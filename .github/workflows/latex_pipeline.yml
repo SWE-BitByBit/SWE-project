@@ -33,7 +33,7 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add '**/*.tex'
+          git add **/*.tex || echo "No .tex files to add"
           git commit -m "Applied LaTeX template via Action" || echo "No changes to commit"
 
       - name: Find all LaTeX files
@@ -54,6 +54,6 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add '**/*.pdf'
+          git add **/*.pdf || echo "No PDFs to add"
           git commit -m "Added compiled PDFs via LaTeX Action" || echo "No PDFs to commit"
           git push
