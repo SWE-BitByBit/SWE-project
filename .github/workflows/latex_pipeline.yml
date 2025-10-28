@@ -1,0 +1,59 @@
+name: Apply Template & Build PDFs
+
+on:
+  push:
+    branches:
+      - '**'
+  workflow_dispatch:
+
+jobs:
+  latex-pipeline:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+
+      - name: Apply LaTeX template
+        run: |
+          for tex_file in $(find . -type f -name "*.tex"); do
+            python .github/scripts/apply_template.py "$tex_file" .github/latex_template.txt
+          done
+
+      - name: Commit updated .tex files
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add **/*.tex || echo "No .tex files to add"
+          git commit -m "Applied LaTeX template via Action" || echo "No changes to commit"
+
+      - name: Find all LaTeX files
+        id: texfiles
+        run: |
+          echo "root_file<<EOF" >> $GITHUB_OUTPUT
+          find . -type f -name "*.tex" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Compile all LaTeX files
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: ${{ steps.texfiles.outputs.root_file }}
+          work_in_root_file_dir: true
+          latexmk_shell_escape: true
+
+      - name: Commit generated PDFs
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add **/*.pdf || echo "No PDFs to add"
+          git commit -m "Added compiled PDFs via LaTeX Action" || echo "No PDFs to commit"
+          git push
