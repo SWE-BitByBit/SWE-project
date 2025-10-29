@@ -40,7 +40,7 @@ jobs:
         id: texfiles
         run: |
           echo "root_file<<EOF" >> $GITHUB_OUTPUT
-          find . -type f -name "*.tex" >> $GITHUB_OUTPUT
+          find . -type f -name "*.tex" ! -name "spazio_firma.tex" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
 
       - name: Compile all LaTeX files
