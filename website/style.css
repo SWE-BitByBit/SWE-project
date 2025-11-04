@@ -1,13 +1,13 @@
 /* --- IMPOSTAZIONI GLOBALI --- */
 :root {
     /* Colori dal logo */
-    --primary-dark: #1A2C3A; /* Blu scuro principale */
-    --accent-color: #30D9C8; /* Azzurrino */
+    --primary-dark: #031735; /* Blu scuro principale */
+    --accent-color: #0AF6C5; /* Azzurrino */
     
     /* Colori di testo e sfondo derivati */
     --text-light: #E2E8F0; /* Bianco sporco per il testo */
-    --text-muted: #9CA3AF; /* Grigio per testo secondario */
-    --bg-lighter-dark: #243B4A; /* Un po' più chiaro del primary-dark per elementi secondari */
+    --text-muted: #8fa4ca; /* Grigio per testo secondario */
+    --bg-lighter-dark: #092956; /* Un po' più chiaro del primary-dark per elementi secondari */
     --border-color: #3C5A6B; /* Bordo più scuro */
 }
 
@@ -24,21 +24,31 @@ html {
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    display: flex; 
     background-color: var(--primary-dark);
     color: var(--text-light);
 }
 
-/* --- 1. MENU LATERALE (NAV) --- */
+/* --- 1. HEADER --- */
+header {
+    position: sticky;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+}
+
+/* --- 2. MENU LATERALE (NAV) --- */
 nav {
     width: 280px; 
-    height: 100vh;
-    position: sticky; 
-    top: 0;
+    top: 60px;
+    position: sticky;
     background-color: var(--bg-lighter-dark);
-    border-right: 1px solid var(--border-color);
     padding: 2rem;
-    overflow-y: auto; 
+    height: 100vh;
 }
 
 .nav-header {
@@ -47,11 +57,7 @@ nav {
 }
 
 .logo {
-    width: 80px; 
-    height: 80px;
-    border-radius: 50%;
-    margin-bottom: 1rem;
-    background-color: var(--accent-color);
+    height: 60px;
 }
 
 nav ul {
@@ -65,14 +71,13 @@ nav ul li {
 nav ul li a {
     display: block;
     text-decoration: none;
-    color: var(--text-muted); 
-    border: 1px solid var(--border-color);
+    color: var(--text-muted);
     background-color: transparent;
     padding: 0.75rem 1.2rem;
     border-radius: 8px;
     font-weight: 500;
     text-align: center;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-out;
 }
 
 nav ul li a:hover {
@@ -83,39 +88,41 @@ nav ul li a:hover {
 }
 
 
-/* --- 2. CONTENUTO PRINCIPALE (MAIN) --- */
+/* --- 3. CONTENUTO PRINCIPALE (MAIN) --- */
 main {
+    margin-left: 280px;
+    margin-top: -100vh;
     flex: 1; 
-    height: 100vh;
-    overflow-y: scroll;
     padding: 3rem;
 }
 
 section {
     margin-bottom: 3rem; 
     background-color: var(--bg-lighter-dark);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
+    border-radius: 8px;
+    border: #0AF6C5 solid 0px;
     padding: 2.5rem;
-    transition: border-color 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
 }
 
 section:hover {
-    border-color: var(--accent-color);
+    border-left-width: 15px;
+    padding-left: 1.78rem;
 }
 
 /* --- STILI PER I CONTENUTI --- */
 h2 {
-    font-size: 2.2rem;
+    font-size: 3.6rem;
     color: var(--accent-color);
-    margin-bottom: 2rem;
+    font-weight: 800;
+    margin-bottom: 2.5rem;
     padding-bottom: 0.5rem;
-    border-bottom: 2px solid var(--accent-color);
 }
 
 h3 {
     font-size: 1.5rem;
     color: var(--text-light);
+    font-weight: 700;
     margin-top: 2.5rem;
     margin-bottom: 1rem;
 }
@@ -126,6 +133,7 @@ p, li, dd {
     line-height: 1.7;
     margin-bottom: 0.75rem;
     color: var(--text-light);
+    font-weight: 300;
 }
 
 main section ul {
@@ -137,7 +145,7 @@ main section ul {
 a {
     color: var(--accent-color);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 /* Sottolineatura per i link nel main (esclusi quelli speciali) */
@@ -173,7 +181,6 @@ dd {
     background-color: var(--primary-dark); 
     padding: 1.5rem;
     border-radius: 8px;
-    border: 1px solid var(--border-color);
     transition: all 0.2s ease-in-out;
 }
 
@@ -188,7 +195,6 @@ dd {
     height: 100px;
     border-radius: 50%;
     margin-bottom: 1rem;
-    border: 3px solid var(--accent-color);
     background-color: #fff;
 }
 
@@ -212,7 +218,6 @@ dd {
 footer {
     margin-top: 1rem;
     padding-top: 2rem;
-    border-top: 1px solid var(--border-color);
 }
 
 /* Contenitore flex per le due colonne */
@@ -271,7 +276,6 @@ footer a:hover {
     text-align: center;
     padding-top: 1.5rem;
     margin-top: 1rem;
-    border-top: 1px solid var(--border-color);
 }
 
 .footer-bottom p {
