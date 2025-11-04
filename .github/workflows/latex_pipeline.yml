@@ -39,11 +39,15 @@ jobs:
       - name: Find all LaTeX files (Python)
         id: texfiles
         run: |
-          echo "root_file<<EOF" >> $GITHUB_OUTPUT
-          python .github/scripts/find_tex_files.py | tee /tmp/tex_files.txt >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
+          FILES=$(python .github/scripts/find_tex_files.py)
           echo "Files found:"
-          cat /tmp/tex_files.txt
+          echo "$FILES"
+          # Scrive nel formato multilinea corretto
+          {
+            echo "root_file<<EOF"
+            echo "$FILES"
+            echo "EOF"
+          } >> $GITHUB_OUTPUT
 
       - name: Compile all LaTeX files
         uses: xu-cheng/latex-action@v3
