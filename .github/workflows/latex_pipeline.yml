@@ -36,25 +36,29 @@ jobs:
           git add **/*.tex || echo "No .tex files to add"
           git commit -m "Applied LaTeX template via Action" || echo "No changes to commit"
 
-      - name: Find all LaTeX files (Python)
-        id: texfiles
+      - name: Install LaTeX tools
         run: |
-          FILES=$(python .github/scripts/find_tex_files.py)
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends \
+            texlive-latex-extra \
+            texlive-fonts-recommended \
+            texlive-fonts-extra \
+            latexmk
+
+      - name: Find all LaTeX files (Python)
+        run: |
+          python .github/scripts/find_tex_files.py > /tmp/tex_files.txt
           echo "Files found:"
-          echo "$FILES"
-          # Scrive nel formato multilinea corretto
-          {
-            echo "root_file<<EOF"
-            echo "$FILES"
-            echo "EOF"
-          } >> $GITHUB_OUTPUT
+          cat /tmp/tex_files.txt
 
       - name: Compile all LaTeX files
-        uses: xu-cheng/latex-action@v3
-        with:
-          root_file: ${{ steps.texfiles.outputs.root_file }}
-          work_in_root_file_dir: true
-          latexmk_shell_escape: true
+        run: |
+          echo "Compiling LaTeX files..."
+          while IFS= read -r file; do
+            echo "▶ Compiling: $file"
+            latexmk -pdf -interaction=nonstopmode "$file"
+            latexmk -c "$file"
+          done < /tmp/tex_files.txt
 
       - name: Commit generated PDFs
         run: |
@@ -63,3 +67,4 @@ jobs:
           git add **/*.pdf || echo "No PDFs to add"
           git commit -m "Added compiled PDFs via LaTeX Action" || echo "No PDFs to commit"
           git push
+
