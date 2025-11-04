@@ -1,0 +1,158 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{graphicx}
+\graphicspath{{resources/}{../resources/}{../../resources/}{../../../resources/}{../../../../resources/}}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{colortbl}
+\usepackage{hyperref} % link cliccabili
+\usepackage{fancyhdr} % intestazioni personalizzate
+\usepackage{titlesec} % per formattare le sezioni
+\geometry{margin=2.5cm}
+
+\setlength{\parindent}{0pt}
+\setstretch{1.2}
+
+% ===== Stile intestazione =====
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{gray}{Verbale Riunione - Gruppo 17}}
+\fancyfoot[C]{\thepage}
+
+% ===== Formattazione sezioni =====
+\titleformat{\section}{\Large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.5em}{}
+
+\begin{document}
+
+% ======= HEADER UNIVERSITÀ E GRUPPO CENTRATI VERTICALMENTE =======
+\vspace*{\fill} % --- Spinge verso il basso l'inizio del contenuto
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logoUni.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\color{red}\LARGE \textbf{Università degli Studi di Padova}}\\[0.3cm]
+        {\large
+        Laurea: Informatica\\
+        Corso: Ingegneria del Software\\
+        Anno Accademico: 2025/26
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1cm}
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logo.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\LARGE \textbf{Gruppo 17}}\\[0.3cm]
+        {\large
+        Nome: BitByBit\\
+        Email: swe.bitbybit@gmail.com
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1.5cm}
+
+\begin{center}
+    {\LARGE \textbf{Glossario}}
+\end{center}
+
+\vspace*{\fill} % --- Spinge verso l’alto la fine del contenuto, centrando tutto il blocco
+
+\clearpage
+% ======= INFO GENERALI =======
+
+% ======= INDICE SU PAGINA DEDICATA =======
+\clearpage
+\tableofcontents
+\thispagestyle{empty} % senza numero di pagina per l'indice
+\clearpage
+
+% ---------- REDAZIONE E REVISIONE ----------
+\clearpage
+\section{Glossario}
+
+\subsection*{Acronimi}
+\begin{tabular}{p{0.22\linewidth} p{0.72\linewidth}}
+\textbf{API} & Application Programming Interface. \\
+\textbf{MVP} & Minimum Viable Product. \\
+\textbf{PB} & Project Baseline \\
+\textbf{RTB} & Requirements and Technology Baseline \\
+\textbf{DB} & Database. \\
+\textbf{JSON} & JavaScript Object Notation. \\
+
+\end{tabular}
+
+\vspace{0.6cm}
+
+\subsection*{Termini principali}
+\begin{description}
+  \item[Requisito] Condizione o capacità che il sistema deve soddisfare.
+  \item[Requisito funzionale] Funzionalità che il sistema deve offrire.
+  \item[Requisito non funzionale] Vincolo di qualità (prestazioni, sicurezza, usabilità, manutentibilità).
+  \item[Backlog] Elenco prioritario delle funzionalità, bug e attività da svolgere.
+  \item[Sprint] Iterazione di lavoro con obiettivi definiti (2 settimane).
+  \item[MVP] Versione minima del prodotto che permette di validare l'ipotesi principale.
+  \item[Prototipo] Versione preliminare per testare design o comportamenti prima dello sviluppo completo.
+  \item[Architettura] Organizzazione generale del sistema e dei suoi componenti.
+  \item[Componente] Unità software con responsabilità ben definite e interfacce pubbliche.
+  \item[API] Interfaccia che consente la comunicazione tra componenti o servizi.
+  \item[Database] Sistema di memorizzazione dei dati e la sua struttura definita.
+  \item[Normalizzazione] Tecnica per ridurre ridondanza e incongruenze nei dati.
+  \item[JSON] Formato per lo scambio di dati tra client e server.
+  \item[Test unitario] Verifica automatizzata di singole unità di codice.
+  \item[Test di integrazione] Verifica delle interazioni tra più componenti o servizi.
+  \item[UAT] User Acceptance Testing: test eseguiti dall'utente finale per verifica dei requisiti.
+  \item[CI/CD] Pipeline per integrazione continua, test automatici e rilascio continuo.
+  \item[Repository / Branch] Archivio del codice sorgente e linee di sviluppo parallele.
+  \item[Pull Request / Merge Request] Procedura per proporre e rivedere modifiche prima dell'integrazione.
+  \item[Issue] Problema da risolvere.
+  \item[Task] Attività da svolgere.
+  \item[Bug] Difetto da controllare.
+  \item[Deployment] Processo di pubblicazione del software in un ambiente esecutivo.
+  \item[Licenza] Condizioni legali che regolano l'uso e la distribuzione del software.
+\end{description}
+
+
+\section{Redazione e revisioni del documento}
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2} 
+\arrayrulecolor{black}
+\begin{tabular}{|p{0.1\linewidth}|p{0.18\linewidth}|p{0.22\linewidth}|p{0.20\linewidth}|p{0.22\linewidth}|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Versione} & \textbf{Ruolo} & \textbf{Nome} & \textbf{Data e ora} & \textbf{Descrizione} \\
+\hline
+\rowcolor{white}
+ & Redatto da & Visentin Giovanni & 2025/11/04 15:55 & Stesura iniziale del verbale \\
+\hline
+\rowcolor{gray!20}
+ & Revisione &  &  & Controllo approfondito del verbale \\
+\hline
+\rowcolor{white}
+ & Conferma & Tutti i membri &  & Conferma da parte di tutti del verbale \\
+\hline
+\rowcolor{gray!20}
+ & Modifiche &  &  &  \\
+\hline
+\end{tabular}
+\end{center}
+
+\end{document}
