@@ -45,6 +45,18 @@ jobs:
             texlive-fonts-extra \
             latexmk
 
+      - name: Install required LaTeX packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            texlive-latex-base \
+            texlive-latex-extra \
+            texlive-fonts-recommended \
+            texlive-lang-italian \
+            texlive-latex-recommended \
+            texlive-pictures \
+            texlive-xetex
+
       - name: Find all LaTeX files (Python)
         run: |
           python .github/scripts/find_tex_files.py > /tmp/tex_files.txt
