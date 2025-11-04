@@ -36,12 +36,14 @@ jobs:
           git add **/*.tex || echo "No .tex files to add"
           git commit -m "Applied LaTeX template via Action" || echo "No changes to commit"
 
-      - name: Find all LaTeX files
+      - name: Find all LaTeX files (Python)
         id: texfiles
         run: |
-          FILES=$(find . -type f -name "*.tex" ! -name "spazio_firma.tex" | tr '\n' ' ')
-          echo "root_file=$FILES" >> $GITHUB_OUTPUT
-
+          echo "root_file<<EOF" >> $GITHUB_OUTPUT
+          python .github/scripts/find_tex_files.py | tee /tmp/tex_files.txt >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+          echo "Files found:"
+          cat /tmp/tex_files.txt
 
       - name: Compile all LaTeX files
         uses: xu-cheng/latex-action@v3
