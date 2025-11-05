@@ -181,5 +181,21 @@
         </footer>
 
     </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          // Seleziona tutti i link del menu laterale
+          const navLinks = document.querySelectorAll("nav ul li a");
+        
+          navLinks.forEach(link => {
+            const targetId = link.getAttribute("href").replace("#", "");
+            const section = document.getElementById(targetId);
+        
+            // Se la sezione esiste ma è nascosta (display: none), nascondi anche il link
+            if (section && window.getComputedStyle(section).display === "none") {
+              link.parentElement.style.display = "none";
+            }
+          });
+        });
+    </script>
 </body>
 </html>
