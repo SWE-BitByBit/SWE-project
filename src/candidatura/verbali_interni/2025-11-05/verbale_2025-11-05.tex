@@ -1,4 +1,3 @@
-% template presente
 \documentclass[a4paper,12pt]{article}
 
 \usepackage{tabularx}
@@ -7,10 +6,10 @@
 \usepackage[italian]{babel}
 \usepackage{hyperref}
 \hypersetup{
-    colorlinks=true,
-    linkcolor=blue,
-    filecolor=blue,
-    urlcolor=blue,     
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=blue,
+	urlcolor=blue,     
 }
 \usepackage{graphicx}
 \graphicspath{{resources/}{../resources/}{../../resources/}{../../../resources/}{../../../../resources/}}
@@ -23,7 +22,7 @@
 \usepackage{titlesec}
 \geometry{margin=2.5cm}
 % ===== Variabile per il titolo del documento =====
-\newcommand{\documenttitle}{Verbale Riunione Numero X}
+\newcommand{\documenttitle}{Verbale Riunione Interna}
 
 
 \setlength{\parindent}{0pt}
@@ -40,167 +39,156 @@
 \titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.5em}{}
 
 \begin{document}
-
-% ======= HEADER UNIVERSITÀ E GRUPPO CENTRATI VERTICALMENTE =======
-\vspace*{\fill} % --- Spinge verso il basso l'inizio del contenuto
-
-\begin{center}
-    \begin{minipage}{0.25\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{logoUni.png}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.7\textwidth}
-        \raggedright
-        {\color{red}\LARGE \textbf{Università degli Studi di Padova}}\\[0.3cm]
-        {\large
-        Laurea: Informatica\\
-        Corso: Ingegneria del Software\\
-        Anno Accademico: 2025/26
-        }
-    \end{minipage}
-\end{center}
-
-\vspace{1cm}
-
-\begin{center}
-    \begin{minipage}{0.25\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{logo.png}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.7\textwidth}
-        \raggedright
-        {\LARGE \textbf{Gruppo 17}}\\[0.3cm]
-        {\large
-        Nome: BitByBit\\
-        Email: swe.bitbybit@gmail.com
-        }
-    \end{minipage}
-\end{center}
-
-\vspace{1.5cm}
-
-\begin{center}
-    {\LARGE \textbf{\documenttitle}}
-\end{center}
-
-\vspace*{\fill} % --- Spinge verso l’alto la fine del contenuto, centrando tutto il blocco
-
-\clearpage
-% ======= INFO GENERALI =======
-\section*{Informazioni Generali}
-\renewcommand{\arraystretch}{1.3}
-
-\begin{tcolorbox}
-\begin{tabularx}{\textwidth}{@{}l X@{}}
-\textbf{Redattore:} & XXXX \\
-\textbf{Verificatore:} & XXXX \\
-\textbf{Responsabile:} & XXXX \\
-\textbf{Amministratore:} & XXXX \\
-\textbf{Data:} & 23 ottobre 2025 \\
-\textbf{Durata:} & 1h 45m \\
-\textbf{Luogo:} & Padova, Aula 2 \\
-\end{tabularx}
-\end{tcolorbox}
-
-\vspace{0.4cm}
-\textbf{Partecipanti:}
-\begin{itemize}
-    \item Manisi Riccardo
-    \item Parolin Dennis
-    \item Scaggiante Gabriele
-    \item Sanguin Marco
-    \item Visentin Giovanni
-\end{itemize}
-
-\textbf{Assenti:}
-\begin{itemize}
-    \item (nessuno)
-\end{itemize}
-
-\clearpage
-
-\vspace{0.5cm}
-
-\vspace{0.8cm}
-
-% ======= INDICE SU PAGINA DEDICATA =======
-\clearpage
-\tableofcontents
-\thispagestyle{empty} % senza numero di pagina per l'indice
-\clearpage
-
-% ---------- ORDINE DEL GIORNO ----------
-\section{Ordine del Giorno}
-\begin{itemize}
-    \item %modifica
-\end{itemize}
-
-% ---------- DISCUSSIONI ----------
-\section{Discussioni}
-%modifica
-
-% ---------- DECISIONI ----------
-\section{Decisioni}
-\begin{itemize}
-    \item %modifica
-    \item %modifica
-\end{itemize}
-
-% ---------- TO DO ----------
-\section{To Do}
-Dalle discussioni e decisioni intraprese, sono sorte le seguenti task:
-
-\begin{center}
-\small
-\renewcommand{\arraystretch}{1.2} 
-\arrayrulecolor{black} 
-\begin{tabular}{|p{0.35\linewidth}|p{0.2\linewidth}|p{0.2\linewidth}|p{0.2\linewidth}|}
-\hline
-\rowcolor{gray!60} 
-\textbf{Task} & \textbf{Assegnatario} & \textbf{Scadenza} & \textbf{Link GitHub} \\
-\hline
-\rowcolor{white}
-Esempio Task 1 & Nome Cognome & 30/10/2025 & \href{https://github.com/<repo>/issues/1}{\textbf{issue}} \\
-\hline
-\rowcolor{gray!20}
-Esempio Task 2 & Nome Cognome & 05/11/2025 & \href{https://github.com/<repo>/issues/2}{\textbf{issue}} \\
-\hline
-\rowcolor{white}
-Esempio Task 3 & Nome Cognome & 10/11/2025 & \href{https://github.com/<repo>/issues/3}{\textbf{issue}} \\
-\hline
-\end{tabular}
-\end{center}
-
-% ---------- REDAZIONE E REVISIONE ----------
-\clearpage
-\section{Redazione e revisioni del documento}
-
-\begin{center}
-\small
-\renewcommand{\arraystretch}{1.2} 
-\arrayrulecolor{black}
-\begin{tabular}{|p{0.1\linewidth}|p{0.18\linewidth}|p{0.22\linewidth}|p{0.20\linewidth}|p{0.22\linewidth}|}
-\hline
-\rowcolor{gray!60} 
-\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
-\hline
-\rowcolor{white}
- &  &  &  &  \\
-\hline
-\rowcolor{gray!20}
- &  &  &  & \\
-\hline
-\rowcolor{white}
- &  &  &  & \\
-\hline
-\rowcolor{gray!20}
- &  &  &  &  \\
-\hline
-\end{tabular}
-\end{center}
-
+	
+	% ======= HEADER UNIVERSITÀ E GRUPPO CENTRATI VERTICALMENTE =======
+	\vspace*{\fill} % --- Spinge verso il basso l'inizio del contenuto
+	
+	\begin{center}
+		\begin{minipage}{0.25\textwidth}
+			\centering
+			\includegraphics[width=\linewidth]{logoUni.png}
+		\end{minipage}
+		\hfill
+		\begin{minipage}{0.7\textwidth}
+			\raggedright
+			{\color{red}\LARGE \textbf{Università degli Studi di Padova}}\\[0.3cm]
+			{\large
+				Laurea: Informatica\\
+				Corso: Ingegneria del Software\\
+				Anno Accademico: 2025/26
+			}
+		\end{minipage}
+	\end{center}
+	
+	\vspace{1cm}
+	
+	\begin{center}
+		\begin{minipage}{0.25\textwidth}
+			\centering
+			\includegraphics[width=\linewidth]{logo.png}
+		\end{minipage}
+		\hfill
+		\begin{minipage}{0.7\textwidth}
+			\raggedright
+			{\LARGE \textbf{Gruppo 17}}\\[0.3cm]
+			{\large
+				Nome: BitByBit\\
+				Email: swe.bitbybit@gmail.com
+			}
+		\end{minipage}
+	\end{center}
+	
+	\vspace{1.5cm}
+	
+	\begin{center}
+		{\LARGE \textbf{\documenttitle}}
+	\end{center}
+	
+	\vspace*{\fill} % --- Spinge verso l’alto la fine del contenuto, centrando tutto il blocco
+	
+	\clearpage
+	% ======= INFO GENERALI =======
+	\section*{Informazioni Generali}
+	\renewcommand{\arraystretch}{1.3}
+	
+	\begin{tcolorbox}
+		\begin{tabularx}{\textwidth}{@{}l X@{}}
+			\textbf{Redattore:} & Marco Sanguin \\
+			\textbf{Verificatore:} & XXXX \\
+			\textbf{Data:} &  2025-11-05 \\
+			\textbf{Durata:} & 1h 45m \\
+			\textbf{Luogo:} & Discord \\
+		\end{tabularx}
+	\end{tcolorbox}
+	
+	\vspace{0.4cm}
+	\textbf{Partecipanti:}
+	\begin{itemize}
+		\item Manisi Riccardo
+		\item Scaggiante Gabriele
+		\item Sanguin Marco
+		\item Visentin Giovanni
+		\item Fracasso Ferdinando
+	\end{itemize}
+	
+	\textbf{Assenti:}
+	\begin{itemize}
+		\item Parolin Dennis
+	\end{itemize}
+	
+	\clearpage
+	
+	\vspace{0.5cm}
+	
+	\vspace{0.8cm}
+	
+	% ======= INDICE SU PAGINA DEDICATA =======
+	\clearpage
+	\tableofcontents
+	\thispagestyle{empty} % senza numero di pagina per l'indice
+	\clearpage
+	
+	% ---------- ORDINE DEL GIORNO ----------
+	\section{Ordine del Giorno}
+	\begin{itemize}
+		\item Confermare il cambio di capitolato da C8 a C4, a seguito dell'assegnazione ad un altro gruppo.
+		\item Completare e aggiornare i documenti per l'invio della seconda candidatura.
+	\end{itemize}
+	
+	% ---------- DISCUSSIONI ----------
+	\section{Discussioni}
+	Durante la riunione interna, i membri del gruppo hanno concordato di mandare la richiesta di candidatura al capitolato C4, cambiando da C8 in quanto gi\`a assegnato ad un altro gruppo; quindi hanno discusso sui documenti che andavano redatti e come si sarebbero potuti migliorare per renderli pi\`u ordinati e comprensibili, aggiornado anche la disposizione dei file e delle cartelle nella repository del progetto. 
+	
+	% ---------- DECISIONI ----------
+	\section{Decisioni}
+	Si \`e deciso di cambiare la richiesta di candidatura e redarne una nuova per il capitolato C4 da mandare il prima possibile, includendo la nuova pagina web di presentazione del gruppo.
+	
+	% ---------- TO DO ----------
+	\section{To Do}
+	Dalle discussioni e decisioni intraprese, sono sorte le seguenti task:
+	
+	\begin{center}
+		\small
+		\renewcommand{\arraystretch}{1.2} 
+		\arrayrulecolor{black} 
+		\begin{tabular}{|p{0.35\linewidth}|p{0.2\linewidth}|p{0.2\linewidth}|p{0.2\linewidth}|}
+			\hline
+			\rowcolor{gray!60} 
+			\textbf{Task} & \textbf{Assegnatario} & \textbf{Scadenza} & \textbf{Link GitHub} \\
+			\hline
+			\rowcolor{white}
+			Redarre il documento di valutazione capitolati per la seconda candidatura & Gabriele Scaggiante & 2025-11-05 & \href{https://github.com/SWE-BitByBit/SWE-project/issues/54}{\textbf{issue}} \\
+			\hline
+			\rowcolor{gray!20}
+			Redarre la domanda di seconda candidatura & Visentin Giovanni & 2025-11-05 & \href{https://github.com/SWE-BitByBit/SWE-project/issues/50}{\textbf{issue}} \\
+			\hline
+			\rowcolor{white}
+			Sistemare i link ai documenti nella pagina web & Visentin Giovanni & 2025-11-05 & \href{https://github.com/SWE-BitByBit/SWE-project/issues/49}{\textbf{issue}} \\
+			\hline
+			\rowcolor{gray!20}
+			Normalizzare i nome di file e cartelle & Riccardo Manisi & 2025-11-05 & \href{https://github.com/SWE-BitByBit/SWE-project/issues/53}{\textbf{issue}} \\
+			\hline
+		\end{tabular}
+	\end{center}
+	
+	% ---------- REDAZIONE E REVISIONE ----------
+	\clearpage
+	\section{Redazione e revisioni del documento}
+	
+	\begin{center}
+		\small
+		\renewcommand{\arraystretch}{1.2} 
+		\arrayrulecolor{black}
+		\begin{tabular}{|p{0.1\linewidth}|p{0.18\linewidth}|p{0.22\linewidth}|p{0.20\linewidth}|p{0.22\linewidth}|}
+			\hline
+			\rowcolor{gray!60} 
+			\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+			\hline
+			\rowcolor{white}
+			0.1.0 & 2025-11-05 & Marco Sanguin  & Stesura iniziale del verbale &  \\
+			\hline
+	
+		\end{tabular}
+	\end{center}
+	
 \end{document}
-
-
