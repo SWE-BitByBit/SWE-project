@@ -49,23 +49,17 @@ jobs:
             texlive-xetex \
             latexmk
 
-      - name: Compile all LaTeX files in their directories
+      - name: Build all LaTeX files to docs/
         run: |
-          echo "🔍 Ricerca dei file .tex..."
-          find . -type f -name "*.tex" ! -name "spazio_firma.tex" > tex_files.txt
-          echo "📄 File trovati:"
-          cat tex_files.txt
-          while IFS= read -r tex_file; do
-            echo "🚀 Compilo: $tex_file"
-            dir=$(dirname "$tex_file")
-            file=$(basename "$tex_file")
-            latexmk -pdf -interaction=nonstopmode -halt-on-error -cd "$dir/$file"
-          done < tex_files.txt
+          python .github/scripts/build_pdfs.py
 
       - name: Commit generated PDFs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add **/*.pdf || echo "No PDFs to add"
-          git commit -m "Added compiled PDFs via LaTeX Action" || echo "No PDFs to commit"
-          git push
+          git pull --rebase origin ${{ github.ref_name }} || true
+          git add docs/**/*.pdf || echo "No PDFs to add"
+          git commit -m "📄 Added generated PDFs to docs/" || echo "No PDFs to commit"
+          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }} HEAD:${{ github.ref_name }}
