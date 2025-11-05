@@ -11,7 +11,7 @@ IGNORED_FILES = {"spazio_firma.tex"}
 def main():
     tex_files = [f for f in SRC_DIR.rglob("*.tex") if f.name not in IGNORED_FILES]
     if not tex_files:
-        print("⚠️ Nessun file .tex da compilare trovato in src/")
+        print("Nessun file .tex da compilare trovato in src/")
         return
 
     for tex_file in tex_files:
@@ -19,22 +19,25 @@ def main():
         output_dir = DOCS_DIR / rel_path.parent
         output_dir.mkdir(parents=True, exist_ok=True)
 
-        print(f"🧩 Compilo: {tex_file} → {output_dir}")
+        print(f"Compilo: {tex_file} → {output_dir}")
 
         try:
-            # ✅ latexmk viene eseguito nella cartella del file,
-            #    così i percorsi relativi nei \input funzionano
+            # latexmk eseguito nella cartella del file
+            # Output PDF nella cartella corrispondente in docs/
             subprocess.run(
                 [
                     "bash",
                     "-c",
-                    f"cd '{tex_file.parent}' && latexmk -pdf -interaction=nonstopmode -halt-on-error "
-                    f"-output-directory='{output_dir}' '{tex_file.name}'"
+                    f"cd '{tex_file.parent}' && "
+                    f"latexmk -pdf -interaction=nonstopmode -halt-on-error "
+                    f"-outdir='{output_dir}' '{tex_file.name}'"
                 ],
                 check=True
             )
-        except subprocess.CalledProcessError:
-            print(f"❌ Errore durante la compilazione di {tex_file}")
+
+        except subprocess.CalledProcessError as e:
+            print(f"Errore durante la compilazione di {tex_file}")
+            print(f"   Codice di ritorno: {e.returncode}")
 
     print("✅ Compilazione completata.")
 
