@@ -10,8 +10,16 @@
 \usepackage{setspace}
 \usepackage{colortbl}
 \usepackage{hyperref} % link cliccabili
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    urlcolor=blue,     
+}
 \usepackage{fancyhdr} % intestazioni personalizzate
 \usepackage{titlesec} % per formattare le sezioni
+\usepackage{float} % per la tabella del glossario
+\usepackage{longtable} % per fare in modo che la tabella sia più lunga di una pagina
 \geometry{margin=2.5cm}
 
 \setlength{\parindent}{0pt}
@@ -103,38 +111,63 @@
 \vspace{0.6cm}
 
 \subsection*{Termini principali}
-\begin{description}
-  \item[Requisito] Condizione o capacità che il sistema deve soddisfare.
-  \item[Requisito funzionale] Funzionalità che il sistema deve offrire.
-  \item[Requisito non funzionale] Vincolo di qualità (prestazioni, sicurezza, usabilità, manutentibilità).
-  \item[Backlog] Elenco prioritario delle funzionalità, bug e attività da svolgere.
-  \item[Sprint] Iterazione di lavoro con obiettivi definiti (2 settimane).
-  \item[PoC] prototipo o esperimento usato per dimostrare la fattibilità di una soluzione.
-  \item[Repository/Repo] Archivio centralizzato dove viene conservato e gestito il codice sorgente del progetto.
-  \item[MVP] Versione minima del prodotto che permette di validare l'ipotesi principale.
-  \item[RTB] Insieme dei requisiti approvati e della loro tracciabilità.
-  \item[PB] Versione approvata del prodotto pronta al rilascio o alla validazione.
-  \item[Prototipo] Versione preliminare per testare design o comportamenti prima dello sviluppo completo.
-  \item[Architettura] Organizzazione generale del sistema e dei suoi componenti.
-  \item[Componente] Unità software con responsabilità ben definite e interfacce pubbliche.
-  \item[API] Interfaccia che consente la comunicazione tra componenti o servizi.
-  \item[Database] Sistema di memorizzazione dei dati e la sua struttura definita.
-  \item[Normalizzazione] Tecnica per ridurre ridondanza e incongruenze nei dati.
-  \item[JSON] Formato per lo scambio di dati tra client e server.
-  \item[Test unitario] Verifica automatizzata di singole unità di codice.
-  \item[Test di integrazione] Verifica delle interazioni tra più componenti o servizi.
-  \item[Repository / Branch] Archivio del codice sorgente e linee di sviluppo parallele.
-  \item[Pull Request / Merge Request] Procedura per proporre e rivedere modifiche prima dell'integrazione.
-  \item[Issue] Problema da risolvere.
-  \item[Task] Attività da svolgere.
-  \item[Bug] Difetto da controllare.
-  \item[Deployment] Processo di pubblicazione del software in un ambiente esecutivo.
-  \item[Licenza] Condizioni legali che regolano l'uso e la distribuzione del software.
-  \item[Glossario] Elenco termini utilizzati dal gruppo.
-  \item[Verbale] Documento riassuntivo di una riunione in form AAAA-MM-GG.
-\end{description}
 
+\renewcommand{\arraystretch}{1.2}
+\begin{longtable}{p{4cm} p{11cm}}
+\textbf{Termine} & \textbf{Definizione} \\ \hline
+\endfirsthead
 
+\textbf{Termine} & \textbf{Definizione} \\ \hline
+\endhead
+
+Requisito & Condizione o capacità che il sistema deve soddisfare. \\
+Requisito funzionale & Funzionalità che il sistema deve offrire. \\
+Requisito non funzionale & Vincolo di qualità (prestazioni, sicurezza, usabilità, manutentibilità). \\
+Backlog & Elenco prioritario delle funzionalità, bug e attività da svolgere. \\
+Sprint & Iterazione di lavoro con obiettivi definiti (2 settimane). \\
+PoC & Prototipo o esperimento usato per dimostrare la fattibilità di una soluzione. \\
+Repository / Repo & Archivio centralizzato dove viene conservato e gestito il codice sorgente del progetto. \\
+MVP & Versione minima del prodotto che permette di validare l'ipotesi principale. \\
+RTB & Insieme dei requisiti approvati e della loro tracciabilità. \\
+PB & Versione approvata del prodotto pronta al rilascio o alla validazione. \\
+Prototipo & Versione preliminare per testare design o comportamenti prima dello sviluppo completo. \\
+Architettura & Organizzazione generale del sistema e dei suoi componenti. \\
+Componente & Unità software con responsabilità ben definite e interfacce pubbliche. \\
+API & Interfaccia che consente la comunicazione tra componenti o servizi. \\
+Database & Sistema di memorizzazione dei dati e la sua struttura definita. \\
+Normalizzazione & Tecnica per ridurre ridondanza e incongruenze nei dati. \\
+JSON & Formato per lo scambio di dati tra client e server. \\
+Test unitario & Verifica automatizzata di singole unità di codice. \\
+Test di integrazione & Verifica delle interazioni tra più componenti o servizi. \\
+Repository / Branch & Archivio del codice sorgente e linee di sviluppo parallele. \\
+Pull Request / Merge Request & Procedura per proporre e rivedere modifiche prima dell'integrazione. \\
+Issue & Problema da risolvere. \\
+Task & Attività da svolgere. \\
+Bug & Difetto da controllare. \\
+Deployment & Processo di pubblicazione del software in un ambiente esecutivo. \\
+Licenza & Condizioni legali che regolano l'uso e la distribuzione del software. \\
+Glossario & Elenco termini utilizzati dal gruppo. \\
+Verbale & Documento riassuntivo di una riunione. Ciascun Verbale deve specificare Ordine del Giorno, Discussioni fatte, Decisioni intraprese, Issue concrete da svolgere e deve essere verificato da un membro del gruppo diverso da quello che lo ha scritto. \\
+To Do & Sezione di un verbale o di un documento di altro tipo in cui si elencano le azioni concrete che ogni membro del gruppo deve svolgere a partire da quanto è stato redatto il documento.
+
+\end{longtable}
+\newpage
+\section{Nomenclatura}
+In questa sezione viene specificato in maniera esatta in che modo vanno nominati file, cartelle e altri artefatti.
+\subsection{Date}
+Il formato delle date è \textbf{AAAA-MM-GG}. Un esempio di data corretta è 2025-11-04. Ogni data deve  sempre essere costituita da 10 caratteri. Non è consentito abbreviare l'anno (es: 25 al posto di 2025) né scrivere singole cifre senza uno zero prima (es: 5 al posto di 05) né usare lo slash (/) al posto del trattino.
+
+\subsection{Ore}
+Ci sono due formati per le ore:
+\begin{itemize}
+    \item \textbf{Durata}: Per espriemere una durata usare il formato \textbf{Hh Mm} (es: 2h 15m)
+    \item \textbf{Ora di orologio}: Per indicare che un evento è avvenuto in una specifica ora, usare il formato \textbf{HH:MM} (es: 15:45)
+\end{itemize}
+
+\subsection{Verbali}
+Ogni verbale va nominato in relazione alla data a cui si riferisce. Il nome di ogni verbale deve iniziare con "verbale\_" (lettere minuscole), seguito dalla data nel formato concordato. Un esempio di nominazione corretta è "verbale\_2025-11-05". L'unica eccezione è nel caso in cui usare questo formato generi due verbali con lo stesso nome all'interno della stessa cartella. In tal caso è necessario aggiungere, dopo la data, una breve descrizione del contesto relativo al verbale, sostituendo agli spazi il simbolo \_. Ad esempio "verbale\_2025-10-28\_incontro\_c8"
+
+\clearpage
 \section{Redazione e revisioni del documento}
 
 \begin{center}
@@ -144,19 +177,13 @@
 \begin{tabular}{|p{0.1\linewidth}|p{0.18\linewidth}|p{0.22\linewidth}|p{0.20\linewidth}|p{0.22\linewidth}|}
 \hline
 \rowcolor{gray!60} 
-\textbf{Versione} & \textbf{Ruolo} & \textbf{Nome} & \textbf{Data e ora} & \textbf{Descrizione} \\
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 \rowcolor{white}
-0.1 & Redatto da & Visentin Giovanni & 2025-11-04 15:55 & Stesura iniziale del verbale \\
+0.2.0 & 2025-11-05 & Giovanni Visentin & Aggiunti termini al documento & Gabriele Scaggiante \\
 \hline
 \rowcolor{gray!20}
- & Revisione &  &  & Controllo approfondito del verbale \\
-\hline
-\rowcolor{white}
-0.2 & Modifiche & Visentin Giovanni & 2025-11-05 & Aggiunti termini al documento \\
-\hline
-\rowcolor{gray!20}
- & Conferma & Tutti i membri &  & Conferma da parte di tutti del verbale \\
+0.1.0 & 2025-11-04 & Giovanni Visentin & Stesura iniziale del glossario & Gabriele Scaggiante \\
 \hline
 \end{tabular}
 \end{center}
