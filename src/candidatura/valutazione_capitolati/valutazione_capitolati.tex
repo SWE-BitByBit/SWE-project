@@ -1,0 +1,344 @@
+% template presente
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{graphicx}
+\graphicspath{{resources/}{../resources/}{../../resources/}{../../../resources/}{../../../../resources/}}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{colortbl}
+\usepackage{hyperref} % link cliccabili
+\usepackage{fancyhdr} % intestazioni personalizzate
+\usepackage{titlesec} % per formattare le sezioni
+\geometry{margin=2.5cm}
+
+\setlength{\parindent}{0pt}
+\setstretch{1.2}
+
+% ===== Stile intestazione =====
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{gray}{Valutazione dei Capitolati D'Appalto}}
+\fancyfoot[C]{\thepage}
+
+% ===== Formattazione sezioni =====
+\titleformat{\section}{\Large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.5em}{}
+
+\begin{document}
+
+% ======= HEADER UNIVERSITÀ E GRUPPO CENTRATI VERTICALMENTE =======
+\vspace*{\fill} % --- Spinge verso il basso l'inizio del contenuto
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logoUni.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\color{red}\LARGE \textbf{Università degli Studi di Padova}}\\[0.3cm]
+        {\large
+        Laurea: Informatica\\
+        Corso: Ingegneria del Software\\
+        Anno Accademico: 2025/26
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1cm}
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logo.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\LARGE \textbf{Gruppo 17}}\\[0.3cm]
+        {\large
+        Nome: BitByBit\\
+        Email: swe.bitbybit@gmail.com
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1.5cm}
+
+\begin{center}
+    {\LARGE \textbf{Valutazione dei Capitolati D'Appalto}}
+\end{center}
+
+\vspace*{\fill} % --- Spinge verso l’alto la fine del contenuto, centrando tutto il blocco
+
+\clearpage
+
+
+% ======= INDICE SU PAGINA DEDICATA =======
+\clearpage
+\tableofcontents
+\thispagestyle{empty} % senza numero di pagina per l'indice
+\clearpage
+
+% ---------- Capitolato SCELTO ----------
+\section{Capitolato scelto: C8 - ``Smart Order''}
+
+\subsection{Introduzione al Capitolato}
+\textbf{Proponente:} Ergon Informatica Srl
+
+Il Capitolato ``Smart Order'' richiede la realizzazione di un software intelligente pensato per aiutare i clienti a ordinare prodotti dalle aziende in maniera semplice, intuitiva e tramite input multimodali, tra cui chat, foto e registrazioni audio. La piattaforma, disponibile via web, utilizzerà l’AI per analizzare gli ordini degli utenti, capire le loro intenzioni e convertire la loro richiesta in un formato strutturato pronto all’utilizzo e modellato sulla banca dati dell’azienda stessa.
+
+\subsection{Dominio}
+
+\subsubsection{Dominio Tecnico}
+Il dominio tecnico del progetto SmartOrder comprende l’insieme di strumenti e tecnologie necessari per sviluppare una piattaforma intelligente capace di interpretare automaticamente ordini cliente provenienti da diverse fonti (testo, immagini, audio) e integrarli nei sistemi aziendali. Le principali aree tecnologiche coinvolte sono:
+
+\begin{itemize}
+    \item \textbf{Elaborazione del linguaggio naturale (NLP):} utilizzo di modelli basati su Transformer (BERT, RoBERTa, GPT) per comprendere il contenuto testuale e identificare entità come prodotti e quantità a partire dal catalogo aziendale.
+    \item \textbf{Visione artificiale e OCR:} impiego di strumenti come Tesseract o EasyOCR per estrarre dati strutturati da documenti o immagini contenenti ordini.
+    \item \textbf{Riconoscimento vocale (ASR):} uso di modelli come Whisper o Google Speech-to-Text per convertire comandi o ordini vocali in testo analizzabile.
+    \item \textbf{Integrazione e gestione dati:} adozione di database relazionali (MySQL, PostgreSQL) e API REST per la comunicazione tra moduli e l’invio dei dati elaborati ai sistemi ERP aziendali.
+    \item \textbf{Infrastruttura e frontend:} utilizzo di framework moderni come .NET Blazor, React o Angular per la realizzazione di interfacce web e di un’architettura modulare, scalabile e facilmente manutenibile.
+\end{itemize}
+
+Questo dominio tecnico permette di realizzare un sistema affidabile e intelligente, in grado di integrare diverse tecnologie di IA per automatizzare e ottimizzare i processi di gestione degli ordini.
+
+\subsubsection{Dominio Applicativo}
+La piattaforma è destinata a tutte le aziende che vogliono facilitare e automatizzare il processo di ordinazione per i propri utenti nell’ottica della digitalizzazione dei processi. Il dominio applicativo del progetto SmartOrder è quindi quello della gestione aziendale e dei processi di acquisto/vendita, con particolare riferimento all’ambito dei sistemi ERP e dell’automazione dei flussi di ordine cliente.
+
+\subsection{Motivazioni della Scelta}
+Il nostro gruppo ha scelto di candidarsi per questo progetto per una serie di motivazioni tecniche e formative che riteniamo particolarmente stimolanti:
+
+\begin{itemize}
+    \item \textbf{Interesse per l’Intelligenza Artificiale e le sue applicazioni reali:} Ci ha particolarmente colpito la struttura del progetto, che unisce diverse componenti tecnologiche, dal riconoscimento vocale alla visione artificiale fino all’elaborazione del linguaggio naturale, in un’unica architettura coerente. Questo ci offre l’opportunità di approfondire in modo concreto come modelli multimodali e sistemi di AI possano collaborare per trasformare dati non strutturati in informazioni strutturate e utili ai processi aziendali.
+    \item \textbf{Chiarezza e flessibilità nella definizione del progetto:} Rispetto ad altri progetti proposti, questo ci è apparso particolarmente chiaro nella descrizione degli obiettivi e delle attività richieste. Allo stesso tempo, lascia un margine di libertà sufficiente per introdurre scelte progettuali e soluzioni personali, permettendoci di mettere in campo la nostra creatività e valorizzare le competenze del gruppo.
+    \item \textbf{Utilità pratica e impatto aziendale:} Il progetto SmartOrder affronta una problematica concreta e diffusa nel mondo industriale e commerciale, ossia la gestione di dati non strutturati provenienti dai clienti. Contribuire a un progetto che possa essere d’aiuto a una vasta gamma di utenti in contesti reali era l’obiettivo principale ricercato dai membri del gruppo.
+    \item \textbf{Sviluppo di competenze tecniche avanzate:} Questo progetto ci offre l’opportunità di mettere in pratica e approfondire le nostre competenze in ambiti come il machine learning, l’elaborazione del linguaggio naturale, la visione artificiale, lo sviluppo di API e l’integrazione con database aziendali, permettendoci di acquisire una visione più completa e concreta del ciclo di vita di un sistema basato sull’intelligenza artificiale. Molti dei membri del gruppo non hanno mai utilizzato le tecnologie citate nel Capitolato e desiderano cogliere questa occasione per imparare a usarle in maniera concreta.
+    \item \textbf{Professionalità e disponibilità del referente aziendale:} Un ulteriore aspetto che ha influenzato positivamente la nostra decisione è stata la disponibilità e la professionalità del responsabile aziendale, che si è dimostrato aperto al dialogo e pronto a fornire chiarimenti e supporto. Questo atteggiamento collaborativo ci ha trasmesso fiducia e ci ha ulteriormente motivati a intraprendere il progetto con impegno e interesse.
+    \item \textbf{Disponibilità di dati reali forniti dall’azienda:} Un elemento che ci ha particolarmente motivato nella scelta di questo progetto è la possibilità di lavorare su dati reali messi a disposizione dall’azienda proponente, come un catalogo contenente migliaia di articoli. Questo aspetto rende il progetto estremamente concreto e ci permette di testare le soluzioni sviluppate in un contesto realistico, verificando direttamente le prestazioni e l’efficacia dei modelli su casi d’uso autentici.
+\end{itemize}
+
+\subsection{Conclusione}
+La scelta di SmartOrder nasce dalla volontà di lavorare su un progetto che unisca innovazione tecnologica e utilità concreta. Ci ha colpito l’obiettivo del Capitolato, che affronta un problema reale come la gestione automatizzata degli ordini attraverso l’intelligenza artificiale e l’elaborazione di dati multimodali. La struttura del sistema, chiara ma al tempo stesso flessibile, ci permette di sperimentare liberamente diverse soluzioni senza perdere il riferimento di un’architettura solida. Consideriamo SmartOrder un’occasione per misurarci con strumenti avanzati e metodologie moderne, trasformando un caso d’uso realistico in un’esperienza formativa completa, capace di farci crescere sia dal punto di vista tecnico che professionale.
+
+% ---------- Capitolati CONSIDERATI ----------
+\section{Capitolati alternativi di interesse}
+
+\subsection{Capitolato C4: L’app che protegge e trasforma}
+
+\subsubsection{Descrizione}
+L’appalto prevede la progettazione e lo sviluppo di un’applicazione mobile innovativa, denominata “L’app che Protegge e Trasforma”, finalizzata alla prevenzione e al supporto delle vittime di violenza di genere. L’obiettivo è realizzare uno strumento intelligente, sicuro e accessibile, capace di riconoscere segnali di rischio, fornire supporto immediato e risorse concrete, e promuovere autonomia ed empowerment.
+L’app sarà disponibile per iOS e Android e include funzionalità di rilevamento automatico di situazioni di pericolo, accesso a reti di aiuto geo-localizzate, strumenti di sicurezza personalizzati (come modalità stealth e allarmi silenziosi), moduli formativi per la prevenzione e una community di supporto.
+Il progetto richiede l’intero ciclo di vita dello sviluppo software, dall’analisi alla manutenzione, garantendo sicurezza dei dati, scalabilità e usabilità, nel rispetto delle normative sulla privacy e dei principi di “security e privacy by design”.
+
+\subsubsection{Punti a favore}
+\begin{itemize}
+    \item \textbf{Rilevanza sociale e impatto concreto:} Il progetto affronta un tema estremamente attuale e delicato come la violenza di genere, proponendo un approccio tecnologico a un problema umano e sociale. Sviluppare un’app che possa realmente aiutare persone in difficoltà rappresenta un’opportunità per mettere le competenze informatiche al servizio del bene comune.
+    \item \textbf{Accessibilità e inclusione:} Uno degli obiettivi principali del progetto è semplificare l’accesso alle risorse di supporto psicologico, legale e di emergenza rendendole disponibili in modo immediato, discreto e sicuro. Questo tipo di soluzione può fare la differenza nel momento del bisogno, e ci motiva fortemente sul piano etico e personale.
+    \item \textbf{Innovazione tecnologica e crescita professionale:} Il Capitolato integra diverse tecnologie moderne, intelligenza artificiale, machine learning, sviluppo mobile, gestione sicura dei dati e geolocalizzazione offrendo un contesto ideale per ampliare le competenze del gruppo. Anche se alcune di queste aree sono nuove per noi, il progetto rappresenta una sfida formativa molto stimolante e un’occasione per sperimentare tecnologie di rilevanza fondamentale.
+    \item \textbf{Interdisciplinarità del progetto:} La realizzazione dell’app richiede competenze non solo tecniche ma anche di design, sicurezza, comunicazione e comprensione dell’utente. Ciò favorisce un approccio collaborativo completo, in cui ognuno può contribuire con le proprie capacità e crescere in più direzioni.
+    \item \textbf{Collaborazione con enti e professionisti:} Il progetto offre anche la possibilità di interfacciarsi con professionisti del settore sociale o della sicurezza, creando una collaborazione interdisciplinare che arricchisce la visione del team e avvicina il lavoro a contesti reali.
+\end{itemize}
+
+\subsubsection{Punti critici}
+\begin{itemize}
+    \item \textbf{Carico di lavoro e complessità generale:} Il progetto presenta un livello di complessità piuttosto elevato, sia per la varietà delle funzionalità richieste (intelligenza artificiale, geolocalizzazione, sicurezza, gestione dati, interfacce mobile) sia per la sensibilità del tema trattato. Considerando il tempo e le risorse disponibili, abbiamo preferito orientarci verso un Capitolato che ci permetta di realizzare un prodotto completo, stabile e curato nei dettagli.
+    \item \textbf{Curva di apprendimento molto ripida:} Le tecnologie richieste, in particolare quelle legate al machine learning, all’elaborazione dei dati e alla sicurezza mobile, non sono ancora nelle competenze del gruppo. Anche se rappresentano una grande opportunità formativa, l’impegno richiesto per apprenderle e integrarle correttamente rischia di rallentare eccessivamente lo sviluppo.
+    \item \textbf{Ambiguità nella definizione dei requisiti:} Il Capitolato presenta diverse funzionalità interessanti ma non del tutto chiarite in termini di priorità e obbligatorietà. Questo potrebbe creare difficoltà nella pianificazione del lavoro e nel bilanciare le parti tecniche, rischiando di concentrarsi su aspetti secondari a discapito di quelli fondamentali.
+    \item \textbf{Preoccupazioni etiche e responsabilità sociale:} L’app tratta temi estremamente delicati, e l’idea di affidare anche solo parzialmente all’intelligenza artificiale funzioni legate al supporto o al riconoscimento di situazioni di pericolo solleva qualche dubbio etico. È un progetto che richiede una grande attenzione nella comunicazione e nella gestione dei dati, e non siamo certi di poter garantire pienamente questa responsabilità nel contesto di un progetto universitario.
+    \item \textbf{Rischio di dispersione degli obiettivi:} Il progetto tocca molti ambiti diversi, tecnico, psicologico, sociale e formativo, e questo, se non gestito con grande chiarezza, può portare a una frammentazione del lavoro e a un prodotto finale meno coerente o focalizzato rispetto alle aspettative iniziali.
+\end{itemize}
+
+\subsection{Capitolato C6: Second Brain}
+
+\subsubsection{Descrizione}
+Il progetto proposto da Zucchetti Spa mira a sviluppare un’applicazione web basata su tecnologie HTML e MarkDown, che integri le capacità dei Large Language Model per assistere gli utenti nella creazione, revisione e analisi di testi. L’obiettivo è esplorare le potenzialità degli LLM nel supportare attività come il miglioramento del tono, la riscrittura, la traduzione, la sintesi e il brainstorming.  
+L’applicazione sarà composta da un editor testuale e da un’area di rendering MarkDown, dove l’utente potrà scrivere e visualizzare in tempo reale il risultato formattato. Attraverso l’integrazione con modelli come Gemini, Mistral o Gemma, l’editor permetterà di applicare operazioni di riepilogo, miglioramento e traduzione su tutto o parte del testo selezionato, oltre a fornire una critica secondo la metodologia dei “sei cappelli per pensare” di Edward De Bono.  
+Il sistema potrà anche generare testi completi a partire da un prompt, secondo il paradigma del “Distant Writing”. In una fase avanzata, potranno essere implementate funzionalità opzionali come il salvataggio server side delle note in un database, la loro modifica e collegamento, per realizzare un vero e proprio “secondo cervello” digitale capace di organizzare e potenziare le idee dell’utente.
+
+\subsubsection{Punti a favore}
+\begin{itemize}
+    \item \textbf{Innovazione e esperienza concreta con AI generativa:} Il Capitolato permette di lavorare su tecnologie attuali come i Large Language Model e l’intelligenza artificiale, offrendo la possibilità di sperimentare concretamente modelli come Gemini, Mistral o Gemma e di vedere come le funzionalità di un LLM (sintesi, riscrittura, critica con i “sei cappelli”) possono migliorare la produttività e la creatività.
+    \item \textbf{Rilevanza e coinvolgimento personale:} Il progetto affronta temi che viviamo quotidianamente, come la presa di appunti e la gestione delle conoscenze, attività che conosciamo bene come studenti e utilizzatori di strumenti digitali come Obsidian o Notion. Lavorare su un’app pensata anche per noi studenti ci motiva e ci permette di comprendere subito le esigenze degli utenti finali.
+    \item \textbf{Interesse tecnico sul grafo di note:} Lo sviluppo della funzionalità di archiviazione e collegamento delle note tramite database rappresenta una sfida interessante e aggiunge valore sia in termini di usabilità che di impatto visivo.
+    \item \textbf{Impatto trasversale e utilità:} La soluzione ha potenzialità di applicazione sia in ambito aziendale che educativo, dalla formazione alla produttività, ampliando le opportunità di utilizzo del progetto.
+\end{itemize}
+
+\subsubsection{Punti critici}
+\begin{itemize}
+    \item \textbf{Ruolo secondario delle funzionalità strutturali e organizzative:} Il Capitolato pone il focus sull’integrazione dei Large Language Model e sulle operazioni di manipolazione e analisi del testo tramite intelligenza artificiale. Sono sicuramente aspetti interessanti, ma altre funzionalità come la visualizzazione e l’organizzazione strutturata delle note e del sito, che per noi rappresentano un elemento di pari interesse, sono considerate solo requisiti opzionali o non necessarie.
+    \item \textbf{Semplice definizione di prompt per l’utilizzo dell’AI:} L’utilizzo dell’AI per il progetto, anche da quanto emerso da un incontro diretto con il responsabile, si limita alla progettazione dei prompt necessari per soddisfare tutte le funzioni richieste dal Capitolato. Avremmo preferito un utilizzo più approfondito dei modelli di intelligenza artificiale che andasse oltre la semplice progettazione testuale.
+    \item \textbf{Esistenza di piattaforme mature analoghe:} Lo sviluppo di un’applicazione di scrittura di testi in markdown è sicuramente interessante, ma avremmo preferito prendere in mano un progetto più innovativo o per il quale fossero poche o poco conosciute le alternative già presenti sul mercato. Il Capitolato in questione, a nostro avviso, avrebbe richiesto un utilizzo di varie librerie già consolidate, con poco spazio a implementazioni tecniche originali al di fuori di quanto riportato nel documento di presentazione.
+\end{itemize}
+
+
+% ---------- Capitolati SCARTATI ----------
+\section{Altri Capitolati valutati}
+\subsection{Capitolato C1: Automated EN18031 Compliance Verification}
+
+\subsubsection{Descrizione}
+Il Capitolato, proposto da Bluewind S.r.l., riguarda la realizzazione di un sistema software per automatizzare la verifica di conformità alla norma EN 18031. Tale normativa impone requisiti di sicurezza informatica, protezione dei dati e prevenzione delle frodi per dispositivi radio (Wi-Fi, LTE, Bluetooth, IoT).
+
+Il progetto prevede lo sviluppo di un’interfaccia grafica interattiva che guidi l’utente attraverso i decision tree previsti dallo standard, consentendo l’importazione di documenti e file strutturati e l’esecuzione automatica delle verifiche. Il sistema dovrà inoltre offrire una dashboard per la visualizzazione dello stato dei requisiti, l’esecuzione dei decision tree e la modifica grafica dei flussi decisionali.
+
+\subsubsection{Punti a favore}
+\begin{itemize}
+    \item Il progetto propone un’applicazione strutturata e completa, con una chiara suddivisione tra frontend e backend.
+    \item È presente un’interfaccia grafica interattiva e una dashboard ben definite, che rendono il progetto concreto e tangibile.
+    \item Lascia libertà tecnologica nella scelta dello stack e del tipo di applicazione (desktop o web).
+    \item Include un caso studio pratico (una macchina del caffè IoT), che rende più chiaro l’ambito di applicazione.
+\end{itemize}
+
+\subsubsection{Punti critici}
+\begin{itemize}
+    \item Il progetto è fortemente legato a una norma tecnica e legislativa complessa (EN 18031), rendendo l’attività più documentale che creativa.
+    \item Non è previsto alcun utilizzo di intelligenza artificiale, elemento che noi ricerchiamo e con cui abbiamo intenzione di sperimentare.
+    \item Il focus principale è sull’automazione di verifiche normative e sulla gestione di decision tree, attività a basso contenuto innovativo dal punto di vista tecnico.
+    \item Preferiamo lavorare a un progetto che possa essere utile a una grande mole di utenti. Al contrario, il dominio d’applicazione di questo Capitolato è molto specifico e vincolato al contesto industriale e normativo europeo, con scarsa possibilità di generalizzazione o riuso.
+    \item Il progetto privilegia la conformità e la correttezza formale più che l’esplorazione di soluzioni originali o creative.
+\end{itemize}
+
+
+
+
+
+\subsection{Capitolato C2: Code Guardian}
+
+\subsubsection{Descrizione}
+Il progetto, proposto da Var Group S.p.A., prevede la realizzazione di una piattaforma web basata su architettura multi-agente per l’audit e la remediation automatica dei repository software. Gli agenti avranno il compito di analizzare codice sorgente su GitHub valutando qualità, sicurezza e manutenzione, con particolare attenzione alle vulnerabilità OWASP, alla presenza di test unitari e alla qualità della documentazione.
+
+\subsubsection{Punti a favore}
+\begin{itemize}
+    \item Apprezziamo l’idea di un sistema distribuito ad agenti, che stimola la riflessione su architetture moderne e modulari.
+    \item L’uso di tecnologie come React, Node.js e Python rende l’implementazione accessibile e coerente con strumenti già diffusi. Dal momento che molti membri del gruppo hanno già avuto modo di conoscere o sperimentare queste tecnologie, questa è un’ottima occasione per esplorarle più a fondo in un contesto reale.
+    \item Il supporto tecnico fornito da Var Group, con mentoring su più tecnologie, rappresenta un valore aggiunto per l’apprendimento.
+\end{itemize}
+
+\subsubsection{Punti critici}
+\begin{itemize}
+    \item L’attenzione principale è su analisi di sicurezza e best practice, aspetti più conformativi che creativi, con poco spazio all’innovazione o alla personalizzazione.
+    \item Ci preoccupa la presenza di numerosi vincoli tecnici (CI/CD, coverage minimo, documentazione estesa). Preferiamo un progetto con pochi vincoli in modo da poterci focalizzare su pochi aspetti in maniera mirata.
+    \item Il nostro gruppo ritiene che il dominio applicativo sia già ampiamente coperto da soluzioni mature, riducendo l’interesse nel realizzare un nuovo strumento analogo.
+    \item La complessità infrastrutturale (AWS, GitHub Actions, orchestrazione cloud) potrebbe essere eccessiva per il nostro livello di esperienza attuale.
+\end{itemize}
+
+
+
+
+
+\subsection{Capitolato C3: DIPReader}
+
+\subsubsection{Descrizione}
+Il progetto, proposto da Sanmarco Informatica S.p.A., mira a realizzare un’applicazione multipiattaforma per la consultazione e la ricerca offline di documenti digitali provenienti da sistemi di conservazione centralizzati. Lo strumento consentirà di analizzare e visualizzare i contenuti di archivi compressi contenenti documenti, metadati e report, offrendo funzioni di ricerca basate su metadati o sul linguaggio naturale.
+
+\subsubsection{Punti a favore}
+\begin{itemize}
+    \item È apprezzata la chiarezza funzionale del progetto, con obiettivi chiari e requisiti tecnici ben delineati.
+    \item La possibilità di integrare una ricerca semantica rappresenta un elemento potenzialmente interessante, dato che potrebbe introdurre componenti di AI parecchio interessanti.
+\end{itemize}
+
+\subsubsection{Punti critici}
+\begin{itemize}
+    \item A nostro avviso il progetto è troppo focalizzato su aspetti documentali e normativi, con scarso margine per la creatività o l’innovazione. Abbiamo già lavorato a progetti simili in passato, e preferiremmo lavorare a qualcosa di diverso.
+    \item L’impiego dell’intelligenza artificiale è solo marginale e opzionale, con limitata possibilità di impiego di modelli multimodali, che ci avrebbe fatto piacere approfondire.
+    \item Le funzionalità richieste risultano prevalentemente tecniche e gestionali, non particolarmente stimolanti dal punto di vista progettuale. Anche il dominio applicativo dell’applicazione è poco affine ai nostri interessi.
+    \item Il progetto non richiede un’interfaccia grafica particolarmente avanzata.
+\end{itemize}
+
+
+
+
+
+\subsection{Capitolato C5: NEXUM – Eggon S.r.l.}
+
+\subsubsection{Descrizione}
+Il progetto NEXUM, promosso da Eggon S.r.l., mira a potenziare la piattaforma HR dell’azienda grazie all’uso dell’intelligenza artificiale. L’iniziativa prevede lo sviluppo di moduli per ottimizzare la gestione documentale e la comunicazione aziendale, migliorando l’esperienza di aziende, consulenti del lavoro e dipendenti. Tra le principali funzionalità figurano un Assistente intelligente per la creazione automatica di contenuti e un AI Co-Pilot per la classificazione e distribuzione automatica dei documenti.
+
+\subsubsection{Punti a favore}
+\begin{itemize}
+    \item Il nostro gruppo apprezza il forte orientamento pratico e reale del progetto, che tra tutti i Capitolati è l’unico a richiedere l’implementazione di funzionalità a supporto di un ecosistema software già esistente.
+    \item Il progetto è presentato in maniera molto chiara, con note specifiche sulle finalità e sugli elementi progettuali necessari per lo sviluppo della soluzione software.
+    \item C’è un ampio utilizzo dell’AI generativa su dati reali.
+    \item L’azienda si dimostra comunicativa, attenta alle esigenze degli studenti e disponibile per aiuto e supporto.
+\end{itemize}
+
+\subsubsection{Punti critici}
+\begin{itemize}
+    \item L’ambito entro cui si pone il progetto, le risorse umane, non è particolarmente interessante per il nostro gruppo: preferiamo ambiti più innovativi o creativi.
+    \item L’architettura del sistema è già definita e vincolata riducendo la libertà progettuale.
+    \item Le funzionalità di AI, pur presenti, sono orientate a scopi di automazione testuale e documentale, con meno spazio per sperimentazioni su modelli multimodali o analisi complesse.
+    \item La forte enfasi sulla compliance e sulla gestione documentale impone vincoli tecnici e normativi che potrebbero non lasciare spazio alla parte creativa di sviluppo.
+    \item Il progetto richiede un livello tecnico avanzato che potrebbe rappresentare una sfida significativa in termini di tempi e carico di lavoro per il nostro gruppo. Temiamo un carico di studio troppo elevato, sproporzionato rispetto ai risultati attesi.
+\end{itemize}
+
+
+
+
+
+\subsection{Capitolato C7: Sistema di acquisizione dati da sensori}
+
+\subsubsection{Descrizione}
+Il progetto proposto da M31 S.r.l. mira alla realizzazione di un sistema distribuito per l’acquisizione e la gestione di dati provenienti da sensori Bluetooth Low Energy (BLE). L’architettura si articola su tre livelli: sensori, gateway BLE–WiFi e piattaforma cloud. La componente di simulazione dei gateway sostituirà i dispositivi fisici, permettendo di testare l’infrastruttura cloud e validare la comunicazione tra livelli.
+
+\subsubsection{Punti a favore}
+\begin{itemize}
+    \item Apprezziamo molto la chiarezza e solidità architetturale del progetto, che fornisce una base ben strutturata per comprendere scenari reali di comunicazione IoT.
+    \item Il progetto offre la possibilità di lavorare su un’infrastruttura cloud moderna, sperimentando concetti come microservizi, scalabilità e sicurezza.
+\end{itemize}
+
+\subsubsection{Punti critici}
+\begin{itemize}
+    \item Il progetto è fortemente incentrato sull’infrastruttura e sull’integrazione tecnica, lasciando poco spazio alla creatività o alla realizzazione di componenti originali.
+    \item Le tecnologie coinvolte sono molto complesse e richiedono un livello di competenza non adeguato alle nostre attuali conoscenze.
+    \item L’ambito di applicazione del software è distante dai nostri interessi.
+\end{itemize}
+
+
+
+
+
+\subsection{Capitolato C9: View4Life}
+
+\subsubsection{Descrizione}
+Il Capitolato riguarda lo sviluppo di View4Life, una piattaforma per la gestione degli impianti domotici in residenze protette per anziani. Il progetto richiede la realizzazione di un applicativo web responsive e di un’infrastruttura Cloud containerizzata, con l’obiettivo di monitorare e controllare dispositivi smart come luci, tapparelle, termostati, sensori di presenza e caduta e attuatori per accessi e allarmi.
+
+\subsubsection{Punti a favore}
+\begin{itemize}
+    \item Il Capitolato fornisce requisiti dettagliati su dispositivi, interfacce, ruoli utenti e tipologie di allarmi, facilitando la progettazione.
+    \item L’applicativo ha finalità pratiche importanti e avrà un impatto significativo su un gran numero di persone.
+    \item Il Capitolato pone solo alcuni vincoli tecnici, lasciando ampia libertà nello sviluppo. Questo consente l’uso di tecnologie conosciute dal gruppo e la sperimentazione.
+\end{itemize}
+
+\subsubsection{Punti critici}
+\begin{itemize}
+    \item La soluzione proposta è prevalentemente un’integrazione di sistemi esistenti, con pochi margini per creatività o idee innovative. Il nostro gruppo preferirebbe realizzare un prodotto software meno vincolato.
+    \item Il progetto richiede l’uso di kit Vimar e impianti fisici. Temiamo che questo possa limitare la sperimentazione individuale e rallentare il processo di sviluppo, oltre che risultare molto complesso in termini di integrazione.
+\end{itemize}
+
+
+
+% ---------- REDAZIONE E REVISIONE ----------
+\clearpage
+\section{Redazione e revisioni del documento}
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2} 
+\arrayrulecolor{black}
+\begin{tabular}{|p{0.1\linewidth}|p{0.18\linewidth}|p{0.22\linewidth}|p{0.20\linewidth}|p{0.22\linewidth}|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+\hline
+\rowcolor{white}
+1.0.0 & 2025-10-30 & Gabriele Scaggiante e Dennis Parolin & Stesura iniziale & Giovanni Visentin \\
+\hline
+
+\end{tabular}
+\end{center}
+
+\end{document}

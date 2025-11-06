@@ -1,0 +1,230 @@
+% template presente
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{graphicx}
+\graphicspath{{resources/}{../resources/}{../../resources/}{../../../resources/}{../../../../resources/}}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{colortbl}
+\usepackage{hyperref} % link cliccabili
+\usepackage{fancyhdr} % intestazioni personalizzate
+\usepackage{titlesec} % per formattare le sezioni
+\geometry{margin=2.5cm}
+
+\setlength{\parindent}{0pt}
+\setstretch{1.2}
+
+% ===== Stile intestazione =====
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{gray}{Verbale Riunione - Gruppo 17}}
+\fancyfoot[C]{\thepage}
+
+% ===== Formattazione sezioni =====
+\titleformat{\section}{\Large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.5em}{}
+
+\begin{document}
+
+% ======= HEADER UNIVERSITÀ E GRUPPO CENTRATI VERTICALMENTE =======
+\vspace*{\fill} % --- Spinge verso il basso l'inizio del contenuto
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logoUni.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\color{red}\LARGE \textbf{Università degli Studi di Padova}}\\[0.3cm]
+        {\large
+        Laurea: Informatica\\
+        Corso: Ingegneria del Software\\
+        Anno Accademico: 2025/26
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1cm}
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logo.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\LARGE \textbf{Gruppo 17}}\\[0.3cm]
+        {\large
+        Nome: BitByBit\\
+        Email: swe.bitbybit@gmail.com
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1.5cm}
+
+\begin{center}
+    {\LARGE \textbf{Verbale Riunione Numero 2}}
+\end{center}
+
+\vspace*{\fill} % --- Spinge verso l’alto la fine del contenuto, centrando tutto il blocco
+
+\clearpage
+% ======= INFO GENERALI =======
+{\large \textbf{Informazioni generali}}
+{\footnotesize
+\setstretch{1.1}
+
+\begin{itemize}
+    \item \textbf{Data:} 2025-10-27
+    \item \textbf{Ora inizio:} 14:00
+    \item \textbf{Ora fine:} 14:27
+    \item \textbf{Tipo riunione:} Esterna
+    \item \textbf{Luogo:} Google Meet
+    \item \textbf{Durata:} 27 min
+    \item \textbf{Responsabile:} Gabriele Scaggiante
+\end{itemize}
+
+\vspace{0.2cm}
+
+\textbf{Partecipanti:}
+\begin{itemize}
+    \item Gianluca Carlesso (Ergon)
+    \item Membri del gruppo BitByBit:
+    \begin{itemize}
+        \item Gabriele Scaggiante
+        \item Giovanni Visentin
+        \item Ferdinando Fracasso
+        \item Riccardo Manisi
+    \end{itemize}
+\end{itemize}
+
+\textbf{Assenti:}
+\begin{itemize}
+    \item Dennis Parolin
+    \item Marco Sanguin
+\end{itemize}
+}
+
+\vspace{0.5cm}
+
+\vspace{0.8cm}
+
+% ======= INDICE SU PAGINA DEDICATA =======
+\clearpage
+\tableofcontents
+\thispagestyle{empty} % senza numero di pagina per l'indice
+\clearpage
+
+% ---------- ORDINE DEL GIORNO ----------
+\section{Ordine del Giorno}
+\begin{itemize}
+    \item Presentazione reciproca tra il gruppo BitByBit e Ergon
+    \item Chiarimenti e domande sul progetto "SmartOrder"
+\end{itemize}
+
+% ---------- DISCUSSIONI ----------
+\section{Discussioni}
+Durante la chiamata conoscitiva con Gianluca Carlesso, referente per il progetto “SmartOrder” di Ergon, si sono affrontati diversi temi tecnici e organizzativi.
+
+\subsection{Adattabilità del software e gestione del catalogo}
+È stato chiarito che il software deve essere in grado di adattarsi a qualsiasi catalogo di prodotti.  
+Ogni azienda dispone di un proprio database contenente l’elenco dei prodotti e i relativi dati (nome, codice, prezzo, immagini, ecc.), con una dimensione media di circa 5.000 articoli.
+
+\subsection{Accesso alle API e utilizzo dei modelli linguistici}
+Il referente ha confermato che saranno fornite al gruppo le chiavi per l’accesso alle API degli LLM scelti.  
+Sono presenti limiti di utilizzo in termini di token, ma negli anni precedenti tali limiti non hanno rappresentato un problema.
+
+\subsection{Tipologie di input e modalità di inserimento degli ordini}
+L’utente potrà inserire gli ordini tramite:
+\begin{itemize}
+    \item chat testuale integrata nell’applicazione;
+    \item messaggi vocali, eventualmente collegati ad app di messaggistica esterne;
+    \item immagini contenenti ordini scritti a mano (foto di fogli);
+    \item opzionalmente foto di prodotti, barcode o QR code.
+\end{itemize}
+Ogni ordine corrisponde tipicamente a un singolo tipo di input, ma è possibile prevedere l’unione o la frammentazione di ordini in base alla modalità di inserimento.
+
+\subsection{Gestione degli errori e funzionalità di annullamento}
+Nel caso in cui l’ordine non venga compreso, l’applicazione potrà:
+\begin{itemize}
+    \item mostrare un messaggio di errore e richiedere un nuovo input;
+    \item proporre un elenco di prodotti che meglio corrispondono alla richiesta.
+\end{itemize}
+È inoltre prevista la possibilità di cancellare un ordine in corso o già effettuato.
+
+\subsection{Sistema di login e profilo utente}
+È necessario implementare un sistema di autenticazione che consenta all’utente di:
+\begin{itemize}
+    \item accedere con un proprio profilo;
+    \item visualizzare e gestire i propri ordini;
+    \item annullare o modificare ordini precedenti.
+\end{itemize}
+
+\subsection{Riconoscimento multimodale e approccio incrementale}
+Si è concordato di iniziare lo sviluppo dal riconoscimento testuale, per poi integrare successivamente l’elaborazione audio e immagini.  
+Le componenti vocali e visive dovranno generare testo, così da rientrare nel flusso di interpretazione già previsto per l’input scritto.
+
+\subsection{Utilizzo degli LLM e strategie di adattamento ai cataloghi}
+Sono state discusse due principali strategie per adattare il modello linguistico ai cataloghi aziendali:
+\begin{enumerate}
+    \item \textbf{Fine tuning} sul catalogo, per rendere l’AI più mirata e coerente con i prodotti disponibili;
+    \item \textbf{Prompt dinamico} contenente il catalogo in formato testuale, con il limite della lunghezza del prompt.
+\end{enumerate}
+Entrambe le soluzioni permettono di gestire una base dati soggetta a modifiche nel tempo.
+
+\subsection{Interfaccia grafica e vincoli di gestione}
+L’interfaccia dovrà consentire all’utente di:
+\begin{itemize}
+    \item effettuare ordini;
+    \item visualizzarne i contenuti e modificarli;
+    \item revocarli in caso di necessità;
+    \item consultare il catalogo prodotti, anche in caso di errore o su richiesta.
+\end{itemize}
+Non è invece previsto che l’utente possa modificare direttamente il database del catalogo, la cui gestione rimane competenza del backend.
+
+% ---------- DECISIONI ----------
+\section{Decisioni}
+\begin{itemize}
+    \item N.A.
+\end{itemize}
+
+% ---------- TO DO ----------
+\section{To Do}
+Dalle discussioni e decisioni intraprese non sono sorte task immediate.
+
+% ---------- REDAZIONE E REVISIONE ----------
+\clearpage
+\section{Redazione e revisioni del documento}
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2} 
+\arrayrulecolor{black}
+\begin{tabular}{|p{0.1\linewidth}|p{0.18\linewidth}|p{0.22\linewidth}|p{0.20\linewidth}|p{0.22\linewidth}|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Versione} & \textbf{Ruolo} & \textbf{Nome} & \textbf{Data e ora} & \textbf{Descrizione} \\
+\hline
+\rowcolor{white}
+1.0.0 & Redatto da & Gabriele Scaggiante & 2025-10-27 & Stesura iniziale del verbale \\
+\hline
+\rowcolor{gray!20}
+1.0.0 & Revisione & Giovanni Visentin & 2025-10-28 & Controllo approfondito del verbale \\
+\hline
+\rowcolor{white}
+1.0.0 & Conferma & Tutti i membri & 2025-10-29 & Conferma da parte di tutti del verbale \\
+\hline
+
+\end{tabular}
+\end{center}
+
+\input{../spazio_firma.tex}
+
+\end{document}

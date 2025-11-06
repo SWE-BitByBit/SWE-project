@@ -1,0 +1,244 @@
+% template presente
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{tabularx}
+\usepackage{tcolorbox}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    urlcolor=blue,     
+}
+\usepackage{graphicx}
+\graphicspath{{resources/}{../resources/}{../../resources/}{../../../resources/}{../../../../resources/}}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{colortbl}
+\usepackage{fancyhdr} % intestazioni personalizzate
+\usepackage{titlesec} % per formattare le sezioni
+\geometry{margin=2.5cm}
+
+\setlength{\parindent}{0pt}
+\setstretch{1.2}
+
+% ===== Stile intestazione =====
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{gray}{Verbale Riunione Numero 4 - BitByBit}}
+\fancyfoot[C]{\thepage}
+
+% ===== Formattazione sezioni =====
+\titleformat{\section}{\Large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.5em}{}
+
+\begin{document}
+
+% ======= HEADER UNIVERSITÀ E GRUPPO CENTRATI VERTICALMENTE =======
+\vspace*{\fill} % --- Spinge verso il basso l'inizio del contenuto
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logoUni.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\color{red}\LARGE \textbf{Università degli Studi di Padova}}\\[0.3cm]
+        {\large
+        Laurea: Informatica\\
+        Corso: Ingegneria del Software\\
+        Anno Accademico: 2025/26
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1cm}
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logo.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\LARGE \textbf{Gruppo 17}}\\[0.3cm]
+        {\large
+        Nome: BitByBit\\
+        Email: swe.bitbybit@gmail.com
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1.5cm}
+
+\begin{center}
+    {\LARGE \textbf{Verbale Riunione Interna}}
+\end{center}
+
+\vspace*{\fill} % --- Spinge verso l’alto la fine del contenuto, centrando tutto il blocco
+
+\clearpage
+% ======= INFO GENERALI =======
+{\large \textbf{Informazioni generali}}
+{\footnotesize
+\setstretch{1.1}
+
+\begin{itemize}
+    \item \textbf{Data:} 2025-11-04
+    \item \textbf{Ora inizio:} 14:30
+    \item \textbf{Ora fine:} 16:45
+    \item \textbf{Tipo riunione:} Interna
+    \item \textbf{Luogo:} Discord
+    \item \textbf{Durata:} 2 h 15 min
+    \item \textbf{Responsabile:} Gabriele Scaggiante
+\end{itemize}
+
+\vspace{0.2cm}
+
+\textbf{Partecipanti:}
+\begin{itemize}
+    \item Gabriele Scaggiante
+    \item Giovanni Visentin
+    \item Dennis Parolin 
+    \item Riccardo Manisi
+    \item Ferdinando Fracasso
+\end{itemize}
+
+\textbf{Assenti:}
+\begin{itemize}
+    \item Marco Sanguin
+\end{itemize}
+}
+
+\vspace{0.5cm}
+
+\vspace{0.8cm}
+
+% ======= INDICE SU PAGINA DEDICATA =======
+\clearpage
+\tableofcontents
+\thispagestyle{empty} % senza numero di pagina per l'indice
+\clearpage
+
+% ---------- ORDINE DEL GIORNO ----------
+\section{Ordine del Giorno}
+\begin{itemize}
+    \item Analisi collettiva delle problematiche sorte dall'avanzamento revisioni.
+    \item Organizzazione del lavoro per riproporre la candidatura per il capitolato n.8.
+\end{itemize}
+
+% ---------- DISCUSSIONI ----------
+\section{Discussioni}
+Durante la riunione interna, i membri del gruppo hanno preso visione degli esiti e delle problematiche evidenziate dal primo documento dell'avanzamento revisioni. Ciascuna problematica è stata esaminata individualmente da tutti i membri del gruppo.
+
+\subsection{Problematiche sorte dalla prima candidatura}
+Le problematiche che sono sorte nella prima candidatura per il capitolato C8 sono le seguenti:
+\begin{itemize}
+    \item \textbf{Mancano le regole (iniziali) di rotazione dei ruoli:} il gruppo riconosce l'assenza delle regole di rotazione. In qualità di relatore del documento di assegnazione delle ore, Ferdinando si assume le responsabilità, concordando man mano il carico di lavoro con ciascun membro del gruppo, di aggiornare il documento includendo le regole di rotazione.
+    \item \textbf{Preoccupa l'importante differenza di impegno dichiarato da un membro del gruppo:} dopo un confronto con l'interessato, è stata data disponibilità ad aumentare l'impegno dichiarato. Ferdinando provvederà ad aggiornare il relativo documento. 
+    \item \textbf{Necessità di un sito web per la visualizzazione delle risorse esterne:} Abbiamo stabilito che sarà necessario implementare un piccolo sito web in cui sarà possibile accedere in maniera istantanea ed intuitiva a tutti i documenti d'interesse. Ci siamo confrontati su come gestire la comparsa dei documenti all'interno del sito. Le scelte possibili sono due: generare i contenuti in maniera dinamica a partire da GitHub oppure inserire manualmente i file .pdf all'interno del sito. Al momento optiamo temporaneamente per la seconda opzione, dato il poco tempo a disposizione. Quando ci saremo aggiudicati un capitolato implementeremo la soluzione dinamica. Useremo GitHub Pages per l'hosting.  
+    \item \textbf{A ogni singola revisione dovrebbe corrispondere una verifica:} il gruppo inizialmente non aveva ben chiaro cosa ciò significasse. L'opinione comune e più ragionevole è che ogni qual volta un documento viene modificato, debba corrispondere una verifica da parte di un altro membro del gruppo. Ogni revisione e verifica deve essere segnalata nella tabella di redazione del documento. Riccardo modificherà la tabella per facilitare questo workflow.
+    \item \textbf{Un singolo Verbale interno:} il gruppo evidenzia il fatto che siano stati redatti 3 Verbali interni. La confusione probabilmente nasce dal fatto che nel branch develop sia presente un singolo Verbale interno, mentre nel main sono presenti 3 Verbali interni. 
+    \item \textbf{Tutti i Verbali, anche quelli esterni, devono confluire in azioni tracciabili:} riconosciamo l'assenza di una mappatura tra Verbali e azioni concrete svolte dai membri del gruppo. D'ora in avanti ciascun Verbale indicherà esplicitamente le azioni necessarie da esso emerse, con annessi i membri del gruppo assegnati e la data prevista di completamento. Ogni azione nel Verbale punterà alla corrispondente issue sul repository GitHub.
+\end{itemize}
+
+\subsection{Problematiche organizzative generali}
+Nel corso della riunione abbiamo fatto il punto della situazione evidenziando le principali criticità, a livello organizzativo, del nostro gruppo e del suo lavoro:
+
+\begin{itemize}
+    \item \textbf{Organizzazione non ottimale del lavoro sulla repository remota:} in alcuni casi dei compiti non erano associati a delle issue specifiche; in altri casi le issue rimanevano aperte nonostante i relativi compiti fossero già stati completati. D'ora in avanti ogni compito dovrà avere una issue assegnata immediatamente a un membro del gruppo. Al completamento del lavoro, la issue corrispondente dovrà essere chiusa.
+    \item \textbf{Utilizzo poco coerente dei branch main e develop sulla repository remota:} a causa anche della poca esperienza di quasi tutti i membri del gruppo con GitHub, in molti casi sono stati fatti push alternati tra main e develop senza una vera e propria organizzazione. D'ora in avanti tutti i push andranno sul branch develop, e sarà poi fatto il merge di develop in main al raggiungimento di una versione stabile.
+    \item \textbf{Informazioni non centralizzate:} abbiamo riconosciuto come problematico l'utilizzo di più strumenti di archiviazione per visualizzare e distribuire documenti di interesse. Un esempio è l'utilizzo di Google Drive per fornire il documento di candidatura, che ha impedito la modifica del file pdf contenente link associati a URL relativi a specifici commit. D'ora in avanti l'intero lavoro sarà organizzato e gestito su GitHub.
+\end{itemize}
+
+\subsection{Requisiti aggiuntivi esaminati}
+Il gruppo si è confrontato su cosa fare nei prossimi giorni, specificando una serie di requisiti aggiuntivi necessari per assicurarsi una maggiore probabilità di aggiudicarsi il capitolato desiderato. In particolare è necessario:
+\begin{itemize}
+\item{Spostare in avanti la data di fine progetto}
+\item{Creare un glossario contenente i termini da utilizzare nei documenti. Il glossario sarà disponibile sul sito}
+\item{Sistemare la tabella nel file dei costi e rischi}
+\item{Fare il merge da main a develop per aggiornare il branch}
+\item{Aggiornare le date dal formato GG-MM-AAAA a AAAA-MM-GG}
+\item{Rifare tabella riassuntiva azioni svolte nel template}
+\item{Redarre un documento per il way of working}
+\end{itemize}
+% ---------- DECISIONI ----------
+\section{Decisioni}
+Al termine della discussione, siamo tutti concordi sul provare a fare il possibile per aggiudicarci il capitolato n.8. Ciascuna azione correttiva è stata trasformata in una issue, e a ogni membro del gruppo è stato assegnato uno o più compiti necessari per poter riproporre la candidatura entro \textbf{domani}.  
+
+% ---------- TO DO ----------
+\section{To Do}
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2} 
+\arrayrulecolor{black}
+\begin{tabular}{|p{0.45\linewidth}|p{0.25\linewidth}|p{0.2\linewidth}|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Task} & \textbf{Assegnatario} & \textbf{Scadenza} \\
+\hline
+\rowcolor{white}
+\href{https://github.com/SWE-BitByBit/SWE-project/issues/42}{Modifica struttura cartelle repository} & Dennis Parolin & 2025-11-05 \\
+\hline
+\rowcolor{gray!20}
+\href{https://github.com/SWE-BitByBit/SWE-project/issues/41}{Creazione del file del glossario} & Giovanni Visentin & 2025-11-05 \\
+\hline
+\rowcolor{white}
+\href{https://github.com/SWE-BitByBit/SWE-project/issues/40}{Creazione del file “Norme di progetto”} & Riccardo Manisi & 2025-11-05 \\
+\hline
+\rowcolor{gray!20}
+\href{https://github.com/SWE-BitByBit/SWE-project/issues/39}{Stesura delle sezioni per il documento “Norme di progetto”} & Riccardo Manisi & 2025-11-05 \\
+\hline
+\rowcolor{white}
+\href{https://github.com/SWE-BitByBit/SWE-project/issues/38}{Studio del flusso di lavoro con pull request} & Riccardo Manisi & 2025-11-05 \\
+\hline
+\rowcolor{gray!20}
+\href{https://github.com/SWE-BitByBit/SWE-project/issues/37}{Revisione del template generale} & Riccardo Manisi & 2025-11-05 \\
+\hline
+\rowcolor{white}
+\href{https://github.com/SWE-BitByBit/SWE-project/issues/36}{Sviluppo del sito web per il progetto} & Dennis Parolin & 2025-11-05 \\
+\hline
+\rowcolor{gray!20}
+\href{https://github.com/SWE-BitByBit/SWE-project/issues/35}{Stesura del Verbale del 2025/11/04} & Gabriele Scaggiante & 2025-11-05 \\
+\hline
+\rowcolor{white}
+\href{https://github.com/SWE-BitByBit/SWE-project/issues/34}{Correzione del documento “Costi e Rischi”} & Ferdinando Fracasso & 2025-11-05 \\
+\hline
+\rowcolor{gray!20}
+\href{https://github.com/SWE-BitByBit/SWE-project/issues/33}{Merge tra i branch \texttt{main} e \texttt{develop}} & Riccardo Manisi & 2025-11-05 \\
+\hline
+\rowcolor{white}
+\href{https://github.com/SWE-BitByBit/SWE-project/issues/32}{Modifica del formato data nei Verbali (AAAA-MM-GG $\rightarrow$ GG-MM-AAAA)} & Gabriele Scaggiante & 2025-11-05 \\
+\hline
+\end{tabular}
+\end{center}
+
+
+% ---------- REDAZIONE E REVISIONE ----------
+\clearpage
+\section{Redazione e revisioni del documento}
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2} 
+\arrayrulecolor{black}
+\begin{tabular}{|p{0.1\linewidth}|p{0.12\linewidth}|p{0.22\linewidth}|p{0.26\linewidth}|p{0.22\linewidth}|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+\hline
+\rowcolor{white}
+1.0.0 & 2025-11-04 & Gabriele Scaggiante & Stesura iniziale del Verbale & Giovanni Visentin \\
+\hline
+
+\end{tabular}
+\end{center}
+
+\end{document}

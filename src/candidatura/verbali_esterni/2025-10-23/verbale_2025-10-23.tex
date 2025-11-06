@@ -1,0 +1,234 @@
+% template presente
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{graphicx}
+\graphicspath{{resources/}{../resources/}{../../resources/}{../../../resources/}{../../../../resources/}}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{colortbl}
+\usepackage{hyperref} % link cliccabili
+\usepackage{fancyhdr} % intestazioni personalizzate
+\usepackage{titlesec} % per formattare le sezioni
+\geometry{margin=2.5cm}
+
+\setlength{\parindent}{0pt}
+\setstretch{1.2}
+
+% ===== Stile intestazione =====
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{gray}{Verbale Riunione - Gruppo 17}}
+\fancyfoot[C]{\thepage}
+
+% ===== Formattazione sezioni =====
+\titleformat{\section}{\Large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.5em}{}
+
+\begin{document}
+
+% ======= HEADER UNIVERSITÀ E GRUPPO CENTRATI VERTICALMENTE =======
+\vspace*{\fill}
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logoUni.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\color{red}\LARGE \textbf{Università degli Studi di Padova}}\\[0.3cm]
+        {\large
+        Laurea: Informatica\\
+        Corso: Ingegneria del Software\\
+        Anno Accademico: 2025/26
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1cm}
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logo.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\LARGE \textbf{Gruppo 17}}\\[0.3cm]
+        {\large
+        Nome: BitByBit\\
+        Email: swe.bitbybit@gmail.com
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1.5cm}
+
+\begin{center}
+    {\LARGE \textbf{Verbale Riunione Numero 1}}\\[0.2cm]
+    {\large \textit{Riepilogo chiamata conoscitiva con Zucchetti}}
+\end{center}
+
+\vspace*{\fill}
+
+\clearpage
+
+% ======= INFO GENERALI =======
+{\large \textbf{Informazioni generali}}
+{\footnotesize
+\setstretch{1.1}
+
+\begin{itemize}
+    \item \textbf{Data:} 23 ottobre 2025
+    \item \textbf{Ora inizio:} 15:30
+    \item \textbf{Ora fine:} 16:00
+    \item \textbf{Tipo riunione:} Esterna
+    \item \textbf{Luogo:} Google Meet
+    \item \textbf{Durata:} 30 min
+    \item \textbf{Responsabile:} Gabriele Scaggiante
+\end{itemize}
+
+\vspace{0.2cm}
+
+\textbf{Partecipanti:}
+\begin{itemize}
+    \item Gregorio Piccoli (Zucchetti)
+    \item Membri del gruppo BitByBit:
+    \begin{itemize}
+        \item Gabriele Scaggiante
+        \item Giovanni Visentin
+        \item Dennis Parolin
+        \item Ferdinando Fracasso
+    \end{itemize}
+\end{itemize}
+
+\textbf{Assenti:}
+\begin{itemize}
+    \item Riccardo Manisi
+    \item Marco Sanguin
+\end{itemize}
+}
+
+\vspace{0.8cm}
+
+% ======= INDICE =======
+\clearpage
+\tableofcontents
+\thispagestyle{empty}
+\clearpage
+
+% ---------- ORDINE DEL GIORNO ----------
+\section{Ordine del Giorno}
+\begin{itemize}
+    \item Presentazione reciproca tra il gruppo BitByBit e Zucchetti.
+    \item Chiarimenti sul progetto “Second Brain”.
+\end{itemize}
+
+% ---------- DISCUSSIONI ----------
+\section{Discussioni}
+
+Durante la chiamata conoscitiva con \textbf{Gregorio Piccoli}, referente per il progetto “\textit{Second Brain}” di Zucchetti, si sono affrontati diversi temi tecnici e organizzativi.
+
+\subsection{Implementazione dei 6 cappelli per pensare}
+La discussione è cominciata con una domanda sui “6 cappelli per pensare” e su come andrebbero implementati. La risposta è stata che abbiamo completa libertà di implementazione. Possiamo quindi prevedere di esaminare il testo usando contemporaneamente tutti i 6 cappelli, evidenziando poi aree di miglioramento in base alle preferenze dell’utente, oppure gestire la cosa di testa nostra senza grossi problemi.
+
+\subsection{Utilizzo dell'AI e infrastruttura}
+Zucchetti dispone di tre macchine con GPU di fascia media, utilizzate per l’elaborazione dei prompt.  
+I server ospitano localmente vari modelli LLM (tra 7B e 27B) gestiti tramite \textbf{Ollama}, un framework che permette l’accesso ai modelli via \textbf{API endpoint}.  
+Alcuni modelli sono open source e locali (senza costi per token), mentre altri, come \textbf{Gemini}, comportano un costo per token e vengono serviti tramite proxy aziendale.  
+
+L’utilizzo dei modelli è consentito fino al raggiungimento di una soglia di spesa massima non specificata; superato tale limite sarà necessario richiedere la riattivazione del servizio.
+
+\subsection{Interazione con gli LLM}
+L’interazione con i modelli avverrà tramite un’API che consente di:
+\begin{itemize}
+    \item Selezionare il modello desiderato;
+    \item Fornire due prompt distinti: uno di \textbf{sistema} (per definire lo stile o il ruolo dell’AI) e uno \textbf{utente} (contenente il testo da elaborare).
+\end{itemize}
+
+Non è previsto il training o la progettazione di modelli personalizzati. La possibilità di sviluppare modelli non parametrici non è stata esclusa, ma non è un requisito del progetto.
+
+\subsection{Gestione utenti e architettura applicativa}
+È stato consigliato di implementare un sistema di \textbf{login} e un backend di gestione utenti e note. Tuttavia, la gestione dei dati dovrà avvenire in locale per un singolo utente, mantenendo il focus sull’aspetto personale dell’applicazione.  
+
+È stato sconsigliato implementare funzionalità complesse come un grafo di link in stile \textit{Obsidian}, privilegiando invece quelle legate all’utilizzo dell’AI.
+
+\subsection{Funzionalità opzionali e revisioni}
+Le funzionalità opzionali possono essere definite liberamente nel corso dello sviluppo. È comunque gradito un confronto iniziale con il referente.  
+Non è previsto un calendario fisso di revisioni: eventuali incontri possono essere organizzati in base alle necessità, anche in presenza (la sede Zucchetti è nei pressi di Padova).
+
+\subsection{Interfaccia grafica e altre idee}
+L’applicazione dovrà essere \textbf{ottimizzata per desktop in orizzontale}; non è necessario un design verticale per mobile.  
+
+Tra le funzionalità opzionali considerate interessanti:
+\begin{itemize}
+    \item Analisi di video tramite AI e segmentazione basata sui 6 cappelli;
+    \item Digitazione vocale;
+    \item Generazione di contenuti testuali a partire da input non testuali.
+\end{itemize}
+
+% ---------- DECISIONI ----------
+\section{Decisioni}
+\begin{itemize}
+    \item N.A
+\end{itemize}
+
+% ---------- TO DO ----------
+\section{To Do}
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2} 
+\arrayrulecolor{black} 
+\begin{tabular}{|p{0.45\linewidth}|p{0.25\linewidth}|p{0.25\linewidth}|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Task} & \textbf{Assegnatario} & \textbf{Scadenza} \\
+\hline
+\rowcolor{white}
+N.A &  &  \\
+\hline
+\rowcolor{gray!20}
+N.A &  &  \\
+\hline
+\rowcolor{white}
+N.A &  &  \\
+\hline
+\rowcolor{gray!20}
+N.A &  &  \\
+\hline
+\end{tabular}
+\end{center}
+
+% ---------- REDAZIONE E REVISIONE ----------
+\clearpage
+\section{Redazione e revisioni del documento}
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2} 
+\arrayrulecolor{black}
+\begin{tabular}{|p{0.1\linewidth}|p{0.18\linewidth}|p{0.22\linewidth}|p{0.20\linewidth}|p{0.22\linewidth}|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Versione} & \textbf{Ruolo} & \textbf{Nome} & \textbf{Data e ora} & \textbf{Descrizione} \\
+\hline
+\rowcolor{white}
+1.0.0 & Redatto da & Dennis Parolin & 2025-10-23 & Stesura iniziale del verbale \\
+\hline
+\rowcolor{gray!20}
+1.0.0 & Revisione & Gabriele Scaggiante & 2025-10-23 & Controllo approfondito del verbale \\
+\hline
+\rowcolor{white}
+1.0.0 & Conferma & Tutti i membri & 2025-10-28 & Conferma da parte di tutti del verbale \\
+\hline
+\end{tabular}
+\end{center}
+
+\input{../spazio_firma.tex}
+\end{document}

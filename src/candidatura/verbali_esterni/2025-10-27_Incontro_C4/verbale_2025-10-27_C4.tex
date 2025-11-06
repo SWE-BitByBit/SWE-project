@@ -1,0 +1,219 @@
+% template presente
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{graphicx}
+\graphicspath{{resources/}{../resources/}{../../resources/}{../../../resources/}{../../../../resources/}}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{colortbl}
+\usepackage{hyperref} % link cliccabili
+\usepackage{fancyhdr} % intestazioni personalizzate
+\usepackage{titlesec} % per formattare le sezioni
+\geometry{margin=2.5cm}
+
+\setlength{\parindent}{0pt}
+\setstretch{1.2}
+
+% ===== Stile intestazione =====
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{gray}{Verbale Riunione - Gruppo 17}}
+\fancyfoot[C]{\thepage}
+
+% ===== Formattazione sezioni =====
+\titleformat{\section}{\Large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.5em}{}
+
+\begin{document}
+
+% ======= HEADER UNIVERSITÀ E GRUPPO CENTRATI VERTICALMENTE =======
+\vspace*{\fill} % --- Spinge verso il basso l'inizio del contenuto
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logoUni.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\color{red}\LARGE \textbf{Università degli Studi di Padova}}\\[0.3cm]
+        {\large
+        Laurea: Informatica\\
+        Corso: Ingegneria del Software\\
+        Anno Accademico: 2025/26
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1cm}
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logo.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\LARGE \textbf{Gruppo 17}}\\[0.3cm]
+        {\large
+        Nome: BitByBit\\
+        Email: swe.bitbybit@gmail.com
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1.5cm}
+
+\begin{center}
+    {\LARGE \textbf{Verbale Riunione Numero 3}}
+\end{center}
+
+\vspace*{\fill} % --- Spinge verso l’alto la fine del contenuto, centrando tutto il blocco
+
+\clearpage
+% ======= INFO GENERALI =======
+{\large \textbf{Informazioni generali}}
+{\footnotesize
+\setstretch{1.1}
+
+\begin{itemize}
+    \item \textbf{Data:} 2025-10-27
+    \item \textbf{Ora inizio:} 16:15
+    \item \textbf{Ora fine:} 16:56
+    \item \textbf{Tipo riunione:} Esterna
+    \item \textbf{Luogo:} Google Meet
+    \item \textbf{Durata:} 41 min
+    \item \textbf{Responsabile:} Gabriele Scaggiante
+\end{itemize}
+
+\vspace{0.2cm}
+
+\textbf{Partecipanti:}
+\begin{itemize}
+    \item Emanuele Righetto (Miriade)
+    \item Arianna Bellino (Miriade)
+    \item Membri del gruppo BitByBit:
+    \begin{itemize}
+        \item Gabriele Scaggiante
+        \item Giovanni Visentin
+        \item Dennis Parolin 
+        \item Riccardo Manisi
+    \end{itemize}
+\end{itemize}
+
+\textbf{Assenti:}
+\begin{itemize}
+    \item Ferdinando Fracasso
+    \item Marco Sanguin
+\end{itemize}
+}
+
+\vspace{0.5cm}
+
+\vspace{0.8cm}
+
+% ======= INDICE SU PAGINA DEDICATA =======
+\clearpage
+\tableofcontents
+\thispagestyle{empty} % senza numero di pagina per l'indice
+\clearpage
+
+% ---------- ORDINE DEL GIORNO ----------
+\section{Ordine del Giorno}
+\begin{itemize}
+    \item Presentazione reciproca tra il gruppo BitByBit e Miriade
+    \item Chiarimenti e domande sul progetto "L'app Che Protegge e Trasforma"
+\end{itemize}
+
+% ---------- DISCUSSIONI ----------
+\section{Discussioni}
+Durante la chiamata conoscitiva con Emanuele Righetto e Arianna Bellino, referenti per il progetto “L’app che Protegge e Trasforma” di Miriade, sono stati affrontati diversi temi relativi alla progettazione, alla gestione dei dati e alla sicurezza dell’applicazione.
+
+\subsection{Gestione dei dati e tutela della privacy}
+È stato chiarito che tutte le interazioni tra utente e applicazione, in linea teorica, dovrebbero essere tracciate e memorizzate nella banca dati.  
+Esempi includono le domande poste dall’utente all’intelligenza artificiale e le relative risposte. Tuttavia, è necessario prestare particolare attenzione al trattamento dei dati personali: in linea di massima sarebbe meglio non raccogliere dati riconducibili a un singolo individuo, in modo da tutelare la privacy.  
+Le informazioni registrate verranno utilizzate per migliorare le prestazioni dell’app, ad esempio fornendo risposte più rapide a richieste già effettuate.
+
+\subsection{Ambito di distribuzione dell’applicazione}
+Alla domanda relativa alla diffusione dell’app oltre il territorio nazionale, è stato specificato che, almeno nella fase iniziale, lo sviluppo e la distribuzione avverranno esclusivamente in Italia, al fine di rispettare la normativa vigente e semplificare la gestione legale.
+
+\subsection{Tracciamento dei percorsi sicuri e progettazione funzionale}
+Il gruppo ha chiesto chiarimenti sulla gestione dei percorsi sicuri. Non è stata fornita una risposta definitiva sulla necessità di memorizzarli in un database o recuperarli da fonti esterne.  
+È stato comunque sottolineato che non tutte le funzionalità richieste sono vincolanti: il gruppo è invitato a proporre soluzioni personali sia dal punto di vista tecnico che di design, contribuendo attivamente alla progettazione funzionale dell’app.
+
+\subsection{Rilevamento passivo di situazioni di pericolo}
+Riguardo al meccanismo di rilevamento delle “red flag”, i referenti hanno lasciato libertà di scelta sulle modalità di implementazione, raccomandando di prestare attenzione ai consumi energetici dell'app.  
+È stato infatti osservato che mantenere l’app in ascolto continuo potrebbe esaurire rapidamente la batteria. Tra le possibili alternative è stata menzionata l’integrazione con assistenti vocali come Alexa per il rilevamento di episodi potenzialmente pericolosi.
+
+\subsection{Funzionalità di chiamata ai soccorsi}
+È stato chiarito che la chiamata ai soccorsi non dovrà essere inviata direttamente ai numeri di emergenza, ma potrà essere sostituita da un sistema di segnalazione, ad esempio tramite:
+\begin{itemize}
+    \item invio di un segnale broadcast ai dispositivi nelle vicinanze;
+    \item notifica a una lista di contatti fidati che potranno decidere se allertare i soccorsi.
+\end{itemize}
+L’intelligenza artificiale non deve mai avere l’ultima parola: la decisione finale deve sempre spettare a una persona reale.
+
+\subsection{Gestione di assenza di connessione e campo}
+È stato affrontato il problema dell’utilizzo dell’app in condizioni di assenza di rete o di segnale telefonico.  
+In tali situazioni l’app risulterebbe in gran parte inutilizzabile; pertanto, il design dovrà tenere conto dello stato del dispositivo e dell’ambiente in cui si trova l’utente.
+
+\subsection{Disinstallazione e sicurezza dell’app}
+Si è discusso sulla possibilità di distinguere tra una disinstallazione normale e una forzata.  
+È stata proposta l’introduzione di una password necessaria per la rimozione dell’app, così da impedire che una persona esterna possa disinstallarla senza autorizzazione.  
+È stato inoltre suggerito di camuffare l’applicazione, ad esempio con schermate o nomi ingannevoli, per evitare sospetti in caso di controllo del dispositivo da parte di terzi.
+
+\subsection{Collaborazioni e supporti esterni}
+In relazione alle funzionalità con implicazioni legislative o psicologiche, è stata confermata la possibilità di essere messi in contatto con associazioni partner di Miriade, che potranno fornire supporto teorico per elementi come quiz informativi o note normative.
+
+\subsection{Distribuzione e testing dell’app}
+È stato chiarito che la pubblicazione dell’app sugli store ufficiali non è a carico del gruppo.  
+Sarà sufficiente produrre build di test per piattaforme come TestFlight (iOS) o Android, così da consentire prove su dispositivi reali.
+
+\subsection{Utilizzo dell’intelligenza artificiale}
+L’azienda mette a disposizione le API di \textbf{Amazon Bedrock} per l’integrazione dell’intelligenza artificiale.  
+I costi relativi all’uso dei token non rappresentano una criticità.
+
+% ---------- DECISIONI ----------
+\section{Decisioni}
+\begin{itemize}
+    \item N.A.
+\end{itemize}
+
+% ---------- TO DO ----------
+\section{To Do}
+Dalle discussioni e decisioni intraprese non sono sorte task immediate.
+
+% ---------- REDAZIONE E REVISIONE ----------
+\clearpage
+\section{Redazione e revisioni del documento}
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2} 
+\arrayrulecolor{black}
+\begin{tabular}{|p{0.1\linewidth}|p{0.18\linewidth}|p{0.22\linewidth}|p{0.20\linewidth}|p{0.22\linewidth}|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Versione} & \textbf{Ruolo} & \textbf{Nome} & \textbf{Data e ora} & \textbf{Descrizione} \\
+\hline
+\rowcolor{white}
+1.0.0 & Redatto da & Gabriele Scaggiante & 2025-10-27 & Stesura iniziale del verbale \\
+\hline
+\rowcolor{gray!20}
+1.0.0 & Revisione & Giovanni Visentin & 2025-10-28 & Controllo approfondito del verbale \\
+\hline
+\rowcolor{white}
+1.0.0 & Conferma & Tutti i membri & 2025-10-29 & Conferma da parte di tutti del verbale \\
+\hline
+
+\end{tabular}
+\end{center}
+
+\input{../spazio_firma.tex}
+
+\end{document}

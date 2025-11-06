@@ -1,0 +1,180 @@
+% template presente
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{graphicx}
+\graphicspath{{resources/}{../resources/}{../../resources/}{../../../resources/}{../../../../resources/}}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{colortbl}
+\usepackage{hyperref} % link cliccabili
+\usepackage{fancyhdr} % intestazioni personalizzate
+\usepackage{titlesec} % per formattare le sezioni
+\geometry{margin=2.5cm}
+
+\setlength{\parindent}{0pt}
+\setstretch{1.2}
+
+% ===== Stile intestazione =====
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{gray}{Verbale Riunione - Gruppo 17}}
+\fancyfoot[C]{\thepage}
+
+% ===== Formattazione sezioni =====
+\titleformat{\section}{\Large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.5em}{}
+
+\begin{document}
+
+% ======= HEADER UNIVERSITÀ E GRUPPO CENTRATI VERTICALMENTE =======
+\vspace*{\fill} % --- Spinge verso il basso l'inizio del contenuto
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logoUni.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\color{red}\LARGE \textbf{Università degli Studi di Padova}}\\[0.3cm]
+        {\large
+        Laurea: Informatica\\
+        Corso: Ingegneria del Software\\
+        Anno Accademico: 2025/26
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1cm}
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logo.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\LARGE \textbf{Gruppo 17}}\\[0.3cm]
+        {\large
+        Nome: BitByBit\\
+        Email: swe.bitbybit@gmail.com
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1.5cm}
+
+\begin{center}
+    {\LARGE \textbf{Verbale Riunione Numero X}}
+\end{center}
+
+\vspace*{\fill} % --- Spinge verso l’alto la fine del contenuto, centrando tutto il blocco
+
+\clearpage
+% ======= INFO GENERALI =======
+{\large \textbf{Informazioni generali}}
+{\footnotesize
+\setstretch{1.1}
+
+\begin{itemize}
+    \item \textbf{Data:} 2025-10-22
+    \item \textbf{Ora inizio:} 17:10
+    \item \textbf{Ora fine:} 18:45
+    \item \textbf{Tipo riunione:} Interna
+    \item \textbf{Luogo:} Discord
+    \item \textbf{Durata:} 1h 35min
+    \item \textbf{Responsabile:} Dennis Parolin
+\end{itemize}
+
+\vspace{0.2cm}
+
+\textbf{Partecipanti:}
+\begin{itemize}
+    \item Dennis Parolin
+    \item Riccardo Manisi
+    \item Ferdinando Fracasso
+    \item Giovanni Visentin
+\end{itemize}
+
+\textbf{Assenti:}
+\begin{itemize}
+    \item Gabriele Scaggiante
+    \item Marco Sanguin
+\end{itemize}
+}
+
+\vspace{0.5cm}
+
+\vspace{0.8cm}
+
+% ======= INDICE SU PAGINA DEDICATA =======
+\clearpage
+\tableofcontents
+\thispagestyle{empty} % senza numero di pagina per l'indice
+\clearpage
+
+% ---------- ORDINE DEL GIORNO ----------
+\section{Ordine del Giorno}
+\begin{itemize}
+    \item Stilare un to-do meglio organizzato e più ampio
+    \item Discussione sul way-of-working
+    \item Aggiornamento repository github
+\end{itemize}
+
+% ---------- DISCUSSIONI ----------
+\section{Discussioni}
+Inizialmente, è stato stilato un elenco di attività da svolgere per chiarire quali siano le macro attività. Inoltre, abbiamo discusso per capire come è possibile suddividersi le ore di lavoro. Successivamente, è iniziata una discussione per creare e organizzare uno scheletro di way-of-working.
+Dopodiché, sono state aggiunte issue ed è stata creata una milestone per la repository.
+Infine abbiamo confermato il meeting con l'azienda dell'appalto C6 che verrà fatto in data \textbf{2025-10-23} alle \textbf{15:30}
+
+% ---------- DECISIONI ----------
+\section{Decisioni}
+\begin{itemize}
+    \item Sono state decise delle issue da aggiungere alla repository, come la creazione del diario di bordo
+    \item Sono stati decisi i responsabili temporanei prima della vera e propria rotazione dei ruoli durante lo svolgimento del progetto relativo a quello che sarà l'appalto aggiudicato
+\end{itemize}
+
+% ---------- TO DO ----------
+\section{To Do}
+Dalle discussioni e decisioni intraprese, sono sorte le seguenti task:
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2} 
+\arrayrulecolor{black} 
+\begin{tabular}{|p{0.45\linewidth}|p{0.25\linewidth}|p{0.25\linewidth}|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Task} & \textbf{Assegnatario} & \textbf{Scadenza} \\
+\hline
+\rowcolor{white}
+Creare primo diario di bordo & Tutto il team & 2025-10-27 \\
+\hline
+\end{tabular}
+\end{center}
+
+% ---------- REDAZIONE E REVISIONE ----------
+\clearpage
+\section{Redazione e revisioni del documento}
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2} 
+\arrayrulecolor{black}
+\begin{tabular}{|p{0.1\linewidth}|p{0.12\linewidth}|p{0.22\linewidth}|p{0.26\linewidth}|p{0.22\linewidth}|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+\hline
+\rowcolor{white}
+1.0.0 & 2025-10-22 & Dennis Parolin & Stesura iniziale del verbale & Riccardo Manisi \\
+\hline
+\end{tabular}
+\end{center}
+
+\end{document}

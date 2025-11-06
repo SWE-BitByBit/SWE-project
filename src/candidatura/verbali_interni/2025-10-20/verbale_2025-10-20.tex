@@ -1,0 +1,181 @@
+% template presente
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{graphicx}
+\graphicspath{{resources/}{../resources/}{../../resources/}{../../../resources/}{../../../../resources/}}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{colortbl}
+\usepackage{hyperref} % link cliccabili
+\usepackage{fancyhdr} % intestazioni personalizzate
+\usepackage{titlesec} % per formattare le sezioni
+\geometry{margin=2.5cm}
+
+\setlength{\parindent}{0pt}
+\setstretch{1.2}
+
+% ===== Stile intestazione =====
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{gray}{Verbale Riunione - Gruppo 17}}
+\fancyfoot[C]{\thepage}
+
+% ===== Formattazione sezioni =====
+\titleformat{\section}{\Large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.5em}{}
+
+\begin{document}
+
+% ======= HEADER UNIVERSITÀ E GRUPPO CENTRATI VERTICALMENTE =======
+\vspace*{\fill} % --- Spinge verso il basso l'inizio del contenuto
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logoUni.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\color{red}\LARGE \textbf{Università degli Studi di Padova}}\\[0.3cm]
+        {\large
+        Laurea: Informatica\\
+        Corso: Ingegneria del Software\\
+        Anno Accademico: 2025/26
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1cm}
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logo.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\LARGE \textbf{Gruppo 17}}\\[0.3cm]
+        {\large
+        Nome: BitByBit\\
+        Email: swe.bitbybit@gmail.com
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1.5cm}
+
+\begin{center}
+    {\LARGE \textbf{Verbale Riunione Numero X}}
+\end{center}
+
+\vspace*{\fill} % --- Spinge verso l’alto la fine del contenuto, centrando tutto il blocco
+
+\clearpage
+% ======= INFO GENERALI =======
+{\large \textbf{Informazioni generali}}
+{\footnotesize
+\setstretch{1.1}
+
+\begin{itemize}
+    \item \textbf{Data:} 2025-10-20
+    \item \textbf{Ora inizio:} 15.30
+    \item \textbf{Ora fine:} 17.30
+    \item \textbf{Tipo riunione:} Interna
+    \item \textbf{Luogo:} Discord
+    \item \textbf{Durata:} 2h
+    \item \textbf{Responsabile:} Dennis Parolin
+\end{itemize}
+
+\vspace{0.2cm}
+
+\textbf{Partecipanti:}
+\begin{itemize}
+    \item Dennis Parolin
+    \item Riccardo Manisi
+    \item Gabriele Scaggiante
+    \item Ferdinando Fracasso
+    \item Giovanni Visentin
+\end{itemize}
+
+\textbf{Assenti:}
+\begin{itemize}
+    \item Nessuno (manca il quinto membro ancora non definito)
+\end{itemize}
+}
+
+\vspace{0.5cm}
+
+\vspace{0.8cm}
+
+% ======= INDICE SU PAGINA DEDICATA =======
+\clearpage
+\tableofcontents
+\thispagestyle{empty} % senza numero di pagina per l'indice
+\clearpage
+
+% ---------- ORDINE DEL GIORNO ----------
+\section{Ordine del Giorno}
+\begin{itemize}
+    \item Incontro formativo effettivo del gruppo (solo ora considerato il problema noto)
+    \item Discussione sugli appalti
+    \item Riorganizzazione della repository github
+\end{itemize}
+
+% ---------- DISCUSSIONI ----------
+\section{Discussioni}
+Il gruppo ha deciso in modo definitivo le 3 preferenze di progetti. Sono sorti dubbi riguardante questi 3 progetti, alcuni sono stati chiariti parlando tra componenti del gruppo, altri invece sono rimasti. Per questo motivo è stata inviata una mail al referente del progetto (quello della scelta primaria) chiedendo un eventuale incontro. Infine è stata spiegata l'attuale struttura della repository github (che era già stata creata al di fuori dai meeting) e riorganizzata/migliorata in parte secondo quanto sorto da una breve discussione riguardante tale argomento.
+
+% ---------- DECISIONI ----------
+\section{Decisioni}
+È stato deciso di di tenere come prima preferenza l'appalto C6, come seconda scelta abbiamo deciso l'appalto C8 e come terza scelta l'appalto C9
+
+% ---------- TO DO ----------
+\section{To Do}
+Dalle discussioni e decisioni intraprese, sono sorte le seguenti task:
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2} 
+\arrayrulecolor{black} 
+\begin{tabular}{|p{0.45\linewidth}|p{0.25\linewidth}|p{0.25\linewidth}|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Task} & \textbf{Assegnatario} & \textbf{Scadenza} \\
+\hline
+\rowcolor{white}
+Migliorare ulteriormente la repository di github (aggiungere action per i file LaTeX) & Riccardo Manisi & 2025-10-26 \\
+\hline
+\rowcolor{white}
+Chiedere incontri per chiarire alcuni dubbi anche sui due appalti non di preferenza primaria & Tutto il gruppo & 2025-10-27 \\
+\hline
+\end{tabular}
+\end{center}
+
+% ---------- REDAZIONE E REVISIONE ----------
+\clearpage
+\section{Redazione e revisioni del documento}
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2} 
+\arrayrulecolor{black}
+\begin{tabular}{|p{0.1\linewidth}|p{0.12\linewidth}|p{0.22\linewidth}|p{0.26\linewidth}|p{0.22\linewidth}|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+\hline
+\rowcolor{white}
+1.0.0 & 2025-10-22 & Dennis Parolin & Aggiunta tabella di redazione e revisione & Ferdinando Fracasso \\
+\hline
+\rowcolor{gray!20}
+0.1.0 & 2025-10-20 & Dennis Parolin & Stesura iniziale del verbale & Riccardo Manisi \\
+\hline
+\end{tabular}
+\end{center}
+
+\end{document}

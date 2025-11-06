@@ -1,0 +1,192 @@
+% template presente
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{tabularx}
+\usepackage{tcolorbox}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    urlcolor=blue,     
+}
+\usepackage{graphicx}
+\graphicspath{{resources/}{../resources/}{../../resources/}{../../../resources/}{../../../../resources/}}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{colortbl}
+\usepackage{hyperref} 
+\usepackage{fancyhdr} 
+\usepackage{titlesec}
+\geometry{margin=2.5cm}
+% ===== Variabile per il titolo del documento =====
+\newcommand{\documenttitle}{Documento Candidatura}
+
+
+\setlength{\parindent}{0pt}
+\setstretch{1.2}
+
+% ===== Stile intestazione =====
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{gray}{\documenttitle - BitByBit}}
+\fancyfoot[C]{\thepage}
+
+% ===== Formattazione sezioni =====
+\titleformat{\section}{\Large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.5em}{}
+
+\begin{document}
+
+% ======= HEADER UNIVERSITÀ E GRUPPO CENTRATI VERTICALMENTE =======
+\vspace*{\fill} % --- Spinge verso il basso l'inizio del contenuto
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logoUni.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\color{red}\LARGE \textbf{Università degli Studi di Padova}}\\[0.3cm]
+        {\large
+        Laurea: Informatica\\
+        Corso: Ingegneria del Software\\
+        Anno Accademico: 2025/26
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1cm}
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logo.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\LARGE \textbf{Gruppo 17}}\\[0.3cm]
+        {\large
+        Nome: BitByBit\\
+        Email: swe.bitbybit@gmail.com
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1.5cm}
+
+\begin{center}
+    {\LARGE \textbf{\documenttitle}}
+\end{center}
+
+\vspace*{\fill} % --- Spinge verso l’alto la fine del contenuto, centrando tutto il blocco
+
+\clearpage
+% ======= INFO GENERALI =======
+\section*{Informazioni Generali}
+\renewcommand{\arraystretch}{1.3}
+
+\begin{tcolorbox}
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\textbf{Destinatari:} & Professor Vardanega Tullio, Professor Cardin Riccardo \\
+\textbf{Redattore:} & Visentin Giovanni \\
+\textbf{Data:} & 2025-11-05 \\
+\textbf{Pagina web del gruppo:} & \href{https://swe-bitbybit.github.io/SWE-project/}{\textbf{Pagina web}} \\
+\end{tabularx}
+\end{tcolorbox}
+
+\clearpage
+
+\vspace{0.5cm}
+
+\vspace{0.8cm}
+
+% ======= INDICE SU PAGINA DEDICATA =======
+\clearpage
+\tableofcontents
+\thispagestyle{empty} % senza numero di pagina per l'indice
+\clearpage
+
+\section{Candidatura}
+Il gruppo \textbf{BitByBit} intende ufficialmente candidarsi per lo sviluppo del capitolato \textbf{C4 - "L'app che Protegge e Trasforma"}, proposto dall’azienda \textbf{Miriade srl}.
+
+La decisione è stata presa a seguito di un’analisi approfondita dei capitolati proposti. La scelta del gruppo era ricaduta sul capitolato \textbf{C8} che però non è stato aggiudicato. Il gruppo decide quindi di candidarsi per il capitolato \textbf{C4} visto l'interesse verso il progetto. 
+
+Le motivazioni che hanno portato il gruppo \textbf{BitByBit} a selezionare il capitolato \textbf{C4 - "L'app che Protegge e Trasforma"} proposto da \textbf{Miriade srl} sono illustrate nel documento dedicato, consultabile al seguente link: 
+\href{https://swe-bitbybit.github.io/SWE-project/docs/candidatura/valutazione_capitolati/valutazione_capitolati_seconda_candidatura.pdf}{\textbf{Analisi dei Capitolati}}.
+
+Per ulteriori approfondimenti tecnici e per la visione completa della documentazione aggiornata, è possibile consultare la \href{https://github.com/SWE-BitByBit/SWE-project.git}{\textbf{repository ufficiale del progetto}} su GitHub.
+
+A seguito della mancata assegnazione del capitolato, il gruppo \textbf{BitByBit} si è impegnato a risolvere le problematiche e migliorare la struttura della repository. Le informazioni delle migliorie apportate sono recuperabili nel documento \href{https://swe-bitbybit.github.io/SWE-project/docs/candidatura/verbali_interni/2025-11-04/verbale_2025-11-04.pdf}{\textbf{verbale 2025-11-04}} e \href{https://swe-bitbybit.github.io/SWE-project/docs/candidatura/verbali_interni/2025-11-05/verbale_2025-11-05.pdf}{\textbf{verbale 2025-11-05}}.
+
+% ===== INFO INCONTRI CON PROPONENTI =====
+\subsection{Incontri con le aziende proponenti}
+
+Nel corso della fase di analisi preliminare, il gruppo ha organizzato diversi incontri con le aziende proponenti per ottenere chiarimenti e specifiche aggiuntive sui capitolati di interesse.  
+Ogni incontro è stato verbalizzato e i verbali sono stati firmati dalle rispettive aziende per attestare l’avvenuto confronto.
+
+\begin{itemize}
+    \item \textbf{Zucchetti S.p.A.} – approfondimento sul capitolato \emph{C6 Second Brain}.  
+    Verbale disponibile al seguente link: \href{https://swe-bitbybit.github.io/SWE-project/docs/candidatura/verbali_esterni/2025-10-23/verbale_esterno_C6_firmato.pdf}{Verbale esterno 2025-10-23}.
+    \item \textbf{Ergon Informatica s.r.l.} – discussione sul capitolato \emph{C8 Smart Order}.  
+    Verbale disponibile al seguente link: \href{https://swe-bitbybit.github.io/SWE-project/docs/candidatura/verbali_esterni/2025-10-27_Incontro_C8/verbale_esterno_C8_firmato.pdf}{Verbale esterno 2025-10-27}.
+    \item \textbf{Miriade S.p.A.} – incontro per chiarimenti sul capitolato \emph{C4 L’app che protegge e trasforma}.  
+    Verbale disponibile al seguente link: \href{https://swe-bitbybit.github.io/SWE-project/docs/candidatura/verbali_esterni/2025-10-27_Incontro_C4/verbale_esterno_C4_firmato.pdf}{Verbale esterno 2025-10-27}.
+\end{itemize}
+
+% ===== PREVENTIVO COSTI ======
+\subsection{Preventivo costi e rischi}
+Come indicato nel documento \href{https://swe-bitbybit.github.io/SWE-project/docs/candidatura/valutazione_costi_rischi/valutazione_costi_rischi.pdf}{Documento costi e rischi} nel repository GitHub il costo stimato dal gruppo per la realizzazione del capitolato ammonta a \textbf{11.370,00€}, con la consegna prevista in data \textbf{2026-04-15}.
+
+% ===== COMPOSIZIONE DEL GRUPPO =====
+\subsection{Composizione del gruppo}
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{|p{0.3\linewidth}|p{0.2\linewidth}|}
+\hline
+\rowcolor{gray!60}
+\textbf{Nome e Cognome} & \textbf{Matricola} \\
+\hline
+Dennis Parolin & 2113203 \\
+\hline
+Ferdinando Fracasso & 2122649 \\
+\hline
+Giovanni Visentin & 2101064 \\
+\hline
+Riccardo Manisi & 2111948 \\
+\hline
+Marco Sanguin & 2103121 \\
+\hline
+Gabriele Scaggiante & 2101076 \\
+\hline
+\end{tabular}
+\end{center}
+
+% ---------- REDAZIONE E REVISIONE ----------
+\clearpage
+\section{Redazione e revisioni del documento}
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2} 
+\arrayrulecolor{black}
+\begin{tabular}{|p{0.1\linewidth}|p{0.18\linewidth}|p{0.22\linewidth}|p{0.20\linewidth}|p{0.22\linewidth}|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+\hline
+\rowcolor{white}
+1.0.0 & 2025-11-05 & Visentin Giovanni & Stesura documento & Dennis Parolin \\
+\hline
+\end{tabular}
+\end{center}
+
+\end{document}

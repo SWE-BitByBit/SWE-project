@@ -1,17 +1,29 @@
 \documentclass[a4paper,12pt]{article}
 
+\usepackage{tabularx}
+\usepackage{tcolorbox}
 \usepackage[utf8]{inputenc}
 \usepackage[italian]{babel}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    urlcolor=blue,     
+}
 \usepackage{graphicx}
 \graphicspath{{resources/}{../resources/}{../../resources/}{../../../resources/}{../../../../resources/}}
 \usepackage{xcolor}
 \usepackage{geometry}
 \usepackage{setspace}
 \usepackage{colortbl}
-\usepackage{hyperref} % link cliccabili
-\usepackage{fancyhdr} % intestazioni personalizzate
-\usepackage{titlesec} % per formattare le sezioni
+\usepackage{hyperref} 
+\usepackage{fancyhdr} 
+\usepackage{titlesec}
 \geometry{margin=2.5cm}
+% ===== Variabile per il titolo del documento =====
+\newcommand{\documenttitle}{Verbale Riunione Numero X}
+
 
 \setlength{\parindent}{0pt}
 \setstretch{1.2}
@@ -19,7 +31,7 @@
 % ===== Stile intestazione =====
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\textcolor{gray}{Verbale Riunione - Gruppo 17}}
+\fancyhead[L]{\textcolor{gray}{\documenttitle - BitByBit}}
 \fancyfoot[C]{\thepage}
 
 % ===== Formattazione sezioni =====
@@ -69,45 +81,44 @@
 \vspace{1.5cm}
 
 \begin{center}
-    {\LARGE \textbf{Verbale Riunione Numero X}}
+    {\LARGE \textbf{\documenttitle}}
 \end{center}
 
 \vspace*{\fill} % --- Spinge verso l’alto la fine del contenuto, centrando tutto il blocco
 
 \clearpage
 % ======= INFO GENERALI =======
-{\large \textbf{Informazioni generali}}
-{\footnotesize
-\setstretch{1.1}
+\section*{Informazioni Generali}
+\renewcommand{\arraystretch}{1.3}
 
-\begin{itemize}
-    \item \textbf{Data:} %modifica
-    \item \textbf{Ora inizio:} %modifica
-    \item \textbf{Ora fine:} %modifica
-    \item \textbf{Tipo riunione:}%modifica
-    \item \textbf{Luogo:} %modifica
-    \item \textbf{Durata:} %modifica
-    \item \textbf{Responsabile:} %modifica
-\end{itemize}
+\begin{tcolorbox}
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\textbf{Redattore:} & XXXX \\
+\textbf{Verificatore:} & XXXX \\
+\textbf{Responsabile:} & XXXX \\
+\textbf{Amministratore:} & XXXX \\
+\textbf{Data:} & 23 ottobre 2025 \\
+\textbf{Durata:} & 1h 45m \\
+\textbf{Luogo:} & Padova, Aula 2 \\
+\end{tabularx}
+\end{tcolorbox}
 
-\vspace{0.2cm}
-
+\vspace{0.4cm}
 \textbf{Partecipanti:}
 \begin{itemize}
-    \item %modifica
-    \item %modifica
-    \item %modifica
-    \item %modifica
-    \item %modifica
-    \item %modifica
+    \item Manisi Riccardo
+    \item Parolin Dennis
+    \item Scaggiante Gabriele
+    \item Sanguin Marco
+    \item Visentin Giovanni
 \end{itemize}
 
 \textbf{Assenti:}
 \begin{itemize}
-    \item %modifica
-    \item %modifica
+    \item (nessuno)
 \end{itemize}
-}
+
+\clearpage
 
 \vspace{0.5cm}
 
@@ -144,19 +155,19 @@ Dalle discussioni e decisioni intraprese, sono sorte le seguenti task:
 \small
 \renewcommand{\arraystretch}{1.2} 
 \arrayrulecolor{black} 
-\begin{tabular}{|p{0.45\linewidth}|p{0.25\linewidth}|p{0.25\linewidth}|}
+\begin{tabular}{|p{0.35\linewidth}|p{0.2\linewidth}|p{0.2\linewidth}|p{0.2\linewidth}|}
 \hline
 \rowcolor{gray!60} 
-\textbf{Task} & \textbf{Assegnatario} & \textbf{Scadenza} \\
+\textbf{Task} & \textbf{Assegnatario} & \textbf{Scadenza} & \textbf{Link GitHub} \\
 \hline
 \rowcolor{white}
-Esempio Task 1 & Nome Cognome & 30/10/2025 \\
+Esempio Task 1 & Nome Cognome & 30/10/2025 & \href{https://github.com/<repo>/issues/1}{\textbf{issue}} \\
 \hline
 \rowcolor{gray!20}
-Esempio Task 2 & Nome Cognome & 05/11/2025 \\
+Esempio Task 2 & Nome Cognome & 05/11/2025 & \href{https://github.com/<repo>/issues/2}{\textbf{issue}} \\
 \hline
 \rowcolor{white}
-Esempio Task 3 & Nome Cognome & 10/11/2025 \\
+Esempio Task 3 & Nome Cognome & 10/11/2025 & \href{https://github.com/<repo>/issues/3}{\textbf{issue}} \\
 \hline
 \end{tabular}
 \end{center}
@@ -172,21 +183,22 @@ Esempio Task 3 & Nome Cognome & 10/11/2025 \\
 \begin{tabular}{|p{0.1\linewidth}|p{0.18\linewidth}|p{0.22\linewidth}|p{0.20\linewidth}|p{0.22\linewidth}|}
 \hline
 \rowcolor{gray!60} 
-\textbf{Versione} & \textbf{Ruolo} & \textbf{Nome} & \textbf{Data e ora} & \textbf{Descrizione} \\
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 \rowcolor{white}
- & Redatto da &  &  & Stesura iniziale del verbale \\
+ &  &  &  &  \\
 \hline
 \rowcolor{gray!20}
- & Revisione &  &  & Controllo approfondito del verbale \\
+ &  &  &  & \\
 \hline
 \rowcolor{white}
- & Conferma & Tutti i membri &  & Conferma da parte di tutti del verbale \\
+ &  &  &  & \\
 \hline
 \rowcolor{gray!20}
- & Modifiche &  &  &  \\
+ &  &  &  &  \\
 \hline
 \end{tabular}
 \end{center}
 
 \end{document}
+

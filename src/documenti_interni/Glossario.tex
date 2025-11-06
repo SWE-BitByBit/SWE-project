@@ -1,0 +1,398 @@
+% template presente
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{graphicx}
+\graphicspath{{resources/}{../resources/}{../../resources/}{../../../resources/}{../../../../resources/}}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{colortbl}
+\usepackage{hyperref} % link cliccabili
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    urlcolor=blue,     
+}
+\usepackage{fancyhdr} % intestazioni personalizzate
+\usepackage{titlesec} % per formattare le sezioni
+\usepackage{float} % per la tabella del glossario
+\usepackage{longtable} % per fare in modo che la tabella sia più lunga di una pagina
+\geometry{margin=2.5cm}
+
+\setlength{\parindent}{0pt}
+\setstretch{1.2}
+
+% ===== Stile intestazione =====
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{gray}{Glossario - Gruppo BitByBit}}
+\fancyfoot[C]{\thepage}
+
+% ===== Formattazione sezioni =====
+\titleformat{\section}{\Large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.5em}{}
+
+\begin{document}
+
+% ======= HEADER UNIVERSITÀ E GRUPPO CENTRATI VERTICALMENTE =======
+\vspace*{\fill} % --- Spinge verso il basso l'inizio del contenuto
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logoUni.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\color{red}\LARGE \textbf{Università degli Studi di Padova}}\\[0.3cm]
+        {\large
+        Laurea: Informatica\\
+        Corso: Ingegneria del Software\\
+        Anno Accademico: 2025/26
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1cm}
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logo.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\LARGE \textbf{Gruppo 17}}\\[0.3cm]
+        {\large
+        Nome: BitByBit\\
+        Email: swe.bitbybit@gmail.com
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1.5cm}
+
+\begin{center}
+    {\LARGE \textbf{Glossario}}
+\end{center}
+
+\vspace*{\fill} % --- Spinge verso l’alto la fine del contenuto, centrando tutto il blocco
+
+\clearpage
+% ======= INFO GENERALI =======
+
+% ======= INDICE SU PAGINA DEDICATA =======
+\clearpage
+\tableofcontents
+\thispagestyle{empty} % senza numero di pagina per l'indice
+\clearpage
+
+% ---------- REDAZIONE E REVISIONE ----------
+\clearpage
+\section{Glossario}
+
+\subsection{Acronimi}
+\begin{tabular}{p{0.22\linewidth} p{0.72\linewidth}}
+\textbf{API} & Application Programming Interface. \\
+\textbf{PoC} & Proof of Concept \\
+\textbf{MVP} & Minimum Viable Product. \\
+\textbf{RTB} & Requirements and Technology Baseline \\
+\textbf{PB} & Product Baseline \\
+\textbf{DB} & Database. \\
+\textbf{JSON} & JavaScript Object Notation. \\
+
+\end{tabular}
+
+\vspace{0.6cm}
+
+\subsection*{Termini principali}
+
+\section{A}
+
+\subsection*{Agile development}
+Metodo per lo sviluppo sw ideato per produrre sw utile nel minor tempo possibile. Il sistema è sviluppato attraverso una serie di incrementi a cui partecipano anche gli stakeholders e gli utenti finali per una maggiore comunicazione in fase di sviluppo. I risultati di ogni incremento vengono utilizzati come base per la pianificazione del prossimo.  
+Attività centrali sono: il \textbf{design} e \textbf{l'implementazione}.  
+La stesura di un documento dei requisiti è superflua in quanto i requisiti cambiano così velocemente che il documento è obsoleto non appena viene scritto.
+
+\subsection*{API}
+Interfaccia che consente la comunicazione tra componenti o servizi.
+
+\subsection*{Architettura}
+Organizzazione generale del sistema e dei suoi componenti.
+
+% ==============================
+\section{B}
+
+\subsection*{Backlog}
+Elenco prioritario delle funzionalità, bug e attività da svolgere.
+
+\subsection*{Baseline}
+Versione approvata di un prodotto di lavoro (di progetto) che può essere modificato solo attraverso procedure formali di controllo delle modifiche.
+
+\subsection*{Bug}
+Difetto da controllare.
+
+% ==============================
+\section{C}
+
+\subsection*{Capitolato}
+Documento che contiene le specifiche di un progetto software. Viene redatto dal proponente e presentato ai fornitori interessati a partecipare all'appalto.  
+Descrive i requisiti lato bisogno (requisiti utente).
+
+\subsection*{Committente}
+Colui che paga il prodotto. Di solito (ma non necessariamente) è colui che decide i requisiti.
+
+\subsection*{Componente}
+Unità software con responsabilità ben definite e interfacce pubbliche.
+
+\subsection*{Contratto}
+Documento (legale) stilato tra committente e fornitore.
+
+\subsection*{Click}
+L'azione di premere e rilasciare rapidamente un pulsante del mouse (o un'area equivalente su un touchpad) per attivare un comando, selezionare un oggetto o seguire un collegamento ipertestuale su un'interfaccia grafica.
+
+% ==============================
+\section{D}
+
+\subsection*{Database}
+Sistema di memorizzazione dei dati e la sua struttura definita.
+
+\subsection*{Deployment}
+Processo di pubblicazione del software in un ambiente esecutivo.
+
+\subsection*{Documento analisi dei requisiti}
+Stabilisce esattamente cosa deve essere implementato nel sistema, cioè elenca i requisiti lato soluzione (requisiti software).  
+Può essere parte del contatto con l’acquirente.  
+Può essere soggetto a modifiche durante lo sviluppo del prodotto sw.
+
+% ==============================
+\section{E}
+
+\subsection*{Extreme programming (XP)}
+Tecnica di sviluppo software.  
+I requisiti non sono documenti formali:
+\begin{itemize}
+\item vengono espressi come scenari d’uso (chiamati \textbf{user stories}), che sono implementati come una serie di task;
+\item vengono scritti insieme al cliente su story card;
+\item vengono scomposti in compiti tecnici (task);
+\item per ogni task vengono sviluppati test automatici.
+\end{itemize}
+Affinché il nuovo codice possa essere rilasciato tutti i test devono essere eseguiti correttamente.
+
+% ==============================
+\section{G}
+
+\subsection*{Glossario}
+Elenco termini utilizzati dal gruppo.
+
+% ==============================
+\section{J}
+
+\subsection*{JSON}
+Formato per lo scambio di dati tra client e server.
+
+% ==============================
+\section{L}
+
+\subsection*{Life cycle}
+Gli stati che il prodotto software assume da concezione, all’uso fino al ritiro.  
+Si riferisce alla completa durata dello sviluppo del prodotto, dal concepimento al ritiro (=fine), che deve essere garantita.  
+È composto da stati in cui si ha una certa sequenza di passaggi da seguire. La transizione da uno stato all’altro avviene come conseguenza dell’esecuzione di un’attività.  
+In seguito al ritiro il prodotto può essere rimesso in vita, per questo viene indicato con ciclo.
+
+\subsection*{Licenza}
+Condizioni legali che regolano l’uso e la distribuzione del software.
+
+% ==============================
+\section{M}
+
+\subsection*{Milestone}
+Strumento utilizzato nella gestione di progetto per fissare una data di calendario che descrive degli obiettivi che portano un avanzamento nello sviluppo di progetto.  
+Ogni milestone deve essere:
+\begin{itemize}
+\item specifica 
+\item raggiungibile
+\item misurabile
+\item traducibile in compiti assegnabili
+\item dimostrabile dagli stakeholders
+\end{itemize}
+
+\subsection*{Model}
+Insieme di specifiche che descrivono un fenomeno d’interesse.
+
+\subsection*{MVP}
+Versione minima del prodotto che permette di validare l’ipotesi principale.
+
+% ==============================
+\section{P}
+
+\subsection*{PB}
+Versione approvata del prodotto pronta al rilascio o alla validazione.
+
+\subsection*{Piano di progetto}
+Documento ufficiale di tipo esterno, soggetto ad approvazioni, con il quale si descrivono gli obiettivi di progetto e gli elementi necessari al loro raggiungimento.  
+Si vedono le risorse disponibili e le loro assegnazioni alle attività con scansione nel tempo.  
+Principalmente è scomposto in:
+\begin{itemize}
+\item Pianificazione (preventiva): Team, Analisi dei rischi
+\item Consuntivazione: valutazione retrospettiva delle attività svolte
+\end{itemize}
+Struttura tipica del PdP:
+\begin{itemize}
+\item Introduzione (scopo e struttura)
+\item Organizzazione del progetto
+\item Analisi dei rischi
+\item Risorse disponibili
+\item Suddivisione del lavoro (work breakdown)
+\item Calendario delle attività
+\item Meccanismo di controllo e rendicontazione
+\end{itemize}
+
+\subsection*{Piano di qualifica}
+Documento incrementale di tipo esterno che stabilisce gli standard di qualità, i processi e le attività di testing che saranno implementati durante lo sviluppo di un progetto.  
+Contiene una descrizione dettagliata delle strategie di testing (verifica), delle metriche di valutazione e dei criteri di accettazione del prodotto finale.  
+L’obiettivo principale è garantire che il prodotto soddisfi gli standard di qualità prefissati e che il processo di sviluppo segua procedure coerenti ed efficaci.  
+Per ogni passo fatto in analisi o altro è necessario preparare test e tracciamenti per non lasciare indietro nulla.
+
+\subsection*{PoC}
+Prototipo o esperimento usato per dimostrare la fattibilità di una soluzione.
+
+\subsection*{Process}
+Un insieme strutturato di attività, metodi, pratiche e trasformazioni utilizzate per sviluppare, manutenere e gestire un prodotto software o un sistema. Definisce cosa deve essere fatto, chi lo fa, quando e come, per raggiungere un obiettivo specifico.
+
+\subsection*{Project}
+È un insieme ordinato di attività sviluppate sulla base dei processi di ciclo di vita che soddisfano gli obiettivi dati.
+\begin{itemize}
+\item Le attività sono suddivise in compiti assegnabili a singoli individui.
+\item Le attività sono pianificate prima di essere svolte.
+\end{itemize}
+
+\subsection*{Prototipo}
+Versione preliminare per testare design o comportamenti prima dello sviluppo completo.
+
+\subsection*{Pull Request / Merge Request}
+Procedura per proporre e rivedere modifiche prima dell’integrazione.
+
+% ==============================
+\section{R}
+
+\subsection*{Repository / Repo}
+Archivio centralizzato dove viene conservato e gestito il codice sorgente del progetto.
+
+\subsection*{Repository / Branch}
+Archivio del codice sorgente e linee di sviluppo parallele.
+
+\subsection*{Requisito}
+Condizione o capacità che il sistema deve soddisfare.
+
+\subsection*{Requisito funzionale}
+Funzionalità che il sistema deve offrire.
+
+\subsection*{Requisito non funzionale}
+Vincolo di qualità (prestazioni, sicurezza, usabilità, manutentibilità).
+
+\subsection*{Requisito utente}
+Requisiti astratti di alto livello.  
+Dichiarazioni in linguaggio naturale (e anche diagrammi) dei servizi che il sistema dovrebbe fornire agli utenti e dei vincoli che deve rispettare.  
+Possono variare da dichiarazioni generali a descrizioni dettagliate.
+
+\subsection*{Requisito software}
+Descrizioni dettagliate delle funzioni, servizi e vincoli di sistema, inseriti nel documento di analisi dei requisiti.
+
+\subsection*{RTB}
+Insieme dei requisiti approvati e della loro tracciabilità.
+
+% ==============================
+\section{S}
+
+\subsection*{Sprint}
+Iterazione di lavoro con obiettivi definiti (2 settimane).
+
+\subsection*{Stakeholder}
+Tutti coloro che a vario titolo hanno influenza sul prodotto e sul progetto: utenti, committente, fornitore, regolatori.
+
+% ==============================
+\section{T}
+
+\subsection*{Task}
+Attività da svolgere.
+
+\subsection*{Technology baseline}
+Documento di quello che si dovrebbe implementare.
+
+\subsection*{Test unitario}
+Verifica automatizzata di singole unità di codice.
+
+\subsection*{Test di integrazione}
+Verifica delle interazioni tra più componenti o servizi.
+
+\subsection*{Test-driven development}
+Vengono scritti prima i test e poi il codice. Scrivendo i test si definisce implicitamente l’interfaccia e le specifiche di comportamento di una funzionalità.  
+I test devono essere automatici e verificare che il codice soddisfi le specifiche di output.
+
+\subsection*{To Do}
+Sezione di un verbale o di un documento in cui si elencano le azioni concrete che ogni membro del gruppo deve svolgere.
+
+% ==============================
+\section{U}
+
+\subsection*{Utente}
+La persona che usa e interagisce direttamente col sistema (spesso si identifica col committente).
+
+\subsection*{User story}
+Descrizione breve e informale di una funzionalità del sistema vista dal punto di vista dell’utente finale.  
+Riassume un’esigenza che l’utente vuole ottenere e perché.  
+L’utente lavora con il team per creare una \textbf{story card} che viene poi suddivisa in task.
+
+% ==============================
+\section{V}
+
+\subsection*{Validazione}
+Attività eseguita al culmine del progetto per accertare che il prodotto finale corrisponda alle attese.
+
+\subsection*{Verifica}
+Attività eseguita durante lo sviluppo per accertare che le attività non introducano errori.
+
+\subsection*{Verbale}
+Documento riassuntivo di una riunione. Deve specificare Ordine del Giorno, Discussioni, Decisioni, Issue e To Do.  
+Ogni verbale deve essere verificato da un membro diverso da chi l’ha scritto.
+
+% ==============================
+\section{W}
+
+\subsection*{Way of working (WoW)}
+Comprende le metodologie di sviluppo (modello di sviluppo), la spartizione dei ruoli e delle attività, gli strumenti di lavoro (GitHub, GitLab, Trello, Jira, Slack, Discord, Obsidian, Google Docs), convenzioni standard e procedure condivise dai membri del team.
+
+\clearpage
+\section{Redazione e revisioni del documento}
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2} 
+\arrayrulecolor{black}
+\begin{tabular}{|p{0.1\linewidth}|p{0.18\linewidth}|p{0.22\linewidth}|p{0.20\linewidth}|p{0.22\linewidth}|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+\hline
+\rowcolor{white}
+0.2.2 & 2025-11-05 & Dennis Parolin & Aggiunti termini al documento e sistemato alcuni errori grammaticali & Gabriele Scaggiante \\
+\hline
+\rowcolor{gray!20}
+0.2.1 & 2025-11-06 & Riccardo Manisi & Tolta la sezione delle convenzioni di scrittura, aggiunto indice e formattazione, inserito nuovi termini & Dennis Parolin \\
+\hline
+\rowcolor{white}
+0.1.1 & 2025-11-05 & Giovanni Visentin & Aggiunti termini al documento & Gabriele Scaggiante \\
+\hline
+\rowcolor{gray!20}
+0.1.0 & 2025-11-04 & Giovanni Visentin & Stesura iniziale del glossario & Gabriele Scaggiante \\
+\hline
+\end{tabular}
+\end{center}
+
+\end{document}

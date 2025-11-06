@@ -1,0 +1,202 @@
+% template presente
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{graphicx}
+\graphicspath{{resources/}{../resources/}{../../resources/}{../../../resources/}{../../../../resources/}}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{colortbl}
+\usepackage{hyperref} % link cliccabili
+\usepackage{fancyhdr} % intestazioni personalizzate
+\usepackage{titlesec} % per formattare le sezioni
+\geometry{margin=2.5cm}
+
+\setlength{\parindent}{0pt}
+\setstretch{1.2}
+
+% ===== Stile intestazione =====
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{gray}{Verbale Riunione - Gruppo 17}}
+\fancyfoot[C]{\thepage}
+
+% ===== Formattazione sezioni =====
+\titleformat{\section}{\Large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.5em}{}
+
+\begin{document}
+
+% ======= HEADER UNIVERSITÀ E GRUPPO CENTRATI VERTICALMENTE =======
+\vspace*{\fill} % --- Spinge verso il basso l'inizio del contenuto
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logoUni.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\color{red}\LARGE \textbf{Università degli Studi di Padova}}\\[0.3cm]
+        {\large
+        Laurea: Informatica\\
+        Corso: Ingegneria del Software\\
+        Anno Accademico: 2025/26
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1cm}
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logo.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\LARGE \textbf{Gruppo 17}}\\[0.3cm]
+        {\large
+        Nome: BitByBit\\
+        Email: swe.bitbybit@gmail.com
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1.5cm}
+
+\begin{center}
+    {\LARGE \textbf{Verbale Riunione Interna}}
+\end{center}
+
+\vspace*{\fill} % --- Spinge verso l’alto la fine del contenuto, centrando tutto il blocco
+
+\clearpage
+% ======= INFO GENERALI =======
+{\large \textbf{Informazioni generali}}
+{\footnotesize
+\setstretch{1.1}
+
+\begin{itemize}
+    \item \textbf{Data:} 2025-10-28
+    \item \textbf{Ora inizio:} 14:30
+    \item \textbf{Ora fine:} 16:45
+    \item \textbf{Tipo riunione:} Interna
+    \item \textbf{Luogo:} Discord
+    \item \textbf{Durata:} 2 h 15 min
+    \item \textbf{Responsabile:} Gabriele Scaggiante
+\end{itemize}
+
+\vspace{0.2cm}
+
+\textbf{Partecipanti:}
+\begin{itemize}
+    \item Gabriele Scaggiante
+    \item Giovanni Visentin
+    \item Dennis Parolin 
+    \item Riccardo Manisi
+    \item Ferdinando Fracasso
+\end{itemize}
+
+\textbf{Assenti:}
+\begin{itemize}
+    \item Marco Sanguin
+\end{itemize}
+}
+
+\vspace{0.5cm}
+
+\vspace{0.8cm}
+
+% ======= INDICE SU PAGINA DEDICATA =======
+\clearpage
+\tableofcontents
+\thispagestyle{empty} % senza numero di pagina per l'indice
+\clearpage
+
+% ---------- ORDINE DEL GIORNO ----------
+\section{Ordine del Giorno}
+\begin{itemize}
+    \item Riepilogo delle riunioni esterne fatte
+    \item Raccolta di opinioni generali per proporre la candidatura
+\end{itemize}
+
+% ---------- DISCUSSIONI ----------
+\section{Discussioni}
+Durante la riunione interna, i membri del gruppo hanno discusso in merito alla scelta del progetto da realizzare, analizzando preferenze personali, complessità tecniche e disponibilità dei referenti.
+
+\subsection{Preferenze dei membri}
+Ciascun componente ha espresso la propria preferenza tra i progetti proposti:
+\begin{itemize}
+    \item \textbf{Riccardo} e \textbf{Giovanni} hanno manifestato interesse per il progetto \textbf{C4}, principalmente per l’aspetto legato al design, all’accessibilità e alla possibilità di sviluppare un’applicazione mobile.
+    \item \textbf{Gabriele}, \textbf{Dennis} e \textbf{Ferdinando} preferiscono il progetto \textbf{C8}, considerandolo più gestibile e vicino alle competenze già acquisite, pur trattando argomenti rilevanti e utili alla formazione.
+\end{itemize}
+Chi ha espresso preferenza per il C8 ha evidenziato che il C4 presenta una maggiore complessità tecnica e richiederebbe un impegno più elevato in termini di tempo e risorse.  
+\\
+Il capitolato n.6 per il momento è stato escluso: tutti i partecipanti alla riunione esterna hanno infatti espresso opinioni negative in merito alla direzione presa dal progetto, che sembrava più interessante prima dell'incontro. Anche il referente non ha dato un'impressione positiva.
+
+\subsection{Considerazioni sui progetti C4 e C8}
+È stato osservato che il progetto C8 risulta già assegnato, perciò la scelta potrebbe comportare difficoltà nel processo di selezione.  
+Se il progetto C4 fosse meno impegnativo, tutti i membri sarebbero favorevoli alla sua realizzazione.  
+
+I referenti del progetto C4 sono stati giudicati positivamente da parte di Dennis, che li ha trovati disponibili e collaborativi, mentre Gabriele ha percepito un atteggiamento più distaccato e non particolarmente professionale.
+
+\subsection{Disponibilità e modalità di lavoro}
+Sono state discusse le modalità di collaborazione con le aziende:
+\begin{itemize}
+    \item I referenti del C4 sono stati percepiti da Dennis come poco disponibili a incontri frequenti.
+    \item Gabriele ha suggerito di favorire l’apprendimento individuale per velocizzare i tempi, evitando di coinvolgere tutto il gruppo in ogni fase operativa.
+\end{itemize}
+In termini di utilizzo dell’intelligenza artificiale, entrambi i progetti — C4 e C8 — sembrano offrire opportunità equivalenti, con la differenza che il C4 consentirebbe di approfondire maggiormente lo sviluppo mobile.
+
+\subsection{Analisi tecnica del progetto C4}
+Per la realizzazione del progetto C4 sarebbero necessarie competenze e attività nei seguenti ambiti:
+\begin{itemize}
+    \item Linguaggi e framework: \textbf{Flutter} e \textbf{Dart};
+    \item Design dell’applicazione (UX, funzionalità, onboarding) — stimato in circa due settimane di lavoro;
+    \item Infrastruttura e servizi cloud: \textbf{AWS} (Amazon Bedrock, database SQL e NoSQL);
+    \item Contenimento e distribuzione: \textbf{Docker};
+    \item Aspetti legali: conformità \textbf{GDPR} e diritto all’oblio;
+    \item Interazioni con il dispositivo (notifiche, microfono, accesso tramite password, ecc.).
+\end{itemize}
+
+\subsection{Gestione della complessità e degli obiettivi}
+È stato proposto di consultare il \textbf{Professor Vardanega} per valutare la gestione del carico di lavoro nel caso in cui si scelga il C4.  
+Si è inoltre sottolineato che gli obiettivi del progetto potranno essere eventualmente ridimensionati in corso d’opera, pur consapevoli che una riduzione eccessiva delle funzionalità potrebbe compromettere il valore formativo del lavoro.  
+Gabriele ha espresso preoccupazione riguardo al rischio di iniziare il progetto senza un quadro chiaro delle funzionalità da implementare sin dall’inizio.
+
+
+% ---------- DECISIONI ----------
+\section{Decisioni}
+Al termine della discussione, non è stata ancora presa una decisione definitiva sul progetto da scegliere.  
+Il gruppo intende contattare il \textbf{Professor Vardanega} per un confronto e predisporre una lista di domande da presentare in data \textbf{giovedì 30 ottobre 2025}.
+
+% ---------- TO DO ----------
+\section{To Do}
+Annotare una breve lista di domande da porre al Professor Vardanega.
+
+% ---------- REDAZIONE E REVISIONE ----------
+\clearpage
+\section{Redazione e revisioni del documento}
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2} 
+\arrayrulecolor{black}
+\begin{tabular}{|p{0.1\linewidth}|p{0.12\linewidth}|p{0.22\linewidth}|p{0.26\linewidth}|p{0.22\linewidth}|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+\hline
+\rowcolor{white}
+1.0.0 & 2025-10-28 & Gabriele Scaggiante & Stesura iniziale del verbale & Dennis Parolin \\
+\hline
+
+\end{tabular}
+\end{center}
+
+\end{document}

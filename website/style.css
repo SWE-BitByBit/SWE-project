@@ -1,0 +1,287 @@
+/* --- IMPOSTAZIONI GLOBALI --- */
+:root {
+    /* Colori dal logo */
+    --primary-dark: #031735; /* Blu scuro principale */
+    --accent-color: #0AF6C5; /* Azzurrino */
+    
+    /* Colori di testo e sfondo derivati */
+    --text-light: #E2E8F0; /* Bianco sporco per il testo */
+    --text-muted: #8fa4ca; /* Grigio per testo secondario */
+    --bg-lighter-dark: #092956; /* Un po' più chiaro del primary-dark per elementi secondari */
+    --border-color: #3C5A6B; /* Bordo più scuro */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 2rem; 
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--primary-dark);
+    color: var(--text-light);
+}
+
+/* --- 1. HEADER --- */
+header {
+    position: sticky;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+}
+
+/* --- 2. MENU LATERALE (NAV) --- */
+nav {
+    width: 280px; 
+    top: 60px;
+    position: sticky;
+    background-color: var(--bg-lighter-dark);
+    padding: 2rem;
+    height: 100vh;
+}
+
+.nav-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.logo {
+    height: 60px;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    margin-bottom: 0.8rem;
+}
+
+nav ul li a {
+    display: block;
+    text-decoration: none;
+    color: var(--text-muted);
+    background-color: transparent;
+    padding: 0.75rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 500;
+    text-align: center;
+    transition: all 0.2s ease-out;
+}
+
+nav ul li a:hover {
+    background-color: var(--accent-color);
+    color: var(--primary-dark);
+    border-color: var(--accent-color);
+    text-decoration: none; 
+}
+
+
+/* --- 3. CONTENUTO PRINCIPALE (MAIN) --- */
+main {
+    margin-left: 280px;
+    margin-top: -100vh;
+    flex: 1; 
+    padding: 3rem;
+}
+
+section {
+    margin-bottom: 3rem; 
+    background-color: var(--bg-lighter-dark);
+    border-radius: 8px;
+    border: #0AF6C5 solid 0px;
+    padding: 2.5rem;
+    transition: 0.3s ease-in-out;
+}
+
+section:hover {
+    border-left-width: 15px;
+    padding-left: 1.78rem;
+}
+
+.hidden {
+display: none;
+}
+/* --- STILI PER I CONTENUTI --- */
+h2 {
+    font-size: 3.6rem;
+    color: var(--accent-color);
+    font-weight: 800;
+    margin-bottom: 2.5rem;
+    padding-bottom: 0.5rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+    color: var(--text-light);
+    font-weight: 700;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Stile base per paragrafi, liste e def. */
+p, li, dd {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+    color: var(--text-light);
+    font-weight: 300;
+}
+
+main section ul {
+    list-style-type: none;
+    padding-left: 1.5rem;
+}
+
+/* Stile base per i link */
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 400;
+}
+
+/* Sottolineatura per i link nel main (esclusi quelli speciali) */
+main a:hover {
+    text-decoration: underline;
+}
+
+/* Stili per il Glossario */
+dl {
+    padding-left: 1rem;
+}
+dt {
+    font-weight: bold;
+    color: var(--text-light);
+    font-size: 1.1rem;
+    margin-top: 1.5rem;
+}
+dd {
+    margin-left: 1rem;
+    font-size: 1rem;
+    color: var(--text-muted);
+}
+
+/* Stili per il Team */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+}
+
+.team-member {
+    text-align: center;
+    background-color: var(--primary-dark); 
+    padding: 1.5rem;
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+}
+
+.team-member:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    border-color: var(--accent-color);
+}
+
+.team-member img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    background-color: #fff;
+}
+
+.team-member h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    color: var(--text-light);
+}
+
+.team-member p {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 0;
+    font-family: monospace;
+}
+
+
+/* * MODIFICA CHIAVE: Nuovi stili per il Footer
+ */
+footer {
+    margin-top: 1rem;
+    padding-top: 2rem;
+}
+
+/* Contenitore flex per le due colonne */
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem; /* Spazio tra le colonne */
+    flex-wrap: wrap; /* Su schermi piccoli, le colonne andranno a capo */
+    margin-bottom: 2rem;
+}
+
+.footer-description {
+    flex: 2; /* Più spazio alla descrizione */
+    min-width: 300px; /* Larghezza minima per il wrapping */
+}
+
+.footer-links {
+    flex: 1; /* Meno spazio ai link */
+    min-width: 200px;
+}
+
+footer h4 {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+/* Stile per i paragrafi nel footer */
+footer p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* Stile per la lista di link nel footer */
+footer ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+footer li {
+    font-size: 1rem; /* Reset per non ereditare da 'p, li, dd' */
+    margin-bottom: 0.5rem;
+}
+
+/* Link del footer (non sono bottoni) */
+footer a {
+    color: var(--accent-color);
+}
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Linea di copyright finale */
+.footer-bottom {
+    text-align: center;
+    padding-top: 1.5rem;
+    margin-top: 1rem;
+}
+
+.footer-bottom p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}

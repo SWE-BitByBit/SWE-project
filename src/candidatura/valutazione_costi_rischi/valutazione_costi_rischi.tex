@@ -1,0 +1,331 @@
+% template presente
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{graphicx}
+\graphicspath{{resources/}{../resources/}{../../resources/}{../../../resources/}{../../../../resources/}}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{colortbl}
+\usepackage{hyperref} % link cliccabili
+\usepackage{fancyhdr} % intestazioni personalizzate
+\usepackage{titlesec} % per formattare le sezioni
+\geometry{margin=2.5cm}
+
+\setlength{\parindent}{0pt}
+\setstretch{1.2}
+
+% ===== Stile intestazione =====
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{gray}{Preventivo Costi e Rischi Attesi - Gruppo 17}}
+\fancyfoot[C]{\thepage}
+
+% ===== Formattazione sezioni =====
+\titleformat{\section}{\Large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.5em}{}
+
+\begin{document}
+
+% ======= HEADER UNIVERSITÀ E GRUPPO CENTRATI VERTICALMENTE =======
+\vspace*{\fill} % --- Spinge verso il basso l'inizio del contenuto
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logoUni.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\color{red}\LARGE \textbf{Università degli Studi di Padova}}\\[0.3cm]
+        {\large
+        Laurea: Informatica\\
+        Corso: Ingegneria del Software\\
+        Anno Accademico: 2025/26
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1cm}
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logo.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\LARGE \textbf{Gruppo 17}}\\[0.3cm]
+        {\large
+        Nome: BitByBit\\
+        Email: swe.bitbybit@gmail.com
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1.5cm}
+
+\begin{center}
+    {\LARGE \textbf{Preventivo Costi e Rischi Attesi}}
+\end{center}
+
+\vspace*{\fill} % --- Spinge verso l’alto la fine del contenuto, centrando tutto il blocco
+
+\clearpage
+
+% ======= INDICE SU PAGINA DEDICATA =======
+\clearpage
+\tableofcontents
+\thispagestyle{empty} % senza numero di pagina per l'indice
+\clearpage
+
+% ---------- ANALISI RISCHI ----------
+\section{Analisi dei Rischi}
+\begin{itemize}
+    \item \textbf{Rischio}: Numero considerevole di nuovi sistemi da imparare.
+        \begin{itemize}
+            \item \textbf{Mitigazione}: Programmare una fase iniziale di formazione interna e autoformazione con documentazione condivisa. Ogni membro si impegnerà ad approfondire un sottoinsieme specifico di strumenti e a condividerne le conoscenze con il resto del gruppo, riducendo così il tempo di apprendimento complessivo.
+        \end{itemize}
+
+    \item \textbf{Rischio}: Scarso impegno da parte di un membro del gruppo.
+        \begin{itemize}
+            \item \textbf{Mitigazione}: Stabilire fin da subito obiettivi individuali chiari e tracciabili tramite strumenti di project management. In caso di mancato rispetto delle scadenze, il responsabile interverrà con una redistribuzione temporanea dei compiti per garantire la continuità del progetto.
+        \end{itemize}
+
+    \item \textbf{Rischio}: Impegni personali e universitari.
+        \begin{itemize}
+            \item \textbf{Mitigazione}: Pianificare riunioni e obiettivi in anticipo, in modo da evitare di scoprire problemi di disponibilità in momenti critici. 
+        \end{itemize}
+
+    \item \textbf{Rischio}: Indecisioni all'interno del gruppo.
+        \begin{itemize}
+            \item \textbf{Mitigazione}: Nominare un responsabile di riferimento per le decisioni critiche e adottare un metodo decisionale basato sul consenso o, in caso di stallo, sul voto a maggioranza. Le scelte chiave saranno documentate nei verbali delle riunioni per evitare ambiguità future.
+        \end{itemize}
+
+    \item \textbf{Rischio}: Ritardi nella consegna delle funzionalità.
+        \begin{itemize}
+            \item \textbf{Mitigazione}: Suddividere il lavoro in sprint brevi con obiettivi incrementali verificabili. Monitorare i progressi tramite milestone e retrospettive per identificare tempestivamente eventuali blocchi o ritardi.
+        \end{itemize}
+    
+    \item \textbf{Rischio}: Cambiamenti nei requisiti da parte del proponente.
+        \begin{itemize}
+            \item \textbf{Mitigazione}: Mantenere una comunicazione costante con il committente e documentare ogni variazione dei requisiti. Implementare il progetto in modo modulare per rendere più agevole l’adattamento a nuove richieste senza compromettere il lavoro già svolto.
+        \end{itemize}
+\end{itemize}
+
+% ---------- TABELLA RIASSUNTIVA ----------
+\vspace{0.5cm}
+\subsection{Tabella Riassuntiva dei Rischi}
+
+\begin{center}
+    \small
+    \renewcommand{\arraystretch}{1.2}
+    \arrayrulecolor{black}
+    \begin{tabular}{|p{0.35\linewidth}|p{0.15\linewidth}|p{0.10\linewidth}|p{0.30\linewidth}|}
+        \hline
+        \rowcolor{gray!60}
+        \textbf{Rischio} & \textbf{Probabilità} & \textbf{Impatto} & \textbf{Mitigazione Principale} \\
+        \hline
+        \rowcolor{white}
+        Nuovi sistemi da imparare & Media & Alto & Formazione interna e condivisione conoscenze \\
+        \hline
+        \rowcolor{gray!20}
+        Scarso impegno di un membro & Bassa & Alto & Definizione di obiettivi individuali e monitoraggio \\
+        \hline
+        \rowcolor{white}
+        Impegni personali e universitari & Alta & Medio & Pianificazione anticipata e calendario condiviso \\
+        \hline
+        \rowcolor{gray!20}
+        Indecisioni nel gruppo & Media & Medio & Processo decisionale strutturato e verbali \\
+        \hline
+        \rowcolor{white}
+        Ritardi nelle consegne & Media & Alto & Suddivisione in sprint e milestone \\
+        \hline
+        \rowcolor{gray!20}
+        Cambiamenti dei requisiti & Bassa & Alto & Comunicazione costante e sviluppo modulare \\
+        \hline
+    \end{tabular}
+\end{center}
+
+% ---------- ANALISI RUOLI ----------
+\section{Analisi dei Ruoli}
+Per uno corretto svolgimento del progetto sono richiesti i seguenti ruoli:
+
+\begin{itemize}
+    \item \textbf{Responsabile}:
+        \begin{itemize}
+            \item Il responsabile è un ruolo importante per tutta la durate del progetto.
+            Ha il compito di coordinare le attività del gruppo e pianificare e gestire le risorse del progetto, oltre a dover rappresentare il gruppo nei confronti di entità esterne.
+        \end{itemize}
+
+    \item \textbf{Amministratore}:
+        \begin{itemize}
+            \item L'amministratore si occupa della gestione dei sistemi informatici in uso attivo e uso futuro del progetto e della gestione di eventuali ticket dovuti a problemi nel funzionamento dell'infrastruttura.
+            Il ruolo è rilevante per tutto lo svolgimento del progetto data la necessità di avere il maggior uptime possibile degli strumenti e sistemi utilizzati in esso.
+        \end{itemize}
+
+    \item \textbf{Analista}:
+        \begin{itemize}
+            \item Lo scopo dell'analista è quello di identificare i requisiti del progetto, interpretando le necessità degli utenti finali in modo da ottenere una corretta definizione delle funzionalità richieste.
+            Le ore dedicate al ruolo di analista diminuiscono con l'avanzare del progetto, ma il ruolo rimane attivo per eventuali aggiornamenti dei requisiti in seguito a eventuali confronti con il proponente.
+        \end{itemize}
+
+    \item \textbf{Progettista}:
+        \begin{itemize}
+            \item Il ruolo di progettista si occupa di tradurre i requisiti identificati dagli analisti in qualcosa di implementabile, e ne supervisiona l'implementazione da parte dei programmatori.
+        \end{itemize}
+
+    \item \textbf{Programmatore}:
+        \begin{itemize}
+            \item I programmatori si occupano della effettiva realizzazione della parte software del progetto, collaborando con i progettisti per assicurare una corretta implementazione di tutte le funzionalità richieste.
+        \end{itemize}
+
+    \item \textbf{Verificatore}:
+        \begin{itemize}
+            \item Il ruolo di verificatore si assicura che la qualità dei prodotti e processi adottati venga mantenuta per tutta la durata del progetto, metiante revisioni e test.
+        \end{itemize}
+\end{itemize}
+
+% ---------- IMPEGNO ORARIO PREVISTO E ROTAZIONE RUOLI ----------
+\section{Impegno Orario Previsto e Rotazione Ruoli}
+In una riunione tra i membri del gruppo sono state decise le ore dedicate al progetto da parte di ciascun membro, che verranno suddivise nei ruoli identificati nella sezione precedente.
+La tabella seguente indica la disponibilità oraria di ciascun membro.
+\begin{center}
+    \small
+    \renewcommand{\arraystretch}{1.2} 
+    \arrayrulecolor{black} 
+    \begin{tabular}{|p{0.30\linewidth}|p{0.20\linewidth}|}
+        \hline
+        \rowcolor{gray!60} 
+        \textbf{Persona} & \textbf{Ore Assegnate}\\
+        \hline
+        \rowcolor{white}
+        Giovanni Visentin & 90 \\
+        \hline
+        \rowcolor{gray!20}
+        Dennis Parolin & 90 \\
+        \hline
+        \rowcolor{white}
+        Riccardo Manisi	& 90 \\
+        \hline
+        \rowcolor{gray!20}
+        Ferdinando Fracasso & 90 \\
+        \hline
+        \rowcolor{white}
+        Gabriele Scaggiante & 90 \\
+        \hline
+        \rowcolor{gray!20}
+        Marco Sanguin & 90 \\
+        \hline
+        \rowcolor{gray!60}
+        \textbf{Totale} & 540 \\
+        \hline
+    \end{tabular}
+\end{center}
+    
+Inoltre sono stimate le seguenti ore medie per ruolo per ciascun membro.
+\space
+\begin{center}
+    \small
+    \renewcommand{\arraystretch}{1.2}
+    \arrayrulecolor{black} 
+    \begin{tabular}{|p{0.20\linewidth}|p{0.30\linewidth}|}
+        \hline
+        \rowcolor{gray!60}
+        \textbf{Ruolo} & \textbf{Ore medie per persona}\\
+        \hline
+        \rowcolor{white}
+        Responsabile & 13 \\
+        \hline
+        \rowcolor{gray!20}
+        Amministratore & 14 \\
+        \hline
+        \rowcolor{white}
+        Analista & 11 \\
+        \hline
+        \rowcolor{gray!20}
+        Progettista & 17 \\
+        \hline
+        \rowcolor{white}
+        Programmatore & 20 \\
+        \hline
+        \rowcolor{gray!20}
+        Verificatore & 15 \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection{Rotazione dei ruoli}
+Per la durata del progetto è previsto che i ruoli dei membri ruotino in corrispondenza agli sprint, fino all'esaurimento delle ore produttive assegnate. 
+
+% ---------- PREVENTIVO COSTI ----------
+\section{Preventivo Costi}
+In seguito è riportata una tabella contente le ore assegnate a ciascun ruolo, il relativo costo orario per ruolo ed il conseguente costo totale, sempre diviso per ruolo.
+\begin{center}
+    \small
+    \renewcommand{\arraystretch}{1.2} 
+    \arrayrulecolor{black} 
+    \begin{tabular}{|p{0.20\linewidth}|p{0.10\linewidth}|p{0.25\linewidth}|p{0.20\linewidth}|}
+        \hline
+        \rowcolor{gray!60} 
+        \textbf{Ruolo} & \textbf{Ore} & \textbf{Costo Orario} & \textbf{Costo Totale} \\
+        \hline
+        \rowcolor{white}
+        Responsabile & 78 & 30,00€/h & 2.340,00€\\
+        \hline
+        \rowcolor{gray!20}
+        Amministratore & 84 & 20,00€/h & 1.680,00€\\
+        \hline
+        \rowcolor{white}
+        Analista & 66 & 25,00€/h & 1.650,00€\\
+        \hline
+        \rowcolor{gray!20}
+        Progettista & 102 & 25,00€/h & 2.550,00€\\
+        \hline
+        \rowcolor{white}
+        Programmatore & 120 & 15,00€/h & 1.800,00€\\
+        \hline
+        \rowcolor{gray!20}
+        Verificatore & 90 & 15,00€/h & 1.350,00€\\
+        \hline
+    \end{tabular}
+\end{center}
+È previsto un impegno collettivo totale di 540 ore, corrispondente ad un costo totale preventivato di 11.370,00€. 
+
+% ---------- DATA CONSEGNA ----------
+\section{Data di Consegna}
+La data di consegna prevista per il progetto è il 2026-04-15.
+
+% ---------- REDAZIONE E REVISIONE ----------
+\clearpage
+\section{Redazione e revisioni del documento}
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2} 
+\arrayrulecolor{black}
+\begin{tabular}{|p{0.1\linewidth}|p{0.12\linewidth}|p{0.22\linewidth}|p{0.26\linewidth}|p{0.22\linewidth}|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+\hline
+\rowcolor{white}
+1.0.0 & 2025-11-04 & Fracasso Ferdinando & Aggiunte informazioni riguardanti la rotazione dei ruoli e modificata la data di consegna del progetto & Dennis Parolin \\
+\hline
+\rowcolor{gray!20}
+0.3.0 & 2025-10-31 & Fracasso Ferdinando & Aggiunta tabella ripartizione ore & Dennis Parolin \\
+\hline
+\rowcolor{white}
+0.2.0 & 2025-10-31 & Manisi Riccardo & Aggiunte mitigazioni e tabella riassuntiva & Dennis Parolin \\
+\hline
+\rowcolor{gray!20}
+0.1.0 & 2025-10-30 & Fracasso Ferdinando & Stesura iniziale del documento & Dennis Parolin \\
+\hline
+\end{tabular}
+\end{center}
+
+\end{document}
