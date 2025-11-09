@@ -39,6 +39,7 @@ header {
     width: 100%;
     height: 60px;
     background-color: #fff;
+    z-index: 1000;
 }
 
 /* --- 2. MENU LATERALE (NAV) --- */
@@ -49,6 +50,10 @@ nav {
     background-color: var(--bg-lighter-dark);
     padding: 2rem;
     height: 100vh;
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+    padding: 2rem 2rem 0 2rem;
+    z-index: 990;
 }
 
 .nav-header {
@@ -91,7 +96,7 @@ nav ul li a:hover {
 /* --- 3. CONTENUTO PRINCIPALE (MAIN) --- */
 main {
     margin-left: 280px;
-    margin-top: -100vh;
+    margin-top: calc(-100vh + 60px);
     flex: 1; 
     padding: 3rem;
 }
@@ -284,4 +289,82 @@ footer a:hover {
 .footer-bottom p {
     font-size: 0.8rem;
     color: var(--text-muted);
+}
+
+/* --- 4. REGOLE RESPONSIVE PER SMARTPHONE --- */
+
+/* Applica queste regole solo se lo schermo è largo 768px o meno */
+@media (max-width: 768px) {
+
+    /* --- 1. HEADER --- */
+    /* ... (nessuna modifica qui) ... */
+
+
+    /* --- 2. MENU LATERALE (NAV) --- */
+    nav {
+        position: sticky;
+        top: 60px;
+        z-index: 990;
+        background-color: var(--bg-lighter-dark);
+        width: 100%;
+        height: auto;
+        padding: 1rem;
+        overflow-x: auto; 
+        text-align: center;
+        
+        /* --- INIZIO MODIFICA --- */
+        /* Rimuoviamo il bordo e aggiungiamo un'ombra per la profondità */
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4); 
+        /* --- FINE MODIFICA --- */
+    }
+
+    /* Stili per i pulsanti del menu su mobile */
+    nav ul {
+        display: inline-flex; 
+        gap: 0.5rem;
+    }
+
+    nav ul li {
+        margin-bottom: 0;
+    }
+
+    nav ul li a {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    /* --- 3. CONTENUTO PRINCIPALE (MAIN) --- */
+    main {
+        margin-left: 0;
+        margin-top: 0;
+        padding: 1.5rem;
+    }
+
+    section {
+        padding: 1.5rem;
+    }
+
+    section:hover {
+        border-left-width: 8px;
+        padding-left: 1.5rem;
+    }
+
+    /* --- 4. FONT E TITOLI --- */
+    h2 {
+        font-size: 2.5rem;
+    }
+
+    h3 {
+        font-size: 1.3rem;
+    }
+
+    p, li, dd {
+        font-size: 1rem;
+    }
+
+    /* --- 5. FOOTER --- */
+    .footer-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
 }
