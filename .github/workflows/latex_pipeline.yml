@@ -9,64 +9,76 @@ on:
 jobs:
   latex-pipeline:
     runs-on: ubuntu-latest
-    container:
-      image: ghcr.io/xu-cheng/texlive-small:latest  # Ambiente già pronto con LaTeX
-
+    
     permissions:
       contents: write
-
+    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          fetch-depth: 2  # Serve per git diff HEAD~1 HEAD
-
+          fetch-depth: 2  # Numero di commit di cui fare il fetch
+      
+      # Identifica i file .tex modificati PRIMA di entrare nel container
+      - name: Get changed .tex files
+        id: changed-files
+        uses: tj-actions/changed-files@24d32ffd492484c1d75e0c0b894501ddb9d30d62
+        with:
+          files: |
+            **/*.tex
+          files_separator: ' '
+      
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.x"
-
-      # Trova solo file .tex modificati o tutti se manuale
-      - name: Find modified .tex files
-        id: changed-files
+      
+      # Se workflow_dispatch, trova tutti i .tex
+      - name: Find all .tex files (manual trigger)
+        if: github.event_name == 'workflow_dispatch'
+        id: all-files
         run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            # Workflow manuale: considera tutti i .tex sotto src
-            echo "tex_files=$(find src -type f -name '*.tex' | tr '\n' ' ')" >> $GITHUB_OUTPUT
+          echo "tex_files=$(find . -type f -name '*.tex' | tr '\n' ' ')" >> $GITHUB_OUTPUT
+      
+      # Determina quali file processare
+      - name: Determine files to process
+        id: files-to-process
+        run: |
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            echo "files=${{ steps.all-files.outputs.tex_files }}" >> $GITHUB_OUTPUT
           else
-            BEFORE="${{ github.event.before }}"
-            AFTER="${{ github.sha }}"
-
-            # Nuovo branch: BEFORE è tutto zero -> prendi tutti i .tex sotto src
-            if [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
-              echo "tex_files=$(find src -type f -name '*.tex' | tr '\n' ' ')" >> $GITHUB_OUTPUT
-            else
-              # Diff tra i due commit forniti dall'evento
-              echo "tex_files=$(git diff --name-only $BEFORE $AFTER | grep '^src/.*\.tex$' || true | tr '\n' ' ')" >> $GITHUB_OUTPUT
-            fi
+            echo "files=${{ steps.changed-files.outputs.all_changed_files }}" >> $GITHUB_OUTPUT
           fi
-
-      - name: Apply LaTeX template (solo su file modificati)
-        if: steps.changed-files.outputs.tex_files != ''
+      
+      # Continua solo se ci sono file da processare
+      - name: Check if files exist
+        id: check-files
         run: |
-          python .github/scripts/apply_template.py \
-            ${{ steps.changed-files.outputs.tex_files }} \
-            .github/latex_template.txt
-
-      - name: Build LaTeX files (solo modificati)
-        if: steps.changed-files.outputs.tex_files != ''
-        run: |
-          python .github/scripts/build_pdfs.py ${{ steps.changed-files.outputs.tex_files }}
-
+          FILES="${{ steps.files-to-process.outputs.files }}"
+          if [ -z "$FILES" ] || [ "$FILES" = " " ]; then
+            echo "has_files=false" >> $GITHUB_OUTPUT
+          else
+            echo "has_files=true" >> $GITHUB_OUTPUT
+          fi
+      
+      # Ora entriamo nel container Docker solo per i passi che lo richiedono
+      - name: Apply LaTeX template and build PDFs
+        if: steps.check-files.outputs.has_files == 'true'
+        uses: docker://ghcr.io/xu-cheng/texlive-small:latest
+        with:
+          args: >
+            bash -c "
+            python .github/scripts/apply_template.py ${{ steps.files-to-process.outputs.files }} .github/latex_template.txt &&
+            python .github/scripts/build_pdfs.py ${{ steps.files-to-process.outputs.files }}
+            "
+      
       - name: Commit changes
-        if: steps.changed-files.outputs.tex_files != ''
+        if: steps.check-files.outputs.has_files == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          
           git add **/*.tex docs/**/*.pdf || true
-          
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
