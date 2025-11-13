@@ -31,10 +31,20 @@ jobs:
       - name: Find modified .tex files
         id: changed-files
         run: |
-          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
-            echo "tex_files=$(find . -type f -name '*.tex' | tr '\n' ' ')" >> $GITHUB_OUTPUT
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            # Workflow manuale: considera tutti i .tex sotto src
+            echo "tex_files=$(find src -type f -name '*.tex' | tr '\n' ' ')" >> $GITHUB_OUTPUT
           else
-            echo "tex_files=$(git diff --name-only HEAD~1 HEAD | grep '\.tex$' | tr '\n' ' ' || echo '')" >> $GITHUB_OUTPUT
+            BEFORE="${{ github.event.before }}"
+            AFTER="${{ github.sha }}"
+
+            # Nuovo branch: BEFORE è tutto zero -> prendi tutti i .tex sotto src
+            if [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+              echo "tex_files=$(find src -type f -name '*.tex' | tr '\n' ' ')" >> $GITHUB_OUTPUT
+            else
+              # Diff tra i due commit forniti dall'evento
+              echo "tex_files=$(git diff --name-only $BEFORE $AFTER | grep '^src/.*\.tex$' || true | tr '\n' ' ')" >> $GITHUB_OUTPUT
+            fi
           fi
 
       - name: Apply LaTeX template (solo su file modificati)
