@@ -72,7 +72,15 @@ jobs:
             python .github/scripts/apply_template.py ${{ steps.files-to-process.outputs.files }} .github/latex_template.txt &&
             python .github/scripts/build_pdfs.py ${{ steps.files-to-process.outputs.files }}
             "
-      
+      - name: Debug - Show log if exists
+        if: failure()
+        run: |
+          echo "Looking for log files..."
+          find docs -name "*.log" -type f | while read log; do
+            echo "=== Content of $log (last 50 lines) ==="
+            tail -n 50 "$log"
+          done
+              
       - name: Commit changes
         if: steps.check-files.outputs.has_files == 'true'
         run: |
