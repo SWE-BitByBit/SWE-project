@@ -65,7 +65,7 @@ jobs:
       # Ora entriamo nel container Docker solo per i passi che lo richiedono
       - name: Apply LaTeX template and build PDFs
         if: steps.check-files.outputs.has_files == 'true'
-        uses: docker://ghcr.io/xu-cheng/texlive-small:latest
+        uses: docker://texlive/texlive:latest
         with:
           args: >
             bash -c "
