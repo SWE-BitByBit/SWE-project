@@ -9,87 +9,55 @@ on:
 jobs:
   latex-pipeline:
     runs-on: ubuntu-latest
-    
     permissions:
       contents: write
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          fetch-depth: 2  # Numero di commit di cui fare il fetch
-      
-      # Identifica i file .tex modificati PRIMA di entrare nel container
-      - name: Get changed .tex files
-        id: changed-files
-        uses: tj-actions/changed-files@24d32ffd492484c1d75e0c0b894501ddb9d30d62
-        with:
-          files: |
-            **/*.tex
-          files_separator: ' '
-      
+          persist-credentials: true
+
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v4
         with:
           python-version: "3.x"
-      
-      # Se workflow_dispatch, trova tutti i .tex
-      - name: Find all .tex files (manual trigger)
-        if: github.event_name == 'workflow_dispatch'
-        id: all-files
+
+      - name: Apply LaTeX template
         run: |
-          echo "tex_files=$(find . -type f -name '*.tex' | tr '\n' ' ')" >> $GITHUB_OUTPUT
-      
-      # Determina quali file processare
-      - name: Determine files to process
-        id: files-to-process
-        run: |
-          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
-            echo "files=${{ steps.all-files.outputs.tex_files }}" >> $GITHUB_OUTPUT
-          else
-            echo "files=${{ steps.changed-files.outputs.all_changed_files }}" >> $GITHUB_OUTPUT
-          fi
-      
-      # Continua solo se ci sono file da processare
-      - name: Check if files exist
-        id: check-files
-        run: |
-          FILES="${{ steps.files-to-process.outputs.files }}"
-          if [ -z "$FILES" ] || [ "$FILES" = " " ]; then
-            echo "has_files=false" >> $GITHUB_OUTPUT
-          else
-            echo "has_files=true" >> $GITHUB_OUTPUT
-          fi
-      
-      # Ora entriamo nel container Docker solo per i passi che lo richiedono
-      - name: Apply LaTeX template and build PDFs
-        if: steps.check-files.outputs.has_files == 'true'
-        uses: docker://texlive/texlive:latest
-        with:
-          args: >
-            bash -c "
-            python .github/scripts/apply_template.py ${{ steps.files-to-process.outputs.files }} .github/latex_template.txt &&
-            python .github/scripts/build_pdfs.py ${{ steps.files-to-process.outputs.files }}
-            "
-      - name: Debug - Show log if exists
-        if: failure()
-        run: |
-          echo "Looking for log files..."
-          find docs -name "*.log" -type f | while read log; do
-            echo "=== Content of $log (last 50 lines) ==="
-            tail -n 50 "$log"
+          for tex_file in $(find . -type f -name "*.tex"); do
+            python .github/scripts/apply_template.py "$tex_file" .github/latex_template.txt
           done
-              
-      - name: Commit changes
-        if: steps.check-files.outputs.has_files == 'true'
+
+      - name: Commit updated .tex files
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add **/*.tex docs/**/*.pdf || true
-          if git diff --staged --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "Applied template and generated PDFs [skip ci]"
-            git push
-          fi
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add **/*.tex || echo "No .tex files to add"
+          git commit -m "Applied LaTeX template via Action" || echo "No changes to commit"
+
+      - name: Install minimal LaTeX environment
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            texlive-latex-base \
+            texlive-latex-recommended \
+            texlive-latex-extra \
+            texlive-fonts-recommended \
+            texlive-lang-italian \
+            texlive-xetex \
+            latexmk
+
+      - name: Build all LaTeX files to docs/
+        run: |
+          python .github/scripts/build_pdfs.py
+
+      - name: Commit generated PDFs
+        run: |
+          echo "Committo i PDF generati..."
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          find docs -type f -name "*.pdf" -print0 | xargs -0 git add || echo "No PDFs to add"
+          git commit -m "Added generated PDFs" || echo "No PDFs to commit"
+          git push || echo "Nothing to push"
