@@ -33,7 +33,7 @@ def main():
                 f"-outdir='{output_dir.resolve()}' '{tex_file.name}'"
             ],
             check=True,
-            capture_output=True
+            capture_output=False
         )
 
 if __name__ == "__main__":
