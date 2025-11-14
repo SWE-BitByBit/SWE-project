@@ -48,6 +48,7 @@ jobs:
       - name: Build LaTeX files (solo modificati)
         if: steps.changed-files.outputs.tex_files != ''
         run: |
+          chmod -R 777 .
           python .github/scripts/build_pdfs.py ${{ steps.changed-files.outputs.tex_files }}
 
       - name: Install Python dependencies
