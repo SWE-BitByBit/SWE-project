@@ -27,6 +27,10 @@ jobs:
         with:
           python-version: "3.x"
 
+      - name: Install Python dependencies
+        run: |
+          pip install beautifulsoup4 lxml
+
       # Trova solo file .tex modificati o tutti se manuale
       - name: Find modified .tex files
         id: changed-files
@@ -48,6 +52,11 @@ jobs:
         if: steps.changed-files.outputs.tex_files != ''
         run: |
           python .github/scripts/build_pdfs.py ${{ steps.changed-files.outputs.tex_files }}
+
+      - name: Update GitHub Page links
+        if: steps.changed-files.outputs.tex_files != ''
+        run: |
+          python .github/scripts/update_links.py ${{ steps.changed-files.outputs.tex_files }}
 
       - name: Commit changes
         if: steps.changed-files.outputs.tex_files != ''
