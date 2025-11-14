@@ -36,7 +36,6 @@ jobs:
           python-version: "3.x"
 
       - name: Install Python dependencies
-        if: steps.changed-files.outputs.tex_files != ''
         run: |
           # pip ora funziona senza bisogno di trucchi
           pip install beautifulsoup4 lxml
