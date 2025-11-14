@@ -13,27 +13,16 @@ SECTION_MAP = {
 
     # candidatura/verbali_esterni
     DOCS_DIR / "candidatura" / "verbali_esterni": {
-        "html_id": "",
+        "html_id": "candidatura_verbali_esterni",
         "title_prefix": "Verbale del "
     },
 
     # candidatura/verbali_interni
     DOCS_DIR / "candidatura" / "verbali_interni": {
-        "html_id": "",
+        "html_id": "candidatura_verbali_interni",
         "title_prefix": "Verbale del "
-    },
-
-    # documenti_interni/glossario.pdf
-    DOCS_DIR / "documenti_interni" : {
-        "html_id": "",
-        "title_prefix": ""
     }
 
-    #documenti_interni/norme_di_progetto.pdf
-    DOCS_DIR / "documenti_interni" : {
-        "html_id": "",
-        "title_prefix": ""
-    }
 }
 
 
@@ -114,4 +103,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
