@@ -8,9 +8,7 @@ on:
 
 jobs:
   latex-pipeline:
-    runs-on: ubuntu-latest
-    container:
-      image: ghcr.io/xu-cheng/texlive-small:latest  # Ambiente già pronto con LaTeX
+    runs-on: ubuntu-latest # Runner standard, Python e Git funzionano out-of-the-box
 
     permissions:
       contents: write
@@ -20,13 +18,31 @@ jobs:
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          fetch-depth: 0  # Serve per git diff HEAD~1 HEAD
+          fetch-depth: 0 # Mantieni per il corretto funzionamento del git diff
 
-      - name: Set up Python
+      # --- Installazione delle dipendenze ---
+
+      - name: Install TeX Live (LaTeX)
+        # Installa i pacchetti necessari per la compilazione sul runner
+        run: |
+          sudo apt-get update
+          # texlive-full installa tutto, ma è molto lento.
+          # texlive-latex-extra + latexmk è spesso sufficiente e più veloce.
+          sudo apt-get install -y texlive-latex-extra latexmk
+
+      - name: Set up Python (Mantenuto per la cache e la versione)
         uses: actions/setup-python@v5
         with:
           python-version: "3.x"
+          cache: "pip"
 
+      - name: Install Python dependencies
+        if: steps.changed-files.outputs.tex_files != ''
+        run: |
+          # pip ora funziona senza bisogno di trucchi
+          pip install beautifulsoup4 lxml
+
+      # --- Pipeline di Compilazione ---
 
       # Trova solo file .tex modificati o tutti se manuale
       - name: Find modified .tex files
@@ -48,14 +64,8 @@ jobs:
       - name: Build LaTeX files (solo modificati)
         if: steps.changed-files.outputs.tex_files != ''
         run: |
-          chmod -R 777 .
+          # Rimosso: chmod -R 777 . (non serve più)
           python .github/scripts/build_pdfs.py ${{ steps.changed-files.outputs.tex_files }}
-
-      - name: Install Python dependencies
-        # Esegui l'installazione solo se i file .tex sono stati modificati (per risparmiare tempo)
-        if: steps.changed-files.outputs.tex_files != ''
-        run: |
-          python3 -m pip install beautifulsoup4 lxml
 
       - name: Update GitHub Page links
         if: steps.changed-files.outputs.tex_files != ''
@@ -68,7 +78,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           
-          git add **/*.tex docs/**/*.pdf || true
+          git add **/*.tex docs/**/*.pdf index.html || true
           
           if git diff --staged --quiet; then
             echo "No changes to commit"
