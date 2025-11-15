@@ -1,0 +1,220 @@
+% template presente
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{tabularx}
+\usepackage{tcolorbox}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    urlcolor=blue,     
+}
+\usepackage{graphicx}
+\graphicspath{{resources/}{../resources/}{../../resources/}{../../../resources/}{../../../../resources/}}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{colortbl}
+\usepackage{hyperref} 
+\usepackage{fancyhdr} 
+\usepackage{titlesec}
+\geometry{margin=2.5cm}
+% ===== Variabile per il titolo del documento =====
+\newcommand{\documenttitle}{Verbale Riunione Numero X}
+
+
+\setlength{\parindent}{0pt}
+\setstretch{1.2}
+
+% ===== Stile intestazione =====
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{gray}{\documenttitle - BitByBit}}
+\fancyfoot[C]{\thepage}
+
+% ===== Formattazione sezioni =====
+\titleformat{\section}{\Large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.5em}{}
+
+\begin{document}
+
+% ======= HEADER UNIVERSITÀ E GRUPPO CENTRATI VERTICALMENTE =======
+\vspace*{\fill} % --- Spinge verso il basso l'inizio del contenuto
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logoUni.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\color{red}\LARGE \textbf{Università degli Studi di Padova}}\\[0.3cm]
+        {\large
+        Laurea: Informatica\\
+        Corso: Ingegneria del Software\\
+        Anno Accademico: 2025/26
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1cm}
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logo.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\LARGE \textbf{Gruppo 17}}\\[0.3cm]
+        {\large
+        Nome: BitByBit\\
+        Email: swe.bitbybit@gmail.com
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1.5cm}
+
+\begin{center}
+    {\LARGE \textbf{\documenttitle}}
+\end{center}
+
+\vspace*{\fill} % --- Spinge verso l’alto la fine del contenuto, centrando tutto il blocco
+
+\clearpage
+% ======= INFO GENERALI =======
+\section*{Informazioni Generali}
+\renewcommand{\arraystretch}{1.3}
+
+\begin{tcolorbox}
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\textbf{Redattore:} & XXXX \\
+\textbf{Verificatore:} & XXXX \\
+\textbf{Responsabile:} & XXXX \\
+\textbf{Amministratore:} & XXXX \\
+\textbf{Data:} & 23 ottobre 2025 \\
+\textbf{Durata:} & 1h 45m \\
+\textbf{Luogo:} & Padova, Aula 2 \\
+\end{tabularx}
+\end{tcolorbox}
+
+\vspace{0.4cm}
+\textbf{Partecipanti:}
+\begin{itemize}
+    \item Manisi Riccardo
+    \item Parolin Dennis
+    \item Scaggiante Gabriele
+    \item Sanguin Marco
+    \item Visentin Giovanni
+\end{itemize}
+
+\textbf{Assenti:}
+\begin{itemize}
+    \item (nessuno)
+\end{itemize}
+
+\clearpage
+
+\vspace{0.5cm}
+
+\vspace{0.8cm}
+
+% ======= INDICE SU PAGINA DEDICATA =======
+\clearpage
+\tableofcontents
+\thispagestyle{empty} % senza numero di pagina per l'indice
+\clearpage
+
+% ---------- ORDINE DEL GIORNO ----------
+\section{Ordine del Giorno}
+\begin{itemize}
+    \item %modifica
+\end{itemize}
+
+% ---------- DISCUSSIONI ----------
+\section{Discussioni}
+%modifica
+
+% ---------- DECISIONI ----------
+\section{Decisioni}
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2} 
+\arrayrulecolor{black} 
+\begin{tabular}{|p{0.73\textwidth}|c|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Descrizione decisione} & \textbf{Codice decisione} \\
+\hline
+\rowcolor{white}
+Inserire descrizione & VI C 1.1 \\
+\hline
+\rowcolor{gray!20}
+Inserire descrizione &  VI C 1.2 \\
+\hline
+\rowcolor{white}
+Inserire descrizione &  VI C 1.3\\
+\hline
+\end{tabular}
+\end{center}
+
+% ---------- TO DO ----------
+\section{To Do}
+Dalle discussioni e decisioni intraprese, sono emerse le seguenti attività:
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2} 
+\arrayrulecolor{black} 
+\begin{tabular}{|p{0.52\textwidth}|c|c|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Task} & \textbf{Codice decisione} & \textbf{N°issue GitHub} \\
+\hline
+\rowcolor{white}
+Esempio Task 1 & VI C 1.1 & \href{https://github.com/<repo>/issues/1}{\textbf{issue}} \\
+\hline
+\rowcolor{gray!20}
+Esempio Task 2 & VI C 1.2 & \href{https://github.com/<repo>/issues/2}{\textbf{issue}} \\
+\hline
+\rowcolor{white}
+Esempio Task 3 & VI C 1.3 & \href{https://github.com/<repo>/issues/3}{\textbf{issue}} \\
+\hline
+\end{tabular}
+\end{center}
+
+% ---------- REDAZIONE E REVISIONE ----------
+\clearpage
+\section{Redazione e revisioni del documento}
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2} 
+\arrayrulecolor{black}
+\begin{tabular}{|c|p{0.11\linewidth}|p{0.21\linewidth}|p{0.23\linewidth}|p{0.21\linewidth}|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+\hline
+\rowcolor{white}
+ &  &  &  &  \\
+\hline
+\rowcolor{gray!20}
+ &  &  &  & \\
+\hline
+\rowcolor{white}
+ &  &  &  & \\
+\hline
+\rowcolor{gray!20}
+ &  &  &  &  \\
+\hline
+\end{tabular}
+\end{center}
+
+\end{document}
