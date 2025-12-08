@@ -1,0 +1,857 @@
+\documentclass[a4paper,12pt]{article}
+
+% =======================================================
+% 1. CONFIGURAZIONE VARIABILI
+% =======================================================
+\newcommand{\TitoloDocumento}{Piano di Progetto v0.1.0}
+\newcommand{\DataVersione}{AAAA/MM/GG}
+\newcommand{\VersioneAttuale}{0.1.0}
+
+% =======================================================
+% 2. PACCHETTI
+% =======================================================
+\usepackage[table]{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{setspace}
+\usepackage{colortbl}   % Per colorare le celle delle tabelle
+\usepackage{tabularx}   % Per tabelle larghe quanto la pagina
+\usepackage{fancyhdr}   % Per header e footer
+\usepackage{titlesec}   % Per formattare i titoli
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{eurosym}
+
+% Percorsi immagini (aggiusta se necessario)
+\graphicspath{{resources/}{../resources/}{../../resources/}} 
+
+% Hyperref va sempre caricato per ultimo
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,     % Colore link interni (es. indice)
+    filecolor=blue,
+    urlcolor=blue,      % Colore link web
+    pdftitle={\TitoloDocumento},
+}
+
+% --- DEFINIZIONE COLORI ---
+\definecolor{tableHeader}{RGB}{200, 200, 200}
+\definecolor{tableLineOdd}{RGB}{245, 245, 245}
+\definecolor{tableLineEven}{RGB}{255, 255, 255}
+
+% Colori per il grafico a torta (ispirati ai ruoli)
+\definecolor{pieResp}{RGB}{255, 100, 100} % Rosso chiaro
+\definecolor{pieAmm}{RGB}{255, 180, 100}  % Arancione
+\definecolor{pieAnal}{RGB}{255, 255, 100} % Giallo
+\definecolor{pieProg}{RGB}{100, 200, 100} % Verde
+\definecolor{pieDes}{RGB}{100, 200, 255}  % Blu chiaro
+\definecolor{pieVer}{RGB}{200, 100, 255}  % Viola
+
+% --- DEFINIZIONE COLONNE PERSONALIZZATE ---
+\newcolumntype{L}{>{\raggedright\arraybackslash\bfseries}p{4.5cm}}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\newcolumntype{Z}{>{\raggedright\arraybackslash}X}
+% Colonna C definita come X centrata (Necessaria per tabularx)
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+
+% =======================================================
+% 3. IMPOSTAZIONI VISIVE
+% =======================================================
+\geometry{margin=2.5cm}
+\setlength{\parindent}{0pt} % Niente rientro prima riga
+\setstretch{1.2}            % Interlinea 1.2
+
+% Definizione colonna 'Y' per tabularx (testo centrato auto-adattante)
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+% Definizione colonna 'Z' per tabularx (testo allineato a sx auto-adattante)
+\newcolumntype{Z}{>{\raggedright\arraybackslash}X}
+
+% Stile Header e Footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{gray}{\TitoloDocumento \ - BitByBit}}
+\fancyfoot[C]{\thepage}
+
+% Formattazione Titoli
+\titleformat{\section}{\Large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.5em}{}
+\titleformat{\subsubsection}{\bfseries}{\thesubsubsection.}{0.5em}{}
+
+% =======================================================
+% 4. INIZIO DOCUMENTO
+% =======================================================
+\begin{document}
+
+% --- FRONT PAGE (Loghi e Titoli) ---
+\vspace*{\fill} 
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        % Assicurati che il file esista, altrimenti commenta la riga sotto
+        \includegraphics[width=\linewidth]{logoUni.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\color{red}\LARGE \textbf{Università degli Studi di Padova}}\\[0.3cm]
+        {\large
+        Laurea: Informatica\\
+        Corso: Ingegneria del Software\\
+        Anno Accademico: 2025/26
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1cm}
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        % Assicurati che il file esista, altrimenti commenta la riga sotto
+        \includegraphics[width=\linewidth]{logo.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\LARGE \textbf{Gruppo 17}}\\[0.3cm]
+        {\large
+        Nome: BitByBit\\
+        Email: swe.bitbybit@gmail.com
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1.5cm}
+
+\begin{center}
+    {\LARGE \textbf{\TitoloDocumento}}
+\end{center}
+
+\vspace*{\fill} 
+
+% =======================================================
+% REGISTRO DELLE MODIFICHE
+% =======================================================
+\clearpage
+\section{Redazione, modifiche e revisioni del documento} \label{sec:registro_modifiche}
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.4} 
+\arrayrulecolor{black}
+
+\begin{tabularx}{\textwidth}{|c|c|c|X|c|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+\hline
+\rowcolor{white}
+0.3.0 & 2025-12-5 & Dennis Parolin & Redazione dell'intera sezione \ref{sec:pianificazione_lungo_termine} & \\
+\hline
+\rowcolor{gray!20}
+0.2.0 & 2025-12-4 & Dennis Parolin & Redazione delle sezioni \ref{sec:analisi_rischi} con relative sottosezioni \ref{sec:rischi_tecnologici}, \ref{sec:rischi_organizzativi} e \ref{sec:rischi_interpersonali} & \\
+\hline
+\rowcolor{white}
+0.1.0 & 2025-12-3 & Dennis Parolin & Creazione del documento e redazione delle sezioni \ref{sec:scopo_documento}, \ref{sec:definizioni_acronimi_abbreviazioni}, \ref{sec:riferimenti} (con relative sottosezioni \ref{sec:riferimenti_normativi} e \ref{sec:riferimenti_informativi}). & \\
+\hline
+\end{tabularx}
+\end{center}
+
+% --- INDICE ---
+\clearpage
+\tableofcontents
+\thispagestyle{empty} 
+\clearpage
+
+% --- ELENCO TABELLE ---
+\listoftables
+\clearpage
+
+% =======================================================
+% SEZIONE: INTRODUZIONE
+% =======================================================
+
+\section{Introduzione}
+
+% =======================SCOPO DOCUMENTO================================
+\subsection{Scopo del documento} \label{sec:scopo_documento}
+Il \textit{Piano di Progetto} è un documento di natura gestionale che ha lo scopo di definire la pianificazione strategica e operativa delle attività che il gruppo \textit{BitByBit} intraprenderà durante lo sviluppo del progetto didattico.
+
+Il documento è fondamentale per garantire il controllo sull'avanzamento dei lavori e per assicurare il rispetto dei vincoli temporali e qualitativi. In particolare, i suoi obiettivi principali sono:
+
+\begin{itemize}
+    \item \textbf{Pianificazione delle attività:} Definire le scadenze interne ed esterne, allocando le risorse temporali necessarie per il completamento di ogni fase.
+    \item \textbf{Gestione economica:} Stimare i costi previsti (preventivo) e monitorare i costi effettivi (consuntivo) per ogni periodo di rendicontazione, garantendo la trasparenza verso il committente.
+    \item \textbf{Analisi e mitigazione dei rischi:} Identificare le potenziali criticità che potrebbero ostacolare lo sviluppo del progetto.
+\end{itemize}
+
+Data la natura mutevole dei requisiti e la metodologia agile adottata, il presente documento seguirà un approccio \textbf{incrementale}. Verrà sottoposto a continue revisioni e aggiornamenti al termine di ogni fase significativa del ciclo di vita del software, per riflettere lo stato attuale del progetto e affinare le stime future in un'ottica di miglioramento continuo (\textit{continuous improvement}).
+
+% =======================DEFINIZIONI, ACRINIMI E ABBREVIAZIONI================================
+
+\subsection{Definizioni, acronimi e abbreviazioni} \label{sec:definizioni_acronimi_abbreviazioni}
+
+Al fine di evitare ambiguità relative al linguaggio e ai termini utilizzati all'interno dei documenti formali, viene allegato il \href{https://swe-bitbybit.github.io/SWE-docs/docs/documenti_interni/Glossario.pdf}{\textit{Glossario}}.
+I termini tecnici, gli acronimi e le parole con significato specifico all'interno del progetto sono contrassegnati da una lettera 'G' in apice (es. Agile\textsuperscript{G}) e sono descritti in dettaglio nel documento apposito.
+
+% =======================RIFERIMENTI================================
+
+\subsection{Riferimenti} \label{sec:riferimenti}
+
+\subsubsection{Riferimenti normativi} \label{sec:riferimenti_normativi}
+\begin{itemize}
+    \item Capitolato d'appalto C4: \href{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C4.pdf}{L'app che Protegge e Trasforma}
+    \item \href{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C4.pdf}{Norme di Progetto}\todo{Mettere link corretto alle norme di progetto}
+\end{itemize}
+
+\subsubsection{Riferimenti informativi} \label{sec:riferimenti_informativi}
+\begin{itemize}
+    \item Slide sui \href{https://www.math.unipd.it/~tullio/IS-1/2025/Dispense/T02.pdf}{processi di ciclo di vita del software} del Prof. Vardanega
+    \item Slide sulla \href{https://www.math.unipd.it/~tullio/IS-1/2025/Dispense/T04.pdf}{gestione di progetto} del Prof. Vardanega
+    \item \href{https://ieeexplore.ieee.org/document/720574}{Standard IEEE 830 1998}
+    \item \href{https://www.math.unipd.it/~tullio/IS-1/2009/Approfondimenti/ISO_12207-1995.pdf}{Standard ISO/IEC 12207:1995}
+    \item \href{https://swe-bitbybit.github.io/SWE-docs/docs/documenti_interni/Glossario.pdf}{Glossario}
+\end{itemize}
+
+% =======================================================
+% SEZIONE: ANALISI DEI RISCHI
+% =======================================================
+
+\section{Analisi e gestione dei rischi} \label{sec:analisi_rischi}
+La gestione del rischio rappresenta una componente nevralgica nella pianificazione di progetto. Questa sezione si prefigge l'obiettivo di individuare preventivamente le potenziali criticità che potrebbero compromettere il rispetto dei vincoli temporali, la qualità del prodotto finale o l'efficienza del team. Una corretta analisi in tal senso è indispensabile per valutare la sostenibilità del carico di lavoro pianificato in relazione alle risorse disponibili.
+
+Il processo adottato dal gruppo \textit{BitByBit} segue un approccio sistematico e iterativo, strutturato in quattro fasi distinte che si ripetono ciclicamente durante l'intero ciclo di vita del software:
+
+\begin{enumerate}
+    \item \textbf{Identificazione:} Ricerca attiva delle potenziali fonti di rischio, analizzando sia aspetti strettamente tecnici che fattori legati all'organizzazione e alla sfera personale dei membri.
+    \item \textbf{Analisi:} Valutazione qualitativa e quantitativa dei rischi individuati. Per ciascuna voce viene stimata la probabilità di occorrenza e il potenziale impatto (gravità) sugli obiettivi dello sprint\textsuperscript{G} corrente e del progetto globale.
+    \item \textbf{Pianificazione:} Definizione proattiva di strategie atte a prevenire l'insorgere del rischio o, qualora la prevenzione totale non fosse possibile, predisposizione di piani di contingenza per mitigarne gli effetti negativi.
+    \item \textbf{Controllo:} Monitoraggio costante dello stato del progetto per rilevare tempestivamente l'effettivo verificarsi dei rischi e attivare le contromisure pianificate.
+\end{enumerate}
+
+È doveroso sottolineare che, in un contesto didattico caratterizzato da risorse limitate ed esperienza in formazione, le strategie di mitigazione iniziali potrebbero necessitare di affinamenti. Il monitoraggio costante permetterà quindi non solo di arginare i problemi emersi, ma anche di evolvere i processi interni in un'ottica di miglioramento continuo (\textit{continuous improvement}), correggendo eventuali errori di valutazione commessi nelle fasi iniziali.
+
+Per facilitare la gestione e la consultazione, i rischi sono stati catalogati in tre classi principali, ognuna identificata da un codice univoco:
+\begin{itemize}
+    \item \textbf{RT (Rischi Tecnologici):} Problematiche derivanti dall'adozione di nuovi framework, malfunzionamenti hardware o configurazioni software.
+    \item \textbf{RO (Rischi Organizzativi):} Criticità legate alla pianificazione, alla stima dei costi, alla distribuzione dei task e alla comprensione dei requisiti.
+    \item \textbf{RI (Rischi Interpersonali):} Fattori legati alla disponibilità individuale, agli impegni accademici o lavorativi e alle dinamiche interne al team.
+\end{itemize}
+
+% ======================= RISCHI TECNOLOGICI =======================
+\clearpage
+\subsection{Rischi Tecnologici}\label{sec:rischi_tecnologici}
+
+\subsubsection{RT1 - Inesperienza tecnologica}
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.4}
+    \begin{tabularx}{\textwidth}{|L|Z|}
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Tipologia Dato} & \textbf{Valore} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Codice & RT1 \\
+        \hline
+        \rowcolor{tableLineEven}
+        Nome & Inesperienza tecnologica \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Descrizione & Il team potrebbe incontrare difficoltà nell'apprendimento rapido dei framework e delle tecnologie richieste dal capitolato, causando rallentamenti nello sviluppo. \\
+        \hline
+        \rowcolor{tableLineEven}
+        Mitigazione & Studio individuale approfondito supportato da Proof of Concept (PoC) preliminari. Adozione di tecniche di \textit{pair programming} per diffondere la conoscenza nel gruppo e livellare le competenze. \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Frequenza probabile & Alta \\
+        \hline
+        \rowcolor{tableLineEven}
+        Pericolosità ripercussioni & Elevata \\
+        \hline
+    \end{tabularx}
+    \caption{Informazioni sul rischio RT1}
+    \label{tab:RT1}
+\end{table}
+
+\subsubsection{RT2 - Problemi strumenti software}\label{sec:rischi_tecnologici}
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.4}
+    \begin{tabularx}{\textwidth}{|L|Z|}
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Tipologia Dato} & \textbf{Valore} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Codice & RT2 \\
+        \hline
+        \rowcolor{tableLineEven}
+        Nome & Problemi configurazione strumenti software \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Descrizione & Possibili malfunzionamenti, conflitti di versione o errata configurazione degli ambienti di sviluppo (IDE, dipendenze) tra i diversi membri del gruppo. \\
+        \hline
+        \rowcolor{tableLineEven}
+        Mitigazione & Standardizzazione dell'ambiente di sviluppo tramite containerizzazione (Docker). Stesura di guide interne per l'installazione e configurazione degli strumenti. \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Frequenza probabile & Media \\
+        \hline
+        \rowcolor{tableLineEven}
+        Pericolosità ripercussioni & Media \\
+        \hline
+    \end{tabularx}
+    \caption{Informazioni sul rischio RT2}
+    \label{tab:RT2}
+\end{table}
+
+\subsubsection{RT3 - Guasti hardware}
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.4}
+    \begin{tabularx}{\textwidth}{|L|Z|}
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Tipologia Dato} & \textbf{Valore} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Codice & RT3 \\
+        \hline
+        \rowcolor{tableLineEven}
+        Nome & Malfunzionamento hardware personale \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Descrizione & Rottura o indisponibilità temporanea del personal computer di un membro del gruppo, con conseguente impossibilità di contribuire allo sviluppo. \\
+        \hline
+        \rowcolor{tableLineEven}
+        Mitigazione & Utilizzo rigoroso del repository remoto (GitHub) per il versionamento. Questo garantisce che il lavoro non vada perso e permetta al membro di riprendere il lavoro da una postazione di riserva o universitaria. \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Frequenza probabile & Bassa \\
+        \hline
+        \rowcolor{tableLineEven}
+        Pericolosità ripercussioni & Media \\
+        \hline
+    \end{tabularx}
+    \caption{Informazioni sul rischio RT3}
+    \label{tab:RT3}
+\end{table}
+
+\subsubsection{RT4 - Introduzione di errori software}
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.4}
+    \begin{tabularx}{\textwidth}{|L|Z|}
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Tipologia Dato} & \textbf{Valore} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Codice & RT4 \\
+        \hline
+        \rowcolor{tableLineEven}
+        Nome & Introduzione di bug critici nel codice \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Descrizione & Possibilità che vengano introdotti errori logici o di implementazione (bug) che compromettano le funzionalità già sviluppate o blocchino il progresso del progetto. \\
+        \hline
+        \rowcolor{tableLineEven}
+        Mitigazione & Applicazione rigorosa di Unit Testing e Integration Testing. Obbligo di Code Review ("approvazione") prima di ogni merge nel ramo principale. Adozione di pipeline di Continuous Integration (CI). \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Frequenza probabile & Media \\
+        \hline
+        \rowcolor{tableLineEven}
+        Pericolosità ripercussioni & Alta \\
+        \hline
+    \end{tabularx}
+    \caption{Informazioni sul rischio RT4}
+    \label{tab:RT4}
+\end{table}
+
+% ======================= RISCHI ORGANIZZATIVI =======================
+\subsection{Rischi Organizzativi}\label{sec:rischi_organizzativi}
+
+\subsubsection{RO1 - Errata stima dei costi e tempi}
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.4}
+    \begin{tabularx}{\textwidth}{|L|Z|}
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Tipologia Dato} & \textbf{Valore} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Codice & RO1 \\
+        \hline
+        \rowcolor{tableLineEven}
+        Nome & Errata pianificazione temporale \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Descrizione & Rischio di sottostimare o sovrastimare significativamente il tempo necessario per completare un task, portando a scostamenti dal preventivo e ritardi sulla tabella di marcia. \\
+        \hline
+        \rowcolor{tableLineEven}
+        Mitigazione & Monitoraggio continuo a consuntivo per ricalcolare le metriche di produttività. Rimodulazione flessibile dello sprint backlog qualora si evidenziassero ritardi. \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Frequenza probabile & Alta \\
+        \hline
+        \rowcolor{tableLineEven}
+        Pericolosità ripercussioni & Media \\
+        \hline
+    \end{tabularx}
+    \caption{Informazioni sul rischio RO1}
+    \label{tab:RO1}
+\end{table}
+
+\subsubsection{RO2 - Incomprensione dei requisiti}
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.4}
+    \begin{tabularx}{\textwidth}{|L|Z|}
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Tipologia Dato} & \textbf{Valore} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Codice & RO2 \\
+        \hline
+        \rowcolor{tableLineEven}
+        Nome & Divergenza sui requisiti \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Descrizione & Possibile errata interpretazione delle richieste del proponente, che potrebbe portare allo sviluppo di funzionalità non conformi alle aspettative o inutili. \\
+        \hline
+        \rowcolor{tableLineEven}
+        Mitigazione & Comunicazione frequente e formale con il proponente (verbali esterni). Revisione incrociata interna dei documenti di Analisi dei Requisiti prima della validazione. \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Frequenza probabile & Bassa \\
+        \hline
+        \rowcolor{tableLineEven}
+        Pericolosità ripercussioni & Elevata \\
+        \hline
+    \end{tabularx}
+    \caption{Informazioni sul rischio RO2}
+    \label{tab:RO2}
+\end{table}
+
+% ======================= RISCHI INTERPERSONALI =======================
+\subsection{Rischi Interpersonali}\label{sec:rischi_interpersonali}
+
+\subsubsection{RI1 - Impegni accademici}
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.4}
+    \begin{tabularx}{\textwidth}{|L|Z|}
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Tipologia Dato} & \textbf{Valore} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Codice & RI1 \\
+        \hline
+        \rowcolor{tableLineEven}
+        Nome & Concomitanza impegni accademici \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Descrizione & La presenza di appelli d'esame, progetti di altri corsi o lezioni obbligatorie può ridurre drasticamente la disponibilità oraria dei membri in periodi critici. \\
+        \hline
+        \rowcolor{tableLineEven}
+        Mitigazione & Pianificazione a lungo termine che evidenzi le date degli appelli nel calendario condiviso. Riduzione del carico di lavoro previsto negli sprint coincidenti con le sessioni d'esame. \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Frequenza probabile & Alta \\
+        \hline
+        \rowcolor{tableLineEven}
+        Pericolosità ripercussioni & Elevata \\
+        \hline
+    \end{tabularx}
+    \caption{Informazioni sul rischio RI1}
+    \label{tab:RI1}
+\end{table}
+
+\subsubsection{RI2 - Problemi personali}
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.4}
+    \begin{tabularx}{\textwidth}{|L|Z|}
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Tipologia Dato} & \textbf{Valore} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Codice & RI2 \\
+        \hline
+        \rowcolor{tableLineEven}
+        Nome & Indisponibilità per motivi personali \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Descrizione & Imprevisti di salute, familiari o lavorativi che impediscono a un membro di lavorare per un periodo limitato o esteso. \\
+        \hline
+        \rowcolor{tableLineEven}
+        Mitigazione & Comunicazione tempestiva al Responsabile. Ridistribuzione dinamica dei task urgenti tra gli altri componenti (uso di \textit{slack} temporale). \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Frequenza probabile & Bassa \\
+        \hline
+        \rowcolor{tableLineEven}
+        Pericolosità ripercussioni & Media \\
+        \hline
+    \end{tabularx}
+    \caption{Informazioni sul rischio RI2}
+    \label{tab:RI2}
+\end{table}
+
+\subsubsection{RI3 - Contrasti interni}
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.4}
+    \begin{tabularx}{\textwidth}{|L|Z|}
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Tipologia Dato} & \textbf{Valore} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Codice & RI3 \\
+        \hline
+        \rowcolor{tableLineEven}
+        Nome & Conflitti nel gruppo \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Descrizione & Divergenze di opinioni tecniche o metodologiche, oppure tensioni interpersonali che rallentano il processo decisionale e minano la serenità del gruppo. \\
+        \hline
+        \rowcolor{tableLineEven}
+        Mitigazione & Promozione di un clima di dialogo aperto. Intervento del Responsabile di Progetto come mediatore. Adozione di sistemi di votazione democratica per le decisioni bloccanti. \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Frequenza probabile & Bassa \\
+        \hline
+        \rowcolor{tableLineEven}
+        Pericolosità ripercussioni & Elevata \\
+        \hline
+    \end{tabularx}
+    \caption{Informazioni sul rischio RI3}
+    \label{tab:RI3}
+\end{table}
+
+%============================================== 
+%       PIANIFICAZIONE NEL LUNGO TERMINE
+%==============================================
+\section{Pianificazione nel lungo termine}\label{sec:pianificazione_lungo_termine}
+
+\subsection{Introduzione}
+Come dichiarato nel documento di \href{https://swe-bitbybit.github.io/SWE-docs/docs/candidatura/valutazione_costi_rischi/valutazione_costi_rischi.pdf}{valutazione costo e rischi}, il gruppo si impegna a terminare il progetto entro e non oltre il giorno \textbf{2026-04-15} con un budget di spesa fissato a \textbf{11.370\euro}.
+
+Nella fase di candidatura si è teorizzato il seguente prospetto di ripartizione oraria e dei costi:
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabularx}{\textwidth}{|c|C|C|C|}
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Ruolo} & \textbf{Costo Orario} & \textbf{Ore Totali} & \textbf{Costo Totale} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Responsabile & 30€/h & 78 & 2.340\euro \\
+        \hline
+        \rowcolor{tableLineEven}
+        Amministratore & 20€/h & 84 & 1.680\euro \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Analista & 25€/h & 66 & 1.650\euro \\
+        \hline
+        \rowcolor{tableLineEven}
+        Progettista & 25€/h & 102 & 2.550\euro \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Programmatore & 15€/h & 120 & 1.800\euro \\
+        \hline
+        \rowcolor{tableLineEven}
+        Verificatore & 15€/h & 90 & 1.350\euro \\
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Totale} & - & \textbf{540} & \textbf{ 11.370\euro } \\
+        \hline
+    \end{tabularx}
+    \caption{Preventivo iniziale teorizzato in fase di candidatura}
+    \label{tab:preventivo_candidatura}
+\end{table}
+
+Si stima inoltre una candidatura per la \textbf{Requirements and Technology Baseline (RTB)} entro il \textbf{[Data RTB]}.
+\todo Sistemare la stima o eliminare ste ultime righe
+
+Per le fasi di \textbf{Requirements and Technology Baseline (RTB)} e \textbf{Product Baseline (PB)} sono state definite delle attività specifiche da completare. Queste sono fondamentali per una corretta gestione degli sprint che verranno eseguiti. Di seguito sono elencate le attività previste:
+
+% ======================= ATTIVITA PREVISTE PER RTB =======================
+\subsection{Attività previste per la Requirements and Technology Baseline (RTB)}
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \arrayrulecolor{black}
+    \begin{tabularx}{\textwidth}{|L|Z|}
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Attività} & \textbf{Descrizione} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Norme di Progetto & Definisce le regole, le convenzioni e gli strumenti che regolano il \textit{Way of Working} del team, assicurando uniformità e coerenza nello svolgimento delle attività. \\
+        \hline
+        \rowcolor{tableLineEven}
+        Piano di Progetto & Pianifica le risorse, i costi e le scadenze temporali, delineando le attività passate, presenti e future per garantire il rispetto degli obiettivi prefissati. \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Piano di Qualifica & Stabilisce le metriche e le procedure di controllo necessarie per verificare la qualità dei processi e del prodotto software durante l'intero ciclo di vita. \\
+        \hline
+        \rowcolor{tableLineEven}
+        Analisi dei Requisiti & Formalizza i requisiti funzionali, non funzionali e di vincolo concordati con il proponente, dettagliando i casi d'uso del sistema. \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Glossario & Raccoglie e definisce i termini tecnici e specifici del dominio per evitare ambiguità terminologiche sia internamente che verso gli stakeholder esterni. \\
+        \hline
+        \rowcolor{tableLineEven}
+        Proof of Concept & Prototipo software volto a verificare la fattibilità tecnica della soluzione e l'efficacia delle tecnologie selezionate per lo sviluppo. \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Lettera di presentazione RTB & Documento formale che accompagna la consegna, ufficializzando la richiesta del gruppo di sostenere la revisione \textit{Requirements and Technology Baseline}. \\
+        \hline
+    \end{tabularx}
+    \caption{Attività previste per la RTB}
+    \label{tab:attivita_rtb}
+\end{table}
+\todo Si potrebbe modificare la tabella aggiungendo lo sprint entro cui vogliamno finire l'attività
+
+% ======================= ATTIVITA PREVISTE PER PB =======================
+\subsection{Attività previste per la Product Baseline (PB)}
+La redazione di questo paragrafo sarà effettuato in seguito al superamento della
+\textbf{Requirements and Technology Baseline (RTB)}.
+
+
+%============================================== 
+%       PIANIFICAZIONE NEL BREVE TERMINE
+%==============================================
+
+\section{Pianificazione nel breve termine}\label{sec:pianificazione_breve_termine}
+
+% ======================= INTRODUZIONE =======================
+\subsection{Introduzione}
+Il gruppo \textit{BitByBit} ha scelto di organizzare lo sviluppo del progetto seguendo un modello iterativo e incrementale, ispirato ai principi della metodologia \textbf{Agile}. Il lavoro sarà suddiviso in unità temporali denominate \textit{sprint}, ciascuno con una durata due settimane.
+
+Questa strategia permette di mantenere una pianificazione flessibile e adattiva. All'inizio di ogni iterazione, il gruppo definirà gli obiettivi a breve termine e assegnerà le attività, prevedendo una \textbf{rotazione dei ruoli}. Tale rotazione è fondamentale per garantire che ogni membro del team acquisisca competenze trasversali e abbia visione completa del processo produttivo.
+
+Elemento cardine del metodo di lavoro sarà il confronto con il proponente, l'azienda \textbf{Miriade}. Sono previsti incontri online su \textbf{Google Meet} o con il canale indiretto concordato (\textbf{Google Chat}) per verificare la conformità di quanto prodotto rispetto alle aspettative.
+
+Per ogni sprint descritto in questa sezione, verranno riportate le seguenti informazioni:
+\begin{itemize}
+    \item \textbf{Obiettivi e attività:} Descrizione delle finalità dello sprint e delle task pianificate.
+    \item \textbf{Gestione dei rischi:} Analisi dei rischi specifici che potrebbero manifestarsi nel periodo considerato.
+    \item \textbf{Rendicontazione:} Prospetto preventivo delle ore e dei costi stimati, seguito dal consuntivo finale con l'analisi degli eventuali scostamenti.
+\end{itemize}
+
+% ======================= RTB =======================
+\subsection{Requirements and Technology Baseline (RTB)}
+
+\subsubsection{Sprint 1}
+
+% --- TABELLA RIEPILOGATIVA SPRINT ---
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabularx}{\textwidth}{|>{\columncolor{tableHeader}\bfseries}l|X|>{\columncolor{tableHeader}\bfseries}l|X|}
+        \hline
+        Inizio & 2025-11-19 & Fine prevista & 2025-12-03 \\
+        \hline
+        Stato & \textbf{Concluso} & Fine reale & 2025-12-03 \\
+        \hline
+        \multicolumn{2}{|c|}{\cellcolor{tableHeader}\textbf{Giorni di ritardo}} & \multicolumn{2}{c|}{0} \\
+        \hline
+    \end{tabularx}
+    \caption{Riepilogo temporale Sprint 1}
+\end{table}
+
+\paragraph{Informazioni generali e attività da svolgere}
+Lo Sprint 1 ha rappresentato l'avvio operativo del progetto. L'obiettivo primario era la definizione delle funzionalità da proporre al committente e l'avvio della produzione documentale, oltre all'organizzazione interna del gruppo (ruoli e strumenti).
+
+Le attività pianificate e svolte includono:
+\begin{itemize}
+    \item \textit{Analisi:} Studio del capitolato e selezione delle funzionalità chiave.
+    \item \textit{Incontri:} Preparazione delle domande per il primo meeting con Miriade.
+    \item \textit{Documentazione:} Avvio della stesura dei documenti \textit{Analisi dei Requisiti} (AdR), \textit{Norme di Progetto} (NdP) e \textit{Piano di Progetto} (PdP).
+    \item \textit{Gestione:} Discussione e assegnazione dei ruoli.
+\end{itemize}
+
+\paragraph{Rischi attesi}
+Per questo sprint, i rischi principali identificati erano legati alla comprensione del dominio e all'organizzazione iniziale:
+\begin{itemize}
+    \item \textbf{RO2}: Incomprensione dei requisiti iniziali o delle richieste del capitolato.
+    \item \textbf{RT1}: Difficoltà nell'uso dei nuovi strumenti di versionamento e gestione.
+\end{itemize}
+
+\paragraph{Preventivo}
+Si prospetta l'utilizzo delle seguenti risorse:
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \small 
+    \begin{tabularx}{\textwidth}{|l|C|C|C|C|C|C|}
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Membro} & \textbf{Resp} & \textbf{Amm} & \textbf{Anal} & \textbf{Pt} & \textbf{Pr} & \textbf{Ver} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        F. Fracasso & - & 2 & 1 & - & - & 1 \\
+        \hline
+        \rowcolor{tableLineEven}
+        R. Manisi & - & 2 & - & - & - & - \\
+        \hline
+        \rowcolor{tableLineOdd}
+        D. Parolin & 1 & - & - & - & - & 1 \\
+        \hline
+        \rowcolor{tableLineEven}
+        M. Sanguin & 1 & - & - & - & - & - \\
+        \hline
+        \rowcolor{tableLineOdd}
+        G. Scaggiante & - & 2 & 2 & - & - & - \\
+        \hline
+        \rowcolor{tableLineEven}
+        G. Visentin & 2 & - & 1 & - & - & 1 \\
+        \hline
+    \end{tabularx}
+    \caption{Preventivo orario per componente - Sprint 1}
+    \label{tab:preventivo_sprint1}
+\end{table}
+
+% GRAFICO A TORTA PREVENTIVO
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1.2]
+        \draw[thick,fill=pieResp] (0,0) -- (0:1.5) arc (0:85:1.5) -- cycle;
+        \draw (42:1.8) node {24\%};
+        
+        \draw[thick,fill=pieAmm] (0,0) -- (85:1.5) arc (85:212:1.5) -- cycle;
+        \draw (148:1.8) node {35\%};
+        
+        \draw[thick,fill=pieAnal] (0,0) -- (212:1.5) arc (212:297:1.5) -- cycle;
+        \draw (254:1.8) node {24\%};
+        
+        \draw[thick,fill=pieVer] (0,0) -- (297:1.5) arc (297:360:1.5) -- cycle;
+        \draw (328:1.8) node {17\%};
+        
+        \matrix [below, draw=none, fill=none] at (0,-2.5) {
+            \node [fill=pieResp, label=right:Responsabile] {}; & \node [fill=pieAmm, label=right:Amministratore] {}; \\
+            \node [fill=pieAnal, label=right:Analista] {}; & \node [fill=pieVer, label=right:Verificatore] {}; \\
+        };
+    \end{tikzpicture}
+    \caption{Distribuzione ore per ruolo - Preventivo Sprint 1}
+\end{figure}
+
+\paragraph{Consuntivo}
+Di seguito il resoconto delle ore effettivamente impiegate:
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \small
+    \begin{tabularx}{\textwidth}{|l|C|C|C|C|C|C|}
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Membro} & \textbf{Resp} & \textbf{Amm} & \textbf{Anal} & \textbf{Pt} & \textbf{Pr} & \textbf{Ver} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        F. Fracasso & - & 2 & 1 & - & - & 1 \\
+        \hline
+        \rowcolor{tableLineEven}
+        R. Manisi & 1 \textcolor{red}{(+1)} & 2 & - & - & - & - \\
+        \hline
+        \rowcolor{tableLineOdd}
+        D. Parolin & 2 \textcolor{red}{(+1)} & - & - & - & - & 1 \\
+        \hline
+        \rowcolor{tableLineEven}
+        M. Sanguin & 1 & - & - & - & - & - \\
+        \hline
+        \rowcolor{tableLineOdd}
+        G. Scaggiante & - & 2 & - \textcolor{red}{(-2)} & - & - & - \\
+        \hline
+        \rowcolor{tableLineEven}
+        G. Visentin & 2 & - & 1 & - & - & 1 \\
+        \hline
+    \end{tabularx}
+    \caption{Consuntivo orario per componente - Sprint 1}
+    \label{tab:consuntivo_sprint1}
+\end{table}
+
+% GRAFICO A TORTA CONSUNTIVO
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1.2]
+        \draw[thick,fill=pieResp] (0,0) -- (0:1.5) arc (0:127:1.5) -- cycle;
+        \draw (63:1.8) node {35\%};
+        
+        \draw[thick,fill=pieAmm] (0,0) -- (127:1.5) arc (127:254:1.5) -- cycle;
+        \draw (190:1.8) node {35\%};
+        
+        \draw[thick,fill=pieAnal] (0,0) -- (254:1.5) arc (254:296:1.5) -- cycle;
+        \draw (275:1.8) node {12\%};
+        
+        \draw[thick,fill=pieVer] (0,0) -- (296:1.5) arc (296:360:1.5) -- cycle;
+        \draw (328:1.8) node {18\%};
+        
+        \matrix [below, draw=none, fill=none] at (0,-2.5) {
+            \node [fill=pieResp, label=right:Responsabile] {}; & \node [fill=pieAmm, label=right:Amministratore] {}; \\
+            \node [fill=pieAnal, label=right:Analista] {}; & \node [fill=pieVer, label=right:Verificatore] {}; \\
+        };
+    \end{tikzpicture}
+    \caption{Distribuzione ore per ruolo - Consuntivo Sprint 1}
+\end{figure}
+
+\paragraph{Aggiornamento delle risorse rimanenti}
+Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la chiusura dello Sprint 1.
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabularx}{\textwidth}{|l|c|c|c|X|X|}
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Ruolo} & \textbf{Costo} & \textbf{Ore} & \textbf{Costo} & \textbf{Ore rimanenti} & \textbf{Budget rimanente} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Responsabile & 30\euro/h & 6 & 180\euro & 72 \textcolor{red}{(-6)} & 2.160\euro \textcolor{red}{(-180\euro)} \\
+        \hline
+        \rowcolor{tableLineEven}
+        Amministratore & 20\euro/h & 6 & 120\euro & 78 \textcolor{red}{(-6)} & 1.560\euro \textcolor{red}{(-120\euro)} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Analista & 25\euro/h & 2 & 50\euro & 64 \textcolor{red}{(-2)} & 1.600\euro \textcolor{red}{(-50\euro)} \\
+        \hline
+        \rowcolor{tableLineEven}
+        Progettista & 25\euro/h & - & - & 102 & 2.550\euro \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Programmatore & 15\euro/h & - & - & 120 & 1.800\euro \\
+        \hline
+        \rowcolor{tableLineEven}
+        Verificatore & 15\euro/h & 3 & 45\euro & 87 \textcolor{red}{(-3)} & 1.305\euro \textcolor{red}{(-45\euro)} \\
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Totale} & - & \textbf{17} & \textbf{395\euro} & \textbf{523 \textcolor{red}{(-17)}} & \textbf{10.975\euro \textcolor{red}{(-395\euro)}} \\
+        \hline
+    \end{tabularx}
+    \caption{Sprint 1 - Variazione nelle risorse disponibili}
+\end{table}
+
+\paragraph{Rischi incontrati}
+Durante lo sprint si è dovuto gestire il rischio \textbf{RO1 (Errata stima dei costi e tempi)} e \textbf{RI2 (Problemi personali)}. Le attività di stesura dei documenti si sono rivelate più complesse del previsto, richiedendo un maggiore impegno per mantenere il passo con la pianificazione. Inoltre, è stato necessario riorganizzare alcune attività a causa di impegni personali imprevisti di alcuni membri, gestendo il tutto tramite una flessibile ridistribuzione dei task.
+
+\paragraph{Retrospettiva}
+La Sprint Retrospective ha confermato il raggiungimento degli obiettivi principali: l'avvio della produzione documentale e la definizione dell'infrastruttura di progetto. Nonostante la complessità riscontrata nei documenti, il gruppo è riuscito a procedere secondo i piani. Per migliorare l'efficienza futura, è stato deciso di adottare ufficialmente le Pull Request per un migliore controllo di configurazione e verifica.
+
+\end{document}
