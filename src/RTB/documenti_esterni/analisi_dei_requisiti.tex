@@ -1,0 +1,605 @@
+% template presente
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{tabularx}
+\usepackage{tcolorbox}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    urlcolor=blue,     
+}
+\usepackage{graphicx}
+\graphicspath{{resources/}{../resources/}{../../resources/}{../../../resources/}{../../../../resources/}}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{colortbl}
+\usepackage{hyperref} 
+\usepackage{fancyhdr}
+\setlength{\headheight}{25pt}
+\setlength{\headsep}{1cm}
+\usepackage{titlesec}
+\geometry{margin=2.5cm}
+% ===== Variabile per il titolo del documento =====
+% ===== DA MODOFICARE =====
+\newcommand{\documenttitle}{Verbale Riunione Numero X } %serve l'ultimo spazio
+
+
+\setlength{\parindent}{0pt}
+\setstretch{1.2}
+
+% ===== Stile intestazione =====
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{gray}{\documenttitle - BitByBit}}
+\fancyhead[R]{\includegraphics[height=1cm]{solo_logo.jpg}}
+\fancyfoot[C]{\thepage}
+
+% ===== Formattazione sezioni =====
+\titleformat{\section}{\Large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.5em}{}
+
+\begin{document}
+
+% ======= HEADER UNIVERSITÀ E GRUPPO CENTRATI VERTICALMENTE =======
+\vspace*{\fill} % --- Spinge verso il basso l'inizio del contenuto
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logoUni.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\color{red}\LARGE \textbf{Università degli Studi di Padova}}\\[0.3cm]
+        {\large
+        Laurea: Informatica\\
+        Corso: Ingegneria del Software\\
+        Anno Accademico: 2025/26
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1cm}
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logo.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\LARGE \textbf{Gruppo 17}}\\[0.3cm]
+        {\large
+        Nome: BitByBit\\
+        Email: swe.bitbybit@gmail.com
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1.5cm}
+
+\begin{center}
+    {\LARGE \textbf{\documenttitle}}
+\end{center}
+
+\vspace*{\fill} % --- Spinge verso l’alto la fine del contenuto, centrando tutto il blocco
+
+% ---------- REDAZIONE E REVISIONE ----------
+\clearpage
+
+\section*{Registro delle modifiche}
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2} 
+\arrayrulecolor{black}
+\begin{tabular}{|c|p{0.11\linewidth}|p{0.21\linewidth}|p{0.23\linewidth}|p{0.21\linewidth}|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+\hline
+\rowcolor{white}
+ &  &  &  &  \\
+\hline
+\rowcolor{gray!20}
+ &  &  &  & \\
+\hline
+\rowcolor{white}
+ &  &  &  & \\
+\hline
+\rowcolor{gray!20}
+ &  &  &  &  \\
+\hline
+\end{tabular}
+\end{center}
+
+\clearpage
+
+% ======= INFO GENERALI =======
+\section*{Informazioni Generali}
+\renewcommand{\arraystretch}{1.3}
+
+\begin{tcolorbox}
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\textbf{Redattore:} & XXXX \\
+\textbf{Verificatore:} & XXXX \\
+\textbf{Responsabile:} & XXXX \\
+\textbf{Data:} & 23 ottobre 2025 \\
+\textbf{Durata:} & 1h 45m \\
+\textbf{Luogo:} & Padova, Aula 2 \\
+\end{tabularx}
+\end{tcolorbox}
+
+\vspace{0.4cm}
+\textbf{Partecipanti:}
+\begin{itemize}
+    \item Manisi Riccardo
+    \item Parolin Dennis
+    \item Scaggiante Gabriele
+    \item Sanguin Marco
+    \item Visentin Giovanni
+    \item Ferdinando Fracasso
+\end{itemize}
+
+\textbf{Assenti:}
+\begin{itemize}
+    \item (nessuno)
+\end{itemize}
+
+\clearpage
+
+\vspace{0.5cm}
+
+\vspace{0.8cm}
+
+% ======= INDICE SU PAGINA DEDICATA =======
+\clearpage
+\tableofcontents
+\thispagestyle{empty} % senza numero di pagina per l'indice
+\clearpage
+
+% ---------- ORDINE DEL GIORNO ----------
+\section{Ordine del Giorno}
+\begin{itemize}
+    \item %modifica
+\end{itemize}
+
+% ---------- DISCUSSIONI ----------
+\section{Discussioni}
+\begin{itemize}
+    \item %modifica
+\end{itemize}
+%modifica
+
+% ---------- DECISIONI ----------
+\section{Decisioni}
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2} 
+\arrayrulecolor{black} 
+\begin{tabular}{|p{0.73\textwidth}|c|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Descrizione decisione} & \textbf{Codice decisione} \\
+\hline
+\rowcolor{white}
+Inserire descrizione & VI C 1.1 \\
+\hline
+\rowcolor{gray!20}
+Inserire descrizione &  VI C 1.2 \\
+\hline
+\rowcolor{white}
+Inserire descrizione &  VI C 1.3\\
+\hline
+\end{tabular}
+\end{center}
+
+% ---------- TO DO ----------
+\section{To Do}
+Dalle discussioni e decisioni intraprese, sono emerse le seguenti attività:
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2} 
+\arrayrulecolor{black} 
+\begin{tabular}{|p{0.52\textwidth}|c|c|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Task} & \textbf{Codice decisione} & \textbf{N°issue GitHub} \\
+\hline
+\rowcolor{white}
+Esempio Task 1 & VI C 1.1 & \href{https://github.com/<repo>/issues/1}{\textbf{issue}} \\
+\hline
+\rowcolor{gray!20}
+Esempio Task 2 & VI C 1.2 & \href{https://github.com/<repo>/issues/2}{\textbf{issue}} \\
+\hline
+\rowcolor{white}
+Esempio Task 3 & VI C 1.3 & \href{https://github.com/<repo>/issues/3}{\textbf{issue}} \\
+\hline
+\end{tabular}
+\end{center}
+
+
+\end{document}
+\documentclass[a4paper,12pt]{article}
+
+% =======================================================
+% 1. CONFIGURAZIONE VARIABILI
+% =======================================================
+\newcommand{\TitoloDocumento}{Analisi dei Requisiti v0.2.0}
+\newcommand{\DataVersione}{AAAA/MM/GG}
+\newcommand{\VersioneAttuale}{0.1.0}
+
+% =======================================================
+% 2. PACCHETTI
+% =======================================================
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{setspace}
+\usepackage{colortbl}   % Per colorare le celle delle tabelle
+\usepackage{tabularx}   % Per tabelle larghe quanto la pagina
+\usepackage{fancyhdr}   % Per header e footer
+\usepackage{titlesec}   % Per formattare i titoli
+\usepackage[colorinlistoftodos]{todonotes}
+
+% Percorsi immagini (aggiusta se necessario)
+\graphicspath{{resources/}{../resources/}{../../resources/}} 
+
+% Hyperref va sempre caricato per ultimo
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,     % Colore link interni (es. indice)
+    filecolor=blue,
+    urlcolor=blue,      % Colore link web
+    pdftitle={\TitoloDocumento},
+}
+
+% =======================================================
+% 3. IMPOSTAZIONI VISIVE
+% =======================================================
+\geometry{margin=2.5cm}
+\setlength{\parindent}{0pt} % Niente rientro prima riga
+\setstretch{1.2}            % Interlinea 1.2
+
+% Definizione colonna 'Y' per tabularx (testo centrato auto-adattante)
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+% Definizione colonna 'Z' per tabularx (testo allineato a sx auto-adattante)
+\newcolumntype{Z}{>{\raggedright\arraybackslash}X}
+
+% Stile Header e Footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{gray}{\TitoloDocumento \ - BitByBit}}
+\fancyfoot[C]{\thepage}
+
+% Formattazione Titoli
+\titleformat{\section}{\Large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.5em}{}
+\titleformat{\subsubsection}{\bfseries}{\thesubsubsection.}{0.5em}{}
+
+% =======================================================
+% 4. INIZIO DOCUMENTO
+% =======================================================
+\begin{document}
+
+% --- FRONT PAGE (Loghi e Titoli) ---
+\vspace*{\fill} 
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        % Assicurati che il file esista, altrimenti commenta la riga sotto
+        \includegraphics[width=\linewidth]{logoUni.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\color{red}\LARGE \textbf{Università degli Studi di Padova}}\\[0.3cm]
+        {\large
+        Laurea: Informatica\\
+        Corso: Ingegneria del Software\\
+        Anno Accademico: 2025/26
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1cm}
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        % Assicurati che il file esista, altrimenti commenta la riga sotto
+        \includegraphics[width=\linewidth]{logo.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\LARGE \textbf{Gruppo 17}}\\[0.3cm]
+        {\large
+        Nome: BitByBit\\
+        Email: swe.bitbybit@gmail.com
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1.5cm}
+
+\begin{center}
+    {\LARGE \textbf{\TitoloDocumento}}
+\end{center}
+
+\vspace*{\fill} 
+
+% =======================================================
+% REGISTRO DELLE MODIFICHE
+% =======================================================
+\clearpage
+\section{Redazione, modifiche e revisioni del documento} \label{sec:registro_modifiche}
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.4} 
+\arrayrulecolor{black}
+
+\begin{tabularx}{\textwidth}{|c|c|c|X|c|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+\hline
+\rowcolor{white}
+ & & & & \\
+\hline
+\rowcolor{gray!20}
+0.2.0 & 2025-12-1 & Dennis Parolin & Redazione della sezione \ref{sec:funzioni_prodotto}. Modifica delle sezioni \ref{sec:prospettiva_prodotto} e \ref{sec:caratteristiche_utente} sulla base delle funzionalità concordate con la proponente. Spostato il registro delle modifiche (sezione \ref{sec:registro_modifiche}) a prima dell'indice. & \\
+\hline
+\rowcolor{white}
+0.1.0 & 2025-11-23 & Dennis Parolin & Creazione documento e redazione delle sezioni \ref{sec:scopo_documento}, \ref{sec:prospettiva_prodotto}, \ref{sec:caratteristiche_utente}, \ref{sec:definizioni_acronimi_abbreviazioni}, \ref{sec:riferimenti}, \ref{sec:riferimenti_normativi} e \ref{sec:riferimenti_informativi} & \\
+\hline
+\end{tabularx}
+\end{center}
+
+% --- INDICE ---
+\clearpage
+\tableofcontents
+\thispagestyle{empty} 
+\clearpage
+
+% =======================================================
+% SEZIONE: INTRODUZIONE
+% =======================================================
+
+\section{Introduzione}
+
+% =======================SCOPO DOCUMENTO================================
+\subsection{Scopo del documento} \label{sec:scopo_documento}
+Il presente documento di Analisi dei Requisiti ha l'obiettivo di esporre in modo esaustivo e non ambiguo le specifiche funzionali, prestazionali e vincolanti del sistema software oggetto di sviluppo.
+
+L'analisi qui condotta si basa sull'identificazione dei Casi d'Uso (Use Cases), supportati dai relativi diagrammi UML, utilizzati per modellare le interazioni previste tra gli attori e il sistema. Tale approccio permette di derivare puntualmente i requisiti software finali.
+
+Questo elaborato costituisce il riferimento primario per le successive fasi del ciclo di vita del software, guidando la progettazione architetturale, l'implementazione del codice e le attività di verifica e validazione. Ciò garantisce che il prodotto finale sia conforme alle aspettative e alle necessità espresse dal proponente.
+
+I requisiti individuati sono stati prioritizzati secondo la seguente classificazione:
+\begin{itemize}
+    \item \textbf{Obbligatori:} requisiti essenziali e bloccanti, necessari per il funzionamento base del sistema;
+    \item \textbf{Desiderabili:} requisiti che offrono un valore aggiunto significativo, pur non essendo strettamente indispensabili nell'immediato;
+    \item \textbf{Opzionali:} requisiti di utilità marginale o posticipabili a sviluppi futuri.
+\end{itemize}
+
+Il documento, redatto dagli Analisti del gruppo \textit{BitByBit}, è destinato ai seguenti stakeholder:
+\begin{itemize}
+    \item \textbf{Committente/Proponente:} per la validazione delle specifiche e la conferma che i requisiti siano stati recepiti correttamente;
+    \item \textbf{Team di Sviluppo (Progettisti e Programmatori):} come linea guida tecnica per la realizzazione del prodotto;
+    \item \textbf{Verificatori:} come base per la definizione dei piani di test e per la verifica della conformità del software.
+\end{itemize}
+
+% =======================PROSPETTIVA PRODOTTO================================
+
+\subsection{Prospettiva del prodotto} \label{sec:prospettiva_prodotto}
+Il prodotto che il gruppo \textit{BitByBit} si prefigge di realizzare è un'applicazione mobile multipiattaforma (Android e iOS) denominata "L'app che Protegge e Trasforma". Il sistema si colloca in un dominio critico e sensibile, con l'obiettivo primario di prevenire la violenza di genere (focalizzandosi principalmente su donne tra i 18 e i 30 anni) e fornire supporto concreto attraverso strumenti di consapevolezza e sicurezza.
+
+A differenza di una tradizionale applicazione informativa, il sistema integra funzionalità \textbf{attive e intelligenti}, ma con un approccio etico definito: l'Intelligenza Artificiale non agisce autonomamente in situazioni critiche, ma funge da supporto analitico ("Detective delle relazioni" e "Specchio intelligente") per aiutare l'utente a decodificare la propria situazione e riconoscere pattern di rischio. Le funzionalità di allerta verso i contatti fidati ("Guardiano Silenzioso") o di emergenza rimangono sempre vincolate a un'attivazione esplicita dell'utente o a controlli di inattività, evitando automatismi rischiosi da parte dell'IA.
+
+La prospettiva del sistema si estende oltre la singola interazione, offrendo un hub informativo ("Guida al coraggio") che collega l'utente a risorse esterne, normative e mappe di luoghi sicuri. Data la natura dei dati trattati, il prodotto pone un vincolo architetturale imprescindibile sulla \textbf{sicurezza e la privacy}: il sistema garantisce funzionalità di offuscamento (camuffamento icona), crittografia dei contenuti personali (Diario criptato) e gestione granulare della rete di supporto.
+
+Infine, il sistema è progettato per essere affidabile e accessibile in contesti duali: sia come strumento di prevenzione riflessiva in momenti di calma, sia come supporto rapido e intuitivo in condizioni di stress o difficoltà, scalando le risorse per future integrazioni (es. widget o microservizi).
+
+% =======================FUNZIONALITA' PRODOTTO================================
+
+\subsection{Funzioni del prodotto} \label{sec:funzioni_prodotto}
+
+Il prodotto dovrà seguire le seguenti funzionalità principali:
+
+\begin{itemize}
+    \item Welcome page e walkthrough introduttivo;
+    \item Pagina impostazioni;
+    \item Login e gestione Account;
+    \item Detective delle relazioni;
+    \item Lo specchio intelligente;
+    \item La guida al coraggio;
+    \item Guardiano silenzioso;
+    \item Diario criptato.
+\end{itemize}
+
+\subsubsection{Welcome Page e Walkthrough}
+L'esperienza utente avrà inizio con una schermata di benvenuto volta a comprendere la finalità dell'installazione. Tale interfaccia presenterà due opzioni: "Per me" o "Per altri". Questa distinzione è fondamentale per fornire un contesto iniziale al Large Language Model (LLM) e preconfigurare determinati parametri. Inoltre, tale struttura permetterà in futuro l'implementazione di funzionalità differenziate in base al beneficiario del servizio.
+
+Successivamente, sarà proposto un walkthrough illustrativo delle funzionalità disponibili. È prevista la presenza di un comando per saltare tale guida, permettendo l'accesso diretto alle funzionalità dell'app.
+
+\subsubsection{Account e Impostazioni}
+È prevista l'implementazione di una sezione per la gestione dell'account. L'utente avrà la facoltà di fornire un indirizzo e-mail personale, utilizzabile per l'invio di notifiche qualora si rilevi un periodo prolungato di inattività, fungendo da meccanismo di controllo (dead man's switch) per verificare lo stato di sicurezza dell'utente o l'abbandono volontario dell'app.
+
+Un'ulteriore sezione sarà dedicata alle preferenze, incluse la gestione della rete di contatti fidati, la personalizzazione delle notifiche e la scelta dell'icona dell'app (funzionalità di "camuffamento" per proteggere la privacy in caso di ispezione del dispositivo da parte di terzi) e delle informazioni condivisibili (es. posizione geografica). La configurazione della rete di supporto è cruciale: l'utente potrà inserire e-mail o numeri di telefono di persone ritenute \textbf{fidate}, dati essenziali per il funzionamento del \textbf{Guardiano Silenzioso}. Tale funzionalità è progettata per essere scalabile, prevedendo in futuro l'invio di diverse tipologie di notifiche.
+
+\subsubsection{Detective delle Relazioni e Lo Specchio Intelligente}
+L'interfaccia includerà una sezione dedicata all'interazione testuale con l'Intelligenza Artificiale, concepita per chiarire dubbi e fornire supporto. Questa schermata implementerà due distinte funzionalità: \textbf{Detective delle relazioni} e \textbf{Lo specchio intelligente}.
+La prima ha l'obiettivo di analizzare comportamenti o narrazioni dell'utente per identificare la situazione attuale e riconoscere pattern di pericolo meritevoli di attenzione. La seconda è orientata all'autoconsapevolezza, offrendo uno spazio privato per l'analisi dei propri pensieri.
+La selezione del prompt più adeguato tra i due sarà gestita automaticamente dall'app previa analisi del messaggio utente, mantenendo comunque la possibilità di modifica manuale. È prevista inoltre una sezione per l'archiviazione delle chat, consentendone la consultazione e la prosecuzione futura.
+
+\subsubsection{La Guida al Coraggio}
+La sezione denominata \textbf{La guida al coraggio} fungerà da hub informativo, offrendo accesso chiaro a risorse essenziali. I contenuti includeranno:
+\begin{itemize}
+    \item Link a siti web di riferimento;
+    \item Link a materiale video educativo;
+    \item Collegamenti a forum di discussione esistenti;
+    \item Definizioni normative e informazioni sulla "violenza di genere";
+    \item Informazioni legali (diritti, azioni permesse, procedure di denuncia, ecc.).
+\end{itemize}
+Sarà inoltre integrata una mappa per la visualizzazione dei "luoghi sicuri", con indicazioni sui percorsi per raggiungerli basate sulla geolocalizzazione dell'utente (tramite integrazione con Google Maps).
+
+\subsubsection{Guardiano Silenzioso}
+Tale funzionalità è concepita per l'invio tempestivo di comunicazioni di emergenza (e-mail o SMS) ai contatti della rete di supporto in caso di pericolo o necessità. L'attivazione di tali comunicazioni non sarà demandata all'IA, ma sarà gestita direttamente dall'utente tramite un comando "\textbf{SOS}" chiaramente visibile e di rapido accesso.
+
+Qualora il dispositivo si trovi in condizioni di scarsa o nulla connettività internet, l'applicazione prevede una modalità di sicurezza ausiliaria. In tale scenario, previo comando specifico dell'utente, verrà attivato un allarme acustico volto ad attirare l'attenzione dei presenti e dissuadere eventuali aggressori.
+
+\subsubsection{Diario Criptato}
+Il \textbf{Diario Criptato} costituirà uno spazio sicuro per l'annotazione di eventi, pensieri e l'archiviazione di file multimediali (foto e audio). L'accesso a tale sezione sarà protetto da password o autenticazione biometrica, e l'interfaccia sarà progettata per essere discreta.
+
+A tutela della sicurezza dell'utente in situazioni di costrizione, è previsto un meccanismo di accesso differenziato: qualora l'utente sia forzato a mostrare il contenuto del diario, l'inserimento di una password errata darà accesso a un diario fittizio. Questa versione conterrà elementi coerenti e sensati, ma privi di qualsiasi informazione sensibile. L'inserimento della password corretta, invece, garantirà il normale accesso al diario reale e ai dati personali archiviati.
+
+In una prima fase, il diario non sarà interconnesso con l'IA.
+Tuttavia, l'architettura è predisposta per future estensioni, eventualmente sviluppate da team specializzati o tramite microservizi. Possibili evoluzioni includono l'analisi dei contenuti del diario da parte dell'IA per arricchire il contesto delle conversazioni, o viceversa, l'esportazione automatica delle chat nel diario. Si ipotizza inoltre l'implementazione di widget per smartphone o smartwatch per l'inserimento rapido di note vocali o fotografiche.
+
+% =======================CARATTERISTICHE UTENTE================================
+
+\subsection{Caratteristiche dell'utente} \label{sec:caratteristiche_utente}
+A seguito dell'analisi dei potenziali fruitori, il target primario dell'applicazione è stato identificato nelle donne nella fascia d'età compresa tra i 18 e i 30 anni. Tuttavia, il sistema è progettato per accogliere anche utenti esterni interessati a reperire informazioni sul tema.
+
+L'interazione con il sistema varia significativamente in base al contesto d'uso, spaziando dalla ricerca informativa alla necessità di supporto rapido. Si identificano le seguenti tipologie principali di attori:
+
+\begin{itemize}
+    \item \textbf{Utente Target (Donne 18-30 anni):} È l'utilizzatore principale. L'applicativo si configura primariamente come strumento di prevenzione; lo scenario ideale prevede che l'utente interagisca con l'app avendo tempo a disposizione (es. per informarsi o valutare la propria situazione in un contesto di calma apparente).
+    Tuttavia, il sistema deve garantire supporto anche in situazioni di difficoltà e stress (es. potenziale violenza domestica). Va specificato che, in caso di pericolo di vita imminente, si presuppone che la vittima contatti direttamente le autorità (es. 118), bypassando l'applicazione.
+    
+    \item \textbf{Rete di Supporto e Terze Parti:} Questa categoria eterogenea include la cerchia amicale (contatti fidati scelti dall'utente), i professionisti del settore (es. psicologi) e gli utenti esterni. Questi attori interagiscono con il sistema per fornire supporto, ricevere notifiche o, nel caso degli utenti esterni, consultare la sezione informativa dedicata.
+\end{itemize}
+
+In conclusione, il sistema deve essere accessibile a utenti con competenze tecniche variabili, garantendo usabilità sia durante la consultazione approfondita (fase di prevenzione) sia in momenti in cui l'utente necessita di un aiuto rapido e discreto (fase di stress), pur non sostituendosi ai servizi di emergenza primaria.
+
+% =======================DEFINIZIONI, ACRINIMI E ABBREVIAZIONI================================
+
+Al fine di evitare ambiguità relative al linguaggio e ai termini utilizzati all'interno dei documenti formali, viene allegato il \href{https://swe-bitbybit.github.io/SWE-docs/docs/documenti_interni/Glossario.pdf}{\textit{Glossario}}.
+I termini tecnici, gli acronimi e le parole con significato specifico all'interno del progetto sono contrassegnati da una lettera 'G' in apice (es. Agile\textsuperscript{G}) e sono descritti in dettaglio nel documento apposito.
+
+% =======================RIFERIMENTI================================
+
+\subsection{Riferimenti} \label{sec:riferimenti}
+
+\subsubsection{Riferimenti normativi} \label{sec:riferimenti_normativi}
+\begin{itemize}
+    \item Capitolato d'appalto C4: \href{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C4.pdf}{L'app che Protegge e Trasforma}
+    \item \href{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C4.pdf}{Norme di Progetto} \todo{Mettere link corretto alle norme di progetto}
+\end{itemize}
+
+\subsubsection{Riferimenti informativi} \label{sec:riferimenti_informativi}
+\begin{itemize}
+    \item \href{https://ieeexplore.ieee.org/document/720574}{Standard IEEE 830 1998}
+    \item \href{https://www.math.unipd.it/~tullio/IS-1/2009/Approfondimenti/ISO_12207-1995.pdf}{Standard ISO/IEC 12207:1995}
+    \item Slide sull'\href{https://www.math.unipd.it/~tullio/IS-1/2025/Dispense/T05.pdf}{analisi dei requisiti} del Prof. Vardanega
+    \item \href{https://www.math.unipd.it/~rcardin/swea/2022/Diagrammi%20Use%20Case.pdf}{Diagrammi Casi d’Uso} del Prof. Cardin
+    \item \href{https://github.com/rcardin/swe-imdb}{Repository GitHub} del Prof. Cardin
+    \item \href{https://swe-bitbybit.github.io/SWE-docs/docs/documenti_interni/Glossario.pdf}{Glossario}
+\end{itemize}
+
+% =======================================================
+% SEZIONE: CASI D'USO
+% =======================================================
+\clearpage
+\section{Casi d'uso}
+% Qui verranno inseriti i diagrammi UML e le descrizioni
+In questa sezione sono descritti gli attori e i casi d'uso individuati per il sistema.
+
+% Placeholder per le future sottosezioni
+\subsection{Elenco degli attori}
+[Inserire descrizione attori]
+
+\subsection{Elenco dei casi d'uso}
+[Inserire diagrammi e descrizioni]
+
+
+% =======================================================
+% SEZIONE: REQUISITI
+% =======================================================
+\clearpage
+\section{Requisiti}
+In questa sezione vengono elencati i requisiti del sistema, classificati in funzionali, di qualità e di vincolo.
+
+\subsection{Requisiti Funzionali}
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.4} 
+\arrayrulecolor{black}
+% Tabella Requisiti: c=Codice (stretto), X=Descrizione (largo), c=Fonte (stretto)
+\begin{tabularx}{\textwidth}{|c|X|c|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Fonti} \\
+\hline
+\rowcolor{white}
+RF1 & L'utente deve poter effettuare il login tramite credenziali istituzionali. & UC1 \\
+\hline
+\rowcolor{gray!20}
+RF2 & [Inserire requisito funzionale...] & Interno \\
+\hline
+\rowcolor{white}
+RF3 & [Inserire requisito funzionale...] & Capitolato \\
+\hline
+\end{tabularx}
+\end{center}
+
+\subsection{Requisiti di Qualità}
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.4} 
+\arrayrulecolor{black}
+\begin{tabularx}{\textwidth}{|c|X|c|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Fonti} \\
+\hline
+\rowcolor{white}
+RQ1 & Il sistema deve essere corredato di manuale utente. & Capitolato \\
+\hline
+\rowcolor{gray!20}
+RQ2 & [Inserire requisito di qualità...] & Interno \\
+\hline
+\end{tabularx}
+\end{center}
+
+\subsection{Requisiti di Vincolo}
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.4} 
+\arrayrulecolor{black}
+\begin{tabularx}{\textwidth}{|c|X|c|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Fonti} \\
+\hline
+\rowcolor{white}
+RV1 & Il software deve essere sviluppato utilizzando il linguaggio [X]. & Capitolato \\
+\hline
+\rowcolor{gray!20}
+RV2 & [Inserire requisito di vincolo...] & Interno \\
+\hline
+\end{tabularx}
+\end{center}
+
+\subsection{Tracciamento dei Casi d'Uso e Riepilogo}
+% Questa sezione serve solitamente per le matrici di tracciamento (Fonte -> Requisito, Requisito -> Test)
+\paragraph{Matrice Fonte - Requisiti}
+[Inserire tabella di tracciamento]
+
+\paragraph{Riepilogo}
+[Inserire statistiche o grafici riepilogativi dei requisiti]
+
+\end{document}
