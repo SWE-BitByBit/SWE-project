@@ -42,8 +42,7 @@ jobs:
               repo,
               title: issueTitle,
               body: issueBody,
-              assignees: reviewers,
-              labels: ["verifica"]
+              assignees: reviewers
             });
 
             core.setOutput("issue_url", newIssue.data.html_url);
