@@ -43,6 +43,7 @@ jobs:
               title: issueTitle,
               body: issueBody,
               assignees: reviewers
+              labels: ["verifica"]
             });
 
             core.setOutput("issue_url", newIssue.data.html_url);
