@@ -108,7 +108,7 @@
  &  &  &  &  \\
 \hline
 \rowcolor{gray!20}
-0.1.0 & 2025-12-11 & Riccardo Manisi & Creazione file e redazione & Giovanni Visentin \\
+0.1.0 & 2025-12-11 & Riccardo Manisi & Creazione file e redazione & Marco Sanguin \\
 \hline
 \end{tabular}
 \end{center}
@@ -160,7 +160,7 @@
 % ---------- ORDINE DEL GIORNO ----------
 \section{Ordine del Giorno}
 \begin{itemize}
-    \item Revisione bozza dei casi d'uso redatti dai singoli membri del gruppo, quali Dennis Parolin, Giovanni Visentin, Riccardo Manisi. 
+    \item Questa riunione è stata svolta per eseguire un controllo sui casi d'uso trovati in modo da avere i feedback dagli altri analisi. Revisione bozza dei casi d'uso redatti dai singoli membri del gruppo, quali Dennis Parolin, Giovanni Visentin, Riccardo Manisi. 
 \end{itemize}
 
 % ---------- DISCUSSIONI ----------
@@ -170,7 +170,8 @@
     \item Nel walkthrough dopo una prima analisi si è deciso che nelle schermate oltre alle funzionalità già descritte ci debba essere una voce che permetta all'utente di andare a tornare alla schermata precedente del walkthrough.
     \item Secondo l'analisi fatta l'applicazione potrebbe non necessitare di una password per l'account. Ci si riserva la duscussione con l'azienda proponente per definire i dettagli su questo dubbio.
     \item Si è deciso una struttura per i casi d'uso derivati dalla funzionalità di account e impostazioni. Ci deve essere un caso d'uso principale per la schermata delle impostazioni da cui si estendono un numero di estensioni pari al numero di voci presenti nel menu per le impostazioni. Sono state  inoltre identificate le voci principali per il menu delle impostazioni: account, contatti fidati,dead man's switch e modifica permessi di applicazione.
-    \item Durante l'incontro è venuto fuori il problema di come implementare il reset della password per il diario criptato nel momento in cui l'utente non ha ancora eseguito la registrazione al sistema tramite l'email. Questa problematica è derivata dal fatto che l'applicazione può essere utilizzata anche da utenti che vogliono rimanere anonimi e non voglio inserire dati sensibili nell'applicazione.
+    \item Durante l'incontro è venuto fuori il problema di come implementare il reset della password per il diario criptato nel momento in cui l'utente non ha ancora eseguito la registrazione al sistema tramite l'email. Questa problematica è derivata dal fatto che l'applicazione può essere utilizzata anche da utenti che vogliono rimanere anonimi e non voglio inserire dati sensibili nell'applicazione. Le funzionalità devono essere comunque essere accessibili a questa tipologia di utenti. 
+    \item Il gruppo ha concordato di fissare un nuovo incontro con l'azienda proponente per visionare i casi d'uso trovati per avere dei feedback sul lavoro eseguito e per ragionare sulle funzionalità che dovranno essere implementate durante il processo di sviluppo.
 \end{itemize}
 %modifica
 
@@ -186,13 +187,22 @@
 \textbf{Descrizione decisione} & \textbf{Codice decisione} \\
 \hline
 \rowcolor{white}
-Inserire descrizione & VI C 1.1 \\
+Redazione dei casi d'uso sul documento AdR per il walkthorugh dell'applicazione & VI RTB 4.1 \\
 \hline
 \rowcolor{gray!20}
-Inserire descrizione &  VI C 1.2 \\
+Redazione dei casi d'uso sul documento AdR per le impostazioni dell'applicazione  &  VI RTB 4.2 \\
 \hline
 \rowcolor{white}
-Inserire descrizione &  VI C 1.3\\
+Redazione dei casi d'uso per la funzionalità del diario criptato &  VI RTB 4.3\\
+\hline
+\rowcolor{gray!20}
+Redazione dei casi d'uso per la funzionalità del guardiano silenzioso  &  VI RTB 4.4 \\
+\hline
+\rowcolor{white}
+Redazione dei casi d'uso per la funzionalità del detective delle relazioni  &  VI RTB 4.5 \\
+\hline
+\rowcolor{gray!20}
+Contatto con la proponente tramite la chat di google per fissare un incontro  &  VI RTB 4.6 \\
 \hline
 \end{tabular}
 \end{center}
@@ -211,13 +221,43 @@ Dalle discussioni e decisioni intraprese, sono emerse le seguenti attività:
 \textbf{Task} & \textbf{Codice decisione} & \textbf{N°issue GitHub} \\
 \hline
 \rowcolor{white}
-Esempio Task 1 & VI C 1.1 & \href{https://github.com/<repo>/issues/1}{\textbf{issue}} \\
+Inserire su AdR casi d'uso per la visualizzazione della prima pagina del walkthorugh & VI RTB 4.1 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/134}{\textbf{\#134}} \\
 \hline
 \rowcolor{gray!20}
-Esempio Task 2 & VI C 1.2 & \href{https://github.com/<repo>/issues/2}{\textbf{issue}} \\
+Inserire su AdR casi d'uso per scenari alternativi dal caso d'uso principlae del walkthorugh & VI RTB 4.1 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/135}{\textbf{\#135}} \\
 \hline
 \rowcolor{white}
-Esempio Task 3 & VI C 1.3 & \href{https://github.com/<repo>/issues/3}{\textbf{issue}} \\
+Redazione su AdR caso d'uso secondario per lo scenario in cui l'utente seleziona la voce indietro nel walkthrough & VI RTB 4.1 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/136}{\textbf{\#136}} \\
+\hline
+\rowcolor{gray!20}
+Redazione su AdR caso d'uso delle schermate del walkthrough per la modifica delle impostazioni & VI RTB 4.1 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/138}{\textbf{\#138}} \\
+\hline
+\rowcolor{white}
+Inserire su AdR caso d'uso principale per la visualizzazione menu impostazioni & VI RTB 4.2 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/139}{\textbf{\#139}} \\
+\hline
+\rowcolor{gray!20}
+Inserire su AdR caso d'uso secondario per l'inserimento dei contatti fidati & VI RTB 4.2 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/140}{\textbf{\#140}} \\
+\hline
+\rowcolor{white}
+Inserire su AdR caso d'uso secondario per info account & VI RTB 4.2 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/141}{\textbf{\#141}} \\
+\hline
+\rowcolor{gray!20}
+Inserire su AdR caso d'uso secondario per dead man's switch & VI RTB 4.2 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/142}{\textbf{\#142}} \\
+\hline
+\rowcolor{white}
+Inserire su AdR caso d'uso per modifica permessi & VI RTB 4.2 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/143}{\textbf{\#143}} \\
+\hline
+\rowcolor{gray!20}
+Inserire su AdR casi d'uso per il diario criptato & VI RTB 4.3 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/144}{\textbf{\#144}} \\
+\hline
+\rowcolor{white}
+Inserire su AdR casi d'uso per il diario fittizio & VI RTB 4.3 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/145}{\textbf{\#145}} \\
+\hline
+\rowcolor{gray!20}
+Inserire su AdR casi d'uso per la funzionalità guardiano silenzioso & VI RTB 4.4 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/146}{\textbf{\#146}} \\
+\hline
+\rowcolor{white}
+Inserire funzionalità AdR casi d'uso detective delle relazioni & VI RTB 4.5 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/147}{\textbf{\#147}} \\
 \hline
 \end{tabular}
 \end{center}
