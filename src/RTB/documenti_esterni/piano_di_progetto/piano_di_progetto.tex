@@ -18,23 +18,24 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{setspace}
-\usepackage{colortbl}   % Per colorare le celle delle tabelle
-\usepackage{tabularx}   % Per tabelle larghe quanto la pagina
-\usepackage{fancyhdr}   % Per header e footer
-\usepackage{titlesec}   % Per formattare i titoli
+\usepackage{colortbl}% Per colorare le celle delle tabelle
+\usepackage{tabularx}% Per tabelle larghe quanto la pagina
+\usepackage{fancyhdr}% Per header e footer
+\usepackage{titlesec}% Per formattare i titoli
 \usepackage[colorinlistoftodos]{todonotes}
 \usepackage{eurosym}
+\usepackage{tikz}
 
 % Percorsi immagini (aggiusta se necessario)
-\graphicspath{{resources/}{../resources/}{../../resources/}} 
+\graphicspath{{resources/}{../resources/}{../../resources/}}
 
 % Hyperref va sempre caricato per ultimo
 \usepackage{hyperref}
 \hypersetup{
     colorlinks=true,
-    linkcolor=blue,     % Colore link interni (es. indice)
+    linkcolor=blue,% Colore link interni (es. indice)
     filecolor=blue,
-    urlcolor=blue,      % Colore link web
+    urlcolor=blue,% Colore link web
     pdftitle={\TitoloDocumento},
 }
 
@@ -44,12 +45,12 @@
 \definecolor{tableLineEven}{RGB}{255, 255, 255}
 
 % Colori per il grafico a torta (ispirati ai ruoli)
-\definecolor{pieResp}{RGB}{255, 100, 100} % Rosso chiaro
-\definecolor{pieAmm}{RGB}{255, 180, 100}  % Arancione
-\definecolor{pieAnal}{RGB}{255, 255, 100} % Giallo
-\definecolor{pieProg}{RGB}{100, 200, 100} % Verde
-\definecolor{pieDes}{RGB}{100, 200, 255}  % Blu chiaro
-\definecolor{pieVer}{RGB}{200, 100, 255}  % Viola
+\definecolor{pieResp}{RGB}{255, 100, 100}% Rosso chiaro
+\definecolor{pieAmm}{RGB}{255, 180, 100} % Arancione
+\definecolor{pieAnal}{RGB}{255, 255, 100}% Giallo
+\definecolor{pieProg}{RGB}{100, 200, 100}% Verde
+\definecolor{pieDes}{RGB}{100, 200, 255}% Blu chiaro
+\definecolor{pieVer}{RGB}{200, 100, 255}% Viola
 
 % --- DEFINIZIONE COLONNE PERSONALIZZATE ---
 \newcolumntype{L}{>{\raggedright\arraybackslash\bfseries}p{4.5cm}}
@@ -62,8 +63,8 @@
 % 3. IMPOSTAZIONI VISIVE
 % =======================================================
 \geometry{margin=2.5cm}
-\setlength{\parindent}{0pt} % Niente rientro prima riga
-\setstretch{1.2}            % Interlinea 1.2
+\setlength{\parindent}{0pt}% Niente rientro prima riga
+\setstretch{1.2}% Interlinea 1.2
 
 % Definizione colonna 'Y' per tabularx (testo centrato auto-adattante)
 \newcolumntype{Y}{>{\centering\arraybackslash}X}
@@ -87,7 +88,7 @@
 \begin{document}
 
 % --- FRONT PAGE (Loghi e Titoli) ---
-\vspace*{\fill} 
+\vspace*{\fill}
 
 \begin{center}
     \begin{minipage}{0.25\textwidth}
@@ -132,7 +133,7 @@
     {\LARGE \textbf{\TitoloDocumento}}
 \end{center}
 
-\vspace*{\fill} 
+\vspace*{\fill}
 
 % =======================================================
 % REGISTRO DELLE MODIFICHE
@@ -142,12 +143,12 @@
 
 \begin{center}
 \small
-\renewcommand{\arraystretch}{1.4} 
+\renewcommand{\arraystretch}{1.4}
 \arrayrulecolor{black}
 
 \begin{tabularx}{\textwidth}{|c|c|c|X|c|}
 \hline
-\rowcolor{gray!60} 
+\rowcolor{gray!60}
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 \rowcolor{white}
@@ -165,7 +166,7 @@
 % --- INDICE ---
 \clearpage
 \tableofcontents
-\thispagestyle{empty} 
+\thispagestyle{empty}
 \clearpage
 
 % --- ELENCO TABELLE ---
