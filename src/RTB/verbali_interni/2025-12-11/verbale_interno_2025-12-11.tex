@@ -26,7 +26,7 @@
 \geometry{margin=2.5cm}
 % ===== Variabile per il titolo del documento =====
 % ===== DA MODOFICARE =====
-\newcommand{\documenttitle}{Verbale Riunione Numero X } %serve l'ultimo spazio
+\newcommand{\documenttitle}{Verbale interno, riunione 4 - RTB } %serve l'ultimo spazio
 
 
 \setlength{\parindent}{0pt}
@@ -108,13 +108,7 @@
  &  &  &  &  \\
 \hline
 \rowcolor{gray!20}
- &  &  &  & \\
-\hline
-\rowcolor{white}
- &  &  &  & \\
-\hline
-\rowcolor{gray!20}
- &  &  &  &  \\
+0.1.0 & 2025-12-11 & Riccardo Manisi & Creazione file e redazione & Giovanni Visentin \\
 \hline
 \end{tabular}
 \end{center}
@@ -127,12 +121,12 @@
 
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
-\textbf{Redattore:} & XXXX \\
-\textbf{Verificatore:} & XXXX \\
-\textbf{Responsabile:} & XXXX \\
+\textbf{Redattore:} & Riccardo Manisi \\
+\textbf{Verificatore:} & Giovanni Visentin \\
+\textbf{Responsabile:} & Riccardo Manisi \\
 \textbf{Data:} & 23 ottobre 2025 \\
-\textbf{Durata:} & 1h 45m \\
-\textbf{Luogo:} & Padova, Aula 2 \\
+\textbf{Durata:} & 1h 30m\\
+\textbf{Luogo:} & Padova, complesso Paolotti, Aula L036 \\
 \end{tabularx}
 \end{tcolorbox}
 
@@ -141,15 +135,14 @@
 \begin{itemize}
     \item Manisi Riccardo
     \item Parolin Dennis
-    \item Scaggiante Gabriele
     \item Sanguin Marco
     \item Visentin Giovanni
-    \item Ferdinando Fracasso
 \end{itemize}
 
 \textbf{Assenti:}
 \begin{itemize}
-    \item (nessuno)
+    \item Scaggiante Gabriele
+    \item Ferdinando Fracasso
 \end{itemize}
 
 \clearpage
@@ -167,13 +160,17 @@
 % ---------- ORDINE DEL GIORNO ----------
 \section{Ordine del Giorno}
 \begin{itemize}
-    \item %modifica
+    \item Revisione bozza dei casi d'uso redatti dai singoli membri del gruppo, quali Dennis Parolin, Giovanni Visentin, Riccardo Manisi. 
 \end{itemize}
 
 % ---------- DISCUSSIONI ----------
 \section{Discussioni}
 \begin{itemize}
-    \item %modifica
+    \item I componenti del gruppo dopo una lettura dei casi d'uso derivati dalla funzionalità del walkthorugh decisa con l'azienda proponente Miriade srl, hanno deciso, sotto suggerimento di Marco sanguin, di aggiungere nel walkthrough le schermate per la selezione di impostazioni specifiche. Si è deciso che nel walktrough deve esserci già una schermata in cui l'utente può inserire i contatti fidati, la mail per i messaggi di SOS e la password per il diario di bordo.
+    \item Nel walkthrough dopo una prima analisi si è deciso che nelle schermate oltre alle funzionalità già descritte ci debba essere una voce che permetta all'utente di andare a tornare alla schermata precedente del walkthrough.
+    \item Secondo l'analisi fatta l'applicazione potrebbe non necessitare di una password per l'account. Ci si riserva la duscussione con l'azienda proponente per definire i dettagli su questo dubbio.
+    \item Si è deciso una struttura per i casi d'uso derivati dalla funzionalità di account e impostazioni. Ci deve essere un caso d'uso principale per la schermata delle impostazioni da cui si estendono un numero di estensioni pari al numero di voci presenti nel menu per le impostazioni. Sono state  inoltre identificate le voci principali per il menu delle impostazioni: account, contatti fidati,dead man's switch e modifica permessi di applicazione.
+    \item Durante l'incontro è venuto fuori il problema di come implementare il reset della password per il diario criptato nel momento in cui l'utente non ha ancora eseguito la registrazione al sistema tramite l'email. Questa problematica è derivata dal fatto che l'applicazione può essere utilizzata anche da utenti che vogliono rimanere anonimi e non voglio inserire dati sensibili nell'applicazione.
 \end{itemize}
 %modifica
 
