@@ -212,10 +212,202 @@ Per ogni caso d’uso presentato in questo documento viene adottata una struttur
 
 \subsection{Attori}
 Sono qualcosa di esterno al sistema che accede a delle risorse integagendo con il sistema che si sta producendo. Gli attori secondari sono attori passivi. (aggiungimi info se sono necessarie)
-Gli attori rappresentano entità esterne al sistema che interagiscono con esso per raggiungere obiettivi specifici.\\
+Gli attori rappresentano entità esterne al sistema che interagiscono con esso per raggiungere obiettivi specifici.
 
 \subsection{Componenti diagrammi UML}
 
+% ==== ELENCO DEI CASI D'USO TROVATI ====
+\subsection{Lista casi d'uso}
 
+\subsubsection{UC-IMP1 - Visualizzazione schermata impostazioni} \label{sec:UC-IMP1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema mostra la schermata delle impostazioni dell'applicazione
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'utente seleziona la voce delle impostazioni
+        \item Il sistema mostra la schermata delle impostazioni
+    \end{itemize}
+    \item \textbf{Trigger:} L'utente vuole visualizzare le impostazioni dell'applicazione
+\end{itemize}
+
+\subsubsection{UC-IMP2 - Visualizzazione rete di contatti fidati} \label{sec:UC-IMP2}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'utente ha selezionato la voce per visualizzare le impostazioni dell'applicazione
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema mostra la schermata con la lista dei contatti fidati
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'Utente seleziona dal la voce per la visualizzazione dei contatti fidati
+        \item L'utente visualizza la schermata con la lista dei contatti fidati aggiunti $\rightarrow$ vedi \ref{subsec:UC-IMP2.1} 
+    \end{itemize}
+    \item \textbf{Scenario secondario:}
+    \begin{itemize}
+        \item L'utente non ha aggiunto ancora nessun contatto alla propria rete di contatti fidati
+    \end{itemize}
+    \item \textbf{Inclusioni:} \ref{subsec:UC-IMP2.1}
+    \item \textbf{Estensioni:}
+    \item \textbf{Trigger:} L'utente vuole vedere la rete dei contatti fidate aggiunti fin ora
+\end{itemize}
+
+\subsubsection{UC-IMP2.1 - Visualizzazione informazioni contatto fidato} \label{subsec:UC-IMP2.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'utente sta visualizzando la lista dei contatti fidati
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \item Il sistema mostra nella lista dei contatti fidati il nome, il numero di telefono e l'indirizzo email per quel contatto
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Per ogni contatto vengono visualizzate le informazioni relative quali il nome, il numero di telefono e l'indirizzo email
+    \end{itemize}
+    \item \textbf{Trigger:} L'utente vuole visualizzare la propria rete di contatti fidati
+\end{itemize}
+
+\subsubsection{UC-IMP3 - Aggiunta contatto fidato} \label{subsec:UC-IMP3}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'utente ha selezionato la voce per visualizzare le impostazioni dell'applicazione
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Le informazioni del contatto fidato sono memorizzate nel sistema
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'utente seleziona la voce per l'aggiunta del contatto fidato
+        \item L'utente inserisce il nome del contatto fidato $\rightarrow$ \ref{subsec:UC-IMP3.1}
+        \item L'utente inserisce il numero di telefono del contatto fidato $\rightarrow$ \ref{subsec:UC-IMP3.2}
+        \item L'utente inserisce l'indirizzo email del contatto fidato $\rightarrow$ \ref{subsec:UC-IMP3.3}
+        \item L'utente seleziona la voce per il salvataggio fidato nella rete di contatti
+    \end{itemize}
+    \item \textbf{Scenario secondario:}
+    \begin{itemize}
+        \item Il numero di telefono è già presente nelle informazioni di un contatto fidato
+        \item L'indirizzo email è già presente nelle informazioni di un contatto fidato
+    \end{itemize}
+    \item \textbf{Inclusioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-IMP3.1}
+        \item \ref{subsec:UC-IMP3.2}
+        \item \ref{subsec:UC-IMP3.3}
+    \end{itemize}
+    \item \textbf{Estensioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-IMP4}
+    \end{itemize}
+    \item \textbf{Trigger:} L'utente vuole aggiungere un nuovo contatto fidato nella propria rete
+\end{itemize}
+
+\subsubsection{UC-IMP3.1 - Inserimento nome contatto fidato} \label{subsec:UC-IMP3.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'utente ha selezionato la voce per l'aggiunta di un nuovo contatto fidato
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema riceve il nome del contatto fidato che l'utente vuole inserire
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'utente inserisce il nome del contatto fidato da memorizzare
+    \end{itemize}
+    \item \textbf{Trigger:} L'utente vuole inserire un nuovo contatto nella propria rete di contatti fidati
+\end{itemize}
+
+\subsubsection{UC-IMP3.2 - Inserimento numero di telefono contatto fidato} \label{subsec:UC-IMP3.2}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'utente ha selezionato la voce per l'aggiunta di un nuovo contatto fidato
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema riceve il numero di telefono del contatto fidato che l'utente vuole inserire
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'utente inserisce il nome del contatto fidato da memorizzare
+    \end{itemize}
+    \item \textbf{Trigger:} L'utente vuole inserire un nuovo contatto nella propria rete di contatti fidati
+\end{itemize}
+
+\subsubsection{UC-IMP3.3 - Inserimento indirizzo email contatto fidato} \label{subsec:UC-IMP3.3}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'utente ha selezionato dla voce per l'aggiunta di un nuovo contatto fidato
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema riceve l'indirizzo email del contatto fidato che l'utente vuole inserire
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'utente inserisce l'indirizzo email del contatto fidato da memorizzare
+    \end{itemize}
+    \item \textbf{Trigger:} L'utente vuole inserire un nuovo contatto nella propria rete di contatti fidati
+\end{itemize}
+
+\subsubsection{UC-IMP4 - Numero di telefono già presente nel sistema} \label{subsec:UC-IMP4}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item 
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item 
+    \end{itemize}
+    \item \textbf{Scenario secondario:}
+    \item \textbf{Inclusioni:}
+    \item \textbf{Estensioni:}
+    \item \textbf{Trigger:}
+\end{itemize}
+
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore secondario:}
+    \item \textbf{Pre-condizioni:}
+    \item \textbf{Post-condizioni:}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item 
+    \end{itemize}
+    \item \textbf{Scenario secondario:}
+    \item \textbf{Inclusioni:}
+    \item \textbf{Estensioni:}
+    \item \textbf{Trigger:}
+\end{itemize}
 
 \end{document}
