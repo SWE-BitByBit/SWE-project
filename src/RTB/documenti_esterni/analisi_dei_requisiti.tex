@@ -21,14 +21,19 @@
 \usepackage{colortbl}
 \usepackage{hyperref} 
 \usepackage{fancyhdr}
+\usepackage{float} 
+\usepackage{enumitem}
+\usepackage{caption} % <--- AGGIUNTO PER GESTIRE LE DIDASCALIE MANUALI
 \setlength{\headheight}{25pt}
 \setlength{\headsep}{1cm}
 \usepackage{titlesec}
 \geometry{margin=2.5cm}
-% ===== Variabile per il titolo del documento =====
-% ===== DA MODOFICARE =====
-\newcommand{\documenttitle}{Analisi dei requisiti } %serve l'ultimo spazio
 
+% ===== Variabile per il titolo del documento =====
+\newcommand{\documenttitle}{Analisi dei requisiti } 
+
+% Rinomina l'elenco delle tabelle
+\renewcommand{\listtablename}{Indice delle tabelle}
 
 \setlength{\parindent}{0pt}
 \setstretch{1.2}
@@ -37,22 +42,24 @@
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\textcolor{gray}{\documenttitle - BitByBit}}
-\fancyhead[R]{\includegraphics[height=1cm]{solo_logo.jpg}}
+\fancyhead[R]{\includegraphics[height=1cm]{solo_logo.jpg}} 
 \fancyfoot[C]{\thepage}
 
 % ===== Formattazione sezioni =====
 \titleformat{\section}{\Large\bfseries}{\thesection.}{0.5em}{}
 \titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.5em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection}{0.5em}{}
 
 \begin{document}
 
-% ======= HEADER UNIVERSITÀ E GRUPPO CENTRATI VERTICALMENTE =======
-\vspace*{\fill} % --- Spinge verso il basso l'inizio del contenuto
+% ======= HEADER UNIVERSITÀ E GRUPPO =======
+\vspace*{\fill} 
 
 \begin{center}
     \begin{minipage}{0.25\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{logoUni.png}
+        % \includegraphics[width=\linewidth]{logoUni.png} 
+        \rule{\linewidth}{2cm} 
     \end{minipage}
     \hfill
     \begin{minipage}{0.7\textwidth}
@@ -71,7 +78,8 @@
 \begin{center}
     \begin{minipage}{0.25\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{logo.png}
+        % \includegraphics[width=\linewidth]{logo.png} 
+        \rule{\linewidth}{2cm} 
     \end{minipage}
     \hfill
     \begin{minipage}{0.7\textwidth}
@@ -90,132 +98,390 @@
     {\LARGE \textbf{\documenttitle}}
 \end{center}
 
-\vspace*{\fill} % --- Spinge verso l’alto la fine del contenuto, centrando tutto il blocco
+\vspace*{\fill} 
 
-% ---------- REDAZIONE E REVISIONE ----------
+% ---------- REGISTRO MODIFICHE ----------
 \clearpage
-
 \section*{Registro delle modifiche}
 \begin{center}
 \small
 \renewcommand{\arraystretch}{1.2} 
 \arrayrulecolor{black}
+% Nota: Il registro modifiche di solito NON va nell'indice delle tabelle, quindi non metto caption qui
 \begin{tabular}{|c|p{0.11\linewidth}|p{0.21\linewidth}|p{0.23\linewidth}|p{0.21\linewidth}|}
 \hline
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
+\rowcolor{gray!20}
+0.3.0 & 2025-12-12 & Dennis Parolin & Rifatti da zero i casi d'uso riguardanti il benvenuto e walktrhoug (UC-BW) & Marco Sanguin\\
+\hline
 \rowcolor{white}
-0.2.0 & 2025-12-11 & Riccardo Manisi & Aggiunta sezione scopo dei casi d'uso, attori e nomenclatura per casi d'uso & Giovanni Visentin \\
+0.2.0 & 2025-12-11 & Riccardo Manisi & Aggiunta casi d'uso Walkthrough & Giovanni Visentin \\
 \hline
 \rowcolor{gray!20}
 0.1.0 & 2025-12-10 & Riccardo Manisi & Creazione del documento & Giovanni Visentin\\
-\hline
-\rowcolor{white}
- &  &  &  & \\
-\hline
-\rowcolor{gray!20}
- &  &  &  &  \\
 \hline
 \end{tabular}
 \end{center}
 
 \clearpage
 
-% ======= INFO GENERALI =======
-\section*{Informazioni Generali}
-\renewcommand{\arraystretch}{1.3}
-
-\begin{tcolorbox}
-\begin{tabularx}{\textwidth}{@{}l X@{}}
-\textbf{Stato:} & xxx\\
-\textbf{Responsabile:} & \\
-\textbf{Redattore:} & Riccardo Manisi \\
-\textbf{Verificatori:} & Giovanni Visentin \\
-\textbf{Destinatari:} &
-\begin{tabular}[t]{@{}l@{}}
-Miriade srl\\
-Prof. Tullio Vardanega\\
-Prof. Riccardo Cardin\\
-Gruppo BitByBit\\
-\end{tabular}
-\end{tabularx}
-\end{tcolorbox}
-
-\clearpage
-
-\vspace{0.5cm}
-
-\vspace{0.8cm}
-
-% ======= INDICE SU PAGINA DEDICATA =======
-\clearpage
+% ======= INDICE DEI CONTENUTI =======
 \tableofcontents
-\thispagestyle{empty} % senza numero di pagina per l'indice
+\thispagestyle{empty}
+
+\clearpage
+
+% ======= INDICE DELLE TABELLE =======
+\listoftables
+\thispagestyle{empty}
+
 \clearpage
 
 \section{Introduzione}
 
 \subsection{Glossario}
-
 \subsubsection{Nomenclatura casi d'uso}
 \label{subsec:glossario-casi-duso}
-Questa sezione raccoglie i termini tecnici specifici utilizzati nella descrizione dei casi d’uso presenti in questo documento. 
+Questa sezione raccoglie i termini tecnici specifici utilizzati nella descrizione dei casi d’uso.
 
 \begin{center}
 \small
 \arrayrulecolor{black} 
 \begin{longtable}{| m{3cm} | m{0.75\textwidth} |}
 \hline
-\rowcolor{gray!60}
-{\centering \textbf{Termine}\par} &
-{\centering \textbf{Descrizione}\par} \\
-\hline
-\rowcolor{white}
-\centering \textbf{Attore principale} & Attore che interagisce attivamente con il sistema. \\
-\hline
-\rowcolor{gray!20}
-\centering \textbf{Attore secondario} & Coloro che interagiscono passivamente con il sistema. \\
-\hline
-\rowcolor{white}
-\centering \textbf{Pre-condizioni} & Lista di elementi o condizioni che sono necessari affinchè l'utente possa eseguire gli scenari del caso d'uso. \\
-\hline
-\rowcolor{gray!20}
-\centering \textbf{Post-condizioni} & Condizioni che devono essere vere al termine dell'esecuzione del caso d'uso. Descrivono lo stato finale osservabile del sistema dopo la conclusione del caso d’uso.  \\
-\hline
-\rowcolor{white}
-\centering \textbf{Scenario principale} & Sequenza di passi che descrive il flusso standard del caso'uso. Rappresenta l'happy path dell'esecuzione del caso d'uso che conduce al raggiungimento dell'obiettivo fissato. \\
-\hline
-\rowcolor{gray!20}
-\centering \textbf{Scenario secondario} & Sequenza di passi che devia dallo scenario principale a seguito di condizioni particolari. Porta il sistema in condizioni diverse da quelle dello scenario principale. \\
-\hline
-\rowcolor{white}
-\centering \textbf{Inclusioni} & Relazione tra casi d'uso in cui il caso d'uso incluso viene eseguito in modo incondizionato durante i passi del caso d'uso principale. \\
-\hline
-\rowcolor{gray!20}
-\centering \textbf{Estensioni} & Relazione tra casi d'uso in cui il caso d'uso esteso viene eseguito solo quando si verificano le condizioni di estensione definite. \\
-\hline
-\rowcolor{white}
-\centering \textbf{Trigger} & Evento o condizione che avvia l’esecuzione del caso d’uso. \\
-\hline
+\rowcolor{gray!60} \textbf{Termine} & \textbf{Descrizione} \\ \hline
+\rowcolor{white} \textbf{Attore principale} & Attore che interagisce attivamente con il sistema. \\ \hline
+\rowcolor{gray!20} \textbf{Pre-condizioni} & Lista di elementi necessari affinché l'utente possa eseguire il caso d'uso. \\ \hline
+\rowcolor{white} \textbf{Post-condizioni} & Stato finale del sistema dopo la conclusione del caso d’uso. \\ \hline
+\rowcolor{gray!20} \textbf{Scenario principale} & Flusso standard (happy path) che conduce all'obiettivo. \\ \hline
+\rowcolor{white} \textbf{Inclusioni} & Caso d'uso eseguito in modo incondizionato durante il principale. \\ \hline
+\rowcolor{gray!20} \textbf{Estensioni} & Caso d'uso eseguito solo in condizioni particolari. \\ \hline
 \end{longtable}
 \end{center}
 
 \section{Casi d'uso}
 
 \subsection{Scopo}
-Nel processo di analisi, come indicato nel documento delle \href{}{\textbf{Norme di progetto}}, il gruppo BitByBit ha identificato come prima attività l'individuazione dei casi d'uso del sistema. La stesura dei casi d'uso costituisce uno sturumento fondamentale per la successiva individuazione dei requisiti funzionali del sistema, poichè consentono di definire in modo chiaro all'utente come il sistema sarà impiegato per soddisfare specifici obiettivi.\\
-Nello specifico essi rappresentano una descrizione di come il sistema interagisce con i suoi attori per raggiungere un obiettivo specifico.
-Ogni caso d'uso ha uno scenario principale che rappresenta il flusso standard di interazioni e può includere scenari alternativi che fanno arrivare il sistema in uno stato diverso da quello che si identifica nello scenario principale del caso.\\
-Per facilitare la comprensione da parte dei lettori tecnici e non tecnici, alla descrizione in linguaggio naturale, viene anche associato un diagramma UML, che offre una rappresentazione grafica delle interazioni tra attori e sistema.\\
-Per ogni caso d’uso presentato in questo documento viene adottata una struttura uniforme. I termini specifici adottati sono raccolti nella sezione dedicata (\hyperref[nomenclatura-casi-duso]{vedi sezione - da aggiungere -}).
+Descrizione dello scopo dei casi d'uso.
 
 \subsection{Attori}
-Sono qualcosa di esterno al sistema che accede a delle risorse integagendo con il sistema che si sta producendo. Gli attori secondari sono attori passivi. (aggiungimi info se sono necessarie)
-Gli attori rappresentano entità esterne al sistema che interagiscono con esso per raggiungere obiettivi specifici.\\
+Descrizione degli attori.
 
 \subsection{Componenti diagrammi UML}
+Descrizione dei componenti.
 
+% ==========================================
+% ===== NUOVA SEZIONE: LISTA CASI D'USO ====
+% ==========================================
 
+\subsection{Lista casi d'uso}
+
+% DEFINIZIONE TARGET LINK PER UC-BW1
+\phantomsection
+\label{uc:bw1} 
+\subsubsection{UC-BW1 - Esecuzione Walkthrough Interattivo}
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=0.8\textwidth]{resources/UC-BW1.png}
+    \caption{Diagramma del caso d'uso UC-BW1}
+    \label{fig:uc-bw1}
+\end{figure}
+
+\begin{center}
+% AGGIUNTO CAPTIONOF PER L'INDICE
+\captionof{table}{UC-BW1: Esecuzione Walkthrough Interattivo} \label{tab:uc-bw1}
+\small
+\renewcommand{\arraystretch}{1.4} 
+\arrayrulecolor{black}
+\begin{tabularx}{\textwidth}{|p{0.25\textwidth}|X|}
+\hline
+\rowcolor{purple!80} 
+\textcolor{white}{\textbf{Campo}} & \textcolor{white}{\textbf{Descrizione}} \\
+\hline
+\rowcolor{gray!20}
+\textbf{Attori} & \textbf{Utente Generico} \\
+\hline
+\rowcolor{white}
+\textbf{Precondizioni} & 
+\begin{itemize}[nosep, leftmargin=*]
+    \item L’utente non ha mai aperto l’applicazione.
+    \item L’utente non ha ancora visualizzato tutte le pagine del walkthrough.
+\end{itemize}
+\\
+\hline
+\rowcolor{gray!20}
+\textbf{Postcondizioni} & 
+\begin{itemize}[nosep, leftmargin=*]
+    \item L’utente ha visualizzato le funzionalità principali.
+    \item L’utente ha completato le configurazioni iniziali (obbligatorie o facoltative).
+    \item Il sistema mostra la Dashboard principale.
+\end{itemize}
+\\
+\hline
+\rowcolor{white}
+\textbf{Scenario principale} & 
+\begin{itemize}[nosep, leftmargin=*]
+    \item Il sistema mostra la schermata di benvenuto.
+    \item L'utente esegue la profilazione iniziale (Vedi \hyperref[uc:bw1.2]{UC-BW1.2}).
+    \item Il sistema inizia il ciclo di presentazione delle schede informative dell'app.
+    \item L'utente interagisce con la scheda (Vedere i casi \hyperref[uc:bw1.5]{UC-BW1.5}, \hyperref[uc:bw1.6]{UC-BW1.6} e \hyperref[uc:bw1.7]{UC-BW1.7}).
+    \item L'utente naviga verso la scheda successiva (Vedi \hyperref[uc:bw1.3]{UC-BW1.3}) appena ha finito di interagire/leggere la scheda.
+    \item Il sistema chiude il walkthrough e apre la Home Page.
+\end{itemize}
+\\
+\hline
+\rowcolor{gray!20}
+\textbf{Scenario secondario} & 
+\begin{itemize}[nosep, leftmargin=*]
+    \item L'utente decide di tornare alla scheda precedente (Vedi \hyperref[uc:bw1.4]{UC-BW1.4}).
+    \item L'utente decide di saltare il tutorial (Vedi \hyperref[uc:bw1.1]{UC-BW1.1}).
+\end{itemize}
+\\
+\hline
+\rowcolor{white}
+\textbf{Inclusioni} & 
+\begin{itemize}[nosep, leftmargin=*]
+    \item \hyperref[uc:bw1.2]{UC-BW1.2} (Selezione Profilo)
+    \item \hyperref[uc:bw1.3]{UC-BW1.3} (Navigazione Avanti)
+\end{itemize}
+\\
+\hline
+\rowcolor{gray!20}
+\textbf{Estensioni} & 
+\begin{itemize}[nosep, leftmargin=*]
+    \item \hyperref[uc:bw1.1]{UC-BW1.1} (Salta)
+    \item \hyperref[uc:bw1.4]{UC-BW1.4} (Indietro)
+    \item \hyperref[uc:bw1.5]{UC-BW1.5} (Config. Rapida Contatto)
+    \item \hyperref[uc:bw1.6]{UC-BW1.6} (Config. Rapida Email)
+    \item \hyperref[uc:bw1.7]{UC-BW1.7} (Config. Rapida Diario)
+\end{itemize}
+\\
+\hline
+\rowcolor{white}
+\textbf{Trigger} & 
+Primo avvio dell'applicazione.
+\\
+\hline
+\end{tabularx}
+\end{center}
+
+\vspace{0.5cm}
+
+UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso come raffigurato nella seguente immagine:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{resources/sottocasi_UC-BW1.png}
+    \caption{Dettaglio inclusioni ed estensioni del caso d'uso UC-BW1}
+    \label{fig:uc-bw1-detail}
+\end{figure}
+
+\newpage
+
+% ----- SOTTOCASI DI UC-BW1 -----
+
+% DEFINIZIONE TARGET LINK PER UC-BW1.1
+\phantomsection
+\label{uc:bw1.1}
+\subsubsection*{UC-BW1.1: Salta Walkthrough}
+\begin{center}
+\captionof{table}{UC-BW1.1: Salta Walkthrough} \label{tab:uc-bw1.1}
+\small
+\renewcommand{\arraystretch}{1.4} 
+\begin{tabularx}{\textwidth}{|p{0.25\textwidth}|X|}
+\hline
+\rowcolor{gray!60} \textbf{Campo} & \textbf{Descrizione} \\ \hline
+\rowcolor{white} \textbf{Attori} & Utente Generico \\ \hline
+\rowcolor{gray!20} \textbf{Precondizioni} & Il walkthrough è in corso. \\ \hline
+\rowcolor{white} \textbf{Postcondizioni} & Accesso diretto alla Dashboard senza ulteriori configurazioni. \\ \hline
+\rowcolor{gray!20} \textbf{Scenario principale} & 
+\begin{itemize}[nosep, leftmargin=*]
+    \item L'utente seleziona la voce "Salta" durante il walkthrough.
+    \item Il sistema interrompe la presentazione delle schede e apre direttamente la Home Page.
+\end{itemize}
+\\ \hline
+\end{tabularx}
+\end{center}
+
+\vspace{0.3cm}
+
+% DEFINIZIONE TARGET LINK PER UC-BW1.2
+\phantomsection
+\label{uc:bw1.2}
+\subsubsection*{UC-BW1.2: Selezione Profilo}
+\begin{center}
+\captionof{table}{UC-BW1.2: Selezione Profilo} \label{tab:uc-bw1.2}
+\small
+\renewcommand{\arraystretch}{1.4} 
+\begin{tabularx}{\textwidth}{|p{0.25\textwidth}|X|}
+\hline
+\rowcolor{gray!60} \textbf{Campo} & \textbf{Descrizione} \\ \hline
+\rowcolor{white} \textbf{Attori} & Utente Generico \\ \hline
+\rowcolor{gray!20} \textbf{Precondizioni} & Il walkthrough è attivo e sta presentando la scheda di benvenuto. \\ \hline
+\rowcolor{white} \textbf{Postcondizioni} & Il contesto d'uso è salvato e il sistema adatta i testi e i contenuti successivi in base alla scelta. \\ \hline
+\rowcolor{gray!20} \textbf{Scenario principale} & L'utente seleziona l'opzione "Per me" o "Per altri". \\ \hline
+\end{tabularx}
+\end{center}
+
+\vspace{0.3cm}
+
+% DEFINIZIONE TARGET LINK PER UC-BW1.3
+\phantomsection
+\label{uc:bw1.3}
+\subsubsection*{UC-BW1.3: Navigazione Avanti}
+\begin{center}
+\captionof{table}{UC-BW1.3: Navigazione Avanti} \label{tab:uc-bw1.3}
+\small
+\renewcommand{\arraystretch}{1.4} 
+\begin{tabularx}{\textwidth}{|p{0.25\textwidth}|X|}
+\hline
+\rowcolor{gray!60} \textbf{Campo} & \textbf{Descrizione} \\ \hline
+\rowcolor{white} \textbf{Attori} & Utente Generico \\ \hline
+\rowcolor{gray!20} \textbf{Precondizioni} & L'utente sta visualizzando una scheda del walkthrough che non è l'ultima. \\ \hline
+\rowcolor{white} \textbf{Postcondizioni} & Il sistema mostra la scheda successiva. \\ \hline
+\rowcolor{gray!20} \textbf{Scenario principale} & 
+\begin{itemize}[nosep, leftmargin=*]
+    \item L'utente preme "Avanti".
+    \item Il sistema salva eventuali dati parziali inseriti nella pagina corrente.
+    \item Il sistema carica la scheda successiva.
+\end{itemize}
+\\ \hline
+\end{tabularx}
+\end{center}
+
+\vspace{0.3cm}
+
+% DEFINIZIONE TARGET LINK PER UC-BW1.4
+\phantomsection
+\label{uc:bw1.4}
+\subsubsection*{UC-BW1.4: Navigazione Indietro}
+\begin{center}
+\captionof{table}{UC-BW1.4: Navigazione Indietro} \label{tab:uc-bw1.4}
+\small
+\renewcommand{\arraystretch}{1.4} 
+\begin{tabularx}{\textwidth}{|p{0.25\textwidth}|X|}
+\hline
+\rowcolor{gray!60} \textbf{Campo} & \textbf{Descrizione} \\ \hline
+\rowcolor{white} \textbf{Attori} & Utente Generico \\ \hline
+\rowcolor{gray!20} \textbf{Precondizioni} & L'utente sta visualizzando una scheda che non è la prima. \\ \hline
+\rowcolor{white} \textbf{Postcondizioni} & Il sistema mostra la scheda precedente. \\ \hline
+\rowcolor{gray!20} \textbf{Scenario principale} & 
+\begin{itemize}[nosep, leftmargin=*]
+    \item L'utente preme "Indietro".
+    \item Il sistema torna alla scheda precedente.
+\end{itemize}
+ \\ \hline
+\end{tabularx}
+\end{center}
+
+\vspace{0.3cm}
+
+% DEFINIZIONE TARGET LINK PER UC-BW1.5
+\phantomsection
+\label{uc:bw1.5}
+\subsubsection*{UC-BW1.5: Configurazione Rapida Contatto}
+\begin{center}
+\captionof{table}{UC-BW1.5: Configurazione Rapida Contatto} \label{tab:uc-bw1.5}
+\small
+\renewcommand{\arraystretch}{1.4} 
+\begin{tabularx}{\textwidth}{|p{0.25\textwidth}|X|}
+\hline
+\rowcolor{gray!60} \textbf{Campo} & \textbf{Descrizione} \\ \hline
+\rowcolor{white} \textbf{Attori} & Utente Generico \\ \hline
+\rowcolor{gray!20} \textbf{Precondizioni} & 
+\begin{itemize}[nosep, leftmargin=*]
+    \item Il walkthrough è attivo.
+    \item La scheda riguardante la "Rete di Contatti Fidati" è visibile.
+\end{itemize}
+ \\ \hline
+\rowcolor{white} \textbf{Postcondizioni} & Il contatto è salvato in memoria OPPURE nessun contatto è salvato e l'utente è informato. \\ \hline
+\rowcolor{gray!20} \textbf{Scenario principale} & 
+\begin{itemize}[nosep, leftmargin=*]
+    \item L'utente compila i campi presenti nella scheda.
+    \item Il sistema valida e salva il contatto immediatamente.
+\end{itemize}
+ \\ \hline
+\rowcolor{white} \textbf{Scenario secondario} & 
+\begin{itemize}[nosep, leftmargin=*]
+    \item L'utente lascia i campi vuoti e non interagisce.
+    \item L'utente preme "Avanti" (Vedi \hyperref[uc:bw1]{UC-BW1}).
+    \item Il sistema non salva nulla.
+    \item Il sistema mostra un breve avviso "Potrai configurare i contatti più tardi nelle Impostazioni".
+\end{itemize}
+ \\ \hline
+\end{tabularx}
+\end{center}
+
+\vspace{0.3cm}
+
+% DEFINIZIONE TARGET LINK PER UC-BW1.6
+\phantomsection
+\label{uc:bw1.6}
+\subsubsection*{UC-BW1.6: Configurazione Rapida Email}
+\begin{center}
+\captionof{table}{UC-BW1.6: Configurazione Rapida Email} \label{tab:uc-bw1.6}
+\small
+\renewcommand{\arraystretch}{1.4} 
+\begin{tabularx}{\textwidth}{|p{0.25\textwidth}|X|}
+\hline
+\rowcolor{gray!60} \textbf{Campo} & \textbf{Descrizione} \\ \hline
+\rowcolor{white} \textbf{Attori} & Utente Generico \\ \hline
+\rowcolor{gray!20} \textbf{Precondizioni} & 
+\begin{itemize}[nosep, leftmargin=*]
+    \item Il walkthrough è attivo.
+    \item La scheda riguardante la funzionalità di dead man’s switch è visibile.
+\end{itemize}
+ \\ \hline
+\rowcolor{white} \textbf{Postcondizioni} & L'email è salvata OPPURE nessuna email è salvata e l'utente è informato. \\ \hline
+\rowcolor{gray!20} \textbf{Scenario principale} & 
+\begin{itemize}[nosep, leftmargin=*]
+    \item L'utente inserisce la propria email.
+    \item Il sistema valida il formato.
+    \item Il sistema salva l'indirizzo.
+\end{itemize}
+\\ \hline
+\rowcolor{white} \textbf{Scenario secondario} & 
+\begin{itemize}[nosep, leftmargin=*]
+    \item L'utente lascia il campo vuoto.
+    \item Il sistema non salva nulla.
+    \item Il sistema notifica l’utente del fatto che non potrà usare la funzionalità ma che può configurarla nelle impostazioni.
+\end{itemize}
+\\ \hline
+\end{tabularx}
+\end{center}
+
+\vspace{0.3cm}
+
+% DEFINIZIONE TARGET LINK PER UC-BW1.7
+\phantomsection
+\label{uc:bw1.7}
+\subsubsection*{UC-BW1.7: Configurazione Rapida Diario}
+\begin{center}
+\captionof{table}{UC-BW1.7: Configurazione Rapida Diario} \label{tab:uc-bw1.7}
+\small
+\renewcommand{\arraystretch}{1.4} 
+\begin{tabularx}{\textwidth}{|p{0.25\textwidth}|X|}
+\hline
+\rowcolor{gray!60} \textbf{Campo} & \textbf{Descrizione} \\ \hline
+\rowcolor{white} \textbf{Attori} & Utente Generico \\ \hline
+\rowcolor{gray!20} \textbf{Precondizioni} & 
+\begin{itemize}[nosep, leftmargin=*]
+    \item Il walkthrough è attivo.
+    \item La scheda riguardante il "Diario Criptato" è visibile.
+\end{itemize}
+ \\ \hline
+\rowcolor{white} \textbf{Postcondizioni} & Le credenziali sono impostate OPPURE il diario rimane con la password da impostare tramite le Impostazioni. \\ \hline
+\rowcolor{gray!20} \textbf{Scenario principale} & 
+\begin{itemize}[nosep, leftmargin=*]
+    \item L'utente inserisce la Password.
+    \item Il sistema cripta e salva le chiavi di accesso.
+\end{itemize}
+\\ \hline
+\rowcolor{white} \textbf{Scenario secondario} & L'utente non inserisce le password. Quindi il sistema mostra un avviso all'utente informandolo del fatto che potrà impostare la password tramite le Impostazioni. \\ \hline
+\end{tabularx}
+\end{center}
 
 \end{document}
