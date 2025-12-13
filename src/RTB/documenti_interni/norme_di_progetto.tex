@@ -18,8 +18,8 @@
 \usepackage{geometry}
 \usepackage{setspace}
 \usepackage{colortbl}
-\usepackage{hyperref}
 \usepackage{longtable}
+\usepackage{hyperref} 
 \usepackage{fancyhdr}
 \setlength{\headheight}{25pt}
 \setlength{\headsep}{1cm}
@@ -95,6 +95,30 @@
 
 \vspace*{\fill} % --- Spinge verso l’alto la fine del contenuto, centrando tutto il blocco
 
+% ======= INFO GENERALI =======
+\section*{Informazioni Generali}
+\renewcommand{\arraystretch}{1.3}
+
+\begin{tcolorbox}
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\textbf{Stato:} & xxx\\
+\textbf{Responsabile:} & Riccardo Manisi\\
+\textbf{Redattore:} & Riccardo Manisi \\
+\textbf{Verificatori:} & 
+\begin{tabular}[t]{@{}l@{}}
+Dennis Parolin \\
+Marco Sanguin \\
+\end{tabular} \\
+\textbf{Destinatari:} & Gruppo BitByBit\\
+\end{tabularx}
+\end{tcolorbox}
+
+\clearpage
+
+\vspace{0.5cm}
+
+\vspace{0.8cm}
+
 % ---------- REDAZIONE E REVISIONE ----------
 \clearpage
 
@@ -109,12 +133,27 @@
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 \rowcolor{white}
-0.2.1 & 2025-12-02 & Riccardo Manisi & Aggiunta sezioni per processo di configurazione e di gestione. & Marco Sanguin\\
+0.4.1 & 2025-12-11 & Riccardo Manisi & Aggiunta prefazione con info generali del doc & Marco Sanguin\\
+\hline
+\rowcolor{gray!20}
+0.4.0 & 2025-12-10 & Riccardo Manisi & Aggiunta attività di istituzione per Git e GitHub & Marco Sanguin\\
+\hline
+\rowcolor{white}
+0.3.1 & 2025-12-10 & Riccardo Manisi & Corretti errori grammaticali & Marco Sanguin\\
+\hline
+\rowcolor{gray!20}
+0.3.0 & 2025-12-07 & Riccardo Manisi & Aggiunta attività di implementazione nel processo di infrastruttura & Giovanni Visentin\\
+\hline
+\rowcolor{white}
+0.2.0 & 2025-12-02 & Riccardo Manisi & Aggiunta sezioni per processo di configurazione e di gestione. & Marco Sanguin\\
 \hline
 \rowcolor{gray!20}
 0.1.1 & 2025-12-02 & Riccardo Manisi & Sistemati errori lessicali & Marco Sanguin\\
 \hline
 \rowcolor{white}
+0.1.1 & 2025-12-02 & Riccardo Manisi & Sistemati errori lessicali & Marco Sanguin\\
+\hline
+\rowcolor{gray!20}
 0.1.0 & 2025-12-01 & Riccardo Manisi & Creazione del documento. Aggiunto processo di documentazione e bozza per le sezioni successive. & Marco Sanguin \\
 \hline
 \end{tabular}
@@ -545,5 +584,98 @@ L'esito di ogni incontro, interno o esterno, deve essere registrato mediante la 
 
 % ==== SEZIONE GESTIONE DEI PROCESSI ====
 \subsection{Gestione dei processi}
+
+% ==== SEZIONE PROCESSO DI INFRASTRUTTURA ====
+\subsection{Infrastruttura}
+\label{sec:infrastruttura}
+Il processo di infrastruttura ha lo scopo di stabilire e mantenere l'infrastruttura necessaria per eseguire gli altri processi di ciclo di vita.\\L'infrastruttura, che sia hardware o software, comprende strumenti, standard e le strutture per lo sviluppo, il funzionamento e la manutenzione.
+
+\subsubsection{Attività previste}
+Il processo di infrastruttura consiste delle seguenti attività:
+\begin{itemize}
+    \item \textbf{implementazione};
+    \item \textbf{istituzione};
+    \item \textbf{manutenzione}.
+\end{itemize}
+
+\subsubsection{Implementazione}
+L’infrastruttura operativa del progetto viene implementata in modo da soddisfare pienamente i requisiti dei processi che la utilizzano.\\ Ogni tecnologia impiegata viene scelta in base alla sua capacità di supportare efficacemente le attività del ciclo di vita, migliorare la comunicazione tra i membri del team e garantire qualità, tracciabilità e mantenibilità dei prodotti generati.\\La seguente sezione descrive gli strumenti adottati.
+\begin{center}
+\small
+\arrayrulecolor{black} 
+\begin{longtable}{| m{3cm} | m{0.75\textwidth} |}
+\hline
+\rowcolor{gray!60}
+{\centering \textbf{Strumento}\par} &
+{\centering \textbf{Descrizione}\par} \\
+\hline
+\rowcolor{white}
+\centering Whatsapp & Piattaforma di messaggistica istantanea utilizzata per comunicazioni informali che non richiedono tracciamento. Scelta per la rapidità, l’immediatezza e la diffusione tra i membri del team. Facilita il coordinamento veloce su aspetti operativi di basso impatto.\\
+\hline
+\rowcolor{gray!20}
+\centering \textbf{Discord\ap{G}} & Strumento di comunicazione tramite canali vocali e testuali, utilizzato per le riunioni interne che necessitano di tracciamento e organizzazione strutturata. Scelto per la stabilità, la possibilità di creare canali dedicati.\\
+\hline
+\rowcolor{white}
+\centering Google Meet & Piattaforma sincrona per videoconferenze utilizzata negli incontri con l’azienda proponente, in quanto standard scelto dal committente.\\
+\hline
+\rowcolor{gray!20}
+\centering Google Chat & Piattaforma di messaggistica organizzata per stanze e conversazioni strutturate. Proposta dall'azienda proponente come canale asincrono per le comunicazioni.\\
+\hline
+\rowcolor{white}
+\centering \textbf{Git\ap{G}} & Sistema di versionamento distribuito utilizzato per tracciare l’evoluzione del progetto, gestire i rami di sviluppo e mantenere l’integrità dello storico. Scelto per la diffusione nel settore e la capacità di supportare efficacemente lavori collaborativi.\\
+\hline
+\rowcolor{gray!20}
+\centering \textbf{GitHub\ap{G}} & Piattaforma cloud-based di hosting per repository Git, utilizzata per la gestione collaborativa del codice. Scelta per le funzionalità integrate (issue tracking, pull request, branching rules, code review) che supportano il processo di sviluppo.\\
+\hline
+\rowcolor{white}
+\centering \LaTeX & Linguaggio di markup per la produzione di documenti tecnici e accademici. Scelto per l’elevata qualità tipografica e per la possibilità di definire template uniformi, garantendo coerenza e mantenibilità della documentazione.\\
+\hline
+\rowcolor{gray!20}
+\centering Google Mail & Servizio di posta elettronica utilizzato come canale asincrono formale di comunicazione verso l’esterno. Scelto per la sua affidabilità e per l’integrazione con gli altri strumenti Google.\\
+\hline
+\rowcolor{white}
+\centering Google Drive & Spazio di archiviazione cloud utilizzato dal gruppo per raccogliere documenti correlati, appunti delle riunioni, fogli di calcolo in cui il gruppo registra le informazioni informali riguardanti i periodi di Sprint. Scelto per la centralizzazione dei contenuti, l’accessibilità da qualsiasi dispositivo e la possibilità di modifica concorrente.\\
+\hline
+\rowcolor{gray!20}
+\centering Google Sheets & Foglio di calcolo online utilizzato per i dati riguardanti i singoli Sprint e rappresentarli in appositi grafici per una visualizzazione migliore. Scelto per la collaborazione sincrona e la facilità di aggiornamento in tempo reale.\\
+\hline
+\rowcolor{white}
+\centering Google Docs & Editor di testi online per la stesura collaborativa di contenuti non ufficiali come bozze interne per i verbali. Scelto per la semplicità d’uso e la modifica concorrente.\\
+\hline
+\rowcolor{gray!20}
+\centering Google Presentazioni & Strumento per la realizzazione di presentazioni utilizzate nelle esposizioni verso professori e stakeholder. Scelto per la capacità di collaborazione e per i template professionali disponibili.\\
+\hline
+\rowcolor{white}
+\centering Script Python & Script sviluppati per automatizzare attività ricorrenti nel processo, come operazioni di generazione automatica o validazione. Scelti per la flessibilità del linguaggio e la facilità di integrazione con altre tecnologie.\\
+\hline
+\end{longtable}
+\end{center}
+
+\subsubsection{Istituzione}
+La presente attività di \textbf{istituzione dell'infrastruttura} ha lo scopo di documentare la configurazione dell'infrastruttura per facilitarne la manutenzione e la modifica da parte dei membri del gruppo BitByBit.
+
+\paragraph{Discord}
+
+\paragraph{Git}
+Per garantire coerenza operativa tra tutti i membri del team, è previsto un insieme minimo di configurazioni locali che ciascun componente deve applicare al proprio ambiente Git.
+\begin{itemize}
+    \item Ogni membro deve definire il proprio nome e indirizzo e-mail in Git, così che ogni commit sia attribuito in modo univoco e riconoscibile all’interno dello storico del progetto.
+    \item Il membro deve assicurarsi che Git sia correttamente installato nel proprio ambiente, e che sia possibile accedere alla repository remota tramite le chiavi SSH configurate.
+\end{itemize}
+
+\paragraph{GitHub}
+La configurazione del repository è definita per supportare il workflow adottato e garantire qualità, tracciabilità e sicurezza delle modifiche.\\
+Al suo interno è possibile trovare varie directories, di seguito verranno descritte le più rilevanti.
+\begin{itemize}
+    \item \textbf{.github} contiene la configurazione delle automazioni del progetto. Include il file \texttt{CODEOWNERS}, che definisce i responsabili delle diverse directory e consente a GitHub di assegnare automaticamente i revisori per le pull request. Contiene inoltre il file \texttt{latex\_template.txt}, che rappresenta il template comune a tutti i documenti del gruppo BitByBit, e \texttt{template\_pull\_request.md}, il modello utilizzato per la creazione automatica delle pull request.
+    \begin{itemize}
+        \item \textbf{.github/workflows} contiene i workflow GitHub Actions dedicati all’integrazione continua e all’automazione delle attività del repository.
+        \item \textbf{.github/scripts} contiene gli script Python incaricati dell’automazione dei processi, come la compilazione dei file \texttt{.tex} e l’inserimento automatico del template \LaTeX durante la creazione di nuovi documenti.
+    \end{itemize}
+    \item \textbf{website} raccoglie gli elementi necessari alla pubblicazione del sito del progetto, tra cui fogli di stile e risorse grafiche.
+    \item \textbf{resources} funge da archivio centralizzato delle risorse condivise, includendo immagini, loghi e altri materiali comuni utilizzati nel repository.
+    \item \textbf{src} contiene tutti i file sorgente \texttt{.tex}, ovvero il codice \LaTeX prodotto dal gruppo BitByBit, organizzato in sezioni corrispondenti alle diverse fasi del progetto.
+    \item \textbf{docs} replica la struttura della directory \textbf{src}, ma raccoglie i file \texttt{PDF} generati a partire dai documenti \LaTeX.
+\end{itemize}
 
 \end{document}

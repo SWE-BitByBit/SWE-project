@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - '**'
-  workflow_dispatch:
 
 jobs:
   latex-pipeline:
@@ -57,7 +56,9 @@ jobs:
           sudo apt-get install -y --no-install-recommends \
             texlive-latex-extra \
             texlive-fonts-recommended \
+            texlive-fonts-extra \
             texlive-lang-italian \
+            texlive-pictures \
             latexmk
 
       - name: Build modified LaTeX files
