@@ -106,16 +106,16 @@
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 \rowcolor{white}
+0.4.0 & 2025-12-13 & Riccardo Manisi & Aggiunti casi d'uso UC-D1, UC-D2 e UC-D3 & Marco Sanguin \\
+\hline
+\rowcolor{}
 0.3.0 & 2025-12-12 & Riccardo Manisi & Aggiunti casi d'uso per schermata impostazioni (UC-IMP1) e quelli relativi ai contatti fidati  & Giovanni Visentin \\
 \hline
-\rowcolor{gray!20}
+\rowcolor{white}
 0.2.0 & 2025-12-11 & Riccardo Manisi & Aggiunta sezione scopo dei casi d'uso, attori e nomenclatura per casi d'uso & Giovanni Visentin \\
 \hline
-\rowcolor{white}
-0.1.0 & 2025-12-10 & Riccardo Manisi & Creazione del documento & Giovanni Visentin\\
-\hline
 \rowcolor{gray!20}
- &  &  &  &  \\
+0.1.0 & 2025-12-10 & Riccardo Manisi & Creazione del documento & Giovanni Visentin\\
 \hline
 \end{tabular}
 \end{center}
@@ -456,6 +456,237 @@ Gli attori rappresentano entità esterne al sistema che interagiscono con esso p
         \item L'utente seleziona la voce di cancellazione per quel contatto
     \end{itemize}
     \item \textbf{Trigger:} L'utente vuole cancellare un contatto dalla propria rete di contatti fidati
+\end{itemize}
+
+\subsubsection{UC-D1 - Autenticazione per il diario criptato} \label{subsec:UC-D1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'utente ha impostato la password per il diario ciptato
+        \item L'utente non è autenticato al diario criptato
+        \item L’utente ha selezionato la voce per visualizzare il diario criptato
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema mostra all’utente il contenuto del diario criptato
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L’utente inserisce la password per il diario criptato $\rightarrow$ vedi \ref{subsec:UC-D1.1}
+        \item L’utente sceglie la voce per accedere al diario criptato 
+        \item Il sistema mostra all'utente la schermata per il contenuto del diario criptato
+    \end{itemize}
+    \item \textbf{Scenario secondario:}
+    \begin{itemize}
+        \item L’utente inserisce la password errata per il diario criptato $\rightarrow$ vedi \ref{subsec:UC-D1.2}
+    \end{itemize}
+    \item \textbf{Inclusioni:} 
+    \begin{itemize}
+        \item \ref{subsec:UC-D1.1}
+    \end{itemize}
+    \item \textbf{Estensioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-D1.2}
+    \end{itemize}
+    \item \textbf{Trigger:} L’utente vuole visualizzare il contenuto del diario criptato
+\end{itemize}
+
+\subsubsection{UC-D1.1 - Inserimento password per il diario criptato} \label{subsec:UC-D1.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'utente ha impostato la password per il diario ciptato
+        \item L'utente non è autenticato al diario criptato
+        \item L’utente ha selezionato la voce per visualizzare il diario criptato
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema riceve la password con cui l'utente si vuole autenticare
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L’utente procede ad inserire la password per il diario criptato
+    \end{itemize}
+    \item \textbf{Trigger:} L’utente vuole visualizzare il contenuto del diario criptato
+\end{itemize}
+
+\subsubsection{UC-D1.2 - Inserimento password errata per il diario criptato} \label{subsec:UC-D1.2}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'utente ha impostato la password per il diario ciptato
+        \item L'utente non è autenticato al diario criptato
+        \item L'utente ha inserito un password errata
+        \item L'utente ha selezionato la voce per accedere al diario
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema mostra un diario fittizio con delle note su un argomento non sensibile per non destare sospetti sulla vera funzione del diario
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema ha verificato che la password inserita non corrisponde a quella reale
+        \item Il sistema mostra all’utente un diario fittizio
+    \end{itemize}
+    \item \textbf{Trigger:} L’utente vuole visualizzare il contenuto del diario criptato
+\end{itemize}
+
+\subsubsection{UC-D2 - Inserimento nota scritta nel diario criptato} \label{subsec:UC-D2}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L’utente è autenticato nel diario criptato
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema memorizza nel diario criptato una nuova nota scritta e la mostra nel diario criptato
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'utente seleziona la barra per l'inserimento di una nota
+        \item L’utente inserisce il testo per la nuova nota $\rightarrow$ \ref{subsec:UC-D2.1}
+        \item L’utente seleziona la voce per il salvataggio nella barra per l'inserimento della nota $\rightarrow$ \ref{subsec:UC-D2.2}
+    \end{itemize}
+    \item \textbf{Scenario secondario:}
+    \begin{itemize}
+        \item L’utente seleziona la voce “esci” per uscire dal diario senza aver registrato la nota presente nella casella di testo $\rightarrow$ \ref{subsec:UC-D2.3}
+    \end{itemize}
+    \item \textbf{Inclusioni:} 
+    \begin{itemize}
+        \item \ref{subsec:UC-D2.1}
+    \end{itemize}
+    \item \textbf{Estensioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-D2.2}
+        \item \ref{subsec:UC-D2.3}
+    \end{itemize}
+    \item \textbf{Trigger:} L’utente vuole inserire una nuova nota scritta nel diario criptato
+\end{itemize}
+
+\subsubsection{UC-D2.1 - Inserimento testo della nota scritta per diario criptato} \label{subsec:UC-D2.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L’utente è autenticato nel diario criptato 
+        \item L’utente ha selezionato la barra per l’inserimento di una nuova nota
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema riceve la nota che l’utente vuole memorizzare nel diario
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L’utente inserisce il testo per la nuova nota 
+    \end{itemize}
+    \item \textbf{Trigger:} L’utente vuole inserire una nuova nota scritta nel diario criptato
+\end{itemize}
+
+\subsubsection{UC-D2.2 - Salvataggio della nota scritta nel diario di bordo} \label{subsec:UC-D2.2}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L’utente è autenticato nel diario criptato
+        \item L’utente ha inserito del testo nella barra per l’inserimento di una nuova nota
+        \item L'utente ha selezionato la voce per il salvataggio nella barra per l'inserimento della nota
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item La nuova nota viene memorizzata nel sistema e mostrata nel diario criptato
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item La nota viene memorizzata nel sistema
+        \item La nota viene mostrata nel diario criptato
+    \end{itemize}
+    \item \textbf{Trigger:} L’utente vuole salvare nel diario la nota che ha scritto
+\end{itemize}
+
+\subsubsection{UC-D2.3 - Uscita dal diario criptato senza salvataggio delle modifiche} \label{subsec:UC-D2.3}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L’utente è autenticato nel diario criptato
+        \item L’utente ha inserito del testo nella barra per l’inserimento di una nuova nota o ha caricato un media
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema non memoriazza la nota o il media caricato nel diario criptato
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L’utente seleziona la voce per uscire dalla schermata del diario criptato
+        \item Il sistema non memorizza nel diario criptato la nota scritta o il media
+    \end{itemize}
+    \item \textbf{Trigger:} L’utente vuole uscire dalla schermata diario criptato
+\end{itemize}
+
+\subsubsection{UC-D3 - Inserimento media nel diario criptato} \label{subsec:UC-D3}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L’utente è autenticato nel diario criptato
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema memorizza nel diario criptato un media inserito dall'utente
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L’utente seleziona la voce per l’aggiunta di un media
+        \item L’utente carica il media desiderato $\rightarrow$ \ref{subsec:UC-D3.1}
+        \item L’utente seleziona la voce per il salvataggio del media nel diario criptato
+    \end{itemize}
+    \item \textbf{Scenario secondario:}
+    \begin{itemize}
+        \item L’utente seleziona la voce “esci” per uscire dal diario senza aver inserito un media nella barra di inserimento $\rightarrow$ \ref{subsec:UC-D2.3}
+    \end{itemize}
+    \item \textbf{Inclusioni:} 
+    \begin{itemize}
+        \item \ref{subsec:UC-D3.1}
+    \end{itemize}
+    \item \textbf{Estensioni:}
+    \begin{itemize}
+        \item 
+        \item \ref{subsec:UC-D2.3}
+    \end{itemize}
+    \item \textbf{Trigger:} L’utente vuole inserire una nuova nota scritta nel diario criptato
+\end{itemize}
+
+\subsubsection{UC-D3.1 - Inserimento testo della nota scritta per diario criptato} \label{subsec:UC-D3.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L’utente è autenticato nel diario criptato 
+        \item L’utente ha selezionato la voce per l'aggiunta di un media dalla barra di inserimento
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema riceve il media che l’utente vuole memorizzare nel diario
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L’utente sceglie il media che vuole caricare
+        \item L'utente carica il media 
+    \end{itemize}
+    \item \textbf{Trigger:} L’utente vuole inserire una nuovo media nel diario criptato
 \end{itemize}
 
 \end{document}
