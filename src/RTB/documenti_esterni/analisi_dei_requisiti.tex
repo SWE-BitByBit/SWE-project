@@ -11,7 +11,7 @@
     urlcolor=blue,     
 }
 \usepackage{graphicx}
-% Percorsi di ricerca per le immagini
+% Percorsi di ricerca per le immagini (mantenuti per sicurezza, ma usiamo percorsi espliciti sotto)
 \graphicspath{{resources/}{../resources/}{../../resources/}{../../../resources/}{../../../../resources/}}
 \usepackage{xcolor}
 \usepackage{geometry}
@@ -23,6 +23,8 @@
 \usepackage{enumitem} 
 \usepackage{titlesec}
 \usepackage{amssymb} % Per simboli matematici come rightarrow
+\usepackage{tabularx} % Aggiunto per evitare errori se usato nel frontespizio
+\usepackage{tcolorbox} % Aggiunto per il box delle info generali
 
 \setlength{\headheight}{25pt}
 \setlength{\headsep}{1cm}
@@ -38,7 +40,8 @@
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\textcolor{gray}{\documenttitle - BitByBit}}
-\fancyhead[R]{\includegraphics[height=1cm]{solo_logo.jpg}} 
+% FIX IMMAGINE: Percorso relativo esplicito
+\fancyhead[R]{\includegraphics[height=1cm]{../../../resources/solo_logo.jpg}} 
 \fancyfoot[C]{\thepage}
 
 % ===== Formattazione sezioni =====
@@ -117,7 +120,7 @@ Gruppo BitByBit\\
 \end{tabularx}
 \end{tcolorbox}
 
-\vspace*{\fill} % --- Spinge verso l’alto la fine del contenuto, centrando tutto il blocco
+\vspace*{\fill} 
 
 % ==============================================================================
 % ======================= REGISTRO MODIFICHE ===================================
@@ -215,7 +218,8 @@ Descrizione dei componenti.
 
 \begin{figure}[H] 
     \centering
-    \includegraphics[width=0.8\textwidth]{UC-BW1.png}
+    % FIX IMMAGINE: Percorso relativo esplicito
+    \includegraphics[width=0.8\textwidth]{../../../resources/UC-BW1.png}
     \caption{Diagramma del caso d'uso UC-BW1}
     \label{fig:uc-bw1}
 \end{figure}
@@ -276,7 +280,8 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso come raffigurato nel
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{sottocasi_UC-BW1.png}
+    % FIX IMMAGINE: Percorso relativo esplicito
+    \includegraphics[width=0.9\textwidth]{../../../resources/sottocasi_UC-BW1.png}
     \caption{Dettaglio inclusioni ed estensioni del caso d'uso UC-BW1}
     \label{fig:uc-bw1-detail}
 \end{figure}
