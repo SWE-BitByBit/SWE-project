@@ -39,6 +39,7 @@
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\textcolor{gray}{\documenttitle - BitByBit}}
+\fancyhead[R]{\includegraphics[height=1cm]{solo_logo.jpg}}
 %\fancyhead[R]{\includegraphics[height=1cm]{solo_logo.jpg}}
 \fancyfoot[C]{\thepage}
 
@@ -95,12 +96,13 @@
 \vspace*{\fill} % --- Spinge verso l’alto la fine del contenuto, centrando tutto il blocco
 
 % ======= INFO GENERALI =======
-\section*{Informazioni Generali}
 \renewcommand{\arraystretch}{1.3}
+\vspace{0.1cm}
 
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & xxx\\
+\textbf{Versione:} & XXXX \\
 \textbf{Responsabile:} & Riccardo Manisi\\
 \textbf{Redattore:} & Riccardo Manisi \\
 \textbf{Verificatori:} & 
@@ -112,11 +114,7 @@ Marco Sanguin \\
 \end{tabularx}
 \end{tcolorbox}
 
-\clearpage
-
-\vspace{0.5cm}
-
-\vspace{0.8cm}
+\vspace*{\fill} % --- Spinge verso l’alto la fine del contenuto, centrando tutto il blocco
 
 % ---------- REDAZIONE E REVISIONE ----------
 \clearpage
@@ -126,22 +124,28 @@ Marco Sanguin \\
 \small
 \renewcommand{\arraystretch}{1.2} 
 \arrayrulecolor{black}
-\begin{tabular}{|c|p{0.11\linewidth}|p{0.21\linewidth}|p{0.23\linewidth}|p{0.21\linewidth}|}
+\begin{tabular}{|c|c|p{0.21\linewidth}|p{0.23\linewidth}|c|}
 \hline
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 \rowcolor{white}
-0.3.1 & 2025-12-11 & Riccardo Manisi & Aggiunta prefazione con info generali del doc & Marco Sanguin\\
+0.4.1 & 2025-12-11 & Riccardo Manisi & Aggiunta prefazione con info generali del doc & Marco Sanguin\\
 \hline
 \rowcolor{gray!20}
-0.3.0 & 2025-12-10 & Riccardo Manisi & Aggiunta attività di istituzione per Git e GitHub & Marco Sanguin\\
+0.4.0 & 2025-12-10 & Riccardo Manisi & Aggiunta attività di istituzione per Git e GitHub & Marco Sanguin\\
 \hline
 \rowcolor{white}
-0.2.1 & 2025-12-10 & Riccardo Manisi & Corretti errori grammaticali & Marco Sanguin\\
+0.3.1 & 2025-12-10 & Riccardo Manisi & Corretti errori grammaticali & Marco Sanguin\\
 \hline
 \rowcolor{gray!20}
-0.2.0 & 2025-12-07 & Riccardo Manisi & Aggiunta attività di implementazione nel processo di infrastruttura & Giovanni Visentin\\
+0.3.0 & 2025-12-07 & Riccardo Manisi & Aggiunta attività di implementazione nel processo di infrastruttura & Giovanni Visentin\\
+\hline
+\rowcolor{white}
+0.2.0 & 2025-12-02 & Riccardo Manisi & Aggiunta sezioni per processo di configurazione e di gestione. & Marco Sanguin\\
+\hline
+\rowcolor{gray!20}
+0.1.1 & 2025-12-02 & Riccardo Manisi & Sistemati errori lessicali & Marco Sanguin\\
 \hline
 \rowcolor{white}
 0.1.1 & 2025-12-02 & Riccardo Manisi & Sistemati errori lessicali & Marco Sanguin\\
@@ -400,9 +404,180 @@ I verificatori sono tenuti a controllare che i documenti di ciclo di vita del pr
 
 % ==== PROCESSO DI GESTIONE DELLA CONFIGURAZIONE ====
 \subsection{Processo di gestione della configurazione}
+Il processo di gestione della configurazione ha l’obiettivo di applicare procedure per garantire il controllo sistematico degli artefatti prodotti dal gruppo \textit{BitByBit} durante l’intero ciclo di vita del software. \\ Esso permette di tracciare le modifiche apportate agli elementi di configurazione, garantendo che ogni componente venga rilasciato in modo coerente e dopo le opportune verifiche. Inoltre, consente di registrare, classificare e monitorare le richieste di modifica, assicurando che i prodotti di lavoro risultino completi, coerenti e corretti. Infine, supporta una gestione ordinata degli elementi approvati, curandone l’archiviazione, la conservazione e la distribuzione.
+
+\subsubsection{Strumenti a supporto}
+Per le attività previste, il gruppo BitByBit utilizza gli stumenti elencati di seguito.
+\begin{itemize}
+    \item \textbf{GitHub}: piattaforma per il versionamento, la gestione dei repository, delle \textbf{issue\ap{G}}, delle \textbf{pull request\ap{G}} e dei flussi di lavoro collaborativi mediante GitHub Projects e Teams. È inoltre il punto ufficiale di archiviazione degli artefatti approvati.
+    \item \textbf{GitHub Actions}: utilizzate per automatizzare la compilazione dei documenti in \LaTeX{} e garantire la validazione continua del repository.
+    \item \textbf{Branch protection rules}: utilizzate per impedire modifiche non autorizzate sul branch principale e garantire che ogni integrazione avvenga secondo le regole di verifica previste dal gruppo.
+\end{itemize}
+
+\subsubsection{Implementazione di processo}
+Le attività principali del processo di gestione della configurazione sono:
+\begin{itemize}
+    \item \textbf{identificazione della configurazione}, viene definito uno schema uniforme di versionamento e naming, per identificare ogni componente del sistema;
+    \item \textbf{controllo della configurazione}, metodologie per stabilire l'identificazione, l'approvazione o rifiuto, la verifica e l'eventuale rilascio delle change request; 
+    \item \textbf{registro di stato}, per predisporre registri di gestione e report di stato che mostrino lo stato e la cronologia degli elementi software;
+    \item \textbf{valutazione della configurazione}, come determinare la completezza funzionale e fisica delle componenti software con i loro requisiti.
+\end{itemize}
+
+\subsubsection{Identificazione della configurazione}
+Per il versionamento viene adottato il \textbf{Semantic Versioning (SemVer\ap{G})}.  
+Ogni documento riporta una versione nel formato:
+\begin{center}
+\texttt{X.Y.Z}
+\end{center}
+dove:
+\begin{itemize}
+    \item \textbf{X (major)}: incrementata solo alla pubblicazione ufficiale, corrispondente al merge sul branch \texttt{main};
+    \item \textbf{Y (minor)}: incrementata quando vengono effettuare modifiche sostanziali alla struttura o al contenuto del documento;
+    \item \textbf{Z (patch)}: incrementata con correzioni minori, refusi o chiarimenti senza impatto tecnico.
+\end{itemize}
+Ogni documento di ciclo di vita presenta uno storico delle modifiche con associata la precisa versione.
+Questa scelta permette una chiara tracciabilità chiara, prevedibilità delle modifiche ed evoluzione controllata degli artefatti documentali.
+
+\paragraph{Aggiunta dei tag}
+Al termine del processo di revisione, quando una \textbf{pull request\ap{G}} viene approvata dai verificatori e successivamente chiusa dal \textbf{responsabile\ap{G}}, viene generato un commit di merge che rappresenta la versione consolidata delle modifiche introdotte nel branch \texttt{develop}.\\Poiché questo commit costituisce il punto di riferimento ufficiale per la versione del documento o dell’artefatto modificato, il responsabile – oppure, se previsto, una GitHub Action – deve applicare un tag che identifichi formalmente la nuova versione.
+
+Il formato per il tag sul branch \texttt{develop} è il seguente:
+\begin{center}
+    \texttt{sigla\_del\_documento-X.Y.Z}
+\end{center}
+dove \texttt{sigla\_del\_documento} fa riferimento alle convenzioni di scrittura presenti nel processo di documentazione (vedi sezione 3.1). Invece, \texttt{X.Y.Z} indica la versione con cui il documento entra ufficialmente nel repository, dopo la verifica e la validazione eseguite dalle figure del team adibite a questi compiti.
+Dopo il merge da develop a main si applica il tag della baseline alla commit risultante rispettando il formato seguente:
+\begin{center}
+    \texttt{sigla\_della\_baseline-X.Y.Z}
+\end{center}
+
+\subsubsection{Controllo della configurazione}
+ Il controllo della configurazione definisce le modalità con cui il gruppo gestisce, valuta e approva tutte le modifiche agli elementi configurabili del progetto.\\ L’intero ciclo di lavoro è organizzato secondo la pratica del feature branching, in cui per ogni modifica deve essere aperto un branch di \texttt{feature} seguendo la nomenclatura esposta in sezione (da aggiungere).
+
+\paragraph{Gestione issue e pianificazione del lavoro}
+Ogni modifica nasce dall’apertura di una \textbf{issue GitHub\ap{G}}, che costituisce il punto di riferimento per la tracciabilità dell’attività.\\ Al momento della creazione, la \textbf{issue\ap{G}} deve essere dotata di un titolo descrittivo e di una spiegazione chiara dell’obiettivo. Il responsabile assegna inoltre priorità, milestone, iterazione (che corrisponde allo sprint in cui l’attività deve essere completata) e l’assegnatario, selezionato in base al ruolo che il membro ricopre in quel momento. Label aggiuntive consentono una categorizzazione accurata del lavoro.\\ La pianificazione complessiva è supportata dalle \textbf{GitHub Project Board\ap{G}}, che permettono di consultare \textbf{product backlog\ap{G}} e \textbf{sprint backlog\ap{G}} tramite viste personalizzate, semplificando la gestione dei carichi di lavoro e l’avanzamento delle attività.
+
+\paragraph{Creazione della pull request}
+Una volta completata l’attività descritta nella \textbf{issue GitHub\ap{G}}, il membro incaricato apre una \textbf{pull request\ap{G}} dal branch di feature al \texttt{branch develop}.\\ Ogni \textbf{pull request\ap{G}} deve utilizzare il template comune del gruppo, che contiene le sezioni necessarie per descrivere contesto, modifiche introdotte, issue collegate e controlli effettuati. La descrzione del template presente nel file \texttt{pull\_request\_template.md}, deve essere compilato e adattato ogni volta, così da velocizzare il lavoro di revisione e rendere uniformi tutte le richieste. Il membro deve indicare tramite il campo \texttt{Reviewers} il singolo membro incaricato del compito di verificare quella modifica.
+
+\paragraph{Verifica e revisone della pull request}
+All'apertura della \textbf{pull request\ap{G}} viene richiesta automaticamente la verifica ai membri del team verificatori:
+\begin{itemize}
+    \item se la verifica produce esito positivo, la \textbf{pull request\ap{G}} viene approvata dal verificatore incaricato;
+    \item se sono presenti dei problemi o miglioramenti da applicare, il verificatore richiede delle modifiche, tramite l'opzione di \textbf{GitHub\ap{G}} \texttt{request changes}, aggiungendo un commento di quello che è il problema trovato e di una possibile soluzione se è presente. Successivamente la persona che ha aperto la \textbf{pull request\ap{G}} si impegna a eseguire le correzioni e a notificare il completamento dell'azione per avere una verifica il prima possibile.
+\end{itemize}
+
+\paragraph{Integrazione nella baseline}
+Quando la \textbf{pull request\ap{G}} viene approvata del \textbf{verificatore\ap{G}}, il responsabile esegue la revisione. Si impegna ad eseguire il merge nel branch \texttt{develop}. A questo punto, la modifica entra ufficialmente in \textbf{baseline\ap{G}} e diventa parte del progetto.
+
+\subsubsection{Registro dello stato della configurazione}
+Lo stato aggiornato degli elementi di configurazione è tracciato tramite:
+\begin{itemize}
+    \item le issue aperte, in corso e chiuse;
+    \item le milestone attive e completate;
+    \item la cronologia delle pull request;
+    \item le versioni ufficiali dei documenti pubblicate sul branch \texttt{main}.
+\end{itemize}
+GitHub Projects funge da registro organizzato delle attività, offrendo una rappresentazione visiva dello stato corrente.
+
+\subsubsection{Valutazione della configurazione}
+L'\textbf{attività di valutazione della configurazione} ha lo scopo di garantire che gli elementi software sviluppati siano completi, coerenti e conformi ai \textbf{requisiti approvati}.\\Il gruppo BitByBit assicura tale controllo attraverso un tracciamento sistematico dei requisiti, che consente di collegare ogni modifica e ogni componente alla motivazione tecnica o funzionale che la giustifica. Durante lo sviluppo, i membri si impegnano inoltre a mantenere una chiara corrispondenza tra codice e requisiti, anche tramite annotazioni e riferimenti interni.\\La valutazione viene svolta in modo continuativo, non solo nelle fasi conclusive, così da individuare rapidamente deviazioni dal design e garantire che:
+\begin{itemize}
+    \item tutti i requisiti software siano effettivamente soddisfatti;
+    \item non vengano introdotti comportamenti non richiesti;
+    \item ogni parte del sistema risulti coerente con l’architettura definita.
+\end{itemize}
 
 % ==== SEZIONE PROCESSI ORGANIZZATIVI ====
 \section{Processi organizzativi del ciclo di vita}
+I processi organizzativi di ciclo di vita rappresentano l’insieme delle attività che il gruppo BitByBit ha scelto di adottare per strutturare e supportare in modo sistematico tutti i propri progetti.\\
+Questi processi forniscono un quadro stabile entro cui i progetti vengono sviluppati e permettono di mantenere strumenti, procedure e competenze costantemente aggiornati. Allo stesso tempo, l’esperienza maturata nei progetti può portare all’introduzione di miglioramenti nei processi stessi, contribuendo così all’evoluzione dell’intera organizzazione.\\
+Nelle presenti \textit{Norme di Progetto}, i processi organizzativi sono suddivisi nelle seguenti categorie, che verranno approfondite nelle sezioni successive:
+\begin{itemize}
+    \item \textbf{Gestione di processo};
+    \item \textbf{Infrastruttura};
+    \item \textbf{Processo di miglioramento};
+    \item \textbf{Processo di formazione}.
+\end{itemize}
+
+\subsection{Gestione dei processi}
+Il processo di \textbf{gestione dei processi} definisce le attività organizzative necessarie per pianificare, coordinare e monitorare il lavoro del gruppo. Esso stabilisce i compiti da svolgere, i ruoli incaricati di eseguirli e le modalità di comunicazione interna ed esterna.\\
+L’obiettivo è garantire che le attività procedano in modo efficace e controllato.
+
+\subsubsection{Strumenti a supporto}
+Il gruppo \textit{BitByBit} utilizza le funzionalità delle \textbf{GitHub Organizations} per organizzare il lavoro e gestire i ruoli (vedi Sezione - da aggiunggere-). Ogni team corrisponde a un ruolo specifico e include solo i membri incaricati in quel periodo, facilitando la rotazione programmata dei ruoli.\\
+Sul branch principale (\texttt{main}) solo i membri del team dei Responsabili possono eseguire push o merge, mentre tutti gli altri membri propongono modifiche tramite \textbf{pull request\ap{G}}. La funzione \texttt{CODEOWNERS} assegna automaticamente ai Verificatori la responsabilità di revisione dei documenti, garantendo che tutte le modifiche rispettino il workflow e i controlli qualitativi previsti.\\
+Questa configurazione assicura una chiara separazione dei ruoli, un flusso di modifica strutturato e un efficace supporto automatizzato alla gestione della configurazione.
+
+\subsubsection{Implementazione di processo}
+Le attività previste dal processo di gestione dei processi sono articolate come segue.
+\begin{itemize}
+    \item \textbf{Inizializzazione e definizione degli ambiti}, il \textbf{responsabile\ap{G}} del progetto assieme ai membri del team identifica i requisiti per l'attività da svolgere.Si procede poi alla valutazione della fattibilità verificando disponibilità delle risorse, adeguatezza delle competenze e tempistiche.
+    \item \textbf{Pianificazione}, si definisce il piano operativo del processo, includendo la descrizione delle attività, i prodotti software da generare e la stima dei tempi necessari. Il piano specifica inoltre risorse richieste, assegnazione delle responsabilità, analisi dei rischi, misure di qualità da adottare, costi stimati e infrastruttura di supporto.
+    \item \textbf{Esecuzione e controllo}, le attività pianificate vengono attuate. Il \textbf{responsabile\ap{G}} di processo produce report periodici sullo stato di avanzamento, destinati sia all’uso interno sia all’acquirente. Il responsabile monitora l’aderenza al piano e interviene per risolvere eventuali scostamenti.
+    \item \textbf{Revisione e valutazione}, perché un prodotto entri in \textbf{baseline\ap{G}}, le modifiche apportate devono essere prima verificate da un \textbf{verificatore\ap{G}} (si veda Sezione ?) e successivamente revisionate dal \textbf{responsabile\ap{G}}. Quest’ultimo accerta che i prodotti software e i piani risultino conformi ai requisiti stabiliti, valutando l’esito dei compiti completati e garantendo qualità e coerenza con gli obiettivi del processo.
+    \item \textbf{Chiusura}, al completamento delle attività e dei prodotti previsti, si verifica che i criteri concordati con l’acquirente siano soddisfatti. Il \textbf{responsabile\ap{G}} controlla la completezza dei risultati e dei report.
+\end{itemize}
+
+\subsubsection{Ruoli}
+\begin{center}
+\small
+\arrayrulecolor{black} 
+\begin{longtable}{| m{3cm} | m{0.75\textwidth} |}
+\hline
+\rowcolor{gray!60} 
+{\centering \textbf{Ruoli}} &
+{\centering \textbf{Compiti e responsabilità}} \\
+\hline
+\rowcolor{white}
+\centering Responsabile & È la figura che nel momento governa il team. Identifica le attività che sono state eseguite nello spint terminato e quelle che non sono state portate a termine. Durante l'evento di sprint planning stabilisce ed inisrisce nello Sprint Backlog le attività da eseguire nello sprint successivo, individuando i costi, i rischi e i membri del gruppo in base ai loro ruoli. Rappresenta il gruppo all'esterno, interfacciandosi con gli enti esterni quali i professori e l'azienda proponente.    \\
+\hline
+\rowcolor{gray!20}
+\centering Amministratore & È l'amministratore di sistema (Sys Admin), si occupa della gestione dell'infrastruttura utilizzata per eseguire le attività dei processi di ciclo di vita. Ha il compito di inserire nell'infrastruttura gli strumenti e le tecnologie per l'attuazione del Way of Working. Deve accertarsi che l'infrastruttura si trovi in uno stato stabile e qiuindi risolvere eventuali problematiche che possono derivarne. Deve redigere il presente documento.\\
+\hline
+\rowcolor{white}
+\centering Analisita & Il compito dell'analista è quello di identificare i requisiti del progetto, interpretando le necessità degli utenti finali in modo da ottenere una corretta definizione delle funzionalità richieste. Ha il compito di redigere il documento di analisi dei requisiti \\
+\hline
+\rowcolor{gray!20}
+\centering Progettista & Il ruolo di progettista si occupa di tradurre i requisiti identificati dagli analisti in qualcosa di implementabile, e ne supervisiona l'implementazione da parte dei programmatori. \\
+\hline
+\rowcolor{white}
+\centering Programmatore & È la persona cui spetta il compito di tradurre le unità di design in codice funzionante. In concomitanza con il codice deve anche implementare i test automatici per la verifica del corretto funzionamento del codice.\\
+\hline
+\rowcolor{gray!20}
+\centering Verificatore & Ha il compito di assicurarsi che le attività vengano svolte correttamente seguendo i processi di ciclo di vita. Si occupa di eseguire test approfonditi e revisioni sul software. Ha il compito di verificare le modifiche apportate ai vari documenti ed eventualemente esponendo le criticità che presentano, deve perciò avere un'approfondita conoscenza dei requisiti per ogni processo di vita.\\
+\hline
+\end{longtable}
+\end{center}
+
+\subsubsection{Struttura teams GitHub}
+L’organizzazione interna del gruppo (si veda sezione 4.1) è stata implementata tramite la funzione nativa di \textbf{GitHub Teams\ap{G}} di \textbf{GitHub\ap{G}}, che consente di suddividere i membri in sotto–gruppi corrispondenti ai ruoli previsti dal progetto (si veda Sezione 4.1.3). Ogni ruolo forma un team composto da uno a più membri, così da distribuire responsabilità e carico di verifica.\\
+Le figure che interessano le \textbf{pull request\ap{G}} sono principlamente due:
+\begin{itemize}
+    \item \textbf{verificatori\ap{G}}, scelti tra i membri del team con responsabilità di verifica in quello sprint, devono controllare la correttezza formale delle modifiche;
+    \item \textbf{responsabile\ap{G}}, una volta ottenuta l’approvazione dei verificatori, è incaricato di completare l’operazione di merge sul \texttt{branch main} nel rispetto delle regole di protezione del branch.
+\end{itemize}
+Questa struttura garantisce che ogni modifica venga validata da più persone e che il processo rispetti il processo di qualità (si veda sezione - da aggiungere-).
+
+\subsubsection{Coordinamento}
+Il coordinamento del gruppo è garantito attraverso riunioni periodiche, interne ed esterne, finalizzate a mantenere un allineamento continuo sullo stato dei lavori, sui problemi emersi e sulle decisioni organizzative che emergono in fase di lavoro.
+\paragraph{Riunioni}
+Le riunioni previste dal processo di gestione dei processi sono suddivise in due categorie principali:
+\begin{itemize}
+    \item \textbf{Interne}: si svolgono tra i soli membri del gruppo e hanno luogo principalmente su \textbf{Discord\ap{G}}. Ogni \textbf{Sprint\ap{G}} ha una durata di due settimane e prevede tre incontri:
+    \begin{itemize}
+        \item uno a fine \textbf{Sprint\ap{G}}, comprendente \textbf{Sprint Review\ap{G}}, \textbf{Sprint Retrospective\ap{G}} e \textbf{Sprint Planning\ap{G}}. In questa sede il \textbf{Responsabile} verifica lo stato delle attività concluse, analizza eventuali problemi riscontrati e pianifica il lavoro del successivo \textbf{Sprint\ap{G}};
+        \item due durante lo svolgimento dello \textbf{Sprint\ap{G}}, in cui venogono trattati i temi dell'ordine del giorno e ciascun membro espone le attività completate, quelle ancora in corso e le difficoltà incontrate.
+    \end{itemize}
+    Per ogni riunione vengono assegnati specifici ruoli:
+    \begin{itemize}
+        \item \textbf{Scriba}: i membri incaricati di prendere appunti durante gli incontri;
+        \item \textbf{Portavoce}: identificato nel \textbf{responsabile\ap{G}}, che modera e coordina la discussione;
+        \item \textbf{Redattore}: responsabile della stesura del verbale e del caricamento nel \textbf{repository\ap{G}}.
+    \end{itemize}
+    \item \textbf{Esterne}: coinvolgono anche figure esterne quali i docenti o l'azienda proponente \textbf{Miriade Srl}. Queste riunioni vengono svolte generalmente tramite \textbf{Google Meet\ap{G}}. La frequenza concordata è di un incontro al mese, con la possibilità di richiederne ulteriori qualora fossero necessari chiarimenti o approfondimenti specifici.
+\end{itemize}
+L'esito di ogni incontro, interno o esterno, deve essere registrato mediante la redazione di un verbale, secondo le modalità previste dal processo di documentazione (vedi sezione -da aggiungere-). 
 
 % ==== SEZIONE GESTIONE DEI PROCESSI ====
 \subsection{Gestione dei processi}
