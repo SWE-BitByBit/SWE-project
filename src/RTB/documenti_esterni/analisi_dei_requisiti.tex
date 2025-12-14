@@ -20,16 +20,16 @@
 \usepackage{setspace}
 \usepackage{longtable}
 \usepackage{colortbl}
-\usepackage{hyperref} 
 \usepackage{fancyhdr}
-\setlength{\headheight}{25pt}
-\setlength{\headsep}{1cm}
+\usepackage{float} 
+\usepackage{enumitem} 
+\usepackage{titlesec}
+\usepackage{amssymb} 
 \usepackage{titlesec}
 \geometry{margin=2.5cm}
-% ===== Variabile per il titolo del documento =====
-% ===== DA MODOFICARE =====
-\newcommand{\documenttitle}{Analisi dei requisiti } %serve l'ultimo spazio
 
+% ===== Variabile per il titolo del documento =====
+\newcommand{\documenttitle}{Analisi dei requisiti } 
 
 \setlength{\parindent}{0pt}
 \setstretch{1.2}
@@ -45,11 +45,15 @@
 % ===== Formattazione sezioni =====
 \titleformat{\section}{\Large\bfseries}{\thesection.}{0.5em}{}
 \titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.5em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection}{0.5em}{}
 
 \begin{document}
 
-% ======= HEADER UNIVERSITÀ E GRUPPO CENTRATI VERTICALMENTE =======
-\vspace*{\fill} % --- Spinge verso il basso l'inizio del contenuto
+% ==============================================================================
+% ========================== FRONT PAGE ========================================
+% ==============================================================================
+
+\vspace*{\fill} 
 
 \begin{center}
     \begin{minipage}{0.25\textwidth}
@@ -100,7 +104,7 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & In corso\\
-\textbf{Versione:} & XXXX \\
+\textbf{Versione:} & 0.7.0 \\
 \textbf{Responsabile:} & \\
 \textbf{Redattori:} & Riccardo Manisi, Dennis Parolin \\
 \textbf{Verificatori:} & Giovanni Visentin, Marco Sanguin \\
@@ -114,11 +118,12 @@ Gruppo BitByBit\\
 \end{tabularx}
 \end{tcolorbox}
 
-\vspace*{\fill} % --- Spinge verso l’alto la fine del contenuto, centrando tutto il blocco
+\vspace*{\fill} 
 
-% ---------- REDAZIONE E REVISIONE ----------
+% ==============================================================================
+% ======================= REGISTRO MODIFICHE ===================================
+% ==============================================================================
 \clearpage
-
 \section*{Registro delle modifiche}
 \begin{center}
 \small
@@ -130,7 +135,13 @@ Gruppo BitByBit\\
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 \rowcolor{white}
-0.5.0 & 2025-12-12 & Riccardo Manisi & Aggiunti casi d'uso per schermata impostazioni (UC-IMP1) e quelli relativi ai contatti fidati & Giovanni Visentin \\
+0.7.0 & 2025-12-12 & Riccardo Manisi & Aggiunti casi d'uso per schermata impostazioni (UC-IMP1) e quelli relativi ai contatti fidati & Giovanni Visentin \\
+\hline
+\rowcolor{gray!20}
+0.6.0 & 2025-12-12 & Dennis Parolin & Rifacimento completo casi d'uso Benvenuto e Walkthrough (UC-BW) & Marco Sanguin\\
+\hline
+\rowcolor{white}
+0.5.0 & 2025-12-11 & Riccardo Manisi & Prima stesura casi d'uso Walkthrough & Giovanni Visentin \\
 \hline
 \rowcolor{gray!20}
 0.4.0 & 2025-12-11 & Riccardo Manisi & Aggiunta sezione scopo dei casi d'uso, attori e nomenclatura per casi d'uso & Giovanni Visentin \\
@@ -149,7 +160,7 @@ Gruppo BitByBit\\
 
 \clearpage
 
-% ======= INFO GENERALI (Tabella Duplicata rimossa o mantenuta a scelta - qui l'ho lasciata come nel tuo codice originale ma potresti volerla togliere se ridondante) =======
+% ======= INFO GENERALI  =======
 \section*{Informazioni Generali}
 \renewcommand{\arraystretch}{1.3}
 
@@ -179,12 +190,16 @@ Gruppo BitByBit\\
 
 \vspace{0.8cm}
 
-% ======= INDICE SU PAGINA DEDICATA =======
+% ==============================================================================
+% ============================= INDICI =========================================
+% ==============================================================================
 
+% Indice dei contenuti
 \tableofcontents
-\thispagestyle{empty} % senza numero di pagina per l'indice
-\clearpage
+\thispagestyle{empty}
 
+\clearpage
+\section{Introduzione}
 \subsection{Scopo del documento} \label{sec:scopo_documento}
 Il presente documento di Analisi dei Requisiti ha l'obiettivo di esporre in modo esaustivo e non ambiguo le specifiche funzionali, prestazionali e vincolanti del sistema software oggetto di sviluppo.
 
@@ -314,66 +329,321 @@ I termini tecnici, gli acronimi e le parole con significato specifico all'intern
     \item \href{https://swe-bitbybit.github.io/SWE-docs/docs/documenti_interni/Glossario.pdf}{Glossario}
 \end{itemize}
 
-\subsubsection{Nomenclatura casi d'uso}
+\section{Casi d'uso}
+
+\subsection{Scopo}
+Descrizione dello scopo dei casi d'uso.
+
+\subsection{Nomenclatura casi d'uso}
 \label{subsec:glossario-casi-duso}
-Questa sezione raccoglie i termini tecnici specifici utilizzati nella descrizione dei casi d’uso presenti in questo documento. 
+Questa sezione raccoglie i termini tecnici specifici utilizzati nella descrizione dei casi d’uso.
 
 \begin{center}
 \small
 \arrayrulecolor{black} 
 \begin{longtable}{| m{3cm} | m{0.75\textwidth} |}
 \hline
-\rowcolor{gray!60}
-{\centering \textbf{Termine}\par} &
-{\centering \textbf{Descrizione}\par} \\
-\hline
-\rowcolor{white}
-\centering \textbf{Attore principale} & Attore che interagisce attivamente con il sistema. \\
-\hline
-\rowcolor{gray!20}
-\centering \textbf{Attore secondario} & Coloro che interagiscono passivamente con il sistema. \\
-\hline
-\rowcolor{white}
-\centering \textbf{Pre-condizioni} & Lista di elementi o condizioni che sono necessari affinchè l'utente possa eseguire gli scenari del caso d'uso. \\
-\hline
-\rowcolor{gray!20}
-\centering \textbf{Post-condizioni} & Condizioni che devono essere vere al termine dell'esecuzione del caso d'uso. Descrivono lo stato finale osservabile del sistema dopo la conclusione del caso d’uso.  \\
-\hline
-\rowcolor{white}
-\centering \textbf{Scenario principale} & Sequenza di passi che descrive il flusso standard del caso'uso. Rappresenta l'happy path dell'esecuzione del caso d'uso che conduce al raggiungimento dell'obiettivo fissato. \\
-\hline
-\rowcolor{gray!20}
-\centering \textbf{Scenario secondario} & Sequenza di passi che devia dallo scenario principale a seguito di condizioni particolari. Porta il sistema in condizioni diverse da quelle dello scenario principale. \\
-\hline
-\rowcolor{white}
-\centering \textbf{Inclusioni} & Relazione tra casi d'uso in cui il caso d'uso incluso viene eseguito in modo incondizionato durante i passi del caso d'uso principale. \\
-\hline
-\rowcolor{gray!20}
-\centering \textbf{Estensioni} & Relazione tra casi d'uso in cui il caso d'uso esteso viene eseguito solo quando si verificano le condizioni di estensione definite. \\
-\hline
-\rowcolor{white}
-\centering \textbf{Trigger} & Evento o condizione che avvia l’esecuzione del caso d’uso. \\
-\hline
+\rowcolor{gray!60} \textbf{Termine} & \textbf{Descrizione} \\ \hline
+\rowcolor{white} \textbf{Attore principale} & Attore che interagisce attivamente con il sistema. \\ \hline
+\rowcolor{gray!20} \textbf{Pre-condizioni} & Lista di elementi necessari affinché l'utente possa eseguire il caso d'uso. \\ \hline
+\rowcolor{white} \textbf{Post-condizioni} & Stato finale del sistema dopo la conclusione del caso d’uso. \\ \hline
+\rowcolor{gray!20} \textbf{Scenario principale} & Flusso standard (happy path) che conduce all'obiettivo. \\ \hline
+\rowcolor{white} \textbf{Inclusioni} & Caso d'uso eseguito in modo incondizionato durante il principale. \\ \hline
+\rowcolor{gray!20} \textbf{Estensioni} & Caso d'uso eseguito solo in condizioni particolari. \\ \hline
 \end{longtable}
 \end{center}
 
-\section{Casi d'uso}
-
-\subsection{Scopo}
-Nel processo di analisi, come indicato nel documento delle \href{}{\textbf{Norme di progetto}}, il gruppo BitByBit ha identificato come prima attività l'individuazione dei casi d'uso del sistema. La stesura dei casi d'uso costituisce uno sturumento fondamentale per la successiva individuazione dei requisiti funzionali del sistema, poichè consentono di definire in modo chiaro all'utente come il sistema sarà impiegato per soddisfare specifici obiettivi.\\
-Nello specifico essi rappresentano una descrizione di come il sistema interagisce con i suoi attori per raggiungere un obiettivo specifico.
-Ogni caso d'uso ha uno scenario principale che rappresenta il flusso standard di interazioni e può includere scenari alternativi che fanno arrivare il sistema in uno stato diverso da quello che si identifica nello scenario principale del caso.\\
-Per facilitare la comprensione da parte dei lettori tecnici e non tecnici, alla descrizione in linguaggio naturale, viene anche associato un diagramma UML, che offre una rappresentazione grafica delle interazioni tra attori e sistema.\\
-Per ogni caso d’uso presentato in questo documento viene adottata una struttura uniforme. I termini specifici adottati sono raccolti nella sezione dedicata (\hyperref[nomenclatura-casi-duso]{vedi sezione - da aggiungere -}).
-
 \subsection{Attori}
-Sono qualcosa di esterno al sistema che accede a delle risorse integagendo con il sistema che si sta producendo. Gli attori secondari sono attori passivi. (aggiungimi info se sono necessarie)
+Sono qualcosa di esterno al sistema che accede a delle risorse interagendo con il sistema che si sta producendo. Gli attori secondari sono attori passivi.
 Gli attori rappresentano entità esterne al sistema che interagiscono con esso per raggiungere obiettivi specifici.
 
 \subsection{Componenti diagrammi UML}
+Descrizione dei componenti.
 
-% ==== ELENCO DEI CASI D'USO TROVATI ====
+% ==============================================================================
+% ========================== LISTA CASI D'USO ==================================
+% ==============================================================================
+
 \subsection{Lista casi d'uso}
+
+% ==============================================================================
+% ========================== UC-BW: WALKTHROUGH ================================
+% ==============================================================================
+
+\subsubsection{UC-BW1 - Esecuzione Walkthrough Interattivo} \label{subsec:UC-BW1}
+
+\begin{figure}[H] 
+    \centering
+    % FIX IMMAGINE: Percorso relativo esplicito
+    \includegraphics[width=0.8\textwidth]{../../../resources/UC-BW1.png}
+    \caption{Diagramma del caso d'uso UC-BW1}
+    \label{fig:uc-bw1}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente Generico
+    
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item L’utente non ha mai aperto l’applicazione
+        \item L’utente non ha ancora visualizzato tutte le pagine del walkthrough
+    \end{itemize}
+    
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L’utente ha visualizzato le funzionalità principali
+        \item L’utente ha completato le configurazioni iniziali (obbligatorie o facoltative)
+        \item Il sistema mostra la Dashboard principale
+    \end{itemize}
+    
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item Il sistema mostra la schermata di benvenuto
+        \item L'utente esegue la profilazione iniziale $\rightarrow$ \ref{subsec:UC-BW1.2}
+        \item Il sistema inizia il ciclo di presentazione delle schede informative dell'app
+        \item L'utente interagisce con la scheda $\rightarrow$ \ref{subsec:UC-BW1.5}, \ref{subsec:UC-BW1.6}, \ref{subsec:UC-BW1.7}
+        \item L'utente naviga verso la scheda successiva appena ha finito di interagire/leggere la scheda $\rightarrow$ \ref{subsec:UC-BW1.3}
+        \item Il sistema chiude il walkthrough e apre la Home Page
+    \end{itemize}
+    
+    \item \textbf{Scenario secondario:}
+    \begin{itemize}
+        \item L'utente decide di tornare alla scheda precedente $\rightarrow$ \ref{subsec:UC-BW1.4}
+        \item L'utente decide di saltare il tutorial $\rightarrow$ \ref{subsec:UC-BW1.1}
+    \end{itemize}
+    
+    \item \textbf{Inclusioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-BW1.2}
+        \item \ref{subsec:UC-BW1.3}
+    \end{itemize}
+    
+    \item \textbf{Estensioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-BW1.1}
+        \item \ref{subsec:UC-BW1.4}
+        \item \ref{subsec:UC-BW1.5}
+        \item \ref{subsec:UC-BW1.6}
+        \item \ref{subsec:UC-BW1.7}
+    \end{itemize}
+    
+    \item \textbf{Trigger:} Primo avvio dell'applicazione
+\end{itemize}
+
+\vspace{0.5cm}
+
+UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso come raffigurato nella seguente immagine:
+
+\begin{figure}[H]
+    \centering
+    % FIX IMMAGINE: Percorso relativo esplicito
+    \includegraphics[width=0.9\textwidth]{../../../resources/sottocasi_UC-BW1.png}
+    \caption{Dettaglio inclusioni ed estensioni del caso d'uso UC-BW1}
+    \label{fig:uc-bw1-detail}
+\end{figure}
+
+\newpage
+
+% ----- SOTTOCASI DI UC-BW1 -----
+
+% --- UC-BW1.1 ---
+\subsubsection{UC-BW1.1 - Salta Walkthrough} \label{subsec:UC-BW1.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente Generico
+    
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il walkthrough è in corso
+    \end{itemize}
+    
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Accesso diretto alla Dashboard senza ulteriori configurazioni
+    \end{itemize}
+    
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item L'utente seleziona la voce "Salta" durante il walkthrough
+        \item Il sistema interrompe la presentazione delle schede e apre direttamente la Home Page
+    \end{itemize}
+    
+    \item \textbf{Trigger:} L'utente preme il pulsante "Salta"
+\end{itemize}
+
+% --- UC-BW1.2 ---
+\subsubsection{UC-BW1.2 - Selezione Profilo} \label{subsec:UC-BW1.2}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente Generico
+    
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il walkthrough è attivo e sta presentando la scheda di benvenuto
+    \end{itemize}
+    
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il contesto d'uso è salvato e il sistema adatta i testi e i contenuti successivi in base alla scelta
+    \end{itemize}
+    
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item L'utente seleziona l'opzione "Per me" o "Per altri"
+    \end{itemize}
+    
+    \item \textbf{Trigger:} Il sistema richiede la selezione del profilo mostrando la relativa schermata
+\end{itemize}
+
+% --- UC-BW1.3 ---
+\subsubsection{UC-BW1.3 - Navigazione Avanti} \label{subsec:UC-BW1.3}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente Generico
+    
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item L'utente sta visualizzando una scheda del walkthrough che non è l'ultima
+    \end{itemize}
+    
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema mostra la scheda successiva
+    \end{itemize}
+    
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item L'utente preme "Avanti"
+        \item Il sistema salva eventuali dati parziali inseriti nella pagina corrente
+        \item Il sistema carica la scheda successiva
+    \end{itemize}
+    
+    \item \textbf{Trigger:} L'utente preme il pulsante "Avanti"
+\end{itemize}
+
+% --- UC-BW1.4 ---
+\subsubsection{UC-BW1.4 - Navigazione Indietro} \label{subsec:UC-BW1.4}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente Generico
+    
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item L'utente sta visualizzando una scheda che non è la prima
+    \end{itemize}
+    
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema mostra la scheda precedente
+    \end{itemize}
+    
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item L'utente preme "Indietro"
+        \item Il sistema torna alla scheda precedente
+    \end{itemize}
+    
+    \item \textbf{Trigger:} L'utente preme il pulsante "Indietro"
+\end{itemize}
+
+% --- UC-BW1.5 ---
+\subsubsection{UC-BW1.5 - Configurazione Rapida Contatto} \label{subsec:UC-BW1.5}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente Generico
+    
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il walkthrough è attivo
+        \item La scheda riguardante la "Rete di Contatti Fidati" è visibile
+    \end{itemize}
+    
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il contatto è salvato in memoria OPPURE nessun contatto è salvato e l'utente è informato
+    \end{itemize}
+    
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item L'utente compila i campi presenti nella scheda
+        \item Il sistema valida e salva il contatto immediatamente
+    \end{itemize}
+    
+    \item \textbf{Scenario secondario:}
+    \begin{itemize}
+        \item L'utente lascia i campi vuoti e non interagisce
+        \item L'utente preme "Avanti" $\rightarrow$ \ref{subsec:UC-BW1}
+        \item Il sistema non salva nulla
+        \item Il sistema mostra un breve avviso "Potrai configurare i contatti più tardi nelle Impostazioni"
+    \end{itemize}
+    
+    \item \textbf{Trigger:} L'utente interagisce con i campi di input della scheda Contatti
+\end{itemize}
+
+% --- UC-BW1.6 ---
+\subsubsection{UC-BW1.6 - Configurazione Rapida Email} \label{subsec:UC-BW1.6}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente Generico
+    
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il walkthrough è attivo
+        \item La scheda riguardante la funzionalità di dead man’s switch è visibile
+    \end{itemize}
+    
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'email è salvata OPPURE nessuna email è salvata e l'utente è informato
+    \end{itemize}
+    
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item L'utente inserisce la propria email
+        \item Il sistema valida il formato
+        \item Il sistema salva l'indirizzo
+    \end{itemize}
+    
+    \item \textbf{Scenario secondario:}
+    \begin{itemize}
+        \item L'utente lascia il campo vuoto
+        \item Il sistema non salva nulla
+        \item Il sistema notifica l’utente del fatto che non potrà usare la funzionalità ma che può configurarla nelle impostazioni
+    \end{itemize}
+    
+    \item \textbf{Trigger:} L'utente interagisce con il campo di input della scheda Email
+\end{itemize}
+
+% --- UC-BW1.7 ---
+\subsubsection{UC-BW1.7 - Configurazione Rapida Diario} \label{subsec:UC-BW1.7}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente Generico
+    
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il walkthrough è attivo
+        \item La scheda riguardante il "Diario Criptato" è visibile
+    \end{itemize}
+    
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Le credenziali sono impostate OPPURE il diario rimane con la password da impostare tramite le Impostazioni
+    \end{itemize}
+    
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item L'utente inserisce la Password
+        \item Il sistema cripta e salva le chiavi di accesso
+    \end{itemize}
+    
+    \item \textbf{Scenario secondario:}
+    \begin{itemize}
+        \item L'utente non inserisce le password
+        \item Il sistema mostra un avviso all'utente informandolo del fatto che potrà impostare la password tramite le Impostazioni
+    \end{itemize}
+    
+    \item \textbf{Trigger:} L'utente interagisce con i campi di input della scheda Diario
+\end{itemize}
+
+\newpage
+
+% ==============================================================================
+% ========================== UC-IMP: IMPOSTAZIONI ==============================
+% ==============================================================================
 
 \subsubsection{UC-IMP1 - Visualizzazione schermata impostazioni} \label{sec:UC-IMP1}
 \begin{itemize}
