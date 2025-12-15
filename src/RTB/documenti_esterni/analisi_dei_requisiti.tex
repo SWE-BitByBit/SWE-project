@@ -132,6 +132,9 @@ Gruppo BitByBit\\
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
+\rowcolor{gray!20}
+0.8.0 & 2025-12-15 & Giovanni Visentin & Aggiunti casi d'uso per Diari fittizio (UC-D4, UC-D5, UC-D5.1, UC-D6) & Marco Sanguin \\
+\hline
 \rowcolor{white}
 0.7.0 & 2025-12-12 & Riccardo Manisi & Aggiunti casi d'uso per schermata impostazioni (UC-IMP1) e quelli relativi ai contatti fidati & Giovanni Visentin \\
 \hline
@@ -950,12 +953,12 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso come raffigurato nel
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
-        \item Il sistema mostra un diario fittizio con delle note su un argomento non sensibile per non destare sospetti sulla vera funzione del diario
+        \item Il sistema mostra un messaggio di errore
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item Il sistema ha verificato che la password inserita non corrisponde a quella reale
-        \item Il sistema mostra all’utente un diario fittizio
+        \item Il sistema ha verificato che la password inserita non corrisponde a quella corretta
+        \item Il sistema mostra all’utente un messaggio di errore
     \end{itemize}
     \item \textbf{Trigger:} L’utente vuole visualizzare il contenuto del diario criptato
 \end{itemize}
@@ -1085,7 +1088,6 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso come raffigurato nel
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item 
         \item \ref{subsec:UC-D2.3}
     \end{itemize}
     \item \textbf{Trigger:} L’utente vuole inserire un nuovo media nel diario criptato
@@ -1110,6 +1112,122 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso come raffigurato nel
         \item L'utente carica il media 
     \end{itemize}
     \item \textbf{Trigger:} L’utente vuole inserire un nuovo media nel diario criptato
+\end{itemize}
+
+\subsubsection{UC-D4 - Inserimento password Diario Fittizio} \label{subsec:UC-D4}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'utente è nella sezione di inserimento password per diario criptato
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'utente visualizza un diario fittizio
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'utente inserisce una password per entrare nel diario criptato $\rightarrow$ \ref{subsec:UC-D1.1}
+        \item Il sistema controlla che la password inserita dall'utente sia conforme alla password scelta dall'utente come password fittizia
+        \item Il sistema mostra il diario fittizio all'utente
+    \end{itemize}
+    \item \textbf{Scenario secondario:}
+    \begin{itemize}
+        \item La password proposta non è quella scelta dall'utente per aprire il diario fittizio $\rightarrow$ \ref{subsec:UC-D1.2}
+    \end{itemize}
+    \item \textbf{Inclusioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-D1.1}
+    \end{itemize}
+    \item \textbf{Estensioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-D3}
+    \end{itemize}
+    \item \textbf{Trigger:} L'utente inserisce una password nella richiesta di accesso al diario criptato
+\end{itemize}
+
+\subsubsection{UC-D5 - Scelta password Diario Fittizio} \label{subsec:UC-D5}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'utente è nel diario criptato
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'utente ha scelto la password per il diario fittizio
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'utente entra nel diario criptato
+        \item Il sistema chiede una password per il diario fittizio diversa da quella del diario criptato
+    \end{itemize}
+    \item \textbf{Scenario secondario:}
+    \begin{itemize}
+        \item La password proposta è uguale a quella del diario criptato $\rightarrow$ \ref{subsec:UC-D5.1}
+    \end{itemize}
+    \item \textbf{Estensioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-D5.1}
+    \end{itemize}
+    \item \textbf{Trigger:} L'utente decide di modificare/scegliere la password per il diario fittizio
+\end{itemize}
+
+\subsubsection{UC-D5.1 - Password Diario fittizio uguale} \label{subsec:UC-D5.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'utente ha scelto una password per il diario fittizio.
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema non ha salvato la password
+        \item L'utente deve decidere di nuovo la password
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema rileva una uguaglianza delle password per il diario fittizio e per il diario criptato
+        \item Il sistema notifica l'utente dell'errore, chiedendo un'ulteriore password
+    \end{itemize}
+    \item \textbf{Trigger:} L'utente ha inserito una password uguale a quella del diario criptato.
+\end{itemize}
+
+\subsubsection{UC-D6 - Inserimento nota scritta nel diario fittizio} \label{subsec:UC-D6}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L’utente è autenticato nel diario fittizio
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema memorizza nel diario fittizio una nuova nota scritta e la mostra nel diario fittizio
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'utente seleziona la barra per l'inserimento di una nota
+        \item L’utente inserisce il testo per la nuova nota $\rightarrow$ \ref{subsec:UC-D2.1}
+        \item L’utente seleziona la voce per il salvataggio nella barra per l'inserimento della nota $\rightarrow$ \ref{subsec:UC-D2.2}
+    \end{itemize}
+    \item \textbf{Scenario secondario:}
+    \begin{itemize}
+        \item L’utente seleziona la voce “esci” per uscire dal diario senza aver registrato la nota presente nella casella di testo $\rightarrow$ \ref{subsec:UC-D2.3}
+    \end{itemize}
+    \item \textbf{Inclusioni:} 
+    \begin{itemize}
+        \item \ref{subsec:UC-D2.1}
+    \end{itemize}
+    \item \textbf{Estensioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-D2.2}
+        \item \ref{subsec:UC-D2.3}
+    \end{itemize}
+    \item \textbf{Trigger:} L’utente vuole inserire una nuova nota scritta nel diario fittizio
 \end{itemize}
 
 \end{document}
