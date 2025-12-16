@@ -125,13 +125,16 @@ Gruppo BitByBit\\
 \small
 \renewcommand{\arraystretch}{1.2} 
 \arrayrulecolor{black}
-\begin{tabular}{|c|p{0.11\linewidth}|p{0.21\linewidth}|p{0.23\linewidth}|p{0.21\linewidth}|}
+\begin{longtable}{|c|c|p{0.21\linewidth}|p{0.23\linewidth}|c|}
 \hline
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+\hline
+\rowcolor{white}
+0.10.0 & 2025-12-16 & Riccardo Manisi & Aggiunta UC-IMP2.1.1, UC-IMP2.1.2, UC-IMP2.1.3 per visualizzazione dettagli contatto fidato & Giovanni Visentin \\
+\hline
 \rowcolor{white}
 0.9.0 & 2025-12-16 & Riccardo Manisi & Cancellato UC-BW1.5 [deprecato] in UC-BW1 e inserita inclusione con UC-IMP3 & Giovanni Visentin \\
-\hline
 \hline
 \rowcolor{white}
 0.8.1 & 2025-12-16 & Dennis Parolin & Sistemato errore di una sezione ripetuta due volte ma con una sottosezione differente & Marco Sanguin \\
@@ -160,7 +163,7 @@ Gruppo BitByBit\\
 \rowcolor{white}
 0.1.0 & 2025-12-10 & Riccardo Manisi & Creazione del documento & Giovanni Visentin \\
 \hline
-\end{tabular}
+\end{longtable}
 \end{center}
 
 \clearpage
@@ -623,24 +626,19 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'utente ha selezionato la voce per visualizzare le impostazioni dell'applicazione
+        \item L'utente ha selezionato la voce per visualizzare la propria rete di contatti fidati
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
-        \item Il sistema mostra la schermata con la lista dei contatti fidati
+        \item Il sistema mostra la schermata con la lista dei contatti fidati memorizzati per quell'utente
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'Utente seleziona dalla voce per la visualizzazione dei contatti fidati
+        \item L'Utente seleziona la voce per la visualizzazione dei contatti fidati
         \item L'utente visualizza la schermata con la lista dei contatti fidati aggiunti $\rightarrow$ vedi \ref{subsec:UC-IMP2.1} 
     \end{itemize}
-    \item \textbf{Scenario secondario:}
-    \begin{itemize}
-        \item L'utente non ha aggiunto ancora nessun contatto alla propria rete di contatti fidati
-    \end{itemize}
     \item \textbf{Inclusioni:} \ref{subsec:UC-IMP2.1}
-    \item \textbf{Estensioni:}
-    \item \textbf{Trigger:} L'utente vuole vedere la rete dei contatti fidate aggiunti fin ora
+    \item \textbf{Trigger:} L'utente vuole vedere la rete dei contatti fidati che ha aggiunto
 \end{itemize}
 
 \subsubsection{UC-IMP2.1 - Visualizzazione informazioni contatto fidato} \label{subsec:UC-IMP2.1}
@@ -652,12 +650,73 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
         \item L'utente sta visualizzando la lista dei contatti fidati
     \end{itemize}
     \item \textbf{Post-condizioni:}
-    \item Il sistema mostra nella lista dei contatti fidati il nome, il numero di telefono e l'indirizzo email per quel contatto
+    \item \begin{itemize}
+        \item Il sistema per ogni contatto fidato le informazioni di contatto e il nominativo
+    \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item Per ogni contatto vengono visualizzate le informazioni relative quali il nome, il numero di telefono e l'indirizzo email
+        \item Per il contatto fidato presente il sistema mosta le relative informazioni quali:
+        \begin{itemize}
+            \item il nome $\rightarrow$ \ref{subsec:UC-IMP2.1.1}
+            \item il numero di telefono $\rightarrow$ \ref{subsec:UC-IMP2.1.2}
+            \item l'indirizzo email $\rightarrow$ \ref{subsec:UC-IMP2.1.3}
+        \end{itemize}
     \end{itemize}
-    \item \textbf{Trigger:} L'utente vuole visualizzare la propria rete di contatti fidati
+    \item \textbf{Trigger:} L'utente vuole visualizzare le informazioni di contatto per un contatto fidato
+\end{itemize}
+
+\subsubsection{UC-IMP2.1.1 - Visualizzazione nome contatto fidato} \label{subsec:UC-IMP2.1.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'utente sta visualizzando la lista dei contatti fidati
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema mostra a schermo il nome del contatto fidato
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema mostra a schermo il nome del contatto fidato
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-IMP2.1.2 - Visualizzazione numero di telefono contatto fidato} \label{subsec:UC-IMP2.1.2}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'utente sta visualizzando la lista dei contatti fidati
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema mostra a schermo il numero di telefono del contatto fidato
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema mostra a schermo il numero di telefono del contatto fidato
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-IMP2.1.3 - Visualizzazione indirizzo email contatto fidato} \label{subsec:UC-IMP2.1.3}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'utente sta visualizzando la lista dei contatti fidati
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema mostra a schermo l'indirizzo email del contatto fidato
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema mostra a schermo l'indirizzo email del contatto fidato
+    \end{itemize}
 \end{itemize}
 
 \subsubsection{UC-IMP3 - Aggiunta contatto fidato} \label{subsec:UC-IMP3}
@@ -678,7 +737,7 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
         \item L'utente inserisce il nome del contatto fidato $\rightarrow$ \ref{subsec:UC-IMP3.1}
         \item L'utente inserisce il numero di telefono del contatto fidato $\rightarrow$ \ref{subsec:UC-IMP3.2}
         \item L'utente inserisce l'indirizzo email del contatto fidato $\rightarrow$ \ref{subsec:UC-IMP3.3}
-        \item L'utente seleziona la voce per il salvataggio fidato nella rete di contatti
+        \item L'utente seleziona la voce per il salvataggio del contatto fidato nella rete di contatti
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
@@ -854,7 +913,7 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item L’utente ha selezionato la voce per visualizzare il diario criptato
-        \item L’utente inserisce la password per il diario criptato $\rightarrow$ \ref{subsec:UC-D1.1}
+        \item L’utente inserisce la password con cui vuole autenticarsi nel diario criptato $\rightarrow$ \ref{subsec:UC-D1.1}
         \item L’utente sceglie la voce per accedere al diario criptato 
         \item Il sistema mostra all'utente la schermata per il contenuto del diario criptato
     \end{itemize}
@@ -902,7 +961,8 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
         \item Il sistema è attivo
         \item L'utente ha impostato la password per il diario criptato
         \item L'utente non è autenticato al diario criptato
-        \item L'utente ha inserito un password errata
+        \item L'utente ha inserito un password errata per il diario criptato
+        \item L'utente ha inserito una password diversa da quella fittizia
         \item L'utente ha selezionato la voce per accedere al diario
     \end{itemize}
     \item \textbf{Post-condizioni:} 
@@ -911,7 +971,8 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item Il sistema ha verificato che la password inserita non corrisponde a quella corretta
+        \item Il sistema verifica che la password inserita non corrisponde a quella corretta per l'autenticazione nel diario criptato
+        \item Il sistema verifica che la password inserita è diversa dalle password per l'autenticazione nel il diario fittizio 
         \item Il sistema mostra all’utente un messaggio di errore
     \end{itemize}
     \item \textbf{Trigger:} L’utente vuole visualizzare il contenuto del diario criptato
@@ -1068,21 +1129,21 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \item \textbf{Trigger:} L’utente vuole inserire un nuovo media nel diario criptato
 \end{itemize}
 
-\subsubsection{UC-D4 - Inserimento password Diario Fittizio} \label{subsec:UC-D4}
+\subsubsection{UC-D4 - Accesso al Diario Fittizio} \label{subsec:UC-D4}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'utente è nella sezione di inserimento password per diario criptato
+        \item L'utente è nella sezione di inserimento password per il diario criptato
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item L'utente visualizza un diario fittizio
+        \item Il sistema mostra il diario fittizio
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'utente inserisce una password per entrare nel diario criptato $\rightarrow$ \ref{subsec:UC-D1.1}
+        \item L'utente inserisce la password con cui vuole autenticarsi nel diario criptato $\rightarrow$ \ref{subsec:UC-D1.1}
         \item Il sistema controlla che la password inserita dall'utente sia conforme alla password scelta dall'utente come password fittizia
         \item Il sistema mostra il diario fittizio all'utente
     \end{itemize}
@@ -1092,50 +1153,52 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-D1.1}
+        \item \ref{subsec:UC-D1.2}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
         \item \ref{subsec:UC-D3}
     \end{itemize}
-    \item \textbf{Trigger:} L'utente inserisce una password nella richiesta di accesso al diario criptato
+    \item \textbf{Trigger:} L'utente vuole autenticarsi nel diario fittizio
 \end{itemize}
 
-\subsubsection{UC-D5 - Scelta password Diario Fittizio} \label{subsec:UC-D5}
+\subsubsection{UC-D5 - Impostazione password Diario Fittizio} \label{subsec:UC-D5}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente autenticato
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'utente è nel diario criptato
+        \item L'utente è autenticato nel diario criptato
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item L'utente ha scelto la password per il diario fittizio
+        \item Il sistema memorizza la password per il diario fittizio
+        \item Il sistema mostra la schermata principale del diario criptato
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'utente entra nel diario criptato
-        \item Il sistema chiede una password per il diario fittizio diversa da quella del diario criptato
+        \item L'utente seleziona la voce per impostare la password del diario fittizio
+        \item L'utente inserisce la password per il diario fittizio
+        \item L'utente seleziona la voce di salvataggio per salvare la password inserita
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
-        \item La password proposta è uguale a quella del diario criptato $\rightarrow$ \ref{subsec:UC-D5.1}
+        \item La password inserita dall'utente è uguale a quella del diario criptato $\rightarrow$ \ref{subsec:UC-D5.1}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
         \item \ref{subsec:UC-D5.1}
     \end{itemize}
-    \item \textbf{Trigger:} L'utente decide di modificare/scegliere la password per il diario fittizio
+    \item \textbf{Trigger:} L'utente vuole impostare la password per il diario fittizio
 \end{itemize}
 
-\subsubsection{UC-D5.1 - Password Diario fittizio uguale} \label{subsec:UC-D5.1}
+\subsubsection{UC-D5.1 - Errore password Diario fittizio} \label{subsec:UC-D5.1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente autenticato
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'utente ha scelto una password per il diario fittizio.
+        \item L'utente ha scelto una password per il diario fittizio
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
@@ -1147,7 +1210,7 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
         \item Il sistema rileva una uguaglianza delle password per il diario fittizio e per il diario criptato
         \item Il sistema notifica l'utente dell'errore, chiedendo un'ulteriore password
     \end{itemize}
-    \item \textbf{Trigger:} L'utente ha inserito una password uguale a quella del diario criptato.
+    \item \textbf{Trigger:} L'utente ha inserito una password uguale a quella del diario criptato
 \end{itemize}
 
 \subsubsection{UC-D6 - Inserimento nota scritta nel diario fittizio} \label{subsec:UC-D6}
@@ -1170,7 +1233,7 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
-        \item L’utente seleziona la voce “esci” per uscire dal diario senza aver registrato la nota presente nella casella di testo $\rightarrow$ \ref{subsec:UC-D2.3}
+        \item L’utente seleziona la voce per uscire dal diario senza aver registrato la nota presente nella casella di testo $\rightarrow$ \ref{subsec:UC-D2.3}
     \end{itemize}
     \item \textbf{Inclusioni:} 
     \begin{itemize}
