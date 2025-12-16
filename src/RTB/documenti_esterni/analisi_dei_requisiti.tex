@@ -353,14 +353,11 @@ Questa sezione raccoglie i termini tecnici specifici utilizzati nella descrizion
 Sono qualcosa di esterno al sistema che accede a delle risorse integagendo con il sistema che si sta producendo. Gli attori secondari sono attori passivi. (aggiungimi info se sono necessarie)
 Gli attori rappresentano entità esterne al sistema che interagiscono con esso per raggiungere obiettivi specifici.
 
-\subsection{Componenti diagrammi UML}
-
-
-% ========================== LISTA CASI D'USO ==================================
+% ===== LISTA CASI D'USO ======
 
 \subsection{Lista casi d'uso}
 
-% ========================== UC-BW: WALKTHROUGH ================================
+% ===== UC-BW: WALKTHROUGH =====
 
 \subsubsection{UC-BW1 - Esecuzione Walkthrough Interattivo} \label{subsec:UC-BW1}
 
@@ -383,8 +380,10 @@ Gli attori rappresentano entità esterne al sistema che interagiscono con esso p
     
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item L’utente ha visualizzato le funzionalità principali
-        \item L’utente ha completato le configurazioni iniziali (obbligatorie o facoltative)
+        \item L’utente ha visualizzato le funzionalità presenti nelle schermate
+        \item L’utente ha aggiunto un contatto fidato alla sua rete di contatti fidati
+        \item L'utente ha inserito la propria mail di contatto
+        \item L'utente ha impostato la password per il diario criptato
         \item Il sistema mostra la Dashboard principale
     \end{itemize}
     
@@ -393,9 +392,14 @@ Gli attori rappresentano entità esterne al sistema che interagiscono con esso p
         \item Il sistema mostra la schermata di benvenuto
         \item L'utente esegue la profilazione iniziale $\rightarrow$ \ref{subsec:UC-BW1.2}
         \item Il sistema inizia il ciclo di presentazione delle schede informative dell'app
-        \item L'utente interagisce con la scheda $\rightarrow$ \ref{subsec:UC-BW1.5}, \ref{subsec:UC-BW1.6}, \ref{subsec:UC-BW1.7}
-        \item L'utente naviga verso la scheda successiva appena ha finito di interagire/leggere la scheda $\rightarrow$ \ref{subsec:UC-BW1.3}
-        \item Il sistema chiude il walkthrough e apre la Home Page
+        \item L'utente seleziona la voce prosegui
+        \item Il sistema mostra la schermata per l'aggiunta del primo contatto fidato
+        \item L'utente aggiunge il suo primo contatto fidato $\rightarrow$ \ref{}
+        \item Il sistema mostra la schermata per la configurazione dell'email dell'utente
+        \item L'utente inserisce l'email per il dead man's switch $\rightarrow$ \ref{subsec:UC-BW1.6}
+        \item Il sistema mostra la schermata per l'impostazione dell password per il diario criptato \ref{subsec:UC-BW1.7}
+        \item L'utente seleziona la voce prosegui $\rightarrow$ \ref{subsec:UC-BW1.3}
+        \item Il sistema mostra la Home Page
     \end{itemize}
     
     \item \textbf{Scenario secondario:}
