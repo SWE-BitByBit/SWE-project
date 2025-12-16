@@ -49,9 +49,7 @@
 
 \begin{document}
 
-% ==============================================================================
-% ========================== FRONT PAGE ========================================
-% ==============================================================================
+% ====== FRONT PAGE ======
 
 \vspace*{\fill} 
 
@@ -131,6 +129,9 @@ Gruppo BitByBit\\
 \hline
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+\rowcolor{white}
+0.9.0 & 2025-12-16 & Riccardo Manisi & Cancellato UC-BW1.5 [deprecato] in UC-BW1 e inserita inclusione con UC-IMP3 & Giovanni Visentin \\
+\hline
 \hline
 \rowcolor{white}
 0.10.0 & 2025-12-16 & Riccardo Manisi & Aggiunta UC-IMP2.1.1, UC-IMP2.1.2, UC-IMP2.1.3 per visualizzazione dettagli contatto fidato & Giovanni Visentin \\
@@ -173,7 +174,7 @@ Gruppo BitByBit\\
 
 \clearpage
 
-% ========================== INTRODUZIONE ======================================
+% ======= INTRODUZIONE ========
 
 \section{Introduzione}
 \subsection{Scopo del documento} \label{sec:scopo_documento}
@@ -280,12 +281,12 @@ L'interazione con il sistema varia significativamente in base al contesto d'uso,
 
 In conclusione, il sistema deve essere accessibile a utenti con competenze tecniche variabili, garantendo usabilità sia durante la consultazione approfondita (fase di prevenzione) sia in momenti in cui l'utente necessita di un aiuto rapido e discreto (fase di stress), pur non sostituendosi ai servizi di emergenza primaria.
 
-% =======================DEFINIZIONI, ACRINIMI E ABBREVIAZIONI================================
+% ====== DEFINIZIONI, ACRINIMI E ABBREVIAZIONI ======
 
 Al fine di evitare ambiguità relative al linguaggio e ai termini utilizzati all'interno dei documenti formali, viene allegato il \href{https://swe-bitbybit.github.io/SWE-docs/docs/documenti_interni/Glossario.pdf}{\textit{Glossario}}.
 I termini tecnici, gli acronimi e le parole con significato specifico all'interno del progetto sono contrassegnati da una lettera 'G' in apice (es. Agile\textsuperscript{G}) e sono descritti in dettaglio nel documento apposito.
 
-% =======================RIFERIMENTI================================
+% ====== RIFERIMENTI ======
 
 \subsection{Riferimenti} \label{sec:riferimenti}
 
@@ -359,19 +360,15 @@ Questa sezione raccoglie i termini tecnici specifici utilizzati nella descrizion
 \end{longtable}
 \end{center}
 
-
 \subsection{Attori}
 Sono qualcosa di esterno al sistema che accede a delle risorse interagendo con il sistema che si sta producendo. Gli attori secondari sono attori passivi. (aggiungimi info se sono necessarie)
 Gli attori rappresentano entità esterne al sistema che interagiscono con esso per raggiungere obiettivi specifici.
 
-\subsection{Componenti diagrammi UML}
-
-
-% ========================== LISTA CASI D'USO ==================================
+% ===== LISTA CASI D'USO ======
 
 \subsection{Lista casi d'uso}
 
-% ========================== UC-BW: WALKTHROUGH ================================
+% ===== UC-BW: WALKTHROUGH =====
 
 \subsubsection{UC-BW1 - Esecuzione Walkthrough Interattivo} \label{subsec:UC-BW1}
 
@@ -386,8 +383,10 @@ Gli attori rappresentano entità esterne al sistema che interagiscono con esso p
     
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item L’utente ha visualizzato le funzionalità principali
-        \item L’utente ha completato le configurazioni iniziali (obbligatorie o facoltative)
+        \item L’utente ha visualizzato le funzionalità presenti nelle schermate
+        \item L’utente ha aggiunto un contatto fidato alla sua rete di contatti fidati
+        \item L'utente ha inserito la propria mail di contatto
+        \item L'utente ha impostato la password per il diario criptato
         \item Il sistema mostra la Dashboard principale
     \end{itemize}
     
@@ -396,30 +395,36 @@ Gli attori rappresentano entità esterne al sistema che interagiscono con esso p
         \item Il sistema mostra la schermata di benvenuto
         \item L'utente esegue la profilazione iniziale $\rightarrow$ \ref{subsec:UC-BW1.2}
         \item Il sistema inizia il ciclo di presentazione delle schede informative dell'app
-        \item L'utente interagisce con la scheda $\rightarrow$ \ref{subsec:UC-BW1.5}, \ref{subsec:UC-BW1.6}, \ref{subsec:UC-BW1.7}
-        \item L'utente naviga verso la scheda successiva appena ha finito di interagire/leggere la scheda $\rightarrow$ \ref{subsec:UC-BW1.3}
-        \item Il sistema chiude il walkthrough e apre la Home Page
+        \item L'utente seleziona la voce prosegui per ogni scheda
+        \item Il sistema mostra la scheda per l'aggiunta del primo contatto fidato
+        \item L'utente aggiunge il suo primo contatto fidato $\rightarrow$ \ref{subsec:UC-IMP3}
+        \item Il sistema mostra la scheda per la configurazione dell'email dell'utente
+        \item L'utente inserisce l'email per il dead man's switch $\rightarrow$ \ref{subsec:UC-BW1.5}
+        \item Il sistema mostra la scheda per l'impostazione della password per il diario criptato 
+        \item L'utente inserisce la password per il diario criptato $\rightarrow$ \ref{subsec:UC-BW1.6}
+        \item L'utente seleziona la voce prosegui $\rightarrow$ \ref{subsec:UC-BW1.3}
+        \item Il sistema mostra la Home Page
     \end{itemize}
     
     \item \textbf{Scenario secondario:}
     \begin{itemize}
         \item L'utente decide di tornare alla scheda precedente $\rightarrow$ \ref{subsec:UC-BW1.4}
-        \item L'utente decide di saltare il tutorial $\rightarrow$ \ref{subsec:UC-BW1.1}
+        \item L'utente decide di saltare il walkthrough $\rightarrow$ \ref{subsec:UC-BW1.1}
     \end{itemize}
     
     \item \textbf{Inclusioni:}
     \begin{itemize}
         \item \ref{subsec:UC-BW1.2}
+        \item \ref{subsec:UC-IMP3}
         \item \ref{subsec:UC-BW1.3}
+        \item \ref{subsec:UC-BW1.5}
+        \item \ref{subsec:UC-BW1.6}
     \end{itemize}
     
     \item \textbf{Estensioni:}
     \begin{itemize}
         \item \ref{subsec:UC-BW1.1}
         \item \ref{subsec:UC-BW1.4}
-        \item \ref{subsec:UC-BW1.5}
-        \item \ref{subsec:UC-BW1.6}
-        \item \ref{subsec:UC-BW1.7}
     \end{itemize}
     
     \item \textbf{Trigger:} Primo avvio dell'applicazione
@@ -431,19 +436,20 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
 
 % ------------------- SOTTOCASI DI UC-BW1 -------------------------
 
-% --- UC-BW1.1 ---
+% ==== UC-BW1.1 ====
 \subsubsection{UC-BW1.1 - Salta Walkthrough} \label{subsec:UC-BW1.1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente Generico
     
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
+        \item Il sistema è attivo
         \item Il walkthrough è in corso
     \end{itemize}
     
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item Accesso diretto alla Dashboard senza ulteriori configurazioni
+        \item Il sistema mostra la Dashboard principale dell'applicazione
     \end{itemize}
     
     \item \textbf{Scenario principale:}
@@ -452,10 +458,10 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
         \item Il sistema interrompe la presentazione delle schede e apre direttamente la Home Page
     \end{itemize}
     
-    \item \textbf{Trigger:} L'utente preme il pulsante "Salta"
+    \item \textbf{Trigger:} L'utente seleziona la voce per saltare il walkthrough
 \end{itemize}
 
-% --- UC-BW1.2 ---
+% ==== UC-BW1.2 ====
 \subsubsection{UC-BW1.2 - Selezione Profilo} \label{subsec:UC-BW1.2}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente Generico
@@ -478,7 +484,7 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \item \textbf{Trigger:} Il sistema richiede la selezione del profilo mostrando la relativa schermata
 \end{itemize}
 
-% --- UC-BW1.3 ---
+% ==== UC-BW1.3 ====
 \subsubsection{UC-BW1.3 - Navigazione Avanti} \label{subsec:UC-BW1.3}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente Generico
@@ -490,7 +496,7 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item Il sistema mostra la scheda successiva
+        \item Il sistema mostra la scheda successiva del walkthrough
     \end{itemize}
     
     \item \textbf{Scenario principale:}
@@ -503,7 +509,7 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \item \textbf{Trigger:} L'utente preme il pulsante "Avanti"
 \end{itemize}
 
-% --- UC-BW1.4 ---
+% ==== UC-BW1.4 ====
 \subsubsection{UC-BW1.4 - Navigazione Indietro} \label{subsec:UC-BW1.4}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente Generico
@@ -527,41 +533,8 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \item \textbf{Trigger:} L'utente preme il pulsante "Indietro"
 \end{itemize}
 
-% --- UC-BW1.5 ---
-\subsubsection{UC-BW1.5 - Configurazione Rapida Contatto} \label{subsec:UC-BW1.5}
-\begin{itemize}
-    \item \textbf{Attore principale:} Utente Generico
-    
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il walkthrough è attivo
-        \item La scheda riguardante la "Rete di Contatti Fidati" è visibile
-    \end{itemize}
-    
-    \item \textbf{Post-condizioni:}
-    \begin{itemize}
-        \item Il contatto è salvato in memoria OPPURE nessun contatto è salvato e l'utente è informato
-    \end{itemize}
-    
-    \item \textbf{Scenario principale:}
-    \begin{itemize}
-        \item L'utente compila i campi presenti nella scheda
-        \item Il sistema valida e salva il contatto immediatamente
-    \end{itemize}
-    
-    \item \textbf{Scenario secondario:}
-    \begin{itemize}
-        \item L'utente lascia i campi vuoti e non interagisce
-        \item L'utente preme "Avanti" $\rightarrow$ \ref{subsec:UC-BW1}
-        \item Il sistema non salva nulla
-        \item Il sistema mostra un breve avviso "Potrai configurare i contatti più tardi nelle Impostazioni"
-    \end{itemize}
-    
-    \item \textbf{Trigger:} L'utente interagisce con i campi di input della scheda Contatti
-\end{itemize}
-
-% --- UC-BW1.6 ---
-\subsubsection{UC-BW1.6 - Configurazione Rapida Email} \label{subsec:UC-BW1.6}
+% ==== UC-BW1.5 ====
+\subsubsection{UC-BW1.5 - Configurazione Rapida Email} \label{subsec:UC-BW1.5}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente Generico
     
@@ -593,8 +566,8 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \item \textbf{Trigger:} L'utente interagisce con il campo di input della scheda Email
 \end{itemize}
 
-% --- UC-BW1.7 ---
-\subsubsection{UC-BW1.7 - Configurazione Rapida Diario} \label{subsec:UC-BW1.7}
+% ==== UC-BW1.6 ====
+\subsubsection{UC-BW1.6 - Configurazione Rapida Diario} \label{subsec:UC-BW1.6}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente Generico
     
@@ -624,11 +597,7 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \item \textbf{Trigger:} L'utente interagisce con i campi di input della scheda Diario
 \end{itemize}
 
-\newpage
-
-% ==============================================================================
-% ========================== UC-IMP: IMPOSTAZIONI ==============================
-% ==============================================================================
+% ===== UC-IMP: IMPOSTAZIONI =====
 
 \subsubsection{UC-IMP1 - Visualizzazione schermata impostazioni} \label{sec:UC-IMP1}
 \begin{itemize}
@@ -648,6 +617,8 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \end{itemize}
     \item \textbf{Trigger:} L'utente vuole visualizzare le impostazioni dell'applicazione
 \end{itemize}
+
+% ==== UC-IMP2 - LISTA CONTATTI FIDATI ====
 
 \subsubsection{UC-IMP2 - Visualizzazione rete di contatti fidati} \label{sec:UC-IMP2}
 \begin{itemize}
@@ -1202,12 +1173,13 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \item \textbf{Post-condizioni:}
     \begin{itemize}
         \item Il sistema memorizza la password per il diario fittizio
+        \item Il sistema mostra la schermata principale del diario criptato
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'utente seleziona la voce per impostare la password per il diario fittizio
+        \item L'utente seleziona la voce per impostare la password del diario fittizio
         \item L'utente inserisce la password per il diario fittizio
-        \item L'utente seleziona la voce di salvataggio della password inserita
+        \item L'utente seleziona la voce di salvataggio per salvare la password inserita
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
@@ -1226,7 +1198,7 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'utente ha scelto una password per il diario fittizio.
+        \item L'utente ha scelto una password per il diario fittizio
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
@@ -1238,7 +1210,7 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
         \item Il sistema rileva una uguaglianza delle password per il diario fittizio e per il diario criptato
         \item Il sistema notifica l'utente dell'errore, chiedendo un'ulteriore password
     \end{itemize}
-    \item \textbf{Trigger:} L'utente ha inserito una password uguale a quella del diario criptato.
+    \item \textbf{Trigger:} L'utente ha inserito una password uguale a quella del diario criptato
 \end{itemize}
 
 \subsubsection{UC-D6 - Inserimento nota scritta nel diario fittizio} \label{subsec:UC-D6}
