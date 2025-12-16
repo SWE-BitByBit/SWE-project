@@ -104,9 +104,9 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & In corso\\
-\textbf{Versione:} & 0.7.0 \\
+\textbf{Versione:} & 0.8.1 \\
 \textbf{Responsabile:} & \\
-\textbf{Redattori:} & Riccardo Manisi, Dennis Parolin \\
+\textbf{Redattori:} & Riccardo Manisi, Dennis Parolin, Giovanni Visentin \\
 \textbf{Verificatori:} & Giovanni Visentin, Marco Sanguin \\
 \textbf{Destinatari:} &
 \begin{tabular}[t]{@{}l@{}}
@@ -131,6 +131,9 @@ Gruppo BitByBit\\
 \hline
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+\hline
+\rowcolor{white}
+0.8.1 & 2025-12-16 & Dennis Parolin & Sistemato errore di una sezione ripetuta due volte ma con una sottosezione differente & Marco Sanguin \\
 \hline
 \rowcolor{gray!20}
 0.8.0 & 2025-12-15 & Giovanni Visentin & Aggiunti casi d'uso per Diari fittizio (UC-D4, UC-D5, UC-D5.1, UC-D6) & Marco Sanguin \\
@@ -299,10 +302,16 @@ I termini tecnici, gli acronimi e le parole con significato specifico all'intern
     \item \href{https://swe-bitbybit.github.io/SWE-docs/docs/documenti_interni/Glossario.pdf}{Glossario}
 \end{itemize}
 
+% ---------------------------- SEZIONE CASI D'USO -------------------------------
+
 \section{Casi d'uso}
 
 \subsection{Scopo}
-Descrizione dello scopo dei casi d'uso.
+Nel processo di analisi, come indicato nel documento delle \href{}{\textbf{Norme di progetto}}, il gruppo BitByBit ha identificato come prima attività l'individuazione dei casi d'uso del sistema. La stesura dei casi d'uso costituisce uno sturumento fondamentale per la successiva individuazione dei requisiti funzionali del sistema, poichè consentono di definire in modo chiaro all'utente come il sistema sarà impiegato per soddisfare specifici obiettivi.\\
+Nello specifico essi rappresentano una descrizione di come il sistema interagisce con i suoi attori per raggiungere un obiettivo specifico.
+Ogni caso d'uso ha uno scenario principale che rappresenta il flusso standard di interazioni e può includere scenari alternativi che fanno arrivare il sistema in uno stato diverso da quello che si identifica nello scenario principale del caso.\\
+Per facilitare la comprensione da parte dei lettori tecnici e non tecnici, alla descrizione in linguaggio naturale, viene anche associato un diagramma UML, che offre una rappresentazione grafica delle interazioni tra attori e sistema.\\
+Per ogni caso d’uso presentato in questo documento viene adottata una struttura uniforme. I termini specifici adottati sono raccolti nella sezione dedicata (\hyperref[nomenclatura-casi-duso]{vedi sezione - da aggiungere -}).
 
 \subsection{Nomenclatura casi d'uso}
 \label{subsec:glossario-casi-duso}
@@ -347,17 +356,9 @@ Questa sezione raccoglie i termini tecnici specifici utilizzati nella descrizion
 \end{longtable}
 \end{center}
 
-\section{Casi d'uso}
-
-\subsection{Scopo}
-Nel processo di analisi, come indicato nel documento delle \href{}{\textbf{Norme di progetto}}, il gruppo BitByBit ha identificato come prima attività l'individuazione dei casi d'uso del sistema. La stesura dei casi d'uso costituisce uno sturumento fondamentale per la successiva individuazione dei requisiti funzionali del sistema, poichè consentono di definire in modo chiaro all'utente come il sistema sarà impiegato per soddisfare specifici obiettivi.\\
-Nello specifico essi rappresentano una descrizione di come il sistema interagisce con i suoi attori per raggiungere un obiettivo specifico.
-Ogni caso d'uso ha uno scenario principale che rappresenta il flusso standard di interazioni e può includere scenari alternativi che fanno arrivare il sistema in uno stato diverso da quello che si identifica nello scenario principale del caso.\\
-Per facilitare la comprensione da parte dei lettori tecnici e non tecnici, alla descrizione in linguaggio naturale, viene anche associato un diagramma UML, che offre una rappresentazione grafica delle interazioni tra attori e sistema.\\
-Per ogni caso d’uso presentato in questo documento viene adottata una struttura uniforme. I termini specifici adottati sono raccolti nella sezione dedicata (\hyperref[nomenclatura-casi-duso]{vedi sezione - da aggiungere -}).
 
 \subsection{Attori}
-Sono qualcosa di esterno al sistema che accede a delle risorse integagendo con il sistema che si sta producendo. Gli attori secondari sono attori passivi. (aggiungimi info se sono necessarie)
+Sono qualcosa di esterno al sistema che accede a delle risorse interagendo con il sistema che si sta producendo. Gli attori secondari sono attori passivi. (aggiungimi info se sono necessarie)
 Gli attori rappresentano entità esterne al sistema che interagiscono con esso per raggiungere obiettivi specifici.
 
 \subsection{Componenti diagrammi UML}
@@ -370,14 +371,6 @@ Gli attori rappresentano entità esterne al sistema che interagiscono con esso p
 % ========================== UC-BW: WALKTHROUGH ================================
 
 \subsubsection{UC-BW1 - Esecuzione Walkthrough Interattivo} \label{subsec:UC-BW1}
-
-\begin{figure}[H] 
-    \centering
-    % FIX IMMAGINE: Percorso relativo esplicito
-    \includegraphics[width=0.8\textwidth]{../../../resources/UC-BW1.png}
-    \caption{Diagramma del caso d'uso UC-BW1}
-    \label{fig:uc-bw1}
-\end{figure}
 
 \begin{itemize}
     \item \textbf{Attore principale:} Utente Generico
@@ -431,19 +424,9 @@ Gli attori rappresentano entità esterne al sistema che interagiscono con esso p
 
 \vspace{0.5cm}
 
-UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso come raffigurato nella seguente immagine:
+UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
 
-\begin{figure}[H]
-    \centering
-    % FIX IMMAGINE: Percorso relativo esplicito
-    \includegraphics[width=0.9\textwidth]{../../../resources/sottocasi_UC-BW1.png}
-    \caption{Dettaglio inclusioni ed estensioni del caso d'uso UC-BW1}
-    \label{fig:uc-bw1-detail}
-\end{figure}
-
-\newpage
-
-% ----- SOTTOCASI DI UC-BW1 -----
+% ------------------- SOTTOCASI DI UC-BW1 -------------------------
 
 % --- UC-BW1.1 ---
 \subsubsection{UC-BW1.1 - Salta Walkthrough} \label{subsec:UC-BW1.1}
