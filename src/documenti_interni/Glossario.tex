@@ -96,8 +96,11 @@
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
+\rowcolor{white}
+0.3.1 & 2025-12-16 & Ferdinando Fracasso & Rimosso definizioni di termini non utilizzati e tolta la sezione introduttiva perchè superflua, inoltre modificato definizioni di branch/merge/pull request per chiarezza & Giovanni Visentin\\
+\hline
 \rowcolor{gray!20}
-0.3.0 & 2025-12-12 & Ferdinando Fracasso & Ristrutturato layout documento e aggiunto sezione introduttiva & \\
+0.3.0 & 2025-12-12 & Ferdinando Fracasso & Ristrutturato layout documento e aggiunto sezione introduttiva & Giovanni Visentin\\
 \hline
 \rowcolor{white}
 0.2.2 & 2025-11-05 & Dennis Parolin & Aggiunti termini al documento e sistemato alcuni errori grammaticali & Gabriele Scaggiante \\
@@ -125,14 +128,14 @@
 \clearpage
 
 % ======= INTRODUZIONE =======
-\clearpage
-\section{Introduzione}
-\subsection*{Scopo del documento}
-Il presente documento ha lo scopo di raccogliere i termini tecnici utilizzati all'interno del progetto e fornire le loro definizioni, in modo da permettere una più facile comprensione della documentazione prodotta durante lo svolgimento del progetto.
+%\clearpage
+%\section{Introduzione}
+%\subsection*{Scopo del documento}
+%Il presente documento ha lo scopo di raccogliere i termini tecnici utilizzati all'interno del progetto e fornire le loro definizioni, in modo da permettere una più facile comprensione della documentazione prodotta durante lo svolgimento del progetto.
 
 % ======= ACRONIMI =======
 \clearpage
-\section*{Glossario}
+%\section*{Glossario}
 
 \section{Acronimi}
 \begin{itemize}
@@ -181,8 +184,8 @@ Elenco prioritario delle funzionalità, bug e attività da svolgere.
 \subsection{Baseline}
 Versione approvata di un prodotto di lavoro (di progetto) che può essere modificato solo attraverso procedure formali di controllo delle modifiche.
 
-\subsection{Bug}
-Difetto da controllare.
+\subsection{Branch}
+Area contenuta di un repository in cui possono essere effettuate modifiche senza che abbiano effetto sul resto del progetto.
 
 % ==============================
 \section{C}
@@ -200,14 +203,8 @@ Unità software con responsabilità ben definite e interfacce pubbliche.
 \subsection{Contratto}
 Documento (legale) stilato tra committente e fornitore.
 
-\subsection{Click}
-L'azione di premere e rilasciare rapidamente un pulsante del mouse (o un'area equivalente su un touchpad) per attivare un comando, selezionare un oggetto o seguire un collegamento ipertestuale su un'interfaccia grafica.
-
 % ==============================
 \section{D}
-
-\subsection{Database}
-Sistema di memorizzazione dei dati e la sua struttura definita.
 
 \subsection{Deployment}
 Processo di pubblicazione del software in un ambiente esecutivo.
@@ -219,17 +216,6 @@ Può essere soggetto a modifiche durante lo sviluppo del prodotto sw.
 
 % ==============================
 \section{E}
-
-\subsection{Extreme programming (XP)}
-Tecnica di sviluppo software.  
-I requisiti non sono documenti formali:
-\begin{itemize}
-\item vengono espressi come scenari d’uso (chiamati \textbf{user stories}), che sono implementati come una serie di task;
-\item vengono scritti insieme al cliente su story card;
-\item vengono scomposti in compiti tecnici (task);
-\item per ogni task vengono sviluppati test automatici.
-\end{itemize}
-Affinché il nuovo codice possa essere rilasciato tutti i test devono essere eseguiti correttamente.
 
 % ==============================
 \section{F}
@@ -249,9 +235,6 @@ Elenco termini utilizzati dal gruppo.
 % ==============================
 \section{J}
 
-\subsection{JSON}
-Formato per lo scambio di dati tra client e server.
-
 % ==============================
 \section{K}
 
@@ -264,11 +247,12 @@ Si riferisce alla completa durata dello sviluppo del prodotto, dal concepimento 
 È composto da stati in cui si ha una certa sequenza di passaggi da seguire. La transizione da uno stato all’altro avviene come conseguenza dell’esecuzione di un’attività.  
 In seguito al ritiro il prodotto può essere rimesso in vita, per questo viene indicato con ciclo.
 
-\subsection{Licenza}
-Condizioni legali che regolano l’uso e la distribuzione del software.
 
 % ==============================
 \section{M}
+
+\subsection{Merge}
+Procedura in cui le modifiche su un branch vengono combinate con un altro branch.
 
 \subsection{Milestone}
 Strumento utilizzato nella gestione di progetto per fissare una data di calendario che descrive degli obiettivi che portano un avanzamento nello sviluppo di progetto.  
@@ -340,8 +324,9 @@ Un insieme strutturato di attività, metodi, pratiche e trasformazioni utilizzat
 \subsection{Prototipo}
 Versione preliminare per testare design o comportamenti prima dello sviluppo completo.
 
-\subsection{Pull Request / Merge Request}
-Procedura per proporre e rivedere modifiche prima dell’integrazione.
+\subsection{Pull Request}
+Procedura per proporre e rivedere modifiche prima di effettuare un merge tra branch.
+
 
 % ==============================
 \section{Q}
@@ -351,9 +336,6 @@ Procedura per proporre e rivedere modifiche prima dell’integrazione.
 
 \subsection{Repository / Repo}
 Archivio centralizzato dove viene conservato e gestito il codice sorgente del progetto.
-
-\subsection{Repository / Branch}
-Archivio del codice sorgente e linee di sviluppo parallele.
 
 \subsection{Requisito}
 Condizione o capacità che il sistema deve soddisfare.
@@ -398,10 +380,6 @@ Verifica automatizzata di singole unità di codice.
 
 \subsection{Test di integrazione}
 Verifica delle interazioni tra più componenti o servizi.
-
-\subsection{Test-driven development}
-Vengono scritti prima i test e poi il codice. Scrivendo i test si definisce implicitamente l’interfaccia e le specifiche di comportamento di una funzionalità.  
-I test devono essere automatici e verificare che il codice soddisfi le specifiche di output.
 
 \subsection{To Do}
 Sezione di un verbale o di un documento in cui si elencano le azioni concrete che ogni membro del gruppo deve svolgere.
