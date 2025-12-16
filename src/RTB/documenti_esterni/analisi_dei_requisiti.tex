@@ -102,7 +102,7 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & In corso\\
-\textbf{Versione:} & 0.8.1 \\
+\textbf{Versione:} & 0.10.0 \\
 \textbf{Responsabile:} & \\
 \textbf{Redattori:} & Riccardo Manisi, Dennis Parolin, Giovanni Visentin \\
 \textbf{Verificatori:} & Giovanni Visentin, Marco Sanguin \\
@@ -130,8 +130,10 @@ Gruppo BitByBit\\
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \rowcolor{white}
-0.9.0 & 2025-12-16 & Riccardo Manisi & Cancellato UC-BW1.5 [deprecato] in UC-BW1 e inserita inclusione con UC-IMP3 & Giovanni Visentin \\
+0.10.0 & 2025-12-16 & Riccardo Manisi & Aggiunti UC5 e UC5.1 per allert rischio & Giovanni Visentin \\
 \hline
+\rowcolor{gray!20}
+0.9.0 & 2025-12-17 & Riccardo Manisi & Cancellato UC-BW1.5 [deprecato] in UC-BW1 e inserita inclusione con UC-IMP3 & Giovanni Visentin \\
 \hline
 \rowcolor{white}
 0.8.1 & 2025-12-16 & Dennis Parolin & Sistemato errore di una sezione ripetuta due volte ma con una sottosezione differente & Marco Sanguin \\
@@ -1068,7 +1070,67 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \item \textbf{Trigger:} L’utente vuole inserire un nuovo media nel diario criptato
 \end{itemize}
 
-\subsubsection{UC-D4 - Inserimento password Diario Fittizio} \label{subsec:UC-D4}
+\subsubsection{UC-D4 - Analisi automatica del contenuto del diario criptato} \label{subsec:UC-D4}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} LLM
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L’utente è autenticato nel diario criptato
+        \item È stata salvata una nuova nota scritta o un nuovo media nel diario criptato
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il contenuto del diario è stato analizzato
+        \item Il sistema ha determinato se sono presenti situazioni di rischio
+        \item Il sistema identifica se sono presenti situazioni di rischio 
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema analizza il testo o il media caricato
+        \item Il sistema valuta la presenza di segnali di rischio
+        \item Il sistema associa al contenuto le motivazioni della classificazione
+    \end{itemize}
+    \item \textbf{Scenario secondario:}
+    \begin{itemize}
+        \item Il sistema notifica l'utente della presenza di una possibile situazione di rischio $\rightarrow$ \ref{subsec:UC-D4.1}
+    \end{itemize}
+    \item \textbf{Estensioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-D4.1}
+    \end{itemize}
+    \item \textbf{Trigger:} Salvataggio di una nuova nota o di un media nel diario criptato
+\end{itemize}
+
+\subsubsection{UC-D4.1 - Visualizzazione rilevamento situazioni di rischio nel diario criptato} \label{subsec:UC-D4.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item È stata individuata una situazione di rischio nel diario criptato
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item L’utente visualizza un messaggio di allerta
+        \item L’utente visualizza le motivazioni del rischio rilevato
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema mostra a schermo un messaggio di avviso nel diario criptato
+        \item Il sistema espone le motivazioni per cui il contenuto è stato classificato a rischio
+        \item L'utente visiona l'allert
+        \item L'utente seleziona la voce per chiudere l'alert
+    \end{itemize}
+    \item \textbf{Scenario secondario:}
+    \begin{itemize}
+        \item Il sistema notifica l'utente della presenza di una possibile situazione di rischio $\rightarrow$ \ref{subsec:UC-D2.3}
+    \end{itemize}
+    \item \textbf{Trigger:} Il sistema ha individuato una situazione di rischio
+\end{itemize}
+
+\subsubsection{UC-D5 - Inserimento password Diario Fittizio} \label{subsec:UC-D5}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:} 
@@ -1101,7 +1163,7 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \item \textbf{Trigger:} L'utente inserisce una password nella richiesta di accesso al diario criptato
 \end{itemize}
 
-\subsubsection{UC-D5 - Scelta password Diario Fittizio} \label{subsec:UC-D5}
+\subsubsection{UC-D6 - Scelta password Diario Fittizio} \label{subsec:UC-D6}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente autenticato
     \item \textbf{Pre-condizioni:} 
@@ -1120,16 +1182,16 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
-        \item La password proposta è uguale a quella del diario criptato $\rightarrow$ \ref{subsec:UC-D5.1}
+        \item La password proposta è uguale a quella del diario criptato $\rightarrow$ \ref{subsec:UC-D6.1}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-D5.1}
+        \item \ref{subsec:UC-D6.1}
     \end{itemize}
     \item \textbf{Trigger:} L'utente decide di modificare/scegliere la password per il diario fittizio
 \end{itemize}
 
-\subsubsection{UC-D5.1 - Password Diario fittizio uguale} \label{subsec:UC-D5.1}
+\subsubsection{UC-D6.1 - Password Diario fittizio uguale} \label{subsec:UC-D6.1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente autenticato
     \item \textbf{Pre-condizioni:} 
@@ -1150,7 +1212,7 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \item \textbf{Trigger:} L'utente ha inserito una password uguale a quella del diario criptato.
 \end{itemize}
 
-\subsubsection{UC-D6 - Inserimento nota scritta nel diario fittizio} \label{subsec:UC-D6}
+\subsubsection{UC-D7 - Inserimento nota scritta nel diario fittizio} \label{subsec:UC-D7}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
