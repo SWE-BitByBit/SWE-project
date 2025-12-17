@@ -26,7 +26,7 @@
 \geometry{margin=2.5cm}
 % ===== Variabile per il titolo del documento =====
 % ===== DA MODOFICARE =====
-\newcommand{\documenttitle}{Verbale Riunione Numero X } %serve l'ultimo spazio
+\newcommand{\documenttitle}{Verbale Riunione Numero 3 } %serve l'ultimo spazio
 
 
 \setlength{\parindent}{0pt}
@@ -95,16 +95,11 @@
 
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
-\textbf{Stato:} & XXXX \\
-\textbf{Versione:} & XXXX \\
-\textbf{Redattori:} & XXXX \\
-\textbf{Verificatori:} & XXXX \\
-\textbf{Responsabile:} & XXXX \\
-\textbf{Destinatari:} & 
-\begin{tabular}[t]{@{}l@{}}
-Destinatario 1 \\
-Destinatario 2 \\
-\end{tabular} \\
+\textbf{Stato:} & Completato \\
+\textbf{Versione:} & 1.0.0 \\
+\textbf{Redattori:} & Dennis Parolin \\
+\textbf{Verificatori:} & Marco Sanguin, Giovanni Visentin \\
+\textbf{Responsabile:} & Riccardo Manisi \\
 \end{tabularx}
 \end{tcolorbox}
 
@@ -124,16 +119,7 @@ Destinatario 2 \\
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 \rowcolor{white}
- &  &  &  &  \\
-\hline
-\rowcolor{gray!20}
- &  &  &  & \\
-\hline
-\rowcolor{white}
- &  &  &  & \\
-\hline
-\rowcolor{gray!20}
- &  &  &  &  \\
+0.1.0 & 2025-12-17 & Dennis Parolin & Redazione completa del documento & Giovanni Visentin\\
 \hline
 \end{tabular}
 \end{center}
@@ -152,22 +138,26 @@ Destinatario 2 \\
 
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
-\textbf{Data:} & 23 ottobre 2025 \\
-\textbf{Ora Inizio:} & XXX \\
-\textbf{Durata:} & 1h 45m \\
-\textbf{Luogo:} & Padova, Aula 2 \\
+\textbf{Data:} & 17 dicembre 2025 \\
+\textbf{Ora Inizio:} & 16.00 \\
+\textbf{Durata:} & 50m \\
+\textbf{Luogo:} & Google Meet \\
 \textbf{Presenti:} & 
 \begin{tabular}[t]{@{}l@{}}
 Fracasso Ferdinando\\
 Manisi Riccardo\\
 Parolin Dennis\\
-Scaggiante Gabriele\\
 Sanguin Marco\\
 Visentin Giovanni \\
 \end{tabular} \\
+\textbf{Miriade:} & 
+\begin{tabular}[t]{@{}l@{}}
+Egidi Annalisa\\
+Righetto Emanuele\\
+\end{tabular} \\
 \textbf{Assenti:} & 
 \begin{tabular}[t]{@{}l@{}}
-nessuno\\
+Scaggiante Gabriele\\
 \end{tabular} \\
 \end{tabularx}
 \end{tcolorbox}
@@ -175,15 +165,48 @@ nessuno\\
 % ---------- ORDINE DEL GIORNO, METTERE SE DOC È UN VERBALE  ----------
 \section{Ordine del Giorno}
 \begin{itemize}
-    \item %modifica
+    \item Chiarimenti in merito a casi specifici relativi ad alcune funzionalità.
+    \item Risoluzione di dubbi riguardanti la redazione dei casi d'uso.
 \end{itemize}
 
-% ---------- DISCUSSIONI, METTERE SE DOC È UN VERBALE ----------
+% ---------- DISCUSSIONI ----------
 \section{Discussioni}
+Nel corso della riunione sono stati affrontati diversi aspetti implementativi e logici delle funzionalità previste. Di seguito si riportano i punti salienti suddivisi per argomento.
+
+\subsection{Funzionalità Dead Man's Switch}
+Si è discusso del metodo di notifica più idoneo per questa funzionalità, valutando l'utilizzo delle notifiche PUSH rispetto alle e-mail.
+Sebbene le notifiche PUSH garantiscano maggiore visibilità per eventi critici, la proponente ha suggerito di optare per l'invio di \textbf{e-mail}.
+La motivazione risiede nella complessità tecnica: realizzare un'infrastruttura per le notifiche PUSH richiederebbe un dispendio di risorse non giustificato se limitato a una singola funzionalità. Tale implementazione sarebbe stata valutabile solo se estesa a più aree dell'applicazione.
+
+\subsection{Funzionalità Guardiano Silenzioso}
+In merito al contenuto del messaggio automatico inviato dal "Guardiano Silenzioso", è stato chiarito che il gruppo ha discrezionalità sulla scelta dei dati (orario, nome, posizione, ecc.).
+Il vincolo fondamentale è il \textbf{consenso dell'utente}: è necessario garantire che l'applicazione abbia i permessi espliciti per gestire e inviare tali informazioni (in particolare la geolocalizzazione).
+
+\subsection{Autenticazione e Walkthrough}
 \begin{itemize}
-    \item %modifica
+    \item \textbf{Autenticazione:} Per la gestione dell'accesso e della creazione account, è stato indicato di utilizzare \textbf{Google Authenticator} come attore secondario per gestire il flusso di autenticazione.
+    \item \textbf{Walkthrough:} Si è valutata l'ipotesi di inserire una sezione di registrazione al termine della presentazione iniziale. La proponente ha consigliato di mantenere questa procedura \textbf{opzionale} per non forzare la condivisione di dati sensibili. L'approccio preferibile consiste nell'informare l'utente dei vantaggi della registrazione (tramite testo o immagini), lasciando a lui la scelta di avviare la procedura in un secondo momento.
 \end{itemize}
-%modifica
+
+\subsection{Diario Criptato}
+La discussione si è concentrata sui meccanismi di sicurezza e sulla distinzione tra diario reale e fittizio.
+\begin{itemize}
+    \item \textbf{Credenziali:} La password del diario deve essere indipendente da quella dell'account principale. La scelta tra Password alfanumerica o PIN è a discrezione del gruppo (il PIN è risultato preferibile per rapidità d'uso).
+    \item \textbf{Diario Fittizio:} È necessario impostare una password specifica per il diario fittizio. L'accesso tramite una generica "password errata" è stato scartato, in quanto potrebbe destare sospetti in un osservatore esterno.
+    \item \textbf{Gestione Password:}
+    \begin{itemize}
+        \item La modifica della password del diario reale avverrà tramite una schermata dedicata nelle impostazioni.
+        \item La configurazione/modifica della password del diario fittizio dovrà avvenire \textbf{all'interno del diario stesso}, evitando voci visibili nelle impostazioni generali (es. "Modifica password fittizia") che ne svelerebbero l'esistenza.
+    \end{itemize}
+    \item \textbf{Reset Password:} Si è deciso di non implementare, per il momento, meccanismi di recupero password (es. tramite token). La priorità è realizzare un sistema semplice e funzionante, predisposto per future estensioni, evitando le complessità di sicurezza legate al reset.
+    \item \textbf{Integrazione AI:} L'integrazione dell'Intelligenza Artificiale, come concordato nell'incontro del 2025-11-25, rimane opzionale. Tuttavia, i relativi Casi d'Uso devono essere mantenuti come "opzionali", anche se l'implementazione non verrà verosimilmente completata entro le scadenze attuali.
+\end{itemize}
+
+\subsection{Varie ed Eventuali}
+\begin{itemize}
+    \item \textbf{Mockup:} Non è strettamente necessario allegare mockup ai casi d'uso, ma è consentito farlo qualora aiuti la comprensione o migliori la qualità della presentazione.
+    \item \textbf{Pianificazione PoC:} È stata ipotizzata una consegna del Proof of Concept (PoC) verso la fine di Gennaio 2026. La data verrà confermata ufficialmente durante il prossimo incontro interno (fissato per il 2025-12-19).
+\end{itemize}
 
 % ---------- DECISIONI, METTERE SE DOC È UN VERBALE ----------
 \section{Decisioni}
@@ -197,41 +220,25 @@ nessuno\\
 \textbf{Descrizione decisione} & \textbf{Codice decisione} \\
 \hline
 \rowcolor{white}
-Inserire descrizione & VI C 1.1 \\
+Semplificare la gestione della sicurezza della password del diario criptato & VE RTB 3.1 \\
 \hline
 \rowcolor{gray!20}
-Inserire descrizione &  VI C 1.2 \\
+Utilizzare Google Authenticator per svolgere l'autenticazione all'applicazione &  VE RTB 3.2 \\
 \hline
 \rowcolor{white}
-Inserire descrizione &  VI C 1.3\\
+Inviare una mail anziché notifiche PUSH quando si utilizza la funzionalità Dead Man's Switch &  VE RTB 3.3\\
+\hline
+\rowcolor{gray!20}
+Tenere come casi d'uso facoltativi quello dell'AI che interagisce con il diario criptato. Ad esempio analizza le note e identificare pattern di pericolo tramite quelle &  VE RTB 3.4\\
+\hline
+\rowcolor{white}
+Tenere come facoltativa l'autenticazione tramite walkthrough &  VE RTB 3.5\\
 \hline
 \end{tabular}
 \end{center}
 
 % ---------- TO DO, METTERE SE DOC È UN VERBALE ----------
 \section{To Do}
-Dalle discussioni e decisioni intraprese, sono emerse le seguenti attività:
-
-\begin{center}
-\small
-\renewcommand{\arraystretch}{1.2} 
-\arrayrulecolor{black} 
-\begin{tabular}{|p{0.52\textwidth}|c|c|}
-\hline
-\rowcolor{gray!60} 
-\textbf{Task} & \textbf{Codice decisione} & \textbf{N°issue GitHub} \\
-\hline
-\rowcolor{white}
-Esempio Task 1 & VI C 1.1 & \href{https://github.com/<repo>/issues/1}{\textbf{issue}} \\
-\hline
-\rowcolor{gray!20}
-Esempio Task 2 & VI C 1.2 & \href{https://github.com/<repo>/issues/2}{\textbf{issue}} \\
-\hline
-\rowcolor{white}
-Esempio Task 3 & VI C 1.3 & \href{https://github.com/<repo>/issues/3}{\textbf{issue}} \\
-\hline
-\end{tabular}
-\end{center}
-
+Dalle discussioni e decisioni intraprese è emerso che i to do verranno stabiliti ed assegnati durante la prossima riunione interna che il gruppo farà, prevista per il 2025-12-19. Questo perché inizierà il nuovo periodo di sprint e quindi i ruoli e le quantità di ore svolte dai componenti cambieranno. 
 
 \end{document}
