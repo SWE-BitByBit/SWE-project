@@ -102,7 +102,7 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & In corso\\
-\textbf{Versione:} & 0.11.0 \\
+\textbf{Versione:} & 0.12.0 \\
 \textbf{Responsabile:} & \\
 \textbf{Redattori:} & Riccardo Manisi, Dennis Parolin, Giovanni Visentin \\
 \textbf{Verificatori:} & Giovanni Visentin, Marco Sanguin \\
@@ -129,6 +129,9 @@ Gruppo BitByBit\\
 \hline
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+\hline
+\rowcolor{white}
+0.12.0 & 2025-12-19 & Riccardo Manisi &  Inseriti casi d'uso per autenitcazione all'app UC-AUTH1 e UC-AUTH1.1. Cancellato UC-BW1.5 [deprecato] & Dennis Parolin \\
 \hline
 \rowcolor{gray!20}
 0.11.0 & 2025-12-17 & Riccardo Manisi & Cancellato UC-BW1.5 [deprecato] in UC-BW1 e inserita inclusione con UC-IMP3 & Giovanni Visentin \\
@@ -456,12 +459,12 @@ Gli attori rappresentano entità esterne al sistema che interagiscono con esso p
         \item L'utente esegue la profilazione iniziale $\rightarrow$ \ref{subsec:UC-BW1.2}
         \item Il sistema inizia il ciclo di presentazione delle schede informative dell'app
         \item L'utente seleziona la voce prosegui per ogni scheda
+        \item Il sistema mostra la scheda per l'autenticazione 
+        \item L'utente effettua l'autenticazione all'applicazione $\rightarrow$ \ref{subsec:UC-AUTH1}
         \item Il sistema mostra la scheda per l'aggiunta del primo contatto fidato
         \item L'utente aggiunge il suo primo contatto fidato $\rightarrow$ \ref{subsec:UC-IMP3}
-        \item Il sistema mostra la scheda per la configurazione dell'email dell'utente
-        \item L'utente inserisce l'email per il dead man's switch $\rightarrow$ \ref{subsec:UC-BW1.5}
         \item Il sistema mostra la scheda per l'impostazione della password per il diario criptato 
-        \item L'utente inserisce la password per il diario criptato $\rightarrow$ \ref{subsec:UC-BW1.6}
+        \item L'utente inserisce la password per il diario criptato $\rightarrow$ \ref{subsec:UC-BW1.5}
         \item L'utente seleziona la voce prosegui $\rightarrow$ \ref{subsec:UC-BW1.3}
         \item Il sistema mostra la Home Page
     \end{itemize}
@@ -476,12 +479,12 @@ Gli attori rappresentano entità esterne al sistema che interagiscono con esso p
         \item \ref{subsec:UC-IMP3}
         \item \ref{subsec:UC-BW1.3}
         \item \ref{subsec:UC-BW1.5}
-        \item \ref{subsec:UC-BW1.6}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
         \item \ref{subsec:UC-BW1.1}
         \item \ref{subsec:UC-BW1.4}
+        \item \ref{subsec:UC-AUTH1}
     \end{itemize}
     \item \textbf{Trigger:} Primo avvio dell'applicazione
 \end{itemize}
@@ -590,40 +593,7 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
 \end{itemize}
 
 % ==== UC-BW1.5 ====
-\subsubsection{UC-BW1.5 - Configurazione Rapida Email} \label{subsec:UC-BW1.5}
-\begin{itemize}
-    \item \textbf{Attore principale:} Utente Generico
-    
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il walkthrough è attivo
-        \item La scheda riguardante la funzionalità di dead man’s switch è visibile
-    \end{itemize}
-    
-    \item \textbf{Post-condizioni:}
-    \begin{itemize}
-        \item L'email è salvata OPPURE nessuna email è salvata e l'utente è informato
-    \end{itemize}
-    
-    \item \textbf{Scenario principale:}
-    \begin{itemize}
-        \item L'utente inserisce la propria email
-        \item Il sistema valida il formato
-        \item Il sistema salva l'indirizzo
-    \end{itemize}
-    
-    \item \textbf{Scenario secondario:}
-    \begin{itemize}
-        \item L'utente lascia il campo vuoto
-        \item Il sistema non salva nulla
-        \item Il sistema notifica l’utente del fatto che non potrà usare la funzionalità ma che può configurarla nelle impostazioni
-    \end{itemize}
-    
-    \item \textbf{Trigger:} L'utente interagisce con il campo di input della scheda Email
-\end{itemize}
-
-% ==== UC-BW1.6 ====
-\subsubsection{UC-BW1.6 - Configurazione Rapida Diario} \label{subsec:UC-BW1.6}
+\subsubsection{UC-BW1.5 - Configurazione Rapida Diario} \label{subsec:UC-BW1.5}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente Generico
     
