@@ -18,7 +18,7 @@
 \usepackage{geometry}
 \usepackage{setspace}
 \usepackage{colortbl}
-\usepackage{hyperref} 
+\usepackage{hyperref}
 \usepackage{fancyhdr}
 \setlength{\headheight}{25pt}
 \setlength{\headsep}{1cm}
@@ -96,15 +96,11 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & XXXX \\
-\textbf{Versione:} & XXXX \\
-\textbf{Redattori:} & XXXX \\
-\textbf{Verificatori:} & XXXX \\
-\textbf{Responsabile:} & XXXX \\
-\textbf{Destinatari:} & 
-\begin{tabular}[t]{@{}l@{}}
-Destinatario 1 \\
-Destinatario 2 \\
-\end{tabular} \\
+\textbf{Versione:} & 0.1.0 \\
+\textbf{Redattori:} & Marco Sanguin \\
+\textbf{Verificatori:} & \\
+\textbf{Responsabile:} & Marco Sanguin \\
+\textbf{Destinatari:} & Gruppo BitByBit \\
 \end{tabularx}
 \end{tcolorbox}
 
@@ -123,9 +119,13 @@ Destinatario 2 \\
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
+\rowcolor{gray!20}
+ 0.2.0 &  2025-12-19 & Marco Sanguin & Redazione completa del verbale &  \\
+\hline
 \rowcolor{white}
  0.1.0 &  2025-12-19 & Marco Sanguin & Creazione documento &  \\
 \hline
+
 
 \end{tabular}
 \end{center}
@@ -167,13 +167,25 @@ nessuno\\
 % ---------- ORDINE DEL GIORNO, METTERE SE DOC È UN VERBALE  ----------
 \section{Ordine del Giorno}
 \begin{itemize}
-    \item %modifica
+    \item Suddivisione ruoli e compiti per il terzo sprint
+    \item Pianificazione delle scadenze delle milestone
 \end{itemize}
 
 % ---------- DISCUSSIONI, METTERE SE DOC È UN VERBALE ----------
 \section{Discussioni}
 \begin{itemize}
-    \item %modifica
+    \item \textbf{Consuntivo ore:} I componenti del gruppo hanno effettuato un resoconto delle ore effettive spese durante lo sprint appena concluso, confrontandole con quanto preventivato per monitorare l'andamento del budget temporale.
+    \item \textbf{Rotazione dei ruoli:} Sono stati definiti i ruoli per il prossimo sprint, garantendo la rotazione delle responsabilità tra i membri del team.
+    \item \textbf{Pianificazione delle attività:} Il gruppo ha stabilito le priorità per il prossimo periodo, che includono:
+    \begin{itemize}
+        \item Redazione del Piano di Qualifica;
+        \item Completamento dell'Analisi dei Requisiti (finalizzazione dei casi d'uso, diagrammi UML e progettazione dei mockup);
+        \item Aggiornamento del Piano di Progetto, delle Norme di Progetto e del Glossario.
+    \end{itemize}
+    \item \textbf{Fissazione data consegna RTB:} Il gruppo ha discusso le tempistiche necessarie per il completamento della documentazione e del materiale tecnico richiesto per l' RTB. Dopo un'analisi del lavoro rimanente, è stata proposta la data del 12 febbraio come termine per la consegna, da comunicare anche alla proponente.
+    \item \textbf{Gestione infrastruttura:} È stata discussa l'opportunità di apportare alcune modifiche migliorative alla struttura della repository per ottimizzare il flusso di lavoro.
+    \item \textbf{Incontro con il professore:} Si \`e deciso di fissare un incontro con il professore per discutere della struttura e correttezza dei casi d'uso e dei diagrammi UML per avere un parere esterno e oggettivo sul lavoro prodotto.
+    \item \textbf{Disponibilità durante le festività:} Il team ha preso atto che la capacità produttiva dello sprint sarà ridotta a causa della pausa natalizia, ricalibrando di conseguenza il carico di lavoro previsto.
 \end{itemize}
 %modifica
 
@@ -189,20 +201,35 @@ nessuno\\
 \textbf{Descrizione decisione} & \textbf{Codice decisione} \\
 \hline
 \rowcolor{white}
-Inserire descrizione & VI C 1.1 \\
+Data di consegna dell'RTB fissata al 2026-02-12 & VI RTB 5.1 \\
 \hline
 \rowcolor{gray!20}
-Inserire descrizione &  VI C 1.2 \\
+Richiesta immediata di un incontro al Prof. Cardin prima della pausa natalizia & VI RTB 5.2 \\
 \hline
 \rowcolor{white}
-Inserire descrizione &  VI C 1.3\\
+Completamento dei diagrammi UML relativi ai casi d'uso nell'AdR per presentarli al professore & VI RTB 5.3 \\
+\hline
+\rowcolor{gray!20}
+Stesura della sezione attori e dei requisiti (obbligatori, desiderabili, opzionali) nell'AdR & VI RTB 5.4 \\
+\hline
+\rowcolor{white}
+Consuntivo del secondo sprint e pianificazione preventiva del terzo nel Piano di Progetto & VI RTB 5.5 \\
+\hline
+\rowcolor{gray!20}
+Aggiornamento delle Norme di Progetto con le nuove direttive emerse & VI RTB 5.6 \\
+\hline
+\rowcolor{gray!20}
+Aggiornamento e sistemazione del sito web & VI RTB 5.7 \\
+\hline
+\rowcolor{white}
+Iniziare a redarre il Piano di Qualifica per la definizione dei test e delle metriche & VI RTB 5.8 \\
 \hline
 \end{tabular}
 \end{center}
 
 % ---------- TO DO, METTERE SE DOC È UN VERBALE ----------
 \section{To Do}
-Dalle discussioni e decisioni intraprese, sono emerse le seguenti attività:
+Dalle discussioni e decisioni intraprese nella scorsa riunione esterna con la proponente e in questa riunione interna, sono emerse le seguenti attività:
 
 \begin{center}
 \small
@@ -214,14 +241,33 @@ Dalle discussioni e decisioni intraprese, sono emerse le seguenti attività:
 \textbf{Task} & \textbf{Codice decisione} & \textbf{N°issue GitHub} \\
 \hline
 \rowcolor{white}
-Esempio Task 1 & VI C 1.1 & \href{https://github.com/<repo>/issues/1}{\textbf{issue}} \\
+Redazione casi d'uso per impostazione password diario criptato e modifica & VE RTB 3.1 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/216}{\textbf{issue}} \\
 \hline
 \rowcolor{gray!20}
-Esempio Task 2 & VI C 1.2 & \href{https://github.com/<repo>/issues/2}{\textbf{issue}} \\
+Redazione caso d'uso per autenticazione all'applicazione & VE RTB 3.2 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/213}{\textbf{issue}} \\
 \hline
 \rowcolor{white}
-Esempio Task 3 & VI C 1.3 & \href{https://github.com/<repo>/issues/3}{\textbf{issue}} \\
+Aggiungere i diagrammi UML ai casi d'uso nell'AdR & VI RTB 5.3 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/204}{\textbf{issue}} \\
 \hline
+\rowcolor{gray!20}
+Aggiungere le sezioni degli attori e dei requisiti nell'AdR & VI RTB 5.4 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/206}{\textbf{issue}} \\
+\hline
+\rowcolor{white}
+Contattare il professore per pianificare un incontro & VI RTB 5.2 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/208}{\textbf{issue}} \\
+\hline
+\rowcolor{gray!20}
+Inzio della redazione del Piano di Qualifica & VI RTB 5.8 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/210}{\textbf{issue}} \\
+\hline
+\rowcolor{white}
+Redazione del consuntivo dello scorso sprint nel piano di progetto & VI RTB 5.5 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/207}{\textbf{issue}} \\
+\hline
+\rowcolor{gray!20}
+Redazione dell'attività di manutenzione per processo di infrastruttura nelle NdP & VI RTB 5.6 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/211}{\textbf{issue}} \\
+\hline
+\rowcolor{white}
+Aggiornamento e sistemazione del sito web del gruppo & VI RTB 5.7 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/212}{\textbf{issue}} \\
+\hline
+
 \end{tabular}
 \end{center}
 
