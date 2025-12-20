@@ -424,13 +424,13 @@ Gli attori rappresentano entità esterne al sistema che interagiscono con esso p
         \item \ref{subsec:UC-IMP3}
         \item \ref{subsec:UC-BW1.3}
         \item \ref{subsec:UC-BW1.5}
+        \item \ref{subsec:UC-D1}
     \end{itemize}
     
     \item \textbf{Estensioni:}
     \begin{itemize}
         \item \ref{subsec:UC-BW1.1}
         \item \ref{subsec:UC-BW1.4}
-        \item \ref{subsec:UC-D1}
     \end{itemize}
     
     \item \textbf{Trigger:} Primo avvio dell'applicazione
@@ -625,7 +625,7 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
         \item L'utente sta visualizzando la lista dei contatti fidati
     \end{itemize}
     \item \textbf{Post-condizioni:}
-    \item \begin{itemize}
+    \begin{itemize}
         \item Il sistema per ogni contatto fidato le informazioni di contatto e il nominativo
     \end{itemize}
     \item \textbf{Scenario principale:} 
@@ -921,6 +921,10 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \begin{itemize}
         \item La nuova password inserita dall'utente è uguale a quella vecchia $\rightarrow$ \ref{subsec:UC-D2.1}
     \end{itemize}
+    \item \textbf{Estensioni:} 
+    \begin{itemize}
+        \item \ref{subsec:UC-D2.1}
+    \end{itemize}
     \item \textbf{Trigger:} L’utente vuole modificare la password del diario criptato
 \end{itemize}
 
@@ -1180,7 +1184,7 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \item \textbf{Trigger:} L’utente vuole inserire un nuovo media nel diario criptato
 \end{itemize}
 
-\subsubsection{UC-D6 - Analisi automatica del contenuto del diario criptato} \label{subsec:UC-64}
+\subsubsection{UC-D6 - Analisi automatica del contenuto del diario criptato} \label{subsec:UC-D6}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Attore secondario:} LLM
@@ -1259,12 +1263,12 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
-        \item La password proposta non è quella scelta dall'utente per aprire il diario fittizio $\rightarrow$ \ref{subsec:UC-D1.2}
-        \item \item La password proposta non è quella scelta dall'utente per aprire il diario criptato $\rightarrow$ \ref{subsec:UC-D1.2}
+        \item La password inserita non coincide con quella impostata dall'utente per il diario fittizio $\rightarrow$ \ref{subsec:UC-D3.2}
+        \item La password inserita coicide con quella impostata dall'utente per il diario criptato $\rightarrow$ \ref{subsec:UC-D3.2}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-D1.2}
+        \item \ref{subsec:UC-D3.2}
     \end{itemize}
     \item \textbf{Trigger:} L'utente vuole autenticarsi nel diario fittizio
 \end{itemize}
