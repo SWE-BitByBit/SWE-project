@@ -1,0 +1,285 @@
+% template presente
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{tabularx}
+\usepackage{tcolorbox}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    urlcolor=blue,     
+}
+\usepackage{graphicx}
+\graphicspath{{resources/}{../resources/}{../../resources/}{../../../resources/}{../../../../resources/}}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{colortbl}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\setlength{\headheight}{25pt}
+\setlength{\headsep}{1cm}
+\usepackage{titlesec}
+\geometry{margin=2.5cm}
+% ===== Variabile per il titolo del documento =====
+% ===== DA MODOFICARE =====
+\newcommand{\documenttitle}{Verbale interno, riunione 5 - RTB  } %serve l'ultimo spazio
+
+
+\setlength{\parindent}{0pt}
+\setstretch{1.2}
+
+% ===== Stile intestazione =====
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{gray}{\documenttitle - BitByBit}}
+\fancyhead[R]{\includegraphics[height=1cm]{solo_logo.jpg}}
+\fancyfoot[C]{\thepage}
+
+% ===== Formattazione sezioni =====
+\titleformat{\section}{\Large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.5em}{}
+
+\begin{document}
+
+% ======= HEADER UNIVERSITÀ E GRUPPO CENTRATI VERTICALMENTE =======
+\vspace*{\fill} % --- Spinge verso il basso l'inizio del contenuto
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logoUni.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\color{red}\LARGE \textbf{Università degli Studi di Padova}}\\[0.3cm]
+        {\large
+        Laurea: Informatica\\
+        Corso: Ingegneria del Software\\
+        Anno Accademico: 2025/26
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1cm}
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logo.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\LARGE \textbf{Gruppo 17}}\\[0.3cm]
+        {\large
+        Nome: BitByBit\\
+        Email: swe.bitbybit@gmail.com
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1.5cm}
+
+\begin{center}
+    {\LARGE \textbf{\documenttitle}}
+\end{center}
+
+% ======= INFO GENERALI SUL DOCUMENTO, DA TENERE SU OGNI DOC =======
+\renewcommand{\arraystretch}{1.3}
+\vspace{0.1cm}
+
+\begin{tcolorbox}
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\textbf{Stato:} & completato \\
+\textbf{Versione:} & 0.3.0 \\
+\textbf{Redattori:} & Marco Sanguin \\
+\textbf{Verificatori:} & \\
+\textbf{Responsabile:} & Marco Sanguin \\
+\textbf{Destinatari:} & Gruppo BitByBit \\
+\end{tabularx}
+\end{tcolorbox}
+
+\vspace*{\fill} % --- Spinge verso l’alto la fine del contenuto, centrando tutto il blocco
+
+% ---------- REDAZIONE E REVISIONE ----------
+\clearpage
+
+\section*{Registro delle modifiche}
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2} 
+\arrayrulecolor{black}
+\begin{tabular}{|c|c|p{0.21\linewidth}|p{0.23\linewidth}|c|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+\hline
+\rowcolor{white}
+ 0.3.0 &  2025-12-19 & Marco Sanguin & Aggiunta spartizione dei ruoli &  \\
+\hline
+\rowcolor{gray!20}
+ 0.2.0 &  2025-12-19 & Marco Sanguin & Redazione completa del verbale &  \\
+\hline
+\rowcolor{white}
+ 0.1.0 &  2025-12-19 & Marco Sanguin & Creazione documento &  \\
+\hline
+
+
+\end{tabular}
+\end{center}
+
+\clearpage
+
+% ======= INDICE SU PAGINA DEDICATA =======
+\clearpage
+\tableofcontents
+\thispagestyle{empty} % senza numero di pagina per l'indice
+\clearpage
+
+% ======= INFO GENERALI RIUNIONE, METTERE SE DOC È UN VERBALE =======
+\section{Informazioni generali}
+\renewcommand{\arraystretch}{1.3}
+
+\begin{tcolorbox}
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\textbf{Data:} & 19 Dicembre 2025 \\
+\textbf{Ora Inizio:} & 10:00 \\
+\textbf{Durata:} & 1h 30 \\
+\textbf{Luogo:} & Discord \\
+\textbf{Presenti:} & 
+\begin{tabular}[t]{@{}l@{}}
+Fracasso Ferdinando\\
+Manisi Riccardo\\
+Parolin Dennis\\
+Scaggiante Gabriele\\
+Sanguin Marco\\
+Visentin Giovanni \\
+\end{tabular} \\
+\textbf{Assenti:} & 
+\begin{tabular}[t]{@{}l@{}}
+nessuno\\
+\end{tabular} \\
+\end{tabularx}
+\end{tcolorbox}
+
+% ---------- ORDINE DEL GIORNO, METTERE SE DOC È UN VERBALE  ----------
+\section{Ordine del Giorno}
+\begin{itemize}
+    \item Suddivisione ruoli e compiti per il terzo sprint
+    \item Pianificazione delle scadenze delle milestone
+\end{itemize}
+
+% ---------- DISCUSSIONI, METTERE SE DOC È UN VERBALE ----------
+\section{Discussioni}
+\begin{itemize}
+    \item \textbf{Consuntivo ore:} I componenti del gruppo hanno effettuato un resoconto delle ore effettive spese durante lo sprint appena concluso, confrontandole con quanto preventivato per monitorare l'andamento del budget temporale.
+    \item \textbf{Pianificazione delle attività:} Il gruppo ha stabilito le priorità per il prossimo periodo, che includono:
+    \begin{itemize}
+        \item Redazione del Piano di Qualifica;
+        \item Completamento dell'Analisi dei Requisiti (finalizzazione dei casi d'uso, diagrammi UML e progettazione dei mockup);
+        \item Aggiornamento del Piano di Progetto, delle Norme di Progetto e del Glossario.
+    \end{itemize}
+    \item \textbf{Fissazione data consegna RTB:} Il gruppo ha discusso le tempistiche necessarie per il completamento della documentazione e del materiale tecnico richiesto per l' RTB. Dopo un'analisi del lavoro rimanente, è stata proposta la data del 12 febbraio come termine per la consegna, da comunicare anche alla proponente.
+    \item \textbf{Gestione infrastruttura:} È stata discussa l'opportunità di apportare alcune modifiche migliorative alla struttura della repository per ottimizzare il flusso di lavoro.
+    \item \textbf{Incontro con il professore:} Si \`e deciso di fissare un incontro con il professore per discutere della struttura e correttezza dei casi d'uso e dei diagrammi UML per avere un parere esterno e oggettivo sul lavoro prodotto.
+    \item \textbf{Disponibilità durante le festività:} Il team ha preso atto che la capacità produttiva dello sprint sarà ridotta a causa della pausa natalizia, ricalibrando di conseguenza il carico di lavoro previsto.
+    \item \textbf{Rotazione dei ruoli:} Sono stati definiti i ruoli per il prossimo sprint, garantendo la rotazione delle responsabilità tra i membri del team
+\end{itemize}
+Si riporta qui di seguito la spartizione dei ruoli per ogni membro del gruppo stabilita durante le discussioni durante l'incontro:
+\begin{center}
+    \textbf{Amministratore\ap{G}} $\rightarrow$ Riccardo Manisi, Marco Sanguin, Gabriele Scaggiante, Dennis Parolin, Giovanni Visentin\\
+    \textbf{Responsabile\ap{G}} $\rightarrow$ Marco Sanguin\\
+    \textbf{Analista\ap{G}} $\rightarrow$ Ferdinando Fracasso, Riccardo Manisi, Gabriele Scaggiante, Dennis Parolin, Giovanni Visentin\\
+    \textbf{Verificatore\ap{G}} $\rightarrow$ Ferdinando Fracasso, Dennis Parolin, Giovanni Visentin
+\end{center}
+%modifica
+
+% ---------- DECISIONI, METTERE SE DOC È UN VERBALE ----------
+\section{Decisioni}
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2} 
+\arrayrulecolor{black} 
+\begin{tabular}{|p{0.73\textwidth}|c|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Descrizione decisione} & \textbf{Codice decisione} \\
+\hline
+\rowcolor{white}
+Data di consegna dell'RTB fissata al 2026-02-12 & VI RTB 5.1 \\
+\hline
+\rowcolor{gray!20}
+Richiesta immediata di un incontro al Prof. Cardin prima della pausa natalizia & VI RTB 5.2 \\
+\hline
+\rowcolor{white}
+Completamento dei diagrammi UML relativi ai casi d'uso nell'AdR per presentarli al professore & VI RTB 5.3 \\
+\hline
+\rowcolor{gray!20}
+Stesura della sezione attori e dei requisiti (obbligatori, desiderabili, opzionali) nell'AdR & VI RTB 5.4 \\
+\hline
+\rowcolor{white}
+Consuntivo del secondo sprint e pianificazione preventiva del terzo nel Piano di Progetto & VI RTB 5.5 \\
+\hline
+\rowcolor{gray!20}
+Aggiornamento delle Norme di Progetto con le nuove direttive emerse & VI RTB 5.6 \\
+\hline
+\rowcolor{gray!20}
+Aggiornamento e sistemazione del sito web & VI RTB 5.7 \\
+\hline
+\rowcolor{white}
+Iniziare a redarre il Piano di Qualifica per la definizione dei test e delle metriche & VI RTB 5.8 \\
+\hline
+\end{tabular}
+\end{center}
+
+% ---------- TO DO, METTERE SE DOC È UN VERBALE ----------
+\section{To Do}
+Dalle discussioni e decisioni intraprese nella scorsa riunione esterna con la proponente e in questa riunione interna, sono emerse le seguenti attività:
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2} 
+\arrayrulecolor{black} 
+\begin{tabular}{|p{0.52\textwidth}|c|c|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Task} & \textbf{Codice decisione} & \textbf{N°issue GitHub} \\
+\hline
+\rowcolor{white}
+Redazione casi d'uso per impostazione password diario criptato e modifica & VE RTB 3.1 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/216}{\textbf{issue}} \\
+\hline
+\rowcolor{gray!20}
+Redazione caso d'uso per autenticazione all'applicazione & VE RTB 3.2 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/213}{\textbf{issue}} \\
+\hline
+\rowcolor{white}
+Aggiungere i diagrammi UML ai casi d'uso nell'AdR & VI RTB 5.3 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/204}{\textbf{issue}} \\
+\hline
+\rowcolor{gray!20}
+Aggiungere le sezioni degli attori e dei requisiti nell'AdR & VI RTB 5.4 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/206}{\textbf{issue}} \\
+\hline
+\rowcolor{white}
+Contattare il professore per pianificare un incontro & VI RTB 5.2 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/208}{\textbf{issue}} \\
+\hline
+\rowcolor{gray!20}
+Inzio della redazione del Piano di Qualifica & VI RTB 5.8 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/210}{\textbf{issue}} \\
+\hline
+\rowcolor{white}
+Redazione del consuntivo dello scorso sprint nel piano di progetto & VI RTB 5.5 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/207}{\textbf{issue}} \\
+\hline
+\rowcolor{gray!20}
+Redazione dell'attività di manutenzione per processo di infrastruttura nelle NdP & VI RTB 5.6 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/211}{\textbf{issue}} \\
+\hline
+\rowcolor{white}
+Aggiornamento e sistemazione del sito web del gruppo & VI RTB 5.7 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/212}{\textbf{issue}} \\
+\hline
+
+\end{tabular}
+\end{center}
+
+
+\end{document}
