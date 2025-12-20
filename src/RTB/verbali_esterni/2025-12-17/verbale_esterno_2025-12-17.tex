@@ -1,0 +1,255 @@
+% template presente
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{tabularx}
+\usepackage{tcolorbox}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    urlcolor=blue,     
+}
+\usepackage{graphicx}
+\graphicspath{{resources/}{../resources/}{../../resources/}{../../../resources/}{../../../../resources/}}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{colortbl}
+\usepackage{hyperref} 
+\usepackage{fancyhdr}
+\setlength{\headheight}{25pt}
+\setlength{\headsep}{1cm}
+\usepackage{titlesec}
+\geometry{margin=2.5cm}
+% ===== Variabile per il titolo del documento =====
+% ===== DA MODOFICARE =====
+\newcommand{\documenttitle}{Verbale Riunione Numero 3 } %serve l'ultimo spazio
+
+
+\setlength{\parindent}{0pt}
+\setstretch{1.2}
+
+% ===== Stile intestazione =====
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{gray}{\documenttitle - BitByBit}}
+\fancyhead[R]{\includegraphics[height=1cm]{solo_logo.jpg}}
+\fancyfoot[C]{\thepage}
+
+% ===== Formattazione sezioni =====
+\titleformat{\section}{\Large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.5em}{}
+
+\begin{document}
+
+% ======= HEADER UNIVERSITÀ E GRUPPO CENTRATI VERTICALMENTE =======
+\vspace*{\fill} % --- Spinge verso il basso l'inizio del contenuto
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logoUni.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\color{red}\LARGE \textbf{Università degli Studi di Padova}}\\[0.3cm]
+        {\large
+        Laurea: Informatica\\
+        Corso: Ingegneria del Software\\
+        Anno Accademico: 2025/26
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1cm}
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logo.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\LARGE \textbf{Gruppo 17}}\\[0.3cm]
+        {\large
+        Nome: BitByBit\\
+        Email: swe.bitbybit@gmail.com
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1.5cm}
+
+\begin{center}
+    {\LARGE \textbf{\documenttitle}}
+\end{center}
+
+% ======= INFO GENERALI SUL DOCUMENTO, DA TENERE SU OGNI DOC =======
+\renewcommand{\arraystretch}{1.3}
+\vspace{0.1cm}
+
+\begin{tcolorbox}
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\textbf{Stato:} & Completato \\
+\textbf{Versione:} & 1.0.0 \\
+\textbf{Redattori:} & Dennis Parolin \\
+\textbf{Verificatori:} & Marco Sanguin, Giovanni Visentin \\
+\textbf{Responsabile:} & Riccardo Manisi \\
+\end{tabularx}
+\end{tcolorbox}
+
+\vspace*{\fill} % --- Spinge verso l’alto la fine del contenuto, centrando tutto il blocco
+
+% ---------- REDAZIONE E REVISIONE ----------
+\clearpage
+
+\section*{Registro delle modifiche}
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2} 
+\arrayrulecolor{black}
+\begin{tabular}{|c|c|p{0.21\linewidth}|p{0.23\linewidth}|c|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+\hline
+\rowcolor{white}
+0.1.0 & 2025-12-17 & Dennis Parolin & Redazione completa del documento & Giovanni Visentin\\
+\hline
+\end{tabular}
+\end{center}
+
+\clearpage
+
+% ======= INDICE SU PAGINA DEDICATA =======
+\clearpage
+\tableofcontents
+\thispagestyle{empty} % senza numero di pagina per l'indice
+\clearpage
+
+% ======= INFO GENERALI RIUNIONE, METTERE SE DOC È UN VERBALE =======
+\section{Informazioni generali}
+\renewcommand{\arraystretch}{1.3}
+
+\begin{tcolorbox}
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\textbf{Data:} & 17 dicembre 2025 \\
+\textbf{Ora Inizio:} & 16.00 \\
+\textbf{Durata:} & 50m \\
+\textbf{Luogo:} & Google Meet \\
+\textbf{Presenti:} & 
+\begin{tabular}[t]{@{}l@{}}
+Fracasso Ferdinando\\
+Manisi Riccardo\\
+Parolin Dennis\\
+Sanguin Marco\\
+Visentin Giovanni \\
+\end{tabular} \\
+\textbf{Miriade:} & 
+\begin{tabular}[t]{@{}l@{}}
+Egidi Annalisa\\
+Righetto Emanuele\\
+\end{tabular} \\
+\textbf{Assenti:} & 
+\begin{tabular}[t]{@{}l@{}}
+Scaggiante Gabriele\\
+\end{tabular} \\
+\end{tabularx}
+\end{tcolorbox}
+
+% ---------- ORDINE DEL GIORNO, METTERE SE DOC È UN VERBALE  ----------
+\section{Ordine del Giorno}
+\begin{itemize}
+    \item Chiarimenti in merito a casi specifici relativi ad alcune funzionalità.
+    \item Risoluzione di dubbi riguardanti la redazione dei casi d'uso.
+\end{itemize}
+
+% ---------- DISCUSSIONI ----------
+\section{Discussioni}
+Nel corso della riunione sono stati affrontati diversi aspetti implementativi e logici delle funzionalità previste. Di seguito si riportano i punti salienti suddivisi per argomento.
+
+\subsection{Funzionalità Dead Man's Switch}
+Si è discusso del metodo di notifica più idoneo per questa funzionalità, valutando l'utilizzo delle notifiche PUSH rispetto alle e-mail.
+Sebbene le notifiche PUSH garantiscano maggiore visibilità per eventi critici, la proponente ha suggerito di optare per l'invio di \textbf{e-mail}.
+La motivazione risiede nella complessità tecnica: realizzare un'infrastruttura per le notifiche PUSH richiederebbe un dispendio di risorse non giustificato se limitato a una singola funzionalità. Tale implementazione sarebbe stata valutabile solo se estesa a più aree dell'applicazione.
+
+\subsection{Funzionalità Guardiano Silenzioso}
+In merito al contenuto del messaggio automatico inviato dal "Guardiano Silenzioso", è stato chiarito che il gruppo ha discrezionalità sulla scelta dei dati (orario, nome, posizione, ecc.).
+Il vincolo fondamentale è il \textbf{consenso dell'utente}: è necessario garantire che l'applicazione abbia i permessi espliciti per gestire e inviare tali informazioni (in particolare la geolocalizzazione).
+
+\subsection{Autenticazione e Walkthrough}
+\begin{itemize}
+    \item \textbf{Autenticazione:} Per la gestione dell'accesso e della creazione account, è stato indicato di utilizzare \textbf{Google Authenticator} come attore secondario per gestire il flusso di autenticazione.
+    \item \textbf{Walkthrough:} Si è valutata l'ipotesi di inserire una sezione di registrazione al termine della presentazione iniziale. La proponente ha consigliato di mantenere questa procedura \textbf{opzionale} per non forzare la condivisione di dati sensibili. L'approccio preferibile consiste nell'informare l'utente dei vantaggi della registrazione (tramite testo o immagini), lasciando a lui la scelta di avviare la procedura in un secondo momento.
+\end{itemize}
+
+\subsection{Diario Criptato}
+La discussione si è concentrata sui meccanismi di sicurezza e sulla distinzione tra diario reale e fittizio.
+\begin{itemize}
+    \item \textbf{Credenziali:} La password del diario deve essere indipendente da quella dell'account principale. La scelta tra Password alfanumerica o PIN è a discrezione del gruppo (il PIN è risultato preferibile per rapidità d'uso).
+    \item \textbf{Diario Fittizio:} È necessario impostare una password specifica per il diario fittizio. L'accesso tramite una generica "password errata" è stato scartato, in quanto potrebbe destare sospetti in un osservatore esterno.
+    \item \textbf{Gestione Password:}
+    \begin{itemize}
+        \item La modifica della password del diario reale avverrà tramite una schermata dedicata nelle impostazioni.
+        \item La configurazione/modifica della password del diario fittizio dovrà avvenire \textbf{all'interno del diario stesso}, evitando voci visibili nelle impostazioni generali (es. "Modifica password fittizia") che ne svelerebbero l'esistenza.
+    \end{itemize}
+    \item \textbf{Reset Password:} Si è deciso di non implementare, per il momento, meccanismi di recupero password (es. tramite token). La priorità è realizzare un sistema semplice e funzionante, predisposto per future estensioni, evitando le complessità di sicurezza legate al reset.
+    \item \textbf{Integrazione AI:} L'integrazione dell'Intelligenza Artificiale, come concordato nell'incontro del 2025-11-25, rimane opzionale. Tuttavia, i relativi Casi d'Uso devono essere mantenuti come "opzionali", anche se l'implementazione non verrà verosimilmente completata entro le scadenze attuali.
+\end{itemize}
+
+\subsection{Varie ed Eventuali}
+\begin{itemize}
+    \item \textbf{Mockup:} Non è strettamente necessario allegare mockup ai casi d'uso, ma è consentito farlo qualora aiuti la comprensione o migliori la qualità della presentazione.
+    \item \textbf{Pianificazione PoC:} È stata ipotizzata una consegna del Proof of Concept (PoC) verso la fine di Gennaio 2026. La data verrà confermata ufficialmente durante il prossimo incontro interno (fissato per il 2025-12-19).
+\end{itemize}
+
+% ---------- DECISIONI, METTERE SE DOC È UN VERBALE ----------
+\section{Decisioni}
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2} 
+\arrayrulecolor{black} 
+\begin{tabular}{|p{0.73\textwidth}|c|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Descrizione decisione} & \textbf{Codice decisione} \\
+\hline
+\rowcolor{white}
+Semplificare la gestione della sicurezza della password del diario criptato & VE RTB 3.1 \\
+\hline
+\rowcolor{gray!20}
+Utilizzare Google Authenticator per svolgere l'autenticazione all'applicazione &  VE RTB 3.2 \\
+\hline
+\rowcolor{white}
+Inviare una mail anziché notifiche PUSH quando si utilizza la funzionalità Dead Man's Switch &  VE RTB 3.3\\
+\hline
+\rowcolor{gray!20}
+Tenere come casi d'uso facoltativi quello dell'AI che interagisce con il diario criptato. Ad esempio analizza le note e identificare pattern di pericolo tramite quelle &  VE RTB 3.4\\
+\hline
+\rowcolor{white}
+Tenere come facoltativa l'autenticazione tramite walkthrough &  VE RTB 3.5\\
+\hline
+\end{tabular}
+\end{center}
+
+% ---------- TO DO, METTERE SE DOC È UN VERBALE ----------
+\section{To Do}
+Dalle discussioni e decisioni intraprese è emerso che i to do verranno stabiliti ed assegnati durante la prossima riunione interna che il gruppo farà, prevista per il 2025-12-19. Questo perché inizierà il nuovo periodo di sprint e quindi i ruoli e le quantità di ore svolte dai componenti cambieranno. 
+
+% ---------- FIRMA AZIENDALE ----------
+\vspace*{\fill} % Spinge la firma in fondo alla pagina
+\noindent
+\begin{minipage}{0.60\textwidth}
+    {\small
+    \textbf{Firma aziendale:}\\[0.3cm]
+    \textit{(Spazio riservato all’azienda per apporre firma o timbro)}\\[0.8cm]
+    \fbox{\rule{0pt}{2.5cm}\rule{5cm}{0pt}} % rettangolo segnaposto firma
+    }
+\end{minipage}
+
+\end{document}

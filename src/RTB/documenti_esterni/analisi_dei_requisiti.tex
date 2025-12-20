@@ -130,14 +130,15 @@ Gruppo BitByBit\\
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
+
 \rowcolor{gray!20}
-0.11.0 & 2025-12-16 & Marco Sanguin & Aggiunti Casi d'uso per Guardiano Silenzioso e Detective delle Relazioni (UC-S, UC-I) & Giovanni Visentin \\ 
+0.11.0 & 2025-12-19 & Riccardo Manisi &  Inseriti casi d'uso per autenitcazione all'app UC-AUTH1 e UC-AUTH1.1. Cancellato UC-BW1.5 [deprecato] & Giovanni Visentin \\
 \hline
 \rowcolor{white}
-0.10.0 & 2025-12-16 & Riccardo Manisi & Aggiunta UC-IMP2.1.1, UC-IMP2.1.2, UC-IMP2.1.3 per visualizzazione dettagli contatto fidato & Giovanni Visentin \\
+0.10.0 & 2025-12-17 & Riccardo Manisi & Cancellato UC-BW1.5 [deprecato] in UC-BW1 e inserita inclusione con UC-IMP3 & Giovanni Visentin \\
 \hline
 \rowcolor{gray!20}
-0.9.0 & 2025-12-16 & Riccardo Manisi & Cancellato UC-BW1.5 [deprecato] in UC-BW1 e inserita inclusione con UC-IMP3 & Giovanni Visentin \\
+0.9.0 & 2025-12-16 & Marco Sanguin & Aggiunti Casi d'uso per Guardiano Silenzioso e Detective delle Relazioni (UC-S, UC-I) & Giovanni Visentin \\ 
 \hline
 \rowcolor{white}
 0.8.1 & 2025-12-16 & Dennis Parolin & Sistemato errore di una sezione ripetuta due volte ma con una sottosezione differente & Marco Sanguin \\
@@ -371,19 +372,77 @@ Gli attori rappresentano entità esterne al sistema che interagiscono con esso p
 
 \subsection{Lista casi d'uso}
 
+% ==== AUTENTICAZIONE APP ====
+
+\subsubsection{UC-AUTH1 - Autenticazione all'app tramite Google Auth} \label{subsec:UC-AUTH1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente Generico
+    \item \textbf{Attore secondario:} Google Auth
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'utente non è autenticato all'applicazione
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L’utente è autenticato nell'applicazione
+        \item Il sistema riconosce l'utente come utente autenticato
+        \item L'utente può accedere alle funzionalità riservate dell'applicazione
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item Il sistema mostra la schermata di accesso all’applicazione
+        \item L’utente seleziona la voce per l’autenticazione tramite Google
+        \item Il sistema richiede l’autenticazione a Google Auth
+        \item L’utente conferma l’accesso tramite il proprio account Google
+        \item Il servizio Google Auth verifica l’identità dell’utente
+        \item Il servizio Google Auth comunica l’esito positivo al sistema
+    \end{itemize}
+    \item \textbf{Scenario secondario:}
+    \begin{itemize}
+        \item Il servizio Google Auth restituisce un esito negativo $\rightarrow$ \ref{subsec:UC-AUTH1.1}
+    \end{itemize} 
+    \item \textbf{Estensioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-AUTH1.1}
+    \end{itemize}
+    \item \textbf{Trigger:} L'utente vuole accedere all'applicazione
+\end{itemize}
+
+\subsubsection{UC-AUTH1.1 - Visualizzazione messaggio di errore per autenticazione fallita} \label{subsec:UC-AUTH1.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente Generico
+    \item \textbf{Attore secondario:} Google Auth
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L’utente ha avviato il processo di autenticazione tramite Google
+        \item Il servizio Google Auth ha restituito un esito negativo dell’autenticazione
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema mostra all’utente un messaggio di errore relativo al fallimento dell’autenticazione
+        \item L’utente rimane nello stato non autenticato
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item Il servizio Google Auth comunica al sistema l’esito negativo dell’autenticazione
+        \item Il sistema mostra all’utente un messaggio di errore relativo all’autenticazione fallita
+    \end{itemize}
+    \item \textbf{Trigger:} L'utente vuole accedere all'applicazione
+\end{itemize}
+
 % ===== UC-BW: WALKTHROUGH =====
 
 \subsubsection{UC-BW1 - Esecuzione Walkthrough Interattivo} \label{subsec:UC-BW1}
 
 \begin{itemize}
     \item \textbf{Attore principale:} Utente Generico
-    
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item L’utente non ha mai aperto l’applicazione
         \item L’utente non ha ancora visualizzato tutte le pagine del walkthrough
     \end{itemize}
-    
     \item \textbf{Post-condizioni:}
     \begin{itemize}
         \item L’utente ha visualizzato le funzionalità presenti nelle schermate
@@ -392,44 +451,39 @@ Gli attori rappresentano entità esterne al sistema che interagiscono con esso p
         \item L'utente ha impostato la password per il diario criptato
         \item Il sistema mostra la Dashboard principale
     \end{itemize}
-    
     \item \textbf{Scenario principale:}
     \begin{itemize}
         \item Il sistema mostra la schermata di benvenuto
         \item L'utente esegue la profilazione iniziale $\rightarrow$ \ref{subsec:UC-BW1.2}
         \item Il sistema inizia il ciclo di presentazione delle schede informative dell'app
         \item L'utente seleziona la voce prosegui per ogni scheda
+        \item Il sistema mostra la scheda per l'autenticazione 
+        \item L'utente effettua l'autenticazione all'applicazione $\rightarrow$ \ref{subsec:UC-AUTH1}
         \item Il sistema mostra la scheda per l'aggiunta del primo contatto fidato
         \item L'utente aggiunge il suo primo contatto fidato $\rightarrow$ \ref{subsec:UC-IMP3}
-        \item Il sistema mostra la scheda per la configurazione dell'email dell'utente
-        \item L'utente inserisce l'email per il dead man's switch $\rightarrow$ \ref{subsec:UC-BW1.5}
         \item Il sistema mostra la scheda per l'impostazione della password per il diario criptato 
-        \item L'utente inserisce la password per il diario criptato $\rightarrow$ \ref{subsec:UC-BW1.6}
+        \item L'utente inserisce la password per il diario criptato $\rightarrow$ \ref{subsec:UC-BW1.5}
         \item L'utente seleziona la voce prosegui $\rightarrow$ \ref{subsec:UC-BW1.3}
         \item Il sistema mostra la Home Page
     \end{itemize}
-    
     \item \textbf{Scenario secondario:}
     \begin{itemize}
         \item L'utente decide di tornare alla scheda precedente $\rightarrow$ \ref{subsec:UC-BW1.4}
         \item L'utente decide di saltare il walkthrough $\rightarrow$ \ref{subsec:UC-BW1.1}
-    \end{itemize}
-    
+    \end{itemize} 
     \item \textbf{Inclusioni:}
     \begin{itemize}
         \item \ref{subsec:UC-BW1.2}
         \item \ref{subsec:UC-IMP3}
         \item \ref{subsec:UC-BW1.3}
         \item \ref{subsec:UC-BW1.5}
-        \item \ref{subsec:UC-BW1.6}
     \end{itemize}
-    
     \item \textbf{Estensioni:}
     \begin{itemize}
         \item \ref{subsec:UC-BW1.1}
         \item \ref{subsec:UC-BW1.4}
+        \item \ref{subsec:UC-AUTH1}
     \end{itemize}
-    
     \item \textbf{Trigger:} Primo avvio dell'applicazione
 \end{itemize}
 
@@ -537,40 +591,7 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
 \end{itemize}
 
 % ==== UC-BW1.5 ====
-\subsubsection{UC-BW1.5 - Configurazione Rapida Email} \label{subsec:UC-BW1.5}
-\begin{itemize}
-    \item \textbf{Attore principale:} Utente Generico
-    
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il walkthrough è attivo
-        \item La scheda riguardante la funzionalità di dead man’s switch è visibile
-    \end{itemize}
-    
-    \item \textbf{Post-condizioni:}
-    \begin{itemize}
-        \item L'email è salvata OPPURE nessuna email è salvata e l'utente è informato
-    \end{itemize}
-    
-    \item \textbf{Scenario principale:}
-    \begin{itemize}
-        \item L'utente inserisce la propria email
-        \item Il sistema valida il formato
-        \item Il sistema salva l'indirizzo
-    \end{itemize}
-    
-    \item \textbf{Scenario secondario:}
-    \begin{itemize}
-        \item L'utente lascia il campo vuoto
-        \item Il sistema non salva nulla
-        \item Il sistema notifica l’utente del fatto che non potrà usare la funzionalità ma che può configurarla nelle impostazioni
-    \end{itemize}
-    
-    \item \textbf{Trigger:} L'utente interagisce con il campo di input della scheda Email
-\end{itemize}
-
-% ==== UC-BW1.6 ====
-\subsubsection{UC-BW1.6 - Configurazione Rapida Diario} \label{subsec:UC-BW1.6}
+\subsubsection{UC-BW1.5 - Configurazione Rapida Diario} \label{subsec:UC-BW1.5}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente Generico
     
@@ -587,7 +608,7 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     
     \item \textbf{Scenario principale:}
     \begin{itemize}
-        \item L'utente inserisce la Password
+        \item L'utente inserisce la password
         \item Il sistema cripta e salva le chiavi di accesso
     \end{itemize}
     
@@ -1132,7 +1153,67 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \item \textbf{Trigger:} L’utente vuole inserire un nuovo media nel diario criptato
 \end{itemize}
 
-\subsubsection{UC-D4 - Accesso al Diario Fittizio} \label{subsec:UC-D4}
+\subsubsection{UC-D4 - Analisi automatica del contenuto del diario criptato} \label{subsec:UC-D4}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore secondario:} LLM
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L’utente è autenticato nel diario criptato
+        \item È stata salvata una nuova nota scritta o un nuovo media nel diario criptato
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il contenuto del diario è stato analizzato
+        \item Il sistema ha determinato se sono presenti situazioni di rischio
+        \item Il sistema identifica se sono presenti situazioni di rischio 
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema analizza il testo o il media caricato
+        \item Il sistema valuta la presenza di segnali di rischio
+        \item Il sistema associa al contenuto le motivazioni della classificazione
+    \end{itemize}
+    \item \textbf{Scenario secondario:}
+    \begin{itemize}
+        \item Il sistema notifica l'utente della presenza di una possibile situazione di rischio $\rightarrow$ \ref{subsec:UC-D4.1}
+    \end{itemize}
+    \item \textbf{Estensioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-D4.1}
+    \end{itemize}
+    \item \textbf{Trigger:} Salvataggio di una nuova nota o di un media nel diario criptato
+\end{itemize}
+
+\subsubsection{UC-D4.1 - Visualizzazione rilevamento situazioni di rischio nel diario criptato} \label{subsec:UC-D4.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item È stata individuata una situazione di rischio nel diario criptato
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item L’utente visualizza un messaggio di allerta
+        \item L’utente visualizza le motivazioni del rischio rilevato
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema mostra a schermo un messaggio di avviso nel diario criptato
+        \item Il sistema espone le motivazioni per cui il contenuto è stato classificato a rischio
+        \item L'utente visiona l'alert
+        \item L'utente seleziona la voce per chiudere l'alert
+    \end{itemize}
+    \item \textbf{Scenario secondario:}
+    \begin{itemize}
+        \item Il sistema notifica l'utente della presenza di una possibile situazione di rischio $\rightarrow$ \ref{subsec:UC-D2.3}
+    \end{itemize}
+    \item \textbf{Trigger:} Il sistema ha individuato una situazione di rischio
+\end{itemize}
+
+\subsubsection{UC-D5 - Inserimento password Diario Fittizio} \label{subsec:UC-D5}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:} 
@@ -1165,7 +1246,7 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \item \textbf{Trigger:} L'utente vuole autenticarsi nel diario fittizio
 \end{itemize}
 
-\subsubsection{UC-D5 - Impostazione password Diario Fittizio} \label{subsec:UC-D5}
+\subsubsection{UC-D6 - Scelta password Diario Fittizio} \label{subsec:UC-D6}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente autenticato
     \item \textbf{Pre-condizioni:} 
@@ -1186,16 +1267,16 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
-        \item La password inserita dall'utente è uguale a quella del diario criptato $\rightarrow$ \ref{subsec:UC-D5.1}
+        \item La password proposta è uguale a quella del diario criptato $\rightarrow$ \ref{subsec:UC-D6.1}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-D5.1}
+        \item \ref{subsec:UC-D6.1}
     \end{itemize}
     \item \textbf{Trigger:} L'utente vuole impostare la password per il diario fittizio
 \end{itemize}
 
-\subsubsection{UC-D5.1 - Errore password Diario fittizio} \label{subsec:UC-D5.1}
+\subsubsection{UC-D6.1 - Password Diario fittizio uguale} \label{subsec:UC-D6.1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente autenticato
     \item \textbf{Pre-condizioni:} 
@@ -1216,7 +1297,7 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \item \textbf{Trigger:} L'utente ha inserito una password uguale a quella del diario criptato
 \end{itemize}
 
-\subsubsection{UC-D6 - Inserimento nota scritta nel diario fittizio} \label{subsec:UC-D6}
+\subsubsection{UC-D7 - Inserimento nota scritta nel diario fittizio} \label{subsec:UC-D7}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
