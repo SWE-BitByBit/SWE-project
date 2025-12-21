@@ -102,7 +102,7 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & In corso\\
-\textbf{Versione:} & 0.12.0 \\
+\textbf{Versione:} & 0.11.0 \\
 \textbf{Responsabile:} & \\
 \textbf{Redattori:} & Riccardo Manisi, Dennis Parolin, Giovanni Visentin \\
 \textbf{Verificatori:} & Giovanni Visentin, Marco Sanguin \\
@@ -136,13 +136,13 @@ Gruppo BitByBit\\
 0.12.0 & 2025-12-19 & Riccardo Manisi &  Inseriti casi d'uso per autenitcazione all'app UC-AUTH1 e UC-AUTH1.1. Cancellato UC-BW1.5 [deprecato] & Giovanni Visentin \\
 \hline
 \rowcolor{gray!20}
-0.11.0 & 2025-12-17 & Riccardo Manisi & Cancellato UC-BW1.5 [deprecato] in UC-BW1 e inserita inclusione con UC-IMP3 & Giovanni Visentin \\
+0.11.0 & 2025-12-19 & Riccardo Manisi &  Inseriti casi d'uso per autenitcazione all'app UC-AUTH1 e UC-AUTH1.1. Cancellato UC-BW1.5 [deprecato] & Giovanni Visentin \\
 \hline
 \rowcolor{white}
-0.10.0 & 2025-12-16 & Riccardo Manisi & Aggiunta UC-IMP2.1.1, UC-IMP2.1.2, UC-IMP2.1.3 per visualizzazione dettagli contatto fidato & Giovanni Visentin \\
+0.10.0 & 2025-12-17 & Riccardo Manisi & Cancellato UC-BW1.5 [deprecato] in UC-BW1 e inserita inclusione con UC-IMP3 & Giovanni Visentin \\
 \hline
 \rowcolor{gray!20}
-0.9.0 & 2025-12-16 & Riccardo Manisi & Aggiunti UC5 e UC5.1 per allert rischio & Giovanni Visentin \\
+0.9.0 & 2025-12-16 & Marco Sanguin & Aggiunti Casi d'uso per Guardiano Silenzioso e Detective delle Relazioni (UC-S, UC-I) & Giovanni Visentin \\ 
 \hline
 \rowcolor{white}
 0.8.1 & 2025-12-16 & Dennis Parolin & Sistemato errore di una sezione ripetuta due volte ma con una sottosezione differente & Marco Sanguin \\
@@ -1096,7 +1096,7 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \begin{itemize}
         \item Il sistema è attivo
         \item L’utente è autenticato nel diario criptato o nel diario fittizio
-        \item L’utente ha selezionato la barra per l’inserimento di una nuova nota
+        \item L’utente ha selezionato la voce per l’inserimento di una nuova nota
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
@@ -1159,6 +1159,7 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \begin{itemize}
         \item Il sistema è attivo
         \item L’utente è autenticato nel diario criptato
+        \item L'utente ha selezionato la voce per l'inserimento di un media
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
@@ -1172,7 +1173,7 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
-        \item L’utente seleziona la voce “esci” per uscire dal diario senza aver inserito un media nella barra di inserimento $\rightarrow$ \ref{subsec:UC-D4.3}
+        \item L’utente seleziona la voce per uscire dal diario senza aver inserito un media nella barra di inserimento $\rightarrow$ \ref{subsec:UC-D4.3}
     \end{itemize}
     \item \textbf{Inclusioni:} 
     \begin{itemize}
@@ -1220,7 +1221,6 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \begin{itemize}
         \item Il contenuto del diario è stato analizzato
         \item Il sistema ha determinato se sono presenti situazioni di rischio
-        \item Il sistema identifica se sono presenti situazioni di rischio 
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
@@ -1262,7 +1262,7 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \item \textbf{Trigger:} Il sistema ha individuato una situazione di rischio
 \end{itemize}
 
-\subsubsection{UC-D7 - Inserimento password diario fittizio} \label{subsec:UC-D7}
+\subsubsection{UC-D7 - Accesso diario fittizio} \label{subsec:UC-D7}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:} 
@@ -1279,7 +1279,8 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'utente inserisce la password con cui vuole autenticarsi al diario fittizio
+        \item L’utente ha selezionato la voce per visualizzare il diario criptato
+        \item L'utente inserisce la password con cui vuole autenticarsi al diario fittizio $\rightarrow$ \ref{subsec:UC-D3.1}
         \item Il sistema controlla che la password inserita dall'utente sia conforme alla password scelta dall'utente come password fittizia
         \item Il sistema mostra il diario fittizio all'utente
     \end{itemize}
@@ -1287,6 +1288,10 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \begin{itemize}
         \item La password inserita non coincide con quella impostata dall'utente per il diario fittizio $\rightarrow$ \ref{subsec:UC-D3.2}
         \item La password inserita coicide con quella impostata dall'utente per il diario criptato $\rightarrow$ \ref{subsec:UC-D3.2}
+    \end{itemize}
+    \item \textbf{Inclusioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-D3.1}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
@@ -1379,6 +1384,191 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
         \item \ref{subsec:UC-D4.3}
     \end{itemize}
     \item \textbf{Trigger:} L’utente vuole inserire una nuova nota scritta nel diario fittizio
+\end{itemize}
+
+% ========================== UC-S: SICUREZZA - GUARDIANO SILENZIOSO  ==============================
+
+\subsubsection{UC-S1 - Invio Messaggio} \label{sec:UC-S1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore secondario:} Servizio di invio mail
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item L’utente ha impostato una lista di contatti fidati \ref{subsec:UC-IMP3}
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema ha inviato un segnale ai contatti fidati
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L’utente richiede l’attivazione della funzionalità.
+        \item Il sistema verifica che ci sia connessione.
+	    \item Il sistema manda un messaggio preimpostato ai contatti prescelti.
+	    \item Il contatto nella lista dell’utente riceve il messaggio.
+    \end{itemize}
+    \item \textbf{Estensioni:}
+    \begin{itemize}
+        \item \ref{sec:UC-S2}
+        \item \ref{sec:UC-S3}
+    \end{itemize}
+    \item \textbf{Trigger:} L'Utente vuole o ha necessità di mandare una richiesta di aiuto a delle persone fidate.
+\end{itemize}
+
+\subsubsection{UC-S2 - Mancanza di connessione} \label{sec:UC-S2}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item il sistema non ha accesso alla connessione internet.
+	\item è in corso la richiesta di aiuto.
+    \end{itemize}	
+
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema ha inviato un segnale acustico.
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema ha rilevato che non c’è connessione.
+
+        \item Il sistema emette un segnale acustico senza badare al volume impostato dall’utente.
+    \end{itemize}
+  
+    \item \textbf{Trigger:} L'Utente vuole o ha necessità di mandare un segnale di aiuto.
+\end{itemize}
+
+\subsubsection{UC-S3 - Mancanza di contatti fidati} \label{sec:UC-S3}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item L’utente ha avviato la funzionalità che manda un messaggio alle persone fidate
+	    \item La lista delle persone fidate è vuota
+    \end{itemize}	
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema mostra un messaggio di errore per avvisare l'utente che non ha inserito contatti fidati
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema rileva che la lista dei contatti fidati è vuota
+        \item Il sistema notifica l'utente con un messaggio di errore e chiede di inserire almeno un contatto fidato
+    \end{itemize}
+    \item \textbf{Trigger:} L'Utente vuole mandare un messaggio di SOS ai contatti fidati
+\end{itemize}
+
+% ========================== UC-I: I - DETECTIVE DELLE RELAZIONI  ==============================
+
+\subsubsection{UC-I1 - Invio messaggio al chatbot} \label{sec:UC-I1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item  il sistema è attivo
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L’Utente ha ricevuto una risposta dall’assistente virtuale intelligente
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L’utente inserisce la nota nella barra per l'inserimento
+        \item L'utente seleziona la voce per l'invio della nota all'LLM
+        \item L'LLM riceve il messaggio dell'utente
+    \end{itemize}
+    \item \textbf{Scenario secondario:} 
+    \begin{itemize}
+        \item Il sistema non è riuscito a leggere il messaggio scritto dall'utente $\rightarrow$ \ref{sec:UC-I2}
+    \end{itemize}
+    \item \textbf{Estensioni:}
+    \begin{itemize}
+        \item \ref{sec:UC-I2}
+    \end{itemize}
+    \item \textbf{Trigger:} L'Utente vuole ricevere il parere del Detective delle Relazioni o dello specchio intelligente riguardo a qualcosa.
+\end{itemize}
+
+\subsubsection{UC-I2 - Il messaggio non è stato letto dal sistema} \label{sec:UC-I2}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+	\item L’utente ha mandato un messaggio all' IA
+    \end{itemize}	
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L’utente riceve un messaggio di errore
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema riscontra un errore dopo la ricezione di un messaggio da parte dell’utente
+        \item Il sistema notifica l’utente di tale errore, dando la possibilità di riprovare
+    \end{itemize}
+    \item \textbf{Trigger:} il sistema riceve un errore dal servizio IA
+\end{itemize}
+
+\subsubsection{UC-I3 - Generazione risposta LLM} \label{sec:UC-I3}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+	    \item L’utente ha mandato un messaggio
+	    \item Il sistema ha risposto a tale messaggio
+    \end{itemize}	
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema ha generato una nuova risposta
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema chiede cosa deve modificare nella risposta
+        \item Il sistema genera una nuova risposta
+    \end{itemize}
+    \item \textbf{Trigger:} L’utente ha premuto il pulsante “Genera nuova risposta”
+\end{itemize}
+
+\subsubsection{UC-I4 - Modifica input} \label{sec:UC-I4}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+	    \item L’utente ha mandato un messaggio
+	    \item Il sistema ha risposto a tale messaggio
+    \end{itemize}	
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L’utente ha modificato il messaggio inviato.
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema ferma la risposta al messaggio se è in corso.
+        \item L’utente può modificare il messaggio inviato.
+	\item Il sistema riceve il nuovo messaggio modificato.
+    \end{itemize}
+    \item \textbf{Trigger:} L’utente ha premuto il pulsante “Modifica messaggio”
+\end{itemize}
+
+\subsubsection{UC-I5 - Context Switch} \label{sec:UC-I5}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo.
+    \end{itemize}	
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema ha cambiato il contesto fornito al modello.
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema chiede quale contesto l’utente vuole usare
+        \item Il sistema imposta come attivo il contesto richiesto.
+	\item L’utente può cambiare tra ‘Detective delle Relazioni’ a ‘Lo Specchio Intelligente’ o viceversa.
+    \end{itemize}
+    \item \textbf{Trigger:} L’utente ha premuto il pulsante “Context Switch”.
 \end{itemize}
 
 \end{document}
