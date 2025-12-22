@@ -498,7 +498,7 @@ Gli attori rappresentano entità esterne al sistema che interagiscono con esso p
 
 \vspace{0.5cm}
 
-UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
+UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:\
 
 % ------------------- SOTTOCASI DI UC-BW1 -------------------------
 
@@ -1525,98 +1525,152 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
 
 % ========================== UC-I: I - DETECTIVE DELLE RELAZIONI  ==============================
 
-\subsubsection{UC-I1 - Invio messaggio al chatbot} \label{sec:UC-I1}
+\subsubsection{UC-I1 - Invio messaggio} \label{sec:UC-I1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
-        \item  il sistema è attivo
+        \item Il sistema è attivo
+        \item L'utente ha scritto un messaggio 
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item L’Utente ha ricevuto una risposta dall’assistente virtuale intelligente
+        \item L'utente ha inviato il messaggio al chatbot
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L’utente inserisce la nota nella barra per l'inserimento
-        \item L'utente seleziona la voce per l'invio della nota all'LLM
-        \item L'LLM riceve il messaggio dell'utente
+        \item L’utente inserisce da tastiera il messaggio nella barra apposita %\ref{sec:UC-I1}
+        \item L'utente 
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-        \item Il sistema non è riuscito a leggere il messaggio scritto dall'utente $\rightarrow$ \ref{sec:UC-I2}
+        \item L'utente esce dalla sessione prima di inviare il messaggio \ref{sec:UC-I2} %domanda%
+    \end{itemize}
+    \item \textbf{Inclusioni:}
+    \begin{itemize}
+        \item \ref{sec:UC-I1.1}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
         \item \ref{sec:UC-I2}
     \end{itemize}
-    \item \textbf{Trigger:} L'Utente vuole ricevere il parere del Detective delle Relazioni o dello specchio intelligente riguardo a qualcosa.
+    \item \textbf{Trigger:} L'Utente vuole scrivere al chatbot
 \end{itemize}
 
-\subsubsection{UC-I2 - Il messaggio non è stato letto dal sistema} \label{sec:UC-I2}
-\begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
-    \item \textbf{Pre-condizioni:} 
-    \begin{itemize}
-        \item Il sistema è attivo
-	\item L’utente ha mandato un messaggio all' IA
-    \end{itemize}	
-    \item \textbf{Post-condizioni:}
-    \begin{itemize}
-        \item L’utente riceve un messaggio di errore
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item Il sistema riscontra un errore dopo la ricezione di un messaggio da parte dell’utente
-        \item Il sistema notifica l’utente di tale errore, dando la possibilità di riprovare
-    \end{itemize}
-    \item \textbf{Trigger:} il sistema riceve un errore dal servizio IA
-\end{itemize}
+%
+%\subsubsection{UC-I1.1 - Inserimento messaggio al chatbot} \label{sec:UC-I1} %domanda
+%\begin{itemize}
+%    \item \textbf{Attore principale:} Utente generico
+%    \item \textbf{Pre-condizioni:} 
+%    \begin{itemize}
+%        \item  il sistema è attivo
+%    \end{itemize}
+%    \item \textbf{Post-condizioni:}
+%    \begin{itemize}
+%        \item L’Utente ha inserito il messaggio nella barra apposita
+%    \end{itemize}
+%    \item \textbf{Scenario principale:} 
+%    \begin{itemize}
+%        \item L'utente seleziona la voce per l'invio della nota all'LLM
+%        \item L'LLM riceve il messaggio dell'utente
+%    \end{itemize}
+%        \item \ref{sec:UC-I1.2}
+%    \end{itemize}
+%    \item \textbf{Trigger:} L'Utente vuole ricevere il parere del Detective delle Relazioni o dello specchio intelligente riguardo a qualcosa.
+%\end{itemize}
 
-\subsubsection{UC-I3 - Generazione risposta LLM} \label{sec:UC-I3}
+\subsubsection{UC-I1.1 - Analisi messaggio} \label{sec:UC-I1.1}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} LLM
+    \item \textbf{Attore secondario:} Utente generico
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
 	    \item L’utente ha mandato un messaggio
-	    \item Il sistema ha risposto a tale messaggio
+	    \item Il sistema ha ricevuto il messaggio
     \end{itemize}	
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item Il sistema ha generato una nuova risposta
+        \item Il sistema ha generato una risposta
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item Il sistema chiede cosa deve modificare nella risposta
+        \item Il sistema analizza il messaggio con il contesto scelto \ref{sec:UC-I4}
         \item Il sistema genera una nuova risposta
     \end{itemize}
-    \item \textbf{Trigger:} L’utente ha premuto il pulsante “Genera nuova risposta”
+    \item \textbf{Scenario secondario:} 
+    \begin{itemize}
+        \item Il sistema riscontra un errore nella lettura del messaggio \ref{sec:UC-I3}
+    \end{itemize}
+    \item \textbf{Trigger:} L’utente ha inviato un messaggio al chatbot
 \end{itemize}
 
-\subsubsection{UC-I4 - Modifica input} \label{sec:UC-I4}
+\subsubsection{UC-I2 - Annullamento messaggio} \label{sec:UC-I2}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
-	    \item L’utente ha mandato un messaggio
-	    \item Il sistema ha risposto a tale messaggio
+	    \item L’utente ha scritto un messaggio
+        \item L'utente non ha ancora inviato il messaggio
     \end{itemize}	
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item L’utente ha modificato il messaggio inviato.
+        \item Il sistema non ha ricevuto il messaggio
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item Il messaggio viene eliminato prima di essere inviato
+    \end{itemize}
+    \item \textbf{Trigger:} L'utente esce dalla sessione
+\end{itemize}
+
+\subsubsection{UC-I3 - Errore di lettura del messaggio} \label{sec:UC-I3}
+\begin{itemize}
+    \item \textbf{Attore principale:} LLM
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+	    \item L’utente ha mandato un messaggio
+    \end{itemize}	
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L’utente è notificato dell'errore
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item Il sistema ferma la risposta al messaggio se è in corso.
-        \item L’utente può modificare il messaggio inviato.
+        \item Il sistema rileva un errore nella lettura del messaggio inviato
+        \item Il sistema notifica l'utente dell'errore
+        \item L'utente può mandare un nuovo messaggio
+        \item L'utente può chiedere di riprovare a leggere il messaggio \ref{sec:UC-I1.1}
 	\item Il sistema riceve il nuovo messaggio modificato.
     \end{itemize}
-    \item \textbf{Trigger:} L’utente ha premuto il pulsante “Modifica messaggio”
+    \item \textbf{Trigger:} Il sistema non è riuscito a leggere il messaggio
 \end{itemize}
 
-\subsubsection{UC-I5 - Context Switch} \label{sec:UC-I5}
+%\subsubsection{UC-I4 - Modifica input} \label{sec:UC-I4}
+%\begin{itemize}
+%    \item \textbf{Attore principale:} Utente generico
+%    \item \textbf{Pre-condizioni:} 
+%    \begin{itemize}
+%        \item Il sistema è attivo
+%	    \item L’utente ha mandato un messaggio
+%	    \item Il sistema ha risposto a tale messaggio
+%    \end{itemize}	
+%    \item \textbf{Post-condizioni:}
+%    \begin{itemize}
+%        \item L’utente ha modificato il messaggio inviato.
+%    \end{itemize}
+%    \item \textbf{Scenario principale:} 
+%    \begin{itemize}
+%        \item Il sistema ferma la risposta al messaggio se è in corso.
+%        \item L’utente può modificare il messaggio inviato.
+%	\item Il sistema riceve il nuovo messaggio modificato.
+%    \end{itemize}
+%    \item \textbf{Trigger:} L’utente ha premuto il pulsante “Modifica messaggio”
+%\end{itemize}
+
+\subsubsection{UC-I4 - Context Switch} \label{sec:UC-I4}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:} 
