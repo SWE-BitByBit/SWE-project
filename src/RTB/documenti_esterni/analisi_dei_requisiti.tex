@@ -130,9 +130,14 @@ Gruppo BitByBit\\
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
+
 \rowcolor{white}
+0.14.0 & 2025-12-21 & Giovanni Visentin & Aggiunto caso d'uso UC-IMP8 e proposto UC-SYS1 & Dennis Parolin \\
+\hline
+\rowcolor{gray!20}
 0.13.0 & 2025-12-19 & Riccardo Manisi & Aggiunta UC-D1, UC-D2 per impostazione e modifica password diario criptato. Eliminato UC-BW1.6 [deprecato] & Dennis Parolin \\
 \hline
+\rowcolor{white}
 0.12.0 & 2025-12-19 & Riccardo Manisi &  Inseriti casi d'uso per autenitcazione all'app UC-AUTH1 e UC-AUTH1.1. Cancellato UC-BW1.5 [deprecato] & Giovanni Visentin \\
 \hline
 \rowcolor{gray!20}
@@ -892,6 +897,66 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \end{itemize}
     \item \textbf{Trigger:} L'utente vuole cancellare un contatto dalla propria rete di contatti fidati
 \end{itemize}
+
+% ==== UC-IMP8 - CONFIGURAZIONE DEAD MAN'S SWITCH ====
+
+\subsubsection{UC-IMP8 - Gestione funzionalità Dead Man's Switch} \label{subsec:UC-IMP8}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'utente ha effettuato l'accesso alle impostazioni di sicurezza
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Le preferenze per il monitoraggio dell'inattività sono salvate nel sistema
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'utente attiva l'interruttore del Dead Man's Switch
+        \item L'utente definisce l'intervallo di tempo massimo di inattività (es. 24h, 48h, 72h, ...) dopo il quale ricevere la mail
+        \item L'utente modifica il tono/l'apparenza della mail che riceverà
+        \item L'utente conferma il salvataggio delle impostazioni
+    \end{itemize}
+    \item \textbf{Scenario secondario:}
+    \begin{itemize} 
+        \item L'utente disattiva la funzionalità. Il sistema interrompe qualsiasi timer di monitoraggio attivo.
+    \end{itemize}
+    \item \textbf{Trigger:} L'utente vuole configurare o modificare il timer di inattività.
+\end{itemize}
+
+%% ==== UC-SYS1 - ESECUZIONE PROTOCOLLO INATTIVITÀ ==== BACK-END (non da metttere negli UC)
+%
+%\subsubsection{UC-SYS1 - Esecuzione protocollo di inattività} \label{subsec:UC-SYS1}
+%\begin{itemize}
+%    \item \textbf{Attore principale:} Sistema (Timer)
+%    \item \textbf{Attori secondari:} Utente autenticato
+%    \item \textbf{Pre-condizioni:} 
+%    \begin{itemize}
+%        \item La funzionalità Dead Man's Switch è attiva
+%        \item È trascorso l'intervallo di tempo configurato dall'utente senza alcuna interazione con l'app
+%    \end{itemize}
+%    \item \textbf{Post-condizioni:}
+%    \begin{itemize}
+%        \item Il sistema ha inviato la mail all'utente OPPURE il sistema ha resettato il timer in seguito alla risposta dell'utente
+%    \end{itemize}
+%    \item \textbf{Scenario principale:} 
+%    \begin{itemize}
+%        \item Il sistema rileva il superamento della soglia di inattività
+%        \item Il sistema invia una mail all'utente per verificare la sua presenza
+%        \item Il sistema attende per un "periodo di grazia" predefinito (es. 1 ora) una risposta dell'utente
+%        \item Il sistema compone la mail con il messaggio personalizzato e i dati raccolti
+%        \item Il sistema invia la mail all'indirizzo del contatto fidato configurato
+%    \end{itemize}
+%    \item \textbf{Scenario secondario:}
+%    \begin{itemize}
+%        \item L'utente interagisce con la mail o apre l'app. Il sistema annulla la procedura di invio e resetta il timer di inattività.
+%    \end{itemize}
+%    \item \textbf{Trigger:} Scadenza del timer di inattività configurato dall'utente.
+%\end{itemize}
+
+\subsubsection{UC-D1 - Autenticazione per il diario criptato} \label{subsec:UC-D1}
 
 % ==== DIARIO CRIPTATO =====
 
