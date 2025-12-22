@@ -304,6 +304,7 @@ La presente sezione espone i seguenti processi di supporto:
     \item[(d)] \textbf{verifica;}
     \item[(e)] \textbf{validazione.}
 \end{itemize}
+
 \subsection{Documentazione}
 Il processo di documentazione ha l’obiettivo di definire le modalità, gli strumenti e le convenzioni che il gruppo adotta per la produzione, la gestione, la revisione e l’approvazione di tutti i documenti del progetto.
 
@@ -338,31 +339,44 @@ Per sostenere il processo di documentazione sono utilizzati i seguenti strumenti
 Ogni documento, indipendentemente dalla sua categoria, deve essere redatto in conformità alle convenzioni formali definite nelle Norme di Progetto.
 
 \subsubsection{Implementazione di processo}
-Ogni documento, prima di essere integrato nella versione stabile del \textbf{repository\ap{G}}, deve attraversare un ciclo strutturato di produzione che garantisce la qualità, la verificabilità e la tracciabilità delle modifiche. Le attività descritte in questa sezione definiscono il flusso operativo seguito dal gruppo per l’elaborazione, la revisione e la pubblicazione dei prodotti documentali.
+Ogni documento, prima di essere integrato nella versione stabile del repository, deve attraversare un ciclo strutturato di produzione che garantisce la qualità, la verificabilità e la tracciabilità delle modifiche. Le attività descritte in questa sezione definiscono il flusso operativo seguito dal gruppo per l’elaborazione, la revisione e la pubblicazione dei prodotti documentali.
 
 \paragraph{Creazione delle issue GitHub}
-Ogni modifica documentale, compresa anche la creazione di un documento, inizia con l’apertura di una issue su GitHub per permettere la tracciabilità nella board del \textbf{Project GitHub\ap{G}}. Ogni commit deve essere atomico, cioè riferirsi ad un’unica azione in quanto migliorano la revisione, il recupero e la collaborazione.
+Ogni azione che porta a dei cambiamenti ad un documento del gruppo deve iniziare con l’apertura di una issue su GitHub per permettere la tracciabilità nella board del Project GitHub. Ogni commit deve fare riferimento ad una sola azione in modo da garantire che il processo iterativo di revisione ed eventuali correzioni di errori sia il più veloce possibile.
 
 \paragraph{Assegnazione della issue} 
-Nessuna issue può essere avviata senza una chiara assegnazione. L’assegnazione viene effettuata dal \textbf{responsabile\ap{G}}, che determina chi, nel gruppo, è incaricato dell’esecuzione dell’attività. Questo passaggio garantisce che ogni modifica sia riconducibile a un autore e che la responsabilità operativa sia chiaramente definita.
+Nessuna issue può essere avviata senza che sia assegnata ad un membro del gruppo. L’assegnazione viene effettuata dal \textbf{responsabile\ap{G}}, che determina chi, nel gruppo, è incaricato dell’esecuzione di quella precisa attività. Questo passaggio garantisce che ogni modifica sia riconducibile a un autore e che la responsabilità operativa sia chiaramente definita.
 
 \paragraph{Impostazione del documento}
-Il membro del team può ora avviare la stesura del documento all’interno del branch dedicato, il cui nome segue la nomenclatura presente nella sezione (da aggiungere). La prima attività consiste nella creazione del file sorgente, denominato secondo le convenzioni stabilite (ad esempio nel formato \texttt{nome\_documento.tex}). Una volta inserito il nuovo file nel repository remoto, il sistema provvede automaticamente ad applicare il template comune, garantendo l’integrazione delle componenti strutturali condivise.\\Spetta quindi al redattore adattare il template al contenuto specifico del documento, completandone le sezioni pertinenti e verificando che l’impostazione risultante sia conforme agli standard definiti per la documentazione del progetto. Questa attività assicura uniformità, leggibilità e coerenza stilistica dell’intera produzione documentale lungo tutto il ciclo di vita del progetto.\\Ogni membro del gruppo è quindi tenuto a verificare che i documenti prodotti rispettino un formato uniforme, verificabile e riconducibile agli standard scelti.\\ Questa attività garantisce la leggibilità, la coerenza e la mantenibilità dell’intera produzione documentale durante tutto il ciclo di vita del progetto.
+Il membro del team può ora aprire un branch secondario da \texttt{develop}, seguendo la nomenclatura presente nella sezione \ref{par:p-infrastruttura-istituzione}, ed eseguire le modifiche definite nella relativa issue. 
+Se le modifiche implicano la creazione del file di documentazione il membro del gruppo è tenuto a creare il file sorgente, denominato secondo le convenzioni stabilite (\hyperref[par:p-infrastruttura-istituzione]{vedi sezione~\ref*{par:p-infrastruttura-istituzione}}). Una volta inserito il nuovo file nel repository remoto, il sistema provvede automaticamente ad applicare il template comune, garantendo l’integrazione delle componenti strutturali condivise.
+\\Spetta quindi al redattore adattare il template al contenuto specifico del documento, completandone le sezioni pertinenti e verificando che l’impostazione risultante sia conforme agli standard definiti per la documentazione del progetto. Questa attività assicura uniformità, leggibilità e coerenza stilistica dell’intera produzione documentale lungo tutto il ciclo di vita del progetto.
+\\Ogni membro del gruppo è quindi tenuto a verificare che i documenti prodotti rispettino un formato uniforme, verificabile e riconducibile agli standard scelti.\\ Questa attività garantisce la leggibilità, la coerenza e la mantenibilità dell’intera produzione documentale durante tutto il ciclo di vita del progetto.
 
 \subsubsection*{Intestazione}
 Ogni pagina del documento include un'intestazione che riporta il titolo dello specifico documento e il nome del gruppo.
 \subsubsection*{Frontespizio}
 Il frontespizio possiede i seguenti elementi:
 \begin{itemize}
-    \item logo dell'ateneo;
-    \item informazioni dell'ateneo;
-    \item logo del gruppo;
-    \item contatto ufficiale del gruppo;
-    \item nome del documento.
+    \item \textbf{logo dell'ateneo;}
+    \item \textbf{informazioni dell'ateneo;}
+    \item \textbf{logo del gruppo};
+    \item \textbf{contatto ufficiale} del gruppo;
+    \item \textbf{nome del documento};
+    \item \textbf{informazione generali del documento} le cui informazioni sono riportate di seguito.
+    \begin{itemize}
+        \item stato del documento
+        \item versione
+        \item il responsabile per quel documento
+        \item i membri del gruppo che hanno contribuito alla redazione 
+        \item i verificatori 
+        \item i destinastari
+    \end{itemize}
 \end{itemize}
 
 \subsubsection*{Storico del documento}
-Nell'ultima pagina deve essere presente uno storico delle modifiche apportate al documento. Le entry della tabella devono essere in ordine cronologico in modo che la prima entry faccia riferimento alla modifica più recente. Una entry è composta da:
+Nella prima pagina dopo il frontespizion deve essere presente il registro delle modifiche apportate al documento. Le entry della tabella devono essere in ordine cronologico in modo che la prima entry faccia riferimento alla modifica più recente. 
+\\Ogni entry deve essere composta da:
 \begin{enumerate}
     \item \textbf{versione};
     \item \textbf{data della modifica};
@@ -385,25 +399,23 @@ Nell'ultima pagina deve essere presente uno storico delle modifiche apportate al
 \end{center}
 
 \subsubsection*{Indice}
-Ogni documento deve presentare un indice delle sezioni e sottosezioni per una visita veloce e facilitata di specifici all'interno dello stesso documento.
+Ogni documento deve presentare un indice delle sezioni e sottosezioni per facilitare la navigazione dei lettori all'interno dello stesso documento.
 
 \subsubsection*{Struttura dei verbali}
-I verbali rappresentano i rendiconti di riunioni ufficiali interne, a cui partecipano solo i componenti del gruppo, ed esterne, a cui invece partecipano anche enti esterni al gruppo come le aziende fornitrici o i professori. Ogni verbale oltre alle sezioni precedentemente elencate deve presentare al suo interno i seguenti elementi nell'ordine in cui sono descritti:
+I verbali rappresentano i rendiconti di riunioni ufficiali interne, a cui partecipano solo i componenti del gruppo, ed esterne, a cui invece partecipano anche enti esterni al gruppo come impiegati dell'azienda proponenti del capitolato o i professori del corso. Ogni verbale oltre alle sezioni precedentemente elencate deve presentare al suo interno i seguenti elementi nell'ordine in cui sono descritti:
 \begin{enumerate}
-  \item \textbf{Informazioni generali}: contiene i dati identificativi dell’incontro quali: 
+  \item \textbf{Informazioni generali} per quell'incontro: contiene i dati identificativi dell’incontro quali: 
   \begin{itemize}
-      \item il redattore;
-      \item il verificatore;
-      \item il responsabile;
-      \item l'amministratore;
       \item la data in cui si è svolto l'incontro;
+      \item l'orario d'inizio;
       \item la durata;
-      \item l'elenco dei partecipanti e degli assenti.
+      \item il luogo in cui si è svolto;
+      \item l'elenco dei presenti e degli assenti.
   \end{itemize}
     Queste informazioni sono volte a dare un contesto formale alla riunione.
-  \item \textbf{Ordine del giorno}: riassume i punti principali che si intendono discutere durante l’incontro, predisposti in anticipo dal responsabile o dall’amministratore. Questa sezione funge da guida per la conduzione del verbale.
+  \item \textbf{Ordine del giorno}: riassume i punti principali che si intendono discutere durante l’incontro, predisposti in anticipo dal responsabile/i di progetto durante quel periodo. Questa sezione funge da guida per la conduzione del verbale.
   \item \textbf{Discussioni}: riporta in modo sintetico ma chiaro i contenuti emersi durante il confronto tra i partecipanti. Devono essere descritte le osservazioni, le problematiche sollevate e le proposte di soluzione valutate durante l’incontro.
-  \item \textbf{Decisioni}: elenca tutte le decisioni approvate dal gruppo, incluse quelle riguardanti modifiche ai documenti, scadenze o variazioni organizzative. Ogni decisione deve essere formulata in modo oggettivo e deve avere un codice identificativo univoco che segue il seguente formato:
+  \item \textbf{Decisioni}: elenca tutte le risposte che il gruppo si da per uno specifico, incluse quelle riguardanti modifiche ai documenti, scadenze o variazioni organizzative. Ogni decisione deve essere formulata in modo oggettivo e deve avere un codice identificativo univoco che segue il seguente formato:
   \[
 \texttt{[VI/VE] [fase a cui appartiene] Y.Z}
 \]
@@ -414,7 +426,7 @@ dove:
     \item \textbf{Y}, indica il numero del verbale in riferimento a quella revisione;
     \item \textbf{X} indica il numero della decisione interna a quel documento.
 \end{itemize}
-  \item \textbf{To-do}: presenta, sotto forma di tabella, le attività operative pianificate a seguito della riunione. Ogni attività è identificata da:
+  \item \textbf{To-do}: presenta, sotto forma di tabella, gli incarichi operativi pianificati a seguito della riunione. Ogni \textbf{To-do} è identificata da:
   \begin{itemize}
       \item una descrizione sintetica;
       \item Il codice della decisione da cui è stata creata (per ogni decisione ci possono essere 0 o più attività);
@@ -422,7 +434,7 @@ dove:
   \end{itemize}
 \end{enumerate}
 
-\subsubsection*{Convenzioni di scrittura}
+\subsubsection*{Convenzioni di scrittura} \label{subsubsec:convenzioni-scrittura}
 Le convenzioni di scrittura stabiliscono regole comuni per la redazione di tutti i documenti del progetto.
 \paragraph{Date}
 \begin{itemize}
@@ -469,7 +481,8 @@ Di seguito sono presenti le sigle usate all interno dei documenti.
 \end{itemize}
 
 \paragraph{Modifiche a documenti}
-Per eseguire delle modifiche alla documentazione di progetto, il membro del gruppo è tenuto a istanziare un nuovo branch di \texttt{feature}. La denominazione del branch di feature deve seguire la nomenclatura presente nella sezione (da aggiungere). \\Ogni modifica a un documento deve essere accompagnata da un aggiornamento del numero di versione appropriato. Il membro del gruppo che si occupa delle modifiche è anche tenuto ad aggiornare lo \textbf{storico dei documenti} con le informazioni richieste.\\ 
+Per eseguire delle modifiche alla documentazione di progetto, il membro del gruppo è tenuto ad istanziare un nuovo branch a partire da quello di \texttt{develop}. La denominazione del branch di feature deve seguire la nomenclatura presente nella sezione (\hyperref[par:p-infrastruttura-istituzione]{vedi sezione~\ref*{par:p-infrastruttura-istituzione}}).
+\\Ogni modifica a un documento deve essere accompagnata da uno scatto del nuomero di versione. Il membro del gruppo che si occupa delle modifiche è anche tenuto ad aggiornare lo \textbf{storico dei documenti} con le informazioni richieste.\\ 
 Ogni modifica ad un documento deve essere tracciabile all’interno dello stesso tramite lo \textbf{storico del documento}, riportando:
   \begin{itemize}
       \item il numero di versione assegnato;
@@ -480,17 +493,19 @@ Ogni modifica ad un documento deve essere tracciabile all’interno dello stesso
   \end{itemize}
 
 \paragraph{Conclusione modifiche} 
-Una volta completate le modifiche nel branch di \texttt{feature}, il membro incaricato procede ad aprire una \textbf{pull request\ap{G}} dal proprio branch di feature verso il branch \texttt{develop}. Nella fase di apertura della \textbf{pull request\ap{G}} devono essere compilate le informazioni richieste dal relativo template, specifico per il \textbf{repository\ap{G}} della documentazione. La \textbf{pull request\ap{G}} costituisce la richiesta formale per integrare le modifiche nella versione di sviluppo, permettendo al team di effettuare la revisione del codice e di approvarne l’unione.
+Una volta completate le modifiche nel nuovo branch aperto, il membro incaricato procede ad aprire una pull request dal proprio branch di feature verso il branch \texttt{develop}. 
+Nella fase di apertura della pull request deve essere compilato il form per la descrizione della pull request con le informazioni richieste. La pull request costituisce la richiesta formale per l'integrazione delle modifiche nel repository del gruppo, dopo l'avvenuta approvazione delle modifiche apportate.
 
 \paragraph{Verifica} Il verificatore esamina sia la correttezza formale sia sostanziale del documento.
     \begin{itemize}
-        \item Se le modifiche risultano corrette, il verificato approva la \textbf{pull request\ap{G}}.
-        \item Se emergono incongruenze o problemi, il verificatore richiede modifiche aggiungendo dei commenti specifici al codice nel messaggio della \textbf{pull request\ap{G}} e aprendo una issue \textbf{GitHub\ap{G}} dedicata.
+        \item Se le modifiche risultano corrette, il verificato approva la pull request.
+        \item Se emergono incongruenze o problemi, il verificatore richiede delle modifiche aggiungendo dei commenti al codice.
     \end{itemize}
-Le modifiche richieste devono essere applicate dall’autore originario della \textbf{pull request\ap{G}}, che procede aggiornando il branch \texttt{develop} fino alla completa risoluzione.
+Le modifiche richieste devono essere applicate dall’autore originario della pull request\ap{G}, che procede aggiornando il branch \texttt{develop} fino alla completa risoluzione.
 I verificatori sono tenuti a controllare che i documenti di ciclo di vita del progetto comprendano gli elementi di struttura elencati di seguito nell' ordine in cui si presentano.
 
-\paragraph{Approvazione e pull request} Una volta ottenuta l’approvazione del verificatore, la \textbf{pull request\ap{G}} viene sottoposta al \textbf{responsabile\ap{G}}, che effettua un ultima revisione formale. Solo il \textbf{responsabile\ap{G}} è autorizzato a procedere con il merge della PR nel branch \texttt{develop}. Il merge rappresenta l’integrazione definitiva del documento nella versione stabile del progetto.
+\paragraph{Approvazione e pull request} Una volta ottenuta l’approvazione del verificatore, la \textbf{pull request\ap{G}} viene sottoposta alla visione del \textbf{responsabile\ap{G}}, che effettua un ultima revisione formale. Solo il \textbf{responsabile\ap{G}} è autorizzato a procedere con il merge della pull request nel branch \texttt{develop}.
+\\Il merge rappresenta l’integrazione definitiva del documento nella versione stabile del progetto.
 
 \paragraph{Pubblicazione} Con la conclusione del merge, il documento aggiornato diventa parte integrante della \textbf{baseline\ap{G}} di progetto. Il branch \texttt{main} costituisce, infatti, il riferimento ufficiale per la versione stabile e coerente dei documenti.
 
@@ -752,7 +767,7 @@ Per garantire coerenza operativa tra tutti i membri del team, è previsto un ins
     \item Il membro deve assicurarsi che Git sia correttamente installato nel proprio ambiente, e che sia possibile accedere alla repository remota tramite le chiavi SSH configurate.
 \end{itemize}
 
-\paragraph{GitHub}
+\paragraph{GitHub} \label{par:p-infrastruttura-istituzione}
 La configurazione del repository è definita per supportare il workflow adottato e garantire qualità, tracciabilità e sicurezza delle modifiche.\\
 Al suo interno è possibile trovare varie directories, di seguito verranno descritte le più rilevanti.
 \begin{itemize}
