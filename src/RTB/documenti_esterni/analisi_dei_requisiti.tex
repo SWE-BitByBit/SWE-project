@@ -131,6 +131,9 @@ Gruppo BitByBit\\
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 
+\rowcolor{gray!20}
+0.15.0 & 2025-12-22 & Giovanni Visentin & Modifica Uc-IMP8 in IMP9 e aggiunti UC-I & Dennis Parolin \\
+\hline
 \rowcolor{white}
 0.14.0 & 2025-12-21 & Giovanni Visentin & Aggiunto caso d'uso UC-IMP8 e proposto UC-SYS1 & Dennis Parolin \\
 \hline
@@ -898,9 +901,30 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:\
     \item \textbf{Trigger:} L'utente vuole cancellare un contatto dalla propria rete di contatti fidati
 \end{itemize}
 
-% ==== UC-IMP8 - CONFIGURAZIONE DEAD MAN'S SWITCH ====
+\subsubsection{UC-IMP8 - Modifica contatto fidato} \label{subsec:UC-IMP8}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'utente ha selezionato la voce per la visualizzazione della lista dei contatti fidati
+        \item L'utente ha selezionato un contatto fidato
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema modifica un contatto fidato dell'utente
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'utente seleziona la voce di modifica dei dati per quel contatto
+        \item L'utente modifica il nome e/o la mail e/o il numero di telefono del contatto fidato
+    \end{itemize}
+    \item \textbf{Trigger:} L'utente vuole modificare alcuni dati di un contatto fidato
+\end{itemize}
 
-\subsubsection{UC-IMP8 - Gestione funzionalità Dead Man's Switch} \label{subsec:UC-IMP8}
+% ==== UC-IMP9 - CONFIGURAZIONE DEAD MAN'S SWITCH ====
+
+\subsubsection{UC-IMP9 - Gestione funzionalità Dead Man's Switch} \label{subsec:UC-IMP9}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente autenticato
     \item \textbf{Pre-condizioni:} 
