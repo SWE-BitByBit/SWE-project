@@ -132,7 +132,13 @@ Gruppo BitByBit\\
 \hline
 
 \rowcolor{white}
-0.12.0 & 2025-12-21 & Giovanni Visentin & Aggiunto caso d'uso UC-IMP8 e proposto UC-SYS1 & Dennis Parolin \\
+0.14.0 & 2025-12-21 & Giovanni Visentin & Aggiunto caso d'uso UC-IMP8 e proposto UC-SYS1 & Dennis Parolin \\
+\hline
+\rowcolor{gray!20}
+0.13.0 & 2025-12-19 & Riccardo Manisi & Aggiunta UC-D1, UC-D2 per impostazione e modifica password diario criptato. Eliminato UC-BW1.6 [deprecato] & Dennis Parolin \\
+\hline
+\rowcolor{white}
+0.12.0 & 2025-12-19 & Riccardo Manisi &  Inseriti casi d'uso per autenitcazione all'app UC-AUTH1 e UC-AUTH1.1. Cancellato UC-BW1.5 [deprecato] & Giovanni Visentin \\
 \hline
 \rowcolor{gray!20}
 0.11.0 & 2025-12-19 & Riccardo Manisi &  Inseriti casi d'uso per autenitcazione all'app UC-AUTH1 e UC-AUTH1.1. Cancellato UC-BW1.5 [deprecato] & Giovanni Visentin \\
@@ -465,7 +471,7 @@ Gli attori rappresentano entità esterne al sistema che interagiscono con esso p
         \item Il sistema mostra la scheda per l'aggiunta del primo contatto fidato
         \item L'utente aggiunge il suo primo contatto fidato $\rightarrow$ \ref{subsec:UC-IMP3}
         \item Il sistema mostra la scheda per l'impostazione della password per il diario criptato 
-        \item L'utente inserisce la password per il diario criptato $\rightarrow$ \ref{subsec:UC-BW1.5}
+        \item L'utente imposta la password per il diario criptato $\rightarrow$ \ref{subsec:UC-D1}
         \item L'utente seleziona la voce prosegui $\rightarrow$ \ref{subsec:UC-BW1.3}
         \item Il sistema mostra la Home Page
     \end{itemize}
@@ -477,15 +483,15 @@ Gli attori rappresentano entità esterne al sistema che interagiscono con esso p
     \item \textbf{Inclusioni:}
     \begin{itemize}
         \item \ref{subsec:UC-BW1.2}
+        \item \ref{subsec:UC-AUTH1}
         \item \ref{subsec:UC-IMP3}
+        \item \ref{subsec:UC-D1}
         \item \ref{subsec:UC-BW1.3}
-        \item \ref{subsec:UC-BW1.5}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
         \item \ref{subsec:UC-BW1.1}
         \item \ref{subsec:UC-BW1.4}
-        \item \ref{subsec:UC-AUTH1}
     \end{itemize}
     \item \textbf{Trigger:} Primo avvio dell'applicazione
 \end{itemize}
@@ -593,37 +599,6 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \item \textbf{Trigger:} L'utente preme il pulsante "Indietro"
 \end{itemize}
 
-% ==== UC-BW1.5 ====
-\subsubsection{UC-BW1.5 - Configurazione Rapida Diario} \label{subsec:UC-BW1.5}
-\begin{itemize}
-    \item \textbf{Attore principale:} Utente Generico
-    
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il walkthrough è attivo
-        \item La scheda riguardante il "Diario Criptato" è visibile
-    \end{itemize}
-    
-    \item \textbf{Post-condizioni:}
-    \begin{itemize}
-        \item Le credenziali sono impostate OPPURE il diario rimane con la password da impostare tramite le Impostazioni
-    \end{itemize}
-    
-    \item \textbf{Scenario principale:}
-    \begin{itemize}
-        \item L'utente inserisce la password
-        \item Il sistema cripta e salva le chiavi di accesso
-    \end{itemize}
-    
-    \item \textbf{Scenario secondario:}
-    \begin{itemize}
-        \item L'utente non inserisce le password
-        \item Il sistema mostra un avviso all'utente informandolo del fatto che potrà impostare la password tramite le Impostazioni
-    \end{itemize}
-    
-    \item \textbf{Trigger:} L'utente interagisce con i campi di input della scheda Diario
-\end{itemize}
-
 % ===== UC-IMP: IMPOSTAZIONI =====
 
 \subsubsection{UC-IMP1 - Visualizzazione schermata impostazioni} \label{sec:UC-IMP1}
@@ -677,7 +652,7 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
         \item L'utente sta visualizzando la lista dei contatti fidati
     \end{itemize}
     \item \textbf{Post-condizioni:}
-    \item \begin{itemize}
+    \begin{itemize}
         \item Il sistema per ogni contatto fidato le informazioni di contatto e il nominativo
     \end{itemize}
     \item \textbf{Scenario principale:} 
@@ -982,6 +957,88 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
 %\end{itemize}
 
 \subsubsection{UC-D1 - Autenticazione per il diario criptato} \label{subsec:UC-D1}
+
+% ==== DIARIO CRIPTATO =====
+
+\subsubsection{UC-D1 - Impostazione password per il diario criptato} \label{subsec:UC-D1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item Il diario criptato non ha ancora una password impostata
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema ha memorizzato la password del diario criptato
+        \item Il diario criptato risulta protetto da password
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema mostra la schermata per l’impostazione della password del diario criptato
+        \item L’utente inserisce la password scelta
+        \item L'utente seleziona la voce per la conferma dell'impostazione della password
+        \item Il sistema salva la password del diario criptato
+    \end{itemize}
+    \item \textbf{Trigger:} L’utente vuole impostare la password per il diario criptato
+\end{itemize}
+
+\subsubsection{UC-D2 - Modifica password del diario criptato} \label{subsec:UC-D2}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item Il diario criptato ha già una password impostata
+        \item L'utente ha selezionato la voce per la modifica della password per il diario criptato
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema aggiorna la password del diario criptato
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema mostra la schermata per la modifica della password del diario criptato
+        \item L’utente inserisce la password attuale
+        \item L’utente inserisce la nuova password
+        \item L’utente seleziona la voce per la conferma dell'operazione
+        \item Il sistema aggiorna la vecchia password con quella nuova
+    \end{itemize}
+    \item \textbf{Scenario secondario:} 
+    \begin{itemize}
+        \item La nuova password inserita dall'utente è uguale a quella vecchia $\rightarrow$ \ref{subsec:UC-D2.1}
+    \end{itemize}
+    \item \textbf{Estensioni:} 
+    \begin{itemize}
+        \item \ref{subsec:UC-D2.1}
+    \end{itemize}
+    \item \textbf{Trigger:} L’utente vuole modificare la password del diario criptato
+\end{itemize}
+
+\subsubsection{UC-D2.1 - Inserimento nuova password uguale a quella già presente} \label{subsec:UC-D2.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'utente ha inserito una nuova password per il diario criptato
+        \item L'utente ha selezionato la voce per la conferma dell'aggiornamento della password
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema mostra a schermo un messaggio d'errore
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema riceve la richiesta di aggiornamento della password del diario criptato
+        \item Il sistema confronta la nuova password inserita con quella attualmente impostata
+        \item Il sistema rileva che le due password coincidono
+        \item Il sistema un messaggio d’errore all'utente
+    \end{itemize}
+    \item \textbf{Trigger:} L’utente vuole modificare la password del diario criptato
+\end{itemize}
+
+\subsubsection{UC-D3 - Accesso al diario criptato} \label{subsec:UC-D3}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -989,7 +1046,6 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
         \item Il sistema è attivo
         \item L'utente ha impostato la password per il diario criptato
         \item L'utente non è autenticato al diario criptato
-        \item L’utente ha selezionato la voce per visualizzare il diario criptato
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
@@ -998,26 +1054,26 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item L’utente ha selezionato la voce per visualizzare il diario criptato
-        \item L’utente inserisce la password con cui vuole autenticarsi nel diario criptato $\rightarrow$ \ref{subsec:UC-D1.1}
+        \item L’utente inserisce la password con cui vuole autenticarsi nel diario criptato $\rightarrow$ \ref{subsec:UC-D3.1}
         \item L’utente sceglie la voce per accedere al diario criptato 
         \item Il sistema mostra all'utente la schermata per il contenuto del diario criptato
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
-        \item L’utente inserisce la password errata per il diario criptato $\rightarrow$ \ref{subsec:UC-D1.2}
+        \item L’utente inserisce la password errata per il diario criptato $\rightarrow$ \ref{subsec:UC-D3.2}
     \end{itemize}
     \item \textbf{Inclusioni:} 
     \begin{itemize}
-        \item \ref{subsec:UC-D1.1}
+        \item \ref{subsec:UC-D3.1}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-D1.2}
+        \item \ref{subsec:UC-D3.2}
     \end{itemize}
     \item \textbf{Trigger:} L’utente vuole visualizzare il contenuto del diario criptato
 \end{itemize}
 
-\subsubsection{UC-D1.1 - Inserimento password per il diario criptato} \label{subsec:UC-D1.1}
+\subsubsection{UC-D3.1 - Inserimento password per il diario criptato} \label{subsec:UC-D3.1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -1038,7 +1094,7 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \item \textbf{Trigger:} L’utente vuole visualizzare il contenuto del diario criptato
 \end{itemize}
 
-\subsubsection{UC-D1.2 - Inserimento password errata per il diario criptato} \label{subsec:UC-D1.2}
+\subsubsection{UC-D3.2 - Inserimento password errata per il diario criptato} \label{subsec:UC-D3.2}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -1052,18 +1108,19 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
-        \item Il sistema mostra un messaggio di errore
+        \item Il sistema mostra a schermo un messaggio di errore
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item Il sistema verifica che la password inserita non corrisponde a quella corretta per l'autenticazione nel diario criptato
-        \item Il sistema verifica che la password inserita è diversa dalle password per l'autenticazione nel il diario fittizio 
+        \item Il sistema riceve la richiesta di autenticazione al diario
+        \item Il sistema confronta la password inserita con quella memorizzata per lo specifico tipo di diario
+        \item Il sistema rileva che la password non coincide con quella memorizzata per lo specifico tipo di diario
         \item Il sistema mostra all’utente un messaggio di errore
     \end{itemize}
     \item \textbf{Trigger:} L’utente vuole visualizzare il contenuto del diario criptato
 \end{itemize}
 
-\subsubsection{UC-D2 - Inserimento nota scritta nel diario criptato} \label{subsec:UC-D2}
+\subsubsection{UC-D4 - Inserimento nota scritta nel diario criptato} \label{subsec:UC-D4}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -1078,33 +1135,33 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item L'utente seleziona la barra per l'inserimento di una nota
-        \item L’utente inserisce il testo per la nuova nota $\rightarrow$ \ref{subsec:UC-D2.1}
-        \item L’utente seleziona la voce per il salvataggio nella barra per l'inserimento della nota $\rightarrow$ \ref{subsec:UC-D2.2}
+        \item L’utente inserisce il testo per la nuova nota $\rightarrow$ \ref{subsec:UC-D4.1}
+        \item L’utente seleziona la voce per il salvataggio nella barra per l'inserimento della nota $\rightarrow$ \ref{subsec:UC-D4.2}
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
-        \item L’utente seleziona la voce “esci” per uscire dal diario senza aver registrato la nota presente nella casella di testo $\rightarrow$ \ref{subsec:UC-D2.3}
+        \item L’utente seleziona la voce “esci” per uscire dal diario senza aver registrato la nota presente nella casella di testo $\rightarrow$ \ref{subsec:UC-D4.3}
     \end{itemize}
     \item \textbf{Inclusioni:} 
     \begin{itemize}
-        \item \ref{subsec:UC-D2.1}
+        \item \ref{subsec:UC-D4.1}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-D2.2}
-        \item \ref{subsec:UC-D2.3}
+        \item \ref{subsec:UC-D4.2}
+        \item \ref{subsec:UC-D4.3}
     \end{itemize}
     \item \textbf{Trigger:} L’utente vuole inserire una nuova nota scritta nel diario criptato
 \end{itemize}
 
-\subsubsection{UC-D2.1 - Inserimento testo della nota scritta per diario criptato} \label{subsec:UC-D2.1}
+\subsubsection{UC-D4.1 - Inserimento testo della nota scritta per diario} \label{subsec:UC-D4.1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item L’utente è autenticato nel diario criptato 
-        \item L’utente ha selezionato la barra per l’inserimento di una nuova nota
+        \item L’utente è autenticato nel diario criptato o nel diario fittizio
+        \item L’utente ha selezionato la voce per l’inserimento di una nuova nota
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
@@ -1114,59 +1171,60 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \begin{itemize}
         \item L’utente inserisce il testo per la nuova nota 
     \end{itemize}
-    \item \textbf{Trigger:} L’utente vuole inserire una nuova nota scritta nel diario criptato
+    \item \textbf{Trigger:} L’utente vuole inserire una nuova nota scritta nel diario criptato o nel diario fittizio
 \end{itemize}
 
-\subsubsection{UC-D2.2 - Salvataggio della nota scritta nel diario di bordo} \label{subsec:UC-D2.2}
+\subsubsection{UC-D4.2 - Salvataggio della nota scritta nel diario} \label{subsec:UC-D4.2}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item L’utente è autenticato nel diario criptato
+        \item L’utente è autenticato nel diario criptato o nel diario fittizio
         \item L’utente ha inserito del testo nella barra per l’inserimento di una nuova nota
         \item L'utente ha selezionato la voce per il salvataggio nella barra per l'inserimento della nota
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
-        \item La nuova nota viene memorizzata nel sistema e mostrata nel diario criptato
+        \item La nuova nota viene memorizzata nel sistema e mostrata nel diario
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item La nota viene memorizzata nel sistema
-        \item La nota viene mostrata nel diario criptato
+        \item La nota viene mostrata nel diario
     \end{itemize}
     \item \textbf{Trigger:} L’utente vuole salvare nel diario la nota che ha scritto
 \end{itemize}
 
-\subsubsection{UC-D2.3 - Uscita dal diario criptato senza salvataggio delle modifiche} \label{subsec:UC-D2.3}
+\subsubsection{UC-D4.3 - Uscita dal diario senza salvataggio delle modifiche} \label{subsec:UC-D4.3}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item L’utente è autenticato nel diario criptato
+        \item L’utente è autenticato nel diario criptato o nel diario fittizio
         \item L’utente ha inserito del testo nella barra per l’inserimento di una nuova nota o ha caricato un media
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
-        \item Il sistema non memoriazza la nota o il media caricato nel diario criptato
+        \item Il sistema non memoriazza la nota o il media caricato nel diario
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L’utente seleziona la voce per uscire dalla schermata del diario criptato
-        \item Il sistema non memorizza nel diario criptato la nota scritta o il media
+        \item L’utente seleziona la voce per uscire dalla schermata del diario 
+        \item Il sistema non memorizza nel diario la nota scritta o il media
     \end{itemize}
-    \item \textbf{Trigger:} L’utente vuole uscire dalla schermata diario criptato
+    \item \textbf{Trigger:} L’utente vuole uscire dalla schermata diario
 \end{itemize}
 
-\subsubsection{UC-D3 - Inserimento media nel diario criptato} \label{subsec:UC-D3}
+\subsubsection{UC-D5 - Inserimento media nel diario criptato} \label{subsec:UC-D5}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
         \item L’utente è autenticato nel diario criptato
+        \item L'utente ha selezionato la voce per l'inserimento di un media
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
@@ -1175,25 +1233,25 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item L’utente seleziona la voce per l’aggiunta di un media
-        \item L’utente carica il media desiderato $\rightarrow$ \ref{subsec:UC-D3.1}
+        \item L’utente carica il media desiderato $\rightarrow$ \ref{subsec:UC-D5.1}
         \item L’utente seleziona la voce per il salvataggio del media nel diario criptato
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
-        \item L’utente seleziona la voce “esci” per uscire dal diario senza aver inserito un media nella barra di inserimento $\rightarrow$ \ref{subsec:UC-D2.3}
+        \item L’utente seleziona la voce per uscire dal diario senza aver inserito un media nella barra di inserimento $\rightarrow$ \ref{subsec:UC-D4.3}
     \end{itemize}
     \item \textbf{Inclusioni:} 
     \begin{itemize}
-        \item \ref{subsec:UC-D3.1}
+        \item \ref{subsec:UC-D5.1}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-D2.3}
+        \item \ref{subsec:UC-D4.3}
     \end{itemize}
     \item \textbf{Trigger:} L’utente vuole inserire un nuovo media nel diario criptato
 \end{itemize}
 
-\subsubsection{UC-D3.1 - Scelta del media da inserire nel diario criptato} \label{subsec:UC-D3.1}
+\subsubsection{UC-D5.1 - Scelta del media da inserire nel diario criptato} \label{subsec:UC-D5.1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -1214,7 +1272,7 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \item \textbf{Trigger:} L’utente vuole inserire un nuovo media nel diario criptato
 \end{itemize}
 
-\subsubsection{UC-D4 - Analisi automatica del contenuto del diario criptato} \label{subsec:UC-D4}
+\subsubsection{UC-D6 - Analisi automatica del contenuto del diario criptato} \label{subsec:UC-D6}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Attore secondario:} LLM
@@ -1228,7 +1286,6 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \begin{itemize}
         \item Il contenuto del diario è stato analizzato
         \item Il sistema ha determinato se sono presenti situazioni di rischio
-        \item Il sistema identifica se sono presenti situazioni di rischio 
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
@@ -1238,16 +1295,16 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
-        \item Il sistema notifica l'utente della presenza di una possibile situazione di rischio $\rightarrow$ \ref{subsec:UC-D4.1}
+        \item Il sistema notifica l'utente della presenza di una possibile situazione di rischio $\rightarrow$ \ref{subsec:UC-D6.1}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-D4.1}
+        \item \ref{subsec:UC-D6.1}
     \end{itemize}
     \item \textbf{Trigger:} Salvataggio di una nuova nota o di un media nel diario criptato
 \end{itemize}
 
-\subsubsection{UC-D4.1 - Visualizzazione rilevamento situazioni di rischio nel diario criptato} \label{subsec:UC-D4.1}
+\subsubsection{UC-D6.1 - Visualizzazione rilevamento situazioni di rischio nel diario criptato} \label{subsec:UC-D6.1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -1267,20 +1324,19 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
         \item L'utente visiona l'alert
         \item L'utente seleziona la voce per chiudere l'alert
     \end{itemize}
-    \item \textbf{Scenario secondario:}
-    \begin{itemize}
-        \item Il sistema notifica l'utente della presenza di una possibile situazione di rischio $\rightarrow$ \ref{subsec:UC-D2.3}
-    \end{itemize}
     \item \textbf{Trigger:} Il sistema ha individuato una situazione di rischio
 \end{itemize}
 
-\subsubsection{UC-D5 - Inserimento password Diario Fittizio} \label{subsec:UC-D5}
+\subsubsection{UC-D7 - Accesso diario fittizio} \label{subsec:UC-D7}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'utente è nella sezione di inserimento password per il diario criptato
+        \item L'utente ha impostato la password per il diario criptato
+        \item L'utente non è autenticato al diario criptato
+        \item L'utente non è autenticato al diario fittizio
+        \item L'utente ha selezionato la voce per accedere al diario criptato
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
@@ -1288,26 +1344,28 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'utente inserisce la password con cui vuole autenticarsi nel diario criptato $\rightarrow$ \ref{subsec:UC-D1.1}
+        \item L’utente ha selezionato la voce per visualizzare il diario criptato
+        \item L'utente inserisce la password con cui vuole autenticarsi al diario fittizio $\rightarrow$ \ref{subsec:UC-D3.1}
         \item Il sistema controlla che la password inserita dall'utente sia conforme alla password scelta dall'utente come password fittizia
         \item Il sistema mostra il diario fittizio all'utente
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
-        \item La password proposta non è quella scelta dall'utente per aprire il diario fittizio $\rightarrow$ \ref{subsec:UC-D1.2}
+        \item La password inserita non coincide con quella impostata dall'utente per il diario fittizio $\rightarrow$ \ref{subsec:UC-D3.2}
+        \item La password inserita coicide con quella impostata dall'utente per il diario criptato $\rightarrow$ \ref{subsec:UC-D3.2}
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-D1.2}
+        \item \ref{subsec:UC-D3.1}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-D3}
+        \item \ref{subsec:UC-D3.2}
     \end{itemize}
     \item \textbf{Trigger:} L'utente vuole autenticarsi nel diario fittizio
 \end{itemize}
 
-\subsubsection{UC-D6 - Scelta password Diario Fittizio} \label{subsec:UC-D6}
+\subsubsection{UC-D8 - Scelta password Diario Fittizio} \label{subsec:UC-D8}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente autenticato
     \item \textbf{Pre-condizioni:} 
@@ -1328,16 +1386,16 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
-        \item La password proposta è uguale a quella del diario criptato $\rightarrow$ \ref{subsec:UC-D6.1}
+        \item La password proposta è uguale a quella del diario criptato $\rightarrow$ \ref{subsec:UC-D8.1}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-D6.1}
+        \item \ref{subsec:UC-D8.1}
     \end{itemize}
     \item \textbf{Trigger:} L'utente vuole impostare la password per il diario fittizio
 \end{itemize}
 
-\subsubsection{UC-D6.1 - Password Diario fittizio uguale} \label{subsec:UC-D6.1}
+\subsubsection{UC-D8.1 - Password Diario fittizio uguale} \label{subsec:UC-D8.1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente autenticato
     \item \textbf{Pre-condizioni:} 
@@ -1358,7 +1416,7 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \item \textbf{Trigger:} L'utente ha inserito una password uguale a quella del diario criptato
 \end{itemize}
 
-\subsubsection{UC-D7 - Inserimento nota scritta nel diario fittizio} \label{subsec:UC-D7}
+\subsubsection{UC-D9 - Inserimento nota scritta nel diario fittizio} \label{subsec:UC-D9}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -1368,33 +1426,32 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
-        \item Il sistema memorizza nel diario fittizio una nuova nota scritta e la mostra nel diario fittizio
+        \item Il sistema memorizza nel diario fittizio una nuova nota scritta
+        \item Il sistema la mostra nel diario fittizio una nuova nota scritta
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item L'utente seleziona la barra per l'inserimento di una nota
-        \item L’utente inserisce il testo per la nuova nota $\rightarrow$ \ref{subsec:UC-D2.1}
-        \item L’utente seleziona la voce per il salvataggio nella barra per l'inserimento della nota $\rightarrow$ \ref{subsec:UC-D2.2}
+        \item L’utente inserisce il testo per la nuova nota $\rightarrow$ \ref{subsec:UC-D4.1}
+        \item L’utente seleziona la voce per il salvataggio nella barra per l'inserimento della nota $\rightarrow$ \ref{subsec:UC-D4.2}
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
-        \item L’utente seleziona la voce per uscire dal diario senza aver registrato la nota presente nella casella di testo $\rightarrow$ \ref{subsec:UC-D2.3}
+        \item L’utente seleziona la voce per uscire dal diario senza aver registrato la nota presente nella casella di testo $\rightarrow$ \ref{subsec:UC-D4.3}
     \end{itemize}
     \item \textbf{Inclusioni:} 
     \begin{itemize}
-        \item \ref{subsec:UC-D2.1}
+        \item \ref{subsec:UC-D4.1}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-D2.2}
-        \item \ref{subsec:UC-D2.3}
+        \item \ref{subsec:UC-D4.2}
+        \item \ref{subsec:UC-D4.3}
     \end{itemize}
     \item \textbf{Trigger:} L’utente vuole inserire una nuova nota scritta nel diario fittizio
 \end{itemize}
 
-% ==============================================================================
-% ========================== UC-S: SICUREZZA - GUARDIANO SILENZIOSO  ==============================
-% ==============================================================================
+% ===== UC-S: SICUREZZA - GUARDIANO SILENZIOSO  ======
 
 \subsubsection{UC-S1 - Invio Messaggio} \label{sec:UC-S1}
 \begin{itemize}
@@ -1402,7 +1459,7 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \item \textbf{Attore secondario:} Servizio di invio mail
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
-        \item L’utente ha impostato una lista di contatti fidati \ref{sec:UC-IMP3}
+        \item L’utente ha impostato una lista di contatti fidati \ref{subsec:UC-IMP3}
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
@@ -1411,26 +1468,17 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item L’utente richiede l’attivazione della funzionalità.
-
         \item Il sistema verifica che ci sia connessione.
-
-	\item Il sistema manda un messaggio preimpostato ai contatti prescelti.
-
-	\item Il contatto nella lista dell’utente riceve il messaggio.
-
+	    \item Il sistema manda un messaggio preimpostato ai contatti prescelti.
+	    \item Il contatto nella lista dell’utente riceve il messaggio.
     \end{itemize}
-
     \item \textbf{Estensioni:}
     \begin{itemize}
         \item \ref{sec:UC-S2}
         \item \ref{sec:UC-S3}
     \end{itemize}
-    
     \item \textbf{Trigger:} L'Utente vuole o ha necessità di mandare una richiesta di aiuto a delle persone fidate.
 \end{itemize}
-
-
-
 
 \subsubsection{UC-S2 - Mancanza di connessione} \label{sec:UC-S2}
 \begin{itemize}
@@ -1455,116 +1503,94 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \item \textbf{Trigger:} L'Utente vuole o ha necessità di mandare un segnale di aiuto.
 \end{itemize}
 
-
 \subsubsection{UC-S3 - Mancanza di contatti fidati} \label{sec:UC-S3}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
-    \item \textbf{Pre-condizioni:} 
+    \item \textbf{Pre-condizioni:}
     \begin{itemize}
-        \item L’utente ha avviato la funzionalità che manda un messaggio alle persone fidate.
-	\item La lista delle persone fidate è vuota o inesistente.
+        \item L’utente ha avviato la funzionalità che manda un messaggio alle persone fidate
+	    \item La lista delle persone fidate è vuota
     \end{itemize}	
-
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
-        \item Il sistema mostra un messaggio di errore, e chiede l'inserimento di almento un contatto fidato
+        \item Il sistema mostra un messaggio di errore per avvisare l'utente che non ha inserito contatti fidati
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item Il sistema rileva che la lista dei contatti fidati \`e vuota
-
-        \item Il sistema notifica l'utente con un messaggio di errore e chiede di inserire almeno un contatto fidato.
+        \item Il sistema rileva che la lista dei contatti fidati è vuota
+        \item Il sistema notifica l'utente con un messaggio di errore e chiede di inserire almeno un contatto fidato
     \end{itemize}
-
-    \item \textbf{Estensioni:}
-    \begin{itemize}
-        \item \ref{sec:UC-S2}
-    \end{itemize}
-    
-    \item \textbf{Trigger:} L'Utente vuole o ha necessità di mandare un messaggio a delle persone.
+    \item \textbf{Trigger:} L'Utente vuole mandare un messaggio di SOS ai contatti fidati
 \end{itemize}
 
-% ==============================================================================
 % ========================== UC-I: I - DETECTIVE DELLE RELAZIONI  ==============================
-% ==============================================================================
 
-\subsubsection{UC-I1 - Invio messaggio al chatbot } \label{sec:UC-I1}
+\subsubsection{UC-I1 - Invio messaggio al chatbot} \label{sec:UC-I1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
-        \item  il sistema è attivo.
+        \item  il sistema è attivo
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item L’Utente ha ricevuto una risposta dall’assistente virtuale intelligente.
+        \item L’Utente ha ricevuto una risposta dall’assistente virtuale intelligente
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L’utente manda un messaggio all’IA.
-
-        \item L’IA risponde all’utente.
+        \item L’utente inserisce la nota nella barra per l'inserimento
+        \item L'utente seleziona la voce per l'invio della nota all'LLM
+        \item L'LLM riceve il messaggio dell'utente
     \end{itemize}
-
+    \item \textbf{Scenario secondario:} 
+    \begin{itemize}
+        \item Il sistema non è riuscito a leggere il messaggio scritto dall'utente $\rightarrow$ \ref{sec:UC-I2}
+    \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
         \item \ref{sec:UC-I2}
     \end{itemize}
-    
     \item \textbf{Trigger:} L'Utente vuole ricevere il parere del Detective delle Relazioni o dello specchio intelligente riguardo a qualcosa.
 \end{itemize}
 
-
-
-
-\subsubsection{UC-I2 -  Il messaggio non è stato letto dal sistema.} \label{sec:UC-I2}
+\subsubsection{UC-I2 - Il messaggio non è stato letto dal sistema} \label{sec:UC-I2}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
-        \item Il sistema è attivo.
+        \item Il sistema è attivo
 	\item L’utente ha mandato un messaggio all' IA
     \end{itemize}	
-
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item L’utente riceve un messaggio di errore.
+        \item L’utente riceve un messaggio di errore
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item Il sistema riscontra un errore dopo la ricezione di un messaggio da parte dell’utente.
-
-        \item Il sistema notifica l’utente di tale errore, dando la possibilità di riprovare.
+        \item Il sistema riscontra un errore dopo la ricezione di un messaggio da parte dell’utente
+        \item Il sistema notifica l’utente di tale errore, dando la possibilità di riprovare
     \end{itemize}
-  
-    \item \textbf{Trigger:} il sistema riceve un errore dal servizio IA.
+    \item \textbf{Trigger:} il sistema riceve un errore dal servizio IA
 \end{itemize}
 
-
-\subsubsection{UC-I3 - Mancanza di contatti fidati} \label{sec:UC-I3}
+\subsubsection{UC-I3 - Generazione risposta LLM} \label{sec:UC-I3}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
-        \item Il sistema è attivo.
-
-	\item L’utente ha mandato un messaggio.
-
-	\item Il sistema ha risposto a tale messaggio.
-
+        \item Il sistema è attivo
+	    \item L’utente ha mandato un messaggio
+	    \item Il sistema ha risposto a tale messaggio
     \end{itemize}	
-
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item Il sistema ha generato una nuova risposta.
+        \item Il sistema ha generato una nuova risposta
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item Il sistema chiede cosa deve modificare nella risposta.
-
-        \item Il sistema genera una nuova risposta.
+        \item Il sistema chiede cosa deve modificare nella risposta
+        \item Il sistema genera una nuova risposta
     \end{itemize}
-    
     \item \textbf{Trigger:} L’utente ha premuto il pulsante “Genera nuova risposta”
 \end{itemize}
 
@@ -1573,12 +1599,10 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
-        \item Il sistema è attivo.
-	\item L’utente ha mandato un messaggio.
-	\item Il sistema ha risposto a tale messaggio.
-
+        \item Il sistema è attivo
+	    \item L’utente ha mandato un messaggio
+	    \item Il sistema ha risposto a tale messaggio
     \end{itemize}	
-
     \item \textbf{Post-condizioni:}
     \begin{itemize}
         \item L’utente ha modificato il messaggio inviato.
@@ -1589,7 +1613,6 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
         \item L’utente può modificare il messaggio inviato.
 	\item Il sistema riceve il nuovo messaggio modificato.
     \end{itemize}
-    
     \item \textbf{Trigger:} L’utente ha premuto il pulsante “Modifica messaggio”
 \end{itemize}
 
@@ -1600,7 +1623,6 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
     \begin{itemize}
         \item Il sistema è attivo.
     \end{itemize}	
-
     \item \textbf{Post-condizioni:}
     \begin{itemize}
         \item Il sistema ha cambiato il contesto fornito al modello.
@@ -1611,7 +1633,6 @@ UC-BW1 include ed estende \textbf{7} ulteriori Casi d’Uso:
         \item Il sistema imposta come attivo il contesto richiesto.
 	\item L’utente può cambiare tra ‘Detective delle Relazioni’ a ‘Lo Specchio Intelligente’ o viceversa.
     \end{itemize}
-    
     \item \textbf{Trigger:} L’utente ha premuto il pulsante “Context Switch”.
 \end{itemize}
 
