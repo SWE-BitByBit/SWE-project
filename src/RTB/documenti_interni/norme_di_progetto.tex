@@ -101,7 +101,7 @@
 
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
-\textbf{Stato:} & xxx\\
+\textbf{Stato:} & in lavorazione\\
 \textbf{Versione:} & XXXX \\
 \textbf{Responsabile:} & Riccardo Manisi\\
 \textbf{Redattore:} & Riccardo Manisi \\
@@ -293,6 +293,72 @@ Questa sezione elenca e descrive brevemente tutta la documentazione che verrà p
         \item Documento contenente le definizioni dei termini usati nei documenti prodotti durante lo svolgimento del progetto, per permetterne una facile consultazione.
     \end{itemize}
 \end{itemize}
+
+% ==== PROCESSO DI SVILUPPO ====
+\subsection{Processo di sviluppo} \label{sec:processo-sviluppo}
+Il \textbf{processo di sviluppo} comprende le attività svolte dal team di sviluppo. Esso include le attività per l'analisi dei requisiti, il design, lo sviluppo del prodotto software, l'integrazione dei test e l'accettazione del prodotto da rilasciare.\\Il processo di sviluppo deve seguire le pratiche del processo di gestione dei processi (vedi sezione -da aggiungere-), stabilire l'infrastruttura secondo il processo di infrastruttura (\hyperref[sec:infrastruttura]{vedi sezione ?}), e gestire il processo a livello organizzativo tramite i processi di miglioramento (vedi sezione ?) e di formazione (vedi sezione ?).
+
+\subsubsection{Attività previste}
+Le attività che compongono il \textbf{processo di sviluppo} adattate al progetto sviluppato dal gruppo BiByBit sono elencate di seguito.
+\begin{itemize}
+    \item \textbf{Implementazione di processo}, l'organizzazione è tenuta a scegliere un modello di ciclo di vita se non ne ha ancora adottato uno in particolare, tenendo conto del campo di applicazione, del campo e della complessità del progetto.
+    \item \textbf{Analisi dei requisiti di sistema}, il sistema da implementare deve essere condotta in modo dettagliato, al fine di produrre una descrizione delle funzionalità e delle capacità del sistema, nonché dei requisiti utente e di sistema.
+    \item \textbf{Progettazione dell'architettura}, deve essere identificata un'architettura di alto livello per identificare gli elementi software. Deve essere garantito che gli tutti i requisiti siano allocati tra gli elementi.
+    \item \textbf{Codifica e testing}, per ogni elemento software il programmatore deve implementare e documentare ogni elemento software, andando a garantire che ogni unità software soddisfi i suoi requisiti implementando i corrispettivi test.
+    \item \textbf{Integrazione software}, il programmatore è tenuto a definire le unità software, i test le tempistiche e i dati che devono essere implementati per il particolare elemento software.
+    \item \textbf{Test di qualità del software}, comprende l'implementazione di test in conformità con le metriche di qualità del software.
+    \item \textbf{Integrazione nel sistema}, il programmatore procede ad integrare l'elemento software nel sistema, assieme alle sue dipendenze se è necessario.
+    \item \textbf{Test di qualità del sistema}, vengono eseguiti i test sull'intero sistema, per accertarsi che sia pronto per essere rilasciato.
+    \item \textbf{Installazione del software}, comprende la consegna del software al cliente e la sua installazione nell'ambiente concordato dal contratto.
+    \item \textbf{Supporto per l'approvazione},  il fornitore e il cliente collaudano il prodotto per accertare che tutti i requisiti stabiliti sono presenti nel software consegnato.
+\end{itemize}
+
+\subsubsection{Analisi dei requisiti}
+L'attività di analisi dei requisiti ha l’obiettivo di trasformare i requisiti utente espressi nel capitolato, nel nostro caso il \textbf{capitolato C4} proposto da \textbf{Miriade srl}, in requisiti di sistema chiari, completi e verificabili. 
+Tale attività produce il documento dell'analisi dei requisiti che stabilisce le basi per un accordo tra la proponente e il \textbf{gruppo BitByBit} su quello che il prodotto software è tenuto a fare.
+\\L’analisi dei requisiti obbliga tutte le parti coinvolte a valutare in modo completo e condiviso ciò che il sistema dovrà realizzare prima dell’avvio della progettazione. Questo riduce significativamente il rischio di dover intervenire successivamente su design, codice o test.
+\\Il gruppo si impegna inoltre a monitorare con continuità l’allineamento tra requisiti implementati e requisiti concordati con la proponente, aggiornandoli in modo controllato quando necessario.
+
+\paragraph{Stesura dei casi d'uso}
+
+La definizione dei casi d’uso segue un processo iterativo che comprende:
+\begin{itemize}
+    \item \textbf{comprensione del problema} e del dominio applicativo;
+    \item \textbf{identificazione degli scenari} attraverso la definizione delle interazioni tra attori e sistema;
+    \item \textbf{stesura dei casi d'uso} andando ad identificare gli scenari principali e quelli secondari;
+    \item \textbf{implementazione degli UML}.
+\end{itemize}
+
+Il gruppo effettua una revisione completa dei casi d'uso individuati, correggendo eventuali incoerenze. Se necessario, vengono condotti approfondimenti con la proponente per garantire un’interpretazione condivisa degli scenari critici.
+\\Per ogni caso d’uso viene realizzato un diagramma UML dedicato, al fine di ridurre possibili ambiguità interpretative.\\
+
+La nomenclatura adottata viene esposta di seguito.
+\begin{center}
+    \texttt{UC-<funzionalità>-X.Y}
+\end{center}
+\begin{itemize}
+    \item \texttt{UC} sigla per use case
+    \item \texttt{<funzionalità>} sigla per la funzionalità a cui si riferisce quel caso d'uso;
+    \item \texttt{X} numero intero identificativo per il caso d'uso principale;
+    \item \texttt{Y} numero intero identificativo per il sotto-caso eventuale.
+\end{itemize}
+Questa codifica garantisce un’identificazione univoca e promuove tracciabilità e verificabilità.
+
+\paragraph{Stesura dei requisiti}
+I requisiti vengono organizzati per livello di importanza, definito con la proponente:
+\begin{itemize}
+    \item \textbf{Obbligatori} (\textbf{OB}): necessari e irrinunciabili per la soddisfazione minima degli stakeholder;
+    \item \textbf{Desiderabili} (\textbf{DE}): non essenziali ma ad alto valore aggiunto;
+    \item \textbf{Opzionali} (\textbf{OP}): utili, ma pianificabili o negoziabili in fasi successive.
+\end{itemize}
+
+Ogni requisito è identificato tramite una codifica standard:
+\begin{center}
+    \texttt{R-<importanza>-X}
+\end{center}
+dove \texttt{<importanza>} è la sigla a due lettere che indica la categoria del requisito e \texttt{X} è un identificatore numerico univoco.
+
+Tale classificazione supporta la tracciabilità, la verifica e la gestione dell’evoluzione dei requisiti durante l’intero ciclo di vita.
 
 % ==== SEZIONE PROCESSI DI SUPPORTO ====
 \section{Processi di supporto}
