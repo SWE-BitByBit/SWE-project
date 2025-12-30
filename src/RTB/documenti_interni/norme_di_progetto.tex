@@ -101,14 +101,20 @@
 
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
-\textbf{Stato:} & xxx\\
-\textbf{Versione:} & XXXX \\
+\textbf{Stato:} & in lavorazione\\
+\textbf{Versione:} & 0.6.0 \\
 \textbf{Responsabile:} & Riccardo Manisi\\
-\textbf{Redattore:} & Riccardo Manisi \\
+\textbf{Redattore:} & 
+\begin{tabular}[t]{@{}l@{}}
+Riccardo Manisi\\
+Ferdinando Fracasso\\
+Gabriele Scaggiante\\
+\end{tabular} \\
 \textbf{Verificatori:} & 
 \begin{tabular}[t]{@{}l@{}}
 Dennis Parolin \\
 Marco Sanguin \\
+Giovanni Visentin\\
 \end{tabular} \\
 \textbf{Destinatari:} & Gruppo BitByBit\\
 \end{tabularx}
@@ -128,6 +134,9 @@ Marco Sanguin \\
 \hline
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+\hline
+\rowcolor{gray!20}
+0.6.0 & 2025-12-30 & Riccardo Manisi & Aggiunto processo di accertamento qualità & Ferdinando Fracasso \\
 \hline
 \rowcolor{gray!20}
 0.5.3 & 2025-12-22 & Riccardo Manisi & Aggiunta attività di aggiornamento glossario & Giovanni Visentin \\
@@ -599,6 +608,31 @@ L'\textbf{attività di valutazione della configurazione} ha lo scopo di garantir
     \item ogni parte del sistema risulti coerente con l’architettura definita.
 \end{itemize}
 
+% ==== SEZIONE PROCESSO ACCERTAMENTO DELLA QUALITÀ ====
+\subsection{Processo di accertamento della qualità}
+
+Il processo di \textbf{accertamento della qualità} ha lo scopo di garantire che la qualità del \textbf{prodotto software} e dei \textbf{processi di ciclo di vita} adottati sia conforme ai requisiti specificati e ai piani prestabiliti.
+L’accertamento della qualità consente di fornire evidenze oggettive sul fatto che i sistemi software sviluppati siano idonei allo scopo per cui sono stati richiesti e soddisfino le aspettative degli stakeholder coinvolti.
+
+\subsubsection{Implementazione di processo}
+Il gruppo \textit{BitByBit} ha identificato come principale attività del processo di accertamento della qualità la redazione del documento di \textbf{Piano di Qualifica}.
+Tale documento definisce gli obiettivi quantitativi di qualità relativi sia al prodotto software sia ai processi di ciclo di vita adottati, e raccoglie le misurazioni oggettive effettuate durante lo svolgimento del progetto.\\
+Le misurazioni consistono nella quantificazione, mediante l’utilizzo di metriche, di specifici attributi dei prodotti software e dei processi di ciclo di vita.
+Per ciascuna metrica vengono inoltre individuati, nel Piano di Qualifica, dei valori ottimali o soglie di riferimento, al fine di identificare tempestivamente eventuali comportamenti anomali o scostamenti rispetto agli obiettivi di qualità prefissati.\\
+Un elenco completo delle metriche adottate è riportato alla \hyperref[sec:elenco-metriche]{Sezione~\ref*{sec:elenco-metriche}} per una consultazione più agevole.
+
+\subsubsection{Accertamento della qualità di prodotto}
+L’attività di \textbf{accertamento della qualità di prodotto} ha lo scopo di assicurare che i prodotti software e la documentazione correlata siano forniti in conformità ai termini e ai requisiti specificati con l’acquirente.\\
+Nel Piano di Qualifica vengono definite specifiche metriche di qualità di prodotto.
+Le misurazioni eseguite vengono confrontate con i valori ottimali stabiliti per ciascuna metrica, al fine di valutare in modo oggettivo la qualità del software realizzato.\\
+Le metriche di prodotto costituiscono un supporto decisionale per determinare se il software implementato soddisfa i criteri di qualità richiesti ed è pertanto idoneo al rilascio.
+
+\subsubsection{Accertamento della qualità di processo}
+L’attività di \textbf{accertamento della qualità di processo} ha lo scopo di assicurare che i processi di ciclo di vita siano eseguiti in conformità agli standard e alle procedure definiti per ciascun processo.\\
+Nel Piano di Qualifica vengono formalizzate le metriche di processo e i relativi valori ottimali stabiliti dal gruppo.
+Le misurazioni effettuate vengono successivamente confrontate con tali valori di riferimento, consentendo di valutare l’efficacia e l’adeguatezza dei processi adottati.\\
+Le metriche di processo sono utilizzate dal responsabile di progetto come strumento di supporto decisionale per individuare eventuali criticità e valutare la necessità di apportare modifiche o miglioramenti ai processi in uso.
+
 % ==== SEZIONE PROCESSI ORGANIZZATIVI ====
 \section{Processi organizzativi del ciclo di vita}
 I processi organizzativi di ciclo di vita rappresentano l’insieme delle attività che il gruppo BitByBit ha scelto di adottare per strutturare e supportare in modo sistematico tutti i propri progetti.\\
@@ -816,4 +850,8 @@ Il processo di formazione è finalizzato a mettere ciascun membro del gruppo nel
 \end{itemize}
 \subsubsection{Piano di formazione}
 Ciascun membro del team è tenuto a studiare in maniera autonoma gli argomenti d'interesse. L'intero team stabilisce cosa studiare durante gli incontri interni, creando issue dedicate assegnate a ciascun membro del team. Ogni membro è tenuto ad avere una visione d'insieme delle tecnologie e delle metodologie necessarie per il completamento del progetto, ma ha completa libertà per quanto riguarda i metodi di apprendimento che preferisce utilizzare. Ciascun membro è tenuto ad approfondire argomenti specifici sulla base dei compiti che gli sono stati assegnati. Al completamento di tali compiti e al termine di ogni sprint, i membri devono confrontarsi condividendo in maniera sintetica ciò che hanno imparato relativamente ai compiti che hanno portato a termine o sui quali hanno fatto progressi significativi. Questo approccio mira ad alleggerire il carico globale di studio, a garantire una maggiore velocità esecutiva e a promuovere una formazione meno teorica e più incentrata sulla comprensione globale del sistema sul quale si lavora. 
+
+\section{Metriche} \label{sec:elenco-metriche}
+
+
 \end{document}
