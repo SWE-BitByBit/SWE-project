@@ -101,14 +101,20 @@
 
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
-\textbf{Stato:} & xxx\\
-\textbf{Versione:} & XXXX \\
+\textbf{Stato:} & in lavorazione\\
+\textbf{Versione:} & 0.7.0 \\
 \textbf{Responsabile:} & Riccardo Manisi\\
-\textbf{Redattore:} & Riccardo Manisi \\
+\textbf{Redattori:} & 
+\begin{tabular}[t]{@{}l@{}}
+Ferdinando Fracasso\\
+Riccardo Manisi\\
+Gabriele Scaggiante\\
+\end{tabular} \\
 \textbf{Verificatori:} & 
 \begin{tabular}[t]{@{}l@{}}
 Dennis Parolin \\
 Marco Sanguin \\
+Ferdinando Fracasso\\
 \end{tabular} \\
 \textbf{Destinatari:} & Gruppo BitByBit\\
 \end{tabularx}
@@ -129,14 +135,17 @@ Marco Sanguin \\
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
-\rowcolor{gray!20}
-0.5.3 & 2025-12-22 & Riccardo Manisi & Aggiunta attività di aggiornamento glossario & Giovanni Visentin \\
+\rowcolor{white}
+0.8.0 & 2025-12-23 & Riccardo Manisi & Aggiunte le sezioni di attivita previste e analisi dei requisiti per processo di sviluppo  & Ferdinando Fracasso\\
 \hline
 \rowcolor{gray!20}
-0.5.2 & 2025-12-16 & Ferdinando Fracasso & Rimossa sezione ripetuta & Giovanni Visentin \\
+0.7.0 & 2025-12-22 & Riccardo Manisi & Aggiunta attività di aggiornamento glossario & Giovanni Visentin \\
 \hline
 \rowcolor{white}
-0.5.1 & 2025-12-13 & Gabriele Scaggiante & Aggiunta Processo di miglioramento e Processo di formazione & Marco Sanguin\\
+0.6.1 & 2025-12-16 & Ferdinando Fracasso & Rimossa sezione ripetuta & Giovanni Visentin \\
+\hline
+\rowcolor{gray!20}
+0.6.0 & 2025-12-13 & Gabriele Scaggiante & Aggiunta Processo di miglioramento e Processo di formazione & Marco Sanguin\\
 \hline
 \rowcolor{gray!20}
 0.5.0 & 2025-12-11 & Ferdinando Fracasso & Aggiunta sezione "Processo di fornitura" & Giovanni Visentin \\
@@ -294,6 +303,72 @@ Questa sezione elenca e descrive brevemente tutta la documentazione che verrà p
         \item Documento contenente le definizioni dei termini usati nei documenti prodotti durante lo svolgimento del progetto, per permetterne una facile consultazione.
     \end{itemize}
 \end{itemize}
+
+% ==== PROCESSO DI SVILUPPO ====
+\subsection{Processo di sviluppo} \label{sec:processo-sviluppo}
+Il \textbf{processo di sviluppo} comprende le attività svolte dal team di sviluppo. Esso include le attività per l'analisi dei requisiti, il design, lo sviluppo del prodotto software, l'integrazione dei test e l'accettazione del prodotto da rilasciare.\\Il processo di sviluppo deve seguire le pratiche del processo di gestione dei processi (vedi sezione -da aggiungere-), stabilire l'infrastruttura secondo il processo di infrastruttura (\hyperref[sec:infrastruttura]{vedi sezione ?}), e gestire il processo a livello organizzativo tramite i processi di miglioramento (vedi sezione ?) e di formazione (vedi sezione ?).
+
+\subsubsection{Attività previste}
+Le attività che compongono il \textbf{processo di sviluppo} adattate al progetto sviluppato dal gruppo BiByBit sono elencate di seguito.
+\begin{itemize}
+    \item \textbf{Implementazione di processo}, l'organizzazione è tenuta a scegliere un modello di ciclo di vita se non ne ha ancora adottato uno in particolare, tenendo conto del campo di applicazione, del campo e della complessità del progetto.
+    \item \textbf{Analisi dei requisiti di sistema}, il sistema da implementare deve essere condotta in modo dettagliato, al fine di produrre una descrizione delle funzionalità e delle capacità del sistema, nonché dei requisiti utente e di sistema.
+    \item \textbf{Progettazione dell'architettura}, deve essere identificata un'architettura di alto livello per identificare gli elementi software. Deve essere garantito che gli tutti i requisiti siano allocati tra gli elementi.
+    \item \textbf{Codifica e testing}, per ogni elemento software il programmatore deve implementare e documentare ogni elemento software, andando a garantire che ogni unità software soddisfi i suoi requisiti implementando i corrispettivi test.
+    \item \textbf{Integrazione software}, il programmatore è tenuto a definire le unità software, i test le tempistiche e i dati che devono essere implementati per il particolare elemento software.
+    \item \textbf{Test di qualità del software}, comprende l'implementazione di test in conformità con le metriche di qualità del software.
+    \item \textbf{Integrazione nel sistema}, il programmatore procede ad integrare l'elemento software nel sistema, assieme alle sue dipendenze se è necessario.
+    \item \textbf{Test di qualità del sistema}, vengono eseguiti i test sull'intero sistema, per accertarsi che sia pronto per essere rilasciato.
+    \item \textbf{Installazione del software}, comprende la consegna del software al cliente e la sua installazione nell'ambiente concordato dal contratto.
+    \item \textbf{Supporto per l'approvazione},  il fornitore e il cliente collaudano il prodotto per accertare che tutti i requisiti stabiliti sono presenti nel software consegnato.
+\end{itemize}
+
+\subsubsection{Analisi dei requisiti}
+L'attività di analisi dei requisiti ha l’obiettivo di trasformare i requisiti utente espressi nel capitolato, nel nostro caso il \textbf{capitolato C4} proposto da \textbf{Miriade srl}, in requisiti di sistema chiari, completi e verificabili. 
+Tale attività produce il documento dell'analisi dei requisiti che stabilisce le basi per un accordo tra la proponente e il \textbf{gruppo BitByBit} su quello che il prodotto software è tenuto a fare.
+\\L’analisi dei requisiti obbliga tutte le parti coinvolte a valutare in modo completo e condiviso ciò che il sistema dovrà realizzare prima dell’avvio della progettazione. Questo riduce significativamente il rischio di dover intervenire successivamente su design, codice o test.
+\\Il gruppo si impegna inoltre a monitorare con continuità l’allineamento tra requisiti implementati e requisiti concordati con la proponente, aggiornandoli in modo controllato quando necessario.
+
+\paragraph{Stesura dei casi d'uso}
+
+La definizione dei casi d’uso segue un processo iterativo che comprende:
+\begin{itemize}
+    \item \textbf{comprensione del problema} e del dominio applicativo;
+    \item \textbf{identificazione degli scenari} attraverso la definizione delle interazioni tra attori e sistema;
+    \item \textbf{stesura dei casi d'uso} andando ad identificare gli scenari principali e quelli secondari;
+    \item \textbf{implementazione degli UML}.
+\end{itemize}
+
+Il gruppo effettua una revisione completa dei casi d'uso individuati, correggendo eventuali incoerenze. Se necessario, vengono condotti approfondimenti con la proponente per garantire un’interpretazione condivisa degli scenari critici.
+\\Per ogni caso d’uso viene realizzato un diagramma UML dedicato, al fine di ridurre possibili ambiguità interpretative.\\
+
+La nomenclatura adottata viene esposta di seguito.
+\begin{center}
+    \texttt{UC-<funzionalità>-X.Y}
+\end{center}
+\begin{itemize}
+    \item \texttt{UC} sigla per use case
+    \item \texttt{<funzionalità>} sigla per la funzionalità a cui si riferisce quel caso d'uso;
+    \item \texttt{X} numero intero identificativo per il caso d'uso principale;
+    \item \texttt{Y} numero intero identificativo per il sotto-caso eventuale.
+\end{itemize}
+Questa codifica garantisce un’identificazione univoca e promuove tracciabilità e verificabilità.
+
+\paragraph{Stesura dei requisiti}
+I requisiti vengono organizzati per livello di importanza, definito con la proponente:
+\begin{itemize}
+    \item \textbf{Obbligatori} (\textbf{OB}): necessari e irrinunciabili per la soddisfazione minima degli stakeholder;
+    \item \textbf{Desiderabili} (\textbf{DE}): non essenziali ma ad alto valore aggiunto;
+    \item \textbf{Opzionali} (\textbf{OP}): utili, ma pianificabili o negoziabili in fasi successive.
+\end{itemize}
+
+Ogni requisito è identificato tramite una codifica standard:
+\begin{center}
+    \texttt{R-<importanza>-X}
+\end{center}
+dove \texttt{<importanza>} è la sigla a due lettere che indica la categoria del requisito e \texttt{X} è un identificatore numerico univoco.
+
+Tale classificazione supporta la tracciabilità, la verifica e la gestione dell’evoluzione dei requisiti durante l’intero ciclo di vita.
 
 % ==== SEZIONE PROCESSI DI SUPPORTO ====
 \section{Processi di supporto}
@@ -677,14 +752,14 @@ Le riunioni previste dal processo di gestione dei processi sono suddivise in due
 \begin{itemize}
     \item \textbf{Interne}: si svolgono tra i soli membri del gruppo e hanno luogo principalmente su \textbf{Discord\ap{G}}. Ogni \textbf{Sprint\ap{G}} ha una durata di due settimane e prevede tre incontri:
     \begin{itemize}
-        \item uno a fine \textbf{Sprint\ap{G}}, comprendente \textbf{Sprint Review\ap{G}}, \textbf{Sprint Retrospective\ap{G}} e \textbf{Sprint Planning\ap{G}}. In questa sede il \textbf{Responsabile} verifica lo stato delle attività concluse, analizza eventuali problemi riscontrati e pianifica il lavoro del successivo \textbf{Sprint\ap{G}};
-        \item due durante lo svolgimento dello \textbf{Sprint\ap{G}}, in cui venogono trattati i temi dell'ordine del giorno e ciascun membro espone le attività completate, quelle ancora in corso e le difficoltà incontrate.
+        \item uno a fine Sprint, comprendenteSprint Review \textbf{Sprint Retrospective\ap{G}} e \textbf{Sprint Planning\ap{G}}. In questa sede il \textbf{Responsabile} verifica lo stato delle attività concluse, analizza eventuali problemi riscontrati e pianifica il lavoro del successivo Sprint;
+        \item due durante lo svolgimento dello Sprint, in cui venogono trattati i temi dell'ordine del giorno e ciascun membro espone le attività completate, quelle ancora in corso e le difficoltà incontrate.
     \end{itemize}
     Per ogni riunione vengono assegnati specifici ruoli:
     \begin{itemize}
         \item \textbf{Scriba}: i membri incaricati di prendere appunti durante gli incontri;
-        \item \textbf{Portavoce}: identificato nel \textbf{responsabile\ap{G}}, che modera e coordina la discussione;
-        \item \textbf{Redattore}: responsabile della stesura del verbale e del caricamento nel \textbf{repository\ap{G}}.
+        \item \textbf{Portavoce}: identificato nel responsabile, che modera e coordina la discussione;
+        \item \textbf{Redattore}: responsabile della stesura del verbale e del caricamento nel repository.
     \end{itemize}
     \item \textbf{Esterne}: coinvolgono anche figure esterne quali i docenti o l'azienda proponente \textbf{Miriade Srl}. Queste riunioni vengono svolte generalmente tramite \textbf{Google Meet\ap{G}}. La frequenza concordata è di un incontro al mese, con la possibilità di richiederne ulteriori qualora fossero necessari chiarimenti o approfondimenti specifici.
 \end{itemize}
@@ -721,7 +796,7 @@ L’infrastruttura operativa del progetto viene implementata in modo da soddisfa
 \centering Whatsapp & Piattaforma di messaggistica istantanea utilizzata per comunicazioni informali che non richiedono tracciamento. Scelta per la rapidità, l’immediatezza e la diffusione tra i membri del team. Facilita il coordinamento veloce su aspetti operativi di basso impatto.\\
 \hline
 \rowcolor{gray!20}
-\centering \textbf{Discord\ap{G}} & Strumento di comunicazione tramite canali vocali e testuali, utilizzato per le riunioni interne che necessitano di tracciamento e organizzazione strutturata. Scelto per la stabilità, la possibilità di creare canali dedicati.\\
+\centering Discord & Strumento di comunicazione tramite canali vocali e testuali, utilizzato per le riunioni interne che necessitano di tracciamento e organizzazione strutturata. Scelto per la stabilità, la possibilità di creare canali dedicati.\\
 \hline
 \rowcolor{white}
 \centering Google Meet & Piattaforma sincrona per videoconferenze utilizzata negli incontri con l’azienda proponente, in quanto standard scelto dal committente.\\
@@ -730,10 +805,10 @@ L’infrastruttura operativa del progetto viene implementata in modo da soddisfa
 \centering Google Chat & Piattaforma di messaggistica organizzata per stanze e conversazioni strutturate. Proposta dall'azienda proponente come canale asincrono per le comunicazioni.\\
 \hline
 \rowcolor{white}
-\centering \textbf{Git\ap{G}} & Sistema di versionamento distribuito utilizzato per tracciare l’evoluzione del progetto, gestire i rami di sviluppo e mantenere l’integrità dello storico. Scelto per la diffusione nel settore e la capacità di supportare efficacemente lavori collaborativi.\\
+\centering Git & Sistema di versionamento distribuito utilizzato per tracciare l’evoluzione del progetto, gestire i rami di sviluppo e mantenere l’integrità dello storico. Scelto per la diffusione nel settore e la capacità di supportare efficacemente lavori collaborativi.\\
 \hline
 \rowcolor{gray!20}
-\centering \textbf{GitHub\ap{G}} & Piattaforma cloud-based di hosting per repository Git, utilizzata per la gestione collaborativa del codice. Scelta per le funzionalità integrate (issue tracking, pull request, branching rules, code review) che supportano il processo di sviluppo.\\
+\centering GitHub & Piattaforma cloud-based di hosting per repository Git, utilizzata per la gestione collaborativa del codice. Scelta per le funzionalità integrate (issue tracking, pull request, branching rules, code review) che supportano il processo di sviluppo.\\
 \hline
 \rowcolor{white}
 \centering \LaTeX & Linguaggio di markup per la produzione di documenti tecnici e accademici. Scelto per l’elevata qualità tipografica e per la possibilità di definire template uniformi, garantendo coerenza e mantenibilità della documentazione.\\
@@ -756,6 +831,9 @@ L’infrastruttura operativa del progetto viene implementata in modo da soddisfa
 \rowcolor{white}
 \centering Script Python & Script sviluppati per automatizzare attività ricorrenti nel processo, come operazioni di generazione automatica o validazione. Scelti per la flessibilità del linguaggio e la facilità di integrazione con altre tecnologie.\\
 \hline
+\rowcolor{gray!20}
+\centering Lucid app & Strumento per la creazione di diagrammi, utilizzato per la redazione dei diagrammi UML dei casi d’uso. Scelto per la possibilità di collaborazione in tempo reale, che ha consentito a più membri del gruppo di lavorare simultaneamente.\\
+\hline
 \end{longtable}
 \end{center}
 
@@ -763,6 +841,8 @@ L’infrastruttura operativa del progetto viene implementata in modo da soddisfa
 La presente attività di \textbf{istituzione dell'infrastruttura} ha lo scopo di documentare la configurazione dell'infrastruttura per facilitarne la manutenzione e la modifica da parte dei membri del gruppo BitByBit.
 
 \paragraph{Discord}
+Discord è utilizzato come strumento per gli incontri del team e come archivio centralizzato delle risorse condivise, tra cui file e link relativi allo sviluppo e al materiale del corso.  
+Il gruppo BitByBit ha organizzato la piattaforma tramite più canali testuali, suddivisi per tipologia di contenuto (risorse di sviluppo, file e chat generale), e un canale vocale dedicato allo svolgimento delle riunioni.
 
 \paragraph{Git}
 Per garantire coerenza operativa tra tutti i membri del team, è previsto un insieme minimo di configurazioni locali che ciascun componente deve applicare al proprio ambiente Git.
@@ -788,11 +868,14 @@ Al suo interno è possibile trovare varie directories, di seguito verranno descr
 
 % ==== SEZIONE PROCESSO DI MIGLIORAMENTO ====
 \subsection{Processo di miglioramento}
-Il processo di miglioramento è il processo tramite il quale vengono analizzati, valutati, misurati e migliorati i processi del ciclo di vita.
+Il processo di miglioramento è il processo tramite il quale vengono analizzati, valutati, misurati e migliorati i processi del ciclo di vita
+
 \subsubsection{Scopo}
 Durante tutta la fase di lavoro il team si pone l'obiettivo di seguire i principi del \textbf{miglioramento continuo}. Lo scopo principale è identificare problematiche ricorrenti in processi, ruoli e situazioni dell'intero ciclo di vita in modo da poterli evitare in futuro. Dopo aver identificato tali punti critici, il team si impegna a discuterne insieme per trovare spunti di miglioramento da trasformare in \textbf{processi standardizzati}. 
+
 \subsubsection{Descrizione}
 Il miglioramento continuo rappresenta un ciclo iterativo che consente al team di adattarsi in maniera flessibile alle esigenze in evoluzione del progetto, assicurando progressi costanti e un incremento dell’efficienza operativa. Ogni fase del ciclo di vita del progetto, dalla definizione delle attività alla redazione dei documenti, riflette questo approccio.
+
 \subsubsection{Implementazione}
 Durante l’esecuzione delle attività e la stesura dei documenti, il team applica sistematicamente il principio del \textbf{miglioramento continuo}. In caso di riscontro di un problema, viene convocata una riunione interna in cui tutti i membri del team discutono l’argomento, valutando soluzioni possibili e alternative. L’applicazione pratica del miglioramento viene registrata nella sezione \textbf{“Decisioni”} del corrispondente verbale interno, comprensiva della giustificazione della scelta e del consenso tra tutti i membri del team.
 
@@ -803,8 +886,10 @@ Inoltre, tutte le problematiche rilevate e le soluzioni adottate continuano a es
 % ==== SEZIONE PROCESSO DI FORMAZIONE ====
 \subsection{Processo di formazione}
 Il processo di formazione è il processo che garantisce che il team abbia le conoscenze tecniche necessarie per svolgere il lavoro che deve portare a termine.
+
 \subsubsection{Scopo}
 Lo scopo del processo di formazione è garantire che ogni membro del team sia adeguatamente formato e competente per lo svolgimento delle attività di progetto. La formazione è considerata un fattore essenziale per assicurare la corretta acquisizione, sviluppo, utilizzo e manutenzione del prodotto software, nonché per supportare efficacemente le attività di gestione e di natura tecnica.
+
 \subsubsection{Descrizione}
 Il processo di formazione prevede l’analisi dei requisiti di progetto al fine di individuare le competenze necessarie, i ruoli coinvolti e i livelli di conoscenza richiesti. Sulla base di tale analisi, vengono definite le tipologie di formazione e le categorie di personale che necessitano di istruzione. La formazione viene pianificata e avviata sin dalle prime fasi del progetto, in modo da garantire la disponibilità tempestiva di risorse qualificate durante l’intero ciclo di vita del software.
 \subsubsection{Aspettative formative}
