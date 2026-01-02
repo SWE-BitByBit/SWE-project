@@ -1001,51 +1001,59 @@ Le metriche di prodotto adottate nel progetto sono suddivise nelle seguenti due 
 \subsection{Metriche di processo}
 
 \subsubsection{Fornitura}
-\paragraph{Planned Value (PV)}
+
+\paragraph{Budget at Completion (BAC)}
 \begin{itemize}
     \item \textbf{Codice:} \texttt{M-PC1}
-    \item \textbf{Formula:} $PV=(\text{Budget at Completition})\cdot(\text{\% di lavoro pianificata nello sprint})$
+    \item \textbf{Formula:} $BAC=\text{budget totale pianificato per il progetto}$
+    \item \textbf{Descrizione:} rappresenta il costo totale pianificato del progetto al momento della definizione del piano. Rappresenta una metrica di riferimento per altre misurazioni.
+\end{itemize}
+
+\paragraph{Planned Value (PV)}
+\begin{itemize}
+    \item \textbf{Codice:} \texttt{M-PC2}
+    \item \textbf{Formula:} $PV=(\text{BAC})\cdot(\text{\% di lavoro pianificata nello sprint})$
     \item \textbf{Descrizione:} rappresenta il preventivo per i costi del lavoro che si intende eseguire durante uno sprint di progetto
 \end{itemize}
 
 \paragraph{Actual Cost (AC)}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PC2}
+    \item \textbf{Codice:} \texttt{M-PC3}
     \item \textbf{Formula:} $AC=\text{costo effettivo sostenuto in uno sprint}$
     \item \textbf{Descrizione:} rappresenta i costi effettivamente sostenuti per completare il lavoro svolto durante uno sprint di progetto
 \end{itemize}
 
 \paragraph{Earned Value (EV)}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PC3}
+    \item \textbf{Codice:} \texttt{M-PC4}
     \item \textbf{Formula:} $EV=\frac{\text{\# di issue completate}}{\text{\# di issue pianificate}}*PV$
     \item \textbf{Descrizione:} rappresenta il valore del lavoro realmente completato rispetto a quanto pianificato. Consente di valutare l’avanzamento effettivo del progetto indipendentemente dai costi sostenuti.
 \end{itemize}
 
 \paragraph{Schedule Performance Index (SPI)}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PC4}
+    \item \textbf{Codice:} \texttt{M-PC5}
     \item \textbf{Formula:} $SPI=\frac{\text{EV}}{\text{PV}}$
     \item \textbf{Descrizione:} misura l'efficacia della gestione del tempo. Esso confronta la quantità di lavoro effettivamente completata con la quantità di lavoro pianificata. Un valore $=1$ indica che il progetto è in linea con il piano stabilito, un valore $<1$ evidenzia un ritardo.
 \end{itemize}
 
 \paragraph{Cost Performance Index (CPI)}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PC5}
+    \item \textbf{Codice:} \texttt{M-PC6}
     \item \textbf{Formula:} $CPI=\frac{\text{EV}}{\text{AC}}$
     \item \textbf{Descrizione:} misura l'efficienza con cui il progetto utilizza il proprio budget. Un valore $\geq 1$ indica che si sta rispettando il buget prefissato.
 \end{itemize}
 
 \paragraph{Estimate at Completion (EAC)}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PC6}
-    \item \textbf{Formula:} $EAC=\frac{\text{Budget at Completition}-\text{EV}}{\text{CPI}}$
+    \item \textbf{Codice:} \texttt{M-PC7}
+    \item \textbf{Formula:} $EAC=\frac{\text{BAC}-\text{EV}}{\text{CPI}}$
     \item \textbf{Descrizione:} stima il costo totale del progetto al completamento, assumendo che l’andamento futuro segua l’efficienza attuale. Viene confrontato con il Budget at Completition per individuare potenziali scostamenti.
 \end{itemize}
 
 \paragraph{Estimate to Complete (ETC)}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PC7}
+    \item \textbf{Codice:} \texttt{M-PC8}
     \item \textbf{Formula:} $ETC=EAC-AC$
     \item \textbf{Descrizione:} misura il costo previsto per completare il lavoro rimanente del progetto escludendo i costi già sostenuti.
 \end{itemize}
@@ -1053,14 +1061,14 @@ Le metriche di prodotto adottate nel progetto sono suddivise nelle seguenti due 
 \subsubsection{Verifica}
 \paragraph{Code Coverage}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PC8}
+    \item \textbf{Codice:} \texttt{M-PC9}
     \item \textbf{Formula:} $CC=\frac{\text{\# linee di codice testate}}{\text{\# linee di codice totali}}*100$
     \item \textbf{Descrizione:} misura la percentuale di codice soggetto a test. 
 \end{itemize}
 
 \paragraph{Requirements Coverage (RC)}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PC9}
+    \item \textbf{Codice:} \texttt{M-PC10}
     \item \textbf{Formula:} $\frac{\text{\# requisiti testati}}{\text{\# requisiti totali}}*100$
     \item \textbf{Descrizione:} Indica la percentuale di requisiti che hanno test case corrispondenti. Garantisce che tutti i requisiti documentati siano verificati.
 \end{itemize}
@@ -1068,7 +1076,7 @@ Le metriche di prodotto adottate nel progetto sono suddivise nelle seguenti due 
 \subsubsection{Documentazione}
 \paragraph{Indice di Gulpease}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PC10}
+    \item \textbf{Codice:} \texttt{M-PC11}
     \item \textbf{Formula:} $89 + \frac{300 \cdot (\text{numero di frasi}) - 10 \cdot (\text{numero di lettere})}{\text{numero di parole}}$
     \item \textbf{Descrizione:} indice di leggibilità tarato su testi in lingua italiana. In generale risulta che testi con un indice:
     \begin{itemize}
@@ -1080,7 +1088,7 @@ Le metriche di prodotto adottate nel progetto sono suddivise nelle seguenti due 
 
 \paragraph{Document Coverage Ratio (DCR)}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PC11}
+    \item \textbf{Codice:} \texttt{M-PC12}
     \item \textbf{Formula:} $\frac{\text{\# sezioni documentate}}{\text{\# sezioni previste dallo standard o dal piano}} * 100$
     \item \textbf{Descrizione:} misura il grado di completezza della documentazione prodotta rispetto alle sezioni previste dai piani e dagli standard adottati. 
     Supporta il processo di documentazione e l’accertamento della conformità agli standard di progetto.
@@ -1089,7 +1097,7 @@ Le metriche di prodotto adottate nel progetto sono suddivise nelle seguenti due 
 \subsubsection{Accertamento della qualità}
 \paragraph{Satisfied Metrics}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PC12}
+    \item \textbf{Codice:} \texttt{M-PC13}
     \item \textbf{Formula:} $MS=\frac{\text{\# metriche soddisfatte}}{\text{\# metriche totali}}*100$
     \item \textbf{Descrizione:} misura la percentuale di metriche che sono state soddisfatte durante uno sprint. Una metrica viene considerata soddisfatta quando presenta un valore accettabile.
 \end{itemize}
@@ -1097,7 +1105,7 @@ Le metriche di prodotto adottate nel progetto sono suddivise nelle seguenti due 
 \subsubsection{Gestione dei processi}
 \paragraph{Sprint Commitment Reliability (SCR)}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PC13}
+    \item \textbf{Codice:} \texttt{M-PC14}
     \item \textbf{Formula:} $\frac{\text{\# issue completate nello sprint}}{\text{\# issue pianificate}} * 100$
     \item \textbf{Descrizione:} misura la capacità del team di rispettare gli impegni pianificati per lo sprint.
     Supporta la valutazione della qualità della pianificazione e della stabilità del processo di sviluppo.
