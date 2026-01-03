@@ -1,6 +1,8 @@
 % template presente
 \documentclass[a4paper,12pt]{article}
 
+\usepackage{tabularx}
+\usepackage{tcolorbox}
 \usepackage[utf8]{inputenc}
 \usepackage[italian]{babel}
 \usepackage{graphicx}
@@ -81,7 +83,35 @@
     {\LARGE \textbf{Glossario}}
 \end{center}
 
-\vspace*{\fill} % --- Spinge verso l'alto la fine del contenuto, centrando tutto il blocco
+% ======= INFO GENERALI SUL DOCUMENTO, DA TENERE SU OGNI DOC =======
+\renewcommand{\arraystretch}{1.3}
+\vspace{0.1cm}
+
+\begin{tcolorbox}
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\textbf{Stato:} & in corso \\
+\textbf{Versione:} & 0.3.2 \\
+\textbf{Redattori:} & 
+\begin{tabular}[t]{@{}l@{}}
+Ferdinando Fracasso \\
+Riccardo Manisi \\
+Giovanni Visentin \\
+\end{tabular} \\
+\textbf{Verificatori:} & 
+\begin{tabular}[t]{@{}l@{}}
+Gabriele Scaggiante \\
+Dennis Parolin \\
+Giovanni Visentin \\
+\end{tabular} \\
+\textbf{Responsabile:} & Ferdinando Fracasso \\
+\textbf{Destinatari:} & 
+\begin{tabular}[t]{@{}l@{}}
+Gruppo BitByBit \\
+\end{tabular} \\
+\end{tabularx}
+\end{tcolorbox}
+
+\vspace*{\fill} % --- Spinge verso l’alto la fine del contenuto, centrando tutto il blocco
 
 % ======= REDAZIONE E REVISIONE =======
 \clearpage
@@ -95,6 +125,9 @@
 \hline
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+\hline
+\rowcolor{gray!20}
+0.3.2 & 2025-12-23 & Riccardo Manisi & Aggiunta sezione info generali documenti e migliorato layout & Dennis Parolin\\
 \hline
 \rowcolor{white}
 0.3.1 & 2025-12-16 & Ferdinando Fracasso & Rimosso definizioni di termini non utilizzati e tolta la sezione introduttiva perchè superflua, inoltre modificato definizioni di branch/merge/pull request per chiarezza & Giovanni Visentin\\
@@ -117,12 +150,9 @@
 \end{tabular}
 \end{center}
 
-
 \clearpage
-% ======= INFO GENERALI =======
 
 % ======= INDICE SU PAGINA DEDICATA =======
-\clearpage
 \tableofcontents
 \thispagestyle{empty} % senza numero di pagina per l'indice
 \clearpage
@@ -130,89 +160,66 @@
 % ======= INTRODUZIONE =======
 %\clearpage
 %\section{Introduzione}
-%\subsection*{Scopo del documento}
-%Il presente documento ha lo scopo di raccogliere i termini tecnici utilizzati all'interno del progetto e fornire le loro definizioni, in modo da permettere una più facile comprensione della documentazione prodotta durante lo svolgimento del progetto.
-
-% ======= ACRONIMI =======
-\clearpage
-%\section*{Glossario}
-
-\section{Acronimi}
-\begin{itemize}
-    \item \begin{tabular}{p{0.22\linewidth} p{0.72\linewidth}}
-        \textbf{API} & Application Programming Interface. \\
-        \end{tabular}
-    \item \begin{tabular}{p{0.22\linewidth} p{0.72\linewidth}}
-        \textbf{PoC} & Proof of Concept \\
-        \end{tabular}
-    \item \begin{tabular}{p{0.22\linewidth} p{0.72\linewidth}}
-        \textbf{MVP} & Minimum Viable Product. \\
-        \end{tabular}
-    \item \begin{tabular}{p{0.22\linewidth} p{0.72\linewidth}}
-        \textbf{RTB} & Requirements and Technology Baseline \\
-        \end{tabular}
-    \item \begin{tabular}{p{0.22\linewidth} p{0.72\linewidth}}
-        \textbf{PB} & Product Baseline \\
-        \end{tabular}
-    \item \begin{tabular}{p{0.22\linewidth} p{0.72\linewidth}}
-        \textbf{DB} & Database. \\
-        \end{tabular}
-    \item \begin{tabular}{p{0.22\linewidth} p{0.72\linewidth}}
-        \textbf{JSON} & JavaScript Object Notation. \\
-        \end{tabular}
-\end{itemize}
+\section{Scopo del documento}
+Il presente documento ha lo scopo di raccogliere i termini tecnici utilizzati all'interno del progetto e fornire le loro definizioni, in modo da permettere una più facile comprensione della documentazione prodotta durante lo svolgimento del progetto.
 
 \section{A}
 
-\subsection{Agile development}
+\subsection*{Agile development}
 Metodo per lo sviluppo sw ideato per produrre sw utile nel minor tempo possibile. Il sistema è sviluppato attraverso una serie di incrementi a cui partecipano anche gli stakeholders e gli utenti finali per una maggiore comunicazione in fase di sviluppo. I risultati di ogni incremento vengono utilizzati come base per la pianificazione del prossimo.  
 Attività centrali sono: il \textbf{design} e \textbf{l'implementazione}.  
 La stesura di un documento dei requisiti è superflua in quanto i requisiti cambiano così velocemente che il documento è obsoleto non appena viene scritto.
 
-\subsection{API}
-Interfaccia che consente la comunicazione tra componenti o servizi.
+\subsection*{Analisi dei requisiti}
+Stabilisce esattamente cosa deve essere implementato nel sistema, cioè elenca i requisiti lato soluzione (requisiti software).  
+Può essere parte del contatto con l’acquirente.  
+Può essere soggetto a modifiche durante lo sviluppo del prodotto sw.
 
-\subsection{Architettura}
+\subsection*{Architettura}
 Organizzazione generale del sistema e dei suoi componenti.
+
+\clearpage
 
 % ==============================
 \section{B}
 
-\subsection{Backlog}
-Elenco prioritario delle funzionalità, bug e attività da svolgere.
-
-\subsection{Baseline}
+\subsection*{Baseline}
 Versione approvata di un prodotto di lavoro (di progetto) che può essere modificato solo attraverso procedure formali di controllo delle modifiche.
 
-\subsection{Branch}
-Area contenuta di un repository in cui possono essere effettuate modifiche senza che abbiano effetto sul resto del progetto.
+\subsection*{Board di progetto}
+Rappresenta un'organizzazione delle attività, nel contesto di GitHub identificate tramite le issue. Può contenere tutte le attività di un progetto o solo un sottoinsieme con caratteristiche precise.
+
+\subsection*{Branch}
+Versione parallela del repository. È contenuto all'interno del repository, ma non ha effetti sul branch principale. Permette di lavorare senza interrompere la versione stabile corrente.
+
+\clearpage
 
 % ==============================
 \section{C}
 
-\subsection{Capitolato}
+\subsection*{Capitolato}
 Documento che contiene le specifiche di un progetto software. Viene redatto dal proponente e presentato ai fornitori interessati a partecipare all'appalto.  
-Descrive i requisiti lato bisogno (requisiti utente).
+Presenta aspettative, vincoli, e suggerimenti. Descrive i requisiti lato bisogno (requisiti utente).
 
-\subsection{Committente}
-Colui che paga il prodotto. Di solito (ma non necessariamente) è colui che decide i requisiti.
+\subsection*{Ciclo di vita}
+È composto da un'insieme di stati che descrivono l'avanzamento del prodotto software dalla concezione all'utilizzo fino al ritiro.
+Si riferisce alla completa durata dello sviluppo del prodotto, dal concepimento alla fine, che deve essere garantita.  
+È composto da stati in cui si ha una certa sequenza di passaggi da seguire. La transizione da uno stato all’altro avviene come conseguenza di un processo di ciclo di vita.  
+In seguito al ritiro il prodotto può essere rimesso in vita, per questo viene indicato con ciclo.
 
-\subsection{Componente}
-Unità software con responsabilità ben definite e interfacce pubbliche.
+\subsection*{Committente}
+Colui che ordina l'esecuzione di un prodotto ad un ente esterno, il fornitore. È colui che ha il maggior peso contrattuale.
 
-\subsection{Contratto}
+\subsection*{Configuration Item}
+Identifica una componente o un elemento infrastrutturale che deve essere gestito e monitorato per garantire la corretta erogazione dei servizi software.
+
+\subsection*{Contratto}
 Documento (legale) stilato tra committente e fornitore.
+
+\clearpage
 
 % ==============================
 \section{D}
-
-\subsection{Deployment}
-Processo di pubblicazione del software in un ambiente esecutivo.
-
-\subsection{Documento analisi dei requisiti}
-Stabilisce esattamente cosa deve essere implementato nel sistema, cioè elenca i requisiti lato soluzione (requisiti software).  
-Può essere parte del contatto con l’acquirente.  
-Può essere soggetto a modifiche durante lo sviluppo del prodotto sw.
 
 % ==============================
 \section{E}
@@ -222,9 +229,6 @@ Può essere soggetto a modifiche durante lo sviluppo del prodotto sw.
 
 % ==============================
 \section{G}
-
-\subsection{Glossario}
-Elenco termini utilizzati dal gruppo.
 
 % ==============================
 \section{H}
@@ -241,20 +245,10 @@ Elenco termini utilizzati dal gruppo.
 % ==============================
 \section{L}
 
-\subsection{Life cycle}
-Gli stati che il prodotto software assume da concezione, all’uso fino al ritiro.  
-Si riferisce alla completa durata dello sviluppo del prodotto, dal concepimento al ritiro (=fine), che deve essere garantita.  
-È composto da stati in cui si ha una certa sequenza di passaggi da seguire. La transizione da uno stato all’altro avviene come conseguenza dell’esecuzione di un’attività.  
-In seguito al ritiro il prodotto può essere rimesso in vita, per questo viene indicato con ciclo.
-
-
 % ==============================
 \section{M}
 
-\subsection{Merge}
-Procedura in cui le modifiche su un branch vengono combinate con un altro branch.
-
-\subsection{Milestone}
+\subsection*{Milestone}
 Strumento utilizzato nella gestione di progetto per fissare una data di calendario che descrive degli obiettivi che portano un avanzamento nello sviluppo di progetto.  
 Ogni milestone deve essere:
 \begin{itemize}
@@ -265,11 +259,18 @@ Ogni milestone deve essere:
 \item dimostrabile dagli stakeholders
 \end{itemize}
 
-\subsection{Model}
-Insieme di specifiche che descrivono un fenomeno d’interesse.
+\subsection*{Merge}
+Metodo per integrare i cambiamenti fatti in un branch di lavoro in un altro branch, definito di destinazione. Può essere eseguito con le pull request o tramite la command line.
 
-\subsection{MVP}
-Versione minima del prodotto che permette di validare l’ipotesi principale.
+\subsection*{Metrica}
+Qualsiasi tipo di misurazione relativa a un sistema software, processo o documentazione. Permette di quantificare un atttributi di un prodotto o un processo.
+
+\subsection*{MVP}
+Sigla per \textbf{Minimum Viable Product}. Artefatto che definisce la versione di un prodotto dotata di funzionalità sufficienti per distribuito efficacemente.
+Lo scopo è quello di ottenere dei feedback da parte dal committente e/o dei potenziali utenti utilizzatori.
+La creazione di questo prodotto deve consumare la minima quantità di risorse del fornitore, in quanto può essere scartato completamente.
+
+\clearpage
 
 % ==============================
 \section{N}
@@ -280,10 +281,10 @@ Versione minima del prodotto che permette di validare l’ipotesi principale.
 % ==============================
 \section{P}
 
-\subsection{PB}
-Versione approvata del prodotto pronta al rilascio o alla validazione.
+\subsection*{PB}
+Sigla per \textbf{Product Baseline}. Baseline di progetto per validare l'architettura del prodotto software e la sua realizzazione. Espone il design definitivo del prodotto descritto nel documento delle specifiche tecniche.
 
-\subsection{Piano di progetto}
+\subsection*{Piano di progetto}
 Documento ufficiale di tipo esterno, soggetto ad approvazioni, con il quale si descrivono gli obiettivi di progetto e gli elementi necessari al loro raggiungimento.  
 Si vedono le risorse disponibili e le loro assegnazioni alle attività con scansione nel tempo.  
 Principalmente è scomposto in:
@@ -302,30 +303,34 @@ Struttura tipica del PdP:
 \item Meccanismo di controllo e rendicontazione
 \end{itemize}
 
-\subsection{Piano di qualifica}
-Documento incrementale di tipo esterno che stabilisce gli standard di qualità, i processi e le attività di testing che saranno implementati durante lo sviluppo di un progetto.  
-Contiene una descrizione dettagliata delle strategie di testing (verifica), delle metriche di valutazione e dei criteri di accettazione del prodotto finale.  
-L’obiettivo principale è garantire che il prodotto soddisfi gli standard di qualità prefissati e che il processo di sviluppo segua procedure coerenti ed efficaci.  
-Per ogni passo fatto in analisi o altro è necessario preparare test e tracciamenti per non lasciare indietro nulla.
+\subsection*{Piano di qualifica}
+Documento per la specifica degli obiettivi di qualità. Espone gli standard adottati per la misurazione della qualità e le componenti che devono essere oggetto di test di verifica. 
+Vengono presentate anche le misurazioni effettuate tramite il cruscotto della qualità durante gli sprint di progetto.
 
-\subsection{PoC}
-Prototipo o esperimento usato per dimostrare la fattibilità di una soluzione.
+\subsection*{PoC}
+Sigla per \textbf{Proof of Concept}. Artefatto che serve a valutare la fattibilità tecnologica del prodotto che si intende sviluppare. Le tecnologie adottate devono essere decise in base alle specifiche funzionalità individuate a partire dai bisogni del committente.
 
-\subsection{Process}
+\subsection*{Processo}
 Un insieme strutturato di attività, metodi, pratiche e trasformazioni utilizzate per sviluppare, manutenere e gestire un prodotto software o un sistema. Definisce cosa deve essere fatto, chi lo fa, quando e come, per raggiungere un obiettivo specifico.
 
-\subsection{Project}
+\subsection*{Product backlog}
+Lista dinamica che evolve nel tempo con il prodotto. Vengono rappresentati gli item da eseguire nei prossimi rilasci con un livello di priorità assegnato a ciascuno.
+Gli item presenti rappresentano le macroattività che devono essere eseguite dal team.
+
+\subsection*{Proponente}
+Azienda esterna all'università che propone un capitolato da sviluppare. 
+
+\subsection*{Project}
 È un insieme ordinato di attività sviluppate sulla base dei processi di ciclo di vita che soddisfano gli obiettivi dati.
 \begin{itemize}
 \item Le attività sono suddivise in compiti assegnabili a singoli individui.
 \item Le attività sono pianificate prima di essere svolte.
 \end{itemize}
 
-\subsection{Prototipo}
-Versione preliminare per testare design o comportamenti prima dello sviluppo completo.
-
-\subsection{Pull Request}
+\subsection*{Pull Request}
 Modifiche proposte da un repository inviate da un utente e accettate o scartate da un collaboratore interno al repository.
+
+\clearpage
 
 % ==============================
 \section{Q}
@@ -333,85 +338,95 @@ Modifiche proposte da un repository inviate da un utente e accettate o scartate 
 % ==============================
 \section{R}
 
-\subsection{Repository}
-È l'elemento base di GitHub. Archivio centralizzato che contiene tutti i file di un progetto (inclusa la definizione). Memorizza la cronologia delle modifiche di ogni file. I repository possono avere più collaboratori ed essere pubblici o privati.
+\subsection*{Release}
+Una versione particolare di un configuration item resa disponibile per uno scopo specifico.
 
-\subsection{Requisito}
+\subsection*{Repository}
+Archivio centralizzato dove viene conservato e gestito il codice sorgente del progetto.
+
+\subsection*{Requisito}
 Condizione o capacità che il sistema deve soddisfare.
 
-\subsection{Requisito funzionale}
+\subsection*{Requisito funzionale}
 Funzionalità che il sistema deve offrire.
 
-\subsection{Requisito non funzionale}
+\subsection*{Requisito non funzionale}
 Vincolo di qualità (prestazioni, sicurezza, usabilità, manutentibilità).
 
-\subsection{Requisito utente}
+\subsection*{Requisito utente}
 Requisiti astratti di alto livello.  
-Dichiarazioni in linguaggio naturale (e anche diagrammi) dei servizi che il sistema dovrebbe fornire agli utenti e dei vincoli che deve rispettare.  
-Possono variare da dichiarazioni generali a descrizioni dettagliate.
+Dichiarazioni in linguaggio naturale (e anche diagrammi) dei servizi che il sistema dovrebbe fornire agli utenti e dei vincoli che deve rispettare.
 
-\subsection{Requisito software}
+\subsection*{Requisito software}
 Descrizioni dettagliate delle funzioni, servizi e vincoli di sistema, inseriti nel documento di analisi dei requisiti.
 
-\subsection{RTB}
-Insieme dei requisiti approvati e della loro tracciabilità.
+\subsection*{RTB}
+Sigla per \textbf{Requirements and Tecnology Baseline}. Rappresenta una baseline di progetto. Produce la lista dei requisiti funzionali e non funzionali da soddisfare, stati stabiliti con la proponente e il PoC.
+
+\clearpage
 
 % ==============================
 \section{S}
 
-\subsection{Sprint}
-Iterazione di lavoro con obiettivi definiti (2 settimane).
+\subsection*{Sprint}
+Breve periodo di tempo, dalla durata prefissata, in cui un team lavora per completare le attività elencate nello sprint backlog di quel preciso sprint.
 
-\subsection{Stakeholder}
+\subsection*{Sprint backlog}
+Lista degli item riferita ad un particolare sprint di progetto. Gli item al suo interno possono essere scomposti in attività più piccole, ma non possono essere mai eliminati.
+
+\subsection*{Sprint Review}
+Riunione, fatta alla fine di uno sprint, che consta di una revisione per identificare il progresso eseguito sul prodotto. Partecipano anche gli stakeholders.
+
+\subsection*{Sprint Retrospective}
+Riunione che viene fatta con la solo presenza dei membri del team per identificare le attività portate a termine e i problemi insorti durante la loro esecuzione.
+Ha l'obiettivo di identificare i potenziali errori fatti.
+
+\subsection*{Stakeholder}
 Tutti coloro che a vario titolo hanno influenza sul prodotto e sul progetto: utenti, committente, fornitore, regolatori.
+
+\subsection*{SemVer}
+Sigla per \textbf{Sematinc Versioning}. Metodologia composta da un'insieme di regole e vincoli che dpecifica come i numeri di versione sono incrementati e assegnati.
+
+\clearpage
 
 % ==============================
 \section{T}
 
-\subsection{Task}
-Attività da svolgere.
+\subsection*{To-Do}
+Attività che derivano da decisioni prese dai componenti del gruppo. Ogni To-Do deve essere tracciabile all'interno del contesto del progetto tramite la sua formalizzazione in issue GitHub.
 
-\subsection{Technology baseline}
-Documento di quello che si dovrebbe implementare.
-
-\subsection{Test unitario}
-Verifica automatizzata di singole unità di codice.
-
-\subsection{Test di integrazione}
-Verifica delle interazioni tra più componenti o servizi.
-
-\subsection{To Do}
-Sezione di un verbale o di un documento in cui si elencano le azioni concrete che ogni membro del gruppo deve svolgere.
+\clearpage
 
 % ==============================
 \section{U}
 
-\subsection{Utente}
+\subsection*{Utente}
 La persona che usa e interagisce direttamente col sistema (spesso si identifica col committente).
 
-\subsection{User story}
-Descrizione breve e informale di una funzionalità del sistema vista dal punto di vista dell’utente finale.  
-Riassume un’esigenza che l’utente vuole ottenere e perché.  
-L’utente lavora con il team per creare una \textbf{story card} che viene poi suddivisa in task.
+\clearpage
 
 % ==============================
 \section{V}
 
-\subsection{Validazione}
+\subsection*{Validazione}
 Attività eseguita al culmine del progetto per accertare che il prodotto finale corrisponda alle attese.
 
-\subsection{Verifica}
+\subsection*{Verifica}
 Attività eseguita durante lo sviluppo per accertare che le attività non introducano errori.
 
-\subsection{Verbale}
-Documento riassuntivo di una riunione. Deve specificare Ordine del Giorno, Discussioni, Decisioni, Issue e To Do.  
+\subsection*{Verbale}
+Documento riassuntivo di un incontro. Deve specificare Ordine del Giorno, Discussioni, Decisioni, Issue e To Do.  
 Ogni verbale deve essere verificato da un membro diverso da chi l’ha scritto.
+
+\clearpage
 
 % ==============================
 \section{W}
 
-\subsection{Way of working (WoW)}
+\subsection*{Way of working}
 Comprende le metodologie di sviluppo (modello di sviluppo), la spartizione dei ruoli e delle attività, gli strumenti di lavoro (GitHub, GitLab, Trello, Jira, Slack, Discord, Obsidian, Google Docs), convenzioni standard e procedure condivise dai membri del team.
+
+\clearpage
 
 % ==============================
 \section{X}
