@@ -100,7 +100,7 @@
 \renewcommand{\arraystretch}{1.3}
 
 \begin{tcolorbox}
-\begin{tabularx}{\textwidth}{@{}l X@{}}
+\begin{longtable}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & In corso\\
 \textbf{Versione:} & 0.1.0 \\
 \textbf{Responsabile:} & Marco Sanguin \\
@@ -113,7 +113,7 @@ Prof. Tullio Vardanega\\
 Prof. Riccardo Cardin\\
 Gruppo BitByBit\\
 \end{tabular}
-\end{tabularx}
+\end{longtable}
 \end{tcolorbox}
 
 \vspace*{\fill} 
@@ -195,42 +195,42 @@ I termini tecnici, gli acronimi e le parole con significato specifico all'intern
 \section{Qualità di Prodotto}\label{sec:qualità_prodotto}
 La qualità del prodotto rappresenta la capacità del software di soddisfare i requisiti funzionali e non funzionali stabiliti. In linea con la \textbf{visione verticale} del Sistema Qualità, il gruppo BitByBit adotta una \textbf{misurazione oggettiva} per valutare le caratteristiche intrinseche del prodotto e garantirne l'idoneità all'uso e la futura estendibilità.
 
-Le categorie selezionate si ispirano allo standard ISO/IEC 9126:
+Le soglie di accettabilità e di optimalità definite per ciascuna metrica sono state determinate sulla base della letteratura riportata nei riferimenti informativi (si veda sezione \hyperref[sec:riferimenti_informativi]{Sezione~\ref*{sec:riferimenti_informativi}}).
 
 % ----- METRICHE STATICHE ------
 \subsection{Metriche statiche}\label{subsec:metriche-statiche}
 
-\begin{table}[H]
+\begin{longtable}[H]
 \centering
 \renewcommand{\arraystretch}{1.5}
 \begin{tabularx}{\textwidth}{|c|X|c|c|}
 \hline
 \rowcolor{gray!30} \textbf{ID} & \textbf{Nome} & \textbf{Valore accettabile} & \textbf{Valore ottimo} \\ \hline
 \textbf{MPD1} & Requisiti obbligatori soddisfatti & $100\%$ & $100\%$ \\ \hline
-\textbf{MPD2} & Requisiti desiderabili soddisfatti & $\ge 30\%$ & $100\%$ \\ \hline
-\textbf{MPD3} & Requisiti opzionali soddisfatti & $\ge 0\%$ & $\ge 70\%$ \\ \hline
-\textbf{MPD4} & Defect Density (DD) & $\ge 0\%$ & $\ge 70\%$ \\ \hline
-\textbf{MPD5} & Cyclomatic Complexity & $\ge 0\%$ & $\ge 70\%$ \\ \hline
-\textbf{MPD6} & Lenght of code & $\ge 0\%$ & $\ge 70\%$ \\ \hline
-\textbf{MPD7} & Depth of Conditional Nesting (DCN) & $\ge 0\%$ & $\ge 70\%$ \\ \hline
+\textbf{MPD2} & Requisiti desiderabili soddisfatti & $\ge 30\%$ & $\ge 60\%$ \\ \hline
+\textbf{MPD3} & Requisiti opzionali soddisfatti & $\ge 10\%$ & $\ge 40\%$ \\ \hline
+\textbf{MPD4} & Defect Density (DD) & $\le 5$ difetti/KLOC & $\le 1$ difetto/KLOC \\ \hline
+\textbf{MPD5} & Cyclomatic Complexity & $\le 10$ per funzione & $\le 5$ per funzione \\ \hline
+\textbf{MPD6} & Length of code & $\le 300$ LOC per funzione & $\le 100$ LOC per funzione \\ \hline
+\textbf{MPD7} & Depth of Conditional Nesting (DCN) & $\le 4$ livelli & $\le 2$ livelli \\ \hline
 \end{tabularx}
 \caption{Soglie delle metriche statiche}
-\end{table}
+\end{longtable}
 
 % ----- METRICHE DINAMICHE ------
 \subsection{Metriche dinamiche}\label{subsec:metriche-dinamiche}
-\begin{table}[H]
+\begin{longtable}[H]
 \centering
 \renewcommand{\arraystretch}{1.5}
 \begin{tabularx}{\textwidth}{|c|X|c|c|}
 \hline
 \rowcolor{gray!30} \textbf{ID} & \textbf{Nome} & \textbf{Valore accettabile} & \textbf{Valore ottimo} \\ \hline
-\textbf{MPD8} & Defeact Leakeage & $\ge 60\%$ & $\ge 80\%$ \\ \hline
-\textbf{MPD9} & Defeact Removal Efficenty (DRE) & $\ge 60\%$ & $\ge 80\%$ \\ \hline
-\textbf{MPD10} & Bug Rate per Test Case & $\le 10\%$ & $0\%$ \\ \hline
+\textbf{MPD8} & Defect Leakage & $\le 20\%$ & $\le 5\%$ \\ \hline
+\textbf{MPD9} & Defect Removal Efficiency (DRE) & $\ge 80\%$ & $\ge 95\%$ \\ \hline
+\textbf{MPD10} & Bug Rate per Test Case & $\le 0.3$ & $\le 0.1$ \\ \hline
 \end{tabularx}
 \caption{Soglie delle metriche dinamiche}
-\end{table}
+\end{longtable}
 
 % ==== QUALITA DI PROCESSO ====
 \section{Qualità di processo}\label{sec:qualità_processo}
@@ -251,7 +251,7 @@ I processi primari raggruppano le attività fondamentali che concorrono direttam
 Il gruppo BitByBit monitora i seguenti processi primari attraverso metriche oggettive:
 
 \subsubsection{Fornitura}\label{sec:fornitura}
-\begin{table}[H]
+\begin{longtable}[H]
 \centering
 \renewcommand{\arraystretch}{1.5}
 \begin{tabularx}{\textwidth}{|c|X|c|c|}
@@ -267,10 +267,10 @@ Il gruppo BitByBit monitora i seguenti processi primari attraverso metriche ogge
 \textbf{MPC08} & Estimate To Complete (ETC) & $\le BAC$ & $\le (BAC - AC)$ \\ \hline
 \end{tabularx}
 \caption{Soglie delle metriche per il processo di fornitura}
-\end{table}
+\end{longtable}
 
 \subsubsection{Verifica}\label{sec:verifica}
-\begin{table}[H]
+\begin{longtable}[H]
 \centering
 \renewcommand{\arraystretch}{1.5}
 \begin{tabularx}{\textwidth}{|c|X|c|c|}
@@ -280,7 +280,7 @@ Il gruppo BitByBit monitora i seguenti processi primari attraverso metriche ogge
 \textbf{MPC10} & Requirements Coverage (RC) & $100\%$ & $100\%$ \\ \hline
 \end{tabularx}
 \caption{Soglie delle metriche per il processo di verifica}
-\end{table}
+\end{longtable}
 
 % --------------------------------------------- PROCESSI DI SUPPORTO ---------------------------------------------
 \subsection{Processi di Supporto}\label{sec:processi_supporto}
