@@ -147,7 +147,7 @@ Gruppo BitByBit\\
 
 \clearpage
 
-% ============================================= INTRODUZIONE =============================================
+% ===== INTRODUZIONE =====
 
 \section{Introduzione} \label{sec:introduzione}
 \subsection{Scopo del documento} \label{sec:scopo_documento}
@@ -169,7 +169,7 @@ Il presente Piano di Qualifica funge da strumento guida integrando i tre element
 
 L'approccio si basa sull'adozione di uno specifico \textbf{way of working} condiviso. Il documento è da considerarsi di natura dinamica: sarà soggetto a revisioni e aggiornamenti periodici per recepire nuove informazioni, modifiche ai requisiti e risultati delle attività di verifica.
 
-% ============================================= RIFERIMENTI =============================================
+% ==== RIFERIMENTI =====
 
 \subsection{Riferimenti} \label{sec:riferimenti}
 Al fine di evitare ambiguità relative al linguaggio e ai termini utilizzati all'interno dei documenti formali, viene allegato il \href{https://swe-bitbybit.github.io/SWE-docs/docs/documenti_interni/Glossario.pdf}{\textit{Glossario}}.
@@ -191,7 +191,48 @@ I termini tecnici, gli acronimi e le parole con significato specifico all'intern
     \item Slide sull'introduzione alla \href{https://www.math.unipd.it/~tullio/IS-1/2025/Dispense/T09.pdf}{Verifica e Validazione} del Prof. Vardanega
 \end{itemize}
 
-% ============================================= QUALITA DI PROCESSO =============================================
+% ===== QUALITA DI PRODOTTO =====
+\section{Qualità di Prodotto}\label{sec:qualità_prodotto}
+La qualità del prodotto rappresenta la capacità del software di soddisfare i requisiti funzionali e non funzionali stabiliti. In linea con la \textbf{visione verticale} del Sistema Qualità, il gruppo BitByBit adotta una \textbf{misurazione oggettiva} per valutare le caratteristiche intrinseche del prodotto e garantirne l'idoneità all'uso e la futura estendibilità.
+
+Le categorie selezionate si ispirano allo standard ISO/IEC 9126:
+
+% ----- METRICHE STATICHE ------
+\subsection{Metriche statiche}\label{subsec:metriche-statiche}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5}
+\begin{tabularx}{\textwidth}{|c|X|c|c|}
+\hline
+\rowcolor{gray!30} \textbf{ID} & \textbf{Nome} & \textbf{Valore accettabile} & \textbf{Valore ottimo} \\ \hline
+\textbf{MPD1} & Requisiti obbligatori soddisfatti & $100\%$ & $100\%$ \\ \hline
+\textbf{MPD2} & Requisiti desiderabili soddisfatti & $\ge 30\%$ & $100\%$ \\ \hline
+\textbf{MPD3} & Requisiti opzionali soddisfatti & $\ge 0\%$ & $\ge 70\%$ \\ \hline
+\textbf{MPD4} & Defect Density (DD) & $\ge 0\%$ & $\ge 70\%$ \\ \hline
+\textbf{MPD5} & Cyclomatic Complexity & $\ge 0\%$ & $\ge 70\%$ \\ \hline
+\textbf{MPD6} & Lenght of code & $\ge 0\%$ & $\ge 70\%$ \\ \hline
+\textbf{MPD7} & Depth of Conditional Nesting (DCN) & $\ge 0\%$ & $\ge 70\%$ \\ \hline
+\end{tabularx}
+\caption{Soglie delle metriche statiche}
+\end{table}
+
+% ----- METRICHE DINAMICHE ------
+\subsection{Metriche dinamiche}\label{subsec:metriche-dinamiche}
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5}
+\begin{tabularx}{\textwidth}{|c|X|c|c|}
+\hline
+\rowcolor{gray!30} \textbf{ID} & \textbf{Nome} & \textbf{Valore accettabile} & \textbf{Valore ottimo} \\ \hline
+\textbf{MPD8} & Defeact Leakeage & $\ge 60\%$ & $\ge 80\%$ \\ \hline
+\textbf{MPD9} & Defeact Removal Efficenty (DRE) & $\ge 60\%$ & $\ge 80\%$ \\ \hline
+\textbf{MPD10} & Bug Rate per Test Case & $\le 10\%$ & $0\%$ \\ \hline
+\end{tabularx}
+\caption{Soglie delle metriche dinamiche}
+\end{table}
+
+% ==== QUALITA DI PROCESSO ====
 \section{Qualità di processo}\label{sec:qualità_processo}
 Il Sistema Qualità del gruppo si articola in tre elementi cardine, che il presente Piano di Qualifica integra e coordina:
 
@@ -203,15 +244,13 @@ Il Sistema Qualità del gruppo si articola in tre elementi cardine, che il prese
 
 Tale sistema si basa su una \textbf{visione quantitativa}, che permette di valutare la qualità attraverso misurazioni oggettive anziché analisi soggettive. I risultati di queste misurazioni, che indicano il grado di efficienza dei processi e la loro conformità ai requisiti, vengono raccolti in un apposito \textbf{cruscotto di controllo}: questo strumento consente al gruppo di monitorare in tempo reale l'andamento del progetto e di intervenire prontamente in caso di derive.
 
-% --------------------------------------------- PROCESSI PRIMARI ---------------------------------------------
+% ---- PROCESSI PRIMARI -----
 \subsection{Processi Primari}\label{sec:processi_primari}
 I processi primari raggruppano le attività fondamentali che concorrono direttamente alla creazione del valore per il proponente. Questi processi sono analizzati secondo una \textbf{visione verticale}, ovvero specifica per il prodotto e il servizio oggetto del progetto. 
 
 Il gruppo BitByBit monitora i seguenti processi primari attraverso metriche oggettive:
 
 \subsubsection{Fornitura}\label{sec:fornitura}
-Il processo di fornitura monitora l'avanzamento del progetto rispetto alla pianificazione iniziale.
-
 \begin{table}[H]
 \centering
 \renewcommand{\arraystretch}{1.5}
@@ -231,8 +270,6 @@ Il processo di fornitura monitora l'avanzamento del progetto rispetto alla piani
 \end{table}
 
 \subsubsection{Verifica}\label{sec:verifica}
-La verifica assicura la \textbf{qualità intrinseca} del prodotto. L'adozione di test automatici con una copertura significativa garantisce che la base software sia solida e pronta per essere estesa dal proponente senza introdurre regressioni.
-
 \begin{table}[H]
 \centering
 \renewcommand{\arraystretch}{1.5}
@@ -250,7 +287,6 @@ La verifica assicura la \textbf{qualità intrinseca} del prodotto. L'adozione di
 I processi di supporto assicurano che la qualità del lavoro svolto sia costante lungo l'intero arco temporale del progetto. Poiché il gruppo adotta un'intensità di lavoro distribuita su un periodo più esteso, l'attenzione alla correttezza formale e alla manutenibilità del codice è prioritaria per garantire la \textbf{visione relativa} della qualità (soddisfazione del proponente).
 
 \subsubsection{Documentazione}\label{sec:documentazione}
-Il processo di documentazione è il principale garante dell'estendibilità del sistema.
 \begin{table}[H]
 \centering
 \renewcommand{\arraystretch}{1.5}
@@ -286,97 +322,5 @@ Il processo di documentazione è il principale garante dell'estendibilità del s
 \end{tabularx}
 \caption{Soglie delle metriche per la gestione dei processi}
 \end{table}
-
-% ============================================= QUALITA DI PRODOTTO =============================================
-\section{Qualità di Prodotto}\label{sec:qualità_prodotto}
-La qualità del prodotto rappresenta la capacità del software di soddisfare i requisiti funzionali e non funzionali stabiliti. In linea con la \textbf{visione verticale} del Sistema Qualità, il gruppo BitByBit adotta una \textbf{misurazione oggettiva} per valutare le caratteristiche intrinseche del prodotto e garantirne l'idoneità all'uso e la futura estendibilità.
-
-Le categorie selezionate si ispirano allo standard ISO/IEC 9126:
-
-% --------------------------------------------- FUNZIONALITA ---------------------------------------------
-\subsection{Funzionalità}\label{sec:funzionalità}
-La funzionalità descrive la capacità del software di offrire tutte le funzioni richieste dal proponente. Essendo la qualità intesa come conformità ai requisiti, il soddisfacimento dei requisiti obbligatori è considerato un obiettivo imprescindibile.
-
-\begin{table}[H]
-\centering
-\renewcommand{\arraystretch}{1.5}
-\begin{tabularx}{\textwidth}{|c|X|c|c|}
-\hline
-\rowcolor{gray!30} \textbf{ID} & \textbf{Nome} & \textbf{Valore accettabile} & \textbf{Valore ottimo} \\ \hline
-\textbf{MPD01} & Requisiti obbligatori soddisfatti & $100\%$ & $100\%$ \\ \hline
-\textbf{MPD02} & Requisiti desiderabili soddisfatti & $\ge 30\%$ & $100\%$ \\ \hline
-\textbf{MPD03} & Requisiti opzionali soddisfatti & $\ge 0\%$ & $\ge 70\%$ \\ \hline
-\end{tabularx}
-\caption{Soglie delle metriche per la Funzionalità}
-\end{table}
-
-% --------------------------------------------- AFFIDABILITA ---------------------------------------------
-\subsection{Affidabilità}\label{sec:affidabilità}
-L'affidabilità valuta la capacità del software di operare correttamente nel tempo e di mantenere prestazioni costanti in condizioni specifiche.
-
-\begin{table}[H]
-\centering
-\renewcommand{\arraystretch}{1.5}
-\begin{tabularx}{\textwidth}{|c|X|c|c|}
-\hline
-\rowcolor{gray!30} \textbf{ID} & \textbf{Nome} & \textbf{Valore accettabile} & \textbf{Valore ottimo} \\ \hline
-\textbf{MPD04} & Branch Coverage & $\ge 60\%$ & $\ge 80\%$ \\ \hline
-\textbf{MPD05} & Statement Coverage & $\ge 60\%$ & $\ge 80\%$ \\ \hline
-\textbf{MPD06} & Failure Density & $\le 10\%$ & $0\%$ \\ \hline
-\end{tabularx}
-\caption{Soglie delle metriche per l'Affidabilità}
-\end{table}
-
-% --------------------------------------------- USABILITA ---------------------------------------------
-\subsection{Usabilità}\label{sec:usabilità}
-L'usabilità misura la semplicità d'uso e la facilità di apprendimento dell'interfaccia da parte dell'utente finale.
-
-\begin{table}[H]
-\centering
-\renewcommand{\arraystretch}{1.5}
-\begin{tabularx}{\textwidth}{|c|X|c|c|}
-\hline
-\rowcolor{gray!30} \textbf{ID} & \textbf{Nome} & \textbf{Valore accettabile} & \textbf{Valore ottimo} \\ \hline
-\textbf{MPD07} & Time on Task & $\le 60$ s & $\le 30$ s \\ \hline
-\textbf{MPD08} & Error Rate per Task & $\le 5\%$ & $\le 2\%$ \\ \hline
-\end{tabularx}
-\caption{Soglie delle metriche per l'Usabilità}
-\end{table}
-
-% --------------------------------------------- EFFICIENZA ---------------------------------------------
-\subsection{Efficienza}\label{sec:efficienza}
-L'efficienza riguarda la capacità del software di fornire tempi di risposta adeguati e di utilizzare le risorse di sistema in modo ottimale.
-
-\begin{table}[H]
-\centering
-\renewcommand{\arraystretch}{1.5}
-\begin{tabularx}{\textwidth}{|c|X|c|c|}
-\hline
-\rowcolor{gray!30} \textbf{ID} & \textbf{Nome} & \textbf{Valore accettabile} & \textbf{Valore ottimo} \\ \hline
-\textbf{MPD09} & Response Time & $\le 2$ s & $\le 1$ s \\ \hline
-\end{tabularx}
-\caption{Soglie delle metriche per l'Efficienza}
-\end{table}
-
-% --------------------------------------------- MANUTENIBILITA ---------------------------------------------
-\subsection{Manutenibilità}\label{sec:manutenibilità}
-La manutenibilità è la caratteristica cruciale per garantire che il software sia facilmente modificabile e ampliabile nel tempo. Soglie rigorose in questa categoria assicurano l'estendibilità richiesta dal proponente per futuri sviluppi.
-
-\begin{table}[H]
-\centering
-\renewcommand{\arraystretch}{1.5}
-\begin{tabularx}{\textwidth}{|c|X|c|c|}
-\hline
-\rowcolor{gray!30} \textbf{ID} & \textbf{Nome} & \textbf{Valore accettabile} & \textbf{Valore ottimo} \\ \hline
-\textbf{MPD10} & Code Smells per KLOC & $\le 15$ & $\le 5$ \\ \hline
-\textbf{MPD11} & Coefficient of Coupling & $\le 0.35$ & $\le 0.20$ \\ \hline
-\textbf{MPD12} & Cyclomatic Complexity & $\le 20$ & $\le 10$ \\ \hline
-\end{tabularx}
-\caption{Soglie delle metriche per la Manutenibilità}
-\end{table}
-
-\section{Metodi di Testing}
-
-\section{Cruscotto di Valutazione}
 
 \end{document}
