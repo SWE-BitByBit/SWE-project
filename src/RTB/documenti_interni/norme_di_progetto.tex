@@ -115,6 +115,7 @@ Gabriele Scaggiante\\
 \begin{tabular}[t]{@{}l@{}}
 Dennis Parolin \\
 Marco Sanguin \\
+Giovanni Visentin\\
 Ferdinando Fracasso\\
 \end{tabular} \\
 \textbf{Destinatari:} & Gruppo BitByBit\\
@@ -136,8 +137,11 @@ Ferdinando Fracasso\\
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
+\rowcolor{white}
+0.10.0 & 2025-12-31 & Riccardo Manisi & Aggiunta sezione con metriche per QA & Ferdinando Fracasso \\
+\hline
 \rowcolor{gray!20}
-0.9.0 & 2025-12-31 & Riccardo Manisi & Aggiunta sezione con metriche per QA & Ferdinando Fracasso \\
+0.9.0 & 2025-12-30 & Riccardo Manisi & Aggiunto processo di accertamento qualità & Ferdinando Fracasso \\
 \hline
 \rowcolor{white}
 0.8.0 & 2025-12-23 & Riccardo Manisi & Aggiunte le sezioni di attivita previste e analisi dei requisiti per processo di sviluppo  & Ferdinando Fracasso\\
@@ -173,7 +177,7 @@ Ferdinando Fracasso\\
 0.1.1 & 2025-12-02 & Riccardo Manisi & Sistemati errori lessicali & Marco Sanguin\\
 \hline
 \rowcolor{gray!20}
-0.1.0 & 2025-12-01 & Riccardo Manisi & Creazione del documento. Aggiunto processo di documentazione e bozza per le sezioni successive. & Marco Sanguin \\
+0.1.0 & 2025-12-01 & Riccardo Manisi & Creazione del documento. Aggiunto processo di documentazione e bozza per le sezioni successive & Marco Sanguin \\
 \hline
 \end{tabular}
 \end{center}
@@ -678,6 +682,31 @@ L'\textbf{attività di valutazione della configurazione} ha lo scopo di garantir
     \item ogni parte del sistema risulti coerente con l’architettura definita.
 \end{itemize}
 
+% ==== SEZIONE PROCESSO ACCERTAMENTO DELLA QUALITÀ ====
+\subsection{Processo di accertamento della qualità}
+
+Il processo di \textbf{accertamento della qualità} ha lo scopo di garantire che la qualità del \textbf{prodotto software} e dei \textbf{processi di ciclo di vita} adottati sia conforme ai requisiti specificati e ai piani prestabiliti.
+L’accertamento della qualità consente di fornire evidenze oggettive sul fatto che i sistemi software sviluppati siano idonei allo scopo per cui sono stati richiesti e soddisfino le aspettative degli stakeholder coinvolti.
+
+\subsubsection{Implementazione di processo}
+Il gruppo \textit{BitByBit} ha identificato come principale attività del processo di accertamento della qualità la redazione del documento di \textbf{Piano di Qualifica}.
+Tale documento definisce gli obiettivi quantitativi di qualità relativi sia al prodotto software sia ai processi di ciclo di vita adottati, e raccoglie le misurazioni oggettive effettuate durante lo svolgimento del progetto.\\
+Le misurazioni consistono nella quantificazione, mediante l’utilizzo di metriche, di specifici attributi dei prodotti software e dei processi di ciclo di vita.
+Per ciascuna metrica vengono inoltre individuati, nel Piano di Qualifica, dei valori ottimali o soglie di riferimento, al fine di identificare tempestivamente eventuali comportamenti anomali o scostamenti rispetto agli obiettivi di qualità prefissati.\\
+Un elenco completo delle metriche adottate è riportato alla \hyperref[sec:elenco-metriche]{Sezione~\ref*{sec:elenco-metriche}} per una consultazione più agevole.
+
+\subsubsection{Accertamento della qualità di prodotto}
+L’attività di \textbf{accertamento della qualità di prodotto} ha lo scopo di assicurare che i prodotti software e la documentazione correlata siano forniti in conformità ai termini e ai requisiti specificati con l’acquirente.\\
+Nel Piano di Qualifica vengono definite specifiche metriche di qualità di prodotto.
+Le misurazioni eseguite vengono confrontate con i valori ottimali stabiliti per ciascuna metrica, al fine di valutare in modo oggettivo la qualità del software realizzato.\\
+Le metriche di prodotto costituiscono un supporto decisionale per determinare se il software implementato soddisfa i criteri di qualità richiesti ed è pertanto idoneo al rilascio.
+
+\subsubsection{Accertamento della qualità di processo}
+L’attività di \textbf{accertamento della qualità di processo} ha lo scopo di assicurare che i processi di ciclo di vita siano eseguiti in conformità agli standard e alle procedure definiti per ciascun processo.\\
+Nel Piano di Qualifica vengono formalizzate le metriche di processo e i relativi valori ottimali stabiliti dal gruppo.
+Le misurazioni effettuate vengono successivamente confrontate con tali valori di riferimento, consentendo di valutare l’efficacia e l’adeguatezza dei processi adottati.\\
+Le metriche di processo sono utilizzate dal responsabile di progetto come strumento di supporto decisionale per individuare eventuali criticità e valutare la necessità di apportare modifiche o miglioramenti ai processi in uso.
+
 % ==== SEZIONE PROCESSI ORGANIZZATIVI ====
 \section{Processi organizzativi del ciclo di vita}
 I processi organizzativi di ciclo di vita rappresentano l’insieme delle attività che il gruppo BitByBit ha scelto di adottare per strutturare e supportare in modo sistematico tutti i propri progetti.\\
@@ -942,16 +971,38 @@ Le metriche di prodotto adottate nel progetto sono suddivise nelle seguenti due 
 \end{itemize}
 
 \subsubsection{Metriche statiche}
+
+\paragraph{Requisiti obbligatori soddisfatti}
+\begin{itemize}
+    \item \textbf{Codice:} \texttt{M-PD1}
+    \item \textbf{Formula:} $\frac{\text{\# di requisiti obbligatori soddisfatti}}{\text{\# di requisiti obbligatori totali}}*100$
+    \item \textbf{Descrizione:} fornisce un'indicazione del grado di requisiti obbligatori che sono stati implementati nel prodotto software fino a quel momento.
+\end{itemize}
+
+\paragraph{Requisiti desiderabili soddisfatti}
+\begin{itemize}
+    \item \textbf{Codice:} \texttt{M-PD2} 
+    \item \textbf{Formula:} $\frac{\text{\# di requisiti desiderabili soddisfatti}}{\text{\# di requisiti desiderabili totali}}*100$
+    \item \textbf{Descrizione:} fornisce un'indicazione del grado di requisiti desiderabili che sono stati implementati nel prodotto software fino a quel momento.
+\end{itemize}
+
+\paragraph{Requisiti opzionali soddisfatti}
+\begin{itemize}
+    \item \textbf{Codice:} \texttt{M-PD3} 
+    \item \textbf{Formula:} $\frac{\text{\# di requisiti opzionali soddisfatti}}{\text{\# di requisiti opzionali totali}}*100$
+    \item \textbf{Descrizione:} fornisce un'indicazione del grado di requisiti opzionali che sono stati implementati nel prodotto software fino a quel momento. 
+\end{itemize}
+
 \paragraph{Defect Density (DD)}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PD1} 
+    \item \textbf{Codice:} \texttt{M-PD4} 
     \item \textbf{Formula:} $DD=\frac{\text{\# di difetti}}{KLOC}$
     \item \textbf{Descrizione:} misura quanti difetti trovati in 1000 linee di codice (\textbf{KLOC}, \textbf{Kilo Lines Of Code}). Migliora la qualità del codice e la sua mantenibilità.
 \end{itemize}
 
 \paragraph{Cyclomatic Complexity}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PD2}
+    \item \textbf{Codice:} \texttt{M-PD5}
     \item \textbf{Formula:} $E - N + 2P$
     \item \textbf{Descrizione:} misura la complessità di un programma contandone i percorsi linearmente indipendenti. Fornisce un'indice sulla complessità logica del codice.
     \begin{itemize}
@@ -963,14 +1014,14 @@ Le metriche di prodotto adottate nel progetto sono suddivise nelle seguenti due 
 
 \paragraph{Lenght of code}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PD3}
+    \item \textbf{Codice:} \texttt{M-PD6}
     \item \textbf{Formula:} $\text{\# di linee di codice per una componente software}$
     \item \textbf{Descrizione:} misura la dimensione di un componente software. Più è grande una componente software maggiore sarà la possibilità di sviluppare errori.
 \end{itemize}
 
 \paragraph{Depth of Conditional Nesting (DCN)}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PD4}
+    \item \textbf{Codice:} \texttt{M-PD7}
     \item \textbf{Formula:} $DCN=\max(\text{\# di strutture annidate})$
     \item \textbf{Descrizione:} misura la profondità massima di annidamento delle strutture condizionali (\texttt{if}, \texttt{else if}, \texttt{switch}) presenti nel codice. Un maggiore annidamento rende difficile la comprensione del codice.
 \end{itemize}
@@ -978,21 +1029,21 @@ Le metriche di prodotto adottate nel progetto sono suddivise nelle seguenti due 
 \subsubsection{Metriche dinamiche}
 \paragraph{Defect Leakeage}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PD5}
+    \item \textbf{Codice:} \texttt{M-PD8}
     \item \textbf{Formula:} $\frac{\text{\# difetti dopo il rilascio}}{\text{\# difetti trovati durante fase di test}}*100$
     \item \textbf{Descrizione:} Tiene traccia di quanti difetti vengono trasferiti in produzione dopo i test.
 \end{itemize}
 
 \paragraph{Defect Removal Efficenty (DRE)}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PD6}
+    \item \textbf{Codice:} \texttt{M-PD9}
         \item \textbf{Formula:} $DRE=\frac{\text{difetti trovati prima del rilascio}}{\text{difetti prima del rilascio + difetti dopo}}*100$
     \item \textbf{Descrizione:} mostra la percentuale di difetti rilevati e rimossi prima del rilascio. Aiuta a misurare l'efficacia del processo di accertamento della qualità. 
 \end{itemize}
 
 \paragraph{Bug Rate per Test Case}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PD7}
+    \item \textbf{Codice:} \texttt{M-PD10}
     \item \textbf{Formula:} $\frac{\text{\# bug individuati}}{\text{\# test case eseguiti}}\cdot 100$
     \item \textbf{Descrizione:} misura il numero medio di difetti rilevati. La metrica fornisce un’indicazione dell’efficacia dei test e della qualità del software nelle fasi di test.
 \end{itemize}
