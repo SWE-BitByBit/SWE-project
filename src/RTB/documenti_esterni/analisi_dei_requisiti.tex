@@ -102,9 +102,9 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & In corso\\
-\textbf{Versione:} & 0.15.1 \\
+\textbf{Versione:} & 0.15.2 \\
 \textbf{Responsabile:} & \\
-\textbf{Redattori:} & Riccardo Manisi, Dennis Parolin, Giovanni Visentin \\
+\textbf{Redattori:} & Riccardo Manisi, Dennis Parolin, Giovanni Visentin, Ferdinando Fracasso \\
 \textbf{Verificatori:} & Giovanni Visentin, Marco Sanguin \\
 \textbf{Destinatari:} &
 \begin{tabular}[t]{@{}l@{}}
@@ -131,6 +131,9 @@ Gruppo BitByBit\\
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 
+\rowcolor{gray!20}
+0.15.2 & 2026-01-09 & Ferdinando Fracasso & Modifica sezione attori nei casi d'uso & Dennis Parolin \\
+\hline
 \rowcolor{white}
 0.15.1 & 2025-12-23 & Dennis Parolin & Aggiunte le immagini dei diagrammi UML riguardanti i casi d'uso & Giovanni Visentin \\
 \hline
@@ -184,6 +187,12 @@ Gruppo BitByBit\\
 \hline
 \end{longtable}
 \end{center}
+
+\clearpage
+
+% Indice dei contenuti
+\tableofcontents
+\thispagestyle{empty}
 
 \clearpage
 
@@ -380,8 +389,17 @@ Questa sezione raccoglie i termini tecnici specifici utilizzati nella descrizion
 \end{center}
 
 \subsection{Attori}
-Sono qualcosa di esterno al sistema che accede a delle risorse interagendo con il sistema che si sta producendo. Gli attori secondari sono attori passivi. (aggiungimi info se sono necessarie)
-Gli attori rappresentano entità esterne al sistema che interagiscono con esso per raggiungere obiettivi specifici.
+Gli attori rappresentano entità esterne al sistema che interagiscono con esso per raggiungere obiettivi specifici. Gli attori secondari sono attori che non interagiscono direttamente con il sistema, ma solo passivamente.
+
+\subsubsection{Attori primari:}
+\begin{itemize}
+    \item \textbf{Utente generico:} un qualsiasi utente che interagisce con l'applicazione.
+\end{itemize}
+
+\subsubsection{Attori secondari:}
+\begin{itemize}
+    \item \textbf{Contatto fidato:} ricevente di eventuali comunicazioni di sicurezza da parte dell'applicazione.
+\end{itemize}
 
 % ===== LISTA CASI D'USO ======
 
