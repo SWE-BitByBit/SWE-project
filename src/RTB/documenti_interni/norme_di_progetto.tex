@@ -103,7 +103,7 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & in lavorazione\\
-\textbf{Versione:} & 0.10.0 \\
+\textbf{Versione:} & 0.11.1 \\
 \textbf{Responsabile:} & Riccardo Manisi\\
 \textbf{Redattori:} & 
 \begin{tabular}[t]{@{}l@{}}
@@ -138,8 +138,11 @@ Ferdinando Fracasso\\
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
+\rowcolor{gray!20}
+0.11.1 & 2026-01-10 & Dennis Parolin & Sistemate le sezioni "Processo di verifica" e "Processo di validazione" tra i Processi di Supporto. Sistemata la sezione "Codifica" tra i Processi Primari. & Riccardo Manisi\\
+\hline
 \rowcolor{white}
-0.11.0 & 2026-01-06 & Dennis Parolin & Aggiunta sezioni "Processo di verifica" e "Processo di validazione" tra i Processi di Supporto. Aggiunta la sezione "Codifica" tra i Processi Primari.  & Riccardo Manisi \\
+0.11.0 & 2026-01-06 & Dennis Parolin & Aggiunta sezioni "Processo di verifica" e "Processo di validazione" tra i Processi di Supporto. Aggiunta la sezione "Codifica" tra i Processi Primari. & Riccardo Manisi \\
 \hline
 \rowcolor{gray!20}
 0.10.1 & 2026-01-06 & Ferdinando Fracasso & Aggiunta "Piano di qualifica" nella sezione Documentazione fornita  & Riccardo Manisi\\
@@ -392,34 +395,31 @@ Tale classificazione supporta la tracciabilità, la verifica e la gestione dell�
 
 % ==== SEZIONE CODIFICA ====
 \subsubsection{Codifica}
+L'attività di codifica ha lo scopo di realizzare tecnicamente quanto definito nelle fasi di analisi e progettazione.
+L'obiettivo principale delle norme qui esposte è garantire l'\textbf{uniformità}: il codice deve risultare omogeneo, leggibile e manutenibile, indipendentemente dal membro del gruppo che lo ha scritto.
 
-\paragraph{Scopo}
-L'attività di codifica svolta dai programmatori del gruppo \textit{BitByBit} ha come scopo la realizzazione tecnica di quanto definito nelle fasi di analisi e progettazione.
-\\Questa sezione descrive le regole e le convenzioni che i membri del gruppo devono seguire per garantire la qualità, la leggibilità e la manutenibilità del codice prodotto.
-
-\paragraph{Formattazione del codice}
-La struttura dei file sorgente deve seguire rigorosamente lo standard di stile definito per il linguaggio utilizzato.
-\\Per garantire l'uniformità, l'operazione di formattazione deve essere eseguita in due momenti:
+\paragraph{Automazione e controllo qualità}
+Per garantire il rispetto rigoroso dello stile senza rallentare lo sviluppo, il gruppo affida il controllo formale agli strumenti di automazione, riducendo l'errore umano.
+Il processo di verifica dello stile avviene su due livelli:
 \begin{itemize}
-    \item \textbf{In locale}: nell'ambiente di sviluppo dello sviluppatore (IDE), configurato per formattare automaticamente il codice al salvataggio del file;
-    \item \textbf{In remoto}: tramite \textbf{GitHub Actions}, che verifica automaticamente la conformità dello stile ad ogni \textit{push}.
-\end{itemize}
-Come stabilito nelle policy del repository, la pipeline di CI/CD bloccherà l'integrazione nel branch principale (merge) di qualsiasi codice che non rispetti gli standard di formattazione preimpostati.
-
-\paragraph{Pratiche di programmazione}
-Per assicurare un codice pulito e robusto, vengono adottate le seguenti pratiche:
-\begin{itemize}
-    \item \textbf{Variabili globali}: evitare tassativamente l'uso di variabili globali per prevenire effetti collaterali indesiderati e difficoltà nel testing;
-    \item \textbf{Funzioni}: evitare funzioni eccessivamente lunghe o complesse. Si deve prediligere la scrittura di funzioni brevi, ben definite e con una singola responsabilità.
+    \item \textbf{Locale}: l'ambiente di sviluppo (IDE) di ogni membro è configurato per formattare automaticamente il codice al salvataggio, applicando le regole di indentazione e spaziatura condivise.
+    \item \textbf{Remoto}: la pipeline di \textbf{GitHub Actions} verifica la conformità del codice ad ogni \textit{push}. Come da policy, il mancato rispetto delle norme di formattazione impedisce tecnicamente il merge delle modifiche nel ramo principale.
 \end{itemize}
 
-\paragraph{Convenzioni sintattiche}
+\paragraph{Norme stilistiche e sintattiche}
+Per favorire la comprensione globale del progetto, vengono imposte le seguenti regole di scrittura:
 \begin{itemize}
-    \item \textbf{Lingua}: utilizzare esclusivamente la lingua inglese per tutti i costrutti del codice (variabili, classi, metodi) e per i commenti;
-    \item \textbf{Nomi}: utilizzare nomi significativi ed esplicativi per variabili, funzioni e strutture dati, evitando abbreviazioni criptiche;
-    \item \textbf{Commenti}: il codice deve essere commentato in modo chiaro e conciso. Ogni funzione o classe pubblica deve essere preceduta da un commento che ne descriva lo scopo, i parametri e i valori di ritorno;
-    \item \textbf{Indentazione}: utilizzare un'indentazione coerente (es. 4 spazi o 1 tabulazione) in tutto il progetto;
-    \item \textbf{Istruzioni per riga}: evitare di scrivere più istruzioni sulla stessa riga, in quanto ciò riduce drasticamente la leggibilità del codice e complica il debugging.
+    \item \textbf{Lingua e Nomenclatura}: l'intera base di codice (variabili, funzioni, commenti) deve essere redatta in \textbf{lingua inglese}. I nomi scelti devono essere significativi ed auto-esplicativi, evitando abbreviazioni criptiche che richiedano interpretazione.
+    \item \textbf{Formattazione}: l'indentazione è fissata a 4 spazi (o 1 tabulazione) ed è mantenuta coerente dagli strumenti automatici.
+    \item \textbf{Leggibilità}: per facilitare il debugging e la lettura, è vietato scrivere più istruzioni sulla stessa riga.
+    \item \textbf{Commenti}: si predilige un codice che si "autodocumenta" tramite nomi chiari. Tuttavia, è obbligatorio commentare tutte le interfacce pubbliche (metodi e classi esportate) specificando parametri e valori di ritorno.
+\end{itemize}
+
+\paragraph{Vincoli implementativi}
+Al fine di mantenere il codice robusto e testabile, il gruppo adotta le seguenti pratiche ingegneristiche:
+\begin{itemize}
+    \item \textbf{Assenza di stato globale}: è vietato l'utilizzo di variabili globali, in quanto introducono dipendenze nascoste e rendono imprevedibile il comportamento del software.
+    \item \textbf{Semplicità delle funzioni}: le funzioni devono essere brevi e focalizzate su una singola responsabilità. Una funzione eccessivamente lunga o complessa è indice di cattiva progettazione e deve essere rifattorizzata.
 \end{itemize}
 
 % ==== SEZIONE PROCESSI DI SUPPORTO ====
@@ -753,119 +753,93 @@ Le metriche di processo sono utilizzate dal responsabile di progetto come strume
 
 % ==== SEZIONE PROCESSO DI VERIFICA ====
 \subsection{Processo di verifica}
-Il processo di \textbf{Verifica} ha lo scopo di accertare che i prodotti software (codice, documentazione e design) siano realizzati a regola d'arte e in conformità alle specifiche tecniche e ai requisiti definiti.
+Il processo di verifica è l'insieme delle attività volte ad accertare che ogni prodotto del ciclo di vita (codice, documenti, architettura) sia conforme ai requisiti e agli standard di qualità stabiliti.
+L'obiettivo è rispondere alla domanda «Did we build the product right?» (Abbiamo costruito il prodotto nel modo corretto?), intercettando difetti ed errori prima che questi si propaghino alle fasi successive.
 
-L'obiettivo di questo processo si riassume nella risposta alla domanda: «Did we build the product right?» (Abbiamo costruito il prodotto nel modo corretto?).
-\\Tutti gli esiti, le metriche e le procedure dettagliate derivanti da questo processo devono essere riportati puntualmente nel documento \textbf{Piano di Qualifica}.
-
-\subsubsection{Attività previste}
-In conformità con lo standard ISO/IEC 12207, il gruppo \textit{BitByBit} struttura il processo di verifica in due macro-fasi, descritte brevemente di seguito e dettagliate nelle sezioni successive:
+\subsubsection{Strategia e Workflow}
+Il gruppo \textit{BitByBit} integra la verifica direttamente nel flusso di sviluppo quotidiano (Git Flow), adottando la politica del \textbf{Continuous Verification}.
+Le regole operative sono le seguenti:
 \begin{itemize}
-    \item \textbf{predisposizione alla verifica} (Process implementation): comprende tutte le attività preparatorie, dalla definizione degli strumenti alla scelta delle strategie di test e dei criteri di accettazione per il merge delle modifiche;
-    \item \textbf{esecuzione della verifica} (Verification actions): è la fase operativa vera e propria, suddivisa in analisi statica (senza esecuzione) e analisi dinamica (con esecuzione del codice).
+    \item \textbf{Policy "No Verify, No Merge"}: nessun artefatto può essere integrato nel ramo di sviluppo principale (\texttt{develop}) se non ha superato con successo i controlli di verifica.
+    \item \textbf{Pull Request come Quality Gate}: ogni modifica deve essere proposta tramite Pull Request. In questa sede avviene la verifica (automatica o manuale) e solo l'esito positivo autorizza il merge.
+    \item \textbf{Rami Stabili}: il ramo \texttt{main} è protetto e accoglie solo versioni del software che hanno superato l'intero ciclo di test (inclusi quelli di sistema).
 \end{itemize}
 
-\subsubsection{Strumenti a supporto}
-La definizione puntuale e l'elenco degli strumenti a supporto saranno ampliati e dettagliati durante lo svolgimento della \textbf{Product Baseline} (PB).
+\subsubsection{Verifica della Documentazione}
+La documentazione è soggetta esclusivamente ad \textbf{analisi statica}, ovvero controlli che non richiedono l'esecuzione.
+Per garantire la qualità dei documenti, il gruppo valuta due metodologie:
+\begin{itemize}
+    \item \textbf{Walkthrough}: revisione guidata dall'autore. Utile per l'allineamento del team ma dispendiosa.
+    \item \textbf{Ispezione (Inspection)}: lettura autonoma da parte del verificatore basata su liste di controllo (\textit{checklist}).
+\end{itemize}
+Tra le due, il gruppo \textit{BitByBit} adotta come standard l'\textbf{Ispezione}. L'uso di checklist predefinite garantisce infatti un processo ripetibile, oggettivo e meno soggetto a errori umani rispetto alla revisione libera.
 
-\subsubsection{Predisposizione alla verifica}
-Questa fase definisce le regole e le strategie che il gruppo adotta per prevenire l'introduzione di difetti nel prodotto.
-\\Il gruppo \textit{BitByBit} adotta un flusso di lavoro basato sul branching model (Git Flow). È stata stabilita una policy rigorosa: \textbf{nessun documento o porzione di codice può essere integrato nel ramo di sviluppo (\texttt{develop}) senza aver superato con successo la fase di verifica.}
+\subsubsection{Verifica del Codice Software}
+La verifica del software si articola in due momenti distinti: l'analisi del codice sorgente (statica) e l'esecuzione dei test (dinamica).
 
-Il flusso operativo prevede che:
+\paragraph{Analisi Statica Automatizzata}
+Prima di essere eseguito, il codice viene analizzato da strumenti automatici (Linter e Static Analyzers) integrati nella pipeline di CI/CD.
+Questo passaggio serve a rilevare:
+\begin{itemize}
+    \item violazioni delle norme di codifica (indentazione, naming);
+    \item potenziali bug logici o di sicurezza (es. variabili non utilizzate, cicli infiniti);
+    \item calcolo delle metriche di complessità.
+\end{itemize}
+
+\paragraph{Analisi Dinamica (Testing)}
+L'analisi dinamica verifica il comportamento del software tramite la sua esecuzione.
+Per essere valido, ogni test deve garantire due proprietà: \textbf{ripetibilità} (stesso output a parità di input) e \textbf{automatizzabilità} (esecuzione senza intervento umano).
+Il gruppo struttura i test secondo il modello a V, coprendo i seguenti livelli:
+
 \begin{enumerate}
-    \item ogni modifica venga sviluppata su un branch dedicato (feature branch);
-    \item al termine del lavoro, venga aperta una Pull Request verso il ramo \texttt{develop};
-    \item la verifica venga effettuata sulla Pull Request;
-    \item solo a verifica superata avvenga il merge su \texttt{develop}.
+    \item \textbf{Test di Unità}: Verifica delle singole componenti (funzioni/classi) in isolamento.
+    \begin{itemize}
+        \item \textit{White-box}: test strutturali che mirano alla copertura dei percorsi logici interni (Statement Coverage).
+        \item \textit{Black-box}: test funzionali che verificano l'output dato un input, analizzando valori validi, non validi e casi limite (Boundary Analysis).
+    \end{itemize}
+    
+    \item \textbf{Test di Integrazione}: Verifica della collaborazione tra unità già testate.
+    \begin{itemize}
+        \item \textit{Top-Down}: integrazione dalle componenti di alto livello a quelle basse (richiede \textbf{Stub}).
+        \item \textit{Bottom-Up}: integrazione dalle componenti base verso l'interfaccia (richiede \textbf{Driver}).
+    \end{itemize}
+    
+    \item \textbf{Test di Sistema}: Verifica del sistema completo rispetto ai requisiti funzionali e prestazionali mappati nell'Analisi dei Requisiti.
+    
+    \item \textbf{Test di Regressione}: Riesecuzione automatica della suite di test esistente ad ogni modifica, per garantire che le nuove feature non abbiano corrotto funzionalità preesistenti.
 \end{enumerate}
-Il ramo \texttt{main} è riservato esclusivamente ai rilasci di fase e deve contenere solo versioni stabili e già ampiamente verificate in \texttt{develop}.
 
-\subsubsection{Esecuzione della verifica}
-L'esecuzione operativa della verifica avviene attraverso due approcci complementari: l'analisi statica e l'analisi dinamica.
-
-\paragraph{Analisi Statica}
-L'analisi statica è la verifica di un artefatto che non prevede la sua esecuzione. Mira a rilevare difetti di sintassi, forma o logica prima ancora che il codice venga eseguito.
-\\Le metodologie principali adottabili sono:
-\begin{itemize}
-    \item \textbf{Walkthrough}: una revisione "guidata" in cui l'autore illustra l'artefatto ai verificatori. Sebbene utile per condividere conoscenza, è un processo costoso in termini di tempo e difficilmente automatizzabile.
-    \item \textbf{Ispezione}: una tecnica più formale basata sull'uso di liste di controllo (checklist). Il verificatore esamina l'artefatto in autonomia cercando discrepanze rispetto agli standard definiti.
-\end{itemize}
-Il gruppo \textit{BitByBit} predilige la tecnica dell'\textbf{Ispezione}. Per la documentazione si utilizzano checklist manuali, mentre per il codice si punta all'automazione tramite strumenti di linting e static analysis (nella pipeline di CI), che garantiscono un controllo oggettivo e ripetibile.
-
-\paragraph{Analisi Dinamica}
-L'analisi dinamica richiede l'esecuzione del software per verificarne il comportamento reale. L'obiettivo è rilevare le \textbf{failure} (malfunzionamenti visibili) causate da \textbf{fault} (errori nel codice).
-\\Un test, per essere considerato valido, deve possedere due caratteristiche:
-\begin{itemize}
-    \item \textbf{ripetibilità}: eseguendo il test più volte con gli stessi input, deve produrre sempre lo stesso output;
-    \item \textbf{automatizzabilità}: deve poter essere eseguito da una macchina senza intervento umano, per essere integrato nella Continuous Integration.
-\end{itemize}
-Il gruppo struttura l'analisi dinamica nei seguenti livelli:
-
-\subparagraph{Test di Unità (Unit Testing)}
-Verificano la correttezza delle più piccole unità di software (funzioni, metodi, classi) isolandole dal resto del sistema. Si dividono in due categorie:
-\begin{itemize}
-    \item \textbf{Test Funzionali (Black-box)}: verificano che, dato un input, l'output sia corretto, ignorando la struttura interna del codice. Per questi test il gruppo applica l'analisi dei valori limite, testando valori validi, non validi e valori di confine (edge cases).
-    \item \textbf{Test Strutturali (White-box)}: verificano la logica interna del codice. L'obiettivo è garantire la copertura dei percorsi (statement coverage), assicurandosi che i rami condizionali (if/else, loop) vengano eseguiti.
-\end{itemize}
-
-\subparagraph{Test di Integrazione}
-Una volta verificate le singole unità, è necessario accertare che queste collaborino correttamente tra loro. L'integrazione segue due strategie principali:
-\begin{itemize}
-    \item \textbf{Top-Down}: si integrano prima le componenti di alto livello e si scende verso i dettagli. Richiede l'uso di \textit{stub} per simulare le componenti di basso livello non ancora sviluppate.
-    \item \textbf{Bottom-Up}: si integrano prima le componenti base e si risale verso l'interfaccia. Richiede l'uso di \textit{driver} per guidare i test sulle componenti di basso livello.
-\end{itemize}
-
-\subparagraph{Test di Sistema}
-Verificano il comportamento dell'intero sistema integrato. A differenza dei livelli precedenti, qui si verifica la rispondenza ai requisiti funzionali e prestazionali specificati nell'Analisi dei Requisiti, simulando l'interazione completa dell'utente con il software.
-
-\subparagraph{Test di Regressione}
-Questa tecnica è trasversale a tutti i livelli. Consiste nella riesecuzione sistematica di tutti i test precedentemente superati ogni volta che viene apportata una modifica o correzione (bugfix). Questo garantisce che le nuove implementazioni non abbiano introdotto errori in funzionalità già esistenti ("regressioni").
-
-\subsubsection{Nomenclatura dei Test}
-Per garantire la tracciabilità nel \textbf{Piano di Qualifica}, ogni test è identificato univocamente secondo il formato:
+\subsubsection{Classificazione dei Test}
+Per garantire l'ordine nel \textbf{Piano di Qualifica}, il gruppo adotta una nomenclatura univoca per il tracciamento:
 \begin{center}
     \texttt{T-[ID]-[Tipo]}
 \end{center}
-Dove:
-\begin{itemize}
-    \item \textbf{T}: prefisso fisso che indica "Test";
-    \item \textbf{ID}: numero progressivo univoco per tipologia;
-    \item \textbf{Tipo}: lettera che identifica la tipologia:
-    \begin{itemize}
-        \item \textbf{U}: Test di Unità;
-        \item \textbf{I}: Test di Integrazione;
-        \item \textbf{S}: Test di Sistema;
-        \item \textbf{A}: Test di Accettazione (Validazione).
-    \end{itemize}
-\end{itemize}
-Ogni test riporterà inoltre il suo stato: \textbf{I} (Implementato), \textbf{NI} (Non Implementato) o \textbf{S} (Superato).
+Dove \textbf{ID} è un progressivo numerico e \textbf{Tipo} indica la categoria: \textbf{U} (Unità), \textbf{I} (Integrazione), \textbf{S} (Sistema), \textbf{A} (Accettazione).
+Lo stato di ogni test viene tracciato come: \textbf{I} (Implementato), \textbf{NI} (Non Implementato) o \textbf{S} (Superato).
 
 % ==== SEZIONE PROCESSO DI VALIDAZIONE ====
 \subsection{Processo di validazione}
-Lo scopo del processo di \textbf{Validazione} è confermare, attraverso la fornitura di evidenze oggettive, che il prodotto software realizzato soddisfi i requisiti per l'uso specifico a cui è destinato.
-\\L'obiettivo ultimo è accertare che quanto sviluppato dal gruppo \textit{BitByBit} risponda efficacemente alle esigenze reali e alle aspettative dell'azienda proponente \textbf{Miriade}.
+Il processo di validazione costituisce l'ultimo livello di controllo qualitativo prima del rilascio formale del prodotto.
+A differenza della verifica, che si configura come un controllo tecnico continuo sul codice, la validazione ha lo scopo di accertare che il sistema software realizzato dal gruppo \textit{BitByBit} sia pienamente conforme alle aspettative e ai bisogni reali dell'azienda proponente \textbf{Miriade}.
 
-Per riassumere la differenza sostanziale con il processo di verifica (che precede questa fase):
+\subsubsection{Obiettivi del processo}
+Il gruppo adotta questo processo per rispondere in modo affermativo alla domanda «Did we build the right product?», ovvero «Abbiamo costruito il prodotto giusto?».
+Gli obiettivi perseguiti sono:
 \begin{itemize}
-    \item La \textbf{Verifica} risponde alla domanda: «Are we building the product right?» (Stiamo costruendo il prodotto nel modo giusto/corretto?).
-    \item La \textbf{Validazione} risponde alla domanda: «Did we build the right product?» (Abbiamo costruito il prodotto giusto per il cliente?).
+    \item dimostrare la totale copertura dei requisiti concordati nel documento di \textbf{Analisi dei Requisiti};
+    \item accertare l'idoneità del software nel contesto operativo reale tramite la simulazione di scenari d'uso;
+    \item ottenere l'approvazione formale per il rilascio del prodotto.
 \end{itemize}
 
-\subsubsection{Attività previste}
-In conformità con lo standard ISO/IEC 12207, il gruppo ha identificato e strutturato le attività del processo come segue:
-\begin{itemize}
-    \item \textbf{predisposizione alla validazione} (Process implementation);
-    \item \textbf{esecuzione della validazione} (Validation activities).
-\end{itemize}
+\subsubsection{Tracciamento come strumento di validazione}
+La prima fase operativa del processo consiste nell'assicurare che ogni funzionalità richiesta sia effettivamente presente nel sistema. Per fare ciò il gruppo utilizza la \textbf{matrice di tracciamento} come strumento di controllo principale.
+L'attività prevede di mappare univocamente ogni requisito (funzionale, di qualità o vincolo) ai relativi test di validazione.
+Questo approccio metodologico garantisce che non venga sviluppato codice non richiesto e, soprattutto, che ogni requisito concordato con \textbf{Miriade} sia verificabile tramite un test specifico. Un requisito privo di tracciamento verso un test è considerato non validabile e quindi non accettabile.
 
-\subsubsection{Predisposizione alla validazione}
-Questa fase preparatoria è necessaria per definire il perimetro e gli strumenti della validazione. Il gruppo \textit{BitByBit} ha analizzato le esigenze di \textbf{Miriade} formalizzandole nel documento di \textbf{Analisi dei Requisiti}.
-\\Elemento cardine di questa predisposizione è il \textbf{Tracciamento dei Requisiti}. Questo strumento, già fondamentale per la verifica, è altrettanto critico per la validazione poiché permette di mappare ogni funzionalità sviluppata al requisito originario che la richiede. Un requisito si considera validabile solo se il suo soddisfacimento è tracciato e verificabile.
-
-\subsubsection{Esecuzione della validazione}
-Questa fase costituisce l'attuazione pratica del processo. Per validare il prodotto, il gruppo si impegna a effettuare i \textbf{Test di Accettazione}.
-\\Tali test consistono nella simulazione di scenari di utilizzo reali (User Scenarios) da parte degli utenti finali o dei proponenti. Il superamento dei test di accettazione garantisce che il sistema non solo sia privo di errori tecnici (già accertato in verifica), ma sia efficace e idoneo all'uso nel contesto operativo previsto da \textbf{Miriade}.
+\subsubsection{Esecuzione dei test di accettazione}
+La validazione si concretizza con l'esecuzione dei \textbf{Test di Accettazione} (UAT - User Acceptance Testing).
+In questa fase il gruppo non si limita a verificare l'assenza di errori, ma simula scenari di utilizzo reali (User Scenarios) per valutare il comportamento del sistema dal punto di vista dell'utente finale.
+Il superamento di questi test certifica che il prodotto supporta efficacemente i processi lavorativi richiesti. In caso di fallimento di un test di accettazione il prodotto viene respinto e rimandato alla fase di sviluppo per le necessarie correzioni, seguite da una regressione per confermare la risoluzione delle non conformità.
 
 % ==== SEZIONE PROCESSI ORGANIZZATIVI ====
 \section{Processi organizzativi del ciclo di vita}
