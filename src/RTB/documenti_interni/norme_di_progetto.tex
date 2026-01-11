@@ -1,6 +1,7 @@
 % template presente
 \documentclass[a4paper,12pt]{article}
 
+\usepackage{amsmath}
 \usepackage{tabularx}
 \usepackage{tcolorbox}
 \usepackage[utf8]{inputenc}
@@ -101,14 +102,21 @@
 
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
-\textbf{Stato:} & xxx\\
-\textbf{Versione:} & XXXX \\
+\textbf{Stato:} & in lavorazione\\
+\textbf{Versione:} & 0.9.1 \\
 \textbf{Responsabile:} & Riccardo Manisi\\
-\textbf{Redattore:} & Riccardo Manisi \\
+\textbf{Redattori:} & 
+\begin{tabular}[t]{@{}l@{}}
+Ferdinando Fracasso\\
+Riccardo Manisi\\
+Gabriele Scaggiante\\
+\end{tabular} \\
 \textbf{Verificatori:} & 
 \begin{tabular}[t]{@{}l@{}}
 Dennis Parolin \\
 Marco Sanguin \\
+Giovanni Visentin\\
+Ferdinando Fracasso\\
 \end{tabular} \\
 \textbf{Destinatari:} & Gruppo BitByBit\\
 \end{tabularx}
@@ -124,15 +132,31 @@ Marco Sanguin \\
 \small
 \renewcommand{\arraystretch}{1.2} 
 \arrayrulecolor{black}
-\begin{tabular}{|c|c|p{0.21\linewidth}|p{0.23\linewidth}|c|}
+\begin{longtable}{|c|c|p{0.21\linewidth}|p{0.23\linewidth}|c|}
 \hline
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+\hline
 \rowcolor{gray!20}
-0.3.2 & 2025-12-13 & Gabriele Scaggiante & Aggiunta Processo di miglioramento e Processo di formazione & Marco Sanguin\\
+0.10.1 & 2026-01-06 & Ferdinando Fracasso & Aggiunta "Piano di qualifica" nella sezione Documentazione fornita  & Riccardo Manisi\\
 \hline
 \rowcolor{white}
-0.5.1 & 2025-12-16 & Ferdinando Fracasso & Rimossa sezione ripetuta & Giovanni Visentin \\
+0.10.0 & 2025-12-31 & Riccardo Manisi & Aggiunta sezione con metriche per QA & Ferdinando Fracasso \\
+\hline
+\rowcolor{gray!20}
+0.9.0 & 2025-12-30 & Riccardo Manisi & Aggiunto processo di accertamento qualità & Ferdinando Fracasso \\
+\hline
+\rowcolor{white}
+0.8.0 & 2025-12-23 & Riccardo Manisi & Aggiunte le sezioni di attivita previste e analisi dei requisiti per processo di sviluppo  & Ferdinando Fracasso\\
+\hline
+\rowcolor{gray!20}
+0.7.0 & 2025-12-22 & Riccardo Manisi & Aggiunta attività di aggiornamento glossario & Giovanni Visentin \\
+\hline
+\rowcolor{white}
+0.6.1 & 2025-12-16 & Ferdinando Fracasso & Rimossa sezione ripetuta & Giovanni Visentin \\
+\hline
+\rowcolor{gray!20}
+0.6.0 & 2025-12-13 & Gabriele Scaggiante & Aggiunta Processo di miglioramento e Processo di formazione & Marco Sanguin\\
 \hline
 \rowcolor{gray!20}
 0.5.0 & 2025-12-11 & Ferdinando Fracasso & Aggiunta sezione "Processo di fornitura" & Giovanni Visentin \\
@@ -155,13 +179,10 @@ Marco Sanguin \\
 \rowcolor{gray!20}
 0.1.1 & 2025-12-02 & Riccardo Manisi & Sistemati errori lessicali & Marco Sanguin\\
 \hline
-\rowcolor{white}
-0.1.1 & 2025-12-02 & Riccardo Manisi & Sistemati errori lessicali & Marco Sanguin\\
-\hline
 \rowcolor{gray!20}
-0.1.0 & 2025-12-01 & Riccardo Manisi & Creazione del documento. Aggiunto processo di documentazione e bozza per le sezioni successive. & Marco Sanguin \\
+0.1.0 & 2025-12-01 & Riccardo Manisi & Creazione del documento. Aggiunto processo di documentazione e bozza per le sezioni successive & Marco Sanguin \\
 \hline
-\end{tabular}
+\end{longtable}
 \end{center}
 
 \clearpage
@@ -287,12 +308,83 @@ Questa sezione elenca e descrive brevemente tutta la documentazione che verrà p
         \item Documento in cui viene definita la pianificazione strategica e operativa delle attività intraprese dal gruppo BitByBit durante lo sviluppo del progetto. 
         \\Il piano di progetto ha l’obiettivo di tenere sotto controllo l’avanzamento delle attività e di garantire l’efficienza e la qualità dello sviluppo, mediante la pianificazione delle attività e relative scadenze, monitorando i costi di ciascun periodo e identificando le potenziali criticità che ostacolerebbero lo sviluppo.
     \end{itemize}
-
+    
+    \item \textbf{Piano di qualifica:}
+    \begin{itemize}
+        \item Documento in cui viene definita la strategia adottata dal gruppo al fine di garantire la qualità del prodotto finale, sotto forma di metriche e relativi obiettivi, metodi di testing e resoconti.
+    \end{itemize}
+    
     \item \textbf{Glossario:}
     \begin{itemize}
         \item Documento contenente le definizioni dei termini usati nei documenti prodotti durante lo svolgimento del progetto, per permetterne una facile consultazione.
     \end{itemize}
 \end{itemize}
+
+% ==== PROCESSO DI SVILUPPO ====
+\subsection{Processo di sviluppo} \label{sec:processo-sviluppo}
+Il \textbf{processo di sviluppo} comprende le attività svolte dal team di sviluppo. Esso include le attività per l'analisi dei requisiti, il design, lo sviluppo del prodotto software, l'integrazione dei test e l'accettazione del prodotto da rilasciare.\\Il processo di sviluppo deve seguire le pratiche del processo di gestione dei processi (vedi sezione -da aggiungere-), stabilire l'infrastruttura secondo il processo di infrastruttura (\hyperref[sec:infrastruttura]{vedi sezione ?}), e gestire il processo a livello organizzativo tramite i processi di miglioramento (vedi sezione ?) e di formazione (vedi sezione ?).
+
+\subsubsection{Attività previste}
+Le attività che compongono il \textbf{processo di sviluppo} adattate al progetto sviluppato dal gruppo BiByBit sono elencate di seguito.
+\begin{itemize}
+    \item \textbf{Implementazione di processo}, l'organizzazione è tenuta a scegliere un modello di ciclo di vita se non ne ha ancora adottato uno in particolare, tenendo conto del campo di applicazione, del campo e della complessità del progetto.
+    \item \textbf{Analisi dei requisiti di sistema}, il sistema da implementare deve essere condotta in modo dettagliato, al fine di produrre una descrizione delle funzionalità e delle capacità del sistema, nonché dei requisiti utente e di sistema.
+    \item \textbf{Progettazione dell'architettura}, deve essere identificata un'architettura di alto livello per identificare gli elementi software. Deve essere garantito che gli tutti i requisiti siano allocati tra gli elementi.
+    \item \textbf{Codifica e testing}, per ogni elemento software il programmatore deve implementare e documentare ogni elemento software, andando a garantire che ogni unità software soddisfi i suoi requisiti implementando i corrispettivi test.
+    \item \textbf{Integrazione software}, il programmatore è tenuto a definire le unità software, i test le tempistiche e i dati che devono essere implementati per il particolare elemento software.
+    \item \textbf{Test di qualità del software}, comprende l'implementazione di test in conformità con le metriche di qualità del software.
+    \item \textbf{Integrazione nel sistema}, il programmatore procede ad integrare l'elemento software nel sistema, assieme alle sue dipendenze se è necessario.
+    \item \textbf{Test di qualità del sistema}, vengono eseguiti i test sull'intero sistema, per accertarsi che sia pronto per essere rilasciato.
+    \item \textbf{Installazione del software}, comprende la consegna del software al cliente e la sua installazione nell'ambiente concordato dal contratto.
+    \item \textbf{Supporto per l'approvazione},  il fornitore e il cliente collaudano il prodotto per accertare che tutti i requisiti stabiliti sono presenti nel software consegnato.
+\end{itemize}
+
+\subsubsection{Analisi dei requisiti}
+L'attività di analisi dei requisiti ha l’obiettivo di trasformare i requisiti utente espressi nel capitolato, nel nostro caso il \textbf{capitolato C4} proposto da \textbf{Miriade srl}, in requisiti di sistema chiari, completi e verificabili. 
+Tale attività produce il documento dell'analisi dei requisiti che stabilisce le basi per un accordo tra la proponente e il \textbf{gruppo BitByBit} su quello che il prodotto software è tenuto a fare.
+\\L’analisi dei requisiti obbliga tutte le parti coinvolte a valutare in modo completo e condiviso ciò che il sistema dovrà realizzare prima dell’avvio della progettazione. Questo riduce significativamente il rischio di dover intervenire successivamente su design, codice o test.
+\\Il gruppo si impegna inoltre a monitorare con continuità l’allineamento tra requisiti implementati e requisiti concordati con la proponente, aggiornandoli in modo controllato quando necessario.
+
+\paragraph{Stesura dei casi d'uso}
+
+La definizione dei casi d’uso segue un processo iterativo che comprende:
+\begin{itemize}
+    \item \textbf{comprensione del problema} e del dominio applicativo;
+    \item \textbf{identificazione degli scenari} attraverso la definizione delle interazioni tra attori e sistema;
+    \item \textbf{stesura dei casi d'uso} andando ad identificare gli scenari principali e quelli secondari;
+    \item \textbf{implementazione degli UML}.
+\end{itemize}
+
+Il gruppo effettua una revisione completa dei casi d'uso individuati, correggendo eventuali incoerenze. Se necessario, vengono condotti approfondimenti con la proponente per garantire un’interpretazione condivisa degli scenari critici.
+\\Per ogni caso d’uso viene realizzato un diagramma UML dedicato, al fine di ridurre possibili ambiguità interpretative.\\
+
+La nomenclatura adottata viene esposta di seguito.
+\begin{center}
+    \texttt{UC-<funzionalità>-X.Y}
+\end{center}
+\begin{itemize}
+    \item \texttt{UC} sigla per use case
+    \item \texttt{<funzionalità>} sigla per la funzionalità a cui si riferisce quel caso d'uso;
+    \item \texttt{X} numero intero identificativo per il caso d'uso principale;
+    \item \texttt{Y} numero intero identificativo per il sotto-caso eventuale.
+\end{itemize}
+Questa codifica garantisce un’identificazione univoca e promuove tracciabilità e verificabilità.
+
+\paragraph{Stesura dei requisiti}
+I requisiti vengono organizzati per livello di importanza, definito con la proponente:
+\begin{itemize}
+    \item \textbf{Obbligatori} (\textbf{OB}): necessari e irrinunciabili per la soddisfazione minima degli stakeholder;
+    \item \textbf{Desiderabili} (\textbf{DE}): non essenziali ma ad alto valore aggiunto;
+    \item \textbf{Opzionali} (\textbf{OP}): utili, ma pianificabili o negoziabili in fasi successive.
+\end{itemize}
+
+Ogni requisito è identificato tramite una codifica standard:
+\begin{center}
+    \texttt{R-<importanza>-X}
+\end{center}
+dove \texttt{<importanza>} è la sigla a due lettere che indica la categoria del requisito e \texttt{X} è un identificatore numerico univoco.
+
+Tale classificazione supporta la tracciabilità, la verifica e la gestione dell’evoluzione dei requisiti durante l’intero ciclo di vita.
 
 % ==== SEZIONE PROCESSI DI SUPPORTO ====
 \section{Processi di supporto}
@@ -304,10 +396,11 @@ La presente sezione espone i seguenti processi di supporto:
     \item[(d)] \textbf{verifica;}
     \item[(e)] \textbf{validazione.}
 \end{itemize}
+
 \subsection{Documentazione}
 Il processo di documentazione ha l’obiettivo di definire le modalità, gli strumenti e le convenzioni che il gruppo adotta per la produzione, la gestione, la revisione e l’approvazione di tutti i documenti del progetto.
 
-\subsubsection{Obbiettivi}
+\subsubsection{Obiettivi}
 \begin{enumerate}
   \item Garantire \textbf{completezza}, \textbf{chiarezza} e \textbf{coerenza} delle informazioni contenute nei documenti.
   \item Assicurare la \textbf{tracciabilità} delle modifiche e delle versioni;
@@ -338,31 +431,44 @@ Per sostenere il processo di documentazione sono utilizzati i seguenti strumenti
 Ogni documento, indipendentemente dalla sua categoria, deve essere redatto in conformità alle convenzioni formali definite nelle Norme di Progetto.
 
 \subsubsection{Implementazione di processo}
-Ogni documento, prima di essere integrato nella versione stabile del \textbf{repository\ap{G}}, deve attraversare un ciclo strutturato di produzione che garantisce la qualità, la verificabilità e la tracciabilità delle modifiche. Le attività descritte in questa sezione definiscono il flusso operativo seguito dal gruppo per l’elaborazione, la revisione e la pubblicazione dei prodotti documentali.
+Ogni documento, prima di essere integrato nella versione stabile del repository, deve attraversare un ciclo strutturato di produzione che garantisce la qualità, la verificabilità e la tracciabilità delle modifiche. Le attività descritte in questa sezione definiscono il flusso operativo seguito dal gruppo per l’elaborazione, la revisione e la pubblicazione dei prodotti documentali.
 
 \paragraph{Creazione delle issue GitHub}
-Ogni modifica documentale, compresa anche la creazione di un documento, inizia con l’apertura di una issue su GitHub per permettere la tracciabilità nella board del \textbf{Project GitHub\ap{G}}. Ogni commit deve essere atomico, cioè riferirsi ad un’unica azione in quanto migliorano la revisione, il recupero e la collaborazione.
+Ogni azione che porta a dei cambiamenti ad un documento del gruppo deve iniziare con l’apertura di una issue su GitHub per permettere la tracciabilità nella board del Project GitHub. Ogni commit deve fare riferimento ad una sola azione in modo da garantire che il processo iterativo di revisione ed eventuali correzioni di errori sia il più veloce possibile.
 
 \paragraph{Assegnazione della issue} 
-Nessuna issue può essere avviata senza una chiara assegnazione. L’assegnazione viene effettuata dal \textbf{responsabile\ap{G}}, che determina chi, nel gruppo, è incaricato dell’esecuzione dell’attività. Questo passaggio garantisce che ogni modifica sia riconducibile a un autore e che la responsabilità operativa sia chiaramente definita.
+Nessuna issue può essere avviata senza che sia assegnata ad un membro del gruppo. L’assegnazione viene effettuata dal responsabile, che determina chi, nel gruppo, è incaricato dell’esecuzione di quella precisa attività. Questo passaggio garantisce che ogni modifica sia riconducibile a un autore e che la responsabilità operativa sia chiaramente definita.
 
 \paragraph{Impostazione del documento}
-Il membro del team può ora avviare la stesura del documento all’interno del branch dedicato, il cui nome segue la nomenclatura presente nella sezione (da aggiungere). La prima attività consiste nella creazione del file sorgente, denominato secondo le convenzioni stabilite (ad esempio nel formato \texttt{nome\_documento.tex}). Una volta inserito il nuovo file nel repository remoto, il sistema provvede automaticamente ad applicare il template comune, garantendo l’integrazione delle componenti strutturali condivise.\\Spetta quindi al redattore adattare il template al contenuto specifico del documento, completandone le sezioni pertinenti e verificando che l’impostazione risultante sia conforme agli standard definiti per la documentazione del progetto. Questa attività assicura uniformità, leggibilità e coerenza stilistica dell’intera produzione documentale lungo tutto il ciclo di vita del progetto.\\Ogni membro del gruppo è quindi tenuto a verificare che i documenti prodotti rispettino un formato uniforme, verificabile e riconducibile agli standard scelti.\\ Questa attività garantisce la leggibilità, la coerenza e la mantenibilità dell’intera produzione documentale durante tutto il ciclo di vita del progetto.
+Il membro del team può ora aprire un branch secondario da \texttt{develop}, seguendo la nomenclatura presente nella sezione \ref{par:p-infrastruttura-istituzione}, ed eseguire le modifiche definite nella relativa issue. 
+Se le modifiche implicano la creazione del file di documentazione il membro del gruppo è tenuto a creare il file sorgente, denominato secondo le convenzioni stabilite (\hyperref[par:p-infrastruttura-istituzione]{vedi sezione~\ref*{par:p-infrastruttura-istituzione}}). Una volta inserito il nuovo file nel repository remoto, il sistema provvede automaticamente ad applicare il template comune, garantendo l’integrazione delle componenti strutturali condivise.
+\\Spetta quindi al redattore adattare il template al contenuto specifico del documento, completandone le sezioni pertinenti e verificando che l’impostazione risultante sia conforme agli standard definiti per la documentazione del progetto. Questa attività assicura uniformità, leggibilità e coerenza stilistica dell’intera produzione documentale lungo tutto il ciclo di vita del progetto.
+\\Ogni membro del gruppo è quindi tenuto a verificare che i documenti prodotti rispettino un formato uniforme, verificabile e riconducibile agli standard scelti.\\ Questa attività garantisce la leggibilità, la coerenza e la mantenibilità dell’intera produzione documentale durante tutto il ciclo di vita del progetto.
 
 \subsubsection*{Intestazione}
 Ogni pagina del documento include un'intestazione che riporta il titolo dello specifico documento e il nome del gruppo.
 \subsubsection*{Frontespizio}
 Il frontespizio possiede i seguenti elementi:
 \begin{itemize}
-    \item logo dell'ateneo;
-    \item informazioni dell'ateneo;
-    \item logo del gruppo;
-    \item contatto ufficiale del gruppo;
-    \item nome del documento.
+    \item \textbf{logo dell'ateneo;}
+    \item \textbf{informazioni dell'ateneo;}
+    \item \textbf{logo del gruppo};
+    \item \textbf{contatto ufficiale} del gruppo;
+    \item \textbf{nome del documento};
+    \item \textbf{informazione generali del documento} le cui informazioni sono riportate di seguito.
+    \begin{itemize}
+        \item stato del documento
+        \item versione
+        \item il responsabile per quel documento
+        \item i membri del gruppo che hanno contribuito alla redazione 
+        \item i verificatori 
+        \item i destinastari
+    \end{itemize}
 \end{itemize}
 
 \subsubsection*{Storico del documento}
-Nell'ultima pagina deve essere presente uno storico delle modifiche apportate al documento. Le entry della tabella devono essere in ordine cronologico in modo che la prima entry faccia riferimento alla modifica più recente. Una entry è composta da:
+Nella prima pagina dopo il frontespizion deve essere presente il registro delle modifiche apportate al documento. Le entry della tabella devono essere in ordine cronologico in modo che la prima entry faccia riferimento alla modifica più recente. 
+\\Ogni entry deve essere composta da:
 \begin{enumerate}
     \item \textbf{versione};
     \item \textbf{data della modifica};
@@ -385,25 +491,23 @@ Nell'ultima pagina deve essere presente uno storico delle modifiche apportate al
 \end{center}
 
 \subsubsection*{Indice}
-Ogni documento deve presentare un indice delle sezioni e sottosezioni per una visita veloce e facilitata di specifici all'interno dello stesso documento.
+Ogni documento deve presentare un indice delle sezioni e sottosezioni per facilitare la navigazione dei lettori all'interno dello stesso documento.
 
 \subsubsection*{Struttura dei verbali}
-I verbali rappresentano i rendiconti di riunioni ufficiali interne, a cui partecipano solo i componenti del gruppo, ed esterne, a cui invece partecipano anche enti esterni al gruppo come le aziende fornitrici o i professori. Ogni verbale oltre alle sezioni precedentemente elencate deve presentare al suo interno i seguenti elementi nell'ordine in cui sono descritti:
+I verbali rappresentano i rendiconti di riunioni ufficiali interne, a cui partecipano solo i componenti del gruppo, ed esterne, a cui invece partecipano anche enti esterni al gruppo come impiegati dell'azienda proponenti del capitolato o i professori del corso. Ogni verbale oltre alle sezioni precedentemente elencate deve presentare al suo interno i seguenti elementi nell'ordine in cui sono descritti:
 \begin{enumerate}
-  \item \textbf{Informazioni generali}: contiene i dati identificativi dell’incontro quali: 
+  \item \textbf{Informazioni generali} per quell'incontro: contiene i dati identificativi dell’incontro quali: 
   \begin{itemize}
-      \item il redattore;
-      \item il verificatore;
-      \item il responsabile;
-      \item l'amministratore;
       \item la data in cui si è svolto l'incontro;
+      \item l'orario d'inizio;
       \item la durata;
-      \item l'elenco dei partecipanti e degli assenti.
+      \item il luogo in cui si è svolto;
+      \item l'elenco dei presenti e degli assenti.
   \end{itemize}
     Queste informazioni sono volte a dare un contesto formale alla riunione.
-  \item \textbf{Ordine del giorno}: riassume i punti principali che si intendono discutere durante l’incontro, predisposti in anticipo dal responsabile o dall’amministratore. Questa sezione funge da guida per la conduzione del verbale.
+  \item \textbf{Ordine del giorno}: riassume i punti principali che si intendono discutere durante l’incontro, predisposti in anticipo dal responsabile/i di progetto durante quel periodo. Questa sezione funge da guida per la conduzione del verbale.
   \item \textbf{Discussioni}: riporta in modo sintetico ma chiaro i contenuti emersi durante il confronto tra i partecipanti. Devono essere descritte le osservazioni, le problematiche sollevate e le proposte di soluzione valutate durante l’incontro.
-  \item \textbf{Decisioni}: elenca tutte le decisioni approvate dal gruppo, incluse quelle riguardanti modifiche ai documenti, scadenze o variazioni organizzative. Ogni decisione deve essere formulata in modo oggettivo e deve avere un codice identificativo univoco che segue il seguente formato:
+  \item \textbf{Decisioni}: elenca tutte le risposte che il gruppo si da per uno specifico, incluse quelle riguardanti modifiche ai documenti, scadenze o variazioni organizzative. Ogni decisione deve essere formulata in modo oggettivo e deve avere un codice identificativo univoco che segue il seguente formato:
   \[
 \texttt{[VI/VE] [fase a cui appartiene] Y.Z}
 \]
@@ -414,7 +518,7 @@ dove:
     \item \textbf{Y}, indica il numero del verbale in riferimento a quella revisione;
     \item \textbf{X} indica il numero della decisione interna a quel documento.
 \end{itemize}
-  \item \textbf{To-do}: presenta, sotto forma di tabella, le attività operative pianificate a seguito della riunione. Ogni attività è identificata da:
+  \item \textbf{To-do}: presenta, sotto forma di tabella, gli incarichi operativi pianificati a seguito della riunione. Ogni \textbf{To-do} è identificata da:
   \begin{itemize}
       \item una descrizione sintetica;
       \item Il codice della decisione da cui è stata creata (per ogni decisione ci possono essere 0 o più attività);
@@ -422,7 +526,7 @@ dove:
   \end{itemize}
 \end{enumerate}
 
-\subsubsection*{Convenzioni di scrittura}
+\subsubsection*{Convenzioni di scrittura} \label{subsubsec:convenzioni-scrittura}
 Le convenzioni di scrittura stabiliscono regole comuni per la redazione di tutti i documenti del progetto.
 \paragraph{Date}
 \begin{itemize}
@@ -469,7 +573,8 @@ Di seguito sono presenti le sigle usate all interno dei documenti.
 \end{itemize}
 
 \paragraph{Modifiche a documenti}
-Per eseguire delle modifiche alla documentazione di progetto, il membro del gruppo è tenuto a istanziare un nuovo branch di \texttt{feature}. La denominazione del branch di feature deve seguire la nomenclatura presente nella sezione (da aggiungere). \\Ogni modifica a un documento deve essere accompagnata da un aggiornamento del numero di versione appropriato. Il membro del gruppo che si occupa delle modifiche è anche tenuto ad aggiornare lo \textbf{storico dei documenti} con le informazioni richieste.\\ 
+Per eseguire delle modifiche alla documentazione di progetto, il membro del gruppo è tenuto ad istanziare un nuovo branch a partire da quello di \texttt{develop}. La denominazione del branch di feature deve seguire la nomenclatura presente nella sezione (\hyperref[par:p-infrastruttura-istituzione]{vedi sezione~\ref*{par:p-infrastruttura-istituzione}}).
+\\Ogni modifica a un documento deve essere accompagnata da uno scatto del nuomero di versione. Il membro del gruppo che si occupa delle modifiche è anche tenuto ad aggiornare lo \textbf{storico dei documenti} con le informazioni richieste.\\ 
 Ogni modifica ad un documento deve essere tracciabile all’interno dello stesso tramite lo \textbf{storico del documento}, riportando:
   \begin{itemize}
       \item il numero di versione assegnato;
@@ -479,20 +584,25 @@ Ogni modifica ad un documento deve essere tracciabile all’interno dello stesso
       \item il nome del verificatore che è tenuto ad eseguire la verifica.
   \end{itemize}
 
+\paragraph{Aggiornamento del glossario}
+Ogni membro del gruppo, nel momento in cui aggiunge un termine ad un documento che può essere fonte di ambiguità e che non sia già presente nel glossario, è tenuto ad aggiornare il glossario del progetto. Con il dermine deve essere anche fornita una sua descrizione esplicativa.
+
 \paragraph{Conclusione modifiche} 
-Una volta completate le modifiche nel branch di \texttt{feature}, il membro incaricato procede ad aprire una \textbf{pull request\ap{G}} dal proprio branch di feature verso il branch \texttt{develop}. Nella fase di apertura della \textbf{pull request\ap{G}} devono essere compilate le informazioni richieste dal relativo template, specifico per il \textbf{repository\ap{G}} della documentazione. La \textbf{pull request\ap{G}} costituisce la richiesta formale per integrare le modifiche nella versione di sviluppo, permettendo al team di effettuare la revisione del codice e di approvarne l’unione.
+Una volta completate le modifiche nel nuovo branch aperto, il membro incaricato procede ad aprire una pull request dal proprio branch di feature verso il branch \texttt{develop}. 
+Nella fase di apertura della pull request deve essere compilato il form per la descrizione della pull request con le informazioni richieste. La pull request costituisce la richiesta formale per l'integrazione delle modifiche nel repository del gruppo, dopo l'avvenuta approvazione delle modifiche apportate.
 
 \paragraph{Verifica} Il verificatore esamina sia la correttezza formale sia sostanziale del documento.
     \begin{itemize}
-        \item Se le modifiche risultano corrette, il verificato approva la \textbf{pull request\ap{G}}.
-        \item Se emergono incongruenze o problemi, il verificatore richiede modifiche aggiungendo dei commenti specifici al codice nel messaggio della \textbf{pull request\ap{G}} e aprendo una issue \textbf{GitHub\ap{G}} dedicata.
+        \item Se le modifiche risultano corrette, il verificato approva la pull request.
+        \item Se emergono incongruenze o problemi, il verificatore richiede delle modifiche aggiungendo dei commenti al codice.
     \end{itemize}
-Le modifiche richieste devono essere applicate dall’autore originario della \textbf{pull request\ap{G}}, che procede aggiornando il branch \texttt{develop} fino alla completa risoluzione.
+Le modifiche richieste devono essere applicate dall’autore originario della pull request, che procede aggiornando il branch \texttt{develop} fino alla completa risoluzione.
 I verificatori sono tenuti a controllare che i documenti di ciclo di vita del progetto comprendano gli elementi di struttura elencati di seguito nell' ordine in cui si presentano.
 
-\paragraph{Approvazione e pull request} Una volta ottenuta l’approvazione del verificatore, la \textbf{pull request\ap{G}} viene sottoposta al \textbf{responsabile\ap{G}}, che effettua un ultima revisione formale. Solo il \textbf{responsabile\ap{G}} è autorizzato a procedere con il merge della PR nel branch \texttt{develop}. Il merge rappresenta l’integrazione definitiva del documento nella versione stabile del progetto.
+\paragraph{Approvazione e pull request} Una volta ottenuta l’approvazione del verificatore, la pull request viene sottoposta alla visione del responsabile, che effettua un ultima revisione formale. Solo il responsabile è autorizzato a procedere con il merge della pull request nel branch \texttt{develop}.
+\\Il merge rappresenta l’integrazione definitiva del documento nella versione stabile del progetto.
 
-\paragraph{Pubblicazione} Con la conclusione del merge, il documento aggiornato diventa parte integrante della \textbf{baseline\ap{G}} di progetto. Il branch \texttt{main} costituisce, infatti, il riferimento ufficiale per la versione stabile e coerente dei documenti.
+\paragraph{Pubblicazione} Con la conclusione del merge, il documento aggiornato diventa parte integrante della baseline di progetto. Il branch \texttt{main} costituisce, infatti, il riferimento ufficiale per la versione stabile e coerente dei documenti.
 
 % ==== PROCESSO DI GESTIONE DELLA CONFIGURAZIONE ====
 \subsection{Processo di gestione della configurazione}
@@ -501,7 +611,7 @@ Il processo di gestione della configurazione ha l’obiettivo di applicare proce
 \subsubsection{Strumenti a supporto}
 Per le attività previste, il gruppo BitByBit utilizza gli stumenti elencati di seguito.
 \begin{itemize}
-    \item \textbf{GitHub}: piattaforma per il versionamento, la gestione dei repository, delle \textbf{issue\ap{G}}, delle \textbf{pull request\ap{G}} e dei flussi di lavoro collaborativi mediante GitHub Projects e Teams. È inoltre il punto ufficiale di archiviazione degli artefatti approvati.
+    \item \textbf{GitHub}: piattaforma per il versionamento, la gestione dei repository, delle issue, delle pull request e dei flussi di lavoro collaborativi mediante GitHub Projects e Teams. È inoltre il punto ufficiale di archiviazione degli artefatti approvati.
     \item \textbf{GitHub Actions}: utilizzate per automatizzare la compilazione dei documenti in \LaTeX{} e garantire la validazione continua del repository.
     \item \textbf{Branch protection rules}: utilizzate per impedire modifiche non autorizzate sul branch principale e garantire che ogni integrazione avvenga secondo le regole di verifica previste dal gruppo.
 \end{itemize}
@@ -516,7 +626,7 @@ Le attività principali del processo di gestione della configurazione sono:
 \end{itemize}
 
 \subsubsection{Identificazione della configurazione}
-Per il versionamento viene adottato il \textbf{Semantic Versioning (SemVer\ap{G})}.  
+Per il versionamento viene adottato il Semantic Versioning SemVer.  
 Ogni documento riporta una versione nel formato:
 \begin{center}
 \texttt{X.Y.Z}
@@ -531,7 +641,7 @@ Ogni documento di ciclo di vita presenta uno storico delle modifiche con associa
 Questa scelta permette una chiara tracciabilità chiara, prevedibilità delle modifiche ed evoluzione controllata degli artefatti documentali.
 
 \paragraph{Aggiunta dei tag}
-Al termine del processo di revisione, quando una \textbf{pull request\ap{G}} viene approvata dai verificatori e successivamente chiusa dal \textbf{responsabile\ap{G}}, viene generato un commit di merge che rappresenta la versione consolidata delle modifiche introdotte nel branch \texttt{develop}.\\Poiché questo commit costituisce il punto di riferimento ufficiale per la versione del documento o dell’artefatto modificato, il responsabile – oppure, se previsto, una GitHub Action – deve applicare un tag che identifichi formalmente la nuova versione.
+Al termine del processo di revisione, quando una pull request viene approvata dai verificatori e successivamente chiusa dal responsabile, viene generato un commit di merge che rappresenta la versione consolidata delle modifiche introdotte nel branch \texttt{develop}.\\Poiché questo commit costituisce il punto di riferimento ufficiale per la versione del documento o dell’artefatto modificato, il responsabile – oppure, se previsto, una GitHub Action – deve applicare un tag che identifichi formalmente la nuova versione.
 
 Il formato per il tag sul branch \texttt{develop} è il seguente:
 \begin{center}
@@ -547,20 +657,20 @@ Dopo il merge da develop a main si applica il tag della baseline alla commit ris
  Il controllo della configurazione definisce le modalità con cui il gruppo gestisce, valuta e approva tutte le modifiche agli elementi configurabili del progetto.\\ L’intero ciclo di lavoro è organizzato secondo la pratica del feature branching, in cui per ogni modifica deve essere aperto un branch di \texttt{feature} seguendo la nomenclatura esposta in sezione (da aggiungere).
 
 \paragraph{Gestione issue e pianificazione del lavoro}
-Ogni modifica nasce dall’apertura di una \textbf{issue GitHub\ap{G}}, che costituisce il punto di riferimento per la tracciabilità dell’attività.\\ Al momento della creazione, la \textbf{issue\ap{G}} deve essere dotata di un titolo descrittivo e di una spiegazione chiara dell’obiettivo. Il responsabile assegna inoltre priorità, milestone, iterazione (che corrisponde allo sprint in cui l’attività deve essere completata) e l’assegnatario, selezionato in base al ruolo che il membro ricopre in quel momento. Label aggiuntive consentono una categorizzazione accurata del lavoro.\\ La pianificazione complessiva è supportata dalle \textbf{GitHub Project Board\ap{G}}, che permettono di consultare \textbf{product backlog\ap{G}} e \textbf{sprint backlog\ap{G}} tramite viste personalizzate, semplificando la gestione dei carichi di lavoro e l’avanzamento delle attività.
+Ogni modifica nasce dall’apertura di una issue GitHub, che costituisce il punto di riferimento per la tracciabilità dell’attività.\\ Al momento della creazione, la issue deve essere dotata di un titolo descrittivo e di una spiegazione chiara dell’obiettivo. Il responsabile assegna inoltre priorità, milestone, iterazione (che corrisponde allo sprint in cui l’attività deve essere completata) e l’assegnatario, selezionato in base al ruolo che il membro ricopre in quel momento. Label aggiuntive consentono una categorizzazione accurata del lavoro.\\ La pianificazione complessiva è supportata dalle GitHub Project Board, che permettono di consultare product backlog e sprint backlog tramite viste personalizzate, semplificando la gestione dei carichi di lavoro e l’avanzamento delle attività.
 
 \paragraph{Creazione della pull request}
-Una volta completata l’attività descritta nella \textbf{issue GitHub\ap{G}}, il membro incaricato apre una \textbf{pull request\ap{G}} dal branch di feature al \texttt{branch develop}.\\ Ogni \textbf{pull request\ap{G}} deve utilizzare il template comune del gruppo, che contiene le sezioni necessarie per descrivere contesto, modifiche introdotte, issue collegate e controlli effettuati. La descrzione del template presente nel file \texttt{pull\_request\_template.md}, deve essere compilato e adattato ogni volta, così da velocizzare il lavoro di revisione e rendere uniformi tutte le richieste. Il membro deve indicare tramite il campo \texttt{Reviewers} il singolo membro incaricato del compito di verificare quella modifica.
+Una volta completata l’attività descritta nella issue GitHub, il membro incaricato apre una pull request dal branch di feature al \texttt{branch develop}.\\ Ogni pull request deve utilizzare il template comune del gruppo, che contiene le sezioni necessarie per descrivere contesto, modifiche introdotte, issue collegate e controlli effettuati. La descrzione del template presente nel file \texttt{pull\_request\_template.md}, deve essere compilato e adattato ogni volta, così da velocizzare il lavoro di revisione e rendere uniformi tutte le richieste. Il membro deve indicare tramite il campo \texttt{Reviewers} il singolo membro incaricato del compito di verificare quella modifica.
 
 \paragraph{Verifica e revisone della pull request}
-All'apertura della \textbf{pull request\ap{G}} viene richiesta automaticamente la verifica ai membri del team verificatori:
+All'apertura della pull request viene richiesta automaticamente la verifica ai membri del team verificatori:
 \begin{itemize}
-    \item se la verifica produce esito positivo, la \textbf{pull request\ap{G}} viene approvata dal verificatore incaricato;
-    \item se sono presenti dei problemi o miglioramenti da applicare, il verificatore richiede delle modifiche, tramite l'opzione di \textbf{GitHub\ap{G}} \texttt{request changes}, aggiungendo un commento di quello che è il problema trovato e di una possibile soluzione se è presente. Successivamente la persona che ha aperto la \textbf{pull request\ap{G}} si impegna a eseguire le correzioni e a notificare il completamento dell'azione per avere una verifica il prima possibile.
+    \item se la verifica produce esito positivo, la pull request viene approvata dal verificatore incaricato;
+    \item se sono presenti dei problemi o miglioramenti da applicare, il verificatore richiede delle modifiche, tramite l'opzione di GitHub \texttt{request changes}, aggiungendo un commento di quello che è il problema trovato e di una possibile soluzione se è presente. Successivamente la persona che ha aperto la pull request si impegna a eseguire le correzioni e a notificare il completamento dell'azione per avere una verifica il prima possibile.
 \end{itemize}
 
 \paragraph{Integrazione nella baseline}
-Quando la \textbf{pull request\ap{G}} viene approvata del \textbf{verificatore\ap{G}}, il responsabile esegue la revisione. Si impegna ad eseguire il merge nel branch \texttt{develop}. A questo punto, la modifica entra ufficialmente in \textbf{baseline\ap{G}} e diventa parte del progetto.
+Quando la pull request viene approvata del verificatore, il responsabile esegue la revisione. Si impegna ad eseguire il merge nel branch \texttt{develop}. A questo punto, la modifica entra ufficialmente in baseline e diventa parte del progetto.
 
 \subsubsection{Registro dello stato della configurazione}
 Lo stato aggiornato degli elementi di configurazione è tracciato tramite:
@@ -580,6 +690,31 @@ L'\textbf{attività di valutazione della configurazione} ha lo scopo di garantir
     \item ogni parte del sistema risulti coerente con l’architettura definita.
 \end{itemize}
 
+% ==== SEZIONE PROCESSO ACCERTAMENTO DELLA QUALITÀ ====
+\subsection{Processo di accertamento della qualità}
+
+Il processo di \textbf{accertamento della qualità} ha lo scopo di garantire che la qualità del \textbf{prodotto software} e dei \textbf{processi di ciclo di vita} adottati sia conforme ai requisiti specificati e ai piani prestabiliti.
+L’accertamento della qualità consente di fornire evidenze oggettive sul fatto che i sistemi software sviluppati siano idonei allo scopo per cui sono stati richiesti e soddisfino le aspettative degli stakeholder coinvolti.
+
+\subsubsection{Implementazione di processo}
+Il gruppo \textit{BitByBit} ha identificato come principale attività del processo di accertamento della qualità la redazione del documento di \textbf{Piano di Qualifica}.
+Tale documento definisce gli obiettivi quantitativi di qualità relativi sia al prodotto software sia ai processi di ciclo di vita adottati, e raccoglie le misurazioni oggettive effettuate durante lo svolgimento del progetto.\\
+Le misurazioni consistono nella quantificazione, mediante l’utilizzo di metriche, di specifici attributi dei prodotti software e dei processi di ciclo di vita.
+Per ciascuna metrica vengono inoltre individuati, nel Piano di Qualifica, dei valori ottimali o soglie di riferimento, al fine di identificare tempestivamente eventuali comportamenti anomali o scostamenti rispetto agli obiettivi di qualità prefissati.\\
+Un elenco completo delle metriche adottate è riportato alla \hyperref[sec:elenco-metriche]{Sezione~\ref*{sec:elenco-metriche}} per una consultazione più agevole.
+
+\subsubsection{Accertamento della qualità di prodotto}
+L’attività di \textbf{accertamento della qualità di prodotto} ha lo scopo di assicurare che i prodotti software e la documentazione correlata siano forniti in conformità ai termini e ai requisiti specificati con l’acquirente.\\
+Nel Piano di Qualifica vengono definite specifiche metriche di qualità di prodotto.
+Le misurazioni eseguite vengono confrontate con i valori ottimali stabiliti per ciascuna metrica, al fine di valutare in modo oggettivo la qualità del software realizzato.\\
+Le metriche di prodotto costituiscono un supporto decisionale per determinare se il software implementato soddisfa i criteri di qualità richiesti ed è pertanto idoneo al rilascio.
+
+\subsubsection{Accertamento della qualità di processo}
+L’attività di \textbf{accertamento della qualità di processo} ha lo scopo di assicurare che i processi di ciclo di vita siano eseguiti in conformità agli standard e alle procedure definiti per ciascun processo.\\
+Nel Piano di Qualifica vengono formalizzate le metriche di processo e i relativi valori ottimali stabiliti dal gruppo.
+Le misurazioni effettuate vengono successivamente confrontate con tali valori di riferimento, consentendo di valutare l’efficacia e l’adeguatezza dei processi adottati.\\
+Le metriche di processo sono utilizzate dal responsabile di progetto come strumento di supporto decisionale per individuare eventuali criticità e valutare la necessità di apportare modifiche o miglioramenti ai processi in uso.
+
 % ==== SEZIONE PROCESSI ORGANIZZATIVI ====
 \section{Processi organizzativi del ciclo di vita}
 I processi organizzativi di ciclo di vita rappresentano l’insieme delle attività che il gruppo BitByBit ha scelto di adottare per strutturare e supportare in modo sistematico tutti i propri progetti.\\
@@ -598,17 +733,17 @@ L’obiettivo è garantire che le attività procedano in modo efficace e control
 
 \subsubsection{Strumenti a supporto}
 Il gruppo \textit{BitByBit} utilizza le funzionalità delle \textbf{GitHub Organizations} per organizzare il lavoro e gestire i ruoli (vedi Sezione - da aggiunggere-). Ogni team corrisponde a un ruolo specifico e include solo i membri incaricati in quel periodo, facilitando la rotazione programmata dei ruoli.\\
-Sul branch principale (\texttt{main}) solo i membri del team dei Responsabili possono eseguire push o merge, mentre tutti gli altri membri propongono modifiche tramite \textbf{pull request\ap{G}}. La funzione \texttt{CODEOWNERS} assegna automaticamente ai Verificatori la responsabilità di revisione dei documenti, garantendo che tutte le modifiche rispettino il workflow e i controlli qualitativi previsti.\\
+Sul branch principale (\texttt{main}) solo i membri del team dei Responsabili possono eseguire push o merge, mentre tutti gli altri membri propongono modifiche tramite pull request. La funzione \texttt{CODEOWNERS} assegna automaticamente ai Verificatori la responsabilità di revisione dei documenti, garantendo che tutte le modifiche rispettino il workflow e i controlli qualitativi previsti.\\
 Questa configurazione assicura una chiara separazione dei ruoli, un flusso di modifica strutturato e un efficace supporto automatizzato alla gestione della configurazione.
 
 \subsubsection{Implementazione di processo}
 Le attività previste dal processo di gestione dei processi sono articolate come segue.
 \begin{itemize}
-    \item \textbf{Inizializzazione e definizione degli ambiti}, il \textbf{responsabile\ap{G}} del progetto assieme ai membri del team identifica i requisiti per l'attività da svolgere.Si procede poi alla valutazione della fattibilità verificando disponibilità delle risorse, adeguatezza delle competenze e tempistiche.
+    \item \textbf{Inizializzazione e definizione degli ambiti}, il responsabile del progetto assieme ai membri del team identifica i requisiti per l'attività da svolgere.Si procede poi alla valutazione della fattibilità verificando disponibilità delle risorse, adeguatezza delle competenze e tempistiche.
     \item \textbf{Pianificazione}, si definisce il piano operativo del processo, includendo la descrizione delle attività, i prodotti software da generare e la stima dei tempi necessari. Il piano specifica inoltre risorse richieste, assegnazione delle responsabilità, analisi dei rischi, misure di qualità da adottare, costi stimati e infrastruttura di supporto.
-    \item \textbf{Esecuzione e controllo}, le attività pianificate vengono attuate. Il \textbf{responsabile\ap{G}} di processo produce report periodici sullo stato di avanzamento, destinati sia all’uso interno sia all’acquirente. Il responsabile monitora l’aderenza al piano e interviene per risolvere eventuali scostamenti.
-    \item \textbf{Revisione e valutazione}, perché un prodotto entri in \textbf{baseline\ap{G}}, le modifiche apportate devono essere prima verificate da un \textbf{verificatore\ap{G}} (si veda Sezione ?) e successivamente revisionate dal \textbf{responsabile\ap{G}}. Quest’ultimo accerta che i prodotti software e i piani risultino conformi ai requisiti stabiliti, valutando l’esito dei compiti completati e garantendo qualità e coerenza con gli obiettivi del processo.
-    \item \textbf{Chiusura}, al completamento delle attività e dei prodotti previsti, si verifica che i criteri concordati con l’acquirente siano soddisfatti. Il \textbf{responsabile\ap{G}} controlla la completezza dei risultati e dei report.
+    \item \textbf{Esecuzione e controllo}, le attività pianificate vengono attuate. Il responsabile di processo produce report periodici sullo stato di avanzamento, destinati sia all’uso interno sia all’acquirente. Il responsabile monitora l’aderenza al piano e interviene per risolvere eventuali scostamenti.
+    \item \textbf{Revisione e valutazione}, perché un prodotto entri in baseline, le modifiche apportate devono essere prima verificate da un verificatore (si veda Sezione ?) e successivamente revisionate dal responsabile. Quest’ultimo accerta che i prodotti software e i piani risultino conformi ai requisiti stabiliti, valutando l’esito dei compiti completati e garantendo qualità e coerenza con gli obiettivi del processo.
+    \item \textbf{Chiusura}, al completamento delle attività e dei prodotti previsti, si verifica che i criteri concordati con l’acquirente siano soddisfatti. Il responsabile controlla la completezza dei risultati e dei report.
 \end{itemize}
 
 \subsubsection{Ruoli}
@@ -643,11 +778,11 @@ Le attività previste dal processo di gestione dei processi sono articolate come
 \end{center}
 
 \subsubsection{Struttura teams GitHub}
-L’organizzazione interna del gruppo (si veda sezione 4.1) è stata implementata tramite la funzione nativa di \textbf{GitHub Teams\ap{G}} di \textbf{GitHub\ap{G}}, che consente di suddividere i membri in sotto–gruppi corrispondenti ai ruoli previsti dal progetto (si veda Sezione 4.1.3). Ogni ruolo forma un team composto da uno a più membri, così da distribuire responsabilità e carico di verifica.\\
-Le figure che interessano le \textbf{pull request\ap{G}} sono principlamente due:
+L’organizzazione interna del gruppo (si veda sezione 4.1) è stata implementata tramite la funzione nativa di GitHub Teams di GitHub, che consente di suddividere i membri in sotto–gruppi corrispondenti ai ruoli previsti dal progetto (si veda Sezione 4.1.3). Ogni ruolo forma un team composto da uno a più membri, così da distribuire responsabilità e carico di verifica.\\
+Le figure che interessano le pull request sono principlamente due:
 \begin{itemize}
-    \item \textbf{verificatori\ap{G}}, scelti tra i membri del team con responsabilità di verifica in quello sprint, devono controllare la correttezza formale delle modifiche;
-    \item \textbf{responsabile\ap{G}}, una volta ottenuta l’approvazione dei verificatori, è incaricato di completare l’operazione di merge sul \texttt{branch main} nel rispetto delle regole di protezione del branch.
+    \item verificatori, scelti tra i membri del team con responsabilità di verifica in quello sprint, devono controllare la correttezza formale delle modifiche;
+    \item responsabile, una volta ottenuta l’approvazione dei verificatori, è incaricato di completare l’operazione di merge sul \texttt{branch main} nel rispetto delle regole di protezione del branch.
 \end{itemize}
 Questa struttura garantisce che ogni modifica venga validata da più persone e che il processo rispetti il processo di qualità (si veda sezione - da aggiungere-).
 
@@ -656,18 +791,18 @@ Il coordinamento del gruppo è garantito attraverso riunioni periodiche, interne
 \paragraph{Riunioni}
 Le riunioni previste dal processo di gestione dei processi sono suddivise in due categorie principali:
 \begin{itemize}
-    \item \textbf{Interne}: si svolgono tra i soli membri del gruppo e hanno luogo principalmente su \textbf{Discord\ap{G}}. Ogni \textbf{Sprint\ap{G}} ha una durata di due settimane e prevede tre incontri:
+    \item \textbf{Interne}: si svolgono tra i soli membri del gruppo e hanno luogo principalmente su Discord. Ogni Sprint ha una durata di due settimane e prevede tre incontri:
     \begin{itemize}
-        \item uno a fine \textbf{Sprint\ap{G}}, comprendente \textbf{Sprint Review\ap{G}}, \textbf{Sprint Retrospective\ap{G}} e \textbf{Sprint Planning\ap{G}}. In questa sede il \textbf{Responsabile} verifica lo stato delle attività concluse, analizza eventuali problemi riscontrati e pianifica il lavoro del successivo \textbf{Sprint\ap{G}};
-        \item due durante lo svolgimento dello \textbf{Sprint\ap{G}}, in cui venogono trattati i temi dell'ordine del giorno e ciascun membro espone le attività completate, quelle ancora in corso e le difficoltà incontrate.
+        \item uno a fine Sprint, comprendenteSprint Review Sprint Retrospective e Sprint Planning. In questa sede il \textbf{Responsabile} verifica lo stato delle attività concluse, analizza eventuali problemi riscontrati e pianifica il lavoro del successivo Sprint;
+        \item due durante lo svolgimento dello Sprint, in cui venogono trattati i temi dell'ordine del giorno e ciascun membro espone le attività completate, quelle ancora in corso e le difficoltà incontrate.
     \end{itemize}
     Per ogni riunione vengono assegnati specifici ruoli:
     \begin{itemize}
         \item \textbf{Scriba}: i membri incaricati di prendere appunti durante gli incontri;
-        \item \textbf{Portavoce}: identificato nel \textbf{responsabile\ap{G}}, che modera e coordina la discussione;
-        \item \textbf{Redattore}: responsabile della stesura del verbale e del caricamento nel \textbf{repository\ap{G}}.
+        \item \textbf{Portavoce}: identificato nel responsabile, che modera e coordina la discussione;
+        \item \textbf{Redattore}: responsabile della stesura del verbale e del caricamento nel repository.
     \end{itemize}
-    \item \textbf{Esterne}: coinvolgono anche figure esterne quali i docenti o l'azienda proponente \textbf{Miriade Srl}. Queste riunioni vengono svolte generalmente tramite \textbf{Google Meet\ap{G}}. La frequenza concordata è di un incontro al mese, con la possibilità di richiederne ulteriori qualora fossero necessari chiarimenti o approfondimenti specifici.
+    \item \textbf{Esterne}: coinvolgono anche figure esterne quali i docenti o l'azienda proponente \textbf{Miriade Srl}. Queste riunioni vengono svolte generalmente tramite Google Meet. La frequenza concordata è di un incontro al mese, con la possibilità di richiederne ulteriori qualora fossero necessari chiarimenti o approfondimenti specifici.
 \end{itemize}
 L'esito di ogni incontro, interno o esterno, deve essere registrato mediante la redazione di un verbale, secondo le modalità previste dal processo di documentazione (vedi sezione -da aggiungere-). 
 
@@ -702,7 +837,7 @@ L’infrastruttura operativa del progetto viene implementata in modo da soddisfa
 \centering Whatsapp & Piattaforma di messaggistica istantanea utilizzata per comunicazioni informali che non richiedono tracciamento. Scelta per la rapidità, l’immediatezza e la diffusione tra i membri del team. Facilita il coordinamento veloce su aspetti operativi di basso impatto.\\
 \hline
 \rowcolor{gray!20}
-\centering \textbf{Discord\ap{G}} & Strumento di comunicazione tramite canali vocali e testuali, utilizzato per le riunioni interne che necessitano di tracciamento e organizzazione strutturata. Scelto per la stabilità, la possibilità di creare canali dedicati.\\
+\centering Discord & Strumento di comunicazione tramite canali vocali e testuali, utilizzato per le riunioni interne che necessitano di tracciamento e organizzazione strutturata. Scelto per la stabilità, la possibilità di creare canali dedicati.\\
 \hline
 \rowcolor{white}
 \centering Google Meet & Piattaforma sincrona per videoconferenze utilizzata negli incontri con l’azienda proponente, in quanto standard scelto dal committente.\\
@@ -711,10 +846,10 @@ L’infrastruttura operativa del progetto viene implementata in modo da soddisfa
 \centering Google Chat & Piattaforma di messaggistica organizzata per stanze e conversazioni strutturate. Proposta dall'azienda proponente come canale asincrono per le comunicazioni.\\
 \hline
 \rowcolor{white}
-\centering \textbf{Git\ap{G}} & Sistema di versionamento distribuito utilizzato per tracciare l’evoluzione del progetto, gestire i rami di sviluppo e mantenere l’integrità dello storico. Scelto per la diffusione nel settore e la capacità di supportare efficacemente lavori collaborativi.\\
+\centering Git & Sistema di versionamento distribuito utilizzato per tracciare l’evoluzione del progetto, gestire i rami di sviluppo e mantenere l’integrità dello storico. Scelto per la diffusione nel settore e la capacità di supportare efficacemente lavori collaborativi.\\
 \hline
 \rowcolor{gray!20}
-\centering \textbf{GitHub\ap{G}} & Piattaforma cloud-based di hosting per repository Git, utilizzata per la gestione collaborativa del codice. Scelta per le funzionalità integrate (issue tracking, pull request, branching rules, code review) che supportano il processo di sviluppo.\\
+\centering GitHub & Piattaforma cloud-based di hosting per repository Git, utilizzata per la gestione collaborativa del codice. Scelta per le funzionalità integrate (issue tracking, pull request, branching rules, code review) che supportano il processo di sviluppo.\\
 \hline
 \rowcolor{white}
 \centering \LaTeX & Linguaggio di markup per la produzione di documenti tecnici e accademici. Scelto per l’elevata qualità tipografica e per la possibilità di definire template uniformi, garantendo coerenza e mantenibilità della documentazione.\\
@@ -737,6 +872,9 @@ L’infrastruttura operativa del progetto viene implementata in modo da soddisfa
 \rowcolor{white}
 \centering Script Python & Script sviluppati per automatizzare attività ricorrenti nel processo, come operazioni di generazione automatica o validazione. Scelti per la flessibilità del linguaggio e la facilità di integrazione con altre tecnologie.\\
 \hline
+\rowcolor{gray!20}
+\centering Lucid app & Strumento per la creazione di diagrammi, utilizzato per la redazione dei diagrammi UML dei casi d’uso. Scelto per la possibilità di collaborazione in tempo reale, che ha consentito a più membri del gruppo di lavorare simultaneamente.\\
+\hline
 \end{longtable}
 \end{center}
 
@@ -744,6 +882,8 @@ L’infrastruttura operativa del progetto viene implementata in modo da soddisfa
 La presente attività di \textbf{istituzione dell'infrastruttura} ha lo scopo di documentare la configurazione dell'infrastruttura per facilitarne la manutenzione e la modifica da parte dei membri del gruppo BitByBit.
 
 \paragraph{Discord}
+Discord è utilizzato come strumento per gli incontri del team e come archivio centralizzato delle risorse condivise, tra cui file e link relativi allo sviluppo e al materiale del corso.  
+Il gruppo BitByBit ha organizzato la piattaforma tramite più canali testuali, suddivisi per tipologia di contenuto (risorse di sviluppo, file e chat generale), e un canale vocale dedicato allo svolgimento delle riunioni.
 
 \paragraph{Git}
 Per garantire coerenza operativa tra tutti i membri del team, è previsto un insieme minimo di configurazioni locali che ciascun componente deve applicare al proprio ambiente Git.
@@ -752,7 +892,7 @@ Per garantire coerenza operativa tra tutti i membri del team, è previsto un ins
     \item Il membro deve assicurarsi che Git sia correttamente installato nel proprio ambiente, e che sia possibile accedere alla repository remota tramite le chiavi SSH configurate.
 \end{itemize}
 
-\paragraph{GitHub}
+\paragraph{GitHub} \label{par:p-infrastruttura-istituzione}
 La configurazione del repository è definita per supportare il workflow adottato e garantire qualità, tracciabilità e sicurezza delle modifiche.\\
 Al suo interno è possibile trovare varie directories, di seguito verranno descritte le più rilevanti.
 \begin{itemize}
@@ -769,11 +909,14 @@ Al suo interno è possibile trovare varie directories, di seguito verranno descr
 
 % ==== SEZIONE PROCESSO DI MIGLIORAMENTO ====
 \subsection{Processo di miglioramento}
-Il processo di miglioramento è il processo tramite il quale vengono analizzati, valutati, misurati e migliorati i processi del ciclo di vita.
+Il processo di miglioramento è il processo tramite il quale vengono analizzati, valutati, misurati e migliorati i processi del ciclo di vita
+
 \subsubsection{Scopo}
 Durante tutta la fase di lavoro il team si pone l'obiettivo di seguire i principi del \textbf{miglioramento continuo}. Lo scopo principale è identificare problematiche ricorrenti in processi, ruoli e situazioni dell'intero ciclo di vita in modo da poterli evitare in futuro. Dopo aver identificato tali punti critici, il team si impegna a discuterne insieme per trovare spunti di miglioramento da trasformare in \textbf{processi standardizzati}. 
+
 \subsubsection{Descrizione}
 Il miglioramento continuo rappresenta un ciclo iterativo che consente al team di adattarsi in maniera flessibile alle esigenze in evoluzione del progetto, assicurando progressi costanti e un incremento dell’efficienza operativa. Ogni fase del ciclo di vita del progetto, dalla definizione delle attività alla redazione dei documenti, riflette questo approccio.
+
 \subsubsection{Implementazione}
 Durante l’esecuzione delle attività e la stesura dei documenti, il team applica sistematicamente il principio del \textbf{miglioramento continuo}. In caso di riscontro di un problema, viene convocata una riunione interna in cui tutti i membri del team discutono l’argomento, valutando soluzioni possibili e alternative. L’applicazione pratica del miglioramento viene registrata nella sezione \textbf{“Decisioni”} del corrispondente verbale interno, comprensiva della giustificazione della scelta e del consenso tra tutti i membri del team.
 
@@ -784,8 +927,10 @@ Inoltre, tutte le problematiche rilevate e le soluzioni adottate continuano a es
 % ==== SEZIONE PROCESSO DI FORMAZIONE ====
 \subsection{Processo di formazione}
 Il processo di formazione è il processo che garantisce che il team abbia le conoscenze tecniche necessarie per svolgere il lavoro che deve portare a termine.
+
 \subsubsection{Scopo}
 Lo scopo del processo di formazione è garantire che ogni membro del team sia adeguatamente formato e competente per lo svolgimento delle attività di progetto. La formazione è considerata un fattore essenziale per assicurare la corretta acquisizione, sviluppo, utilizzo e manutenzione del prodotto software, nonché per supportare efficacemente le attività di gestione e di natura tecnica.
+
 \subsubsection{Descrizione}
 Il processo di formazione prevede l’analisi dei requisiti di progetto al fine di individuare le competenze necessarie, i ruoli coinvolti e i livelli di conoscenza richiesti. Sulla base di tale analisi, vengono definite le tipologie di formazione e le categorie di personale che necessitano di istruzione. La formazione viene pianificata e avviata sin dalle prime fasi del progetto, in modo da garantire la disponibilità tempestiva di risorse qualificate durante l’intero ciclo di vita del software.
 \subsubsection{Aspettative formative}
@@ -797,4 +942,232 @@ Il processo di formazione è finalizzato a mettere ciascun membro del gruppo nel
 \end{itemize}
 \subsubsection{Piano di formazione}
 Ciascun membro del team è tenuto a studiare in maniera autonoma gli argomenti d'interesse. L'intero team stabilisce cosa studiare durante gli incontri interni, creando issue dedicate assegnate a ciascun membro del team. Ogni membro è tenuto ad avere una visione d'insieme delle tecnologie e delle metodologie necessarie per il completamento del progetto, ma ha completa libertà per quanto riguarda i metodi di apprendimento che preferisce utilizzare. Ciascun membro è tenuto ad approfondire argomenti specifici sulla base dei compiti che gli sono stati assegnati. Al completamento di tali compiti e al termine di ogni sprint, i membri devono confrontarsi condividendo in maniera sintetica ciò che hanno imparato relativamente ai compiti che hanno portato a termine o sui quali hanno fatto progressi significativi. Questo approccio mira ad alleggerire il carico globale di studio, a garantire una maggiore velocità esecutiva e a promuovere una formazione meno teorica e più incentrata sulla comprensione globale del sistema sul quale si lavora. 
+
+\section{Metriche} \label{sec:elenco-metriche}
+Le seguenti metriche compongono il manuale delle metriche che il gruppo ha identificato per questo specifico progetto. Le metriche identificate dipendono dal preciso software che si deve sviluppare e dalle tecnologie che vengono utilizzate.
+
+\subsection{Nomenclatura}
+La nomenclatura utilizzata per le metriche è la seguente:
+\begin{center}
+    \texttt{M-<tipo>X}
+\end{center}
+dove:
+\begin{itemize}
+    \item \texttt{M}: indica la sigla per \textbf{Metrica};
+    \item \texttt{<tipo>}: indica che aspetto misura la metrica;
+    \begin{itemize}
+        \item \textbf{PD} per Prodotto;
+        \item \textbf{PC} per Processo;
+    \end{itemize}
+    \item \texttt{X}: un numero incrementale per identificare unicamente la metrica. Il conteggio è separato per le 2 tipologie.
+\end{itemize}
+
+\subsection{Metriche di Prodotto}
+La qualità del software dipende da un insieme di attributi che caratterizzano il comportamento, la struttura e l’evolvibilità del sistema nel tempo.\\
+Gli attributi di qualità considerati nel progetto sono i seguenti:
+\begin{itemize}
+    \item \textbf{complessità (complexity)}, rappresenta il grado di articolazione logica e strutturale del sistema;
+    \item \textbf{comprensibilità (understandability)}, indica la facilità con cui il software può essere letto e compreso;
+    \item \textbf{manutenibilità (maintainability)}, rappresenta la capacità del prodotto software di essere modificato, corretto o esteso;
+    \item \textbf{efficienza (efficiency)}, indica la capacità del sistema di fornire le funzionalità richieste utilizzando in modo ottimale le risorse disponibili;
+    \item \textbf{affidabilità (reliability)}, rappresenta la capacità del sistema di mantenere un livello di prestazioni accettabile quando utilizzato in condizioni specificate.
+\end{itemize}
+Le metriche di prodotto adottate nel progetto sono suddivise nelle seguenti due categorie:
+\begin{itemize}
+    \item \textbf{Metriche dinamiche}, raccolte mediante misurazioni effettuate su un programma in esecuzione. Tali metriche supportano la valutazione dell’efficienza e dell’affidabilità del sistema;
+    \item \textbf{Metriche statiche}, raccolte mediante misurazioni effettuate su rappresentazioni del sistema, quali codice sorgente, progetto o documentazione. Esse supportano la valutazione della complessità, della comprensibilità e della manutenibilità del sistema o dei suoi componenti.
+\end{itemize}
+
+\subsubsection{Metriche statiche}
+
+\paragraph{Requisiti obbligatori soddisfatti}
+\begin{itemize}
+    \item \textbf{Codice:} \texttt{M-PD1}
+    \item \textbf{Formula:} $\frac{\text{\# di requisiti obbligatori soddisfatti}}{\text{\# di requisiti obbligatori totali}}*100$
+    \item \textbf{Descrizione:} fornisce un'indicazione del grado di requisiti obbligatori che sono stati implementati nel prodotto software fino a quel momento.
+\end{itemize}
+
+\paragraph{Requisiti desiderabili soddisfatti}
+\begin{itemize}
+    \item \textbf{Codice:} \texttt{M-PD2} 
+    \item \textbf{Formula:} $\frac{\text{\# di requisiti desiderabili soddisfatti}}{\text{\# di requisiti desiderabili totali}}*100$
+    \item \textbf{Descrizione:} fornisce un'indicazione del grado di requisiti desiderabili che sono stati implementati nel prodotto software fino a quel momento.
+\end{itemize}
+
+\paragraph{Requisiti opzionali soddisfatti}
+\begin{itemize}
+    \item \textbf{Codice:} \texttt{M-PD3} 
+    \item \textbf{Formula:} $\frac{\text{\# di requisiti opzionali soddisfatti}}{\text{\# di requisiti opzionali totali}}*100$
+    \item \textbf{Descrizione:} fornisce un'indicazione del grado di requisiti opzionali che sono stati implementati nel prodotto software fino a quel momento. 
+\end{itemize}
+
+\paragraph{Defect Density (DD)}
+\begin{itemize}
+    \item \textbf{Codice:} \texttt{M-PD4} 
+    \item \textbf{Formula:} $DD=\frac{\text{\# di difetti}}{KLOC}$
+    \item \textbf{Descrizione:} misura quanti difetti trovati in 1000 linee di codice (\textbf{KLOC}, \textbf{Kilo Lines Of Code}). Migliora la qualità del codice e la sua mantenibilità.
+\end{itemize}
+
+\paragraph{Cyclomatic Complexity}
+\begin{itemize}
+    \item \textbf{Codice:} \texttt{M-PD5}
+    \item \textbf{Formula:} $E - N + 2P$
+    \item \textbf{Descrizione:} misura la complessità di un programma contandone i percorsi linearmente indipendenti. Fornisce un'indice sulla complessità logica del codice.
+    \begin{itemize}
+        \item \textbf{$E$} = numero di archi nel grafo
+        \item \textbf{$N$} = numero di nodi nel grafo
+        \item \textbf{$E$} = numero di componenti connesse ad ogni arco
+    \end{itemize}
+\end{itemize}
+
+\paragraph{Lenght of code}
+\begin{itemize}
+    \item \textbf{Codice:} \texttt{M-PD6}
+    \item \textbf{Formula:} $\text{\# di linee di codice per una componente software}$
+    \item \textbf{Descrizione:} misura la dimensione di un componente software. Più è grande una componente software maggiore sarà la possibilità di sviluppare errori.
+\end{itemize}
+
+\paragraph{Depth of Conditional Nesting (DCN)}
+\begin{itemize}
+    \item \textbf{Codice:} \texttt{M-PD7}
+    \item \textbf{Formula:} $DCN=\max(\text{\# di strutture annidate})$
+    \item \textbf{Descrizione:} misura la profondità massima di annidamento delle strutture condizionali (\texttt{if}, \texttt{else if}, \texttt{switch}) presenti nel codice. Un maggiore annidamento rende difficile la comprensione del codice.
+\end{itemize}
+
+\subsubsection{Metriche dinamiche}
+\paragraph{Defect Leakeage}
+\begin{itemize}
+    \item \textbf{Codice:} \texttt{M-PD8}
+    \item \textbf{Formula:} $\frac{\text{\# difetti dopo il rilascio}}{\text{\# difetti trovati durante fase di test}}*100$
+    \item \textbf{Descrizione:} Tiene traccia di quanti difetti vengono trasferiti in produzione dopo i test.
+\end{itemize}
+
+\paragraph{Defect Removal Efficenty (DRE)}
+\begin{itemize}
+    \item \textbf{Codice:} \texttt{M-PD9}
+        \item \textbf{Formula:} $DRE=\frac{\text{difetti trovati prima del rilascio}}{\text{difetti prima del rilascio + difetti dopo}}*100$
+    \item \textbf{Descrizione:} mostra la percentuale di difetti rilevati e rimossi prima del rilascio. Aiuta a misurare l'efficacia del processo di accertamento della qualità. 
+\end{itemize}
+
+\paragraph{Bug Rate per Test Case}
+\begin{itemize}
+    \item \textbf{Codice:} \texttt{M-PD10}
+    \item \textbf{Formula:} $\frac{\text{\# bug individuati}}{\text{\# test case eseguiti}}\cdot 100$
+    \item \textbf{Descrizione:} misura il numero medio di difetti rilevati. La metrica fornisce un’indicazione dell’efficacia dei test e della qualità del software nelle fasi di test.
+\end{itemize}
+
+% ==== METRICHE DI PROCESSSO ====
+\subsection{Metriche di processo}
+
+\subsubsection{Fornitura}
+
+\paragraph{Budget at Completion (BAC)}
+\begin{itemize}
+    \item \textbf{Codice:} \texttt{M-PC1}
+    \item \textbf{Formula:} $BAC=\text{budget totale pianificato per il progetto}$
+    \item \textbf{Descrizione:} rappresenta il costo totale pianificato del progetto al momento della definizione del piano. Rappresenta una metrica di riferimento per altre misurazioni.
+\end{itemize}
+
+\paragraph{Planned Value (PV)}
+\begin{itemize}
+    \item \textbf{Codice:} \texttt{M-PC2}
+    \item \textbf{Formula:} $PV=(\text{BAC})\cdot(\text{\% di lavoro pianificata nello sprint})$
+    \item \textbf{Descrizione:} rappresenta il preventivo per i costi del lavoro che si intende eseguire durante uno sprint di progetto
+\end{itemize}
+
+\paragraph{Actual Cost (AC)}
+\begin{itemize}
+    \item \textbf{Codice:} \texttt{M-PC3}
+    \item \textbf{Formula:} $AC=\text{costo effettivo sostenuto in uno sprint}$
+    \item \textbf{Descrizione:} rappresenta i costi effettivamente sostenuti per completare il lavoro svolto durante uno sprint di progetto
+\end{itemize}
+
+\paragraph{Earned Value (EV)}
+\begin{itemize}
+    \item \textbf{Codice:} \texttt{M-PC4}
+    \item \textbf{Formula:} $EV=\frac{\text{\# di issue completate}}{\text{\# di issue pianificate}}*PV$
+    \item \textbf{Descrizione:} rappresenta il valore del lavoro realmente completato rispetto a quanto pianificato. Consente di valutare l’avanzamento effettivo del progetto indipendentemente dai costi sostenuti.
+\end{itemize}
+
+\paragraph{Schedule Performance Index (SPI)}
+\begin{itemize}
+    \item \textbf{Codice:} \texttt{M-PC5}
+    \item \textbf{Formula:} $SPI=\frac{\text{EV}}{\text{PV}}$
+    \item \textbf{Descrizione:} misura l'efficacia della gestione del tempo. Esso confronta la quantità di lavoro effettivamente completata con la quantità di lavoro pianificata. Un valore $=1$ indica che il progetto è in linea con il piano stabilito, un valore $<1$ evidenzia un ritardo.
+\end{itemize}
+
+\paragraph{Cost Performance Index (CPI)}
+\begin{itemize}
+    \item \textbf{Codice:} \texttt{M-PC6}
+    \item \textbf{Formula:} $CPI=\frac{\text{EV}}{\text{AC}}$
+    \item \textbf{Descrizione:} misura l'efficienza con cui il progetto utilizza il proprio budget. Un valore $\geq 1$ indica che si sta rispettando il buget prefissato.
+\end{itemize}
+
+\paragraph{Estimate at Completion (EAC)}
+\begin{itemize}
+    \item \textbf{Codice:} \texttt{M-PC7}
+    \item \textbf{Formula:} $EAC=\frac{\text{BAC}-\text{EV}}{\text{CPI}}$
+    \item \textbf{Descrizione:} stima il costo totale del progetto al completamento, assumendo che l’andamento futuro segua l’efficienza attuale. Viene confrontato con il Budget at Completition per individuare potenziali scostamenti.
+\end{itemize}
+
+\paragraph{Estimate to Complete (ETC)}
+\begin{itemize}
+    \item \textbf{Codice:} \texttt{M-PC8}
+    \item \textbf{Formula:} $ETC=EAC-AC$
+    \item \textbf{Descrizione:} misura il costo previsto per completare il lavoro rimanente del progetto escludendo i costi già sostenuti.
+\end{itemize}
+
+\subsubsection{Verifica}
+\paragraph{Code Coverage}
+\begin{itemize}
+    \item \textbf{Codice:} \texttt{M-PC9}
+    \item \textbf{Formula:} $CC=\frac{\text{\# linee di codice testate}}{\text{\# linee di codice totali}}*100$
+    \item \textbf{Descrizione:} misura la percentuale di codice soggetto a test. 
+\end{itemize}
+
+\paragraph{Requirements Coverage (RC)}
+\begin{itemize}
+    \item \textbf{Codice:} \texttt{M-PC10}
+    \item \textbf{Formula:} $\frac{\text{\# requisiti testati}}{\text{\# requisiti totali}}*100$
+    \item \textbf{Descrizione:} Indica la percentuale di requisiti che hanno test case corrispondenti. Garantisce che tutti i requisiti documentati siano verificati.
+\end{itemize}
+
+\subsubsection{Documentazione}
+\paragraph{Indice di Gulpease}
+\begin{itemize}
+    \item \textbf{Codice:} \texttt{M-PC11}
+    \item \textbf{Formula:} $89 + \frac{300 \cdot (\text{numero di frasi}) - 10 \cdot (\text{numero di lettere})}{\text{numero di parole}}$
+    \item \textbf{Descrizione:} indice di leggibilità tarato su testi in lingua italiana. In generale risulta che testi con un indice:
+    \begin{itemize}
+        \item \textbf{inferiore a 80} sono difficili da leggere per chi ha la licenza elementare
+        \item \textbf{inferiore a 60} sono difficili da leggere per chi ha la licenza media
+        \item \textbf{inferiore a 40} sono difficili da leggere per chi ha un diploma superiore
+    \end{itemize}
+\end{itemize}
+
+\paragraph{Document Coverage Ratio (DCR)}
+\begin{itemize}
+    \item \textbf{Codice:} \texttt{M-PC12}
+    \item \textbf{Formula:} $\frac{\text{\# sezioni documentate}}{\text{\# sezioni previste dallo standard o dal piano}} * 100$
+    \item \textbf{Descrizione:} misura il grado di completezza della documentazione prodotta rispetto alle sezioni previste dai piani e dagli standard adottati. 
+    Supporta il processo di documentazione e l’accertamento della conformità agli standard di progetto.
+\end{itemize}
+
+\subsubsection{Accertamento della qualità}
+\paragraph{Satisfied Metrics}
+\begin{itemize}
+    \item \textbf{Codice:} \texttt{M-PC13}
+    \item \textbf{Formula:} $MS=\frac{\text{\# metriche soddisfatte}}{\text{\# metriche totali}}*100$
+    \item \textbf{Descrizione:} misura la percentuale di metriche che sono state soddisfatte durante uno sprint. Una metrica viene considerata soddisfatta quando presenta un valore accettabile.
+\end{itemize}
+
+\subsubsection{Gestione dei processi}
+\paragraph{Sprint Commitment Reliability (SCR)}
+\begin{itemize}
+    \item \textbf{Codice:} \texttt{M-PC14}
+    \item \textbf{Formula:} $\frac{\text{\# issue completate nello sprint}}{\text{\# issue pianificate}} * 100$
+    \item \textbf{Descrizione:} misura la capacità del team di rispettare gli impegni pianificati per lo sprint.
+    Supporta la valutazione della qualità della pianificazione e della stabilità del processo di sviluppo.
+\end{itemize}
+
 \end{document}
