@@ -138,6 +138,9 @@ Ferdinando Fracasso\\
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
+\rowcolor{white}
+0.11.2 & 2026-01-11 & Dennis Parolin & Aggiunti gl istrumenti di supporto delle sezioni "Processo di verifica", "Processo di validazione" e "Codifica". Aggiunta la lista delle tabelle. & Riccardo Manisi \\
+\hline
 \rowcolor{gray!20}
 0.11.1 & 2026-01-10 & Dennis Parolin & Sistemate le sezioni "Processo di verifica" e "Processo di validazione" tra i Processi di Supporto. Sistemata la sezione "Codifica" tra i Processi Primari. & Riccardo Manisi\\
 \hline
@@ -199,6 +202,11 @@ Ferdinando Fracasso\\
 \tableofcontents
 \thispagestyle{empty} % senza numero di pagina per l'indice
 \clearpage
+
+\listoftables
+\thispagestyle{empty}
+\clearpage
+% ===============================
 
 \section{Introduzione}
 \subsection{Scopo del documento}
@@ -422,6 +430,19 @@ Al fine di mantenere il codice robusto e testabile, il gruppo adotta le seguenti
     \item \textbf{Semplicità delle funzioni}: le funzioni devono essere brevi e focalizzate su una singola responsabilità. Una funzione eccessivamente lunga o complessa è indice di cattiva progettazione e deve essere rifattorizzata.
 \end{itemize}
 
+\subsubsection{Strumenti a supporto della codifica}
+L'applicazione delle norme di codifica è facilitata da un set di strumenti che accompagna lo sviluppatore dalla scrittura fino all'integrazione.
+
+\paragraph{Ambiente di Sviluppo}
+Il gruppo ha uniformato l'ambiente di lavoro adottando \textbf{Visual Studio Code} come IDE di riferimento.
+
+\paragraph{Automazione e CI}
+Gli strumenti critici per il mantenimento dello standard, le cui specifiche tecniche verranno consolidate durante la Product Baseline (PB), sono classificabili in:
+\begin{itemize}
+    \item \textbf{Linter e Formatter}: strumenti di analisi statica specifici per linguaggio che rilevano violazioni stilistiche in tempo reale all'interno dell'IDE.
+    \item \textbf{GitHub Actions}: piattaforma utilizzata per i controlli remoti bloccanti (Quality Gate), che assicura che nessun codice non conforme venga integrato nel ramo \texttt{develop}.
+\end{itemize}
+
 % ==== SEZIONE PROCESSI DI SUPPORTO ====
 \section{Processi di supporto}
 La presente sezione espone i seguenti processi di supporto:
@@ -503,7 +524,7 @@ Il frontespizio possiede i seguenti elementi:
 \end{itemize}
 
 \subsubsection*{Storico del documento}
-Nella prima pagina dopo il frontespizion deve essere presente il registro delle modifiche apportate al documento. Le entry della tabella devono essere in ordine cronologico in modo che la prima entry faccia riferimento alla modifica più recente. 
+Nella prima pagina dopo il frontespizio deve essere presente il registro delle modifiche apportate al documento. Le entry della tabella devono essere in ordine cronologico in modo che la prima entry faccia riferimento alla modifica più recente.
 \\Ogni entry deve essere composta da:
 \begin{enumerate}
     \item \textbf{versione};
@@ -511,20 +532,24 @@ Nella prima pagina dopo il frontespizion deve essere presente il registro delle 
     \item \textbf{autore della modifica};
     \item \textbf{verificatore}, il nome del verificatore che ha verificato quella modifica.
 \end{enumerate}
-\begin{center}
-\small
-\renewcommand{\arraystretch}{1.2} 
-\arrayrulecolor{black}
-\begin{tabular}{|p{0.1\linewidth}|p{0.18\linewidth}|p{0.18\linewidth}|p{0.18\linewidth}|p{0.18\linewidth}|}
-\hline
-\rowcolor{gray!60} 
-\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
-\hline
-\rowcolor{white}
- &  &  &  &  \\
- \hline
-\end{tabular}
-\end{center}
+
+\begin{table}[h]
+    \begin{center}
+    \small
+    \renewcommand{\arraystretch}{1.2}
+    \arrayrulecolor{black}
+    \begin{tabular}{|p{0.1\linewidth}|p{0.18\linewidth}|p{0.18\linewidth}|p{0.18\linewidth}|p{0.18\linewidth}|}
+    \hline
+    \rowcolor{gray!60}
+    \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+    \hline
+    \rowcolor{white}
+    & & & & \\
+    \hline
+    \end{tabular}
+    \end{center}
+    \caption{Esempio di tabella dello storico di un documento}
+\end{table}
 
 \subsubsection*{Indice}
 Ogni documento deve presentare un indice delle sezioni e sottosezioni per facilitare la navigazione dei lettori all'interno dello stesso documento.
@@ -774,6 +799,13 @@ Per garantire la qualità dei documenti, il gruppo valuta due metodologie:
 \end{itemize}
 Tra le due, il gruppo \textit{BitByBit} adotta come standard l'\textbf{Ispezione}. L'uso di checklist predefinite garantisce infatti un processo ripetibile, oggettivo e meno soggetto a errori umani rispetto alla revisione libera.
 
+\paragraph{Strumenti per la verifica documentazione}
+Poiché il gruppo ha adottato la tecnica dell'\textbf{Ispezione} basata su checklist, la verifica della documentazione non richiede strumenti di automazione complessi, ma si avvale delle piattaforme di sviluppo e collaborazione:
+\begin{itemize}
+    \item \textbf{GitHub}: è lo strumento principale. L'interfaccia delle Pull Request permette ai verificatori di commentare righe specifiche del documento, richiedere modifiche e approvare il lavoro solo quando la checklist di verifica è soddisfatta.
+    \item \textbf{VS Code}: viene utilizzato dai verificatori per il controllo locale dei file sorgente (LaTeX/Markdown), permettendo di individuare errori di sintassi o formattazione non visibili dall'interfaccia web prima di dare l'approvazione.
+\end{itemize}
+
 \subsubsection{Verifica del Codice Software}
 La verifica del software si articola in due momenti distinti: l'analisi del codice sorgente (statica) e l'esecuzione dei test (dinamica).
 
@@ -809,6 +841,9 @@ Il gruppo struttura i test secondo il modello a V, coprendo i seguenti livelli:
     \item \textbf{Test di Regressione}: Riesecuzione automatica della suite di test esistente ad ogni modifica, per garantire che le nuove feature non abbiano corrotto funzionalità preesistenti.
 \end{enumerate}
 
+\paragraph{Strumenti per la verifica del codice}
+La definizione puntuale degli strumenti tecnici per la verifica del codice (es. framework di unit testing, linter specifici per linguaggio, strumenti di analisi statica e coverage) sarà effettuata e dettagliata durante lo svolgimento della \textbf{Product Baseline} (PB), in coerenza con le tecnologie che verranno consolidate in quella fase.
+
 \subsubsection{Classificazione dei Test}
 Per garantire l'ordine nel \textbf{Piano di Qualifica}, il gruppo adotta una nomenclatura univoca per il tracciamento:
 \begin{center}
@@ -840,6 +875,22 @@ Questo approccio metodologico garantisce che non venga sviluppato codice non ric
 La validazione si concretizza con l'esecuzione dei \textbf{Test di Accettazione} (UAT - User Acceptance Testing).
 In questa fase il gruppo non si limita a verificare l'assenza di errori, ma simula scenari di utilizzo reali (User Scenarios) per valutare il comportamento del sistema dal punto di vista dell'utente finale.
 Il superamento di questi test certifica che il prodotto supporta efficacemente i processi lavorativi richiesti. In caso di fallimento di un test di accettazione il prodotto viene respinto e rimandato alla fase di sviluppo per le necessarie correzioni, seguite da una regressione per confermare la risoluzione delle non conformità.
+
+\subsubsection{Strumenti a supporto della validazione}
+Analogamente alla verifica, anche il processo di validazione si avvale di strumenti specifici per gestire la complessità del tracciamento e l'esecuzione dei test.
+
+\paragraph{Strumenti per il tracciamento}
+La gestione manuale della matrice di tracciamento è soggetta ad errori umani. Per questo motivo il gruppo utilizza:
+\begin{itemize}
+    \item \textbf{Script di automazione}: verranno impiegati script interni (o tool esterni integrati) capaci di scansionare i file sorgente della documentazione e del codice per generare e aggiornare automaticamente le tabelle di tracciamento (Requisiti-Fonti e Requisiti-Test).
+\end{itemize}
+
+\paragraph{Strumenti per l'esecuzione e il reporting}
+Per l'effettuazione pratica dei test di accettazione:
+\begin{itemize}
+    \item \textbf{Ambiente di Deployment}: i test verranno eseguiti su un'istanza del software deployata in un ambiente il più possibile simile a quello di produzione, accessibile tramite Browser Web standard (Chrome/Firefox).
+    \item \textbf{GitHub Issues}: qualsiasi anomalia o comportamento inatteso riscontrato durante la validazione (test fallito) verrà tracciato aprendo una Issue dedicata su GitHub, etichettata specificamente come bug di validazione per distinguerla dai difetti tecnici di sviluppo.
+\end{itemize}
 
 % ==== SEZIONE PROCESSI ORGANIZZATIVI ====
 \section{Processi organizzativi del ciclo di vita}
@@ -900,6 +951,7 @@ Le attività previste dal processo di gestione dei processi sono articolate come
 \rowcolor{gray!20}
 \centering Verificatore & Ha il compito di assicurarsi che le attività vengano svolte correttamente seguendo i processi di ciclo di vita. Si occupa di eseguire test approfonditi e revisioni sul software. Ha il compito di verificare le modifiche apportate ai vari documenti ed eventualemente esponendo le criticità che presentano, deve perciò avere un'approfondita conoscenza dei requisiti per ogni processo di vita.\\
 \hline
+\caption{Descrizione dei ruoli del progetto e delle loro responsabilità} \\
 \end{longtable}
 \end{center}
 
@@ -1001,6 +1053,7 @@ L’infrastruttura operativa del progetto viene implementata in modo da soddisfa
 \rowcolor{gray!20}
 \centering Lucid app & Strumento per la creazione di diagrammi, utilizzato per la redazione dei diagrammi UML dei casi d’uso. Scelto per la possibilità di collaborazione in tempo reale, che ha consentito a più membri del gruppo di lavorare simultaneamente.\\
 \hline
+\caption{Strumenti utilizzati per l'infrastruttura} \\
 \end{longtable}
 \end{center}
 

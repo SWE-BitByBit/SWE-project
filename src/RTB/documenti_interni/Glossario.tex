@@ -90,12 +90,13 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & in corso \\
-\textbf{Versione:} & 0.3.2 \\
+\textbf{Versione:} & 0.3.3 \\
 \textbf{Redattori:} & 
 \begin{tabular}[t]{@{}l@{}}
 Ferdinando Fracasso \\
 Riccardo Manisi \\
 Giovanni Visentin \\
+Dennis Parolin \\
 \end{tabular} \\
 \textbf{Verificatori:} & 
 \begin{tabular}[t]{@{}l@{}}
@@ -103,7 +104,7 @@ Gabriele Scaggiante \\
 Dennis Parolin \\
 Giovanni Visentin \\
 \end{tabular} \\
-\textbf{Responsabile:} & Ferdinando Fracasso \\
+\textbf{Responsabile:} & Giovanni Visentin \\
 \textbf{Destinatari:} & 
 \begin{tabular}[t]{@{}l@{}}
 Gruppo BitByBit \\
@@ -125,6 +126,9 @@ Gruppo BitByBit \\
 \hline
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+\hline
+\rowcolor{white}
+0.3.3 & 2026-01-11 & Dennis Parolin & Aggiunti Termini & Riccardo Manisi \\
 \hline
 \rowcolor{gray!20}
 0.3.2 & 2025-12-23 & Riccardo Manisi & Aggiunta sezione info generali documenti e migliorato layout & Dennis Parolin\\
@@ -166,14 +170,28 @@ Il presente documento ha lo scopo di raccogliere i termini tecnici utilizzati al
 \section{A}
 
 \subsection*{Agile development}
-Metodo per lo sviluppo sw ideato per produrre sw utile nel minor tempo possibile. Il sistema è sviluppato attraverso una serie di incrementi a cui partecipano anche gli stakeholders e gli utenti finali per una maggiore comunicazione in fase di sviluppo. I risultati di ogni incremento vengono utilizzati come base per la pianificazione del prossimo.  
-Attività centrali sono: il \textbf{design} e \textbf{l'implementazione}.  
+Metodo per lo sviluppo sw ideato per produrre sw utile nel minor tempo possibile. Il sistema è sviluppato attraverso una serie di incrementi a cui partecipano anche gli stakeholders e gli utenti finali per una maggiore comunicazione in fase di sviluppo. I risultati di ogni incremento vengono utilizzati come base per la pianificazione del prossimo.  
+Attività centrali sono: il \textbf{design} e \textbf{l'implementazione}.  
 La stesura di un documento dei requisiti è superflua in quanto i requisiti cambiano così velocemente che il documento è obsoleto non appena viene scritto.
 
 \subsection*{Analisi dei requisiti}
-Stabilisce esattamente cosa deve essere implementato nel sistema, cioè elenca i requisiti lato soluzione (requisiti software).  
-Può essere parte del contatto con l’acquirente.  
+Stabilisce esattamente cosa deve essere implementato nel sistema, cioè elenca i requisiti lato soluzione (requisiti software).  
+Può essere parte del contatto con l’acquirente.  
 Può essere soggetto a modifiche durante lo sviluppo del prodotto sw.
+
+\subsection*{Analisi Dinamica}
+Tecnica di verifica che richiede l'esecuzione del codice software su un processore (reale o virtuale).
+\begin{itemize}
+    \item Il suo obiettivo è osservare il comportamento del sistema in risposta a determinati input per rilevare malfunzionamenti (failure).
+    \item Include le attività di testing (Unità, Integrazione, Sistema).
+\end{itemize}
+
+\subsection*{Analisi Statica}
+Tecnica di verifica che non prevede l'esecuzione del codice.
+\begin{itemize}
+    \item Si basa sull'esame dei documenti o del codice sorgente per individuare difetti di forma, sintassi o logica.
+    \item Include attività come l'ispezione, il walkthrough e l'uso di strumenti automatici (linter).
+\end{itemize}
 
 \subsection*{Architettura}
 Organizzazione generale del sistema e dei suoi componenti.
@@ -186,11 +204,24 @@ Organizzazione generale del sistema e dei suoi componenti.
 \subsection*{Baseline}
 Versione approvata di un prodotto di lavoro (di progetto) che può essere modificato solo attraverso procedure formali di controllo delle modifiche.
 
+\subsection*{Black-box (Testing)}
+Metodologia di test in cui il verificatore non conosce o ignora la struttura interna del sistema (codice sorgente).
+\begin{itemize}
+    \item I test sono progettati basandosi esclusivamente sulle specifiche dei requisiti (input e output attesi).
+    \item È nota anche come testing funzionale.
+\end{itemize}
+
 \subsection*{Board di progetto}
 Rappresenta un'organizzazione delle attività, nel contesto di GitHub identificate tramite le issue. Può contenere tutte le attività di un progetto o solo un sottoinsieme con caratteristiche precise.
 
+\subsection*{Boundary Analysis (Analisi dei Valori Limite)}
+Tecnica di progettazione dei test black-box che si concentra sui valori ai margini delle classi di equivalenza degli input (es. minimo, massimo, appena sopra, appena sotto). È utilizzata perché i difetti si nascondono spesso ai bordi dei range di input validi.
+
 \subsection*{Branch}
 Versione parallela del repository. È contenuto all'interno del repository, ma non ha effetti sul branch principale. Permette di lavorare senza interrompere la versione stabile corrente.
+
+\subsection*{Bugfix}
+Intervento di manutenzione correttiva volto a risolvere un difetto (bug) riscontrato nel software. Include la diagnosi del problema, la modifica del codice e la successiva verifica.
 
 \clearpage
 
@@ -198,13 +229,23 @@ Versione parallela del repository. È contenuto all'interno del repository, ma n
 \section{C}
 
 \subsection*{Capitolato}
-Documento che contiene le specifiche di un progetto software. Viene redatto dal proponente e presentato ai fornitori interessati a partecipare all'appalto.  
+Documento che contiene le specifiche di un progetto software. Viene redatto dal proponente e presentato ai fornitori interessati a partecipare all'appalto. 
 Presenta aspettative, vincoli, e suggerimenti. Descrive i requisiti lato bisogno (requisiti utente).
+
+\subsection*{Checklist}
+Lista di controllo strutturata utilizzata durante le ispezioni per guidare il verificatore. Contiene un elenco di criteri ed errori comuni da cercare nell'artefatto esaminato, garantendo che nessun aspetto critico venga trascurato.
+
+\subsection*{CI/CD (Continuous Integration / Continuous Delivery)}
+Insieme di pratiche e strumenti che automatizzano le fasi di integrazione, test e rilascio del software.
+\begin{itemize}
+    \item \textbf{CI}: integra frequentemente le modifiche di codice in un repository condiviso, eseguendo build e test automatici.
+    \item \textbf{CD}: automatizza il rilascio del software negli ambienti di test o produzione.
+\end{itemize}
 
 \subsection*{Ciclo di vita}
 È composto da un'insieme di stati che descrivono l'avanzamento del prodotto software dalla concezione all'utilizzo fino al ritiro.
-Si riferisce alla completa durata dello sviluppo del prodotto, dal concepimento alla fine, che deve essere garantita.  
-È composto da stati in cui si ha una certa sequenza di passaggi da seguire. La transizione da uno stato all’altro avviene come conseguenza di un processo di ciclo di vita.  
+Si riferisce alla completa durata dello sviluppo del prodotto, dal concepimento alla fine, che deve essere garantita. 
+È composto da stati in cui si ha una certa sequenza di passaggi da seguire. La transizione da uno stato all’altro avviene come conseguenza di un processo di ciclo di vita. 
 In seguito al ritiro il prodotto può essere rimesso in vita, per questo viene indicato con ciclo.
 
 \subsection*{Committente}
@@ -213,6 +254,9 @@ Colui che ordina l'esecuzione di un prodotto ad un ente esterno, il fornitore. �
 \subsection*{Configuration Item}
 Identifica una componente o un elemento infrastrutturale che deve essere gestito e monitorato per garantire la corretta erogazione dei servizi software.
 
+\subsection*{Continuous Verification}
+Approccio che integra la verifica (statica e dinamica) in ogni fase del flusso di sviluppo, anziché posticiparla alla fine. Nel contesto del gruppo, è implementata tramite policy che impediscono il merge di codice non verificato.
+
 \subsection*{Contratto}
 Documento (legale) stilato tra committente e fornitore.
 
@@ -220,6 +264,14 @@ Documento (legale) stilato tra committente e fornitore.
 
 % ==============================
 \section{D}
+
+\subsection*{Deployment}
+Il processo di messa in opera di un sistema software o di un aggiornamento in un ambiente specifico (es. ambiente di staging o di produzione), rendendolo disponibile per l'uso o per il collaudo.
+
+\subsection*{Driver}
+Componente software fittizio utilizzato nei test di integrazione (strategia Bottom-Up). Simula il comportamento di un modulo di livello superiore che deve chiamare e pilotare il modulo sotto test, passandogli gli input necessari.
+
+\clearpage
 
 % ==============================
 \section{E}
@@ -230,11 +282,30 @@ Documento (legale) stilato tra committente e fornitore.
 % ==============================
 \section{G}
 
+\subsection*{Git Flow}
+Modello di gestione dei branch in Git che definisce ruoli specifici per i diversi rami (es. \texttt{main}, \texttt{develop}, \texttt{feature/*}) e regole precise per la loro interazione, facilitando il lavoro parallelo e il rilascio di versioni.
+
+\subsection*{GitHub Actions}
+Piattaforma di integrazione continua (CI) e distribuzione continua (CD) integrata in GitHub, che permette di automatizzare i flussi di lavoro di compilazione, test e deployment direttamente dal repository.
+
+\clearpage
+
 % ==============================
 \section{H}
 
 % ==============================
 \section{I}
+
+\subsection*{IDE (Integrated Development Environment)}
+Applicazione software che fornisce agli sviluppatori strumenti completi per lo sviluppo software. Include solitamente un editor di codice, strumenti di build automation, un debugger e funzionalità di intellisense (es. Visual Studio Code).
+
+\subsection*{Ispezione (Inspection)}
+Tecnica formale di analisi statica in cui un verificatore esamina un artefatto (codice o documento) in autonomia, utilizzando una checklist per individuare discrepanze rispetto agli standard. È un processo rigoroso e documentato.
+
+\subsection*{Issue}
+Unità di lavoro tracciata su un sistema di gestione progetti (es. GitHub). Nel contesto della validazione, viene utilizzata per tracciare anomalie o bug riscontrati durante i test.
+
+\clearpage
 
 % ==============================
 \section{J}
@@ -245,8 +316,16 @@ Documento (legale) stilato tra committente e fornitore.
 % ==============================
 \section{L}
 
+\subsection*{Linter}
+Strumento di analisi statica automatizzata che analizza il codice sorgente per segnalare errori di programmazione, bug, errori stilistici e costrutti sospetti.
+
+\clearpage
+
 % ==============================
 \section{M}
+
+\subsection*{Matrice di Tracciamento}
+Tabella che mappa le relazioni tra i requisiti e altri artefatti del progetto, in particolare i test. Serve a garantire che ogni requisito abbia almeno un test associato (copertura) e che ogni test sia giustificato da un requisito.
 
 \subsection*{Milestone}
 Strumento utilizzato nella gestione di progetto per fissare una data di calendario che descrive degli obiettivi che portano un avanzamento nello sviluppo di progetto.  
@@ -335,8 +414,19 @@ Modifiche proposte da un repository inviate da un utente e accettate o scartate 
 % ==============================
 \section{Q}
 
+\subsection*{Quality Gate}
+Punto di controllo nel ciclo di vita del software che il progetto deve superare per passare alla fase successiva. Nel contesto della CI/CD, è un insieme di criteri automatici (es. "nessun test fallito") che bloccano il merge se non soddisfatti.
+
+\clearpage
+
 % ==============================
 \section{R}
+
+\subsection*{Refactoring}
+Processo di ristrutturazione del codice esistente senza modificarne il comportamento esterno. L'obiettivo è migliorare la leggibilità, ridurre la complessità e facilitare la manutenzione futura.
+
+\subsection*{Regressione}
+Malfunzionamento introdotto involontariamente in una funzionalità precedentemente funzionante a seguito di una modifica al codice (es. bugfix o nuova feature).
 
 \subsection*{Release}
 Una versione particolare di un configuration item resa disponibile per uno scopo specifico.
@@ -353,20 +443,25 @@ Funzionalità che il sistema deve offrire.
 \subsection*{Requisito non funzionale}
 Vincolo di qualità (prestazioni, sicurezza, usabilità, manutentibilità).
 
-\subsection*{Requisito utente}
-Requisiti astratti di alto livello.  
-Dichiarazioni in linguaggio naturale (e anche diagrammi) dei servizi che il sistema dovrebbe fornire agli utenti e dei vincoli che deve rispettare.
-
 \subsection*{Requisito software}
 Descrizioni dettagliate delle funzioni, servizi e vincoli di sistema, inseriti nel documento di analisi dei requisiti.
+
+\subsection*{Requisito utente}
+Requisiti astratti di alto livello.  
+Dichiarazioni in linguaggio naturale (e anche diagrammi) dei servizi che il sistema dovrebbe fornire agli utenti e dei vincoli che deve rispettare.
 
 \subsection*{RTB}
 Sigla per \textbf{Requirements and Tecnology Baseline}. Rappresenta una baseline di progetto. Produce la lista dei requisiti funzionali e non funzionali da soddisfare, stati stabiliti con la proponente e il PoC.
 
 \clearpage
-
 % ==============================
 \section{S}
+
+\subsection*{Self-documenting code}
+Codice scritto in modo talmente chiaro (tramite nomi significativi di variabili e funzioni) da rendere superflui i commenti esplicativi per comprenderne il funzionamento logico.
+
+\subsection*{SemVer}
+Sigla per \textbf{Semantic Versioning}. Metodologia composta da un'insieme di regole e vincoli che specifica come i numeri di versione sono incrementati e assegnati.
 
 \subsection*{Sprint}
 Breve periodo di tempo, dalla durata prefissata, in cui un team lavora per completare le attività elencate nello sprint backlog di quel preciso sprint.
@@ -374,23 +469,45 @@ Breve periodo di tempo, dalla durata prefissata, in cui un team lavora per compl
 \subsection*{Sprint backlog}
 Lista degli item riferita ad un particolare sprint di progetto. Gli item al suo interno possono essere scomposti in attività più piccole, ma non possono essere mai eliminati.
 
+\subsection*{Sprint Retrospective}
+Riunione che viene fatta con la sola presenza dei membri del team per identificare le attività portate a termine e i problemi insorti durante la loro esecuzione.
+Ha l'obiettivo di identificare i potenziali errori fatti.
+
 \subsection*{Sprint Review}
 Riunione, fatta alla fine di uno sprint, che consta di una revisione per identificare il progresso eseguito sul prodotto. Partecipano anche gli stakeholders.
-
-\subsection*{Sprint Retrospective}
-Riunione che viene fatta con la solo presenza dei membri del team per identificare le attività portate a termine e i problemi insorti durante la loro esecuzione.
-Ha l'obiettivo di identificare i potenziali errori fatti.
 
 \subsection*{Stakeholder}
 Tutti coloro che a vario titolo hanno influenza sul prodotto e sul progetto: utenti, committente, fornitore, regolatori.
 
-\subsection*{SemVer}
-Sigla per \textbf{Sematinc Versioning}. Metodologia composta da un'insieme di regole e vincoli che dpecifica come i numeri di versione sono incrementati e assegnati.
+\subsection*{Statement Coverage}
+Metrica di copertura del codice che indica la percentuale di istruzioni (righe di codice) eseguite almeno una volta durante i test automatici.
+
+\subsection*{Stub}
+Componente software fittizio utilizzato nei test di integrazione (strategia Top-Down). Simula il comportamento di un modulo di livello inferiore non ancora implementato, fornendo risposte predefinite alle chiamate del modulo sotto test.
 
 \clearpage
 
 % ==============================
 \section{T}
+
+\subsection*{Test di Accettazione (UAT)}
+Livello di test finalizzato a validare il sistema rispetto ai bisogni dell'utente.
+\begin{itemize}
+    \item Viene eseguito in un ambiente simile a quello reale.
+    \item Ha lo scopo di ottenere l'approvazione formale del cliente per il rilascio (Validazione).
+\end{itemize}
+
+\subsection*{Test di Integrazione}
+Livello di test che verifica le interazioni tra componenti software o sistemi diversi. L'obiettivo è rilevare difetti nelle interfacce e nello scambio di dati tra moduli che singolarmente funzionano.
+
+\subsection*{Test di Regressione}
+Riesecuzione di test già superati in precedenza per assicurarsi che le recenti modifiche al codice non abbiano introdotto nuovi difetti in parti del software già verificate.
+
+\subsection*{Test di Sistema}
+Livello di test che verifica il comportamento dell'intero sistema integrato rispetto ai requisiti specificati. Copre aspetti funzionali e non funzionali (prestazioni, sicurezza).
+
+\subsection*{Test di Unità}
+Livello di test che verifica le più piccole parti testabili del software (es. singole funzioni o metodi) in isolamento dal resto del sistema.
 
 \subsection*{To-Do}
 Attività che derivano da decisioni prese dai componenti del gruppo. Ogni To-Do deve essere tracciabile all'interno del contesto del progetto tramite la sua formalizzazione in issue GitHub.
@@ -399,6 +516,9 @@ Attività che derivano da decisioni prese dai componenti del gruppo. Ogni To-Do 
 
 % ==============================
 \section{U}
+
+\subsection*{User Scenarios (Scenari d'uso)}
+Descrizioni narrative di come un utente interagisce con il sistema per raggiungere un obiettivo specifico. Sono utilizzati durante la validazione per verificare che il flusso di lavoro supporti le esigenze reali.
 
 \subsection*{Utente}
 La persona che usa e interagisce direttamente col sistema (spesso si identifica col committente).
@@ -409,22 +529,32 @@ La persona che usa e interagisce direttamente col sistema (spesso si identifica 
 \section{V}
 
 \subsection*{Validazione}
-Attività eseguita al culmine del progetto per accertare che il prodotto finale corrisponda alle attese.
-
-\subsection*{Verifica}
-Attività eseguita durante lo sviluppo per accertare che le attività non introducano errori.
+Processo di conferma, attraverso evidenze oggettive, che il software soddisfi le esigenze dell'utente e l'uso previsto. Risponde alla domanda: "Abbiamo costruito il prodotto giusto?".
 
 \subsection*{Verbale}
-Documento riassuntivo di un incontro. Deve specificare Ordine del Giorno, Discussioni, Decisioni, Issue e To Do.  
+Documento riassuntivo di un incontro. Deve specificare Ordine del Giorno, Discussioni, Decisioni, Issue e To Do. 
 Ogni verbale deve essere verificato da un membro diverso da chi l’ha scritto.
+
+\subsection*{Verifica}
+Processo di valutazione per determinare se i prodotti di una fase di sviluppo soddisfano le condizioni imposte all'inizio di quella fase. Risponde alla domanda: "Stiamo costruendo il prodotto nel modo giusto?".
 
 \clearpage
 
 % ==============================
 \section{W}
 
+\subsection*{Walkthrough}
+Tecnica di analisi statica informale in cui l'autore di un artefatto guida i membri del team attraverso il documento o il codice per individuare errori e condividere conoscenza.
+
 \subsection*{Way of working}
 Comprende le metodologie di sviluppo (modello di sviluppo), la spartizione dei ruoli e delle attività, gli strumenti di lavoro (GitHub, GitLab, Trello, Jira, Slack, Discord, Obsidian, Google Docs), convenzioni standard e procedure condivise dai membri del team.
+
+\subsection*{White-box (Testing)}
+Metodologia di test in cui il verificatore conosce la struttura interna del codice e la utilizza per progettare i casi di test.
+\begin{itemize}
+    \item Mira a coprire i percorsi logici interni (es. rami if-else, cicli).
+    \item È nota anche come testing strutturale.
+\end{itemize}
 
 \clearpage
 
