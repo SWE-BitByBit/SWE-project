@@ -341,7 +341,7 @@ Per ogni caso d’uso presentato in questo documento viene adottata una struttur
 
 \subsection{Nomenclatura casi d'uso}
 \label{subsec:glossario-casi-duso}
-Questa sezione raccoglie i termini tecnici specifici utilizzati nella descrizione dei casi d’uso presenti in questo documento. 
+Questa sezione raccoglie i termini tecnici specifici utilizzati nella descrizione dei casi d’uso presenti in questo documento.
 
 \begin{center}
 \small
@@ -392,13 +392,13 @@ Gli attori rappresentano entità esterne al sistema che interagiscono con esso p
 
 % ==== AUTENTICAZIONE APP ====
 
-\subsubsection{UC-AUTH1 - Autenticazione all'app tramite Google Auth} \label{subsec:UC-AUTH1}
+\subsubsection{UC-1 Autenticazione all'App tramite Google Auth} \label{subsec:UC-1}
 
 \begin{figure}[H] 
     \centering
-    \includegraphics[width=0.9\textwidth]{../../../resources/UC-AUTH.png}
-    \caption{Diagramma dei casi d'uso UC-AUTH1 e UC-AUTH1.1}
-    \label{fig:UC-AUTH}
+    \includegraphics[width=0.9\textwidth]{../../../resources/UC-1.png}
+    \caption{Diagramma dei casi d'uso UC-1 e UC-2}
+    \label{fig:UC-1}
 \end{figure}
 
 \begin{itemize}
@@ -407,66 +407,66 @@ Gli attori rappresentano entità esterne al sistema che interagiscono con esso p
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'utente non è autenticato all'applicazione
+        \item L'attore non è autenticato all'applicazione
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item L’utente è autenticato nell'applicazione
-        \item Il sistema riconosce l'utente come utente autenticato
-        \item L'utente può accedere alle funzionalità riservate dell'applicazione
+        \item L’attore è autenticato nell'applicazione
+        \item Il sistema riconosce l'attore come utente autenticato
+        \item L'attore può accedere alle funzionalità riservate dell'applicazione
     \end{itemize}
     \item \textbf{Scenario principale:}
     \begin{itemize}
-        \item Il sistema mostra la schermata di accesso all’applicazione
-        \item L’utente seleziona la voce per l’autenticazione tramite Google
-        \item Il sistema richiede l’autenticazione a Google Auth
-        \item L’utente conferma l’accesso tramite il proprio account Google
-        \item Il servizio Google Auth verifica l’identità dell’utente
-        \item Il servizio Google Auth comunica l’esito positivo al sistema
+        \item L'attore richiede l'autenticazione tramite Google
+        \item L'attore viene reindirizzato a Google Auth dal sistema
+        \item L'attore si autentica su Google Auth
+        \item Google Auth reindirizza al sistema fornendo un token di validazione
+        \item Il sistema valida il token e crea la sessione utente
+        \item L'attore accede al sistema come "utente autenticato"
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
-        \item Il servizio Google Auth restituisce un esito negativo $\rightarrow$ \ref{subsec:UC-AUTH1.1}
+        \item Google Auth restituisce errore o token non valido $\rightarrow$ \ref{subsec:UC-2}
     \end{itemize} 
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-AUTH1.1}
+        \item \ref{subsec:UC-2}
     \end{itemize}
-    \item \textbf{Trigger:} L'utente vuole accedere all'applicazione
+    \item \textbf{Trigger:} L'attore vuole accedere all'applicazione
 \end{itemize}
 
-\subsubsection{UC-AUTH1.1 - Visualizzazione messaggio di errore per autenticazione fallita} \label{subsec:UC-AUTH1.1}
+\subsubsection{UC-2 Visualizzazione Messaggio di Errore per Autenticazione Fallita} \label{subsec:UC-2}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente Generico
     \item \textbf{Attore secondario:} Google Auth
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
-        \item L’utente ha avviato il processo di autenticazione tramite Google
-        \item Il servizio Google Auth ha restituito un esito negativo dell’autenticazione
+        \item L'attore ha tentato l'autenticazione tramite il servizio Google Auth
+        \item Google Auth ha restituito un token non valido o un errore
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item Il sistema mostra all’utente un messaggio di errore relativo al fallimento dell’autenticazione
-        \item L’utente rimane nello stato non autenticato
+        \item L'utente visualizza l'errore ed è pronto per riprovare l'autenticazione
+        \item L'attore rimane nello stato di "utente non autenticato"
     \end{itemize}
     \item \textbf{Scenario principale:}
     \begin{itemize}
         \item Il servizio Google Auth comunica al sistema l’esito negativo dell’autenticazione
         \item Il sistema mostra all’utente un messaggio di errore relativo all’autenticazione fallita
     \end{itemize}
-    \item \textbf{Trigger:} L'utente vuole accedere all'applicazione
+    \item \textbf{Trigger:} Google Auth restituisce un codice di errore durante il processo di autenticazione
 \end{itemize}
 
 % ===== UC-BW: WALKTHROUGH =====
 
-\subsubsection{UC-BW1 - Esecuzione Walkthrough Interattivo} \label{subsec:UC-BW1}
+\subsubsection{UC-3 - Esecuzione Walkthrough Interattivo} \label{subsec:UC-3}
 
 \begin{figure}[H] 
     \centering
-    \includegraphics[width=0.9\textwidth]{../../../resources/UC-BW1.png}
-    \caption{Diagramma del caso d'uso UC-BW1}
-    \label{fig:UC-BW1}
+    \includegraphics[width=0.9\textwidth]{../../../resources/UC-3.png}
+    \caption{Diagramma del caso d'uso UC-3}
+    \label{fig:UC-3}
 \end{figure}
 
 \begin{itemize}
@@ -487,22 +487,16 @@ Gli attori rappresentano entità esterne al sistema che interagiscono con esso p
     \item \textbf{Scenario principale:}
     \begin{itemize}
         \item Il sistema mostra la schermata di benvenuto
-        \item L'utente esegue la profilazione iniziale $\rightarrow$ \ref{subsec:UC-BW1.2}
+        \item L'utente esegue la profilazione iniziale $\rightarrow$ \ref{subsec:UC-3.1}
         \item Il sistema inizia il ciclo di presentazione delle schede informative dell'app
-        \item L'utente seleziona la voce prosegui per ogni scheda
-        \item Il sistema mostra la scheda per l'autenticazione 
-        \item L'utente effettua l'autenticazione all'applicazione $\rightarrow$ \ref{subsec:UC-AUTH1}
-        \item Il sistema mostra la scheda per l'aggiunta del primo contatto fidato
-        \item L'utente aggiunge il suo primo contatto fidato $\rightarrow$ \ref{subsec:UC-IMP3}
-        \item Il sistema mostra la scheda per l'impostazione della password per il diario criptato 
-        \item L'utente imposta la password per il diario criptato $\rightarrow$ \ref{subsec:UC-D1}
+        \item L'utente seleziona la voce prosegui per ogni scheda $\rightarrow$ \ref{subsec:UC-3.2}
         \item L'utente seleziona la voce prosegui $\rightarrow$ \ref{subsec:UC-BW1.3}
         \item Il sistema mostra la Home Page
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
-        \item L'utente decide di tornare alla scheda precedente $\rightarrow$ \ref{subsec:UC-BW1.4}
-        \item L'utente decide di saltare il walkthrough $\rightarrow$ \ref{subsec:UC-BW1.1}
+        \item L'utente decide di tornare alla scheda precedente $\rightarrow$ \ref{subsec:UC-3.3}
+        \item L'utente decide di saltare il walkthrough $\rightarrow$ \ref{subsec:UC-4}
     \end{itemize} 
     \item \textbf{Inclusioni:}
     \begin{itemize}
@@ -514,7 +508,6 @@ Gli attori rappresentano entità esterne al sistema che interagiscono con esso p
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-BW1.1}
         \item \ref{subsec:UC-BW1.4}
     \end{itemize}
     \item \textbf{Trigger:} Primo avvio dell'applicazione
