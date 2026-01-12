@@ -102,10 +102,10 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & In corso\\
-\textbf{Versione:} & 0.15.3 \\
+\textbf{Versione:} & 0.15.4 \\
 \textbf{Responsabile:} & \\
 \textbf{Redattori:} & Riccardo Manisi, Dennis Parolin, Giovanni Visentin, Ferdinando Fracasso \\
-\textbf{Verificatori:} & Giovanni Visentin, Marco Sanguin \\
+\textbf{Verificatori:} & Giovanni Visentin, Marco Sanguin, Dennis Parolin \\
 \textbf{Destinatari:} &
 \begin{tabular}[t]{@{}l@{}}
 Miriade srl\\
@@ -131,8 +131,11 @@ Gruppo BitByBit\\
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 
+\rowcolor{gray!20}
+0.15.4 & 2026-01-12 & Ferdinando Fracasso & Correzione errori nelle sezioni "Attori" e "Requisiti" & Dennis Parolin \\
+\hline
 \rowcolor{white}
-0.15.3 & 2026-01-12 & Ferdinando Fracasso & Aggiunta sezione requisiti & Dennis Parolin \\
+0.15.3 & 2026-01-11 & Ferdinando Fracasso & Aggiunta sezione requisiti & Dennis Parolin \\
 \hline
 \rowcolor{gray!20}
 0.15.2 & 2026-01-09 & Ferdinando Fracasso & Modifica sezione attori nei casi d'uso & Dennis Parolin \\
@@ -391,11 +394,15 @@ Gli attori rappresentano entità esterne al sistema che interagiscono con esso p
 \subsubsection{Attori primari:}
 \begin{itemize}
     \item \textbf{Utente generico:} un qualsiasi utente che interagisce con l'applicazione.
+    \item \textbf{}
 \end{itemize}
 
 \subsubsection{Attori secondari:}
 \begin{itemize}
-    \item \textbf{Contatto fidato:} ricevente di eventuali comunicazioni di sicurezza da parte dell'applicazione.
+    %\item \textbf{Contatto fidato:} ricevente di eventuali comunicazioni di sicurezza da parte dell'applicazione. --- 
+    \item \textbf{Google Auth:} API Google usata per l'autenticazione dell'utente.
+    \item \textbf{LLM:} sistema usato per analizzare alcuni input dell'utente nell'applicazione.
+    \item \textbf{Servizio di invio mail:} servizio usato per inviare email dall'applicazione.
 \end{itemize}
 % ===== LISTA CASI D'USO ======
 
@@ -1810,7 +1817,7 @@ Dove:
     \begin{itemize}
         \item \textbf{F}: requisiti funzionali, che descrivono funzionalità offerte dall'applicazione.
         \item \textbf{Q}: requisiti di qualità, che definiscono le specifiche di qualità dell'applicazione.
-        \item \textbf{V}: requisiti di vincolo, ovvero limiti e restrizioni derivate dal capitolato o imposte dal commitente
+        \item \textbf{V}: requisiti di vincolo, ovvero limiti e restrizioni derivate dal capitolato o imposte dal committente
     \end{itemize}
     \item  \textbf{Priorità} può essere:
     \begin{itemize}
@@ -1841,7 +1848,7 @@ Dove:
     RFO-2 & L'applicazione deve mostrare un messaggio di errore di login in caso di accesso fallito & UC-AUTH1.1\\
     \hline
     \rowcolor{white}
-    RFO-3 & L'applicazione deve fornire una interfaccia per consentire a nuovi utenti di registrarsi & IC-AUTH1\\
+    RFO-3 & L'applicazione deve fornire una interfaccia per consentire a nuovi utenti di registrarsi & UC-AUTH1\\
     \hline
     \rowcolor{gray!20}
     RFO-4 & L'applicazione deve offrire un walkthrough ad un nuovo utente, con scelta profilo in base all'uso che l'utente vuole fare dell'applicazione & UC-BW1, UC-BW1.2\\
@@ -1889,16 +1896,16 @@ Dove:
     RFO-18 & L'applicazione deve mostrare un messaggio di errore se durante la modifica della password del "diario criptato" l'utente inserisce una nuova password identica a quella esistente & UC-D2.1\\
     \hline
     \rowcolor{white}
-    RFO-19 & L'applicazione deve mostrare un messaggio di errore se la password diario inserita dall'utente è errata & UC-D3.2, UC-D7\\
+    RFO-19 & L'applicazione deve mostrare un messaggio di errore se la password del diario inserita dall'utente è errata & UC-D3.2, UC-D7\\
     \hline
     \rowcolor{gray!20}
-    RFO-20 & L'utente deve poter inserire e eliminare note scritte nel "diario criptato" & UC-D4, UC-D4.1, UC-D4.2\\
+    RFO-20 & L'utente deve poter inserire ed eliminare note scritte nel "diario criptato" & UC-D4, UC-D4.1, UC-D4.2\\
     \hline
     \rowcolor{white}
-    RFO-21 & L'utente deve poter uscire dalla schermata "diario criptato" senza salvare la nota o media appena inserito, & UC-D4.3\\
+    RFO-21 & L'utente deve poter uscire dalla schermata "diario criptato" senza salvare la nota o media appena inserito & UC-D4.3\\
     \hline
     \rowcolor{gray!20}
-    RFO-22 & L'utente deve poter inserire e eliminare media (immagini, video, audio) nel "diario criptato" & UC-D5, UC-D5.1\\
+    RFO-22 & L'utente deve poter inserire ed eliminare media (immagini, video, audio) nel "diario criptato" & UC-D5, UC-D5.1\\
     \hline
     \rowcolor{white}
     RFD-23 & L'applicazione deve poter analizzare tramite LLM note e media inseriti nel "diario criptato" per rilevare possibili situazioni di rischio & UC-D6\\
@@ -1916,13 +1923,13 @@ Dove:
     RFO-27 & Se la password del "diario fittizio" scelta dall'utente è identica alla password del "diario criptato", l'applicazione deve visualizzare un messaggio di errore & UC-D8.1\\
     \hline
     \rowcolor{gray!20}
-    RFO-28 & L'utente deve poter inserire e eliminare note e media nel "diario fittizio" & UC-D9\\
+    RFO-28 & L'utente deve poter inserire ed eliminare note e media nel "diario fittizio" & UC-D9\\
     \hline
     \rowcolor{white}
     RFO-29 & L'utente deve poter mandare un messaggio ai "contatti fidati" & UC-S1\\
     \hline
     \rowcolor{gray!20}
-    RFO-30 & Se il telefono dell'utente non è connesso alla rete internet o cellulare e tenta di inviare un messaggio ai contatti fidati, allora l'applicazione può attivare un segnale acustico & UC-S2, verbale esterno\\
+    RFO-30 & Se il telefono dell'utente non è connesso alla rete internet o cellulare e tenta di inviare un messaggio ai contatti fidati, allora come alternatica l'utente deve poter attivare un segnale acustico di emergenza & UC-S2, verbale esterno\\
     \hline
     \rowcolor{white}
     RFO-31 & Se la "lista dei contatti fidati" è vuota, l'applicazione visualizza un messaggio di errore quando l'utente tenta di inviare un messaggio & UC-S3\\
@@ -1952,7 +1959,7 @@ Dove:
     RFO-39 & La mappa deve visualizzare i luoghi sicuri nella zona & verbale interno\\
     \hline
     \rowcolor{gray!20}
-    RFO-40 & L'applicazione deve offrire all'utente una sezione informativa, "La guida al coraggio", contentente risorse geolocalizzate per la propria sicurezza & verbale interno\\
+    RFO-40 & L'applicazione deve offrire all'utente una sezione informativa, "La guida al coraggio", contenente risorse geolocalizzate per la propria sicurezza & verbale interno\\
     \hline
     \rowcolor{white}
     RFO-41 & L'applicazione deve fornire all'utente la possibilità di usare comandi rapidi per comunicazioni di emergenza & verbale esterno\\
