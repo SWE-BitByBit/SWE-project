@@ -663,62 +663,82 @@ UC-IMP1 comprende vari casi d'uso per funzionare che vengono rappresentati nella
     \label{fig:sottocasi_UC-IMP1}
 \end{figure}
 
-\subsubsection{UC-IMP2 - Visualizzazione rete di contatti fidati} \label{sec:UC-IMP2}
+\subsubsection{UC-#1 - Visualizzazione lista contatti fidati} \label{sec:UC-#1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'utente ha selezionato la voce per visualizzare la propria rete di contatti fidati
+        \item L'attore ha selezionato la voce per visualizzare la propria rete di contatti fidati
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
-        \item Il sistema mostra la schermata con la lista dei contatti fidati memorizzati per quell'utente
+        \item L'utente visualizza la lista dei contatti fidati
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'Utente seleziona la voce per la visualizzazione dei contatti fidati
-        \item L'utente visualizza la schermata con la lista dei contatti fidati aggiunti $\rightarrow$ vedi \ref{subsec:UC-IMP2.1} 
+        \item L'attore seleziona la voce per visualizzare la rete dei contatti fidati
+        \item L'attore visualizza singolarmente i contatti fidati nella lista $\rightarrow$ \ref{subsec:UC-#1.1} 
     \end{itemize}
-    \item \textbf{Inclusioni:} \ref{subsec:UC-IMP2.1}
+    \item \textbf{Inclusioni:} \ref{subsec:UC-1.1}
     \item \textbf{Trigger:} L'utente vuole vedere la rete dei contatti fidati che ha aggiunto
 \end{itemize}
 
-\subsubsection{UC-IMP2.1 - Visualizzazione informazioni contatto fidato} \label{subsec:UC-IMP2.1}
+\subsubsection{UC-#1.1 - Visualizzazione singolo contatto fidato nella lista} \label{subsec:UC-#1.1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'utente sta visualizzando la lista dei contatti fidati
+        \item L'attore sta visualizzando la lista dei contatti fidati
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item Il sistema per ogni contatto fidato le informazioni di contatto e il nominativo
+        \item 
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item 
+    \end{itemize}
+    \item \textbf{Trigger:} 
+\end{itemize}
+
+\subsubsection{UC-#2 - Visualizzazione Informazioni Contatto Fidato} \label{subsec:UC-#2}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore sta visualizzando la lista dei contatti fidati
+        \item L'attore ha selezionato un contatto fidato dalla lista dei contatti fidati
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza le informazioni del contatto fidato
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item Per il contatto fidato presente il sistema mosta le relative informazioni quali:
         \begin{itemize}
-            \item il nome $\rightarrow$ \ref{subsec:UC-IMP2.1.1}
-            \item il numero di telefono $\rightarrow$ \ref{subsec:UC-IMP2.1.2}
-            \item l'indirizzo email $\rightarrow$ \ref{subsec:UC-IMP2.1.3}
+            \item il nome $\rightarrow$ \ref{subsec:UC-#2.1}
+            \item il numero di telefono $\rightarrow$ \ref{subsec:UC-#2.2}
+            \item l'indirizzo email $\rightarrow$ \ref{subsec:UC-#2.3}
         \end{itemize}
     \end{itemize}
-    \item \textbf{Trigger:} L'utente vuole visualizzare le informazioni di contatto per un contatto fidato
+    \item \textbf{Trigger:} L'attore vuole visualizzare le informazioni di contatto per un contatto fidato
 \end{itemize}
 
-\subsubsection{UC-IMP2.1.1 - Visualizzazione nome contatto fidato} \label{subsec:UC-IMP2.1.1}
+\subsubsection{UC-#2.1 - Visualizzazione nome contatto fidato} \label{subsec:UC-#2.1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'utente sta visualizzando la lista dei contatti fidati
+        \item L'attore sta visualizzando le informazioni del contatto fidato
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item Il sistema mostra a schermo il nome del contatto fidato
+        \item 
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
@@ -726,17 +746,17 @@ UC-IMP1 comprende vari casi d'uso per funzionare che vengono rappresentati nella
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-IMP2.1.2 - Visualizzazione numero di telefono contatto fidato} \label{subsec:UC-IMP2.1.2}
+\subsubsection{UC-#2.2 - Visualizzazione numero di telefono contatto fidato} \label{subsec:UC-#2.2}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'utente sta visualizzando la lista dei contatti fidati
+        \item L'attore sta visualizzando le informazioni del contatto fidato
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item Il sistema mostra a schermo il numero di telefono del contatto fidato
+        \item
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
@@ -744,17 +764,17 @@ UC-IMP1 comprende vari casi d'uso per funzionare che vengono rappresentati nella
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-IMP2.1.3 - Visualizzazione indirizzo email contatto fidato} \label{subsec:UC-IMP2.1.3}
+\subsubsection{UC-#2.3 - Visualizzazione indirizzo email contatto fidato} \label{subsec:UC-#2.3}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'utente sta visualizzando la lista dei contatti fidati
+        \item L'attore sta visualizzando le informazioni del contatto fidato
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item Il sistema mostra a schermo l'indirizzo email del contatto fidato
+        \item 
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
