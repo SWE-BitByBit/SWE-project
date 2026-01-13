@@ -102,7 +102,7 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & In corso\\
-\textbf{Versione:} & 0.15.4 \\
+\textbf{Versione:} & 0.15.5 \\
 \textbf{Responsabile:} & \\
 \textbf{Redattori:} & Riccardo Manisi, Dennis Parolin, Giovanni Visentin, Ferdinando Fracasso \\
 \textbf{Verificatori:} & Giovanni Visentin, Marco Sanguin, Dennis Parolin \\
@@ -131,6 +131,9 @@ Gruppo BitByBit\\
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 
+\rowcolor{white}
+0.15.5 & 2026-01-13 & Ferdinando Fracasso & Aggiunta nella sezione "Attori" & Dennis Parolin \\
+\hline
 \rowcolor{gray!20}
 0.15.4 & 2026-01-12 & Ferdinando Fracasso & Correzione errori nelle sezioni "Attori" e "Requisiti" & Dennis Parolin \\
 \hline
@@ -394,7 +397,7 @@ Gli attori rappresentano entità esterne al sistema che interagiscono con esso p
 \subsubsection{Attori primari:}
 \begin{itemize}
     \item \textbf{Utente generico:} un qualsiasi utente che interagisce con l'applicazione.
-    \item \textbf{}
+    \item \textbf{Utente autenticato:} un utente che ha effettuato con successo la procedura di autenticazione ed interagisce con l'applicazione 
 \end{itemize}
 
 \subsubsection{Attori secondari:}
@@ -1929,7 +1932,7 @@ Dove:
     RFO-29 & L'utente deve poter mandare un messaggio ai "contatti fidati" & UC-S1\\
     \hline
     \rowcolor{gray!20}
-    RFO-30 & Se il telefono dell'utente non è connesso alla rete internet o cellulare e tenta di inviare un messaggio ai contatti fidati, allora come alternatica l'utente deve poter attivare un segnale acustico di emergenza & UC-S2, verbale esterno\\
+    RFO-30 & Se il telefono dell'utente non è connesso alla rete internet o cellulare e tenta di inviare un messaggio ai contatti fidati, allora come alternativa l'utente deve poter attivare un segnale acustico di emergenza & UC-S2, verbale esterno\\
     \hline
     \rowcolor{white}
     RFO-31 & Se la "lista dei contatti fidati" è vuota, l'applicazione visualizza un messaggio di errore quando l'utente tenta di inviare un messaggio & UC-S3\\
@@ -1964,7 +1967,6 @@ Dove:
     \rowcolor{white}
     RFO-41 & L'applicazione deve fornire all'utente la possibilità di usare comandi rapidi per comunicazioni di emergenza & verbale esterno\\
     \hline
-    \rowcolor{gray!20}
     
 \end{longtable}
 \end{center}
@@ -2006,7 +2008,7 @@ Dove:
     \textbf{Codice} & \textbf{Descrizione} & \textbf{Fonti} \\
     \hline
     \rowcolor{white}
-    RVO-1 & L'applicazione deve essere scritta nel linguaggio Flutter & Capitolato \\
+    RVO-1 & L'applicazione deve essere scritta nel linguaggio Dart usando il framework Flutter & Capitolato \\
     \hline
     \rowcolor{gray!20}
     RVO-2 & L'applicazione deve fare uso dei servizi AWS per il backend & Capitolato \\
