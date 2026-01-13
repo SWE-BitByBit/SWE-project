@@ -1068,11 +1068,11 @@ UC-#6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \item \textbf{Trigger:} L'attore vuole modificare l'indirizzo email di un contatto fidato presente nella propria rete di contatti fidati
 \end{itemize}
 
-% ===== UC-IMP7 - CANCELLAZIONE CONTATTO FIDATO =====
+% ===== UC-#13 - CANCELLAZIONE CONTATTO FIDATO =====
 
-\subsubsection{UC-IMP7 - Cancellazione contatto fidato} \label{subsec:UC-IMP7}
+\subsubsection{UC-#13 - Cancellazione contatto fidato} \label{subsec:UC-#13}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} Utente autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -1090,26 +1090,7 @@ UC-#6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \item \textbf{Trigger:} L'utente vuole cancellare un contatto dalla propria rete di contatti fidati
 \end{itemize}
 
-\subsubsection{UC-IMP8 - Modifica contatto fidato} \label{subsec:UC-IMP8}
-\begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item L'utente ha selezionato la voce per la visualizzazione della lista dei contatti fidati
-        \item L'utente ha selezionato un contatto fidato
-    \end{itemize}
-    \item \textbf{Post-condizioni:}
-    \begin{itemize}
-        \item Il sistema modifica un contatto fidato dell'utente
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item L'utente seleziona la voce di modifica dei dati per quel contatto
-        \item L'utente modifica il nome e/o la mail e/o il numero di telefono del contatto fidato
-    \end{itemize}
-    \item \textbf{Trigger:} L'utente vuole modificare alcuni dati di un contatto fidato
-\end{itemize}
+
 
 % ==== UC-IMP9 - CONFIGURAZIONE DEAD MAN'S SWITCH ====
 
@@ -1138,36 +1119,6 @@ UC-#6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \end{itemize}
     \item \textbf{Trigger:} L'utente vuole configurare o modificare il timer di inattività.
 \end{itemize}
-
-%% ==== UC-SYS1 - ESECUZIONE PROTOCOLLO INATTIVITÀ ==== BACK-END (non da metttere negli UC)
-%
-%\subsubsection{UC-SYS1 - Esecuzione protocollo di inattività} \label{subsec:UC-SYS1}
-%\begin{itemize}
-%    \item \textbf{Attore principale:} Sistema (Timer)
-%    \item \textbf{Attori secondari:} Utente autenticato
-%    \item \textbf{Pre-condizioni:} 
-%    \begin{itemize}
-%        \item La funzionalità Dead Man's Switch è attiva
-%        \item È trascorso l'intervallo di tempo configurato dall'utente senza alcuna interazione con l'app
-%    \end{itemize}
-%    \item \textbf{Post-condizioni:}
-%    \begin{itemize}
-%        \item Il sistema ha inviato la mail all'utente OPPURE il sistema ha resettato il timer in seguito alla risposta dell'utente
-%    \end{itemize}
-%    \item \textbf{Scenario principale:} 
-%    \begin{itemize}
-%        \item Il sistema rileva il superamento della soglia di inattività
-%        \item Il sistema invia una mail all'utente per verificare la sua presenza
-%        \item Il sistema attende per un "periodo di grazia" predefinito (es. 1 ora) una risposta dell'utente
-%        \item Il sistema compone la mail con il messaggio personalizzato e i dati raccolti
-%        \item Il sistema invia la mail all'indirizzo del contatto fidato configurato
-%    \end{itemize}
-%    \item \textbf{Scenario secondario:}
-%    \begin{itemize}
-%        \item L'utente interagisce con la mail o apre l'app. Il sistema annulla la procedura di invio e resetta il timer di inattività.
-%    \end{itemize}
-%    \item \textbf{Trigger:} Scadenza del timer di inattività configurato dall'utente.
-%\end{itemize}
 
 % ==== DIARIO CRIPTATO =====
 
