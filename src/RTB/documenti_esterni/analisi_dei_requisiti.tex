@@ -1121,7 +1121,7 @@ UC-#6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \item \textbf{Trigger:} L'attore ha scelto la voce di cancellazione per quel contatto fidato
 \end{itemize}
 
-\subsubsection{UC-#4 Rifiuto Conferma Eliminazione Contatto Fidato} \label{subsec:UC-#14}
+\subsubsection{UC-#14 Rifiuto Conferma Eliminazione Contatto Fidato} \label{subsec:UC-#14}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente autenticato
     \item \textbf{Pre-condizioni:}
@@ -1173,99 +1173,30 @@ UC-#6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
 
 % ==== DIARIO CRIPTATO =====
 
-\subsubsection{UC-D1 - Impostazione password per il diario criptato} \label{subsec:UC-D1}
-
-\begin{figure}[H] 
-    \centering
-    \includegraphics[width=0.9\textwidth]{../../../resources/UC-D1.png}
-    \caption{Diagramma del caso d'uso UC-D1}
-    \label{fig:UC-D1}
-\end{figure}
-
+\subsubsection{UC-#15 - Impostazione password per diario criptato} \label{subsec:UC-#15}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
+        \item L'utente ha selezionato la voce per l'impostazione della password per il diario criptato
         \item Il diario criptato non ha ancora una password impostata
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
         \item Il sistema ha memorizzato la password del diario criptato
-        \item Il diario criptato risulta protetto da password
+        \item Il diario criptato è accessibile solo tramite l'uso della password impostata
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item Il sistema mostra la schermata per l’impostazione della password del diario criptato
-        \item L’utente inserisce la password scelta
-        \item L'utente seleziona la voce per la conferma dell'impostazione della password
+        \item L'attore inserisce la password desiderata per il diario criptato $\rightarrow$ \ref{subsec:UC-#15.1}
+        \item L'attore seleziona la voce per la conferma dell'impostazione della password
         \item Il sistema salva la password del diario criptato
     \end{itemize}
     \item \textbf{Trigger:} L’utente vuole impostare la password per il diario criptato
 \end{itemize}
 
-\subsubsection{UC-D2 - Modifica password del diario criptato} \label{subsec:UC-D2}
-
-\begin{figure}[H] 
-    \centering
-    \includegraphics[width=0.9\textwidth]{../../../resources/UC-D2.png}
-    \caption{Diagramma del caso d'uso UC-D2}
-    \label{fig:UC-D2}
-\end{figure}
-
-\begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item Il diario criptato ha già una password impostata
-        \item L'utente ha selezionato la voce per la modifica della password per il diario criptato
-    \end{itemize}
-    \item \textbf{Post-condizioni:}
-    \begin{itemize}
-        \item Il sistema aggiorna la password del diario criptato
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item Il sistema mostra la schermata per la modifica della password del diario criptato
-        \item L’utente inserisce la password attuale
-        \item L’utente inserisce la nuova password
-        \item L’utente seleziona la voce per la conferma dell'operazione
-        \item Il sistema aggiorna la vecchia password con quella nuova
-    \end{itemize}
-    \item \textbf{Scenario secondario:} 
-    \begin{itemize}
-        \item La nuova password inserita dall'utente è uguale a quella vecchia $\rightarrow$ \ref{subsec:UC-D2.1}
-    \end{itemize}
-    \item \textbf{Estensioni:} 
-    \begin{itemize}
-        \item \ref{subsec:UC-D2.1}
-    \end{itemize}
-    \item \textbf{Trigger:} L’utente vuole modificare la password del diario criptato
-\end{itemize}
-
-\subsubsection{UC-D2.1 - Inserimento nuova password uguale a quella già presente} \label{subsec:UC-D2.1}
-\begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item L'utente ha inserito una nuova password per il diario criptato
-        \item L'utente ha selezionato la voce per la conferma dell'aggiornamento della password
-    \end{itemize}
-    \item \textbf{Post-condizioni:}
-    \begin{itemize}
-        \item Il sistema mostra a schermo un messaggio d'errore
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item Il sistema riceve la richiesta di aggiornamento della password del diario criptato
-        \item Il sistema confronta la nuova password inserita con quella attualmente impostata
-        \item Il sistema rileva che le due password coincidono
-        \item Il sistema un messaggio d’errore all'utente
-    \end{itemize}
-    \item \textbf{Trigger:} L’utente vuole modificare la password del diario criptato
-\end{itemize}
 
 \subsubsection{UC-D3 - Accesso al diario criptato} \label{subsec:UC-D3}
 
