@@ -957,7 +957,116 @@ UC-#6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \item \textbf{Trigger:} L'attore ha inserito un l'indirizzo email non conforme ai criteri dell'applicazione
 \end{itemize}
 
-% ===== UC-# - CANCELLAZIONE CONTATTO FIDATO =====
+% ===== UC-#12: MODIFICA CONTATTO FIDATO =====
+
+\subsubsection{UC-#12 - Aggiunta contatto fidato} \label{subsec:UC-#12}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item Almeno un contatto fidato è presente nella rete dei contatti
+        \item L'attore ha selezionato la voce per la modifica di un contatto fidato
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Le nuove informazioni del contatto fidato sono memorizzate nel sistema
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore seleziona la voce per la modifica del contatto fidato
+        \item L'attore modifica il nome del contatto fidato $\rightarrow$ \ref{subsec:UC-#12.1}
+        \item L'attore modifica il numero di telefono del contatto fidato $\rightarrow$ \ref{subsec:UC-#12.2}
+        \item L'attore modifica l'indirizzo email del contatto fidato $\rightarrow$ \ref{subsec:UC-#12.3}
+        \item L'attore seleziona la voce per il salvataggio delle modifiche del contatto fidato nella rete di contatti
+    \end{itemize}
+    \item \textbf{Scenario secondario:}
+    \begin{itemize}
+        \item Le informazioni sono rilevate già all'interno del sistema $\rightarrow$ \ref{subsec:UC-#9}
+    \end{itemize}
+    \item \textbf{Inclusioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-#12.1}
+        \item \ref{subsec:UC-#12.2}
+        \item \ref{subsec:UC-#12.3}
+    \end{itemize}
+    \item \textbf{Estensioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-#9}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole aggiungere un nuovo contatto fidato nella propria rete
+\end{itemize}
+
+\subsubsection{UC-#12.1 - Modifica nome contatto fidato} \label{subsec:UC-#12.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato la voce per la modifica di un contatto fidato
+        \item L'attore ha selezionato il campo del nome del contatto fidato da modificare
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema riceve il nome del contatto fidato che l'attore vuole modificare
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore inserisce il nuovo nome del contatto fidato da memorizzare
+        \item L'attore decide di salvare le modifiche apportate
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole modificare il nome di un contatto fidato presente nella propria rete di contatti fidati
+\end{itemize}
+
+\subsubsection{UC-#12.2 - Modifica numero di telefono contatto fidato} \label{subsec:UC-#12.2}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato la voce per la modifica di un contatto fidato
+        \item L'attore ha selezionato il campo del numero di telefono del contatto fidato da modificare
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema riceve il numero di telefono del contatto fidato che l'attore vuole modificare
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore inserisce il numero di telefono del contatto fidato da memorizzare
+        \item L'attore decide di salvare le modifiche apportate
+    \end{itemize}
+    \item \textbf{Scenario secondario:}
+    \begin{itemize}
+        \item Il numero inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \ref{subsec:UC-#10}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole modificare il numero di telefono di un contatto fidato presente nella propria rete di contatti fidati
+\end{itemize}
+
+\subsubsection{UC-#12.3 - Modifica indirizzo email contatto fidato} \label{subsec:UC-#12.3}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato la voce per la modifica di un contatto fidato
+        \item L'attore ha selezionato il campo dell'indirizzo email del contatto fidato da modificare
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema riceve l'indirizzo email del contatto fidato che l'attore vuole modificare
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore inserisce l'indirizzo email del contatto fidato da memorizzare
+        \item L'attore decide di salvare le modifiche apportate
+    \end{itemize}
+    \item \textbf{Scenario secondario:}
+    \begin{itemize}
+        \item L'indirizzo email inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \ref{subsec:UC-#11}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole modificare l'indirizzo email di un contatto fidato presente nella propria rete di contatti fidati
+\end{itemize}
 
 % ===== UC-IMP7 - CANCELLAZIONE CONTATTO FIDATO =====
 
