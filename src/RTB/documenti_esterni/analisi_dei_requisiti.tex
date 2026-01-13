@@ -654,7 +654,7 @@ UC-BW1 include ed estende ulteriori Casi d’Uso rappresentati nella seguente im
 
 % ==== UC-IMP2 - LISTA CONTATTI FIDATI ====
 
-UC-IMP1 comprende vari casi d'uso per funzionare che vengono rappresentati nella seguente immagine e poi spiegati testualmente uno ad uno:
+UC-#1 comprende vari casi d'uso per funzionare che vengono rappresentati nella seguente immagine e poi spiegati testualmente uno ad uno:
 
 \begin{figure}[H] 
     \centering
@@ -782,13 +782,15 @@ UC-IMP1 comprende vari casi d'uso per funzionare che vengono rappresentati nella
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-IMP3 - Aggiunta contatto fidato} \label{subsec:UC-IMP3}
+% ===== UC-#3: AGGIUNTA CONTATTO FIDATO =====
+
+\subsubsection{UC-#3 - Aggiunta contatto fidato} \label{subsec:UC-#3}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} Utente autenticato
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'utente ha selezionato la voce per visualizzare le impostazioni dell'applicazione
+        \item L'attore ha selezionato la voce per l'aggiunta di un nuovo contatto fidato
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
@@ -796,78 +798,78 @@ UC-IMP1 comprende vari casi d'uso per funzionare che vengono rappresentati nella
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'utente seleziona la voce per l'aggiunta del contatto fidato
-        \item L'utente inserisce il nome del contatto fidato $\rightarrow$ \ref{subsec:UC-IMP3.1}
-        \item L'utente inserisce il numero di telefono del contatto fidato $\rightarrow$ \ref{subsec:UC-IMP3.2}
-        \item L'utente inserisce l'indirizzo email del contatto fidato $\rightarrow$ \ref{subsec:UC-IMP3.3}
-        \item L'utente seleziona la voce per il salvataggio del contatto fidato nella rete di contatti
+        \item L'attore seleziona la voce per l'aggiunta del contatto fidato
+        \item L'attore inserisce il nome del contatto fidato $\rightarrow$ \ref{subsec:UC-#3.1}
+        \item L'attore inserisce il numero di telefono del contatto fidato $\rightarrow$ \ref{subsec:UC-#3.2}
+        \item L'attore inserisce l'indirizzo email del contatto fidato $\rightarrow$ \ref{subsec:UC-#3.3}
+        \item L'attore seleziona la voce per il salvataggio del contatto fidato nella rete di contatti
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
-        \item Il numero di telefono è già presente nelle informazioni di un contatto fidato $\rightarrow$ \ref{subsec:UC-IMP4}
-        \item L'indirizzo email è già presente nelle informazioni di un contatto fidato $\rightarrow$ \ref{subsec:UC-IMP5}
-        \item Informazioni per il numero di telefono e per l'indirizzo email assenti $\rightarrow$ \ref{subsec:UC-IMP6}
+        \item Le informazioni sono rilevate già all'interno del sistema $\rightarrow$ \ref{subsec:UC-#4}
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-IMP3.1}
-        \item \ref{subsec:UC-IMP3.2}
-        \item \ref{subsec:UC-IMP3.3}
+        \item \ref{subsec:UC-#3.1}
+        \item \ref{subsec:UC-#3.2}
+        \item \ref{subsec:UC-#3.3}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-IMP4}
-        \item \ref{subsec:UC-IMP5}
-        \item \ref{subsec:UC-IMP6}
+        \item \ref{subsec:UC-#4}
     \end{itemize}
-    \item \textbf{Trigger:} L'utente vuole aggiungere un nuovo contatto fidato nella propria rete
+    \item \textbf{Trigger:} L'attore vuole aggiungere un nuovo contatto fidato nella propria rete
 \end{itemize}
 
-\subsubsection{UC-IMP3.1 - Inserimento nome contatto fidato} \label{subsec:UC-IMP3.1}
+\subsubsection{UC-#3.1 - Inserimento nome contatto fidato} \label{subsec:UC-#3.1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'utente ha selezionato la voce per l'aggiunta di un nuovo contatto fidato
+        \item L'attore ha selezionato la voce per l'aggiunta di un nuovo contatto fidato
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
-        \item Il sistema riceve il nome del contatto fidato che l'utente vuole inserire
+        \item Il sistema riceve il nome del contatto fidato che l'attore vuole inserire
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'utente inserisce il nome del contatto fidato da memorizzare
+        \item L'attore inserisce il nome del contatto fidato da memorizzare
     \end{itemize}
-    \item \textbf{Trigger:} L'utente vuole inserire un nuovo contatto nella propria rete di contatti fidati
+    \item \textbf{Trigger:} L'attore vuole inserire un nuovo contatto nella propria rete di contatti fidati
 \end{itemize}
 
-\subsubsection{UC-IMP3.2 - Inserimento numero di telefono contatto fidato} \label{subsec:UC-IMP3.2}
+\subsubsection{UC-#3.2 - Inserimento numero di telefono contatto fidato} \label{subsec:UC-#3.2}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'utente ha selezionato la voce per l'aggiunta di un nuovo contatto fidato
+        \item L'attore ha selezionato la voce per l'aggiunta di un nuovo contatto fidato
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
-        \item Il sistema riceve il numero di telefono del contatto fidato che l'utente vuole inserire
+        \item Il sistema riceve il numero di telefono del contatto fidato che l'attore vuole inserire
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'utente inserisce il nome del contatto fidato da memorizzare
+        \item L'attore inserisce il numero di telefono del contatto fidato da memorizzare
     \end{itemize}
-    \item \textbf{Trigger:} L'utente vuole inserire un nuovo contatto nella propria rete di contatti fidati
+    \item \textbf{Scenario secondario:}
+    \begin{itemize}
+        \item Il numero inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \ref{subsec:UC-#5}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole inserire un nuovo contatto nella propria rete di contatti fidati
 \end{itemize}
 
-\subsubsection{UC-IMP3.3 - Inserimento indirizzo email contatto fidato} \label{subsec:UC-IMP3.3}
+\subsubsection{UC-#3.3 - Inserimento indirizzo email contatto fidato} \label{subsec:UC-#3.3}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'utente ha selezionato dla voce per l'aggiunta di un nuovo contatto fidato
+        \item L'attore ha selezionato dla voce per l'aggiunta di un nuovo contatto fidato
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
@@ -875,69 +877,87 @@ UC-IMP1 comprende vari casi d'uso per funzionare che vengono rappresentati nella
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'utente inserisce l'indirizzo email del contatto fidato da memorizzare
+        \item L'attore inserisce l'indirizzo email del contatto fidato da memorizzare
     \end{itemize}
-    \item \textbf{Trigger:} L'utente vuole inserire un nuovo contatto nella propria rete di contatti fidati
+    \item \textbf{Scenario secondario:}
+    \begin{itemize}
+        \item L'indirizzo email inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \ref{subsec:UC-#6}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole inserire un nuovo contatto nella propria rete di contatti fidati
 \end{itemize}
 
-\subsubsection{UC-IMP4 - Numero di telefono già presente nel sistema} \label{subsec:UC-IMP4}
+\subsubsection{UC-#4 Informazioni di contatto già presenti nel sistema} \label{subsec:UC-#4}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'utente ha inserito il numero di telefono per il contatto fidato
-        \item L'utente ha selezionato la voce di salvataggio del contatto fidato
+        \item L'attore ha selezionato la voce per l'aggiunta di un nuovo contatto fidato
+        \item L'attore ha inserito alcune informazioni del contatto fidato
+        \item Le informazioni del contatto fidato sono già presenti nel sistema
     \end{itemize}
-    \item \textbf{Post-condizioni:}
+    \item \textbf{Post-condizioni:} 
     \begin{itemize}
-        \item L'aggiunta dei contatto alla rete di contatti fidati non viene eseguita dal sistema
+        \item Il sistema non salva le informazioni duplicate del contatto fidato
+        \item L'attore può procedere con l'aggiunta del contatto fidato
+        \item Il sistema precompila i campi con le informazioni già presenti
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item Il numero di telefono aggiunto dall'utente è già presente nella rete dei contatti fidati.
+        \item L'attore inserisce alcune informazioni del contatto fidato
+        \item Il sistema rileva che le informazioni del contatto fidato sono già presenti
+        \item Il sistema precompila i campi con le informazioni rilevate
     \end{itemize}
-    \item \textbf{Trigger:} L'utente vuole inserire un nuovo contatto nella propria rete di contatti fidati
+    \item \textbf{Trigger:} L'attore ha inserito alcune informazioni del contatto fidato
 \end{itemize}
 
-\subsubsection{UC-IMP5 - Indirizzo email già presente nel sistema} \label{subsec:UC-IMP5}
+\subsubsection{UC-#5 Numero di telefono non conforme ai criteri} \label{subsec:UC-#5}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'utente ha inserito l'indirizzo email per il contatto fidato
-        \item L'utente ha selezionato la voce di salvataggio del contatto fidato
+        \item L'attore ha selezionato la voce per l'aggiunta di un nuovo contatto fidato
+        \item L'attore ha inserito un numero di telefono non conforme ai criteri dell'applicazione
     \end{itemize}
-    \item \textbf{Post-condizioni:}
+    \item \textbf{Post-condizioni:} 
     \begin{itemize}
-        \item L'aggiunta dei contatto alla rete di contatti fidati non viene eseguita dal sistema
+        \item Il sistema notifica all'attore che il numero di telefono inserito non è valido
+        \item L'attore può correggere il numero di telefono inserito
     \end{itemize}
     \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item L'indirizzo email aggiunto dall'utente è già presente nella rete dei contatti fidati.
+    \begin{itemize}        
+        \item L'attore inserisce un numero di telefono non conforme ai criteri dell'applicazione
+        \item Il sistema verifica il numero di telefono e rileva che non è valido
+        \item Il sistema notifica all'attore l'errore e richiede la correzione del numero
     \end{itemize}
-    \item \textbf{Trigger:} L'utente vuole inserire un nuovo contatto nella propria rete di contatti fidati
+    \item \textbf{Trigger:} L'attore ha inserito un numero di telefono non conforme ai criteri dell'applicazione
 \end{itemize}
 
-\subsubsection{UC-IMP6 - Infomazioni di contatto assenti} \label{subsec:UC-IMP6}
+\subsubsection{UC-#6 Indirizzo email di telefono non conforme ai criteri} \label{subsec:UC-#6}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'utente ha selezionato la voce per il salvataggio del contatto fidato
+        \item L'attore ha selezionato la voce per l'aggiunta di un nuovo contatto fidato
+        \item L'attore ha inserito un indirizzo email non conforme ai criteri dell'applicazione
     \end{itemize}
-    \item \textbf{Post-condizioni:}
+    \item \textbf{Post-condizioni:} 
     \begin{itemize}
-        \item L'aggiunta dei contatto alla rete di contatti fidati non viene eseguita dal sistema
+        \item Il sistema notifica all'attore che l'indirizzo email inserito non è valido
+        \item L'attore può correggere l'indirizzo email inserito
     \end{itemize}
     \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item L'utente non ha inserito l'informazione di contatto per la persona che vuole inserire come contatto fidato. Il campo per il numero di telefono o per l'indirizzo email sono vuoti.
+    \begin{itemize}        
+        \item L'attore inserisce un l'indirizzo email non conforme ai criteri dell'applicazione
+        \item Il sistema verifica l'indirizzo email e rileva che non è valido
+        \item Il sistema notifica all'attore l'errore e richiede la correzione l'indirizzo email
     \end{itemize}
-    \item \textbf{Trigger:} L'utente vuole inserire un nuovo contatto nella propria rete di contatti fidati
+    \item \textbf{Trigger:} L'attore ha inserito un l'indirizzo email non conforme ai criteri dell'applicazione
 \end{itemize}
+
+% ===== UC-IMP7 - CANCELLAZIONE CONTATTO FIDATO =====
 
 \subsubsection{UC-IMP7 - Cancellazione contatto fidato} \label{subsec:UC-IMP7}
 \begin{itemize}
