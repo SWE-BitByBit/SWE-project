@@ -1070,26 +1070,77 @@ UC-#6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
 
 % ===== UC-#13 - CANCELLAZIONE CONTATTO FIDATO =====
 
-\subsubsection{UC-#13 - Cancellazione contatto fidato} \label{subsec:UC-#13}
+\subsubsection{UC-#13 Eliminazione Contatto Fidato} \label{subsec:UC-#13}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'utente ha selezionato la voce per la visualizzazione della lista dei contatti fidati
+        \item L'attore sta visualizzando le informazioni di un contatto fidato
+        \item Almeno un contatto fidato è presente nella rete dei contatti fidati
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item Il sistema cancella un contatto fidato dalla rete dei contatti dell'utente
+        \item Il sistema rimuove un contatto fidato dalla rete dei contatti fidati dell'utente
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'utente seleziona una voce dalla lista dei contatti fidati
-        \item L'utente seleziona la voce di cancellazione per quel contatto
+        \item L'attore seleziona una contatto dalla lista dei contatti fidati
+        \item L'attore seleziona la voce di cancellazione per quel contatto fidato
+        \item L'attore conferma l'eliminazione del contatto fidato $\rightarrow$ \ref{subsec:UC-#13.1}
+        \item Il sistema rimuove il contatto fidato scelto dall'attore dalla rete dei contatti fidati dell'attore
     \end{itemize}
-    \item \textbf{Trigger:} L'utente vuole cancellare un contatto dalla propria rete di contatti fidati
+    \item \textbf{Scenario secondario:}
+    \begin{itemize}
+        \item L'attore rifiuta la conferma dell'eliminazione del contatto fidato $\rightarrow$ \ref{subsec:UC-#14}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole rimuovere un contatto dalla propria rete di contatti fidati
 \end{itemize}
 
+\subsubsection{UC-#13.1 Conferma Eliminazione Contatto Fidato} \label{subsec:UC-#13.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato la voce di cancellazione per quel contatto fidato
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema riceve la conferma dell'attore di rimuovere un contatto fidato dalla propria rete dei contatti fidati
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore conferma l'eliminazione del contatto fidato $\rightarrow$ \ref{subsec:UC-#13.1}
+        \item Il sistema rimuove il contatto fidato scelto dall'attore dalla rete dei contatti fidati dell'attore
+    \end{itemize}
+    \item \textbf{Scenario secondario:}
+    \begin{itemize}
+        \item L'attore rifiuta la conferma dell'eliminazione del contatto fidato $\rightarrow$ \ref{subsec:UC-#14}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore ha scelto la voce di cancellazione per quel contatto fidato
+\end{itemize}
+
+\subsubsection{UC-#4 Rifiuto Conferma Eliminazione Contatto Fidato} \label{subsec:UC-#14}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato la voce di cancellazione per quel contatto fidato
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema riceve responso negativo da parte dell'attore per rimuovere un contatto fidato dalla propria rete dei contatti fidati
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore rifiuta l'eliminazione del contatto fidato $\rightarrow$ \ref{subsec:UC-#13.1}
+        \item Il sistema non rimuove il contatto fidato dalla rete dei contatti fidati dell'attore
+        \item Il sistema ritorna alla visualizzazione della lista dei contatti fidati
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore ha scelto di non rimuovere il contatto fidato dalla propria rete dei contatti fidati
+\end{itemize}
 
 
 % ==== UC-IMP9 - CONFIGURAZIONE DEAD MAN'S SWITCH ====
