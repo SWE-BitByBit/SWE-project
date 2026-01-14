@@ -103,13 +103,14 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & in lavorazione\\
-\textbf{Versione:} & 0.9.1 \\
+\textbf{Versione:} & 0.11.2 \\
 \textbf{Responsabile:} & Riccardo Manisi\\
 \textbf{Redattori:} & 
 \begin{tabular}[t]{@{}l@{}}
 Ferdinando Fracasso\\
 Riccardo Manisi\\
 Gabriele Scaggiante\\
+Dennis Parolin\\
 \end{tabular} \\
 \textbf{Verificatori:} & 
 \begin{tabular}[t]{@{}l@{}}
@@ -137,6 +138,15 @@ Ferdinando Fracasso\\
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
+\rowcolor{white}
+0.11.2 & 2026-01-11 & Dennis Parolin & Aggiunti gli strumenti di supporto delle sezioni "Processo di verifica", "Processo di validazione" e "Codifica". Aggiunta la lista delle tabelle. & Riccardo Manisi \\
+\hline
+\rowcolor{gray!20}
+0.11.1 & 2026-01-10 & Dennis Parolin & Sistemate le sezioni "Processo di verifica" e "Processo di validazione" tra i Processi di Supporto. Sistemata la sezione "Codifica" tra i Processi Primari. & Riccardo Manisi\\
+\hline
+\rowcolor{white}
+0.11.0 & 2026-01-06 & Dennis Parolin & Aggiunta sezioni "Processo di verifica" e "Processo di validazione" tra i Processi di Supporto. Aggiunta la sezione "Codifica" tra i Processi Primari. & Riccardo Manisi \\
+\hline
 \rowcolor{gray!20}
 0.10.1 & 2026-01-06 & Ferdinando Fracasso & Aggiunta "Piano di qualifica" nella sezione Documentazione fornita  & Riccardo Manisi\\
 \hline
@@ -158,25 +168,25 @@ Ferdinando Fracasso\\
 \rowcolor{gray!20}
 0.6.0 & 2025-12-13 & Gabriele Scaggiante & Aggiunta Processo di miglioramento e Processo di formazione & Marco Sanguin\\
 \hline
-\rowcolor{gray!20}
+\rowcolor{white}
 0.5.0 & 2025-12-11 & Ferdinando Fracasso & Aggiunta sezione "Processo di fornitura" & Giovanni Visentin \\
 \hline
-\rowcolor{white}
+\rowcolor{gray!20}
 0.4.1 & 2025-12-11 & Riccardo Manisi & Aggiunta prefazione con info generali del doc & Marco Sanguin\\
 \hline
-\rowcolor{gray!20}
+\rowcolor{white}
 0.4.0 & 2025-12-10 & Riccardo Manisi & Aggiunta attività di istituzione per Git e GitHub & Marco Sanguin\\
 \hline
-\rowcolor{white}
+\rowcolor{gray!20}
 0.3.1 & 2025-12-10 & Riccardo Manisi & Corretti errori grammaticali & Marco Sanguin\\
 \hline
-\rowcolor{gray!20}
+\rowcolor{white}
 0.3.0 & 2025-12-07 & Riccardo Manisi & Aggiunta attività di implementazione nel processo di infrastruttura & Giovanni Visentin\\
 \hline
-\rowcolor{white}
+\rowcolor{gray!20}
 0.2.0 & 2025-12-02 & Riccardo Manisi & Aggiunta sezioni per processo di configurazione e di gestione. & Marco Sanguin\\
 \hline
-\rowcolor{gray!20}
+\rowcolor{white}
 0.1.1 & 2025-12-02 & Riccardo Manisi & Sistemati errori lessicali & Marco Sanguin\\
 \hline
 \rowcolor{gray!20}
@@ -192,6 +202,11 @@ Ferdinando Fracasso\\
 \tableofcontents
 \thispagestyle{empty} % senza numero di pagina per l'indice
 \clearpage
+
+\listoftables
+\thispagestyle{empty}
+\clearpage
+% ===============================
 
 \section{Introduzione}
 \subsection{Scopo del documento}
@@ -215,17 +230,27 @@ I documenti prodotti nei processi di ciclo di vita sono corredati da un glossari
 Il glossario è considerato parte integrante del processo di documentazione: viene aggiornato ogni volta che emergono nuovi termini rilevanti, che vengono introdotti nuovi concetti tecnici o che si rende necessario chiarire ambiguità riscontrate durante la redazione o la verifica dei documenti.
 
 \subsection{Riferimenti}
+
 \subsubsection{Riferimenti normativi}
 \begin{itemize}
-    \item \textbf{Capitola d'appalto C4: L'app che Protegge e Trasforma}\\
-    {\small\url{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C4.pdf}}
-    \item \textbf{Standard ISO/IEC 12207:1995}\\
-    {\small\url{https://www.math.unipd.it/~tullio/IS-1/2009/Approfondimenti/ISO_12207-1995.pdf}}
+    \item \textbf{Capitolato d'appalto C4: \emph{L'app che Protegge e Trasforma}}\\
+    Parti consultate: documento completo\\
+    Versione: Ver. 1.0\\
+    Ultimo accesso: \textit{2026-01-12}\\
+    \url{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C4.pdf}
+    \item \textbf{ISO/IEC 12207:1997 - Software Life Cycle Processes}\\
+    Parti consultate: documento completo\\
+    Versione: edizione 1997\\
+    Ultimo accesso: \textit{2025-12-30}\\
+    \url{https://www.math.unipd.it/~tullio/IS-1/2009/Approfondimenti/ISO_12207-1995.pdf}
 \end{itemize}
 
 \subsubsection{Riferimenti informativi}
 \begin{itemize}
-    \item 
+    \item \textbf{Ian Sommerville, \emph{Software Engineering}}\\
+    Parti consultate: Capitoli 2, 24\\
+    Versione: \textit{X Edizione}\\
+    Ultimo accesso: \textit{2026-01-12}\\
 \end{itemize}
 
 % ===== SEZIONE PER I PROCESSI PRIMARI ====
@@ -241,7 +266,7 @@ La presente sezione espone i seguenti processi primari:
 \subsubsection{Scopo}
 Il processo primario di fornitura definisce le attività da intraprendere da parte del fornitore e l’analisi e pianificazione delle risorse necessarie per garantire l’efficienza e la conformità del progetto ai requisiti discussi con il proponente.
 
-\subsubsection{Fasi del processo}
+\subsubsection{Implementazione di processo}
 Il processo di fornitura è suddiviso nelle seguenti attività:
 \begin{itemize}
     \item \textbf{Inizializzazione:}
@@ -324,6 +349,12 @@ Questa sezione elenca e descrive brevemente tutta la documentazione che verrà p
 \subsection{Processo di sviluppo} \label{sec:processo-sviluppo}
 Il \textbf{processo di sviluppo} comprende le attività svolte dal team di sviluppo. Esso include le attività per l'analisi dei requisiti, il design, lo sviluppo del prodotto software, l'integrazione dei test e l'accettazione del prodotto da rilasciare.\\Il processo di sviluppo deve seguire le pratiche del processo di gestione dei processi (vedi sezione -da aggiungere-), stabilire l'infrastruttura secondo il processo di infrastruttura (\hyperref[sec:infrastruttura]{vedi sezione ?}), e gestire il processo a livello organizzativo tramite i processi di miglioramento (vedi sezione ?) e di formazione (vedi sezione ?).
 
+\subsubsection{Strumenti a supporto}
+Per sostenere il processi di sviluppo sono stati utilizzati i seguenti strumenti:
+\begin{itemize}
+    \item \textbf{Lucid chart}: piattaforma per la modellazione UML. Lo strumento consente la creazione di diagrammi UML (tra cui diagrammi dei casi d'uso, delle classi e di sequenza) direttamente in ambiente web, favorendo la collaborazione sincrona tra i membri del gruppo sullo stesso documento.
+\end{itemize}
+
 \subsubsection{Attività previste}
 Le attività che compongono il \textbf{processo di sviluppo} adattate al progetto sviluppato dal gruppo BiByBit sono elencate di seguito.
 \begin{itemize}
@@ -385,6 +416,48 @@ Ogni requisito è identificato tramite una codifica standard:
 dove \texttt{<importanza>} è la sigla a due lettere che indica la categoria del requisito e \texttt{X} è un identificatore numerico univoco.
 
 Tale classificazione supporta la tracciabilità, la verifica e la gestione dell’evoluzione dei requisiti durante l’intero ciclo di vita.
+
+% ==== SEZIONE CODIFICA ====
+\subsubsection{Codifica}
+L'attività di codifica ha lo scopo di realizzare tecnicamente quanto definito nelle fasi di analisi e progettazione.
+L'obiettivo principale delle norme qui esposte è garantire l'\textbf{uniformità}: il codice deve risultare omogeneo, leggibile e manutenibile, indipendentemente dal membro del gruppo che lo ha scritto.
+
+\paragraph{Automazione e controllo qualità}
+Per garantire il rispetto rigoroso dello stile senza rallentare lo sviluppo, il gruppo affida il controllo formale agli strumenti di automazione, riducendo l'errore umano.
+Il processo di verifica dello stile avviene su due livelli:
+\begin{itemize}
+    \item \textbf{Locale}: l'ambiente di sviluppo (IDE) di ogni membro è configurato per formattare automaticamente il codice al salvataggio, applicando le regole di indentazione e spaziatura condivise.
+    \item \textbf{Remoto}: la pipeline di \textbf{GitHub Actions} verifica la conformità del codice ad ogni \textit{push}. Come da policy, il mancato rispetto delle norme di formattazione impedisce tecnicamente il merge delle modifiche nel ramo principale.
+\end{itemize}
+
+\paragraph{Norme stilistiche e sintattiche}
+Per favorire la comprensione globale del progetto, vengono imposte le seguenti regole di scrittura:
+\begin{itemize}
+    \item \textbf{Lingua e Nomenclatura}: l'intera base di codice (variabili, funzioni, commenti) deve essere redatta in \textbf{lingua inglese}. I nomi scelti devono essere significativi ed auto-esplicativi, evitando abbreviazioni criptiche che richiedano interpretazione.
+    \item \textbf{Formattazione}: l'indentazione è fissata a 4 spazi (o 1 tabulazione) ed è mantenuta coerente dagli strumenti automatici.
+    \item \textbf{Leggibilità}: per facilitare il debugging e la lettura, è vietato scrivere più istruzioni sulla stessa riga.
+    \item \textbf{Commenti}: si predilige un codice che si "autodocumenta" tramite nomi chiari. Tuttavia, è obbligatorio commentare tutte le interfacce pubbliche (metodi e classi esportate) specificando parametri e valori di ritorno.
+\end{itemize}
+
+\paragraph{Vincoli implementativi}
+Al fine di mantenere il codice robusto e testabile, il gruppo adotta le seguenti pratiche ingegneristiche:
+\begin{itemize}
+    \item \textbf{Assenza di stato globale}: è vietato l'utilizzo di variabili globali, in quanto introducono dipendenze nascoste e rendono imprevedibile il comportamento del software.
+    \item \textbf{Semplicità delle funzioni}: le funzioni devono essere brevi e focalizzate su una singola responsabilità. Una funzione eccessivamente lunga o complessa è indice di cattiva progettazione e deve essere rifattorizzata.
+\end{itemize}
+
+\subsubsection{Strumenti a supporto della codifica}
+L'applicazione delle norme di codifica è facilitata da un set di strumenti che accompagna lo sviluppatore dalla scrittura fino all'integrazione.
+
+\paragraph{Ambiente di Sviluppo}
+Il gruppo ha uniformato l'ambiente di lavoro adottando \textbf{Visual Studio Code} come IDE di riferimento.
+
+\paragraph{Automazione e CI}
+Gli strumenti critici per il mantenimento dello standard, le cui specifiche tecniche verranno consolidate durante la Product Baseline (PB), sono classificabili in:
+\begin{itemize}
+    \item \textbf{Linter e Formatter}: strumenti di analisi statica specifici per linguaggio che rilevano violazioni stilistiche in tempo reale all'interno dell'IDE.
+    \item \textbf{GitHub Actions}: piattaforma utilizzata per i controlli remoti bloccanti (Quality Gate), che assicura che nessun codice non conforme venga integrato nel ramo \texttt{develop}.
+\end{itemize}
 
 % ==== SEZIONE PROCESSI DI SUPPORTO ====
 \section{Processi di supporto}
@@ -455,19 +528,19 @@ Il frontespizio possiede i seguenti elementi:
     \item \textbf{logo del gruppo};
     \item \textbf{contatto ufficiale} del gruppo;
     \item \textbf{nome del documento};
-    \item \textbf{informazione generali del documento} le cui informazioni sono riportate di seguito.
+    \item \textbf{informazioni generali del documento} le cui informazioni sono riportate di seguito.
     \begin{itemize}
-        \item stato del documento
-        \item versione
-        \item il responsabile per quel documento
-        \item i membri del gruppo che hanno contribuito alla redazione 
-        \item i verificatori 
-        \item i destinastari
+        \item Lo \textbf{stato del documento};
+        \item la \textbf{versione} attuale;
+        \item il membro del gruppo \textbf{responsabile} per quel documento;
+        \item \textbf{redattori} i membri del gruppo che hanno contribuito alla redazione 
+        \item i \textbf{verificatori}, che identificano i membri che hanno eseguito attività di verifica per quel documento; 
+        \item i \textbf{destinastari} del documento.
     \end{itemize}
 \end{itemize}
 
 \subsubsection*{Storico del documento}
-Nella prima pagina dopo il frontespizion deve essere presente il registro delle modifiche apportate al documento. Le entry della tabella devono essere in ordine cronologico in modo che la prima entry faccia riferimento alla modifica più recente. 
+Nella prima pagina dopo il frontespizio deve essere presente il registro delle modifiche apportate al documento. Le entry della tabella devono essere in ordine cronologico in modo che la prima entry faccia riferimento alla modifica più recente.
 \\Ogni entry deve essere composta da:
 \begin{enumerate}
     \item \textbf{versione};
@@ -475,20 +548,24 @@ Nella prima pagina dopo il frontespizion deve essere presente il registro delle 
     \item \textbf{autore della modifica};
     \item \textbf{verificatore}, il nome del verificatore che ha verificato quella modifica.
 \end{enumerate}
-\begin{center}
-\small
-\renewcommand{\arraystretch}{1.2} 
-\arrayrulecolor{black}
-\begin{tabular}{|p{0.1\linewidth}|p{0.18\linewidth}|p{0.18\linewidth}|p{0.18\linewidth}|p{0.18\linewidth}|}
-\hline
-\rowcolor{gray!60} 
-\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
-\hline
-\rowcolor{white}
- &  &  &  &  \\
- \hline
-\end{tabular}
-\end{center}
+
+\begin{table}[h]
+    \begin{center}
+    \small
+    \renewcommand{\arraystretch}{1.2}
+    \arrayrulecolor{black}
+    \begin{tabular}{|p{0.1\linewidth}|p{0.18\linewidth}|p{0.18\linewidth}|p{0.18\linewidth}|p{0.18\linewidth}|}
+    \hline
+    \rowcolor{gray!60}
+    \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+    \hline
+    \rowcolor{white}
+    & & & & \\
+    \hline
+    \end{tabular}
+    \end{center}
+    \caption{Esempio di tabella dello storico di un documento}
+\end{table}
 
 \subsubsection*{Indice}
 Ogni documento deve presentare un indice delle sezioni e sottosezioni per facilitare la navigazione dei lettori all'interno dello stesso documento.
@@ -509,7 +586,7 @@ I verbali rappresentano i rendiconti di riunioni ufficiali interne, a cui partec
   \item \textbf{Discussioni}: riporta in modo sintetico ma chiaro i contenuti emersi durante il confronto tra i partecipanti. Devono essere descritte le osservazioni, le problematiche sollevate e le proposte di soluzione valutate durante l’incontro.
   \item \textbf{Decisioni}: elenca tutte le risposte che il gruppo si da per uno specifico, incluse quelle riguardanti modifiche ai documenti, scadenze o variazioni organizzative. Ogni decisione deve essere formulata in modo oggettivo e deve avere un codice identificativo univoco che segue il seguente formato:
   \[
-\texttt{[VI/VE] [fase a cui appartiene] Y.Z}
+\texttt{<VI/VE> <fase a cui appartiene> Y.Z}
 \]
 dove:
 \begin{itemize}
@@ -542,11 +619,11 @@ Le ore hanno 2 formati:
 \begin{itemize}
     \item Tutti i file devono avere nomi in minuscolo, senza spazi, e le parole devono essere separate da un \textbf{underscore (\_)}.
     \item Il nome di ogni verbale deve iniziare con \texttt{verbale\_} , segue il tipo di verbale \texttt{interno} o \texttt{esterno} e la data in cui si è svolto. Un esempio di nominazione corretta è \texttt{verbale\_interno\_2025-11-05}.
-    \item L'unica eccezione è nel caso in cui usare questo formato generi due verbali con lo stesso nome all'interno della stessa cartella. In tal caso è necessario aggiungere, dopo la data, una breve descrizione del contesto relativo al verbale, sostituendo agli spazi il simbolo \texttt{underscore (\_)}. Ad esempio \texttt{verbale\_2025-10-28\_incontro\_c8}.
+    \item L'unica eccezione è nel caso in cui usare questo formato generi due verbali con lo stesso nome all'interno della stessa cartella. In tal caso è necessario aggiungere, dopo la data, una breve descrizione del contesto relativo al verbale, sostituendo agli spazi il simbolo \textbf{underscore (\_)}. Ad esempio \texttt{verbale\_2025-10-28\_incontro\_c8}.
     \item I \texttt{file PDF} mantengono lo stesso nome del file sorgente \texttt{.tex}.
 \end{itemize}
 
-\subsubsection*{Sigle}
+\subsubsection*{Sigle} \label{sigle}
 Di seguito sono presenti le sigle usate all interno dei documenti.
 \begin{itemize}
     \item \textbf{Fasi di progetto}:
@@ -606,7 +683,9 @@ I verificatori sono tenuti a controllare che i documenti di ciclo di vita del pr
 
 % ==== PROCESSO DI GESTIONE DELLA CONFIGURAZIONE ====
 \subsection{Processo di gestione della configurazione}
-Il processo di gestione della configurazione ha l’obiettivo di applicare procedure per garantire il controllo sistematico degli artefatti prodotti dal gruppo \textit{BitByBit} durante l’intero ciclo di vita del software. \\ Esso permette di tracciare le modifiche apportate agli elementi di configurazione, garantendo che ogni componente venga rilasciato in modo coerente e dopo le opportune verifiche. Inoltre, consente di registrare, classificare e monitorare le richieste di modifica, assicurando che i prodotti di lavoro risultino completi, coerenti e corretti. Infine, supporta una gestione ordinata degli elementi approvati, curandone l’archiviazione, la conservazione e la distribuzione.
+Il processo di gestione della configurazione ha l’obiettivo di applicare procedure per garantire il controllo sistematico degli artefatti prodotti dal gruppo \textit{BitByBit} durante l’intero ciclo di vita del software. \\
+Esso permette di tracciare le modifiche apportate ai configuration item, garantendo che ogni item venga rilasciato in modo coerente e dopo le opportune verifiche. Inoltre, consente di registrare, classificare e monitorare le richieste di modifica, assicurando che i prodotti di lavoro risultino completi, coerenti e corretti. 
+Infine, supporta una gestione ordinata degli item approvati, curandone l’archiviazione, la conservazione e la distribuzione.
 
 \subsubsection{Strumenti a supporto}
 Per le attività previste, il gruppo BitByBit utilizza gli stumenti elencati di seguito.
@@ -620,18 +699,18 @@ Per le attività previste, il gruppo BitByBit utilizza gli stumenti elencati di 
 Le attività principali del processo di gestione della configurazione sono:
 \begin{itemize}
     \item \textbf{identificazione della configurazione}, viene definito uno schema uniforme di versionamento e naming, per identificare ogni componente del sistema;
-    \item \textbf{controllo della configurazione}, metodologie per stabilire l'identificazione, l'approvazione o rifiuto, la verifica e l'eventuale rilascio delle change request; 
+    \item \textbf{controllo della configurazione}, metodologie per stabilire l'identificazione, l'approvazione o rifiuto, la verifica e l'eventuale rilascio delle richieste di modifica; 
     \item \textbf{registro di stato}, per predisporre registri di gestione e report di stato che mostrino lo stato e la cronologia degli elementi software;
     \item \textbf{valutazione della configurazione}, come determinare la completezza funzionale e fisica delle componenti software con i loro requisiti.
 \end{itemize}
 
 \subsubsection{Identificazione della configurazione}
 Per il versionamento viene adottato il Semantic Versioning SemVer.  
-Ogni documento riporta una versione nel formato:
+Ogni documento riporta una versione nel seguente formato.
 \begin{center}
 \texttt{X.Y.Z}
 \end{center}
-dove:
+Dove:
 \begin{itemize}
     \item \textbf{X (major)}: incrementata solo alla pubblicazione ufficiale, corrispondente al merge sul branch \texttt{main};
     \item \textbf{Y (minor)}: incrementata quando vengono effettuare modifiche sostanziali alla struttura o al contenuto del documento;
@@ -640,24 +719,23 @@ dove:
 Ogni documento di ciclo di vita presenta uno storico delle modifiche con associata la precisa versione.
 Questa scelta permette una chiara tracciabilità chiara, prevedibilità delle modifiche ed evoluzione controllata degli artefatti documentali.
 
-\paragraph{Aggiunta dei tag}
-Al termine del processo di revisione, quando una pull request viene approvata dai verificatori e successivamente chiusa dal responsabile, viene generato un commit di merge che rappresenta la versione consolidata delle modifiche introdotte nel branch \texttt{develop}.\\Poiché questo commit costituisce il punto di riferimento ufficiale per la versione del documento o dell’artefatto modificato, il responsabile – oppure, se previsto, una GitHub Action – deve applicare un tag che identifichi formalmente la nuova versione.
-
-Il formato per il tag sul branch \texttt{develop} è il seguente:
-\begin{center}
-    \texttt{sigla\_del\_documento-X.Y.Z}
-\end{center}
-dove \texttt{sigla\_del\_documento} fa riferimento alle convenzioni di scrittura presenti nel processo di documentazione (vedi sezione 3.1). Invece, \texttt{X.Y.Z} indica la versione con cui il documento entra ufficialmente nel repository, dopo la verifica e la validazione eseguite dalle figure del team adibite a questi compiti.
-Dopo il merge da develop a main si applica il tag della baseline alla commit risultante rispettando il formato seguente:
-\begin{center}
-    \texttt{sigla\_della\_baseline-X.Y.Z}
-\end{center}
-
 \subsubsection{Controllo della configurazione}
- Il controllo della configurazione definisce le modalità con cui il gruppo gestisce, valuta e approva tutte le modifiche agli elementi configurabili del progetto.\\ L’intero ciclo di lavoro è organizzato secondo la pratica del feature branching, in cui per ogni modifica deve essere aperto un branch di \texttt{feature} seguendo la nomenclatura esposta in sezione (da aggiungere).
+Il controllo della configurazione definisce le modalità con cui il gruppo gestisce, valuta e approva tutte le modifiche agli elementi configurabili del progetto.\\
+L’intero ciclo di lavoro è organizzato secondo la pratica del feature branching, secondo la quale ogni sviluppatore deve aprire un nuovo branch per iniziare a lavorare. Quando si è terminato il lavoro allora le modifiche possono essere integrate nel branch principale, nel nostro caso identificato su develop.\\
+Per la nomenclatura del branch di \texttt{feature} ogni membro del gruppo è tenuto a seguire la nomenclatura di seguito esposta.
+\begin{center}
+    \texttt{task/<descrizione delle modifiche>\_<documento soggetto alle modifiche>}
+\end{center}
+Dove:
+\begin{itemize}
+    \item \texttt{<descrizione delle modifiche>}, comprende una breve descrizione delle modifiche applicate in quel branch, senza utilizzare spazi e le parole separate da \textbf{tattini (-)};
+    \item \texttt{<documento soggetto alle modifiche>}, sigla (che segue la nomenclatura in \hyperref[sigle]{Sezione~\ref*{sigle}}) per il documento a cui avvengono apportate le modifiche.
+\end{itemize}
 
 \paragraph{Gestione issue e pianificazione del lavoro}
-Ogni modifica nasce dall’apertura di una issue GitHub, che costituisce il punto di riferimento per la tracciabilità dell’attività.\\ Al momento della creazione, la issue deve essere dotata di un titolo descrittivo e di una spiegazione chiara dell’obiettivo. Il responsabile assegna inoltre priorità, milestone, iterazione (che corrisponde allo sprint in cui l’attività deve essere completata) e l’assegnatario, selezionato in base al ruolo che il membro ricopre in quel momento. Label aggiuntive consentono una categorizzazione accurata del lavoro.\\ La pianificazione complessiva è supportata dalle GitHub Project Board, che permettono di consultare product backlog e sprint backlog tramite viste personalizzate, semplificando la gestione dei carichi di lavoro e l’avanzamento delle attività.
+Ogni modifica nasce dall’apertura di una issue GitHub, che costituisce il punto di riferimento per la tracciabilità dell’attività.\\ 
+Al momento della creazione, la issue deve essere dotata di un titolo descrittivo e di una spiegazione chiara dell’obiettivo. Il responsabile assegna inoltre priorità, milestone, iterazione (che corrisponde allo sprint in cui l’attività deve essere completata) e l’assegnatario, selezionato in base al ruolo che il membro ricopre in quel momento. Label aggiuntive consentono una categorizzazione accurata del lavoro.\\ 
+La pianificazione complessiva è supportata dalle GitHub Project Board, che permettono di consultare product backlog e sprint backlog tramite viste personalizzate, semplificando la gestione dei carichi di lavoro e l’avanzamento delle attività.
 
 \paragraph{Creazione della pull request}
 Una volta completata l’attività descritta nella issue GitHub, il membro incaricato apre una pull request dal branch di feature al \texttt{branch develop}.\\ Ogni pull request deve utilizzare il template comune del gruppo, che contiene le sezioni necessarie per descrivere contesto, modifiche introdotte, issue collegate e controlli effettuati. La descrzione del template presente nel file \texttt{pull\_request\_template.md}, deve essere compilato e adattato ogni volta, così da velocizzare il lavoro di revisione e rendere uniformi tutte le richieste. Il membro deve indicare tramite il campo \texttt{Reviewers} il singolo membro incaricato del compito di verificare quella modifica.
@@ -715,6 +793,122 @@ Nel Piano di Qualifica vengono formalizzate le metriche di processo e i relativi
 Le misurazioni effettuate vengono successivamente confrontate con tali valori di riferimento, consentendo di valutare l’efficacia e l’adeguatezza dei processi adottati.\\
 Le metriche di processo sono utilizzate dal responsabile di progetto come strumento di supporto decisionale per individuare eventuali criticità e valutare la necessità di apportare modifiche o miglioramenti ai processi in uso.
 
+% ==== SEZIONE PROCESSO DI VERIFICA ====
+\subsection{Processo di verifica}
+Il processo di verifica è l'insieme delle attività volte ad accertare che ogni prodotto del ciclo di vita (codice, documenti, architettura) sia conforme ai requisiti e agli standard di qualità stabiliti.
+L'obiettivo è rispondere alla domanda «Did we build the product right?» (Abbiamo costruito il prodotto nel modo corretto?), intercettando difetti ed errori prima che questi si propaghino alle fasi successive.
+
+\subsubsection{Strategia e Workflow}
+Il gruppo \textit{BitByBit} integra la verifica direttamente nel flusso di sviluppo quotidiano (Git Flow), adottando la politica del \textbf{Continuous Verification}.
+Le regole operative sono le seguenti:
+\begin{itemize}
+    \item \textbf{Policy "No Verify, No Merge"}: nessun artefatto può essere integrato nel ramo di sviluppo principale (\texttt{develop}) se non ha superato con successo i controlli di verifica.
+    \item \textbf{Pull Request come Quality Gate}: ogni modifica deve essere proposta tramite Pull Request. In questa sede avviene la verifica (automatica o manuale) e solo l'esito positivo autorizza il merge.
+    \item \textbf{Rami Stabili}: il ramo \texttt{main} è protetto e accoglie solo versioni del software che hanno superato l'intero ciclo di test (inclusi quelli di sistema).
+\end{itemize}
+
+\subsubsection{Verifica della Documentazione}
+La documentazione è soggetta esclusivamente ad \textbf{analisi statica}, ovvero controlli che non richiedono l'esecuzione.
+Per garantire la qualità dei documenti, il gruppo valuta due metodologie:
+\begin{itemize}
+    \item \textbf{Walkthrough}: revisione guidata dall'autore. Utile per l'allineamento del team ma dispendiosa.
+    \item \textbf{Ispezione (Inspection)}: lettura autonoma da parte del verificatore basata su liste di controllo (\textit{checklist}).
+\end{itemize}
+Tra le due, il gruppo \textit{BitByBit} adotta come standard l'\textbf{Ispezione}. L'uso di checklist predefinite garantisce infatti un processo ripetibile, oggettivo e meno soggetto a errori umani rispetto alla revisione libera.
+
+\paragraph{Strumenti per la verifica documentazione}
+Poiché il gruppo ha adottato la tecnica dell'\textbf{Ispezione} basata su checklist, la verifica della documentazione non richiede strumenti di automazione complessi, ma si avvale delle piattaforme di sviluppo e collaborazione:
+\begin{itemize}
+    \item \textbf{GitHub}: è lo strumento principale. L'interfaccia delle Pull Request permette ai verificatori di commentare righe specifiche del documento, richiedere modifiche e approvare il lavoro solo quando la checklist di verifica è soddisfatta.
+    \item \textbf{VS Code}: viene utilizzato dai verificatori per il controllo locale dei file sorgente (LaTeX/Markdown), permettendo di individuare errori di sintassi o formattazione non visibili dall'interfaccia web prima di dare l'approvazione.
+\end{itemize}
+
+\subsubsection{Verifica del Codice Software}
+La verifica del software si articola in due momenti distinti: l'analisi del codice sorgente (statica) e l'esecuzione dei test (dinamica).
+
+\paragraph{Analisi Statica Automatizzata}
+Prima di essere eseguito, il codice viene analizzato da strumenti automatici (Linter e Static Analyzers) integrati nella pipeline di CI/CD.
+Questo passaggio serve a rilevare:
+\begin{itemize}
+    \item violazioni delle norme di codifica (indentazione, naming);
+    \item potenziali bug logici o di sicurezza (es. variabili non utilizzate, cicli infiniti);
+    \item calcolo delle metriche di complessità.
+\end{itemize}
+
+\paragraph{Analisi Dinamica (Testing)}
+L'analisi dinamica verifica il comportamento del software tramite la sua esecuzione.
+Per essere valido, ogni test deve garantire due proprietà: \textbf{ripetibilità} (stesso output a parità di input) e \textbf{automatizzabilità} (esecuzione senza intervento umano).
+Il gruppo struttura i test secondo il modello a V, coprendo i seguenti livelli:
+
+\begin{enumerate}
+    \item \textbf{Test di Unità}: Verifica delle singole componenti (funzioni/classi) in isolamento.
+    \begin{itemize}
+        \item \textit{White-box}: test strutturali che mirano alla copertura dei percorsi logici interni (Statement Coverage).
+        \item \textit{Black-box}: test funzionali che verificano l'output dato un input, analizzando valori validi, non validi e casi limite (Boundary Analysis).
+    \end{itemize}
+    
+    \item \textbf{Test di Integrazione}: Verifica della collaborazione tra unità già testate.
+    \begin{itemize}
+        \item \textit{Top-Down}: integrazione dalle componenti di alto livello a quelle basse (richiede \textbf{Stub}).
+        \item \textit{Bottom-Up}: integrazione dalle componenti base verso l'interfaccia (richiede \textbf{Driver}).
+    \end{itemize}
+    
+    \item \textbf{Test di Sistema}: Verifica del sistema completo rispetto ai requisiti funzionali e prestazionali mappati nell'Analisi dei Requisiti.
+    
+    \item \textbf{Test di Regressione}: Riesecuzione automatica della suite di test esistente ad ogni modifica, per garantire che le nuove feature non abbiano corrotto funzionalità preesistenti.
+\end{enumerate}
+
+\paragraph{Strumenti per la verifica del codice}
+La definizione puntuale degli strumenti tecnici per la verifica del codice (es. framework di unit testing, linter specifici per linguaggio, strumenti di analisi statica e coverage) sarà effettuata e dettagliata durante lo svolgimento della \textbf{Product Baseline} (PB), in coerenza con le tecnologie che verranno consolidate in quella fase.
+
+\subsubsection{Classificazione dei Test}
+Per garantire l'ordine nel \textbf{Piano di Qualifica}, il gruppo adotta una nomenclatura univoca per il tracciamento:
+\begin{center}
+    \texttt{T-[ID]-[Tipo]}
+\end{center}
+Dove \textbf{ID} è un progressivo numerico e \textbf{Tipo} indica la categoria: \textbf{U} (Unità), \textbf{I} (Integrazione), \textbf{S} (Sistema), \textbf{A} (Accettazione).
+Lo stato di ogni test viene tracciato come: \textbf{I} (Implementato), \textbf{NI} (Non Implementato) o \textbf{S} (Superato).
+
+% ==== SEZIONE PROCESSO DI VALIDAZIONE ====
+\subsection{Processo di validazione}
+Il processo di validazione costituisce l'ultimo livello di controllo qualitativo prima del rilascio formale del prodotto.
+A differenza della verifica, che si configura come un controllo tecnico continuo sul codice, la validazione ha lo scopo di accertare che il sistema software realizzato dal gruppo \textit{BitByBit} sia pienamente conforme alle aspettative e ai bisogni reali dell'azienda proponente \textbf{Miriade}.
+
+\subsubsection{Obiettivi del processo}
+Il gruppo adotta questo processo per rispondere in modo affermativo alla domanda «Did we build the right product?», ovvero «Abbiamo costruito il prodotto giusto?».
+Gli obiettivi perseguiti sono:
+\begin{itemize}
+    \item dimostrare la totale copertura dei requisiti concordati nel documento di \textbf{Analisi dei Requisiti};
+    \item accertare l'idoneità del software nel contesto operativo reale tramite la simulazione di scenari d'uso;
+    \item ottenere l'approvazione formale per il rilascio del prodotto.
+\end{itemize}
+
+\subsubsection{Tracciamento come strumento di validazione}
+La prima fase operativa del processo consiste nell'assicurare che ogni funzionalità richiesta sia effettivamente presente nel sistema. Per fare ciò il gruppo utilizza la \textbf{matrice di tracciamento} come strumento di controllo principale.
+L'attività prevede di mappare univocamente ogni requisito (funzionale, di qualità o vincolo) ai relativi test di validazione.
+Questo approccio metodologico garantisce che non venga sviluppato codice non richiesto e, soprattutto, che ogni requisito concordato con \textbf{Miriade} sia verificabile tramite un test specifico. Un requisito privo di tracciamento verso un test è considerato non validabile e quindi non accettabile.
+
+\subsubsection{Esecuzione dei test di accettazione}
+La validazione si concretizza con l'esecuzione dei \textbf{Test di Accettazione} (UAT - User Acceptance Testing).
+In questa fase il gruppo non si limita a verificare l'assenza di errori, ma simula scenari di utilizzo reali (User Scenarios) per valutare il comportamento del sistema dal punto di vista dell'utente finale.
+Il superamento di questi test certifica che il prodotto supporta efficacemente i processi lavorativi richiesti. In caso di fallimento di un test di accettazione il prodotto viene respinto e rimandato alla fase di sviluppo per le necessarie correzioni, seguite da una regressione per confermare la risoluzione delle non conformità.
+
+\subsubsection{Strumenti a supporto della validazione}
+Analogamente alla verifica, anche il processo di validazione si avvale di strumenti specifici per gestire la complessità del tracciamento e l'esecuzione dei test.
+
+\paragraph{Strumenti per il tracciamento}
+La gestione manuale della matrice di tracciamento è soggetta ad errori umani. Per questo motivo il gruppo utilizza:
+\begin{itemize}
+    \item \textbf{Script di automazione}: verranno impiegati script interni (o tool esterni integrati) capaci di scansionare i file sorgente della documentazione e del codice per generare e aggiornare automaticamente le tabelle di tracciamento (Requisiti-Fonti e Requisiti-Test).
+\end{itemize}
+
+\paragraph{Strumenti per l'esecuzione e il reporting}
+Per l'effettuazione pratica dei test di accettazione:
+\begin{itemize}
+    \item \textbf{Ambiente di Deployment}: i test verranno eseguiti su un'istanza del software deployata in un ambiente il più possibile simile a quello di produzione, accessibile tramite Browser Web standard (Chrome/Firefox).
+    \item \textbf{GitHub Issues}: qualsiasi anomalia o comportamento inatteso riscontrato durante la validazione (test fallito) verrà tracciato aprendo una Issue dedicata su GitHub, etichettata specificamente come bug di validazione per distinguerla dai difetti tecnici di sviluppo.
+\end{itemize}
+
 % ==== SEZIONE PROCESSI ORGANIZZATIVI ====
 \section{Processi organizzativi del ciclo di vita}
 I processi organizzativi di ciclo di vita rappresentano l’insieme delle attività che il gruppo BitByBit ha scelto di adottare per strutturare e supportare in modo sistematico tutti i propri progetti.\\
@@ -727,6 +921,7 @@ Nelle presenti \textit{Norme di Progetto}, i processi organizzativi sono suddivi
     \item \textbf{Processo di formazione}.
 \end{itemize}
 
+% ==== SEZIONE GESTIONE DEI PROCESSI ====
 \subsection{Gestione dei processi}
 Il processo di \textbf{gestione dei processi} definisce le attività organizzative necessarie per pianificare, coordinare e monitorare il lavoro del gruppo. Esso stabilisce i compiti da svolgere, i ruoli incaricati di eseguirli e le modalità di comunicazione interna ed esterna.\\
 L’obiettivo è garantire che le attività procedano in modo efficace e controllato.
@@ -774,6 +969,7 @@ Le attività previste dal processo di gestione dei processi sono articolate come
 \rowcolor{gray!20}
 \centering Verificatore & Ha il compito di assicurarsi che le attività vengano svolte correttamente seguendo i processi di ciclo di vita. Si occupa di eseguire test approfonditi e revisioni sul software. Ha il compito di verificare le modifiche apportate ai vari documenti ed eventualemente esponendo le criticità che presentano, deve perciò avere un'approfondita conoscenza dei requisiti per ogni processo di vita.\\
 \hline
+\caption{Descrizione dei ruoli del progetto e delle loro responsabilità} \\
 \end{longtable}
 \end{center}
 
@@ -805,9 +1001,6 @@ Le riunioni previste dal processo di gestione dei processi sono suddivise in due
     \item \textbf{Esterne}: coinvolgono anche figure esterne quali i docenti o l'azienda proponente \textbf{Miriade Srl}. Queste riunioni vengono svolte generalmente tramite Google Meet. La frequenza concordata è di un incontro al mese, con la possibilità di richiederne ulteriori qualora fossero necessari chiarimenti o approfondimenti specifici.
 \end{itemize}
 L'esito di ogni incontro, interno o esterno, deve essere registrato mediante la redazione di un verbale, secondo le modalità previste dal processo di documentazione (vedi sezione -da aggiungere-). 
-
-% ==== SEZIONE GESTIONE DEI PROCESSI ====
-\subsection{Gestione dei processi}
 
 % ==== SEZIONE PROCESSO DI INFRASTRUTTURA ====
 \subsection{Infrastruttura}
@@ -873,12 +1066,13 @@ L’infrastruttura operativa del progetto viene implementata in modo da soddisfa
 \centering Script Python & Script sviluppati per automatizzare attività ricorrenti nel processo, come operazioni di generazione automatica o validazione. Scelti per la flessibilità del linguaggio e la facilità di integrazione con altre tecnologie.\\
 \hline
 \rowcolor{gray!20}
-\centering Lucid app & Strumento per la creazione di diagrammi, utilizzato per la redazione dei diagrammi UML dei casi d’uso. Scelto per la possibilità di collaborazione in tempo reale, che ha consentito a più membri del gruppo di lavorare simultaneamente.\\
+\centering Lucid chart & Strumento per la creazione di diagrammi, utilizzato per la redazione dei diagrammi UML dei casi d’uso. Scelto per la possibilità di collaborazione in tempo reale, che ha consentito a più membri del gruppo di lavorare simultaneamente.\\
 \hline
+\caption{Strumenti utilizzati per l'infrastruttura} \\
 \end{longtable}
 \end{center}
 
-\subsubsection{Istituzione}
+\subsubsection{Istituzione} \label{par:p-infrastruttura-istituzione}
 La presente attività di \textbf{istituzione dell'infrastruttura} ha lo scopo di documentare la configurazione dell'infrastruttura per facilitarne la manutenzione e la modifica da parte dei membri del gruppo BitByBit.
 
 \paragraph{Discord}
@@ -892,7 +1086,7 @@ Per garantire coerenza operativa tra tutti i membri del team, è previsto un ins
     \item Il membro deve assicurarsi che Git sia correttamente installato nel proprio ambiente, e che sia possibile accedere alla repository remota tramite le chiavi SSH configurate.
 \end{itemize}
 
-\paragraph{GitHub} \label{par:p-infrastruttura-istituzione}
+\paragraph{GitHub} 
 La configurazione del repository è definita per supportare il workflow adottato e garantire qualità, tracciabilità e sicurezza delle modifiche.\\
 Al suo interno è possibile trovare varie directories, di seguito verranno descritte le più rilevanti.
 \begin{itemize}
