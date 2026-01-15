@@ -1635,7 +1635,7 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
 
 % ===== UC-S: SICUREZZA - GUARDIANO SILENZIOSO  ======
 
-\subsubsection{UC-S1 - Invio Messaggio} \label{sec:UC-S1}
+\subsubsection{UC-S1 - Invio Messaggio SOS} \label{sec:UC-S1}
 
 \begin{figure}[H] 
     \centering
@@ -1646,10 +1646,10 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
 
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
-    \item \textbf{Attore secondario:} Servizio di invio mail
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
-        \item L’utente ha impostato una lista di contatti fidati \ref{subsec:UC-IMP3}
+        \item Il sistema è attivo
+        \item L'attore ha eseguito il comando per l'invio del segnale
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
@@ -1686,7 +1686,6 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item Il sistema ha rilevato che non c’è connessione.
-
         \item Il sistema emette un segnale acustico senza badare al volume impostato dall’utente.
     \end{itemize}
   
@@ -1725,36 +1724,40 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
 \end{figure}
 
 
-\subsubsection{UC-I1 - Invio messaggio} \label{sec:UC-I1}
+\subsubsection{UC-I1 - Consultazione Chatbot} \label{sec:UC-I1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
-    \item \textbf{Pre-condizioni:} 
+    \item \textbf{Pre-condizioni:} LLM
     \begin{itemize}
-        \item Il sistema è attivo
-        \item L'utente ha scritto un messaggio 
+        \item Il sistema è attivato
+        \item L'attore sta visualizzando una chat
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item L'utente ha inviato il messaggio al chatbot
+        \item L'attore ha ricevuto una risposta dall'LLM
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L’utente inserisce da tastiera il messaggio nella barra apposita %\ref{sec:UC-I1}
-        \item L'utente invia il messaggio al chatbot impostato nel contesto scelto
+        \item L'attore inserisce da tastiera il messaggio nella barra apposita
+        \item L'attore invia il messaggio al chatbot impostato nel contesto scelto
+        \item Il chatbot analizza il messaggio secondo i prompt impostati dal contesto
+        \item Il chatbot analizza il messaggio secondo la cronologia dei messaggi
+        \item Il chatbot impacchetta la risposta
+        \item L'attore visualizza la risposta del chatbot a schermo
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-        \item L'utente esce dalla sessione prima di inviare il messaggio % \ref{sec:UC-I2} %domanda%
-    \end{itemize}
-    \item \textbf{Inclusioni:}
-    \begin{itemize}
-        \item \ref{sec:UC-I2}
+        \item L'attore interrompe il processo di analisi del messaggio dell'LLM \ref{subsec:UC-I2}
+        \item Il messaggio non riesce ad essere inviato causa mancanza di connessione \ref{subsec:UC-I3}
+        \item L'LLM riscontra un problema durante la lettura del messaggio \ref{subsec:UC-I4}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
+        \item \ref{sec:UC-I2}
+        \item \ref{sec:UC-I3}
         \item \ref{sec:UC-I4}
     \end{itemize}
-    \item \textbf{Trigger:} L'Utente vuole scrivere al chatbot
+    \item \textbf{Trigger:} L'Utente vuole consultarsi con il chatbot
 \end{itemize}
 
 \subsubsection{UC-I2 - Generazione risposta LLM} \label{sec:UC-I2}
