@@ -131,6 +131,9 @@ Gruppo BitByBit\\
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 
+\rowcolor{gray!20}
+0.18.0 & 2026-01-15 & Giovanni Visentin & Riscritti gli UC per chatbot e cronologia chat (da terminare) & Gabriele Scaggiante \\
+\hline
 \rowcolor{white}
 0.17.0 & 2025-01-14 & Gabriele Scaggiante & Riscritti gli UC per il diario secondo il nuovo schema & Giovanni Visentin \\
 \hline
@@ -1727,7 +1730,8 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
 \subsubsection{UC-I1 - Consultazione Chatbot} \label{sec:UC-I1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
-    \item \textbf{Pre-condizioni:} LLM
+    \item \textbf{Attore secondario:} LLM
+    \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivato
         \item L'attore sta visualizzando una chat
@@ -1760,40 +1764,56 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \item \textbf{Trigger:} L'Utente vuole consultarsi con il chatbot
 \end{itemize}
 
-\subsubsection{UC-I2 - Generazione risposta LLM} \label{sec:UC-I2}
+\subsubsection{UC-I2 - Interruzione risposta} \label{sec:UC-I2}
 \begin{itemize}
-    \item \textbf{Attore principale:} LLM
-    \item \textbf{Attore secondario:} Utente generico
+    \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
-	    \item L’utente ha mandato un messaggio
+	    \item L'attore ha mandato un messaggio
 	    \item Il sistema ha ricevuto il messaggio
     \end{itemize}	
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item Il sistema ha generato una risposta
+        \item Il sistema ha interrotto la generazione della risposta
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item Il sistema analizza il messaggio con il contesto scelto \ref{sec:UC-I5}
-        \item Il sistema genera una nuova risposta
+        \item L'attore interrompe l'LLM durante l'analisi del messaggio
+        \item Il sistema smette di analizzare il messaggio
+        \item Il sistema notifica l'attore dell'interruzione della generazione della risposta
+        \item L'attore può riscrivere un messaggio al chatbot
     \end{itemize}
-    \item \textbf{Scenario secondario:} 
-    \begin{itemize}
-        \item Il sistema riscontra un errore nella lettura del messaggio \ref{sec:UC-I3}
-    \end{itemize}
-    \item \textbf{Estensioni:}
-    \begin{itemize}
-        \item \ref{sec:UC-I3}
-    \end{itemize}
-    \item \textbf{Trigger:} L’utente ha inviato un messaggio al chatbot
+    \item \textbf{Trigger:} L'attore vuole interrompere la generazione della risposta dell'LLM
 \end{itemize}
 
-\subsubsection{UC-I3 - Errore di lettura del messaggio} \label{sec:UC-I3}
+\subsubsection{UC-I3 - Mancanza di connessione} \label{sec:UC-I3}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha inviato un messaggio al chatbot
+        \item Il sistema rileva la mancanza di connessione
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema ha smesso di provare a leggere il messaggio
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema ha rilevato che non c’è connessione.
+        \item Il sistema notifica l'attore della mancanza di connessione
+        \item L'attore può riprovare
+        \item L'attore può scrivere un nuovo messaggio
+    \end{itemize}
+    \item \textbf{Trigger:} Il sistema rileva la mancanza di connessione
+\end{itemize}
+
+\subsubsection{UC-I4 - Errore di lettura del messaggio} \label{sec:UC-I4} ???
 \begin{itemize}
     \item \textbf{Attore principale:} LLM
-    \item \textbf{Pre-condizioni:} 
+    \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
 	    \item L’utente ha mandato un messaggio
@@ -1813,46 +1833,122 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \item \textbf{Trigger:} Il sistema non è riuscito a leggere il messaggio
 \end{itemize}
 
-\subsubsection{UC-I4 - Modifica input} \label{sec:UC-I4}
+\subsubsection{UC-I5 - Switch al "Detective delle Relazioni"} \label{sec:UC-I5}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
-    \item \textbf{Pre-condizioni:} 
-    \begin{itemize}
-        \item Il sistema è attivo
-	    \item L’utente ha mandato un messaggio
-	    \item Il sistema ha risposto a tale messaggio
-    \end{itemize}	
-    \item \textbf{Post-condizioni:}
-    \begin{itemize}
-        \item L’utente ha modificato il messaggio inviato.
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item Il sistema ferma la risposta al messaggio se è in corso.
-        \item L’utente può modificare il messaggio inviato.
-	    \item Il sistema riceve il nuovo messaggio modificato.
-    \end{itemize}
-    \item \textbf{Trigger:} L’utente ha premuto il pulsante “Modifica messaggio”
-\end{itemize}
-
-\subsubsection{UC-I5 - Context Switch} \label{sec:UC-I5}
-\begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
-    \item \textbf{Pre-condizioni:} 
+    \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo.
+        \item Una chat con il chatbot è aperta
+        \item Il contesto attualmente impostato è "Specchio Intelligente"
     \end{itemize}	
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item Il sistema ha cambiato il contesto fornito al modello.
+        \item Il sistema ha cambiato il contesto fornito al modello da "Specchio Intelligente" a "Detective delle Relazioni"
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item Il sistema chiede quale contesto l’utente vuole usare
-        \item Il sistema imposta come attivo il contesto richiesto.
-	\item L’utente può cambiare tra ‘Detective delle Relazioni’ a ‘Lo Specchio Intelligente’ o viceversa.
+        \item L'attore seleziona la voce per il cambio del contesto
+        \item Il sistema imposta come attivo il contesto "Detective delle Relazioni"
     \end{itemize}
-    \item \textbf{Trigger:} L’utente ha premuto il pulsante “Context Switch”.
+    \item \textbf{Scenario secondario:} 
+    \begin{itemize}
+        \item  \ref{subsec:UC-I6}
+    \end{itemize}
+    \item \textbf{Trigger:} L’utente ha premuto il pulsante per il cambio del contesto.
+\end{itemize}
+
+\subsubsection{UC-I7 - Switch a "Specchio Intelligente"} \label{sec:UC-I7}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo.
+        \item Una chat con il chatbot è aperta
+        \item Il contesto attualmente impostato è "Detective delle Relazioni"
+    \end{itemize}	
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema ha cambiato il contesto fornito al modello da "Detective delle Relazioni" a "Specchio Intelligente"
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore seleziona la voce per il cambio del contesto
+        \item Il sistema imposta come attivo il contesto "Specchio Intelligente"
+    \end{itemize}
+    \item \textbf{Trigger:} L’utente ha premuto il pulsante per il cambio del contesto.
+\end{itemize}
+
+\subsubsection{UC-I8 - Visualizzazione cronologia chat} \label{subsec:UC-I8}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato la cronologia delle chat
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema mostra l'elenco completo delle chat in cronologia
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema recupera tutte le chat memorizzate
+        \item Il sistema organizza le note secondo ordine cronologico
+        \item Il sistema visualizza la lista delle chat con una preview del primo messaggio inviato dentro la chat
+        \item L'attore può visualizzare una singola chat dalla lista \ref{subsec:UC-I7.1}
+    \end{itemize}
+    \item \textbf{Inclusioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-7.1}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore ha selezionato la cronologia delle chat
+\end{itemize}
+
+\subsubsection{UC-I8.1 - Visualizzazione singola chat della lista} \label{subsec:UC-I8.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato la cronologia delle chat
+        \item La cronologia delle chat è visibile
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item L'attore ha visualizzato una singola chat
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema recupera le informazioni della chat da visualizzare
+        \item Il sistema mostra la preview del primo messaggio della chat nella lista \ref{subsec:UC-I7.1.1}
+    \end{itemize}
+    \item \textbf{Inclusioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-7.1.1}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore ha visualizzato la cronologia
+\end{itemize}
+
+\subsubsection{UC-I8.1.1 - Visualizzazione preview inizio chat della lista} \label{subsec:UC-I8.1.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato la cronologia delle chat
+        \item La cronologia delle chat è visibile
+        \item Le chat sono caricate
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item L'attore ha visualizzato la preview di una chat
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema mostra la preview del primo messaggio della chat nella lista
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore ha visualizzato una singola chat dalla cronologia delle chat
 \end{itemize}
 
 \end{document}
