@@ -131,6 +131,9 @@ Gruppo BitByBit\\
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 
+\rowcolor{white}
+0.18.1 & 2025-01-15 & Gabriele Scaggiante & Aggiunti scenari secondari negli UC del diario & Giovanni Visentin \\
+\hline
 \rowcolor{gray!20}
 0.18.0 & 2026-01-15 & Giovanni Visentin & Riscritti gli UC per chatbot e cronologia chat (da terminare) & Gabriele Scaggiante \\
 \hline
@@ -1198,6 +1201,11 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
         \item L'attore conferma la password inserita
         \item Il sistema memorizza la password del diario fittizio
     \end{itemize}
+    \item \textbf{Scenari secondari:} 
+    \begin{itemize}
+        \item La password del diario fittizio combacia con quella già impostata del diario criptato. Il sistema non memorizza la password e mostra un messaggio di errore $\rightarrow$ \ref{subsec:UC-D2}
+        \item La password non è conforme ai criteri di sicurezza minimi imposti dal sistema. La password non viene memorizzata e viene mostrato un messaggio di errore. $\rightarrow$ \ref{subsec:UC-D3}
+    \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
         \item \ref{subsec:UC-D2}
@@ -1275,6 +1283,10 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
         \item Il sistema verifica che la password corrisponda a quella del diario fittizio
         \item Il sistema autentica l'attore e concede l'accesso al diario fittizio
     \end{itemize}
+    \item \textbf{Scenario secondario:} 
+    \begin{itemize}
+        \item Non è stata impostata la password per il diario fittizio. Il sistema richiede che venga impostata una password prima di procedere. $\rightarrow$ \ref{subsec:UC-D1}
+    \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
         \item \ref{subsec:UC-D7}
@@ -1307,6 +1319,10 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
         \item Il sistema verifica che la password corrisponda a quella del diario criptato
         \item Il sistema autentica l'attore e concede l'accesso al diario criptato
     \end{itemize}
+    \item \textbf{Scenario secondario:} 
+    \begin{itemize}
+        \item Non è stata impostata la password per il diario criptato. Il sistema richiede che venga impostata una password prima di procedere. $\rightarrow$ \ref{subsec:UC-D6}
+    \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
         \item \ref{subsec:UC-D7}
@@ -1337,6 +1353,11 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
         \item L'attore conferma la password inserita
         \item Il sistema memorizza la password del diario criptato
     \end{itemize}
+    \item \textbf{Scenari secondari:} 
+    \begin{itemize}
+        \item La password del diario criptato combacia con quella già impostata del diario fittizio. Il sistema non memorizza la password e mostra un messaggio di errore $\rightarrow$ \ref{subsec:UC-D10}
+        \item La password non è conforme ai criteri di sicurezza minimi imposti dal sistema. La password non viene memorizzata e viene mostrato un messaggio di errore. $\rightarrow$ \ref{subsec:UC-D3}
+    \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
         \item \ref{subsec:UC-D10}
@@ -1364,6 +1385,11 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
         \item L'attore conferma l'inserimento
         \item Il sistema riceve la password e verifica che sia corretta
         \item L'attore ottiene l'accesso al diario
+    \end{itemize}
+    \item \textbf{Scenari secondari:} 
+    \begin{itemize}
+        \item L'attore inserisce la password errata. Il sistema notifica l'errore e impedisce l'accesso al diario. $\rightarrow$ \ref{subsec:UC-D8}
+        \item L'attore ha inserito la password errata più volte di quanto consentito dal sistema. Il sistema nega l'accesso e disabilita l'inserimento della password per un periodo di tempo predefinito. $\rightarrow$ \ref{subsec:UC-D9}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
