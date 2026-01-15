@@ -131,6 +131,9 @@ Gruppo BitByBit\\
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 
+\rowcolor{white}
+0.19.0 & 2026-01-15 & Gabriele Scaggiante & Aggiunti UC Guardiano Silenzioso & Giovanni Visentin \\
+\hline
 \rowcolor{gray!20}
 0.18.2 & 2026-01-15 & Gabriele Scaggiante & Corretti alcuni refusi & Giovanni Visentin \\
 \hline
@@ -1672,7 +1675,7 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
 \begin{figure}[H] 
     \centering
     \includegraphics[width=0.9\textwidth]{../../../resources/UC-S1.png}
-    \caption{Diagramma del caso d'uso UC-S1 con UC-S2 e UC-S3}
+    \caption{Diagramma del caso d'uso UC-S1 con UC-S2, UC-S3 e UC-S4}
     \label{fig:UC-S1}
 \end{figure}
 
@@ -1680,26 +1683,29 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
-        \item Il sistema è attivo
-        \item L'attore ha eseguito il comando per l'invio del segnale
+        \item Il sistema è attivo.
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item Il sistema ha inviato un segnale ai contatti fidati
+        \item Il sistema ha preso in carico la richiesta di invio del messaggio SOS.
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L’utente richiede l’attivazione della funzionalità.
-        \item Il sistema verifica che ci sia connessione.
-	    \item Il sistema manda un messaggio preimpostato ai contatti prescelti.
-	    \item Il contatto nella lista dell’utente riceve il messaggio.
+        \item L’attore interagisce con l'opzione di invio del messaggio SOS.
+        \item Il sistema verifica la presenza di connessione.
+	    \item Il sistema invia una mail preimpostata ai contatti fidati memorizzati.
+    \end{itemize}
+    \item \textbf{Scenari secondari:} 
+    \begin{itemize}
+        \item Il sistema non è in grado di connettersi a internet. L'invio del messaggio fallisce e viene chiesto all'attore se inviare un segnale acustico. $\rightarrow$ \ref{sec:UC-S2}
+        \item Il sistema non ha memorizzato nessun contatto fidato. L'invio del messaggio fallisce e viene chiesto all'attore se inviare un segnale acustico. $\rightarrow$ \ref{sec:UC-S3}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
         \item \ref{sec:UC-S2}
         \item \ref{sec:UC-S3}
     \end{itemize}
-    \item \textbf{Trigger:} L'Utente vuole o ha necessità di mandare una richiesta di aiuto a delle persone fidate.
+    \item \textbf{Trigger:} L'Attore interagisce con l'opzione di invio del messaggio SOS.
 \end{itemize}
 
 \subsubsection{UC-S2 - Mancanza di connessione} \label{sec:UC-S2}
@@ -1707,21 +1713,27 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
-        \item il sistema non ha accesso alla connessione internet.
-	\item è in corso la richiesta di aiuto.
+        \item Il sistema è attivo.
+        \item Il sistema non ha accesso alla connessione internet.
+	    \item È in corso la richiesta di invio del messaggio SOS.
     \end{itemize}	
 
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item Il sistema ha inviato un segnale acustico.
+        \item Il sistema ha notificato l'Attore dell'errore
+        \item Il sistema ha proposto all'Attore l'opzione di invio del segnale acustico.
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item Il sistema ha rilevato che non c’è connessione.
-        \item Il sistema emette un segnale acustico senza badare al volume impostato dall’utente.
+        \item Il sistema ha rilevato l'assenza di connessione.
+        \item Il sistema mostra un messaggio di errore.
+        \item Il sistema dà la possibilità all'attore di inviare un segnale acustico $\rightarrow$ \ref{sec:UC-S4}
     \end{itemize}
-  
-    \item \textbf{Trigger:} L'Utente vuole o ha necessità di mandare un segnale di aiuto.
+    \item \textbf{Estensioni:}
+    \begin{itemize}
+        \item \ref{sec:UC-S4}
+    \end{itemize}
+    \item \textbf{Trigger:} Il sistema rileva l'assenza di connessione durante l'invio del messaggio di SOS.
 \end{itemize}
 
 \subsubsection{UC-S3 - Mancanza di contatti fidati} \label{sec:UC-S3}
@@ -1729,19 +1741,48 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
-        \item L’utente ha avviato la funzionalità che manda un messaggio alle persone fidate
-	    \item La lista delle persone fidate è vuota
+        \item Il sistema è attivo.
+	    \item È in corso la richiesta di invio del messaggio SOS.
+	    \item La lista dei contatti fidati è vuota.
     \end{itemize}	
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
-        \item Il sistema mostra un messaggio di errore per avvisare l'utente che non ha inserito contatti fidati
+        \item Il sistema ha notificato l'Attore dell'errore
+        \item Il sistema ha proposto all'Attore l'opzione di invio del segnale acustico.
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item Il sistema rileva che la lista dei contatti fidati è vuota
-        \item Il sistema notifica l'utente con un messaggio di errore e chiede di inserire almeno un contatto fidato
+        \item Il sistema notifica l'utente con un messaggio di errore
+        \item Il sistema dà la possibilità all'attore di inviare un segnale acustico $\rightarrow$ \ref{sec:UC-S4}
+    \end{itemize}
+    \item \textbf{Estensioni:}
+    \begin{itemize}
+        \item \ref{sec:UC-S4}
     \end{itemize}
     \item \textbf{Trigger:} L'Utente vuole mandare un messaggio di SOS ai contatti fidati
+\end{itemize}
+
+\subsubsection{UC-S4 - Invio segnale acustico} \label{sec:UC-S4}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo.
+	    \item È in corso la richiesta di invio del messaggio SOS.
+	    \item Si è verificato un errore che ha impedito l'invio delle mail ai contatti fidati.
+        \item L'Attore ha selezionato l'opzione di invio del segnale acustico.
+    \end{itemize}	
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema avvia l'invio di un segnale acustico
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'Attore seleziona l'opzione per inviare il segnale acustico.
+        \item Il sistema invia il segnale acustico indipendente dalle impostazioni di volume del dispositivo.
+    \end{itemize}
+    \item \textbf{Trigger:} L'Attore seleziona l'opzione per inviare il segnale acustico.
 \end{itemize}
 
 % ========================== UC-I: I - DETECTIVE DELLE RELAZIONI  ==============================
