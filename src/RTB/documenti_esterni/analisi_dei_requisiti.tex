@@ -492,38 +492,35 @@ Gli attori rappresentano entità esterne al sistema che interagiscono con esso p
 
 \begin{itemize}
     \item \textbf{Attore principale:} Utente Generico
-    \item \textbf{Pre-condizioni:} 
+    \item \textbf{Pre-condizioni:}
     \begin{itemize}
-        \item L’utente non ha mai aperto l’applicazione
-        \item L’utente non ha ancora visualizzato tutte le pagine del walkthrough
+        \item Il sistema è attivo
+        \item L'attore apre per la prima volta l’applicazione
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item L’utente ha visualizzato le funzionalità presenti nelle schermate
-        \item L’utente ha aggiunto un contatto fidato alla sua rete di contatti fidati
-        \item L'utente ha inserito la propria mail di contatto
-        \item L'utente ha impostato la password per il diario criptato
-        \item Il sistema mostra la Dashboard principale
+        \item L’utente ha visualizzato le funzionalità presenti nelle schermate e ha imparato l'applicazione
     \end{itemize}
     \item \textbf{Scenario principale:}
     \begin{itemize}
         \item Il sistema mostra la schermata di benvenuto
-        \item L'utente esegue la profilazione iniziale $\rightarrow$ \ref{subsec:UC-3.1}
         \item Il sistema inizia il ciclo di presentazione delle schede informative dell'app
-        \item L'utente seleziona la voce prosegui per ogni scheda $\rightarrow$ \ref{subsec:UC-3.2}
-        \item L'utente seleziona la voce prosegui $\rightarrow$ \ref{subsec:UC-BW1.3}
+        \item L'attore esegue la feature di autenticazione \ref{subsec:UC-3.1}
+        \item L'attore esegue scelta della tipologia di utilizzo dell'applicazione \ref{subsec:UC-3.2}
+        \item L'attore esegue la feature di aggiunta di una password per il diario criptato \ref{subsec:UC-3.3}
+        \item L'attore esegue la feature di aggiunta di un contatto fidato \ref{subsec:UC-3.4}
         \item Il sistema mostra la Home Page
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
-        \item L'utente decide di tornare alla scheda precedente $\rightarrow$ \ref{subsec:UC-3.3}
-        \item L'utente decide di saltare il walkthrough $\rightarrow$ \ref{subsec:UC-4}
+        \item L'attore sceglie di saltare tutte le funzionalità del walkthrough \ref{subsec:UC-4}
     \end{itemize} 
     \item \textbf{Inclusioni:}
     \begin{itemize}
         \item \ref{subsec:UC-3.1}
         \item \ref{subsec:UC-3.2}
         \item \ref{subsec:UC-3.3}
+        \item \ref{subsec:UC-3.4}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
