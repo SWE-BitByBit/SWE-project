@@ -2649,4 +2649,77 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \item \textbf{Trigger:} Fallimento nel download o nell'apertura della risorsa
 \end{itemize}
 
+\subsubsection{UC-L1 - Visualizzazione mappa luoghi sicuri} \label{sec:UC-L1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato la funzionalità per visualizzare la mappa dei luoghi sicuri
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza la mappa con i punti di interesse
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema carica i dati geolocalizzati dei luoghi sicuri
+        \item Il sistema visualizza la mappa interattiva all'interno dell'applicazione
+        \item Il sistema mostra i marker corrispondenti ai luoghi sicuri nelle vicinanze (Centri antiviolenza, Ospedali, Stazioni di Polizia)
+        \item L'attore può selezionare un luogo sicuro dalla mappa
+        \item L'attore può decidere di aprire la posizione su Google Maps $\rightarrow$ \ref{subsec:UC-L2}
+    \end{itemize}
+    \item \textbf{Estensioni:} \ref{subsec:UC-L2}
+    \item \textbf{Trigger:} L'attore vuole localizzare i luoghi sicuri più vicini
+\end{itemize}
+
+\subsubsection{UC-L2 - Apertura mappa in Google Maps} \label{subsec:UC-L2}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore secondario:} Google Maps
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore sta visualizzando la mappa dei luoghi sicuri
+        \item Il dispositivo dispone di una connessione internet e/o dell'applicazione Google Maps
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'applicazione esterna (Google Maps) viene aperta con le coordinate impostate
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore seleziona l'opzione per aprire il luogo su Google Maps
+        \item Il sistema chiama l'applicazione esterna Google Maps passando le coordinate necessarie
+        \item L'attore Google Maps visualizza la mappa/itinerario
+    \end{itemize}
+    \item \textbf{Scenario secondario:} 
+    \begin{itemize}
+         \item Si verifica un errore nell'apertura dell'applicazione esterna $\rightarrow$ \ref{subsec:UC-L3}
+    \end{itemize}
+    \item \textbf{Estensioni:} \ref{subsec:UC-L3}
+    \item \textbf{Trigger:} L'attore vuole avviare la navigazione o vedere dettagli aggiuntivi del luogo
+\end{itemize}
+
+\subsubsection{UC-L3 - Errore apertura mappa esterna} \label{subsec:UC-L3}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item Il sistema tenta di aprire l'applicazione Google Maps
+        \item Si verifica un problema nell'apertura
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema notifica l'errore e mantiene l'utente nell'applicazione corrente
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema rileva il fallimento nell'invocazione dell'app esterna
+        \item Il sistema mostra un messaggio di errore
+        \item Il sistema ritorna alla visualizzazione della mappa interna
+    \end{itemize}
+\end{itemize}
+
 \end{document}
