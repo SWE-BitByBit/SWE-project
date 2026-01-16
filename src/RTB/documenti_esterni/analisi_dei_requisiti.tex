@@ -2237,4 +2237,237 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \item \textbf{Trigger:} L'attore sceglie di non confermare l'eliminazione della chat
 \end{itemize}
 
+% ========================== UC-G: Guide ==============================
+
+\subsubsection{UC-G1 - Visualizzazione lista community} \label{sec:UC-G1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato la sezione dedicata alle community
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza l'elenco delle community disponibili
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema recupera l'elenco delle community attive dal server
+        \item Il sistema visualizza la lista delle community $\rightarrow$ \ref{subsec:UC-G1.1}
+        \item L'attore può scorrere la lista per scegliere quale community visitare
+    \end{itemize}
+    \item \textbf{Inclusioni:} \ref{subsec:UC-G1.1}
+    \item \textbf{Trigger:} L'attore vuole esplorare le community esistenti
+\end{itemize}
+
+\subsubsection{UC-G1.1 - Visualizzazione singola community nella lista} \label{subsec:UC-G1.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item Il sistema sta renderizzando la lista delle community
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza i dati riassuntivi della singola community
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema mostra il nome della community
+        \item Il sistema mostra l'icona o l'immagine rappresentativa
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-G2 - Visita community} \label{sec:UC-G2}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore visualizza la lista delle community
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza i post e le discussioni interne alla community
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore seleziona una community specifica dalla lista
+        \item Il sistema carica i dettagli della community scelta
+        \item Il sistema presenta la schermata di dettaglio della community
+    \end{itemize}
+    \item \textbf{Scenario secondario:} 
+    \begin{itemize}
+         \item Errore nel caricamento della pagina $\rightarrow$ \ref{subsec:UC-G3}
+    \end{itemize}
+    \item \textbf{Estensioni:} \ref{subsec:UC-G3}
+    \item \textbf{Trigger:} L'attore seleziona una community per visualizzarne il contenuto
+\end{itemize}
+
+\subsubsection{UC-G3 - Errore caricamento community} \label{subsec:UC-G3}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore sta tentando di visualizzare la lista o i dettagli di una community
+        \item Si verifica un problema tecnico (timeout server, assenza rete)
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema notifica l'errore e non mostra dati parziali o corrotti
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema rileva il fallimento della richiesta dati
+        \item Il sistema mostra un messaggio di errore all'utente
+        \item Il sistema permette di ricaricare la pagina
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-G4 - Visualizzazione lista contatti d'emergenza} \label{sec:UC-G4}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato la sezione dei numeri utili/emergenza
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza l'elenco dei numeri di emergenza
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema recupera la lista dei contatti di emergenza nazionali
+        \item Il sistema recupera la lista dei numeri dei contatti fidati personali 
+        \item Il sistema visualizza le entry della lista $\rightarrow$ \ref{subsec:UC-G4.1}
+    \end{itemize}
+    \item \textbf{Inclusioni:} \ref{subsec:UC-G4.1}
+    \item \textbf{Trigger:} L'attore vuole consultare i numeri rapidi di emergenza
+\end{itemize}
+
+\subsubsection{UC-G4.1 - Visualizzazione singolo contatto d'emergenza} \label{subsec:UC-G4.1}
+\begin{itemize}
+    \item \textbf{Descrizione:} Questo caso d'uso generalizza la visualizzazione di un contatto, definendo la struttura comune (nome e numero) per qualsiasi tipo di contatto d'emergenza.
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item Il sistema sta renderizzando la lista dei contatti
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item I dettagli essenziali del contatto sono visibili a schermo
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema visualizza il nome identificativo del contatto $\rightarrow$ \ref{subsec:UC-G4.1.1}
+        \item Il sistema visualizza il numero telefonico associato al contatto $\rightarrow$ \ref{subsec:UC-G4.1.2}
+    \end{itemize}
+    \item \textbf{Inclusioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-G4.1.1}
+        \item \ref{subsec:UC-G4.1.2}
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-G4.1.1 - Visualizzazione nome contatti d'emergenza} \label{subsec:UC-G4.1.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item Il sistema sta visualizzando un contatto d'emergenza
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il nome del contatto è visibile
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema mostra la stringa di testo corrispondente al nome dell'ente o della persona
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-G4.1.2 - Visualizzazione numero contatti d'emergenza} \label{subsec:UC-G4.1.2}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item Il sistema sta visualizzando un contatto d'emergenza
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il numero di telefono è visibile
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema mostra le cifre del numero telefonico associato al contatto
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-G5 - Visualizzazione singolo contatto ente d'emergenza} \label{subsec:UC-G5}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Generalizzazione:} È una specializzazione di \textbf{UC-G4.1}
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il contatto da visualizzare è un ente istituzionale o certificato
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza i dati dell'ente
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema recupera i dati dell'ente
+        \item Il sistema eredita il comportamento di visualizzazione da \ref{subsec:UC-G4.1}
+        \item Il sistema può mostrare un logo o un'icona specifica dell'ente
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-G6 - Visualizzazione singolo contatto personale d'emergenza} \label{subsec:UC-G6}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Generalizzazione:} È una specializzazione di \textbf{UC-G4.1}
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il contatto da visualizzare è stato aggiunto dall'attore
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza i dati del contatto personale
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema recupera i dati dal database locale dell'utente
+        \item Il sistema eredita il comportamento di visualizzazione da \ref{subsec:UC-G4.1}
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-G7 - Composizione automatica numero contatto} \label{sec:UC-G7}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore visualizza la lista dei contatti d'emergenza
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema compila il numero sul dispositivo
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore interagisce con un contatto
+        \item Il sistema rileva il numero associato
+        \item Il sistema compila il numero sul dispositivo dell'attore
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore seleziona il pulsante di chiamata di un contatto
+\end{itemize}
+
 \end{document}
