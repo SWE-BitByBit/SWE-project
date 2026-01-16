@@ -2470,4 +2470,183 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \item \textbf{Trigger:} L'attore seleziona il pulsante di chiamata di un contatto
 \end{itemize}
 
+\subsubsection{UC-G8 - Visualizzazione lista leggi} \label{sec:UC-G8}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato la sezione informativa sulle normative vigenti
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza l'elenco delle leggi e dei diritti pertinenti
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema recupera l'elenco delle normative dal database
+        \item Il sistema visualizza le entry della lista delle leggi $\rightarrow$ \ref{subsec:UC-G8.1}
+        \item L'attore può scorrere la lista per cercare l'argomento di interesse
+    \end{itemize}
+    \item \textbf{Inclusioni:} \ref{subsec:UC-G8.1}
+    \item \textbf{Trigger:} L'attore vuole informarsi sui propri diritti legali
+\end{itemize}
+
+\subsubsection{UC-G8.1 - Visualizzazione singola legge nella lista} \label{subsec:UC-G8.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item Il sistema sta mostrando la lista delle leggi
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza il titolo
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema mostra il titolo della legge
+        \item L'attore può selezionare una legge per aprirne i dettagli
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-G9 - Visualizzazione dettagli legge} \label{sec:UC-G9}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore visualizza la lista delle leggi
+        \item L'attore seleziona una legge dalla lista
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza interamente i dettagli della legge
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore seleziona una normativa specifica dalla lista
+        \item Il sistema recupera il contenuto dettagliato della legge
+        \item Il sistema presenta la schermata di dettaglio con il testo esplicativo completo
+    \end{itemize}
+    \item \textbf{Scenario secondario:} 
+    \begin{itemize}
+         \item Errore nel caricamento del contenuto della legge $\rightarrow$ \ref{subsec:UC-G10}
+    \end{itemize}
+    \item \textbf{Estensioni:} \ref{subsec:UC-G10}
+    \item \textbf{Trigger:} L'attore vuole approfondire il contenuto di una legge
+\end{itemize}
+
+\subsubsection{UC-G10 - Errore caricamento normativa} \label{subsec:UC-G10}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore sta tentando di visualizzare la lista o i dettagli di una legge
+        \item Si verifica un problema tecnico (timeout server, assenza rete)
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema notifica l'errore all'attore
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema rileva il fallimento della richiesta dati
+        \item Il sistema mostra un messaggio di errore esplicativo all'utente
+        \item Il sistema permette di ricaricare la pagina o tornare indietro
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-G11 - Visualizzazione lista materiale informativo} \label{sec:UC-G11}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato la sezione del materiale informativo
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza l'elenco dei materiali multimediali o testuali disponibili
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema recupera l'elenco delle risorse disponibili dal server
+        \item Il sistema visualizza la lista dei materiali disponibili 
+        \item L'attore può visualizzare singolarmente ogni materiale nella lista $\rightarrow$ \ref{subsec:UC-G11.1}
+        \item L'attore può scorrere la lista per trovare il contenuto di interesse
+    \end{itemize}
+    \item \textbf{Inclusioni:} \ref{subsec:UC-G11.1}
+    \item \textbf{Trigger:} L'attore vuole consultare risorse educative o di supporto
+\end{itemize}
+
+\subsubsection{UC-G11.1 - Visualizzazione singolo materiale informativo} \label{subsec:UC-G11.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item Il sistema sta renderizzando la lista dei materiali
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore identifica il titolo e il formato del materiale
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema mostra il titolo del materiale
+        \item Il sistema mostra l'icona relativa al formato
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-G12 - Visualizzazione dettagli materiale informativo} \label{sec:UC-G12}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore visualizza la lista del materiale informativo
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il contenuto selezionato viene aperto per la consultazione o avviato il download
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore seleziona una risorsa specifica dalla lista
+        \item Il sistema recupera il file o il contenuto associato
+        \item Il sistema visualizza il materiale a schermo intero o ne avvia la riproduzione
+    \end{itemize}
+    \item \textbf{Scenario secondario:} 
+    \begin{itemize}
+         \item Si verifica un errore durante il recupero del file (es. file corrotto o offline) $\rightarrow$ \ref{subsec:UC-G13}
+    \end{itemize}
+    \item \textbf{Estensioni:} \ref{subsec:UC-G13}
+    \item \textbf{Trigger:} L'attore seleziona una risorsa per visualizzarla
+\end{itemize}
+
+\subsubsection{UC-G13 - Errore caricamento materiale} \label{subsec:UC-G13}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha richiesto l'apertura di un materiale informativo
+        \item Si verifica un problema tecnico (timeout, assenza rete, risorsa rimossa)
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'utente è notificato dell'errore
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema rileva un errore durante il tentativo di accesso alla risorsa
+        \item Il sistema mostra un messaggio di errore
+        \item Il sistema visualizza la lista dei materiali
+    \end{itemize}
+    \item \textbf{Trigger:} Fallimento nel download o nell'apertura della risorsa
+\end{itemize}
+
 \end{document}
