@@ -1163,32 +1163,144 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \item \textbf{Trigger:} L'attore ha scelto di non rimuovere il contatto fidato dalla propria rete dei contatti fidati
 \end{itemize}
 
-% ==== UC-IMP9 - CONFIGURAZIONE DEAD MAN'S SWITCH ====
+% ==== DEAD MAN'S SWITCH ====
 
-\subsubsection{UC-IMP9 - Gestione funzionalità Dead Man's Switch} \label{subsec:UC-IMP9}
+\subsubsection{UC-DS1 - Impostazione timer prima inattività} \label{sec:UC-DS1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente autenticato
-    \item \textbf{Pre-condizioni:} 
+    \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'utente ha effettuato l'accesso alle impostazioni di sicurezza
+        \item L'attore ha effettuato l'accesso alle impostazioni del Dead Man's Switch
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item Le preferenze per il monitoraggio dell'inattività sono salvate nel sistema
+        \item Il sistema memorizza l'intervallo di tempo per il primo controllo di inattività
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'utente attiva l'interruttore del Dead Man's Switch
-        \item L'utente definisce l'intervallo di tempo massimo di inattività (es. 24h, 48h, 72h, ...) dopo il quale ricevere la mail
-        \item L'utente modifica il tono/l'apparenza della mail che riceverà
-        \item L'utente conferma il salvataggio delle impostazioni
+        \item L'attore seleziona l'opzione per il primo timer
+        \item L'attore imposta la durata desiderata dopo la quale il sistema invierà la mail di controllo all'attore
+        \item L'attore conferma la scelta
+        \item Il sistema aggiorna la configurazione
     \end{itemize}
-    \item \textbf{Scenario secondario:}
-    \begin{itemize} 
-        \item L'utente disattiva la funzionalità. Il sistema interrompe qualsiasi timer di monitoraggio attivo.
+    \item \textbf{Trigger:} L'attore vuole definire dopo quanto tempo il sistema deve verificare la sua presenza
+\end{itemize}
+
+\subsubsection{UC-DS2 - Impostazione timer seconda inattività} \label{sec:UC-DS2}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova nelle impostazioni del Dead Man's Switch
+        \item Il timer di prima inattività è stato configurato
     \end{itemize}
-    \item \textbf{Trigger:} L'utente vuole configurare o modificare il timer di inattività.
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema memorizza l'intervallo di tempo per il secondo controllo di inattività
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item L'attore seleziona l'opzione per il secondo timer
+        \item L'attore imposta la durata che deve trascorrere tra la mail di controllo e l'invio del messaggio di SOS ai contatti fidati
+        \item L'attore conferma la scelta
+        \item Il sistema aggiorna la configurazione
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole definire quanto tempo ha per rispondere alla mail di controllo prima che parta l'allarme
+\end{itemize}
+
+\subsubsection{UC-DS3 - Modifica titolo mail di avviso} \label{sec:UC-DS3}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato l'opzione di modifica del contenuto della mail
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il nuovo oggetto della mail viene salvato nel sistema
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore seleziona il campo relativo al titolo della mail
+        \item L'attore modifica il testo che funge da oggetto della mail
+        \item L'attore salva le modifiche
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-DS4 - Modifica corpo mail di avviso} \label{sec:UC-DS4}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato l'opzione di modifica del contenuto della mail
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il nuovo corpo del messaggio viene salvato nel sistema
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore seleziona il campo relativo al corpo della mail
+        \item L'attore modifica il corpo della mail
+        \item L'attore salva le modifiche
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-DS5 - Visualizzazione preview mail di avviso} \label{sec:UC-DS5}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore vuole verificare l'aspetto della mail configurata
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza un'anteprima fedele della mail che verrà inviata
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema recupera i dati della mail
+        \item Il sistema compone l'anteprima del messaggio
+        \item Il sistema visualizza il titolo della mail $\rightarrow$ \ref{subsec:UC-DS5.1}
+        \item Il sistema visualizza il corpo della mail $\rightarrow$ \ref{subsec:UC-DS5.2}
+    \end{itemize}
+    \item \textbf{Scenario secondario:} 
+    \begin{itemize}
+        \item Errore nel recupero della configurazione 
+    \end{itemize}
+    \item \textbf{Inclusioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-DS5.1}
+        \item \ref{subsec:UC-DS5.2}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore seleziona il pulsante di anteprima
+\end{itemize}
+
+\subsubsection{UC-DS5.1 - Visualizzazione titolo mail di avviso} \label{subsec:UC-DS5.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Pre-condizioni:} Il sistema sta renderizzando l'anteprima
+    \item \textbf{Post-condizioni:} L'oggetto della mail è visibile
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema mostra il testo configurato come oggetto della mail nell'header dell'anteprima
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-DS5.2 - Visualizzazione corpo della mail di avviso} \label{subsec:UC-DS5.2}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Pre-condizioni:} Il sistema sta renderizzando l'anteprima
+    \item \textbf{Post-condizioni:} Il contenuto principale della mail è visibile
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema mostra il testo del messaggio nel corpo dell'anteprima
+    \end{itemize}
 \end{itemize}
 
 % ==== DIARIO CRIPTATO =====
