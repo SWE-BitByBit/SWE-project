@@ -147,8 +147,11 @@
 \rowcolor{gray!60}
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
-\rowcolor{gray!20}
+\rowcolor{white}
 0.4.0 & 2026-01-12 & Marco Sanguin & Redazione \ref{sec:sprint2_RTB}, \ref{sec:sprint3_RTB} e inzio \ref{sec:sprint4_RTB} & Dennis Parolin \\
+\hline
+\rowcolor{gray!20}
+0.3.1 & 2026-01-11 & Riccardo Manisi & Aggiunta \ref{tab:RO3} e \ref{tab:RO4}. E aggiunte attività RTB. & Gabriele Scaggiante \\
 \hline
 \rowcolor{white}
 0.3.0 & 2025-12-05 & Dennis Parolin & Redazione dell'intera sezione \ref{sec:pianificazione_lungo_termine} & Giovanni Visentin \\
@@ -244,7 +247,7 @@ Per facilitare la gestione e la consultazione, i rischi sono stati catalogati in
 
 % ======================= RISCHI TECNOLOGICI =======================
 \clearpage
-\subsection{Rischi Tecnologici}\label{sec:rischi_tecnologici}
+\subsection{Rischi Tecnologici} \label{sec:rischi_tecnologici}
 
 \subsubsection{RT1 - Inesperienza tecnologica}
 \begin{table}[H]
@@ -441,6 +444,70 @@ Per facilitare la gestione e la consultazione, i rischi sono stati catalogati in
     \label{tab:RO2}
 \end{table}
 
+\subsubsection{RO3 - Incontri non abbastanza frequenti}
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.4}
+    \begin{tabularx}{\textwidth}{|L|Z|}
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Tipologia Dato} & \textbf{Valore} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Codice & RO3 \\
+        \hline
+        \rowcolor{tableLineEven}
+        Nome & Incontri non avvenuti \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Descrizione & Gli incontri interni o esterni non avvengono con abbastanza frequenza come si è definito nelle norme di progetto.\\
+        \hline
+        \rowcolor{tableLineEven}
+        Mitigazione & Fissare gli incontri con anticipo di minimo una settimana. Devono essere presenti tutti i componenti del gruppo affinché l'incontro abbia un effetto per l'avanzamento. \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Frequenza probabile & Media \\
+        \hline
+        \rowcolor{tableLineEven}
+        Pericolosità ripercussioni & Elevata \\
+        \hline
+    \end{tabularx}
+    \caption{Informazioni sul rischio RO3}
+    \label{tab:RO3}
+\end{table}
+
+\subsubsection{RO4 - Assenza di componenti del gruppo}
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.4}
+    \begin{tabularx}{\textwidth}{|L|Z|}
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Tipologia Dato} & \textbf{Valore} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Codice & RO4 \\
+        \hline
+        \rowcolor{tableLineEven}
+        Nome & Assenza di un componente \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Descrizione & Comunicazione assente per un periodo di tempo maggiore di una settimana da parte di un componente del gruppo, con anche mancata presenza agli incontri interni svolti. Mancato completamento delle attività assegnate.\\
+        \hline
+        \rowcolor{tableLineEven}
+        Mitigazione & Nessuna. \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Frequenza probabile & Bassa \\
+        \hline
+        \rowcolor{tableLineEven}
+        Pericolosità ripercussioni & Media \\
+        \hline
+    \end{tabularx}
+    \caption{Rischio assenza di un componente per periodo prolungato RO4}
+    \label{tab:RO4}
+\end{table}
+
 % ======================= RISCHI INTERPERSONALI =======================
 \subsection{Rischi Interpersonali}\label{sec:rischi_interpersonali}
 
@@ -602,22 +669,31 @@ Per le fasi di \textbf{Requirements and Technology Baseline (RTB)} e \textbf{Pro
         \textbf{Attività} & \textbf{Descrizione} \\
         \hline
         \rowcolor{tableLineOdd}
-        Norme di Progetto & Definisce le regole, le convenzioni e gli strumenti che regolano il \textit{Way of Working} del team, assicurando uniformità e coerenza nello svolgimento delle attività. \\
+        Redazione norme di Progetto & Definisce le regole, le convenzioni e gli strumenti che regolano il \textit{Way of Working} del team, assicurando uniformità e coerenza nello svolgimento delle attività. \\
         \hline
         \rowcolor{tableLineEven}
-        Piano di Progetto & Pianifica le risorse, i costi e le scadenze temporali, delineando le attività passate, presenti e future per garantire il rispetto degli obiettivi prefissati. \\
+        Implementazione Sito & Implementazione del sito per facilitare la fruizione dei documenti prodotti dal gruppo durante i processi di ciclo di vita. \\
         \hline
         \rowcolor{tableLineOdd}
-        Piano di Qualifica & Stabilisce le metriche e le procedure di controllo necessarie per verificare la qualità dei processi e del prodotto software durante l'intero ciclo di vita. \\
+        Redazione del Piano di Progetto & Pianifica le risorse, i costi e le scadenze temporali, delineando le attività passate, presenti e future per garantire il rispetto degli obiettivi prefissati. \\
         \hline
         \rowcolor{tableLineEven}
-        Analisi dei Requisiti & Formalizza i requisiti funzionali, non funzionali e di vincolo concordati con il proponente, dettagliando i casi d'uso del sistema. \\
+        Redazione del Piano di Qualifica & Stabilisce le metriche e le procedure di controllo necessarie per verificare la qualità dei processi e del prodotto software durante l'intero ciclo di vita. \\
         \hline
         \rowcolor{tableLineOdd}
-        Glossario & Raccoglie e definisce i termini tecnici e specifici del dominio per evitare ambiguità terminologiche sia internamente che verso gli stakeholder esterni. \\
+        Implementazione del cruscotto di valutazione & Implementazione del cruscotto per l'accertamento della qualità tramite lo strumento scelto dal gruppo. Riporta le misurazioni e le loro valutazioni per una migliore comprensione. \\
         \hline
         \rowcolor{tableLineEven}
-        Proof of Concept & Prototipo software volto a verificare la fattibilità tecnica della soluzione e l'efficacia delle tecnologie selezionate per lo sviluppo. \\
+        Redazione casi d'uso per AdR & Scrittura della sezione del documento Analisi dei Requisiti relativa ai casi d'uso. \\
+        \hline
+        \rowcolor{tableLineEven}
+        Redazione requisiti per AdR & Implementazione della sezione del documento Analisi dei Requisiti relativa ai requisiti del prodotto software. \\
+        \hline
+        \rowcolor{tableLineEven}
+        Redazione Analisi dei Requisiti & Formalizza i requisiti funzionali, non funzionali e di vincolo concordati con il proponente, dettagliando i casi d'uso del sistema. \\
+        \hline
+        \rowcolor{tableLineEven}
+        Realizzazione del Proof of Concept & Prototipo software volto a verificare la fattibilità tecnica della soluzione e l'efficacia delle tecnologie selezionate per lo sviluppo. Utilizzato anche per familiarizzare con le tecnologie proposte. \\
         \hline
         \rowcolor{tableLineOdd}
         Lettera di presentazione RTB & Documento formale che accompagna la consegna, ufficializzando la richiesta del gruppo di sostenere la revisione \textit{Requirements and Technology Baseline}. \\
