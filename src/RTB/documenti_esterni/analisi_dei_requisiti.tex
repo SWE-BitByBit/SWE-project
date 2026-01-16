@@ -831,7 +831,7 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-?4}
+        \item \ref{subsec:UC-?9}
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole aggiungere un nuovo contatto fidato nella propria rete
 \end{itemize}
@@ -875,6 +875,7 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \begin{itemize}
         \item Il numero inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \ref{subsec:UC-?10}
     \end{itemize}
+    \item \textbf{Estensioni:} \ref{sec:UC-?10}
     \item \textbf{Trigger:} L'attore vuole inserire un nuovo contatto nella propria rete di contatti fidati
 \end{itemize}
 
@@ -898,6 +899,7 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \begin{itemize}
         \item L'indirizzo email inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \ref{subsec:UC-?11}
     \end{itemize}
+    \item \textbf{Estensioni:} \ref{sec:UC-?11}
     \item \textbf{Trigger:} L'attore vuole inserire un nuovo contatto nella propria rete di contatti fidati
 \end{itemize}
 
@@ -1055,6 +1057,7 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \begin{itemize}
         \item Il numero inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \ref{subsec:UC-?10}
     \end{itemize}
+    \item \textbf{Estensioni:} \ref{sec:UC-?10}
     \item \textbf{Trigger:} L'attore vuole modificare il numero di telefono di un contatto fidato presente nella propria rete di contatti fidati
 \end{itemize}
 
@@ -1080,6 +1083,7 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \begin{itemize}
         \item L'indirizzo email inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \ref{subsec:UC-?11}
     \end{itemize}
+    \item \textbf{Estensioni:} \ref{sec:UC-?11}
     \item \textbf{Trigger:} L'attore vuole modificare l'indirizzo email di un contatto fidato presente nella propria rete di contatti fidati
 \end{itemize}
 
@@ -1105,10 +1109,7 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
         \item L'attore conferma l'eliminazione del contatto fidato $\rightarrow$ \ref{subsec:UC-?13.1}
         \item Il sistema rimuove il contatto fidato scelto dall'attore dalla rete dei contatti fidati dell'attore
     \end{itemize}
-    \item \textbf{Scenario secondario:}
-    \begin{itemize}
-        \item L'attore rifiuta la conferma dell'eliminazione del contatto fidato $\rightarrow$ \ref{subsec:UC-?14}
-    \end{itemize}
+    \item \textbf{inclusioni:} \ref{sec:UC-?13.1}
     \item \textbf{Trigger:} L'attore vuole rimuovere un contatto dalla propria rete di contatti fidati
 \end{itemize}
 
@@ -1124,15 +1125,16 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \begin{itemize}
         \item Il sistema riceve la conferma dell'attore di rimuovere un contatto fidato dalla propria rete dei contatti fidati
     \end{itemize}
-    \item \textbf{Scenario principale:} 
+    \item \textbf{Scenario principale:}
     \begin{itemize}
-        \item L'attore conferma l'eliminazione del contatto fidato $\rightarrow$ \ref{subsec:UC-?13.1}
+        \item L'attore conferma l'eliminazione del contatto fidato
         \item Il sistema rimuove il contatto fidato scelto dall'attore dalla rete dei contatti fidati dell'attore
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
         \item L'attore rifiuta la conferma dell'eliminazione del contatto fidato $\rightarrow$ \ref{subsec:UC-?14}
     \end{itemize}
+    \item \textbf{Estensioni:} \ref{sec:UC-?14}
     \item \textbf{Trigger:} L'attore ha scelto la voce di cancellazione per quel contatto fidato
 \end{itemize}
 
@@ -1143,6 +1145,7 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \begin{itemize}
         \item Il sistema è attivo
         \item L'attore ha selezionato la voce di cancellazione per quel contatto fidato
+        \item L'attore sta visualizzando la richiesta di conferma di cancellazione del contatto fidato
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
@@ -1150,13 +1153,12 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'attore rifiuta l'eliminazione del contatto fidato $\rightarrow$ \ref{subsec:UC-?13.1}
+        \item L'attore rifiuta l'eliminazione del contatto fidato
         \item Il sistema non rimuove il contatto fidato dalla rete dei contatti fidati dell'attore
         \item Il sistema ritorna alla visualizzazione della lista dei contatti fidati
     \end{itemize}
     \item \textbf{Trigger:} L'attore ha scelto di non rimuovere il contatto fidato dalla propria rete dei contatti fidati
 \end{itemize}
-
 
 % ==== UC-IMP9 - CONFIGURAZIONE DEAD MAN'S SWITCH ====
 
@@ -1923,8 +1925,9 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-        \item  \ref{subsec:UC-I6}
+        \item Errore nello switch di contesto \ref{subsec:UC-I6}
     \end{itemize}
+    \item \textbf{Estensioni:} \ref{sec:UC-I6}
     \item \textbf{Trigger:} L’utente ha premuto il pulsante per il cambio del contesto.
 \end{itemize}
 
@@ -1946,6 +1949,11 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
         \item L'attore seleziona la voce per il cambio del contesto
         \item Il sistema imposta come attivo il contesto "Specchio Intelligente"
     \end{itemize}
+    \item \textbf{Scenario secondario:} 
+    \begin{itemize}
+        \item Errore nello switch di contesto \ref{subsec:UC-I6}
+    \end{itemize}
+    \item \textbf{Estensioni:} \ref{sec:UC-I6}
     \item \textbf{Trigger:} L’utente ha premuto il pulsante per il cambio del contesto.
 \end{itemize}
 
@@ -2019,6 +2027,214 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
         \item Il sistema mostra la preview del primo messaggio della chat nella lista
     \end{itemize}
     \item \textbf{Trigger:} L'attore ha visualizzato una singola chat dalla cronologia delle chat
+\end{itemize}
+
+\subsubsection{UC-I9 - Visualizzazione contenuto chat} \label{subsec:UC-I9}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato una chat (dalla cronologia o una nuova conversazione)
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item L'attore visualizza l'interfaccia della chat con i relativi contenuti
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema carica il contenuto della chat selezionata
+        \item Il sistema visualizza la lista dei messaggi scambiati tra attore e chatbot $\rightarrow$ \ref{subsec:UC-I9.1}
+    \end{itemize}
+    \item \textbf{Scenario secondario:} 
+    \begin{itemize}
+        \item Errore nel caricamento del contenuto della chat \ref{subsec:UC-I10}
+    \end{itemize}
+    \item \textbf{Inclusioni:} \ref{subsec:UC-I9.1}
+    \item \textbf{Estensioni:} \ref{sec:UC-I10}
+    \item \textbf{Trigger:} L'attore vuole visualizzare il contenuto di una chat specifica
+\end{itemize}
+
+\subsubsection{UC-I9.1 - Visualizzazione lista messaggi} \label{subsec:UC-I9.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore sta visualizzando il contenuto della chat
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza la lista dei messaggi della conversazione avuta con il chatbot
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema recupera i messaggi dal database
+        \item Per ogni messaggio presente, il sistema ne identifica la tipologia (utente o chatbot)
+        \item Il sistema visualizza i messaggi dell'utente $\rightarrow$ \ref{subsec:UC-I9.1.1}
+        \item Il sistema visualizza i messaggi del chatbot $\rightarrow$ \ref{subsec:UC-I9.1.2}
+        \item L'attore può scorrere tra i messaggi
+    \end{itemize}
+    \item \textbf{Inclusioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-I9.1.1}
+        \item \ref{subsec:UC-I9.1.2}
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-I9.1.1 - Visualizzazione messaggio utente} \label{subsec:UC-I9.1.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item Il sistema sta mostrando la lista dei messaggi all'attore
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il singolo messaggio inviato dall'utente viene mostrato a schermo
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema mostra il testo del messaggio inviato dall'utente con la formattazione grafica allineata a destra
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-I9.1.2 - Visualizzazione messaggio chatbot} \label{subsec:UC-I9.1.2}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item Il sistema sta mostrando la lista dei messaggi all'attore
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il singolo messaggio generato dal chatbot viene mostrato a schermo
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema mostra il testo del messaggio generato dal chatbot con la formattazione grafica allineata a sinistra
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-I10 - Errore caricamento chat} \label{subsec:UC-I10}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato una chat
+        \item Si verifica un errore tecnico (assenza di rete, errore server, timeout) durante il recupero dei dati
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il contenuto della chat non viene visualizzato
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema tenta di recuperare il contenuto e la cronologia della chat
+        \item Il sistema rileva un fallimento nell'operazione di caricamento
+        \item Il sistema mostra un messaggio di errore
+        \item Il sistema propone all'attore di riprovare l'azione
+        \item L'attore visualizza la chat 
+    \end{itemize}
+    \item \textbf{Trigger:} Il recupero dei dati della chat fallisce o va in timeout
+\end{itemize}
+
+\subsubsection{UC-I11 - Creazione nuova chat} \label{subsec:UC-I11}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova nella schermata principale
+        \item L'attore ha selezionato la voce per creare una nuova chat
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Una nuova sessione di chat viene creata
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore seleziona la voce per avviare una nuova conversazione con il chatbot
+        \item Il sistema inizializza un nuovo contesto di chat vuoto
+        \item Il sistema reindirizza l'attore alla schermata della chat
+        \item L'attore visualizza la schermata della chat vuota \ref{subsec:UC-I9}
+    \end{itemize}
+    \item \textbf{Inclusioni:} \ref{subsec:UC-I9}
+    \item \textbf{Trigger:} L'attore vuole iniziare una nuova conversazione con il chatbot
+\end{itemize}
+
+\subsubsection{UC-I12 - Eliminazione chat} \label{subsec:UC-I12}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item Esiste almeno una chat nella cronologia
+        \item L'attore sta visualizzando la cronologia
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item La chat selezionata e i relativi dati vengono rimossi dal sistema
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore attiva la modalità di gestione/modifica della cronologia
+        \item L'attore seleziona la chat che desidera rimuovere
+        \item L'attore conferma l'intenzione di eliminare la chat $\rightarrow$ \ref{subsec:UC-I12.1}
+        \item Il sistema elimina la chat e aggiorna la lista della cronologia
+    \end{itemize}
+    \item \textbf{Inclusioni:} \ref{subsec:UC-I12.1}
+    \item \textbf{Trigger:} L'attore vuole rimuovere una conversazione passata
+\end{itemize}
+
+\subsubsection{UC-I12.1 - Conferma eliminazione chat} \label{subsec:UC-I12.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha richiesto l'eliminazione di una chat
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item L'operazione di eliminazione viene confermata al sistema
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema richiede una conferma esplicita per procedere con l'eliminazione
+        \item L'attore conferma l'operazione
+    \end{itemize}
+    \item \textbf{Scenario secondario:}
+    \begin{itemize}
+        \item L'attore rifiuta la conferma dell'eliminazione della chat $\rightarrow$ \ref{subsec:UC-I13}
+    \end{itemize}
+    \item \textbf{Estensioni:} \ref{sec:UC-I13}
+\end{itemize}
+
+\subsubsection{UC-I13 - Rifiuto conferma eliminazione chat} \label{subsec:UC-I13}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato l'opzione di cancellazione per una chat
+        \item Il sistema è in attesa di conferma
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema riceve responso negativo da parte dell'attore per rimuovere la chat
+        \item La chat non viene eliminata
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore rifiuta l'eliminazione della chat
+        \item Il sistema non rimuove la chat dalla cronologia
+        \item Il sistema chiude la richiesta di conferma e ritorna alla visualizzazione precedente
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore sceglie di non confermare l'eliminazione della chat
 \end{itemize}
 
 \end{document}
