@@ -102,10 +102,10 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & In corso\\
-\textbf{Versione:} & 0.15.1 \\
+\textbf{Versione:} & 0.15.5 \\
 \textbf{Responsabile:} & Giovanni Visentin\\
-\textbf{Redattori:} & Riccardo Manisi, Dennis Parolin, Giovanni Visentin \\
-\textbf{Verificatori:} & Giovanni Visentin, Marco Sanguin \\
+\textbf{Redattori:} & Riccardo Manisi, Dennis Parolin, Giovanni Visentin, Ferdinando Fracasso \\
+\textbf{Verificatori:} & Giovanni Visentin, Marco Sanguin, Dennis Parolin \\
 \textbf{Destinatari:} &
 \begin{tabular}[t]{@{}l@{}}
 Miriade srl\\
@@ -131,6 +131,18 @@ Gruppo BitByBit\\
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 
+\rowcolor{white}
+0.15.5 & 2026-01-13 & Ferdinando Fracasso & Aggiunta nella sezione "Attori" & Dennis Parolin \\
+\hline
+\rowcolor{gray!20}
+0.15.4 & 2026-01-12 & Ferdinando Fracasso & Correzione errori nelle sezioni "Attori" e "Requisiti" & Dennis Parolin \\
+\hline
+\rowcolor{white}
+0.15.3 & 2026-01-11 & Ferdinando Fracasso & Aggiunta sezione requisiti & Dennis Parolin \\
+\hline
+\rowcolor{gray!20}
+0.15.2 & 2026-01-09 & Ferdinando Fracasso & Modifica sezione attori nei casi d'uso & Dennis Parolin \\
+\hline
 \rowcolor{white}
 0.15.1 & 2025-12-23 & Dennis Parolin & Aggiunte le immagini dei diagrammi UML riguardanti i casi d'uso & Giovanni Visentin \\
 \hline
@@ -380,9 +392,21 @@ Questa sezione raccoglie i termini tecnici specifici utilizzati nella descrizion
 \end{center}
 
 \subsection{Attori}
-Sono qualcosa di esterno al sistema che accede a delle risorse interagendo con il sistema che si sta producendo. Gli attori secondari sono attori passivi. (aggiungimi info se sono necessarie)
-Gli attori rappresentano entità esterne al sistema che interagiscono con esso per raggiungere obiettivi specifici.
+Gli attori rappresentano entità esterne al sistema che interagiscono con esso per raggiungere obiettivi specifici. Gli attori secondari sono attori che non interagiscono direttamente con il sistema, ma solo passivamente.
 
+\subsubsection{Attori primari:}
+\begin{itemize}
+    \item \textbf{Utente generico:} un qualsiasi utente che interagisce con l'applicazione.
+    \item \textbf{Utente autenticato:} un utente che ha effettuato con successo la procedura di autenticazione ed interagisce con l'applicazione 
+\end{itemize}
+
+\subsubsection{Attori secondari:}
+\begin{itemize}
+    %\item \textbf{Contatto fidato:} ricevente di eventuali comunicazioni di sicurezza da parte dell'applicazione. --- 
+    \item \textbf{Google Auth:} API Google usata per l'autenticazione dell'utente.
+    \item \textbf{LLM:} sistema usato per analizzare alcuni input dell'utente nell'applicazione.
+    \item \textbf{Servizio di invio mail:} servizio usato per inviare email dall'applicazione.
+\end{itemize}
 % ===== LISTA CASI D'USO ======
 
 \subsection{Lista casi d'uso}
@@ -1782,5 +1806,241 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \end{itemize}
     \item \textbf{Trigger:} L’utente ha premuto il pulsante “Context Switch”.
 \end{itemize}
+\section{Requisiti}
+Questa sezione espone i requisiti relativi all'applicazione, individuati durante l'attività di analisi mediante i casi d'uso, nel capitolato d'appalto oppure durante incontri interni o con il committente.
+\subsection{Terminologia}
+I requisiti sono identificati con il seguente formato:\\
+\begin{center}
+    \texttt{R[Tipo][Priorità]-[Id]}
+\end{center}
+Dove:
+\begin{itemize}
+    \item \textbf{R} indica "Requisito".
+    \item \textbf{Tipo} può essere:
+    \begin{itemize}
+        \item \textbf{F}: requisiti funzionali, che descrivono funzionalità offerte dall'applicazione.
+        \item \textbf{Q}: requisiti di qualità, che definiscono le specifiche di qualità dell'applicazione.
+        \item \textbf{V}: requisiti di vincolo, ovvero limiti e restrizioni derivate dal capitolato o imposte dal committente
+    \end{itemize}
+    \item  \textbf{Priorità} può essere:
+    \begin{itemize}
+        \item \textbf{O}: requisito obbligatorio, da soddisfare per la riuscita del progetto.
+        \item \textbf{D}: requisito desiderabile, non strettamente necessario ma che comunque apporterebbe un valore aggiunto per il committente. 
+        \item \textbf{OP}: requisito opzionale, di minore impatto.
+    \end{itemize}
+    \item \textbf{Id}: un numero incrementale che identifica univocamente un requisito di una data categoria.
+\end{itemize}
+\subsection{Requisiti funzionali}
+
+\begin{center}
+    Tabella 1: Tabella dei requisiti funzionali
+\end{center}
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2} 
+\arrayrulecolor{black}
+\begin{longtable} {|p{0.10\linewidth}|p{0.55\linewidth}|p{0.30\linewidth}|}
+    \hline
+    \rowcolor{gray!60} 
+    \textbf{Codice} & \textbf{Descrizione} & \textbf{Fonti} \\
+    \hline
+    \rowcolor{white}
+    RFO-1 & L'utente deve poter accedere all'applicazione & UC-AUTH1\\
+    \hline
+    \rowcolor{gray!20}
+    RFO-2 & L'applicazione deve mostrare un messaggio di errore di login in caso di accesso fallito & UC-AUTH1.1\\
+    \hline
+    \rowcolor{white}
+    RFO-3 & L'applicazione deve fornire una interfaccia per consentire a nuovi utenti di registrarsi & UC-AUTH1\\
+    \hline
+    \rowcolor{gray!20}
+    RFO-4 & L'applicazione deve offrire un walkthrough ad un nuovo utente, con scelta profilo in base all'uso che l'utente vuole fare dell'applicazione & UC-BW1, UC-BW1.2\\
+    \hline
+    \rowcolor{white}
+    RFO-5 & L'utente deve poter saltare il walkthrough & UC-BW1.1\\
+    \hline
+    \rowcolor{gray!20}
+    RFO-6 & L'utente deve poter navigare tra le schede del walkthrough & UC-BW1.3, UC-BW1.4\\
+    \hline
+    \rowcolor{white}
+    RFO-7 & L'utente deve poter visualizzare la schermata "impostazioni applicazione" & UC-IMP1\\
+    \hline
+    \rowcolor{gray!20}
+    RFO-8 & L'utente deve poter visualizzare la "lista dei contatti fidati" & UC-IMP2, UC-IMP2.1, UC-IMP2.1.1, UC-IMP2.1.2, UC-IMP2.1.3\\
+    \hline
+    \rowcolor{white}
+    RFO-9 & L'utente deve poter aggiungere contatti alla "lista dei contatti fidati" & UC-IMP3, UC-IMP3.1, UC-IMP3.2, UC-IMP3.3\\
+    \hline
+    \rowcolor{gray!20}
+    RFO-10 & L'applicazione non deve inserire un nuovo "contatto fidato" se il suo numero di telefono e/o email sono già presenti nel sistema & UC-IMP4, UC-IMP5\\
+    \hline
+    \rowcolor{white}
+    RFO-11 & L'applicazione non deve inserire un nuovo "contatto fidato" se l'utente non ha inserito informazioni di contatto per esso & UC-IMP6\\
+    \hline
+    \rowcolor{gray!20}
+    RFO-12 & L'utente deve poter eliminare un "contatto fidato" & UC-IMP7\\ 
+    \hline
+    \rowcolor{white}
+    RFO-13 & L'utente deve poter modificare le informazioni di un "contatto fidato" & UC-IMP8\\
+    \hline
+    \rowcolor{gray!20}
+    RFO-14 & L'utente deve poter modificare le impostazioni del "dead man's switch" & UC-IMP9\\
+    \hline
+    \rowcolor{white}
+    RFO-15 & L'utente deve poter accedere al "diario criptato" & UC-D3, UC-D3.1\\
+    \hline
+    \rowcolor{gray!20}
+    RFO-16 & L'utente deve poter impostare una password per il "diario criptato" & UC-D1\\
+    \hline
+    \rowcolor{white}
+    RFO-17 & L'utente deve poter modificare la password del "diario criptato" & UC-D2, UC-D2.1\\
+    \hline
+    \rowcolor{gray!20}
+    RFO-18 & L'applicazione deve mostrare un messaggio di errore se durante la modifica della password del "diario criptato" l'utente inserisce una nuova password identica a quella esistente & UC-D2.1\\
+    \hline
+    \rowcolor{white}
+    RFO-19 & L'applicazione deve mostrare un messaggio di errore se la password del diario inserita dall'utente è errata & UC-D3.2, UC-D7\\
+    \hline
+    \rowcolor{gray!20}
+    RFO-20 & L'utente deve poter inserire ed eliminare note scritte nel "diario criptato" & UC-D4, UC-D4.1, UC-D4.2\\
+    \hline
+    \rowcolor{white}
+    RFO-21 & L'utente deve poter uscire dalla schermata "diario criptato" senza salvare la nota o media appena inserito & UC-D4.3\\
+    \hline
+    \rowcolor{gray!20}
+    RFO-22 & L'utente deve poter inserire ed eliminare media (immagini, video, audio) nel "diario criptato" & UC-D5, UC-D5.1\\
+    \hline
+    \rowcolor{white}
+    RFD-23 & L'applicazione deve poter analizzare tramite LLM note e media inseriti nel "diario criptato" per rilevare possibili situazioni di rischio & UC-D6\\
+    \hline
+    \rowcolor{gray!20}
+    RFD-24 & Se l'applicazione rileva una situazione di rischio nel "diario criptato", deve visualizzare un alert a schermo & UC-D6.1\\
+    \hline
+    \rowcolor{white}
+    RFO-25 & L'utente deve poter creare un "diario fittizio" & UC-D7, UC-D8, UC-D8.1\\
+    \hline
+    \rowcolor{gray!20}
+    RFO-26 & L'utente deve poter scegliere una password per il "diario fittizio" diversa da quella del "diario criptato" & UC-D8, UC-D8.1\\
+    \hline
+    \rowcolor{white}
+    RFO-27 & Se la password del "diario fittizio" scelta dall'utente è identica alla password del "diario criptato", l'applicazione deve visualizzare un messaggio di errore & UC-D8.1\\
+    \hline
+    \rowcolor{gray!20}
+    RFO-28 & L'utente deve poter inserire ed eliminare note e media nel "diario fittizio" & UC-D9\\
+    \hline
+    \rowcolor{white}
+    RFO-29 & L'utente deve poter mandare un messaggio ai "contatti fidati" & UC-S1\\
+    \hline
+    \rowcolor{gray!20}
+    RFO-30 & Se il telefono dell'utente non è connesso alla rete internet o cellulare e tenta di inviare un messaggio ai contatti fidati, allora come alternativa l'utente deve poter attivare un segnale acustico di emergenza & UC-S2, verbale esterno\\
+    \hline
+    \rowcolor{white}
+    RFO-31 & Se la "lista dei contatti fidati" è vuota, l'applicazione visualizza un messaggio di errore quando l'utente tenta di inviare un messaggio & UC-S3\\
+    \hline
+    \rowcolor{gray!20}
+    RFO-32 & L'applicazione deve offrire all'utente accesso ad un LLM con cui interagire & UC-I1, UC-I2, UC-I3, UC-I4, UC-I5\\
+    \hline
+    \rowcolor{white}
+    RFO-33 & Il LLM deve generare risposte ai messaggi inviatigli dall'utente & UC-I2\\
+    \hline
+    \rowcolor{gray!20}
+    RFO-34 & Se il LLM non è in grado di interpretare il messaggio, l'applicazione deve visualizzare un messaggio di errore & UC-I3\\
+    \hline
+    \rowcolor{white}
+    RFO-35 & L'utente deve poter modificare un messaggio precedentemente inviato al LLM & UC-I4\\
+    \hline
+    \rowcolor{gray!20}
+    RFO-36 & L'utente deve sempre poter scegliere il contesto del LLM tra "Detective delle Relazioni" e "Lo Specchio Intelligente" & UC-I5\\
+    \hline
+    \rowcolor{white}
+    RFD-37 & L'applicazione deve fornire supporto multilingua & Capitolato\\
+    \hline
+    \rowcolor{gray!20}
+    RFO-38 & L'applicazione deve fornire all'utente una mappa geolocalizzata & verbale interno\\
+    \hline
+    \rowcolor{white}
+    RFO-39 & La mappa deve visualizzare i luoghi sicuri nella zona & verbale interno\\
+    \hline
+    \rowcolor{gray!20}
+    RFO-40 & L'applicazione deve offrire all'utente una sezione informativa, "La guida al coraggio", contenente risorse geolocalizzate per la propria sicurezza & verbale interno\\
+    \hline
+    \rowcolor{white}
+    RFO-41 & L'applicazione deve fornire all'utente la possibilità di usare comandi rapidi per comunicazioni di emergenza & verbale esterno\\
+    \hline
+    
+\end{longtable}
+\end{center}
+
+\subsection{Requisiti di qualità}
+\begin{center}
+    Tabella 2: Tabella dei requisiti di qualità
+\end{center}
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2} 
+\arrayrulecolor{black}
+\begin{longtable} {|p{0.10\linewidth}|p{0.55\linewidth}|p{0.30\linewidth}|}
+    \hline
+    \rowcolor{gray!60} 
+    \textbf{Codice} & \textbf{Descrizione} & \textbf{Fonti} \\
+    \hline
+    \rowcolor{white}
+    RQO-1 & L'applicazione deve rispettare le norme definite nel documento Norme di Progetto & verbale interno \\
+    \hline
+    \rowcolor{gray!20}
+    RQO-2 & Lo sviluppo dell'applicazione deve rispettare i vincoli e le metriche definite nel documento Piano di Qualifica & verbale interno\\
+    \hline
+
+\end{longtable}
+\end{center}
+\subsection{Requisiti di vincolo}
+\begin{center}
+    Tabella 3: Tabella dei requisiti di vincolo
+\end{center}
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2} 
+\arrayrulecolor{black}
+\begin{longtable} {|p{0.10\linewidth}|p{0.55\linewidth}|p{0.30\linewidth}|}
+    \hline
+    \rowcolor{gray!60} 
+    \textbf{Codice} & \textbf{Descrizione} & \textbf{Fonti} \\
+    \hline
+    \rowcolor{white}
+    RVO-1 & L'applicazione deve essere scritta nel linguaggio Dart usando il framework Flutter & Capitolato \\
+    \hline
+    \rowcolor{gray!20}
+    RVO-2 & L'applicazione deve fare uso dei servizi AWS per il backend & Capitolato \\
+    \hline
+    \rowcolor{white}
+    RVO-3 & L'applicazione deve fornire accesso a un LLM tramite servizi Amazon Bedrock & Verbale esterno\\
+    \hline
+    \rowcolor{gray!20}
+    RVO-4 & L'applicazione deve seguire i principi sicurezza by design per garantire la sicurezza dei dati & capitolato\\
+    \hline
+    \rowcolor{white}
+    RVO-5 & L'applicazione deve fare uso dei servizi Google Authentication per la gestione dell'autenticazione & verbale interno, UC-AUTH1\\
+    \hline
+    \rowcolor{gray!20}
+    RVO-6 & L'applicazione deve seguire rigorosamente le normative del GDPR & capitolato\\
+    \hline
+    \rowcolor{white}
+    RVO-7 & L'applicazione deve implementare un sistema audit trail per tenere traccia di tutte le operazioni significative effettuate in essa & capitolato\\
+    \hline
+    \rowcolor{gray!20}
+    RVO-8 & L'applicazione deve avere un'architettura a microservizi & capitolato\\
+    \hline
+    \rowcolor{white}
+    RVO-9 & L'applicazione deve fare uso di tecnologie di containerizzazione o serverless & capitolato\\
+    \hline
+    \rowcolor{gray!20}
+    RVO-10 & Frontend e backend dell'applicazione devono comunicare tramite API ben definite e protette & capitolato\\
+    \hline
+    \rowcolor{white}
+    RVO-11 & L'applicazione deve essere sviluppata per sistemi operativi IOS e Android & capitolato\\
+    \hline
+\end{longtable}
+\end{center}
 
 \end{document}
