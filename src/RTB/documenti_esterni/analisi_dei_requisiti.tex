@@ -26,6 +26,10 @@
 \usepackage{titlesec}
 \usepackage{amssymb} 
 \usepackage{titlesec}
+\usepackage[T1]{fontenc}
+
+\setlength{\headheight}{30pt}
+
 \geometry{margin=2.5cm}
 
 % ===== Variabile per il titolo del documento =====
@@ -38,8 +42,8 @@
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\textcolor{gray}{\documenttitle - BitByBit}}
-% FIX ACTION: Percorso assoluto relativo
-\fancyhead[R]{\includegraphics[height=1cm]{../../../resources/solo_logo.jpg}}
+% Logo rimosso - file non disponibile
+% \fancyhead[R]{\includegraphics[height=1cm]{solo_logo.jpg}}
 \fancyfoot[C]{\thepage}
 
 % ===== Formattazione sezioni =====
@@ -56,8 +60,8 @@
 \begin{center}
     \begin{minipage}{0.25\textwidth}
         \centering
-        % FIX ACTION: Percorso assoluto relativo
-        \includegraphics[width=\linewidth]{../../../resources/logoUni.png}
+        % Logo università rimosso - file non disponibile
+        % \includegraphics[width=\linewidth]{logoUni.png}
     \end{minipage}
     \hfill
     \begin{minipage}{0.7\textwidth}
@@ -76,8 +80,8 @@
 \begin{center}
     \begin{minipage}{0.25\textwidth}
         \centering
-        % FIX ACTION: Percorso assoluto relativo
-        \includegraphics[width=\linewidth]{../../../resources/logo.png}
+        % Logo BitByBit rimosso - file non disponibile
+        % \includegraphics[width=\linewidth]{logo.png}
     \end{minipage}
     \hfill
     \begin{minipage}{0.7\textwidth}
@@ -125,7 +129,7 @@ Gruppo BitByBit\\
 \small
 \renewcommand{\arraystretch}{1.2} 
 \arrayrulecolor{black}
-\begin{longtable}{|c|c|p{0.21\linewidth}|p{0.23\linewidth}|c|}
+\begin{longtable}{|c|c|>{\raggedright\arraybackslash}p{0.21\linewidth}|>{\raggedright\arraybackslash}p{0.23\linewidth}|c|}
 \hline
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
@@ -354,7 +358,7 @@ I termini tecnici, gli acronimi e le parole con significato specifico all'intern
 \section{Casi d'uso}
 
 \subsection{Scopo}
-Nel processo di analisi, come indicato nel documento delle \href{}{\textbf{Norme di progetto}}, il gruppo BitByBit ha stabilito come prima attività l'individuazione dei casi d'uso del sistema. La stesura dei casi d'uso costituisce uno strumento fondamentale per la successiva individuazione dei requisiti funzionali del sistema, poiché consentono di definire in modo chiaro all'utente come il sistema sarà impiegato per soddisfare specifici obiettivi.\\
+Nel processo di analisi, come indicato nel documento delle \href{https://swe-bitbybit.github.io/SWE-docs/docs/documenti_interni/norme_di_progetto.pdf}{\textbf{Norme di progetto}}, il gruppo BitByBit ha stabilito come prima attività l'individuazione dei casi d'uso del sistema. La stesura dei casi d'uso costituisce uno strumento fondamentale per la successiva individuazione dei requisiti funzionali del sistema, poiché consentono di definire in modo chiaro all'utente come il sistema sarà impiegato per soddisfare specifici obiettivi.\\
 Nello specifico essi rappresentano una descrizione di come il sistema interagisce con i suoi attori per raggiungere un obiettivo specifico.
 Ogni caso d'uso ha uno scenario principale che rappresenta il flusso standard di interazioni e può includere scenari alternativi che fanno arrivare il sistema in uno stato diverso da quello che si identifica nello scenario principale del caso.\\
 Per facilitare la comprensione da parte dei lettori sia tecnici che non, alla descrizione in linguaggio naturale, viene anche associato un diagramma UML, che offre una rappresentazione grafica delle interazioni tra attori e sistema.\\
@@ -367,7 +371,7 @@ Questa sezione raccoglie i termini tecnici specifici utilizzati nella descrizion
 \begin{center}
 \small
 \arrayrulecolor{black} 
-\begin{longtable}{| m{3cm} | m{0.75\textwidth} |}
+\begin{longtable}{|c|c|>{\raggedright\arraybackslash}p{0.21\linewidth}|>{\raggedright\arraybackslash}p{0.23\linewidth}|c|}
 \hline
 \rowcolor{gray!60}
 {\centering \textbf{Termine}\par} &
@@ -415,12 +419,13 @@ Gli attori rappresentano entità esterne al sistema che interagiscono con esso p
 
 \subsubsection{UC-1 Autenticazione all'App tramite Google Auth} \label{subsec:UC-1}
 
-\begin{figure}[H] 
-    \centering
-    \includegraphics[width=0.9\textwidth]{../../../resources/UC-1.png}
-    \caption{Diagramma dei casi d'uso UC-1 e UC-2}
-    \label{fig:UC-1}
-\end{figure}
+% Diagramma UC-1 rimosso - file non disponibile
+% \begin{figure}[H] 
+%     \centering
+%     \includegraphics[width=0.9\textwidth]{UC-1.png}
+%     \caption{Diagramma dei casi d'uso UC-1 e UC-2}
+%     \label{fig:UC-1}
+% \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore principale:} Utente Generico
@@ -482,12 +487,13 @@ Gli attori rappresentano entità esterne al sistema che interagiscono con esso p
 
 \subsubsection{UC-3 - Esecuzione Walkthrough Interattivo} \label{subsec:UC-3}
 
-\begin{figure}[H] 
-    \centering
-    \includegraphics[width=0.9\textwidth]{../../../resources/UC-3.png}
-    \caption{Diagramma del caso d'uso UC-3}
-    \label{fig:UC-3}
-\end{figure}
+% Diagramma UC-3 rimosso - file non disponibile
+% \begin{figure}[H] 
+%     \centering
+%     \includegraphics[width=0.9\textwidth]{UC-1.png}
+%     \caption{Diagramma del caso d'uso UC-3}
+%     \label{fig:UC-3}
+% \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore principale:} Utente Generico
@@ -536,7 +542,8 @@ UC-BW1 include ed estende ulteriori Casi d’Uso rappresentati nella seguente im
 
 \begin{figure}[H] 
     \centering
-    \includegraphics[width=0.9\textwidth]{../../../resources/sottocasi_UC-BW1.png}
+    % Immagine rimossa - file non disponibile
+    % \includegraphics[width=0.9\textwidth]{UC-1.png}
     \caption{Diagramma dei casi d'uso inclusi ed estesi da UC-BW1}
     \label{fig:UC-sottocasi_UC-BW1}
 \end{figure}
@@ -678,14 +685,15 @@ UC-BW1 include ed estende ulteriori Casi d’Uso rappresentati nella seguente im
 
 % ==== UC-?6 - LISTA CONTATTI FIDATI ====
 
-UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella seguente immagine e poi spiegati testualmente uno ad uno:
+UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella seguente immagine e poi spiegati testualmente uno ad uno.
 
-\begin{figure}[H] 
-    \centering
-    \includegraphics[width=0.9\textwidth]{../../../resources/sottocasi_UC-IMP1.png}
-    \caption{Diagramma dei casi d'uso compresi da UC-IMP1}
-    \label{fig:sottocasi_UC-IMP1}
-\end{figure}
+% Diagramma UC-IMP1 rimosso - file non disponibile
+% \begin{figure}[H] 
+%     \centering
+%     \includegraphics[width=0.9\textwidth]{UC-1.png}
+%     \caption{Diagramma dei casi d'uso compresi da UC-IMP1}
+%     \label{fig:sottocasi_UC-IMP1}
+% \end{figure}
 
 \subsubsection{UC-?6 - Visualizzazione lista contatti fidati} \label{sec:UC-?6}
 \begin{itemize}
@@ -1795,12 +1803,13 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
 
 \subsubsection{UC-S1 - Invio Messaggio SOS} \label{sec:UC-S1}
 
-\begin{figure}[H] 
-    \centering
-    \includegraphics[width=0.9\textwidth]{../../../resources/UC-S1.png}
-    \caption{Diagramma del caso d'uso UC-S1 con UC-S2, UC-S3 e UC-S4}
-    \label{fig:UC-S1}
-\end{figure}
+% Diagramma UC-S1 rimosso - file non disponibile
+% \begin{figure}[H] 
+%     \centering
+%     \includegraphics[width=0.9\textwidth]{UC-1.png}
+%     \caption{Diagramma del caso d'uso UC-S1 con UC-S2, UC-S3 e UC-S4}
+%     \label{fig:UC-S1}
+% \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
@@ -1910,14 +1919,15 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
 
 % ========================== UC-I: I - DETECTIVE DELLE RELAZIONI  ==============================
 
-La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguardanti la funzionalità Detective delle Relazioni e Lo Specchio Intelligente:
+La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguardanti la funzionalità Detective delle Relazioni e Lo Specchio Intelligente.
 
-\begin{figure}[H] 
-    \centering
-    \includegraphics[width=0.9\textwidth]{../../../resources/UC-IGenerico.png}
-    \caption{Diagramma Dei casi d'uso UC-I}
-    \label{fig:UC-IGenerico}
-\end{figure}
+% Diagramma UC-IGenerico rimosso - file non disponibile
+% \begin{figure}[H] 
+%     \centering
+%     \includegraphics[width=0.9\textwidth]{../../../resources/UC-IGenerico.png}
+%     \caption{Diagramma Dei casi d'uso UC-I}
+%     \label{fig:UC-IGenerico}
+% \end{figure}
 
 
 \subsubsection{UC-I1 - Consultazione Chatbot} \label{sec:UC-I1}
@@ -2003,7 +2013,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \item \textbf{Trigger:} Il sistema rileva la mancanza di connessione
 \end{itemize}
 
-\subsubsection{UC-I4 - Errore di lettura del messaggio} \label{sec:UC-I4} ???
+\subsubsection{UC-I4 - Errore di lettura del messaggio} \label{sec:UC-I4}
 \begin{itemize}
     \item \textbf{Attore principale:} LLM
     \item \textbf{Pre-condizioni:}
