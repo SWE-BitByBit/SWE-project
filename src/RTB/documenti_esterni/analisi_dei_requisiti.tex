@@ -570,7 +570,7 @@ UC-BW1 include ed estende ulteriori Casi d’Uso rappresentati nella seguente im
     \begin{itemize}
         \item Il sistema è attivo
         \item Sta avvenendo il primo accesso al sistema da parte dell'attore
-        \item Il walkthrough è attivo
+        \item Il walkthrough è in corso
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
@@ -585,6 +585,43 @@ UC-BW1 include ed estende ulteriori Casi d’Uso rappresentati nella seguente im
     \end{itemize}
     \item \textbf{Trigger:} Il sistema richiede la selezione del profilo
 \end{itemize}
+
+\subsubsection{UC-3.2 - Walkthrough diario criptato} \label{subsec:UC-3.2}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente Generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item Sta avvenendo il primo accesso al sistema da parte dell'attore
+        \item Il walkthrough è in corso
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'utente ha configurato il diario
+        \item Il sistema passa al prossimo step del walkthrough
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item Il sistema mostra una schermata informativa sui vantaggi del diario criptato
+        \item L'attore decide di abilitare la funzionalità
+        \item L'attore esegue la procedura di impostazione password \ref{subsec:UC-D8}
+    \end{itemize}
+    \item \textbf{Scenario secondario:}
+    \begin{itemize}
+        \item L'attore sceglie di saltare la configurazione di questa feature \ref{subsec:UC-5}
+    \end{itemize}
+    \item \textbf{Inclusioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-D8}
+    \end{itemize}
+    \item \textbf{Estensioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-5}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore completa lo step precedente del walkthrough
+\end{itemize}
+
+
 
 % ==== UC-?6 - LISTA CONTATTI FIDATI ====
 
