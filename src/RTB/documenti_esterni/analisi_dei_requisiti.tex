@@ -135,6 +135,9 @@ Gruppo BitByBit\\
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 
+\rowcolor{white}
+0.19.4 & 2026-01-16 & Gabriele Scaggiante & Rinominazione codici casi d'uso & Giovanni Visentin \\
+\hline
 \rowcolor{gray!20}
 0.19.3 & 2026-01-27 & Giovanni Visentin & Aggiunta casi d'uso walkthrough & Gabriele Scaggiante \\
 \hline
@@ -190,7 +193,7 @@ Gruppo BitByBit\\
 0.8.1 & 2025-12-16 & Dennis Parolin & Sistemato errore di una sezione ripetuta due volte ma con una sottosezione differente & Marco Sanguin \\
 \hline
 \rowcolor{gray!20}
-0.8.0 & 2025-12-15 & Giovanni Visentin & Aggiunti casi d'uso per Diari fittizio (UC-D4, UC-D5, UC-D5.1, UC-D6) & Marco Sanguin \\
+0.8.0 & 2025-12-15 & Giovanni Visentin & Aggiunti casi d'uso per Diari fittizio (UC-D4, UC-D5, UC-D5.1, UC-23.1) & Marco Sanguin \\
 \hline
 \rowcolor{white}
 0.7.0 & 2025-12-12 & Riccardo Manisi & Aggiunti casi d'uso per schermata impostazioni (UC-IMP1) e quelli relativi ai contatti fidati & Giovanni Visentin \\
@@ -541,16 +544,6 @@ Gli attori rappresentano entità esterne al sistema che interagiscono con esso p
 
 \vspace{0.5cm}
 
-UC-BW1 include ed estende ulteriori Casi d’Uso rappresentati nella seguente immagine e poi descritti testualmente:\
-
-\begin{figure}[H] 
-    \centering
-    % Immagine rimossa - file non disponibile
-    % \includegraphics[width=0.9\textwidth]{UC-1.png}
-    \caption{Diagramma dei casi d'uso inclusi ed estesi da UC-BW1}
-    \label{fig:UC-sottocasi_UC-BW1}
-\end{figure}
-
 \subsubsection{UC-4 - Salta Walkthrough} \label{subsec:UC-4}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente Generico
@@ -614,7 +607,7 @@ UC-BW1 include ed estende ulteriori Casi d’Uso rappresentati nella seguente im
     \begin{itemize}
         \item Il sistema mostra una schermata informativa sui vantaggi del diario criptato
         \item L'attore decide di abilitare la funzionalità
-        \item L'attore esegue la procedura di impostazione password \ref{subsec:UC-D8}
+        \item L'attore esegue la procedura di impostazione password \ref{subsec:UC-25}
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
@@ -622,7 +615,7 @@ UC-BW1 include ed estende ulteriori Casi d’Uso rappresentati nella seguente im
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-D8}
+        \item \ref{subsec:UC-23.1}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
@@ -648,7 +641,7 @@ UC-BW1 include ed estende ulteriori Casi d’Uso rappresentati nella seguente im
     \begin{itemize}
         \item Il sistema spiega i vantaggi dei contatti fidati per le situazioni di emergenza
         \item L'attore decide di configurare il contatto
-        \item L'attore esegue la procedura di aggiunta contatto \ref{subsec:UC-?8}
+        \item L'attore esegue la procedura di aggiunta contatto \ref{subsec:UC-8}
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
@@ -656,7 +649,7 @@ UC-BW1 include ed estende ulteriori Casi d’Uso rappresentati nella seguente im
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-?8}
+        \item \ref{subsec:UC-8}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
@@ -686,19 +679,11 @@ UC-BW1 include ed estende ulteriori Casi d’Uso rappresentati nella seguente im
     \item \textbf{Trigger:} L'attore decide di non configurare la feature corrente
 \end{itemize}
 
-% ==== UC-?6 - LISTA CONTATTI FIDATI ====
+% ==== UC-6 - LISTA CONTATTI FIDATI ====
 
-UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella seguente immagine e poi spiegati testualmente uno ad uno.
+UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella seguente immagine e poi spiegati testualmente uno ad uno.
 
-% Diagramma UC-IMP1 rimosso - file non disponibile
-% \begin{figure}[H] 
-%     \centering
-%     \includegraphics[width=0.9\textwidth]{UC-1.png}
-%     \caption{Diagramma dei casi d'uso compresi da UC-IMP1}
-%     \label{fig:sottocasi_UC-IMP1}
-% \end{figure}
-
-\subsubsection{UC-?6 - Visualizzazione lista contatti fidati} \label{sec:UC-?6}
+\subsubsection{UC-6 - Visualizzazione lista contatti fidati} \label{sec:UC-6}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -713,13 +698,13 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item L'attore visualizza le entry della lista dei contatti fidati
-        \item L'attore visualizza singolarmente i contatti fidati nella lista $\rightarrow$ \ref{subsec:UC-?6.1} 
+        \item L'attore visualizza singolarmente i contatti fidati nella lista $\rightarrow$ \ref{subsec:UC-6.1} 
     \end{itemize}
     \item \textbf{Inclusioni:} \ref{subsec:UC-1.1}
     \item \textbf{Trigger:} L'attore vuole vedere la rete dei contatti fidati che ha aggiunto
 \end{itemize}
 
-\subsubsection{UC-?6.1 - Visualizzazione singolo contatto fidato nella lista} \label{subsec:UC-?6.1}
+\subsubsection{UC-6.1 - Visualizzazione singolo contatto fidato nella lista} \label{subsec:UC-6.1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:} 
@@ -733,12 +718,12 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'attore visualizza il nome del contatto fidato nella lista \label{subsec:UC-?7.1}
+        \item L'attore visualizza il nome del contatto fidato nella lista \label{subsec:UC-7.1}
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole visualizzare la lista dei contatti fidati
 \end{itemize}
 
-\subsubsection{UC-?7 - Visualizzazione Informazioni Contatto Fidato} \label{subsec:UC-?7}
+\subsubsection{UC-7 - Visualizzazione Informazioni Contatto Fidato} \label{subsec:UC-7}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:} 
@@ -755,15 +740,15 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \begin{itemize}
         \item Per il contatto fidato presente il sistema mostra le relative informazioni quali:
         \begin{itemize}
-            \item il nome $\rightarrow$ \ref{subsec:UC-?7.1}
-            \item il numero di telefono $\rightarrow$ \ref{subsec:UC-?7.2}
-            \item l'indirizzo email $\rightarrow$ \ref{subsec:UC-?7.3}
+            \item il nome $\rightarrow$ \ref{subsec:UC-7.1}
+            \item il numero di telefono $\rightarrow$ \ref{subsec:UC-7.2}
+            \item l'indirizzo email $\rightarrow$ \ref{subsec:UC-7.3}
         \end{itemize}
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole visualizzare le informazioni di contatto per un contatto fidato
 \end{itemize}
 
-\subsubsection{UC-?7.1 - Visualizzazione nome contatto fidato} \label{subsec:UC-?7.1}
+\subsubsection{UC-7.1 - Visualizzazione nome contatto fidato} \label{subsec:UC-7.1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:} 
@@ -781,7 +766,7 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-?7.2 - Visualizzazione numero di telefono contatto fidato} \label{subsec:UC-?7.2}
+\subsubsection{UC-7.2 - Visualizzazione numero di telefono contatto fidato} \label{subsec:UC-7.2}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:} 
@@ -799,7 +784,7 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-?7.3 - Visualizzazione indirizzo email contatto fidato} \label{subsec:UC-?7.3}
+\subsubsection{UC-7.3 - Visualizzazione indirizzo email contatto fidato} \label{subsec:UC-7.3}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:} 
@@ -817,9 +802,9 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \end{itemize}
 \end{itemize}
 
-% ===== UC-?8: AGGIUNTA CONTATTO FIDATO =====
+% ===== AGGIUNTA CONTATTO FIDATO =====
 
-\subsubsection{UC-?8 - Aggiunta contatto fidato} \label{subsec:UC-?8}
+\subsubsection{UC-8 - Aggiunta contatto fidato} \label{subsec:UC-8}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente autenticato
     \item \textbf{Pre-condizioni:} 
@@ -834,29 +819,29 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item L'attore seleziona la voce per l'aggiunta del contatto fidato
-        \item L'attore inserisce il nome del contatto fidato $\rightarrow$ \ref{subsec:UC-?8.1}
-        \item L'attore inserisce il numero di telefono del contatto fidato $\rightarrow$ \ref{subsec:UC-?8.2}
-        \item L'attore inserisce l'indirizzo email del contatto fidato $\rightarrow$ \ref{subsec:UC-?8.3}
+        \item L'attore inserisce il nome del contatto fidato $\rightarrow$ \ref{subsec:UC-8.1}
+        \item L'attore inserisce il numero di telefono del contatto fidato $\rightarrow$ \ref{subsec:UC-8.2}
+        \item L'attore inserisce l'indirizzo email del contatto fidato $\rightarrow$ \ref{subsec:UC-8.3}
         \item L'attore seleziona la voce per il salvataggio del contatto fidato nella rete di contatti
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
-        \item Le informazioni sono rilevate già all'interno del sistema $\rightarrow$ \ref{subsec:UC-?9}
+        \item Le informazioni sono rilevate già all'interno del sistema $\rightarrow$ \ref{subsec:UC-9}
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-?8.1}
-        \item \ref{subsec:UC-?8.2}
-        \item \ref{subsec:UC-?8.3}
+        \item \ref{subsec:UC-8.1}
+        \item \ref{subsec:UC-8.2}
+        \item \ref{subsec:UC-8.3}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-?9}
+        \item \ref{subsec:UC-9}
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole aggiungere un nuovo contatto fidato nella propria rete
 \end{itemize}
 
-\subsubsection{UC-?8.1 - Inserimento nome contatto fidato} \label{subsec:UC-?8.1}
+\subsubsection{UC-8.1 - Inserimento nome contatto fidato} \label{subsec:UC-8.1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -875,7 +860,7 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \item \textbf{Trigger:} L'attore vuole inserire un nuovo contatto nella propria rete di contatti fidati
 \end{itemize}
 
-\subsubsection{UC-?8.2 - Inserimento numero di telefono contatto fidato} \label{subsec:UC-?8.2}
+\subsubsection{UC-8.2 - Inserimento numero di telefono contatto fidato} \label{subsec:UC-8.2}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -893,13 +878,13 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
-        \item Il numero inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \ref{subsec:UC-?10}
+        \item Il numero inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \ref{subsec:UC-10}
     \end{itemize}
-    \item \textbf{Estensioni:} \ref{sec:UC-?10}
+    \item \textbf{Estensioni:} \ref{sec:UC-10}
     \item \textbf{Trigger:} L'attore vuole inserire un nuovo contatto nella propria rete di contatti fidati
 \end{itemize}
 
-\subsubsection{UC-?8.3 - Inserimento indirizzo email contatto fidato} \label{subsec:UC-?8.3}
+\subsubsection{UC-8.3 - Inserimento indirizzo email contatto fidato} \label{subsec:UC-8.3}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -917,13 +902,13 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
-        \item L'indirizzo email inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \ref{subsec:UC-?11}
+        \item L'indirizzo email inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \ref{subsec:UC-11}
     \end{itemize}
-    \item \textbf{Estensioni:} \ref{sec:UC-?11}
+    \item \textbf{Estensioni:} \ref{sec:UC-11}
     \item \textbf{Trigger:} L'attore vuole inserire un nuovo contatto nella propria rete di contatti fidati
 \end{itemize}
 
-\subsubsection{UC-?9 Informazioni di contatto già presenti nel sistema} \label{subsec:UC-?9}
+\subsubsection{UC-9 Informazioni di contatto già presenti nel sistema} \label{subsec:UC-9}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -948,7 +933,7 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \item \textbf{Trigger:} L'attore ha inserito alcune informazioni del contatto fidato
 \end{itemize}
 
-\subsubsection{UC-?10 Numero di telefono non conforme ai criteri} \label{subsec:UC-?10}
+\subsubsection{UC-10 Numero di telefono non conforme ai criteri} \label{subsec:UC-10}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -971,7 +956,7 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \item \textbf{Trigger:} L'attore ha inserito un numero di telefono non conforme ai criteri dell'applicazione
 \end{itemize}
 
-\subsubsection{UC-?11 Indirizzo email di telefono non conforme ai criteri} \label{subsec:UC-?11}
+\subsubsection{UC-11 Indirizzo email di telefono non conforme ai criteri} \label{subsec:UC-11}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -994,9 +979,9 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \item \textbf{Trigger:} L'attore ha inserito un l'indirizzo email non conforme ai criteri dell'applicazione
 \end{itemize}
 
-% ===== UC-?12: MODIFICA CONTATTO FIDATO =====
+% ===== UC-12: MODIFICA CONTATTO FIDATO =====
 
-\subsubsection{UC-?12 - Modifica contatto fidato} \label{subsec:UC-?12}
+\subsubsection{UC-12 - Modifica contatto fidato} \label{subsec:UC-12}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente autenticato
     \item \textbf{Pre-condizioni:} 
@@ -1012,29 +997,29 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item L'attore seleziona la voce per la modifica del contatto fidato
-        \item L'attore modifica il nome del contatto fidato $\rightarrow$ \ref{subsec:UC-?12.1}
-        \item L'attore modifica il numero di telefono del contatto fidato $\rightarrow$ \ref{subsec:UC-?12.2}
-        \item L'attore modifica l'indirizzo email del contatto fidato $\rightarrow$ \ref{subsec:UC-?12.3}
+        \item L'attore modifica il nome del contatto fidato $\rightarrow$ \ref{subsec:UC-12.1}
+        \item L'attore modifica il numero di telefono del contatto fidato $\rightarrow$ \ref{subsec:UC-12.2}
+        \item L'attore modifica l'indirizzo email del contatto fidato $\rightarrow$ \ref{subsec:UC-12.3}
         \item L'attore seleziona la voce per il salvataggio delle modifiche del contatto fidato nella rete di contatti
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
-        \item Le informazioni sono rilevate già all'interno del sistema $\rightarrow$ \ref{subsec:UC-?9}
+        \item Le informazioni sono rilevate già all'interno del sistema $\rightarrow$ \ref{subsec:UC-9}
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-?12.1}
-        \item \ref{subsec:UC-?12.2}
-        \item \ref{subsec:UC-?12.3}
+        \item \ref{subsec:UC-12.1}
+        \item \ref{subsec:UC-12.2}
+        \item \ref{subsec:UC-12.3}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-?9}
+        \item \ref{subsec:UC-9}
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole aggiungere un nuovo contatto fidato nella propria rete
 \end{itemize}
 
-\subsubsection{UC-?12.1 - Modifica nome contatto fidato} \label{subsec:UC-?12.1}
+\subsubsection{UC-12.1 - Modifica nome contatto fidato} \label{subsec:UC-12.1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente autenticato
     \item \textbf{Pre-condizioni:}
@@ -1055,7 +1040,7 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \item \textbf{Trigger:} L'attore vuole modificare il nome di un contatto fidato presente nella propria rete di contatti fidati
 \end{itemize}
 
-\subsubsection{UC-?12.2 - Modifica numero di telefono contatto fidato} \label{subsec:UC-?12.2}
+\subsubsection{UC-12.2 - Modifica numero di telefono contatto fidato} \label{subsec:UC-12.2}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente autenticato
     \item \textbf{Pre-condizioni:}
@@ -1075,13 +1060,13 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
-        \item Il numero inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \ref{subsec:UC-?10}
+        \item Il numero inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \ref{subsec:UC-10}
     \end{itemize}
-    \item \textbf{Estensioni:} \ref{sec:UC-?10}
+    \item \textbf{Estensioni:} \ref{sec:UC-10}
     \item \textbf{Trigger:} L'attore vuole modificare il numero di telefono di un contatto fidato presente nella propria rete di contatti fidati
 \end{itemize}
 
-\subsubsection{UC-?12.3 - Modifica indirizzo email contatto fidato} \label{subsec:UC-?12.3}
+\subsubsection{UC-12.3 - Modifica indirizzo email contatto fidato} \label{subsec:UC-12.3}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente autenticato
     \item \textbf{Pre-condizioni:}
@@ -1101,15 +1086,15 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
-        \item L'indirizzo email inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \ref{subsec:UC-?11}
+        \item L'indirizzo email inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \ref{subsec:UC-11}
     \end{itemize}
-    \item \textbf{Estensioni:} \ref{sec:UC-?11}
+    \item \textbf{Estensioni:} \ref{sec:UC-11}
     \item \textbf{Trigger:} L'attore vuole modificare l'indirizzo email di un contatto fidato presente nella propria rete di contatti fidati
 \end{itemize}
 
-% ===== UC-?13 - CANCELLAZIONE CONTATTO FIDATO =====
+% ===== UC-13 - CANCELLAZIONE CONTATTO FIDATO =====
 
-\subsubsection{UC-?13 Eliminazione Contatto Fidato} \label{subsec:UC-?13}
+\subsubsection{UC-13 Eliminazione Contatto Fidato} \label{subsec:UC-13}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente autenticato
     \item \textbf{Pre-condizioni:}
@@ -1126,14 +1111,14 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \begin{itemize}
         \item L'attore seleziona una contatto dalla lista dei contatti fidati
         \item L'attore seleziona la voce di cancellazione per quel contatto fidato
-        \item L'attore conferma l'eliminazione del contatto fidato $\rightarrow$ \ref{subsec:UC-?13.1}
+        \item L'attore conferma l'eliminazione del contatto fidato $\rightarrow$ \ref{subsec:UC-13.1}
         \item Il sistema rimuove il contatto fidato scelto dall'attore dalla rete dei contatti fidati dell'attore
     \end{itemize}
-    \item \textbf{inclusioni:} \ref{sec:UC-?13.1}
+    \item \textbf{inclusioni:} \ref{sec:UC-13.1}
     \item \textbf{Trigger:} L'attore vuole rimuovere un contatto dalla propria rete di contatti fidati
 \end{itemize}
 
-\subsubsection{UC-?13.1 Conferma Eliminazione Contatto Fidato} \label{subsec:UC-?13.1}
+\subsubsection{UC-13.1 Conferma Eliminazione Contatto Fidato} \label{subsec:UC-13.1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente autenticato
     \item \textbf{Pre-condizioni:}
@@ -1152,13 +1137,13 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
-        \item L'attore rifiuta la conferma dell'eliminazione del contatto fidato $\rightarrow$ \ref{subsec:UC-?14}
+        \item L'attore rifiuta la conferma dell'eliminazione del contatto fidato $\rightarrow$ \ref{subsec:UC-14}
     \end{itemize}
-    \item \textbf{Estensioni:} \ref{sec:UC-?14}
+    \item \textbf{Estensioni:} \ref{sec:UC-14}
     \item \textbf{Trigger:} L'attore ha scelto la voce di cancellazione per quel contatto fidato
 \end{itemize}
 
-\subsubsection{UC-?14 Rifiuto Conferma Eliminazione Contatto Fidato} \label{subsec:UC-?14}
+\subsubsection{UC-14 Rifiuto Conferma Eliminazione Contatto Fidato} \label{subsec:UC-14}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente autenticato
     \item \textbf{Pre-condizioni:}
@@ -1182,7 +1167,7 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
 
 % ==== DEAD MAN'S SWITCH ====
 
-\subsubsection{UC-DS1 - Impostazione timer prima inattività} \label{sec:UC-DS1}
+\subsubsection{UC-15 - Impostazione timer prima inattività} \label{sec:UC-15}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente autenticato
     \item \textbf{Pre-condizioni:}
@@ -1204,7 +1189,7 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \item \textbf{Trigger:} L'attore vuole definire dopo quanto tempo il sistema deve verificare la sua presenza
 \end{itemize}
 
-\subsubsection{UC-DS2 - Impostazione timer seconda inattività} \label{sec:UC-DS2}
+\subsubsection{UC-16 - Impostazione timer seconda inattività} \label{sec:UC-16}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente autenticato
     \item \textbf{Pre-condizioni:}
@@ -1227,7 +1212,7 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \item \textbf{Trigger:} L'attore vuole definire quanto tempo ha per rispondere alla mail di controllo prima che parta l'allarme
 \end{itemize}
 
-\subsubsection{UC-DS3 - Modifica titolo mail di avviso} \label{sec:UC-DS3}
+\subsubsection{UC-17 - Modifica titolo mail di avviso} \label{sec:UC-17}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente autenticato
     \item \textbf{Pre-condizioni:}
@@ -1247,7 +1232,7 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-DS4 - Modifica corpo mail di avviso} \label{sec:UC-DS4}
+\subsubsection{UC-18 - Modifica corpo mail di avviso} \label{sec:UC-18}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente autenticato
     \item \textbf{Pre-condizioni:}
@@ -1267,7 +1252,7 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-DS5 - Visualizzazione preview mail di avviso} \label{sec:UC-DS5}
+\subsubsection{UC-19 - Visualizzazione preview mail di avviso} \label{sec:UC-19}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente autenticato
     \item \textbf{Pre-condizioni:}
@@ -1283,8 +1268,8 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \begin{itemize}
         \item Il sistema recupera i dati della mail
         \item Il sistema compone l'anteprima del messaggio
-        \item Il sistema visualizza il titolo della mail $\rightarrow$ \ref{subsec:UC-DS5.1}
-        \item Il sistema visualizza il corpo della mail $\rightarrow$ \ref{subsec:UC-DS5.2}
+        \item Il sistema visualizza il titolo della mail $\rightarrow$ \ref{subsec:UC-19.1}
+        \item Il sistema visualizza il corpo della mail $\rightarrow$ \ref{subsec:UC-19.2}
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
@@ -1292,13 +1277,13 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-DS5.1}
-        \item \ref{subsec:UC-DS5.2}
+        \item \ref{subsec:UC-19.1}
+        \item \ref{subsec:UC-19.2}
     \end{itemize}
     \item \textbf{Trigger:} L'attore seleziona il pulsante di anteprima
 \end{itemize}
 
-\subsubsection{UC-DS5.1 - Visualizzazione titolo mail di avviso} \label{subsec:UC-DS5.1}
+\subsubsection{UC-19.1 - Visualizzazione titolo mail di avviso} \label{subsec:UC-19.1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente autenticato
     \item \textbf{Pre-condizioni:} Il sistema sta renderizzando l'anteprima
@@ -1309,7 +1294,7 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-DS5.2 - Visualizzazione corpo della mail di avviso} \label{subsec:UC-DS5.2}
+\subsubsection{UC-19.2 - Visualizzazione corpo della mail di avviso} \label{subsec:UC-19.2}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente autenticato
     \item \textbf{Pre-condizioni:} Il sistema sta renderizzando l'anteprima
@@ -1322,7 +1307,7 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
 
 % ==== DIARIO CRIPTATO =====
 
-\subsubsection{UC-D1 - Impostazione password per diario fittizio} \label{subsec:UC-D1}
+\subsubsection{UC-20 - Impostazione password per diario fittizio} \label{subsec:UC-20}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -1343,18 +1328,18 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \end{itemize}
     \item \textbf{Scenari secondari:} 
     \begin{itemize}
-        \item La password del diario fittizio combacia con quella già impostata del diario criptato. Il sistema non memorizza la password e mostra un messaggio di errore $\rightarrow$ \ref{subsec:UC-D2}
-        \item La password non è conforme ai criteri di sicurezza minimi imposti dal sistema. La password non viene memorizzata e viene mostrato un messaggio di errore. $\rightarrow$ \ref{subsec:UC-D3}
+        \item La password del diario fittizio combacia con quella già impostata del diario criptato. Il sistema non memorizza la password e mostra un messaggio di errore $\rightarrow$ \ref{subsec:UC-20.1}
+        \item La password non è conforme ai criteri di sicurezza minimi imposti dal sistema. La password non viene memorizzata e viene mostrato un messaggio di errore. $\rightarrow$ \ref{subsec:UC-21}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-D2}
-        \item \ref{subsec:UC-D3}
+        \item \ref{subsec:UC-20.1}
+        \item \ref{subsec:UC-21}
     \end{itemize}
     \item \textbf{Trigger:} L'attore interagisce con il form di inserimento della password per il diario fittizio
 \end{itemize}
 
-\subsubsection{UC-D2 - Password uguale alla password del diario criptato} \label{subsec:UC-D2}
+\subsubsection{UC-20.1 - Password uguale alla password del diario criptato} \label{subsec:UC-20.1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -1378,7 +1363,7 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \item \textbf{Trigger:} La password inserita per il diario fittizio corrisponde alla password del diario criptato
 \end{itemize}
 
-\subsubsection{UC-D3 - Password non conforme ai criteri} \label{subsec:UC-D3}
+\subsubsection{UC-21 - Password non conforme ai criteri} \label{subsec:UC-21}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -1403,7 +1388,7 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \item \textbf{Trigger:} La password inserita non rispetta i criteri di sicurezza dell'applicazione
 \end{itemize}
 
-\subsubsection{UC-D4 - Accesso al diario fittizio} \label{subsec:UC-D4}
+\subsubsection{UC-22 - Accesso al diario fittizio} \label{subsec:UC-22}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -1419,26 +1404,26 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item L'attore seleziona l'opzione per accedere al diario
-        \item L'attore procede con l'inserimento della password di accesso \ref{subsec:UC-D7}
+        \item L'attore procede con l'inserimento della password di accesso \ref{subsec:UC-24}
         \item Il sistema verifica che la password corrisponda a quella del diario fittizio
         \item Il sistema autentica l'attore e concede l'accesso al diario fittizio
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-        \item Non è stata impostata la password per il diario fittizio. Il sistema richiede che venga impostata una password prima di procedere. $\rightarrow$ \ref{subsec:UC-D1}
+        \item Non è stata impostata la password per il diario fittizio. Il sistema richiede che venga impostata una password prima di procedere. $\rightarrow$ \ref{subsec:UC-20}
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-D7}
+        \item \ref{subsec:UC-24}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-D1}
+        \item \ref{subsec:UC-20}
     \end{itemize}
     \item \textbf{Trigger:} L'attore desidera accedere al diario fittizio
 \end{itemize}
 
-\subsubsection{UC-D5 - Accesso al diario criptato} \label{subsec:UC-D5}
+\subsubsection{UC-23 - Accesso al diario criptato} \label{subsec:UC-23}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -1455,26 +1440,26 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item L'attore seleziona l'opzione per accedere al diario
-        \item L'attore procede con l'inserimento della password di accesso \ref{subsec:UC-D7}
+        \item L'attore procede con l'inserimento della password di accesso \ref{subsec:UC-24}
         \item Il sistema verifica che la password corrisponda a quella del diario criptato
         \item Il sistema autentica l'attore e concede l'accesso al diario criptato
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-        \item Non è stata impostata la password per il diario criptato. Il sistema richiede che venga impostata una password prima di procedere. $\rightarrow$ \ref{subsec:UC-D6}
+        \item Non è stata impostata la password per il diario criptato. Il sistema richiede che venga impostata una password prima di procedere. $\rightarrow$ \ref{subsec:UC-23.1}
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-D7}
+        \item \ref{subsec:UC-24}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-D6}
+        \item \ref{subsec:UC-23.1}
     \end{itemize}
     \item \textbf{Trigger:} L'attore desidera accedere al diario criptato
 \end{itemize}
 
-\subsubsection{UC-D6 - Impostazione password per diario criptato} \label{subsec:UC-D6}
+\subsubsection{UC-23.1 - Impostazione password per diario criptato} \label{subsec:UC-23.1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -1495,18 +1480,18 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \end{itemize}
     \item \textbf{Scenari secondari:} 
     \begin{itemize}
-        \item La password del diario criptato combacia con quella già impostata del diario fittizio. Il sistema non memorizza la password e mostra un messaggio di errore $\rightarrow$ \ref{subsec:UC-D10}
-        \item La password non è conforme ai criteri di sicurezza minimi imposti dal sistema. La password non viene memorizzata e viene mostrato un messaggio di errore. $\rightarrow$ \ref{subsec:UC-D3}
+        \item La password del diario criptato combacia con quella già impostata del diario fittizio. Il sistema non memorizza la password e mostra un messaggio di errore $\rightarrow$ \ref{subsec:UC-23.1.1}
+        \item La password non è conforme ai criteri di sicurezza minimi imposti dal sistema. La password non viene memorizzata e viene mostrato un messaggio di errore. $\rightarrow$ \ref{subsec:UC-21}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-D10}
-        \item \ref{subsec:UC-D3}
+        \item \ref{subsec:UC-23.1.1}
+        \item \ref{subsec:UC-21}
     \end{itemize}
     \item \textbf{Trigger:} L'attore interagisce con il form di inserimento della password per il diario criptato
 \end{itemize}
 
-\subsubsection{UC-D7 - Inserimento password accesso diario} \label{subsec:UC-D7}
+\subsubsection{UC-24 - Inserimento password accesso diario} \label{subsec:UC-24}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -1528,18 +1513,18 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \end{itemize}
     \item \textbf{Scenari secondari:} 
     \begin{itemize}
-        \item L'attore inserisce la password errata. Il sistema notifica l'errore e impedisce l'accesso al diario. $\rightarrow$ \ref{subsec:UC-D8}
-        \item L'attore ha inserito la password errata più volte di quanto consentito dal sistema. Il sistema nega l'accesso e disabilita l'inserimento della password per un periodo di tempo predefinito. $\rightarrow$ \ref{subsec:UC-D9}
+        \item L'attore inserisce la password errata. Il sistema notifica l'errore e impedisce l'accesso al diario. $\rightarrow$ \ref{subsec:UC-25}
+        \item L'attore ha inserito la password errata più volte di quanto consentito dal sistema. Il sistema nega l'accesso e disabilita l'inserimento della password per un periodo di tempo predefinito. $\rightarrow$ \ref{subsec:UC-26}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-D8}
-        \item \ref{subsec:UC-D9}
+        \item \ref{subsec:UC-25}
+        \item \ref{subsec:UC-26}
     \end{itemize}
     \item \textbf{Trigger:} Il sistema richiede l'autenticazione per accedere al diario
 \end{itemize}
 
-\subsubsection{UC-D8 - Inserimento password errata} \label{subsec:UC-D8}
+\subsubsection{UC-25 - Inserimento password errata} \label{subsec:UC-25}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -1566,7 +1551,7 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \item \textbf{Trigger:} La password inserita dall'attore non corrisponde a quella configurata per il diario
 \end{itemize}
 
-\subsubsection{UC-D9 - Password errata troppe volte} \label{subsec:UC-D9}
+\subsubsection{UC-26 - Password errata troppe volte} \label{subsec:UC-26}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -1590,7 +1575,7 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \item \textbf{Trigger:} L'attore ha inserito la password errata per un numero di volte superiore alla soglia massima consentita
 \end{itemize}
 
-\subsubsection{UC-D10 - Password uguale alla password del diario fittizio} \label{subsec:UC-D10}
+\subsubsection{UC-23.1.1 - Password uguale alla password del diario fittizio} \label{subsec:UC-23.1.1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -1614,7 +1599,7 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \item \textbf{Trigger:} La password inserita per il diario criptato corrisponde alla password del diario fittizio
 \end{itemize}
 
-\subsubsection{UC-D11 - Visualizzazione diario} \label{subsec:UC-D11}
+\subsubsection{UC-27 - Visualizzazione diario} \label{subsec:UC-27}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente autenticato al diario
     \item \textbf{Pre-condizioni:}
@@ -1629,16 +1614,16 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item L'attore accede alla schermata principale del diario
-        \item Il sistema carica e visualizza la lista delle note presenti \ref{subsec:UC-D12}
+        \item Il sistema carica e visualizza la lista delle note presenti \ref{subsec:UC-27.1}
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-D12}
+        \item \ref{subsec:UC-27.1}
     \end{itemize}
     \item \textbf{Trigger:} L'attore accede al diario
 \end{itemize}
 
-\subsubsection{UC-D12 - Visualizzazione lista note} \label{subsec:UC-D12}
+\subsubsection{UC-27.1 - Visualizzazione lista note} \label{subsec:UC-27.1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente autenticato al diario
     \item \textbf{Pre-condizioni:}
@@ -1656,15 +1641,15 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
         \item Il sistema recupera tutte le note memorizzate nel diario
         \item Il sistema organizza le note secondo un ordine prestabilito
         \item Il sistema visualizza la lista delle note con informazioni di anteprima
-        \item L'attore può visualizzare una singola nota dalla lista \ref{subsec:UC-D13}
+        \item L'attore può visualizzare una singola nota dalla lista \ref{subsec:UC-27.1.1}
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-D13}
+        \item \ref{subsec:UC-27.1.1}
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-D13 - Visualizzazione singola nota della lista} \label{subsec:UC-D13}
+\subsubsection{UC-27.1.1 - Visualizzazione singola nota della lista} \label{subsec:UC-27.1.1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente autenticato al diario
     \item \textbf{Pre-condizioni:}
@@ -1685,7 +1670,7 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-D14 - Creazione nota} \label{subsec:UC-D14}
+\subsubsection{UC-28 - Creazione nota} \label{subsec:UC-28}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente autenticato al diario
     \item \textbf{Pre-condizioni:}
@@ -1706,7 +1691,7 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \item \textbf{Trigger:} L'attore seleziona l'opzione di creazione nota nel diario
 \end{itemize}
 
-\subsubsection{UC-D15 - Eliminazione nota} \label{subsec:UC-D15}
+\subsubsection{UC-29 - Eliminazione nota} \label{subsec:UC-29}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente autenticato al diario
     \item \textbf{Pre-condizioni:}
@@ -1733,7 +1718,7 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \item \textbf{Trigger:} L'attore seleziona l'opzione di eliminazione nota nel diario
 \end{itemize}
 
-\subsubsection{UC-D16 - Inserimento testo nella nota} \label{subsec:UC-D16}
+\subsubsection{UC-30 - Inserimento testo nella nota} \label{subsec:UC-30}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente autenticato al diario
     \item \textbf{Pre-condizioni:}
@@ -1754,7 +1739,7 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-D17 - Inserimento media nella nota} \label{subsec:UC-D17}
+\subsubsection{UC-31 - Inserimento media nella nota} \label{subsec:UC-31}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente autenticato al diario
     \item \textbf{Pre-condizioni:}
@@ -1779,7 +1764,7 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \item \textbf{Trigger:} L'attore seleziona l'opzione di inserimento media
 \end{itemize}
 
-\subsubsection{UC-D18 - Visualizzazione contenuto nota} \label{subsec:UC-D18}
+\subsubsection{UC-32 - Visualizzazione contenuto nota} \label{subsec:UC-32}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente autenticato al diario
     \item \textbf{Pre-condizioni:}
@@ -1804,14 +1789,14 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
 
 % ===== UC-S: SICUREZZA - GUARDIANO SILENZIOSO  ======
 
-\subsubsection{UC-S1 - Invio Messaggio SOS} \label{sec:UC-S1}
+\subsubsection{UC-33 - Invio Messaggio SOS} \label{sec:UC-33}
 
-% Diagramma UC-S1 rimosso - file non disponibile
+% Diagramma UC-33 rimosso - file non disponibile
 % \begin{figure}[H] 
 %     \centering
 %     \includegraphics[width=0.9\textwidth]{UC-1.png}
-%     \caption{Diagramma del caso d'uso UC-S1 con UC-S2, UC-S3 e UC-S4}
-%     \label{fig:UC-S1}
+%     \caption{Diagramma del caso d'uso UC-33 con UC-33.1, UC-33.2 e UC-34}
+%     \label{fig:UC-33}
 % \end{figure}
 
 \begin{itemize}
@@ -1832,18 +1817,18 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \end{itemize}
     \item \textbf{Scenari secondari:} 
     \begin{itemize}
-        \item Il sistema non è in grado di connettersi a internet. L'invio del messaggio fallisce e viene chiesto all'attore se inviare un segnale acustico. $\rightarrow$ \ref{sec:UC-S2}
-        \item Il sistema non ha memorizzato nessun contatto fidato. L'invio del messaggio fallisce e viene chiesto all'attore se inviare un segnale acustico. $\rightarrow$ \ref{sec:UC-S3}
+        \item Il sistema non è in grado di connettersi a internet. L'invio del messaggio fallisce e viene chiesto all'attore se inviare un segnale acustico. $\rightarrow$ \ref{sec:UC-33.1}
+        \item Il sistema non ha memorizzato nessun contatto fidato. L'invio del messaggio fallisce e viene chiesto all'attore se inviare un segnale acustico. $\rightarrow$ \ref{sec:UC-33.2}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \ref{sec:UC-S2}
-        \item \ref{sec:UC-S3}
+        \item \ref{sec:UC-33.1}
+        \item \ref{sec:UC-33.2}
     \end{itemize}
     \item \textbf{Trigger:} L'Attore interagisce con l'opzione di invio del messaggio SOS.
 \end{itemize}
 
-\subsubsection{UC-S2 - Mancanza di connessione} \label{sec:UC-S2}
+\subsubsection{UC-33.1 - Mancanza di connessione} \label{sec:UC-33.1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:} 
@@ -1862,16 +1847,16 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \begin{itemize}
         \item Il sistema ha rilevato l'assenza di connessione.
         \item Il sistema mostra un messaggio di errore.
-        \item Il sistema dà la possibilità all'attore di inviare un segnale acustico $\rightarrow$ \ref{sec:UC-S4}
+        \item Il sistema dà la possibilità all'attore di inviare un segnale acustico $\rightarrow$ \ref{sec:UC-34}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \ref{sec:UC-S4}
+        \item \ref{sec:UC-34}
     \end{itemize}
     \item \textbf{Trigger:} Il sistema rileva l'assenza di connessione durante l'invio del messaggio di SOS.
 \end{itemize}
 
-\subsubsection{UC-S3 - Mancanza di contatti fidati} \label{sec:UC-S3}
+\subsubsection{UC-33.2 - Mancanza di contatti fidati} \label{sec:UC-33.2}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -1889,16 +1874,16 @@ UC-?6 comprende vari casi d'uso per funzionare che vengono rappresentati nella s
     \begin{itemize}
         \item Il sistema rileva che la lista dei contatti fidati è vuota
         \item Il sistema notifica l'utente con un messaggio di errore
-        \item Il sistema dà la possibilità all'attore di inviare un segnale acustico $\rightarrow$ \ref{sec:UC-S4}
+        \item Il sistema dà la possibilità all'attore di inviare un segnale acustico $\rightarrow$ \ref{sec:UC-34}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \ref{sec:UC-S4}
+        \item \ref{sec:UC-34}
     \end{itemize}
     \item \textbf{Trigger:} L'Utente vuole mandare un messaggio di SOS ai contatti fidati
 \end{itemize}
 
-\subsubsection{UC-S4 - Invio segnale acustico} \label{sec:UC-S4}
+\subsubsection{UC-34 - Invio segnale acustico} \label{sec:UC-34}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -1933,7 +1918,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
 % \end{figure}
 
 
-\subsubsection{UC-I1 - Consultazione Chatbot} \label{sec:UC-I1}
+\subsubsection{UC-35 - Consultazione Chatbot} \label{sec:UC-35}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Attore secondario:} LLM
@@ -1957,20 +1942,20 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-        \item L'attore interrompe il processo di analisi del messaggio dell'LLM \ref{subsec:UC-I2}
-        \item Il messaggio non riesce ad essere inviato causa mancanza di connessione \ref{subsec:UC-I3}
-        \item L'LLM riscontra un problema durante la lettura del messaggio \ref{subsec:UC-I4}
+        \item L'attore interrompe il processo di analisi del messaggio dell'LLM \ref{subsec:UC-35.1}
+        \item Il messaggio non riesce ad essere inviato causa mancanza di connessione \ref{subsec:UC-35.2}
+        \item L'LLM riscontra un problema durante la lettura del messaggio \ref{subsec:UC-35.3}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \ref{sec:UC-I2}
-        \item \ref{sec:UC-I3}
-        \item \ref{sec:UC-I4}
+        \item \ref{sec:UC-35.1}
+        \item \ref{sec:UC-35.2}
+        \item \ref{sec:UC-35.3}
     \end{itemize}
     \item \textbf{Trigger:} L'Utente vuole consultarsi con il chatbot
 \end{itemize}
 
-\subsubsection{UC-I2 - Interruzione risposta} \label{sec:UC-I2}
+\subsubsection{UC-35.1 - Interruzione risposta} \label{sec:UC-35.1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:} 
@@ -1993,7 +1978,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \item \textbf{Trigger:} L'attore vuole interrompere la generazione della risposta dell'LLM
 \end{itemize}
 
-\subsubsection{UC-I3 - Mancanza di connessione} \label{sec:UC-I3}
+\subsubsection{UC-35.2 - Mancanza di connessione} \label{sec:UC-35.2}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -2016,7 +2001,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \item \textbf{Trigger:} Il sistema rileva la mancanza di connessione
 \end{itemize}
 
-\subsubsection{UC-I4 - Errore di lettura del messaggio} \label{sec:UC-I4}
+\subsubsection{UC-35.3 - Errore di lettura del messaggio} \label{sec:UC-35.3}
 \begin{itemize}
     \item \textbf{Attore principale:} LLM
     \item \textbf{Pre-condizioni:}
@@ -2033,13 +2018,13 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
         \item Il sistema rileva un errore nella lettura del messaggio inviato
         \item Il sistema notifica l'utente dell'errore
         \item L'utente può mandare un nuovo messaggio
-        \item L'utente può chiedere di riprovare a leggere il messaggio \ref{sec:UC-I2}
+        \item L'utente può chiedere di riprovare a leggere il messaggio \ref{sec:UC-35.1}
 	\item Il sistema riceve il nuovo messaggio modificato.
     \end{itemize}
     \item \textbf{Trigger:} Il sistema non è riuscito a leggere il messaggio
 \end{itemize}
 
-\subsubsection{UC-I5 - Switch al "Detective delle Relazioni"} \label{sec:UC-I5}
+\subsubsection{UC-36 - Switch al "Detective delle Relazioni"} \label{sec:UC-36}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -2059,13 +2044,13 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-        \item Errore nello switch di contesto \ref{subsec:UC-I6}
+        \item Errore nello switch di contesto \ref{subsec:UC-38}
     \end{itemize}
-    \item \textbf{Estensioni:} \ref{sec:UC-I6}
+    \item \textbf{Estensioni:} \ref{sec:UC-38}
     \item \textbf{Trigger:} L’utente ha premuto il pulsante per il cambio del contesto.
 \end{itemize}
 
-\subsubsection{UC-I7 - Switch a "Specchio Intelligente"} \label{sec:UC-I7}
+\subsubsection{UC-37 - Switch a "Specchio Intelligente"} \label{sec:UC-37}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -2085,13 +2070,13 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-        \item Errore nello switch di contesto \ref{subsec:UC-I6}
+        \item Errore nello switch di contesto \ref{subsec:UC-38}
     \end{itemize}
-    \item \textbf{Estensioni:} \ref{sec:UC-I6}
+    \item \textbf{Estensioni:} \ref{sec:UC-38}
     \item \textbf{Trigger:} L’utente ha premuto il pulsante per il cambio del contesto.
 \end{itemize}
 
-\subsubsection{UC-I8 - Visualizzazione cronologia chat} \label{subsec:UC-I8}
+\subsubsection{UC-39 - Visualizzazione cronologia chat} \label{subsec:UC-39}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -2108,16 +2093,16 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
         \item Il sistema recupera tutte le chat memorizzate
         \item Il sistema organizza le chat secondo ordine cronologico
         \item Il sistema visualizza la lista delle chat con una preview del primo messaggio inviato dentro la chat
-        \item L'attore può visualizzare una singola chat dalla lista \ref{subsec:UC-I7.1}
+        \item L'attore può visualizzare una singola chat dalla lista \ref{subsec:UC-39.1}
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-7.1}
+        \item \ref{subsec:UC-39.1}
     \end{itemize}
     \item \textbf{Trigger:} L'attore ha selezionato la cronologia delle chat
 \end{itemize}
 
-\subsubsection{UC-I8.1 - Visualizzazione singola chat della lista} \label{subsec:UC-I8.1}
+\subsubsection{UC-39.1 - Visualizzazione singola chat della lista} \label{subsec:UC-39.1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -2133,16 +2118,16 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item Il sistema recupera le informazioni della chat da visualizzare
-        \item Il sistema mostra la preview del primo messaggio della chat nella lista \ref{subsec:UC-I7.1.1}
+        \item Il sistema mostra la preview del primo messaggio della chat nella lista \ref{subsec:UC-39.1.1}
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-7.1.1}
+        \item \ref{subsec:UC-39.1.1}
     \end{itemize}
     \item \textbf{Trigger:} L'attore ha visualizzato la cronologia
 \end{itemize}
 
-\subsubsection{UC-I8.1.1 - Visualizzazione preview inizio chat della lista} \label{subsec:UC-I8.1.1}
+\subsubsection{UC-39.1.1 - Visualizzazione preview inizio chat della lista} \label{subsec:UC-39.1.1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -2163,7 +2148,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \item \textbf{Trigger:} L'attore ha visualizzato una singola chat dalla cronologia delle chat
 \end{itemize}
 
-\subsubsection{UC-I9 - Visualizzazione contenuto chat} \label{subsec:UC-I9}
+\subsubsection{UC-40 - Visualizzazione contenuto chat} \label{subsec:UC-40}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -2178,18 +2163,18 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item Il sistema carica il contenuto della chat selezionata
-        \item Il sistema visualizza la lista dei messaggi scambiati tra attore e chatbot $\rightarrow$ \ref{subsec:UC-I9.1}
+        \item Il sistema visualizza la lista dei messaggi scambiati tra attore e chatbot $\rightarrow$ \ref{subsec:UC-40.1}
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-        \item Errore nel caricamento del contenuto della chat \ref{subsec:UC-I10}
+        \item Errore nel caricamento del contenuto della chat \ref{subsec:UC-40.2}
     \end{itemize}
-    \item \textbf{Inclusioni:} \ref{subsec:UC-I9.1}
-    \item \textbf{Estensioni:} \ref{sec:UC-I10}
+    \item \textbf{Inclusioni:} \ref{subsec:UC-40.1}
+    \item \textbf{Estensioni:} \ref{sec:UC-40.2}
     \item \textbf{Trigger:} L'attore vuole visualizzare il contenuto di una chat specifica
 \end{itemize}
 
-\subsubsection{UC-I9.1 - Visualizzazione lista messaggi} \label{subsec:UC-I9.1}
+\subsubsection{UC-40.1 - Visualizzazione lista messaggi} \label{subsec:UC-40.1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:} 
@@ -2205,18 +2190,18 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \begin{itemize}
         \item Il sistema recupera i messaggi dal database
         \item Per ogni messaggio presente, il sistema ne identifica la tipologia (utente o chatbot)
-        \item Il sistema visualizza i messaggi dell'utente $\rightarrow$ \ref{subsec:UC-I9.1.1}
-        \item Il sistema visualizza i messaggi del chatbot $\rightarrow$ \ref{subsec:UC-I9.1.2}
+        \item Il sistema visualizza i messaggi dell'utente $\rightarrow$ \ref{subsec:UC-40.1.1}
+        \item Il sistema visualizza i messaggi del chatbot $\rightarrow$ \ref{subsec:UC-40.1.2}
         \item L'attore può scorrere tra i messaggi
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-I9.1.1}
-        \item \ref{subsec:UC-I9.1.2}
+        \item \ref{subsec:UC-40.1.1}
+        \item \ref{subsec:UC-40.1.2}
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-I9.1.1 - Visualizzazione messaggio utente} \label{subsec:UC-I9.1.1}
+\subsubsection{UC-40.1.1 - Visualizzazione messaggio utente} \label{subsec:UC-40.1.1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:} 
@@ -2234,7 +2219,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-I9.1.2 - Visualizzazione messaggio chatbot} \label{subsec:UC-I9.1.2}
+\subsubsection{UC-40.1.2 - Visualizzazione messaggio chatbot} \label{subsec:UC-40.1.2}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:} 
@@ -2252,7 +2237,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-I10 - Errore caricamento chat} \label{subsec:UC-I10}
+\subsubsection{UC-40.2 - Errore caricamento chat} \label{subsec:UC-40.2}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -2276,7 +2261,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \item \textbf{Trigger:} Il recupero dei dati della chat fallisce o va in timeout
 \end{itemize}
 
-\subsubsection{UC-I11 - Creazione nuova chat} \label{subsec:UC-I11}
+\subsubsection{UC-41 - Creazione nuova chat} \label{subsec:UC-41}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -2294,13 +2279,13 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
         \item L'attore seleziona la voce per avviare una nuova conversazione con il chatbot
         \item Il sistema inizializza un nuovo contesto di chat vuoto
         \item Il sistema reindirizza l'attore alla schermata della chat
-        \item L'attore visualizza la schermata della chat vuota \ref{subsec:UC-I9}
+        \item L'attore visualizza la schermata della chat vuota \ref{subsec:UC-40}
     \end{itemize}
-    \item \textbf{Inclusioni:} \ref{subsec:UC-I9}
+    \item \textbf{Inclusioni:} \ref{subsec:UC-40}
     \item \textbf{Trigger:} L'attore vuole iniziare una nuova conversazione con il chatbot
 \end{itemize}
 
-\subsubsection{UC-I12 - Eliminazione chat} \label{subsec:UC-I12}
+\subsubsection{UC-42 - Eliminazione chat} \label{subsec:UC-42}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -2317,14 +2302,14 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \begin{itemize}
         \item L'attore attiva la modalità di gestione/modifica della cronologia
         \item L'attore seleziona la chat che desidera rimuovere
-        \item L'attore conferma l'intenzione di eliminare la chat $\rightarrow$ \ref{subsec:UC-I12.1}
+        \item L'attore conferma l'intenzione di eliminare la chat $\rightarrow$ \ref{subsec:UC-42.1}
         \item Il sistema elimina la chat e aggiorna la lista della cronologia
     \end{itemize}
-    \item \textbf{Inclusioni:} \ref{subsec:UC-I12.1}
+    \item \textbf{Inclusioni:} \ref{subsec:UC-42.1}
     \item \textbf{Trigger:} L'attore vuole rimuovere una conversazione passata
 \end{itemize}
 
-\subsubsection{UC-I12.1 - Conferma eliminazione chat} \label{subsec:UC-I12.1}
+\subsubsection{UC-42.1 - Conferma eliminazione chat} \label{subsec:UC-42.1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -2343,12 +2328,12 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
-        \item L'attore rifiuta la conferma dell'eliminazione della chat $\rightarrow$ \ref{subsec:UC-I13}
+        \item L'attore rifiuta la conferma dell'eliminazione della chat $\rightarrow$ \ref{subsec:UC-42.1.1}
     \end{itemize}
-    \item \textbf{Estensioni:} \ref{sec:UC-I13}
+    \item \textbf{Estensioni:} \ref{sec:UC-42.1.1}
 \end{itemize}
 
-\subsubsection{UC-I13 - Rifiuto conferma eliminazione chat} \label{subsec:UC-I13}
+\subsubsection{UC-42.1.1 - Rifiuto conferma eliminazione chat} \label{subsec:UC-42.1.1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -2373,7 +2358,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
 
 % ========================== UC-G: Guide ==============================
 
-\subsubsection{UC-G1 - Visualizzazione lista community} \label{sec:UC-G1}
+\subsubsection{UC-43 - Visualizzazione lista community} \label{sec:UC-43}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -2388,14 +2373,14 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item Il sistema recupera l'elenco delle community attive dal server
-        \item Il sistema visualizza la lista delle community $\rightarrow$ \ref{subsec:UC-G1.1}
+        \item Il sistema visualizza la lista delle community $\rightarrow$ \ref{subsec:UC-43.1}
         \item L'attore può scorrere la lista per scegliere quale community visitare
     \end{itemize}
-    \item \textbf{Inclusioni:} \ref{subsec:UC-G1.1}
+    \item \textbf{Inclusioni:} \ref{subsec:UC-43.1}
     \item \textbf{Trigger:} L'attore vuole esplorare le community esistenti
 \end{itemize}
 
-\subsubsection{UC-G1.1 - Visualizzazione singola community nella lista} \label{subsec:UC-G1.1}
+\subsubsection{UC-43.1 - Visualizzazione singola community nella lista} \label{subsec:UC-43.1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:} 
@@ -2414,7 +2399,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-G2 - Visita community} \label{sec:UC-G2}
+\subsubsection{UC-44 - Visita community} \label{sec:UC-44}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -2434,13 +2419,13 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-         \item Errore nel caricamento della pagina $\rightarrow$ \ref{subsec:UC-G3}
+         \item Errore nel caricamento della pagina $\rightarrow$ \ref{subsec:UC-44.1}
     \end{itemize}
-    \item \textbf{Estensioni:} \ref{subsec:UC-G3}
+    \item \textbf{Estensioni:} \ref{subsec:UC-44.1}
     \item \textbf{Trigger:} L'attore seleziona una community per visualizzarne il contenuto
 \end{itemize}
 
-\subsubsection{UC-G3 - Errore caricamento community} \label{subsec:UC-G3}
+\subsubsection{UC-44.1 - Errore caricamento community} \label{subsec:UC-44.1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -2461,7 +2446,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-G4 - Visualizzazione lista contatti d'emergenza} \label{sec:UC-G4}
+\subsubsection{UC-45 - Visualizzazione lista contatti d'emergenza} \label{sec:UC-45}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -2477,13 +2462,13 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \begin{itemize}
         \item Il sistema recupera la lista dei contatti di emergenza nazionali
         \item Il sistema recupera la lista dei numeri dei contatti fidati personali 
-        \item Il sistema visualizza le entry della lista $\rightarrow$ \ref{subsec:UC-G4.1}
+        \item Il sistema visualizza le entry della lista $\rightarrow$ \ref{subsec:UC-45.1}
     \end{itemize}
-    \item \textbf{Inclusioni:} \ref{subsec:UC-G4.1}
+    \item \textbf{Inclusioni:} \ref{subsec:UC-45.1}
     \item \textbf{Trigger:} L'attore vuole consultare i numeri rapidi di emergenza
 \end{itemize}
 
-\subsubsection{UC-G4.1 - Visualizzazione singolo contatto d'emergenza} \label{subsec:UC-G4.1}
+\subsubsection{UC-45.1 - Visualizzazione singolo contatto d'emergenza} \label{subsec:UC-45.1}
 \begin{itemize}
     \item \textbf{Descrizione:} Questo caso d'uso generalizza la visualizzazione di un contatto, definendo la struttura comune (nome e numero) per qualsiasi tipo di contatto d'emergenza.
     \item \textbf{Attore principale:} Utente generico
@@ -2498,17 +2483,17 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item Il sistema visualizza il nome identificativo del contatto $\rightarrow$ \ref{subsec:UC-G4.1.1}
-        \item Il sistema visualizza il numero telefonico associato al contatto $\rightarrow$ \ref{subsec:UC-G4.1.2}
+        \item Il sistema visualizza il nome identificativo del contatto $\rightarrow$ \ref{subsec:UC-45.1.1}
+        \item Il sistema visualizza il numero telefonico associato al contatto $\rightarrow$ \ref{subsec:UC-45.1.2}
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-G4.1.1}
-        \item \ref{subsec:UC-G4.1.2}
+        \item \ref{subsec:UC-45.1.1}
+        \item \ref{subsec:UC-45.1.2}
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-G4.1.1 - Visualizzazione nome contatti d'emergenza} \label{subsec:UC-G4.1.1}
+\subsubsection{UC-45.1.1 - Visualizzazione nome contatti d'emergenza} \label{subsec:UC-45.1.1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:} 
@@ -2526,7 +2511,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-G4.1.2 - Visualizzazione numero contatti d'emergenza} \label{subsec:UC-G4.1.2}
+\subsubsection{UC-45.1.2 - Visualizzazione numero contatti d'emergenza} \label{subsec:UC-45.1.2}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:} 
@@ -2544,10 +2529,10 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-G5 - Visualizzazione singolo contatto ente d'emergenza} \label{subsec:UC-G5}
+\subsubsection{UC-46 - Visualizzazione singolo contatto ente d'emergenza} \label{subsec:UC-46}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
-    \item \textbf{Generalizzazione:} È una specializzazione di \textbf{UC-G4.1}
+    \item \textbf{Generalizzazione:} È una specializzazione di \textbf{UC-45.1}
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il contatto da visualizzare è un ente istituzionale o certificato
@@ -2559,15 +2544,15 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item Il sistema recupera i dati dell'ente
-        \item Il sistema eredita il comportamento di visualizzazione da \ref{subsec:UC-G4.1}
+        \item Il sistema eredita il comportamento di visualizzazione da \ref{subsec:UC-45.1}
         \item Il sistema può mostrare un logo o un'icona specifica dell'ente
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-G6 - Visualizzazione singolo contatto personale d'emergenza} \label{subsec:UC-G6}
+\subsubsection{UC-47 - Visualizzazione singolo contatto personale d'emergenza} \label{subsec:UC-47}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
-    \item \textbf{Generalizzazione:} È una specializzazione di \textbf{UC-G4.1}
+    \item \textbf{Generalizzazione:} È una specializzazione di \textbf{UC-45.1}
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il contatto da visualizzare è stato aggiunto dall'attore
@@ -2579,11 +2564,11 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item Il sistema recupera i dati dal database locale dell'utente
-        \item Il sistema eredita il comportamento di visualizzazione da \ref{subsec:UC-G4.1}
+        \item Il sistema eredita il comportamento di visualizzazione da \ref{subsec:UC-45.1}
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-G7 - Composizione automatica numero contatto} \label{sec:UC-G7}
+\subsubsection{UC-48 - Composizione automatica numero contatto} \label{sec:UC-48}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -2604,7 +2589,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \item \textbf{Trigger:} L'attore seleziona il pulsante di chiamata di un contatto
 \end{itemize}
 
-\subsubsection{UC-G8 - Visualizzazione lista leggi} \label{sec:UC-G8}
+\subsubsection{UC-49 - Visualizzazione lista leggi} \label{sec:UC-49}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -2619,14 +2604,14 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item Il sistema recupera l'elenco delle normative dal database
-        \item Il sistema visualizza le entry della lista delle leggi $\rightarrow$ \ref{subsec:UC-G8.1}
+        \item Il sistema visualizza le entry della lista delle leggi $\rightarrow$ \ref{subsec:UC-49.1}
         \item L'attore può scorrere la lista per cercare l'argomento di interesse
     \end{itemize}
-    \item \textbf{Inclusioni:} \ref{subsec:UC-G8.1}
+    \item \textbf{Inclusioni:} \ref{subsec:UC-49.1}
     \item \textbf{Trigger:} L'attore vuole informarsi sui propri diritti legali
 \end{itemize}
 
-\subsubsection{UC-G8.1 - Visualizzazione singola legge nella lista} \label{subsec:UC-G8.1}
+\subsubsection{UC-49.1 - Visualizzazione singola legge nella lista} \label{subsec:UC-49.1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:} 
@@ -2645,7 +2630,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-G9 - Visualizzazione dettagli legge} \label{sec:UC-G9}
+\subsubsection{UC-50 - Visualizzazione dettagli legge} \label{sec:UC-50}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -2666,19 +2651,19 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-         \item Errore nel caricamento del contenuto della legge $\rightarrow$ \ref{subsec:UC-G10}
+         \item Errore nel caricamento del contenuto della legge $\rightarrow$ \ref{subsec:UC-51}
     \end{itemize}
-    \item \textbf{Estensioni:} \ref{subsec:UC-G10}
+    \item \textbf{Estensioni:} \ref{subsec:UC-51}
     \item \textbf{Trigger:} L'attore vuole approfondire il contenuto di una legge
 \end{itemize}
 
-\subsubsection{UC-G10 - Errore caricamento normativa} \label{subsec:UC-G10}
+\subsubsection{UC-51 - Errore caricamento normativa} \label{subsec:UC-51}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'attore sta tentando di visualizzare la lista o i dettagli di una legge
+        \item L'attore sta tentando di visualizzare i dettagli di una legge
         \item Si verifica un problema tecnico (timeout server, assenza rete)
     \end{itemize}
     \item \textbf{Post-condizioni:}
@@ -2693,7 +2678,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-G11 - Visualizzazione lista materiale informativo} \label{sec:UC-G11}
+\subsubsection{UC-52 - Visualizzazione lista materiale informativo} \label{sec:UC-52}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -2709,14 +2694,14 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \begin{itemize}
         \item Il sistema recupera l'elenco delle risorse disponibili dal server
         \item Il sistema visualizza la lista dei materiali disponibili 
-        \item L'attore può visualizzare singolarmente ogni materiale nella lista $\rightarrow$ \ref{subsec:UC-G11.1}
+        \item L'attore può visualizzare singolarmente ogni materiale nella lista $\rightarrow$ \ref{subsec:UC-52.1}
         \item L'attore può scorrere la lista per trovare il contenuto di interesse
     \end{itemize}
-    \item \textbf{Inclusioni:} \ref{subsec:UC-G11.1}
+    \item \textbf{Inclusioni:} \ref{subsec:UC-52.1}
     \item \textbf{Trigger:} L'attore vuole consultare risorse educative o di supporto
 \end{itemize}
 
-\subsubsection{UC-G11.1 - Visualizzazione singolo materiale informativo} \label{subsec:UC-G11.1}
+\subsubsection{UC-52.1 - Visualizzazione singolo materiale informativo} \label{subsec:UC-52.1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:} 
@@ -2735,7 +2720,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-G12 - Visualizzazione dettagli materiale informativo} \label{sec:UC-G12}
+\subsubsection{UC-53 - Visualizzazione dettagli materiale informativo} \label{sec:UC-53}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -2755,13 +2740,13 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-         \item Si verifica un errore durante il recupero del file (es. file corrotto o offline) $\rightarrow$ \ref{subsec:UC-G13}
+         \item Si verifica un errore durante il recupero del file (es. file corrotto o offline) $\rightarrow$ \ref{subsec:UC-53.1}
     \end{itemize}
-    \item \textbf{Estensioni:} \ref{subsec:UC-G13}
+    \item \textbf{Estensioni:} \ref{subsec:UC-53.1}
     \item \textbf{Trigger:} L'attore seleziona una risorsa per visualizzarla
 \end{itemize}
 
-\subsubsection{UC-G13 - Errore caricamento materiale} \label{subsec:UC-G13}
+\subsubsection{UC-53.1 - Errore caricamento materiale} \label{subsec:UC-53.1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -2783,7 +2768,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \item \textbf{Trigger:} Fallimento nel download o nell'apertura della risorsa
 \end{itemize}
 
-\subsubsection{UC-L1 - Visualizzazione mappa luoghi sicuri} \label{sec:UC-L1}
+\subsubsection{UC-54 - Visualizzazione mappa luoghi sicuri} \label{sec:UC-54}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -2801,13 +2786,13 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
         \item Il sistema visualizza la mappa interattiva all'interno dell'applicazione
         \item Il sistema mostra i marker corrispondenti ai luoghi sicuri nelle vicinanze (Centri antiviolenza, Ospedali, Stazioni di Polizia)
         \item L'attore può selezionare un luogo sicuro dalla mappa
-        \item L'attore può decidere di aprire la posizione su Google Maps $\rightarrow$ \ref{subsec:UC-L2}
+        \item L'attore può decidere di aprire la posizione su Google Maps $\rightarrow$ \ref{subsec:UC-55}
     \end{itemize}
-    \item \textbf{Estensioni:} \ref{subsec:UC-L2}
+    \item \textbf{Estensioni:} \ref{subsec:UC-55}
     \item \textbf{Trigger:} L'attore vuole localizzare i luoghi sicuri più vicini
 \end{itemize}
 
-\subsubsection{UC-L2 - Apertura mappa in Google Maps} \label{subsec:UC-L2}
+\subsubsection{UC-55 - Apertura mappa in Google Maps} \label{subsec:UC-55}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Attore secondario:} Google Maps
@@ -2829,13 +2814,13 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-         \item Si verifica un errore nell'apertura dell'applicazione esterna $\rightarrow$ \ref{subsec:UC-L3}
+         \item Si verifica un errore nell'apertura dell'applicazione esterna $\rightarrow$ \ref{subsec:UC-56}
     \end{itemize}
-    \item \textbf{Estensioni:} \ref{subsec:UC-L3}
+    \item \textbf{Estensioni:} \ref{subsec:UC-56}
     \item \textbf{Trigger:} L'attore vuole avviare la navigazione o vedere dettagli aggiuntivi del luogo
 \end{itemize}
 
-\subsubsection{UC-L3 - Errore apertura mappa esterna} \label{subsec:UC-L3}
+\subsubsection{UC-56 - Errore apertura mappa esterna} \label{subsec:UC-56}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
