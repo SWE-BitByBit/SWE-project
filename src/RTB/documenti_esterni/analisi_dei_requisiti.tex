@@ -480,8 +480,6 @@ Gli attori rappresentano entità esterne al sistema che interagiscono con esso p
     \item \textbf{Trigger:} Google Auth restituisce un codice di errore durante il processo di autenticazione
 \end{itemize}
 
-% ===== UC-BW: WALKTHROUGH =====
-
 \subsubsection{UC-3 - Esecuzione Walkthrough Interattivo} \label{subsec:UC-3}
 
 \begin{figure}[H] 
@@ -515,6 +513,7 @@ Gli attori rappresentano entità esterne al sistema che interagiscono con esso p
     \item \textbf{Scenario secondario:}
     \begin{itemize}
         \item L'attore sceglie di saltare tutte le funzionalità del walkthrough \ref{subsec:UC-4}
+        \item L'attore sceglie di autenticarsi con Google \ref{subsec:UC-1}
     \end{itemize} 
     \item \textbf{Inclusioni:}
     \begin{itemize}
@@ -526,6 +525,7 @@ Gli attori rappresentano entità esterne al sistema che interagiscono con esso p
     \item \textbf{Estensioni:}
     \begin{itemize}
         \item \ref{subsec:UC-4}
+        \item \ref{subsec:UC-1}
     \end{itemize}
     \item \textbf{Trigger:} Primo avvio dell'applicazione
 \end{itemize}
@@ -540,8 +540,6 @@ UC-BW1 include ed estende ulteriori Casi d’Uso rappresentati nella seguente im
     \caption{Diagramma dei casi d'uso inclusi ed estesi da UC-BW1}
     \label{fig:UC-sottocasi_UC-BW1}
 \end{figure}
-
-% ==== UC-4 ====
 
 \subsubsection{UC-4 - Salta Walkthrough} \label{subsec:UC-4}
 \begin{itemize}
@@ -563,30 +561,29 @@ UC-BW1 include ed estende ulteriori Casi d’Uso rappresentati nella seguente im
         \item Il sistema interrompe la presentazione delle schede e apre direttamente la Home Page
     \end{itemize}
     \item \textbf{Trigger:} L'attore decide di saltare il walkthrough
-\end{itemize}   
+\end{itemize}
 
-% ==== UC-BW1.2 ====
-
-\subsubsection{UC-BW1.2 - Selezione Profilo} \label{subsec:UC-BW1.2}
+\subsubsection{UC-3.1 - Selezione Profilo} \label{subsec:UC-3.1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente Generico
-    
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
-        \item Il walkthrough è attivo e sta presentando la scheda di benvenuto
+        \item Il sistema è attivo
+        \item Sta avvenendo il primo accesso al sistema da parte dell'attore
+        \item Il walkthrough è attivo
     \end{itemize}
-    
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item Il contesto d'uso è salvato e il sistema adatta i testi e i contenuti successivi in base alla scelta
+        \item Il profilo è salvato dal sistema
     \end{itemize}
-    
     \item \textbf{Scenario principale:}
     \begin{itemize}
-        \item L'utente seleziona l'opzione "Per me" o "Per altri"
+        \item L'attore vede una spiegazione della differenza tra i due profili
+        \item L'attore visualizza i due profili proposti "Per me" e "Per altri"
+        \item L'attore seleziona il profilo "Per me" o "Per altri"
+        \item Il sistema salva il profilo scelto
     \end{itemize}
-    
-    \item \textbf{Trigger:} Il sistema richiede la selezione del profilo mostrando la relativa schermata
+    \item \textbf{Trigger:} Il sistema richiede la selezione del profilo
 \end{itemize}
 
 % ==== UC-?6 - LISTA CONTATTI FIDATI ====
