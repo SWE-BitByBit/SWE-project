@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout SWE-project
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Set up Python
@@ -23,26 +23,12 @@ jobs:
 
       - name: Run Gulpease script
         run: |
-          python scripts/gulpease.py
+          python .github/scripts/gulpease.py
 
-      - name: Checkout project-metrics
-        uses: actions/checkout@v4
-        with:
-          repository: BitByBit-SWE/project-metrics
-          token: ${{ secrets.METRICS_REPO_TOKEN }}
-          path: project-metrics
-
-      - name: Update CSV
+      - name: Commit and push CSV
         run: |
-          cp project-metrics/data/gulpease_index.csv project-metrics/data/gulpease_index.csv || true
-          cp ../project-metrics/data/gulpease_index.csv project-metrics/data/gulpease_index.csv
-
-      - name: Commit and push
-        run: |
-            cd project-metrics
-            git config user.name "github-actions"
-            git config user.email "github-actions@github.com"
-            git add data/gulpease_index.csv
-            git commit -m "chore(metrics): update Gulpease index" || echo "No changes"
-            git push
-
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add metrics-measurements/gulpease_index.csv
+          git commit -m "chore(metrics): update Gulpease index" || echo "No changes to commit"
+          git push
