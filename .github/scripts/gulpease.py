@@ -9,7 +9,7 @@ from pathlib import Path
 PROJECT_ROOT = Path("src")
 AREE = ["RTB", "PB"]  # PB può non esistere
 
-OUTPUT_CSV = Path("project-metrics/data/gulpease_index.csv")
+OUTPUT_CSV = Path("metrics-measurements/gulpease_index.csv")
 
 # =========================
 # DOCUMENTI DA MISURARE
