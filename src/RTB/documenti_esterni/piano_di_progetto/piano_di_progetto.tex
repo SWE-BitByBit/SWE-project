@@ -4,9 +4,9 @@
 % =======================================================
 % 1. CONFIGURAZIONE VARIABILI
 % =======================================================
-\newcommand{\TitoloDocumento}{Piano di Progetto v0.3.0}
+\newcommand{\TitoloDocumento}{Piano di Progetto}
 \newcommand{\DataVersione}{AAAA/MM/GG}
-\newcommand{\VersioneAttuale}{0.3.0}
+\newcommand{\VersioneAttuale}{0.3.1}
 
 % =======================================================
 % 2. PACCHETTI
@@ -25,6 +25,7 @@
 \usepackage[colorinlistoftodos]{todonotes}
 \usepackage{eurosym}
 \usepackage{tikz}     % Necessario per i grafici a torta
+\usepackage{tcolorbox}
 
 % Percorsi immagini (aggiusta se necessario)
 \graphicspath{{resources/}{../resources/}{../../resources/}{../../../resources/}{../../../../resources/}}
@@ -128,6 +129,34 @@
     {\LARGE \textbf{\TitoloDocumento}}
 \end{center}
 
+% ======= INFO GENERALI =======
+\renewcommand{\arraystretch}{1.3}
+
+\begin{tcolorbox}
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\textbf{Stato:} & in lavorazione\\
+\textbf{Versione:} & \VersioneAttuale \\
+\textbf{Responsabile:} & Dennis Parolin\\
+\textbf{Redattori:} & 
+\begin{tabular}[t]{@{}l@{}}
+Dennis Parolin\\
+\end{tabular} \\
+\textbf{Verificatori:} & 
+\begin{tabular}[t]{@{}l@{}}
+Giovanni Visentin\\
+Ferdinando Fracasso\\
+Riccardo Manisi\\
+\end{tabular} \\
+\textbf{Destinatari:} &
+\begin{tabular}[t]{@{}l@{}}
+Miriade srl\\
+Prof. Tullio Vardanega\\
+Prof. Riccardo Cardin\\
+Gruppo BitByBit\\\\
+\end{tabular}
+\end{tabularx}
+\end{tcolorbox}
+
 \vspace*{\fill}
 
 % =======================================================
@@ -146,6 +175,9 @@
 
 \rowcolor{gray!60}
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+\hline
+\rowcolor{gray!20}
+0.4.1 & 2026-01-14 & Ferdinando Fracasso & Aggiunte informazioni generali documento nella pagina iniziale & Riccardo Manisi \\
 \hline
 \rowcolor{white}
 0.4.0 & 2026-01-12 & Marco Sanguin & Redazione \ref{sec:sprint2_RTB}, \ref{sec:sprint3_RTB} e inzio \ref{sec:sprint4_RTB} & Dennis Parolin \\
