@@ -39,11 +39,11 @@
 \setstretch{1.2}
 
 % ===== Stile intestazione =====
+\setlength{\headheight}{33pt}
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\textcolor{gray}{\documenttitle - BitByBit}}
-% Logo rimosso - file non disponibile
-% \fancyhead[R]{\includegraphics[height=1cm]{solo_logo.jpg}}
+\fancyhead[R]{\includegraphics[height=1cm]{solo_logo.jpg}}
 \fancyfoot[C]{\thepage}
 
 % ===== Formattazione sezioni =====
@@ -55,13 +55,12 @@
 
 % ====== FRONT PAGE ======
 
-\vspace*{\fill} 
+\vspace*{\fill} % --- Spinge verso il basso l'inizio del contenuto
 
 \begin{center}
     \begin{minipage}{0.25\textwidth}
         \centering
-        % Logo università rimosso - file non disponibile
-        % \includegraphics[width=\linewidth]{logoUni.png}
+        \includegraphics[width=\linewidth]{logoUni.png}
     \end{minipage}
     \hfill
     \begin{minipage}{0.7\textwidth}
@@ -80,8 +79,7 @@
 \begin{center}
     \begin{minipage}{0.25\textwidth}
         \centering
-        % Logo BitByBit rimosso - file non disponibile
-        % \includegraphics[width=\linewidth]{logo.png}
+        \includegraphics[width=\linewidth]{logo.png}
     \end{minipage}
     \hfill
     \begin{minipage}{0.7\textwidth}
@@ -100,6 +98,8 @@
     {\LARGE \textbf{\documenttitle}}
 \end{center}
 
+\vspace*{\fill}
+
 % ======= INFO GENERALI =======
 \renewcommand{\arraystretch}{1.3}
 
@@ -108,7 +108,7 @@
 \textbf{Stato:} & In corso\\
 \textbf{Versione:} & 0.19.5 \\
 \textbf{Responsabile:} & \\
-\textbf{Redattori:} & Riccardo Manisi, Dennis Parolin, Giovanni Visentin \\
+\textbf{Redattori:} & Riccardo Manisi, Dennis Parolin, Giovanni Visentin, Gabriele Scaggiante \\
 \textbf{Verificatori:} & Giovanni Visentin, Marco Sanguin \\
 \textbf{Destinatari:} &
 \begin{tabular}[t]{@{}l@{}}
@@ -135,56 +135,53 @@ Gruppo BitByBit\\
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 
-\rowcolor{gray!20}
-0.19.5 & 2026-02-05 & Dennis Parolin & Sistemato un caso d'uso con nome dupplicato. Eliminato UC-47 e UC-46 è diventato il nuovo UC-45.1 & Marco Sanguin \\
-\hline
 \rowcolor{white}
-0.19.4 & 2026-01-16 & Gabriele Scaggiante & Rinominazione codici casi d'uso & Giovanni Visentin \\
+0.19.5 & 2026-02-05 & Dennis Parolin & Sistemato un caso d'uso con nome duplicato. Eliminato UC-47 e UC-46 è diventato il nuovo UC-45.1. Eliminati due punti nello scenario principale di UC-1, troppo specifici. Corretti i nomi di UC-55 e UC-56. Aggiunti UC-57 e UC-58, corrette le precondizioni degli UC da 15 a 19.2 e la post condizione di UC-1. Corretti riferimenti a casi d'uso errati o mancanti. Aggiunta la sezione Attori (\ref{subsection:attori}). Sistemata l'intestazione ed errori di compilazione. Aggiunto l'indice riassuntivo delle tabelle e l'indice riassuntivo delle immagini. Corretti errori grammaticali e di battitura & Marco Sanguin \\
 \hline
 \rowcolor{gray!20}
-0.19.3 & 2026-01-27 & Giovanni Visentin & Aggiunta casi d'uso walkthrough & Gabriele Scaggiante \\
+0.19.4 & 2026-01-27 & Giovanni Visentin & Aggiunta casi d'uso walkthrough & Gabriele Scaggiante \\
 \hline
 \rowcolor{white}
+0.19.3 & 2026-01-16 & Gabriele Scaggiante & Rinominazione codici casi d'uso & Giovanni Visentin \\
+\hline
+\rowcolor{gray!20}
 0.19.2 & 2026-01-16 & Giovanni Visentin & Aggiunta casi d'uso dead man switch & Gabriele Scaggiante \\
 \hline
-\rowcolor{gray!20}
+\rowcolor{white}
 0.19.1 & 2026-01-16 & Giovanni Visentin & Aggiunta casi d'uso guida & Gabriele Scaggiante \\
 \hline
-\rowcolor{white}
+\rowcolor{gray!20}
 0.19.0 & 2026-01-15 & Gabriele Scaggiante & Aggiunti UC Guardiano Silenzioso & Giovanni Visentin \\
 \hline
-\rowcolor{gray!20}
+\rowcolor{white}
 0.18.2 & 2026-01-15 & Gabriele Scaggiante & Corretti alcuni refusi & Giovanni Visentin \\
 \hline
-\rowcolor{white}
+\rowcolor{gray!20}
 0.18.1 & 2026-01-15 & Gabriele Scaggiante & Aggiunti scenari secondari negli UC del diario & Giovanni Visentin \\
 \hline
-\rowcolor{gray!20}
+\rowcolor{white}
 0.18.0 & 2026-01-15 & Giovanni Visentin & Riscritti gli UC per chatbot e cronologia chat (da terminare) & Gabriele Scaggiante \\
 \hline
-\rowcolor{white}
+\rowcolor{gray!20}
 0.17.0 & 2026-01-14 & Gabriele Scaggiante & Riscritti gli UC per il diario secondo il nuovo schema & Giovanni Visentin \\
 \hline
-\rowcolor{gray!20}
+\rowcolor{white}
 0.16.0 & 2026-01-12 & Giovanni Visentin & Inizio riscrittura UC secondo nuovo schema & Dennis Parolin \\
 \hline
-\rowcolor{white}
+\rowcolor{gray!20}
 0.15.1 & 2025-12-23 & Dennis Parolin & Aggiunte le immagini dei diagrammi UML riguardanti i casi d'uso & Giovanni Visentin \\
 \hline
+\rowcolor{white}
+0.14.0 & 2025-12-22 & Giovanni Visentin & Modifica UC-IMP8 in IMP9 e aggiunti UC-I & Dennis Parolin \\
+\hline
 \rowcolor{gray!20}
-0.15.0 & 2025-12-22 & Giovanni Visentin & Modifica UC-IMP8 in IMP9 e aggiunti UC-I & Dennis Parolin \\
+0.13.0 & 2025-12-21 & Giovanni Visentin & Aggiunto caso d'uso UC-IMP8 e proposto UC-SYS1 & Dennis Parolin \\
 \hline
 \rowcolor{white}
-0.14.0 & 2025-12-21 & Giovanni Visentin & Aggiunto caso d'uso UC-IMP8 e proposto UC-SYS1 & Dennis Parolin \\
+0.12.0 & 2025-12-19 & Riccardo Manisi & Aggiunta UC-D1, UC-D2 per impostazione e modifica password diario criptato. Eliminato UC-BW1.6 [deprecato] & Dennis Parolin \\
 \hline
 \rowcolor{gray!20}
-0.13.0 & 2025-12-19 & Riccardo Manisi & Aggiunta UC-D1, UC-D2 per impostazione e modifica password diario criptato. Eliminato UC-BW1.6 [deprecato] & Dennis Parolin \\
-\hline
-\rowcolor{white}
-0.12.0 & 2025-12-19 & Riccardo Manisi &  Inseriti casi d'uso per autenitcazione all'app UC-AUTH1 e UC-AUTH1.1. Cancellato UC-BW1.5 [deprecato] & Giovanni Visentin \\
-\hline
-\rowcolor{gray!20}
-0.11.0 & 2025-12-19 & Riccardo Manisi &  Inseriti casi d'uso per autenitcazione all'app UC-AUTH1 e UC-AUTH1.1. Cancellato UC-BW1.5 [deprecato] & Giovanni Visentin \\
+0.11.0 & 2025-12-19 & Riccardo Manisi &  Inseriti casi d'uso per autenticazione all'app UC-AUTH1 e UC-AUTH1.1. Cancellato UC-BW1.5 [deprecato] & Giovanni Visentin \\
 \hline
 \rowcolor{white}
 0.10.0 & 2025-12-17 & Riccardo Manisi & Cancellato UC-BW1.5 [deprecato] in UC-BW1 e inserita inclusione con UC-IMP3 & Giovanni Visentin \\
@@ -227,6 +224,14 @@ Gruppo BitByBit\\
 % Indice dei contenuti
 \tableofcontents
 \thispagestyle{empty}
+
+\clearpage
+
+% Indice delle tabelle
+\listoftables
+
+% Indice delle figure
+\listoffigures
 
 \clearpage
 
@@ -371,16 +376,17 @@ Nel processo di analisi, come indicato nel documento delle \href{https://swe-bit
 Nello specifico essi rappresentano una descrizione di come il sistema interagisce con i suoi attori per raggiungere un obiettivo specifico.
 Ogni caso d'uso ha uno scenario principale che rappresenta il flusso standard di interazioni e può includere scenari alternativi che fanno arrivare il sistema in uno stato diverso da quello che si identifica nello scenario principale del caso.\\
 Per facilitare la comprensione da parte dei lettori sia tecnici che non, alla descrizione in linguaggio naturale, viene anche associato un diagramma UML, che offre una rappresentazione grafica delle interazioni tra attori e sistema.\\
-Per ogni caso d’uso presentato in questo documento viene adottata una struttura uniforme. I termini specifici adottati sono raccolti nella sezione dedicata (\hyperref[nomenclatura-casi-duso]{vedi sezione - da aggiungere -}).
+Per ogni caso d'uso presentato in questo documento viene adottata una struttura uniforme. I termini specifici adottati sono raccolti nella sezione dedicata (\hyperref[nomenclatura-casi-duso]{Nomenclatura casi d'uso}).
 
 \subsection{Nomenclatura casi d'uso}
-\label{subsec:glossario-casi-duso}
+\label{nomenclatura-casi-duso}
 Questa sezione raccoglie i termini tecnici specifici utilizzati nella descrizione dei casi d’uso presenti in questo documento.
 
 \begin{center}
 \small
 \arrayrulecolor{black} 
-\begin{longtable}{|c|c|>{\raggedright\arraybackslash}p{0.21\linewidth}|>{\raggedright\arraybackslash}p{0.23\linewidth}|c|}
+\begin{longtable}{|p{0.30\textwidth}|p{0.60\textwidth}|}
+\caption{Tabella nomenclatura casi d'uso} \label{tab:nomenclatura} \\
 \hline
 \rowcolor{gray!60}
 {\centering \textbf{Termine}\par} &
@@ -393,13 +399,13 @@ Questa sezione raccoglie i termini tecnici specifici utilizzati nella descrizion
 \centering \textbf{Attore secondario} & Coloro che interagiscono passivamente con il sistema. \\
 \hline
 \rowcolor{white}
-\centering \textbf{Pre-condizioni} & Lista di elementi o condizioni che sono necessari affinchè l'utente possa eseguire gli scenari del caso d'uso. \\
+\centering \textbf{Pre-condizioni} & Lista di elementi o condizioni che sono necessari affinché l'utente possa eseguire gli scenari del caso d'uso. \\
 \hline
 \rowcolor{gray!20}
 \centering \textbf{Post-condizioni} & Condizioni che devono essere vere al termine dell'esecuzione del caso d'uso. Descrivono lo stato finale osservabile del sistema dopo la conclusione del caso d’uso.  \\
 \hline
 \rowcolor{white}
-\centering \textbf{Scenario principale} & Sequenza di passi che descrive il flusso standard del caso'uso. Rappresenta l'happy path dell'esecuzione del caso d'uso che conduce al raggiungimento dell'obiettivo fissato. \\
+\centering \textbf{Scenario principale} & Sequenza di passi che descrive il flusso standard del caso d'uso. Rappresenta l'happy path dell'esecuzione del caso d'uso che conduce al raggiungimento dell'obiettivo fissato. \\
 \hline
 \rowcolor{gray!20}
 \centering \textbf{Scenario secondario} & Sequenza di passi che devia dallo scenario principale a seguito di condizioni particolari. Porta il sistema in condizioni diverse da quelle dello scenario principale. \\
@@ -416,9 +422,55 @@ Questa sezione raccoglie i termini tecnici specifici utilizzati nella descrizion
 \end{longtable}
 \end{center}
 
-\subsection{Attori}
-Sono qualcosa di esterno al sistema che accede a delle risorse interagendo con il sistema che si sta producendo. Gli attori secondari sono attori passivi.
-Gli attori rappresentano entità esterne al sistema che interagiscono con esso per raggiungere obiettivi specifici.
+\subsection{Attori} \label{subsection:attori}
+Gli attori sono entità esterne che interagiscono con il sistema per raggiungere determinati obiettivi. Essi si distinguono in due categorie principali:
+\begin{itemize}
+    \item \textbf{Attori principali:} sono coloro che avviano attivamente l'interazione con il sistema per soddisfare un proprio bisogno o scopo.
+    \item \textbf{Attori secondari:} sono entità (spesso sistemi esterni o servizi) che partecipano all'interazione fornendo dati o servizi necessari al sistema, ma senza avviare direttamente il caso d'uso. Spesso sono attori passivi.
+\end{itemize}
+Di seguito vengono rappresentati quali attori primari e secondari sono stati utilizzati:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{../../../resources/attori.png}
+    \caption{Diagramma degli attori}
+    \label{fig:attori}
+\end{figure}
+
+\begin{center}
+\small
+\arrayrulecolor{black}
+\begin{longtable}{|p{0.30\textwidth}|p{0.60\textwidth}|}
+\caption{Tabella di spiegazione degli attori} \label{tab:attori} \\
+\hline
+\rowcolor{gray!70}
+\centering \textbf{Attori primari} & \centering \textbf{Descrizione} \tabularnewline
+\hline
+\endfirsthead
+\hline
+\endhead
+\rowcolor{white}
+\centering \textbf{Utente Generico} & Un utente che non ha ancora compiuto il processo di autenticazione (che quindi non ha fornito la sua mail) e che non ha ancora creato una password per il diario \\
+\hline
+\rowcolor{gray!20}
+\centering \textbf{Utente Autenticato} & Un utente il quale ha attraversato e concluso il processo di autenticazione e che quindi ha fornito la sua mail, ma non ha ancora creato una password per il diario. Ha accesso a delle funzionalità aggiuntive rispetto all'utente generico e all'utente autenticato al diario \\
+\hline
+\rowcolor{white}
+\centering \textbf{Utente autenticato al diario} & Un utente il quale ha creato una password per il diario \\
+\hline
+\rowcolor{gray!70}
+\centering \textbf{Attori secondari} & \centering \textbf{Descrizione} \tabularnewline
+\hline
+\rowcolor{white}
+\centering \textbf{Google Auth} & Servizio di autenticazione esterno che permette al sistema di identificare l'utente tramite le proprie credenziali Google, evitando la creazione di nuovi account dedicati. \\
+\hline
+\rowcolor{gray!20}
+\centering \textbf{LLM} & Modello di Intelligenza Artificiale esterno che riceve i messaggi dell'utente e il contesto della conversazione per generare risposte coerenti e simulare un'interazione umana nelle funzionalità di supporto. \\
+\hline
+\rowcolor{white}
+\centering \textbf{Google Maps} & Servizio di mappatura esterno invocato dal sistema per mostrare la posizione precisa dei luoghi sicuri e calcolare i percorsi per raggiungerli. \\
+\hline
+\end{longtable}
+\end{center}
 
 % ===== LISTA CASI D'USO ======
 
@@ -449,14 +501,13 @@ Gli attori rappresentano entità esterne al sistema che interagiscono con esso p
         \item L’attore è autenticato all'applicazione
         \item Il sistema riconosce l'attore come utente autenticato
         \item L'attore può accedere alle funzionalità riservate dell'applicazione
+        \item La funzionalità di Dead Man Switch viene attivata automaticamente
     \end{itemize}
     \item \textbf{Scenario principale:}
     \begin{itemize}
         \item L'attore richiede l'autenticazione tramite Google
         \item L'attore viene reindirizzato a Google Auth dal sistema
         \item L'attore si autentica su Google Auth
-        \item Google Auth reindirizza al sistema fornendo un token di validazione
-        \item Il sistema valida il token e crea la sessione utente
         \item L'attore accede al sistema come "utente autenticato"
     \end{itemize}
     \item \textbf{Scenario secondario:}
@@ -519,10 +570,10 @@ Gli attori rappresentano entità esterne al sistema che interagiscono con esso p
     \begin{itemize}
         \item Il sistema mostra la schermata di benvenuto
         \item Il sistema inizia il ciclo di presentazione delle schede informative dell'app
-        \item L'attore esegue la feature di autenticazione \ref{subsec:UC-3.1}
-        \item L'attore esegue scelta della tipologia di utilizzo dell'applicazione \ref{subsec:UC-3.2}
-        \item L'attore esegue la feature di aggiunta di una password per il diario criptato \ref{subsec:UC-3.3}
-        \item L'attore esegue la feature di aggiunta di un contatto fidato \ref{subsec:UC-3.4}
+        \item L'attore esegue la feature di autenticazione \ref{subsec:UC-1}
+        \item L'attore esegue scelta della tipologia di utilizzo dell'applicazione \ref{subsec:UC-3.1}
+        \item L'attore esegue la feature di aggiunta di una password per il diario criptato \ref{subsec:UC-3.2}
+        \item L'attore esegue la feature di aggiunta di un contatto fidato \ref{subsec:UC-3.3}
         \item Il sistema mostra la Home Page
     \end{itemize}
     \item \textbf{Scenario secondario:}
@@ -532,10 +583,10 @@ Gli attori rappresentano entità esterne al sistema che interagiscono con esso p
     \end{itemize} 
     \item \textbf{Inclusioni:}
     \begin{itemize}
+        \item \ref{subsec:UC-1}
         \item \ref{subsec:UC-3.1}
         \item \ref{subsec:UC-3.2}
         \item \ref{subsec:UC-3.3}
-        \item \ref{subsec:UC-3.4}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
@@ -703,7 +754,7 @@ UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella se
         \item L'attore visualizza le entry della lista dei contatti fidati
         \item L'attore visualizza singolarmente i contatti fidati nella lista $\rightarrow$ \ref{subsec:UC-6.1} 
     \end{itemize}
-    \item \textbf{Inclusioni:} \ref{subsec:UC-1.1}
+    \item \textbf{Inclusioni:} \ref{subsec:UC-6.1}
     \item \textbf{Trigger:} L'attore vuole vedere la rete dei contatti fidati che ha aggiunto
 \end{itemize}
 
@@ -721,7 +772,7 @@ UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella se
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'attore visualizza il nome del contatto fidato nella lista \label{subsec:UC-7.1}
+        \item L'attore visualizza il nome del contatto fidato nella lista \ref{subsec:UC-7.1}
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole visualizzare la lista dei contatti fidati
 \end{itemize}
@@ -883,7 +934,7 @@ UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella se
     \begin{itemize}
         \item Il numero inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \ref{subsec:UC-10}
     \end{itemize}
-    \item \textbf{Estensioni:} \ref{sec:UC-10}
+    \item \textbf{Estensioni:} \ref{subsec:UC-10}
     \item \textbf{Trigger:} L'attore vuole inserire un nuovo contatto nella propria rete di contatti fidati
 \end{itemize}
 
@@ -907,7 +958,7 @@ UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella se
     \begin{itemize}
         \item L'indirizzo email inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \ref{subsec:UC-11}
     \end{itemize}
-    \item \textbf{Estensioni:} \ref{sec:UC-11}
+    \item \textbf{Estensioni:} \ref{subsec:UC-11}
     \item \textbf{Trigger:} L'attore vuole inserire un nuovo contatto nella propria rete di contatti fidati
 \end{itemize}
 
@@ -959,7 +1010,7 @@ UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella se
     \item \textbf{Trigger:} L'attore ha inserito un numero di telefono non conforme ai criteri dell'applicazione
 \end{itemize}
 
-\subsubsection{UC-11 Indirizzo email di telefono non conforme ai criteri} \label{subsec:UC-11}
+\subsubsection{UC-11 Indirizzo email non conforme ai criteri} \label{subsec:UC-11}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
@@ -975,11 +1026,11 @@ UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella se
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}        
-        \item L'attore inserisce un l'indirizzo email non conforme ai criteri dell'applicazione
+        \item L'attore inserisce un indirizzo email non conforme ai criteri dell'applicazione
         \item Il sistema verifica l'indirizzo email e rileva che non è valido
-        \item Il sistema notifica all'attore l'errore e richiede la correzione l'indirizzo email
+        \item Il sistema notifica all'attore l'errore e richiede la correzione dell'indirizzo email
     \end{itemize}
-    \item \textbf{Trigger:} L'attore ha inserito un l'indirizzo email non conforme ai criteri dell'applicazione
+    \item \textbf{Trigger:} L'attore ha inserito un indirizzo email non conforme ai criteri dell'applicazione
 \end{itemize}
 
 % ===== UC-12: MODIFICA CONTATTO FIDATO =====
@@ -1065,7 +1116,7 @@ UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella se
     \begin{itemize}
         \item Il numero inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \ref{subsec:UC-10}
     \end{itemize}
-    \item \textbf{Estensioni:} \ref{sec:UC-10}
+    \item \textbf{Estensioni:} \ref{subsec:UC-10}
     \item \textbf{Trigger:} L'attore vuole modificare il numero di telefono di un contatto fidato presente nella propria rete di contatti fidati
 \end{itemize}
 
@@ -1091,7 +1142,7 @@ UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella se
     \begin{itemize}
         \item L'indirizzo email inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \ref{subsec:UC-11}
     \end{itemize}
-    \item \textbf{Estensioni:} \ref{sec:UC-11}
+    \item \textbf{Estensioni:} \ref{subsec:UC-11}
     \item \textbf{Trigger:} L'attore vuole modificare l'indirizzo email di un contatto fidato presente nella propria rete di contatti fidati
 \end{itemize}
 
@@ -1112,12 +1163,12 @@ UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella se
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'attore seleziona una contatto dalla lista dei contatti fidati
+        \item L'attore seleziona un contatto dalla lista dei contatti fidati
         \item L'attore seleziona la voce di cancellazione per quel contatto fidato
         \item L'attore conferma l'eliminazione del contatto fidato $\rightarrow$ \ref{subsec:UC-13.1}
         \item Il sistema rimuove il contatto fidato scelto dall'attore dalla rete dei contatti fidati dell'attore
     \end{itemize}
-    \item \textbf{inclusioni:} \ref{sec:UC-13.1}
+    \item \textbf{inclusioni:} \ref{subsec:UC-13.1}
     \item \textbf{Trigger:} L'attore vuole rimuovere un contatto dalla propria rete di contatti fidati
 \end{itemize}
 
@@ -1142,7 +1193,7 @@ UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella se
     \begin{itemize}
         \item L'attore rifiuta la conferma dell'eliminazione del contatto fidato $\rightarrow$ \ref{subsec:UC-14}
     \end{itemize}
-    \item \textbf{Estensioni:} \ref{sec:UC-14}
+    \item \textbf{Estensioni:} \ref{subsec:UC-14}
     \item \textbf{Trigger:} L'attore ha scelto la voce di cancellazione per quel contatto fidato
 \end{itemize}
 
@@ -1176,6 +1227,7 @@ UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella se
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
+        \item La funzionalità Dead Man's Switch è abilitata UC-57 $\rightarrow$ \ref{sec:UC-57}
         \item L'attore ha effettuato l'accesso alle impostazioni del Dead Man's Switch
     \end{itemize}
     \item \textbf{Post-condizioni:}
@@ -1198,6 +1250,7 @@ UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella se
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
+        \item La funzionalità Dead Man's Switch è abilitata UC-57 $\rightarrow$ \ref{sec:UC-57}
         \item L'attore si trova nelle impostazioni del Dead Man's Switch
         \item Il timer di prima inattività è stato configurato
     \end{itemize}
@@ -1221,6 +1274,7 @@ UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella se
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
+        \item La funzionalità Dead Man's Switch è abilitata UC-57 $\rightarrow$ \ref{sec:UC-57}
         \item L'attore ha selezionato l'opzione di modifica del contenuto della mail
     \end{itemize}
     \item \textbf{Post-condizioni:}
@@ -1241,6 +1295,7 @@ UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella se
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
+        \item La funzionalità Dead Man's Switch è abilitata UC-57 $\rightarrow$ \ref{sec:UC-57}
         \item L'attore ha selezionato l'opzione di modifica del contenuto della mail
     \end{itemize}
     \item \textbf{Post-condizioni:}
@@ -1261,6 +1316,7 @@ UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella se
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
+        \item La funzionalità Dead Man's Switch è abilitata UC-57 $\rightarrow$ \ref{sec:UC-57}
         \item L'attore vuole verificare l'aspetto della mail configurata
     \end{itemize}
     \item \textbf{Post-condizioni:}
@@ -1289,7 +1345,11 @@ UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella se
 \subsubsection{UC-19.1 - Visualizzazione titolo mail di avviso} \label{subsec:UC-19.1}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente autenticato
-    \item \textbf{Pre-condizioni:} Il sistema sta renderizzando l'anteprima
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item La funzionalità Dead Man's Switch è abilitata UC-57 $\rightarrow$ \ref{sec:UC-57}
+        \item Il sistema sta renderizzando l'anteprima
+    \end{itemize}
     \item \textbf{Post-condizioni:} L'oggetto della mail è visibile
     \item \textbf{Scenario principale:} 
     \begin{itemize}
@@ -1300,12 +1360,56 @@ UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella se
 \subsubsection{UC-19.2 - Visualizzazione corpo della mail di avviso} \label{subsec:UC-19.2}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente autenticato
-    \item \textbf{Pre-condizioni:} Il sistema sta renderizzando l'anteprima
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item La funzionalità Dead Man's Switch è abilitata UC-57 $\rightarrow$ \ref{sec:UC-57}
+        \item Il sistema sta renderizzando l'anteprima
+    \end{itemize}
     \item \textbf{Post-condizioni:} Il contenuto principale della mail è visibile
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item Il sistema mostra il testo del messaggio nel corpo dell'anteprima
     \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-57 - Attivazione Dead Man's Switch} \label{sec:UC-57}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha effettuato l'accesso alle impostazioni del Dead Man's Switch
+        \item L'attore ha selezionato l'opzione di attivazione del Dead Man's Switch
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il Dead Man's Switch è attivato
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore seleziona il pulsante di attivazione del Dead Man's Switch
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore seleziona il pulsante di attivazione del Dead Man's Switch
+\end{itemize}
+
+\subsubsection{UC-58 - Disattivazione Dead Man's Switch} \label{sec:UC-58}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha effettuato l'accesso alle impostazioni del Dead Man's Switch
+        \item L'attore ha selezionato l'opzione di disattivazione del Dead Man's Switch
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il Dead Man's Switch è disattivato
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore seleziona il pulsante di disattivazione del Dead Man's Switch
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore seleziona il pulsante di disattivazione del Dead Man's Switch
 \end{itemize}
 
 % ==== DIARIO CRIPTATO =====
@@ -1916,7 +2020,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
 % \begin{figure}[H] 
 %     \centering
 %     \includegraphics[width=0.9\textwidth]{../../../resources/UC-IGenerico.png}
-%     \caption{Diagramma Dei casi d'uso UC-I}
+%     \caption{Diagramma dei casi d'uso UC-I}
 %     \label{fig:UC-IGenerico}
 % \end{figure}
 
@@ -1945,9 +2049,9 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-        \item L'attore interrompe il processo di analisi del messaggio dell'LLM \ref{subsec:UC-35.1}
-        \item Il messaggio non riesce ad essere inviato causa mancanza di connessione \ref{subsec:UC-35.2}
-        \item L'LLM riscontra un problema durante la lettura del messaggio \ref{subsec:UC-35.3}
+        \item L'attore interrompe il processo di analisi del messaggio dell'LLM \ref{sec:UC-35.1}
+        \item Il messaggio non riesce ad essere inviato causa mancanza di connessione \ref{sec:UC-35.2}
+        \item L'LLM riscontra un problema durante la lettura del messaggio \ref{sec:UC-35.3}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
@@ -2022,7 +2126,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
         \item Il sistema notifica l'utente dell'errore
         \item L'utente può mandare un nuovo messaggio
         \item L'utente può chiedere di riprovare a leggere il messaggio \ref{sec:UC-35.1}
-	\item Il sistema riceve il nuovo messaggio modificato.
+	    \item Il sistema riceve il nuovo messaggio modificato.
     \end{itemize}
     \item \textbf{Trigger:} Il sistema non è riuscito a leggere il messaggio
 \end{itemize}
@@ -2047,7 +2151,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-        \item Errore nello switch di contesto \ref{subsec:UC-38}
+        \item Errore nello switch di contesto \ref{sec:UC-38}
     \end{itemize}
     \item \textbf{Estensioni:} \ref{sec:UC-38}
     \item \textbf{Trigger:} L’utente ha premuto il pulsante per il cambio del contesto.
@@ -2073,10 +2177,33 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-        \item Errore nello switch di contesto \ref{subsec:UC-38}
+        \item Errore nello switch di contesto \ref{sec:UC-38}
     \end{itemize}
     \item \textbf{Estensioni:} \ref{sec:UC-38}
     \item \textbf{Trigger:} L’utente ha premuto il pulsante per il cambio del contesto.
+\end{itemize}
+
+\subsubsection{UC-38 - Errore switch contesto} \label{sec:UC-38}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha richiesto il cambio di contesto
+        \item Si verifica un errore durante l'operazione
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema notifica l'errore
+        \item Il contesto rimane invariato
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item Il sistema rileva un errore nel cambio del contesto
+        \item Il sistema mostra un messaggio di errore
+        \item Il sistema mantiene il contesto precedente
+    \end{itemize}
+    \item \textbf{Trigger:} Fallimento operazione di switch contesto
 \end{itemize}
 
 \subsubsection{UC-39 - Visualizzazione cronologia chat} \label{subsec:UC-39}
@@ -2173,7 +2300,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
         \item Errore nel caricamento del contenuto della chat \ref{subsec:UC-40.2}
     \end{itemize}
     \item \textbf{Inclusioni:} \ref{subsec:UC-40.1}
-    \item \textbf{Estensioni:} \ref{sec:UC-40.2}
+    \item \textbf{Estensioni:} \ref{subsec:UC-40.2}
     \item \textbf{Trigger:} L'attore vuole visualizzare il contenuto di una chat specifica
 \end{itemize}
 
@@ -2333,7 +2460,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \begin{itemize}
         \item L'attore rifiuta la conferma dell'eliminazione della chat $\rightarrow$ \ref{subsec:UC-42.1.1}
     \end{itemize}
-    \item \textbf{Estensioni:} \ref{sec:UC-42.1.1}
+    \item \textbf{Estensioni:} \ref{subsec:UC-42.1.1}
 \end{itemize}
 
 \subsubsection{UC-42.1.1 - Rifiuto conferma eliminazione chat} \label{subsec:UC-42.1.1}
@@ -2756,7 +2883,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \item \textbf{Trigger:} L'attore vuole localizzare i luoghi sicuri più vicini
 \end{itemize}
 
-\subsubsection{UC-55 - Apertura mappa in Google Maps} \label{subsec:UC-55}
+\subsubsection{UC-55 - Apertura luogo in Google Maps} \label{subsec:UC-55}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Attore secondario:} Google Maps
@@ -2784,7 +2911,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \item \textbf{Trigger:} L'attore vuole avviare la navigazione o vedere dettagli aggiuntivi del luogo
 \end{itemize}
 
-\subsubsection{UC-56 - Errore apertura mappa esterna} \label{subsec:UC-56}
+\subsubsection{UC-56 - Errore apertura luogo in mappa esterna} \label{subsec:UC-56}
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:}
