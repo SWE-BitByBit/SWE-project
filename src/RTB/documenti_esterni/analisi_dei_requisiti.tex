@@ -2468,18 +2468,18 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \item \textbf{Trigger:} L'attore vuole consultare i numeri rapidi di emergenza
 \end{itemize}
 
-\subsubsection{UC-45.1 - Visualizzazione singolo contatto d'emergenza} \label{subsec:UC-45.1}
+\subsubsection{UC-45.1 - Visualizzazione singolo contatto ente d'emergenza} \label{subsec:UC-45.1}
 \begin{itemize}
     \item \textbf{Descrizione:} Questo caso d'uso generalizza la visualizzazione di un contatto, definendo la struttura comune (nome e numero) per qualsiasi tipo di contatto d'emergenza.
     \item \textbf{Attore principale:} Utente generico
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
-        \item Il sistema sta renderizzando la lista dei contatti
+        \item Il sistema sta renderizzando la lista dei contatti degli enti d'emergenza
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item I dettagli essenziali del contatto sono visibili a schermo
+        \item I dettagli essenziali dell'ente sono visibili a schermo
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
@@ -2526,45 +2526,6 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item Il sistema mostra le cifre del numero telefonico associato al contatto
-    \end{itemize}
-\end{itemize}
-
-\subsubsection{UC-46 - Visualizzazione singolo contatto ente d'emergenza} \label{subsec:UC-46}
-\begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
-    \item \textbf{Generalizzazione:} È una specializzazione di \textbf{UC-45.1}
-    \item \textbf{Pre-condizioni:} 
-    \begin{itemize}
-        \item Il contatto da visualizzare è un ente istituzionale o certificato
-    \end{itemize}
-    \item \textbf{Post-condizioni:}
-    \begin{itemize}
-        \item L'attore visualizza i dati dell'ente
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item Il sistema recupera i dati dell'ente
-        \item Il sistema eredita il comportamento di visualizzazione da \ref{subsec:UC-45.1}
-        \item Il sistema può mostrare un logo o un'icona specifica dell'ente
-    \end{itemize}
-\end{itemize}
-
-\subsubsection{UC-47 - Visualizzazione singolo contatto personale d'emergenza} \label{subsec:UC-47}
-\begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
-    \item \textbf{Generalizzazione:} È una specializzazione di \textbf{UC-45.1}
-    \item \textbf{Pre-condizioni:} 
-    \begin{itemize}
-        \item Il contatto da visualizzare è stato aggiunto dall'attore
-    \end{itemize}
-    \item \textbf{Post-condizioni:}
-    \begin{itemize}
-        \item L'attore visualizza i dati del contatto personale
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item Il sistema recupera i dati dal database locale dell'utente
-        \item Il sistema eredita il comportamento di visualizzazione da \ref{subsec:UC-45.1}
     \end{itemize}
 \end{itemize}
 
