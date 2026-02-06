@@ -135,6 +135,9 @@ Gruppo BitByBit\\
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 
+\rowcolor{gray!20}
+0.19.6 & 2026-02-06 & Dennis Parolin & Modificati i termini ambigui. Aggiunti UC-59 e UC-60 per rimpiazzare UC-9. Sistemati casi d'usoUC-8, UC-8.2, UC-8.3, UC-12, UC-12.2 e UC-12.3 di conseguenza per integrarli con UC-59 e UC-60. & Marco Sanguin \\
+\hline
 \rowcolor{white}
 0.19.5 & 2026-02-05 & Dennis Parolin & Sistemato un caso d'uso con nome duplicato. Eliminato UC-47 e UC-46 è diventato il nuovo UC-45.1. Eliminati due punti nello scenario principale di UC-1, troppo specifici. Corretti i nomi di UC-55 e UC-56. Aggiunti UC-57 e UC-58, corrette le precondizioni degli UC da 15 a 19.2 e la post condizione di UC-1. Corretti riferimenti a casi d'uso errati o mancanti. Aggiunta la sezione Attori (\ref{subsection:attori}). Sistemata l'intestazione ed errori di compilazione. Aggiunto l'indice riassuntivo delle tabelle e l'indice riassuntivo delle immagini. Corretti errori grammaticali e di battitura & Marco Sanguin \\
 \hline
@@ -751,7 +754,7 @@ UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella se
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'attore visualizza le entry della lista dei contatti fidati
+        \item L'attore visualizza le voci della lista dei contatti fidati
         \item L'attore visualizza singolarmente i contatti fidati nella lista $\rightarrow$ \ref{subsec:UC-6.1} 
     \end{itemize}
     \item \textbf{Inclusioni:} \ref{subsec:UC-6.1}
@@ -878,19 +881,11 @@ UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella se
         \item L'attore inserisce l'indirizzo email del contatto fidato $\rightarrow$ \ref{subsec:UC-8.3}
         \item L'attore seleziona la voce per il salvataggio del contatto fidato nella rete di contatti
     \end{itemize}
-    \item \textbf{Scenario secondario:}
-    \begin{itemize}
-        \item Le informazioni sono rilevate già all'interno del sistema $\rightarrow$ \ref{subsec:UC-9}
-    \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
         \item \ref{subsec:UC-8.1}
         \item \ref{subsec:UC-8.2}
         \item \ref{subsec:UC-8.3}
-    \end{itemize}
-    \item \textbf{Estensioni:}
-    \begin{itemize}
-        \item \ref{subsec:UC-9}
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole aggiungere un nuovo contatto fidato nella propria rete
 \end{itemize}
@@ -933,8 +928,13 @@ UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella se
     \item \textbf{Scenario secondario:}
     \begin{itemize}
         \item Il numero inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \ref{subsec:UC-10}
+        \item Il numero inserito è già presente nel sistema $\rightarrow$ \ref{subsec:UC-59}
     \end{itemize}
-    \item \textbf{Estensioni:} \ref{subsec:UC-10}
+    \item \textbf{Estensioni:} 
+    \begin{itemize}
+        \item \ref{subsec:UC-10}
+        \item \ref{subsec:UC-59}
+    \end{itemize}
     \item \textbf{Trigger:} L'attore vuole inserire un nuovo contatto nella propria rete di contatti fidati
 \end{itemize}
 
@@ -957,34 +957,60 @@ UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella se
     \item \textbf{Scenario secondario:}
     \begin{itemize}
         \item L'indirizzo email inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \ref{subsec:UC-11}
+        \item L'indirizzo email inserito è già presente nel sistema $\rightarrow$ \ref{subsec:UC-60}
     \end{itemize}
-    \item \textbf{Estensioni:} \ref{subsec:UC-11}
+    \item \textbf{Estensioni:} 
+    \begin{itemize}
+        \item \ref{subsec:UC-11}
+        \item \ref{subsec:UC-60}
+    \end{itemize}
     \item \textbf{Trigger:} L'attore vuole inserire un nuovo contatto nella propria rete di contatti fidati
 \end{itemize}
 
-\subsubsection{UC-9 Informazioni di contatto già presenti nel sistema} \label{subsec:UC-9}
+\subsubsection{UC-59 - Numero di telefono già presente} \label{subsec:UC-59}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} Utente autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'attore ha selezionato la voce per l'aggiunta di un nuovo contatto fidato
-        \item L'attore ha inserito alcune informazioni del contatto fidato
-        \item Le informazioni del contatto fidato sono già presenti nel sistema
+        \item L'attore sta aggiungendo o modificando un contatto fidato
+        \item L'attore ha inserito un numero di telefono già associato a un altro contatto
     \end{itemize}
-    \item \textbf{Post-condizioni:} 
+    \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item Il sistema non salva le informazioni duplicate del contatto fidato
-        \item L'attore può procedere con l'aggiunta del contatto fidato
-        \item Il sistema precompila i campi con le informazioni già presenti
+        \item Il sistema notifica la presenza del duplicato
+        \item Il salvataggio del contatto viene bloccato
     \end{itemize}
-    \item \textbf{Scenario principale:} 
+    \item \textbf{Scenario principale:}
     \begin{itemize}
-        \item L'attore inserisce alcune informazioni del contatto fidato
-        \item Il sistema rileva che le informazioni del contatto fidato sono già presenti
-        \item Il sistema precompila i campi con le informazioni rilevate
+        \item Il sistema rileva che il numero di telefono inserito è già presente in rubrica
+        \item Il sistema mostra un messaggio di errore specifico per il numero duplicato
+        \item Il sistema richiede all'attore di inserire un numero diverso
     \end{itemize}
-    \item \textbf{Trigger:} L'attore ha inserito alcune informazioni del contatto fidato
+    \item \textbf{Trigger:} Rilevamento di un numero di telefono duplicato durante il salvataggio o l'inserimento
+\end{itemize}
+
+\subsubsection{UC-60 - Email già presente} \label{subsec:UC-60}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore sta aggiungendo o modificando un contatto fidato
+        \item L'attore ha inserito un indirizzo email già associato a un altro contatto
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema notifica la presenza del duplicato
+        \item Il salvataggio del contatto viene bloccato
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item Il sistema rileva che l'email inserita è già presente in rubrica
+        \item Il sistema mostra un messaggio di errore specifico per l'email duplicata
+        \item Il sistema richiede all'attore di inserire un'email diversa
+    \end{itemize}
+    \item \textbf{Trigger:} Rilevamento di un'email duplicata durante il salvataggio o l'inserimento
 \end{itemize}
 
 \subsubsection{UC-10 Numero di telefono non conforme ai criteri} \label{subsec:UC-10}
@@ -1056,21 +1082,13 @@ UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella se
         \item L'attore modifica l'indirizzo email del contatto fidato $\rightarrow$ \ref{subsec:UC-12.3}
         \item L'attore seleziona la voce per il salvataggio delle modifiche del contatto fidato nella rete di contatti
     \end{itemize}
-    \item \textbf{Scenario secondario:}
-    \begin{itemize}
-        \item Le informazioni sono rilevate già all'interno del sistema $\rightarrow$ \ref{subsec:UC-9}
-    \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
         \item \ref{subsec:UC-12.1}
         \item \ref{subsec:UC-12.2}
         \item \ref{subsec:UC-12.3}
     \end{itemize}
-    \item \textbf{Estensioni:}
-    \begin{itemize}
-        \item \ref{subsec:UC-9}
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore vuole aggiungere un nuovo contatto fidato nella propria rete
+    \item \textbf{Trigger:} L'attore vuole modificare un contatto fidato nella propria rete
 \end{itemize}
 
 \subsubsection{UC-12.1 - Modifica nome contatto fidato} \label{subsec:UC-12.1}
@@ -1115,8 +1133,13 @@ UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella se
     \item \textbf{Scenario secondario:}
     \begin{itemize}
         \item Il numero inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \ref{subsec:UC-10}
+        \item Il numero modificato è già presente nel sistema per un altro contatto $\rightarrow$ \ref{subsec:UC-59}
     \end{itemize}
-    \item \textbf{Estensioni:} \ref{subsec:UC-10}
+    \item \textbf{Estensioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-10}
+        \item \ref{subsec:UC-59}
+    \end{itemize}
     \item \textbf{Trigger:} L'attore vuole modificare il numero di telefono di un contatto fidato presente nella propria rete di contatti fidati
 \end{itemize}
 
@@ -1141,8 +1164,13 @@ UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella se
     \item \textbf{Scenario secondario:}
     \begin{itemize}
         \item L'indirizzo email inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \ref{subsec:UC-11}
+        \item L'indirizzo email modificato è già presente nel sistema per un altro contatto $\rightarrow$ \ref{subsec:UC-60}
     \end{itemize}
-    \item \textbf{Estensioni:} \ref{subsec:UC-11}
+    \item \textbf{Estensioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-11}
+        \item \ref{subsec:UC-60}
+    \end{itemize}
     \item \textbf{Trigger:} L'attore vuole modificare l'indirizzo email di un contatto fidato presente nella propria rete di contatti fidati
 \end{itemize}
 
@@ -2592,7 +2620,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \begin{itemize}
         \item Il sistema recupera la lista dei contatti di emergenza nazionali
         \item Il sistema recupera la lista dei numeri dei contatti fidati personali 
-        \item Il sistema visualizza le entry della lista $\rightarrow$ \ref{subsec:UC-45.1}
+        \item Il sistema visualizza le voci della lista $\rightarrow$ \ref{subsec:UC-45.1}
     \end{itemize}
     \item \textbf{Inclusioni:} \ref{subsec:UC-45.1}
     \item \textbf{Trigger:} L'attore vuole consultare i numeri rapidi di emergenza
@@ -2695,7 +2723,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item Il sistema recupera l'elenco delle normative dal database
-        \item Il sistema visualizza le entry della lista delle leggi $\rightarrow$ \ref{subsec:UC-49.1}
+        \item Il sistema visualizza le voci della lista delle leggi $\rightarrow$ \ref{subsec:UC-49.1}
         \item L'attore può scorrere la lista per cercare l'argomento di interesse
     \end{itemize}
     \item \textbf{Inclusioni:} \ref{subsec:UC-49.1}
