@@ -20,9 +20,11 @@
 \usepackage{setspace}
 \usepackage{colortbl}
 \usepackage{longtable}
+\usepackage{etoolbox}
+\AtBeginEnvironment{longtable}{\setlength{\parskip}{0pt}}
 \usepackage{hyperref} 
 \usepackage{fancyhdr}
-\setlength{\headheight}{25pt}
+\setlength{\headheight}{35pt}
 \setlength{\headsep}{1cm}
 \usepackage{titlesec}
 \geometry{margin=2.5cm}
@@ -103,7 +105,7 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & in lavorazione\\
-\textbf{Versione:} & 0.11.3 \\
+\textbf{Versione:} & 0.11.4 \\
 \textbf{Responsabile:} & Riccardo Manisi\\
 \textbf{Redattori:} & 
 \begin{tabular}[t]{@{}l@{}}
@@ -133,10 +135,14 @@ Ferdinando Fracasso\\
 \small
 \renewcommand{\arraystretch}{1.2} 
 \arrayrulecolor{black}
-\begin{longtable}{|c|c|p{0.21\linewidth}|p{0.23\linewidth}|c|}
+\begin{longtable}{|c|c|>{\raggedright\arraybackslash}p{0.21\linewidth}|>{\raggedright\arraybackslash}p{0.23\linewidth}|c|}
 \hline
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+\hline
+
+\rowcolor{white}
+0.11.4 & 2026-02-06 & Dennis Parolin & Modificata la sezione "Stesura dei reqauisiti" modificando la nomenclatura degli identificatori dei requisiti. Risolti problemi di compilazione. & Giovanni Visentin \\
 \hline
 \rowcolor{gray!20}
 0.11.3 & 2026-02-03 & Dennis Parolin & Fatti dei controlli generici del documento. Sistemati riferimenti a sezioni non esistenti o errate. Aggiunti i placeholder per raggiungere sezioni esistenti ma non raggiungibili (perché senza riferimento). Sistemati vari errori di battitura, errori grammaticali, refusi e errori logici. Aggiunti ad esempio degli strumenti citati ma che non erano presenti nella tabella degli strumenti utilizzati & Giovanni Visentin\\
@@ -235,7 +241,7 @@ Il glossario è considerato parte integrante del processo di documentazione: vie
 \subsection{Riferimenti}
 
 \subsubsection{Riferimenti normativi}
-\begin{itemize}
+\begin{itemize}\raggedright
     \item \textbf{Capitolato d'appalto C4: \emph{L'app che Protegge e Trasforma}}\\
     Parti consultate: documento completo\\
     Versione: 1.0\\
@@ -249,7 +255,7 @@ Il glossario è considerato parte integrante del processo di documentazione: vie
 \end{itemize}
 
 \subsubsection{Riferimenti informativi}
-\begin{itemize}
+\begin{itemize}\raggedright
     \item \textbf{Ian Sommerville, \emph{Software Engineering}}\\
     Parti consultate: Capitoli 2, 24\\
     Versione: \textit{X Edizione}\\
@@ -376,8 +382,8 @@ Le attività che compongono il \textbf{processo di sviluppo} adattate al progett
 \subsubsection{Analisi dei requisiti}
 L'attività di analisi dei requisiti ha l’obiettivo di trasformare i requisiti utente espressi nel capitolato, nel nostro caso il \textbf{capitolato C4} proposto da \textbf{Miriade S.r.l.}, in requisiti di sistema chiari, completi e verificabili. 
 Tale attività produce il documento dell'analisi dei requisiti che stabilisce le basi per un accordo tra la proponente e il \textbf{gruppo BitByBit} su quello che il prodotto software è tenuto a fare.
-\\L’analisi dei requisiti obbliga tutte le parti coinvolte a valutare in modo completo e condiviso ciò che il sistema dovrà realizzare prima dell’avvio della progettazione. Questo riduce significativamente il rischio di dover intervenire successivamente su design, codice o test.
-\\Il gruppo si impegna inoltre a monitorare con continuità l’allineamento tra requisiti implementati e requisiti concordati con la proponente, aggiornandoli in modo controllato quando necessario.
+\par L’analisi dei requisiti obbliga tutte le parti coinvolte a valutare in modo completo e condiviso ciò che il sistema dovrà realizzare prima dell’avvio della progettazione. Questo riduce significativamente il rischio di dover intervenire successivamente su design, codice o test.
+\par Il gruppo si impegna inoltre a monitorare con continuità l’allineamento tra requisiti implementati e requisiti concordati con la proponente, aggiornandoli in modo controllato quando necessario.
 
 \paragraph{Stesura dei casi d'uso}
 
@@ -390,7 +396,7 @@ La definizione dei casi d’uso segue un processo iterativo che comprende:
 \end{itemize}
 
 Il gruppo effettua una revisione completa dei casi d'uso individuati, correggendo eventuali incoerenze. Se necessario, vengono condotti approfondimenti con la proponente per garantire un’interpretazione condivisa degli scenari critici.
-\\Per ogni caso d’uso viene realizzato un diagramma UML dedicato, al fine di ridurre possibili ambiguità interpretative.\\
+\par Per ogni caso d’uso viene realizzato un diagramma UML dedicato, al fine di ridurre possibili ambiguità interpretative.\\
 
 La nomenclatura adottata viene esposta di seguito.
 \begin{center}
@@ -414,9 +420,20 @@ I requisiti vengono organizzati per livello di importanza, definito con la propo
 
 Ogni requisito è identificato tramite una codifica standard:
 \begin{center}
-    \texttt{R-<importanza>-X}
+    \texttt{R<tipo>-<importanza>-X}
 \end{center}
-dove \texttt{<importanza>} è la sigla a due lettere che indica la categoria del requisito e \texttt{X} è un identificatore numerico univoco.
+Dove:
+\begin{itemize}
+    \item \texttt{R}: è per abbreviare la parola Requisito
+    \item \texttt{<tipo>}: è la sigla che indica la tipologia di requisito
+    \begin{itemize}
+        \item \texttt{F}: per indicare che è un requisito Funzionale
+        \item \texttt{Q}: per indicare che è un requisito di Qualità
+        \item \texttt{V}: per indicare che è un requisito di Vincolo
+    \end{itemize}
+    \item \texttt{<importanza>}: è la sigla a due lettere che indica la categoria del requisito
+    \item \texttt{X}: è un identificatore numerico univoco
+\end{itemize}
 
 Tale classificazione supporta la tracciabilità, la verifica e la gestione dell’evoluzione dei requisiti durante l’intero ciclo di vita.
 
@@ -553,11 +570,11 @@ Nella prima pagina dopo il frontespizio deve essere presente il registro delle m
 \end{enumerate}
 
 \begin{table}[h]
-    \begin{center}
+    \centering
     \small
     \renewcommand{\arraystretch}{1.2}
     \arrayrulecolor{black}
-    \begin{tabular}{|p{0.1\linewidth}|p{0.18\linewidth}|p{0.18\linewidth}|p{0.18\linewidth}|p{0.18\linewidth}|}
+    \begin{tabularx}{\linewidth}{|>{\raggedright\arraybackslash}p{0.13\linewidth}|>{\raggedright\arraybackslash}p{0.15\linewidth}|>{\raggedright\arraybackslash}p{0.17\linewidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.17\linewidth}|}
     \hline
     \rowcolor{gray!60}
     \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
@@ -565,8 +582,7 @@ Nella prima pagina dopo il frontespizio deve essere presente il registro delle m
     \rowcolor{white}
     & & & & \\
     \hline
-    \end{tabular}
-    \end{center}
+    \end{tabularx}
     \caption{Esempio di tabella dello storico di un documento}
 \end{table}
 
