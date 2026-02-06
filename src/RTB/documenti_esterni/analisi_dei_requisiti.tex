@@ -2964,12 +2964,8 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
 
 \clearpage
 \section{Requisiti} \label{section:requisiti}
-Di seguito vengono riportati i requisiti del sistema, individuati attraverso l'analisi dei casi d'uso. I requisiti sono classificati in:
-\begin{itemize}
-    \item \textbf{Requisiti Funzionali (RF):} descrivono le funzionalità che il sistema deve fornire.
-    \item \textbf{Requisiti di Qualità (RQ):} descrivono le caratteristiche di qualità del sistema (performance, affidabilità, ecc.).
-    \item \textbf{Requisiti di Vincolo (RV):} descrivono i vincoli tecnologici o progettuali imposti al sistema.
-\end{itemize}
+Di seguito vengono riportati i requisiti del sistema, individuati attraverso l'analisi dei casi d'uso.\\
+La nomenclatura utilizzata per il codice dei requisiti è spiegata nel documento \href{https://swe-bitbybit.github.io/SWE-docs/docs/documenti_interni/norme_di_progetto.pdf}{Norme di Progetto} alla sezione 2.2.3.2.\\
 
 \subsection{Requisiti Funzionali} \label{subsection:requisiti_funzionali}
 \begin{center}
@@ -2989,256 +2985,256 @@ Di seguito vengono riportati i requisiti del sistema, individuati attraverso l'a
 \hline
 \endhead
 \rowcolor{white}
-RFO-1 & L'utente deve poter autenticarsi tramite Google Auth & \hyperref[subsec:UC-1]{UC-1} \\
+RF-OB-1 & L'utente deve poter autenticarsi tramite Google Auth & \hyperref[subsec:UC-1]{UC-1} \\
 \hline
 \rowcolor{gray!20}
-RFO-2 & Il sistema deve mostrare un errore in caso di fallimento dell'autenticazione & \hyperref[subsec:UC-2]{UC-2} \\
+RF-OB-2 & Il sistema deve mostrare un errore in caso di fallimento dell'autenticazione & \hyperref[subsec:UC-2]{UC-2} \\
 \hline
 \rowcolor{white}
-RFO-3 & L'utente deve poter visualizzare un walkthrough interattivo al primo avvio & \hyperref[subsec:UC-3]{UC-3} \\
+RF-OB-3 & L'utente deve poter visualizzare un walkthrough interattivo al primo avvio & \hyperref[subsec:UC-3]{UC-3} \\
 \hline
 \rowcolor{gray!20}
-RFO-4 & L'utente deve poter saltare il walkthrough & \hyperref[subsec:UC-4]{UC-4} \\
+RF-OB-4 & L'utente deve poter saltare il walkthrough & \hyperref[subsec:UC-4]{UC-4} \\
 \hline
 \rowcolor{white}
-RFO-5 & L'utente deve poter selezionare il profilo di utilizzo ("Per me" o "Per altri") & \hyperref[subsec:UC-3.1]{UC-3.1} \\
+RF-OB-5 & L'utente deve poter selezionare il profilo di utilizzo ("Per me" o "Per altri") & \hyperref[subsec:UC-3.1]{UC-3.1} \\
 \hline
 \rowcolor{gray!20}
-RFO-6 & L'utente deve poter configurare il diario criptato durante il walkthrough & \hyperref[subsec:UC-3.2]{UC-3.2} \\
+RF-OB-6 & L'utente deve poter configurare il diario criptato durante il walkthrough & \hyperref[subsec:UC-3.2]{UC-3.2} \\
 \hline
 \rowcolor{white}
-RFO-7 & L'utente deve poter configurare un contatto fidato durante il walkthrough & \hyperref[subsec:UC-3.3]{UC-3.3} \\
+RF-OB-7 & L'utente deve poter configurare un contatto fidato durante il walkthrough & \hyperref[subsec:UC-3.3]{UC-3.3} \\
 \hline
 \rowcolor{gray!20}
-RFO-8 & L'utente deve poter saltare la configurazione di una funzionalità specifica del walkthrough & \hyperref[subsec:UC-5]{UC-5} \\
+RF-OB-8 & L'utente deve poter saltare la configurazione di una funzionalità specifica del walkthrough & \hyperref[subsec:UC-5]{UC-5} \\
 \hline
 \rowcolor{white}
-RFO-9 & L'utente deve poter visualizzare la lista dei contatti fidati & \hyperref[sec:UC-6]{UC-6} \\
+RF-OB-9 & L'utente deve poter visualizzare la lista dei contatti fidati & \hyperref[sec:UC-6]{UC-6} \\
 \hline
 \rowcolor{gray!20}
-RFO-10 & Il sistema deve permettere la visualizzazione di un singolo contatto fidato dalla lista & \hyperref[subsec:UC-6.1]{UC-6.1} \\
+RF-OB-10 & Il sistema deve permettere la visualizzazione di un singolo contatto fidato dalla lista & \hyperref[subsec:UC-6.1]{UC-6.1} \\
 \hline
 \rowcolor{white}
-RFO-11 & L'utente deve poter visualizzare i dettagli (nome, numero, email) di un contatto fidato & \hyperref[subsec:UC-7]{UC-7} \\
+RF-OB-11 & L'utente deve poter visualizzare i dettagli (nome, numero, email) di un contatto fidato & \hyperref[subsec:UC-7]{UC-7} \\
 \hline
 \rowcolor{gray!20}
-RFO-12 & L'utente deve poter aggiungere un nuovo contatto fidato & \hyperref[subsec:UC-8]{UC-8} \\
+RF-OB-12 & L'utente deve poter aggiungere un nuovo contatto fidato & \hyperref[subsec:UC-8]{UC-8} \\
 \hline
 \rowcolor{white}
-RFO-13 & Il sistema deve riconoscere e gestire le informazioni di contatto già presenti & \hyperref[subsec:UC-59]{UC-59}, \hyperref[subsec:UC-60]{UC-60} \\
+RF-OB-13 & Il sistema deve riconoscere e gestire le informazioni di contatto già presenti & \hyperref[subsec:UC-59]{UC-59}, \hyperref[subsec:UC-60]{UC-60} \\
 \hline
 \rowcolor{gray!20}
-RFO-14 & Il sistema deve validare la conformità del numero di telefono inserito & \hyperref[subsec:UC-10]{UC-10} \\
+RF-OB-14 & Il sistema deve validare la conformità del numero di telefono inserito & \hyperref[subsec:UC-10]{UC-10} \\
 \hline
 \rowcolor{white}
-RFO-15 & Il sistema deve validare la conformità dell'indirizzo email inserito & \hyperref[subsec:UC-11]{UC-11} \\
+RF-OB-15 & Il sistema deve validare la conformità dell'indirizzo email inserito & \hyperref[subsec:UC-11]{UC-11} \\
 \hline
 \rowcolor{gray!20}
-RFO-16 & L'utente deve poter modificare i dati di un contatto fidato esistente & \hyperref[subsec:UC-12]{UC-12} \\
+RF-OB-16 & L'utente deve poter modificare i dati di un contatto fidato esistente & \hyperref[subsec:UC-12]{UC-12} \\
 \hline
 \rowcolor{white}
-RFO-17 & L'utente deve poter eliminare un contatto fidato & \hyperref[subsec:UC-13]{UC-13} \\
+RF-OB-17 & L'utente deve poter eliminare un contatto fidato & \hyperref[subsec:UC-13]{UC-13} \\
 \hline
 \rowcolor{gray!20}
-RFO-18 & Il sistema deve richiedere conferma prima dell'eliminazione di un contatto fidato & \hyperref[subsec:UC-13.1]{UC-13.1} \\
+RF-OB-18 & Il sistema deve richiedere conferma prima dell'eliminazione di un contatto fidato & \hyperref[subsec:UC-13.1]{UC-13.1} \\
 \hline
 \rowcolor{white}
-RFO-19 & L'utente deve poter rifiutare la conferma di eliminazione & \hyperref[subsec:UC-14]{UC-14} \\
+RF-OB-19 & L'utente deve poter rifiutare la conferma di eliminazione & \hyperref[subsec:UC-14]{UC-14} \\
 \hline
 \rowcolor{gray!20}
-RFO-20 & L'utente deve poter impostare il timer di prima inattività (Dead Man's Switch) & \hyperref[sec:UC-15]{UC-15} \\
+RF-OB-20 & L'utente deve poter impostare il timer di prima inattività (Dead Man's Switch) & \hyperref[sec:UC-15]{UC-15} \\
 \hline
 \rowcolor{white}
-RFO-21 & L'utente deve poter impostare il timer di seconda inattività & \hyperref[sec:UC-16]{UC-16} \\
+RF-OB-21 & L'utente deve poter impostare il timer di seconda inattività & \hyperref[sec:UC-16]{UC-16} \\
 \hline
 \rowcolor{gray!20}
-RFO-22 & L'utente deve poter modificare il titolo della mail di avviso & \hyperref[sec:UC-17]{UC-17} \\
+RF-OB-22 & L'utente deve poter modificare il titolo della mail di avviso & \hyperref[sec:UC-17]{UC-17} \\
 \hline
 \rowcolor{white}
-RFO-23 & L'utente deve poter modificare il corpo della mail di avviso & \hyperref[sec:UC-18]{UC-18} \\
+RF-OB-23 & L'utente deve poter modificare il corpo della mail di avviso & \hyperref[sec:UC-18]{UC-18} \\
 \hline
 \rowcolor{gray!20}
-RFO-24 & L'utente deve poter visualizzare un'anteprima della mail di avviso & \hyperref[sec:UC-19]{UC-19} \\
+RF-OB-24 & L'utente deve poter visualizzare un'anteprima della mail di avviso & \hyperref[sec:UC-19]{UC-19} \\
 \hline
 \rowcolor{white}
-RFO-25 & L'utente deve poter attivare il Dead Man's Switch & \hyperref[sec:UC-57]{UC-57} \\
+RF-OB-25 & L'utente deve poter attivare il Dead Man's Switch & \hyperref[sec:UC-57]{UC-57} \\
 \hline
 \rowcolor{gray!20}
-RFO-26 & L'utente deve poter disattivare il Dead Man's Switch & \hyperref[sec:UC-58]{UC-58} \\
+RF-OB-26 & L'utente deve poter disattivare il Dead Man's Switch & \hyperref[sec:UC-58]{UC-58} \\
 \hline
 \rowcolor{white}
-RFO-27 & L'utente deve poter impostare una password per il diario fittizio & \hyperref[subsec:UC-20]{UC-20} \\
+RF-OB-27 & L'utente deve poter impostare una password per il diario fittizio & \hyperref[subsec:UC-20]{UC-20} \\
 \hline
 \rowcolor{gray!20}
-RFO-28 & Il sistema deve impedire che la password del diario fittizio sia uguale a quella del diario criptato & \hyperref[subsec:UC-20.1]{UC-20.1} \\
+RF-OB-28 & Il sistema deve impedire che la password del diario fittizio sia uguale a quella del diario criptato & \hyperref[subsec:UC-20.1]{UC-20.1} \\
 \hline
 \rowcolor{white}
-RFO-29 & Il sistema deve verificare che la password rispetti i criteri di sicurezza & \hyperref[subsec:UC-21]{UC-21} \\
+RF-OB-29 & Il sistema deve verificare che la password rispetti i criteri di sicurezza & \hyperref[subsec:UC-21]{UC-21} \\
 \hline
 \rowcolor{gray!20}
-RFO-30 & L'utente deve poter accedere al diario fittizio tramite password & \hyperref[subsec:UC-22]{UC-22} \\
+RF-OB-30 & L'utente deve poter accedere al diario fittizio tramite password & \hyperref[subsec:UC-22]{UC-22} \\
 \hline
 \rowcolor{white}
-RFO-31 & L'utente deve poter accedere al diario criptato tramite password & \hyperref[subsec:UC-23]{UC-23} \\
+RF-OB-31 & L'utente deve poter accedere al diario criptato tramite password & \hyperref[subsec:UC-23]{UC-23} \\
 \hline
 \rowcolor{gray!20}
-RFO-32 & L'utente deve poter impostare una password per il diario criptato & \hyperref[subsec:UC-23.1]{UC-23.1} \\
+RF-OB-32 & L'utente deve poter impostare una password per il diario criptato & \hyperref[subsec:UC-23.1]{UC-23.1} \\
 \hline
 \rowcolor{white}
-RFO-33 & Il sistema deve impedire che la password del diario criptato sia uguale a quella del diario fittizio & \hyperref[subsec:UC-23.1.1]{UC-23.1.1} \\
+RF-OB-33 & Il sistema deve impedire che la password del diario criptato sia uguale a quella del diario fittizio & \hyperref[subsec:UC-23.1.1]{UC-23.1.1} \\
 \hline
 \rowcolor{gray!20}
-RFO-34 & L'utente deve inserire la password per accedere al diario (fittizio o criptato) & \hyperref[subsec:UC-24]{UC-24} \\
+RF-OB-34 & L'utente deve inserire la password per accedere al diario (fittizio o criptato) & \hyperref[subsec:UC-24]{UC-24} \\
 \hline
 \rowcolor{white}
-RFO-35 & Il sistema deve notificare l'errore in caso di password errata & \hyperref[subsec:UC-25]{UC-25} \\
+RF-OB-35 & Il sistema deve notificare l'errore in caso di password errata & \hyperref[subsec:UC-25]{UC-25} \\
 \hline
 \rowcolor{gray!20}
-RFO-36 & Il sistema deve bloccare temporaneamente l'accesso dopo troppi tentativi errati & \hyperref[subsec:UC-26]{UC-26} \\
+RF-OB-36 & Il sistema deve bloccare temporaneamente l'accesso dopo troppi tentativi errati & \hyperref[subsec:UC-26]{UC-26} \\
 \hline
 \rowcolor{white}
-RFO-37 & L'utente autenticato deve poter visualizzare il contenuto del diario & \hyperref[subsec:UC-27]{UC-27} \\
+RF-OB-37 & L'utente autenticato deve poter visualizzare il contenuto del diario & \hyperref[subsec:UC-27]{UC-27} \\
 \hline
 \rowcolor{gray!20}
-RFO-38 & Il sistema deve mostrare la lista delle note presenti nel diario & \hyperref[subsec:UC-27.1]{UC-27.1} \\
+RF-OB-38 & Il sistema deve mostrare la lista delle note presenti nel diario & \hyperref[subsec:UC-27.1]{UC-27.1} \\
 \hline
 \rowcolor{white}
-RFO-39 & L'utente deve poter visualizzare l'anteprima di una singola nota & \hyperref[subsec:UC-27.1.1]{UC-27.1.1} \\
+RF-OB-39 & L'utente deve poter visualizzare l'anteprima di una singola nota & \hyperref[subsec:UC-27.1.1]{UC-27.1.1} \\
 \hline
 \rowcolor{gray!20}
-RFO-40 & L'utente deve poter creare una nuova nota & \hyperref[subsec:UC-28]{UC-28} \\
+RF-OB-40 & L'utente deve poter creare una nuova nota & \hyperref[subsec:UC-28]{UC-28} \\
 \hline
 \rowcolor{white}
-RFO-41 & L'utente deve poter eliminare una nota esistente & \hyperref[subsec:UC-29]{UC-29} \\
+RF-OB-41 & L'utente deve poter eliminare una nota esistente & \hyperref[subsec:UC-29]{UC-29} \\
 \hline
 \rowcolor{gray!20}
-RFO-42 & L'utente deve poter inserire contenuto testuale in una nota & \hyperref[subsec:UC-30]{UC-30} \\
+RF-OB-42 & L'utente deve poter inserire contenuto testuale in una nota & \hyperref[subsec:UC-30]{UC-30} \\
 \hline
 \rowcolor{white}
-RFO-43 & L'utente deve poter inserire contenuti multimediali (audio/foto) in una nota & \hyperref[subsec:UC-31]{UC-31} \\
+RF-OB-43 & L'utente deve poter inserire contenuti multimediali (audio/foto) in una nota & \hyperref[subsec:UC-31]{UC-31} \\
 \hline
 \rowcolor{gray!20}
-RFO-44 & L'utente deve poter visualizzare il contenuto completo (testo e media) di una nota & \hyperref[subsec:UC-32]{UC-32} \\
+RF-OB-44 & L'utente deve poter visualizzare il contenuto completo (testo e media) di una nota & \hyperref[subsec:UC-32]{UC-32} \\
 \hline
 \rowcolor{white}
-RFO-45 & L'utente deve poter inviare un messaggio di SOS ai contatti fidati & \hyperref[sec:UC-33]{UC-33} \\
+RF-OB-45 & L'utente deve poter inviare un messaggio di SOS ai contatti fidati & \hyperref[sec:UC-33]{UC-33} \\
 \hline
 \rowcolor{gray!20}
-RFO-46 & Il sistema deve gestire l'invio SOS in assenza di connessione internet & \hyperref[sec:UC-33.1]{UC-33.1} \\
+RF-OB-46 & Il sistema deve gestire l'invio SOS in assenza di connessione internet & \hyperref[sec:UC-33.1]{UC-33.1} \\
 \hline
 \rowcolor{white}
-RFO-47 & Il sistema deve gestire l'invio SOS in assenza di contatti fidati configurati & \hyperref[sec:UC-33.2]{UC-33.2} \\
+RF-OB-47 & Il sistema deve gestire l'invio SOS in assenza di contatti fidati configurati & \hyperref[sec:UC-33.2]{UC-33.2} \\
 \hline
 \rowcolor{gray!20}
-RFO-48 & L'utente deve poter inviare un segnale acustico di emergenza & \hyperref[sec:UC-34]{UC-34} \\
+RF-OB-48 & L'utente deve poter inviare un segnale acustico di emergenza & \hyperref[sec:UC-34]{UC-34} \\
 \hline
 \rowcolor{white}
-RFO-49 & L'utente deve poter consultare il chatbot & \hyperref[sec:UC-35]{UC-35} \\
+RF-OB-49 & L'utente deve poter consultare il chatbot & \hyperref[sec:UC-35]{UC-35} \\
 \hline
 \rowcolor{gray!20}
-RFO-50 & L'utente deve poter interrompere la generazione della risposta del chatbot & \hyperref[sec:UC-35.1]{UC-35.1} \\
+RF-OB-50 & L'utente deve poter interrompere la generazione della risposta del chatbot & \hyperref[sec:UC-35.1]{UC-35.1} \\
 \hline
 \rowcolor{white}
-RFO-51 & Il sistema deve gestire la mancanza di connessione durante la chat & \hyperref[sec:UC-35.2]{UC-35.2} \\
+RF-OB-51 & Il sistema deve gestire la mancanza di connessione durante la chat & \hyperref[sec:UC-35.2]{UC-35.2} \\
 \hline
 \rowcolor{gray!20}
-RFO-52 & Il sistema deve gestire errori di lettura del messaggio da parte dell'LLM & \hyperref[sec:UC-35.3]{UC-35.3} \\
+RF-OB-52 & Il sistema deve gestire errori di lettura del messaggio da parte dell'LLM & \hyperref[sec:UC-35.3]{UC-35.3} \\
 \hline
 \rowcolor{white}
-RFO-53 & L'utente deve poter cambiare il contesto della chat a "Detective delle Relazioni" & \hyperref[sec:UC-36]{UC-36} \\
+RF-OB-53 & L'utente deve poter cambiare il contesto della chat a "Detective delle Relazioni" & \hyperref[sec:UC-36]{UC-36} \\
 \hline
 \rowcolor{gray!20}
-RFO-54 & L'utente deve poter cambiare il contesto della chat a "Specchio Intelligente" & \hyperref[sec:UC-37]{UC-37} \\
+RF-OB-54 & L'utente deve poter cambiare il contesto della chat a "Specchio Intelligente" & \hyperref[sec:UC-37]{UC-37} \\
 \hline
 \rowcolor{white}
-RFO-55 & Il sistema deve notificare errori durante il cambio di contesto & \hyperref[sec:UC-38]{UC-38} \\
+RF-OB-55 & Il sistema deve notificare errori durante il cambio di contesto & \hyperref[sec:UC-38]{UC-38} \\
 \hline
 \rowcolor{gray!20}
-RFO-56 & L'utente deve poter visualizzare la cronologia delle chat & \hyperref[subsec:UC-39]{UC-39} \\
+RF-OB-56 & L'utente deve poter visualizzare la cronologia delle chat & \hyperref[subsec:UC-39]{UC-39} \\
 \hline
 \rowcolor{white}
-RFO-57 & L'utente deve poter selezionare una singola chat dalla cronologia & \hyperref[subsec:UC-39.1]{UC-39.1} \\
+RF-OB-57 & L'utente deve poter selezionare una singola chat dalla cronologia & \hyperref[subsec:UC-39.1]{UC-39.1} \\
 \hline
 \rowcolor{gray!20}
-RFO-58 & Il sistema deve mostrare una preview dell'inizio della chat in cronologia & \hyperref[subsec:UC-39.1.1]{UC-39.1.1} \\
+RF-OB-58 & Il sistema deve mostrare una preview dell'inizio della chat in cronologia & \hyperref[subsec:UC-39.1.1]{UC-39.1.1} \\
 \hline
 \rowcolor{white}
-RFO-59 & L'utente deve poter visualizzare il contenuto completo di una chat passata o corrente & \hyperref[subsec:UC-40]{UC-40} \\
+RF-OB-59 & L'utente deve poter visualizzare il contenuto completo di una chat passata o corrente & \hyperref[subsec:UC-40]{UC-40} \\
 \hline
 \rowcolor{gray!20}
-RFO-60 & Il sistema deve visualizzare la lista dei messaggi scambiati & \hyperref[subsec:UC-40.1]{UC-40.1} \\
+RF-OB-60 & Il sistema deve visualizzare la lista dei messaggi scambiati & \hyperref[subsec:UC-40.1]{UC-40.1} \\
 \hline
 \rowcolor{white}
-RFO-61 & Il sistema deve distinguere visivamente i messaggi utente da quelli del chatbot & \hyperref[subsec:UC-40.1.1]{UC-40.1.1} \\
+RF-OB-61 & Il sistema deve distinguere visivamente i messaggi utente da quelli del chatbot & \hyperref[subsec:UC-40.1.1]{UC-40.1.1} \\
 \hline
 \rowcolor{gray!20}
-RFO-62 & Il sistema deve gestire errori nel caricamento della chat & \hyperref[subsec:UC-40.2]{UC-40.2} \\
+RF-OB-62 & Il sistema deve gestire errori nel caricamento della chat & \hyperref[subsec:UC-40.2]{UC-40.2} \\
 \hline
 \rowcolor{white}
-RFO-63 & L'utente deve poter creare una nuova chat & \hyperref[subsec:UC-41]{UC-41} \\
+RF-OB-63 & L'utente deve poter creare una nuova chat & \hyperref[subsec:UC-41]{UC-41} \\
 \hline
 \rowcolor{gray!20}
-RFO-64 & L'utente deve poter eliminare una chat dalla cronologia & \hyperref[subsec:UC-42]{UC-42} \\
+RF-OB-64 & L'utente deve poter eliminare una chat dalla cronologia & \hyperref[subsec:UC-42]{UC-42} \\
 \hline
 \rowcolor{white}
-RFO-65 & Il sistema deve richiedere conferma per l'eliminazione di una chat & \hyperref[subsec:UC-42.1]{UC-42.1} \\
+RF-OB-65 & Il sistema deve richiedere conferma per l'eliminazione di una chat & \hyperref[subsec:UC-42.1]{UC-42.1} \\
 \hline
 \rowcolor{gray!20}
-RFO-66 & L'utente deve poter rifiutare l'eliminazione di una chat & \hyperref[subsec:UC-42.1.1]{UC-42.1.1} \\
+RF-OB-66 & L'utente deve poter rifiutare l'eliminazione di una chat & \hyperref[subsec:UC-42.1.1]{UC-42.1.1} \\
 \hline
 \rowcolor{white}
-RFO-67 & L'utente deve poter visualizzare la lista delle community & \hyperref[sec:UC-43]{UC-43} \\
+RF-OB-67 & L'utente deve poter visualizzare la lista delle community & \hyperref[sec:UC-43]{UC-43} \\
 \hline
 \rowcolor{gray!20}
-RFO-68 & Il sistema deve mostrare i dettagli riassuntivi di una community & \hyperref[subsec:UC-43.1]{UC-43.1} \\
+RF-OB-68 & Il sistema deve mostrare i dettagli riassuntivi di una community & \hyperref[subsec:UC-43.1]{UC-43.1} \\
 \hline
 \rowcolor{white}
-RFO-69 & L'utente deve poter visitare una community e visualizzarne i contenuti & \hyperref[sec:UC-44]{UC-44} \\
+RF-OB-69 & L'utente deve poter visitare una community e visualizzarne i contenuti & \hyperref[sec:UC-44]{UC-44} \\
 \hline
 \rowcolor{gray!20}
-RFO-70 & Il sistema deve gestire errori nel caricamento delle community & \hyperref[subsec:UC-44.1]{UC-44.1} \\
+RF-OB-70 & Il sistema deve gestire errori nel caricamento delle community & \hyperref[subsec:UC-44.1]{UC-44.1} \\
 \hline
 \rowcolor{white}
-RFO-71 & L'utente deve poter visualizzare la lista dei contatti/enti d'emergenza & \hyperref[sec:UC-45]{UC-45} \\
+RF-OB-71 & L'utente deve poter visualizzare la lista dei contatti/enti d'emergenza & \hyperref[sec:UC-45]{UC-45} \\
 \hline
 \rowcolor{gray!20}
-RFO-72 & Il sistema deve mostrare nome e numero dei contatti d'emergenza & \hyperref[subsec:UC-45.1]{UC-45.1} \\
+RF-OB-72 & Il sistema deve mostrare nome e numero dei contatti d'emergenza & \hyperref[subsec:UC-45.1]{UC-45.1} \\
 \hline
 \rowcolor{white}
-RFO-73 & L'utente deve poter comporre automaticamente il numero di un contatto d'emergenza & \hyperref[sec:UC-48]{UC-48} \\
+RF-OB-73 & L'utente deve poter comporre automaticamente il numero di un contatto d'emergenza & \hyperref[sec:UC-48]{UC-48} \\
 \hline
 \rowcolor{gray!20}
-RFO-74 & L'utente deve poter visualizzare la lista delle leggi e normative & \hyperref[sec:UC-49]{UC-49} \\
+RF-OB-74 & L'utente deve poter visualizzare la lista delle leggi e normative & \hyperref[sec:UC-49]{UC-49} \\
 \hline
 \rowcolor{white}
-RFO-75 & Il sistema deve mostrare il titolo delle leggi nella lista & \hyperref[subsec:UC-49.1]{UC-49.1} \\
+RF-OB-75 & Il sistema deve mostrare il titolo delle leggi nella lista & \hyperref[subsec:UC-49.1]{UC-49.1} \\
 \hline
 \rowcolor{gray!20}
-RFO-76 & L'utente deve poter visualizzare i dettagli completi di una legge & \hyperref[sec:UC-50]{UC-50} \\
+RF-OB-76 & L'utente deve poter visualizzare i dettagli completi di una legge & \hyperref[sec:UC-50]{UC-50} \\
 \hline
 \rowcolor{white}
-RFO-77 & Il sistema deve gestire errori nel caricamento delle normative & \hyperref[subsec:UC-51]{UC-51} \\
+RF-OB-77 & Il sistema deve gestire errori nel caricamento delle normative & \hyperref[subsec:UC-51]{UC-51} \\
 \hline
 \rowcolor{gray!20}
-RFO-78 & L'utente deve poter visualizzare la lista del materiale informativo & \hyperref[sec:UC-52]{UC-52} \\
+RF-OB-78 & L'utente deve poter visualizzare la lista del materiale informativo & \hyperref[sec:UC-52]{UC-52} \\
 \hline
 \rowcolor{white}
-RFO-79 & Il sistema deve mostrare titolo e formato del materiale informativo & \hyperref[subsec:UC-52.1]{UC-52.1} \\
+RF-OB-79 & Il sistema deve mostrare titolo e formato del materiale informativo & \hyperref[subsec:UC-52.1]{UC-52.1} \\
 \hline
 \rowcolor{gray!20}
-RFO-80 & L'utente deve poter visualizzare/scaricare il dettaglio del materiale informativo & \hyperref[sec:UC-53]{UC-53} \\
+RF-OB-80 & L'utente deve poter visualizzare/scaricare il dettaglio del materiale informativo & \hyperref[sec:UC-53]{UC-53} \\
 \hline
 \rowcolor{white}
-RFO-81 & Il sistema deve gestire errori nel caricamento del materiale informativo & \hyperref[subsec:UC-53.1]{UC-53.1} \\
+RF-OB-81 & Il sistema deve gestire errori nel caricamento del materiale informativo & \hyperref[subsec:UC-53.1]{UC-53.1} \\
 \hline
 \rowcolor{gray!20}
-RFO-82 & L'utente deve poter visualizzare la mappa dei luoghi sicuri & \hyperref[sec:UC-54]{UC-54} \\
+RF-OB-82 & L'utente deve poter visualizzare la mappa dei luoghi sicuri & \hyperref[sec:UC-54]{UC-54} \\
 \hline
 \rowcolor{white}
-RFO-83 & L'utente deve poter aprire la posizione di un luogo sicuro su Google Maps & \hyperref[subsec:UC-55]{UC-55} \\
+RF-OB-83 & L'utente deve poter aprire la posizione di un luogo sicuro su Google Maps & \hyperref[subsec:UC-55]{UC-55} \\
 \hline
 \rowcolor{gray!20}
-RFO-84 & Il sistema deve gestire errori nell'apertura della mappa esterna & \hyperref[subsec:UC-56]{UC-56} \\
+RF-OB-84 & Il sistema deve gestire errori nell'apertura della mappa esterna & \hyperref[subsec:UC-56]{UC-56} \\
 \hline
 \end{longtable}
 \end{center}
@@ -3261,19 +3257,19 @@ RFO-84 & Il sistema deve gestire errori nell'apertura della mappa esterna & \hyp
 \hline
 \endhead
 \rowcolor{white}
-RQO-1 & L'invio del segnale acustico deve essere udibile e indipendente dal volume di sistema & \hyperref[sec:UC-34]{UC-34} \\
+RQ-OB-1 & L'invio del segnale acustico deve essere udibile e indipendente dal volume di sistema & \hyperref[sec:UC-34]{UC-34} \\
 \hline
 \rowcolor{gray!20}
-RQO-2 & Il sistema deve fornire feedback immediato all'utente in caso di assenza di rete & \hyperref[sec:UC-33.1]{UC-33.1}, \hyperref[sec:UC-35.2]{UC-35.2} \\
+RQ-OB-2 & Il sistema deve fornire feedback immediato all'utente in caso di assenza di rete & \hyperref[sec:UC-33.1]{UC-33.1}, \hyperref[sec:UC-35.2]{UC-35.2} \\
 \hline
 \rowcolor{white}
-RQO-3 & L'interfaccia utente deve supportare l'apprendimento progressivo tramite walkthrough & \hyperref[subsec:UC-3]{UC-3} \\
+RQ-OB-3 & L'interfaccia utente deve supportare l'apprendimento progressivo tramite walkthrough & \hyperref[subsec:UC-3]{UC-3} \\
 \hline
 \rowcolor{gray!20}
-RQO-4 & I messaggi di errore devono essere chiari e comprensibili per l'utente non tecnico & \hyperref[subsec:UC-2]{UC-2}, \hyperref[sec:UC-38]{UC-38}, \hyperref[subsec:UC-40.2]{UC-40.2} \\
+RQ-OB-4 & I messaggi di errore devono essere chiari e comprensibili per l'utente non tecnico & \hyperref[subsec:UC-2]{UC-2}, \hyperref[sec:UC-38]{UC-38}, \hyperref[subsec:UC-40.2]{UC-40.2} \\
 \hline
 \rowcolor{white}
-RQO-5 & Il sistema deve garantire la persistenza locale dei contatti fidati & \hyperref[subsec:UC-8]{UC-8} \\
+RQ-OB-5 & Il sistema deve garantire la persistenza locale dei contatti fidati & \hyperref[subsec:UC-8]{UC-8} \\
 \hline
 \end{longtable}
 \end{center}
@@ -3296,19 +3292,19 @@ RQO-5 & Il sistema deve garantire la persistenza locale dei contatti fidati & \h
 \hline
 \endhead
 \rowcolor{white}
-RVO-1 & L'applicazione deve utilizzare il servizio Google Auth per l'autenticazione & \hyperref[subsec:UC-1]{UC-1} \\
+RV-OB-1 & L'applicazione deve utilizzare il servizio Google Auth per l'autenticazione & \hyperref[subsec:UC-1]{UC-1} \\
 \hline
 \rowcolor{gray!20}
-RVO-2 & L'integrazione per la navigazione verso luoghi sicuri deve avvenire tramite Google Maps & \hyperref[subsec:UC-55]{UC-55} \\
+RV-OB-2 & L'integrazione per la navigazione verso luoghi sicuri deve avvenire tramite Google Maps & \hyperref[subsec:UC-55]{UC-55} \\
 \hline
 \rowcolor{white}
-RVO-3 & Il sistema deve utilizzare un modello LLM per le funzionalità di assistenza conversazionale & \hyperref[sec:UC-35]{UC-35} \\
+RV-OB-3 & Il sistema deve utilizzare un modello LLM per le funzionalità di assistenza conversazionale & \hyperref[sec:UC-35]{UC-35} \\
 \hline
 \rowcolor{gray!20}
-RVO-4 & La password del diario criptato e quella del diario fittizio devono essere obbligatoriamente diverse & \hyperref[subsec:UC-20.1]{UC-20.1} \\
+RV-OB-4 & La password del diario criptato e quella del diario fittizio devono essere obbligatoriamente diverse & \hyperref[subsec:UC-20.1]{UC-20.1} \\
 \hline
 \rowcolor{white}
-RVO-5 & Le comunicazioni SOS devono utilizzare canali standard (Email/SMS) quando possibile & \hyperref[sec:UC-33]{UC-33} \\
+RV-OB-5 & Le comunicazioni SOS devono utilizzare canali standard (Email/SMS) quando possibile & \hyperref[sec:UC-33]{UC-33} \\
 \hline
 \end{longtable}
 \end{center}
