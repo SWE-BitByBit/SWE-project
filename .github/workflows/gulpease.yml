@@ -1,11 +1,9 @@
 name: Update Gulpease Index
 
 on:
-  pull_request:
+  push:
     branches:
-      - develop
-    types:
-      - closed
+      - '**'
     
 jobs:
   gulpease:
