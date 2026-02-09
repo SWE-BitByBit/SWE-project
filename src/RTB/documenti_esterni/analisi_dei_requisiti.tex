@@ -108,8 +108,8 @@
 \textbf{Stato:} & In corso\\
 \textbf{Versione:} & 0.19.5 \\
 \textbf{Responsabile:} & \\
-\textbf{Redattori:} & Riccardo Manisi, Dennis Parolin, Giovanni Visentin, Gabriele Scaggiante \\
-\textbf{Verificatori:} & Giovanni Visentin, Marco Sanguin \\
+\textbf{Redattori:} & Riccardo Manisi, Dennis Parolin, Giovanni Visentin, Gabriele Scaggiante, Ferdinando Fracasso \\
+\textbf{Verificatori:} & Giovanni Visentin, Marco Sanguin, Dennis Parolin \\
 \textbf{Destinatari:} &
 \begin{tabular}[t]{@{}l@{}}
 Miriade srl\\
@@ -136,10 +136,10 @@ Gruppo BitByBit\\
 \hline
 
 \rowcolor{gray!20}
-0.19.6 & 2026-02-06 & Dennis Parolin & Modificati i termini ambigui. Aggiunti UC-59 e UC-60 per rimpiazzare UC-9. Sistemati casi d'usoUC-8, UC-8.2, UC-8.3, UC-12, UC-12.2 e UC-12.3 di conseguenza per integrarli con UC-59 e UC-60. Aggiunta la sezione "Requisiti" (\ref{section:requisiti}) con le sue sottosezioni (\ref{subsection:requisiti_funzionali}, \ref{subsection:requisiti_qualita}, \ref{subsection:requisiti_vincolo}). & Marco Sanguin \\
+0.19.6 & 2026-02-06 & Dennis Parolin & Modificati i termini ambigui. Aggiunti UC-59 e UC-60 per rimpiazzare UC-9. Sistemati casi d'usoUC-8, UC-8.2, UC-8.3, UC-12, UC-12.2 e UC-12.3 di conseguenza per integrarli con UC-59 e UC-60. Riscritta la sezione "Requisiti" (\ref{section:requisiti}) con le sue sottosezioni (\ref{subsection:requisiti_funzionali}, \ref{subsection:requisiti_qualita}, \ref{subsection:requisiti_vincolo}) sulla base dei nuovi casi d'uso redatti. & Marco Sanguin \\
 \hline
 \rowcolor{white}
-0.19.5 & 2026-02-05 & Dennis Parolin & Sistemato un caso d'uso con nome duplicato. Eliminato UC-47 e UC-46 è diventato il nuovo UC-45.1. Eliminati due punti nello scenario principale di UC-1, troppo specifici. Corretti i nomi di UC-55 e UC-56. Aggiunti UC-57 e UC-58, corrette le precondizioni degli UC da 15 a 19.2 e la post condizione di UC-1. Corretti riferimenti a casi d'uso errati o mancanti. Aggiunta la sezione Attori (\ref{subsection:attori}). Sistemata l'intestazione ed errori di compilazione. Aggiunto l'indice riassuntivo delle tabelle e l'indice riassuntivo delle immagini. Corretti errori grammaticali e di battitura & Marco Sanguin \\
+0.19.5 & 2026-02-05 & Dennis Parolin & Sistemato un caso d'uso con nome duplicato. Eliminato UC-47 e UC-46 è diventato il nuovo UC-45.1. Eliminati due punti nello scenario principale di UC-1, troppo specifici. Corretti i nomi di UC-55 e UC-56. Aggiunti UC-57 e UC-58, corrette le precondizioni degli UC da 15 a 19.2 e la post condizione di UC-1. Corretti riferimenti a casi d'uso errati o mancanti. Riscritta la sezione Attori (\ref{subsection:attori}) sulla base dei nuovi casi d'uso redatti. Sistemata l'intestazione ed errori di compilazione. Aggiunto l'indice riassuntivo delle tabelle e l'indice riassuntivo delle immagini. Corretti errori grammaticali e di battitura & Marco Sanguin \\
 \hline
 \rowcolor{gray!20}
 0.19.4 & 2026-01-27 & Giovanni Visentin & Aggiunta casi d'uso walkthrough & Gabriele Scaggiante \\
@@ -169,7 +169,19 @@ Gruppo BitByBit\\
 0.17.0 & 2026-01-14 & Gabriele Scaggiante & Riscritti gli UC per il diario secondo il nuovo schema & Giovanni Visentin \\
 \hline
 \rowcolor{white}
+0.16.1 & 2026-01-13 & Ferdinando Fracasso & Aggiunta nella sezione "Attori" & Dennis Parolin \\
+\hline
+\rowcolor{gray!20}
 0.16.0 & 2026-01-12 & Giovanni Visentin & Inizio riscrittura UC secondo nuovo schema & Dennis Parolin \\
+\hline
+\rowcolor{white}
+0.15.4 & 2026-01-12 & Ferdinando Fracasso & Correzione errori nelle sezioni "Attori" e "Requisiti" & Dennis Parolin \\
+\hline
+\rowcolor{gray!20}
+0.15.3 & 2026-01-11 & Ferdinando Fracasso & Aggiunta sezione requisiti & Dennis Parolin \\
+\hline
+\rowcolor{white}
+0.15.2 & 2026-01-09 & Ferdinando Fracasso & Modifica sezione attori nei casi d'uso & Dennis Parolin \\
 \hline
 \rowcolor{gray!20}
 0.15.1 & 2025-12-23 & Dennis Parolin & Aggiunte le immagini dei diagrammi UML riguardanti i casi d'uso & Giovanni Visentin \\
@@ -349,25 +361,59 @@ In conclusione, il sistema deve essere accessibile a utenti con competenze tecni
 
 \subsection{Riferimenti} \label{sec:riferimenti}
 
+
 % ====== DEFINIZIONI, ACRINIMI E ABBREVIAZIONI ======
 
 Al fine di evitare ambiguità relative al linguaggio e ai termini utilizzati all'interno dei documenti formali, viene allegato il \href{https://swe-bitbybit.github.io/SWE-docs/docs/documenti_interni/Glossario.pdf}{\textit{Glossario}}.
 I termini tecnici, gli acronimi e le parole con significato specifico all'interno del progetto sono contrassegnati da una lettera 'G' in apice (es. Agile\textsuperscript{G}) e sono descritti in dettaglio nel documento apposito.
 
-\subsubsection{Riferimenti normativi} \label{sec:riferimenti_normativi}
+\subsubsection{Riferimenti normativi}\label{sec:riferimenti_normativi}
 \begin{itemize}
-    \item Capitolato d'appalto C4: \href{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C4.pdf}{L'app che Protegge e Trasforma}
-    \item \href{https://swe-bitbybit.github.io/SWE-docs/docs/documenti_interni/norme_di_progetto.pdf}{Norme di Progetto}
+\item \textbf{Capitolato d'appalto C4: \emph{L'app che Protegge e Trasforma}}\\
+Parti consultate: documento completo\\
+Versione: 1.0\\
+Ultimo accesso: \textit{2026-01-14}\\
+\url{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C4.pdf}
+
+\pagebreak %---Inserito perchè altrimenti il riferimento successivo viene tagliato in due
+
+\item \textbf{Norme di Progetto}\\
+Parti consultate: documento completo\\
+Versione: v.0.10.2\\
+Ultimo accesso: \textit{2026-01-14}\\
+\url{https://swe-bitbybit.github.io/SWE-docs/docs/documenti_interni/norme_di_progetto.pdf} %---Link del sito, ma non funziona al momento---
 \end{itemize}
 
 \subsubsection{Riferimenti informativi} \label{sec:riferimenti_informativi}
 \begin{itemize}
-    \item \href{https://ieeexplore.ieee.org/document/720574}{Standard IEEE 830 1998}
-    \item \href{https://www.math.unipd.it/~tullio/IS-1/2009/Approfondimenti/ISO_12207-1995.pdf}{Standard ISO/IEC 12207:1995}
-    \item Slide sull'\href{https://www.math.unipd.it/~tullio/IS-1/2025/Dispense/T05.pdf}{analisi dei requisiti} del Prof. Vardanega
-    \item \href{https://www.math.unipd.it/~rcardin/swea/2022/Diagrammi%20Use%20Case.pdf}{Diagrammi Casi d’Uso} del Prof. Cardin
-    \item \href{https://github.com/rcardin/swe-imdb}{Repository GitHub} del Prof. Cardin
-    \item \href{https://swe-bitbybit.github.io/SWE-docs/docs/documenti_interni/Glossario.pdf}{Glossario}
+    \item \textbf{Standard IEEE 830 1998}\\
+        Parti consultate: documento completo\\
+        Versione: \textit{edizione 1998}\\
+        Ultimo accesso: \textit{2026-01-13}\\
+        \url{https://ieeexplore.ieee.org/document/720574}
+    \item \textbf{Standard ISO/IEC 12207:1995}\\
+        Parti consultate: documento completo\\
+        Versione: \textit{edizione 1997} \\
+        Ultimo accesso: \textit{2026-01-13}\\
+        \url{https://www.math.unipd.it/~tullio/IS-1/2009/Approfondimenti/ISO_12207-1995.pdf}
+    \item \textbf{Slide sull'\emph{analisi dei requisiti} del Prof. Vardanega}\\
+        Parti consultate: documento completo\\
+        Versione: \textit{A.A.2025/2026}\\
+        Ultimo accesso: \textit{2026-01-13}\\
+        \url{https://www.math.unipd.it/~tullio/IS-1/2025/Dispense/T05.pdf}
+    \item \textbf{Slide sui \emph{diagrammi dei casi d'uso} del Prof. Cardin}\\
+        Parti consultate: documento completo\\
+        Versione: \textit{A.A.2025/2026}\\
+        Ultimo accesso: \textit{2026-01-13}\\
+        \url{https://www.math.unipd.it/~rcardin/swea/2022/Diagrammi%20Use%20Case.pdf}
+    \item \textbf{\emph{Repository Github} del Prof. Cardin}\\
+        Ultimo accesso: \textit{2026-01-13}\\
+        \url{https://github.com/rcardin/swe-imdb}
+    \item \textbf{Glossario}\\
+        Parti consultate: documento completo\\
+        Versione: \textit{v.0.3.2}\\
+        Ultimo accesso: \textit{2026-01-15}\\
+        \url{https://swe-bitbybit.github.io/SWE-docs/docs/documenti_interni/Glossario.pdf}
 \end{itemize}
 
 % ---------------------------- SEZIONE CASI D'USO -------------------------------
