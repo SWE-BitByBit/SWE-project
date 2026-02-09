@@ -6,6 +6,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[italian]{babel}
 \usepackage{hyperref}
+\usepackage{xurl}
 \hypersetup{
     colorlinks=true,
     linkcolor=blue,
@@ -106,8 +107,8 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & In corso\\
-\textbf{Versione:} & 0.19.5 \\
-\textbf{Responsabile:} & \\
+\textbf{Versione:} & 0.19.7 \\
+\textbf{Responsabile:} & Giovanni Visentin \\
 \textbf{Redattori:} & Riccardo Manisi, Dennis Parolin, Giovanni Visentin, Gabriele Scaggiante, Ferdinando Fracasso \\
 \textbf{Verificatori:} & Giovanni Visentin, Marco Sanguin, Dennis Parolin \\
 \textbf{Destinatari:} &
@@ -135,6 +136,9 @@ Gruppo BitByBit\\
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 
+\rowcolor{white}
+0.19.7 & 2026-02-09 & Dennis Parolin & Sistemati errori di compilazione. Sistemate le caption delle tabelle. Sistemati UC-7.1, UC-7.2 e UC-7.3 a cui mancavano le post-condizioni & Giovanni Visentin \\
+\hline
 \rowcolor{gray!20}
 0.19.6 & 2026-02-06 & Dennis Parolin & Modificati i termini ambigui. Aggiunti UC-59 e UC-60 per rimpiazzare UC-9. Sistemati casi d'usoUC-8, UC-8.2, UC-8.3, UC-12, UC-12.2 e UC-12.3 di conseguenza per integrarli con UC-59 e UC-60. Riscritta la sezione "Requisiti" (\ref{section:requisiti}) con le sue sottosezioni (\ref{subsection:requisiti_funzionali}, \ref{subsection:requisiti_qualita}, \ref{subsection:requisiti_vincolo}) sulla base dei nuovi casi d'uso redatti. & Marco Sanguin \\
 \hline
@@ -435,7 +439,7 @@ Questa sezione raccoglie i termini tecnici specifici utilizzati nella descrizion
 \small
 \arrayrulecolor{black} 
 \begin{longtable}{|p{0.30\textwidth}|p{0.60\textwidth}|}
-\caption{Tabella nomenclatura casi d'uso} \label{tab:nomenclatura} \\
+
 \hline
 \rowcolor{gray!60}
 {\centering \textbf{Termine}\par} &
@@ -468,6 +472,9 @@ Questa sezione raccoglie i termini tecnici specifici utilizzati nella descrizion
 \rowcolor{white}
 \centering \textbf{Trigger} & Evento o condizione che avvia l’esecuzione del caso d’uso. \\
 \hline
+
+\caption{Tabella nomenclatura casi d'uso} \label{tab:nomenclatura} \\
+
 \end{longtable}
 \end{center}
 
@@ -480,7 +487,7 @@ Gli attori sono entità esterne che interagiscono con il sistema per raggiungere
 Di seguito vengono rappresentati quali attori primari e secondari sono stati utilizzati:
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{../../../resources/attori.png}
+    \includegraphics[width=1\textwidth]{attori.png}
     \caption{Diagramma degli attori}
     \label{fig:attori}
 \end{figure}
@@ -489,7 +496,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 \small
 \arrayrulecolor{black}
 \begin{longtable}{|p{0.30\textwidth}|p{0.60\textwidth}|}
-\caption{Tabella di spiegazione degli attori} \label{tab:attori} \\
+
 \hline
 \rowcolor{gray!70}
 \centering \textbf{Attori primari} & \centering \textbf{Descrizione} \tabularnewline
@@ -518,6 +525,9 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 \rowcolor{white}
 \centering \textbf{Google Maps} & Servizio di mappatura esterno invocato dal sistema per mostrare la posizione precisa dei luoghi sicuri e calcolare i percorsi per raggiungerli. \\
 \hline
+
+\caption{Tabella di spiegazione degli attori} \label{tab:attori} \\
+
 \end{longtable}
 \end{center}
 
@@ -861,7 +871,7 @@ UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella se
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item 
+        \item L'attore visualizza il nome del contatto fidato
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
@@ -879,7 +889,7 @@ UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella se
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item
+        \item L'attore visualizza il numero di telefono del contatto fidato
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
@@ -897,7 +907,7 @@ UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella se
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item 
+        \item L'attore visualizza l'indirizzo email del contatto fidato
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
@@ -3010,8 +3020,8 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
 
 \clearpage
 \section{Requisiti} \label{section:requisiti}
-Di seguito vengono riportati i requisiti del sistema, individuati attraverso l'analisi dei casi d'uso.\\
-La nomenclatura utilizzata per il codice dei requisiti è spiegata nel documento \href{https://swe-bitbybit.github.io/SWE-docs/docs/documenti_interni/norme_di_progetto.pdf}{Norme di Progetto} alla sezione 2.2.3.2.\\
+Di seguito vengono riportati i requisiti del sistema, individuati attraverso l'analisi dei casi d'uso.
+La nomenclatura utilizzata per il codice dei requisiti è spiegata nel documento \href{https://swe-bitbybit.github.io/SWE-docs/docs/documenti_interni/norme_di_progetto.pdf}{Norme di Progetto} alla sezione 2.2.3.2.
 
 \subsection{Requisiti Funzionali} \label{subsection:requisiti_funzionali}
 \begin{center}
