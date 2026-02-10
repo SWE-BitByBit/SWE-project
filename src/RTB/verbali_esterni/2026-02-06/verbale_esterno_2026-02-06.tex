@@ -1,4 +1,3 @@
-% template presente
 \documentclass[a4paper,12pt]{article}
 
 \usepackage{tabularx}
@@ -25,9 +24,7 @@
 \usepackage{titlesec}
 \geometry{margin=2.5cm}
 % ===== Variabile per il titolo del documento =====
-% ===== DA MODOFICARE =====
-\newcommand{\documenttitle}{Verbale Riunione Numero X } %serve l'ultimo spazio
-
+\newcommand{\documenttitle}{Verbale Riunione Numero 4 } 
 
 \setlength{\parindent}{0pt}
 \setstretch{1.2}
@@ -46,7 +43,7 @@
 \begin{document}
 
 % ======= HEADER UNIVERSITÀ E GRUPPO CENTRATI VERTICALMENTE =======
-\vspace*{\fill} % --- Spinge verso il basso l'inizio del contenuto
+\vspace*{\fill} 
 
 \begin{center}
     \begin{minipage}{0.25\textwidth}
@@ -89,26 +86,27 @@
     {\LARGE \textbf{\documenttitle}}
 \end{center}
 
-% ======= INFO GENERALI SUL DOCUMENTO, DA TENERE SU OGNI DOC =======
+% ======= INFO GENERALI SUL DOCUMENTO =======
 \renewcommand{\arraystretch}{1.3}
 \vspace{0.1cm}
 
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
-\textbf{Stato:} & XXXX \\
-\textbf{Versione:} & XXXX \\
-\textbf{Redattori:} & XXXX \\
-\textbf{Verificatori:} & XXXX \\
-\textbf{Responsabile:} & XXXX \\
+\textbf{Stato:} & In corso \\
+\textbf{Versione:} & 0.0.2 \\
+\textbf{Redattori:} & Giovanni Visentin \\
+\textbf{Verificatori:} & Gabriele Scaggiante \\
+\textbf{Responsabile:} & Ferdinando Fracasso \\
 \textbf{Destinatari:} & 
 \begin{tabular}[t]{@{}l@{}}
-Destinatario 1 \\
-Destinatario 2 \\
+Miriade \\
+Prof. Tullio Vardanega \\
+Prof. Cardin \\
 \end{tabular} \\
 \end{tabularx}
 \end{tcolorbox}
 
-\vspace*{\fill} % --- Spinge verso l’alto la fine del contenuto, centrando tutto il blocco
+\vspace*{\fill} 
 
 % ---------- REDAZIONE E REVISIONE ----------
 \clearpage
@@ -123,17 +121,11 @@ Destinatario 2 \\
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
-\rowcolor{white}
- &  &  &  &  \\
-\hline
 \rowcolor{gray!20}
- &  &  &  & \\
+0.0.2 & 06/02/2026 & Giovanni Visentin & Aggiornamento & Gabriele Scaggiante \\
 \hline
 \rowcolor{white}
- &  &  &  & \\
-\hline
-\rowcolor{gray!20}
- &  &  &  &  \\
+0.0.1 & 06/02/2026 & Giovanni Visentin & Stesura verbale & Gabriele Scaggiante \\
 \hline
 \end{tabular}
 \end{center}
@@ -143,49 +135,79 @@ Destinatario 2 \\
 % ======= INDICE SU PAGINA DEDICATA =======
 \clearpage
 \tableofcontents
-\thispagestyle{empty} % senza numero di pagina per l'indice
+\thispagestyle{empty} 
 \clearpage
 
-% ======= INFO GENERALI RIUNIONE, METTERE SE DOC È UN VERBALE =======
+% ======= INFO GENERALI RIUNIONE =======
 \section{Informazioni generali}
 \renewcommand{\arraystretch}{1.3}
 
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
-\textbf{Data:} & 23 ottobre 2025 \\
-\textbf{Ora Inizio:} & XXX \\
-\textbf{Durata:} & 1h 45m \\
-\textbf{Luogo:} & Padova, Aula 2 \\
+\textbf{Data:} & 06 febbraio 2026 \\
+\textbf{Ora Inizio:} & 16:30 \\
+\textbf{Durata:} & 1h 10m \\
+\textbf{Luogo:} & Google Meet \\
 \textbf{Presenti:} & 
 \begin{tabular}[t]{@{}l@{}}
-Fracasso Ferdinando\\
 Manisi Riccardo\\
-Parolin Dennis\\
 Scaggiante Gabriele\\
-Sanguin Marco\\
 Visentin Giovanni \\
+\end{tabular} \\
+\textbf{Miriade:} & 
+\begin{tabular}[t]{@{}l@{}}
+Annalisa Egidi\\
+Arianna\\
+Emanuele Righetto\\
 \end{tabular} \\
 \textbf{Assenti:} & 
 \begin{tabular}[t]{@{}l@{}}
-nessuno\\
+Fracasso Ferdinando\\
+Sanguin Marco\\
+Parolin Dennis\\
 \end{tabular} \\
 \end{tabularx}
 \end{tcolorbox}
 
-% ---------- ORDINE DEL GIORNO, METTERE SE DOC È UN VERBALE  ----------
+% ---------- ORDINE DEL GIORNO ----------
 \section{Ordine del Giorno}
 \begin{itemize}
-    \item %modifica
+    \item Definizione architettura e infrastruttura AWS.
+    \item Chiarimenti su credenziali e permessi (Certificazioni ISO).
+    \item Pianificazione del PoC e deploy.
+    \item Dettagli tecnici su autenticazione, servizi AI e sviluppo mobile.
 \end{itemize}
 
-% ---------- DISCUSSIONI, METTERE SE DOC È UN VERBALE ----------
+% ---------- DISCUSSIONI ----------
 \section{Discussioni}
-\begin{itemize}
-    \item %modifica
-\end{itemize}
-%modifica
 
-% ---------- DECISIONI, METTERE SE DOC È UN VERBALE ----------
+\subsection{Credenziali e Ambiente AWS}
+L'azienda ha comunicato che, dovendo ottemperare a diverse certificazioni ISO, non è possibile fornire accesso diretto come amministratore all'account AWS principale. È stato concordato l'utilizzo di un account interno con permessi specifici:
+\begin{itemize}
+    \item Accesso admin garantito per i servizi: Cognito, Lambda ed EventBridge.
+    \item Non verrà fornito accesso admin per Bedrock; le chiamate API saranno gestite come servizio.
+\end{itemize}
+
+\subsection{Strategia di Deploy e PoC}
+Si è discusso il flusso di lavoro per lo sviluppo. L'idea approvata è di realizzare inizialmente il Proof of Concept (PoC) in locale.
+Una volta validato il PoC, si procederà con la migrazione sull'account AWS e la generazione dell'APK definitivo. 
+
+\subsection{Architettura del Sistema}
+È stata definita la catena di servizi AWS per supportare l'applicativo:
+\begin{itemize}
+    \item \textbf{Frontend:} Ospitato su bucket S3 e distribuito tramite CloudFront.
+    \item \textbf{Backend:} API Gateway gestirà le richieste (es. GET) connettendosi alle Lambda. Le Lambda conterranno la logica applicativa, ricevendo input JSON e interagendo con Amazon DynamoDB per i dati.
+    \item \textbf{Intelligenza Artificiale:} Verrà utilizzato Amazon Bedrock tramite chiamate API. In fase di test locale o per il piano free, è possibile utilizzare modelli alternativi (es. Llama) deployati localmente.
+    \item \textbf{Email (SES):} Il servizio SES verrà organizzato in topic a cui collegare le email; l'azienda verificherà internamente la gestione specifica.
+\end{itemize}
+
+\subsection{Autenticazione e Mobile}
+\begin{itemize}
+    \item \textbf{Cognito:} Gestirà l'autenticazione tramite User Pool, permettendo permessi differenziati. Sarà integrato il login con Google: il frontend comunicherà con il backend che creerà l'utente su Cognito.
+    \item \textbf{Mobile App:} L'APK verrà generato tramite Flutter. Si è notato che, anche in debug, l'app potrebbe richiedere permessi di sistema specifici all'utente.
+\end{itemize}
+
+% ---------- DECISIONI ----------
 \section{Decisioni}
 \begin{center}
 \small
@@ -197,21 +219,22 @@ nessuno\\
 \textbf{Descrizione decisione} & \textbf{Codice decisione} \\
 \hline
 \rowcolor{white}
-Inserire descrizione & VI C 1.1 \\
+Sviluppare il PoC in locale prima di migrare sull'infrastruttura AWS aziendale & VE RTB 4.1 \\
 \hline
 \rowcolor{gray!20}
-Inserire descrizione &  VI C 1.2 \\
+Adottare l'architettura S3 + CloudFront (Frontend) e API Gateway + Lambda + DynamoDB (Backend) &  VE RTB 4.2 \\
 \hline
 \rowcolor{white}
-Inserire descrizione &  VI C 1.3\\
+Utilizzare Amazon Cognito integrato con Google per la gestione utenti &  VE RTB 4.3\\
+\hline
+\rowcolor{gray!20}
+Utilizzare Amazon Bedrock per i servizi AI (o Llama per test locali) & VE RTB 4.4 \\
 \hline
 \end{tabular}
 \end{center}
 
-% ---------- TO DO, METTERE SE DOC È UN VERBALE ----------
+% ---------- TO DO ----------
 \section{To Do}
-Dalle discussioni e decisioni intraprese, sono emerse le seguenti attività:
-
 \begin{center}
 \small
 \renewcommand{\arraystretch}{1.2} 
@@ -219,19 +242,25 @@ Dalle discussioni e decisioni intraprese, sono emerse le seguenti attività:
 \begin{tabular}{|p{0.52\textwidth}|c|c|}
 \hline
 \rowcolor{gray!60} 
-\textbf{Task} & \textbf{Codice decisione} & \textbf{N°issue GitHub} \\
+\textbf{Task} & \textbf{Assegnatario} & \textbf{Scadenza} \\
 \hline
 \rowcolor{white}
-Esempio Task 1 & VI C 1.1 & \href{https://github.com/<repo>/issues/1}{\textbf{issue}} \\
+Setup ambiente di sviluppo per il team & Team BitByBit & Prossimo Sprint \\
 \hline
 \rowcolor{gray!20}
-Esempio Task 2 & VI C 1.2 & \href{https://github.com/<repo>/issues/2}{\textbf{issue}} \\
-\hline
-\rowcolor{white}
-Esempio Task 3 & VI C 1.3 & \href{https://github.com/<repo>/issues/3}{\textbf{issue}} \\
+Verifica accessi AWS (disponibili da lunedì/martedì) & Responsabile & 10/02/2026 \\
 \hline
 \end{tabular}
 \end{center}
 
+\vspace*{\fill}
+\noindent
+\begin{minipage}{0.60\textwidth}
+    {\small
+    \textbf{Firma aziendale:}\\[0.3cm]
+    \textit{(Spazio riservato all’azienda per apporre firma o timbro)}\\[0.8cm]
+    \fbox{\rule{0pt}{2.5cm}\rule{5cm}{0pt}} 
+    }
+\end{minipage}
 
 \end{document}
