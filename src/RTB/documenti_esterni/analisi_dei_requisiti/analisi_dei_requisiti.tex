@@ -1371,6 +1371,7 @@ UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella se
         \item L'attore modifica il testo che funge da oggetto della mail
         \item L'attore salva le modifiche
     \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole personalizzare il titolo della mail di avviso
 \end{itemize}
 
 \subsubsection{UC-18 - Modifica corpo mail di avviso} \label{sec:UC-18}
@@ -1392,6 +1393,7 @@ UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella se
         \item L'attore modifica il corpo della mail
         \item L'attore salva le modifiche
     \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole personalizzare il corpo della mail di avviso
 \end{itemize}
 
 \subsubsection{UC-19 - Visualizzazione preview mail di avviso} \label{sec:UC-19}
@@ -1439,6 +1441,7 @@ UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella se
     \begin{itemize}
         \item Il sistema mostra il testo configurato come oggetto della mail nell'header dell'anteprima
     \end{itemize}
+    \item \textbf{Trigger:} L'attore visualizza l'anteprima della mail
 \end{itemize}
 
 \subsubsection{UC-19.2 - Visualizzazione corpo della mail di avviso} \label{subsec:UC-19.2}
@@ -1454,6 +1457,7 @@ UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella se
     \begin{itemize}
         \item Il sistema mostra il testo del messaggio nel corpo dell'anteprima
     \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole visualizzare l'anteprima della mail
 \end{itemize}
 
 \subsubsection{UC-57 - Attivazione Dead Man's Switch} \label{sec:UC-57}
@@ -1467,7 +1471,7 @@ UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella se
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item Il Dead Man's Switch è attivato
+        \item Il Dead Man's Switch è attivo
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
@@ -1487,7 +1491,7 @@ UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella se
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item Il Dead Man's Switch è disattivato
+        \item Il Dead Man's Switch non è attivo
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
@@ -1519,7 +1523,7 @@ UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella se
     \end{itemize}
     \item \textbf{Scenari secondari:} 
     \begin{itemize}
-        \item La password del diario fittizio combacia con quella già impostata del diario criptato. Il sistema non memorizza la password e mostra un messaggio di errore $\rightarrow$ \ref{subsec:UC-20.1}
+        \item La password del diario fittizio combacia con quella già impostata del diario criptato. $\rightarrow$ \ref{subsec:UC-20.1}
         \item La password non è conforme ai criteri di sicurezza minimi imposti dal sistema. La password non viene memorizzata e viene mostrato un messaggio di errore. $\rightarrow$ \ref{subsec:UC-21}
     \end{itemize}
     \item \textbf{Estensioni:}
@@ -1712,7 +1716,8 @@ UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella se
         \item \ref{subsec:UC-25}
         \item \ref{subsec:UC-26}
     \end{itemize}
-    \item \textbf{Trigger:} Il sistema richiede l'autenticazione per accedere al diario
+    \item \textbf{Trigger:} L'attore tenta di accedere al diario criptato
+
 \end{itemize}
 
 \subsubsection{UC-25 - Inserimento password errata} \label{subsec:UC-25}
@@ -1739,7 +1744,8 @@ UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella se
         \item Il sistema incrementa il contatore dei tentativi falliti
         \item Il sistema consente all'attore di inserire nuovamente la password
     \end{itemize}
-    \item \textbf{Trigger:} La password inserita dall'attore non corrisponde a quella configurata per il diario
+    \item \textbf{Trigger:} L'attore inserisce una password errata per l'accesso al diario
+
 \end{itemize}
 
 \subsubsection{UC-26 - Password errata troppe volte} \label{subsec:UC-26}
@@ -1838,6 +1844,7 @@ UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella se
     \begin{itemize}
         \item \ref{subsec:UC-27.1.1}
     \end{itemize}
+    \item \textbf{Trigger:} L'attore visualizza il diario
 \end{itemize}
 
 \subsubsection{UC-27.1.1 - Visualizzazione singola nota della lista} \label{subsec:UC-27.1.1}
@@ -1859,6 +1866,7 @@ UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella se
         \item Il sistema recupera le informazioni della nota da visualizzare
         \item Il sistema mostra un'anteprima della nota nella lista
     \end{itemize}
+    \item \textbf{Trigger:} L'attore visualizza la lista delle note
 \end{itemize}
 
 \subsubsection{UC-28 - Creazione nota} \label{subsec:UC-28}
@@ -1928,6 +1936,7 @@ UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella se
         \item L'attore digita il contenuto testuale desiderato
         \item Il sistema memorizza il testo inserito nella nota
     \end{itemize}
+    \item \textbf{Trigger:} L'attore interagisce con una nota per modificarne il contenuto testuale
 \end{itemize}
 
 \subsubsection{UC-31 - Inserimento media nella nota} \label{subsec:UC-31}
@@ -1995,6 +2004,7 @@ UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella se
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo.
+        \item L'utente ha cliccato sull'elemento (voce/pulsante) con funzione di invio del messaggio SOS.
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
@@ -2008,8 +2018,8 @@ UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella se
     \end{itemize}
     \item \textbf{Scenari secondari:} 
     \begin{itemize}
-        \item Il sistema non è in grado di connettersi a internet. L'invio del messaggio fallisce e viene chiesto all'attore se inviare un segnale acustico. $\rightarrow$ \ref{sec:UC-33.1}
-        \item Il sistema non ha memorizzato nessun contatto fidato. L'invio del messaggio fallisce e viene chiesto all'attore se inviare un segnale acustico. $\rightarrow$ \ref{sec:UC-33.2}
+        \item Il sistema non è in grado di connettersi a internet. $\rightarrow$ \ref{sec:UC-33.1}
+        \item Il sistema non ha memorizzato nessun contatto fidato. $\rightarrow$ \ref{sec:UC-33.2}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
@@ -2044,7 +2054,7 @@ UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella se
     \begin{itemize}
         \item \ref{sec:UC-34}
     \end{itemize}
-    \item \textbf{Trigger:} Il sistema rileva l'assenza di connessione durante l'invio del messaggio di SOS.
+    \item \textbf{Trigger:} L'Utente ha cliccato l'elemento per inviare un messaggio di SOS ma il sistema rileva l'assenza di connessione internet.
 \end{itemize}
 
 \subsubsection{UC-33.2 - Mancanza di contatti fidati} \label{sec:UC-33.2}
@@ -2189,7 +2199,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
         \item L'attore può riprovare
         \item L'attore può scrivere un nuovo messaggio
     \end{itemize}
-    \item \textbf{Trigger:} Il sistema rileva la mancanza di connessione
+    \item \textbf{Trigger:} L'Utente vuole consultarsi con il chatbot ma manca la connessione internet.
 \end{itemize}
 
 \subsubsection{UC-35.3 - Errore di lettura del messaggio} \label{sec:UC-35.3}
@@ -2212,7 +2222,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
         \item L'utente può chiedere di riprovare a leggere il messaggio \ref{sec:UC-35.1}
 	    \item Il sistema riceve il nuovo messaggio modificato.
     \end{itemize}
-    \item \textbf{Trigger:} Il sistema non è riuscito a leggere il messaggio
+    \item \textbf{Trigger:} L'Utente vuole consultarsi con il chatbot ma il sistema non è riuscito a leggere il messaggio.
 \end{itemize}
 
 \subsubsection{UC-36 - Switch al "Detective delle Relazioni"} \label{sec:UC-36}
@@ -2287,7 +2297,8 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
         \item Il sistema mostra un messaggio di errore
         \item Il sistema mantiene il contesto precedente
     \end{itemize}
-    \item \textbf{Trigger:} Fallimento operazione di switch contesto
+    \item \textbf{Trigger:} L'attore richiede il cambio di contesto ma si verifica un errore tecnico
+
 \end{itemize}
 
 \subsubsection{UC-39 - Visualizzazione cronologia chat} \label{subsec:UC-39}
@@ -2338,7 +2349,8 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \begin{itemize}
         \item \ref{subsec:UC-39.1.1}
     \end{itemize}
-    \item \textbf{Trigger:} L'attore ha visualizzato la cronologia
+    \item \textbf{Trigger:} L'attore ha selezionato una singola chat dalla cronologia
+
 \end{itemize}
 
 \subsubsection{UC-39.1.1 - Visualizzazione preview inizio chat della lista} \label{subsec:UC-39.1.1}
@@ -2413,6 +2425,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
         \item \ref{subsec:UC-40.1.1}
         \item \ref{subsec:UC-40.1.2}
     \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole visualizzare la lista dei messaggi nella chat
 \end{itemize}
 
 \subsubsection{UC-40.1.1 - Visualizzazione messaggio utente} \label{subsec:UC-40.1.1}
@@ -2431,6 +2444,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \begin{itemize}
         \item Il sistema mostra il testo del messaggio inviato dall'utente con la formattazione grafica allineata a destra
     \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole visualizzare la lista dei messaggi nella chat
 \end{itemize}
 
 \subsubsection{UC-40.1.2 - Visualizzazione messaggio chatbot} \label{subsec:UC-40.1.2}
@@ -2449,6 +2463,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \begin{itemize}
         \item Il sistema mostra il testo del messaggio generato dal chatbot con la formattazione grafica allineata a sinistra
     \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole visualizzare la lista dei messaggi nella chat
 \end{itemize}
 
 \subsubsection{UC-40.2 - Errore caricamento chat} \label{subsec:UC-40.2}
@@ -2472,7 +2487,8 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
         \item Il sistema propone all'attore di riprovare l'azione
         \item L'attore visualizza la chat 
     \end{itemize}
-    \item \textbf{Trigger:} Il recupero dei dati della chat fallisce o va in timeout
+    \item \textbf{Trigger:} L'attore richiede la visualizzazione di una chat ma il caricamento fallisce
+
 \end{itemize}
 
 \subsubsection{UC-41 - Creazione nuova chat} \label{subsec:UC-41}
@@ -2611,6 +2627,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
         \item Il sistema mostra il nome della community
         \item Il sistema mostra l'icona o l'immagine rappresentativa
     \end{itemize}
+    \item \textbf{Trigger:} L'attore seleziona una community dalla lista delle community
 \end{itemize}
 
 \subsubsection{UC-44 - Visita community} \label{sec:UC-44}
@@ -2658,6 +2675,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
         \item Il sistema mostra un messaggio di errore all'utente
         \item Il sistema permette di ricaricare la pagina
     \end{itemize}
+    \item \textbf{Trigger:} L'attore tenta di visitare una community ma il caricamento fallisce
 \end{itemize}
 
 \subsubsection{UC-45 - Visualizzazione lista contatti d'emergenza} \label{sec:UC-45}
@@ -2723,6 +2741,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \begin{itemize}
         \item Il sistema mostra la stringa di testo corrispondente al nome dell'ente o della persona
     \end{itemize}
+    \item \textbf{Trigger:} L'attore visualizza un contatto d'emergenza
 \end{itemize}
 
 \subsubsection{UC-45.1.2 - Visualizzazione numero contatti d'emergenza} \label{subsec:UC-45.1.2}
@@ -2741,6 +2760,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \begin{itemize}
         \item Il sistema mostra le cifre del numero telefonico associato al contatto
     \end{itemize}
+    \item \textbf{Trigger:} L'attore visualizza un contatto d'emergenza
 \end{itemize}
 
 \subsubsection{UC-48 - Composizione automatica numero contatto} \label{sec:UC-48}
@@ -2803,6 +2823,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
         \item Il sistema mostra il titolo della legge
         \item L'attore può selezionare una legge per aprirne i dettagli
     \end{itemize}
+    \item \textbf{Trigger:} L'attore visualizza la lista delle leggi
 \end{itemize}
 
 \subsubsection{UC-50 - Visualizzazione dettagli legge} \label{sec:UC-50}
@@ -2851,6 +2872,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
         \item Il sistema mostra un messaggio di errore esplicativo all'utente
         \item Il sistema permette di ricaricare la pagina o tornare indietro
     \end{itemize}
+    \item \textbf{Trigger:} L'attore tenta di visualizzare una legge ma il caricamento fallisce
 \end{itemize}
 
 \subsubsection{UC-52 - Visualizzazione lista materiale informativo} \label{sec:UC-52}
@@ -2893,6 +2915,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
         \item Il sistema mostra il titolo del materiale
         \item Il sistema mostra l'icona relativa al formato
     \end{itemize}
+    \item \textbf{Trigger:} L'attore visualizza la lista del materiale informativo
 \end{itemize}
 
 \subsubsection{UC-53 - Visualizzazione dettagli materiale informativo} \label{sec:UC-53}
@@ -2940,7 +2963,8 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
         \item Il sistema mostra un messaggio di errore
         \item Il sistema visualizza la lista dei materiali
     \end{itemize}
-    \item \textbf{Trigger:} Fallimento nel download o nell'apertura della risorsa
+    \item \textbf{Trigger:} L'attore tenta di accedere a una risorsa ma il caricamento fallisce
+
 \end{itemize}
 
 \subsubsection{UC-54 - Visualizzazione mappa luoghi sicuri} \label{sec:UC-54}
@@ -3014,6 +3038,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
         \item Il sistema mostra un messaggio di errore
         \item Il sistema ritorna alla visualizzazione della mappa interna
     \end{itemize}
+    \item \textbf{Trigger:} L'attore tenta di aprire una mappa esterna ma l'operazione fallisce
 \end{itemize}
 
 % ======================= REQUISITI ========================
