@@ -107,7 +107,7 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & In corso\\
-\textbf{Versione:} & 0.3.0 \\
+\textbf{Versione:} & 0.3.1 \\
 \textbf{Responsabile:} & Giovanni Visentin\\
 \textbf{Redattori:} & 
 \begin{tabular}[t]{@{}l@{}}
@@ -143,6 +143,9 @@ Gruppo BitByBit\\
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 
+\rowcolor{white}
+0.3.1 & 2026-02-11 & Dennis Parolin & Eliminati test di sistema T-20-S, T-21-S, T-165-S, T-166-S e T-186-S. Sistemate le descrizioni dei vari test per renderle più chiare e aumentare l'indice di Gulpease. Dimminuiti drasticamente i test di accetazione per renderli più corretti e meno granulari. &  Giovanni Visentin\\
+\hline
 \rowcolor{gray!20}
 0.3.0 & 2026-02-09 & Dennis Parolin & Aggiunta della sezione Metodi di Testing (\ref{sec:metodi_testing}). Corretti errori di compilazione. &  Giovanni Visentin \\
 \hline
@@ -393,606 +396,596 @@ Come stabilito nel documento \href{https://swe-bitbybit.github.io/SWE-docs/docs/
 I test che verranno effettuati sono quelli presenti nella sezione \textbf{3.4.3.2}. La nomenclatura usata per identificare i test viene invece descritta nella sezione \textbf{3.4.4}.\\
 Il gruppo BitByBit identificherà i Test di integrazione, Regressione e Unità durante lo svolgimento delle attività per la \textbf{Product Baseline (PB)}.
 
+\clearpage
+
 \subsection{Test di Sistema}
 \renewcommand{\arraystretch}{1.2}
 \arrayrulecolor{black}
-\begin{longtable}{|c|>{\raggedright\arraybackslash}p{0.45\textwidth}|c|c|}
-\caption{Tabella dei test di sistema (continua)} \\
+\begin{longtable}{| >{\centering\arraybackslash}p{0.09\textwidth} | >{\raggedright\arraybackslash}p{0.52\textwidth} | >{\centering\arraybackslash}p{0.18\textwidth} | >{\centering\arraybackslash}p{0.09\textwidth} |}
 \hline
 \rowcolor{gray!60}
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Requisito Riferimento} & \textbf{Stato del Test} \\
 \hline
 \endhead
 \hline
+\caption[]{Tabella dei test di sistema} \\
+\endfoot
+\hline
 \caption{Tabella dei test di sistema} \\
 \endlastfoot
 \rowcolor{white}
-T-1-S & Verificare che il sistema permetta la corretta visualizzazione pagina di login. & RF-OB-1 & NI \\
+T-1-S & Verificare che la pagina di login venga visualizzata correttamente. & RF-OB-1 & NI \\
 \hline
 \rowcolor{gray!20}
-T-2-S & Verificare che il sistema accetti l'inserimento email valida e lo validi correttamente. & RF-OB-1 & NI \\
+T-2-S & Verificare che il sistema accetti e validi correttamente l'inserimento di un indirizzo email. & RF-OB-1 & NI \\
 \hline
 \rowcolor{white}
-T-3-S & Verificare che il sistema accetti l'inserimento password valida e lo validi correttamente. & RF-OB-1 & NI \\
+T-3-S & Verificare che il sistema accetti e validi correttamente l'inserimento di una password. & RF-OB-1 & NI \\
 \hline
 \rowcolor{gray!20}
-T-4-S & Verificare che l'utente possa effettuare login con credenziali corrette secondo le specifiche. & RF-OB-1 & NI \\
+T-4-S & Verificare che l'utente possa effettuare il login inserendo credenziali corrette. & RF-OB-1 & NI \\
 \hline
 \rowcolor{white}
-T-5-S & Verificare che il sistema mostri un messaggio di errore login con email non registrata appropriato. & RF-OB-1 & NI \\
+T-5-S & Verificare che il sistema mostri un messaggio di errore appropriato quando si tenta il login con un'email non registrata. & RF-OB-1 & NI \\
 \hline
 \rowcolor{gray!20}
-T-6-S & Verificare che il sistema mostri un messaggio di errore login con password errata appropriato. & RF-OB-1 & NI \\
+T-6-S & Verificare che il sistema mostri un messaggio di errore appropriato quando si tenta il login con una password errata. & RF-OB-1 & NI \\
 \hline
 \rowcolor{white}
-T-7-S & Verificare che il sistema mostri un messaggio di errore login con campi vuoti appropriato. & RF-OB-1 & NI \\
+T-7-S & Verificare che il sistema mostri un messaggio di errore appropriato quando si tenta il login lasciando i campi vuoti. & RF-OB-1 & NI \\
 \hline
 \rowcolor{gray!20}
-T-8-S & Verificare che l'utente possa effettuare reindirizzamento dopo login successo secondo le specifiche. & RF-OB-1 & NI \\
+T-8-S & Verificare che l'utente venga reindirizzato correttamente alla pagina principale dopo un login effettuato con successo. & RF-OB-1 & NI \\
 \hline
 \rowcolor{white}
-T-9-S & Verificare che il sistema gestisca correttamente persistenza sessione dopo ricaricamento pagina. & RF-OB-1 & NI \\
+T-9-S & Verificare che la sessione rimanga attiva e consistente dopo il ricaricamento della pagina. & RF-OB-1 & NI \\
 \hline
 \rowcolor{gray!20}
-T-10-S & Verificare che l'utente possa effettuare impossibilità accesso pagina login se già autenticato secondo le specifiche. & RF-OB-1 & NI \\
+T-10-S & Verificare che un utente già autenticato non possa accedere nuovamente alla pagina di login. & RF-OB-1 & NI \\
 \hline
 \rowcolor{white}
-T-11-S & Verificare che il sistema permetta la corretta visualizzazione pagina registrazione. & RF-OB-2 & NI \\
+T-11-S & Verificare che la pagina di registrazione venga visualizzata correttamente. & RF-OB-2 & NI \\
 \hline
 \rowcolor{gray!20}
-T-12-S & Verificare che il sistema gestisca correttamente registrazione con dati validi. & RF-OB-2 & NI \\
+T-12-S & Verificare che la procedura di registrazione si completi con successo inserendo dati validi. & RF-OB-2 & NI \\
 \hline
 \rowcolor{white}
-T-13-S & Verificare che il sistema mostri un messaggio di errore registrazione email già in uso appropriato. & RF-OB-2 & NI \\
+T-13-S & Verificare che il sistema impedisca la registrazione e mostri un errore se l'email inserita è già associata a un account esistente. & RF-OB-2 & NI \\
 \hline
 \rowcolor{gray!20}
-T-14-S & Verificare che il sistema mostri un messaggio di errore registrazione password troppo corta appropriato. & RF-OB-2 & NI \\
+T-14-S & Verificare che il sistema rifiuti la registrazione e mostri un errore se la password scelta è troppo breve. & RF-OB-2 & NI \\
 \hline
 \rowcolor{white}
-T-15-S & Verificare che il sistema mostri un messaggio di errore registrazione campi obbligatori mancanti appropriato. & RF-OB-2 & NI \\
+T-15-S & Verificare che il sistema impedisca la registrazione e segnali l'errore se uno o più campi obbligatori non vengono compilati. & RF-OB-2 & NI \\
 \hline
 \rowcolor{gray!20}
-T-16-S & Verificare che l'utente venga disconnesso correttamente durante logout utente. & RF-OB-1 & NI \\
+T-16-S & Verificare che l'utente venga disconnesso correttamente dopo aver effettuato il logout. & RF-OB-1 & NI \\
 \hline
 \rowcolor{white}
-T-17-S & Verificare che l'utente venga disconnesso correttamente durante invalidazione sessione dopo logout. & RF-OB-1 & NI \\
+T-17-S & Verificare che la sessione venga invalidata correttamente dopo il logout, impedendo accessi successivi. & RF-OB-1 & NI \\
 \hline
 \rowcolor{gray!20}
-T-18-S & Verificare che l'utente possa effettuare impossibilità accesso area riservata dopo logout secondo le specifiche. & RF-OB-1 & NI \\
+T-18-S & Verificare che l'accesso alle aree riservate venga negato dopo aver effettuato il logout. & RF-OB-1 & NI \\
 \hline
 \rowcolor{white}
-T-19-S & Verificare che l'utente possa effettuare avvio walkthrough al primo accesso secondo le specifiche. & RF-OB-3 & NI \\
+T-19-S & Verificare che il walkthrough interattivo si avvii automaticamente al primo accesso dell'utente. & RF-OB-3 & NI \\
 \hline
+
 \rowcolor{gray!20}
-T-20-S & Verificare che il sistema gestisca correttamente navigazione avanti nel walkthrough. & RF-OB-3 & NI \\
+T-22-S & Verificare che il sistema permetta di chiudere correttamente il walkthrough. & RF-OB-3 & NI \\
 \hline
 \rowcolor{white}
-T-21-S & Verificare che il sistema gestisca correttamente navigazione indietro nel walkthrough. & RF-OB-3 & NI \\
+T-23-S & Verificare che l'utente possa saltare il walkthrough se desidera non completarlo. & RF-OB-4 & NI \\
 \hline
 \rowcolor{gray!20}
-T-22-S & Verificare che il sistema gestisca correttamente chiusura walkthrough. & RF-OB-3 & NI \\
+T-24-S & Verificare che il walkthrough non venga riproposto automaticamente agli accessi successivi al primo. & RF-OB-3 & NI \\
 \hline
 \rowcolor{white}
-T-23-S & Verificare che il sistema gestisca correttamente possibilità di saltare il walkthrough. & RF-OB-4 & NI \\
+T-25-S & Verificare che il menu di navigazione principale venga visualizzato correttamente. & RF-OB-3 & NI \\
 \hline
 \rowcolor{gray!20}
-T-24-S & Verificare che il sistema gestisca correttamente non riproposizione walkthrough agli accessi successivi. & RF-OB-3 & NI \\
+T-26-S & Verificare che la navigazione tra le sezioni principali tramite il menu funzioni correttamente. & RF-OB-3 & NI \\
 \hline
 \rowcolor{white}
-T-25-S & Verificare che il sistema permetta la corretta visualizzazione menu di navigazione principale. & RF-OB-3 & NI \\
+T-27-S & Verificare che i dati del profilo utente vengano visualizzati correttamente. & RF-OB-37 & NI \\
 \hline
 \rowcolor{gray!20}
-T-26-S & Verificare che il sistema gestisca correttamente navigazione tra le sezioni principali tramite menu. & RF-OB-3 & NI \\
+T-28-S & Verificare che la modifica del nome utente venga salvata correttamente e sia visibile nel profilo. & RF-OB-37 & NI \\
 \hline
 \rowcolor{white}
-T-27-S & Verificare che il sistema permetta la corretta visualizzazione dati profilo utente. & RF-OB-37 & NI \\
+T-29-S & Verificare che le modifiche apportate al profilo siano persistenti dopo il salvataggio. & RF-OB-37 & NI \\
 \hline
 \rowcolor{gray!20}
-T-28-S & Verificare che le modifiche apportate durante modifica nome utente siano salvate e visibili. & RF-OB-37 & NI \\
+T-30-S & Verificare che l'annullamento delle modifiche al profilo ripristini i dati precedenti. & RF-OB-37 & NI \\
 \hline
 \rowcolor{white}
-T-29-S & Verificare che i dati siano persistiti correttamente durante salvataggio modifiche profilo. & RF-OB-37 & NI \\
+T-31-S & Verificare che il sistema impedisca il salvataggio e mostri un errore se il nome viene lasciato vuoto. & RF-OB-37 & NI \\
 \hline
 \rowcolor{gray!20}
-T-30-S & Verificare che il sistema gestisca correttamente annullamento modifiche profilo. & RF-OB-37 & NI \\
+T-32-S & Verificare che la modifica dell'indirizzo email venga salvata correttamente e aggiornata nel profilo. & RF-OB-37 & NI \\
 \hline
 \rowcolor{white}
-T-31-S & Verificare che il sistema mostri un messaggio di errore modifica con nome vuoto appropriato. & RF-OB-37 & NI \\
+T-33-S & Verificare che venga inviata un'email di conferma al nuovo indirizzo dopo la richiesta di modifica. & RF-OB-37 & NI \\
 \hline
 \rowcolor{gray!20}
-T-32-S & Verificare che le modifiche apportate durante modifica email utente siano salvate e visibili. & RF-OB-37 & NI \\
+T-34-S & Verificare che la procedura di cambio password venga completata correttamente. & RF-OB-37 & NI \\
 \hline
 \rowcolor{white}
-T-33-S & Verificare che il sistema gestisca correttamente invio email conferma cambio indirizzo. & RF-OB-37 & NI \\
+T-35-S & Verificare che il sistema impedisca il cambio password se la vecchia password inserita non è corretta. & RF-OB-37 & NI \\
 \hline
 \rowcolor{gray!20}
-T-34-S & Verificare che il sistema gestisca correttamente cambio password account. & RF-OB-37 & NI \\
+T-36-S & Verificare che l'eliminazione dell'account rimuova definitivamente tutti i dati dell'utente dal sistema. & RF-OB-37 & NI \\
 \hline
 \rowcolor{white}
-T-35-S & Verificare che il sistema mostri un messaggio di errore cambio password con vecchia password errata appropriato. & RF-OB-37 & NI \\
+T-37-S & Verificare che il sistema richieda una conferma esplicita prima di procedere con l'eliminazione dell'account. & RF-OB-37 & NI \\
 \hline
 \rowcolor{gray!20}
-T-36-S & Verificare che il sistema completi eliminazione account rimuovendo i dati definitivamente. & RF-OB-37 & NI \\
+T-38-S & Verificare che la lista dei contatti venga visualizzata correttamente anche quando è vuota. & RF-OB-9 & NI \\
 \hline
 \rowcolor{white}
-T-37-S & Verificare che il sistema completi richiesta conferma eliminazione account rimuovendo i dati definitivamente. & RF-OB-37 & NI \\
+T-39-S & Verificare che il pulsante per aggiungere un nuovo contatto sia visibile e accessibile. & RF-OB-12 & NI \\
 \hline
 \rowcolor{gray!20}
-T-38-S & Verificare che il sistema permetta la corretta visualizzazione lista contatti vuota. & RF-OB-9 & NI \\
+T-40-S & Verificare che il modulo per l'aggiunta di un nuovo contatto si apra correttamente. & RF-OB-12 & NI \\
 \hline
 \rowcolor{white}
-T-39-S & Verificare che il sistema permetta la corretta visualizzazione pulsante aggiungi contatto. & RF-OB-12 & NI \\
+T-41-S & Verificare che il sistema accetti e validi correttamente l'inserimento del nome del contatto. & RF-OB-12 & NI \\
 \hline
 \rowcolor{gray!20}
-T-40-S & Verificare che il sistema gestisca correttamente apertura form aggiunta contatto. & RF-OB-12 & NI \\
+T-42-S & Verificare che il sistema accetti e validi correttamente l'inserimento del cognome del contatto. & RF-OB-12 & NI \\
 \hline
 \rowcolor{white}
-T-41-S & Verificare che il sistema accetti l'inserimento nome contatto e lo validi correttamente. & RF-OB-12 & NI \\
+T-43-S & Verificare che il sistema accetti e validi correttamente l'inserimento di un numero di telefono. & RF-OB-12 & NI \\
 \hline
 \rowcolor{gray!20}
-T-42-S & Verificare che il sistema accetti l'inserimento cognome contatto e lo validi correttamente. & RF-OB-12 & NI \\
+T-44-S & Verificare che il sistema accetti e validi correttamente l'inserimento di un indirizzo email per il contatto. & RF-OB-12 & NI \\
 \hline
 \rowcolor{white}
-T-43-S & Verificare che il sistema accetti l'inserimento numero telefono valido e lo validi correttamente. & RF-OB-12 & NI \\
+T-45-S & Verificare che i dati del nuovo contatto vengano salvati e persistiti correttamente nel sistema. & RF-OB-12 & NI \\
 \hline
 \rowcolor{gray!20}
-T-44-S & Verificare che il sistema accetti l'inserimento email valida e lo validi correttamente. & RF-OB-12 & NI \\
+T-46-S & Verificare che il sistema impedisca il salvataggio e mostri un errore se il nome del contatto è mancante. & RF-OB-12 & NI \\
 \hline
 \rowcolor{white}
-T-45-S & Verificare che i dati siano persistiti correttamente durante salvataggio nuovo contatto. & RF-OB-12 & NI \\
+T-47-S & Verificare che il sistema impedisca il salvataggio e mostri un errore se mancano sia il numero telefono che l'email. & RF-OB-12 & NI \\
 \hline
 \rowcolor{gray!20}
-T-46-S & Verificare che il sistema mostri un messaggio di errore salvataggio contatto senza nome appropriato. & RF-OB-12 & NI \\
+T-48-S & Verificare che il sistema segnali un errore se il formato del numero di telefono inserito non è valido. & RF-OB-14 & NI \\
 \hline
 \rowcolor{white}
-T-47-S & Verificare che il sistema mostri un messaggio di errore salvataggio contatto senza numero né email appropriato. & RF-OB-12 & NI \\
+T-49-S & Verificare che il sistema segnali un errore se il formato dell'indirizzo email inserito non è valido. & RF-OB-15 & NI \\
 \hline
 \rowcolor{gray!20}
-T-48-S & Verificare che il sistema mostri un messaggio di errore numero telefono formato non valido appropriato. & RF-OB-14 & NI \\
+T-50-S & Verificare che il nuovo contatto aggiunto appaia correttamente nella lista dei contatti. & RF-OB-9 & NI \\
 \hline
 \rowcolor{white}
-T-49-S & Verificare che il sistema mostri un messaggio di errore email formato non valido appropriato. & RF-OB-15 & NI \\
+T-51-S & Verificare che la lista dei contatti venga ordinata correttamente secondo i criteri stabiliti. & RF-OB-9 & NI \\
 \hline
 \rowcolor{gray!20}
-T-50-S & Verificare che il sistema permetta la corretta visualizzazione contatto aggiunto in lista. & RF-OB-9 & NI \\
+T-52-S & Verificare che la scheda con i dettagli del contatto selezionato si apra correttamente. & RF-OB-11 & NI \\
 \hline
 \rowcolor{white}
-T-51-S & Verificare che il sistema gestisca correttamente ordinamento lista contatti. & RF-OB-9 & NI \\
+T-53-S & Verificare che la modifica del nome del contatto venga salvata e visualizzata correttamente. & RF-OB-16 & NI \\
 \hline
 \rowcolor{gray!20}
-T-52-S & Verificare che il sistema gestisca correttamente apertura dettagli contatto. & RF-OB-11 & NI \\
+T-54-S & Verificare che la modifica del numero di telefono del contatto venga salvata e visualizzata correttamente. & RF-OB-16 & NI \\
 \hline
 \rowcolor{white}
-T-53-S & Verificare che le modifiche apportate durante modifica nome contatto siano salvate e visibili. & RF-OB-16 & NI \\
+T-55-S & Verificare che tutte le modifiche apportate ai dati del contatto vengano salvate correttamente. & RF-OB-16 & NI \\
 \hline
 \rowcolor{gray!20}
-T-54-S & Verificare che le modifiche apportate durante modifica numero contatto siano salvate e visibili. & RF-OB-16 & NI \\
+T-56-S & Verificare che l'eliminazione di un contatto rimuova definitivamente i suoi dati dal sistema. & RF-OB-17 & NI \\
 \hline
 \rowcolor{white}
-T-55-S & Verificare che i dati siano persistiti correttamente durante salvataggio modifiche contatto. & RF-OB-16 & NI \\
+T-57-S & Verificare che il sistema richieda una conferma esplicita prima di eliminare definitivamente un contatto. & RF-OB-18 & NI \\
 \hline
 \rowcolor{gray!20}
-T-56-S & Verificare che il sistema completi eliminazione contatto rimuovendo i dati definitivamente. & RF-OB-17 & NI \\
+T-58-S & Verificare che l'annullamento dell'operazione di eliminazione lasci il contatto inalterato. & RF-OB-19 & NI \\
 \hline
 \rowcolor{white}
-T-57-S & Verificare che il sistema completi conferma eliminazione contatto rimuovendo i dati definitivamente. & RF-OB-18 & NI \\
+T-59-S & Verificare che il sistema impedisca l'aggiunta di contatti oltre il limite massimo consentito. & RF-OB-12 & NI \\
 \hline
 \rowcolor{gray!20}
-T-58-S & Verificare che il sistema completi annullamento eliminazione contatto rimuovendo i dati definitivamente. & RF-OB-19 & NI \\
+T-60-S & Verificare che il sistema richieda l'inserimento della password per accedere al diario personale. & RF-OB-20 & NI \\
 \hline
 \rowcolor{white}
-T-59-S & Verificare che il sistema gestisca correttamente limite massimo numero contatti. & RF-OB-12 & NI \\
+T-61-S & Verificare che l'accesso al diario sia consentito inserendo la password corretta. & RF-OB-20 & NI \\
 \hline
 \rowcolor{gray!20}
-T-60-S & Verificare che l'utente possa effettuare richiesta password accesso diario secondo le specifiche. & RF-OB-20 & NI \\
+T-62-S & Verificare che il sistema mostri un messaggio di errore appropriato in caso di password errata per il diario. & RF-OB-20 & NI \\
 \hline
 \rowcolor{white}
-T-61-S & Verificare che l'utente possa effettuare accesso diario con password corretta secondo le specifiche. & RF-OB-20 & NI \\
+T-63-S & Verificare che il sistema blocchi temporaneamente l'accesso dopo un numero eccessivo di tentativi errati. & RF-OB-20 & NI \\
 \hline
 \rowcolor{gray!20}
-T-62-S & Verificare che il sistema mostri un messaggio di errore accesso diario password errata appropriato. & RF-OB-20 & NI \\
+T-64-S & Verificare che l'utente possa accedere al diario fittizio inserendo la password esca. & RF-OB-20 & NI \\
 \hline
 \rowcolor{white}
-T-63-S & Verificare che il sistema gestisca correttamente blocco temporaneo dopo tot tentativi errati. & RF-OB-20 & NI \\
+T-65-S & Verificare che il diario fittizio mostri correttamente i contenuti falsi preimpostati. & RF-OB-20 & NI \\
 \hline
 \rowcolor{gray!20}
-T-64-S & Verificare che l'utente possa effettuare accesso diario fittizio con password fake secondo le specifiche. & RF-OB-20 & NI \\
+T-66-S & Verificare che la lista delle note del diario reale venga visualizzata correttamente. & RF-OB-20 & NI \\
 \hline
 \rowcolor{white}
-T-65-S & Verificare che il sistema permetta la corretta visualizzazione contenuti fittizi nel diario fake. & RF-OB-20 & NI \\
+T-67-S & Verificare che venga mostrato un messaggio appropriato quando la lista delle note è vuota. & RF-OB-20 & NI \\
 \hline
 \rowcolor{gray!20}
-T-66-S & Verificare che il sistema permetta la corretta visualizzazione lista note diario reale. & RF-OB-20 & NI \\
+T-68-S & Verificare che la creazione di una nuova nota testuale avvenga correttamente. & RF-OB-20 & NI \\
 \hline
 \rowcolor{white}
-T-67-S & Verificare che il sistema permetta la corretta visualizzazione lista vuota se nessuna nota. & RF-OB-20 & NI \\
+T-69-S & Verificare che il sistema accetti e validi correttamente l'inserimento del titolo della nota. & RF-OB-20 & NI \\
 \hline
 \rowcolor{gray!20}
-T-68-S & Verificare che il sistema gestisca correttamente creazione nuova nota testuale. & RF-OB-20 & NI \\
+T-70-S & Verificare che il sistema accetti e validi correttamente l'inserimento del contenuto della nota. & RF-OB-20 & NI \\
 \hline
 \rowcolor{white}
-T-69-S & Verificare che il sistema accetti l'inserimento titolo nota e lo validi correttamente. & RF-OB-20 & NI \\
+T-71-S & Verificare che la nota appena creata venga salvata correttamente nel sistema. & RF-OB-20 & NI \\
 \hline
 \rowcolor{gray!20}
-T-70-S & Verificare che il sistema accetti l'inserimento corpo nota e lo validi correttamente. & RF-OB-20 & NI \\
+T-72-S & Verificare che la nuova nota salvata compaia correttamente nella lista delle note. & RF-OB-20 & NI \\
 \hline
 \rowcolor{white}
-T-71-S & Verificare che i dati siano persistiti correttamente durante salvataggio nota. & RF-OB-20 & NI \\
+T-73-S & Verificare che le modifiche apportate a una nota esistente vengano salvate correttamente. & RF-OB-20 & NI \\
 \hline
 \rowcolor{gray!20}
-T-72-S & Verificare che il sistema permetta la corretta visualizzazione nota creata in lista. & RF-OB-20 & NI \\
+T-74-S & Verificare che l'eliminazione di una nota rimuova definitivamente i suoi dati dal sistema. & RF-OB-20 & NI \\
 \hline
 \rowcolor{white}
-T-73-S & Verificare che le modifiche apportate durante modifica nota esistente siano salvate e visibili. & RF-OB-20 & NI \\
+T-75-S & Verificare che la ricerca delle note per titolo restituisca i risultati corretti. & RF-OB-20 & NI \\
 \hline
 \rowcolor{gray!20}
-T-74-S & Verificare che il sistema completi eliminazione nota rimuovendo i dati definitivamente. & RF-OB-20 & NI \\
+T-76-S & Verificare che la ricerca delle note per data restituisca i risultati corretti. & RF-OB-20 & NI \\
 \hline
 \rowcolor{white}
-T-75-S & Verificare che il sistema gestisca correttamente ricerca note per titolo. & RF-OB-20 & NI \\
+T-77-S & Verificare che il sistema permetta di allegare correttamente un'immagine alla nota. & RF-OB-20 & NI \\
 \hline
 \rowcolor{gray!20}
-T-76-S & Verificare che il sistema gestisca correttamente ricerca note per data. & RF-OB-20 & NI \\
+T-78-S & Verificare che il sistema mostri un errore se si tenta di caricare un formato di file non supportato. & RF-OB-20 & NI \\
 \hline
 \rowcolor{white}
-T-77-S & Verificare che il sistema accetti l'inserimento allegato immagine a nota e lo validi correttamente. & RF-OB-20 & NI \\
+T-79-S & Verificare che il sistema mostri un errore se il file allegato supera la dimensione massima consentita. & RF-OB-20 & NI \\
 \hline
 \rowcolor{gray!20}
-T-78-S & Verificare che il sistema mostri un messaggio di errore caricamento file non supportato appropriato. & RF-OB-20 & NI \\
+T-80-S & Verificare che l'immagine allegata alla nota venga visualizzata correttamente. & RF-OB-20 & NI \\
 \hline
 \rowcolor{white}
-T-79-S & Verificare che il sistema mostri un messaggio di errore caricamento file troppo grande appropriato. & RF-OB-20 & NI \\
+T-81-S & Verificare che la rimozione di un allegato dalla nota avvenga correttamente. & RF-OB-20 & NI \\
 \hline
 \rowcolor{gray!20}
-T-80-S & Verificare che il sistema permetta la corretta visualizzazione allegato immagine. & RF-OB-20 & NI \\
+T-82-S & Verificare che il sistema permetta di registrare e salvare correttamente una nota vocale. & RF-OB-20 & NI \\
 \hline
 \rowcolor{white}
-T-81-S & Verificare che il sistema gestisca correttamente rimozione allegato da nota. & RF-OB-20 & NI \\
+T-83-S & Verificare che la riproduzione della nota vocale funzioni correttamente. & RF-OB-20 & NI \\
 \hline
 \rowcolor{gray!20}
-T-82-S & Verificare che il sistema accetti l'inserimento nota vocale e lo validi correttamente. & RF-OB-20 & NI \\
+T-84-S & Verificare che l'accesso alla sezione Chatbot con l'AI avvenga correttamente. & RF-OB-35 & NI \\
 \hline
 \rowcolor{white}
-T-83-S & Verificare che il sistema gestisca correttamente riproduzione nota vocale. & RF-OB-20 & NI \\
+T-85-S & Verificare che il messaggio testuale inviato all'AI venga elaborato correttamente. & RF-OB-35 & NI \\
 \hline
 \rowcolor{gray!20}
-T-84-S & Verificare che l'utente possa effettuare accesso sezione Chatbot secondo le specifiche. & RF-OB-35 & NI \\
+T-86-S & Verificare che la risposta generata dall'AI venga ricevuta e visualizzata correttamente. & RF-OB-35 & NI \\
 \hline
 \rowcolor{white}
-T-85-S & Verificare che il sistema gestisca correttamente invio messaggio testuale all'AI. & RF-OB-35 & NI \\
+T-87-S & Verificare che l'indicatore di digitazione sia visibile mentre l'AI sta elaborando la risposta. & RF-OB-35 & NI \\
 \hline
 \rowcolor{gray!20}
-T-86-S & Verificare che il sistema gestisca correttamente ricezione risposta dall'AI. & RF-OB-35 & NI \\
+T-88-S & Verificare che il sistema impedisca l'invio di messaggi vuoti al chatbot. & RF-OB-35 & NI \\
 \hline
 \rowcolor{white}
-T-87-S & Verificare che il sistema permetta la corretta visualizzazione indicatore di digitazione. & RF-OB-35 & NI \\
+T-89-S & Verificare che venga mostrato un errore appropriato in caso di mancata connessione con il servizio AI. & RF-OB-35 & NI \\
 \hline
 \rowcolor{gray!20}
-T-88-S & Verificare che il sistema gestisca correttamente impossibilità invio messaggio vuoto. & RF-OB-35 & NI \\
+T-90-S & Verificare che lo storico delle conversazioni recenti venga visualizzato correttamente. & RF-OB-35 & NI \\
 \hline
 \rowcolor{white}
-T-89-S & Verificare che il sistema mostri un messaggio di gestione errore connessione chat appropriato. & RF-OB-35 & NI \\
+T-91-S & Verificare che sia possibile avviare correttamente una nuova conversazione. & RF-OB-35 & NI \\
 \hline
 \rowcolor{gray!20}
-T-90-S & Verificare che il sistema permetta la corretta visualizzazione storico chat recenti. & RF-OB-35 & NI \\
+T-92-S & Verificare che l'eliminazione di una conversazione rimuova definitivamente i suoi dati. & RF-OB-35 & NI \\
 \hline
 \rowcolor{white}
-T-91-S & Verificare che il sistema gestisca correttamente creazione nuova conversazione. & RF-OB-35 & NI \\
+T-93-S & Verificare che il sistema gestisca correttamente il cambio di contesto in "Detective delle Relazioni". & RF-OB-35 & NI \\
 \hline
 \rowcolor{gray!20}
-T-92-S & Verificare che il sistema completi eliminazione conversazione rimuovendo i dati definitivamente. & RF-OB-35 & NI \\
+T-94-S & Verificare che l'AI fornisca risposte coerenti con il contesto "Detective delle Relazioni". & RF-OB-35 & NI \\
 \hline
 \rowcolor{white}
-T-93-S & Verificare che il sistema gestisca correttamente cambio contesto a 'Detective delle Relazioni'. & RF-OB-35 & NI \\
+T-95-S & Verificare che il sistema gestisca correttamente il cambio di contesto in "Specchio Intelligente". & RF-OB-35 & NI \\
 \hline
 \rowcolor{gray!20}
-T-94-S & Verificare che il sistema gestisca correttamente risposta coerente contesto Detective. & RF-OB-35 & NI \\
+T-96-S & Verificare che l'AI fornisca risposte coerenti con il contesto "Specchio Intelligente". & RF-OB-35 & NI \\
 \hline
 \rowcolor{white}
-T-95-S & Verificare che il sistema gestisca correttamente cambio contesto a 'Specchio Intelligente'. & RF-OB-35 & NI \\
+T-97-S & Verificare che i messaggi della chat vengano mantenuti passando da una schermata all'altra. & RF-OB-35 & NI \\
 \hline
 \rowcolor{gray!20}
-T-96-S & Verificare che il sistema gestisca correttamente risposta coerente contesto Specchio. & RF-OB-35 & NI \\
+T-98-S & Verificare che la chat scorra automaticamente all'ultimo messaggio ricevuto o inviato. & RF-OB-35 & NI \\
 \hline
 \rowcolor{white}
-T-97-S & Verificare che il sistema gestisca correttamente persistenza messaggi cambiando schermata. & RF-OB-35 & NI \\
+T-99-S & Verificare che sia possibile copiare correttamente il testo dei messaggi del bot. & RF-OB-35 & NI \\
 \hline
 \rowcolor{gray!20}
-T-98-S & Verificare che il sistema gestisca correttamente scroll automatico all'ultimo messaggio. & RF-OB-35 & NI \\
+T-100-S & Verificare che il pulsante SOS rapido sia visibile e facilmente accessibile nell'interfaccia. & RF-OB-33 & NI \\
 \hline
 \rowcolor{white}
-T-99-S & Verificare che il sistema gestisca correttamente copia testo messaggio bot. & RF-OB-35 & NI \\
+T-101-S & Verificare che l'attivazione della procedura di SOS avvenga correttamente. & RF-OB-33 & NI \\
 \hline
 \rowcolor{gray!20}
-T-100-S & Verificare che il sistema permetta la corretta visualizzazione pulsante SOS rapido. & RF-OB-33 & NI \\
+T-102-S & Verificare che, in caso di SOS, vengano inviati correttamente SMS ed email ai contatti fidati. & RF-OB-33 & NI \\
 \hline
 \rowcolor{white}
-T-101-S & Verificare che il sistema gestisca correttamente attivazione SOS. & RF-OB-33 & NI \\
+T-103-S & Verificare che l'utente riceva una notifica di conferma avvenuto invio della richiesta di SOS. & RF-OB-33 & NI \\
 \hline
 \rowcolor{gray!20}
-T-102-S & Verificare che il sistema gestisca correttamente invio SMS/Email ai contatti fidati. & RF-OB-33 & NI \\
+T-104-S & Verificare che il sistema mostri un errore appropriato se la rete non è disponibile durante l'invio dell'SOS. & RF-OB-33 & NI \\
 \hline
 \rowcolor{white}
-T-103-S & Verificare che il sistema gestisca correttamente notifica avvenuto invio SOS. & RF-OB-33 & NI \\
+T-105-S & Verificare che l'attivazione manuale dell'allarme sonoro funzioni correttamente. & RF-OB-33 & NI \\
 \hline
 \rowcolor{gray!20}
-T-104-S & Verificare che il sistema mostri un messaggio di gestione errore invio SOS (no rete) appropriato. & RF-OB-33 & NI \\
+T-106-S & Verificare che la disattivazione dell'allarme sonoro avvenga correttamente. & RF-OB-33 & NI \\
 \hline
 \rowcolor{white}
-T-105-S & Verificare che il sistema gestisca correttamente attivazione allarme sonoro manuale. & RF-OB-33 & NI \\
+T-107-S & Verificare che la configurazione del timer per il 'Dead Man Switch' venga salvata correttamente. & RF-OB-33 & NI \\
 \hline
 \rowcolor{gray!20}
-T-106-S & Verificare che il sistema gestisca correttamente disattivazione allarme sonoro. & RF-OB-33 & NI \\
+T-108-S & Verificare che il conto alla rovescia di inattività si avvii correttamente secondo le impostazioni. & RF-OB-33 & NI \\
 \hline
 \rowcolor{white}
-T-107-S & Verificare che il sistema gestisca correttamente configurazione timer Dead Man's Switch. & RF-OB-33 & NI \\
+T-109-S & Verificare che il sistema invii una notifica di pre-allarme prima della scadenza del timer di inattività. & RF-OB-33 & NI \\
 \hline
 \rowcolor{gray!20}
-T-108-S & Verificare che il sistema gestisca correttamente avvio countdown inattività. & RF-OB-33 & NI \\
+T-110-S & Verificare che, allo scadere del timer, venga inviato automaticamente un alert ai contatti fidati. & RF-OB-33 & NI \\
 \hline
 \rowcolor{white}
-T-109-S & Verificare che il sistema gestisca correttamente notifica pre-allarme inattività. & RF-OB-33 & NI \\
+T-111-S & Verificare che l'interazione dell'utente col sistema resetti correttamente il timer di inattività. & RF-OB-33 & NI \\
 \hline
 \rowcolor{gray!20}
-T-110-S & Verificare che il sistema gestisca correttamente invio alert automatico dopo scadenza timer. & RF-OB-33 & NI \\
+T-112-S & Verificare che l'accesso alla mappa dei luoghi sicuri avvenga correttamente. & RF-OB-82 & NI \\
 \hline
 \rowcolor{white}
-T-111-S & Verificare che il sistema gestisca correttamente reset timer tramite interazione utente. & RF-OB-33 & NI \\
+T-113-S & Verificare che la posizione corrente dell'utente venga visualizzata correttamente sulla mappa. & RF-OB-82 & NI \\
 \hline
 \rowcolor{gray!20}
-T-112-S & Verificare che l'utente possa effettuare accesso mappa luoghi sicuri secondo le specifiche. & RF-OB-82 & NI \\
+T-114-S & Verificare che i marcatori dei luoghi sicuri vengano visualizzati correttamente sulla mappa. & RF-OB-82 & NI \\
 \hline
 \rowcolor{white}
-T-113-S & Verificare che il sistema permetta la corretta visualizzazione posizione utente su mappa. & RF-OB-82 & NI \\
+T-115-S & Verificare che cliccando su un marcatore vengano mostrati i dettagli del luogo sicuro. & RF-OB-82 & NI \\
 \hline
 \rowcolor{gray!20}
-T-114-S & Verificare che il sistema permetta la corretta visualizzazione marker luoghi sicuri. & RF-OB-82 & NI \\
+T-116-S & Verificare che l'indirizzo del luogo sicuro sia visibile e corretto nei dettagli. & RF-OB-82 & NI \\
 \hline
 \rowcolor{white}
-T-115-S & Verificare che il sistema gestisca correttamente click su marker per dettagli. & RF-OB-82 & NI \\
+T-117-S & Verificare che il sistema apra correttamente l'applicazione di navigazione esterna per le indicazioni. & RF-OB-83 & NI \\
 \hline
 \rowcolor{gray!20}
-T-116-S & Verificare che il sistema permetta la corretta visualizzazione indirizzo luogo sicuro. & RF-OB-82 & NI \\
+T-118-S & Verificare che venga mostrato un errore appropriato se l'apertura della mappa esterna fallisce. & RF-OB-84 & NI \\
 \hline
 \rowcolor{white}
-T-117-S & Verificare che il sistema gestisca correttamente apertura indicazioni stradali esterne. & RF-OB-83 & NI \\
+T-119-S & Verificare che il filtro dei luoghi per tipologia funzioni correttamente. & RF-OB-82 & NI \\
 \hline
 \rowcolor{gray!20}
-T-118-S & Verificare che il sistema mostri un messaggio di gestione errore apertura mappa esterna appropriato. & RF-OB-84 & NI \\
+T-120-S & Verificare che la mappa si ricarichi correttamente al variare della connessione o della posizione. & RF-OB-82 & NI \\
 \hline
 \rowcolor{white}
-T-119-S & Verificare che il sistema gestisca correttamente filtro luoghi per tipologia. & RF-OB-82 & NI \\
+T-121-S & Verificare che i luoghi vicini vengano raggruppati correttamente in cluster sulla mappa. & RF-OB-82 & NI \\
 \hline
 \rowcolor{gray!20}
-T-120-S & Verificare che il sistema gestisca correttamente ricaricamento mappa al cambio connessione. & RF-OB-82 & NI \\
+T-122-S & Verificare che la mappa non visualizzi luoghi segnalati come pericolosi. & RF-OB-82 & NI \\
 \hline
 \rowcolor{white}
-T-121-S & Verificare che il sistema permetta la corretta visualizzazione cluster luoghi vicini. & RF-OB-82 & NI \\
+T-123-S & Verificare che la posizione dell'utente si aggiorni in tempo reale sulla mappa. & RF-OB-82 & NI \\
 \hline
 \rowcolor{gray!20}
-T-122-S & Verificare che il sistema gestisca correttamente assenza luoghi pericolosi nella mappa. & RF-OB-82 & NI \\
+T-124-S & Verificare che il sistema gestisca correttamente la disattivazione del GPS richiedendo l'inserimento manuale o un fallback. & RF-OB-82 & NI \\
 \hline
 \rowcolor{white}
-T-123-S & Verificare che il sistema gestisca correttamente aggiornamento posizione in tempo reale. & RF-OB-82 & NI \\
+T-125-S & Verificare che la ricerca di un luogo sicuro per nome restituisca i risultati corretti. & RF-OB-82 & NI \\
 \hline
 \rowcolor{gray!20}
-T-124-S & Verificare che il sistema gestisca correttamente disattivazione GPS e fallback manuale. & RF-OB-82 & NI \\
+T-126-S & Verificare che gli orari di apertura del luogo sicuro vengano visualizzati correttamente. & RF-OB-82 & NI \\
 \hline
 \rowcolor{white}
-T-125-S & Verificare che il sistema gestisca correttamente ricerca luogo sicuro per nome. & RF-OB-82 & NI \\
+T-127-S & Verificare che i contatti telefonici del luogo sicuro siano visibili e corretti. & RF-OB-82 & NI \\
 \hline
 \rowcolor{gray!20}
-T-126-S & Verificare che il sistema permetta la corretta visualizzazione orari apertura luogo sicuro. & RF-OB-82 & NI \\
+T-128-S & Verificare che sia possibile avviare una chiamata diretta al luogo sicuro dall'applicazione. & RF-OB-82 & NI \\
 \hline
 \rowcolor{white}
-T-127-S & Verificare che il sistema permetta la corretta visualizzazione contatti telefonici luogo sicuro. & RF-OB-82 & NI \\
+T-129-S & Verificare che l'accesso alla sezione del materiale informativo avvenga correttamente. & RF-OB-52 & NI \\
 \hline
 \rowcolor{gray!20}
-T-128-S & Verificare che il sistema gestisca correttamente chiamata diretta al luogo sicuro dall'app. & RF-OB-82 & NI \\
+T-130-S & Verificare che la lista degli articoli e video educativi venga visualizzata correttamente. & RF-OB-52 & NI \\
 \hline
 \rowcolor{white}
-T-129-S & Verificare che l'utente possa effettuare accesso sezione materiale informativo secondo le specifiche. & RF-OB-52 & NI \\
+T-131-S & Verificare che il dettaglio di un articolo informativo si apra correttamente. & RF-OB-80 & NI \\
 \hline
 \rowcolor{gray!20}
-T-130-S & Verificare che il sistema permetta la corretta visualizzazione lista articoli/video. & RF-OB-52 & NI \\
+T-132-S & Verificare che la riproduzione dei video educativi funzioni correttamente. & RF-OB-52 & NI \\
 \hline
 \rowcolor{white}
-T-131-S & Verificare che il sistema gestisca correttamente apertura dettaglio articolo. & RF-OB-80 & NI \\
+T-133-S & Verificare che la ricerca all'interno del materiale informativo restituisca risultati corretti. & RF-OB-52 & NI \\
 \hline
 \rowcolor{gray!20}
-T-132-S & Verificare che il sistema gestisca correttamente riproduzione video educativo. & RF-OB-52 & NI \\
+T-134-S & Verificare che il sistema mostri un errore appropriato se il caricamento del materiale fallisce. & RF-OB-81 & NI \\
 \hline
 \rowcolor{white}
-T-133-S & Verificare che il sistema gestisca correttamente ricerca materiale informativo. & RF-OB-52 & NI \\
+T-135-S & Verificare che l'accesso alle impostazioni dell'applicazione avvenga correttamente. & RF-OB-14 & NI \\
 \hline
 \rowcolor{gray!20}
-T-134-S & Verificare che il sistema mostri un messaggio di gestione errore caricamento materiale appropriato. & RF-OB-81 & NI \\
+T-136-S & Verificare che il cambio del tema visivo (chiaro/scuro) venga applicato correttamente. & RF-OB-14 & NI \\
 \hline
 \rowcolor{white}
-T-135-S & Verificare che l'utente possa effettuare accesso impostazioni app secondo le specifiche. & RF-OB-14 & NI \\
+T-137-S & Verificare che la selezione della lingua dell'interfaccia venga applicata correttamente. & RF-OB-14 & NI \\
 \hline
 \rowcolor{gray!20}
-T-136-S & Verificare che il sistema gestisca correttamente cambio tema (chiaro/scuro). & RF-OB-14 & NI \\
+T-138-S & Verificare che la gestione dei permessi per le notifiche funzioni correttamente. & RF-OB-14 & NI \\
 \hline
 \rowcolor{white}
-T-137-S & Verificare che il sistema gestisca correttamente selezione lingua. & RF-OB-14 & NI \\
+T-139-S & Verificare che le informazioni sulla versione dell'app vengano visualizzate correttamente. & RF-OB-14 & NI \\
 \hline
 \rowcolor{gray!20}
-T-138-S & Verificare che il sistema gestisca correttamente gestione permessi notifiche. & RF-OB-14 & NI \\
+T-140-S & Verificare che i termini e le condizioni d'uso siano accessibili e leggibili. & RF-OB-14 & NI \\
 \hline
 \rowcolor{white}
-T-139-S & Verificare che il sistema permetta la corretta visualizzazione info versione app. & RF-OB-14 & NI \\
+T-141-S & Verificare che la funzionalità di camuffamento dell'icona dell'app si attivi correttamente. & RF-OB-14 & NI \\
 \hline
 \rowcolor{gray!20}
-T-140-S & Verificare che il sistema permetta la corretta visualizzazione termini e condizioni. & RF-OB-14 & NI \\
+T-142-S & Verificare che l'app mantenga il comportamento corretto quando viene messa in background. & RF-OB-1 & NI \\
 \hline
 \rowcolor{white}
-T-141-S & Verificare che il sistema gestisca correttamente camuffamento icona app. & RF-OB-14 & NI \\
+T-143-S & Verificare che l'app riprenda correttamente lo stato quando viene riaperta dal background. & RF-OB-1 & NI \\
 \hline
 \rowcolor{gray!20}
-T-142-S & Verificare che il sistema gestisca correttamente comportamento app in background. & RF-OB-1 & NI \\
+T-144-S & Verificare che l'app gestisca correttamente le situazioni di connettività instabile o assente. & RF-OB-1 & NI \\
 \hline
 \rowcolor{white}
-T-143-S & Verificare che il sistema gestisca correttamente ripresa app dal background. & RF-OB-1 & NI \\
+T-145-S & Verificare che il sistema gestisca correttamente i timeout delle richieste API. & RF-OB-1 & NI \\
 \hline
 \rowcolor{gray!20}
-T-144-S & Verificare che il sistema gestisca correttamente comportamento con connettività instabile. & RF-OB-1 & NI \\
+T-146-S & Verificare che i meccanismi di protezione contro SQL Injection siano efficaci. & RF-OB-1 & NI \\
 \hline
 \rowcolor{white}
-T-145-S & Verificare che il sistema gestisca correttamente gestione timeout richieste API. & RF-OB-1 & NI \\
+T-147-S & Verificare che i meccanismi di protezione contro attacchi XSS siano efficaci. & RF-OB-1 & NI \\
 \hline
 \rowcolor{gray!20}
-T-146-S & Verificare che il sistema gestisca correttamente protezione contro SQL Injection. & RF-OB-1 & NI \\
+T-148-S & Verificare che i dati in transito siano correttamente cifrati tramite protocollo HTTPS. & RF-OB-1 & NI \\
 \hline
 \rowcolor{white}
-T-147-S & Verificare che il sistema gestisca correttamente protezione contro XSS. & RF-OB-1 & NI \\
+T-149-S & Verificare che i dati sensibili memorizzati localmente siano correttamente cifrati. & RF-OB-1 & NI \\
 \hline
 \rowcolor{gray!20}
-T-148-S & Verificare che il sistema gestisca correttamente cifratura dati in transito (HTTPS). & RF-OB-1 & NI \\
+T-150-S & Verificare che il sistema impedisca la perdita di dati se lo spazio di archiviazione è pieno. & RF-OB-1 & NI \\
 \hline
 \rowcolor{white}
-T-149-S & Verificare che il sistema gestisca correttamente cifratura dati sensibili a riposo. & RF-OB-1 & NI \\
+T-151-S & Verificare che il sistema gestisca correttamente la negazione dei permessi a runtime. & RF-OB-1 & NI \\
 \hline
 \rowcolor{gray!20}
-T-150-S & Verificare che i dati siano persistiti correttamente durante salvataggio dati con storage dispositivo pieno. & RF-OB-1 & NI \\
+T-152-S & Verificare che il sistema richieda nuovamente i permessi se necessario per l'esecuzione. & RF-OB-1 & NI \\
 \hline
 \rowcolor{white}
-T-151-S & Verificare che il sistema gestisca correttamente gestione permessi negati runtime. & RF-OB-1 & NI \\
+T-153-S & Verificare che l'applicazione si comporti correttamente quando è attiva la modalità aereo. & RF-OB-1 & NI \\
 \hline
 \rowcolor{gray!20}
-T-152-S & Verificare che il sistema gestisca correttamente richiesta nuovamente permessi se necessari. & RF-OB-1 & NI \\
+T-154-S & Verificare che il sistema aggiorni automaticamente i dati al ripristino della connettività. & RF-OB-1 & NI \\
 \hline
 \rowcolor{white}
-T-153-S & Verificare che il sistema gestisca correttamente gestione modalità aereo attiva. & RF-OB-1 & NI \\
+T-155-S & Verificare che vengano visualizzati correttamente i placeholder per le immagini non caricate. & RF-OB-1 & NI \\
 \hline
 \rowcolor{gray!20}
-T-154-S & Verificare che il sistema gestisca correttamente aggiornamento dati al ripristino rete. & RF-OB-1 & NI \\
+T-156-S & Verificare che l'interfaccia sia compatibile con la navigazione tramite tastiera. & RQ-OB-11 & NI \\
 \hline
 \rowcolor{white}
-T-155-S & Verificare che il sistema permetta la corretta visualizzazione placeholder immagini non caricate. & RF-OB-1 & NI \\
+T-157-S & Verificare che l'ordine di tabulazione (tab order) segua una logica coerente e intuitiva. & RQ-OB-11 & NI \\
 \hline
 \rowcolor{gray!20}
-T-156-S & Verificare che il sistema gestisca correttamente compatibilità navigazione tramite tastiera. & RQ-OB-11 & NI \\
+T-158-S & Verificare che tutti gli elementi interattivi abbiano etichette appropriate per gli screen reader. & RQ-OB-11 & NI \\
 \hline
 \rowcolor{white}
-T-157-S & Verificare che il sistema gestisca correttamente ordine di tabulazione logico. & RQ-OB-11 & NI \\
+T-159-S & Verificare che il contrasto dei colori dell'interfaccia sia sufficiente per l'accessibilità. & RQ-OB-11 & NI \\
 \hline
 \rowcolor{gray!20}
-T-158-S & Verificare che il sistema gestisca correttamente presenza label per screen reader. & RQ-OB-11 & NI \\
+T-160-S & Verificare che il ridimensionamento del testo non causi perdita di funzionalità o layout corrotto. & RQ-OB-11 & NI \\
 \hline
 \rowcolor{white}
-T-159-S & Verificare che il sistema gestisca correttamente contrasto colori sufficiente. & RQ-OB-11 & NI \\
+T-161-S & Verificare che sia presente un feedback visivo chiaro quando un elemento riceve il focus. & RQ-OB-11 & NI \\
 \hline
 \rowcolor{gray!20}
-T-160-S & Verificare che il sistema gestisca correttamente ridimensionamento testo senza perdita funzionalità. & RQ-OB-11 & NI \\
+T-162-S & Verificare che non siano presenti contenuti lampeggianti (flashing) che possano disturbare. & RQ-OB-11 & NI \\
 \hline
 \rowcolor{white}
-T-161-S & Verificare che il sistema gestisca correttamente feedback visivo al focus degli elementi. & RQ-OB-11 & NI \\
+T-163-S & Verificare che ogni pagina abbia un titolo descrittivo e significativo. & RQ-OB-11 & NI \\
 \hline
 \rowcolor{gray!20}
-T-162-S & Verificare che il sistema gestisca correttamente assenza di flashing content. & RQ-OB-11 & NI \\
+T-164-S & Verificare che i link abbiano testi significativi che ne descrivano la destinazione o funzione. & RQ-OB-11 & NI \\
 \hline
 \rowcolor{white}
-T-163-S & Verificare che il sistema gestisca correttamente titoli di pagina descrittivi. & RQ-OB-11 & NI \\
+T-167-S & Verificare che venga richiesto il consenso al trattamento dei dati al primo avvio dell'app. & RQ-OB-14 & NI \\
 \hline
 \rowcolor{gray!20}
-T-164-S & Verificare che il sistema gestisca correttamente link con testo significativo. & RQ-OB-11 & NI \\
+T-168-S & Verificare che la Privacy Policy sia accessibile direttamente dall'applicazione. & RQ-OB-14 & NI \\
 \hline
 \rowcolor{white}
-T-165-S & Verificare che il sistema gestisca correttamente gestione errori form con suggerimenti. & RQ-OB-11 & NI \\
+T-169-S & Verificare che l'utente possa revocare i consensi opzionali in qualsiasi momento. & RQ-OB-14 & NI \\
 \hline
 \rowcolor{gray!20}
-T-166-S & Verificare che il sistema gestisca correttamente comportamento con font di sistema ingranditi. & RQ-OB-11 & NI \\
+T-170-S & Verificare che i dati inviati per fini statistici siano correttamente anonimizzati. & RQ-OB-14 & NI \\
 \hline
 \rowcolor{white}
-T-167-S & Verificare che il sistema gestisca correttamente consenso trattamento dati al primo avvio. & RQ-OB-14 & NI \\
+T-171-S & Verificare che i dati locali vengano cancellati definitivamente alla disinstallazione o al logout. & RQ-OB-14 & NI \\
 \hline
 \rowcolor{gray!20}
-T-168-S & Verificare che l'utente possa effettuare accesso alla privacy policy dall'app secondo le specifiche. & RQ-OB-14 & NI \\
+T-172-S & Verificare la conformità al GDPR della funzionalità di esportazione dei dati utente. & RQ-OB-14 & NI \\
 \hline
 \rowcolor{white}
-T-169-S & Verificare che il sistema gestisca correttamente possibilità revoca consensi opzionali. & RQ-OB-14 & NI \\
+T-173-S & Verificare la conformità al GDPR della funzionalità di cancellazione account (diritto all'oblio). & RQ-OB-14 & NI \\
 \hline
 \rowcolor{gray!20}
-T-170-S & Verificare che il sistema gestisca correttamente anonimizzazione dati inviati per statistiche. & RQ-OB-14 & NI \\
+T-174-S & Verificare che il tempo di avvio dell'applicazione sia inferiore a 3 secondi. & RQ-OB-12 & NI \\
 \hline
 \rowcolor{white}
-T-171-S & Verificare che il sistema gestisca correttamente cancellazione definitiva dati locali dopo disinstallazione. & RQ-OB-14 & NI \\
+T-175-S & Verificare la fluidità delle animazioni dell'interfaccia utente durante la navigazione. & RQ-OB-12 & NI \\
 \hline
 \rowcolor{gray!20}
-T-172-S & Verificare che il sistema gestisca correttamente conformità GDPR (export dati). & RQ-OB-14 & NI \\
+T-176-S & Verificare che il tempo di risposta dell'API di login sia inferiore a 10 secondi. & RQ-OB-12 & NI \\
 \hline
 \rowcolor{white}
-T-173-S & Verificare che il sistema gestisca correttamente conformità GDPR (diritto all'oblio). & RQ-OB-14 & NI \\
+T-177-S & Verificare che il consumo di batteria dell'applicazione in background sia contenuto. & RQ-OB-12 & NI \\
 \hline
 \rowcolor{gray!20}
-T-174-S & Verificare che il sistema gestisca correttamente tempo di avvio app \textless  3 secondi. & RQ-OB-12 & NI \\
+T-178-S & Verificare che l'utilizzo della memoria RAM rimanga entro limiti accettabili. & RQ-OB-12 & NI \\
 \hline
 \rowcolor{white}
-T-175-S & Verificare che il sistema gestisca correttamente fluidità animazioni interfaccia. & RQ-OB-12 & NI \\
+T-179-S & Verificare l'efficacia della gestione della cache delle immagini per il risparmio dati. & RQ-OB-12 & NI \\
 \hline
 \rowcolor{gray!20}
-T-176-S & Verificare che l'utente possa effettuare tempo risposta API login \textless  1 secondo secondo le specifiche. & RQ-OB-12 & NI \\
+T-180-S & Verificare il corretto caricamento paginato per liste contenenti molti elementi. & RQ-OB-12 & NI \\
 \hline
 \rowcolor{white}
-T-177-S & Verificare che il sistema gestisca correttamente consumo batteria in background contenuto. & RQ-OB-12 & NI \\
+T-181-S & Verificare la corretta visualizzazione e gestione di messaggi lunghi (oltre 500 caratteri). & RF-OB-35 & NI \\
 \hline
 \rowcolor{gray!20}
-T-178-S & Verificare che il sistema gestisca correttamente utilizzo memoria RAM entro limiti accettabili. & RQ-OB-12 & NI \\
+T-182-S & Verificare la corretta visualizzazione degli orari (timestamp) dei messaggi. & RF-OB-35 & NI \\
 \hline
 \rowcolor{white}
-T-179-S & Verificare che il sistema gestisca correttamente gestione cache immagini per risparmio dati. & RQ-OB-12 & NI \\
+T-183-S & Verificare il raggruppamento visivo dei messaggi consecutivi inviati dallo stesso mittente. & RF-OB-35 & NI \\
 \hline
 \rowcolor{gray!20}
-T-180-S & Verificare che il sistema gestisca correttamente caricamento paginato liste lunghe. & RQ-OB-12 & NI \\
+T-184-S & Verificare la corretta gestione e visualizzazione dello stato 'letto' dei messaggi. & RF-OB-35 & NI \\
 \hline
 \rowcolor{white}
-T-181-S & Verificare che il sistema gestisca correttamente gestione messaggi lunghi (\textgreater  500 caratteri). & RF-OB-35 & NI \\
+T-185-S & Verificare la funzionalità di ritentativo d'invio per i messaggi falliti. & RF-OB-35 & NI \\
 \hline
 \rowcolor{gray!20}
-T-182-S & Verificare che il sistema permetta la corretta visualizzazione timestamp messaggi. & RF-OB-35 & NI \\
+T-187-S & Verificare il corretto funzionamento dei deep link dalle notifiche alle chat specifiche. & RF-OB-35 & NI \\
 \hline
 \rowcolor{white}
-T-183-S & Verificare che il sistema gestisca correttamente raggruppamento messaggi consecutivi stesso mittente. & RF-OB-35 & NI \\
+T-188-S & Verificare che sia possibile cancellare un singolo messaggio dalla chat. & RF-OB-35 & NI \\
 \hline
 \rowcolor{gray!20}
-T-184-S & Verificare che il sistema gestisca correttamente stato 'letto' messaggi. & RF-OB-35 & NI \\
+T-189-S & Verificare la corretta esportazione della cronologia chat in formato PDF o TXT. & RF-OB-35 & NI \\
 \hline
 \rowcolor{white}
-T-185-S & Verificare che il sistema gestisca correttamente retry invio messaggio fallito. & RF-OB-35 & NI \\
+T-190-S & Verificare il comportamento corretto della chat durante l'utilizzo della tastiera emoji. & RF-OB-35 & NI \\
 \hline
 \rowcolor{gray!20}
-T-186-S & Verificare che il sistema gestisca correttamente notifica push nuovo messaggio a app chiusa. & RF-OB-35 & NI \\
+T-191-S & Verificare la corretta gestione dell'incollamento di testo nell'area di input della chat. & RF-OB-35 & NI \\
 \hline
 \rowcolor{white}
-T-187-S & Verificare che il sistema gestisca correttamente deep link da notifica a chat specifica. & RF-OB-35 & NI \\
+T-192-S & Verificare che il sistema accetti correttamente l'inserimento di emoji nei campi nome e cognome. & RF-OB-37 & NI \\
 \hline
 \rowcolor{gray!20}
-T-188-S & Verificare che il sistema gestisca correttamente cancellazione singola messaggio. & RF-OB-35 & NI \\
+T-193-S & Verificare il comportamento dell'interfaccia al variare dell'orientamento dello schermo. & RF-OB-1 & NI \\
 \hline
 \rowcolor{white}
-T-189-S & Verificare che il sistema gestisca correttamente esportazione chat in formato PDF/TXT. & RF-OB-35 & NI \\
+T-194-S & Verificare il comportamento dell'applicazione in modalità split-screen. & RF-OB-1 & NI \\
 \hline
 \rowcolor{gray!20}
-T-190-S & Verificare che il sistema gestisca correttamente comportamento chat con tastiera emoji. & RF-OB-35 & NI \\
+T-195-S & Verificare la corretta gestione dell'interruzione dell'app all'arrivo di una chiamata. & RF-OB-1 & NI \\
 \hline
 \rowcolor{white}
-T-191-S & Verificare che il sistema gestisca correttamente incollare testo nella chat. & RF-OB-35 & NI \\
-\hline
-\rowcolor{gray!20}
-T-192-S & Verificare che il sistema accetti l'inserimento emoji nei campi nome/cognome e lo validi correttamente. & RF-OB-37 & NI \\
-\hline
-\rowcolor{white}
-T-193-S & Verificare che il sistema gestisca correttamente comportamento app con rotazione schermo. & RF-OB-1 & NI \\
-\hline
-\rowcolor{gray!20}
-T-194-S & Verificare che il sistema gestisca correttamente comportamento app in split-screen mode. & RF-OB-1 & NI \\
-\hline
-\rowcolor{white}
-T-195-S & Verificare che il sistema gestisca correttamente interruzione flusso per chiamata in arrivo. & RF-OB-1 & NI \\
-\hline
-\rowcolor{gray!20}
-T-196-S & Verificare che il sistema gestisca correttamente ripresa flusso dopo chiamata terminata. & RF-OB-1 & NI \\
+T-196-S & Verificare la corretta ripresa del funzionamento dell'app al termine di una chiamata. & RF-OB-1 & NI \\
 \hline
 \end{longtable}
 
@@ -1000,291 +993,65 @@ T-196-S & Verificare che il sistema gestisca correttamente ripresa flusso dopo c
 \subsection{Test di Accettazione}
 \renewcommand{\arraystretch}{1.2}
 \arrayrulecolor{black}
-\begin{longtable}{|c|>{\raggedright\arraybackslash}p{0.55\textwidth}|c|}
-\caption{Tabella dei test di accettazione (continua)} \\
+\begin{longtable}{| >{\centering\arraybackslash}p{0.10\textwidth} | >{\raggedright\arraybackslash}p{0.68\textwidth} | >{\centering\arraybackslash}p{0.10\textwidth} |}
 \hline
 \rowcolor{gray!60}
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato del Test} \\
 \hline
 \endhead
 \hline
+\caption[]{Tabella dei test di accettazione} \\
+\endfoot
+\hline
 \caption{Tabella dei test di accettazione} \\
 \endlastfoot
 \rowcolor{white}
-T-1-A & Verificare che il sistema gestisca correttamente esecuzione Walkthrough Interattivo. & NI \\
+T-1-A & Verificare il completamento o il salto del Walkthrough Interattivo iniziale. & NI \\
 \hline
 \rowcolor{gray!20}
-T-2-A & Verificare che il sistema gestisca correttamente salta Walkthrough. & NI \\
+T-2-A & Verificare la creazione e gestione del profilo utente. & NI \\
 \hline
 \rowcolor{white}
-T-3-A & Verificare che il sistema gestisca correttamente selezione Profilo. & NI \\
+T-3-A & Verificare il flusso completo di gestione dei contatti fidati (aggiunta, modifica, visualizzazione, validazione ed errori). & NI \\
 \hline
 \rowcolor{gray!20}
-T-4-A & Verificare che il sistema gestisca correttamente walkthrough diario criptato. & NI \\
+T-4-A & Verificare la configurazione completa delle funzionalità di sicurezza (timer inattività e personalizzazione messaggi di avviso). & NI \\
 \hline
 \rowcolor{white}
-T-5-A & Verificare che il sistema gestisca correttamente walkthrough contatto fidato. & NI \\
+T-5-A & Verificare il ciclo di vita della funzionalità Dead Man's Switch (attivazione, disattivazione, countdown e trigger dei messaggi). & NI \\
 \hline
 \rowcolor{gray!20}
-T-6-A & Verificare che il sistema gestisca correttamente salta feature. & NI \\
+T-6-A & Verificare l'accesso e la gestione della sicurezza del diario (impostazione password diario fittizio e criptato). & NI \\
 \hline
 \rowcolor{white}
-T-7-A & Verificare che il sistema permetta la corretta visualizzazione lista contatti fidati. & NI \\
+T-7-A & Verificare le operazioni CRUD (Create, Read, Update, Delete) sulle note del diario, inclusi allegati multimediali. & NI \\
 \hline
 \rowcolor{gray!20}
-T-8-A & Verificare che il sistema permetta la corretta visualizzazione singolo contatto fidato nella lista. & NI \\
+T-8-A & Verificare l'attivazione e l'esecuzione corretta della procedura di emergenza (SOS immediato). & NI \\
 \hline
 \rowcolor{white}
-T-9-A & Verificare che il sistema permetta la corretta visualizzazione Informazioni Contatto Fidato. & NI \\
+T-9-A & Verificare il flusso completo di interazione con il Chatbot e la gestione del cambio contesto AI (Detective, Specchio). & NI \\
 \hline
 \rowcolor{gray!20}
-T-10-A & Verificare che il sistema permetta la corretta visualizzazione nome contatto fidato. & NI \\
+T-10-A & Verificare la gestione della cronologia chat (visualizzazione lista, dettaglio conversazione). & NI \\
 \hline
 \rowcolor{white}
-T-11-A & Verificare che il sistema permetta la corretta visualizzazione numero di telefono contatto fidato. & NI \\
+T-11-A & Verificare il processo di eliminazione sicura di una chat (richiesta, conferma, annullamento). & NI \\
 \hline
 \rowcolor{gray!20}
-T-12-A & Verificare che il sistema permetta la corretta visualizzazione indirizzo email contatto fidato. & NI \\
+T-12-A & Verificare l'accesso e la consultazione delle risorse esterne (Community, Numeri di Emergenza). & NI \\
 \hline
 \rowcolor{white}
-T-13-A & Verificare che il sistema gestisca correttamente aggiunta contatto fidato. & NI \\
+T-13-A & Verificare la consultazione del materiale informativo e giuridico (Leggi, Normative, Guide). & NI \\
 \hline
 \rowcolor{gray!20}
-T-14-A & Verificare che il sistema accetti l'inserimento nome contatto fidato e lo validi correttamente. & NI \\
+T-14-A & Verificare la funzionalità di localizzazione e navigazione verso i Luoghi Sicuri. & NI \\
 \hline
 \rowcolor{white}
-T-15-A & Verificare che il sistema accetti l'inserimento numero di telefono contatto fidato e lo validi correttamente. & NI \\
+T-15-A & Verificare il comportamento del sistema in condizioni di errore (assenza rete, timeout API, dati non disponibili). & NI \\
 \hline
 \rowcolor{gray!20}
-T-16-A & Verificare che il sistema accetti l'inserimento indirizzo email contatto fidato e lo validi correttamente. & NI \\
-\hline
-\rowcolor{white}
-T-17-A & Verificare che il sistema gestisca correttamente numero di telefono già presente. & NI \\
-\hline
-\rowcolor{gray!20}
-T-18-A & Verificare che il sistema gestisca correttamente email già presente. & NI \\
-\hline
-\rowcolor{white}
-T-19-A & Verificare che le modifiche apportate durante modifica contatto fidato siano salvate e visibili. & NI \\
-\hline
-\rowcolor{gray!20}
-T-20-A & Verificare che le modifiche apportate durante modifica nome contatto fidato siano salvate e visibili. & NI \\
-\hline
-\rowcolor{white}
-T-21-A & Verificare che le modifiche apportate durante modifica numero di telefono contatto fidato siano salvate e visibili. & NI \\
-\hline
-\rowcolor{gray!20}
-T-22-A & Verificare che le modifiche apportate durante modifica indirizzo email contatto fidato siano salvate e visibili. & NI \\
-\hline
-\rowcolor{white}
-T-23-A & Verificare che il sistema gestisca correttamente impostazione timer prima inattività. & NI \\
-\hline
-\rowcolor{gray!20}
-T-24-A & Verificare che il sistema gestisca correttamente impostazione timer seconda inattività. & NI \\
-\hline
-\rowcolor{white}
-T-25-A & Verificare che le modifiche apportate durante modifica titolo mail di avviso siano salvate e visibili. & NI \\
-\hline
-\rowcolor{gray!20}
-T-26-A & Verificare che le modifiche apportate durante modifica corpo mail di avviso siano salvate e visibili. & NI \\
-\hline
-\rowcolor{white}
-T-27-A & Verificare che il sistema permetta la corretta visualizzazione preview mail di avviso. & NI \\
-\hline
-\rowcolor{gray!20}
-T-28-A & Verificare che il sistema permetta la corretta visualizzazione titolo mail di avviso. & NI \\
-\hline
-\rowcolor{white}
-T-29-A & Verificare che il sistema permetta la corretta visualizzazione corpo della mail di avviso. & NI \\
-\hline
-\rowcolor{gray!20}
-T-30-A & Verificare che il sistema gestisca correttamente attivazione Dead Man's Switch. & NI \\
-\hline
-\rowcolor{white}
-T-31-A & Verificare che il sistema gestisca correttamente disattivazione Dead Man's Switch. & NI \\
-\hline
-\rowcolor{gray!20}
-T-32-A & Verificare che il sistema gestisca correttamente impostazione password per diario fittizio. & NI \\
-\hline
-\rowcolor{white}
-T-33-A & Verificare che il sistema gestisca correttamente password uguale alla password del diario criptato. & NI \\
-\hline
-\rowcolor{gray!20}
-T-34-A & Verificare che il sistema gestisca correttamente password non conforme ai criteri. & NI \\
-\hline
-\rowcolor{white}
-T-35-A & Verificare che l'utente possa effettuare accesso al diario fittizio secondo le specifiche. & NI \\
-\hline
-\rowcolor{gray!20}
-T-36-A & Verificare che l'utente possa effettuare accesso al diario criptato secondo le specifiche. & NI \\
-\hline
-\rowcolor{white}
-T-37-A & Verificare che il sistema gestisca correttamente impostazione password per diario criptato. & NI \\
-\hline
-\rowcolor{gray!20}
-T-38-A & Verificare che il sistema accetti l'inserimento password accesso diario e lo validi correttamente. & NI \\
-\hline
-\rowcolor{white}
-T-39-A & Verificare che il sistema accetti l'inserimento password errata e lo validi correttamente. & NI \\
-\hline
-\rowcolor{gray!20}
-T-40-A & Verificare che il sistema gestisca correttamente password errata troppe volte. & NI \\
-\hline
-\rowcolor{white}
-T-41-A & Verificare che il sistema gestisca correttamente password uguale alla password del diario fittizio. & NI \\
-\hline
-\rowcolor{gray!20}
-T-42-A & Verificare che il sistema permetta la corretta visualizzazione diario. & NI \\
-\hline
-\rowcolor{white}
-T-43-A & Verificare che il sistema permetta la corretta visualizzazione lista note. & NI \\
-\hline
-\rowcolor{gray!20}
-T-44-A & Verificare che il sistema permetta la corretta visualizzazione singola nota della lista. & NI \\
-\hline
-\rowcolor{white}
-T-45-A & Verificare che il sistema gestisca correttamente creazione nota. & NI \\
-\hline
-\rowcolor{gray!20}
-T-46-A & Verificare che il sistema completi eliminazione nota rimuovendo i dati definitivamente. & NI \\
-\hline
-\rowcolor{white}
-T-47-A & Verificare che il sistema accetti l'inserimento testo nella nota e lo validi correttamente. & NI \\
-\hline
-\rowcolor{gray!20}
-T-48-A & Verificare che il sistema accetti l'inserimento media nella nota e lo validi correttamente. & NI \\
-\hline
-\rowcolor{white}
-T-49-A & Verificare che il sistema permetta la corretta visualizzazione contenuto nota. & NI \\
-\hline
-\rowcolor{gray!20}
-T-50-A & Verificare che il sistema gestisca correttamente invio Messaggio SOS. & NI \\
-\hline
-\rowcolor{white}
-T-51-A & Verificare che il sistema gestisca correttamente assenza rete Internet. & NI \\
-\hline
-\rowcolor{gray!20}
-T-52-A & Verificare che il sistema gestisca correttamente mancanza di contatti fidati. & NI \\
-\hline
-\rowcolor{white}
-T-53-A & Verificare che il sistema gestisca correttamente invio segnale acustico. & NI \\
-\hline
-\rowcolor{gray!20}
-T-54-A & Verificare che il sistema gestisca correttamente consultazione Chatbot. & NI \\
-\hline
-\rowcolor{white}
-T-55-A & Verificare che il sistema gestisca correttamente interruzione risposta. & NI \\
-\hline
-\rowcolor{gray!20}
-T-56-A & Verificare che il sistema gestisca correttamente mancanza di connessione. & NI \\
-\hline
-\rowcolor{white}
-T-57-A & Verificare che il sistema mostri un messaggio di errore di lettura del messaggio appropriato. & NI \\
-\hline
-\rowcolor{gray!20}
-T-58-A & Verificare che il sistema gestisca correttamente switch al "Detective delle Relazioni". & NI \\
-\hline
-\rowcolor{white}
-T-59-A & Verificare che il sistema gestisca correttamente switch a "Specchio Intelligente". & NI \\
-\hline
-\rowcolor{gray!20}
-T-60-A & Verificare che il sistema mostri un messaggio di errore switch contesto appropriato. & NI \\
-\hline
-\rowcolor{white}
-T-61-A & Verificare che il sistema permetta la corretta visualizzazione cronologia chat. & NI \\
-\hline
-\rowcolor{gray!20}
-T-62-A & Verificare che il sistema permetta la corretta visualizzazione singola chat della lista. & NI \\
-\hline
-\rowcolor{white}
-T-63-A & Verificare che il sistema permetta la corretta visualizzazione preview inizio chat della lista. & NI \\
-\hline
-\rowcolor{gray!20}
-T-64-A & Verificare che il sistema permetta la corretta visualizzazione contenuto chat. & NI \\
-\hline
-\rowcolor{white}
-T-65-A & Verificare che il sistema permetta la corretta visualizzazione lista messaggi. & NI \\
-\hline
-\rowcolor{gray!20}
-T-66-A & Verificare che il sistema permetta la corretta visualizzazione messaggio utente. & NI \\
-\hline
-\rowcolor{white}
-T-67-A & Verificare che il sistema permetta la corretta visualizzazione messaggio chatbot. & NI \\
-\hline
-\rowcolor{gray!20}
-T-68-A & Verificare che il sistema mostri un messaggio di errore caricamento chat appropriato. & NI \\
-\hline
-\rowcolor{white}
-T-69-A & Verificare che il sistema gestisca correttamente creazione nuova chat. & NI \\
-\hline
-\rowcolor{gray!20}
-T-70-A & Verificare che il sistema completi eliminazione chat rimuovendo i dati definitivamente. & NI \\
-\hline
-\rowcolor{white}
-T-71-A & Verificare che il sistema completi conferma eliminazione chat rimuovendo i dati definitivamente. & NI \\
-\hline
-\rowcolor{gray!20}
-T-72-A & Verificare che il sistema completi rifiuto conferma eliminazione chat rimuovendo i dati definitivamente. & NI \\
-\hline
-\rowcolor{white}
-T-73-A & Verificare che il sistema permetta la corretta visualizzazione lista community. & NI \\
-\hline
-\rowcolor{gray!20}
-T-74-A & Verificare che il sistema permetta la corretta visualizzazione singola community nella lista. & NI \\
-\hline
-\rowcolor{white}
-T-75-A & Verificare che il sistema gestisca correttamente visita community. & NI \\
-\hline
-\rowcolor{gray!20}
-T-76-A & Verificare che il sistema mostri un messaggio di errore caricamento community appropriato. & NI \\
-\hline
-\rowcolor{white}
-T-77-A & Verificare che il sistema permetta la corretta visualizzazione lista contatti d'emergenza. & NI \\
-\hline
-\rowcolor{gray!20}
-T-78-A & Verificare che il sistema permetta la corretta visualizzazione singolo contatto ente d'emergenza. & NI \\
-\hline
-\rowcolor{white}
-T-79-A & Verificare che il sistema permetta la corretta visualizzazione nome contatti d'emergenza. & NI \\
-\hline
-\rowcolor{gray!20}
-T-80-A & Verificare che il sistema permetta la corretta visualizzazione numero contatti d'emergenza. & NI \\
-\hline
-\rowcolor{white}
-T-81-A & Verificare che il sistema gestisca correttamente composizione automatica numero contatto. & NI \\
-\hline
-\rowcolor{gray!20}
-T-82-A & Verificare che il sistema permetta la corretta visualizzazione lista leggi. & NI \\
-\hline
-\rowcolor{white}
-T-83-A & Verificare che il sistema permetta la corretta visualizzazione singola legge nella lista. & NI \\
-\hline
-\rowcolor{gray!20}
-T-84-A & Verificare che il sistema permetta la corretta visualizzazione dettagli legge. & NI \\
-\hline
-\rowcolor{white}
-T-85-A & Verificare che il sistema mostri un messaggio di errore caricamento normativa appropriato. & NI \\
-\hline
-\rowcolor{gray!20}
-T-86-A & Verificare che il sistema permetta la corretta visualizzazione lista materiale informativo. & NI \\
-\hline
-\rowcolor{white}
-T-87-A & Verificare che il sistema permetta la corretta visualizzazione singolo materiale informativo. & NI \\
-\hline
-\rowcolor{gray!20}
-T-88-A & Verificare che il sistema permetta la corretta visualizzazione dettagli materiale informativo. & NI \\
-\hline
-\rowcolor{white}
-T-89-A & Verificare che il sistema mostri un messaggio di errore caricamento materiale appropriato. & NI \\
-\hline
-\rowcolor{gray!20}
-T-90-A & Verificare che il sistema permetta la corretta visualizzazione mappa luoghi sicuri. & NI \\
-\hline
-\rowcolor{white}
-T-91-A & Verificare che il sistema gestisca correttamente apertura luogo in Google Maps. & NI \\
-\hline
-\rowcolor{gray!20}
-T-92-A & Verificare che il sistema mostri un messaggio di errore apertura luogo in mappa esterna appropriato. & NI \\
+T-16-A & Verificare la consistenza dei dati e la persistenza delle informazioni attraverso sessioni utente multiple. & NI \\
 \hline
 \end{longtable}
 
