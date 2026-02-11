@@ -3,34 +3,30 @@ name: Update Gulpease Index
 on:
   push:
     branches:
-      - develop
-    
+      - '**'
+    paths:
+      - 'src/**'
+
 jobs:
   gulpease:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          fetch-depth: 2
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
       - name: Run Gulpease script
-        run: |
-          python .github/scripts/gulpease.py
+        run: python .github/scripts/gulpease.py
 
-      - name: Commit and push CSV
+      - name: Commit updated CSV
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add metrics-measurements/gulpease_index.csv
           git commit -m "chore(metrics): update Gulpease index" || echo "No changes to commit"
-          git push
+          git push || echo "Nothing to push"
