@@ -4,14 +4,15 @@ on:
   push:
     branches:
       - '**'
-    
+    paths:
+      - 'src/**'
+
 jobs:
   gulpease:
-    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -24,14 +25,25 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Run Gulpease script
+      # 🔎 Controllo se sono cambiati file in src/
+      - name: Check for modified source files
+        id: changed
         run: |
-          python .github/scripts/gulpease.py
+          files=$(git diff --name-only HEAD~1 HEAD 2>/dev/null | grep '^src/' || echo '')
+          echo "files=$files" >> $GITHUB_OUTPUT
+          echo "has_files=$([ -n "$files" ] && echo 'true' || echo 'false')" >> $GITHUB_OUTPUT
 
-      - name: Commit and push CSV
+      # ▶️ Calcolo Gulpease solo se necessario
+      - name: Run Gulpease script
+        if: steps.changed.outputs.has_files == 'true'
+        run: python .github/scripts/gulpease.py
+
+      # 💾 Commit CSV solo se modificato
+      - name: Commit updated CSV
+        if: steps.changed.outputs.has_files == 'true'
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add metrics-measurements/gulpease_index.csv
+          git add metrics-measurements/gulpease_index.csv || echo "No CSV to add"
           git commit -m "chore(metrics): update Gulpease index" || echo "No changes to commit"
-          git push
+          git push || echo "Nothing to push"
