@@ -96,9 +96,9 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & In corso \\
-\textbf{Versione:} & 0.1.0 \\
+\textbf{Versione:} & 0.1.1 \\
 \textbf{Redattori:} &  Ferdinando Fracasso \\
-\textbf{Verificatori:} & Marco Sanguin \\
+\textbf{Verificatori:} & Riccardo Manisi \\
 \textbf{Responsabile:} & Ferdinando Fracasso \\
 \textbf{Destinatari:} & Gruppo BitByBit \\ 
 \begin{tabular}[t]{@{}l@{}}
@@ -121,8 +121,11 @@
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
+\rowcolor{gray!20}
+0.1.1 & 2026-02-11 & Ferdinando Fracasso & Aggiunte menzioni Use Case & Riccardo Manisi \\
+\hline
 \rowcolor{white}
-0.1.0 & 2026-02-14 & Ferdinando Fracasso & Stesura verbale & Marco Sanguin \\
+0.1.0 & 2026-02-04 & Ferdinando Fracasso & Stesura verbale & Riccardo Manisi \\
 \hline
 \end{tabular}
 \end{center}
@@ -173,6 +176,7 @@ Nessuno\\
 \section{Discussioni}
 \begin{itemize}
     \item Nel corso della riunione odierna si è discusso principalmente sullo stato dello studio per il PoC e sulla decisione delle parti da implementare, determinando la creazione di un gruppo di lavoro per lo sviluppo e il possibile bisogno di rivedere la data di consegna.\\
+    In particolare, a seguito alle discussioni sulle parti da implementare, si è deciso di permettere l'inserimento di contatti fidati da parte dell'utente, per il momento senza possibilità di eliminazione o modifica, in da avere più richieste verso i servizi AWS.\\
     Inoltre si è discusso sullo stato dei task assegnati in precedenza, di cui alcuni sono stati rimandati allo sprint 6 a causa del tempo preso dalla sessione di esami. 
     \item A seguito delle discussioni, sono state definite le seguenti attività da svolgere nel corso dello sprint 6:
     \begin{itemize}
@@ -203,7 +207,7 @@ Nessuno\\
 \small
 \renewcommand{\arraystretch}{1.2} 
 \arrayrulecolor{black} 
-\begin{tabular}{|p{0.73\textwidth}|c|}
+\begin{tabular}{|p{0.73\textwidth}|c|c|}
 \hline
 \rowcolor{gray!60} 
 \textbf{Descrizione decisione} & \textbf{Codice decisione} \\
@@ -230,19 +234,19 @@ Contattare il Prof. Cardin per chiarimenti sugli UML riguardanti la funzionalit�
 Iniziare sviluppo front-end del PoC & VI RTB 9.7 \\
 \hline
 \rowcolor{gray!20}
-PoC deve avere la funzionalità di accesso tramite Google Auth & VI RTB 9.8 \\
+PoC deve avere la funzionalità di accesso tramite Google Auth - Use Case pertinenti: UC-1, UC-2 & VI RTB 9.8 \\
 \hline
 \rowcolor{white}
-Funzionalità di chat con chatbot deve essere presente nel PoC & VI RTB 9.9 \\
+Funzionalità di chat con chatbot deve essere presente nel PoC - Use Case pertinenti: UC-35 & VI RTB 9.9 \\
 \hline
 \rowcolor{gray!20}
-La lista dei contatti sarà hard-coded nel PoC & VI RTB 9.10 \\
+L'utente deve avere la possibilità di inserire, ma non modificare o rimuovere, contatti nella lista contatti fidati del PoC - Use Case pertinenti: UC-8, UC-8.1, UC-8.2, UC-8.3 & VI RTB 9.10 \\
 \hline
 \rowcolor{white}
-Il PoC deve avere la funzionalità di invio mail a contatti fidati & VI RTB 9.11 \\
+Il PoC deve avere la funzionalità di invio mail a contatti fidati - Use Case pertinenti: UC-33 & VI RTB 9.11 \\
 \hline
 \rowcolor{gray!20}
-Deve essere possibile inserire immagini nelle note del diario nel PoC & VI RTB 9.12 \\
+Deve essere possibile inserire immagini nelle note del diario nel PoC - Use Case pertinenti: UC-31, UC-32 & VI RTB 9.12 \\
 \hline
 \rowcolor{white}
 Necessaria Github action deploy delle lambda su AWS & VI RTB 9.13 \\
@@ -305,19 +309,19 @@ Contattare Prof. Cardin per chiarimenti su UML walkthrough & VI RTB 9.6 & \href{
 Iniziare sviluppo frontend PoC & VI RTB 9.7 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/344}{\textbf{\#344}} \\
 \hline
 \rowcolor{white}
-Implementare accesso con Google Auth nel PoC & VI RTB 9.8 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/343}{\textbf{\#343}} \\
+Implementare accesso con Google Auth nel PoC, Use Case UC-1 e UC-2 & VI RTB 9.8 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/343}{\textbf{\#343}} \\
 \hline
 \rowcolor{gray!20}
-Implementare funzionalità di chat con chatbot nel PoC & VI RTB 9.9 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/342}{\textbf{\#342}} \\
+Implementare funzionalità di chat con chatbot nel PoC, Use Case UC-35 & VI RTB 9.9 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/342}{\textbf{\#342}} \\
 \hline
 \rowcolor{white}
-Implementare contatti fidati hard-coded nel PoC & VI RTB 9.10 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/341}{\textbf{\#341}} \\
+Implementare nel PoC lista contatti fidati con possibilità di inserimento da parte dell'utente, Use Case UC-8, UC-8.1, UC-8.2 e UC-8.3 & VI RTB 9.10 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/341}{\textbf{\#341}} \\
 \hline
 \rowcolor{gray!20}
-Implementare funzionalità PoC di invio mail a contatti fidati & VI RTB 9.11 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/340}{\textbf{\#340}} \\
+Implementare funzionalità PoC di invio mail a contatti fidati, Use Case UC-33 & VI RTB 9.11 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/340}{\textbf{\#340}} \\
 \hline
 \rowcolor{white}
-Implementare funzionalità note PoC con possibilità di inserire immagini & VI RTB 9.12 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/339}{\textbf{\#339}} \\
+Implementare funzionalità note PoC con possibilità di inserire immagini, Use Case UC-31 e UC-32 & VI RTB 9.12 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/339}{\textbf{\#339}} \\
 \hline
 \rowcolor{gray!20}
 Creare Github action per deploy lambda su AWS & VI RTB 9.13 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/338}{\textbf{\#338}} \\
