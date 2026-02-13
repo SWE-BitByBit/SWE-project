@@ -1,0 +1,3368 @@
+% template presente
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{tabularx}
+\usepackage{tcolorbox}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{hyperref}
+\usepackage{xurl}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    urlcolor=blue,     
+}
+\usepackage{graphicx}
+% Percorsi di ricerca per le immagini
+\graphicspath{{resources/}{../resources/}{../../resources/}{../../../resources/}{../../../../resources/}}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{longtable}
+\usepackage{colortbl}
+\usepackage{fancyhdr}
+\usepackage{float} 
+\usepackage{enumitem} 
+\usepackage{titlesec}
+\usepackage{amssymb} 
+\usepackage{titlesec}
+\usepackage[T1]{fontenc}
+
+\setlength{\headheight}{30pt}
+
+\geometry{margin=2.5cm}
+
+% ===== Variabile per il titolo del documento =====
+\newcommand{\documenttitle}{Analisi dei requisiti } 
+
+\setlength{\parindent}{0pt}
+\setstretch{1.2}
+
+% ===== Stile intestazione =====
+\setlength{\headheight}{33pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{gray}{\documenttitle - BitByBit}}
+\fancyhead[R]{\includegraphics[height=1cm]{solo_logo.jpg}}
+\fancyfoot[C]{\thepage}
+
+% ===== Formattazione sezioni =====
+\titleformat{\section}{\Large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.5em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection}{0.5em}{}
+
+\begin{document}
+
+% ====== FRONT PAGE ======
+
+\vspace*{\fill} % --- Spinge verso il basso l'inizio del contenuto
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logoUni.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\color{red}\LARGE \textbf{Università degli Studi di Padova}}\\[0.3cm]
+        {\large
+        Laurea: Informatica\\
+        Corso: Ingegneria del Software\\
+        Anno Accademico: 2025/26
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1cm}
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logo.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\LARGE \textbf{Gruppo 17}}\\[0.3cm]
+        {\large
+        Nome: BitByBit\\
+        Email: swe.bitbybit@gmail.com
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1.5cm}
+
+\begin{center}
+    {\LARGE \textbf{\documenttitle}}
+\end{center}
+
+\vspace*{\fill}
+
+% ======= INFO GENERALI =======
+\renewcommand{\arraystretch}{1.3}
+
+\begin{tcolorbox}
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\textbf{Stato:} & In corso\\
+\textbf{Versione:} & 0.19.7 \\
+\textbf{Responsabile:} & Giovanni Visentin \\
+\textbf{Redattori:} & Riccardo Manisi, Dennis Parolin, Giovanni Visentin, Gabriele Scaggiante, Ferdinando Fracasso \\
+\textbf{Verificatori:} & Giovanni Visentin, Marco Sanguin, Dennis Parolin \\
+\textbf{Destinatari:} &
+\begin{tabular}[t]{@{}l@{}}
+Miriade srl\\
+Prof. Tullio Vardanega\\
+Prof. Riccardo Cardin\\
+Gruppo BitByBit\\
+\end{tabular}
+\end{tabularx}
+\end{tcolorbox}
+
+\vspace*{\fill} 
+
+% ===== REGISTRO MODIFICHE =======
+\clearpage
+\section*{Registro delle modifiche}
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2} 
+\arrayrulecolor{black}
+\begin{longtable}{|c|c|>{\raggedright\arraybackslash}p{0.21\linewidth}|>{\raggedright\arraybackslash}p{0.23\linewidth}|c|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+\hline
+
+\rowcolor{white}
+0.19.7 & 2026-02-09 & Dennis Parolin & Sistemati errori di compilazione. Sistemate le caption delle tabelle. Sistemati UC-7.1, UC-7.2 e UC-7.3 a cui mancavano le post-condizioni & Giovanni Visentin \\
+\hline
+\rowcolor{gray!20}
+0.19.6 & 2026-02-06 & Dennis Parolin & Modificati i termini ambigui. Aggiunti UC-59 e UC-60 per rimpiazzare UC-9. Sistemati casi d'usoUC-8, UC-8.2, UC-8.3, UC-12, UC-12.2 e UC-12.3 di conseguenza per integrarli con UC-59 e UC-60. Riscritta la sezione "Requisiti" (\ref{section:requisiti}) con le sue sottosezioni (\ref{subsection:requisiti_funzionali}, \ref{subsection:requisiti_qualita}, \ref{subsection:requisiti_vincolo}) sulla base dei nuovi casi d'uso redatti. & Marco Sanguin \\
+\hline
+\rowcolor{white}
+0.19.5 & 2026-02-05 & Dennis Parolin & Sistemato un caso d'uso con nome duplicato. Eliminato UC-47 e UC-46 è diventato il nuovo UC-45.1. Eliminati due punti nello scenario principale di UC-1, troppo specifici. Corretti i nomi di UC-55 e UC-56. Aggiunti UC-57 e UC-58, corrette le precondizioni degli UC da 15 a 19.2 e la post condizione di UC-1. Corretti riferimenti a casi d'uso errati o mancanti. Riscritta la sezione Attori (\ref{subsection:attori}) sulla base dei nuovi casi d'uso redatti. Sistemata l'intestazione ed errori di compilazione. Aggiunto l'indice riassuntivo delle tabelle e l'indice riassuntivo delle immagini. Corretti errori grammaticali e di battitura & Marco Sanguin \\
+\hline
+\rowcolor{gray!20}
+0.19.4 & 2026-01-27 & Giovanni Visentin & Aggiunta casi d'uso walkthrough & Gabriele Scaggiante \\
+\hline
+\rowcolor{white}
+0.19.3 & 2026-01-16 & Gabriele Scaggiante & Rinominazione codici casi d'uso & Giovanni Visentin \\
+\hline
+\rowcolor{gray!20}
+0.19.2 & 2026-01-16 & Giovanni Visentin & Aggiunta casi d'uso dead man switch & Gabriele Scaggiante \\
+\hline
+\rowcolor{white}
+0.19.1 & 2026-01-16 & Giovanni Visentin & Aggiunta casi d'uso guida & Gabriele Scaggiante \\
+\hline
+\rowcolor{gray!20}
+0.19.0 & 2026-01-15 & Gabriele Scaggiante & Aggiunti UC Guardiano Silenzioso & Giovanni Visentin \\
+\hline
+\rowcolor{white}
+0.18.2 & 2026-01-15 & Gabriele Scaggiante & Corretti alcuni refusi & Giovanni Visentin \\
+\hline
+\rowcolor{gray!20}
+0.18.1 & 2026-01-15 & Gabriele Scaggiante & Aggiunti scenari secondari negli UC del diario & Giovanni Visentin \\
+\hline
+\rowcolor{white}
+0.18.0 & 2026-01-15 & Giovanni Visentin & Riscritti gli UC per chatbot e cronologia chat (da terminare) & Gabriele Scaggiante \\
+\hline
+\rowcolor{gray!20}
+0.17.0 & 2026-01-14 & Gabriele Scaggiante & Riscritti gli UC per il diario secondo il nuovo schema & Giovanni Visentin \\
+\hline
+\rowcolor{white}
+0.16.1 & 2026-01-13 & Ferdinando Fracasso & Aggiunta nella sezione "Attori" & Dennis Parolin \\
+\hline
+\rowcolor{gray!20}
+0.16.0 & 2026-01-12 & Giovanni Visentin & Inizio riscrittura UC secondo nuovo schema & Dennis Parolin \\
+\hline
+\rowcolor{white}
+0.15.4 & 2026-01-12 & Ferdinando Fracasso & Correzione errori nelle sezioni "Attori" e "Requisiti" & Dennis Parolin \\
+\hline
+\rowcolor{gray!20}
+0.15.3 & 2026-01-11 & Ferdinando Fracasso & Aggiunta sezione requisiti & Dennis Parolin \\
+\hline
+\rowcolor{white}
+0.15.2 & 2026-01-09 & Ferdinando Fracasso & Modifica sezione attori nei casi d'uso & Dennis Parolin \\
+\hline
+\rowcolor{gray!20}
+0.15.1 & 2025-12-23 & Dennis Parolin & Aggiunte le immagini dei diagrammi UML riguardanti i casi d'uso & Giovanni Visentin \\
+\hline
+\rowcolor{white}
+0.14.0 & 2025-12-22 & Giovanni Visentin & Modifica UC-IMP8 in IMP9 e aggiunti UC-I & Dennis Parolin \\
+\hline
+\rowcolor{gray!20}
+0.13.0 & 2025-12-21 & Giovanni Visentin & Aggiunto caso d'uso UC-IMP8 e proposto UC-SYS1 & Dennis Parolin \\
+\hline
+\rowcolor{white}
+0.12.0 & 2025-12-19 & Riccardo Manisi & Aggiunta UC-D1, UC-D2 per impostazione e modifica password diario criptato. Eliminato UC-BW1.6 [deprecato] & Dennis Parolin \\
+\hline
+\rowcolor{gray!20}
+0.11.0 & 2025-12-19 & Riccardo Manisi &  Inseriti casi d'uso per autenticazione all'app UC-AUTH1 e UC-AUTH1.1. Cancellato UC-BW1.5 [deprecato] & Giovanni Visentin \\
+\hline
+\rowcolor{white}
+0.10.0 & 2025-12-17 & Riccardo Manisi & Cancellato UC-BW1.5 [deprecato] in UC-BW1 e inserita inclusione con UC-IMP3 & Giovanni Visentin \\
+\hline
+\rowcolor{gray!20}
+0.9.0 & 2025-12-16 & Marco Sanguin & Aggiunti Casi d'uso per Guardiano Silenzioso e Detective delle Relazioni (UC-S, UC-I) & Giovanni Visentin \\ 
+\hline
+\rowcolor{white}
+0.8.1 & 2025-12-16 & Dennis Parolin & Sistemato errore di una sezione ripetuta due volte ma con una sottosezione differente & Marco Sanguin \\
+\hline
+\rowcolor{gray!20}
+0.8.0 & 2025-12-15 & Giovanni Visentin & Aggiunti casi d'uso per Diari fittizio (UC-D4, UC-D5, UC-D5.1, UC-23.1) & Marco Sanguin \\
+\hline
+\rowcolor{white}
+0.7.0 & 2025-12-12 & Riccardo Manisi & Aggiunti casi d'uso per schermata impostazioni (UC-IMP1) e quelli relativi ai contatti fidati & Giovanni Visentin \\
+\hline
+\rowcolor{gray!20}
+0.6.0 & 2025-12-12 & Dennis Parolin & Rifacimento completo casi d'uso Benvenuto e Walkthrough (UC-BW) & Marco Sanguin\\
+\hline
+\rowcolor{white}
+0.5.0 & 2025-12-11 & Riccardo Manisi & Prima stesura casi d'uso Walkthrough & Giovanni Visentin \\
+\hline
+\rowcolor{gray!20}
+0.4.0 & 2025-12-11 & Riccardo Manisi & Aggiunta sezione scopo dei casi d'uso, attori e nomenclatura per casi d'uso & Giovanni Visentin \\
+\hline
+\rowcolor{white}
+0.3.0 & 2025-12-11 & Dennis Parolin & Redazione della sezione \ref{sec:funzioni_prodotto}. Modifica delle sezioni \ref{sec:prospettiva_prodotto} e \ref{sec:caratteristiche_utente} sulla base delle funzionalità concordate con la proponente. Spostato il registro delle modifiche a prima dell'indice. & Giovanni Visentin \\
+\hline
+\rowcolor{gray!20}
+0.2.0 & 2025-12-11 & Dennis Parolin & Redazione delle sezioni \ref{sec:scopo_documento}, \ref{sec:prospettiva_prodotto}, \ref{sec:caratteristiche_utente}, \ref{sec:riferimenti}, \ref{sec:riferimenti_normativi} e \ref{sec:riferimenti_informativi} & Marco Sanguin \\
+\hline
+\rowcolor{white}
+0.1.0 & 2025-12-10 & Riccardo Manisi & Creazione del documento & Giovanni Visentin \\
+\hline
+\end{longtable}
+\end{center}
+
+\clearpage
+
+% Indice dei contenuti
+\tableofcontents
+\thispagestyle{empty}
+
+\clearpage
+
+% Indice delle tabelle
+\listoftables
+
+% Indice delle figure
+\listoffigures
+
+\clearpage
+
+% ======= INTRODUZIONE ========
+
+\section{Introduzione}
+\subsection{Scopo del documento} \label{sec:scopo_documento}
+Il presente documento di Analisi dei Requisiti ha l'obiettivo di esporre in modo esaustivo e non ambiguo le specifiche funzionali, prestazionali e vincolanti del sistema software oggetto di sviluppo.
+
+L'analisi qui condotta si basa sull'identificazione dei Casi d'Uso (Use Cases), supportati dai relativi diagrammi UML, utilizzati per modellare le interazioni previste tra gli attori e il sistema. Tale approccio permette di derivare puntualmente i requisiti software finali.
+
+Questo elaborato costituisce il riferimento primario per le successive fasi del ciclo di vita del software, guidando la progettazione architetturale, l'implementazione del codice e le attività di verifica e validazione. Ciò garantisce che il prodotto finale sia conforme alle aspettative e alle necessità espresse dal proponente.
+
+I requisiti individuati sono stati prioritizzati secondo la seguente classificazione:
+\begin{itemize}
+    \item \textbf{Obbligatori:} requisiti essenziali e bloccanti, necessari per il funzionamento base del sistema;
+    \item \textbf{Desiderabili:} requisiti che offrono un valore aggiunto significativo, pur non essendo strettamente indispensabili nell'immediato;
+    \item \textbf{Opzionali:} requisiti di utilità marginale o posticipabili a sviluppi futuri.
+\end{itemize}
+
+Il documento, redatto dagli Analisti del gruppo \textit{BitByBit}, è destinato ai seguenti stakeholder:
+\begin{itemize}
+    \item \textbf{Committente/Proponente:} per la validazione delle specifiche e la conferma che i requisiti siano stati recepiti correttamente;
+    \item \textbf{Team di Sviluppo (Progettisti e Programmatori):} come linea guida tecnica per la realizzazione del prodotto;
+    \item \textbf{Verificatori:} come base per la definizione dei piani di test e per la verifica della conformità del software.
+\end{itemize}
+
+% =======================PROSPETTIVA PRODOTTO================================
+
+\subsection{Prospettiva del prodotto} \label{sec:prospettiva_prodotto}
+Il prodotto che il gruppo \textit{BitByBit} si prefigge di realizzare è un'applicazione mobile multipiattaforma (Android e iOS) denominata "L'app che Protegge e Trasforma". Il sistema si colloca in un dominio critico e sensibile, con l'obiettivo primario di prevenire la violenza di genere (focalizzandosi principalmente su donne tra i 18 e i 30 anni) e fornire supporto concreto attraverso strumenti di consapevolezza e sicurezza.
+
+A differenza di una tradizionale applicazione informativa, il sistema integra funzionalità \textbf{attive e intelligenti}, ma con un approccio etico definito: l'Intelligenza Artificiale non agisce autonomamente in situazioni critiche, ma funge da supporto analitico ("Detective delle relazioni" e "Specchio intelligente") per aiutare l'utente a decodificare la propria situazione e riconoscere pattern di rischio. Le funzionalità di allerta verso i contatti fidati ("Guardiano Silenzioso") o di emergenza rimangono sempre vincolate a un'attivazione esplicita dell'utente o a controlli di inattività, evitando automatismi rischiosi da parte dell'IA.
+
+La prospettiva del sistema si estende oltre la singola interazione, offrendo un hub informativo ("Guida al coraggio") che collega l'utente a risorse esterne, normative e mappe di luoghi sicuri. Data la natura dei dati trattati, il prodotto pone un vincolo architetturale imprescindibile sulla \textbf{sicurezza e la privacy}: il sistema garantisce funzionalità di offuscamento (camuffamento icona), crittografia dei contenuti personali (Diario criptato) e gestione granulare della rete di supporto.
+
+Infine, il sistema è progettato per essere affidabile e accessibile in contesti duali: sia come strumento di prevenzione riflessiva in momenti di calma, sia come supporto rapido e intuitivo in condizioni di stress o difficoltà, scalando le risorse per future integrazioni (es. widget o microservizi).
+
+% =======================FUNZIONALITA' PRODOTTO================================
+
+\subsection{Funzioni del prodotto} \label{sec:funzioni_prodotto}
+
+Il prodotto dovrà seguire le seguenti funzionalità principali:
+
+\begin{itemize}
+    \item Welcome page e walkthrough introduttivo;
+    \item Pagina impostazioni;
+    \item Login e gestione Account;
+    \item Detective delle relazioni;
+    \item Lo specchio intelligente;
+    \item La guida al coraggio;
+    \item Guardiano silenzioso;
+    \item Diario criptato.
+\end{itemize}
+
+\subsubsection{Welcome Page e Walkthrough}
+L'esperienza utente avrà inizio con una schermata di benvenuto volta a comprendere la finalità dell'installazione. Tale interfaccia presenterà due opzioni: "Per me" o "Per altri". Questa distinzione è fondamentale per fornire un contesto iniziale al Large Language Model (LLM) e preconfigurare determinati parametri. Inoltre, tale struttura permetterà in futuro l'implementazione di funzionalità differenziate in base al beneficiario del servizio.
+
+Successivamente, sarà proposto un walkthrough illustrativo delle funzionalità disponibili. È prevista la presenza di un comando per saltare tale guida, permettendo l'accesso diretto alle funzionalità dell'app.
+
+\subsubsection{Account e Impostazioni}
+È prevista l'implementazione di una sezione per la gestione dell'account. L'utente avrà la facoltà di fornire un indirizzo e-mail personale, utilizzabile per l'invio di notifiche qualora si rilevi un periodo prolungato di inattività, fungendo da meccanismo di controllo (dead man's switch) per verificare lo stato di sicurezza dell'utente o l'abbandono volontario dell'app.
+
+Un'ulteriore sezione sarà dedicata alle preferenze, incluse la gestione della rete di contatti fidati, la personalizzazione delle notifiche e la scelta dell'icona dell'app (funzionalità di "camuffamento" per proteggere la privacy in caso di ispezione del dispositivo da parte di terzi) e delle informazioni condivisibili (es. posizione geografica). La configurazione della rete di supporto è cruciale: l'utente potrà inserire e-mail o numeri di telefono di persone ritenute \textbf{fidate}, dati essenziali per il funzionamento del \textbf{Guardiano Silenzioso}. Tale funzionalità è progettata per essere scalabile, prevedendo in futuro l'invio di diverse tipologie di notifiche.
+
+\subsubsection{Detective delle Relazioni e Lo Specchio Intelligente}
+L'interfaccia includerà una sezione dedicata all'interazione testuale con l'Intelligenza Artificiale, concepita per chiarire dubbi e fornire supporto. Questa schermata implementerà due distinte funzionalità: \textbf{Detective delle relazioni} e \textbf{Lo specchio intelligente}.
+La prima ha l'obiettivo di analizzare comportamenti o narrazioni dell'utente per identificare la situazione attuale e riconoscere pattern di pericolo meritevoli di attenzione. La seconda è orientata all'autoconsapevolezza, offrendo uno spazio privato per l'analisi dei propri pensieri.
+La selezione del prompt più adeguato tra i due sarà gestita automaticamente dall'app previa analisi del messaggio utente, mantenendo comunque la possibilità di modifica manuale. È prevista inoltre una sezione per l'archiviazione delle chat, consentendone la consultazione e la prosecuzione futura.
+
+\subsubsection{La Guida al Coraggio}
+La sezione denominata \textbf{La guida al coraggio} fungerà da hub informativo, offrendo accesso chiaro a risorse essenziali. I contenuti includeranno:
+\begin{itemize}
+    \item Link a siti web di riferimento;
+    \item Link a materiale video educativo;
+    \item Collegamenti a forum di discussione esistenti;
+    \item Definizioni normative e informazioni sulla "violenza di genere";
+    \item Informazioni legali (diritti, azioni permesse, procedure di denuncia, ecc.).
+\end{itemize}
+Sarà inoltre integrata una mappa per la visualizzazione dei "luoghi sicuri", con indicazioni sui percorsi per raggiungerli basate sulla geolocalizzazione dell'utente (tramite integrazione con Google Maps).
+
+\subsubsection{Guardiano Silenzioso}
+Tale funzionalità è concepita per l'invio tempestivo di comunicazioni di emergenza (e-mail o SMS) ai contatti della rete di supporto in caso di pericolo o necessità. L'attivazione di tali comunicazioni non sarà demandata all'IA, ma sarà gestita direttamente dall'utente tramite un comando "\textbf{SOS}" chiaramente visibile e di rapido accesso.
+
+Qualora il dispositivo si trovi in condizioni di scarsa o nulla connettività internet, l'applicazione prevede una modalità di sicurezza ausiliaria. In tale scenario, previo comando specifico dell'utente, verrà attivato un allarme acustico volto ad attirare l'attenzione dei presenti e dissuadere eventuali aggressori.
+
+\subsubsection{Diario Criptato}
+Il \textbf{Diario Criptato} costituirà uno spazio sicuro per l'annotazione di eventi, pensieri e l'archiviazione di file multimediali (foto e audio). L'accesso a tale sezione sarà protetto da password o autenticazione biometrica, e l'interfaccia sarà progettata per essere discreta.
+
+A tutela della sicurezza dell'utente in situazioni di costrizione, è previsto un meccanismo di accesso differenziato: qualora l'utente sia forzato a mostrare il contenuto del diario, l'inserimento di una password errata darà accesso a un diario fittizio. Questa versione conterrà elementi coerenti e sensati, ma privi di qualsiasi informazione sensibile. L'inserimento della password corretta, invece, garantirà il normale accesso al diario reale e ai dati personali archiviati.
+
+In una prima fase, il diario non sarà interconnesso con l'IA.
+Tuttavia, l'architettura è predisposta per future estensioni, eventualmente sviluppate da team specializzati o tramite microservizi. Possibili evoluzioni includono l'analisi dei contenuti del diario da parte dell'IA per arricchire il contesto delle conversazioni, o viceversa, l'esportazione automatica delle chat nel diario. Si ipotizza inoltre l'implementazione di widget per smartphone o smartwatch per l'inserimento rapido di note vocali o fotografiche.
+
+% =======================CARATTERISTICHE UTENTE================================
+
+\subsection{Caratteristiche dell'utente} \label{sec:caratteristiche_utente}
+A seguito dell'analisi dei potenziali fruitori, il target primario dell'applicazione è stato identificato nelle donne nella fascia d'età compresa tra i 18 e i 30 anni. Tuttavia, il sistema è progettato per accogliere anche utenti esterni interessati a reperire informazioni sul tema.
+
+L'interazione con il sistema varia significativamente in base al contesto d'uso, spaziando dalla ricerca informativa alla necessità di supporto rapido. Si identificano le seguenti tipologie principali di attori:
+
+\begin{itemize}
+    \item \textbf{Utente Target (Donne 18-30 anni):} È l'utilizzatore principale. L'applicativo si configura primariamente come strumento di prevenzione; lo scenario ideale prevede che l'utente interagisca con l'app avendo tempo a disposizione (es. per informarsi o valutare la propria situazione in un contesto di calma apparente).
+    Tuttavia, il sistema deve garantire supporto anche in situazioni di difficoltà e stress (es. potenziale violenza domestica). Va specificato che, in caso di pericolo di vita imminente, si presuppone che la vittima contatti direttamente le autorità (es. 118), bypassando l'applicazione.
+    
+    \item \textbf{Rete di Supporto e Terze Parti:} Questa categoria eterogenea include la cerchia amicale (contatti fidati scelti dall'utente), i professionisti del settore (es. psicologi) e gli utenti esterni. Questi attori interagiscono con il sistema per fornire supporto, ricevere notifiche o, nel caso degli utenti esterni, consultare la sezione informativa dedicata.
+\end{itemize}
+
+In conclusione, il sistema deve essere accessibile a utenti con competenze tecniche variabili, garantendo usabilità sia durante la consultazione approfondita (fase di prevenzione) sia in momenti in cui l'utente necessita di un aiuto rapido e discreto (fase di stress), pur non sostituendosi ai servizi di emergenza primaria.
+
+% ====== RIFERIMENTI ======
+
+\subsection{Riferimenti} \label{sec:riferimenti}
+
+
+% ====== DEFINIZIONI, ACRINIMI E ABBREVIAZIONI ======
+
+Al fine di evitare ambiguità relative al linguaggio e ai termini utilizzati all'interno dei documenti formali, viene allegato il \href{https://swe-bitbybit.github.io/SWE-docs/docs/documenti_interni/Glossario.pdf}{\textit{Glossario}}.
+I termini tecnici, gli acronimi e le parole con significato specifico all'interno del progetto sono contrassegnati da una lettera 'G' in apice (es. Agile\textsuperscript{G}) e sono descritti in dettaglio nel documento apposito.
+
+\subsubsection{Riferimenti normativi}\label{sec:riferimenti_normativi}
+\begin{itemize}
+\item \textbf{Capitolato d'appalto C4: \emph{L'app che Protegge e Trasforma}}\\
+Parti consultate: documento completo\\
+Versione: 1.0\\
+Ultimo accesso: \textit{2026-01-14}\\
+\url{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C4.pdf}
+
+\pagebreak %---Inserito perchè altrimenti il riferimento successivo viene tagliato in due
+
+\item \textbf{Norme di Progetto}\\
+Parti consultate: documento completo\\
+Versione: v.0.10.2\\
+Ultimo accesso: \textit{2026-01-14}\\
+\url{https://swe-bitbybit.github.io/SWE-docs/docs/documenti_interni/norme_di_progetto.pdf} %---Link del sito, ma non funziona al momento---
+\end{itemize}
+
+\subsubsection{Riferimenti informativi} \label{sec:riferimenti_informativi}
+\begin{itemize}
+    \item \textbf{Standard IEEE 830 1998}\\
+        Parti consultate: documento completo\\
+        Versione: \textit{edizione 1998}\\
+        Ultimo accesso: \textit{2026-01-13}\\
+        \url{https://ieeexplore.ieee.org/document/720574}
+    \item \textbf{Standard ISO/IEC 12207:1995}\\
+        Parti consultate: documento completo\\
+        Versione: \textit{edizione 1997} \\
+        Ultimo accesso: \textit{2026-01-13}\\
+        \url{https://www.math.unipd.it/~tullio/IS-1/2009/Approfondimenti/ISO_12207-1995.pdf}
+    \item \textbf{Slide sull'\emph{analisi dei requisiti} del Prof. Vardanega}\\
+        Parti consultate: documento completo\\
+        Versione: \textit{A.A.2025/2026}\\
+        Ultimo accesso: \textit{2026-01-13}\\
+        \url{https://www.math.unipd.it/~tullio/IS-1/2025/Dispense/T05.pdf}
+    \item \textbf{Slide sui \emph{diagrammi dei casi d'uso} del Prof. Cardin}\\
+        Parti consultate: documento completo\\
+        Versione: \textit{A.A.2025/2026}\\
+        Ultimo accesso: \textit{2026-01-13}\\
+        \url{https://www.math.unipd.it/~rcardin/swea/2022/Diagrammi%20Use%20Case.pdf}
+    \item \textbf{\emph{Repository Github} del Prof. Cardin}\\
+        Ultimo accesso: \textit{2026-01-13}\\
+        \url{https://github.com/rcardin/swe-imdb}
+    \item \textbf{Glossario}\\
+        Parti consultate: documento completo\\
+        Versione: \textit{v.0.3.2}\\
+        Ultimo accesso: \textit{2026-01-15}\\
+        \url{https://swe-bitbybit.github.io/SWE-docs/docs/documenti_interni/Glossario.pdf}
+\end{itemize}
+
+% ---------------------------- SEZIONE CASI D'USO -------------------------------
+
+\section{Casi d'uso}
+
+\subsection{Scopo}
+Nel processo di analisi, come indicato nel documento delle \href{https://swe-bitbybit.github.io/SWE-docs/docs/documenti_interni/norme_di_progetto.pdf}{\textbf{Norme di progetto}}, il gruppo BitByBit ha stabilito come prima attività l'individuazione dei casi d'uso del sistema. La stesura dei casi d'uso costituisce uno strumento fondamentale per la successiva individuazione dei requisiti funzionali del sistema, poiché consentono di definire in modo chiaro all'utente come il sistema sarà impiegato per soddisfare specifici obiettivi.\\
+Nello specifico essi rappresentano una descrizione di come il sistema interagisce con i suoi attori per raggiungere un obiettivo specifico.
+Ogni caso d'uso ha uno scenario principale che rappresenta il flusso standard di interazioni e può includere scenari alternativi che fanno arrivare il sistema in uno stato diverso da quello che si identifica nello scenario principale del caso.\\
+Per facilitare la comprensione da parte dei lettori sia tecnici che non, alla descrizione in linguaggio naturale, viene anche associato un diagramma UML, che offre una rappresentazione grafica delle interazioni tra attori e sistema.\\
+Per ogni caso d'uso presentato in questo documento viene adottata una struttura uniforme. I termini specifici adottati sono raccolti nella sezione dedicata (\hyperref[nomenclatura-casi-duso]{Nomenclatura casi d'uso}).
+
+\subsection{Nomenclatura casi d'uso}
+\label{nomenclatura-casi-duso}
+Questa sezione raccoglie i termini tecnici specifici utilizzati nella descrizione dei casi d’uso presenti in questo documento.
+
+\begin{center}
+\small
+\arrayrulecolor{black} 
+\begin{longtable}{|p{0.30\textwidth}|p{0.60\textwidth}|}
+
+\hline
+\rowcolor{gray!60}
+{\centering \textbf{Termine}\par} &
+{\centering \textbf{Descrizione}\par} \\
+\hline
+\rowcolor{white}
+\centering \textbf{Attore principale} & Attore che interagisce attivamente con il sistema. \\
+\hline
+\rowcolor{gray!20}
+\centering \textbf{Attore secondario} & Coloro che interagiscono passivamente con il sistema. \\
+\hline
+\rowcolor{white}
+\centering \textbf{Pre-condizioni} & Lista di elementi o condizioni che sono necessari affinché l'utente possa eseguire gli scenari del caso d'uso. \\
+\hline
+\rowcolor{gray!20}
+\centering \textbf{Post-condizioni} & Condizioni che devono essere vere al termine dell'esecuzione del caso d'uso. Descrivono lo stato finale osservabile del sistema dopo la conclusione del caso d’uso.  \\
+\hline
+\rowcolor{white}
+\centering \textbf{Scenario principale} & Sequenza di passi che descrive il flusso standard del caso d'uso. Rappresenta l'happy path dell'esecuzione del caso d'uso che conduce al raggiungimento dell'obiettivo fissato. \\
+\hline
+\rowcolor{gray!20}
+\centering \textbf{Scenario secondario} & Sequenza di passi che devia dallo scenario principale a seguito di condizioni particolari. Porta il sistema in condizioni diverse da quelle dello scenario principale. \\
+\hline
+\rowcolor{white}
+\centering \textbf{Inclusioni} & Relazione tra casi d'uso in cui il caso d'uso incluso viene eseguito in modo incondizionato durante i passi del caso d'uso principale. \\
+\hline
+\rowcolor{gray!20}
+\centering \textbf{Estensioni} & Relazione tra casi d'uso in cui il caso d'uso esteso viene eseguito solo quando si verificano le condizioni di estensione definite. \\
+\hline
+\rowcolor{white}
+\centering \textbf{Trigger} & Evento o condizione che avvia l’esecuzione del caso d’uso. \\
+\hline
+
+\caption{Tabella nomenclatura casi d'uso} \label{tab:nomenclatura} \\
+
+\end{longtable}
+\end{center}
+
+\subsection{Attori} \label{subsection:attori}
+Gli attori sono entità esterne che interagiscono con il sistema per raggiungere determinati obiettivi. Essi si distinguono in due categorie principali:
+\begin{itemize}
+    \item \textbf{Attori principali:} sono coloro che avviano attivamente l'interazione con il sistema per soddisfare un proprio bisogno o scopo.
+    \item \textbf{Attori secondari:} sono entità (spesso sistemi esterni o servizi) che partecipano all'interazione fornendo dati o servizi necessari al sistema, ma senza avviare direttamente il caso d'uso. Spesso sono attori passivi.
+\end{itemize}
+Di seguito vengono rappresentati quali attori primari e secondari sono stati utilizzati:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{attori.png}
+    \caption{Diagramma degli attori}
+    \label{fig:attori}
+\end{figure}
+
+\begin{center}
+\small
+\arrayrulecolor{black}
+\begin{longtable}{|p{0.30\textwidth}|p{0.60\textwidth}|}
+
+\hline
+\rowcolor{gray!70}
+\centering \textbf{Attori primari} & \centering \textbf{Descrizione} \tabularnewline
+\hline
+\endfirsthead
+\hline
+\endhead
+\rowcolor{white}
+\centering \textbf{Utente Generico} & Un utente che non ha ancora compiuto il processo di autenticazione (che quindi non ha fornito la sua mail) e che non ha ancora creato una password per il diario \\
+\hline
+\rowcolor{gray!20}
+\centering \textbf{Utente Autenticato} & Un utente il quale ha attraversato e concluso il processo di autenticazione e che quindi ha fornito la sua mail, ma non ha ancora creato una password per il diario. Ha accesso a delle funzionalità aggiuntive rispetto all'utente generico e all'utente autenticato al diario \\
+\hline
+\rowcolor{white}
+\centering \textbf{Utente autenticato al diario} & Un utente il quale ha creato una password per il diario \\
+\hline
+\rowcolor{gray!70}
+\centering \textbf{Attori secondari} & \centering \textbf{Descrizione} \tabularnewline
+\hline
+\rowcolor{white}
+\centering \textbf{Google Auth} & Servizio di autenticazione esterno che permette al sistema di identificare l'utente tramite le proprie credenziali Google, evitando la creazione di nuovi account dedicati. \\
+\hline
+\rowcolor{gray!20}
+\centering \textbf{LLM} & Modello di Intelligenza Artificiale esterno che riceve i messaggi dell'utente e il contesto della conversazione per generare risposte coerenti e simulare un'interazione umana nelle funzionalità di supporto. \\
+\hline
+\rowcolor{white}
+\centering \textbf{Google Maps} & Servizio di mappatura esterno invocato dal sistema per mostrare la posizione precisa dei luoghi sicuri e calcolare i percorsi per raggiungerli. \\
+\hline
+
+\caption{Tabella di spiegazione degli attori} \label{tab:attori} \\
+
+\end{longtable}
+\end{center}
+
+% ===== LISTA CASI D'USO ======
+
+\subsection{Lista casi d'uso}
+
+% ==== AUTENTICAZIONE APP ====
+
+\subsubsection{UC-1 Autenticazione all'App tramite Google Auth} \label{subsec:UC-1}
+
+% Diagramma UC-1 rimosso - file non disponibile
+% \begin{figure}[H] 
+%     \centering
+%     \includegraphics[width=0.9\textwidth]{UC-1.png}
+%     \caption{Diagramma dei casi d'uso UC-1 e UC-2}
+%     \label{fig:UC-1}
+% \end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente Generico
+    \item \textbf{Attore secondario:} Google Auth
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore non è autenticato all'applicazione
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L’attore è autenticato all'applicazione
+        \item Il sistema riconosce l'attore come utente autenticato
+        \item L'attore può accedere alle funzionalità riservate dell'applicazione
+        \item La funzionalità di Dead Man Switch viene attivata automaticamente
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item L'attore richiede l'autenticazione tramite Google
+        \item L'attore viene reindirizzato a Google Auth dal sistema
+        \item L'attore si autentica su Google Auth
+        \item L'attore accede al sistema come "utente autenticato"
+    \end{itemize}
+    \item \textbf{Scenario secondario:}
+    \begin{itemize}
+        \item Google Auth restituisce errore o token non valido $\rightarrow$ \ref{subsec:UC-2}
+    \end{itemize} 
+    \item \textbf{Estensioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-2}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole accedere all'applicazione
+\end{itemize}
+
+\subsubsection{UC-2 Visualizzazione Messaggio di Errore per Autenticazione Fallita} \label{subsec:UC-2}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente Generico
+    \item \textbf{Attore secondario:} Google Auth
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha tentato l'autenticazione tramite il servizio Google Auth
+        \item Google Auth ha restituito un token non valido o un errore
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza l'errore
+        \item L'autenticazione può essere ripetuta
+        \item L'attore rimane nello stato di "utente non autenticato"
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item Il servizio Google Auth comunica al sistema l’esito negativo dell’autenticazione
+        \item Il sistema mostra all’utente un messaggio di errore relativo all’autenticazione fallita
+    \end{itemize}
+    \item \textbf{Trigger:} Google Auth restituisce un codice di errore durante il processo di autenticazione
+\end{itemize}
+
+\subsubsection{UC-3 - Esecuzione Walkthrough Interattivo} \label{subsec:UC-3}
+
+% Diagramma UC-3 rimosso - file non disponibile
+% \begin{figure}[H] 
+%     \centering
+%     \includegraphics[width=0.9\textwidth]{UC-1.png}
+%     \caption{Diagramma del caso d'uso UC-3}
+%     \label{fig:UC-3}
+% \end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente Generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore apre per la prima volta l’applicazione
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L’utente ha visualizzato le funzionalità principali e ha preso familiarità con l'applicazione
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item Il sistema mostra la schermata di benvenuto
+        \item Il sistema inizia il ciclo di presentazione delle schede informative dell'app
+        \item L'attore esegue la feature di autenticazione \ref{subsec:UC-1}
+        \item L'attore esegue scelta della tipologia di utilizzo dell'applicazione \ref{subsec:UC-3.1}
+        \item L'attore esegue la feature di aggiunta di una password per il diario criptato \ref{subsec:UC-3.2}
+        \item L'attore esegue la feature di aggiunta di un contatto fidato \ref{subsec:UC-3.3}
+        \item Il sistema mostra la Home Page
+    \end{itemize}
+    \item \textbf{Scenario secondario:}
+    \begin{itemize}
+        \item L'attore sceglie di saltare tutte le funzionalità del walkthrough \ref{subsec:UC-4}
+        \item L'attore sceglie di autenticarsi con Google \ref{subsec:UC-1}
+    \end{itemize} 
+    \item \textbf{Inclusioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-1}
+        \item \ref{subsec:UC-3.1}
+        \item \ref{subsec:UC-3.2}
+        \item \ref{subsec:UC-3.3}
+    \end{itemize}
+    \item \textbf{Estensioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-4}
+        \item \ref{subsec:UC-1}
+    \end{itemize}
+    \item \textbf{Trigger:} Primo avvio dell'applicazione
+\end{itemize}
+
+\vspace{0.5cm}
+
+\subsubsection{UC-4 - Salta Walkthrough} \label{subsec:UC-4}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente Generico
+    
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item Il walkthrough è in corso
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore ha saltato il walkthrough
+        \item Il sistema mostra la Home Page
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item L'attore seleziona l'opzione per saltare il walkthrough
+        \item Il sistema interrompe la presentazione delle schede e apre direttamente la Home Page
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore decide di saltare il walkthrough
+\end{itemize}
+
+\subsubsection{UC-3.1 - Selezione Profilo} \label{subsec:UC-3.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente Generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item Sta avvenendo il primo accesso al sistema da parte dell'attore
+        \item Il walkthrough è in corso
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il profilo è salvato dal sistema
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item L'attore vede una spiegazione della differenza tra i due profili
+        \item L'attore visualizza i due profili proposti "Per me" e "Per altri"
+        \item L'attore seleziona il profilo "Per me" o "Per altri"
+        \item Il sistema salva il profilo scelto
+    \end{itemize}
+    \item \textbf{Trigger:} Il sistema richiede la selezione del profilo
+\end{itemize}
+
+\subsubsection{UC-3.2 - Walkthrough diario criptato} \label{subsec:UC-3.2}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente Generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item Sta avvenendo il primo accesso al sistema da parte dell'attore
+        \item Il walkthrough è in corso
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'utente ha configurato il diario
+        \item Il sistema passa al prossimo step del walkthrough
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item Il sistema mostra una schermata informativa sui vantaggi del diario criptato
+        \item L'attore decide di abilitare la funzionalità
+        \item L'attore esegue la procedura di impostazione password \ref{subsec:UC-25}
+    \end{itemize}
+    \item \textbf{Scenario secondario:}
+    \begin{itemize}
+        \item L'attore sceglie di saltare la configurazione di questa feature \ref{subsec:UC-5}
+    \end{itemize}
+    \item \textbf{Inclusioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-23.1}
+    \end{itemize}
+    \item \textbf{Estensioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-5}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore completa lo step precedente del walkthrough
+\end{itemize}
+
+\subsubsection{UC-3.3 - Walkthrough contatto fidato} \label{subsec:UC-3.3}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente Generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item Sta avvenendo il primo accesso al sistema da parte dell'attore
+        \item Il walkthrough è in corso
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Un contatto fidato è stato impostato
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item Il sistema spiega i vantaggi dei contatti fidati per le situazioni di emergenza
+        \item L'attore decide di configurare il contatto
+        \item L'attore esegue la procedura di aggiunta contatto \ref{subsec:UC-8}
+    \end{itemize}
+    \item \textbf{Scenario secondario:}
+    \begin{itemize}
+        \item L'attore sceglie di saltare la configurazione di questa feature \ref{subsec:UC-5}
+    \end{itemize}
+    \item \textbf{Inclusioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-8}
+    \end{itemize}
+    \item \textbf{Estensioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-5}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore completa lo step precedente del walkthrough
+\end{itemize}
+
+\subsubsection{UC-5 - Salta feature} \label{subsec:UC-5}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente Generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item Il walkthrough è in corso
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore ha saltato la funzionalità proposta dal walkthrough
+        \item Il sistema procede allo step successivo o alla Home Page
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item L'attore decide di saltare la funzionalità
+        \item Il sistema avanza nel flusso del walkthrough
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore decide di non configurare la feature corrente
+\end{itemize}
+
+% ==== UC-6 - LISTA CONTATTI FIDATI ====
+
+UC-6 comprende vari casi d'uso per funzionare che vengono rappresentati nella seguente immagine e poi spiegati testualmente uno ad uno.
+
+\subsubsection{UC-6 - Visualizzazione lista contatti fidati} \label{sec:UC-6}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato la voce per visualizzare la propria rete di contatti fidati
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item L'attore visualizza la lista dei contatti fidati
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore visualizza le voci della lista dei contatti fidati
+        \item L'attore visualizza singolarmente i contatti fidati nella lista $\rightarrow$ \ref{subsec:UC-6.1} 
+    \end{itemize}
+    \item \textbf{Inclusioni:} \ref{subsec:UC-6.1}
+    \item \textbf{Trigger:} L'attore vuole vedere la rete dei contatti fidati che ha aggiunto
+\end{itemize}
+
+\subsubsection{UC-6.1 - Visualizzazione singolo contatto fidato nella lista} \label{subsec:UC-6.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore sta visualizzando la lista dei contatti fidati
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza un singolo contatto fidato dalla lista
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore visualizza il nome del contatto fidato nella lista \ref{subsec:UC-7.1}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole visualizzare la lista dei contatti fidati
+\end{itemize}
+
+\subsubsection{UC-7 - Visualizzazione Informazioni Contatto Fidato} \label{subsec:UC-7}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore sta visualizzando la lista dei contatti fidati
+        \item L'attore ha selezionato un contatto fidato dalla lista dei contatti fidati
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza le informazioni del contatto fidato
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Per il contatto fidato presente il sistema mostra le relative informazioni quali:
+        \begin{itemize}
+            \item il nome $\rightarrow$ \ref{subsec:UC-7.1}
+            \item il numero di telefono $\rightarrow$ \ref{subsec:UC-7.2}
+            \item l'indirizzo email $\rightarrow$ \ref{subsec:UC-7.3}
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole visualizzare le informazioni di contatto per un contatto fidato
+\end{itemize}
+
+\subsubsection{UC-7.1 - Visualizzazione nome contatto fidato} \label{subsec:UC-7.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore sta visualizzando le informazioni del contatto fidato
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza il nome del contatto fidato
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema mostra a schermo il nome del contatto fidato
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-7.2 - Visualizzazione numero di telefono contatto fidato} \label{subsec:UC-7.2}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore sta visualizzando le informazioni del contatto fidato
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza il numero di telefono del contatto fidato
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema mostra a schermo il numero di telefono del contatto fidato
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-7.3 - Visualizzazione indirizzo email contatto fidato} \label{subsec:UC-7.3}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore sta visualizzando le informazioni del contatto fidato
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza l'indirizzo email del contatto fidato
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema mostra a schermo l'indirizzo email del contatto fidato
+    \end{itemize}
+\end{itemize}
+
+% ===== AGGIUNTA CONTATTO FIDATO =====
+
+\subsubsection{UC-8 - Aggiunta contatto fidato} \label{subsec:UC-8}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato la voce per l'aggiunta di un nuovo contatto fidato
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Le informazioni del contatto fidato sono memorizzate nel sistema
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore seleziona la voce per l'aggiunta del contatto fidato
+        \item L'attore inserisce il nome del contatto fidato $\rightarrow$ \ref{subsec:UC-8.1}
+        \item L'attore inserisce il numero di telefono del contatto fidato $\rightarrow$ \ref{subsec:UC-8.2}
+        \item L'attore inserisce l'indirizzo email del contatto fidato $\rightarrow$ \ref{subsec:UC-8.3}
+        \item L'attore seleziona la voce per il salvataggio del contatto fidato nella rete di contatti
+    \end{itemize}
+    \item \textbf{Inclusioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-8.1}
+        \item \ref{subsec:UC-8.2}
+        \item \ref{subsec:UC-8.3}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole aggiungere un nuovo contatto fidato nella propria rete
+\end{itemize}
+
+\subsubsection{UC-8.1 - Inserimento nome contatto fidato} \label{subsec:UC-8.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato la voce per l'aggiunta di un nuovo contatto fidato
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema riceve il nome del contatto fidato che l'attore vuole inserire
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore inserisce il nome del contatto fidato da memorizzare
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole inserire un nuovo contatto nella propria rete di contatti fidati
+\end{itemize}
+
+\subsubsection{UC-8.2 - Inserimento numero di telefono contatto fidato} \label{subsec:UC-8.2}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato la voce per l'aggiunta di un nuovo contatto fidato
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema riceve il numero di telefono del contatto fidato che l'attore vuole inserire
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore inserisce il numero di telefono del contatto fidato da memorizzare
+    \end{itemize}
+    \item \textbf{Scenario secondario:}
+    \begin{itemize}
+        \item Il numero inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \ref{subsec:UC-10}
+        \item Il numero inserito è già presente nel sistema $\rightarrow$ \ref{subsec:UC-59}
+    \end{itemize}
+    \item \textbf{Estensioni:} 
+    \begin{itemize}
+        \item \ref{subsec:UC-10}
+        \item \ref{subsec:UC-59}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole inserire un nuovo contatto nella propria rete di contatti fidati
+\end{itemize}
+
+\subsubsection{UC-8.3 - Inserimento indirizzo email contatto fidato} \label{subsec:UC-8.3}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato la voce per l'aggiunta di un nuovo contatto fidato
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema riceve l'indirizzo email del contatto fidato che l'utente vuole inserire
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore inserisce l'indirizzo email del contatto fidato da memorizzare
+    \end{itemize}
+    \item \textbf{Scenario secondario:}
+    \begin{itemize}
+        \item L'indirizzo email inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \ref{subsec:UC-11}
+        \item L'indirizzo email inserito è già presente nel sistema $\rightarrow$ \ref{subsec:UC-60}
+    \end{itemize}
+    \item \textbf{Estensioni:} 
+    \begin{itemize}
+        \item \ref{subsec:UC-11}
+        \item \ref{subsec:UC-60}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole inserire un nuovo contatto nella propria rete di contatti fidati
+\end{itemize}
+
+\subsubsection{UC-59 - Numero di telefono già presente} \label{subsec:UC-59}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore sta aggiungendo o modificando un contatto fidato
+        \item L'attore ha inserito un numero di telefono già associato a un altro contatto
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema notifica la presenza del duplicato
+        \item Il salvataggio del contatto viene bloccato
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item Il sistema rileva che il numero di telefono inserito è già presente in rubrica
+        \item Il sistema mostra un messaggio di errore specifico per il numero duplicato
+        \item Il sistema richiede all'attore di inserire un numero diverso
+    \end{itemize}
+    \item \textbf{Trigger:} Rilevamento di un numero di telefono duplicato durante il salvataggio o l'inserimento
+\end{itemize}
+
+\subsubsection{UC-60 - Email già presente} \label{subsec:UC-60}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore sta aggiungendo o modificando un contatto fidato
+        \item L'attore ha inserito un indirizzo email già associato a un altro contatto
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema notifica la presenza del duplicato
+        \item Il salvataggio del contatto viene bloccato
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item Il sistema rileva che l'email inserita è già presente in rubrica
+        \item Il sistema mostra un messaggio di errore specifico per l'email duplicata
+        \item Il sistema richiede all'attore di inserire un'email diversa
+    \end{itemize}
+    \item \textbf{Trigger:} Rilevamento di un'email duplicata durante il salvataggio o l'inserimento
+\end{itemize}
+
+\subsubsection{UC-10 Numero di telefono non conforme ai criteri} \label{subsec:UC-10}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato la voce per l'aggiunta di un nuovo contatto fidato
+        \item L'attore ha inserito un numero di telefono non conforme ai criteri dell'applicazione
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema notifica all'attore che il numero di telefono inserito non è valido
+        \item L'attore può correggere il numero di telefono inserito
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}        
+        \item L'attore inserisce un numero di telefono non conforme ai criteri dell'applicazione
+        \item Il sistema verifica il numero di telefono e rileva che non è valido
+        \item Il sistema notifica all'attore l'errore e richiede la correzione del numero
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore ha inserito un numero di telefono non conforme ai criteri dell'applicazione
+\end{itemize}
+
+\subsubsection{UC-11 Indirizzo email non conforme ai criteri} \label{subsec:UC-11}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato la voce per l'aggiunta di un nuovo contatto fidato
+        \item L'attore ha inserito un indirizzo email non conforme ai criteri dell'applicazione
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema notifica all'attore che l'indirizzo email inserito non è valido
+        \item L'attore può correggere l'indirizzo email inserito
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}        
+        \item L'attore inserisce un indirizzo email non conforme ai criteri dell'applicazione
+        \item Il sistema verifica l'indirizzo email e rileva che non è valido
+        \item Il sistema notifica all'attore l'errore e richiede la correzione dell'indirizzo email
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore ha inserito un indirizzo email non conforme ai criteri dell'applicazione
+\end{itemize}
+
+% ===== UC-12: MODIFICA CONTATTO FIDATO =====
+
+\subsubsection{UC-12 - Modifica contatto fidato} \label{subsec:UC-12}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item Almeno un contatto fidato è presente nella rete dei contatti
+        \item L'attore ha selezionato la voce per la modifica di un contatto fidato
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Le nuove informazioni del contatto fidato sono memorizzate nel sistema
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore seleziona la voce per la modifica del contatto fidato
+        \item L'attore modifica il nome del contatto fidato $\rightarrow$ \ref{subsec:UC-12.1}
+        \item L'attore modifica il numero di telefono del contatto fidato $\rightarrow$ \ref{subsec:UC-12.2}
+        \item L'attore modifica l'indirizzo email del contatto fidato $\rightarrow$ \ref{subsec:UC-12.3}
+        \item L'attore seleziona la voce per il salvataggio delle modifiche del contatto fidato nella rete di contatti
+    \end{itemize}
+    \item \textbf{Inclusioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-12.1}
+        \item \ref{subsec:UC-12.2}
+        \item \ref{subsec:UC-12.3}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole modificare un contatto fidato nella propria rete
+\end{itemize}
+
+\subsubsection{UC-12.1 - Modifica nome contatto fidato} \label{subsec:UC-12.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato la voce per la modifica di un contatto fidato
+        \item L'attore ha selezionato il campo del nome del contatto fidato da modificare
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema riceve il nome del contatto fidato che l'attore vuole modificare
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore inserisce il nuovo nome del contatto fidato da memorizzare
+        \item L'attore salva le modifiche apportate
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole modificare il nome di un contatto fidato presente nella propria rete di contatti fidati
+\end{itemize}
+
+\subsubsection{UC-12.2 - Modifica numero di telefono contatto fidato} \label{subsec:UC-12.2}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato la voce per la modifica di un contatto fidato
+        \item L'attore ha selezionato il campo del numero di telefono del contatto fidato da modificare
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema riceve il numero di telefono del contatto fidato che l'attore vuole modificare
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore inserisce il numero di telefono del contatto fidato da memorizzare
+        \item L'attore salva le modifiche apportate
+    \end{itemize}
+    \item \textbf{Scenario secondario:}
+    \begin{itemize}
+        \item Il numero inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \ref{subsec:UC-10}
+        \item Il numero modificato è già presente nel sistema per un altro contatto $\rightarrow$ \ref{subsec:UC-59}
+    \end{itemize}
+    \item \textbf{Estensioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-10}
+        \item \ref{subsec:UC-59}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole modificare il numero di telefono di un contatto fidato presente nella propria rete di contatti fidati
+\end{itemize}
+
+\subsubsection{UC-12.3 - Modifica indirizzo email contatto fidato} \label{subsec:UC-12.3}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato la voce per la modifica di un contatto fidato
+        \item L'attore ha selezionato il campo dell'indirizzo email del contatto fidato da modificare
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema riceve l'indirizzo email del contatto fidato che l'attore vuole modificare
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore inserisce l'indirizzo email del contatto fidato da memorizzare
+        \item L'attore salva le modifiche apportate
+    \end{itemize}
+    \item \textbf{Scenario secondario:}
+    \begin{itemize}
+        \item L'indirizzo email inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \ref{subsec:UC-11}
+        \item L'indirizzo email modificato è già presente nel sistema per un altro contatto $\rightarrow$ \ref{subsec:UC-60}
+    \end{itemize}
+    \item \textbf{Estensioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-11}
+        \item \ref{subsec:UC-60}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole modificare l'indirizzo email di un contatto fidato presente nella propria rete di contatti fidati
+\end{itemize}
+
+% ===== UC-13 - CANCELLAZIONE CONTATTO FIDATO =====
+
+\subsubsection{UC-13 Eliminazione Contatto Fidato} \label{subsec:UC-13}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore sta visualizzando le informazioni di un contatto fidato
+        \item Almeno un contatto fidato è presente nella rete dei contatti fidati
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema rimuove un contatto fidato dalla rete dei contatti fidati dell'utente
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore seleziona un contatto dalla lista dei contatti fidati
+        \item L'attore seleziona la voce di cancellazione per quel contatto fidato
+        \item L'attore conferma l'eliminazione del contatto fidato $\rightarrow$ \ref{subsec:UC-13.1}
+        \item Il sistema rimuove il contatto fidato scelto dall'attore dalla rete dei contatti fidati dell'attore
+    \end{itemize}
+    \item \textbf{inclusioni:} \ref{subsec:UC-13.1}
+    \item \textbf{Trigger:} L'attore vuole rimuovere un contatto dalla propria rete di contatti fidati
+\end{itemize}
+
+\subsubsection{UC-13.1 Conferma Eliminazione Contatto Fidato} \label{subsec:UC-13.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato la voce di cancellazione per quel contatto fidato
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema riceve la conferma dell'attore di rimuovere un contatto fidato dalla propria rete dei contatti fidati
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item L'attore conferma l'eliminazione del contatto fidato
+        \item Il sistema rimuove il contatto fidato scelto dall'attore dalla rete dei contatti fidati dell'attore
+    \end{itemize}
+    \item \textbf{Scenario secondario:}
+    \begin{itemize}
+        \item L'attore rifiuta la conferma dell'eliminazione del contatto fidato $\rightarrow$ \ref{subsec:UC-14}
+    \end{itemize}
+    \item \textbf{Estensioni:} \ref{subsec:UC-14}
+    \item \textbf{Trigger:} L'attore ha scelto la voce di cancellazione per quel contatto fidato
+\end{itemize}
+
+\subsubsection{UC-14 Rifiuto Conferma Eliminazione Contatto Fidato} \label{subsec:UC-14}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato la voce di cancellazione per quel contatto fidato
+        \item L'attore sta visualizzando la richiesta di conferma di cancellazione del contatto fidato
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema riceve responso negativo da parte dell'attore per rimuovere un contatto fidato dalla propria rete dei contatti fidati
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore rifiuta l'eliminazione del contatto fidato
+        \item Il sistema non rimuove il contatto fidato dalla rete dei contatti fidati dell'attore
+        \item Il sistema ritorna alla visualizzazione della lista dei contatti fidati
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore ha scelto di non rimuovere il contatto fidato dalla propria rete dei contatti fidati
+\end{itemize}
+
+% ==== DEAD MAN'S SWITCH ====
+
+\subsubsection{UC-15 - Impostazione timer prima inattività} \label{sec:UC-15}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item La funzionalità Dead Man's Switch è abilitata UC-57 $\rightarrow$ \ref{sec:UC-57}
+        \item L'attore ha effettuato l'accesso alle impostazioni del Dead Man's Switch
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema memorizza l'intervallo di tempo per il primo controllo di inattività
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore seleziona l'opzione per il primo timer
+        \item L'attore imposta la durata desiderata dopo la quale il sistema invierà la mail di controllo all'attore
+        \item L'attore conferma la scelta
+        \item Il sistema aggiorna la configurazione
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole definire dopo quanto tempo il sistema deve verificare la sua presenza
+\end{itemize}
+
+\subsubsection{UC-16 - Impostazione timer seconda inattività} \label{sec:UC-16}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item La funzionalità Dead Man's Switch è abilitata UC-57 $\rightarrow$ \ref{sec:UC-57}
+        \item L'attore si trova nelle impostazioni del Dead Man's Switch
+        \item Il timer di prima inattività è stato configurato
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema memorizza l'intervallo di tempo per il secondo controllo di inattività
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item L'attore seleziona l'opzione per il secondo timer
+        \item L'attore imposta la durata che deve trascorrere tra la mail di controllo e l'invio del messaggio di SOS ai contatti fidati
+        \item L'attore conferma la scelta
+        \item Il sistema aggiorna la configurazione
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole definire quanto tempo ha per rispondere alla mail di controllo prima che parta l'allarme
+\end{itemize}
+
+\subsubsection{UC-17 - Modifica titolo mail di avviso} \label{sec:UC-17}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item La funzionalità Dead Man's Switch è abilitata UC-57 $\rightarrow$ \ref{sec:UC-57}
+        \item L'attore ha selezionato l'opzione di modifica del contenuto della mail
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il nuovo oggetto della mail viene salvato nel sistema
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore seleziona il campo relativo al titolo della mail
+        \item L'attore modifica il testo che funge da oggetto della mail
+        \item L'attore salva le modifiche
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-18 - Modifica corpo mail di avviso} \label{sec:UC-18}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item La funzionalità Dead Man's Switch è abilitata UC-57 $\rightarrow$ \ref{sec:UC-57}
+        \item L'attore ha selezionato l'opzione di modifica del contenuto della mail
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il nuovo corpo del messaggio viene salvato nel sistema
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore seleziona il campo relativo al corpo della mail
+        \item L'attore modifica il corpo della mail
+        \item L'attore salva le modifiche
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-19 - Visualizzazione preview mail di avviso} \label{sec:UC-19}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item La funzionalità Dead Man's Switch è abilitata UC-57 $\rightarrow$ \ref{sec:UC-57}
+        \item L'attore vuole verificare l'aspetto della mail configurata
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza un'anteprima fedele della mail che verrà inviata
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema recupera i dati della mail
+        \item Il sistema compone l'anteprima del messaggio
+        \item Il sistema visualizza il titolo della mail $\rightarrow$ \ref{subsec:UC-19.1}
+        \item Il sistema visualizza il corpo della mail $\rightarrow$ \ref{subsec:UC-19.2}
+    \end{itemize}
+    \item \textbf{Scenario secondario:} 
+    \begin{itemize}
+        \item Errore nel recupero della configurazione 
+    \end{itemize}
+    \item \textbf{Inclusioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-19.1}
+        \item \ref{subsec:UC-19.2}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore seleziona il pulsante di anteprima
+\end{itemize}
+
+\subsubsection{UC-19.1 - Visualizzazione titolo mail di avviso} \label{subsec:UC-19.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item La funzionalità Dead Man's Switch è abilitata UC-57 $\rightarrow$ \ref{sec:UC-57}
+        \item Il sistema sta renderizzando l'anteprima
+    \end{itemize}
+    \item \textbf{Post-condizioni:} L'oggetto della mail è visibile
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema mostra il testo configurato come oggetto della mail nell'header dell'anteprima
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-19.2 - Visualizzazione corpo della mail di avviso} \label{subsec:UC-19.2}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item La funzionalità Dead Man's Switch è abilitata UC-57 $\rightarrow$ \ref{sec:UC-57}
+        \item Il sistema sta renderizzando l'anteprima
+    \end{itemize}
+    \item \textbf{Post-condizioni:} Il contenuto principale della mail è visibile
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema mostra il testo del messaggio nel corpo dell'anteprima
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-57 - Attivazione Dead Man's Switch} \label{sec:UC-57}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha effettuato l'accesso alle impostazioni del Dead Man's Switch
+        \item L'attore ha selezionato l'opzione di attivazione del Dead Man's Switch
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il Dead Man's Switch è attivato
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore seleziona il pulsante di attivazione del Dead Man's Switch
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore seleziona il pulsante di attivazione del Dead Man's Switch
+\end{itemize}
+
+\subsubsection{UC-58 - Disattivazione Dead Man's Switch} \label{sec:UC-58}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha effettuato l'accesso alle impostazioni del Dead Man's Switch
+        \item L'attore ha selezionato l'opzione di disattivazione del Dead Man's Switch
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il Dead Man's Switch è disattivato
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore seleziona il pulsante di disattivazione del Dead Man's Switch
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore seleziona il pulsante di disattivazione del Dead Man's Switch
+\end{itemize}
+
+% ==== DIARIO CRIPTATO =====
+
+\subsubsection{UC-20 - Impostazione password per diario fittizio} \label{subsec:UC-20}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova nella schermata di impostazione password per il diario fittizio
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item La password del diario fittizio è validata e memorizzata
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore digita la password desiderata per il diario fittizio nel campo dedicato
+        \item Il sistema valida la password inserita
+        \item L'attore conferma la password inserita
+        \item Il sistema memorizza la password del diario fittizio
+    \end{itemize}
+    \item \textbf{Scenari secondari:} 
+    \begin{itemize}
+        \item La password del diario fittizio combacia con quella già impostata del diario criptato. Il sistema non memorizza la password e mostra un messaggio di errore $\rightarrow$ \ref{subsec:UC-20.1}
+        \item La password non è conforme ai criteri di sicurezza minimi imposti dal sistema. La password non viene memorizzata e viene mostrato un messaggio di errore. $\rightarrow$ \ref{subsec:UC-21}
+    \end{itemize}
+    \item \textbf{Estensioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-20.1}
+        \item \ref{subsec:UC-21}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore interagisce con il form di inserimento della password per il diario fittizio
+\end{itemize}
+
+\subsubsection{UC-20.1 - Password uguale alla password del diario criptato} \label{subsec:UC-20.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore sta impostando la password per il diario fittizio
+        \item La password inserita è identica alla password del diario criptato
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema ha notificato l'attore dell'errore
+        \item La password non è stata memorizzata
+        \item L'attore può inserire una nuova password
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema rileva che la password inserita è identica a quella del diario criptato
+        \item Il sistema visualizza un messaggio di errore informando l'attore che le due password devono essere differenti
+        \item Il sistema richiede all'attore di inserire una password diversa
+    \end{itemize}
+    \item \textbf{Trigger:} La password inserita per il diario fittizio corrisponde alla password del diario criptato
+\end{itemize}
+
+\subsubsection{UC-21 - Password non conforme ai criteri} \label{subsec:UC-21}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore sta inserendo la password per l'accesso al diario
+        \item La password inserita non rispetta i criteri di sicurezza definiti dal sistema
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema ha notificato l'attore della non conformità
+        \item La password non è stata accettata
+        \item L'attore può inserire una nuova password conforme ai criteri
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema valida la password inserita rispetto ai criteri di sicurezza
+        \item Il sistema rileva che la password non soddisfa i requisiti minimi
+        \item Il sistema visualizza un messaggio di errore specificando i criteri non soddisfatti
+        \item Il sistema richiede all'attore di inserire una password valida
+    \end{itemize}
+    \item \textbf{Trigger:} La password inserita non rispetta i criteri di sicurezza dell'applicazione
+\end{itemize}
+
+\subsubsection{UC-22 - Accesso al diario fittizio} \label{subsec:UC-22}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore non è autenticato al diario fittizio
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item L'attore è autenticato e ha accesso al diario fittizio
+        \item Il sistema visualizza il contenuto del diario fittizio
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore seleziona l'opzione per accedere al diario
+        \item L'attore procede con l'inserimento della password di accesso \ref{subsec:UC-24}
+        \item Il sistema verifica che la password corrisponda a quella del diario fittizio
+        \item Il sistema autentica l'attore e concede l'accesso al diario fittizio
+    \end{itemize}
+    \item \textbf{Scenario secondario:} 
+    \begin{itemize}
+        \item Non è stata impostata la password per il diario fittizio. Il sistema richiede che venga impostata una password prima di procedere. $\rightarrow$ \ref{subsec:UC-20}
+    \end{itemize}
+    \item \textbf{Inclusioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-24}
+    \end{itemize}
+    \item \textbf{Estensioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-20}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore desidera accedere al diario fittizio
+\end{itemize}
+
+\subsubsection{UC-23 - Accesso al diario criptato} \label{subsec:UC-23}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item Il diario criptato è stato precedentemente configurato
+        \item L'attore non è autenticato al diario criptato
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item L'attore è autenticato e ha accesso al diario criptato
+        \item Il sistema visualizza il contenuto del diario criptato
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore seleziona l'opzione per accedere al diario
+        \item L'attore procede con l'inserimento della password di accesso \ref{subsec:UC-24}
+        \item Il sistema verifica che la password corrisponda a quella del diario criptato
+        \item Il sistema autentica l'attore e concede l'accesso al diario criptato
+    \end{itemize}
+    \item \textbf{Scenario secondario:} 
+    \begin{itemize}
+        \item Non è stata impostata la password per il diario criptato. Il sistema richiede che venga impostata una password prima di procedere. $\rightarrow$ \ref{subsec:UC-23.1}
+    \end{itemize}
+    \item \textbf{Inclusioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-24}
+    \end{itemize}
+    \item \textbf{Estensioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-23.1}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore desidera accedere al diario criptato
+\end{itemize}
+
+\subsubsection{UC-23.1 - Impostazione password per diario criptato} \label{subsec:UC-23.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova nella schermata di impostazione password per il diario criptato
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema ha validato e memorizzato la password del diario criptato
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore digita la password desiderata per il diario criptato nel campo dedicato
+        \item Il sistema valida la password inserita
+        \item L'attore conferma la password inserita
+        \item Il sistema memorizza la password del diario criptato
+    \end{itemize}
+    \item \textbf{Scenari secondari:} 
+    \begin{itemize}
+        \item La password del diario criptato combacia con quella già impostata del diario fittizio. Il sistema non memorizza la password e mostra un messaggio di errore $\rightarrow$ \ref{subsec:UC-23.1.1}
+        \item La password non è conforme ai criteri di sicurezza minimi imposti dal sistema. La password non viene memorizzata e viene mostrato un messaggio di errore. $\rightarrow$ \ref{subsec:UC-21}
+    \end{itemize}
+    \item \textbf{Estensioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-23.1.1}
+        \item \ref{subsec:UC-21}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore interagisce con il form di inserimento della password per il diario criptato
+\end{itemize}
+
+\subsubsection{UC-24 - Inserimento password accesso diario} \label{subsec:UC-24}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova nella schermata di accesso al diario
+        \item Il diario è stato precedentemente configurato con una password
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item L'utente ha accesso al diario corrispondente
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore inserisce la password nel campo dedicato
+        \item L'attore conferma l'inserimento
+        \item Il sistema riceve la password e verifica che sia corretta
+        \item L'attore ottiene l'accesso al diario
+    \end{itemize}
+    \item \textbf{Scenari secondari:} 
+    \begin{itemize}
+        \item L'attore inserisce la password errata. Il sistema notifica l'errore e impedisce l'accesso al diario. $\rightarrow$ \ref{subsec:UC-25}
+        \item L'attore ha inserito la password errata più volte di quanto consentito dal sistema. Il sistema nega l'accesso e disabilita l'inserimento della password per un periodo di tempo predefinito. $\rightarrow$ \ref{subsec:UC-26}
+    \end{itemize}
+    \item \textbf{Estensioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-25}
+        \item \ref{subsec:UC-26}
+    \end{itemize}
+    \item \textbf{Trigger:} Il sistema richiede l'autenticazione per accedere al diario
+\end{itemize}
+
+\subsubsection{UC-25 - Inserimento password errata} \label{subsec:UC-25}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha inserito una password per l'accesso al diario
+        \item La password inserita non corrisponde a quella memorizzata dal sistema
+        \item Il numero di tentativi errati non ha superato la soglia massima consentita
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema ha negato l'accesso al diario
+        \item Il sistema ha incrementato il contatore dei tentativi falliti
+        \item L'attore può effettuare un nuovo tentativo di accesso
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema confronta la password inserita con quella memorizzata
+        \item Il sistema rileva che le password non corrispondono
+        \item Il sistema visualizza un messaggio di errore informando l'attore dell'inserimento errato
+        \item Il sistema incrementa il contatore dei tentativi falliti
+        \item Il sistema consente all'attore di inserire nuovamente la password
+    \end{itemize}
+    \item \textbf{Trigger:} La password inserita dall'attore non corrisponde a quella configurata per il diario
+\end{itemize}
+
+\subsubsection{UC-26 - Password errata troppe volte} \label{subsec:UC-26}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha effettuato multipli tentativi falliti di accesso al diario
+        \item Il numero di tentativi errati ha raggiunto o superato la soglia massima consentita
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item L'accesso al diario è temporaneamente bloccato
+        \item Il sistema ha attivato le misure di sicurezza previste
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema rileva il superamento del numero massimo di tentativi falliti
+        \item Il sistema blocca temporaneamente l'accesso alla funzionalità di diario
+        \item Il sistema visualizza un messaggio informando l'attore del blocco temporaneo
+        \item Il sistema attende un periodo di tempo predefinito prima di consentire nuovi tentativi
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore ha inserito la password errata per un numero di volte superiore alla soglia massima consentita
+\end{itemize}
+
+\subsubsection{UC-23.1.1 - Password uguale alla password del diario fittizio} \label{subsec:UC-23.1.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha impostato la password del diario criptato
+        \item La password inserita è identica alla password del diario fittizio
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema ha notificato l'attore dell'errore
+        \item La password non è stata memorizzata
+        \item L'attore può inserire una nuova password
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema rileva che la password inserita è identica a quella del diario fittizio
+        \item Il sistema visualizza un messaggio di errore informando l'attore che le due password devono essere differenti
+        \item Il sistema richiede all'attore di inserire una password diversa
+    \end{itemize}
+    \item \textbf{Trigger:} La password inserita per il diario criptato corrisponde alla password del diario fittizio
+\end{itemize}
+
+\subsubsection{UC-27 - Visualizzazione diario} \label{subsec:UC-27}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore è autenticato al diario
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema visualizza l'interfaccia principale del diario con la lista delle note
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore accede alla schermata principale del diario
+        \item Il sistema carica e visualizza la lista delle note presenti \ref{subsec:UC-27.1}
+    \end{itemize}
+    \item \textbf{Inclusioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-27.1}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore accede al diario
+\end{itemize}
+
+\subsubsection{UC-27.1 - Visualizzazione lista note} \label{subsec:UC-27.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore è autenticato al diario
+        \item L'attore si trova nella schermata principale del diario
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema visualizza l'elenco completo delle note presenti nel diario
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema recupera tutte le note memorizzate nel diario
+        \item Il sistema organizza le note secondo un ordine prestabilito
+        \item Il sistema visualizza la lista delle note con informazioni di anteprima
+        \item L'attore può visualizzare una singola nota dalla lista \ref{subsec:UC-27.1.1}
+    \end{itemize}
+    \item \textbf{Inclusioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-27.1.1}
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-27.1.1 - Visualizzazione singola nota della lista} \label{subsec:UC-27.1.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore è autenticato al diario
+        \item La lista delle note è visualizzata
+        \item Esiste almeno una nota nel diario
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema visualizza l'anteprima della nota selezionata all'interno della lista
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema recupera le informazioni della nota da visualizzare
+        \item Il sistema mostra un'anteprima della nota nella lista
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-28 - Creazione nota} \label{subsec:UC-28}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore è autenticato al diario
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Una nuova nota è stata creata e memorizzata nel diario
+        \item La nuova nota è visibile nella lista delle note
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore seleziona l'opzione per creare una nuova nota
+        \item Il sistema crea una nuova nota vuota e la memorizza nel diario
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore seleziona l'opzione di creazione nota nel diario
+\end{itemize}
+
+\subsubsection{UC-29 - Eliminazione nota} \label{subsec:UC-29}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore è autenticato al diario
+        \item Esiste almeno una nota nel diario
+        \item L'attore ha selezionato una nota da eliminare
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item La nota selezionata è stata rimossa dal diario
+        \item La nota non è più visibile nella lista delle note
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore seleziona una nota dalla lista
+        \item L'attore sceglie l'opzione di eliminazione
+        \item Il sistema richiede conferma dell'operazione di eliminazione
+        \item L'attore conferma l'eliminazione
+        \item Il sistema rimuove definitivamente la nota dal diario
+        \item Il sistema aggiorna la lista delle note
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore seleziona l'opzione di eliminazione nota nel diario
+\end{itemize}
+
+\subsubsection{UC-30 - Inserimento testo nella nota} \label{subsec:UC-30}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore è autenticato al diario
+        \item L'attore sta modificando una nota
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il testo inserito è stato memorizzato nella nota
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore seleziona la posizione in cui inserire il testo nella nota
+        \item L'attore digita il contenuto testuale desiderato
+        \item Il sistema memorizza il testo inserito nella nota
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-31 - Inserimento media nella nota} \label{subsec:UC-31}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore è autenticato al diario
+        \item L'attore sta modificando una nota
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il media è stato memorizzato nella nota
+        \item Il media è associato alla nota e visualizzabile
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore seleziona l'opzione per inserire contenuto media
+        \item L'attore sceglie il tipo di media da inserire tra audio e immagini
+        \item L'attore seleziona il media desiderato
+        \item L'attore conferma l'inserimento
+        \item Il sistema elabora e memorizza il contenuto media nella nota
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore seleziona l'opzione di inserimento media
+\end{itemize}
+
+\subsubsection{UC-32 - Visualizzazione contenuto nota} \label{subsec:UC-32}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore è autenticato al diario
+        \item Esiste almeno una nota nel diario
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema visualizza il contenuto completo della nota selezionata
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore seleziona una nota dalla lista
+        \item Il sistema recupera il contenuto completo della nota
+        \item Il sistema visualizza tutto il contenuto testuale e media presente nella nota
+        \item L'attore può visualizzare e interagire con il contenuto della nota
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore interagisce con una nota nella lista note
+\end{itemize}
+
+% ===== UC-S: SICUREZZA - GUARDIANO SILENZIOSO  ======
+
+\subsubsection{UC-33 - Invio Messaggio SOS} \label{sec:UC-33}
+
+% Diagramma UC-33 rimosso - file non disponibile
+% \begin{figure}[H] 
+%     \centering
+%     \includegraphics[width=0.9\textwidth]{UC-1.png}
+%     \caption{Diagramma del caso d'uso UC-33 con UC-33.1, UC-33.2 e UC-34}
+%     \label{fig:UC-33}
+% \end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo.
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema ha preso in carico la richiesta di invio del messaggio SOS.
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L’attore interagisce con l'opzione di invio del messaggio SOS.
+        \item Il sistema verifica la presenza di connessione.
+	    \item Il sistema invia una mail preimpostata ai contatti fidati memorizzati.
+    \end{itemize}
+    \item \textbf{Scenari secondari:} 
+    \begin{itemize}
+        \item Il sistema non è in grado di connettersi a internet. L'invio del messaggio fallisce e viene chiesto all'attore se inviare un segnale acustico. $\rightarrow$ \ref{sec:UC-33.1}
+        \item Il sistema non ha memorizzato nessun contatto fidato. L'invio del messaggio fallisce e viene chiesto all'attore se inviare un segnale acustico. $\rightarrow$ \ref{sec:UC-33.2}
+    \end{itemize}
+    \item \textbf{Estensioni:}
+    \begin{itemize}
+        \item \ref{sec:UC-33.1}
+        \item \ref{sec:UC-33.2}
+    \end{itemize}
+    \item \textbf{Trigger:} L'Attore interagisce con l'opzione di invio del messaggio SOS.
+\end{itemize}
+
+\subsubsection{UC-33.1 - Assenza rete Internet} \label{sec:UC-33.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo.
+        \item Il sistema non ha accesso alla connessione internet.
+	    \item È in corso la richiesta di invio del messaggio SOS.
+    \end{itemize}	
+
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema ha notificato l'Attore dell'errore
+        \item Il sistema ha proposto all'Attore l'opzione di invio del segnale acustico.
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema ha rilevato l'assenza di connessione.
+        \item Il sistema mostra un messaggio di errore.
+        \item Il sistema dà la possibilità all'attore di inviare un segnale acustico $\rightarrow$ \ref{sec:UC-34}
+    \end{itemize}
+    \item \textbf{Estensioni:}
+    \begin{itemize}
+        \item \ref{sec:UC-34}
+    \end{itemize}
+    \item \textbf{Trigger:} Il sistema rileva l'assenza di connessione durante l'invio del messaggio di SOS.
+\end{itemize}
+
+\subsubsection{UC-33.2 - Mancanza di contatti fidati} \label{sec:UC-33.2}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo.
+	    \item È in corso la richiesta di invio del messaggio SOS.
+	    \item La lista dei contatti fidati è vuota.
+    \end{itemize}	
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema ha notificato l'Attore dell'errore
+        \item Il sistema ha proposto all'Attore l'opzione di invio del segnale acustico.
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema rileva che la lista dei contatti fidati è vuota
+        \item Il sistema notifica l'utente con un messaggio di errore
+        \item Il sistema dà la possibilità all'attore di inviare un segnale acustico $\rightarrow$ \ref{sec:UC-34}
+    \end{itemize}
+    \item \textbf{Estensioni:}
+    \begin{itemize}
+        \item \ref{sec:UC-34}
+    \end{itemize}
+    \item \textbf{Trigger:} L'Utente vuole mandare un messaggio di SOS ai contatti fidati
+\end{itemize}
+
+\subsubsection{UC-34 - Invio segnale acustico} \label{sec:UC-34}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo.
+	    \item È in corso la richiesta di invio del messaggio SOS.
+	    \item Si è verificato un errore che ha impedito l'invio delle mail ai contatti fidati.
+        \item L'Attore ha selezionato l'opzione di invio del segnale acustico.
+    \end{itemize}	
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema avvia l'invio di un segnale acustico
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'Attore seleziona l'opzione per inviare il segnale acustico.
+        \item Il sistema invia il segnale acustico indipendente dalle impostazioni di volume del dispositivo.
+    \end{itemize}
+    \item \textbf{Trigger:} L'Attore seleziona l'opzione per inviare il segnale acustico.
+\end{itemize}
+
+% ========================== UC-I: I - DETECTIVE DELLE RELAZIONI  ==============================
+
+La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguardanti la funzionalità Detective delle Relazioni e Lo Specchio Intelligente.
+
+% Diagramma UC-IGenerico rimosso - file non disponibile
+% \begin{figure}[H] 
+%     \centering
+%     \includegraphics[width=0.9\textwidth]{../../../resources/UC-IGenerico.png}
+%     \caption{Diagramma dei casi d'uso UC-I}
+%     \label{fig:UC-IGenerico}
+% \end{figure}
+
+
+\subsubsection{UC-35 - Consultazione Chatbot} \label{sec:UC-35}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore secondario:} LLM
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore sta visualizzando una chat
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore ha ricevuto una risposta dall'LLM
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore inserisce da tastiera il messaggio nella barra apposita
+        \item L'attore invia il messaggio al chatbot impostato nel contesto scelto
+        \item Il chatbot analizza il messaggio secondo i prompt impostati dal contesto
+        \item Il chatbot analizza il messaggio secondo la cronologia dei messaggi
+        \item Il chatbot genera la risposta
+        \item L'attore visualizza la risposta del chatbot a schermo
+    \end{itemize}
+    \item \textbf{Scenario secondario:} 
+    \begin{itemize}
+        \item L'attore interrompe il processo di analisi del messaggio dell'LLM \ref{sec:UC-35.1}
+        \item Il messaggio non riesce ad essere inviato causa mancanza di connessione \ref{sec:UC-35.2}
+        \item L'LLM riscontra un problema durante la lettura del messaggio \ref{sec:UC-35.3}
+    \end{itemize}
+    \item \textbf{Estensioni:}
+    \begin{itemize}
+        \item \ref{sec:UC-35.1}
+        \item \ref{sec:UC-35.2}
+        \item \ref{sec:UC-35.3}
+    \end{itemize}
+    \item \textbf{Trigger:} L'Utente vuole consultarsi con il chatbot
+\end{itemize}
+
+\subsubsection{UC-35.1 - Interruzione risposta} \label{sec:UC-35.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+	    \item L'attore ha mandato un messaggio
+	    \item Il sistema ha ricevuto il messaggio
+    \end{itemize}	
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema ha interrotto la generazione della risposta
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore interrompe l'LLM durante l'analisi del messaggio
+        \item Il sistema smette di analizzare il messaggio
+        \item Il sistema notifica l'attore dell'interruzione della generazione della risposta
+        \item L'attore può riscrivere un messaggio al chatbot
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole interrompere la generazione della risposta dell'LLM
+\end{itemize}
+
+\subsubsection{UC-35.2 - Mancanza di connessione} \label{sec:UC-35.2}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha inviato un messaggio al chatbot
+        \item Il sistema rileva la mancanza di connessione
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema ha smesso di provare a leggere il messaggio
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema ha rilevato che non c’è connessione.
+        \item Il sistema notifica l'attore della mancanza di connessione
+        \item L'attore può riprovare
+        \item L'attore può scrivere un nuovo messaggio
+    \end{itemize}
+    \item \textbf{Trigger:} Il sistema rileva la mancanza di connessione
+\end{itemize}
+
+\subsubsection{UC-35.3 - Errore di lettura del messaggio} \label{sec:UC-35.3}
+\begin{itemize}
+    \item \textbf{Attore principale:} LLM
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+	    \item L’utente ha mandato un messaggio
+    \end{itemize}	
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L’utente è notificato dell'errore
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema rileva un errore nella lettura del messaggio inviato
+        \item Il sistema notifica l'utente dell'errore
+        \item L'utente può mandare un nuovo messaggio
+        \item L'utente può chiedere di riprovare a leggere il messaggio \ref{sec:UC-35.1}
+	    \item Il sistema riceve il nuovo messaggio modificato.
+    \end{itemize}
+    \item \textbf{Trigger:} Il sistema non è riuscito a leggere il messaggio
+\end{itemize}
+
+\subsubsection{UC-36 - Switch al "Detective delle Relazioni"} \label{sec:UC-36}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo.
+        \item Una chat con il chatbot è aperta
+        \item Il contesto attualmente impostato è "Specchio Intelligente"
+    \end{itemize}	
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema ha cambiato il contesto fornito al modello da "Specchio Intelligente" a "Detective delle Relazioni"
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore seleziona la voce per il cambio del contesto
+        \item Il sistema imposta come attivo il contesto "Detective delle Relazioni"
+    \end{itemize}
+    \item \textbf{Scenario secondario:} 
+    \begin{itemize}
+        \item Errore nello switch di contesto \ref{sec:UC-38}
+    \end{itemize}
+    \item \textbf{Estensioni:} \ref{sec:UC-38}
+    \item \textbf{Trigger:} L’utente ha premuto il pulsante per il cambio del contesto.
+\end{itemize}
+
+\subsubsection{UC-37 - Switch a "Specchio Intelligente"} \label{sec:UC-37}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo.
+        \item Una chat con il chatbot è aperta
+        \item Il contesto attualmente impostato è "Detective delle Relazioni"
+    \end{itemize}	
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema ha cambiato il contesto fornito al modello da "Detective delle Relazioni" a "Specchio Intelligente"
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore seleziona la voce per il cambio del contesto
+        \item Il sistema imposta come attivo il contesto "Specchio Intelligente"
+    \end{itemize}
+    \item \textbf{Scenario secondario:} 
+    \begin{itemize}
+        \item Errore nello switch di contesto \ref{sec:UC-38}
+    \end{itemize}
+    \item \textbf{Estensioni:} \ref{sec:UC-38}
+    \item \textbf{Trigger:} L’utente ha premuto il pulsante per il cambio del contesto.
+\end{itemize}
+
+\subsubsection{UC-38 - Errore switch contesto} \label{sec:UC-38}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha richiesto il cambio di contesto
+        \item Si verifica un errore durante l'operazione
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema notifica l'errore
+        \item Il contesto rimane invariato
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item Il sistema rileva un errore nel cambio del contesto
+        \item Il sistema mostra un messaggio di errore
+        \item Il sistema mantiene il contesto precedente
+    \end{itemize}
+    \item \textbf{Trigger:} Fallimento operazione di switch contesto
+\end{itemize}
+
+\subsubsection{UC-39 - Visualizzazione cronologia chat} \label{subsec:UC-39}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato la cronologia delle chat
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema mostra l'elenco completo delle chat in cronologia
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema recupera tutte le chat memorizzate
+        \item Il sistema organizza le chat secondo ordine cronologico
+        \item Il sistema visualizza la lista delle chat con una preview del primo messaggio inviato dentro la chat
+        \item L'attore può visualizzare una singola chat dalla lista \ref{subsec:UC-39.1}
+    \end{itemize}
+    \item \textbf{Inclusioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-39.1}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore ha selezionato la cronologia delle chat
+\end{itemize}
+
+\subsubsection{UC-39.1 - Visualizzazione singola chat della lista} \label{subsec:UC-39.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato la cronologia delle chat
+        \item La cronologia delle chat è visibile
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item L'attore ha visualizzato una singola chat
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema recupera le informazioni della chat da visualizzare
+        \item Il sistema mostra la preview del primo messaggio della chat nella lista \ref{subsec:UC-39.1.1}
+    \end{itemize}
+    \item \textbf{Inclusioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-39.1.1}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore ha visualizzato la cronologia
+\end{itemize}
+
+\subsubsection{UC-39.1.1 - Visualizzazione preview inizio chat della lista} \label{subsec:UC-39.1.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato la cronologia delle chat
+        \item La cronologia delle chat è visibile
+        \item Le chat sono caricate
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item L'attore ha visualizzato la preview di una chat
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema mostra la preview del primo messaggio della chat nella lista
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore ha visualizzato una singola chat dalla cronologia delle chat
+\end{itemize}
+
+\subsubsection{UC-40 - Visualizzazione contenuto chat} \label{subsec:UC-40}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato una chat (dalla cronologia o una nuova conversazione)
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item L'attore visualizza l'interfaccia della chat con i relativi contenuti
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema carica il contenuto della chat selezionata
+        \item Il sistema visualizza la lista dei messaggi scambiati tra attore e chatbot $\rightarrow$ \ref{subsec:UC-40.1}
+    \end{itemize}
+    \item \textbf{Scenario secondario:} 
+    \begin{itemize}
+        \item Errore nel caricamento del contenuto della chat \ref{subsec:UC-40.2}
+    \end{itemize}
+    \item \textbf{Inclusioni:} \ref{subsec:UC-40.1}
+    \item \textbf{Estensioni:} \ref{subsec:UC-40.2}
+    \item \textbf{Trigger:} L'attore vuole visualizzare il contenuto di una chat specifica
+\end{itemize}
+
+\subsubsection{UC-40.1 - Visualizzazione lista messaggi} \label{subsec:UC-40.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore sta visualizzando il contenuto della chat
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza la lista dei messaggi della conversazione avuta con il chatbot
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema recupera i messaggi dal database
+        \item Per ogni messaggio presente, il sistema ne identifica la tipologia (utente o chatbot)
+        \item Il sistema visualizza i messaggi dell'utente $\rightarrow$ \ref{subsec:UC-40.1.1}
+        \item Il sistema visualizza i messaggi del chatbot $\rightarrow$ \ref{subsec:UC-40.1.2}
+        \item L'attore può scorrere tra i messaggi
+    \end{itemize}
+    \item \textbf{Inclusioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-40.1.1}
+        \item \ref{subsec:UC-40.1.2}
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-40.1.1 - Visualizzazione messaggio utente} \label{subsec:UC-40.1.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item Il sistema sta mostrando la lista dei messaggi all'attore
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il singolo messaggio inviato dall'utente viene mostrato a schermo
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema mostra il testo del messaggio inviato dall'utente con la formattazione grafica allineata a destra
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-40.1.2 - Visualizzazione messaggio chatbot} \label{subsec:UC-40.1.2}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item Il sistema sta mostrando la lista dei messaggi all'attore
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il singolo messaggio generato dal chatbot viene mostrato a schermo
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema mostra il testo del messaggio generato dal chatbot con la formattazione grafica allineata a sinistra
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-40.2 - Errore caricamento chat} \label{subsec:UC-40.2}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato una chat
+        \item Si verifica un errore tecnico (assenza di rete, errore server, timeout) durante il recupero dei dati
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il contenuto della chat non viene visualizzato
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema tenta di recuperare il contenuto e la cronologia della chat
+        \item Il sistema rileva un fallimento nell'operazione di caricamento
+        \item Il sistema mostra un messaggio di errore
+        \item Il sistema propone all'attore di riprovare l'azione
+        \item L'attore visualizza la chat 
+    \end{itemize}
+    \item \textbf{Trigger:} Il recupero dei dati della chat fallisce o va in timeout
+\end{itemize}
+
+\subsubsection{UC-41 - Creazione nuova chat} \label{subsec:UC-41}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova nella schermata principale
+        \item L'attore ha selezionato la voce per creare una nuova chat
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Una nuova sessione di chat viene creata
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore seleziona la voce per avviare una nuova conversazione con il chatbot
+        \item Il sistema inizializza un nuovo contesto di chat vuoto
+        \item Il sistema reindirizza l'attore alla schermata della chat
+        \item L'attore visualizza la schermata della chat vuota \ref{subsec:UC-40}
+    \end{itemize}
+    \item \textbf{Inclusioni:} \ref{subsec:UC-40}
+    \item \textbf{Trigger:} L'attore vuole iniziare una nuova conversazione con il chatbot
+\end{itemize}
+
+\subsubsection{UC-42 - Eliminazione chat} \label{subsec:UC-42}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item Esiste almeno una chat nella cronologia
+        \item L'attore sta visualizzando la cronologia
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item La chat selezionata e i relativi dati vengono rimossi dal sistema
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore attiva la modalità di gestione/modifica della cronologia
+        \item L'attore seleziona la chat che desidera rimuovere
+        \item L'attore conferma l'intenzione di eliminare la chat $\rightarrow$ \ref{subsec:UC-42.1}
+        \item Il sistema elimina la chat e aggiorna la lista della cronologia
+    \end{itemize}
+    \item \textbf{Inclusioni:} \ref{subsec:UC-42.1}
+    \item \textbf{Trigger:} L'attore vuole rimuovere una conversazione passata
+\end{itemize}
+
+\subsubsection{UC-42.1 - Conferma eliminazione chat} \label{subsec:UC-42.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha richiesto l'eliminazione di una chat
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item L'operazione di eliminazione viene confermata al sistema
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema richiede una conferma esplicita per procedere con l'eliminazione
+        \item L'attore conferma l'operazione
+    \end{itemize}
+    \item \textbf{Scenario secondario:}
+    \begin{itemize}
+        \item L'attore rifiuta la conferma dell'eliminazione della chat $\rightarrow$ \ref{subsec:UC-42.1.1}
+    \end{itemize}
+    \item \textbf{Estensioni:} \ref{subsec:UC-42.1.1}
+\end{itemize}
+
+\subsubsection{UC-42.1.1 - Rifiuto conferma eliminazione chat} \label{subsec:UC-42.1.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato l'opzione di cancellazione per una chat
+        \item Il sistema è in attesa di conferma
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema riceve responso negativo da parte dell'attore per rimuovere la chat
+        \item La chat non viene eliminata
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore rifiuta l'eliminazione della chat
+        \item Il sistema non rimuove la chat dalla cronologia
+        \item Il sistema chiude la richiesta di conferma e ritorna alla visualizzazione precedente
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore sceglie di non confermare l'eliminazione della chat
+\end{itemize}
+
+% ========================== UC-G: Guide ==============================
+
+\subsubsection{UC-43 - Visualizzazione lista community} \label{sec:UC-43}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato la sezione dedicata alle community
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza l'elenco delle community disponibili
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema recupera l'elenco delle community attive dal server
+        \item Il sistema visualizza la lista delle community $\rightarrow$ \ref{subsec:UC-43.1}
+        \item L'attore può scorrere la lista per scegliere quale community visitare
+    \end{itemize}
+    \item \textbf{Inclusioni:} \ref{subsec:UC-43.1}
+    \item \textbf{Trigger:} L'attore vuole esplorare le community esistenti
+\end{itemize}
+
+\subsubsection{UC-43.1 - Visualizzazione singola community nella lista} \label{subsec:UC-43.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item Il sistema sta renderizzando la lista delle community
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza i dati riassuntivi della singola community
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema mostra il nome della community
+        \item Il sistema mostra l'icona o l'immagine rappresentativa
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-44 - Visita community} \label{sec:UC-44}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore visualizza la lista delle community
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza i post e le discussioni interne alla community
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore seleziona una community specifica dalla lista
+        \item Il sistema carica i dettagli della community scelta
+        \item Il sistema presenta la schermata di dettaglio della community
+    \end{itemize}
+    \item \textbf{Scenario secondario:} 
+    \begin{itemize}
+         \item Errore nel caricamento della pagina $\rightarrow$ \ref{subsec:UC-44.1}
+    \end{itemize}
+    \item \textbf{Estensioni:} \ref{subsec:UC-44.1}
+    \item \textbf{Trigger:} L'attore seleziona una community per visualizzarne il contenuto
+\end{itemize}
+
+\subsubsection{UC-44.1 - Errore caricamento community} \label{subsec:UC-44.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore sta tentando di visualizzare la lista o i dettagli di una community
+        \item Si verifica un problema tecnico (timeout server, assenza rete)
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema notifica l'errore e non mostra dati parziali o corrotti
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema rileva il fallimento della richiesta dati
+        \item Il sistema mostra un messaggio di errore all'utente
+        \item Il sistema permette di ricaricare la pagina
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-45 - Visualizzazione lista contatti d'emergenza} \label{sec:UC-45}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato la sezione dei numeri utili/emergenza
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza l'elenco dei numeri di emergenza
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema recupera la lista dei contatti di emergenza nazionali
+        \item Il sistema recupera la lista dei numeri dei contatti fidati personali 
+        \item Il sistema visualizza le voci della lista $\rightarrow$ \ref{subsec:UC-45.1}
+    \end{itemize}
+    \item \textbf{Inclusioni:} \ref{subsec:UC-45.1}
+    \item \textbf{Trigger:} L'attore vuole consultare i numeri rapidi di emergenza
+\end{itemize}
+
+\subsubsection{UC-45.1 - Visualizzazione singolo contatto ente d'emergenza} \label{subsec:UC-45.1}
+\begin{itemize}
+    \item \textbf{Descrizione:} Questo caso d'uso generalizza la visualizzazione di un contatto, definendo la struttura comune (nome e numero) per qualsiasi tipo di contatto d'emergenza.
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item Il sistema sta renderizzando la lista dei contatti degli enti d'emergenza
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item I dettagli essenziali dell'ente sono visibili a schermo
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema visualizza il nome identificativo del contatto $\rightarrow$ \ref{subsec:UC-45.1.1}
+        \item Il sistema visualizza il numero telefonico associato al contatto $\rightarrow$ \ref{subsec:UC-45.1.2}
+    \end{itemize}
+    \item \textbf{Inclusioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-45.1.1}
+        \item \ref{subsec:UC-45.1.2}
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-45.1.1 - Visualizzazione nome contatti d'emergenza} \label{subsec:UC-45.1.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item Il sistema sta visualizzando un contatto d'emergenza
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il nome del contatto è visibile
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema mostra la stringa di testo corrispondente al nome dell'ente o della persona
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-45.1.2 - Visualizzazione numero contatti d'emergenza} \label{subsec:UC-45.1.2}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item Il sistema sta visualizzando un contatto d'emergenza
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il numero di telefono è visibile
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema mostra le cifre del numero telefonico associato al contatto
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-48 - Composizione automatica numero contatto} \label{sec:UC-48}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore visualizza la lista dei contatti d'emergenza
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema compila il numero sul dispositivo
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore interagisce con un contatto
+        \item Il sistema rileva il numero associato
+        \item Il sistema compila il numero sul dispositivo dell'attore
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore seleziona il pulsante di chiamata di un contatto
+\end{itemize}
+
+\subsubsection{UC-49 - Visualizzazione lista leggi} \label{sec:UC-49}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato la sezione informativa sulle normative vigenti
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza l'elenco delle leggi e dei diritti pertinenti
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema recupera l'elenco delle normative dal database
+        \item Il sistema visualizza le voci della lista delle leggi $\rightarrow$ \ref{subsec:UC-49.1}
+        \item L'attore può scorrere la lista per cercare l'argomento di interesse
+    \end{itemize}
+    \item \textbf{Inclusioni:} \ref{subsec:UC-49.1}
+    \item \textbf{Trigger:} L'attore vuole informarsi sui propri diritti legali
+\end{itemize}
+
+\subsubsection{UC-49.1 - Visualizzazione singola legge nella lista} \label{subsec:UC-49.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item Il sistema sta mostrando la lista delle leggi
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza il titolo
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema mostra il titolo della legge
+        \item L'attore può selezionare una legge per aprirne i dettagli
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-50 - Visualizzazione dettagli legge} \label{sec:UC-50}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore visualizza la lista delle leggi
+        \item L'attore seleziona una legge dalla lista
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza interamente i dettagli della legge
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore seleziona una normativa specifica dalla lista
+        \item Il sistema recupera il contenuto dettagliato della legge
+        \item Il sistema presenta la schermata di dettaglio con il testo esplicativo completo
+    \end{itemize}
+    \item \textbf{Scenario secondario:} 
+    \begin{itemize}
+         \item Errore nel caricamento del contenuto della legge $\rightarrow$ \ref{subsec:UC-51}
+    \end{itemize}
+    \item \textbf{Estensioni:} \ref{subsec:UC-51}
+    \item \textbf{Trigger:} L'attore vuole approfondire il contenuto di una legge
+\end{itemize}
+
+\subsubsection{UC-51 - Errore caricamento normativa} \label{subsec:UC-51}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore sta tentando di visualizzare i dettagli di una legge
+        \item Si verifica un problema tecnico (timeout server, assenza rete)
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema notifica l'errore all'attore
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema rileva il fallimento della richiesta dati
+        \item Il sistema mostra un messaggio di errore esplicativo all'utente
+        \item Il sistema permette di ricaricare la pagina o tornare indietro
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-52 - Visualizzazione lista materiale informativo} \label{sec:UC-52}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato la sezione del materiale informativo
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza l'elenco dei materiali multimediali o testuali disponibili
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema recupera l'elenco delle risorse disponibili dal server
+        \item Il sistema visualizza la lista dei materiali disponibili 
+        \item L'attore può visualizzare singolarmente ogni materiale nella lista $\rightarrow$ \ref{subsec:UC-52.1}
+        \item L'attore può scorrere la lista per trovare il contenuto di interesse
+    \end{itemize}
+    \item \textbf{Inclusioni:} \ref{subsec:UC-52.1}
+    \item \textbf{Trigger:} L'attore vuole consultare risorse educative o di supporto
+\end{itemize}
+
+\subsubsection{UC-52.1 - Visualizzazione singolo materiale informativo} \label{subsec:UC-52.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item Il sistema sta renderizzando la lista dei materiali
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza il titolo e il formato del materiale
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema mostra il titolo del materiale
+        \item Il sistema mostra l'icona relativa al formato
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-53 - Visualizzazione dettagli materiale informativo} \label{sec:UC-53}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore visualizza la lista del materiale informativo
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il contenuto selezionato viene aperto per la consultazione o avviato il download
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore seleziona una risorsa specifica dalla lista
+        \item Il sistema recupera il file o il contenuto associato
+        \item Il sistema visualizza il materiale a schermo intero o ne avvia la riproduzione
+    \end{itemize}
+    \item \textbf{Scenario secondario:} 
+    \begin{itemize}
+         \item Si verifica un errore durante il recupero del file (es. file corrotto o offline) $\rightarrow$ \ref{subsec:UC-53.1}
+    \end{itemize}
+    \item \textbf{Estensioni:} \ref{subsec:UC-53.1}
+    \item \textbf{Trigger:} L'attore seleziona una risorsa per visualizzarla
+\end{itemize}
+
+\subsubsection{UC-53.1 - Errore caricamento materiale} \label{subsec:UC-53.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha richiesto l'apertura di un materiale informativo
+        \item Si verifica un problema tecnico (timeout, assenza rete, risorsa rimossa)
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'utente è notificato dell'errore
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema rileva un errore durante il tentativo di accesso alla risorsa
+        \item Il sistema mostra un messaggio di errore
+        \item Il sistema visualizza la lista dei materiali
+    \end{itemize}
+    \item \textbf{Trigger:} Fallimento nel download o nell'apertura della risorsa
+\end{itemize}
+
+\subsubsection{UC-54 - Visualizzazione mappa luoghi sicuri} \label{sec:UC-54}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato la funzionalità per visualizzare la mappa dei luoghi sicuri
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza la mappa con i punti di interesse
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema carica i dati geolocalizzati dei luoghi sicuri
+        \item Il sistema visualizza la mappa interattiva all'interno dell'applicazione
+        \item Il sistema mostra i marker corrispondenti ai luoghi sicuri nelle vicinanze (Centri antiviolenza, Ospedali, Stazioni di Polizia)
+        \item L'attore può selezionare un luogo sicuro dalla mappa
+        \item L'attore può decidere di aprire la posizione su Google Maps $\rightarrow$ \ref{subsec:UC-55}
+    \end{itemize}
+    \item \textbf{Estensioni:} \ref{subsec:UC-55}
+    \item \textbf{Trigger:} L'attore vuole localizzare i luoghi sicuri più vicini
+\end{itemize}
+
+\subsubsection{UC-55 - Apertura luogo in Google Maps} \label{subsec:UC-55}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore secondario:} Google Maps
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore sta visualizzando la mappa dei luoghi sicuri
+        \item Il dispositivo dispone di una connessione internet e/o dell'applicazione Google Maps
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'applicazione esterna (Google Maps) viene aperta con le coordinate impostate
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore seleziona l'opzione per aprire il luogo su Google Maps
+        \item Il sistema chiama l'applicazione esterna Google Maps passando le coordinate necessarie
+        \item L'attore Google Maps visualizza la mappa/itinerario
+    \end{itemize}
+    \item \textbf{Scenario secondario:} 
+    \begin{itemize}
+         \item Si verifica un errore nell'apertura dell'applicazione esterna $\rightarrow$ \ref{subsec:UC-56}
+    \end{itemize}
+    \item \textbf{Estensioni:} \ref{subsec:UC-56}
+    \item \textbf{Trigger:} L'attore vuole avviare la navigazione o vedere dettagli aggiuntivi del luogo
+\end{itemize}
+
+\subsubsection{UC-56 - Errore apertura luogo in mappa esterna} \label{subsec:UC-56}
+\begin{itemize}
+    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item Il sistema tenta di aprire l'applicazione Google Maps
+        \item Si verifica un problema nell'apertura
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema notifica l'errore e mantiene l'utente nell'applicazione corrente
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema rileva il fallimento nell'invocazione dell'app esterna
+        \item Il sistema mostra un messaggio di errore
+        \item Il sistema ritorna alla visualizzazione della mappa interna
+    \end{itemize}
+\end{itemize}
+
+% ======================= REQUISITI ========================
+
+\clearpage
+\section{Requisiti} \label{section:requisiti}
+Di seguito vengono riportati i requisiti del sistema, individuati attraverso l'analisi dei casi d'uso.
+La nomenclatura utilizzata per il codice dei requisiti è spiegata nel documento \href{https://swe-bitbybit.github.io/SWE-docs/docs/documenti_interni/norme_di_progetto.pdf}{Norme di Progetto} alla sezione 2.2.3.2.
+
+\subsection{Requisiti Funzionali} \label{subsection:requisiti_funzionali}
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\arrayrulecolor{black}
+\begin{longtable}{|c|p{9cm}|c|}
+\caption{Tabella Requisiti Funzionali} \label{tab:requisiti_funzionali} \\
+\hline
+\rowcolor{gray!60}
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Riferimento} \\
+\hline
+\endfirsthead
+\caption[]{Tabella Requisiti Funzionali (continua)} \\
+\hline
+\rowcolor{gray!60}
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Riferimento} \\
+\hline
+\endhead
+\rowcolor{white}
+RF-OB-1 & L'utente deve poter autenticarsi tramite Google Auth & \hyperref[subsec:UC-1]{UC-1} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-2 & Il sistema deve mostrare un errore in caso di fallimento dell'autenticazione & \hyperref[subsec:UC-2]{UC-2} \\
+\hline
+\rowcolor{white}
+RF-OB-3 & L'utente deve poter visualizzare un walkthrough interattivo al primo avvio & \hyperref[subsec:UC-3]{UC-3} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-4 & L'utente deve poter saltare il walkthrough & \hyperref[subsec:UC-4]{UC-4} \\
+\hline
+\rowcolor{white}
+RF-OB-5 & L'utente deve poter selezionare il profilo di utilizzo ("Per me" o "Per altri") & \hyperref[subsec:UC-3.1]{UC-3.1} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-6 & L'utente deve poter configurare il diario criptato durante il walkthrough & \hyperref[subsec:UC-3.2]{UC-3.2} \\
+\hline
+\rowcolor{white}
+RF-OB-7 & L'utente deve poter configurare un contatto fidato durante il walkthrough & \hyperref[subsec:UC-3.3]{UC-3.3} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-8 & L'utente deve poter saltare la configurazione di una funzionalità specifica del walkthrough & \hyperref[subsec:UC-5]{UC-5} \\
+\hline
+\rowcolor{white}
+RF-OB-9 & L'utente deve poter visualizzare la lista dei contatti fidati & \hyperref[sec:UC-6]{UC-6} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-10 & Il sistema deve permettere la visualizzazione di un singolo contatto fidato dalla lista & \hyperref[subsec:UC-6.1]{UC-6.1} \\
+\hline
+\rowcolor{white}
+RF-OB-11 & L'utente deve poter visualizzare i dettagli (nome, numero, email) di un contatto fidato & \hyperref[subsec:UC-7]{UC-7} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-12 & L'utente deve poter aggiungere un nuovo contatto fidato & \hyperref[subsec:UC-8]{UC-8} \\
+\hline
+\rowcolor{white}
+RF-OB-13 & Il sistema deve riconoscere e gestire le informazioni di contatto già presenti & \hyperref[subsec:UC-59]{UC-59}, \hyperref[subsec:UC-60]{UC-60} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-14 & Il sistema deve validare la conformità del numero di telefono inserito & \hyperref[subsec:UC-10]{UC-10} \\
+\hline
+\rowcolor{white}
+RF-OB-15 & Il sistema deve validare la conformità dell'indirizzo email inserito & \hyperref[subsec:UC-11]{UC-11} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-16 & L'utente deve poter modificare i dati di un contatto fidato esistente & \hyperref[subsec:UC-12]{UC-12} \\
+\hline
+\rowcolor{white}
+RF-OB-17 & L'utente deve poter eliminare un contatto fidato & \hyperref[subsec:UC-13]{UC-13} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-18 & Il sistema deve richiedere conferma prima dell'eliminazione di un contatto fidato & \hyperref[subsec:UC-13.1]{UC-13.1} \\
+\hline
+\rowcolor{white}
+RF-OB-19 & L'utente deve poter rifiutare la conferma di eliminazione & \hyperref[subsec:UC-14]{UC-14} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-20 & L'utente deve poter impostare il timer di prima inattività (Dead Man's Switch) & \hyperref[sec:UC-15]{UC-15} \\
+\hline
+\rowcolor{white}
+RF-OB-21 & L'utente deve poter impostare il timer di seconda inattività & \hyperref[sec:UC-16]{UC-16} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-22 & L'utente deve poter modificare il titolo della mail di avviso & \hyperref[sec:UC-17]{UC-17} \\
+\hline
+\rowcolor{white}
+RF-OB-23 & L'utente deve poter modificare il corpo della mail di avviso & \hyperref[sec:UC-18]{UC-18} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-24 & L'utente deve poter visualizzare un'anteprima della mail di avviso & \hyperref[sec:UC-19]{UC-19} \\
+\hline
+\rowcolor{white}
+RF-OB-25 & L'utente deve poter attivare il Dead Man's Switch & \hyperref[sec:UC-57]{UC-57} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-26 & L'utente deve poter disattivare il Dead Man's Switch & \hyperref[sec:UC-58]{UC-58} \\
+\hline
+\rowcolor{white}
+RF-OB-27 & L'utente deve poter impostare una password per il diario fittizio & \hyperref[subsec:UC-20]{UC-20} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-28 & Il sistema deve impedire che la password del diario fittizio sia uguale a quella del diario criptato & \hyperref[subsec:UC-20.1]{UC-20.1} \\
+\hline
+\rowcolor{white}
+RF-OB-29 & Il sistema deve verificare che la password rispetti i criteri di sicurezza & \hyperref[subsec:UC-21]{UC-21} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-30 & L'utente deve poter accedere al diario fittizio tramite password & \hyperref[subsec:UC-22]{UC-22} \\
+\hline
+\rowcolor{white}
+RF-OB-31 & L'utente deve poter accedere al diario criptato tramite password & \hyperref[subsec:UC-23]{UC-23} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-32 & L'utente deve poter impostare una password per il diario criptato & \hyperref[subsec:UC-23.1]{UC-23.1} \\
+\hline
+\rowcolor{white}
+RF-OB-33 & Il sistema deve impedire che la password del diario criptato sia uguale a quella del diario fittizio & \hyperref[subsec:UC-23.1.1]{UC-23.1.1} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-34 & L'utente deve inserire la password per accedere al diario (fittizio o criptato) & \hyperref[subsec:UC-24]{UC-24} \\
+\hline
+\rowcolor{white}
+RF-OB-35 & Il sistema deve notificare l'errore in caso di password errata & \hyperref[subsec:UC-25]{UC-25} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-36 & Il sistema deve bloccare temporaneamente l'accesso dopo troppi tentativi errati & \hyperref[subsec:UC-26]{UC-26} \\
+\hline
+\rowcolor{white}
+RF-OB-37 & L'utente autenticato deve poter visualizzare il contenuto del diario & \hyperref[subsec:UC-27]{UC-27} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-38 & Il sistema deve mostrare la lista delle note presenti nel diario & \hyperref[subsec:UC-27.1]{UC-27.1} \\
+\hline
+\rowcolor{white}
+RF-OB-39 & L'utente deve poter visualizzare l'anteprima di una singola nota & \hyperref[subsec:UC-27.1.1]{UC-27.1.1} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-40 & L'utente deve poter creare una nuova nota & \hyperref[subsec:UC-28]{UC-28} \\
+\hline
+\rowcolor{white}
+RF-OB-41 & L'utente deve poter eliminare una nota esistente & \hyperref[subsec:UC-29]{UC-29} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-42 & L'utente deve poter inserire contenuto testuale in una nota & \hyperref[subsec:UC-30]{UC-30} \\
+\hline
+\rowcolor{white}
+RF-OB-43 & L'utente deve poter inserire contenuti multimediali (audio/foto) in una nota & \hyperref[subsec:UC-31]{UC-31} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-44 & L'utente deve poter visualizzare il contenuto completo (testo e media) di una nota & \hyperref[subsec:UC-32]{UC-32} \\
+\hline
+\rowcolor{white}
+RF-OB-45 & L'utente deve poter inviare un messaggio di SOS ai contatti fidati & \hyperref[sec:UC-33]{UC-33} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-46 & Il sistema deve gestire l'invio SOS in assenza di connessione internet & \hyperref[sec:UC-33.1]{UC-33.1} \\
+\hline
+\rowcolor{white}
+RF-OB-47 & Il sistema deve gestire l'invio SOS in assenza di contatti fidati configurati & \hyperref[sec:UC-33.2]{UC-33.2} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-48 & L'utente deve poter inviare un segnale acustico di emergenza & \hyperref[sec:UC-34]{UC-34} \\
+\hline
+\rowcolor{white}
+RF-OB-49 & L'utente deve poter consultare il chatbot & \hyperref[sec:UC-35]{UC-35} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-50 & L'utente deve poter interrompere la generazione della risposta del chatbot & \hyperref[sec:UC-35.1]{UC-35.1} \\
+\hline
+\rowcolor{white}
+RF-OB-51 & Il sistema deve gestire la mancanza di connessione durante la chat & \hyperref[sec:UC-35.2]{UC-35.2} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-52 & Il sistema deve gestire errori di lettura del messaggio da parte dell'LLM & \hyperref[sec:UC-35.3]{UC-35.3} \\
+\hline
+\rowcolor{white}
+RF-OB-53 & L'utente deve poter cambiare il contesto della chat a "Detective delle Relazioni" & \hyperref[sec:UC-36]{UC-36} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-54 & L'utente deve poter cambiare il contesto della chat a "Specchio Intelligente" & \hyperref[sec:UC-37]{UC-37} \\
+\hline
+\rowcolor{white}
+RF-OB-55 & Il sistema deve notificare errori durante il cambio di contesto & \hyperref[sec:UC-38]{UC-38} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-56 & L'utente deve poter visualizzare la cronologia delle chat & \hyperref[subsec:UC-39]{UC-39} \\
+\hline
+\rowcolor{white}
+RF-OB-57 & L'utente deve poter selezionare una singola chat dalla cronologia & \hyperref[subsec:UC-39.1]{UC-39.1} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-58 & Il sistema deve mostrare una preview dell'inizio della chat in cronologia & \hyperref[subsec:UC-39.1.1]{UC-39.1.1} \\
+\hline
+\rowcolor{white}
+RF-OB-59 & L'utente deve poter visualizzare il contenuto completo di una chat passata o corrente & \hyperref[subsec:UC-40]{UC-40} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-60 & Il sistema deve visualizzare la lista dei messaggi scambiati & \hyperref[subsec:UC-40.1]{UC-40.1} \\
+\hline
+\rowcolor{white}
+RF-OB-61 & Il sistema deve distinguere visivamente i messaggi utente da quelli del chatbot & \hyperref[subsec:UC-40.1.1]{UC-40.1.1} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-62 & Il sistema deve gestire errori nel caricamento della chat & \hyperref[subsec:UC-40.2]{UC-40.2} \\
+\hline
+\rowcolor{white}
+RF-OB-63 & L'utente deve poter creare una nuova chat & \hyperref[subsec:UC-41]{UC-41} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-64 & L'utente deve poter eliminare una chat dalla cronologia & \hyperref[subsec:UC-42]{UC-42} \\
+\hline
+\rowcolor{white}
+RF-OB-65 & Il sistema deve richiedere conferma per l'eliminazione di una chat & \hyperref[subsec:UC-42.1]{UC-42.1} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-66 & L'utente deve poter rifiutare l'eliminazione di una chat & \hyperref[subsec:UC-42.1.1]{UC-42.1.1} \\
+\hline
+\rowcolor{white}
+RF-OB-67 & L'utente deve poter visualizzare la lista delle community & \hyperref[sec:UC-43]{UC-43} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-68 & Il sistema deve mostrare i dettagli riassuntivi di una community & \hyperref[subsec:UC-43.1]{UC-43.1} \\
+\hline
+\rowcolor{white}
+RF-OB-69 & L'utente deve poter visitare una community e visualizzarne i contenuti & \hyperref[sec:UC-44]{UC-44} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-70 & Il sistema deve gestire errori nel caricamento delle community & \hyperref[subsec:UC-44.1]{UC-44.1} \\
+\hline
+\rowcolor{white}
+RF-OB-71 & L'utente deve poter visualizzare la lista dei contatti/enti d'emergenza & \hyperref[sec:UC-45]{UC-45} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-72 & Il sistema deve mostrare nome e numero dei contatti d'emergenza & \hyperref[subsec:UC-45.1]{UC-45.1} \\
+\hline
+\rowcolor{white}
+RF-OB-73 & L'utente deve poter comporre automaticamente il numero di un contatto d'emergenza & \hyperref[sec:UC-48]{UC-48} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-74 & L'utente deve poter visualizzare la lista delle leggi e normative & \hyperref[sec:UC-49]{UC-49} \\
+\hline
+\rowcolor{white}
+RF-OB-75 & Il sistema deve mostrare il titolo delle leggi nella lista & \hyperref[subsec:UC-49.1]{UC-49.1} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-76 & L'utente deve poter visualizzare i dettagli completi di una legge & \hyperref[sec:UC-50]{UC-50} \\
+\hline
+\rowcolor{white}
+RF-OB-77 & Il sistema deve gestire errori nel caricamento delle normative & \hyperref[subsec:UC-51]{UC-51} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-78 & L'utente deve poter visualizzare la lista del materiale informativo & \hyperref[sec:UC-52]{UC-52} \\
+\hline
+\rowcolor{white}
+RF-OB-79 & Il sistema deve mostrare titolo e formato del materiale informativo & \hyperref[subsec:UC-52.1]{UC-52.1} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-80 & L'utente deve poter visualizzare/scaricare il dettaglio del materiale informativo & \hyperref[sec:UC-53]{UC-53} \\
+\hline
+\rowcolor{white}
+RF-OB-81 & Il sistema deve gestire errori nel caricamento del materiale informativo & \hyperref[subsec:UC-53.1]{UC-53.1} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-82 & L'utente deve poter visualizzare la mappa dei luoghi sicuri & \hyperref[sec:UC-54]{UC-54} \\
+\hline
+\rowcolor{white}
+RF-OB-83 & L'utente deve poter aprire la posizione di un luogo sicuro su Google Maps & \hyperref[subsec:UC-55]{UC-55} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-84 & Il sistema deve gestire errori nell'apertura della mappa esterna & \hyperref[subsec:UC-56]{UC-56} \\
+\hline
+\end{longtable}
+\end{center}
+
+\subsection{Requisiti di Qualità} \label{subsection:requisiti_qualita}
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\arrayrulecolor{black}
+\begin{longtable}{|c|p{9cm}|c|}
+\caption{Tabella Requisiti di Qualità} \label{tab:requisiti_qualita} \\
+\hline
+\rowcolor{gray!60}
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Riferimento} \\
+\hline
+\endfirsthead
+\caption[]{Tabella Requisiti di Qualità (continua)} \\
+\hline
+\rowcolor{gray!60}
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Riferimento} \\
+\hline
+\endhead
+\rowcolor{white}
+RQ-OB-1 & L'invio del segnale acustico deve essere udibile e indipendente dal volume di sistema & \hyperref[sec:UC-34]{UC-34} \\
+\hline
+\rowcolor{gray!20}
+RQ-OB-2 & Il sistema deve fornire feedback immediato all'utente in caso di assenza di rete & \hyperref[sec:UC-33.1]{UC-33.1}, \hyperref[sec:UC-35.2]{UC-35.2} \\
+\hline
+\rowcolor{white}
+RQ-OB-3 & L'interfaccia utente deve supportare l'apprendimento progressivo tramite walkthrough & \hyperref[subsec:UC-3]{UC-3} \\
+\hline
+\rowcolor{gray!20}
+RQ-OB-4 & I messaggi di errore devono essere chiari e comprensibili per l'utente non tecnico & \hyperref[subsec:UC-2]{UC-2}, \hyperref[sec:UC-38]{UC-38}, \hyperref[subsec:UC-40.2]{UC-40.2} \\
+\hline
+\rowcolor{white}
+RQ-OB-5 & Il sistema deve garantire la persistenza locale dei contatti fidati & \hyperref[subsec:UC-8]{UC-8} \\
+\hline
+\end{longtable}
+\end{center}
+
+\subsection{Requisiti di Vincolo} \label{subsection:requisiti_vincolo}
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\arrayrulecolor{black}
+\begin{longtable}{|c|p{9cm}|c|}
+\caption{Tabella Requisiti di Vincolo} \label{tab:requisiti_vincolo} \\
+\hline
+\rowcolor{gray!60}
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Riferimento} \\
+\hline
+\endfirsthead
+\caption[]{Tabella Requisiti di Vincolo (continua)} \\
+\hline
+\rowcolor{gray!60}
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Riferimento} \\
+\hline
+\endhead
+\rowcolor{white}
+RV-OB-1 & L'applicazione deve utilizzare il servizio Google Auth per l'autenticazione & \hyperref[subsec:UC-1]{UC-1} \\
+\hline
+\rowcolor{gray!20}
+RV-OB-2 & L'integrazione per la navigazione verso luoghi sicuri deve avvenire tramite Google Maps & \hyperref[subsec:UC-55]{UC-55} \\
+\hline
+\rowcolor{white}
+RV-OB-3 & Il sistema deve utilizzare un modello LLM per le funzionalità di assistenza conversazionale & \hyperref[sec:UC-35]{UC-35} \\
+\hline
+\rowcolor{gray!20}
+RV-OB-4 & La password del diario criptato e quella del diario fittizio devono essere obbligatoriamente diverse & \hyperref[subsec:UC-20.1]{UC-20.1} \\
+\hline
+\rowcolor{white}
+RV-OB-5 & Le comunicazioni SOS devono utilizzare canali standard (Email/SMS) quando possibile & \hyperref[sec:UC-33]{UC-33} \\
+\hline
+\end{longtable}
+\end{center}
+
+\end{document}
