@@ -107,7 +107,7 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & In corso\\
-\textbf{Versione:} & 0.4.0 \\
+\textbf{Versione:} & 0.4.1 \\
 \textbf{Responsabile:} & Giovanni Visentin\\
 \textbf{Redattori:} & 
 \begin{tabular}[t]{@{}l@{}}
@@ -143,6 +143,8 @@ Gruppo BitByBit\\
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 
+\rowcolor{white}
+0.4.1 & 2026-02-13 & Dennis Parolin & Piccola correzione di alcuni errori di battitura. &  Giovanni Visentin\\
 \rowcolor{gray!20}
 0.4.0 & 2026-02-12 & Dennis Parolin & Riscrittura quasi completa dei test di sistema. &  Giovanni Visentin \\
 \hline
@@ -507,10 +509,10 @@ T-29-S & Verificare che il sistema impedisca il salvataggio e mostri un errore s
 T-30-S & Verificare che il sistema riconosca e gestire le informazioni di contatto già presenti. & RF-OB-13 & NI \\
 \hline
 \rowcolor{gray!20}
-T-31-S & Verificare che il sistema segnali un errore se il formato del numero di telefono inserito durante l'aggiunta o la modifica di un contatto, non è valido. & RF-OB-14 & NI \\
+T-31-S & Verificare che il sistema segnali un errore se non è valido il formato del numero di telefono inserito durante l'aggiunta o la modifica di un contatto. & RF-OB-14 & NI \\
 \hline
 \rowcolor{white}
-T-32-S & Verificare che il sistema segnali un errore se il formato dell'indirizzo email inserito durante l'aggiunta o la modifica di un contatto, non è valido. & RF-OB-15 & NI \\
+T-32-S & Verificare che il sistema segnali un errore se non è valido il formato dell'indirizzo email inserito durante l'aggiunta o la modifica di un contatto. & RF-OB-15 & NI \\
 \hline
 \rowcolor{gray!20}
 T-33-S & Verificare che la modifica del nome del contatto venga salvata e visualizzata correttamente. & RF-OB-16 & NI \\
@@ -579,7 +581,7 @@ T-53-S & Verificare che la password impostata per il diario fittizio venga salva
 T-54-S & Verificare che il sistema impedisca che la password del diario fittizio sia uguale a quella del diario criptato. & RF-OB-28 & NI \\
 \hline
 \rowcolor{gray!20}
-T-55-S & Verificare che il sistema mostri un messaggi odi errore se la password non rispetta i criteri di sicurezza. & RF-OB-29 & NI \\
+T-55-S & Verificare che il sistema mostri un messaggio di errore se la password non rispetta i criteri di sicurezza. & RF-OB-29 & NI \\
 \hline
 \rowcolor{white}
 T-56-S & Verificare che l'utente possa accedere al diario fittizio tramite la password impostata. & RF-OB-30 & NI \\
@@ -666,7 +668,7 @@ T-82-S & Verificare che il pulsante SOS rapido sia visibile e facilmente accessi
 T-83-S & Verificare che l'attivazione della procedura di SOS avvenga correttamente. & RF-OB-45 & NI \\
 \hline
 \rowcolor{white}
-T-84-S & Verificare che, in caso di SOS, vengano inviati correttamente SMS ed email ai contatti fidati. & RF-OB-45 & NI \\
+T-84-S & Verificare che, in caso di SOS, vengano inviati correttamente SMS e/o email ai contatti fidati. & RF-OB-45 & NI \\
 \hline
 \rowcolor{gray!20}
 T-85-S & Verificare che l'utente riceva un feedback di conferma avvenuto invio della richiesta di SOS. & RF-OB-45 & NI \\
