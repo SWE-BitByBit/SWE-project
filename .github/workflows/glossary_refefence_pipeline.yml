@@ -1,0 +1,35 @@
+name: Process Glossario Terms
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  process-glossary:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    
+    - name: Extract glossary terms
+      run: |
+        python .github/scripts/extract_glossary_terms.py
+    
+    - name: Process LaTeX files
+      run: |
+        python .github/scripts/add_glossary_references.py
+    
+    - name: Commit and push changes
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        
+        git add .
+        git commit -m "Auto: Aggiornati termini glossario" || echo "Nessuna modifica per il commit"
+        git push || echo "Nessuna modifica per il push"
