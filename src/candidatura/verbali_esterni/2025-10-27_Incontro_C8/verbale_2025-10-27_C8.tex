@@ -20,12 +20,16 @@
 % ===== Stile intestazione =====
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\textcolor{gray}{Verbale Riunione - Gruppo 17}}
+\fancyhead[L]{\textcolor{gray}{\term{Verbale} Riunione - Gruppo 17}}
 \fancyfoot[C]{\thepage}
 
 % ===== Formattazione sezioni =====
 \titleformat{\section}{\Large\bfseries}{\thesection.}{0.5em}{}
 \titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.5em}{}
+
+\newcommand{\term}[1]{\textbf{#1}$^\mathbf{G}$}
+
+\newcommand{\ignoreglossary}{}
 
 \begin{document}
 
@@ -70,7 +74,7 @@
 \vspace{1.5cm}
 
 \begin{center}
-    {\LARGE \textbf{Verbale Riunione Numero 2}}
+    {\LARGE \textbf{\term{Verbale} Riunione Numero 2}}
 \end{center}
 
 \vspace*{\fill} % --- Spinge verso l’alto la fine del contenuto, centrando tutto il blocco
@@ -142,7 +146,7 @@ Il referente ha confermato che saranno fornite al gruppo le chiavi per l’acces
 Sono presenti limiti di utilizzo in termini di token, ma negli anni precedenti tali limiti non hanno rappresentato un problema.
 
 \subsection{Tipologie di input e modalità di inserimento degli ordini}
-L’utente potrà inserire gli ordini tramite:
+L’\term{Utente} potrà inserire gli ordini tramite:
 \begin{itemize}
     \item chat testuale integrata nell’applicazione;
     \item messaggi vocali, eventualmente collegati ad app di messaggistica esterne;
@@ -159,8 +163,8 @@ Nel caso in cui l’ordine non venga compreso, l’applicazione potrà:
 \end{itemize}
 È inoltre prevista la possibilità di cancellare un ordine in corso o già effettuato.
 
-\subsection{Sistema di login e profilo utente}
-È necessario implementare un sistema di autenticazione che consenta all’utente di:
+\subsection{Sistema di login e profilo \term{Utente}}
+È necessario implementare un sistema di autenticazione che consenta all’\term{Utente} di:
 \begin{itemize}
     \item accedere con un proprio profilo;
     \item visualizzare e gestire i propri ordini;
@@ -180,14 +184,14 @@ Sono state discusse due principali strategie per adattare il modello linguistico
 Entrambe le soluzioni permettono di gestire una base dati soggetta a modifiche nel tempo.
 
 \subsection{Interfaccia grafica e vincoli di gestione}
-L’interfaccia dovrà consentire all’utente di:
+L’interfaccia dovrà consentire all’\term{Utente} di:
 \begin{itemize}
     \item effettuare ordini;
     \item visualizzarne i contenuti e modificarli;
     \item revocarli in caso di necessità;
     \item consultare il catalogo prodotti, anche in caso di errore o su richiesta.
 \end{itemize}
-Non è invece previsto che l’utente possa modificare direttamente il database del catalogo, la cui gestione rimane competenza del backend.
+Non è invece previsto che l’\term{Utente} possa modificare direttamente il database del catalogo, la cui gestione rimane competenza del backend.
 
 % ---------- DECISIONI ----------
 \section{Decisioni}
@@ -213,13 +217,13 @@ Dalle discussioni e decisioni intraprese non sono sorte task immediate.
 \textbf{Versione} & \textbf{Ruolo} & \textbf{Nome} & \textbf{Data e ora} & \textbf{Descrizione} \\
 \hline
 \rowcolor{white}
-1.0.0 & Redatto da & Gabriele Scaggiante & 2025-10-27 & Stesura iniziale del verbale \\
+1.0.0 & Redatto da & Gabriele Scaggiante & 2025-10-27 & Stesura iniziale del \term{Verbale} \\
 \hline
 \rowcolor{gray!20}
-1.0.0 & Revisione & Giovanni Visentin & 2025-10-28 & Controllo approfondito del verbale \\
+1.0.0 & Revisione & Giovanni Visentin & 2025-10-28 & Controllo approfondito del \term{Verbale} \\
 \hline
 \rowcolor{white}
-1.0.0 & Conferma & Tutti i membri & 2025-10-29 & Conferma da parte di tutti del verbale \\
+1.0.0 & Conferma & Tutti i membri & 2025-10-29 & Conferma da parte di tutti del \term{Verbale} \\
 \hline
 
 \end{tabular}
