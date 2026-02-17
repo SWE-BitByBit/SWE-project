@@ -52,6 +52,10 @@
 \titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.5em}{}
 \titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection}{0.5em}{}
 
+\newcommand{\term}[1]{\textbf{#1}$^\mathbf{G}$}
+
+\newcommand{\ignoreglossary}{}
+
 \begin{document}
 
 % ====== FRONT PAGE ======
@@ -146,7 +150,7 @@ Gruppo BitByBit\\
 0.19.5 & 2026-02-05 & Dennis Parolin & Sistemato un caso d'uso con nome duplicato. Eliminato UC-47 e UC-46 è diventato il nuovo UC-45.1. Eliminati due punti nello scenario principale di UC-1, troppo specifici. Corretti i nomi di UC-55 e UC-56. Aggiunti UC-57 e UC-58, corrette le precondizioni degli UC da 15 a 19.2 e la post condizione di UC-1. Corretti riferimenti a casi d'uso errati o mancanti. Riscritta la sezione Attori (\ref{subsection:attori}) sulla base dei nuovi casi d'uso redatti. Sistemata l'intestazione ed errori di compilazione. Aggiunto l'indice riassuntivo delle tabelle e l'indice riassuntivo delle immagini. Corretti errori grammaticali e di battitura & Marco Sanguin \\
 \hline
 \rowcolor{gray!20}
-0.19.4 & 2026-01-27 & Giovanni Visentin & Aggiunta casi d'uso walkthrough & Gabriele Scaggiante \\
+0.19.4 & 2026-01-27 & Giovanni Visentin & Aggiunta casi d'uso \term{Walkthrough} & Gabriele Scaggiante \\
 \hline
 \rowcolor{white}
 0.19.3 & 2026-01-16 & Gabriele Scaggiante & Rinominazione codici casi d'uso & Giovanni Visentin \\
@@ -218,16 +222,16 @@ Gruppo BitByBit\\
 0.7.0 & 2025-12-12 & Riccardo Manisi & Aggiunti casi d'uso per schermata impostazioni (UC-IMP1) e quelli relativi ai contatti fidati & Giovanni Visentin \\
 \hline
 \rowcolor{gray!20}
-0.6.0 & 2025-12-12 & Dennis Parolin & Rifacimento completo casi d'uso Benvenuto e Walkthrough (UC-BW) & Marco Sanguin\\
+0.6.0 & 2025-12-12 & Dennis Parolin & Rifacimento completo casi d'uso Benvenuto e \term{Walkthrough} (UC-BW) & Marco Sanguin\\
 \hline
 \rowcolor{white}
-0.5.0 & 2025-12-11 & Riccardo Manisi & Prima stesura casi d'uso Walkthrough & Giovanni Visentin \\
+0.5.0 & 2025-12-11 & Riccardo Manisi & Prima stesura casi d'uso \term{Walkthrough} & Giovanni Visentin \\
 \hline
 \rowcolor{gray!20}
 0.4.0 & 2025-12-11 & Riccardo Manisi & Aggiunta sezione scopo dei casi d'uso, attori e nomenclatura per casi d'uso & Giovanni Visentin \\
 \hline
 \rowcolor{white}
-0.3.0 & 2025-12-11 & Dennis Parolin & Redazione della sezione \ref{sec:funzioni_prodotto}. Modifica delle sezioni \ref{sec:prospettiva_prodotto} e \ref{sec:caratteristiche_utente} sulla base delle funzionalità concordate con la proponente. Spostato il registro delle modifiche a prima dell'indice. & Giovanni Visentin \\
+0.3.0 & 2025-12-11 & Dennis Parolin & Redazione della sezione \ref{sec:funzioni_prodotto}. Modifica delle sezioni \ref{sec:prospettiva_prodotto} e \ref{sec:caratteristiche_utente} sulla base delle funzionalità concordate con la \term{Proponente}. Spostato il registro delle modifiche a prima dell'indice. & Giovanni Visentin \\
 \hline
 \rowcolor{gray!20}
 0.2.0 & 2025-12-11 & Dennis Parolin & Redazione delle sezioni \ref{sec:scopo_documento}, \ref{sec:prospettiva_prodotto}, \ref{sec:caratteristiche_utente}, \ref{sec:riferimenti}, \ref{sec:riferimenti_normativi} e \ref{sec:riferimenti_informativi} & Marco Sanguin \\
@@ -258,11 +262,11 @@ Gruppo BitByBit\\
 
 \section{Introduzione}
 \subsection{Scopo del documento} \label{sec:scopo_documento}
-Il presente documento di Analisi dei Requisiti ha l'obiettivo di esporre in modo esaustivo e non ambiguo le specifiche funzionali, prestazionali e vincolanti del sistema software oggetto di sviluppo.
+Il presente documento di \term{Analisi Dei Requisiti} ha l'obiettivo di esporre in modo esaustivo e non ambiguo le specifiche funzionali, prestazionali e vincolanti del sistema software oggetto di sviluppo.
 
 L'analisi qui condotta si basa sull'identificazione dei Casi d'Uso (Use Cases), supportati dai relativi diagrammi UML, utilizzati per modellare le interazioni previste tra gli attori e il sistema. Tale approccio permette di derivare puntualmente i requisiti software finali.
 
-Questo elaborato costituisce il riferimento primario per le successive fasi del ciclo di vita del software, guidando la progettazione architetturale, l'implementazione del codice e le attività di verifica e validazione. Ciò garantisce che il prodotto finale sia conforme alle aspettative e alle necessità espresse dal proponente.
+Questo elaborato costituisce il riferimento primario per le successive fasi del \term{Ciclo Di Vita} del software, guidando la progettazione architetturale, l'implementazione del codice e le attività di \term{Verifica} e \term{Validazione}. Ciò garantisce che il prodotto finale sia conforme alle aspettative e alle necessità espresse dal \term{Proponente}.
 
 I requisiti individuati sono stati prioritizzati secondo la seguente classificazione:
 \begin{itemize}
@@ -271,11 +275,11 @@ I requisiti individuati sono stati prioritizzati secondo la seguente classificaz
     \item \textbf{Opzionali:} requisiti di utilità marginale o posticipabili a sviluppi futuri.
 \end{itemize}
 
-Il documento, redatto dagli Analisti del gruppo \textit{BitByBit}, è destinato ai seguenti stakeholder:
+Il documento, redatto dagli Analisti del gruppo \textit{BitByBit}, è destinato ai seguenti \term{Stakeholder}:
 \begin{itemize}
-    \item \textbf{Committente/Proponente:} per la validazione delle specifiche e la conferma che i requisiti siano stati recepiti correttamente;
+    \item \textbf{\term{Committente}/\term{Proponente}:} per la \term{Validazione} delle specifiche e la conferma che i requisiti siano stati recepiti correttamente;
     \item \textbf{Team di Sviluppo (Progettisti e Programmatori):} come linea guida tecnica per la realizzazione del prodotto;
-    \item \textbf{Verificatori:} come base per la definizione dei piani di test e per la verifica della conformità del software.
+    \item \textbf{Verificatori:} come base per la definizione dei piani di test e per la \term{Verifica} della conformità del software.
 \end{itemize}
 
 % =======================PROSPETTIVA PRODOTTO================================
@@ -283,9 +287,9 @@ Il documento, redatto dagli Analisti del gruppo \textit{BitByBit}, è destinato 
 \subsection{Prospettiva del prodotto} \label{sec:prospettiva_prodotto}
 Il prodotto che il gruppo \textit{BitByBit} si prefigge di realizzare è un'applicazione mobile multipiattaforma (Android e iOS) denominata "L'app che Protegge e Trasforma". Il sistema si colloca in un dominio critico e sensibile, con l'obiettivo primario di prevenire la violenza di genere (focalizzandosi principalmente su donne tra i 18 e i 30 anni) e fornire supporto concreto attraverso strumenti di consapevolezza e sicurezza.
 
-A differenza di una tradizionale applicazione informativa, il sistema integra funzionalità \textbf{attive e intelligenti}, ma con un approccio etico definito: l'Intelligenza Artificiale non agisce autonomamente in situazioni critiche, ma funge da supporto analitico ("Detective delle relazioni" e "Specchio intelligente") per aiutare l'utente a decodificare la propria situazione e riconoscere pattern di rischio. Le funzionalità di allerta verso i contatti fidati ("Guardiano Silenzioso") o di emergenza rimangono sempre vincolate a un'attivazione esplicita dell'utente o a controlli di inattività, evitando automatismi rischiosi da parte dell'IA.
+A differenza di una tradizionale applicazione informativa, il sistema integra funzionalità \textbf{attive e intelligenti}, ma con un approccio etico definito: l'Intelligenza Artificiale non agisce autonomamente in situazioni critiche, ma funge da supporto analitico ("Detective delle relazioni" e "Specchio intelligente") per aiutare l'\term{Utente} a decodificare la propria situazione e riconoscere pattern di rischio. Le funzionalità di allerta verso i contatti fidati ("Guardiano Silenzioso") o di emergenza rimangono sempre vincolate a un'attivazione esplicita dell'\term{Utente} o a controlli di inattività, evitando automatismi rischiosi da parte dell'IA.
 
-La prospettiva del sistema si estende oltre la singola interazione, offrendo un hub informativo ("Guida al coraggio") che collega l'utente a risorse esterne, normative e mappe di luoghi sicuri. Data la natura dei dati trattati, il prodotto pone un vincolo architetturale imprescindibile sulla \textbf{sicurezza e la privacy}: il sistema garantisce funzionalità di offuscamento (camuffamento icona), crittografia dei contenuti personali (Diario criptato) e gestione granulare della rete di supporto.
+La prospettiva del sistema si estende oltre la singola interazione, offrendo un hub informativo ("Guida al coraggio") che collega l'\term{Utente} a risorse esterne, normative e mappe di luoghi sicuri. Data la natura dei dati trattati, il prodotto pone un vincolo architetturale imprescindibile sulla \textbf{sicurezza e la privacy}: il sistema garantisce funzionalità di offuscamento (camuffamento icona), crittografia dei contenuti personali (Diario criptato) e gestione granulare della rete di supporto.
 
 Infine, il sistema è progettato per essere affidabile e accessibile in contesti duali: sia come strumento di prevenzione riflessiva in momenti di calma, sia come supporto rapido e intuitivo in condizioni di stress o difficoltà, scalando le risorse per future integrazioni (es. widget o microservizi).
 
@@ -296,7 +300,7 @@ Infine, il sistema è progettato per essere affidabile e accessibile in contesti
 Il prodotto dovrà seguire le seguenti funzionalità principali:
 
 \begin{itemize}
-    \item Welcome page e walkthrough introduttivo;
+    \item Welcome page e \term{Walkthrough} introduttivo;
     \item Pagina impostazioni;
     \item Login e gestione Account;
     \item Detective delle relazioni;
@@ -306,20 +310,20 @@ Il prodotto dovrà seguire le seguenti funzionalità principali:
     \item Diario criptato.
 \end{itemize}
 
-\subsubsection{Welcome Page e Walkthrough}
-L'esperienza utente avrà inizio con una schermata di benvenuto volta a comprendere la finalità dell'installazione. Tale interfaccia presenterà due opzioni: "Per me" o "Per altri". Questa distinzione è fondamentale per fornire un contesto iniziale al Large Language Model (LLM) e preconfigurare determinati parametri. Inoltre, tale struttura permetterà in futuro l'implementazione di funzionalità differenziate in base al beneficiario del servizio.
+\subsubsection{Welcome Page e \term{Walkthrough}}
+L'esperienza \term{Utente} avrà inizio con una schermata di benvenuto volta a comprendere la finalità dell'installazione. Tale interfaccia presenterà due opzioni: "Per me" o "Per altri". Questa distinzione è fondamentale per fornire un contesto iniziale al Large Language Model (LLM) e preconfigurare determinati parametri. Inoltre, tale struttura permetterà in futuro l'implementazione di funzionalità differenziate in base al beneficiario del servizio.
 
-Successivamente, sarà proposto un walkthrough illustrativo delle funzionalità disponibili. È prevista la presenza di un comando per saltare tale guida, permettendo l'accesso diretto alle funzionalità dell'app.
+Successivamente, sarà proposto un \term{Walkthrough} illustrativo delle funzionalità disponibili. È prevista la presenza di un comando per saltare tale guida, permettendo l'accesso diretto alle funzionalità dell'app.
 
 \subsubsection{Account e Impostazioni}
-È prevista l'implementazione di una sezione per la gestione dell'account. L'utente avrà la facoltà di fornire un indirizzo e-mail personale, utilizzabile per l'invio di notifiche qualora si rilevi un periodo prolungato di inattività, fungendo da meccanismo di controllo (dead man's switch) per verificare lo stato di sicurezza dell'utente o l'abbandono volontario dell'app.
+È prevista l'implementazione di una sezione per la gestione dell'account. L'\term{Utente} avrà la facoltà di fornire un indirizzo e-mail personale, utilizzabile per l'invio di notifiche qualora si rilevi un periodo prolungato di inattività, fungendo da meccanismo di controllo (dead man's switch) per verificare lo stato di sicurezza dell'\term{Utente} o l'abbandono volontario dell'app.
 
-Un'ulteriore sezione sarà dedicata alle preferenze, incluse la gestione della rete di contatti fidati, la personalizzazione delle notifiche e la scelta dell'icona dell'app (funzionalità di "camuffamento" per proteggere la privacy in caso di ispezione del dispositivo da parte di terzi) e delle informazioni condivisibili (es. posizione geografica). La configurazione della rete di supporto è cruciale: l'utente potrà inserire e-mail o numeri di telefono di persone ritenute \textbf{fidate}, dati essenziali per il funzionamento del \textbf{Guardiano Silenzioso}. Tale funzionalità è progettata per essere scalabile, prevedendo in futuro l'invio di diverse tipologie di notifiche.
+Un'ulteriore sezione sarà dedicata alle preferenze, incluse la gestione della rete di contatti fidati, la personalizzazione delle notifiche e la scelta dell'icona dell'app (funzionalità di "camuffamento" per proteggere la privacy in caso di \term{Ispezione} del dispositivo da parte di terzi) e delle informazioni condivisibili (es. posizione geografica). La configurazione della rete di supporto è cruciale: l'\term{Utente} potrà inserire e-mail o numeri di telefono di persone ritenute \textbf{fidate}, dati essenziali per il funzionamento del \textbf{Guardiano Silenzioso}. Tale funzionalità è progettata per essere scalabile, prevedendo in futuro l'invio di diverse tipologie di notifiche.
 
 \subsubsection{Detective delle Relazioni e Lo Specchio Intelligente}
 L'interfaccia includerà una sezione dedicata all'interazione testuale con l'Intelligenza Artificiale, concepita per chiarire dubbi e fornire supporto. Questa schermata implementerà due distinte funzionalità: \textbf{Detective delle relazioni} e \textbf{Lo specchio intelligente}.
-La prima ha l'obiettivo di analizzare comportamenti o narrazioni dell'utente per identificare la situazione attuale e riconoscere pattern di pericolo meritevoli di attenzione. La seconda è orientata all'autoconsapevolezza, offrendo uno spazio privato per l'analisi dei propri pensieri.
-La selezione del prompt più adeguato tra i due sarà gestita automaticamente dall'app previa analisi del messaggio utente, mantenendo comunque la possibilità di modifica manuale. È prevista inoltre una sezione per l'archiviazione delle chat, consentendone la consultazione e la prosecuzione futura.
+La prima ha l'obiettivo di analizzare comportamenti o narrazioni dell'\term{Utente} per identificare la situazione attuale e riconoscere pattern di pericolo meritevoli di attenzione. La seconda è orientata all'autoconsapevolezza, offrendo uno spazio privato per l'analisi dei propri pensieri.
+La selezione del prompt più adeguato tra i due sarà gestita automaticamente dall'app previa analisi del messaggio \term{Utente}, mantenendo comunque la possibilità di modifica manuale. È prevista inoltre una sezione per l'archiviazione delle chat, consentendone la consultazione e la prosecuzione futura.
 
 \subsubsection{La Guida al Coraggio}
 La sezione denominata \textbf{La guida al coraggio} fungerà da hub informativo, offrendo accesso chiaro a risorse essenziali. I contenuti includeranno:
@@ -330,36 +334,36 @@ La sezione denominata \textbf{La guida al coraggio} fungerà da hub informativo,
     \item Definizioni normative e informazioni sulla "violenza di genere";
     \item Informazioni legali (diritti, azioni permesse, procedure di denuncia, ecc.).
 \end{itemize}
-Sarà inoltre integrata una mappa per la visualizzazione dei "luoghi sicuri", con indicazioni sui percorsi per raggiungerli basate sulla geolocalizzazione dell'utente (tramite integrazione con Google Maps).
+Sarà inoltre integrata una mappa per la visualizzazione dei "luoghi sicuri", con indicazioni sui percorsi per raggiungerli basate sulla geolocalizzazione dell'\term{Utente} (tramite integrazione con Google Maps).
 
 \subsubsection{Guardiano Silenzioso}
-Tale funzionalità è concepita per l'invio tempestivo di comunicazioni di emergenza (e-mail o SMS) ai contatti della rete di supporto in caso di pericolo o necessità. L'attivazione di tali comunicazioni non sarà demandata all'IA, ma sarà gestita direttamente dall'utente tramite un comando "\textbf{SOS}" chiaramente visibile e di rapido accesso.
+Tale funzionalità è concepita per l'invio tempestivo di comunicazioni di emergenza (e-mail o SMS) ai contatti della rete di supporto in caso di pericolo o necessità. L'attivazione di tali comunicazioni non sarà demandata all'IA, ma sarà gestita direttamente dall'\term{Utente} tramite un comando "\textbf{SOS}" chiaramente visibile e di rapido accesso.
 
-Qualora il dispositivo si trovi in condizioni di scarsa o nulla connettività internet, l'applicazione prevede una modalità di sicurezza ausiliaria. In tale scenario, previo comando specifico dell'utente, verrà attivato un allarme acustico volto ad attirare l'attenzione dei presenti e dissuadere eventuali aggressori.
+Qualora il dispositivo si trovi in condizioni di scarsa o nulla connettività internet, l'applicazione prevede una modalità di sicurezza ausiliaria. In tale scenario, previo comando specifico dell'\term{Utente}, verrà attivato un allarme acustico volto ad attirare l'attenzione dei presenti e dissuadere eventuali aggressori.
 
 \subsubsection{Diario Criptato}
 Il \textbf{Diario Criptato} costituirà uno spazio sicuro per l'annotazione di eventi, pensieri e l'archiviazione di file multimediali (foto e audio). L'accesso a tale sezione sarà protetto da password o autenticazione biometrica, e l'interfaccia sarà progettata per essere discreta.
 
-A tutela della sicurezza dell'utente in situazioni di costrizione, è previsto un meccanismo di accesso differenziato: qualora l'utente sia forzato a mostrare il contenuto del diario, l'inserimento di una password errata darà accesso a un diario fittizio. Questa versione conterrà elementi coerenti e sensati, ma privi di qualsiasi informazione sensibile. L'inserimento della password corretta, invece, garantirà il normale accesso al diario reale e ai dati personali archiviati.
+A tutela della sicurezza dell'\term{Utente} in situazioni di costrizione, è previsto un meccanismo di accesso differenziato: qualora l'\term{Utente} sia forzato a mostrare il contenuto del diario, l'inserimento di una password errata darà accesso a un diario fittizio. Questa versione conterrà elementi coerenti e sensati, ma privi di qualsiasi informazione sensibile. L'inserimento della password corretta, invece, garantirà il normale accesso al diario reale e ai dati personali archiviati.
 
 In una prima fase, il diario non sarà interconnesso con l'IA.
-Tuttavia, l'architettura è predisposta per future estensioni, eventualmente sviluppate da team specializzati o tramite microservizi. Possibili evoluzioni includono l'analisi dei contenuti del diario da parte dell'IA per arricchire il contesto delle conversazioni, o viceversa, l'esportazione automatica delle chat nel diario. Si ipotizza inoltre l'implementazione di widget per smartphone o smartwatch per l'inserimento rapido di note vocali o fotografiche.
+Tuttavia, l'\term{Architettura} è predisposta per future estensioni, eventualmente sviluppate da team specializzati o tramite microservizi. Possibili evoluzioni includono l'analisi dei contenuti del diario da parte dell'IA per arricchire il contesto delle conversazioni, o viceversa, l'esportazione automatica delle chat nel diario. Si ipotizza inoltre l'implementazione di widget per smartphone o smartwatch per l'inserimento rapido di note vocali o fotografiche.
 
-% =======================CARATTERISTICHE UTENTE================================
+% =======================CARATTERISTICHE \term{Utente}================================
 
-\subsection{Caratteristiche dell'utente} \label{sec:caratteristiche_utente}
+\subsection{Caratteristiche dell'\term{Utente}} \label{sec:caratteristiche_utente}
 A seguito dell'analisi dei potenziali fruitori, il target primario dell'applicazione è stato identificato nelle donne nella fascia d'età compresa tra i 18 e i 30 anni. Tuttavia, il sistema è progettato per accogliere anche utenti esterni interessati a reperire informazioni sul tema.
 
 L'interazione con il sistema varia significativamente in base al contesto d'uso, spaziando dalla ricerca informativa alla necessità di supporto rapido. Si identificano le seguenti tipologie principali di attori:
 
 \begin{itemize}
-    \item \textbf{Utente Target (Donne 18-30 anni):} È l'utilizzatore principale. L'applicativo si configura primariamente come strumento di prevenzione; lo scenario ideale prevede che l'utente interagisca con l'app avendo tempo a disposizione (es. per informarsi o valutare la propria situazione in un contesto di calma apparente).
+    \item \textbf{\term{Utente} Target (Donne 18-30 anni):} È l'utilizzatore principale. L'applicativo si configura primariamente come strumento di prevenzione; lo scenario ideale prevede che l'\term{Utente} interagisca con l'app avendo tempo a disposizione (es. per informarsi o valutare la propria situazione in un contesto di calma apparente).
     Tuttavia, il sistema deve garantire supporto anche in situazioni di difficoltà e stress (es. potenziale violenza domestica). Va specificato che, in caso di pericolo di vita imminente, si presuppone che la vittima contatti direttamente le autorità (es. 118), bypassando l'applicazione.
     
-    \item \textbf{Rete di Supporto e Terze Parti:} Questa categoria eterogenea include la cerchia amicale (contatti fidati scelti dall'utente), i professionisti del settore (es. psicologi) e gli utenti esterni. Questi attori interagiscono con il sistema per fornire supporto, ricevere notifiche o, nel caso degli utenti esterni, consultare la sezione informativa dedicata.
+    \item \textbf{Rete di Supporto e Terze Parti:} Questa categoria eterogenea include la cerchia amicale (contatti fidati scelti dall'\term{Utente}), i professionisti del settore (es. psicologi) e gli utenti esterni. Questi attori interagiscono con il sistema per fornire supporto, ricevere notifiche o, nel caso degli utenti esterni, consultare la sezione informativa dedicata.
 \end{itemize}
 
-In conclusione, il sistema deve essere accessibile a utenti con competenze tecniche variabili, garantendo usabilità sia durante la consultazione approfondita (fase di prevenzione) sia in momenti in cui l'utente necessita di un aiuto rapido e discreto (fase di stress), pur non sostituendosi ai servizi di emergenza primaria.
+In conclusione, il sistema deve essere accessibile a utenti con competenze tecniche variabili, garantendo usabilità sia durante la consultazione approfondita (fase di prevenzione) sia in momenti in cui l'\term{Utente} necessita di un aiuto rapido e discreto (fase di stress), pur non sostituendosi ai servizi di emergenza primaria.
 
 % ====== RIFERIMENTI ======
 
@@ -373,7 +377,7 @@ I termini tecnici, gli acronimi e le parole con significato specifico all'intern
 
 \subsubsection{Riferimenti normativi}\label{sec:riferimenti_normativi}
 \begin{itemize}
-\item \textbf{Capitolato d'appalto C4: \emph{L'app che Protegge e Trasforma}}\\
+\item \textbf{\term{Capitolato} d'appalto C4: \emph{L'app che Protegge e Trasforma}}\\
 Parti consultate: documento completo\\
 Versione: 1.0\\
 Ultimo accesso: \textit{2026-01-14}\\
@@ -400,7 +404,7 @@ Ultimo accesso: \textit{2026-01-14}\\
         Versione: \textit{edizione 1997} \\
         Ultimo accesso: \textit{2026-01-13}\\
         \url{https://www.math.unipd.it/~tullio/IS-1/2009/Approfondimenti/ISO_12207-1995.pdf}
-    \item \textbf{Slide sull'\emph{analisi dei requisiti} del Prof. Vardanega}\\
+    \item \textbf{Slide sull'\emph{\term{Analisi Dei Requisiti}} del Prof. Vardanega}\\
         Parti consultate: documento completo\\
         Versione: \textit{A.A.2025/2026}\\
         Ultimo accesso: \textit{2026-01-13}\\
@@ -410,7 +414,7 @@ Ultimo accesso: \textit{2026-01-14}\\
         Versione: \textit{A.A.2025/2026}\\
         Ultimo accesso: \textit{2026-01-13}\\
         \url{https://www.math.unipd.it/~rcardin/swea/2022/Diagrammi%20Use%20Case.pdf}
-    \item \textbf{\emph{Repository Github} del Prof. Cardin}\\
+    \item \textbf{\emph{\term{Repository} Github} del Prof. Cardin}\\
         Ultimo accesso: \textit{2026-01-13}\\
         \url{https://github.com/rcardin/swe-imdb}
     \item \textbf{Glossario}\\
@@ -425,7 +429,7 @@ Ultimo accesso: \textit{2026-01-14}\\
 \section{Casi d'uso}
 
 \subsection{Scopo}
-Nel processo di analisi, come indicato nel documento delle \href{https://swe-bitbybit.github.io/SWE-docs/docs/documenti_interni/norme_di_progetto.pdf}{\textbf{Norme di progetto}}, il gruppo BitByBit ha stabilito come prima attività l'individuazione dei casi d'uso del sistema. La stesura dei casi d'uso costituisce uno strumento fondamentale per la successiva individuazione dei requisiti funzionali del sistema, poiché consentono di definire in modo chiaro all'utente come il sistema sarà impiegato per soddisfare specifici obiettivi.\\
+Nel \term{Processo} di analisi, come indicato nel documento delle \href{https://swe-bitbybit.github.io/SWE-docs/docs/documenti_interni/norme_di_progetto.pdf}{\textbf{Norme di progetto}}, il gruppo BitByBit ha stabilito come prima attività l'individuazione dei casi d'uso del sistema. La stesura dei casi d'uso costituisce uno strumento fondamentale per la successiva individuazione dei requisiti funzionali del sistema, poiché consentono di definire in modo chiaro all'\term{Utente} come il sistema sarà impiegato per soddisfare specifici obiettivi.\\
 Nello specifico essi rappresentano una descrizione di come il sistema interagisce con i suoi attori per raggiungere un obiettivo specifico.
 Ogni caso d'uso ha uno scenario principale che rappresenta il flusso standard di interazioni e può includere scenari alternativi che fanno arrivare il sistema in uno stato diverso da quello che si identifica nello scenario principale del caso.\\
 Per facilitare la comprensione da parte dei lettori sia tecnici che non, alla descrizione in linguaggio naturale, viene anche associato un diagramma UML, che offre una rappresentazione grafica delle interazioni tra attori e sistema.\\
@@ -452,7 +456,7 @@ Questa sezione raccoglie i termini tecnici specifici utilizzati nella descrizion
 \centering \textbf{Attore secondario} & Coloro che interagiscono passivamente con il sistema. \\
 \hline
 \rowcolor{white}
-\centering \textbf{Pre-condizioni} & Lista di elementi o condizioni che sono necessari affinché l'utente possa eseguire gli scenari del caso d'uso. \\
+\centering \textbf{Pre-condizioni} & Lista di elementi o condizioni che sono necessari affinché l'\term{Utente} possa eseguire gli scenari del caso d'uso. \\
 \hline
 \rowcolor{gray!20}
 \centering \textbf{Post-condizioni} & Condizioni che devono essere vere al termine dell'esecuzione del caso d'uso. Descrivono lo stato finale osservabile del sistema dopo la conclusione del caso d’uso.  \\
@@ -505,22 +509,22 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 \hline
 \endhead
 \rowcolor{white}
-\centering \textbf{Utente Generico} & Un utente che non ha ancora compiuto il processo di autenticazione (che quindi non ha fornito la sua mail) e che non ha ancora creato una password per il diario \\
+\centering \textbf{\term{Utente} Generico} & Un \term{Utente} che non ha ancora compiuto il \term{Processo} di autenticazione (che quindi non ha fornito la sua mail) e che non ha ancora creato una password per il diario \\
 \hline
 \rowcolor{gray!20}
-\centering \textbf{Utente Autenticato} & Un utente il quale ha attraversato e concluso il processo di autenticazione e che quindi ha fornito la sua mail, ma non ha ancora creato una password per il diario. Ha accesso a delle funzionalità aggiuntive rispetto all'utente generico e all'utente autenticato al diario \\
+\centering \textbf{\term{Utente} Autenticato} & Un \term{Utente} il quale ha attraversato e concluso il \term{Processo} di autenticazione e che quindi ha fornito la sua mail, ma non ha ancora creato una password per il diario. Ha accesso a delle funzionalità aggiuntive rispetto all'\term{Utente} generico e all'\term{Utente} autenticato al diario \\
 \hline
 \rowcolor{white}
-\centering \textbf{Utente autenticato al diario} & Un utente il quale ha creato una password per il diario \\
+\centering \textbf{\term{Utente} autenticato al diario} & Un \term{Utente} il quale ha creato una password per il diario \\
 \hline
 \rowcolor{gray!70}
 \centering \textbf{Attori secondari} & \centering \textbf{Descrizione} \tabularnewline
 \hline
 \rowcolor{white}
-\centering \textbf{Google Auth} & Servizio di autenticazione esterno che permette al sistema di identificare l'utente tramite le proprie credenziali Google, evitando la creazione di nuovi account dedicati. \\
+\centering \textbf{Google Auth} & Servizio di autenticazione esterno che permette al sistema di identificare l'\term{Utente} tramite le proprie credenziali Google, evitando la creazione di nuovi account dedicati. \\
 \hline
 \rowcolor{gray!20}
-\centering \textbf{LLM} & Modello di Intelligenza Artificiale esterno che riceve i messaggi dell'utente e il contesto della conversazione per generare risposte coerenti e simulare un'interazione umana nelle funzionalità di supporto. \\
+\centering \textbf{LLM} & Modello di Intelligenza Artificiale esterno che riceve i messaggi dell'\term{Utente} e il contesto della conversazione per generare risposte coerenti e simulare un'interazione umana nelle funzionalità di supporto. \\
 \hline
 \rowcolor{white}
 \centering \textbf{Google Maps} & Servizio di mappatura esterno invocato dal sistema per mostrare la posizione precisa dei luoghi sicuri e calcolare i percorsi per raggiungerli. \\
@@ -548,7 +552,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 % \end{figure}
 
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente Generico
+    \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Attore secondario:} Google Auth
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
@@ -558,7 +562,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \item \textbf{Post-condizioni:}
     \begin{itemize}
         \item L’attore è autenticato all'applicazione
-        \item Il sistema riconosce l'attore come utente autenticato
+        \item Il sistema riconosce l'attore come \term{Utente} autenticato
         \item L'attore può accedere alle funzionalità riservate dell'applicazione
         \item La funzionalità di Dead Man Switch viene attivata automaticamente
     \end{itemize}
@@ -567,7 +571,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
         \item L'attore richiede l'autenticazione tramite Google
         \item L'attore viene reindirizzato a Google Auth dal sistema
         \item L'attore si autentica su Google Auth
-        \item L'attore accede al sistema come "utente autenticato"
+        \item L'attore accede al sistema come "\term{Utente} autenticato"
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
@@ -582,7 +586,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-2 Visualizzazione Messaggio di Errore per Autenticazione Fallita} \label{subsec:UC-2}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente Generico
+    \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Attore secondario:} Google Auth
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
@@ -594,17 +598,17 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \begin{itemize}
         \item L'attore visualizza l'errore
         \item L'autenticazione può essere ripetuta
-        \item L'attore rimane nello stato di "utente non autenticato"
+        \item L'attore rimane nello stato di "\term{Utente} non autenticato"
     \end{itemize}
     \item \textbf{Scenario principale:}
     \begin{itemize}
         \item Il servizio Google Auth comunica al sistema l’esito negativo dell’autenticazione
-        \item Il sistema mostra all’utente un messaggio di errore relativo all’autenticazione fallita
+        \item Il sistema mostra all’\term{Utente} un messaggio di errore relativo all’autenticazione fallita
     \end{itemize}
-    \item \textbf{Trigger:} Google Auth restituisce un codice di errore durante il processo di autenticazione
+    \item \textbf{Trigger:} Google Auth restituisce un codice di errore durante il \term{Processo} di autenticazione
 \end{itemize}
 
-\subsubsection{UC-3 - Esecuzione Walkthrough Interattivo} \label{subsec:UC-3}
+\subsubsection{UC-3 - Esecuzione \term{Walkthrough} Interattivo} \label{subsec:UC-3}
 
 % Diagramma UC-3 rimosso - file non disponibile
 % \begin{figure}[H] 
@@ -615,7 +619,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 % \end{figure}
 
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente Generico
+    \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -623,7 +627,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item L’utente ha visualizzato le funzionalità principali e ha preso familiarità con l'applicazione
+        \item L’\term{Utente} ha visualizzato le funzionalità principali e ha preso familiarità con l'applicazione
     \end{itemize}
     \item \textbf{Scenario principale:}
     \begin{itemize}
@@ -637,7 +641,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
-        \item L'attore sceglie di saltare tutte le funzionalità del walkthrough \ref{subsec:UC-4}
+        \item L'attore sceglie di saltare tutte le funzionalità del \term{Walkthrough} \ref{subsec:UC-4}
         \item L'attore sceglie di autenticarsi con Google \ref{subsec:UC-1}
     \end{itemize} 
     \item \textbf{Inclusioni:}
@@ -657,36 +661,36 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \vspace{0.5cm}
 
-\subsubsection{UC-4 - Salta Walkthrough} \label{subsec:UC-4}
+\subsubsection{UC-4 - Salta \term{Walkthrough}} \label{subsec:UC-4}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente Generico
+    \item \textbf{Attore principale:} \term{Utente} Generico
     
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item Il walkthrough è in corso
+        \item Il \term{Walkthrough} è in corso
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item L'attore ha saltato il walkthrough
+        \item L'attore ha saltato il \term{Walkthrough}
         \item Il sistema mostra la Home Page
     \end{itemize}
     \item \textbf{Scenario principale:}
     \begin{itemize}
-        \item L'attore seleziona l'opzione per saltare il walkthrough
+        \item L'attore seleziona l'opzione per saltare il \term{Walkthrough}
         \item Il sistema interrompe la presentazione delle schede e apre direttamente la Home Page
     \end{itemize}
-    \item \textbf{Trigger:} L'attore decide di saltare il walkthrough
+    \item \textbf{Trigger:} L'attore decide di saltare il \term{Walkthrough}
 \end{itemize}
 
 \subsubsection{UC-3.1 - Selezione Profilo} \label{subsec:UC-3.1}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente Generico
+    \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
         \item Sta avvenendo il primo accesso al sistema da parte dell'attore
-        \item Il walkthrough è in corso
+        \item Il \term{Walkthrough} è in corso
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
@@ -702,19 +706,19 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \item \textbf{Trigger:} Il sistema richiede la selezione del profilo
 \end{itemize}
 
-\subsubsection{UC-3.2 - Walkthrough diario criptato} \label{subsec:UC-3.2}
+\subsubsection{UC-3.2 - \term{Walkthrough} diario criptato} \label{subsec:UC-3.2}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente Generico
+    \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
         \item Sta avvenendo il primo accesso al sistema da parte dell'attore
-        \item Il walkthrough è in corso
+        \item Il \term{Walkthrough} è in corso
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item L'utente ha configurato il diario
-        \item Il sistema passa al prossimo step del walkthrough
+        \item L'\term{Utente} ha configurato il diario
+        \item Il sistema passa al prossimo step del \term{Walkthrough}
     \end{itemize}
     \item \textbf{Scenario principale:}
     \begin{itemize}
@@ -734,17 +738,17 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \begin{itemize}
         \item \ref{subsec:UC-5}
     \end{itemize}
-    \item \textbf{Trigger:} L'attore completa lo step precedente del walkthrough
+    \item \textbf{Trigger:} L'attore completa lo step precedente del \term{Walkthrough}
 \end{itemize}
 
-\subsubsection{UC-3.3 - Walkthrough contatto fidato} \label{subsec:UC-3.3}
+\subsubsection{UC-3.3 - \term{Walkthrough} contatto fidato} \label{subsec:UC-3.3}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente Generico
+    \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
         \item Sta avvenendo il primo accesso al sistema da parte dell'attore
-        \item Il walkthrough è in corso
+        \item Il \term{Walkthrough} è in corso
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
@@ -768,26 +772,26 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \begin{itemize}
         \item \ref{subsec:UC-5}
     \end{itemize}
-    \item \textbf{Trigger:} L'attore completa lo step precedente del walkthrough
+    \item \textbf{Trigger:} L'attore completa lo step precedente del \term{Walkthrough}
 \end{itemize}
 
 \subsubsection{UC-5 - Salta feature} \label{subsec:UC-5}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente Generico
+    \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item Il walkthrough è in corso
+        \item Il \term{Walkthrough} è in corso
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item L'attore ha saltato la funzionalità proposta dal walkthrough
+        \item L'attore ha saltato la funzionalità proposta dal \term{Walkthrough}
         \item Il sistema procede allo step successivo o alla Home Page
     \end{itemize}
     \item \textbf{Scenario principale:}
     \begin{itemize}
         \item L'attore decide di saltare la funzionalità
-        \item Il sistema avanza nel flusso del walkthrough
+        \item Il sistema avanza nel flusso del \term{Walkthrough}
     \end{itemize}
     \item \textbf{Trigger:} L'attore decide di non configurare la feature corrente
 \end{itemize}
@@ -796,7 +800,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-6 - Visualizzazione lista contatti fidati} \label{sec:UC-6}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -817,7 +821,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-6.1 - Visualizzazione singolo contatto fidato nella lista} \label{subsec:UC-6.1}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
@@ -836,7 +840,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-7 - Visualizzazione Informazioni Contatto Fidato} \label{subsec:UC-7}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
@@ -861,7 +865,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-7.1 - Visualizzazione nome contatto fidato} \label{subsec:UC-7.1}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
@@ -879,7 +883,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-7.2 - Visualizzazione numero di telefono contatto fidato} \label{subsec:UC-7.2}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
@@ -897,7 +901,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-7.3 - Visualizzazione indirizzo email contatto fidato} \label{subsec:UC-7.3}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
@@ -917,7 +921,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-8 - Aggiunta contatto fidato} \label{subsec:UC-8}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Attore principale:} \term{Utente} autenticato
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
@@ -946,7 +950,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-8.1 - Inserimento nome contatto fidato} \label{subsec:UC-8.1}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -965,7 +969,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-8.2 - Inserimento numero di telefono contatto fidato} \label{subsec:UC-8.2}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -994,7 +998,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-8.3 - Inserimento indirizzo email contatto fidato} \label{subsec:UC-8.3}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -1002,7 +1006,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
-        \item Il sistema riceve l'indirizzo email del contatto fidato che l'utente vuole inserire
+        \item Il sistema riceve l'indirizzo email del contatto fidato che l'\term{Utente} vuole inserire
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
@@ -1023,7 +1027,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-59 - Numero di telefono già presente} \label{subsec:UC-59}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Attore principale:} \term{Utente} autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -1046,7 +1050,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-60 - Email già presente} \label{subsec:UC-60}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Attore principale:} \term{Utente} autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -1069,7 +1073,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-10 Numero di telefono non conforme ai criteri} \label{subsec:UC-10}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -1084,7 +1088,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \item \textbf{Scenario principale:} 
     \begin{itemize}        
         \item L'attore inserisce un numero di telefono non conforme ai criteri dell'applicazione
-        \item Il sistema verifica il numero di telefono e rileva che non è valido
+        \item Il sistema \term{Verifica} il numero di telefono e rileva che non è valido
         \item Il sistema notifica all'attore l'errore e richiede la correzione del numero
     \end{itemize}
     \item \textbf{Trigger:} L'attore ha inserito un numero di telefono non conforme ai criteri dell'applicazione
@@ -1092,7 +1096,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-11 Indirizzo email non conforme ai criteri} \label{subsec:UC-11}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -1107,7 +1111,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \item \textbf{Scenario principale:} 
     \begin{itemize}        
         \item L'attore inserisce un indirizzo email non conforme ai criteri dell'applicazione
-        \item Il sistema verifica l'indirizzo email e rileva che non è valido
+        \item Il sistema \term{Verifica} l'indirizzo email e rileva che non è valido
         \item Il sistema notifica all'attore l'errore e richiede la correzione dell'indirizzo email
     \end{itemize}
     \item \textbf{Trigger:} L'attore ha inserito un indirizzo email non conforme ai criteri dell'applicazione
@@ -1117,7 +1121,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-12 - Modifica contatto fidato} \label{subsec:UC-12}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Attore principale:} \term{Utente} autenticato
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
@@ -1147,7 +1151,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-12.1 - Modifica nome contatto fidato} \label{subsec:UC-12.1}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Attore principale:} \term{Utente} autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -1168,7 +1172,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-12.2 - Modifica numero di telefono contatto fidato} \label{subsec:UC-12.2}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Attore principale:} \term{Utente} autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -1199,7 +1203,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-12.3 - Modifica indirizzo email contatto fidato} \label{subsec:UC-12.3}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Attore principale:} \term{Utente} autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -1232,7 +1236,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-13 Eliminazione Contatto Fidato} \label{subsec:UC-13}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Attore principale:} \term{Utente} autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -1241,7 +1245,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item Il sistema rimuove un contatto fidato dalla rete dei contatti fidati dell'utente
+        \item Il sistema rimuove un contatto fidato dalla rete dei contatti fidati dell'\term{Utente}
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
@@ -1256,7 +1260,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-13.1 Conferma Eliminazione Contatto Fidato} \label{subsec:UC-13.1}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Attore principale:} \term{Utente} autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -1281,7 +1285,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-14 Rifiuto Conferma Eliminazione Contatto Fidato} \label{subsec:UC-14}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Attore principale:} \term{Utente} autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -1305,7 +1309,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-15 - Impostazione timer prima inattività} \label{sec:UC-15}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Attore principale:} \term{Utente} autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -1328,7 +1332,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-16 - Impostazione timer seconda inattività} \label{sec:UC-16}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Attore principale:} \term{Utente} autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -1352,7 +1356,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-17 - Modifica titolo mail di avviso} \label{sec:UC-17}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Attore principale:} \term{Utente} autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -1374,7 +1378,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-18 - Modifica corpo mail di avviso} \label{sec:UC-18}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Attore principale:} \term{Utente} autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -1396,7 +1400,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-19 - Visualizzazione preview mail di avviso} \label{sec:UC-19}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Attore principale:} \term{Utente} autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -1428,7 +1432,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-19.1 - Visualizzazione titolo mail di avviso} \label{subsec:UC-19.1}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Attore principale:} \term{Utente} autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item La funzionalità Dead Man's Switch è abilitata UC-57 $\rightarrow$ \ref{sec:UC-57}
@@ -1444,7 +1448,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-19.2 - Visualizzazione corpo della mail di avviso} \label{subsec:UC-19.2}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Attore principale:} \term{Utente} autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item La funzionalità Dead Man's Switch è abilitata UC-57 $\rightarrow$ \ref{sec:UC-57}
@@ -1460,7 +1464,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-57 - Attivazione Dead Man's Switch} \label{sec:UC-57}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Attore principale:} \term{Utente} autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -1480,7 +1484,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-58 - Disattivazione Dead Man's Switch} \label{sec:UC-58}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente autenticato
+    \item \textbf{Attore principale:} \term{Utente} autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -1502,7 +1506,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-20 - Impostazione password per diario fittizio} \label{subsec:UC-20}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -1534,7 +1538,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-20.1 - Password uguale alla password del diario criptato} \label{subsec:UC-20.1}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -1558,7 +1562,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-21 - Password non conforme ai criteri} \label{subsec:UC-21}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -1583,7 +1587,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-22 - Accesso al diario fittizio} \label{subsec:UC-22}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -1598,7 +1602,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \begin{itemize}
         \item L'attore seleziona l'opzione per accedere al diario
         \item L'attore procede con l'inserimento della password di accesso \ref{subsec:UC-24}
-        \item Il sistema verifica che la password corrisponda a quella del diario fittizio
+        \item Il sistema \term{Verifica} che la password corrisponda a quella del diario fittizio
         \item Il sistema autentica l'attore e concede l'accesso al diario fittizio
     \end{itemize}
     \item \textbf{Scenario secondario:} 
@@ -1618,7 +1622,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-23 - Accesso al diario criptato} \label{subsec:UC-23}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -1634,7 +1638,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \begin{itemize}
         \item L'attore seleziona l'opzione per accedere al diario
         \item L'attore procede con l'inserimento della password di accesso \ref{subsec:UC-24}
-        \item Il sistema verifica che la password corrisponda a quella del diario criptato
+        \item Il sistema \term{Verifica} che la password corrisponda a quella del diario criptato
         \item Il sistema autentica l'attore e concede l'accesso al diario criptato
     \end{itemize}
     \item \textbf{Scenario secondario:} 
@@ -1654,7 +1658,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-23.1 - Impostazione password per diario criptato} \label{subsec:UC-23.1}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -1686,7 +1690,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-24 - Inserimento password accesso diario} \label{subsec:UC-24}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -1695,13 +1699,13 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
-        \item L'utente ha accesso al diario corrispondente
+        \item L'\term{Utente} ha accesso al diario corrispondente
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item L'attore inserisce la password nel campo dedicato
         \item L'attore conferma l'inserimento
-        \item Il sistema riceve la password e verifica che sia corretta
+        \item Il sistema riceve la password e \term{Verifica} che sia corretta
         \item L'attore ottiene l'accesso al diario
     \end{itemize}
     \item \textbf{Scenari secondari:} 
@@ -1720,7 +1724,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-25 - Inserimento password errata} \label{subsec:UC-25}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -1748,7 +1752,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-26 - Password errata troppe volte} \label{subsec:UC-26}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -1772,7 +1776,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-23.1.1 - Password uguale alla password del diario fittizio} \label{subsec:UC-23.1.1}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -1796,7 +1800,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-27 - Visualizzazione diario} \label{subsec:UC-27}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente autenticato al diario
+    \item \textbf{Attore principale:} \term{Utente} autenticato al diario
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -1820,7 +1824,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-27.1 - Visualizzazione lista note} \label{subsec:UC-27.1}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente autenticato al diario
+    \item \textbf{Attore principale:} \term{Utente} autenticato al diario
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -1847,7 +1851,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-27.1.1 - Visualizzazione singola nota della lista} \label{subsec:UC-27.1.1}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente autenticato al diario
+    \item \textbf{Attore principale:} \term{Utente} autenticato al diario
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -1869,7 +1873,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-28 - Creazione nota} \label{subsec:UC-28}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente autenticato al diario
+    \item \textbf{Attore principale:} \term{Utente} autenticato al diario
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -1890,7 +1894,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-29 - Eliminazione nota} \label{subsec:UC-29}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente autenticato al diario
+    \item \textbf{Attore principale:} \term{Utente} autenticato al diario
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -1917,7 +1921,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-30 - Inserimento testo nella nota} \label{subsec:UC-30}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente autenticato al diario
+    \item \textbf{Attore principale:} \term{Utente} autenticato al diario
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -1939,7 +1943,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-31 - Inserimento media nella nota} \label{subsec:UC-31}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente autenticato al diario
+    \item \textbf{Attore principale:} \term{Utente} autenticato al diario
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -1964,7 +1968,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-32 - Visualizzazione contenuto nota} \label{subsec:UC-32}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente autenticato al diario
+    \item \textbf{Attore principale:} \term{Utente} autenticato al diario
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -1998,11 +2002,11 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 % \end{figure}
 
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo.
-        \item L'utente ha cliccato sull'elemento (voce/pulsante) con funzione di invio del messaggio SOS.
+        \item L'\term{Utente} ha cliccato sull'elemento (voce/pulsante) con funzione di invio del messaggio SOS.
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
@@ -2011,7 +2015,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item L’attore interagisce con l'opzione di invio del messaggio SOS.
-        \item Il sistema verifica la presenza di connessione.
+        \item Il sistema \term{Verifica} la presenza di connessione.
 	    \item Il sistema invia una mail preimpostata ai contatti fidati memorizzati.
     \end{itemize}
     \item \textbf{Scenari secondari:} 
@@ -2029,7 +2033,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 \subsubsection{UC-33.1 - Assenza rete Internet} \label{sec:UC-33.1}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo.
@@ -2052,12 +2056,12 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \begin{itemize}
         \item \ref{sec:UC-34}
     \end{itemize}
-    \item \textbf{Trigger:} L'Utente ha cliccato l'elemento per inviare un messaggio di SOS ma il sistema rileva l'assenza di connessione internet.
+    \item \textbf{Trigger:} L'\term{Utente} ha cliccato l'elemento per inviare un messaggio di SOS ma il sistema rileva l'assenza di connessione internet.
 \end{itemize}
 
 \subsubsection{UC-33.2 - Mancanza di contatti fidati} \label{sec:UC-33.2}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo.
@@ -2072,19 +2076,19 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item Il sistema rileva che la lista dei contatti fidati è vuota
-        \item Il sistema notifica l'utente con un messaggio di errore
+        \item Il sistema notifica l'\term{Utente} con un messaggio di errore
         \item Il sistema dà la possibilità all'attore di inviare un segnale acustico $\rightarrow$ \ref{sec:UC-34}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
         \item \ref{sec:UC-34}
     \end{itemize}
-    \item \textbf{Trigger:} L'Utente vuole mandare un messaggio di SOS ai contatti fidati
+    \item \textbf{Trigger:} L'\term{Utente} vuole mandare un messaggio di SOS ai contatti fidati
 \end{itemize}
 
 \subsubsection{UC-34 - Invio segnale acustico} \label{sec:UC-34}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo.
@@ -2119,7 +2123,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
 
 \subsubsection{UC-35 - Consultazione Chatbot} \label{sec:UC-35}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Attore secondario:} LLM
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
@@ -2141,7 +2145,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-        \item L'attore interrompe il processo di analisi del messaggio dell'LLM \ref{sec:UC-35.1}
+        \item L'attore interrompe il \term{Processo} di analisi del messaggio dell'LLM \ref{sec:UC-35.1}
         \item Il messaggio non riesce ad essere inviato causa mancanza di connessione \ref{sec:UC-35.2}
         \item L'LLM riscontra un problema durante la lettura del messaggio \ref{sec:UC-35.3}
     \end{itemize}
@@ -2151,12 +2155,12 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
         \item \ref{sec:UC-35.2}
         \item \ref{sec:UC-35.3}
     \end{itemize}
-    \item \textbf{Trigger:} L'Utente vuole consultarsi con il chatbot
+    \item \textbf{Trigger:} L'\term{Utente} vuole consultarsi con il chatbot
 \end{itemize}
 
 \subsubsection{UC-35.1 - Interruzione risposta} \label{sec:UC-35.1}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
@@ -2179,7 +2183,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
 
 \subsubsection{UC-35.2 - Mancanza di connessione} \label{sec:UC-35.2}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -2197,7 +2201,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
         \item L'attore può riprovare
         \item L'attore può scrivere un nuovo messaggio
     \end{itemize}
-    \item \textbf{Trigger:} L'Utente vuole consultarsi con il chatbot ma manca la connessione internet.
+    \item \textbf{Trigger:} L'\term{Utente} vuole consultarsi con il chatbot ma manca la connessione internet.
 \end{itemize}
 
 \subsubsection{UC-35.3 - Errore di lettura del messaggio} \label{sec:UC-35.3}
@@ -2206,26 +2210,26 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-	    \item L’utente ha mandato un messaggio
+	    \item L’\term{Utente} ha mandato un messaggio
     \end{itemize}	
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item L’utente è notificato dell'errore
+        \item L’\term{Utente} è notificato dell'errore
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item Il sistema rileva un errore nella lettura del messaggio inviato
-        \item Il sistema notifica l'utente dell'errore
-        \item L'utente può mandare un nuovo messaggio
-        \item L'utente può chiedere di riprovare a leggere il messaggio \ref{sec:UC-35.1}
+        \item Il sistema notifica l'\term{Utente} dell'errore
+        \item L'\term{Utente} può mandare un nuovo messaggio
+        \item L'\term{Utente} può chiedere di riprovare a leggere il messaggio \ref{sec:UC-35.1}
 	    \item Il sistema riceve il nuovo messaggio modificato.
     \end{itemize}
-    \item \textbf{Trigger:} L'Utente vuole consultarsi con il chatbot ma il sistema non è riuscito a leggere il messaggio.
+    \item \textbf{Trigger:} L'\term{Utente} vuole consultarsi con il chatbot ma il sistema non è riuscito a leggere il messaggio.
 \end{itemize}
 
 \subsubsection{UC-36 - Switch al "Detective delle Relazioni"} \label{sec:UC-36}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo.
@@ -2246,12 +2250,12 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
         \item Errore nello switch di contesto \ref{sec:UC-38}
     \end{itemize}
     \item \textbf{Estensioni:} \ref{sec:UC-38}
-    \item \textbf{Trigger:} L’utente ha premuto il pulsante per il cambio del contesto.
+    \item \textbf{Trigger:} L’\term{Utente} ha premuto il pulsante per il cambio del contesto.
 \end{itemize}
 
 \subsubsection{UC-37 - Switch a "Specchio Intelligente"} \label{sec:UC-37}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo.
@@ -2272,17 +2276,17 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
         \item Errore nello switch di contesto \ref{sec:UC-38}
     \end{itemize}
     \item \textbf{Estensioni:} \ref{sec:UC-38}
-    \item \textbf{Trigger:} L’utente ha premuto il pulsante per il cambio del contesto.
+    \item \textbf{Trigger:} L’\term{Utente} ha premuto il pulsante per il cambio del contesto.
 \end{itemize}
 
 \subsubsection{UC-38 - Errore switch contesto} \label{sec:UC-38}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
         \item L'attore ha richiesto il cambio di contesto
-        \item Si verifica un errore durante l'operazione
+        \item Si \term{Verifica} un errore durante l'operazione
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
@@ -2295,13 +2299,13 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
         \item Il sistema mostra un messaggio di errore
         \item Il sistema mantiene il contesto precedente
     \end{itemize}
-    \item \textbf{Trigger:} L'attore richiede il cambio di contesto ma si verifica un errore tecnico
+    \item \textbf{Trigger:} L'attore richiede il cambio di contesto ma si \term{Verifica} un errore tecnico
 
 \end{itemize}
 
 \subsubsection{UC-39 - Visualizzazione cronologia chat} \label{subsec:UC-39}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -2327,7 +2331,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
 
 \subsubsection{UC-39.1 - Visualizzazione singola chat della lista} \label{subsec:UC-39.1}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -2353,7 +2357,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
 
 \subsubsection{UC-39.1.1 - Visualizzazione preview inizio chat della lista} \label{subsec:UC-39.1.1}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -2374,7 +2378,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
 
 \subsubsection{UC-40 - Visualizzazione contenuto chat} \label{subsec:UC-40}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -2400,7 +2404,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
 
 \subsubsection{UC-40.1 - Visualizzazione lista messaggi} \label{subsec:UC-40.1}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
@@ -2413,8 +2417,8 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item Il sistema recupera i messaggi dal database
-        \item Per ogni messaggio presente, il sistema ne identifica la tipologia (utente o chatbot)
-        \item Il sistema visualizza i messaggi dell'utente $\rightarrow$ \ref{subsec:UC-40.1.1}
+        \item Per ogni messaggio presente, il sistema ne identifica la tipologia (\term{Utente} o chatbot)
+        \item Il sistema visualizza i messaggi dell'\term{Utente} $\rightarrow$ \ref{subsec:UC-40.1.1}
         \item Il sistema visualizza i messaggi del chatbot $\rightarrow$ \ref{subsec:UC-40.1.2}
         \item L'attore può scorrere tra i messaggi
     \end{itemize}
@@ -2426,9 +2430,9 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \item \textbf{Trigger:} L'attore vuole visualizzare la lista dei messaggi nella chat
 \end{itemize}
 
-\subsubsection{UC-40.1.1 - Visualizzazione messaggio utente} \label{subsec:UC-40.1.1}
+\subsubsection{UC-40.1.1 - Visualizzazione messaggio \term{Utente}} \label{subsec:UC-40.1.1}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
@@ -2436,18 +2440,18 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item Il singolo messaggio inviato dall'utente viene mostrato a schermo
+        \item Il singolo messaggio inviato dall'\term{Utente} viene mostrato a schermo
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item Il sistema mostra il testo del messaggio inviato dall'utente con la formattazione grafica allineata a destra
+        \item Il sistema mostra il testo del messaggio inviato dall'\term{Utente} con la formattazione grafica allineata a destra
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole visualizzare la lista dei messaggi nella chat
 \end{itemize}
 
 \subsubsection{UC-40.1.2 - Visualizzazione messaggio chatbot} \label{subsec:UC-40.1.2}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
@@ -2466,12 +2470,12 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
 
 \subsubsection{UC-40.2 - Errore caricamento chat} \label{subsec:UC-40.2}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
         \item L'attore ha selezionato una chat
-        \item Si verifica un errore tecnico (assenza di rete, errore server, timeout) durante il recupero dei dati
+        \item Si \term{Verifica} un errore tecnico (assenza di rete, errore server, timeout) durante il recupero dei dati
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
@@ -2491,7 +2495,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
 
 \subsubsection{UC-41 - Creazione nuova chat} \label{subsec:UC-41}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -2515,7 +2519,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
 
 \subsubsection{UC-42 - Eliminazione chat} \label{subsec:UC-42}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -2539,7 +2543,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
 
 \subsubsection{UC-42.1 - Conferma eliminazione chat} \label{subsec:UC-42.1}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -2563,7 +2567,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
 
 \subsubsection{UC-42.1.1 - Rifiuto conferma eliminazione chat} \label{subsec:UC-42.1.1}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -2588,7 +2592,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
 
 \subsubsection{UC-43 - Visualizzazione lista community} \label{sec:UC-43}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -2610,7 +2614,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
 
 \subsubsection{UC-43.1 - Visualizzazione singola community nella lista} \label{subsec:UC-43.1}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
@@ -2630,7 +2634,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
 
 \subsubsection{UC-44 - Visita community} \label{sec:UC-44}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -2656,12 +2660,12 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
 
 \subsubsection{UC-44.1 - Errore caricamento community} \label{subsec:UC-44.1}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
         \item L'attore sta tentando di visualizzare la lista o i dettagli di una community
-        \item Si verifica un problema tecnico (timeout server, assenza rete)
+        \item Si \term{Verifica} un problema tecnico (timeout server, assenza rete)
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
@@ -2670,7 +2674,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item Il sistema rileva il fallimento della richiesta dati
-        \item Il sistema mostra un messaggio di errore all'utente
+        \item Il sistema mostra un messaggio di errore all'\term{Utente}
         \item Il sistema permette di ricaricare la pagina
     \end{itemize}
     \item \textbf{Trigger:} L'attore tenta di visitare una community ma il caricamento fallisce
@@ -2678,7 +2682,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
 
 \subsubsection{UC-45 - Visualizzazione lista contatti d'emergenza} \label{sec:UC-45}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -2701,7 +2705,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
 \subsubsection{UC-45.1 - Visualizzazione singolo contatto ente d'emergenza} \label{subsec:UC-45.1}
 \begin{itemize}
     \item \textbf{Descrizione:} Questo caso d'uso generalizza la visualizzazione di un contatto, definendo la struttura comune (nome e numero) per qualsiasi tipo di contatto d'emergenza.
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
@@ -2725,7 +2729,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
 
 \subsubsection{UC-45.1.1 - Visualizzazione nome contatti d'emergenza} \label{subsec:UC-45.1.1}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
@@ -2744,7 +2748,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
 
 \subsubsection{UC-45.1.2 - Visualizzazione numero contatti d'emergenza} \label{subsec:UC-45.1.2}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
@@ -2763,7 +2767,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
 
 \subsubsection{UC-48 - Composizione automatica numero contatto} \label{sec:UC-48}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -2784,7 +2788,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
 
 \subsubsection{UC-49 - Visualizzazione lista leggi} \label{sec:UC-49}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -2806,7 +2810,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
 
 \subsubsection{UC-49.1 - Visualizzazione singola legge nella lista} \label{subsec:UC-49.1}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
@@ -2826,7 +2830,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
 
 \subsubsection{UC-50 - Visualizzazione dettagli legge} \label{sec:UC-50}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -2853,12 +2857,12 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
 
 \subsubsection{UC-51 - Errore caricamento normativa} \label{subsec:UC-51}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
         \item L'attore sta tentando di visualizzare i dettagli di una legge
-        \item Si verifica un problema tecnico (timeout server, assenza rete)
+        \item Si \term{Verifica} un problema tecnico (timeout server, assenza rete)
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
@@ -2867,7 +2871,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item Il sistema rileva il fallimento della richiesta dati
-        \item Il sistema mostra un messaggio di errore esplicativo all'utente
+        \item Il sistema mostra un messaggio di errore esplicativo all'\term{Utente}
         \item Il sistema permette di ricaricare la pagina o tornare indietro
     \end{itemize}
     \item \textbf{Trigger:} L'attore tenta di visualizzare una legge ma il caricamento fallisce
@@ -2875,7 +2879,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
 
 \subsubsection{UC-52 - Visualizzazione lista materiale informativo} \label{sec:UC-52}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -2898,7 +2902,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
 
 \subsubsection{UC-52.1 - Visualizzazione singolo materiale informativo} \label{subsec:UC-52.1}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
@@ -2918,7 +2922,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
 
 \subsubsection{UC-53 - Visualizzazione dettagli materiale informativo} \label{sec:UC-53}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -2936,7 +2940,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-         \item Si verifica un errore durante il recupero del file (es. file corrotto o offline) $\rightarrow$ \ref{subsec:UC-53.1}
+         \item Si \term{Verifica} un errore durante il recupero del file (es. file corrotto o offline) $\rightarrow$ \ref{subsec:UC-53.1}
     \end{itemize}
     \item \textbf{Estensioni:} \ref{subsec:UC-53.1}
     \item \textbf{Trigger:} L'attore seleziona una risorsa per visualizzarla
@@ -2944,16 +2948,16 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
 
 \subsubsection{UC-53.1 - Errore caricamento materiale} \label{subsec:UC-53.1}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
         \item L'attore ha richiesto l'apertura di un materiale informativo
-        \item Si verifica un problema tecnico (timeout, assenza rete, risorsa rimossa)
+        \item Si \term{Verifica} un problema tecnico (timeout, assenza rete, risorsa rimossa)
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item L'utente è notificato dell'errore
+        \item L'\term{Utente} è notificato dell'errore
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
@@ -2967,7 +2971,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
 
 \subsubsection{UC-54 - Visualizzazione mappa luoghi sicuri} \label{sec:UC-54}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -2991,7 +2995,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
 
 \subsubsection{UC-55 - Apertura luogo in Google Maps} \label{subsec:UC-55}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Attore secondario:} Google Maps
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
@@ -3011,7 +3015,7 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-         \item Si verifica un errore nell'apertura dell'applicazione esterna $\rightarrow$ \ref{subsec:UC-56}
+         \item Si \term{Verifica} un errore nell'apertura dell'applicazione esterna $\rightarrow$ \ref{subsec:UC-56}
     \end{itemize}
     \item \textbf{Estensioni:} \ref{subsec:UC-56}
     \item \textbf{Trigger:} L'attore vuole avviare la navigazione o vedere dettagli aggiuntivi del luogo
@@ -3019,16 +3023,16 @@ La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguarda
 
 \subsubsection{UC-56 - Errore apertura luogo in mappa esterna} \label{subsec:UC-56}
 \begin{itemize}
-    \item \textbf{Attore principale:} Utente generico
+    \item \textbf{Attore principale:} \term{Utente} generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
         \item Il sistema tenta di aprire l'applicazione Google Maps
-        \item Si verifica un problema nell'apertura
+        \item Si \term{Verifica} un problema nell'apertura
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item Il sistema notifica l'errore e mantiene l'utente nell'applicazione corrente
+        \item Il sistema notifica l'errore e mantiene l'\term{Utente} nell'applicazione corrente
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
@@ -3064,40 +3068,40 @@ La nomenclatura utilizzata per il codice dei requisiti è spiegata nel documento
 \hline
 \endhead
 \rowcolor{white}
-RF-OB-1 & L'utente deve poter autenticarsi tramite Google Auth & \hyperref[subsec:UC-1]{UC-1} \\
+RF-OB-1 & L'\term{Utente} deve poter autenticarsi tramite Google Auth & \hyperref[subsec:UC-1]{UC-1} \\
 \hline
 \rowcolor{gray!20}
 RF-OB-2 & Il sistema deve mostrare un errore in caso di fallimento dell'autenticazione & \hyperref[subsec:UC-2]{UC-2} \\
 \hline
 \rowcolor{white}
-RF-OB-3 & L'utente deve poter visualizzare un walkthrough interattivo al primo avvio & \hyperref[subsec:UC-3]{UC-3} \\
+RF-OB-3 & L'\term{Utente} deve poter visualizzare un \term{Walkthrough} interattivo al primo avvio & \hyperref[subsec:UC-3]{UC-3} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-4 & L'utente deve poter saltare il walkthrough & \hyperref[subsec:UC-4]{UC-4} \\
+RF-OB-4 & L'\term{Utente} deve poter saltare il \term{Walkthrough} & \hyperref[subsec:UC-4]{UC-4} \\
 \hline
 \rowcolor{white}
-RF-OB-5 & L'utente deve poter selezionare il profilo di utilizzo ("Per me" o "Per altri") & \hyperref[subsec:UC-3.1]{UC-3.1} \\
+RF-OB-5 & L'\term{Utente} deve poter selezionare il profilo di utilizzo ("Per me" o "Per altri") & \hyperref[subsec:UC-3.1]{UC-3.1} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-6 & L'utente deve poter configurare il diario criptato durante il walkthrough & \hyperref[subsec:UC-3.2]{UC-3.2} \\
+RF-OB-6 & L'\term{Utente} deve poter configurare il diario criptato durante il \term{Walkthrough} & \hyperref[subsec:UC-3.2]{UC-3.2} \\
 \hline
 \rowcolor{white}
-RF-OB-7 & L'utente deve poter configurare un contatto fidato durante il walkthrough & \hyperref[subsec:UC-3.3]{UC-3.3} \\
+RF-OB-7 & L'\term{Utente} deve poter configurare un contatto fidato durante il \term{Walkthrough} & \hyperref[subsec:UC-3.3]{UC-3.3} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-8 & L'utente deve poter saltare la configurazione di una funzionalità specifica del walkthrough & \hyperref[subsec:UC-5]{UC-5} \\
+RF-OB-8 & L'\term{Utente} deve poter saltare la configurazione di una funzionalità specifica del \term{Walkthrough} & \hyperref[subsec:UC-5]{UC-5} \\
 \hline
 \rowcolor{white}
-RF-OB-9 & L'utente deve poter visualizzare la lista dei contatti fidati & \hyperref[sec:UC-6]{UC-6} \\
+RF-OB-9 & L'\term{Utente} deve poter visualizzare la lista dei contatti fidati & \hyperref[sec:UC-6]{UC-6} \\
 \hline
 \rowcolor{gray!20}
 RF-OB-10 & Il sistema deve permettere la visualizzazione di un singolo contatto fidato dalla lista & \hyperref[subsec:UC-6.1]{UC-6.1} \\
 \hline
 \rowcolor{white}
-RF-OB-11 & L'utente deve poter visualizzare i dettagli (nome, numero, email) di un contatto fidato & \hyperref[subsec:UC-7]{UC-7} \\
+RF-OB-11 & L'\term{Utente} deve poter visualizzare i dettagli (nome, numero, email) di un contatto fidato & \hyperref[subsec:UC-7]{UC-7} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-12 & L'utente deve poter aggiungere un nuovo contatto fidato & \hyperref[subsec:UC-8]{UC-8} \\
+RF-OB-12 & L'\term{Utente} deve poter aggiungere un nuovo contatto fidato & \hyperref[subsec:UC-8]{UC-8} \\
 \hline
 \rowcolor{white}
 RF-OB-13 & Il sistema deve riconoscere e gestire le informazioni di contatto già presenti & \hyperref[subsec:UC-59]{UC-59}, \hyperref[subsec:UC-60]{UC-60} \\
@@ -3109,40 +3113,40 @@ RF-OB-14 & Il sistema deve validare la conformità del numero di telefono inseri
 RF-OB-15 & Il sistema deve validare la conformità dell'indirizzo email inserito & \hyperref[subsec:UC-11]{UC-11} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-16 & L'utente deve poter modificare i dati di un contatto fidato esistente & \hyperref[subsec:UC-12]{UC-12} \\
+RF-OB-16 & L'\term{Utente} deve poter modificare i dati di un contatto fidato esistente & \hyperref[subsec:UC-12]{UC-12} \\
 \hline
 \rowcolor{white}
-RF-OB-17 & L'utente deve poter eliminare un contatto fidato & \hyperref[subsec:UC-13]{UC-13} \\
+RF-OB-17 & L'\term{Utente} deve poter eliminare un contatto fidato & \hyperref[subsec:UC-13]{UC-13} \\
 \hline
 \rowcolor{gray!20}
 RF-OB-18 & Il sistema deve richiedere conferma prima dell'eliminazione di un contatto fidato & \hyperref[subsec:UC-13.1]{UC-13.1} \\
 \hline
 \rowcolor{white}
-RF-OB-19 & L'utente deve poter rifiutare la conferma di eliminazione & \hyperref[subsec:UC-14]{UC-14} \\
+RF-OB-19 & L'\term{Utente} deve poter rifiutare la conferma di eliminazione & \hyperref[subsec:UC-14]{UC-14} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-20 & L'utente deve poter impostare il timer di prima inattività (Dead Man's Switch) & \hyperref[sec:UC-15]{UC-15} \\
+RF-OB-20 & L'\term{Utente} deve poter impostare il timer di prima inattività (Dead Man's Switch) & \hyperref[sec:UC-15]{UC-15} \\
 \hline
 \rowcolor{white}
-RF-OB-21 & L'utente deve poter impostare il timer di seconda inattività & \hyperref[sec:UC-16]{UC-16} \\
+RF-OB-21 & L'\term{Utente} deve poter impostare il timer di seconda inattività & \hyperref[sec:UC-16]{UC-16} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-22 & L'utente deve poter modificare il titolo della mail di avviso & \hyperref[sec:UC-17]{UC-17} \\
+RF-OB-22 & L'\term{Utente} deve poter modificare il titolo della mail di avviso & \hyperref[sec:UC-17]{UC-17} \\
 \hline
 \rowcolor{white}
-RF-OB-23 & L'utente deve poter modificare il corpo della mail di avviso & \hyperref[sec:UC-18]{UC-18} \\
+RF-OB-23 & L'\term{Utente} deve poter modificare il corpo della mail di avviso & \hyperref[sec:UC-18]{UC-18} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-24 & L'utente deve poter visualizzare un'anteprima della mail di avviso & \hyperref[sec:UC-19]{UC-19} \\
+RF-OB-24 & L'\term{Utente} deve poter visualizzare un'anteprima della mail di avviso & \hyperref[sec:UC-19]{UC-19} \\
 \hline
 \rowcolor{white}
-RF-OB-25 & L'utente deve poter attivare il Dead Man's Switch & \hyperref[sec:UC-57]{UC-57} \\
+RF-OB-25 & L'\term{Utente} deve poter attivare il Dead Man's Switch & \hyperref[sec:UC-57]{UC-57} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-26 & L'utente deve poter disattivare il Dead Man's Switch & \hyperref[sec:UC-58]{UC-58} \\
+RF-OB-26 & L'\term{Utente} deve poter disattivare il Dead Man's Switch & \hyperref[sec:UC-58]{UC-58} \\
 \hline
 \rowcolor{white}
-RF-OB-27 & L'utente deve poter impostare una password per il diario fittizio & \hyperref[subsec:UC-20]{UC-20} \\
+RF-OB-27 & L'\term{Utente} deve poter impostare una password per il diario fittizio & \hyperref[subsec:UC-20]{UC-20} \\
 \hline
 \rowcolor{gray!20}
 RF-OB-28 & Il sistema deve impedire che la password del diario fittizio sia uguale a quella del diario criptato & \hyperref[subsec:UC-20.1]{UC-20.1} \\
@@ -3151,19 +3155,19 @@ RF-OB-28 & Il sistema deve impedire che la password del diario fittizio sia ugua
 RF-OB-29 & Il sistema deve verificare che la password rispetti i criteri di sicurezza & \hyperref[subsec:UC-21]{UC-21} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-30 & L'utente deve poter accedere al diario fittizio tramite password & \hyperref[subsec:UC-22]{UC-22} \\
+RF-OB-30 & L'\term{Utente} deve poter accedere al diario fittizio tramite password & \hyperref[subsec:UC-22]{UC-22} \\
 \hline
 \rowcolor{white}
-RF-OB-31 & L'utente deve poter accedere al diario criptato tramite password & \hyperref[subsec:UC-23]{UC-23} \\
+RF-OB-31 & L'\term{Utente} deve poter accedere al diario criptato tramite password & \hyperref[subsec:UC-23]{UC-23} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-32 & L'utente deve poter impostare una password per il diario criptato & \hyperref[subsec:UC-23.1]{UC-23.1} \\
+RF-OB-32 & L'\term{Utente} deve poter impostare una password per il diario criptato & \hyperref[subsec:UC-23.1]{UC-23.1} \\
 \hline
 \rowcolor{white}
 RF-OB-33 & Il sistema deve impedire che la password del diario criptato sia uguale a quella del diario fittizio & \hyperref[subsec:UC-23.1.1]{UC-23.1.1} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-34 & L'utente deve inserire la password per accedere al diario (fittizio o criptato) & \hyperref[subsec:UC-24]{UC-24} \\
+RF-OB-34 & L'\term{Utente} deve inserire la password per accedere al diario (fittizio o criptato) & \hyperref[subsec:UC-24]{UC-24} \\
 \hline
 \rowcolor{white}
 RF-OB-35 & Il sistema deve notificare l'errore in caso di password errata & \hyperref[subsec:UC-25]{UC-25} \\
@@ -3172,31 +3176,31 @@ RF-OB-35 & Il sistema deve notificare l'errore in caso di password errata & \hyp
 RF-OB-36 & Il sistema deve bloccare temporaneamente l'accesso dopo troppi tentativi errati & \hyperref[subsec:UC-26]{UC-26} \\
 \hline
 \rowcolor{white}
-RF-OB-37 & L'utente autenticato deve poter visualizzare il contenuto del diario & \hyperref[subsec:UC-27]{UC-27} \\
+RF-OB-37 & L'\term{Utente} autenticato deve poter visualizzare il contenuto del diario & \hyperref[subsec:UC-27]{UC-27} \\
 \hline
 \rowcolor{gray!20}
 RF-OB-38 & Il sistema deve mostrare la lista delle note presenti nel diario & \hyperref[subsec:UC-27.1]{UC-27.1} \\
 \hline
 \rowcolor{white}
-RF-OB-39 & L'utente deve poter visualizzare l'anteprima di una singola nota & \hyperref[subsec:UC-27.1.1]{UC-27.1.1} \\
+RF-OB-39 & L'\term{Utente} deve poter visualizzare l'anteprima di una singola nota & \hyperref[subsec:UC-27.1.1]{UC-27.1.1} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-40 & L'utente deve poter creare una nuova nota & \hyperref[subsec:UC-28]{UC-28} \\
+RF-OB-40 & L'\term{Utente} deve poter creare una nuova nota & \hyperref[subsec:UC-28]{UC-28} \\
 \hline
 \rowcolor{white}
-RF-OB-41 & L'utente deve poter eliminare una nota esistente & \hyperref[subsec:UC-29]{UC-29} \\
+RF-OB-41 & L'\term{Utente} deve poter eliminare una nota esistente & \hyperref[subsec:UC-29]{UC-29} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-42 & L'utente deve poter inserire contenuto testuale in una nota & \hyperref[subsec:UC-30]{UC-30} \\
+RF-OB-42 & L'\term{Utente} deve poter inserire contenuto testuale in una nota & \hyperref[subsec:UC-30]{UC-30} \\
 \hline
 \rowcolor{white}
-RF-OB-43 & L'utente deve poter inserire contenuti multimediali (audio/foto) in una nota & \hyperref[subsec:UC-31]{UC-31} \\
+RF-OB-43 & L'\term{Utente} deve poter inserire contenuti multimediali (audio/foto) in una nota & \hyperref[subsec:UC-31]{UC-31} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-44 & L'utente deve poter visualizzare il contenuto completo (testo e media) di una nota & \hyperref[subsec:UC-32]{UC-32} \\
+RF-OB-44 & L'\term{Utente} deve poter visualizzare il contenuto completo (testo e media) di una nota & \hyperref[subsec:UC-32]{UC-32} \\
 \hline
 \rowcolor{white}
-RF-OB-45 & L'utente deve poter inviare un messaggio di SOS ai contatti fidati & \hyperref[sec:UC-33]{UC-33} \\
+RF-OB-45 & L'\term{Utente} deve poter inviare un messaggio di SOS ai contatti fidati & \hyperref[sec:UC-33]{UC-33} \\
 \hline
 \rowcolor{gray!20}
 RF-OB-46 & Il sistema deve gestire l'invio SOS in assenza di connessione internet & \hyperref[sec:UC-33.1]{UC-33.1} \\
@@ -3205,13 +3209,13 @@ RF-OB-46 & Il sistema deve gestire l'invio SOS in assenza di connessione interne
 RF-OB-47 & Il sistema deve gestire l'invio SOS in assenza di contatti fidati configurati & \hyperref[sec:UC-33.2]{UC-33.2} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-48 & L'utente deve poter inviare un segnale acustico di emergenza & \hyperref[sec:UC-34]{UC-34} \\
+RF-OB-48 & L'\term{Utente} deve poter inviare un segnale acustico di emergenza & \hyperref[sec:UC-34]{UC-34} \\
 \hline
 \rowcolor{white}
-RF-OB-49 & L'utente deve poter consultare il chatbot & \hyperref[sec:UC-35]{UC-35} \\
+RF-OB-49 & L'\term{Utente} deve poter consultare il chatbot & \hyperref[sec:UC-35]{UC-35} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-50 & L'utente deve poter interrompere la generazione della risposta del chatbot & \hyperref[sec:UC-35.1]{UC-35.1} \\
+RF-OB-50 & L'\term{Utente} deve poter interrompere la generazione della risposta del chatbot & \hyperref[sec:UC-35.1]{UC-35.1} \\
 \hline
 \rowcolor{white}
 RF-OB-51 & Il sistema deve gestire la mancanza di connessione durante la chat & \hyperref[sec:UC-35.2]{UC-35.2} \\
@@ -3220,97 +3224,97 @@ RF-OB-51 & Il sistema deve gestire la mancanza di connessione durante la chat & 
 RF-OB-52 & Il sistema deve gestire errori di lettura del messaggio da parte dell'LLM & \hyperref[sec:UC-35.3]{UC-35.3} \\
 \hline
 \rowcolor{white}
-RF-OB-53 & L'utente deve poter cambiare il contesto della chat a "Detective delle Relazioni" & \hyperref[sec:UC-36]{UC-36} \\
+RF-OB-53 & L'\term{Utente} deve poter cambiare il contesto della chat a "Detective delle Relazioni" & \hyperref[sec:UC-36]{UC-36} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-54 & L'utente deve poter cambiare il contesto della chat a "Specchio Intelligente" & \hyperref[sec:UC-37]{UC-37} \\
+RF-OB-54 & L'\term{Utente} deve poter cambiare il contesto della chat a "Specchio Intelligente" & \hyperref[sec:UC-37]{UC-37} \\
 \hline
 \rowcolor{white}
 RF-OB-55 & Il sistema deve notificare errori durante il cambio di contesto & \hyperref[sec:UC-38]{UC-38} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-56 & L'utente deve poter visualizzare la cronologia delle chat & \hyperref[subsec:UC-39]{UC-39} \\
+RF-OB-56 & L'\term{Utente} deve poter visualizzare la cronologia delle chat & \hyperref[subsec:UC-39]{UC-39} \\
 \hline
 \rowcolor{white}
-RF-OB-57 & L'utente deve poter selezionare una singola chat dalla cronologia & \hyperref[subsec:UC-39.1]{UC-39.1} \\
+RF-OB-57 & L'\term{Utente} deve poter selezionare una singola chat dalla cronologia & \hyperref[subsec:UC-39.1]{UC-39.1} \\
 \hline
 \rowcolor{gray!20}
 RF-OB-58 & Il sistema deve mostrare una preview dell'inizio della chat in cronologia & \hyperref[subsec:UC-39.1.1]{UC-39.1.1} \\
 \hline
 \rowcolor{white}
-RF-OB-59 & L'utente deve poter visualizzare il contenuto completo di una chat passata o corrente & \hyperref[subsec:UC-40]{UC-40} \\
+RF-OB-59 & L'\term{Utente} deve poter visualizzare il contenuto completo di una chat passata o corrente & \hyperref[subsec:UC-40]{UC-40} \\
 \hline
 \rowcolor{gray!20}
 RF-OB-60 & Il sistema deve visualizzare la lista dei messaggi scambiati & \hyperref[subsec:UC-40.1]{UC-40.1} \\
 \hline
 \rowcolor{white}
-RF-OB-61 & Il sistema deve distinguere visivamente i messaggi utente da quelli del chatbot & \hyperref[subsec:UC-40.1.1]{UC-40.1.1}, \hyperref[subsec:UC-40.1.2]{UC-40.1.2} \\
+RF-OB-61 & Il sistema deve distinguere visivamente i messaggi \term{Utente} da quelli del chatbot & \hyperref[subsec:UC-40.1.1]{UC-40.1.1}, \hyperref[subsec:UC-40.1.2]{UC-40.1.2} \\
 \hline
 \rowcolor{gray!20}
 RF-OB-62 & Il sistema deve gestire errori nel caricamento della chat & \hyperref[subsec:UC-40.2]{UC-40.2} \\
 \hline
 \rowcolor{white}
-RF-OB-63 & L'utente deve poter creare una nuova chat & \hyperref[subsec:UC-41]{UC-41} \\
+RF-OB-63 & L'\term{Utente} deve poter creare una nuova chat & \hyperref[subsec:UC-41]{UC-41} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-64 & L'utente deve poter eliminare una chat dalla cronologia & \hyperref[subsec:UC-42]{UC-42} \\
+RF-OB-64 & L'\term{Utente} deve poter eliminare una chat dalla cronologia & \hyperref[subsec:UC-42]{UC-42} \\
 \hline
 \rowcolor{white}
 RF-OB-65 & Il sistema deve richiedere conferma per l'eliminazione di una chat & \hyperref[subsec:UC-42.1]{UC-42.1} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-66 & L'utente deve poter rifiutare l'eliminazione di una chat & \hyperref[subsec:UC-42.1.1]{UC-42.1.1} \\
+RF-OB-66 & L'\term{Utente} deve poter rifiutare l'eliminazione di una chat & \hyperref[subsec:UC-42.1.1]{UC-42.1.1} \\
 \hline
 \rowcolor{white}
-RF-OB-67 & L'utente deve poter visualizzare la lista delle community & \hyperref[sec:UC-43]{UC-43} \\
+RF-OB-67 & L'\term{Utente} deve poter visualizzare la lista delle community & \hyperref[sec:UC-43]{UC-43} \\
 \hline
 \rowcolor{gray!20}
 RF-OB-68 & Il sistema deve mostrare i dettagli riassuntivi di una community & \hyperref[subsec:UC-43.1]{UC-43.1} \\
 \hline
 \rowcolor{white}
-RF-OB-69 & L'utente deve poter visitare una community e visualizzarne i contenuti & \hyperref[sec:UC-44]{UC-44} \\
+RF-OB-69 & L'\term{Utente} deve poter visitare una community e visualizzarne i contenuti & \hyperref[sec:UC-44]{UC-44} \\
 \hline
 \rowcolor{gray!20}
 RF-OB-70 & Il sistema deve gestire errori nel caricamento delle community & \hyperref[subsec:UC-44.1]{UC-44.1} \\
 \hline
 \rowcolor{white}
-RF-OB-71 & L'utente deve poter visualizzare la lista dei contatti/enti d'emergenza & \hyperref[sec:UC-45]{UC-45} \\
+RF-OB-71 & L'\term{Utente} deve poter visualizzare la lista dei contatti/enti d'emergenza & \hyperref[sec:UC-45]{UC-45} \\
 \hline
 \rowcolor{gray!20}
 RF-OB-72 & Il sistema deve mostrare nome e numero dei contatti d'emergenza & \hyperref[subsec:UC-45.1]{UC-45.1} \\
 \hline
 \rowcolor{white}
-RF-OB-73 & L'utente deve poter comporre automaticamente il numero di un contatto d'emergenza & \hyperref[sec:UC-48]{UC-48} \\
+RF-OB-73 & L'\term{Utente} deve poter comporre automaticamente il numero di un contatto d'emergenza & \hyperref[sec:UC-48]{UC-48} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-74 & L'utente deve poter visualizzare la lista delle leggi e normative & \hyperref[sec:UC-49]{UC-49} \\
+RF-OB-74 & L'\term{Utente} deve poter visualizzare la lista delle leggi e normative & \hyperref[sec:UC-49]{UC-49} \\
 \hline
 \rowcolor{white}
 RF-OB-75 & Il sistema deve mostrare il titolo delle leggi nella lista & \hyperref[subsec:UC-49.1]{UC-49.1} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-76 & L'utente deve poter visualizzare i dettagli completi di una legge & \hyperref[sec:UC-50]{UC-50} \\
+RF-OB-76 & L'\term{Utente} deve poter visualizzare i dettagli completi di una legge & \hyperref[sec:UC-50]{UC-50} \\
 \hline
 \rowcolor{white}
 RF-OB-77 & Il sistema deve gestire errori nel caricamento delle normative & \hyperref[subsec:UC-51]{UC-51} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-78 & L'utente deve poter visualizzare la lista del materiale informativo & \hyperref[sec:UC-52]{UC-52} \\
+RF-OB-78 & L'\term{Utente} deve poter visualizzare la lista del materiale informativo & \hyperref[sec:UC-52]{UC-52} \\
 \hline
 \rowcolor{white}
 RF-OB-79 & Il sistema deve mostrare titolo e formato del materiale informativo & \hyperref[subsec:UC-52.1]{UC-52.1} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-80 & L'utente deve poter visualizzare/scaricare il dettaglio del materiale informativo & \hyperref[sec:UC-53]{UC-53} \\
+RF-OB-80 & L'\term{Utente} deve poter visualizzare/scaricare il dettaglio del materiale informativo & \hyperref[sec:UC-53]{UC-53} \\
 \hline
 \rowcolor{white}
 RF-OB-81 & Il sistema deve gestire errori nel caricamento del materiale informativo & \hyperref[subsec:UC-53.1]{UC-53.1} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-82 & L'utente deve poter visualizzare la mappa dei luoghi sicuri & \hyperref[sec:UC-54]{UC-54} \\
+RF-OB-82 & L'\term{Utente} deve poter visualizzare la mappa dei luoghi sicuri & \hyperref[sec:UC-54]{UC-54} \\
 \hline
 \rowcolor{white}
-RF-OB-83 & L'utente deve poter aprire la posizione di un luogo sicuro su Google Maps & \hyperref[subsec:UC-55]{UC-55} \\
+RF-OB-83 & L'\term{Utente} deve poter aprire la posizione di un luogo sicuro su Google Maps & \hyperref[subsec:UC-55]{UC-55} \\
 \hline
 \rowcolor{gray!20}
 RF-OB-84 & Il sistema deve gestire errori nell'apertura della mappa esterna & \hyperref[subsec:UC-56]{UC-56} \\
@@ -3339,13 +3343,13 @@ RF-OB-84 & Il sistema deve gestire errori nell'apertura della mappa esterna & \h
 RQ-OB-1 & L'invio del segnale acustico deve essere udibile e indipendente dal volume di sistema & \hyperref[sec:UC-34]{UC-34} \\
 \hline
 \rowcolor{gray!20}
-RQ-OB-2 & Il sistema deve fornire feedback immediato all'utente in caso di assenza di rete & \hyperref[sec:UC-33.1]{UC-33.1}, \hyperref[sec:UC-35.2]{UC-35.2} \\
+RQ-OB-2 & Il sistema deve fornire feedback immediato all'\term{Utente} in caso di assenza di rete & \hyperref[sec:UC-33.1]{UC-33.1}, \hyperref[sec:UC-35.2]{UC-35.2} \\
 \hline
 \rowcolor{white}
-RQ-OB-3 & L'interfaccia utente deve supportare l'apprendimento progressivo tramite walkthrough & \hyperref[subsec:UC-3]{UC-3} \\
+RQ-OB-3 & L'interfaccia \term{Utente} deve supportare l'apprendimento progressivo tramite \term{Walkthrough} & \hyperref[subsec:UC-3]{UC-3} \\
 \hline
 \rowcolor{gray!20}
-RQ-OB-4 & I messaggi di errore devono essere chiari e comprensibili per l'utente non tecnico & \hyperref[subsec:UC-2]{UC-2}, \hyperref[sec:UC-38]{UC-38}, \hyperref[subsec:UC-40.2]{UC-40.2} \\
+RQ-OB-4 & I messaggi di errore devono essere chiari e comprensibili per l'\term{Utente} non tecnico & \hyperref[subsec:UC-2]{UC-2}, \hyperref[sec:UC-38]{UC-38}, \hyperref[subsec:UC-40.2]{UC-40.2} \\
 \hline
 \rowcolor{white}
 RQ-OB-5 & Il sistema deve garantire la persistenza locale dei contatti fidati & \hyperref[subsec:UC-8]{UC-8} \\

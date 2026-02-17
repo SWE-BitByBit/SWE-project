@@ -20,12 +20,16 @@
 % ===== Stile intestazione =====
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\textcolor{gray}{Verbale Riunione - Gruppo 17}}
+\fancyhead[L]{\textcolor{gray}{\term{Verbale} Riunione - Gruppo 17}}
 \fancyfoot[C]{\thepage}
 
 % ===== Formattazione sezioni =====
 \titleformat{\section}{\Large\bfseries}{\thesection.}{0.5em}{}
 \titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.5em}{}
+
+\newcommand{\term}[1]{\textbf{#1}$^\mathbf{G}$}
+
+\newcommand{\ignoreglossary}{}
 
 \begin{document}
 
@@ -70,7 +74,7 @@
 \vspace{1.5cm}
 
 \begin{center}
-    {\LARGE \textbf{Verbale Riunione Numero X}}
+    {\LARGE \textbf{\term{Verbale} Riunione Numero X}}
 \end{center}
 
 \vspace*{\fill} % --- Spinge verso l’alto la fine del contenuto, centrando tutto il blocco
@@ -121,21 +125,21 @@
 % ---------- ORDINE DEL GIORNO ----------
 \section{Ordine del Giorno}
 \begin{itemize}
-    \item Stilare un to-do meglio organizzato e più ampio
+    \item Stilare un \term{To-Do} meglio organizzato e più ampio
     \item Discussione sul way-of-working
-    \item Aggiornamento repository github
+    \item Aggiornamento \term{Repository} github
 \end{itemize}
 
 % ---------- DISCUSSIONI ----------
 \section{Discussioni}
 Inizialmente, è stato stilato un elenco di attività da svolgere per chiarire quali siano le macro attività. Inoltre, abbiamo discusso per capire come è possibile suddividersi le ore di lavoro. Successivamente, è iniziata una discussione per creare e organizzare uno scheletro di way-of-working.
-Dopodiché, sono state aggiunte issue ed è stata creata una milestone per la repository.
+Dopodiché, sono state aggiunte \term{Issue} ed è stata creata una \term{Milestone} per la \term{Repository}.
 Infine abbiamo confermato il meeting con l'azienda dell'appalto C6 che verrà fatto in data \textbf{2025-10-23} alle \textbf{15:30}
 
 % ---------- DECISIONI ----------
 \section{Decisioni}
 \begin{itemize}
-    \item Sono state decise delle issue da aggiungere alla repository, come la creazione del diario di bordo
+    \item Sono state decise delle \term{Issue} da aggiungere alla \term{Repository}, come la creazione del diario di bordo
     \item Sono stati decisi i responsabili temporanei prima della vera e propria rotazione dei ruoli durante lo svolgimento del progetto relativo a quello che sarà l'appalto aggiudicato
 \end{itemize}
 
@@ -172,7 +176,7 @@ Creare primo diario di bordo & Tutto il team & 2025-10-27 \\
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 \rowcolor{white}
-1.0.0 & 2025-10-22 & Dennis Parolin & Stesura iniziale del verbale & Riccardo Manisi \\
+1.0.0 & 2025-10-22 & Dennis Parolin & Stesura iniziale del \term{Verbale} & Riccardo Manisi \\
 \hline
 \end{tabular}
 \end{center}

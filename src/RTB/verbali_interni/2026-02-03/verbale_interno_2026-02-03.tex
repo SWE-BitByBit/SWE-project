@@ -43,6 +43,10 @@
 \titleformat{\section}{\Large\bfseries}{\thesection.}{0.5em}{}
 \titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.5em}{}
 
+\newcommand{\term}[1]{\textbf{#1}$^\mathbf{G}$}
+
+\newcommand{\ignoreglossary}{}
+
 \begin{document}
 
 % ======= HEADER UNIVERSITÀ E GRUPPO CENTRATI VERTICALMENTE =======
@@ -125,7 +129,7 @@
 0.1.1 & 2026-02-11 & Ferdinando Fracasso & Aggiunte menzioni Use Case & Riccardo Manisi \\
 \hline
 \rowcolor{white}
-0.1.0 & 2026-02-04 & Ferdinando Fracasso & Stesura verbale & Riccardo Manisi \\
+0.1.0 & 2026-02-04 & Ferdinando Fracasso & Stesura \term{Verbale} & Riccardo Manisi \\
 \hline
 \end{tabular}
 \end{center}
@@ -138,7 +142,7 @@
 \thispagestyle{empty} % senza numero di pagina per l'indice
 \clearpage
 
-% ======= INFO GENERALI RIUNIONE, METTERE SE DOC È UN VERBALE =======
+% ======= INFO GENERALI RIUNIONE, METTERE SE DOC È UN \term{Verbale} =======
 \section{Informazioni generali}
 \renewcommand{\arraystretch}{1.3}
 
@@ -164,33 +168,33 @@ Nessuno\\
 \end{tabularx}
 \end{tcolorbox}
 
-% ---------- ORDINE DEL GIORNO, METTERE SE DOC È UN VERBALE  ----------
+% ---------- ORDINE DEL GIORNO, METTERE SE DOC È UN \term{Verbale}  ----------
 \section{Ordine del Giorno}
 \begin{itemize}
-    \item Verificare lo stato dei task assegnati durante lo sprint 5 e dei task rimandati dagli sprint precedenti.
-    \item Decidere le feature da inserire nel PoC.
-    \item Pianficare la spartizione di ruoli e ore per lo sprint 6.
+    \item Verificare lo stato dei task assegnati durante lo \term{Sprint} 5 e dei task rimandati dagli \term{Sprint} precedenti.
+    \item Decidere le feature da inserire nel \term{Poc}.
+    \item Pianficare la spartizione di ruoli e ore per lo \term{Sprint} 6.
 \end{itemize}
 
-% ---------- DISCUSSIONI, METTERE SE DOC È UN VERBALE ----------
+% ---------- DISCUSSIONI, METTERE SE DOC È UN \term{Verbale} ----------
 \section{Discussioni}
 \begin{itemize}
-    \item Nel corso della riunione odierna si è discusso principalmente sullo stato dello studio per il PoC e sulla decisione delle parti da implementare, determinando la creazione di un gruppo di lavoro per lo sviluppo e il possibile bisogno di rivedere la data di consegna.\\
-    In particolare, a seguito alle discussioni sulle parti da implementare, si è deciso di permettere l'inserimento di contatti fidati da parte dell'utente, per il momento senza possibilità di eliminazione o modifica, in da avere più richieste verso i servizi AWS.\\
-    Inoltre si è discusso sullo stato dei task assegnati in precedenza, di cui alcuni sono stati rimandati allo sprint 6 a causa del tempo preso dalla sessione di esami. 
-    \item A seguito delle discussioni, sono state definite le seguenti attività da svolgere nel corso dello sprint 6:
+    \item Nel corso della riunione odierna si è discusso principalmente sullo stato dello studio per il \term{Poc} e sulla decisione delle parti da implementare, determinando la creazione di un gruppo di lavoro per lo sviluppo e il possibile bisogno di rivedere la data di consegna.\\
+    In particolare, a seguito alle discussioni sulle parti da implementare, si è deciso di permettere l'inserimento di contatti fidati da parte dell'\term{Utente}, per il momento senza possibilità di eliminazione o modifica, in da avere più richieste verso i servizi AWS.\\
+    Inoltre si è discusso sullo stato dei task assegnati in precedenza, di cui alcuni sono stati rimandati allo \term{Sprint} 6 a causa del tempo preso dalla sessione di esami. 
+    \item A seguito delle discussioni, sono state definite le seguenti attività da svolgere nel corso dello \term{Sprint} 6:
     \begin{itemize}
-        \item Completare le attività rimandate dallo sprint 5: completamento delle sezioni sugli sprint 4 e 5 nel Piano di Progetto e implementare una Github action per integrare il glossario con gli altri documenti.
-        \item Scrivere la parte iniziale del consultivo per lo sprint 6 nel Piano di Progetto.
-        \item Aggiornare il grafico della ripartizione ore dei ruoli nel Piano di Progetto.
-        \item Aggiungere le immagini dei diagrammi UML nell'Analisi dei Requisiti ed effettuare le modifiche necessarie.
-        \item Contattare il Prof. Cardin per chiarimenti riguardo agli UML per la funzionalità di walkthrough.
-        \item Iniziare lo sviluppo delle feature del PoC.
-        \item Scegliere una data di consegna definitiva per il PoC.
-        \item Effettuare una verifica completa del documento Norme di Progetto.
-        \item Aggiungere sezione "Metodi di testing" nel Piano di Qualifica.
+        \item Completare le attività rimandate dallo \term{Sprint} 5: completamento delle sezioni sugli \term{Sprint} 4 e 5 nel \term{Piano Di Progetto} e implementare una Github action per integrare il glossario con gli altri documenti.
+        \item Scrivere la parte iniziale del consultivo per lo \term{Sprint} 6 nel \term{Piano Di Progetto}.
+        \item Aggiornare il grafico della ripartizione ore dei ruoli nel \term{Piano Di Progetto}.
+        \item Aggiungere le immagini dei diagrammi UML nell'\term{Analisi Dei Requisiti} ed effettuare le modifiche necessarie.
+        \item Contattare il Prof. Cardin per chiarimenti riguardo agli UML per la funzionalità di \term{Walkthrough}.
+        \item Iniziare lo sviluppo delle feature del \term{Poc}.
+        \item Scegliere una data di consegna definitiva per il \term{Poc}.
+        \item Effettuare una \term{Verifica} completa del documento Norme di Progetto.
+        \item Aggiungere sezione "Metodi di testing" nel \term{Piano Di Qualifica}.
     \end{itemize}
-    \item L'assegnazione dei ruoli decisa per il prossimo sprint è la seguente:
+    \item L'assegnazione dei ruoli decisa per il prossimo \term{Sprint} è la seguente:
     \begin{center}
         \textbf{Amministratore\ap{G}} $\rightarrow$ Dennis Parolin, Gabriele Scaggiante\\
         \textbf{Responsabile\ap{G}} $\rightarrow$ Ferdinando Fracasso\\
@@ -201,7 +205,7 @@ Nessuno\\
 \end{itemize}
 %modifica
 \pagebreak
-% ---------- DECISIONI, METTERE SE DOC È UN VERBALE ----------
+% ---------- DECISIONI, METTERE SE DOC È UN \term{Verbale} ----------
 \section{Decisioni}
 \begin{center}
 \small
@@ -213,54 +217,54 @@ Nessuno\\
 \textbf{Descrizione decisione} & \textbf{Codice decisione} \\
 \hline
 \rowcolor{white}
-Rivedere data di consegna PoC & VI RTB 9.1 \\
+Rivedere data di consegna \term{Poc} & VI \term{Rtb} 9.1 \\
 \hline
 \rowcolor{gray!20}
-Iniziare il consultivo per lo sprint corrente nel PdP & VI RTB 9.2 \\
+Iniziare il consultivo per lo \term{Sprint} corrente nel PdP & VI \term{Rtb} 9.2 \\
 \hline
 \rowcolor{white}
-Migliorare il grafico della distribuzione ore di ciascun ruolo & VI RTB 9.3 \\
+Migliorare il grafico della distribuzione ore di ciascun ruolo & VI \term{Rtb} 9.3 \\
 \hline
 \rowcolor{gray!20}
-Inserire immagini UML nell'AdR & VI RTB 9.4 \\
+Inserire immagini UML nell'AdR & VI \term{Rtb} 9.4 \\
 \hline
 \rowcolor{white}
-Implementare le modifiche discusse durante la riunione nell'AdR & VI RTB 9.5 \\
+Implementare le modifiche discusse durante la riunione nell'AdR & VI \term{Rtb} 9.5 \\
 \hline
 \rowcolor{gray!20}
-Contattare il Prof. Cardin per chiarimenti sugli UML riguardanti la funzionalità di walkthrough & VI RTB 9.6 \\
+Contattare il Prof. Cardin per chiarimenti sugli UML riguardanti la funzionalità di \term{Walkthrough} & VI \term{Rtb} 9.6 \\
 \hline
 \rowcolor{white}
-Iniziare sviluppo front-end del PoC & VI RTB 9.7 \\
+Iniziare sviluppo front-end del \term{Poc} & VI \term{Rtb} 9.7 \\
 \hline
 \rowcolor{gray!20}
-PoC deve avere la funzionalità di accesso tramite Google Auth - Use Case pertinenti: UC-1, UC-2 & VI RTB 9.8 \\
+\term{Poc} deve avere la funzionalità di accesso tramite Google Auth - Use Case pertinenti: UC-1, UC-2 & VI \term{Rtb} 9.8 \\
 \hline
 \rowcolor{white}
-Funzionalità di chat con chatbot deve essere presente nel PoC - Use Case pertinenti: UC-35 & VI RTB 9.9 \\
+Funzionalità di chat con chatbot deve essere presente nel \term{Poc} - Use Case pertinenti: UC-35 & VI \term{Rtb} 9.9 \\
 \hline
 \rowcolor{gray!20}
-L'utente deve avere la possibilità di inserire, ma non modificare o rimuovere, contatti nella lista contatti fidati del PoC - Use Case pertinenti: UC-8, UC-8.1, UC-8.2, UC-8.3 & VI RTB 9.10 \\
+L'\term{Utente} deve avere la possibilità di inserire, ma non modificare o rimuovere, contatti nella lista contatti fidati del \term{Poc} - Use Case pertinenti: UC-8, UC-8.1, UC-8.2, UC-8.3 & VI \term{Rtb} 9.10 \\
 \hline
 \rowcolor{white}
-Il PoC deve avere la funzionalità di invio mail a contatti fidati - Use Case pertinenti: UC-33 & VI RTB 9.11 \\
+Il \term{Poc} deve avere la funzionalità di invio mail a contatti fidati - Use Case pertinenti: UC-33 & VI \term{Rtb} 9.11 \\
 \hline
 \rowcolor{gray!20}
-Deve essere possibile inserire immagini nelle note del diario nel PoC - Use Case pertinenti: UC-31, UC-32 & VI RTB 9.12 \\
+Deve essere possibile inserire immagini nelle note del diario nel \term{Poc} - Use Case pertinenti: UC-31, UC-32 & VI \term{Rtb} 9.12 \\
 \hline
 \rowcolor{white}
-Necessaria Github action deploy delle lambda su AWS & VI RTB 9.13 \\
+Necessaria Github action deploy delle lambda su AWS & VI \term{Rtb} 9.13 \\
 \hline
 \rowcolor{gray!20}
-Da implementare sezione metodi di testing nel PdQ & VI RTB 9.14 \\
+Da implementare sezione metodi di testing nel PdQ & VI \term{Rtb} 9.14 \\
 \hline
 \rowcolor{white}
-Serve verificare lo stato del documento NdP & VI RTB 9.15 \\
+Serve verificare lo stato del documento NdP & VI \term{Rtb} 9.15 \\
 \hline
 \end{tabular}
 \end{center}
 \pagebreak
-% ---------- TO DO, METTERE SE DOC È UN VERBALE  ----------
+% ---------- TO DO, METTERE SE DOC È UN \term{Verbale}  ----------
 \section{To Do}
 Dalle discussioni e decisioni intraprese, sono emerse le seguenti attività:
 \begin{center}
@@ -270,61 +274,61 @@ Dalle discussioni e decisioni intraprese, sono emerse le seguenti attività:
 \begin{tabular}{|p{0.52\textwidth}|c|c|}
 \hline
 \rowcolor{gray!60} 
-\textbf{Task} & \textbf{Codice decisione} & \textbf{N°issue GitHub} \\
+\textbf{Task} & \textbf{Codice decisione} & \textbf{N°\term{Issue} GitHub} \\
 \hline
 \rowcolor{white}
-Completare la funzionalità di integrazione del Glossario & VI RTB 7.5 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/327}{\textbf{\#327}} \\
+Completare la funzionalità di integrazione del Glossario & VI \term{Rtb} 7.5 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/327}{\textbf{\#327}} \\
 \hline
 \rowcolor{gray!20}
-Completare il consultivo dello sprint 4 nel PdP & VI RTB 8.6 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/332}{\textbf{\#332}} \\
+Completare il consultivo dello \term{Sprint} 4 nel PdP & VI \term{Rtb} 8.6 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/332}{\textbf{\#332}} \\
 \hline
 \rowcolor{white}
-Inserire il consultivo dello sprint 5 nel PdP & VI RTB 8.6 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/333}{\textbf{\#333}} \\
+Inserire il consultivo dello \term{Sprint} 5 nel PdP & VI \term{Rtb} 8.6 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/333}{\textbf{\#333}} \\
 \hline
 \rowcolor{gray!20}
-Scegliere data di consegna effettiva PoC & VI RTB 9.1 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/345}{\textbf{\#345}} \\
+Scegliere data di consegna effettiva \term{Poc} & VI \term{Rtb} 9.1 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/345}{\textbf{\#345}} \\
 \hline
 \rowcolor{white}
-Iniziare il consultivo dello sprint 6 nel PdP & VI RTB 9.2 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/334}{\textbf{\#334}} \\
+Iniziare il consultivo dello \term{Sprint} 6 nel PdP & VI \term{Rtb} 9.2 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/334}{\textbf{\#334}} \\
 \hline
 \rowcolor{gray!20}
-Aggiornare grafico distribuzione ore nel PdP & VI RTB 9.3 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/330}{\textbf{\#330}} \\
+Aggiornare grafico distribuzione ore nel PdP & VI \term{Rtb} 9.3 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/330}{\textbf{\#330}} \\
 \hline
 \rowcolor{white}
-Aggiungere sezione "Metodi di testing" nel PdQ & VI RTB 9.14 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/329}{\textbf{\#329}} \\
+Aggiungere sezione "Metodi di testing" nel PdQ & VI \term{Rtb} 9.14 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/329}{\textbf{\#329}} \\
 \hline
 \rowcolor{gray!20}
-Effettuare verifica completa NdP & VI RTB 9.15 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/328}{\textbf{\#328}} \\
+Effettuare \term{Verifica} completa NdP & VI \term{Rtb} 9.15 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/328}{\textbf{\#328}} \\
 \hline
 \rowcolor{white}
-Aggiungere immagini UML in AdR & VI RTB 9.4 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/335}{\textbf{\#335}} \\
+Aggiungere immagini UML in AdR & VI \term{Rtb} 9.4 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/335}{\textbf{\#335}} \\
 \hline
 \rowcolor{gray!20}
-Modificare struttura UML in AdR & VI RTB 9.5 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/336}{\textbf{\#336}} \\
+Modificare struttura UML in AdR & VI \term{Rtb} 9.5 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/336}{\textbf{\#336}} \\
 \hline
 \rowcolor{white}
-Contattare Prof. Cardin per chiarimenti su UML walkthrough & VI RTB 9.6 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/337}{\textbf{\#337}} \\
+Contattare Prof. Cardin per chiarimenti su UML \term{Walkthrough} & VI \term{Rtb} 9.6 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/337}{\textbf{\#337}} \\
 \hline
 \rowcolor{gray!20}
-Iniziare sviluppo frontend PoC & VI RTB 9.7 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/344}{\textbf{\#344}} \\
+Iniziare sviluppo frontend \term{Poc} & VI \term{Rtb} 9.7 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/344}{\textbf{\#344}} \\
 \hline
 \rowcolor{white}
-Implementare accesso con Google Auth nel PoC, Use Case UC-1 e UC-2 & VI RTB 9.8 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/343}{\textbf{\#343}} \\
+Implementare accesso con Google Auth nel \term{Poc}, Use Case UC-1 e UC-2 & VI \term{Rtb} 9.8 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/343}{\textbf{\#343}} \\
 \hline
 \rowcolor{gray!20}
-Implementare funzionalità di chat con chatbot nel PoC, Use Case UC-35 & VI RTB 9.9 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/342}{\textbf{\#342}} \\
+Implementare funzionalità di chat con chatbot nel \term{Poc}, Use Case UC-35 & VI \term{Rtb} 9.9 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/342}{\textbf{\#342}} \\
 \hline
 \rowcolor{white}
-Implementare nel PoC lista contatti fidati con possibilità di inserimento da parte dell'utente, Use Case UC-8, UC-8.1, UC-8.2 e UC-8.3 & VI RTB 9.10 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/341}{\textbf{\#341}} \\
+Implementare nel \term{Poc} lista contatti fidati con possibilità di inserimento da parte dell'\term{Utente}, Use Case UC-8, UC-8.1, UC-8.2 e UC-8.3 & VI \term{Rtb} 9.10 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/341}{\textbf{\#341}} \\
 \hline
 \rowcolor{gray!20}
-Implementare funzionalità PoC di invio mail a contatti fidati, Use Case UC-33 & VI RTB 9.11 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/340}{\textbf{\#340}} \\
+Implementare funzionalità \term{Poc} di invio mail a contatti fidati, Use Case UC-33 & VI \term{Rtb} 9.11 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/340}{\textbf{\#340}} \\
 \hline
 \rowcolor{white}
-Implementare funzionalità note PoC con possibilità di inserire immagini, Use Case UC-31 e UC-32 & VI RTB 9.12 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/339}{\textbf{\#339}} \\
+Implementare funzionalità note \term{Poc} con possibilità di inserire immagini, Use Case UC-31 e UC-32 & VI \term{Rtb} 9.12 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/339}{\textbf{\#339}} \\
 \hline
 \rowcolor{gray!20}
-Creare Github action per deploy lambda su AWS & VI RTB 9.13 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/338}{\textbf{\#338}} \\
+Creare Github action per deploy lambda su AWS & VI \term{Rtb} 9.13 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/338}{\textbf{\#338}} \\
 \hline
 \end{tabular}
 \end{center}
