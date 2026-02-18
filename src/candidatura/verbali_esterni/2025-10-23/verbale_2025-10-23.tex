@@ -1,17 +1,17 @@
-% template presente
 \documentclass[a4paper,12pt]{article}
 
 \usepackage[utf8]{inputenc}
 \usepackage[italian]{babel}
 \usepackage{graphicx}
+% Percorsi per le immagini (assumendo che le risorse siano nelle cartelle superiori)
 \graphicspath{{resources/}{../resources/}{../../resources/}{../../../resources/}{../../../../resources/}}
 \usepackage{xcolor}
 \usepackage{geometry}
 \usepackage{setspace}
 \usepackage{colortbl}
-\usepackage{hyperref} % link cliccabili
-\usepackage{fancyhdr} % intestazioni personalizzate
-\usepackage{titlesec} % per formattare le sezioni
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
 \geometry{margin=2.5cm}
 
 \setlength{\parindent}{0pt}
@@ -28,12 +28,11 @@
 \titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.5em}{}
 
 \newcommand{\term}[1]{\textbf{#1}$^\mathbf{G}$}
-
 \newcommand{\ignoreglossary}{}
 
 \begin{document}
 
-% ======= HEADER UNIVERSITÀ E GRUPPO CENTRATI VERTICALMENTE =======
+% ======= HEADER =======
 \vspace*{\fill}
 
 \begin{center}
@@ -79,14 +78,12 @@
 \end{center}
 
 \vspace*{\fill}
-
 \clearpage
 
 % ======= INFO GENERALI =======
 {\large \textbf{Informazioni generali}}
 {\footnotesize
 \setstretch{1.1}
-
 \begin{itemize}
     \item \textbf{Data:} 23 ottobre 2025
     \item \textbf{Ora inizio:} 15:30
@@ -142,9 +139,9 @@ Durante la chiamata conoscitiva con \textbf{Gregorio Piccoli}, referente per il 
 La discussione è cominciata con una domanda sui “6 cappelli per pensare” e su come andrebbero implementati. La risposta è stata che abbiamo completa libertà di implementazione. Possiamo quindi prevedere di esaminare il testo usando contemporaneamente tutti i 6 cappelli, evidenziando poi aree di miglioramento in base alle preferenze dell’\term{Utente}, oppure gestire la cosa di testa nostra senza grossi problemi.
 
 \subsection{Utilizzo dell'AI e infrastruttura}
-Zucchetti dispone di tre macchine con GPU di fascia media, utilizzate per l’elaborazione dei prompt.  
-I server ospitano localmente vari modelli LLM (tra 7B e 27B) gestiti tramite \textbf{Ollama}, un framework che permette l’accesso ai modelli via \textbf{API endpoint}.  
-Alcuni modelli sono open source e locali (senza costi per token), mentre altri, come \textbf{Gemini}, comportano un costo per token e vengono serviti tramite proxy aziendale.  
+Zucchetti dispone di tre macchine con GPU di fascia media, utilizzate per l’elaborazione dei prompt.
+I server ospitano localmente vari modelli LLM (tra 7B e 27B) gestiti tramite \textbf{Ollama}, un framework che permette l’accesso ai modelli via \textbf{API endpoint}.
+Alcuni modelli sono open source e locali (senza costi per token), mentre altri, come \textbf{Gemini}, comportano un costo per token e vengono serviti tramite proxy aziendale.
 
 L’utilizzo dei modelli è consentito fino al raggiungimento di una soglia di spesa massima non specificata; superato tale limite sarà necessario richiedere la riattivazione del servizio.
 
@@ -158,16 +155,16 @@ L’interazione con i modelli avverrà tramite un’API che consente di:
 Non è previsto il training o la progettazione di modelli personalizzati. La possibilità di sviluppare modelli non parametrici non è stata esclusa, ma non è un \term{Requisito} del progetto.
 
 \subsection{Gestione utenti e \term{Architettura} applicativa}
-È stato consigliato di implementare un sistema di \textbf{login} e un backend di gestione utenti e note. Tuttavia, la gestione dei dati dovrà avvenire in locale per un singolo \term{Utente}, mantenendo il focus sull’aspetto personale dell’applicazione.  
+È stato consigliato di implementare un sistema di \textbf{login} e un backend di gestione utenti e note. Tuttavia, la gestione dei dati dovrà avvenire in locale per un singolo \term{Utente}, mantenendo il focus sull’aspetto personale dell’applicazione.
 
 È stato sconsigliato implementare funzionalità complesse come un grafo di link in stile \textit{Obsidian}, privilegiando invece quelle legate all’utilizzo dell’AI.
 
 \subsection{Funzionalità opzionali e revisioni}
-Le funzionalità opzionali possono essere definite liberamente nel corso dello sviluppo. È comunque gradito un confronto iniziale con il referente.  
+Le funzionalità opzionali possono essere definite liberamente nel corso dello sviluppo. È comunque gradito un confronto iniziale con il referente.
 Non è previsto un calendario fisso di revisioni: eventuali incontri possono essere organizzati in base alle necessità, anche in presenza (la sede Zucchetti è nei pressi di Padova).
 
 \subsection{Interfaccia grafica e altre idee}
-L’applicazione dovrà essere \textbf{ottimizzata per desktop in orizzontale}; non è necessario un design verticale per mobile.  
+L’applicazione dovrà essere \textbf{ottimizzata per desktop in orizzontale}; non è necessario un design verticale per mobile.
 
 Tra le funzionalità opzionali considerate interessanti:
 \begin{itemize}
@@ -187,11 +184,11 @@ Tra le funzionalità opzionali considerate interessanti:
 
 \begin{center}
 \small
-\renewcommand{\arraystretch}{1.2} 
-\arrayrulecolor{black} 
+\renewcommand{\arraystretch}{1.2}
+\arrayrulecolor{black}
 \begin{tabular}{|p{0.45\linewidth}|p{0.25\linewidth}|p{0.25\linewidth}|}
 \hline
-\rowcolor{gray!60} 
+\rowcolor{gray!60}
 \textbf{Task} & \textbf{Assegnatario} & \textbf{Scadenza} \\
 \hline
 \rowcolor{white}
@@ -215,11 +212,11 @@ N.A &  &  \\
 
 \begin{center}
 \small
-\renewcommand{\arraystretch}{1.2} 
+\renewcommand{\arraystretch}{1.2}
 \arrayrulecolor{black}
 \begin{tabular}{|p{0.1\linewidth}|p{0.18\linewidth}|p{0.22\linewidth}|p{0.20\linewidth}|p{0.22\linewidth}|}
 \hline
-\rowcolor{gray!60} 
+\rowcolor{gray!60}
 \textbf{Versione} & \textbf{Ruolo} & \textbf{Nome} & \textbf{Data e ora} & \textbf{Descrizione} \\
 \hline
 \rowcolor{white}
