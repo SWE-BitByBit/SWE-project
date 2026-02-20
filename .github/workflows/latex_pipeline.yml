@@ -3,12 +3,8 @@ name: Apply Template & Build PDFs
 on:
   push:
     branches:
-      - 'task/**'
-      - 'feature/**'
-    paths:
-      - 'src/**/*.tex'
+      - '**'
   workflow_dispatch:
-
 
 jobs:
   latex-pipeline:
