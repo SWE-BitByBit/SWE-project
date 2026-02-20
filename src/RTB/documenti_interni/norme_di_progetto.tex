@@ -386,9 +386,9 @@ Le attività che compongono il \textbf{processo di sviluppo} adattate al progett
 
 \subsubsection{Analisi dei requisiti}
 L'attività di analisi dei requisiti ha l’obiettivo di trasformare i requisiti utente espressi nel capitolato, nel nostro caso il \textbf{capitolato C4} proposto da \textbf{Miriade S.r.l.}, in requisiti di sistema chiari, completi e verificabili. 
-Tale attività produce il documento dell'analisi dei requisiti che stabilisce le basi per un accordo tra la proponente e il \textbf{gruppo BitByBit} su quello che il prodotto software è tenuto a fare.
-\par L’analisi dei requisiti obbliga tutte le parti coinvolte a valutare in modo completo e condiviso ciò che il sistema dovrà realizzare prima dell’avvio della progettazione. Questo riduce significativamente il rischio di dover intervenire successivamente su design, codice o test.
-\par Il gruppo si impegna inoltre a monitorare con continuità l’allineamento tra requisiti implementati e requisiti concordati con la proponente, aggiornandoli in modo controllato quando necessario.
+Tale attività produce il documento dell'analisi dei requisiti che stabilisce le basi per un accordo tra la proponente e il fornitore sulle funzionalità che verranno implementate nel prodotto..
+L’analisi dei requisiti obbliga tutte le parti coinvolte a valutare in modo completo e condiviso ciò che il sistema dovrà realizzare prima dell’avvio della progettazione. Questo riduce significativamente il rischio di dover intervenire successivamente su design, codice o test.
+Il gruppo si impegna inoltre a monitorare con continuità l’allineamento tra requisiti implementati e requisiti concordati con la proponente, aggiornandoli in modo controllato quando necessario.
 
 \paragraph{Stesura dei casi d'uso}
 
@@ -401,15 +401,14 @@ La definizione dei casi d’uso segue un processo iterativo che comprende:
 \end{itemize}
 
 Il gruppo effettua una revisione completa dei casi d'uso individuati, correggendo eventuali incoerenze. Se necessario, vengono condotti approfondimenti con la proponente per garantire un’interpretazione condivisa degli scenari critici.
-\par Per ogni caso d’uso viene realizzato un diagramma UML dedicato, al fine di ridurre possibili ambiguità interpretative.\\
+Per ogni caso d’uso viene realizzato un diagramma UML dedicato, al fine di ridurre possibili ambiguità interpretative.\\
 
 La nomenclatura adottata viene esposta di seguito.
 \begin{center}
-    \texttt{UC-<funzionalità>-X.Y}
+    \texttt{UC-X.Y}
 \end{center}
 \begin{itemize}
     \item \texttt{UC} sigla per use case
-    \item \texttt{<funzionalità>} sigla per la funzionalità a cui si riferisce quel caso d'uso;
     \item \texttt{X} numero intero identificativo per il caso d'uso principale;
     \item \texttt{Y} numero intero identificativo per il sotto-caso eventuale.
 \end{itemize}
@@ -619,10 +618,10 @@ dove:
     \item \textbf{Y}, indica il numero del verbale in riferimento a quella revisione;
     \item \textbf{X} indica il numero della decisione interna a quel documento.
 \end{itemize}
-  \item \textbf{To-do}: presenta, sotto forma di tabella, gli incarichi operativi pianificati a seguito della riunione. Ogni \textbf{To-do} è identificata da:
+  \item \textbf{To-do}: presenta, sotto forma di tabella, gli incarichi operativi pianificati a seguito della riunione. Ogni \textbf{To-do} è identificato da:
   \begin{itemize}
       \item una descrizione sintetica;
-      \item Il codice della decisione da cui è stata creata (per ogni decisione ci possono essere 0 o più attività);
+      \item Il codice della decisione da cui è stata creata (per ogni decisione ci possono essere zero o più attività);
       \item il numero della issue GitHub di quella attività presente nel GitHub Project.
   \end{itemize}
 \end{enumerate}
@@ -844,7 +843,7 @@ Tra le due, il gruppo \textit{BitByBit} adotta come standard l'\textbf{Ispezione
 Poiché il gruppo ha adottato la tecnica dell'\textbf{Ispezione} basata su checklist, la verifica della documentazione non richiede strumenti di automazione complessi, ma si avvale delle piattaforme di sviluppo e collaborazione:
 \begin{itemize}
     \item \textbf{GitHub}: è lo strumento principale. L'interfaccia delle Pull Request permette ai verificatori di commentare righe specifiche del documento, richiedere modifiche e approvare il lavoro solo quando la checklist di verifica è soddisfatta.
-    \item \textbf{VS Code}: viene utilizzato dai verificatori per il controllo locale dei file sorgente (LaTeX/Markdown), permettendo di individuare errori di sintassi o formattazione non visibili dall'interfaccia web prima di dare l'approvazione.
+    \item \textbf{VS Code}: viene utilizzato dai verificatori per il controllo locale dei file sorgente (\LaTeX/Markdown), permettendo di individuare errori di sintassi o formattazione non visibili dall'interfaccia web prima di dare l'approvazione.
 \end{itemize}
 
 \subsubsection{Verifica del Codice Software}
@@ -898,7 +897,7 @@ Lo stato di ogni test viene tracciato come: \textbf{I} (Implementato), \textbf{N
 % ==== SEZIONE PROCESSO DI VALIDAZIONE ====
 \subsection{Processo di validazione}
 Il processo di validazione costituisce l'ultimo livello di controllo qualitativo prima del rilascio formale del prodotto.
-A differenza della verifica, che si configura come un controllo tecnico continuo sul codice, la validazione ha lo scopo di accertare che il sistema software realizzato dal gruppo \textit{BitByBit} sia pienamente conforme alle aspettative e ai bisogni reali dell'azienda proponente \textbf{Miriade}.
+A differenza della verifica, che si configura come un controllo tecnico continuo sul codice, la validazione ha lo scopo di accertare che il sistema software realizzato dal gruppo \textit{BitByBit} sia pienamente conforme alle aspettative e ai bisogni reali dell'azienda proponente \textbf{Miriade S.r.l}.
 
 \subsubsection{Obiettivi del processo}
 Il gruppo adotta questo processo per rispondere in modo affermativo alla domanda «Did we build the right product?», ovvero «Abbiamo costruito il prodotto giusto?».
@@ -912,7 +911,7 @@ Gli obiettivi perseguiti sono:
 \subsubsection{Tracciamento come strumento di validazione}
 La prima fase operativa del processo consiste nell'assicurare che ogni funzionalità richiesta sia effettivamente presente nel sistema. Per fare ciò il gruppo utilizza la \textbf{matrice di tracciamento} come strumento di controllo principale.
 L'attività prevede di mappare univocamente ogni requisito (funzionale, di qualità o vincolo) ai relativi test di validazione.
-Questo approccio metodologico garantisce che non venga sviluppato codice non richiesto e, soprattutto, che ogni requisito concordato con \textbf{Miriade} sia verificabile tramite un test specifico. Un requisito privo di tracciamento verso un test è considerato non validabile e quindi non accettabile.
+Questo approccio metodologico garantisce che non venga sviluppato codice non richiesto e, soprattutto, che ogni requisito concordato con \textbf{Miriade S.r.l} sia verificabile tramite un test specifico. Un requisito privo di tracciamento verso un test è considerato non validabile e quindi non accettabile.
 
 \subsubsection{Esecuzione dei test di accettazione}
 La validazione si concretizza con l'esecuzione dei \textbf{Test di Accettazione} (UAT - User Acceptance Testing).
