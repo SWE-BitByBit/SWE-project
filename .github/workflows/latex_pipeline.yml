@@ -3,8 +3,12 @@ name: Apply Template & Build PDFs
 on:
   push:
     branches:
-      - '**'
+      - 'task/**'
+      - 'feature/**'
+    paths:
+      - 'src/**/*.tex'
   workflow_dispatch:
+
 
 jobs:
   latex-pipeline:
@@ -17,7 +21,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          fetch-depth: 2
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -73,6 +77,9 @@ jobs:
           echo "Committo i PDF generati..."
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          find docs -type f -name "*.pdf" -print0 | xargs -0 git add || echo "No PDFs to add"
+          git add docs/*.pdf || echo "No PDFs to add"
           git commit -m "Added generated PDFs" || echo "No PDFs to commit"
-          git push || echo "Nothing to push"
+
+          # Sincronizza con remoto prima del push
+          git pull --rebase origin ${{ github.ref_name }}
+          git push origin HEAD:${{ github.ref_name }}
