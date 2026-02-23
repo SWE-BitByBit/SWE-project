@@ -20,7 +20,7 @@
 \usepackage{colortbl}
 \usepackage{hyperref} 
 \usepackage{fancyhdr}
-\setlength{\headheight}{25pt}
+\setlength{\headheight}{35pt}
 \setlength{\headsep}{1cm}
 \usepackage{titlesec}
 \geometry{margin=2.5cm}
@@ -113,15 +113,19 @@
 \small
 \renewcommand{\arraystretch}{1.2} 
 \arrayrulecolor{black}
-\begin{tabular}{|c|c|p{0.21\linewidth}|p{0.23\linewidth}|c|}
+\begin{tabularx}{\textwidth}{|c|c|>{\raggedright\arraybackslash}p{0.2\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.2\textwidth}|}
 \hline
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
+
 \rowcolor{white}
+1.0.0 & 2026-02-23 & Dennis Parolin & Approvazione del verbale e stabilizzazione versione del documento & Ferdinando Fracasso \\
+\hline
+\rowcolor{gray!20}
 0.1.0 & 2025-12-17 & Dennis Parolin & Redazione completa del documento & Giovanni Visentin\\
 \hline
-\end{tabular}
+\end{tabularx}
 \end{center}
 
 \clearpage

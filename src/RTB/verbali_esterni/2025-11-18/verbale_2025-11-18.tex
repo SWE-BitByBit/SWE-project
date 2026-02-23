@@ -20,6 +20,7 @@
 \usepackage{colortbl}
 \usepackage{hyperref} 
 \usepackage{fancyhdr} 
+\setlength{\headheight}{15pt}
 \usepackage{titlesec}
 \geometry{margin=2.5cm}
 % ===== Variabile per il titolo del documento =====
@@ -199,22 +200,26 @@
 		\small
 		\renewcommand{\arraystretch}{1.2} 
 		\arrayrulecolor{black}
-		\begin{tabular}{|c|p{0.11\linewidth}|p{0.21\linewidth}|p{0.23\linewidth}|p{0.21\linewidth}|}
+		\begin{tabularx}{\textwidth}{|c|c|>{\raggedright\arraybackslash}p{0.2\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.2\textwidth}|}
 			\hline
 			\rowcolor{gray!60} 
 			\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 			\hline
+
 			\rowcolor{white}
-			0.2.1 & 25-11-19 & Sanguin Marco & Aggiunto spazio per firma & Parolin Dennis\\
+			1.0.0 & 2026-02-23 & Dennis Parolin & Approvazione del verbale e stabilizzazione versione del documento & Ferdinando Fracasso \\
 			\hline
 			\rowcolor{gray!20}
-			0.2.0 & 25-11-19 & Sanguin Marco & Modifica e aggiunta informazioni &  Parolin Dennis\\
+			0.2.1 & 25-11-19 & Sanguin Marco & Aggiunto spazio per firma & Parolin Dennis\\
 			\hline
 			\rowcolor{white}
+			0.2.0 & 25-11-19 & Sanguin Marco & Modifica e aggiunta informazioni &  Parolin Dennis\\
+			\hline
+			\rowcolor{gray!20}
 			0.1.0 & 25-11-19 & Sanguin Marco & Redazione e creazione file & Parolin Dennis \\
 			\hline
 			
-		\end{tabular}
+		\end{tabularx}
 	\end{center}
 
 	% ---------- FIRMA AZIENDALE ----------
