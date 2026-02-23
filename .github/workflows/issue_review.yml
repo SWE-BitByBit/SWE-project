@@ -35,7 +35,12 @@ jobs:
             const { owner, repo } = context.repo;
 
             const issueTitle = `Verifica richiesta per PR #${pr.number}: ${pr.title}`;
-            const issueBody = `Eseguire l'attività di verifica secondo il processo di verifica presente nelle norme di progetto del gruppo`;
+            const issueBody = `
+            ## Verifica richiesta
+            Eseguire l'attività di verifica secondo il processo di verifica presente nelle norme di progetto del gruppo
+            🔗 PR: ${pr.html_url}
+
+            Relates to #${pr.number}`;
 
             const newIssue = await github.rest.issues.create({
               owner,
