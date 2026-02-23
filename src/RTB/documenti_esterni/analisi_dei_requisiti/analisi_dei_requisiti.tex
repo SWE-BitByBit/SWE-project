@@ -56,7 +56,7 @@
 
 % ====== FRONT PAGE ======
 
-\vspace*{\fill} % --- Spinge verso il basso l'inizio del contenuto
+\vspace*{5cm}
 
 \begin{center}
     \begin{minipage}{0.25\textwidth}
@@ -109,15 +109,29 @@
 \textbf{Stato:} & In corso\\
 \textbf{Versione:} & 0.19.7 \\
 \textbf{Responsabile:} & Giovanni Visentin \\
-\textbf{Redattori:} & Riccardo Manisi, Dennis Parolin, Giovanni Visentin, Gabriele Scaggiante, Ferdinando Fracasso \\
-\textbf{Verificatori:} & Giovanni Visentin, Marco Sanguin, Dennis Parolin \\
+\textbf{Redattori:} & 
+\begin{tabular}[t]{@{}l@{}}
+Riccardo Manisi\\
+Giovanni Visentin\\
+Marco Sanguin\\
+Dennis Parolin\\
+Gabriele Scaggiante\\
+Ferdinando Fracasso\\
+\end{tabular} \\
+\textbf{Verificatori:} & 
+\begin{tabular}[t]{@{}l@{}}
+Giovanni Visentin\\
+Marco Sanguin\\
+Dennis Parolin\\
+Gabriele Scaggiante\\
+\end{tabular} \\
 \textbf{Destinatari:} &
 \begin{tabular}[t]{@{}l@{}}
 Miriade srl\\
 Prof. Tullio Vardanega\\
 Prof. Riccardo Cardin\\
 Gruppo BitByBit\\
-\end{tabular}
+\end{tabular} \\
 \end{tabularx}
 \end{tcolorbox}
 
@@ -137,10 +151,13 @@ Gruppo BitByBit\\
 \hline
 
 \rowcolor{white}
-0.19.7 & 2026-02-09 & Dennis Parolin & Sistemati errori di compilazione. Sistemate le caption delle tabelle. Sistemati UC-7.1, UC-7.2 e UC-7.3 a cui mancavano le post-condizioni & Giovanni Visentin \\
+0.20.1 & 2026-02-09 & Dennis Parolin & Sistemati errori di compilazione. Sistemate le caption delle tabelle. Sistemati UC-7.1, UC-7.2 e UC-7.3 a cui mancavano le post-condizioni & Giovanni Visentin \\
+\hline
+\rowcolor{white}
+0.20.0 & 2026-02-09 & Dennis Parolin & Riscritta la sezione "Requisiti" (\ref{section:requisiti}) con le sue sottosezioni (\ref{subsection:requisiti_funzionali}, \ref{subsection:requisiti_qualita}, \ref{subsection:requisiti_vincolo}) sulla base dei nuovi casi d'uso redatti. & Giovanni Visentin \\
 \hline
 \rowcolor{gray!20}
-0.19.6 & 2026-02-06 & Dennis Parolin & Modificati i termini ambigui. Aggiunti UC-59 e UC-60 per rimpiazzare UC-9. Sistemati casi d'usoUC-8, UC-8.2, UC-8.3, UC-12, UC-12.2 e UC-12.3 di conseguenza per integrarli con UC-59 e UC-60. Riscritta la sezione "Requisiti" (\ref{section:requisiti}) con le sue sottosezioni (\ref{subsection:requisiti_funzionali}, \ref{subsection:requisiti_qualita}, \ref{subsection:requisiti_vincolo}) sulla base dei nuovi casi d'uso redatti. & Marco Sanguin \\
+0.19.6 & 2026-02-06 & Dennis Parolin & Modificati i termini ambigui. Aggiunti UC-59 e UC-60 per rimpiazzare UC-9. Sistemati casi d'usoUC-8, UC-8.2, UC-8.3, UC-12, UC-12.2 e UC-12.3 di conseguenza per integrarli con UC-59 e UC-60. & Marco Sanguin \\
 \hline
 \rowcolor{white}
 0.19.5 & 2026-02-05 & Dennis Parolin & Sistemato un caso d'uso con nome duplicato. Eliminato UC-47 e UC-46 è diventato il nuovo UC-45.1. Eliminati due punti nello scenario principale di UC-1, troppo specifici. Corretti i nomi di UC-55 e UC-56. Aggiunti UC-57 e UC-58, corrette le precondizioni degli UC da 15 a 19.2 e la post condizione di UC-1. Corretti riferimenti a casi d'uso errati o mancanti. Riscritta la sezione Attori (\ref{subsection:attori}) sulla base dei nuovi casi d'uso redatti. Sistemata l'intestazione ed errori di compilazione. Aggiunto l'indice riassuntivo delle tabelle e l'indice riassuntivo delle immagini. Corretti errori grammaticali e di battitura & Marco Sanguin \\
@@ -605,14 +622,6 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 \end{itemize}
 
 \subsubsection{UC-3 - Esecuzione Walkthrough Interattivo} \label{subsec:UC-3}
-
-% Diagramma UC-3 rimosso - file non disponibile
-% \begin{figure}[H] 
-%     \centering
-%     \includegraphics[width=0.9\textwidth]{UC-1.png}
-%     \caption{Diagramma del caso d'uso UC-3}
-%     \label{fig:UC-3}
-% \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore principale:} Utente Generico
@@ -1988,14 +1997,6 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 % ===== UC-S: SICUREZZA - GUARDIANO SILENZIOSO  ======
 
 \subsubsection{UC-33 - Invio Messaggio SOS} \label{sec:UC-33}
-
-% Diagramma UC-33 rimosso - file non disponibile
-% \begin{figure}[H] 
-%     \centering
-%     \includegraphics[width=0.9\textwidth]{UC-1.png}
-%     \caption{Diagramma del caso d'uso UC-33 con UC-33.1, UC-33.2 e UC-34}
-%     \label{fig:UC-33}
-% \end{figure}
 
 \begin{itemize}
     \item \textbf{Attore principale:} Utente generico
