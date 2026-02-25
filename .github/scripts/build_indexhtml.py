@@ -20,8 +20,8 @@ def create_sec_links(file):
     else:
         #è verbale
         filename = ''
-        if file.match('/verbali_interni/*.pdf'):  #verbale interno
-            filename = file.name.replace('verbale_', 'Verbale interno del ').replace('_',' ').replace('-','/')
+        if file.fullmatch('/verbali_interni/**.pdf'):  #verbale interno
+            filename = file.name.replace('interno_','').replace('verbale_', 'Verbale interno del ').replace('_',' ').replace('-','/')
         else: #verbale esterno
             filename = file.name.replace('esterno_','').replace('verbale_', 'Verbale esterno del ').replace('_',' ').replace('-','/')
             out = out + '<h3>' + filename +'</h3>\n<ul>\n<li>Il <a href="' + file.as_posix() + '" target="blank">file pdf</a> del ' + filename + '</li>\n</ul>\n'
@@ -67,6 +67,7 @@ template = template.replace('[docs]', docsections)
 output_path = Path("index.html")
 output_path.parent.mkdir(parents=True, exist_ok=True)
 with output_path.open('w', encoding="utf-8") as out:
+    print(f"File creato con successo")
     out.write(template)
 
 
