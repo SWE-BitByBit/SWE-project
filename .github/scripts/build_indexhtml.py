@@ -1,18 +1,17 @@
 from pathlib import Path
 import fnmatch as fn
 
-DOCS_PATH = Path("docs")
-C_PATH = Path(DOCS_PATH + "candidatura")
-RTB_PATH = Path(DOCS_PATH + "RTB")
-PB_PATH = Path(DOCS_PATH + "PB")
+C_PATH = Path("docs/candidatura")
+RTB_PATH = Path("docs/RTB")
+PB_PATH = Path("docs/PB")
 
-FILE_FIRMATI = {"*_firmato.pdf"}
+#FILE_FIRMATI = {"*_firmato.pdf"}
 
 def main():
     #Legge file template e poi lo chiude dopo aver creato una variabile
 
-    #with open("site_template.txt", 'r') as temp:
-    template = Path(__file__ + '/..').resolve() + 'site_template.txt'
+    with open(Path('site_template.txt'), 'r') as temp:
+        template = temp.read()
 
     #Ottieni lista di file (con percorso trimmato) dalla action
     files_candidatura = list(C_PATH.rglob("*.pdf"))
@@ -44,8 +43,8 @@ def main():
     template = template.replace('[docs]', docsections)
 
     #Scrive il nuovo file index.html con le sezioni aggiunte
-    #with open("index.html", 'w') as out:
-    #    out.write(template)
+    with open("index.html", 'w') as out:
+        out.write(template)
 
 
 
