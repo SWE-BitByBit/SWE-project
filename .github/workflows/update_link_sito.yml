@@ -34,15 +34,8 @@ jobs:
 
           - name: Commit new index.html
             run:
-                echo "Commit index.html aggiornato"
-
                 git config user.name "github-actions"
                 git config user.email "github-actions@github.com"
-
                 git add index.html || echo "Nothing to add"
-
                 git commit -m "Rebuilt index.html" || echo "No changes to commit"
-
-                git pull --rebase origin ${{ github.ref_name }}
-
-                git push origin HEAD:${{ github.ref_name }}
+                git push || echo "Nothing to push"
