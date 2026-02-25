@@ -2,7 +2,8 @@ name: Update contenuti sito
 on:
     workflow_run:
         workflows: ['Apply Template & Build PDFs']
-        types: [completed]
+        types: 
+            - completed
         branches:
             - 'task/action_aggiornamento_sito'
 
