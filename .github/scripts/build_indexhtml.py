@@ -43,7 +43,8 @@ def main():
     template = template.replace('[docs]', docsections)
 
     #Scrive il nuovo file index.html con le sezioni aggiunte
-    with open("index.html", 'w') as out:
+    output_path = Path("index.html")
+    with output_path.open('w', encoding="utf-8") as out:
         out.write(template)
 
 
