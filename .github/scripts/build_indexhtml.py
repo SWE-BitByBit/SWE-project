@@ -58,7 +58,7 @@ def create_sec_links(file):
     else:
         #è verbale
         filename = ''
-        if '/verbali_interni/' in file:  #verbale interno
+        if file.match('/verbali_interni/*.pdf'):  #verbale interno
             filename = file.name.replace('verbale_', 'Verbale interno del ').replace('_',' ').replace('-','/')
         else: #verbale esterno
             filename = file.name.replace('esterno_','').replace('verbale_', 'Verbale esterno del ').replace('_',' ').replace('-','/')
