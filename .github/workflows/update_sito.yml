@@ -1,0 +1,45 @@
+name: Update contenuti sito
+on:
+    workflow_run:
+        workflows: ['Apply Template & Build PDFs']
+        types: [completed]
+        branches:
+            - 'task/action_aggiornamento_sito'
+
+jobs:
+    
+    add_site_docs:
+        runs-on: ubuntu-latest
+        permissions:
+            contents: write
+
+        steps:
+          - name: Checkout repository
+            uses: actions/checkout@v4
+            with:
+                token: ${{ secrets.GITHUB_TOKEN }}
+                fetch-depth: 0
+
+          - name: Set up Python
+            uses: actions/setup-python@v4
+            with:
+              python-version: "3.x"
+
+          - name: Build index.html file
+            run:
+                python .github/scripts/build_indexhtml.py
+
+          - name: Commit new index.html
+            run:
+                echo "Commit index.html aggiornato"
+
+                git config user.name "github-actions"
+                git config user.email "github-actions@github.com"
+
+                git add index.html || echo "Nothing to add"
+
+                git commit -m "Rebuilt index.html" || echo "No changes to commit"
+
+                git pull --rebase origin ${{ github.ref_name }}
+
+                git push origin HEAD:${{ github.ref_name }}
