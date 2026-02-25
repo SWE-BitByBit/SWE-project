@@ -20,6 +20,7 @@
 \usepackage{float}
 \usepackage{setspace}
 \usepackage{tabularx} % Per tabelle larghe quanto la pagina
+\usepackage{longtable} % Per tabelle su più pagine
 \usepackage{fancyhdr} % Per header e footer
 \setlength{\headheight}{15pt}
 \addtolength{\topmargin}{-2.5pt}
@@ -181,13 +182,23 @@ Gruppo BitByBit\\\\
 \renewcommand{\arraystretch}{1.4}
 \arrayrulecolor{black}
 
-\begin{tabularx}{\textwidth}{|c|c|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|c|}
+\begin{longtable}{|c|c|>{\raggedright\arraybackslash}p{0.20\linewidth}|>{\raggedright\arraybackslash}p{0.37\linewidth}|c|}
 \hline
 
 \rowcolor{gray!60}
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
+\endfirsthead
 
+\hline
+\rowcolor{gray!60}
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+\hline
+\endhead
+
+\rowcolor{white}
+0.5.1 & 2026-02-25 & Dennis Parolin & Sistemati alcuni errori di visualizzazione & Ferdinando Fracasso \\
+\hline
 \rowcolor{gray!20}
 0.5.0 & 2026-02-23 & Dennis Parolin & Completata la sezione "Sprint 6" (\ref{sec:sprint6_RTB}) e fatta la prima metà della sezione "Sprint 7" (\ref{sec:sprint7_RTB}). Corretti errori di compilazione ed & Giovanni Visentin \\
 \hline
@@ -215,18 +226,6 @@ Gruppo BitByBit\\\\
 \rowcolor{gray!20}
 0.3.1 & 2026-01-11 & Riccardo Manisi & Aggiunta \ref{tab:RO3} e \ref{tab:RO4}. E aggiunte attività RTB. & Gabriele Scaggiante \\
 \hline
-\end{tabularx}
-\end{center}
-
-\vspace{0.5cm}
-
-\begin{table}[H]
-\centering
-\begin{tabularx}{\textwidth}{|c|c|>{\raggedright\arraybackslash\hsize=0.65\hsize}X|>{\raggedright\arraybackslash\hsize=1.35\hsize}X|c|}
-\hline
-\rowcolor{gray!60}
-\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
-\hline
 \rowcolor{white}
 0.3.0 & 2025-12-05 & Dennis Parolin & Redazione dell'intera sezione \ref{sec:pianificazione_lungo_termine} & Giovanni Visentin \\
 \hline
@@ -236,8 +235,8 @@ Gruppo BitByBit\\\\
 \rowcolor{white}
 0.1.0 & 2025-12-3 & Dennis Parolin & Creazione del documento e redazione delle sezioni \ref{sec:scopo_documento}, \ref{sec:definizioni_acronimi_abbreviazioni}, \ref{sec:riferimenti}. & Giovanni Visentin \\
 \hline
-\end{tabularx}
-\end{table}
+\end{longtable}
+\end{center}
 
 % --- INDICE ---
 \clearpage
@@ -1471,10 +1470,10 @@ Lo Sprint 4 è stato focalizzato sul completamento della documentazione di anali
 
 Le attività pianificate e svolte includono:
 \begin{itemize}
-    \item \textit{Analisi:} Studio delle metriche di qualit\`a e delle tecnologie per la realizzazione del Proof of Concept.
-    \item \textit{Incontri:} Riunione di coordinamento interna per la redistribuzione del carico di lavoro.
-    \item \textit{Documentazione:} Redazione nelle \textit{Norme di Progetto} delle sezioni relative a codifica, verifica e validazione; aggiornamento del \textit{Piano di Qualifica} con le metodologie di testing e il cruscotto di valutazione; caricamento dei verbali firmati nella repository.
-    \item \textit{Gestione:} Ottimizzazione dei processi automatizzati (GitHub Actions), riorganizzazione dei documenti sul sito web.
+    \item \textbf{Analisi:} Studio delle metriche di qualit\`a e delle tecnologie per la realizzazione del Proof of Concept.
+    \item \textbf{Incontri:} Riunione di coordinamento interna per la redistribuzione del carico di lavoro.
+    \item \textbf{Documentazione:} Redazione nelle \textit{Norme di Progetto} delle sezioni relative a codifica, verifica e validazione; aggiornamento del \textit{Piano di Qualifica} con le metodologie di testing e il cruscotto di valutazione; caricamento dei verbali firmati nella repository.
+    \item \textbf{Gestione:} Ottimizzazione dei processi automatizzati (GitHub Actions), riorganizzazione dei documenti sul sito web.
 \end{itemize}
 
 \paragraph{Rischi attesi}
@@ -2102,7 +2101,7 @@ Lo Sprint 7 proseguirà le attività avviate in precedenza per massimizzare la d
 
 Le attività pianificate includono:
 \begin{itemize}
-    \item \textbf{Analisi:} Continuo dello studio delle funzionalità per il \textit{Proof of Concept}.
+    \item \textbf{Analisi:} Continuazione dello studio delle funzionalità per il \textit{Proof of Concept}.
     \item \textbf{Programmazione:} Avanzamento dello sviluppo del PoC, implementando casi d'uso riguardanti: la navigazione della rubrica contatti e l'aggiunta di nuovi o eliminazione, l'architettura AWS (Lambda e DynamoDB) per la gestione serverless del salvataggio dei contatti e delle note, oltre che la creazione della UI per le note del diario criptato e l'integrazione del Model nel client Flutter.
     \item \textbf{Documentazione:} Completamento \textbf{definitivo} del documento \textit{Analisi dei Requisiti} tramite l'inserimento delle immagini aggiornate relative ai diagrammi UML e la suddivisione logica dei casi d'uso. Ultimare e stabilizzare la versione del \textit{Piano di Qualifica}, del \textit{Piano di Progetto}, delle \textit{Norme di Progetto}, della \textit{Lettera di Presentazione} e di tutti i verbali (interni ed esterni). Redazione manualistica e descrittiva riguardante l'implementazione del PoC e le scelte architetturali adottate.
     \item \textbf{Gestione:} Aggiornamento finale del sito web, riparazione e affinamento delle Action GitHub per l'integrazione continua (compilazione PDF, generazione del glossario e statistiche Gulpease).
