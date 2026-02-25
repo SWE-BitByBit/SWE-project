@@ -197,7 +197,7 @@ Gruppo BitByBit\\\\
 \endhead
 
 \rowcolor{white}
-0.5.1 & 2026-02-25 & Dennis Parolin & Sistemati alcuni errori di visualizzazione & Ferdinando Fracasso \\
+0.5.1 & 2026-02-25 & Dennis Parolin & Sistemati alcuni errori di visualizzazione. Aggiunto il rischio RO5. Modificati i rischi incontrati dello sprint 6 e i rischi attesi dello sprint 7. & Ferdinando Fracasso \\
 \hline
 \rowcolor{gray!20}
 0.5.0 & 2026-02-23 & Dennis Parolin & Completata la sezione "Sprint 6" (\ref{sec:sprint6_RTB}) e fatta la prima metà della sezione "Sprint 7" (\ref{sec:sprint7_RTB}). Corretti errori di compilazione ed & Giovanni Visentin \\
@@ -609,6 +609,38 @@ Per facilitare la gestione e la consultazione, i rischi sono stati catalogati in
     \end{tabularx}
     \caption{Rischio assenza di un componente per periodo prolungato RO4}
     \label{tab:RO4}
+\end{table}
+
+\subsubsection{RO5 - Dipendenza da risorse e permessi esterni}
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.4}
+    \begin{tabularx}{\textwidth}{|L|Z|}
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Tipologia Dato} & \textbf{Valore} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Codice & RO5 \\
+        \hline
+        \rowcolor{tableLineEven}
+        Nome & Mancanza o ritardo nella fornitura di permessi e risorse esterne \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Descrizione & Lo sviluppo del progetto può richiedere l'utilizzo di specifiche risorse, piattaforme (es. Cloud) o credenziali fornite direttamente dall'azienda proponente. Eventuali ritardi nella fornitura di tali strumenti o la mancanza iniziale dei permessi necessari possono causare blocchi temporanei nelle normali attività di sviluppo e test, incidendo sulla tempistica dello sprint. \\
+        \hline
+        \rowcolor{tableLineEven}
+        Mitigazione & Individuazione tempestiva e proattiva delle necessità tecniche per comunicarle prontamente all'azienda proponente. In caso di attesa prolungata, riorganizzazione flessibile ed elastica dei task dello sprint in modo da portare avanti le attività parallele e indipendenti dalle risorse bloccate, riducendo al minimo i tempi morti. \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Frequenza probabile & Media \\
+        \hline
+        \rowcolor{tableLineEven}
+        Pericolosità ripercussioni & Elevata \\
+        \hline
+    \end{tabularx}
+    \caption{Informazioni sul rischio RO5}
+    \label{tab:RO5}
 \end{table}
 
 % ======================= RISCHI INTERPERSONALI =======================
@@ -2070,7 +2102,8 @@ Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la
 
 \paragraph{Rischi incontrati}
 {\sloppy
-Durante lo sprint si è verificata l'occorrenza di molteplici rischi che hanno influito sulla pianificazione: \textbf{RT1 (Inesperienza tecnologica)}, \textbf{RO1 (Errata stima dei tempi)}, \textbf{RO2 (Incomprensione dei requisiti)}, \textbf{RO4 (Assenza di un componente)} e \textbf{RI1 (Impegni accademici)}. Dal punto di vista tecnologico (\textbf{RT1}), l'approccio a strumenti di sviluppo nuovi ha rallentato il ritmo per la stesura del \textit{Proof of Concept}, richiedendo maggiore dedizione. Dal punto di vista organizzativo, si è assistito a un'errata valutazione del carico di lavoro (\textbf{RO1}), in cui attività stimate brevi si sono rivelate complesse e viceversa, causando squilibri nell'impegno orario. Un chiaro esempio è stata la stesura finale del log per il documento di \textit{Analisi dei Requisiti}: le tempistiche si sono dilatate poiché, durante le comunicazioni asincrone tramite spazio dedicato con la proponente, è emersa la necessità di variare alcuni requisiti già definiti (\textbf{RO2}), imponendo quindi una sostanziale revisione di diversi casi d'uso. Nonostante gli sforzi, il documento \textbf{non è stato portato al suo completamento definitivo}, in quanto manca l'inserimento delle immagini dei diagrammi aggiornati, operazione rimandata allo sprint successivo considerando in ogni caso la base testuale solida ottenuta.\\
+Durante lo sprint si è verificata l'occorrenza di molteplici rischi che hanno influito sulla pianificazione: \textbf{RT1 (Inesperienza tecnologica)}, \textbf{RO1 (Errata stima dei tempi)}, \textbf{RO2 (Incomprensione dei requisiti)}, \textbf{RO4 (Assenza di un componente)}, \textbf{RO5 (Dipendenza da risorse e permessi esterni)} e \textbf{RI1 (Impegni accademici)}. Dal punto di vista tecnologico (\textbf{RT1}), l'approccio a strumenti di sviluppo nuovi ha rallentato il ritmo per la stesura del \textit{Proof of Concept}, richiedendo maggiore dedizione. Dal punto di vista organizzativo, si è assistito a un'errata valutazione del carico di lavoro (\textbf{RO1}), in cui attività stimate brevi si sono rivelate complesse e viceversa, causando squilibri nell'impegno orario. Un chiaro esempio è stata la stesura finale del log per il documento di \textit{Analisi dei Requisiti}: le tempistiche si sono dilatate poiché, durante le comunicazioni asincrone tramite spazio dedicato con la proponente, è emersa la necessità di variare alcuni requisiti già definiti (\textbf{RO2}), imponendo quindi una sostanziale revisione di diversi casi d'uso. Nonostante gli sforzi, il documento \textbf{non è stato portato al suo completamento definitivo}, in quanto manca l'inserimento delle immagini dei diagrammi aggiornati, operazione rimandata allo sprint successivo considerando in ogni caso la base testuale solida ottenuta.\\
+In aggiunta, l'impossibilità temporanea di testare e sviluppare a causa della mancanza iniziale di alcuni permessi sull'infrastruttura Cloud AWS fornita dalla proponente (\textbf{RO5}) ha comportato blocchi momentanei, forzando una riorganizzazione dinamica dei task all'interno dello sprint per minimizzare i tempi morti.\\
 Risulta inoltre una decisa mancanza di presenza nel gruppo (\textbf{RO4}) dovuta alla concomitanza con gli appelli d'esame universitari (\textbf{RI1}). A fronte di ciò, si posticiperà lo svolgimento delle task al seguente Sprint 7.
 \par}
 
@@ -2111,9 +2144,9 @@ Le attività pianificate includono:
 Tra i principali rischi che potrebbero interferire con le stime durante questo sprint finale verso l'RTB figurano:
 \begin{itemize}
     \item \textbf{RT1}: Difficoltà nell'utilizzo puntuale e veloce di queste nuove architetture per lo sviluppo del PoC (es. Flutter e servizi Cloud).
-    \item \textbf{RT2}: Ritardi dovuti a permessi AWS od orchestrativi parziali e frammentati resi disponibili durante lo sviluppo iterativo dalla proponente.
     \item \textbf{RT4}: Insorgere di bug o malfunzionamenti architetturali nel codice prodotto per il PoC in vista della scadenza a ritmi serrati.
     \item \textbf{RO4}: Assenza e ritardi nella produzione causati dalla precaria comunicazione tra i componenti a causa dell'accumularsi del lavoro.
+    \item \textbf{RO5}: Mancanza o ritardo nella fornitura di permessi AWS e risorse esterne parziali o frammentate da parte della proponente. % Sarà sicuramente presente nei rischi incontrati in quanto al momento ci manca il necessario per iviare le mail ai contatti fidati.
 \end{itemize}
 
 \paragraph{Preventivo}
@@ -2135,7 +2168,7 @@ Si prospetta l'utilizzo delle seguenti risorse:
         R. Manisi & - & - & - & - & 4 & - \\
         \hline
         \rowcolor{tableLineOdd}
-        D. Parolin & 4 & - & - & - & - & 2 \\
+        D. Parolin & 5 & - & - & - & - & 2 \\
         \hline
         \rowcolor{tableLineEven}
         M. Sanguin & - & 4.5 & 3 & - & - & - \\
@@ -2155,20 +2188,20 @@ Si prospetta l'utilizzo delle seguenti risorse:
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}[scale=1.2]
-        \draw[thick,fill=pieResp] (0,0) -- (0:1.5) arc (0:42.8:1.5) -- cycle;
-        \draw (21.4:1.95) node {11.9\%};
+        \draw[thick,fill=pieResp] (0,0) -- (0:1.5) arc (0:52.2:1.5) -- cycle;
+        \draw (26.1:1.95) node {14.5\%};
         
-        \draw[thick,fill=pieAmm] (0,0) -- (42.8:1.5) arc (42.8:123.4:1.5) -- cycle;
-        \draw (83.1:1.8) node {22.4\%};
+        \draw[thick,fill=pieAmm] (0,0) -- (52.2:1.5) arc (52.2:130.4:1.5) -- cycle;
+        \draw (91.3:1.8) node {21.7\%};
         
-        \draw[thick,fill=pieAnal] (0,0) -- (123.4:1.5) arc (123.4:155.8:1.5) -- cycle;
-        \draw (139.6:1.95) node {9.0\%};
+        \draw[thick,fill=pieAnal] (0,0) -- (130.4:1.5) arc (130.4:161.7:1.5) -- cycle;
+        \draw (146.1:1.95) node {8.7\%};
         
-        \draw[thick,fill=pieVer] (0,0) -- (155.8:1.5) arc (155.8:220.2:1.5) -- cycle;
-        \draw (188:1.95) node {17.9\%};
+        \draw[thick,fill=pieVer] (0,0) -- (161.7:1.5) arc (161.7:224.4:1.5) -- cycle;
+        \draw (193.0:1.95) node {17.4\%};
 
-        \draw[thick,fill=pieProg] (0,0) -- (220.2:1.5) arc (220.2:360:1.5) -- cycle;
-        \draw (290.1:1.8) node {38.8\%};
+        \draw[thick,fill=pieProg] (0,0) -- (224.4:1.5) arc (224.4:360:1.5) -- cycle;
+        \draw (292.2:1.8) node {37.7\%};
         
         \matrix [below, draw=none, fill=none] at (0,-2.5) {
             \node [fill=pieResp, label=right:Responsabile] {}; & \node [fill=pieAmm, label=right:Amministratore] {}; \\
