@@ -1,15 +1,17 @@
 name: Update contenuti sito
 on:
-    workflow_run:
-        workflows: ['Apply Template & Build PDFs']
-        types: 
-            - completed
+    push:
+    #workflow_run:
+        #workflows: ['Apply Template & Build PDFs']
+        #types: 
+        #    - completed
         branches:
-            - 'task/action_aggiornamento_sito'
+            - 'task/**'
+            - 'feature/**'
+    workflow_dispatch:
 
 jobs:
-    
-    add_site_docs:
+    update-link-sito:
         runs-on: ubuntu-latest
         permissions:
             contents: write
