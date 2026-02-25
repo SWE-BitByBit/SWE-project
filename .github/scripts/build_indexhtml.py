@@ -54,7 +54,7 @@ def create_sec_links(file):
     if not fn.fnmatch(file.name, '[verbale]*.pdf'):
         #Non è verbale
         filename = file.name.capitalize().replace('_', ' ')
-        out = out + '<h3>' + filename +'</h3>\n<ul>\n<li>Il <a href="' + file + '" target="blank">file pdf</a> del ' + filename + '</li>\n</ul>\n'
+        out = out + '<h3>' + filename +'</h3>\n<ul>\n<li>Il <a href="' + file.as_posix() + '" target="blank">file pdf</a> del ' + filename + '</li>\n</ul>\n'
     else:
         #è verbale
         filename = ''
@@ -62,7 +62,7 @@ def create_sec_links(file):
             filename = file.name.replace('verbale_', 'Verbale interno del ').replace('_',' ').replace('-','/')
         else: #verbale esterno
             filename = file.name.replace('esterno_','').replace('verbale_', 'Verbale esterno del ').replace('_',' ').replace('-','/')
-            out = out + '<h3>' + filename +'</h3>\n<ul>\n<li>Il <a href="' + file + '" target="blank">file pdf</a> del ' + filename + '</li>\n</ul>\n'
+            out = out + '<h3>' + filename +'</h3>\n<ul>\n<li>Il <a href="' + file.as_posix() + '" target="blank">file pdf</a> del ' + filename + '</li>\n</ul>\n'
     return out
 
 if __name__ == "__main__":
