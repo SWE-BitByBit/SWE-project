@@ -12,12 +12,22 @@ def load_terms():
     return [t.strip() for t in terms if isinstance(t, str) and t.strip()]
 
 
+def has_command_ignore_comment(text: str) -> bool:
+    COMMENT_PATTERN = re.compile(r"(?m)^\s*%+\s*non inserire comandi glossario\s*$")
+    if COMMENT_PATTERN.search(text):
+        return True
+    return False
+
 def insert_term_command(text: str) -> str:
     """
     Inserisce o sostituisce la definizione \newcommand{\term}.
     - Se esiste già un \newcommand{\term}{...} lo rimpiazza con TERM_DEF.
     - Se non esiste, inserisce TERM_DEF nel preambolo.
     """
+
+    if(has_command_ignore_comment(text)):
+        return text
+
     # Sostituzione del comando già presente
     text = re.sub(
         r"\\newcommand\s*\{\\term\}\s*\{[^}]*\}",
@@ -44,6 +54,9 @@ def insert_ignoreglossary_command(text: str) -> str:
     - Se esiste già un \\newcommand{\\ignoreglossary}{...} lo rimpiazza.
     - Se non esiste, lo inserisce nel preambolo (prima di \\begin{document}).
     """
+
+    if(has_command_ignore_comment(text)):
+        return text
 
     # Sostituzione del comando già presente
     text = re.sub(
