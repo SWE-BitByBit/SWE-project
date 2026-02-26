@@ -20,6 +20,7 @@
 \usepackage{colortbl}
 \usepackage{hyperref} 
 \usepackage{fancyhdr} 
+\setlength{\headheight}{15pt}
 \usepackage{titlesec}
 \usepackage{float}
 \geometry{margin=2.5cm}
@@ -102,15 +103,19 @@
 \small
 \renewcommand{\arraystretch}{1.2} 
 \arrayrulecolor{black}
-\begin{tabular}{|c|p{0.11\linewidth}|p{0.21\linewidth}|p{0.23\linewidth}|p{0.21\linewidth}|}
+\begin{tabularx}{\textwidth}{|c|c|>{\raggedright\arraybackslash}p{0.2\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.2\textwidth}|}
 \hline
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
+
 \rowcolor{white}
+1.0.0 & 2026-02-23 & Dennis Parolin & Approvazione del verbale e stabilizzazione versione del documento & Ferdinando Fracasso \\
+\hline
+\rowcolor{gray!20}
 0.1.0 & 2025-11-26 & Dennis Parolin & Scrittura del documento & Marco Sanguin \\
 \hline
-\end{tabular}
+\end{tabularx}
 \end{center}
 
 % ======= INFO GENERALI =======
@@ -198,7 +203,8 @@ Nello specifico, l'installazione e l'utilizzo dell'applicazione sono previsti qu
 \end{itemize}
 
 \subsection{Definizione delle Funzionalità}
-Una volta delineato il contesto d'uso, si è proceduto all'identificazione delle funzionalità più idonee per il target di riferimento. È stato stabilito come principio cardine che le azioni critiche o gli allarmi (come la chiamata alle forze dell'ordine) non debbano essere gestiti autonomamente dall'Intelligenza Artificiale, bensì richiedano sempre la conferma esplicita dell'\term{Utente}. Le funzionalità principali selezionate sono:
+Una volta delineato il contesto d'uso, si è proceduto all'identificazione delle funzionalità più idonee per il target di riferimento. È stato stabilito come principio cardine che le azioni critiche o gli allarmi (come la chiamata alle forze dell'ordine) non debbano essere gestiti autonomamente dall'Intelligenza Artificiale, bensì richiedano sempre la conferma esplicita dell'utente. 
+\\Le funzionalità principali selezionate sono:
 
 \begin{itemize}
     \item Welcome page e \term{Walkthrough} introduttivo;
