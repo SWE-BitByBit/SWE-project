@@ -43,6 +43,10 @@
 \titleformat{\section}{\Large\bfseries}{\thesection.}{0.5em}{}
 \titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.5em}{}
 
+\newcommand{\term}[1]{\textbf{#1}$^\mathbf{G}$}
+
+\newcommand{\ignoreglossary}{}
+
 \begin{document}
 
 % ======= HEADER UNIVERSITÀ E GRUPPO CENTRATI VERTICALMENTE =======
@@ -120,7 +124,7 @@
 \hline
 
 \rowcolor{white}
-1.0.0 & 2026-02-23 & Dennis Parolin & Approvazione del verbale e stabilizzazione versione del documento & Ferdinando Fracasso \\
+1.0.0 & 2026-02-23 & Dennis Parolin & Approvazione del \term{Verbale} e stabilizzazione versione del documento & Ferdinando Fracasso \\
 \hline
 \rowcolor{gray!20}
 0.1.0 & 2025-12-17 & Dennis Parolin & Redazione completa del documento & Giovanni Visentin\\
@@ -136,7 +140,7 @@
 \thispagestyle{empty} % senza numero di pagina per l'indice
 \clearpage
 
-% ======= INFO GENERALI RIUNIONE, METTERE SE DOC È UN VERBALE =======
+% ======= INFO GENERALI RIUNIONE, METTERE SE DOC È UN \term{Verbale} =======
 \section{Informazioni generali}
 \renewcommand{\arraystretch}{1.3}
 
@@ -166,7 +170,7 @@ Scaggiante Gabriele\\
 \end{tabularx}
 \end{tcolorbox}
 
-% ---------- ORDINE DEL GIORNO, METTERE SE DOC È UN VERBALE  ----------
+% ---------- ORDINE DEL GIORNO, METTERE SE DOC È UN \term{Verbale}  ----------
 \section{Ordine del Giorno}
 \begin{itemize}
     \item Chiarimenti in merito a casi specifici relativi ad alcune funzionalità.
@@ -179,17 +183,17 @@ Nel corso della riunione sono stati affrontati diversi aspetti implementativi e 
 
 \subsection{Funzionalità Dead Man's Switch}
 Si è discusso del metodo di notifica più idoneo per questa funzionalità, valutando l'utilizzo delle notifiche PUSH rispetto alle e-mail.
-Sebbene le notifiche PUSH garantiscano maggiore visibilità per eventi critici, la proponente ha suggerito di optare per l'invio di \textbf{e-mail}.
+Sebbene le notifiche PUSH garantiscano maggiore visibilità per eventi critici, la \term{Proponente} ha suggerito di optare per l'invio di \textbf{e-mail}.
 La motivazione risiede nella complessità tecnica: realizzare un'infrastruttura per le notifiche PUSH richiederebbe un dispendio di risorse non giustificato se limitato a una singola funzionalità. Tale implementazione sarebbe stata valutabile solo se estesa a più aree dell'applicazione.
 
 \subsection{Funzionalità Guardiano Silenzioso}
 In merito al contenuto del messaggio automatico inviato dal "Guardiano Silenzioso", è stato chiarito che il gruppo ha discrezionalità sulla scelta dei dati (orario, nome, posizione, ecc.).
-Il vincolo fondamentale è il \textbf{consenso dell'utente}: è necessario garantire che l'applicazione abbia i permessi espliciti per gestire e inviare tali informazioni (in particolare la geolocalizzazione).
+Il vincolo fondamentale è il \textbf{consenso dell'\term{Utente}}: è necessario garantire che l'applicazione abbia i permessi espliciti per gestire e inviare tali informazioni (in particolare la geolocalizzazione).
 
-\subsection{Autenticazione e Walkthrough}
+\subsection{Autenticazione e \term{Walkthrough}}
 \begin{itemize}
     \item \textbf{Autenticazione:} Per la gestione dell'accesso e della creazione account, è stato indicato di utilizzare \textbf{Google Authenticator} come attore secondario per gestire il flusso di autenticazione.
-    \item \textbf{Walkthrough:} Si è valutata l'ipotesi di inserire una sezione di registrazione al termine della presentazione iniziale. La proponente ha consigliato di mantenere questa procedura \textbf{opzionale} per non forzare la condivisione di dati sensibili. L'approccio preferibile consiste nell'informare l'utente dei vantaggi della registrazione (tramite testo o immagini), lasciando a lui la scelta di avviare la procedura in un secondo momento.
+    \item \textbf{\term{Walkthrough}:} Si è valutata l'ipotesi di inserire una sezione di registrazione al termine della presentazione iniziale. La \term{Proponente} ha consigliato di mantenere questa procedura \textbf{opzionale} per non forzare la condivisione di dati sensibili. L'approccio preferibile consiste nell'informare l'\term{Utente} dei vantaggi della registrazione (tramite testo o immagini), lasciando a lui la scelta di avviare la procedura in un secondo momento.
 \end{itemize}
 
 \subsection{Diario Criptato}
@@ -209,10 +213,10 @@ La discussione si è concentrata sui meccanismi di sicurezza e sulla distinzione
 \subsection{Varie ed Eventuali}
 \begin{itemize}
     \item \textbf{Mockup:} Non è strettamente necessario allegare mockup ai casi d'uso, ma è consentito farlo qualora aiuti la comprensione o migliori la qualità della presentazione.
-    \item \textbf{Pianificazione PoC:} È stata ipotizzata una consegna del Proof of Concept (PoC) verso la fine di Gennaio 2026. La data verrà confermata ufficialmente durante il prossimo incontro interno (fissato per il 2025-12-19).
+    \item \textbf{Pianificazione \term{Poc}:} È stata ipotizzata una consegna del Proof of Concept (\term{Poc}) verso la fine di Gennaio 2026. La data verrà confermata ufficialmente durante il prossimo incontro interno (fissato per il 2025-12-19).
 \end{itemize}
 
-% ---------- DECISIONI, METTERE SE DOC È UN VERBALE ----------
+% ---------- DECISIONI, METTERE SE DOC È UN \term{Verbale} ----------
 \section{Decisioni}
 \begin{center}
 \small
@@ -224,26 +228,26 @@ La discussione si è concentrata sui meccanismi di sicurezza e sulla distinzione
 \textbf{Descrizione decisione} & \textbf{Codice decisione} \\
 \hline
 \rowcolor{white}
-Semplificare la gestione della sicurezza della password del diario criptato & VE RTB 3.1 \\
+Semplificare la gestione della sicurezza della password del diario criptato & VE \term{Rtb} 3.1 \\
 \hline
 \rowcolor{gray!20}
-Utilizzare Google Authenticator per svolgere l'autenticazione all'applicazione &  VE RTB 3.2 \\
+Utilizzare Google Authenticator per svolgere l'autenticazione all'applicazione &  VE \term{Rtb} 3.2 \\
 \hline
 \rowcolor{white}
-Inviare una mail anziché notifiche PUSH quando si utilizza la funzionalità Dead Man's Switch &  VE RTB 3.3\\
+Inviare una mail anziché notifiche PUSH quando si utilizza la funzionalità Dead Man's Switch &  VE \term{Rtb} 3.3\\
 \hline
 \rowcolor{gray!20}
-Tenere come casi d'uso facoltativi quello dell'AI che interagisce con il diario criptato. Ad esempio analizza le note e identificare pattern di pericolo tramite quelle &  VE RTB 3.4\\
+Tenere come casi d'uso facoltativi quello dell'AI che interagisce con il diario criptato. Ad esempio analizza le note e identificare pattern di pericolo tramite quelle &  VE \term{Rtb} 3.4\\
 \hline
 \rowcolor{white}
-Tenere come facoltativa l'autenticazione tramite walkthrough &  VE RTB 3.5\\
+Tenere come facoltativa l'autenticazione tramite \term{Walkthrough} &  VE \term{Rtb} 3.5\\
 \hline
 \end{tabular}
 \end{center}
 
-% ---------- TO DO, METTERE SE DOC È UN VERBALE ----------
+% ---------- TO DO, METTERE SE DOC È UN \term{Verbale} ----------
 \section{To Do}
-Dalle discussioni e decisioni intraprese è emerso che i to do verranno stabiliti ed assegnati durante la prossima riunione interna che il gruppo farà, prevista per il 2025-12-19. Questo perché inizierà il nuovo periodo di Sprint e quindi i ruoli e le quantità di ore svolte dai componenti cambieranno. 
+Dalle discussioni e decisioni intraprese è emerso che i to do verranno stabiliti ed assegnati durante la prossima riunione interna che il gruppo farà, prevista per il 2025-12-19. Questo perché inizierà il nuovo periodo di \term{Sprint} e quindi i ruoli e le quantità di ore svolte dai componenti cambieranno. 
 
 % ---------- FIRMA AZIENDALE ----------
 \vspace*{\fill} % Spinge la firma in fondo alla pagina
