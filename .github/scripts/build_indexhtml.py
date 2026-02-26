@@ -67,9 +67,9 @@ verb_esterni_pb = list(PB_PATH_VERB_EXT.rglob("*.pdf"))
 verb_interni_pb = list(PB_PATH_VERB_INT.rglob("*.pdf"))
 
 #Recupero glossario - recupera quello della milestone più recente
-file_glossario = RTB_PATH_INTERNI.rglob("glossario.pdf")
+file_glossario = list(RTB_PATH_INTERNI.rglob("glossario.pdf"))
 if interni_pb:
-    file_glossario = PB_PATH_INTERNI.rglob("glossario.pdf")
+    file_glossario = list(PB_PATH_INTERNI.rglob("glossario.pdf"))
 
 
 #Crea sezioni
@@ -152,7 +152,8 @@ if esterni_candidatura or interni_candidatura or verb_interni_candidatura or ver
 
 #Glossario
 if file_glossario:
-    docsections = docsections + '<section id="glossario">\n<h2>Glossario</h2>\n' + create_doc_link(file_glossario) + '</section>\n'
+    for f in file_glossario:
+        docsections = docsections + '<section id="glossario">\n<h2>Glossario</h2>\n' + create_doc_link(f) + '</section>\n'
 
 #Rimpiazza placeholder nel template
 template = template.replace('[docs]', docsections)
