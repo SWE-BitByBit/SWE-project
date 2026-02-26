@@ -12,7 +12,9 @@
 \usepackage{hyperref} % link cliccabili
 \usepackage{fancyhdr} % intestazioni personalizzate
 \usepackage{titlesec} % per formattare le sezioni
-\geometry{margin=2.5cm}
+\usepackage{bookmark} % evita warning rerunfilecheck per gli outline
+\usepackage{array} % migliora formattazione colonne tabelle
+\geometry{margin=2.5cm, headheight=15pt}
 
 \setlength{\parindent}{0pt}
 \setstretch{1.2}
@@ -200,7 +202,7 @@ Dalle discussioni e decisioni intraprese non sono sorte task immediate.
 \small
 \renewcommand{\arraystretch}{1.2} 
 \arrayrulecolor{black}
-\begin{tabular}{|p{0.1\linewidth}|p{0.18\linewidth}|p{0.22\linewidth}|p{0.20\linewidth}|p{0.22\linewidth}|}
+\begin{tabular}{|c|l|l|c|>{\raggedright\arraybackslash}p{0.35\linewidth}|}
 \hline
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Ruolo} & \textbf{Nome} & \textbf{Data e ora} & \textbf{Descrizione} \\

@@ -12,7 +12,9 @@
 \usepackage{hyperref}
 \usepackage{fancyhdr}
 \usepackage{titlesec}
-\geometry{margin=2.5cm}
+\usepackage{bookmark}
+\usepackage{array}
+\geometry{margin=2.5cm, headheight=15pt}
 
 \setlength{\parindent}{0pt}
 \setstretch{1.2}
@@ -154,7 +156,7 @@ L’interazione con i modelli avverrà tramite un’API che consente di:
 
 Non è previsto il training o la progettazione di modelli personalizzati. La possibilità di sviluppare modelli non parametrici non è stata esclusa, ma non è un \term{Requisito} del progetto.
 
-\subsection{Gestione utenti e \term{Architettura} applicativa}
+\subsection{Gestione utenti e \texorpdfstring{\term{Architettura}}{Architettura} applicativa}
 È stato consigliato di implementare un sistema di \textbf{login} e un backend di gestione utenti e note. Tuttavia, la gestione dei dati dovrà avvenire in locale per un singolo \term{Utente}, mantenendo il focus sull’aspetto personale dell’applicazione.
 
 È stato sconsigliato implementare funzionalità complesse come un grafo di link in stile \textit{Obsidian}, privilegiando invece quelle legate all’utilizzo dell’AI.
@@ -186,7 +188,7 @@ Tra le funzionalità opzionali considerate interessanti:
 \small
 \renewcommand{\arraystretch}{1.2}
 \arrayrulecolor{black}
-\begin{tabular}{|p{0.45\linewidth}|p{0.25\linewidth}|p{0.25\linewidth}|}
+\begin{tabular}{|>{\raggedright\arraybackslash}p{0.45\linewidth}|c|c|}
 \hline
 \rowcolor{gray!60}
 \textbf{Task} & \textbf{Assegnatario} & \textbf{Scadenza} \\
@@ -214,7 +216,7 @@ N.A &  &  \\
 \small
 \renewcommand{\arraystretch}{1.2}
 \arrayrulecolor{black}
-\begin{tabular}{|p{0.1\linewidth}|p{0.18\linewidth}|p{0.22\linewidth}|p{0.20\linewidth}|p{0.22\linewidth}|}
+\begin{tabular}{|c|l|l|c|>{\raggedright\arraybackslash}p{0.35\linewidth}|}
 \hline
 \rowcolor{gray!60}
 \textbf{Versione} & \textbf{Ruolo} & \textbf{Nome} & \textbf{Data e ora} & \textbf{Descrizione} \\
