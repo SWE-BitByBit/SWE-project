@@ -25,7 +25,7 @@ PB_PATH_VERB_INT = Path("docs/PB/verbali_interni")
 def create_doc_link(file):
     #Si assume che il documento non sia un verbale
     out = ''
-    filename = file.name.capitalize().replace('_', ' ')
+    filename = file.with_suffix("").name.capitalize().replace('_', ' ')
     print(f"{filename}\n")
     out = out + '<h3>' + filename +'</h3>\n<ul>\n<li>Il <a href="' + file.as_posix() + '" target="blank">file pdf</a> del ' + filename + '</li>\n</ul>\n'
     print(f"{filename}\n")
@@ -33,7 +33,7 @@ def create_doc_link(file):
 
 def create_verb_link(file):
     out = ''
-    filename = file.name
+    filename = file.with_suffix("").name
     filename = filename.replace("esterno_",'')
     filename = filename.replace("interno_",'')
     filename = filename.replace("verbale_", "Verbale del ")
@@ -55,21 +55,21 @@ verb_interni_candidatura = list(C_PATH_VERB_INT.rglob("*.pdf"))
 esterni_rtb = list(RTB_PATH_ESTERNI.rglob("*.pdf"))
 interni_rtb = list(RTB_PATH_INTERNI.rglob("*.pdf"))
 #Togli glossario da doc rtb
-interni_rtb = [f for f in interni_rtb if f.exists() and f.name not in {"glossario.pdf"}]
+interni_rtb = [f for f in interni_rtb if f.exists() and f.name not in {"Glossario.pdf"}]
 verb_esterni_rtb = list(RTB_PATH_VERB_EXT.rglob("*.pdf"))
 verb_interni_rtb = list(RTB_PATH_VERB_INT.rglob("*.pdf"))
 
 esterni_pb = list(PB_PATH_ESTERNI.rglob("*.pdf"))
 interni_pb = list(PB_PATH_INTERNI.rglob("*.pdf"))
 #Togli glossario da doc pb
-interni_pb = [f for f in interni_pb if f.exists() and f.name not in {"glossario.pdf"}]
+interni_pb = [f for f in interni_pb if f.exists() and f.name not in {"Glossario.pdf"}]
 verb_esterni_pb = list(PB_PATH_VERB_EXT.rglob("*.pdf"))
 verb_interni_pb = list(PB_PATH_VERB_INT.rglob("*.pdf"))
 
 #Recupero glossario - recupera quello della milestone più recente
-file_glossario = list(RTB_PATH_INTERNI.rglob("glossario.pdf"))
+file_glossario = list(RTB_PATH_INTERNI.rglob("*Glossario.pdf"))
 if interni_pb:
-    file_glossario = list(PB_PATH_INTERNI.rglob("glossario.pdf"))
+    file_glossario = list(PB_PATH_INTERNI.rglob("*Glossario.pdf"))
 
 
 #Crea sezioni
