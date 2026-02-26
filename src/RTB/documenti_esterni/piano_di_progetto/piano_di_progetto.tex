@@ -6,7 +6,7 @@
 % =======================================================
 \newcommand{\TitoloDocumento}{Piano di Progetto}
 \newcommand{\DataVersione}{AAAA/MM/GG}
-\newcommand{\VersioneAttuale}{0.4.6}
+\newcommand{\VersioneAttuale}{0.5.0}
 
 % =======================================================
 % 2. PACCHETTI
@@ -20,9 +20,14 @@
 \usepackage{float}
 \usepackage{setspace}
 \usepackage{tabularx} % Per tabelle larghe quanto la pagina
+\usepackage{longtable} % Per tabelle su più pagine
 \usepackage{fancyhdr} % Per header e footer
+\setlength{\headheight}{15pt}
+\addtolength{\topmargin}{-2.5pt}
 \usepackage{titlesec} % Per formattare i titoli
+\setlength{\marginparwidth}{2cm}
 \usepackage[colorinlistoftodos]{todonotes}
+\usepackage{xurl}     % Per gestire gli url lunghi ed evitare Overfull \hbox
 \usepackage{eurosym}
 \usepackage{tikz}     % Necessario per i grafici a torta
 \usepackage{tcolorbox}
@@ -64,6 +69,7 @@
 % 3. IMPOSTAZIONI VISIVE
 % =======================================================
 \geometry{margin=2.5cm}
+\raggedbottom               % Evita Overfull/Underfull \vbox verticali sulle pagine
 \setlength{\parindent}{0pt} % Niente rientro prima riga
 \setstretch{1.2}            % Interlinea 1.2
 
@@ -140,12 +146,18 @@
 \textbf{Redattori:} & 
 \begin{tabular}[t]{@{}l@{}}
 Dennis Parolin\\
+Ferdinando Fracasso\\
+Marco Sanguin\\
+Riccardo Manisi\\
 \end{tabular} \\
 \textbf{Verificatori:} & 
 \begin{tabular}[t]{@{}l@{}}
 Giovanni Visentin\\
 Ferdinando Fracasso\\
 Riccardo Manisi\\
+Marco Sanguin\\
+Gabriele Scaggiante\\
+Dennis Parolin\\
 \end{tabular} \\
 \textbf{Destinatari:} &
 \begin{tabular}[t]{@{}l@{}}
@@ -170,15 +182,28 @@ Gruppo BitByBit\\\\
 \renewcommand{\arraystretch}{1.4}
 \arrayrulecolor{black}
 
-\begin{tabularx}{\textwidth}{|c|c|p{0.225\linewidth}|X|c|}
+\begin{longtable}{|c|c|>{\raggedright\arraybackslash}p{0.20\linewidth}|>{\raggedright\arraybackslash}p{0.37\linewidth}|c|}
 \hline
 
 \rowcolor{gray!60}
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
+\endfirsthead
+
+\hline
+\rowcolor{gray!60}
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+\hline
+\endhead
 
 \rowcolor{white}
-0.4.6 & 2026-02-12 & Ferdinando Fracasso & Redazione consultivo sprint nella sezione \ref{sec:sprint4_RTB}, redazione sezione \ref{sec:sprint5_RTB} e inizio sezione \ref{sec:sprint6_RTB} &  \\
+0.5.1 & 2026-02-25 & Dennis Parolin & Sistemati alcuni errori di visualizzazione. Aggiunto il rischio RO5. Modificati i rischi incontrati dello sprint 6 e i rischi attesi dello sprint 7. & Ferdinando Fracasso \\
+\hline
+\rowcolor{gray!20}
+0.5.0 & 2026-02-23 & Dennis Parolin & Completata la sezione "Sprint 6" (\ref{sec:sprint6_RTB}) e fatta la prima metà della sezione "Sprint 7" (\ref{sec:sprint7_RTB}). Corretti errori di compilazione ed & Giovanni Visentin \\
+\hline
+\rowcolor{white}
+0.4.6 & 2026-02-12 & Ferdinando Fracasso & Redazione consuntivo sprint nella sezione \ref{sec:sprint4_RTB}, redazione sezione \ref{sec:sprint5_RTB} e inizio sezione \ref{sec:sprint6_RTB} & Marco Sanguin \\
 \hline
 \rowcolor{gray!20}
 0.4.5 & 2026-01-24 & Dennis Parolin & Corretto grafico duplicato & Marco Sanguin \\
@@ -201,15 +226,6 @@ Gruppo BitByBit\\\\
 \rowcolor{gray!20}
 0.3.1 & 2026-01-11 & Riccardo Manisi & Aggiunta \ref{tab:RO3} e \ref{tab:RO4}. E aggiunte attività RTB. & Gabriele Scaggiante \\
 \hline
-\end{tabularx}
-
-% A capo dato che la quantità di versioni rompeva il layout della pagina
-
-\begin{tabularx}{\textwidth}{|c|c|p{0.225\linewidth}|X|c|}
-\hline
-\rowcolor{gray!60}
-\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
-\hline
 \rowcolor{white}
 0.3.0 & 2025-12-05 & Dennis Parolin & Redazione dell'intera sezione \ref{sec:pianificazione_lungo_termine} & Giovanni Visentin \\
 \hline
@@ -219,7 +235,7 @@ Gruppo BitByBit\\\\
 \rowcolor{white}
 0.1.0 & 2025-12-3 & Dennis Parolin & Creazione del documento e redazione delle sezioni \ref{sec:scopo_documento}, \ref{sec:definizioni_acronimi_abbreviazioni}, \ref{sec:riferimenti}. & Giovanni Visentin \\
 \hline
-\end{tabularx}
+\end{longtable}
 \end{center}
 
 % --- INDICE ---
@@ -591,8 +607,40 @@ Per facilitare la gestione e la consultazione, i rischi sono stati catalogati in
         Pericolosità ripercussioni & Media \\
         \hline
     \end{tabularx}
-    \caption{Rischio assenza di un componente per periodo prolungato RO4}
+    \caption{Informazioni sul rischio RO4}
     \label{tab:RO4}
+\end{table}
+
+\subsubsection{RO5 - Dipendenza da risorse e permessi esterni}
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.4}
+    \begin{tabularx}{\textwidth}{|L|Z|}
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Tipologia Dato} & \textbf{Valore} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Codice & RO5 \\
+        \hline
+        \rowcolor{tableLineEven}
+        Nome & Mancanza o ritardo nella fornitura di permessi e risorse esterne \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Descrizione & Lo sviluppo del progetto può richiedere l'utilizzo di specifiche risorse, piattaforme (es. Cloud) o credenziali fornite direttamente dall'azienda proponente. Eventuali ritardi nella fornitura di tali strumenti o la mancanza iniziale dei permessi necessari possono causare blocchi temporanei nelle normali attività di sviluppo e test, incidendo sulla tempistica dello sprint. \\
+        \hline
+        \rowcolor{tableLineEven}
+        Mitigazione & Individuazione tempestiva e proattiva delle necessità tecniche per comunicarle prontamente all'azienda proponente. In caso di attesa prolungata, riorganizzazione flessibile ed elastica dei task dello sprint in modo da portare avanti le attività parallele e indipendenti dalle risorse bloccate, riducendo al minimo i tempi morti. \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Frequenza probabile & Media \\
+        \hline
+        \rowcolor{tableLineEven}
+        Pericolosità ripercussioni & Elevata \\
+        \hline
+    \end{tabularx}
+    \caption{Informazioni sul rischio RO5}
+    \label{tab:RO5}
 \end{table}
 
 % ======================= RISCHI INTERPERSONALI =======================
@@ -1454,10 +1502,10 @@ Lo Sprint 4 è stato focalizzato sul completamento della documentazione di anali
 
 Le attività pianificate e svolte includono:
 \begin{itemize}
-    \item \textit{Analisi:} Studio delle metriche di qualit\`a e delle tecnologie per la realizzazione del Proof of Concept.
-    \item \textit{Incontri:} Riunione di coordinamento interna per la redistribuzione del carico di lavoro.
-    \item \textit{Documentazione:} Redazione nelle \textit{Norme di Progetto} delle sezioni relative a codifica, verifica e validazione; aggiornamento del \textit{Piano di Qualifica} con le metodologie di testing e il cruscotto di valutazione; caricamento dei verbali firmati nella repository.
-    \item \textit{Gestione:} Ottimizzazione dei processi automatizzati (GitHub Actions), riorganizzazione dei documenti sul sito web.
+    \item \textbf{Analisi:} Studio delle metriche di qualit\`a e delle tecnologie per la realizzazione del Proof of Concept.
+    \item \textbf{Incontri:} Riunione di coordinamento interna per la redistribuzione del carico di lavoro.
+    \item \textbf{Documentazione:} Redazione nelle \textit{Norme di Progetto} delle sezioni relative a codifica, verifica e validazione; aggiornamento del \textit{Piano di Qualifica} con le metodologie di testing e il cruscotto di valutazione; caricamento dei verbali firmati nella repository.
+    \item \textbf{Gestione:} Ottimizzazione dei processi automatizzati (GitHub Actions), riorganizzazione dei documenti sul sito web.
 \end{itemize}
 
 \paragraph{Rischi attesi}
@@ -1595,7 +1643,7 @@ Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la
 \begin{table}[H]
     \centering
     \renewcommand{\arraystretch}{1.5}
-    \begin{tabularx}{\textwidth}{|l|c|c|c|X|X|}
+    \begin{tabularx}{\textwidth}{|l|c|c|c|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
         \hline
         \rowcolor{tableHeader}
         \textbf{Ruolo} & \textbf{Costo} & \textbf{Ore} & \textbf{Costo} & \textbf{Ore rimanenti} & \textbf{Budget rimanente} \\
@@ -1626,10 +1674,12 @@ Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la
 \end{table}
 
 \paragraph{Rischi incontrati}
-Durante lo sprint si sono ripresentati i rischi \textbf{RI1 (Impegni accademici)}, a causa della sessione di esami, e \textbf{RI2 (Problemi personali)}, a causa della malattia di un membro del gruppo. Tali rischi hanno portato ad una generale diminuzione delle ore effettivamente impiegate nei vari ruoli rispetto a quelle previste, con conseguente rinvio di attività allo sprint successivo. Inoltre si è verificato nuovamente anche il rischio \textbf{RO1 (Errata stima dei tempi)} a causa di ulteriori modifiche richieste sui diagrammi UML, portando ad un ulteriore rinvio del completamento dell'\textit{Analisi dei Requisiti} allo sprint seguente.
+{\sloppy
+Durante lo sprint si sono ripresentati i rischi \textbf{RI1 (Impegni accademici)}, a causa della sessione di esami, e \textbf{RI2 (Problemi personali)}, a causa della malattia di un membro del gruppo. Tali rischi hanno portato ad una generale diminuzione delle ore effettivamente impiegate nei vari ruoli rispetto a quelle previste, con conseguente rinvio di attività allo sprint successivo. Inoltre si è verificato nuovamente anche il rischio \textbf{RO1 (Errata stima dei tempi)} a causa di ulteriori modifiche richieste sui diagrammi UML, portando all'ennesimo rinvio del completamento dell'\textit{Analisi dei Requisiti} allo sprint seguente.
+\par}
 
 \paragraph{Retrospettiva}
-La retrospettiva ha fatto emergere la necessità di pianificare più efficientemente attorno a eventuali malattie o assenze di membri del gruppo, dato che sommate agli impegni universitari hanno portato a ritardi nell'aggiornamento del \textbf{Piano di Progetto} e del \textbf{Piano di Qualifica}. Nonostante il lavoro effettuato sull'\textbf{Analisi dei Requisiti} il documento richiede ulteriore attenzione, posticipando il completamento dell'attività correlata.
+La retrospettiva ha fatto emergere la necessità di pianificare in modo più efficiente attorno a eventuali problemi di salute dei membri, che sommati agli impegni universitari hanno causato ritardi nell'aggiornamento del \textbf{Piano di Progetto} e \textbf{Piano di Qualifica}. Il documento di \textbf{Analisi dei Requisiti} richiede perciò ulteriore attenzione, posticipando l'attività.
 
 %-------------------------------------------------------------------------------------------------%
 
@@ -1853,7 +1903,7 @@ Gli studi sulle funzionalità da implementare nel \textbf{Proof of Concept} hann
         \hline
         Inizio & 2026-01-30 & Fine prevista & 2026-02-12 \\
         \hline
-        Stato & \textbf{In corso} & Fine reale & - \\
+        Stato & \textbf{Concluso} & Fine reale & 2026-02-12 \\
         \hline
         \multicolumn{2}{|c|}{\cellcolor{tableHeader}\textbf{Giorni di ritardo}} & \multicolumn{2}{c|}{0} \\
         \hline
@@ -1952,21 +2002,228 @@ Si prospetta l'utilizzo delle seguenti risorse:
 \end{figure}
 
 \paragraph{Consuntivo}
--
-%  Da fare dopo lo sprint
+Di seguito il resoconto delle ore effettivamente impiegate (corretto dagli errori di somma presenti nel foglio di calcolo):
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.4}
+    \footnotesize
+    \begin{tabularx}{\textwidth}{|l|C|C|C|C|C|C|}
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Membro} & \textbf{Resp} & \textbf{Amm} & \textbf{Anal} & \textbf{Pt} & \textbf{Pr} & \textbf{Ver} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        F. Fracasso & 5\textcolor{red}{(+1)} & - & - & - & - & - \\
+        \hline
+        \rowcolor{tableLineEven}
+        R. Manisi & - & - & - & - & 0\textcolor{red}{(-5)} & - \\
+        \hline
+        \rowcolor{tableLineOdd}
+        D. Parolin & - & 8.25\textcolor{red}{(+3.75)} & 7\textcolor{red}{(+2)} & - & - & - \\
+        \hline
+        \rowcolor{tableLineEven}
+        M. Sanguin & - & - & 1\textcolor{red}{(-1)} & - & - & 0\textcolor{red}{(-2)} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        G. Scaggiante & - & 0\textcolor{red}{(-0.5)} & - & - & 6\textcolor{red}{(+1)} & 0.5\textcolor{red}{(+0.5)} \\
+        \hline
+        \rowcolor{tableLineEven}
+        G. Visentin & - & - & 2\textcolor{red}{(+1.5)} & - & 3\textcolor{red}{(-1)} & 2\textcolor{red}{(+1)} \\
+        \hline
+    \end{tabularx}
+    \caption{Consuntivo orario per componente - Sprint 6}
+    \label{tab:consuntivo_sprint6}
+\end{table}
 
 % GRAFICO A TORTA CONSUNTIVO
-%  Da fare dopo lo sprint
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1.2]
+        \draw[thick,fill=pieResp] (0,0) -- (0:1.5) arc (0:51.8:1.5) -- cycle;
+        \draw (26:1.95) node {14.4\%};
+        
+        \draw[thick,fill=pieAmm] (0,0) -- (51.8:1.5) arc (51.8:137.3:1.5) -- cycle;
+        \draw (95:1.85) node {23.7\%};
+        
+        \draw[thick,fill=pieAnal] (0,0) -- (137.3:1.5) arc (137.3:240.9:1.5) -- cycle;
+        \draw (189:2) node {28.8\%};
+
+        \draw[thick,fill=pieProg] (0,0) -- (240.9:1.5) arc (240.9:334.1:1.5) -- cycle;
+        \draw (288:1.85) node {25.9\%};
+        
+        \draw[thick,fill=pieVer] (0,0) -- (334.1:1.5) arc (334.1:360:1.5) -- cycle;
+        \draw (347:1.9) node {7.2\%};
+        
+        \matrix [below, draw=none, fill=none] at (0,-2.5) {
+            \node [fill=pieResp, label=right:Responsabile] {}; & \node [fill=pieAmm, label=right:Amministratore] {}; \\
+            \node [fill=pieAnal, label=right:Analista] {}; & \node [fill=pieVer, label=right:Verificatore] {}; \\
+            \node [fill=pieProg, label=right:Programmatore] {};\\
+        };
+    \end{tikzpicture}
+    \caption{Distribuzione ore per ruolo - Consuntivo Sprint 6}
+\end{figure}
 
 \paragraph{Aggiornamento delle risorse rimanenti}
--
-%  Da fare dopo lo sprint
+Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la chiusura dello Sprint 6.
 
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabularx}{\textwidth}{|l|c|c|c|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Ruolo} & \textbf{Costo} & \textbf{Ore} & \textbf{Costo} & \textbf{Ore rimanenti} & \textbf{Budget rimanente} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Responsabile & 30\euro/h & 5 & 150\euro & 42 \textcolor{red}{(-5)} & 1.260\euro \textcolor{red}{(-150\euro)} \\
+        \hline
+        \rowcolor{tableLineEven}
+        Amministratore & 20\euro/h & 8.25 & 165\euro & 46.75 \textcolor{red}{(-8.25)} & 935\euro \textcolor{red}{(-165\euro)} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Analista & 25\euro/h & 10 & 250\euro & 3.5 \textcolor{red}{(-10)} & 87,50\euro \textcolor{red}{(-250\euro)} \\
+        \hline
+        \rowcolor{tableLineEven}
+        Progettista & 25\euro/h & - & - & 102 & 2.550\euro \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Programmatore & 15\euro/h & 9 & 135\euro & 110 \textcolor{red}{(-9)} & 1.650\euro \textcolor{red}{(-135\euro)} \\
+        \hline
+        \rowcolor{tableLineEven}
+        Verificatore & 15\euro/h & 2.5 & 37,50\euro & 65 \textcolor{red}{(-2.5)} & 967,50\euro \textcolor{red}{(-37,50\euro)} \\
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Totale} & - & \textbf{34.75} & \textbf{737,50\euro} & \textbf{369.25 \textcolor{red}{(-34.75)}} & \textbf{7.450\euro \textcolor{red}{(-737,50\euro)}} \\
+        \hline
+    \end{tabularx}
+    \caption{Sprint 6 - Variazione nelle risorse disponibili}
+\end{table}
 
 \paragraph{Rischi incontrati}
--
+{\sloppy
+Durante lo sprint si è verificata l'occorrenza di molteplici rischi che hanno influito sulla pianificazione: \textbf{RT1 (Inesperienza tecnologica)}, \textbf{RO1 (Errata stima dei tempi)}, \textbf{RO2 (Incomprensione dei requisiti)}, \textbf{RO4 (Assenza di un componente)}, \textbf{RO5 (Dipendenza da risorse e permessi esterni)} e \textbf{RI1 (Impegni accademici)}. Dal punto di vista tecnologico (\textbf{RT1}), l'approccio a strumenti di sviluppo nuovi ha rallentato il ritmo per la stesura del \textit{Proof of Concept}, richiedendo maggiore dedizione. Dal punto di vista organizzativo, si è assistito a un'errata valutazione del carico di lavoro (\textbf{RO1}), in cui attività stimate brevi si sono rivelate complesse e viceversa, causando squilibri nell'impegno orario. Un chiaro esempio è stata la stesura finale del log per il documento di \textit{Analisi dei Requisiti}: le tempistiche si sono dilatate poiché, durante le comunicazioni asincrone tramite spazio dedicato con la proponente, è emersa la necessità di variare alcuni requisiti già definiti (\textbf{RO2}), imponendo quindi una sostanziale revisione di diversi casi d'uso. Nonostante gli sforzi, il documento \textbf{non è stato portato al suo completamento definitivo}, in quanto manca l'inserimento delle immagini dei diagrammi aggiornati, operazione rimandata allo sprint successivo considerando in ogni caso la base testuale solida ottenuta.\\
+In aggiunta, l'impossibilità temporanea di testare e sviluppare a causa della mancanza iniziale di alcuni permessi sull'infrastruttura Cloud AWS fornita dalla proponente (\textbf{RO5}) ha comportato blocchi momentanei, forzando una riorganizzazione dinamica dei task all'interno dello sprint per minimizzare i tempi morti.\\
+Risulta inoltre una decisa mancanza di presenza nel gruppo (\textbf{RO4}) dovuta alla concomitanza con gli appelli d'esame universitari (\textbf{RI1}). A fronte di ciò, si posticiperà lo svolgimento delle task al seguente Sprint 7.
+\par}
 
 \paragraph{Retrospettiva}
--
+La retrospettiva ha evidenziato che, nonostante i progressi, lo sviluppo risulta globalmente rallentato. Si rende necessaria una maggiore onestà della propria disponibilità e dello stato dei lavori. Occorre porre maggior realismo in fase di preventivo delle ore assegnate e aumentare la trasparenza, affinché l'avanzamento rifletta fedelmente l'effettiva capacità di ogni membro per i futuri sprint.
+
+%-------------------------------------------------------------------------------------------------%
+\subsubsection{Sprint 7}\label{sec:sprint7_RTB}
+
+% --- TABELLA RIEPILOGATIVA SPRINT ---
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabularx}{\textwidth}{|>{\columncolor{tableHeader}\bfseries}l|X|>{\columncolor{tableHeader}\bfseries}l|X|}
+        \hline
+        Inizio & 2026-02-13 & Fine prevista & 2026-02-27 \\
+        \hline
+        Stato & \textbf{In corso} & Fine reale & - \\
+        \hline
+        \multicolumn{2}{|c|}{\cellcolor{tableHeader}\textbf{Giorni di ritardo}} & \multicolumn{2}{c|}{0} \\
+        \hline
+    \end{tabularx}
+    \caption{Riepilogo temporale Sprint 7}
+\end{table}
+
+\paragraph{Informazioni generali e attività da svolgere}
+Lo Sprint 7 proseguirà le attività avviate in precedenza per massimizzare la documentazione prodotta e finalizzare il prototipo in vista dell'imminente consegna per la fase RTB (\textit{Requirements and Technology Baseline}). Secondo quanto emerso dal verbale della riunione interna del 17 Febbraio 2026, si cercherà di recuperare le attività rimaste in arretrato o in ritardo, e in parallelo i nuovi task verranno smistati in base al ruolo assegnato a ogni membro in questa iterazione.
+
+Le attività pianificate includono:
+\begin{itemize}
+    \item \textbf{Analisi:} Continuazione dello studio delle funzionalità per il \textit{Proof of Concept}.
+    \item \textbf{Programmazione:} Avanzamento dello sviluppo del PoC, implementando casi d'uso riguardanti: la navigazione della rubrica contatti e l'aggiunta di nuovi o eliminazione, l'architettura AWS (Lambda e DynamoDB) per la gestione serverless del salvataggio dei contatti e delle note, oltre che la creazione della UI per le note del diario criptato e l'integrazione del Model nel client Flutter.
+    \item \textbf{Documentazione:} Completamento \textbf{definitivo} del documento \textit{Analisi dei Requisiti} tramite l'inserimento delle immagini aggiornate relative ai diagrammi UML e la suddivisione logica dei casi d'uso. Ultimare e stabilizzare la versione del \textit{Piano di Qualifica}, del \textit{Piano di Progetto}, delle \textit{Norme di Progetto}, della \textit{Lettera di Presentazione} e di tutti i verbali (interni ed esterni). Redazione manualistica e descrittiva riguardante l'implementazione del PoC e le scelte architetturali adottate.
+    \item \textbf{Gestione:} Aggiornamento finale del sito web, riparazione e affinamento delle Action GitHub per l'integrazione continua (compilazione PDF, generazione del glossario e statistiche Gulpease).
+\end{itemize}
+
+\paragraph{Rischi attesi}
+Tra i principali rischi che potrebbero interferire con le stime durante questo sprint finale verso l'RTB figurano:
+\begin{itemize}
+    \item \textbf{RT1}: Difficoltà nell'utilizzo puntuale e veloce di queste nuove architetture per lo sviluppo del PoC (es. Flutter e servizi Cloud).
+    \item \textbf{RT4}: Insorgere di bug o malfunzionamenti architetturali nel codice prodotto per il PoC in vista della scadenza a ritmi serrati.
+    \item \textbf{RO4}: Assenza e ritardi nella produzione causati dalla precaria comunicazione tra i componenti a causa dell'accumularsi del lavoro.
+    \item \textbf{RO5}: Mancanza o ritardo nella fornitura di permessi AWS e risorse esterne parziali o frammentate da parte della proponente. % Sarà sicuramente presente nei rischi incontrati in quanto al momento ci manca il necessario per iviare le mail ai contatti fidati.
+\end{itemize}
+
+\paragraph{Preventivo}
+Si prospetta l'utilizzo delle seguenti risorse:
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \small 
+    \begin{tabularx}{\textwidth}{|l|C|C|C|C|C|C|}
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Membro} & \textbf{Resp} & \textbf{Amm} & \textbf{Anal} & \textbf{Pt} & \textbf{Pr} & \textbf{Ver} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        F. Fracasso & - & 2 & - & - & - & 2 \\
+        \hline
+        \rowcolor{tableLineEven}
+        R. Manisi & - & - & - & - & 4 & - \\
+        \hline
+        \rowcolor{tableLineOdd}
+        D. Parolin & 5 & - & - & - & - & 2 \\
+        \hline
+        \rowcolor{tableLineEven}
+        M. Sanguin & - & 4.5 & 3 & - & - & - \\
+        \hline
+        \rowcolor{tableLineOdd}
+        G. Scaggiante & - & 1 & - & - & 5 & - \\
+        \hline
+        \rowcolor{tableLineEven}
+        G. Visentin & - & - & - & - & 4 & 2 \\
+        \hline
+    \end{tabularx}
+    \caption{Preventivo orario per componente - Sprint 7}
+    \label{tab:preventivo_sprint7}
+\end{table}
+
+% GRAFICO A TORTA PREVENTIVO
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1.2]
+        \draw[thick,fill=pieResp] (0,0) -- (0:1.5) arc (0:52.2:1.5) -- cycle;
+        \draw (26.1:1.95) node {14.5\%};
+        
+        \draw[thick,fill=pieAmm] (0,0) -- (52.2:1.5) arc (52.2:130.4:1.5) -- cycle;
+        \draw (91.3:1.8) node {21.7\%};
+        
+        \draw[thick,fill=pieAnal] (0,0) -- (130.4:1.5) arc (130.4:161.7:1.5) -- cycle;
+        \draw (146.1:1.95) node {8.7\%};
+        
+        \draw[thick,fill=pieVer] (0,0) -- (161.7:1.5) arc (161.7:224.4:1.5) -- cycle;
+        \draw (193.0:1.95) node {17.4\%};
+
+        \draw[thick,fill=pieProg] (0,0) -- (224.4:1.5) arc (224.4:360:1.5) -- cycle;
+        \draw (292.2:1.8) node {37.7\%};
+        
+        \matrix [below, draw=none, fill=none] at (0,-2.5) {
+            \node [fill=pieResp, label=right:Responsabile] {}; & \node [fill=pieAmm, label=right:Amministratore] {}; \\
+            \node [fill=pieAnal, label=right:Analista] {}; & \node [fill=pieVer, label=right:Verificatore] {}; \\
+            \node [fill=pieProg, label=right:Programmatore] {};\\
+        };
+    \end{tikzpicture}
+    \caption{Distribuzione ore per ruolo - Preventivo Sprint 7}
+\end{figure}
+
+\paragraph{Consuntivo}
+% TODO
+
+% GRAFICO A TORTA CONSUNTIVO
+
+\paragraph{Aggiornamento delle risorse rimanenti}
+% TODO
+
+\paragraph{Rischi incontrati}
+% TODO
+
+\paragraph{Retrospettiva}
+% TODO
 
 \end{document}
