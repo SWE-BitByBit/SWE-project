@@ -37,6 +37,7 @@ def create_verb_link(file):
     filename = filename.replace("interno_",'')
     filename = filename.replace("verbale_", "Verbale del ")
     filename = filename.replace("-","/")
+    filename = filename.replace('_', ' ')
     out = out + '<li>\n<a href="' + file.as_posix() + '" target="blank">' + filename +'</a>\n</li>\n'
     print(f"{filename}\n")
     return out
@@ -48,7 +49,7 @@ with open(Path('site_template.txt'), 'r') as temp:
 #Ottieni lista di file dai percorsi
 doc_candidatura = list(C_PATH_DOCS.rglob("*.pdf"))
 #rimuovi verbali da doc candidatura
-doc_candidatura = [f for f in doc_candidatura if fn.fnmatch(f.name,"*!verbale*")]
+doc_candidatura = [f for f in doc_candidatura if f.exists and not(fn.fnmatch(f.name,"*verbale*"))]
 verb_esterni_candidatura = list(C_PATH_VERB_EXT.rglob("*.pdf"))
 verb_interni_candidatura = list(C_PATH_VERB_INT.rglob("*.pdf"))
 
