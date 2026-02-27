@@ -22,7 +22,10 @@
 \usepackage{titlesec} % per formattare le sezioni
 \usepackage{float} % per la tabella del glossario
 \usepackage{longtable} % per fare in modo che la tabella sia più lunga di una pagina
-\newcommand{\termdefinition}[1]{\subsection*{#1}} % IMPORTANTE: Va usato per definire i termini per il funzionamento della action
+\usepackage{makeidx}
+\makeindex
+
+\newcommand{\termdefinition}[1]{\subsection*{#1}\index{#1}} % IMPORTANTE: Va usato per definire i termini per il funzionamento della action
 \geometry{margin=2.5cm}
 
 \setlength{\parindent}{0pt}
@@ -128,8 +131,11 @@ Gruppo BitByBit \\
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
+\rowcolor{gray!20}
+0.4.0 & 2026-02-27 & Marco Sanguin & Aggiunti Indice Analitico & Riccardo Manisi \\
+\hline
 \rowcolor{white}
-0.3.2 & 2026-01-11 & Dennis Parolin & Aggiunti Termini & Riccardo Manisi \\
+0.3.3 & 2026-01-11 & Dennis Parolin & Aggiunti Termini & Riccardo Manisi \\
 \hline
 \rowcolor{gray!20}
 0.3.2 & 2025-12-23 & Riccardo Manisi & Aggiunta sezione info generali documenti e migliorato layout & Dennis Parolin\\
@@ -157,9 +163,13 @@ Gruppo BitByBit \\
 
 \clearpage
 
-% ======= INDICE SU PAGINA DEDICATA =======
+% ======= INDICE PER LETTERA=======
 \tableofcontents
 \thispagestyle{empty} % senza numero di pagina per l'indice
+\clearpage
+
+% ======= INDICE ANALITICO =======
+\printindex
 \clearpage
 
 % ======= INTRODUZIONE =======
