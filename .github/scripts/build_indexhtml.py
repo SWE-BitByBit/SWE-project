@@ -49,7 +49,7 @@ with open(Path('site_template.txt'), 'r') as temp:
 doc_candidatura = list(C_PATH_DOCS.rglob("*.pdf"))
 #rimuovi verbali da doc candidatura
 doc_candidatura = [f for f in doc_candidatura if f.exists and not(fn.fnmatch(f.name,"*verbale*"))]
-verb_esterni_candidatura = list(C_PATH_VERB_EXT.rglob("*.pdf"))
+verb_esterni_candidatura = list(C_PATH_VERB_EXT.rglob("*.pdf")).sort(key=lambda f: f.name, reverse=True)
 verb_interni_candidatura = list(C_PATH_VERB_INT.rglob("*.pdf"))
 
 esterni_rtb = list(RTB_PATH_ESTERNI.rglob("*.pdf"))
