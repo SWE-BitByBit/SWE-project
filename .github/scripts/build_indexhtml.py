@@ -126,15 +126,13 @@ if esterni_rtb or interni_rtb or verb_interni_rtb or verb_esterni_rtb:
     docsections = docsections + docs + verb_ext + verb_int + '</section>\n'
 
 #documenti candidatura
-if esterni_candidatura or interni_candidatura or verb_interni_candidatura or verb_esterni_candidatura:
+if doc_candidatura or verb_interni_candidatura or verb_esterni_candidatura:
     docsections = docsections + '<section id="candidatura">\n<h2>Candidatura</h2>\n'
     docs = ''
     verb_ext = ''
     verb_int = ''
     
-    for file in esterni_candidatura:
-        docs = docs + create_doc_link(file)
-    for file in interni_candidatura:
+    for file in doc_candidatura:
         docs = docs + create_doc_link(file)
 
     if verb_esterni_candidatura:
