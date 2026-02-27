@@ -3,8 +3,7 @@ import fnmatch as fn
 
 
 #Path scomposti perchè altrimenti non si riesce a ordinare i link
-C_PATH_ESTERNI = Path("docs/candidatura/documenti_esterni")
-C_PATH_INTERNI = Path("docs/candidatura/documenti_interni")
+C_PATH_DOCS = Path("docs/candidatura")
 C_PATH_VERB_EXT = Path("docs/candidatura/verbali_esterni")
 C_PATH_VERB_INT = Path("docs/candidatura/verbali_interni")
 
@@ -47,8 +46,9 @@ with open(Path('site_template.txt'), 'r') as temp:
     template = temp.read()
 
 #Ottieni lista di file dai percorsi
-esterni_candidatura = list(C_PATH_ESTERNI.rglob("*.pdf"))
-interni_candidatura = list(C_PATH_INTERNI.rglob("*.pdf"))
+doc_candidatura = list(C_PATH_DOCS.rglob("*.pdf"))
+#rimuovi verbali da doc candidatura
+doc_candidatura = [f for f in doc_candidatura if fn.fnmatch(f.name,"*!verbale*")]
 verb_esterni_candidatura = list(C_PATH_VERB_EXT.rglob("*.pdf"))
 verb_interni_candidatura = list(C_PATH_VERB_INT.rglob("*.pdf"))
 
