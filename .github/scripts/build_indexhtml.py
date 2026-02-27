@@ -50,22 +50,27 @@ doc_candidatura = list(C_PATH_DOCS.rglob("*.pdf"))
 #rimuovi verbali da doc candidatura
 doc_candidatura = [f for f in doc_candidatura if f.exists and not(fn.fnmatch(f.name,"*verbale*"))]
 verb_esterni_candidatura = list(C_PATH_VERB_EXT.rglob("*.pdf"))
-verb_esterni_candidatura.sort(key=lambda f: f.name, reverse=True)
+verb_esterni_candidatura.sort(key=lambda f: f.name, reverse=False)
 verb_interni_candidatura = list(C_PATH_VERB_INT.rglob("*.pdf"))
+verb_interni_candidatura.sort(key=lambda f: f.name, reverse=False)
 
 esterni_rtb = list(RTB_PATH_ESTERNI.rglob("*.pdf"))
 interni_rtb = list(RTB_PATH_INTERNI.rglob("*.pdf"))
 #Togli glossario da doc rtb
 interni_rtb = [f for f in interni_rtb if f.exists() and f.name not in {"Glossario.pdf"}]
 verb_esterni_rtb = list(RTB_PATH_VERB_EXT.rglob("*.pdf"))
+verb_esterni_rtb.sort(key=lambda f: f.name, reverse=False)
 verb_interni_rtb = list(RTB_PATH_VERB_INT.rglob("*.pdf"))
+verb_interni_rtb.sort(key=lambda f: f.name, reverse=False)
 
 esterni_pb = list(PB_PATH_ESTERNI.rglob("*.pdf"))
 interni_pb = list(PB_PATH_INTERNI.rglob("*.pdf"))
 #Togli glossario da doc pb
 interni_pb = [f for f in interni_pb if f.exists() and f.name not in {"Glossario.pdf"}]
 verb_esterni_pb = list(PB_PATH_VERB_EXT.rglob("*.pdf"))
+verb_esterni_pb.sort(key=lambda f: f.name, reverse=False)
 verb_interni_pb = list(PB_PATH_VERB_INT.rglob("*.pdf"))
+verb_interni_pb.sort(key=lambda f: f.name, reverse=False)
 
 #Recupero glossario - recupera quello della milestone più recente
 file_glossario = list(RTB_PATH_INTERNI.rglob("*Glossario.pdf"))
