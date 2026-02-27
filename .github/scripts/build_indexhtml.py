@@ -25,8 +25,7 @@ def create_doc_link(file):
     #Si assume che il documento non sia un verbale
     out = ''
     filename = file.with_suffix("").name.capitalize().replace('_', ' ')
-    print(f"{filename}\n")
-    out = out + '<h3>' + filename +'</h3>\n<ul>\n<li>Il <a href="' + file.as_posix() + '" target="blank">file pdf</a> del ' + filename + '</li>\n</ul>\n'
+    out = out + '<h3>' + filename +'</h3>\n<ul>\n<li>\n<a href="' + file.as_posix() + '" target="blank">File pdf ' + filename + '</a>\n</li>\n</ul>\n'
     print(f"{filename}\n")
     return out
 
