@@ -6,7 +6,7 @@
 % =======================================================
 \newcommand{\TitoloDocumento}{Piano di Progetto}
 \newcommand{\DataVersione}{AAAA/MM/GG}
-\newcommand{\VersioneAttuale}{0.4.6}
+\newcommand{\VersioneAttuale}{0.5.0}
 
 % =======================================================
 % 2. PACCHETTI
@@ -20,9 +20,14 @@
 \usepackage{float}
 \usepackage{setspace}
 \usepackage{tabularx} % Per tabelle larghe quanto la pagina
+\usepackage{longtable} % Per tabelle su più pagine
 \usepackage{fancyhdr} % Per header e footer
+\setlength{\headheight}{15pt}
+\addtolength{\topmargin}{-2.5pt}
 \usepackage{titlesec} % Per formattare i titoli
+\setlength{\marginparwidth}{2cm}
 \usepackage[colorinlistoftodos]{todonotes}
+\usepackage{xurl}     % Per gestire gli url lunghi ed evitare Overfull \hbox
 \usepackage{eurosym}
 \usepackage{tikz}     % Necessario per i grafici a torta
 \usepackage{tcolorbox}
@@ -64,6 +69,7 @@
 % 3. IMPOSTAZIONI VISIVE
 % =======================================================
 \geometry{margin=2.5cm}
+\raggedbottom               % Evita Overfull/Underfull \vbox verticali sulle pagine
 \setlength{\parindent}{0pt} % Niente rientro prima riga
 \setstretch{1.2}            % Interlinea 1.2
 
@@ -81,6 +87,10 @@
 % =======================================================
 % 4. INIZIO DOCUMENTO
 % =======================================================
+\newcommand{\term}[1]{\textbf{#1}$^\mathbf{G}$}
+
+\newcommand{\ignoreglossary}{}
+
 \begin{document}
 
 % --- FRONT PAGE (Loghi e Titoli) ---
@@ -140,12 +150,18 @@
 \textbf{Redattori:} & 
 \begin{tabular}[t]{@{}l@{}}
 Dennis Parolin\\
+Ferdinando Fracasso\\
+Marco Sanguin\\
+Riccardo Manisi\\
 \end{tabular} \\
 \textbf{Verificatori:} & 
 \begin{tabular}[t]{@{}l@{}}
 Giovanni Visentin\\
 Ferdinando Fracasso\\
 Riccardo Manisi\\
+Marco Sanguin\\
+Gabriele Scaggiante\\
+Dennis Parolin\\
 \end{tabular} \\
 \textbf{Destinatari:} &
 \begin{tabular}[t]{@{}l@{}}
@@ -170,15 +186,28 @@ Gruppo BitByBit\\\\
 \renewcommand{\arraystretch}{1.4}
 \arrayrulecolor{black}
 
-\begin{tabularx}{\textwidth}{|c|c|p{0.225\linewidth}|X|c|}
+\begin{longtable}{|c|c|>{\raggedright\arraybackslash}p{0.20\linewidth}|>{\raggedright\arraybackslash}p{0.37\linewidth}|c|}
 \hline
 
 \rowcolor{gray!60}
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
+\endfirsthead
+
+\hline
+\rowcolor{gray!60}
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+\hline
+\endhead
 
 \rowcolor{white}
-0.4.6 & 2026-02-12 & Ferdinando Fracasso & Redazione consultivo sprint nella sezione \ref{sec:sprint4_RTB}, redazione sezione \ref{sec:sprint5_RTB} e inizio sezione \ref{sec:sprint6_RTB} &  \\
+0.5.1 & 2026-02-25 & Dennis Parolin & Sistemati alcuni errori di visualizzazione. Aggiunto il rischio RO5. Modificati i rischi incontrati dello \term{Sprint} 6 e i rischi attesi dello \term{Sprint} 7. & Ferdinando Fracasso \\
+\hline
+\rowcolor{gray!20}
+0.5.0 & 2026-02-23 & Dennis Parolin & Completata la sezione "\term{Sprint} 6" (\ref{sec:sprint6_RTB}) e fatta la prima metà della sezione "\term{Sprint} 7" (\ref{sec:sprint7_RTB}). Corretti errori di compilazione ed & Giovanni Visentin \\
+\hline
+\rowcolor{white}
+0.4.6 & 2026-02-12 & Ferdinando Fracasso & Redazione consuntivo \term{Sprint} nella sezione \ref{sec:sprint4_RTB}, redazione sezione \ref{sec:sprint5_RTB} e inizio sezione \ref{sec:sprint6_RTB} & Marco Sanguin \\
 \hline
 \rowcolor{gray!20}
 0.4.5 & 2026-01-24 & Dennis Parolin & Corretto grafico duplicato & Marco Sanguin \\
@@ -187,7 +216,7 @@ Gruppo BitByBit\\\\
 0.4.4 & 2026-02-03 & Dennis Parolin & Aggiornato il grafico della distribuzione ore per task (figura \ref{fig:distribuzione_ore_rtb}) & Marco Sanguin \\
 \hline
 \rowcolor{gray!20}
-0.4.3 & 2026-01-24 & Dennis Parolin & Aggiunta del grafico con distribuzione ore per task (figura \ref{fig:distribuzione_ore_rtb}) nella sezione di attività previste per la RTB e sistemate alcune date non presenti nel documento & Gabriele Scaggiante \\
+0.4.3 & 2026-01-24 & Dennis Parolin & Aggiunta del grafico con distribuzione ore per task (figura \ref{fig:distribuzione_ore_rtb}) nella sezione di attività previste per la \term{Rtb} e sistemate alcune date non presenti nel documento & Gabriele Scaggiante \\
 \hline
 \rowcolor{white}
 0.4.2 & 2026-01-14 & Ferdinando Fracasso & Aggiunte informazioni generali documento nella pagina iniziale & Riccardo Manisi \\
@@ -199,16 +228,7 @@ Gruppo BitByBit\\\\
 0.4.0 & 2026-01-12 & Marco Sanguin & Redazione \ref{sec:sprint2_RTB}, \ref{sec:sprint3_RTB} e inizio \ref{sec:sprint4_RTB} & Dennis Parolin \\
 \hline
 \rowcolor{gray!20}
-0.3.1 & 2026-01-11 & Riccardo Manisi & Aggiunta \ref{tab:RO3} e \ref{tab:RO4}. E aggiunte attività RTB. & Gabriele Scaggiante \\
-\hline
-\end{tabularx}
-
-% A capo dato che la quantità di versioni rompeva il layout della pagina
-
-\begin{tabularx}{\textwidth}{|c|c|p{0.225\linewidth}|X|c|}
-\hline
-\rowcolor{gray!60}
-\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+0.3.1 & 2026-01-11 & Riccardo Manisi & Aggiunta \ref{tab:RO3} e \ref{tab:RO4}. E aggiunte attività \term{Rtb}. & Gabriele Scaggiante \\
 \hline
 \rowcolor{white}
 0.3.0 & 2025-12-05 & Dennis Parolin & Redazione dell'intera sezione \ref{sec:pianificazione_lungo_termine} & Giovanni Visentin \\
@@ -219,7 +239,7 @@ Gruppo BitByBit\\\\
 \rowcolor{white}
 0.1.0 & 2025-12-3 & Dennis Parolin & Creazione del documento e redazione delle sezioni \ref{sec:scopo_documento}, \ref{sec:definizioni_acronimi_abbreviazioni}, \ref{sec:riferimenti}. & Giovanni Visentin \\
 \hline
-\end{tabularx}
+\end{longtable}
 \end{center}
 
 % --- INDICE ---
@@ -240,17 +260,17 @@ Gruppo BitByBit\\\\
 
 % =======================SCOPO DOCUMENTO================================
 \subsection{Scopo del documento} \label{sec:scopo_documento}
-Il \textit{Piano di Progetto} è un documento di natura gestionale che ha lo scopo di definire la pianificazione strategica e operativa delle attività che il gruppo \textit{BitByBit} intraprenderà durante lo sviluppo del progetto didattico.
+Il \textit{\term{Piano Di Progetto}} è un documento di natura gestionale che ha lo scopo di definire la pianificazione strategica e operativa delle attività che il gruppo \textit{BitByBit} intraprenderà durante lo sviluppo del progetto didattico.
 
 Il documento è fondamentale per garantire il controllo sull'avanzamento dei lavori e per assicurare il rispetto dei vincoli temporali e qualitativi. In particolare, i suoi obiettivi principali sono:
 
 \begin{itemize}
     \item \textbf{Pianificazione delle attività:} Definire le scadenze interne ed esterne, allocando le risorse temporali necessarie per il completamento di ogni fase.
-    \item \textbf{Gestione economica:} Stimare i costi previsti (preventivo) e monitorare i costi effettivi (consuntivo) per ogni periodo di rendicontazione, garantendo la trasparenza verso il committente.
+    \item \textbf{Gestione economica:} Stimare i costi previsti (preventivo) e monitorare i costi effettivi (consuntivo) per ogni periodo di rendicontazione, garantendo la trasparenza verso il \term{Committente}.
     \item \textbf{Analisi e mitigazione dei rischi:} Identificare le potenziali criticità che potrebbero ostacolare lo sviluppo del progetto.
 \end{itemize}
 
-Data la natura mutevole dei requisiti e la metodologia agile adottata, il presente documento seguirà un approccio \textbf{incrementale}. Verrà sottoposto a continue revisioni e aggiornamenti al termine di ogni fase significativa del ciclo di vita del software, per riflettere lo stato attuale del progetto e affinare le stime future in un'ottica di miglioramento continuo (\textit{continuous improvement}).
+Data la natura mutevole dei requisiti e la metodologia agile adottata, il presente documento seguirà un approccio \textbf{incrementale}. Verrà sottoposto a continue revisioni e aggiornamenti al termine di ogni fase significativa del \term{Ciclo Di Vita} del software, per riflettere lo stato attuale del progetto e affinare le stime future in un'ottica di miglioramento continuo (\textit{continuous improvement}).
 
 % =======================DEFINIZIONI, ACRONIMI E ABBREVIAZIONI================================
 
@@ -265,7 +285,7 @@ I termini tecnici, gli acronimi e le parole con significato specifico all'intern
 
 \subsubsection{Riferimenti normativi}\label{sec:riferimenti_normativi}
 \begin{itemize}
-\item \textbf{Capitolato d'appalto C4: \emph{L'app che Protegge e Trasforma}}\\
+\item \textbf{\term{Capitolato} d'appalto C4: \emph{L'app che Protegge e Trasforma}}\\
 Parti consultate: documento completo\\
 Versione: 1.0\\
 Ultimo accesso: \textit{2026-01-12}\\
@@ -281,7 +301,7 @@ Ultimo accesso: \textit{2026-01-14}\\
 
 \subsubsection{Riferimenti informativi} \label{sec:riferimenti_informativi}
 \begin{itemize}
-    \item \textbf{Slide sui \emph{processi di ciclo di vita del software} del Prof. Vardanega}\\
+    \item \textbf{Slide sui \emph{processi di \term{Ciclo Di Vita} del software} del Prof. Vardanega}\\
         Parti consultate: documento completo\\
         Versione: \textit{A.A.2025/2026}\\
         Ultimo accesso: \textit{2026-01-12}\\
@@ -314,11 +334,11 @@ Ultimo accesso: \textit{2026-01-14}\\
 \section{Analisi e gestione dei rischi} \label{sec:analisi_rischi}
 La gestione del rischio rappresenta una componente nevralgica nella pianificazione di progetto. Questa sezione si prefigge l'obiettivo di individuare preventivamente le potenziali criticità che potrebbero compromettere il rispetto dei vincoli temporali, la qualità del prodotto finale o l'efficienza del team. Una corretta analisi in tal senso è indispensabile per valutare la sostenibilità del carico di lavoro pianificato in relazione alle risorse disponibili.
 
-Il processo adottato dal gruppo \textit{BitByBit} segue un approccio sistematico e iterativo, strutturato in quattro fasi distinte che si ripetono ciclicamente durante l'intero ciclo di vita del software:
+Il \term{Processo} adottato dal gruppo \textit{BitByBit} segue un approccio sistematico e iterativo, strutturato in quattro fasi distinte che si ripetono ciclicamente durante l'intero \term{Ciclo Di Vita} del software:
 
 \begin{enumerate}
     \item \textbf{Identificazione:} Ricerca attiva delle potenziali fonti di rischio, analizzando sia aspetti strettamente tecnici che fattori legati all'organizzazione e alla sfera personale dei membri.
-    \item \textbf{Analisi:} Valutazione qualitativa e quantitativa dei rischi individuati. Per ciascuna voce viene stimata la probabilità di occorrenza e il potenziale impatto (gravità) sugli obiettivi dello sprint\textsuperscript{G} corrente e del progetto globale.
+    \item \textbf{Analisi:} Valutazione qualitativa e quantitativa dei rischi individuati. Per ciascuna voce viene stimata la probabilità di occorrenza e il potenziale impatto (gravità) sugli obiettivi dello \term{Sprint}\textsuperscript{G} corrente e del progetto globale.
     \item \textbf{Pianificazione:} Definizione proattiva di strategie atte a prevenire l'insorgere del rischio o, qualora la prevenzione totale non fosse possibile, predisposizione di piani di contingenza per mitigarne gli effetti negativi.
     \item \textbf{Controllo:} Monitoraggio costante dello stato del progetto per rilevare tempestivamente l'effettivo verificarsi dei rischi e attivare le contromisure pianificate.
 \end{enumerate}
@@ -352,10 +372,10 @@ Per facilitare la gestione e la consultazione, i rischi sono stati catalogati in
         Nome & Inesperienza tecnologica \\
         \hline
         \rowcolor{tableLineOdd}
-        Descrizione & Il team potrebbe incontrare difficoltà nell'apprendimento rapido dei framework e delle tecnologie richieste dal capitolato, causando rallentamenti nello sviluppo. \\
+        Descrizione & Il team potrebbe incontrare difficoltà nell'apprendimento rapido dei framework e delle tecnologie richieste dal \term{Capitolato}, causando rallentamenti nello sviluppo. \\
         \hline
         \rowcolor{tableLineEven}
-        Mitigazione & Studio individuale approfondito supportato da Proof of Concept (PoC) preliminari. Adozione di tecniche di \textit{pair programming} per diffondere la conoscenza nel gruppo e livellare le competenze. \\
+        Mitigazione & Studio individuale approfondito supportato da Proof of Concept (\term{Poc}) preliminari. Adozione di tecniche di \textit{pair programming} per diffondere la conoscenza nel gruppo e livellare le competenze. \\
         \hline
         \rowcolor{tableLineOdd}
         Frequenza probabile & Alta \\
@@ -384,7 +404,7 @@ Per facilitare la gestione e la consultazione, i rischi sono stati catalogati in
         Nome & Problemi configurazione strumenti software \\
         \hline
         \rowcolor{tableLineOdd}
-        Descrizione & Possibili malfunzionamenti, conflitti di versione o errata configurazione degli ambienti di sviluppo (IDE, dipendenze) tra i diversi membri del gruppo. \\
+        Descrizione & Possibili malfunzionamenti, conflitti di versione o errata configurazione degli ambienti di sviluppo (\term{Ide}, dipendenze) tra i diversi membri del gruppo. \\
         \hline
         \rowcolor{tableLineEven}
         Mitigazione & Standardizzazione dell'ambiente di sviluppo tramite containerizzazione (Docker). Stesura di guide interne per l'installazione e configurazione degli strumenti. \\
@@ -419,7 +439,7 @@ Per facilitare la gestione e la consultazione, i rischi sono stati catalogati in
         Descrizione & Rottura o indisponibilità temporanea del personal computer di un membro del gruppo, con conseguente impossibilità di contribuire allo sviluppo. \\
         \hline
         \rowcolor{tableLineEven}
-        Mitigazione & Utilizzo rigoroso del repository remoto (GitHub) per il versionamento. Questo garantisce che il lavoro non vada perso e permetta al membro di riprendere il lavoro da una postazione di riserva o universitaria. \\
+        Mitigazione & Utilizzo rigoroso del \term{Repository} remoto (GitHub) per il versionamento. Questo garantisce che il lavoro non vada perso e permetta al membro di riprendere il lavoro da una postazione di riserva o universitaria. \\
         \hline
         \rowcolor{tableLineOdd}
         Frequenza probabile & Bassa \\
@@ -451,7 +471,7 @@ Per facilitare la gestione e la consultazione, i rischi sono stati catalogati in
         Descrizione & Possibilità che vengano introdotti errori logici o di implementazione (bug) che compromettano le funzionalità già sviluppate o blocchino il progresso del progetto. \\
         \hline
         \rowcolor{tableLineEven}
-        Mitigazione & Applicazione rigorosa di Unit Testing e Integration Testing. Obbligo di Code Review ("approvazione") prima di ogni merge nel ramo principale. Adozione di pipeline di Continuous Integration (CI). \\
+        Mitigazione & Applicazione rigorosa di Unit Testing e Integration Testing. Obbligo di Code Review ("approvazione") prima di ogni \term{Merge} nel ramo principale. Adozione di pipeline di Continuous Integration (\term{Ci}). \\
         \hline
         \rowcolor{tableLineOdd}
         Frequenza probabile & Media \\
@@ -486,7 +506,7 @@ Per facilitare la gestione e la consultazione, i rischi sono stati catalogati in
         Descrizione & Rischio di sottostimare o sovrastimare significativamente il tempo necessario per completare un task, portando a scostamenti dal preventivo e ritardi sulla tabella di marcia. \\
         \hline
         \rowcolor{tableLineEven}
-        Mitigazione & Monitoraggio continuo a consuntivo per ricalcolare le metriche di produttività. Rimodulazione flessibile dello sprint backlog qualora si evidenziassero ritardi. \\
+        Mitigazione & Monitoraggio continuo a consuntivo per ricalcolare le metriche di produttività. Rimodulazione flessibile dello \term{Sprint Backlog} qualora si evidenziassero ritardi. \\
         \hline
         \rowcolor{tableLineOdd}
         Frequenza probabile & Alta \\
@@ -515,10 +535,10 @@ Per facilitare la gestione e la consultazione, i rischi sono stati catalogati in
         Nome & Divergenza sui requisiti \\
         \hline
         \rowcolor{tableLineOdd}
-        Descrizione & Possibile errata interpretazione delle richieste del proponente, che potrebbe portare allo sviluppo di funzionalità non conformi alle aspettative o inutili. \\
+        Descrizione & Possibile errata interpretazione delle richieste del \term{Proponente}, che potrebbe portare allo sviluppo di funzionalità non conformi alle aspettative o inutili. \\
         \hline
         \rowcolor{tableLineEven}
-        Mitigazione & Comunicazione frequente e formale con il proponente (verbali esterni). Revisione incrociata interna dei documenti di Analisi dei Requisiti prima della validazione. \\
+        Mitigazione & Comunicazione frequente e formale con il \term{Proponente} (verbali esterni). Revisione incrociata interna dei documenti di \term{Analisi Dei Requisiti} prima della \term{Validazione}. \\
         \hline
         \rowcolor{tableLineOdd}
         Frequenza probabile & Bassa \\
@@ -591,8 +611,40 @@ Per facilitare la gestione e la consultazione, i rischi sono stati catalogati in
         Pericolosità ripercussioni & Media \\
         \hline
     \end{tabularx}
-    \caption{Rischio assenza di un componente per periodo prolungato RO4}
+    \caption{Informazioni sul rischio RO4}
     \label{tab:RO4}
+\end{table}
+
+\subsubsection{RO5 - Dipendenza da risorse e permessi esterni}
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.4}
+    \begin{tabularx}{\textwidth}{|L|Z|}
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Tipologia Dato} & \textbf{Valore} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Codice & RO5 \\
+        \hline
+        \rowcolor{tableLineEven}
+        Nome & Mancanza o ritardo nella fornitura di permessi e risorse esterne \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Descrizione & Lo sviluppo del progetto può richiedere l'utilizzo di specifiche risorse, piattaforme (es. Cloud) o credenziali fornite direttamente dall'azienda \term{Proponente}. Eventuali ritardi nella fornitura di tali strumenti o la mancanza iniziale dei permessi necessari possono causare blocchi temporanei nelle normali attività di sviluppo e test, incidendo sulla tempistica dello \term{Sprint}. \\
+        \hline
+        \rowcolor{tableLineEven}
+        Mitigazione & Individuazione tempestiva e proattiva delle necessità tecniche per comunicarle prontamente all'azienda \term{Proponente}. In caso di attesa prolungata, riorganizzazione flessibile ed elastica dei task dello \term{Sprint} in modo da portare avanti le attività parallele e indipendenti dalle risorse bloccate, riducendo al minimo i tempi morti. \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Frequenza probabile & Media \\
+        \hline
+        \rowcolor{tableLineEven}
+        Pericolosità ripercussioni & Elevata \\
+        \hline
+    \end{tabularx}
+    \caption{Informazioni sul rischio RO5}
+    \label{tab:RO5}
 \end{table}
 
 % ======================= RISCHI INTERPERSONALI =======================
@@ -617,7 +669,7 @@ Per facilitare la gestione e la consultazione, i rischi sono stati catalogati in
         Descrizione & La presenza di appelli d'esame, progetti di altri corsi o lezioni obbligatorie può ridurre drasticamente la disponibilità oraria dei membri in periodi critici. \\
         \hline
         \rowcolor{tableLineEven}
-        Mitigazione & Pianificazione a lungo termine che evidenzi le date degli appelli nel calendario condiviso. Riduzione del carico di lavoro previsto negli sprint coincidenti con le sessioni d'esame. \\
+        Mitigazione & Pianificazione a lungo termine che evidenzi le date degli appelli nel calendario condiviso. Riduzione del carico di lavoro previsto negli \term{Sprint} coincidenti con le sessioni d'esame. \\
         \hline
         \rowcolor{tableLineOdd}
         Frequenza probabile & Alta \\
@@ -678,7 +730,7 @@ Per facilitare la gestione e la consultazione, i rischi sono stati catalogati in
         Nome & Conflitti nel gruppo \\
         \hline
         \rowcolor{tableLineOdd}
-        Descrizione & Divergenze di opinioni tecniche o metodologiche, oppure tensioni interpersonali che rallentano il processo decisionale e minano la serenità del gruppo. \\
+        Descrizione & Divergenze di opinioni tecniche o metodologiche, oppure tensioni interpersonali che rallentano il \term{Processo} decisionale e minano la serenità del gruppo. \\
         \hline
         \rowcolor{tableLineEven}
         Mitigazione & Promozione di un clima di dialogo aperto. Intervento del Responsabile di Progetto come mediatore. Adozione di sistemi di votazione democratica per le decisioni bloccanti. \\
@@ -738,10 +790,10 @@ Nella fase di candidatura si è teorizzato il seguente prospetto di ripartizione
     \label{tab:preventivo_candidatura}
 \end{table}
 
-Si stima inoltre una candidatura per la \textbf{Requirements and Technology Baseline (RTB)} entro il \textbf{2026-02-12}.
+Si stima inoltre una candidatura per la \textbf{Requirements and Technology \term{Baseline} (\term{Rtb})} entro il \textbf{2026-02-12}.
 
-% ======================= ATTIVITA PREVISTE PER RTB =======================
-\subsection{Attività previste per la Requirements and Technology Baseline (RTB)}
+% ======================= ATTIVITA PREVISTE PER \term{Rtb} =======================
+\subsection{Attività previste per la Requirements and Technology \term{Baseline} (\term{Rtb})}
 
 \begin{table}[H]
     \centering
@@ -753,58 +805,58 @@ Si stima inoltre una candidatura per la \textbf{Requirements and Technology Base
         \textbf{Attività} & \textbf{Descrizione} \\
         \hline
         \rowcolor{tableLineOdd}
-        Redazione norme di Progetto & Definisce le regole, le convenzioni e gli strumenti che regolano il \textit{Way of Working} del team, assicurando uniformità e coerenza nello svolgimento delle attività. \\
+        Redazione norme di Progetto & Definisce le regole, le convenzioni e gli strumenti che regolano il \textit{\term{Way Of Working}} del team, assicurando uniformità e coerenza nello svolgimento delle attività. \\
         \hline
         \rowcolor{tableLineEven}
-        Implementazione Sito & Implementazione del sito per facilitare la fruizione dei documenti prodotti dal gruppo durante i processi di ciclo di vita. \\
+        Implementazione Sito & Implementazione del sito per facilitare la fruizione dei documenti prodotti dal gruppo durante i processi di \term{Ciclo Di Vita}. \\
         \hline
         \rowcolor{tableLineOdd}
-        Redazione del Piano di Progetto & Pianifica le risorse, i costi e le scadenze temporali, delineando le attività passate, presenti e future per garantire il rispetto degli obiettivi prefissati. \\
+        Redazione del \term{Piano Di Progetto} & Pianifica le risorse, i costi e le scadenze temporali, delineando le attività passate, presenti e future per garantire il rispetto degli obiettivi prefissati. \\
         \hline
         \rowcolor{tableLineEven}
-        Redazione del Piano di Qualifica & Stabilisce le metriche e le procedure di controllo necessarie per verificare la qualità dei processi e del prodotto software durante l'intero ciclo di vita. \\
+        Redazione del \term{Piano Di Qualifica} & Stabilisce le metriche e le procedure di controllo necessarie per verificare la qualità dei processi e del prodotto software durante l'intero \term{Ciclo Di Vita}. \\
         \hline
         \rowcolor{tableLineOdd}
         Implementazione del cruscotto di valutazione & Implementazione del cruscotto per l'accertamento della qualità tramite lo strumento scelto dal gruppo. Riporta le misurazioni e le loro valutazioni per una migliore comprensione. \\
         \hline
         \rowcolor{tableLineEven}
-        Redazione casi d'uso per AdR & Scrittura della sezione del documento Analisi dei Requisiti relativa ai casi d'uso. \\
+        Redazione casi d'uso per AdR & Scrittura della sezione del documento \term{Analisi Dei Requisiti} relativa ai casi d'uso. \\
         \hline
         \rowcolor{tableLineEven}
-        Redazione requisiti per AdR & Implementazione della sezione del documento Analisi dei Requisiti relativa ai requisiti del prodotto software. \\
+        Redazione requisiti per AdR & Implementazione della sezione del documento \term{Analisi Dei Requisiti} relativa ai requisiti del prodotto software. \\
         \hline
         \rowcolor{tableLineEven}
-        Redazione Analisi dei Requisiti & Formalizza i requisiti funzionali, non funzionali e di vincolo concordati con il proponente, dettagliando i casi d'uso del sistema. \\
+        Redazione \term{Analisi Dei Requisiti} & Formalizza i requisiti funzionali, non funzionali e di vincolo concordati con il \term{Proponente}, dettagliando i casi d'uso del sistema. \\
         \hline
         \rowcolor{tableLineEven}
         Realizzazione del Proof of Concept & Prototipo software volto a verificare la fattibilità tecnica della soluzione e l'efficacia delle tecnologie selezionate per lo sviluppo. Utilizzato anche per familiarizzare con le tecnologie proposte. \\
         \hline
         \rowcolor{tableLineOdd}
-        Lettera di presentazione RTB & Documento formale che accompagna la consegna, ufficializzando la richiesta del gruppo di sostenere la revisione \textit{Requirements and Technology Baseline}. \\
+        Lettera di presentazione \term{Rtb} & Documento formale che accompagna la consegna, ufficializzando la richiesta del gruppo di sostenere la revisione \textit{Requirements and Technology \term{Baseline}}. \\
         \hline
     \end{tabularx}
-    \caption{Attività previste per la RTB}
+    \caption{Attività previste per la \term{Rtb}}
     \label{tab:attivita_rtb}
 \end{table}
 
-Per le fasi di \textbf{Requirements and Technology Baseline (RTB)} e \textbf{Product Baseline (PB)} sono state definite delle attività specifiche da completare. Queste sono fondamentali per una corretta gestione degli sprint che verranno eseguiti. Di seguito sono elencate le attività previste:
+Per le fasi di \textbf{Requirements and Technology \term{Baseline} (\term{Rtb})} e \textbf{Product \term{Baseline} (\term{Pb})} sono state definite delle attività specifiche da completare. Queste sono fondamentali per una corretta gestione degli \term{Sprint} che verranno eseguiti. Di seguito sono elencate le attività previste:
 
-Per garantire una corretta distribuzione del carico di lavoro e rispettare le scadenze previste per la RTB, è stata effettuata una stima dettagliata delle ore necessarie per ogni ruolo, suddivise per task specifici. Questa analisi permette di evidenziare come le diverse attività impattino sull'impegno complessivo dei membri del team.
-Il grafico seguente (Figura \ref{fig:distribuzione_ore_rtb}) illustra visivamente il monte ore totale previsto per ciascun ruolo nella fase di RTB, evidenziando tramite i diversi colori il contributo delle singole attività al carico di lavoro complessivo.
+Per garantire una corretta distribuzione del carico di lavoro e rispettare le scadenze previste per la \term{Rtb}, è stata effettuata una stima dettagliata delle ore necessarie per ogni ruolo, suddivise per task specifici. Questa analisi permette di evidenziare come le diverse attività impattino sull'impegno complessivo dei membri del team.
+Il grafico seguente (Figura \ref{fig:distribuzione_ore_rtb}) illustra visivamente il monte ore totale previsto per ciascun ruolo nella fase di \term{Rtb}, evidenziando tramite i diversi colori il contributo delle singole attività al carico di lavoro complessivo.
 
-In particolare, per stimare le ore del Verificatore visibili nel grafico, è stato deciso di calcolarle come il 20\% delle ore previste per quella specifica task. Ad esempio, se l'attività \textbf{Redazione verbali} occupa 17 ore del Responsabile, la relativa verifica è stimata in 3.4 ore. È importante notare che questa è solo una stima: eventuali ore risparmiate su alcune task potranno essere sfruttate per la verifica di altre attività.
+In particolare, per stimare le ore del Verificatore visibili nel grafico, è stato deciso di calcolarle come il 20\% delle ore previste per quella specifica task. Ad esempio, se l'attività \textbf{Redazione verbali} occupa 17 ore del Responsabile, la relativa \term{Verifica} è stimata in 3.4 ore. È importante notare che questa è solo una stima: eventuali ore risparmiate su alcune task potranno essere sfruttate per la \term{Verifica} di altre attività.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{../../../../resources/distribuzione_ore_rtb.png}
-    \caption{Distribuzione ore produttive stimate per ruolo e attività - RTB}
+    \caption{Distribuzione ore produttive stimate per ruolo e attività - \term{Rtb}}
     \label{fig:distribuzione_ore_rtb}
 \end{figure}
 
-% ======================= ATTIVITA PREVISTE PER PB =======================
-\subsection{Attività previste per la Product Baseline (PB)}
+% ======================= ATTIVITA PREVISTE PER \term{Pb} =======================
+\subsection{Attività previste per la Product \term{Baseline} (\term{Pb})}
 La redazione di questo paragrafo sarà effettuato in seguito al superamento della
-\textbf{Requirements and Technology Baseline (RTB)}.
+\textbf{Requirements and Technology \term{Baseline} (\term{Rtb})}.
 
 
 %============================================== 
@@ -815,25 +867,25 @@ La redazione di questo paragrafo sarà effettuato in seguito al superamento dell
 
 % ======================= INTRODUZIONE =======================
 \subsection{Introduzione}
-Il gruppo \textit{BitByBit} ha scelto di organizzare lo sviluppo del progetto seguendo un modello iterativo e incrementale, ispirato ai principi della metodologia \textbf{Agile}. Il lavoro sarà suddiviso in unità temporali denominate \textit{sprint}, ciascuno con una durata due settimane.
+Il gruppo \textit{BitByBit} ha scelto di organizzare lo sviluppo del progetto seguendo un modello iterativo e incrementale, ispirato ai principi della metodologia \textbf{Agile}. Il lavoro sarà suddiviso in unità temporali denominate \textit{\term{Sprint}}, ciascuno con una durata due settimane.
 
-Questa strategia permette di mantenere una pianificazione flessibile e adattiva. All'inizio di ogni iterazione, il gruppo definirà gli obiettivi a breve termine e assegnerà le attività, prevedendo una \textbf{rotazione dei ruoli}. Tale rotazione è fondamentale per garantire che ogni membro del team acquisisca competenze trasversali e abbia visione completa del processo produttivo.
+Questa strategia permette di mantenere una pianificazione flessibile e adattiva. All'inizio di ogni iterazione, il gruppo definirà gli obiettivi a breve termine e assegnerà le attività, prevedendo una \textbf{rotazione dei ruoli}. Tale rotazione è fondamentale per garantire che ogni membro del team acquisisca competenze trasversali e abbia visione completa del \term{Processo} produttivo.
 
-Elemento cardine del metodo di lavoro sarà il confronto con il proponente, l'azienda \textbf{Miriade}. Sono previsti incontri online su \textbf{Google Meet} o con il canale indiretto concordato (\textbf{Google Chat}) per verificare la conformità di quanto prodotto rispetto alle aspettative.
+Elemento cardine del metodo di lavoro sarà il confronto con il \term{Proponente}, l'azienda \textbf{Miriade}. Sono previsti incontri online su \textbf{Google Meet} o con il canale indiretto concordato (\textbf{Google Chat}) per verificare la conformità di quanto prodotto rispetto alle aspettative.
 
-Per ogni sprint descritto in questa sezione, verranno riportate le seguenti informazioni:
+Per ogni \term{Sprint} descritto in questa sezione, verranno riportate le seguenti informazioni:
 \begin{itemize}
-    \item \textbf{Obiettivi e attività:} Descrizione delle finalità dello sprint e delle task pianificate.
+    \item \textbf{Obiettivi e attività:} Descrizione delle finalità dello \term{Sprint} e delle task pianificate.
     \item \textbf{Gestione dei rischi:} Analisi dei rischi specifici che potrebbero manifestarsi nel periodo considerato.
     \item \textbf{Rendicontazione:} Prospetto preventivo delle ore e dei costi stimati, seguito dal consuntivo finale con l'analisi degli eventuali scostamenti.
 \end{itemize}
 
-% ======================= RTB =======================
-\subsection{Requirements and Technology Baseline (RTB)}
+% ======================= \term{Rtb} =======================
+\subsection{Requirements and Technology \term{Baseline} (\term{Rtb})}
 
-\subsubsection{Sprint 1}\label{sec:sprint1_RTB}
+\subsubsection{\term{Sprint} 1}\label{sec:sprint1_RTB}
 
-% --- TABELLA RIEPILOGATIVA SPRINT ---
+% --- TABELLA RIEPILOGATIVA \term{Sprint} ---
 \begin{table}[H]
     \centering
     \renewcommand{\arraystretch}{1.5}
@@ -846,24 +898,24 @@ Per ogni sprint descritto in questa sezione, verranno riportate le seguenti info
         \multicolumn{2}{|c|}{\cellcolor{tableHeader}\textbf{Giorni di ritardo}} & \multicolumn{2}{c|}{0} \\
         \hline
     \end{tabularx}
-    \caption{Riepilogo temporale Sprint 1}
+    \caption{Riepilogo temporale \term{Sprint} 1}
 \end{table}
 
 \paragraph{Informazioni generali e attività da svolgere}
-Lo Sprint 1 ha rappresentato l'avvio operativo del progetto. L'obiettivo primario era la definizione delle funzionalità da proporre al committente e l'avvio della produzione documentale, oltre all'organizzazione interna del gruppo (ruoli e strumenti).
+Lo \term{Sprint} 1 ha rappresentato l'avvio operativo del progetto. L'obiettivo primario era la definizione delle funzionalità da proporre al \term{Committente} e l'avvio della produzione documentale, oltre all'organizzazione interna del gruppo (ruoli e strumenti).
 
 Le attività pianificate e svolte includono:
 \begin{itemize}
-    \item \textit{Analisi:} Studio del capitolato e selezione delle funzionalità chiave.
+    \item \textit{Analisi:} Studio del \term{Capitolato} e selezione delle funzionalità chiave.
     \item \textit{Incontri:} Preparazione delle domande per il primo meeting con Miriade.
-    \item \textit{Documentazione:} Avvio della stesura dei documenti \textit{Analisi dei Requisiti} (AdR), \textit{Norme di Progetto} (NdP) e \textit{Piano di Progetto} (PdP).
+    \item \textit{Documentazione:} Avvio della stesura dei documenti \textit{\term{Analisi Dei Requisiti}} (AdR), \textit{Norme di Progetto} (NdP) e \textit{\term{Piano Di Progetto}} (PdP).
     \item \textit{Gestione:} Discussione e assegnazione dei ruoli.
 \end{itemize}
 
 \paragraph{Rischi attesi}
-Per questo sprint, i rischi principali identificati erano legati alla comprensione del dominio e all'organizzazione iniziale:
+Per questo \term{Sprint}, i rischi principali identificati erano legati alla comprensione del dominio e all'organizzazione iniziale:
 \begin{itemize}
-    \item \textbf{RO2}: Incomprensione dei requisiti iniziali o delle richieste del capitolato.
+    \item \textbf{RO2}: Incomprensione dei requisiti iniziali o delle richieste del \term{Capitolato}.
     \item \textbf{RT1}: Difficoltà nell'uso dei nuovi strumenti di versionamento e gestione.
 \end{itemize}
 
@@ -898,7 +950,7 @@ Si prospetta l'utilizzo delle seguenti risorse:
         G. Visentin & 2 & - & 1 & - & - & 1 \\
         \hline
     \end{tabularx}
-    \caption{Preventivo orario per componente - Sprint 1}
+    \caption{Preventivo orario per componente - \term{Sprint} 1}
     \label{tab:preventivo_sprint1}
 \end{table}
 
@@ -923,7 +975,7 @@ Si prospetta l'utilizzo delle seguenti risorse:
             \node [fill=pieAnal, label=right:Analista] {}; & \node [fill=pieVer, label=right:Verificatore] {}; \\
         };
     \end{tikzpicture}
-    \caption{Distribuzione ore per ruolo - Preventivo Sprint 1}
+    \caption{Distribuzione ore per ruolo - Preventivo \term{Sprint} 1}
 \end{figure}
 
 \paragraph{Consuntivo}
@@ -957,7 +1009,7 @@ Di seguito il resoconto delle ore effettivamente impiegate:
         G. Visentin & 2 & - & 1 & - & - & 1 \\
         \hline
     \end{tabularx}
-    \caption{Consuntivo orario per componente - Sprint 1}
+    \caption{Consuntivo orario per componente - \term{Sprint} 1}
     \label{tab:consuntivo_sprint1}
 \end{table}
 
@@ -982,11 +1034,11 @@ Di seguito il resoconto delle ore effettivamente impiegate:
             \node [fill=pieAnal, label=right:Analista] {}; & \node [fill=pieVer, label=right:Verificatore] {}; \\
         };
     \end{tikzpicture}
-    \caption{Distribuzione ore per ruolo - Consuntivo Sprint 1}
+    \caption{Distribuzione ore per ruolo - Consuntivo \term{Sprint} 1}
 \end{figure}
 
 \paragraph{Aggiornamento delle risorse rimanenti}
-Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la chiusura dello Sprint 1.
+Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la chiusura dello \term{Sprint} 1.
 
 \begin{table}[H]
     \centering
@@ -1018,20 +1070,20 @@ Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la
         \textbf{Totale} & - & \textbf{17} & \textbf{395\euro} & \textbf{523 \textcolor{red}{(-17)}} & \textbf{10.975\euro \textcolor{red}{(-395\euro)}} \\
         \hline
     \end{tabularx}
-    \caption{Sprint 1 - Variazione nelle risorse disponibili}
+    \caption{\term{Sprint} 1 - Variazione nelle risorse disponibili}
 \end{table}
 
 \paragraph{Rischi incontrati}
-Durante lo sprint si è dovuto gestire il rischio \textbf{RO1 (Errata stima dei costi e tempi)} e \textbf{RI2 (Problemi personali)}. Le attività di stesura dei documenti si sono rivelate più complesse del previsto, richiedendo un maggiore impegno per mantenere il passo con la pianificazione. Inoltre, è stato necessario riorganizzare alcune attività a causa di impegni personali imprevisti di alcuni membri, gestendo il tutto tramite una flessibile ridistribuzione dei task.
+Durante lo \term{Sprint} si è dovuto gestire il rischio \textbf{RO1 (Errata stima dei costi e tempi)} e \textbf{RI2 (Problemi personali)}. Le attività di stesura dei documenti si sono rivelate più complesse del previsto, richiedendo un maggiore impegno per mantenere il passo con la pianificazione. Inoltre, è stato necessario riorganizzare alcune attività a causa di impegni personali imprevisti di alcuni membri, gestendo il tutto tramite una flessibile ridistribuzione dei task.
 
 \paragraph{Retrospettiva}
-La Sprint Retrospective ha confermato il raggiungimento degli obiettivi principali: l'avvio della produzione documentale e la definizione dell'infrastruttura di progetto. Nonostante la complessità riscontrata nei documenti, il gruppo è riuscito a procedere secondo i piani. Per migliorare l'efficienza futura, è stato deciso di adottare ufficialmente le Pull Request per un migliore controllo di configurazione e verifica.
+La \term{Sprint Retrospective} ha confermato il raggiungimento degli obiettivi principali: l'avvio della produzione documentale e la definizione dell'infrastruttura di progetto. Nonostante la complessità riscontrata nei documenti, il gruppo è riuscito a procedere secondo i piani. Per migliorare l'efficienza futura, è stato deciso di adottare ufficialmente le \term{Pull Request} per un migliore controllo di configurazione e \term{Verifica}.
 
 %--------------------------------------------------------------------------------------------------%
 
-\subsubsection{Sprint 2}\label{sec:sprint2_RTB}
+\subsubsection{\term{Sprint} 2}\label{sec:sprint2_RTB}
 
-% --- TABELLA RIEPILOGATIVA SPRINT ---
+% --- TABELLA RIEPILOGATIVA \term{Sprint} ---
 \begin{table}[H]
     \centering
     \renewcommand{\arraystretch}{1.5}
@@ -1044,22 +1096,22 @@ La Sprint Retrospective ha confermato il raggiungimento degli obiettivi principa
         \multicolumn{2}{|c|}{\cellcolor{tableHeader}\textbf{Giorni di ritardo}} & \multicolumn{2}{c|}{0} \\
         \hline
     \end{tabularx}
-    \caption{Riepilogo temporale Sprint 2}
+    \caption{Riepilogo temporale \term{Sprint} 2}
 \end{table}
 
 \paragraph{Informazioni generali e attività da svolgere}
-Lo Sprint 2 è stato dedicato principalmente all'analisi dei requisiti e al perfezionamento della documentazione di base. In collaborazione con la proponente, si sono approfonditi e definiti nel dettaglio i casi d'uso scelti, così da avere un quadro chiaro delle funzionalità da sviluppare. Sul piano organizzativo, il gruppo ha continuato la stesura delle \textit{Norme di Progetto} (NdP) e riorganizzato i file all'interno della repository per renderla più ordinata e funzionale.
+Lo \term{Sprint} 2 è stato dedicato principalmente all'\term{Analisi Dei Requisiti} e al perfezionamento della documentazione di base. In collaborazione con la \term{Proponente}, si sono approfonditi e definiti nel dettaglio i casi d'uso scelti, così da avere un quadro chiaro delle funzionalità da sviluppare. Sul piano organizzativo, il gruppo ha continuato la stesura delle \textit{Norme di Progetto} (NdP) e riorganizzato i file all'interno della \term{Repository} per renderla più ordinata e funzionale.
 
 Le attività pianificate e svolte includono:
 \begin{itemize}
     \item \textbf{Analisi:} Studio e approfondimento delle funzionalità scelte.
-    \item \textbf{Incontri:} Chiarimenti con la proponente su particolari funzionalit\`a e casi d'uso.
-    \item \textbf{Documentazione:} Prima redazione dell'\textit{Analisi dei Requisiti} (AdR), completa di casi d'uso, e avanzamento nelle \textit{Norme di Progetto} (NdP).
+    \item \textbf{Incontri:} Chiarimenti con la \term{Proponente} su particolari funzionalit\`a e casi d'uso.
+    \item \textbf{Documentazione:} Prima redazione dell'\textit{\term{Analisi Dei Requisiti}} (AdR), completa di casi d'uso, e avanzamento nelle \textit{Norme di Progetto} (NdP).
     \item \textbf{Gestione:} Discussione e assegnazione dei ruoli.
 \end{itemize}
 
 \paragraph{Rischi attesi}
-Per questo sprint, i rischi principali identificati erano legati alla comprensione delle funzionalit\`a e alla redazione dei casi d'uso:
+Per questo \term{Sprint}, i rischi principali identificati erano legati alla comprensione delle funzionalit\`a e alla redazione dei casi d'uso:
 \begin{itemize}
     
     \item \textbf{RT1}: Difficoltà nell'uso dei nuovi strumenti di versionamento e gestione.
@@ -1099,7 +1151,7 @@ Si prospetta l'utilizzo delle seguenti risorse:
         G. Visentin & - & - & 3 & - & - & 2 \\
         \hline
     \end{tabularx}
-    \caption{Preventivo orario per componente - Sprint 2}
+    \caption{Preventivo orario per componente - \term{Sprint} 2}
     \label{tab:preventivo_sprint2}
 \end{table}
 
@@ -1124,7 +1176,7 @@ Si prospetta l'utilizzo delle seguenti risorse:
             \node [fill=pieAnal, label=right:Analista] {}; & \node [fill=pieVer, label=right:Verificatore] {}; \\
         };
     \end{tikzpicture}
-    \caption{Distribuzione ore per ruolo - Preventivo Sprint 2}
+    \caption{Distribuzione ore per ruolo - Preventivo \term{Sprint} 2}
 \end{figure}
 
 \paragraph{Consuntivo}
@@ -1158,7 +1210,7 @@ Di seguito il resoconto delle ore effettivamente impiegate:
         G. Visentin & 1 \textcolor{red}{(+1)} & - & 2 \textcolor{red}{(-1)} & - & - & 3 \textcolor{red}{(+1)} \\
         \hline
     \end{tabularx}
-    \caption{Consuntivo orario per componente - Sprint 2}
+    \caption{Consuntivo orario per componente - \term{Sprint} 2}
     \label{tab:consuntivo_sprint2}
 \end{table}
 
@@ -1183,11 +1235,11 @@ Di seguito il resoconto delle ore effettivamente impiegate:
             \node [fill=pieAnal, label=right:Analista] {}; & \node [fill=pieVer, label=right:Verificatore] {}; \\
         };
     \end{tikzpicture}
-    \caption{Distribuzione ore per ruolo - Consuntivo Sprint 2}
+    \caption{Distribuzione ore per ruolo - Consuntivo \term{Sprint} 2}
 \end{figure}
 
 \paragraph{Aggiornamento delle risorse rimanenti}
-Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la chiusura dello Sprint 2.
+Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la chiusura dello \term{Sprint} 2.
 
 \begin{table}[H]
     \centering
@@ -1219,20 +1271,20 @@ Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la
         \textbf{Totale} & - & \textbf{41} & \textbf{970\euro} & \textbf{482 \textcolor{red}{(-41)}} & \textbf{10.005\euro \textcolor{red}{(-970\euro)}} \\
         \hline
     \end{tabularx}
-    \caption{Sprint 2 - Variazione nelle risorse disponibili}
+    \caption{\term{Sprint} 2 - Variazione nelle risorse disponibili}
 \end{table}
 
 \paragraph{Rischi incontrati}
-Durante questo sprint abbiamo riscontrato il rischio \textbf{RO1 (Errata stima dei tempi)}, in quanto l'analisi dettagliata dei casi d'uso ha richiesto più tempo del previsto. Si è presentato inoltre il rischio \textbf{RO2 (Incomprensione dei requisiti)}, risolto tramite un confronto diretto con la proponente per chiarire le funzionalità ambigue. Infine, la concomitanza con lo \textbf{studio per altri corsi (RI1)} ha rallentato parzialmente il ritmo di lavoro. Abbiamo gestito queste criticità dando priorità alla definizione testuale dei requisiti, così da avere una base solida per il lavoro futuro.
+Durante questo \term{Sprint} abbiamo riscontrato il rischio \textbf{RO1 (Errata stima dei tempi)}, in quanto l'analisi dettagliata dei casi d'uso ha richiesto più tempo del previsto. Si è presentato inoltre il rischio \textbf{RO2 (Incomprensione dei requisiti)}, risolto tramite un confronto diretto con la \term{Proponente} per chiarire le funzionalità ambigue. Infine, la concomitanza con lo \textbf{studio per altri corsi (RI1)} ha rallentato parzialmente il ritmo di lavoro. Abbiamo gestito queste criticità dando priorità alla definizione testuale dei requisiti, così da avere una base solida per il lavoro futuro.
 
 \paragraph{Retrospettiva}
-La retrospettiva ha mostrato un bilancio positivo per quanto riguarda la comprensione del dominio del progetto e il consolidamento della repository. Tuttavia, a causa del tempo dedicato all'analisi e allo studio individuale, non è stato possibile completare tutti i diagrammi UML dei casi d'uso, che sono stati posticipati allo sprint successivo. Per ottimizzare il lavoro, abbiamo deciso di suddividere i diagrammi rimanenti in task più piccoli, così da completare la documentazione senza impattare sull'inizio dello sviluppo.
+La retrospettiva ha mostrato un bilancio positivo per quanto riguarda la comprensione del dominio del progetto e il consolidamento della \term{Repository}. Tuttavia, a causa del tempo dedicato all'analisi e allo studio individuale, non è stato possibile completare tutti i diagrammi UML dei casi d'uso, che sono stati posticipati allo \term{Sprint} successivo. Per ottimizzare il lavoro, abbiamo deciso di suddividere i diagrammi rimanenti in task più piccoli, così da completare la documentazione senza impattare sull'inizio dello sviluppo.
 
 %-----------------------------------------------------------------------------------------------------------------%
 
-\subsubsection{Sprint 3}\label{sec:sprint3_RTB}
+\subsubsection{\term{Sprint} 3}\label{sec:sprint3_RTB}
 
-% --- TABELLA RIEPILOGATIVA SPRINT ---
+% --- TABELLA RIEPILOGATIVA \term{Sprint} ---
 \begin{table}[H]
     \centering
     \renewcommand{\arraystretch}{1.5}
@@ -1245,23 +1297,23 @@ La retrospettiva ha mostrato un bilancio positivo per quanto riguarda la compren
         \multicolumn{2}{|c|}{\cellcolor{tableHeader}\textbf{Giorni di ritardo}} & \multicolumn{2}{c|}{0} \\
         \hline
     \end{tabularx}
-    \caption{Riepilogo temporale Sprint 3}
+    \caption{Riepilogo temporale \term{Sprint} 3}
 \end{table}
 
 \paragraph{Informazioni generali e attività da svolgere}
-L'attività dello Sprint 3 è iniziata con il completamento dei diagrammi UML relativi ai casi d'uso. Tale materiale è stato sottoposto a revisione con un docente per verificarne la correttezza formale; il colloquio ha però evidenziato la necessità di importanti interventi strutturali, rendendo necessaria una fase di riprogettazione non preventivata. Successivamente, è stata avviata la stesura del \textbf{Piano di Qualifica}. Lo sprint si è concluso con l'implementazione di alcune migliorie alla struttura e all'interfaccia del sito web di progetto.
+L'attività dello \term{Sprint} 3 è iniziata con il completamento dei diagrammi UML relativi ai casi d'uso. Tale materiale è stato sottoposto a revisione con un docente per verificarne la correttezza formale; il colloquio ha però evidenziato la necessità di importanti interventi strutturali, rendendo necessaria una fase di riprogettazione non preventivata. Successivamente, è stata avviata la stesura del \textbf{\term{Piano Di Qualifica}}. Lo \term{Sprint} si è concluso con l'implementazione di alcune migliorie alla struttura e all'interfaccia del sito web di progetto.
 
 Le attività pianificate e svolte includono:
 \begin{itemize}
     \item \textbf{Analisi:} Studio degli UML, e delle metriche di qualit\`a.
     \item \textbf{Incontri:} Revisione dei diagrammi UML con il professore per accertamento della correttezza formale.
-    \item \textbf{Documentazione:} Avanzamento nel completamento dei diagrammi UML dei casi d'uso nell' \textit{Analisi dei Requisiti} (AdR); prima redazione del \textit{Piano di Qualifica} (PdQ) e aggiornamento delle \textit{Norme di Progetto} (NdP).
+    \item \textbf{Documentazione:} Avanzamento nel completamento dei diagrammi UML dei casi d'uso nell' \textit{\term{Analisi Dei Requisiti}} (AdR); prima redazione del \textit{\term{Piano Di Qualifica}} (PdQ) e aggiornamento delle \textit{Norme di Progetto} (NdP).
     \item \textbf{Gestione:}Implementazione di migliorie tecniche al sito web.
 \end{itemize}
 
 
 \paragraph{Rischi attesi}
-Per lo svolgimento dello Sprint 3, sono stati individuati i seguenti rischi principali, legati sia alla natura delle attività che al periodo di riferimento:
+Per lo svolgimento dello \term{Sprint} 3, sono stati individuati i seguenti rischi principali, legati sia alla natura delle attività che al periodo di riferimento:
 
 \begin{itemize}
     \item \textbf{RO1}: Sottostima dei tempi necessari per integrare le correzioni ai diagrammi UML a seguito della revisione con il docente.
@@ -1300,7 +1352,7 @@ Si prospetta l'utilizzo delle seguenti risorse:
         G. Visentin & - & 2 & 4 & - & - & 2 \\
         \hline
     \end{tabularx}
-    \caption{Preventivo orario per componente - Sprint 3}
+    \caption{Preventivo orario per componente - \term{Sprint} 3}
     \label{tab:preventivo_sprint3}
 \end{table}
 
@@ -1325,7 +1377,7 @@ Si prospetta l'utilizzo delle seguenti risorse:
             \node [fill=pieAnal, label=right:Analista] {}; & \node [fill=pieVer, label=right:Verificatore] {}; \\
         };
     \end{tikzpicture}
-    \caption{Distribuzione ore per ruolo - Preventivo Sprint 3}
+    \caption{Distribuzione ore per ruolo - Preventivo \term{Sprint} 3}
 \end{figure}
 
 \paragraph{Consuntivo}
@@ -1359,7 +1411,7 @@ Di seguito il resoconto delle ore effettivamente impiegate:
         G. Visentin & - & - \textcolor{red}{(-2)} & 5 \textcolor{red}{(+1)} & - & - & 1 \textcolor{red}{(-1)} \\
         \hline
     \end{tabularx}
-    \caption{Consuntivo orario per componente - Sprint 3}
+    \caption{Consuntivo orario per componente - \term{Sprint} 3}
     \label{tab:consuntivo_sprint3}
 \end{table}
 
@@ -1384,11 +1436,11 @@ Di seguito il resoconto delle ore effettivamente impiegate:
             \node [fill=pieAnal, label=right:Analista] {}; & \node [fill=pieVer, label=right:Verificatore] {}; \\
         };
     \end{tikzpicture}
-    \caption{Distribuzione ore per ruolo - Consuntivo Sprint 3}
+    \caption{Distribuzione ore per ruolo - Consuntivo \term{Sprint} 3}
 \end{figure}
 
 \paragraph{Aggiornamento delle risorse rimanenti}
-Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la chiusura dello Sprint 3.
+Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la chiusura dello \term{Sprint} 3.
 
 \begin{table}[H]
     \centering
@@ -1420,20 +1472,20 @@ Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la
         \textbf{Totale} & - & \textbf{35,5} & \textbf{820\euro} & \textbf{446,5 \textcolor{red}{(-35,5)}} & \textbf{9.185\euro \textcolor{red}{(-820\euro)}} \\
         \hline
     \end{tabularx}
-    \caption{Sprint 3 - Variazione nelle risorse disponibili}
+    \caption{\term{Sprint} 3 - Variazione nelle risorse disponibili}
 \end{table}
 
 \paragraph{Rischi incontrati}
-Durante lo sprint si è verificata l'occorrenza dei rischi \textbf{RI1 (Impegni accademici)} e \textbf{RI2 (Problemi personali)}, la cui gestione è risultata critica a causa della sovrapposizione tra le scadenze del progetto e il periodo di festività in cui molti componenti del gruppo erano indisponibili. Tale situazione ha richiesto una pianificazione più flessibile per garantire l'avanzamento dei lavori. Inoltre, l'interazione con il docente ha confermato la presenza del rischio \textbf{RO1 (Errata stima dei tempi)}: le correzioni strutturali richieste sui diagrammi UML hanno comportato un carico di lavoro aggiuntivo non inizialmente preventivato e hanno reso necessario il rinvio del completamento dell'Analisi dei Requisiti allo sprint successivo.
+Durante lo \term{Sprint} si è verificata l'occorrenza dei rischi \textbf{RI1 (Impegni accademici)} e \textbf{RI2 (Problemi personali)}, la cui gestione è risultata critica a causa della sovrapposizione tra le scadenze del progetto e il periodo di festività in cui molti componenti del gruppo erano indisponibili. Tale situazione ha richiesto una pianificazione più flessibile per garantire l'avanzamento dei lavori. Inoltre, l'interazione con il docente ha confermato la presenza del rischio \textbf{RO1 (Errata stima dei tempi)}: le correzioni strutturali richieste sui diagrammi UML hanno comportato un carico di lavoro aggiuntivo non inizialmente preventivato e hanno reso necessario il rinvio del completamento dell'\term{Analisi Dei Requisiti} allo \term{Sprint} successivo.
 
 \paragraph{Retrospettiva}
-La retrospettiva dello Sprint 3 ha confermato l'importanza del confronto con il docente per garantire la correttezza dell'analisi prodotta. Tuttavia, è emerso come la concomitanza con il periodo festivo e il carico degli impegni personali abbiano influito sulla produttività del gruppo. Sebbene sia stata avviata con successo la stesura del \textbf{Piano di Qualifica}, alcune attività hanno subito dei ritardi rispetto alla pianificazione: il completamento dell'\textit{Analisi dei Requisiti} e l'aggiornamento del \textit{Piano di Progetto} sono stati posticipati allo sprint successivo. Per il futuro, si rende necessaria una stima più cautelativa delle ore di lavoro effettive nei periodi di sospensione dell'attività didattica.
+La retrospettiva dello \term{Sprint} 3 ha confermato l'importanza del confronto con il docente per garantire la correttezza dell'analisi prodotta. Tuttavia, è emerso come la concomitanza con il periodo festivo e il carico degli impegni personali abbiano influito sulla produttività del gruppo. Sebbene sia stata avviata con successo la stesura del \textbf{\term{Piano Di Qualifica}}, alcune attività hanno subito dei ritardi rispetto alla pianificazione: il completamento dell'\textit{\term{Analisi Dei Requisiti}} e l'aggiornamento del \textit{\term{Piano Di Progetto}} sono stati posticipati allo \term{Sprint} successivo. Per il futuro, si rende necessaria una stima più cautelativa delle ore di lavoro effettive nei periodi di sospensione dell'attività didattica.
 
 %-------------------------------------------------------------------------------------------------%
 
-\subsubsection{Sprint 4}\label{sec:sprint4_RTB}
+\subsubsection{\term{Sprint} 4}\label{sec:sprint4_RTB}
 
-% --- TABELLA RIEPILOGATIVA SPRINT ---
+% --- TABELLA RIEPILOGATIVA \term{Sprint} ---
 \begin{table}[H]
     \centering
     \renewcommand{\arraystretch}{1.5}
@@ -1446,29 +1498,29 @@ La retrospettiva dello Sprint 3 ha confermato l'importanza del confronto con il 
         \multicolumn{2}{|c|}{\cellcolor{tableHeader}\textbf{Giorni di ritardo}} & \multicolumn{2}{c|}{0} \\
         \hline
     \end{tabularx}
-    \caption{Riepilogo temporale Sprint 4}
+    \caption{Riepilogo temporale \term{Sprint} 4}
 \end{table}
 
 \paragraph{Informazioni generali e attività da svolgere}
-Lo Sprint 4 è stato focalizzato sul completamento della documentazione di analisi e sull'avvio delle attività tecniche legate al \textit{Proof of Concept (PoC)}. A seguito della revisione interna, sono state integrate le rappresentazioni grafiche degli UML nell'Analisi dei Requisiti. Un impegno significativo è stato dedicato all'evoluzione del \textit{Piano di Qualifica} e delle \textit{Norme di Progetto}, definendo nel dettaglio i processi di codifica, verifica e validazione. Sul piano tecnico, è stato avviato lo studio delle tecnologie necessarie per il prototipo e sono state apportate migliorie all'automazione della repository (GitHub Actions).
+Lo \term{Sprint} 4 è stato focalizzato sul completamento della documentazione di analisi e sull'avvio delle attività tecniche legate al \textit{Proof of Concept (\term{Poc})}. A seguito della revisione interna, sono state integrate le rappresentazioni grafiche degli UML nell'\term{Analisi Dei Requisiti}. Un impegno significativo è stato dedicato all'evoluzione del \textit{\term{Piano Di Qualifica}} e delle \textit{Norme di Progetto}, definendo nel dettaglio i processi di codifica, \term{Verifica} e \term{Validazione}. Sul piano tecnico, è stato avviato lo studio delle tecnologie necessarie per il prototipo e sono state apportate migliorie all'automazione della \term{Repository} (\term{Github Actions}).
 
 Le attività pianificate e svolte includono:
 \begin{itemize}
-    \item \textit{Analisi:} Studio delle metriche di qualit\`a e delle tecnologie per la realizzazione del Proof of Concept.
-    \item \textit{Incontri:} Riunione di coordinamento interna per la redistribuzione del carico di lavoro.
-    \item \textit{Documentazione:} Redazione nelle \textit{Norme di Progetto} delle sezioni relative a codifica, verifica e validazione; aggiornamento del \textit{Piano di Qualifica} con le metodologie di testing e il cruscotto di valutazione; caricamento dei verbali firmati nella repository.
-    \item \textit{Gestione:} Ottimizzazione dei processi automatizzati (GitHub Actions), riorganizzazione dei documenti sul sito web.
+    \item \textbf{Analisi:} Studio delle metriche di qualit\`a e delle tecnologie per la realizzazione del Proof of Concept.
+    \item \textbf{Incontri:} Riunione di coordinamento interna per la redistribuzione del carico di lavoro.
+    \item \textbf{Documentazione:} Redazione nelle \textit{Norme di Progetto} delle sezioni relative a codifica, \term{Verifica} e \term{Validazione}; aggiornamento del \textit{\term{Piano Di Qualifica}} con le metodologie di testing e il cruscotto di valutazione; caricamento dei verbali firmati nella \term{Repository}.
+    \item \textbf{Gestione:} Ottimizzazione dei processi automatizzati (\term{Github Actions}), riorganizzazione dei documenti sul sito web.
 \end{itemize}
 
 \paragraph{Rischi attesi}
-Per lo svolgimento dello Sprint 4, sono stati individuati i seguenti rischi principali, legati sia alla natura delle attività che al periodo di riferimento:
+Per lo svolgimento dello \term{Sprint} 4, sono stati individuati i seguenti rischi principali, legati sia alla natura delle attività che al periodo di riferimento:
 
 \begin{itemize}
-    \item \textbf{RO1}: Sottostima del tempo necessario per la redazione delle nuove sezioni normative nel \textit{Piano di Qualifica} (PdQ).
-    \item \textbf{RT1}: Difficoltà iniziali nello studio delle tecnologie e dei framework necessari per la realizzazione del \textit{Proof of Concept} (PoC).
-    \item \textbf{RT2}: Possibili malfunzionamenti o errori di configurazione nelle procedure di automazione (GitHub Actions) della repository.
+    \item \textbf{RO1}: Sottostima del tempo necessario per la redazione delle nuove sezioni normative nel \textit{\term{Piano Di Qualifica}} (PdQ).
+    \item \textbf{RT1}: Difficoltà iniziali nello studio delle tecnologie e dei framework necessari per la realizzazione del \textit{Proof of Concept} (\term{Poc}).
+    \item \textbf{RT2}: Possibili malfunzionamenti o errori di configurazione nelle procedure di automazione (\term{Github Actions}) della \term{Repository}.
     \item \textbf{RI1}: Carico di lavoro elevato dovuto allo studio per gli esami universitari, con conseguente riduzione della disponibilità oraria dei membri del gruppo.
-    \item \textbf{RI2}: Ridotta disponibilità dei membri del gruppo nella fase iniziale dello sprint a causa del periodo di festività e impegni personali.
+    \item \textbf{RI2}: Ridotta disponibilità dei membri del gruppo nella fase iniziale dello \term{Sprint} a causa del periodo di festività e impegni personali.
 \end{itemize}
 
 \paragraph{Preventivo}
@@ -1502,7 +1554,7 @@ Si prospetta l'utilizzo delle seguenti risorse:
         G. Visentin & 1 & - & 4 & - & - & - \\
         \hline
     \end{tabularx}
-    \caption{Preventivo orario per componente - Sprint 4}
+    \caption{Preventivo orario per componente - \term{Sprint} 4}
     \label{tab:preventivo_sprint4}
 \end{table}
 
@@ -1527,7 +1579,7 @@ Si prospetta l'utilizzo delle seguenti risorse:
             \node [fill=pieAnal, label=right:Analista] {}; & \node [fill=pieVer, label=right:Verificatore] {}; \\
         };
     \end{tikzpicture}
-    \caption{Distribuzione ore per ruolo - Preventivo Sprint 4}
+    \caption{Distribuzione ore per ruolo - Preventivo \term{Sprint} 4}
 \end{figure}
 
 \paragraph{Consuntivo}
@@ -1561,7 +1613,7 @@ Di seguito il resoconto delle ore effettivamente impiegate:
         G. Visentin & 1 & - & 4 & - & - & - \\
         \hline
     \end{tabularx}
-    \caption{Consuntivo orario per componente - Sprint 4}
+    \caption{Consuntivo orario per componente - \term{Sprint} 4}
     \label{tab:consuntivo_sprint4}
 \end{table}
 
@@ -1586,16 +1638,16 @@ Di seguito il resoconto delle ore effettivamente impiegate:
             \node [fill=pieAnal, label=right:Analista] {}; & \node [fill=pieVer, label=right:Verificatore] {}; \\
         };
     \end{tikzpicture}
-    \caption{Distribuzione ore per ruolo - Consuntivo Sprint 4}
+    \caption{Distribuzione ore per ruolo - Consuntivo \term{Sprint} 4}
 \end{figure}
 
 \paragraph{Aggiornamento delle risorse rimanenti}
-Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la chiusura dello Sprint 4.
+Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la chiusura dello \term{Sprint} 4.
 
 \begin{table}[H]
     \centering
     \renewcommand{\arraystretch}{1.5}
-    \begin{tabularx}{\textwidth}{|l|c|c|c|X|X|}
+    \begin{tabularx}{\textwidth}{|l|c|c|c|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
         \hline
         \rowcolor{tableHeader}
         \textbf{Ruolo} & \textbf{Costo} & \textbf{Ore} & \textbf{Costo} & \textbf{Ore rimanenti} & \textbf{Budget rimanente} \\
@@ -1622,20 +1674,22 @@ Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la
         \textbf{Totale} & - & \textbf{32.5} & \textbf{752,50\euro} & \textbf{414 \textcolor{red}{(-32.5)}} & \textbf{8.432,50\euro \textcolor{red}{(-752,50\euro)}} \\
         \hline
     \end{tabularx}
-    \caption{Sprint 4 - Variazione nelle risorse disponibili}
+    \caption{\term{Sprint} 4 - Variazione nelle risorse disponibili}
 \end{table}
 
 \paragraph{Rischi incontrati}
-Durante lo sprint si sono ripresentati i rischi \textbf{RI1 (Impegni accademici)}, a causa della sessione di esami, e \textbf{RI2 (Problemi personali)}, a causa della malattia di un membro del gruppo. Tali rischi hanno portato ad una generale diminuzione delle ore effettivamente impiegate nei vari ruoli rispetto a quelle previste, con conseguente rinvio di attività allo sprint successivo. Inoltre si è verificato nuovamente anche il rischio \textbf{RO1 (Errata stima dei tempi)} a causa di ulteriori modifiche richieste sui diagrammi UML, portando ad un ulteriore rinvio del completamento dell'\textit{Analisi dei Requisiti} allo sprint seguente.
+{\sloppy
+Durante lo \term{Sprint} si sono ripresentati i rischi \textbf{RI1 (Impegni accademici)}, a causa della sessione di esami, e \textbf{RI2 (Problemi personali)}, a causa della malattia di un membro del gruppo. Tali rischi hanno portato ad una generale diminuzione delle ore effettivamente impiegate nei vari ruoli rispetto a quelle previste, con conseguente rinvio di attività allo \term{Sprint} successivo. Inoltre si è verificato nuovamente anche il rischio \textbf{RO1 (Errata stima dei tempi)} a causa di ulteriori modifiche richieste sui diagrammi UML, portando all'ennesimo rinvio del completamento dell'\textit{\term{Analisi Dei Requisiti}} allo \term{Sprint} seguente.
+\par}
 
 \paragraph{Retrospettiva}
-La retrospettiva ha fatto emergere la necessità di pianificare più efficientemente attorno a eventuali malattie o assenze di membri del gruppo, dato che sommate agli impegni universitari hanno portato a ritardi nell'aggiornamento del \textbf{Piano di Progetto} e del \textbf{Piano di Qualifica}. Nonostante il lavoro effettuato sull'\textbf{Analisi dei Requisiti} il documento richiede ulteriore attenzione, posticipando il completamento dell'attività correlata.
+La retrospettiva ha fatto emergere la necessità di pianificare in modo più efficiente attorno a eventuali problemi di salute dei membri, che sommati agli impegni universitari hanno causato ritardi nell'aggiornamento del \textbf{\term{Piano Di Progetto}} e \textbf{\term{Piano Di Qualifica}}. Il documento di \textbf{\term{Analisi Dei Requisiti}} richiede perciò ulteriore attenzione, posticipando l'attività.
 
 %-------------------------------------------------------------------------------------------------%
 
-\subsubsection{Sprint 5}\label{sec:sprint5_RTB}
+\subsubsection{\term{Sprint} 5}\label{sec:sprint5_RTB}
 
-% --- TABELLA RIEPILOGATIVA SPRINT ---
+% --- TABELLA RIEPILOGATIVA \term{Sprint} ---
 \begin{table}[H]
     \centering
     \renewcommand{\arraystretch}{1.5}
@@ -1648,26 +1702,26 @@ La retrospettiva ha fatto emergere la necessità di pianificare più efficientem
         \multicolumn{2}{|c|}{\cellcolor{tableHeader}\textbf{Giorni di ritardo}} & \multicolumn{2}{c|}{0} \\
         \hline
     \end{tabularx}
-    \caption{Riepilogo temporale Sprint 5}
+    \caption{Riepilogo temporale \term{Sprint} 5}
 \end{table}
 
 \paragraph{Informazioni generali e attività da svolgere}
-Lo sprint 5 si è concentrato sullo studio delle funzionalità da implementare nel \textit{Proof of Concept (PoC)} a partire da un sottoinsieme dei requisiti identificati nell'\textit{Analisi dei Requisiti}. Inoltre si sono dovute recuperare alcune attività non terminate nello sprint 4.\\
+Lo \term{Sprint} 5 si è concentrato sullo studio delle funzionalità da implementare nel \textit{Proof of Concept (\term{Poc})} a partire da un sottoinsieme dei requisiti identificati nell'\textit{\term{Analisi Dei Requisiti}}. Inoltre si sono dovute recuperare alcune attività non terminate nello \term{Sprint} 4.\\
 Le attività pianificate e svolte includono:
 \begin{itemize}
     \item \textbf{Analisi:} Ulteriore studio delle funzionalità da implementare nel \textit{Proof of Concept}.
-    \item \textbf{Incontri:} Riunione interna per l'organizzazione delle attività dello sprint; Accertamento per l'implementazione dell'accesso nel \textit{Proof of Concept}.
-    \item \textbf{Documentazione:} Inserimento nel \textit{Piano di Progetto} della data di candidatura RTB e aggiornamento dei resoconti degli sprint svolti finora; Completamento degli Use Case nell'\textit{Analisi dei Requisiti}.
-    \item \textbf{Gestione:} Completamento dei processi automatizzati (GitHub Actions) per integrazione glossario e calcolo indice Gulpease.
+    \item \textbf{Incontri:} Riunione interna per l'organizzazione delle attività dello \term{Sprint}; Accertamento per l'implementazione dell'accesso nel \textit{Proof of Concept}.
+    \item \textbf{Documentazione:} Inserimento nel \textit{\term{Piano Di Progetto}} della data di candidatura \term{Rtb} e aggiornamento dei resoconti degli \term{Sprint} svolti finora; Completamento degli Use Case nell'\textit{\term{Analisi Dei Requisiti}}.
+    \item \textbf{Gestione:} Completamento dei processi automatizzati (\term{Github Actions}) per integrazione glossario e calcolo indice Gulpease.
 \end{itemize}
 
 \paragraph{Rischi attesi}
-Per lo svolgimento dello Sprint 5, sono stati individuati i seguenti rischi principali, legati sia alla natura delle attività che al periodo di riferimento:
+Per lo svolgimento dello \term{Sprint} 5, sono stati individuati i seguenti rischi principali, legati sia alla natura delle attività che al periodo di riferimento:
 
 \begin{itemize}
-    \item \textbf{RO1}: Difficoltà nel completamento degli Use Case nell'\textit{Analisi dei Requisiti} (AdR).
-    \item \textbf{RT1}: Difficoltà nello studio delle tecnologie e dei framework necessari per la realizzazione del \textit{Proof of Concept} (PoC).
-    \item \textbf{RT2}: Possibili malfunzionamenti o errori di configurazione nelle procedure di automazione (GitHub Actions) della repository.
+    \item \textbf{RO1}: Difficoltà nel completamento degli Use Case nell'\textit{\term{Analisi Dei Requisiti}} (AdR).
+    \item \textbf{RT1}: Difficoltà nello studio delle tecnologie e dei framework necessari per la realizzazione del \textit{Proof of Concept} (\term{Poc}).
+    \item \textbf{RT2}: Possibili malfunzionamenti o errori di configurazione nelle procedure di automazione (\term{Github Actions}) della \term{Repository}.
     \item \textbf{RI1}: Carico di lavoro elevato dovuto allo studio per gli esami universitari, con conseguente riduzione della disponibilità oraria dei membri del gruppo.
 \end{itemize}
 
@@ -1702,7 +1756,7 @@ Si prospetta l'utilizzo delle seguenti risorse:
         G. Visentin & - & - & 1 & - & 2 & - \\
         \hline
     \end{tabularx}
-    \caption{Preventivo orario per componente - Sprint 5}
+    \caption{Preventivo orario per componente - \term{Sprint} 5}
     \label{tab:preventivo_sprint5}
 \end{table}
 
@@ -1732,7 +1786,7 @@ Si prospetta l'utilizzo delle seguenti risorse:
             \node [fill=pieProg, label=right:Programmatore] {};\\
         };
     \end{tikzpicture}
-    \caption{Distribuzione ore per ruolo - Preventivo Sprint 5}
+    \caption{Distribuzione ore per ruolo - Preventivo \term{Sprint} 5}
 \end{figure}
 
 \paragraph{Consuntivo}
@@ -1766,7 +1820,7 @@ Di seguito il resoconto delle ore effettivamente impiegate:
         G. Visentin & - & - & 2\textcolor{red}{(+1)} & - & 0\textcolor{red}{(-2)} & - \\
         \hline
     \end{tabularx}
-    \caption{Consuntivo orario per componente - Sprint 5}
+    \caption{Consuntivo orario per componente - \term{Sprint} 5}
     \label{tab:consuntivo_sprint5}
 \end{table}
 
@@ -1795,11 +1849,11 @@ Di seguito il resoconto delle ore effettivamente impiegate:
             \node [fill=pieProg, label=right:Programmatore] {};\\
         };
     \end{tikzpicture}
-    \caption{Distribuzione ore per ruolo - Consuntivo Sprint 5}
+    \caption{Distribuzione ore per ruolo - Consuntivo \term{Sprint} 5}
 \end{figure}
 
 \paragraph{Aggiornamento delle risorse rimanenti}
-Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la chiusura dello Sprint 5.
+Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la chiusura dello \term{Sprint} 5.
 
 \begin{table}[H]
     \centering
@@ -1831,21 +1885,21 @@ Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la
         \textbf{Totale} & - & \textbf{10.5} & \textbf{245\euro} & \textbf{403.5 \textcolor{red}{(-10.5)}} & \textbf{8.187,50\euro \textcolor{red}{(-245\euro)}} \\
         \hline
     \end{tabularx}
-    \caption{Sprint 5 - Variazione nelle risorse disponibili}
+    \caption{\term{Sprint} 5 - Variazione nelle risorse disponibili}
 \end{table}
 
 \paragraph{Rischi incontrati}
-Il rischio \textbf{RI1 (Impegni accademici)} continua a influenzare l'impegno orario dei membri del gruppo, rallentando il completamento di alcune attività incluso l'aggiornamento del \textbf{Piano di Progetto}.
+Il rischio \textbf{RI1 (Impegni accademici)} continua a influenzare l'impegno orario dei membri del gruppo, rallentando il completamento di alcune attività incluso l'aggiornamento del \textbf{\term{Piano Di Progetto}}.
 
 \paragraph{Retrospettiva}
-La retrospettiva dello sprint 5 ha mostrato dei miglioramenti rispetto allo sprint precedente, nonostante i ritardi con il \textbf{Piano di Progetto}. È emersa la necessità di verificare ulteriormente gli \textit{use case} relativi alla funzionalità di walkthrough nell'\textbf{Analisi dei Requisiti}, nonostante cio il documento procede verso il completamento.
-Gli studi sulle funzionalità da implementare nel \textbf{Proof of Concept} hanno raggiunto uno stadio tale per cui si possa iniziare lo sviluppo effettivo nel corso del prossimo sprint.
+La retrospettiva dello \term{Sprint} 5 ha mostrato dei miglioramenti rispetto allo \term{Sprint} precedente, nonostante i ritardi con il \textbf{\term{Piano Di Progetto}}. È emersa la necessità di verificare ulteriormente gli \textit{use case} relativi alla funzionalità di \term{Walkthrough} nell'\textbf{\term{Analisi Dei Requisiti}}, nonostante cio il documento procede verso il completamento.
+Gli studi sulle funzionalità da implementare nel \textbf{Proof of Concept} hanno raggiunto uno stadio tale per cui si possa iniziare lo sviluppo effettivo nel corso del prossimo \term{Sprint}.
 
 %-------------------------------------------------------------------------------------------------%
-\pagebreak % Inserito perchè taglia la prima sezione dello sprint 6
-\subsubsection{Sprint 6}\label{sec:sprint6_RTB}
+\pagebreak % Inserito perchè taglia la prima sezione dello \term{Sprint} 6
+\subsubsection{\term{Sprint} 6}\label{sec:sprint6_RTB}
 
-% --- TABELLA RIEPILOGATIVA SPRINT ---
+% --- TABELLA RIEPILOGATIVA \term{Sprint} ---
 \begin{table}[H]
     \centering
     \renewcommand{\arraystretch}{1.5}
@@ -1853,21 +1907,21 @@ Gli studi sulle funzionalità da implementare nel \textbf{Proof of Concept} hann
         \hline
         Inizio & 2026-01-30 & Fine prevista & 2026-02-12 \\
         \hline
-        Stato & \textbf{In corso} & Fine reale & - \\
+        Stato & \textbf{Concluso} & Fine reale & 2026-02-12 \\
         \hline
         \multicolumn{2}{|c|}{\cellcolor{tableHeader}\textbf{Giorni di ritardo}} & \multicolumn{2}{c|}{0} \\
         \hline
     \end{tabularx}
-    \caption{Riepilogo temporale Sprint 6}
+    \caption{Riepilogo temporale \term{Sprint} 6}
 \end{table}
 
 \paragraph{Informazioni generali e attività da svolgere}
-Lo sprint 6 si concentra sull'inizio dell'effettivo sviluppo del \textit{Proof of Concept (PoC)}, focalizzandosi su un numero ristretto di funzionalità necessarie per lo studio dell'architettura. Viene continuato il lavoro sui \textit{diagrammi UML} nell'\textit{Analisi dei Requisiti} con l'inserimento di immagini aggiornate e di modifiche discusse durante una riunione interna. Ci si impegna anche a effettuare una revisione completa dello stato del documento \textit{Norme di Progetto} per assicurarsi della sua correttezza.
+Lo \term{Sprint} 6 si concentra sull'inizio dell'effettivo sviluppo del \textit{Proof of Concept (\term{Poc})}, focalizzandosi su un numero ristretto di funzionalità necessarie per lo studio dell'\term{Architettura}. Viene continuato il lavoro sui \textit{diagrammi UML} nell'\textit{\term{Analisi Dei Requisiti}} con l'inserimento di immagini aggiornate e di modifiche discusse durante una riunione interna. \term{Ci} si impegna anche a effettuare una revisione completa dello stato del documento \textit{Norme di Progetto} per assicurarsi della sua correttezza.
 
 Le attività pianificate e svolte includono:
 \begin{itemize}
     \item \textbf{Analisi:} Continuare studio delle funzionalità per il \textit{Proof of Concept}.
-    \item \textbf{Incontri:} Riunione interna per organizzare le attività dello sprint 6; Chiarimenti su \textit{diagrammi UML} riguardanti la funzionalità di walkthrough.
+    \item \textbf{Incontri:} Riunione interna per organizzare le attività dello \term{Sprint} 6; Chiarimenti su \textit{diagrammi UML} riguardanti la funzionalità di \term{Walkthrough}.
     \item \textbf{Programmazione:} Inizio dello sviluppo front-end \textit{Proof of Concept} e implementazione delle seguenti funzionalità:
     \begin{itemize}
         \item \textit{Accesso tramite Google Auth.}
@@ -1876,15 +1930,15 @@ Le attività pianificate e svolte includono:
         \item \textit{Invio mail a contatti.}
         \item \textit{Note diario con inserimento immagini.}
     \end{itemize}
-    \item \textbf{Documentazione:} Aggiornamento del \textit{Piano di Progetto} fino allo sprint corrente; Completamento della sezione \textit{Casi d'Uso} dell'\textit{Analisi dei Requisiti}; Verifica completa delle \textit{Norme di Progetto}.
+    \item \textbf{Documentazione:} Aggiornamento del \textit{\term{Piano Di Progetto}} fino allo \term{Sprint} corrente; Completamento della sezione \textit{Casi d'Uso} dell'\textit{\term{Analisi Dei Requisiti}}; \term{Verifica} completa delle \textit{Norme di Progetto}.
     \item \textbf{Gestione:} Completamento dell'integrazione del glossario; Creazione Github Action per deploy lambda su AWS.
 \end{itemize}
 
 \paragraph{Rischi attesi}
-Per lo svolgimento dello Sprint 6, sono stati individuati i seguenti rischi principali, legati sia alla natura delle attività che al periodo di riferimento:
+Per lo svolgimento dello \term{Sprint} 6, sono stati individuati i seguenti rischi principali, legati sia alla natura delle attività che al periodo di riferimento:
 
 \begin{itemize}
-    \item \textbf{RO1}: Sottostima del tempo necessario per la redazione delle nuove sezioni normative nel \textit{Piano di Qualifica} (PdQ).
+    \item \textbf{RO1}: Sottostima del tempo necessario per la redazione delle nuove sezioni normative nel \textit{\term{Piano Di Qualifica}} (PdQ).
     \item \textbf{RI1}: Carico di lavoro elevato dovuto allo studio per gli esami universitari, con conseguente riduzione della disponibilità oraria dei membri del gruppo.
 \end{itemize}
 
@@ -1919,7 +1973,7 @@ Si prospetta l'utilizzo delle seguenti risorse:
         G. Visentin & - & - & 0.5 & - & 4 & 1 \\
         \hline
     \end{tabularx}
-    \caption{Preventivo orario per componente - Sprint 6}
+    \caption{Preventivo orario per componente - \term{Sprint} 6}
     \label{tab:preventivo_sprint6}
 \end{table}
 
@@ -1948,25 +2002,232 @@ Si prospetta l'utilizzo delle seguenti risorse:
             \node [fill=pieProg, label=right:Programmatore] {};\\
         };
     \end{tikzpicture}
-    \caption{Distribuzione ore per ruolo - Preventivo Sprint 6}
+    \caption{Distribuzione ore per ruolo - Preventivo \term{Sprint} 6}
 \end{figure}
 
 \paragraph{Consuntivo}
--
-%  Da fare dopo lo sprint
+Di seguito il resoconto delle ore effettivamente impiegate (corretto dagli errori di somma presenti nel foglio di calcolo):
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.4}
+    \footnotesize
+    \begin{tabularx}{\textwidth}{|l|C|C|C|C|C|C|}
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Membro} & \textbf{Resp} & \textbf{Amm} & \textbf{Anal} & \textbf{Pt} & \textbf{Pr} & \textbf{Ver} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        F. Fracasso & 5\textcolor{red}{(+1)} & - & - & - & - & - \\
+        \hline
+        \rowcolor{tableLineEven}
+        R. Manisi & - & - & - & - & 0\textcolor{red}{(-5)} & - \\
+        \hline
+        \rowcolor{tableLineOdd}
+        D. Parolin & - & 8.25\textcolor{red}{(+3.75)} & 7\textcolor{red}{(+2)} & - & - & - \\
+        \hline
+        \rowcolor{tableLineEven}
+        M. Sanguin & - & - & 1\textcolor{red}{(-1)} & - & - & 0\textcolor{red}{(-2)} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        G. Scaggiante & - & 0\textcolor{red}{(-0.5)} & - & - & 6\textcolor{red}{(+1)} & 0.5\textcolor{red}{(+0.5)} \\
+        \hline
+        \rowcolor{tableLineEven}
+        G. Visentin & - & - & 2\textcolor{red}{(+1.5)} & - & 3\textcolor{red}{(-1)} & 2\textcolor{red}{(+1)} \\
+        \hline
+    \end{tabularx}
+    \caption{Consuntivo orario per componente - \term{Sprint} 6}
+    \label{tab:consuntivo_sprint6}
+\end{table}
 
 % GRAFICO A TORTA CONSUNTIVO
-%  Da fare dopo lo sprint
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1.2]
+        \draw[thick,fill=pieResp] (0,0) -- (0:1.5) arc (0:51.8:1.5) -- cycle;
+        \draw (26:1.95) node {14.4\%};
+        
+        \draw[thick,fill=pieAmm] (0,0) -- (51.8:1.5) arc (51.8:137.3:1.5) -- cycle;
+        \draw (95:1.85) node {23.7\%};
+        
+        \draw[thick,fill=pieAnal] (0,0) -- (137.3:1.5) arc (137.3:240.9:1.5) -- cycle;
+        \draw (189:2) node {28.8\%};
+
+        \draw[thick,fill=pieProg] (0,0) -- (240.9:1.5) arc (240.9:334.1:1.5) -- cycle;
+        \draw (288:1.85) node {25.9\%};
+        
+        \draw[thick,fill=pieVer] (0,0) -- (334.1:1.5) arc (334.1:360:1.5) -- cycle;
+        \draw (347:1.9) node {7.2\%};
+        
+        \matrix [below, draw=none, fill=none] at (0,-2.5) {
+            \node [fill=pieResp, label=right:Responsabile] {}; & \node [fill=pieAmm, label=right:Amministratore] {}; \\
+            \node [fill=pieAnal, label=right:Analista] {}; & \node [fill=pieVer, label=right:Verificatore] {}; \\
+            \node [fill=pieProg, label=right:Programmatore] {};\\
+        };
+    \end{tikzpicture}
+    \caption{Distribuzione ore per ruolo - Consuntivo \term{Sprint} 6}
+\end{figure}
 
 \paragraph{Aggiornamento delle risorse rimanenti}
--
-%  Da fare dopo lo sprint
+Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la chiusura dello \term{Sprint} 6.
 
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabularx}{\textwidth}{|l|c|c|c|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Ruolo} & \textbf{Costo} & \textbf{Ore} & \textbf{Costo} & \textbf{Ore rimanenti} & \textbf{Budget rimanente} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Responsabile & 30\euro/h & 5 & 150\euro & 42 \textcolor{red}{(-5)} & 1.260\euro \textcolor{red}{(-150\euro)} \\
+        \hline
+        \rowcolor{tableLineEven}
+        Amministratore & 20\euro/h & 8.25 & 165\euro & 46.75 \textcolor{red}{(-8.25)} & 935\euro \textcolor{red}{(-165\euro)} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Analista & 25\euro/h & 10 & 250\euro & 3.5 \textcolor{red}{(-10)} & 87,50\euro \textcolor{red}{(-250\euro)} \\
+        \hline
+        \rowcolor{tableLineEven}
+        Progettista & 25\euro/h & - & - & 102 & 2.550\euro \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Programmatore & 15\euro/h & 9 & 135\euro & 110 \textcolor{red}{(-9)} & 1.650\euro \textcolor{red}{(-135\euro)} \\
+        \hline
+        \rowcolor{tableLineEven}
+        Verificatore & 15\euro/h & 2.5 & 37,50\euro & 65 \textcolor{red}{(-2.5)} & 967,50\euro \textcolor{red}{(-37,50\euro)} \\
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Totale} & - & \textbf{34.75} & \textbf{737,50\euro} & \textbf{369.25 \textcolor{red}{(-34.75)}} & \textbf{7.450\euro \textcolor{red}{(-737,50\euro)}} \\
+        \hline
+    \end{tabularx}
+    \caption{\term{Sprint} 6 - Variazione nelle risorse disponibili}
+\end{table}
 
 \paragraph{Rischi incontrati}
--
+{\sloppy
+Durante lo \term{Sprint} si è verificata l'occorrenza di molteplici rischi che hanno influito sulla pianificazione: \textbf{RT1 (Inesperienza tecnologica)}, \textbf{RO1 (Errata stima dei tempi)}, \textbf{RO2 (Incomprensione dei requisiti)}, \textbf{RO4 (Assenza di un componente)}, \textbf{RO5 (Dipendenza da risorse e permessi esterni)} e \textbf{RI1 (Impegni accademici)}. Dal punto di vista tecnologico (\textbf{RT1}), l'approccio a strumenti di sviluppo nuovi ha rallentato il ritmo per la stesura del \textit{Proof of Concept}, richiedendo maggiore dedizione. Dal punto di vista organizzativo, si è assistito a un'errata valutazione del carico di lavoro (\textbf{RO1}), in cui attività stimate brevi si sono rivelate complesse e viceversa, causando squilibri nell'impegno orario. Un chiaro esempio è stata la stesura finale del log per il documento di \textit{\term{Analisi Dei Requisiti}}: le tempistiche si sono dilatate poiché, durante le comunicazioni asincrone tramite spazio dedicato con la \term{Proponente}, è emersa la necessità di variare alcuni requisiti già definiti (\textbf{RO2}), imponendo quindi una sostanziale revisione di diversi casi d'uso. Nonostante gli sforzi, il documento \textbf{non è stato portato al suo completamento definitivo}, in quanto manca l'inserimento delle immagini dei diagrammi aggiornati, operazione rimandata allo \term{Sprint} successivo considerando in ogni caso la base testuale solida ottenuta.\\
+In aggiunta, l'impossibilità temporanea di testare e sviluppare a causa della mancanza iniziale di alcuni permessi sull'infrastruttura Cloud AWS fornita dalla \term{Proponente} (\textbf{RO5}) ha comportato blocchi momentanei, forzando una riorganizzazione dinamica dei task all'interno dello \term{Sprint} per minimizzare i tempi morti.\\
+Risulta inoltre una decisa mancanza di presenza nel gruppo (\textbf{RO4}) dovuta alla concomitanza con gli appelli d'esame universitari (\textbf{RI1}). A fronte di ciò, si posticiperà lo svolgimento delle task al seguente \term{Sprint} 7.
+\par}
 
 \paragraph{Retrospettiva}
--
+La retrospettiva ha evidenziato che, nonostante i progressi, lo sviluppo risulta globalmente rallentato. Si rende necessaria una maggiore onestà della propria disponibilità e dello stato dei lavori. Occorre porre maggior realismo in fase di preventivo delle ore assegnate e aumentare la trasparenza, affinché l'avanzamento rifletta fedelmente l'effettiva capacità di ogni membro per i futuri \term{Sprint}.
+
+%-------------------------------------------------------------------------------------------------%
+\subsubsection{\term{Sprint} 7}\label{sec:sprint7_RTB}
+
+% --- TABELLA RIEPILOGATIVA \term{Sprint} ---
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabularx}{\textwidth}{|>{\columncolor{tableHeader}\bfseries}l|X|>{\columncolor{tableHeader}\bfseries}l|X|}
+        \hline
+        Inizio & 2026-02-13 & Fine prevista & 2026-02-27 \\
+        \hline
+        Stato & \textbf{In corso} & Fine reale & - \\
+        \hline
+        \multicolumn{2}{|c|}{\cellcolor{tableHeader}\textbf{Giorni di ritardo}} & \multicolumn{2}{c|}{0} \\
+        \hline
+    \end{tabularx}
+    \caption{Riepilogo temporale \term{Sprint} 7}
+\end{table}
+
+\paragraph{Informazioni generali e attività da svolgere}
+Lo \term{Sprint} 7 proseguirà le attività avviate in precedenza per massimizzare la documentazione prodotta e finalizzare il prototipo in vista dell'imminente consegna per la fase \term{Rtb} (\textit{Requirements and Technology \term{Baseline}}). Secondo quanto emerso dal \term{Verbale} della riunione interna del 17 Febbraio 2026, si cercherà di recuperare le attività rimaste in arretrato o in ritardo, e in parallelo i nuovi task verranno smistati in base al ruolo assegnato a ogni membro in questa iterazione.
+
+Le attività pianificate includono:
+\begin{itemize}
+    \item \textbf{Analisi:} Continuazione dello studio delle funzionalità per il \textit{Proof of Concept}.
+    \item \textbf{Programmazione:} Avanzamento dello sviluppo del \term{Poc}, implementando casi d'uso riguardanti: la navigazione della rubrica contatti e l'aggiunta di nuovi o eliminazione, l'\term{Architettura} AWS (Lambda e DynamoDB) per la gestione serverless del salvataggio dei contatti e delle note, oltre che la creazione della UI per le note del diario criptato e l'integrazione del Model nel client Flutter.
+    \item \textbf{Documentazione:} Completamento \textbf{definitivo} del documento \textit{\term{Analisi Dei Requisiti}} tramite l'inserimento delle immagini aggiornate relative ai diagrammi UML e la suddivisione logica dei casi d'uso. Ultimare e stabilizzare la versione del \textit{\term{Piano Di Qualifica}}, del \textit{\term{Piano Di Progetto}}, delle \textit{Norme di Progetto}, della \textit{Lettera di Presentazione} e di tutti i verbali (interni ed esterni). Redazione manualistica e descrittiva riguardante l'implementazione del \term{Poc} e le scelte architetturali adottate.
+    \item \textbf{Gestione:} Aggiornamento finale del sito web, riparazione e affinamento delle Action GitHub per l'integrazione continua (compilazione PDF, generazione del glossario e statistiche Gulpease).
+\end{itemize}
+
+\paragraph{Rischi attesi}
+Tra i principali rischi che potrebbero interferire con le stime durante questo \term{Sprint} finale verso l'\term{Rtb} figurano:
+\begin{itemize}
+    \item \textbf{RT1}: Difficoltà nell'utilizzo puntuale e veloce di queste nuove architetture per lo sviluppo del \term{Poc} (es. Flutter e servizi Cloud).
+    \item \textbf{RT4}: Insorgere di bug o malfunzionamenti architetturali nel codice prodotto per il \term{Poc} in vista della scadenza a ritmi serrati.
+    \item \textbf{RO4}: Assenza e ritardi nella produzione causati dalla precaria comunicazione tra i componenti a causa dell'accumularsi del lavoro.
+    \item \textbf{RO5}: Mancanza o ritardo nella fornitura di permessi AWS e risorse esterne parziali o frammentate da parte della \term{Proponente}. % Sarà sicuramente presente nei rischi incontrati in quanto al momento \term{Ci} manca il necessario per iviare le mail ai contatti fidati.
+\end{itemize}
+
+\paragraph{Preventivo}
+Si prospetta l'utilizzo delle seguenti risorse:
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \small 
+    \begin{tabularx}{\textwidth}{|l|C|C|C|C|C|C|}
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Membro} & \textbf{Resp} & \textbf{Amm} & \textbf{Anal} & \textbf{Pt} & \textbf{Pr} & \textbf{Ver} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        F. Fracasso & - & 2 & - & - & - & 2 \\
+        \hline
+        \rowcolor{tableLineEven}
+        R. Manisi & - & - & - & - & 4 & - \\
+        \hline
+        \rowcolor{tableLineOdd}
+        D. Parolin & 5 & - & - & - & - & 2 \\
+        \hline
+        \rowcolor{tableLineEven}
+        M. Sanguin & - & 4.5 & 3 & - & - & - \\
+        \hline
+        \rowcolor{tableLineOdd}
+        G. Scaggiante & - & 1 & - & - & 5 & - \\
+        \hline
+        \rowcolor{tableLineEven}
+        G. Visentin & - & - & - & - & 4 & 2 \\
+        \hline
+    \end{tabularx}
+    \caption{Preventivo orario per componente - \term{Sprint} 7}
+    \label{tab:preventivo_sprint7}
+\end{table}
+
+% GRAFICO A TORTA PREVENTIVO
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1.2]
+        \draw[thick,fill=pieResp] (0,0) -- (0:1.5) arc (0:52.2:1.5) -- cycle;
+        \draw (26.1:1.95) node {14.5\%};
+        
+        \draw[thick,fill=pieAmm] (0,0) -- (52.2:1.5) arc (52.2:130.4:1.5) -- cycle;
+        \draw (91.3:1.8) node {21.7\%};
+        
+        \draw[thick,fill=pieAnal] (0,0) -- (130.4:1.5) arc (130.4:161.7:1.5) -- cycle;
+        \draw (146.1:1.95) node {8.7\%};
+        
+        \draw[thick,fill=pieVer] (0,0) -- (161.7:1.5) arc (161.7:224.4:1.5) -- cycle;
+        \draw (193.0:1.95) node {17.4\%};
+
+        \draw[thick,fill=pieProg] (0,0) -- (224.4:1.5) arc (224.4:360:1.5) -- cycle;
+        \draw (292.2:1.8) node {37.7\%};
+        
+        \matrix [below, draw=none, fill=none] at (0,-2.5) {
+            \node [fill=pieResp, label=right:Responsabile] {}; & \node [fill=pieAmm, label=right:Amministratore] {}; \\
+            \node [fill=pieAnal, label=right:Analista] {}; & \node [fill=pieVer, label=right:Verificatore] {}; \\
+            \node [fill=pieProg, label=right:Programmatore] {};\\
+        };
+    \end{tikzpicture}
+    \caption{Distribuzione ore per ruolo - Preventivo \term{Sprint} 7}
+\end{figure}
+
+\paragraph{Consuntivo}
+% TODO
+
+% GRAFICO A TORTA CONSUNTIVO
+
+\paragraph{Aggiornamento delle risorse rimanenti}
+% TODO
+
+\paragraph{Rischi incontrati}
+% TODO
+
+\paragraph{Retrospettiva}
+% TODO
 
 \end{document}
