@@ -111,7 +111,7 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & In corso\\
-\textbf{Versione:} & 0.19.7 \\
+\textbf{Versione:} & 0.21.0 \\
 \textbf{Responsabile:} & Giovanni Visentin \\
 \textbf{Redattori:} & 
 \begin{tabular}[t]{@{}l@{}}
@@ -124,10 +124,12 @@ Ferdinando Fracasso\\
 \end{tabular} \\
 \textbf{Verificatori:} & 
 \begin{tabular}[t]{@{}l@{}}
+Riccardo Manisi\\
 Giovanni Visentin\\
 Marco Sanguin\\
 Dennis Parolin\\
 Gabriele Scaggiante\\
+Ferdinando Fracasso\\
 \end{tabular} \\
 \textbf{Destinatari:} &
 \begin{tabular}[t]{@{}l@{}}
@@ -153,7 +155,6 @@ Gruppo BitByBit\\
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
-
 \rowcolor{white}
 0.21.0 & 2026-02-27 & Marco Sanguin & Aggiunte immagini per ogni use case, sistemati titoli, frecce e caption tabelle & Dennis Parolin \\
 \hline
@@ -392,7 +393,7 @@ In conclusione, il sistema deve essere accessibile a utenti con competenze tecni
 
 % ====== DEFINIZIONI, ACRINIMI E ABBREVIAZIONI ======
 
-Al fine di evitare ambiguità relative al linguaggio e ai termini utilizzati all'interno dei documenti formali, viene allegato il \href{https://swe-bitbybit.github.io/SWE-docs/docs/documenti_interni/Glossario.pdf}{\textit{Glossario}}.
+Al fine di evitare ambiguità relative al linguaggio e ai termini utilizzati all'interno dei documenti formali, viene allegato il \href{https://swe-bitbybit.github.io/SWE-docs/docs/RTB/documenti_interni/Glossario.pdf}{\textit{Glossario}}.
 I termini tecnici, gli acronimi e le parole con significato specifico all'interno del progetto sono contrassegnati da una lettera 'G' in apice (es. Agile\textsuperscript{G}) e sono descritti in dettaglio nel documento apposito.
 
 \subsubsection{Riferimenti normativi}\label{sec:riferimenti_normativi}
@@ -409,7 +410,7 @@ Ultimo accesso: \textit{2026-01-14}\\
 Parti consultate: documento completo\\
 Versione: v.0.10.2\\
 Ultimo accesso: \textit{2026-01-14}\\
-\url{https://swe-bitbybit.github.io/SWE-docs/docs/documenti_interni/norme_di_progetto.pdf} %---Link del sito, ma non funziona al momento---
+\url{https://swe-bitbybit.github.io/SWE-docs/docs/RTB/documenti_interni/norme_di_progetto.pdf} %---Link del sito, ma non funziona al momento---
 \end{itemize}
 
 \subsubsection{Riferimenti informativi} \label{sec:riferimenti_informativi}
@@ -441,7 +442,7 @@ Ultimo accesso: \textit{2026-01-14}\\
         Parti consultate: documento completo\\
         Versione: \textit{v.0.3.2}\\
         Ultimo accesso: \textit{2026-01-15}\\
-        \url{https://swe-bitbybit.github.io/SWE-docs/docs/documenti_interni/Glossario.pdf}
+        \url{https://swe-bitbybit.github.io/SWE-docs/docs/RTB/documenti_interni/Glossario.pdf}
 \end{itemize}
 
 % ---------------------------- SEZIONE CASI D'USO -------------------------------
@@ -449,7 +450,7 @@ Ultimo accesso: \textit{2026-01-14}\\
 \section{Casi d'uso}
 
 \subsection{Scopo}
-Nel \term{Processo} di analisi, come indicato nel documento delle \href{https://swe-bitbybit.github.io/SWE-docs/docs/documenti_interni/norme_di_progetto.pdf}{\textbf{Norme di progetto}}, il gruppo BitByBit ha stabilito come prima attività l'individuazione dei casi d'uso del sistema. La stesura dei casi d'uso costituisce uno strumento fondamentale per la successiva individuazione dei requisiti funzionali del sistema, poiché consentono di definire in modo chiaro all'\term{Utente} come il sistema sarà impiegato per soddisfare specifici obiettivi.\\
+Nel \term{Processo} di analisi, come indicato nel documento delle \href{https://swe-bitbybit.github.io/SWE-docs/docs/RTB/documenti_interni/norme_di_progetto.pdf}{\textbf{Norme di progetto}}, il gruppo BitByBit ha stabilito come prima attività l'individuazione dei casi d'uso del sistema. La stesura dei casi d'uso costituisce uno strumento fondamentale per la successiva individuazione dei requisiti funzionali del sistema, poiché consentono di definire in modo chiaro all'\term{Utente} come il sistema sarà impiegato per soddisfare specifici obiettivi.\\
 Nello specifico essi rappresentano una descrizione di come il sistema interagisce con i suoi attori per raggiungere un obiettivo specifico.
 Ogni caso d'uso ha uno scenario principale che rappresenta il flusso standard di interazioni e può includere scenari alternativi che fanno arrivare il sistema in uno stato diverso da quello che si identifica nello scenario principale del caso.\\
 Per facilitare la comprensione da parte dei lettori sia tecnici che non, alla descrizione in linguaggio naturale, viene anche associato un diagramma UML, che offre una rappresentazione grafica delle interazioni tra attori e sistema.\\
@@ -598,7 +599,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \end{itemize} 
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-2}
+        \item \hyperref[subsec:UC-2]{UC-2}
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole accedere all'applicazione
 \end{itemize}
@@ -664,15 +665,15 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \end{itemize} 
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-1}
-        \item \ref{subsec:UC-3.1}
-        \item \ref{subsec:UC-3.2}
-        \item \ref{subsec:UC-3.3}
+        \item \hyperref[subsec:UC-1]{UC-1}
+        \item \hyperref[subsec:UC-3.1]{UC-3.1}
+        \item \hyperref[subsec:UC-3.2]{UC-3.2}
+        \item \hyperref[subsec:UC-3.3]{UC-3.3}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-4}
-        \item \ref{subsec:UC-1}
+        \item \hyperref[subsec:UC-4]{UC-4}
+        \item \hyperref[subsec:UC-1]{UC-1}
     \end{itemize}
     \item \textbf{Trigger:} Primo avvio dell'applicazione
 \end{itemize}
@@ -731,6 +732,11 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 \end{itemize}
 
 \subsubsection{UC-3.2 - \term{Walkthrough} diario criptato} \label{subsec:UC-3.2}
+
+\begin{tcolorbox}[colback=gray!10,colframe=gray!50,title=Nota]
+{\small I casi d'uso \hyperref[subsec:UC-3.2]{UC-3.2} e \hyperref[subsec:UC-3.3]{UC-3.3} rappresentano inclusioni del caso d'uso \hyperref[subsec:UC-3]{UC-3}.
+Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\hyperref[subsec:UC-23.1]{UC-23.1}, \hyperref[subsec:UC-8]{UC-8} e \hyperref[subsec:UC-5]{UC-5}), la cui descrizione dettagliata è riportata nelle sezioni successive del documento.}
+\end{tcolorbox}
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{use_case/UC-3_2-3_3-walkthrough.png}
@@ -754,7 +760,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \begin{itemize}
         \item Il sistema mostra una schermata informativa sui vantaggi del diario criptato
         \item L'attore decide di abilitare la funzionalità
-        \item L'attore esegue la procedura di impostazione password $\rightarrow$ \ref{subsec:UC-25}
+        \item L'attore esegue la procedura di impostazione password $\rightarrow$ \ref{subsec:UC-23.1}
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
@@ -762,11 +768,11 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-23.1}
+        \item \hyperref[subsec:UC-23.1]{UC-23.1}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-5}
+        \item \hyperref[subsec:UC-5]{UC-5}
     \end{itemize}
     \item \textbf{Trigger:} L'attore completa lo step precedente del \term{Walkthrough}
 \end{itemize}
@@ -796,11 +802,11 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-8}
+        \item \hyperref[subsec:UC-8]{UC-8}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-5}
+        \item \hyperref[subsec:UC-5]{UC-5}
     \end{itemize}
     \item \textbf{Trigger:} L'attore completa lo step precedente del \term{Walkthrough}
 \end{itemize}
@@ -851,7 +857,10 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
         \item L'attore visualizza le voci della lista dei contatti fidati
         \item L'attore guarda singolarmente i contatti fidati (la preview delle informazioni del contatto) nella lista ma non cliccla su nessuna voce $\rightarrow$ \ref{subsec:UC-6.1} 
     \end{itemize}
-    \item \textbf{Inclusioni:} \ref{subsec:UC-6.1}
+    \item \textbf{Inclusioni:} 
+    \begin{itemize}
+        \item \hyperref[subsec:UC-6.1]{UC-6.1}
+    \end{itemize}
     \item \textbf{Trigger:} L'attore vuole vedere la rete dei contatti fidati che ha aggiunto
 \end{itemize}
 
@@ -871,10 +880,17 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \begin{itemize}
         \item L'attore visualizza il nome del contatto fidato nella lista $\rightarrow$ \ref{subsec:UC-7.1}
     \end{itemize}
+    \item \textbf{Inclusioni:}
+    \begin{itemize}
+        \item \hyperref[subsec:UC-7.1]{UC-7.1}
+    \end{itemize}
     \item \textbf{Trigger:} L'attore vuole visualizzare la lista dei contatti fidati
 \end{itemize}
 
 \subsubsection{UC-7 - Visualizzazione informazioni contatto fidato} \label{subsec:UC-7}
+\begin{tcolorbox}[colback=gray!10,colframe=gray!50,title=Nota]
+{\small Il casos d'uso \hyperref[subsec:UC-7]{UC-7} è suddiviso nei casi d'uso inclusi \hyperref[subsec:UC-7.1]{UC-7.1}, \hyperref[subsec:UC-7.2]{UC-7.2} e \hyperref[subsec:UC-7.3]{UC-7.3}, che ne dettagliano il comportamento}
+\end{tcolorbox}
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{use_case/UC-7-impostazioni.png}
@@ -901,6 +917,12 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
             \item il numero di telefono $\rightarrow$ \ref{subsec:UC-7.2}
             \item l'indirizzo email $\rightarrow$ \ref{subsec:UC-7.3}
         \end{itemize}
+    \end{itemize}
+    \item \textbf{Inclusioni:}
+    \begin{itemize}
+        \item \hyperref[subsec:UC-7.1]{UC-7.1}
+        \item \hyperref[subsec:UC-7.2]{UC-7.2}
+        \item \hyperref[subsec:UC-7.3]{UC-7.3}
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole visualizzare le informazioni di contatto per un contatto fidato
 \end{itemize}
@@ -962,6 +984,10 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 % ===== AGGIUNTA CONTATTO FIDATO =====
 
 \subsubsection{UC-8 - Aggiunta contatto fidato} \label{subsec:UC-8}
+\begin{tcolorbox}[colback=gray!10,colframe=gray!50,title=Nota]
+{\small Il caso d'uso \hyperref[subsec:UC-8]{UC-8} è suddiviso nei casi d'uso inclusi \hyperref[subsec:UC-8.1]{UC-8.1}, \hyperref[subsec:UC-8.2]{UC-8.2} e \hyperref[subsec:UC-8.3]{UC-8.3}, che ne dettagliano il comportamento.
+Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\hyperref[subsec:UC-10]{UC-10}, \hyperref[subsec:UC-59]{UC-59}, \hyperref[subsec:UC-60]{UC-60} e \hyperref[subsec:UC-11]{UC-11}), la cui descrizione dettagliata è riportata nelle sezioni successive del documento.}
+\end{tcolorbox}
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{use_case/UC-8-impostazioni.png}
@@ -989,9 +1015,9 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-8.1}
-        \item \ref{subsec:UC-8.2}
-        \item \ref{subsec:UC-8.3}
+        \item \hyperref[subsec:UC-8.1]{UC-8.1}
+        \item \hyperref[subsec:UC-8.2]{UC-8.2}
+        \item \hyperref[subsec:UC-8.3]{UC-8.3}
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole aggiungere un nuovo contatto fidato nella propria rete
 \end{itemize}
@@ -1038,8 +1064,8 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \end{itemize}
     \item \textbf{Estensioni:} 
     \begin{itemize}
-        \item \ref{subsec:UC-10}
-        \item \ref{subsec:UC-59}
+        \item \hyperref[subsec:UC-10]{UC-10}
+        \item \hyperref[subsec:UC-59]{UC-59}
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole inserire un nuovo contatto nella propria rete di contatti fidati
 \end{itemize}
@@ -1067,8 +1093,8 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \end{itemize}
     \item \textbf{Estensioni:} 
     \begin{itemize}
-        \item \ref{subsec:UC-11}
-        \item \ref{subsec:UC-60}
+        \item \hyperref[subsec:UC-11]{UC-11}
+        \item \hyperref[subsec:UC-60]{UC-60}
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole inserire un nuovo contatto nella propria rete di contatti fidati
 \end{itemize}
@@ -1168,6 +1194,10 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 % ===== UC-12: MODIFICA CONTATTO FIDATO =====
 
 \subsubsection{UC-12 - Modifica contatto fidato} \label{subsec:UC-12}
+\begin{tcolorbox}[colback=gray!10,colframe=gray!50,title=Nota]
+{\small Il caso d'uso \hyperref[subsec:UC-12]{UC-12} è suddiviso nei casi d'uso inclusi \hyperref[subsec:UC-12.1]{UC-12.1}, \hyperref[subsec:UC-12.2]{UC-12.2} e \hyperref[subsec:UC-12.3]{UC-12.3}, che ne dettagliano il comportamento.
+Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\hyperref[subsec:UC-10]{UC-10}, \hyperref[subsec:UC-59]{UC-59}, \hyperref[subsec:UC-60]{UC-60} e \hyperref[subsec:UC-11]{UC-11}), la cui descrizione dettagliata è riportata nelle sezioni precedenti del documento.}
+\end{tcolorbox}
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{use_case/UC-12-impostazioni.png}
@@ -1196,9 +1226,9 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-12.1}
-        \item \ref{subsec:UC-12.2}
-        \item \ref{subsec:UC-12.3}
+        \item \hyperref[subsec:UC-12.1]{UC-12.1}
+        \item \hyperref[subsec:UC-12.2]{UC-12.2}
+        \item \hyperref[subsec:UC-12.3]{UC-12.3}
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole modificare un contatto fidato nella propria rete
 \end{itemize}
@@ -1249,8 +1279,8 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-10}
-        \item \ref{subsec:UC-59}
+        \item \hyperref[subsec:UC-10]{UC-10}
+        \item \hyperref[subsec:UC-59]{UC-59}
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole modificare il numero di telefono di un contatto fidato presente nella propria rete di contatti fidati
 \end{itemize}
@@ -1280,8 +1310,8 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-11}
-        \item \ref{subsec:UC-60}
+        \item \hyperref[subsec:UC-11]{UC-11}
+        \item \hyperref[subsec:UC-60]{UC-60}
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole modificare l'indirizzo email di un contatto fidato presente nella propria rete di contatti fidati
 \end{itemize}
@@ -1314,7 +1344,10 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
         \item L'attore conferma l'eliminazione del contatto fidato $\rightarrow$ \ref{subsec:UC-13.1}
         \item Il sistema rimuove il contatto fidato scelto dall'attore dalla rete dei contatti fidati dell'attore
     \end{itemize}
-    \item \textbf{inclusioni:} \ref{subsec:UC-13.1}
+    \item \textbf{inclusioni:} 
+    \begin{itemize}
+        \item \hyperref[subsec:UC-13.1]{UC-13.1}
+    \end{itemize}
     \item \textbf{Trigger:} L'attore vuole rimuovere un contatto dalla propria rete di contatti fidati
 \end{itemize}
 
@@ -1339,7 +1372,10 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \begin{itemize}
         \item L'attore rifiuta la conferma dell'eliminazione del contatto fidato $\rightarrow$ \ref{subsec:UC-14}
     \end{itemize}
-    \item \textbf{Estensioni:} \ref{subsec:UC-14}
+    \item \textbf{Estensioni:} 
+    \begin{itemize}
+        \item \hyperref[subsec:UC-14]{UC-14}
+    \end{itemize}
     \item \textbf{Trigger:} L'attore ha scelto la voce di cancellazione per quel contatto fidato
 \end{itemize}
 
@@ -1508,8 +1544,8 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-19.1}
-        \item \ref{subsec:UC-19.2}
+        \item \hyperref[subsec:UC-19.1]{UC-19.1}
+        \item \hyperref[subsec:UC-19.2]{UC-19.2}
     \end{itemize}
     \item \textbf{Trigger:} L'attore seleziona il pulsante di anteprima
 \end{itemize}
@@ -1626,8 +1662,8 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-20.1}
-        \item \ref{subsec:UC-21}
+        \item \hyperref[subsec:UC-20.1]{UC-20.1}
+        \item \hyperref[subsec:UC-21]{UC-21}
     \end{itemize}
     \item \textbf{Trigger:} L'attore interagisce con il form di inserimento della password per il diario fittizio
 \end{itemize}
@@ -1682,6 +1718,10 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 \end{itemize}
 
 \subsubsection{UC-22 - Accesso al diario fittizio} \label{subsec:UC-22}
+\begin{tcolorbox}[colback=gray!10,colframe=gray!50,title=Nota]
+{\small Il caso d'uso \hyperref[subsec:UC-22]{UC-22} include il caso d'uso \hyperref[subsec:UC-24]{UC-24} e viene esteso da \hyperref[subsec:UC-20]{UC-20}.
+Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\hyperref[subsec:UC-26]{UC-26} e \hyperref[subsec:UC-25]{UC-25}), la cui descrizione dettagliata è riportata nelle sezioni successive del documento.}
+\end{tcolorbox}
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{use_case/UC-22-diario.png}
@@ -1713,16 +1753,20 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-24}
+        \item \hyperref[subsec:UC-24]{UC-24}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-20}
+        \item \hyperref[subsec:UC-20]{UC-20}
     \end{itemize}
     \item \textbf{Trigger:} L'attore desidera accedere al diario fittizio
 \end{itemize}
 
 \subsubsection{UC-23 - Accesso al diario criptato} \label{subsec:UC-23}
+\begin{tcolorbox}[colback=gray!10,colframe=gray!50,title=Nota]
+{\small Il caso d'uso \hyperref[subsec:UC-23]{UC-23} include il caso d'uso \hyperref[subsec:UC-24]{UC-24} e viene esteso da \hyperref[subsec:UC-23.1]{UC-23.1}.
+Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\hyperref[subsec:UC-26]{UC-26} e \hyperref[subsec:UC-25]{UC-25}), la cui descrizione dettagliata è riportata nelle sezioni successive del documento.}
+\end{tcolorbox}
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{use_case/UC-23-diario.png}
@@ -1755,11 +1799,11 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-24}
+        \item \hyperref[subsec:UC-24]{UC-24}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-23.1}
+        \item \hyperref[subsec:UC-23.1]{UC-23.1}
     \end{itemize}
     \item \textbf{Trigger:} L'attore desidera accedere al diario criptato
 \end{itemize}
@@ -1796,8 +1840,8 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-23.1.1}
-        \item \ref{subsec:UC-21}
+        \item \hyperref[subsec:UC-23.1.1]{UC-23.1.1}
+        \item \hyperref[subsec:UC-21]{UC-21}
     \end{itemize}
     \item \textbf{Trigger:} L'attore interagisce con il form di inserimento della password per il diario criptato
 \end{itemize}
@@ -1829,8 +1873,8 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-25}
-        \item \ref{subsec:UC-26}
+        \item \hyperref[subsec:UC-25]{UC-25}
+        \item \hyperref[subsec:UC-26]{UC-26}
     \end{itemize}
     \item \textbf{Trigger:} L'attore tenta di accedere al diario criptato
 
@@ -1937,7 +1981,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-27.1}
+        \item \hyperref[subsec:UC-27.1]{UC-27.1}
     \end{itemize}
     \item \textbf{Trigger:} L'attore accede al diario
 \end{itemize}
@@ -1964,7 +2008,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-27.1.1}
+        \item \hyperref[subsec:UC-27.1.1]{UC-27.1.1}
     \end{itemize}
     \item \textbf{Trigger:} L'attore visualizza il diario
 \end{itemize}
@@ -2168,8 +2212,8 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \ref{sec:UC-33.1}
-        \item \ref{sec:UC-33.2}
+        \item \hyperref[sec:UC-33.1]{UC-33.1}
+        \item \hyperref[sec:UC-33.2]{UC-33.2}
     \end{itemize}
     \item \textbf{Trigger:} L'attore interagisce con l'opzione di invio del messaggio SOS.
 \end{itemize}
@@ -2197,7 +2241,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \ref{sec:UC-34}
+        \item \hyperref[sec:UC-34]{UC-34}
     \end{itemize}
     \item \textbf{Trigger:} L'\term{Utente} ha cliccato l'elemento per inviare un messaggio di SOS ma il sistema rileva l'assenza di connessione internet.
 \end{itemize}
@@ -2224,7 +2268,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \ref{sec:UC-34}
+        \item \hyperref[sec:UC-34]{UC-34}
     \end{itemize}
     \item \textbf{Trigger:} L'\term{Utente} vuole mandare un messaggio di SOS ai contatti fidati
 \end{itemize}
@@ -2302,9 +2346,9 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \ref{sec:UC-35.1}
-        \item \ref{sec:UC-35.2}
-        \item \ref{sec:UC-35.3}
+        \item \hyperref[sec:UC-35.1]{UC-35.1}
+        \item \hyperref[sec:UC-35.2]{UC-35.2}
+        \item \hyperref[sec:UC-35.3]{UC-35.3}
     \end{itemize}
     \item \textbf{Trigger:} L'\term{Utente} vuole consultarsi con il chatbot
 \end{itemize}
@@ -2406,7 +2450,10 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \begin{itemize}
         \item Errore nello switch di contesto \ref{sec:UC-38}
     \end{itemize}
-    \item \textbf{Estensioni:} \ref{sec:UC-38}
+    \item \textbf{Estensioni:} 
+    \begin{itemize}
+        \item \hyperref[sec:UC-38]{UC-38}
+    \end{itemize}
     \item \textbf{Trigger:} L’\term{Utente} ha premuto il pulsante per il cambio del contesto.
 \end{itemize}
 
@@ -2438,7 +2485,10 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \begin{itemize}
         \item Errore nello switch di contesto \ref{sec:UC-38}
     \end{itemize}
-    \item \textbf{Estensioni:} \ref{sec:UC-38}
+    \item \textbf{Estensioni:} 
+    \begin{itemize}
+        \item \hyperref[sec:UC-38]{UC-38}
+    \end{itemize}
     \item \textbf{Trigger:} L’\term{Utente} ha premuto il pulsante per il cambio del contesto.
 \end{itemize}
 
@@ -2493,7 +2543,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-39.1}
+        \item \hyperref[subsec:UC-39.1]{UC-39.1}
     \end{itemize}
     \item \textbf{Trigger:} L'attore ha selezionato la cronologia delle chat
 \end{itemize}
@@ -2518,7 +2568,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-39.1.1}
+        \item \hyperref[subsec:UC-39.1.1]{UC-39.1.1}
     \end{itemize}
     \item \textbf{Trigger:} L'attore ha selezionato una singola chat dalla cronologia
 
@@ -2546,6 +2596,10 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 \end{itemize}
 
 \subsubsection{UC-40 - Visualizzazione contenuto chat} \label{subsec:UC-40}
+\begin{tcolorbox}[colback=gray!10,colframe=gray!50,title=Nota]
+{\small Il caso d'uso \hyperref[subsec:UC-40]{UC-40} include il caso d'uso \hyperref[subsec:UC-40.1]{UC-40.1} e viene esteso da \hyperref[subsec:UC-40.2]{UC-40.2}.
+Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\hyperref[subsec:UC-40.1.1]{UC-40.1.1} e \hyperref[subsec:UC-40.1.2]{UC-40.1.2}), la cui descrizione dettagliata è riportata nelle sezioni successive del documento.}
+\end{tcolorbox}
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{use_case/UC-40-detective.png}
@@ -2572,8 +2626,14 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \begin{itemize}
         \item Errore nel caricamento del contenuto della chat $\rightarrow$ \ref{subsec:UC-40.2}
     \end{itemize}
-    \item \textbf{Inclusioni:} \ref{subsec:UC-40.1}
-    \item \textbf{Estensioni:} \ref{subsec:UC-40.2}
+    \item \textbf{Inclusioni:} 
+    \begin{itemize}
+        \item \hyperref[subsec:UC-40.1]{UC-40.1}
+    \end{itemize}
+    \item \textbf{Estensioni:} 
+    \begin{itemize}
+        \item \hyperref[subsec:UC-40.2]{UC-40.2}
+    \end{itemize}
     \item \textbf{Trigger:} L'attore vuole visualizzare il contenuto di una chat specifica
 \end{itemize}
 
@@ -2599,8 +2659,8 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-40.1.1}
-        \item \ref{subsec:UC-40.1.2}
+        \item \hyperref[subsec:UC-40.1.1]{UC-40.1.1}
+        \item \hyperref[subsec:UC-40.1.2]{UC-40.1.2}
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole visualizzare la lista dei messaggi nella chat
 \end{itemize}
@@ -2694,7 +2754,10 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
         \item Il sistema reindirizza l'attore alla schermata della chat
         \item L'attore visualizza la schermata della chat vuota $\rightarrow$ \ref{subsec:UC-40}
     \end{itemize}
-    \item \textbf{Inclusioni:} \ref{subsec:UC-40}
+    \item \textbf{Inclusioni:} 
+    \begin{itemize}
+        \item \hyperref[subsec:UC-40]{UC-40}
+    \end{itemize}
     \item \textbf{Trigger:} L'attore vuole iniziare una nuova conversazione con il chatbot
 \end{itemize}
 
@@ -2718,7 +2781,10 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
         \item L'attore conferma l'intenzione di eliminare la chat $\rightarrow$ \ref{subsec:UC-42.1}
         \item Il sistema elimina la chat e aggiorna la lista della cronologia
     \end{itemize}
-    \item \textbf{Inclusioni:} \ref{subsec:UC-42.1}
+    \item \textbf{Inclusioni:} 
+    \begin{itemize}
+        \item \hyperref[subsec:UC-42.1]{UC-42.1}
+    \end{itemize}
     \item \textbf{Trigger:} L'attore vuole rimuovere una conversazione passata
 \end{itemize}
 
@@ -2743,7 +2809,11 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \begin{itemize}
         \item L'attore rifiuta la conferma dell'eliminazione della chat $\rightarrow$ \ref{subsec:UC-42.1.1}
     \end{itemize}
-    \item \textbf{Estensioni:} \ref{subsec:UC-42.1.1}
+    \item \textbf{Estensioni:} 
+    \begin{itemize}
+        \item \hyperref[subsec:UC-42.1.1]{UC-42.1.1}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore sceglie di confermare l'eliminazione della chat
 \end{itemize}
 
 \subsubsection{UC-42.1.1 - Rifiuto conferma eliminazione chat} \label{subsec:UC-42.1.1}
@@ -2795,7 +2865,10 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
         \item Il sistema visualizza la lista delle community $\rightarrow$ \ref{subsec:UC-43.1}
         \item L'attore può scorrere la lista per scegliere quale community visitare
     \end{itemize}
-    \item \textbf{Inclusioni:} \ref{subsec:UC-43.1}
+    \item \textbf{Inclusioni:} 
+    \begin{itemize}
+        \item \hyperref[subsec:UC-43.1]{UC-43.1}
+    \end{itemize}
     \item \textbf{Trigger:} L'attore vuole esplorare le community esistenti
 \end{itemize}
 
@@ -2874,6 +2947,9 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 \end{itemize}
 
 \subsubsection{UC-45 - Visualizzazione lista contatti d'emergenza} \label{sec:UC-45}
+\begin{tcolorbox}[colback=gray!10,colframe=gray!50,title=Nota]
+{\small Il caso d'uso \hyperref[subsec:UC-45]{UC-45} include il caso d'uso \hyperref[subsec:UC-45.1]{UC-45.1}, si mostrano anche ulteriori casi d'uso correlati (\hyperref[subsec:UC-45.1.1]{UC-45.1.1} e \hyperref[subsec:UC-45.1.2]{UC-45.1.2}), la cui descrizione dettagliata è riportata nelle sezioni successive del documento.}
+\end{tcolorbox}
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{use_case/UC-45-coraggio.png}
@@ -2897,7 +2973,10 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
         \item Il sistema recupera la lista dei numeri dei contatti fidati personali 
         \item Il sistema visualizza le voci della lista $\rightarrow$ \ref{subsec:UC-45.1}
     \end{itemize}
-    \item \textbf{Inclusioni:} \ref{subsec:UC-45.1}
+    \item \textbf{Inclusioni:} 
+    \begin{itemize}
+        \item \hyperref[subsec:UC-45.1]{UC-45.1}
+    \end{itemize}
     \item \textbf{Trigger:} L'attore vuole consultare i numeri rapidi di emergenza
 \end{itemize}
 
@@ -2921,8 +3000,8 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \ref{subsec:UC-45.1.1}
-        \item \ref{subsec:UC-45.1.2}
+        \item \hyperref[subsec:UC-45.1.1]{UC-45.1.1}
+        \item \hyperref[subsec:UC-45.1.2]{UC-45.1.2}
     \end{itemize}
 \end{itemize}
 
@@ -3015,7 +3094,10 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
         \item Il sistema visualizza le voci della lista delle leggi $\rightarrow$ \ref{subsec:UC-49.1}
         \item L'attore può scorrere la lista per cercare l'argomento di interesse
     \end{itemize}
-    \item \textbf{Inclusioni:} \ref{subsec:UC-49.1}
+    \item \textbf{Inclusioni:} 
+    \begin{itemize}
+        \item \hyperref[subsec:UC-49.1]{UC-49.1}
+    \end{itemize}
     \item \textbf{Trigger:} L'attore vuole informarsi sui propri diritti legali
 \end{itemize}
 
@@ -3068,7 +3150,10 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \begin{itemize}
          \item Errore nel caricamento del contenuto della legge $\rightarrow$ \ref{subsec:UC-51}
     \end{itemize}
-    \item \textbf{Estensioni:} \ref{subsec:UC-51}
+    \item \textbf{Estensioni:}
+    \begin{itemize}
+     \item \hyperref[subsec:UC-51]{UC-51}
+    \end{itemize}
     \item \textbf{Trigger:} L'attore vuole approfondire il contenuto di una legge
 \end{itemize}
 
@@ -3119,7 +3204,10 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
         \item L'attore può visualizzare singolarmente ogni materiale nella lista $\rightarrow$ \ref{subsec:UC-52.1}
         \item L'attore può scorrere la lista per trovare il contenuto di interesse
     \end{itemize}
-    \item \textbf{Inclusioni:} \ref{subsec:UC-52.1}
+    \item \textbf{Inclusioni:}
+     \begin{itemize}
+         \item \hyperref[subsec:UC-52.1]{UC-52.1}
+     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole consultare risorse educative o di supporto
 \end{itemize}
 
@@ -3171,7 +3259,10 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \begin{itemize}
          \item Si \term{Verifica} un errore durante il recupero del file (es. file corrotto o offline) $\rightarrow$ \ref{subsec:UC-53.1}
     \end{itemize}
-    \item \textbf{Estensioni:} \ref{subsec:UC-53.1}
+    \item \textbf{Estensioni:}
+     \begin{itemize}
+         \item \hyperref[subsec:UC-53.1]{UC-53.1}
+     \end{itemize}
     \item \textbf{Trigger:} L'attore seleziona una risorsa per visualizzarla
 \end{itemize}
 
@@ -3224,7 +3315,10 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
         \item L'attore può selezionare un luogo sicuro dalla mappa
         \item L'attore può decidere di aprire la posizione su Google Maps $\rightarrow$ \ref{subsec:UC-55}
     \end{itemize}
-    \item \textbf{Estensioni:} \ref{subsec:UC-55}
+    \item \textbf{Estensioni:}
+     \begin{itemize}
+         \item \hyperref[subsec:UC-55]{UC-55}
+     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole localizzare i luoghi sicuri più vicini
 \end{itemize}
 
@@ -3252,7 +3346,10 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \begin{itemize}
          \item Si \term{Verifica} un errore nell'apertura dell'applicazione esterna $\rightarrow$ \ref{subsec:UC-56}
     \end{itemize}
-    \item \textbf{Estensioni:} \ref{subsec:UC-56}
+    \item \textbf{Estensioni:}
+     \begin{itemize}
+         \item \hyperref[subsec:UC-56]{UC-56}
+     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole avviare la navigazione o vedere dettagli aggiuntivi del luogo
 \end{itemize}
 
