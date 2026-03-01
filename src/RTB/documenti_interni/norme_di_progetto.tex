@@ -108,8 +108,8 @@
 
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
-\textbf{Stato:} & in lavorazione\\
-\textbf{Versione:} & 0.11.5 \\
+\textbf{Stato:} & Completo\\
+\textbf{Versione:} & 1.0.0 \\
 \textbf{Responsabile:} & Riccardo Manisi\\
 \textbf{Redattori:} & 
 \begin{tabular}[t]{@{}l@{}}
@@ -144,7 +144,9 @@ Ferdinando Fracasso\\
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
-
+\rowcolor{white}
+1.0.0 & 2026-03-01 & Dennis Parolin & Approvazione documento. & Giovanni Visentin \\
+\hline
 \rowcolor{gray!20}
 0.11.5 & 2026-02-09 & Dennis Parolin & Aggiunta una descrizione mancante. & Marco Sanguin \\
 \hline
@@ -267,6 +269,11 @@ Il glossario è considerato parte integrante del \term{Processo} di documentazio
     Parti consultate: Capitoli 2, 24\\
     Versione: \textit{X Edizione}\\
     Ultimo accesso: \textit{2026-01-12}\\
+    \item \textbf{Glossario}\\
+        Parti consultate: documento completo\\
+        Versione: \textit{v.0.3.2}\\
+        Ultimo accesso: \textit{2026-01-15}\\
+        \url{https://swe-bitbybit.github.io/SWE-docs/docs/RTB/documenti_interni/Glossario.pdf}
 \end{itemize}
 
 % ===== SEZIONE PER I PROCESSI PRIMARI ====
@@ -480,7 +487,7 @@ L'applicazione delle norme di codifica è facilitata da un set di strumenti che 
 \paragraph{Ambiente di Sviluppo}
 Il gruppo ha uniformato l'ambiente di lavoro adottando \textbf{Visual Studio Code} come \term{Ide} di riferimento.
 
-\paragraph{Automazione e \term{Ci}}
+\paragraph{Automazione e \ignoreglossary{Ci}}
 Gli strumenti critici per il mantenimento dello standard, le cui specifiche tecniche verranno consolidate durante la Product \term{Baseline} (\term{Pb}), sono classificabili in:
 \begin{itemize}
     \item \textbf{\term{Linter} e Formatter}: strumenti di \term{Analisi Statica} specifici per linguaggio che rilevano violazioni stilistiche in tempo reale all'interno dell'\term{Ide}.
@@ -534,10 +541,10 @@ Ogni documento, indipendentemente dalla sua categoria, deve essere redatto in co
 \subsubsection{Implementazione di Processo}
 Ogni documento, prima di essere integrato nella versione stabile del \term{Repository}, deve attraversare un ciclo strutturato di produzione che garantisce la qualità, la verificabilità e la tracciabilità delle modifiche. Le attività descritte in questa sezione definiscono il flusso operativo seguito dal gruppo per l’elaborazione, la revisione e la pubblicazione dei prodotti documentali.
 
-\paragraph{Creazione delle \term{Issue} GitHub}
+\paragraph{Creazione delle \ignoreglossary{Issue} GitHub}
 Ogni azione che porta a dei cambiamenti ad un documento del gruppo deve iniziare con l’apertura di una \term{Issue} su GitHub per permettere la tracciabilità nella board del GitHub \term{Project}. Ogni commit deve fare riferimento ad una sola azione in modo da garantire che il \term{Processo} iterativo di revisione ed eventuali correzioni di errori sia il più veloce possibile.
 
-\paragraph{Assegnazione della \term{Issue}} 
+\paragraph{Assegnazione della \ignoreglossary{Issue}} 
 Nessuna \term{Issue} può essere avviata senza che sia assegnata ad un membro del gruppo. L’assegnazione viene effettuata dal responsabile, che determina chi, nel gruppo, è incaricato dell’esecuzione di quella precisa attività. Questo passaggio garantisce che ogni modifica sia riconducibile a un autore e che la responsabilità operativa sia chiaramente definita.
 
 \paragraph{Impostazione del documento}
@@ -695,7 +702,7 @@ Ogni membro del gruppo, nel momento in cui aggiunge un termine ad un documento c
 Una volta completate le modifiche nel nuovo \term{Branch} aperto, il membro incaricato procede ad aprire una \term{Pull Request} dal proprio \term{Branch} di feature verso il \term{Branch} \texttt{develop}. 
 Nella fase di apertura della \term{Pull Request} deve essere compilato il form per la descrizione della \term{Pull Request} con le informazioni richieste. La \term{Pull Request} costituisce la richiesta formale per l'integrazione delle modifiche nel \term{Repository} del gruppo, dopo l'avvenuta approvazione delle modifiche apportate.
 
-\paragraph{\term{Verifica}} Il verificatore esamina sia la correttezza formale sia sostanziale del documento.
+\paragraph{\ignoreglossary{Verifica}} Il verificatore esamina sia la correttezza formale sia sostanziale del documento.
     \begin{itemize}
         \item Se le modifiche risultano corrette, il verificatore approva la \term{Pull Request}.
         \item Se emergono incongruenze o problemi, il verificatore richiede delle modifiche aggiungendo dei commenti al codice.
@@ -703,7 +710,7 @@ Nella fase di apertura della \term{Pull Request} deve essere compilato il form p
 Le modifiche richieste devono essere applicate dall’autore originario della \term{Pull Request}, che procede aggiornando il \term{Branch} \texttt{develop} fino alla completa risoluzione.
 I verificatori sono tenuti a controllare che i documenti di \term{Ciclo Di Vita} del progetto comprendano gli elementi di struttura elencati di seguito nell' ordine in cui si presentano.
 
-\paragraph{Approvazione e \term{Pull Request}} Una volta ottenuta l’approvazione del verificatore, la \term{Pull Request} viene sottoposta alla visione del responsabile, che effettua un ultima revisione formale. Solo il responsabile è autorizzato a procedere con il \term{Merge} della \term{Pull Request} nel \term{Branch} \texttt{develop}.
+\paragraph{Approvazione e \ignoreglossary{Pull Request}} Una volta ottenuta l’approvazione del verificatore, la \term{Pull Request} viene sottoposta alla visione del responsabile, che effettua un ultima revisione formale. Solo il responsabile è autorizzato a procedere con il \term{Merge} della \term{Pull Request} nel \term{Branch} \texttt{develop}.
 \\Il \term{Merge} rappresenta l’integrazione definitiva del documento nella versione stabile del progetto.
 
 \paragraph{Pubblicazione} Con la conclusione del \term{Merge}, il documento aggiornato diventa parte integrante della \term{Baseline} di progetto. Il \term{Branch} \texttt{main} costituisce, infatti, il riferimento ufficiale per la versione stabile e coerente dei documenti.
@@ -759,22 +766,22 @@ Dove:
     \item \texttt{<documento soggetto alle modifiche>}, sigla (che segue la nomenclatura in \hyperref[sigle]{Sezione~\ref*{sigle}}) per il documento a cui avvengono apportate le modifiche.
 \end{itemize}
 
-\paragraph{Gestione \term{Issue} e pianificazione del lavoro}
+\paragraph{Gestione \ignoreglossary{Issue} e pianificazione del lavoro}
 Ogni modifica nasce dall’apertura di una \term{Issue} GitHub, che costituisce il punto di riferimento per la tracciabilità dell’attività.\\ 
 Al momento della creazione, la \term{Issue} deve essere dotata di un titolo descrittivo e di una spiegazione chiara dell’obiettivo. Il responsabile assegna inoltre priorità, \term{Milestone}, iterazione (che corrisponde allo \term{Sprint} in cui l’attività deve essere completata) e l’assegnatario, selezionato in base al ruolo che il membro ricopre in quel momento. Label aggiuntive consentono una categorizzazione accurata del lavoro.\\ 
 La pianificazione complessiva è supportata dalle GitHub \term{Project} Board, che permettono di consultare \term{Product Backlog} e \term{Sprint Backlog} tramite viste personalizzate, semplificando la gestione dei carichi di lavoro e l’avanzamento delle attività.
 
-\paragraph{Creazione della \term{Pull Request}}
+\paragraph{Creazione della \ignoreglossary{Pull Request}}
 Una volta completata l’attività descritta nella \term{Issue} GitHub, il membro incaricato apre una \term{Pull Request} dal \term{Branch} di feature al \texttt{branch develop}.\\ Ogni \term{Pull Request} deve utilizzare il template comune del gruppo, che contiene le sezioni necessarie per descrivere contesto, modifiche introdotte, \term{Issue} collegate e controlli effettuati. La descrizione del template presente nel file \texttt{pull\_request\_template.md}, deve essere compilato e adattato ogni volta, così da velocizzare il lavoro di revisione e rendere uniformi tutte le richieste. Il membro deve indicare tramite il campo \texttt{Reviewers} il singolo membro incaricato del compito di verificare quella modifica.
 
-\paragraph{\term{Verifica} e revisione della \term{Pull Request}}
+\paragraph{\ignoreglossary{Verifica} e revisione della \ignoreglossary{Pull Request}}
 All'apertura della \term{Pull Request} viene richiesta automaticamente la \term{Verifica} ai membri del team verificatori:
 \begin{itemize}
     \item se la \term{Verifica} produce esito positivo, la \term{Pull Request} viene approvata dal verificatore incaricato;
     \item se sono presenti dei problemi o miglioramenti da applicare, il verificatore richiede delle modifiche, tramite l'opzione di GitHub \texttt{request changes}, aggiungendo un commento di quello che è il problema trovato e di una possibile soluzione se è presente. Successivamente la persona che ha aperto la \term{Pull Request} si impegna a eseguire le correzioni e a notificare il completamento dell'azione per avere una \term{Verifica} il prima possibile.
 \end{itemize}
 
-\paragraph{Integrazione nella \term{Baseline}}
+\paragraph{Integrazione nella \ignoreglossary{Baseline}}
 Quando la \term{Pull Request} viene approvata dal verificatore, il responsabile esegue la revisione. Si impegna ad eseguire il \term{Merge} nel \term{Branch} \texttt{develop}. A questo punto, la modifica entra ufficialmente in \term{Baseline} e diventa parte del progetto.
 
 \subsubsection{Registro dello stato della configurazione}
@@ -821,7 +828,7 @@ Le misurazioni effettuate vengono successivamente confrontate con tali valori di
 Le metriche di \term{Processo} sono utilizzate dal responsabile di progetto come strumento di supporto decisionale per individuare eventuali criticità e valutare la necessità di apportare modifiche o miglioramenti ai processi in uso.
 
 % ==== SEZIONE \term{Processo} DI \term{Verifica} ====
-\subsection{Processo di Verifica} \label{sec:processo-verifica}
+\subsection{Processo di \ignoreglossary{Verifica}} \label{sec:processo-verifica}
 Il \term{Processo} di \term{Verifica} è l'insieme delle attività volte ad accertare che ogni prodotto del \term{Ciclo Di Vita} (codice, documenti, \term{Architettura}) sia conforme ai requisiti e agli standard di qualità stabiliti.
 L'obiettivo è rispondere alla domanda «Did we build the product right?» (Abbiamo costruito il prodotto nel modo corretto?), intercettando difetti ed errori prima che questi si propaghino alle fasi successive.
 
@@ -834,7 +841,7 @@ Le regole operative sono le seguenti:
     \item \textbf{Rami Stabili}: il ramo \texttt{main} è protetto e accoglie solo versioni del software che hanno superato l'intero ciclo di test (inclusi quelli di sistema).
 \end{itemize}
 
-\subsubsection{Verifica della Documentazione}
+\subsubsection{\ignoreglossary{Verifica} della Documentazione}
 La documentazione è soggetta esclusivamente ad \textbf{\term{Analisi Statica}}, ovvero controlli che non richiedono l'esecuzione.
 Per garantire la qualità dei documenti, il gruppo valuta due metodologie:
 \begin{itemize}
@@ -843,17 +850,17 @@ Per garantire la qualità dei documenti, il gruppo valuta due metodologie:
 \end{itemize}
 Tra le due, il gruppo \textit{BitByBit} adotta come standard l'\textbf{\term{Ispezione}}. L'uso di \term{Checklist} predefinite garantisce infatti un \term{Processo} ripetibile, oggettivo e meno soggetto a errori umani rispetto alla revisione libera.
 
-\paragraph{Strumenti per la \term{Verifica} della documentazione}
+\paragraph{Strumenti per la \ignoreglossary{Verifica} della documentazione}
 Poiché il gruppo ha adottato la tecnica dell'\textbf{\term{Ispezione}} basata su \term{Checklist}, la \term{Verifica} della documentazione non richiede strumenti di automazione complessi, ma si avvale delle piattaforme di sviluppo e collaborazione:
 \begin{itemize}
     \item \textbf{GitHub}: è lo strumento principale. L'interfaccia delle \term{Pull Request} permette ai verificatori di commentare righe specifiche del documento, richiedere modifiche e approvare il lavoro solo quando la \term{Checklist} di \term{Verifica} è soddisfatta.
     \item \textbf{VS Code}: viene utilizzato dai verificatori per il controllo locale dei file sorgente (\LaTeX/Markdown), permettendo di individuare errori di sintassi o formattazione non visibili dall'interfaccia web prima di dare l'approvazione.
 \end{itemize}
 
-\subsubsection{Verifica del Codice Software}
+\subsubsection{\ignoreglossary{Verifica} del Codice Software}
 La \term{Verifica} del software si articola in due momenti distinti: l'analisi del codice sorgente (statica) e l'esecuzione dei test (dinamica).
 
-\paragraph{\term{Analisi Statica} Automatizzata}
+\paragraph{\ignoreglossary{Analisi Statica} Automatizzata}
 Prima di essere eseguito, il codice viene analizzato da strumenti automatici (\term{Linter} e Static Analyzers) integrati nella pipeline di \term{Ci}/\term{Cd}.
 Questo passaggio serve a rilevare:
 \begin{itemize}
@@ -862,7 +869,7 @@ Questo passaggio serve a rilevare:
     \item calcolo delle metriche di complessità.
 \end{itemize}
 
-\paragraph{\term{Analisi Dinamica} (Testing)}
+\paragraph{\ignoreglossary{Analisi Dinamica} (Testing)}
 L'\term{Analisi Dinamica} \term{Verifica} il comportamento del software tramite la sua esecuzione.
 Per essere valido, ogni test deve garantire due proprietà: \textbf{ripetibilità} (stesso output a parità di input) e \textbf{automatizzabilità} (esecuzione senza intervento umano).
 Il gruppo struttura i test secondo il modello a V, coprendo i seguenti livelli:
@@ -887,7 +894,7 @@ Il gruppo struttura i test secondo il modello a V, coprendo i seguenti livelli:
     \item \textbf{\term{Test Di Accettazione}}: Verifiche formali finali, condotte da utenti o \term{Stakeholder}, per confermare che un software soddisfi i requisiti aziendali e funzionali prima del rilascio in produzione.
 \end{enumerate}
 
-\paragraph{Strumenti per la \term{Verifica} del codice}
+\paragraph{Strumenti per la \ignoreglossary{Verifica} del codice}
 La definizione puntuale degli strumenti tecnici per la \term{Verifica} del codice (es. framework di unit testing, \term{Linter} specifici per linguaggio, strumenti di \term{Analisi Statica} e coverage) sarà effettuata e dettagliata durante lo svolgimento della \textbf{Product \term{Baseline}} (\term{Pb}), in coerenza con le tecnologie che verranno consolidate in quella fase.
 
 \subsubsection{Classificazione dei Test}
@@ -1297,13 +1304,8 @@ Le metriche di prodotto adottate nel progetto sono suddivise nelle seguenti due 
 \paragraph{Planned Value (PV)}
 \begin{itemize}
     \item \textbf{Codice:} \texttt{M-PC2}
-<<<<<<< HEAD
     \item \textbf{Formula:} $PV=(\text{BAC})\cdot(\text{\% di lavoro pianificata nello \term{Sprint}})$
-    \item \textbf{Descrizione:} rappresenta il preventivo per i costi del lavoro che si intende eseguire durante uno \term{Sprint} di progetto.
-=======
-    \item \textbf{Formula:} $PV=(\text{BAC})\cdot(\text{\% di lavoro pianificata nello \term{Sprint}})$
-    \item \textbf{Descrizione:} rappresenta il preventivo per i costi del lavoro che si intende eseguire durante uno \term{Sprint} di progetto.
->>>>>>> e886b4cd3e7c6d2562f58587a8e5409ccd4f0a73
+    \item \textbf{Descrizione:} rappresenta il preventivo per i costi del lavoro che si intende eseguire durante uno \term{Sprint} di progetto. La percentuale di lavoro pianficato corrisponde a $\frac{\text{ore previste in uno Sprint}}{\text{ore totali}}$. \texttt{Ore totali} corrisponde alla somma delle ore che da progetto ogni componente del gruppo deve eseguire.
 \end{itemize}
 
 \paragraph{Actual Cost (AC)}
@@ -1393,7 +1395,7 @@ Le metriche di prodotto adottate nel progetto sono suddivise nelle seguenti due 
 \end{itemize}
 
 \subsubsection{Gestione dei processi}
-\paragraph{\term{Sprint} Commitment Reliability (SCR)}
+\paragraph{\ignoreglossary{Sprint} Commitment Reliability (SCR)}
 \begin{itemize}
     \item \textbf{Codice:} \texttt{M-PC14}
     \item \textbf{Formula:} $\frac{\text{\# \term{Issue} completate nello \term{Sprint}}}{\text{\# \term{Issue} pianificate}} * 100$
