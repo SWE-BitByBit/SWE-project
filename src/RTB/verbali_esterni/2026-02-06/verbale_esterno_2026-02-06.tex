@@ -1,0 +1,281 @@
+% template presente
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{tabularx}
+\usepackage{tcolorbox}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    urlcolor=blue,     
+}
+\usepackage{graphicx}
+\graphicspath{{resources/}{../resources/}{../../resources/}{../../../resources/}{../../../../resources/}}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{colortbl}
+\usepackage{hyperref} 
+\usepackage{fancyhdr}
+\setlength{\headheight}{25pt}
+\setlength{\headsep}{1cm}
+\usepackage{titlesec}
+\geometry{margin=2.5cm}
+% ===== Variabile per il titolo del documento =====
+\newcommand{\documenttitle}{Verbale Riunione Numero 4 } 
+
+\setlength{\parindent}{0pt}
+\setstretch{1.2}
+
+% ===== Stile intestazione =====
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{gray}{\documenttitle - BitByBit}}
+\fancyhead[R]{\includegraphics[height=1cm]{solo_logo.jpg}}
+\fancyfoot[C]{\thepage}
+
+% ===== Formattazione sezioni =====
+\titleformat{\section}{\Large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.5em}{}
+
+\begin{document}
+
+% ======= HEADER UNIVERSITÀ E GRUPPO CENTRATI VERTICALMENTE =======
+\vspace*{\fill} 
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logoUni.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\color{red}\LARGE \textbf{Università degli Studi di Padova}}\\[0.3cm]
+        {\large
+        Laurea: Informatica\\
+        Corso: Ingegneria del Software\\
+        Anno Accademico: 2025/26
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1cm}
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logo.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\LARGE \textbf{Gruppo 17}}\\[0.3cm]
+        {\large
+        Nome: BitByBit\\
+        Email: swe.bitbybit@gmail.com
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1.5cm}
+
+\begin{center}
+    {\LARGE \textbf{\documenttitle}}
+\end{center}
+
+% ======= INFO GENERALI SUL DOCUMENTO =======
+\renewcommand{\arraystretch}{1.3}
+\vspace{0.1cm}
+
+\begin{tcolorbox}
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\textbf{Stato:} & Completato \\
+\textbf{Versione:} & 1.0.0 \\
+\textbf{Redattori:} & Giovanni Visentin \\
+\textbf{Verificatori:} & Gabriele Scaggiante \\
+\textbf{Responsabile:} & Ferdinando Fracasso \\
+\textbf{Destinatari:} & 
+\begin{tabular}[t]{@{}l@{}}
+Miriade \\
+Prof. Tullio Vardanega \\
+Prof. Cardin \\
+\end{tabular} \\
+\end{tabularx}
+\end{tcolorbox}
+
+\vspace*{\fill} 
+
+% ---------- REDAZIONE E REVISIONE ----------
+\clearpage
+
+\section*{Registro delle modifiche}
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2} 
+\arrayrulecolor{black}
+\begin{tabular}{|c|c|p{0.21\linewidth}|p{0.23\linewidth}|c|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+\hline
+\rowcolor{white}
+1.0.0 & 2026-02-28 & Giovanni Visentin & Approvazione del verbale e stabilizzazione versione del documento  & Dennis Parolin \\
+\hline
+\rowcolor{white}
+0.0.1 & 2026-02-07 & Giovanni Visentin & Stesura verbale & Gabriele Scaggiante \\
+\hline
+\end{tabular}
+\end{center}
+
+\clearpage
+
+% ======= INDICE SU PAGINA DEDICATA =======
+\clearpage
+\tableofcontents
+\thispagestyle{empty} 
+\clearpage
+
+% ======= INFO GENERALI RIUNIONE =======
+\section{Informazioni generali}
+\renewcommand{\arraystretch}{1.3}
+
+\begin{tcolorbox}
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\textbf{Data:} & 06 febbraio 2026 \\
+\textbf{Ora Inizio:} & 16:30 \\
+\textbf{Durata:} & 1h 10m \\
+\textbf{Luogo:} & Google Meet \\
+\textbf{Presenti:} & 
+\begin{tabular}[t]{@{}l@{}}
+Manisi Riccardo\\
+Scaggiante Gabriele\\
+Visentin Giovanni \\
+\end{tabular} \\
+\textbf{Miriade:} & 
+\begin{tabular}[t]{@{}l@{}}
+Annalisa Egidi\\
+Arianna Bellino\\
+Emanuele Righetto\\
+\end{tabular} \\
+\textbf{Assenti:} & 
+\begin{tabular}[t]{@{}l@{}}
+Fracasso Ferdinando\\
+Sanguin Marco\\
+Parolin Dennis\\
+\end{tabular} \\
+\end{tabularx}
+\end{tcolorbox}
+
+% ---------- ORDINE DEL GIORNO ----------
+\section{Ordine del Giorno}
+\begin{itemize}
+    \item Definizione architettura e infrastruttura AWS.
+    \item Chiarimenti su credenziali e permessi (Certificazioni ISO).
+    \item Pianificazione del PoC e deploy.
+    \item Dettagli tecnici su autenticazione, servizi AI e sviluppo mobile.
+\end{itemize}
+
+% ---------- DISCUSSIONI ----------
+\section{Discussioni}
+
+\subsection{Credenziali e Ambiente AWS}
+L'azienda ha comunicato che, dovendo ottemperare a diverse certificazioni ISO, non è possibile fornire accesso diretto come amministratore all'account AWS principale. È stato concordato l'utilizzo di un account interno con permessi specifici:
+\begin{itemize}
+    \item Accesso admin garantito per i servizi: Cognito, Lambda ed EventBridge.
+    \item Non verrà fornito accesso admin per Bedrock; le chiamate API saranno gestite come servizio.
+\end{itemize}
+
+\subsection{Strategia di Deploy e PoC}
+Si è discusso il flusso di lavoro per lo sviluppo. L'idea approvata è di realizzare inizialmente il Proof of Concept (PoC) in locale.
+Una volta validato il PoC, si procederà con la migrazione sull'account AWS e la generazione dell'APK definitivo. 
+
+\subsection{Architettura del Sistema}
+È stata definita la catena di servizi AWS per supportare l'applicativo:
+\begin{itemize}
+    \item \textbf{Frontend:} Ospitato su bucket S3 e distribuito tramite CloudFront.
+    \item \textbf{Backend:} API Gateway gestirà le richieste (es. GET) connettendosi alle Lambda. Le Lambda conterranno la logica applicativa, ricevendo input JSON e interagendo con Amazon DynamoDB per i dati.
+    \item \textbf{Intelligenza Artificiale:} Verrà utilizzato Amazon Bedrock tramite chiamate API. In fase di test locale o per il piano free, è possibile utilizzare modelli alternativi (es. Llama) deployati localmente.
+    \item \textbf{Email (SES):} Il servizio SES verrà organizzato in topic a cui collegare le email; l'azienda verificherà internamente la gestione specifica.
+\end{itemize}
+
+\subsection{Autenticazione e Mobile}
+\begin{itemize}
+    \item \textbf{Cognito:} Gestirà l'autenticazione tramite User Pool, permettendo permessi differenziati. Sarà integrato il login con Google: il frontend comunicherà con il backend che creerà l'utente su Cognito.
+    \item \textbf{Mobile App:} L'APK verrà generato tramite Flutter. Si è notato che, anche in debug, l'app potrebbe richiedere permessi di sistema specifici all'utente.
+\end{itemize}
+
+% ---------- DECISIONI ----------
+\section{Decisioni}
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2} 
+\arrayrulecolor{black} 
+\begin{tabular}{|p{0.73\textwidth}|c|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Descrizione decisione} & \textbf{Codice decisione} \\
+\hline
+\rowcolor{white}
+Sviluppare il PoC in locale prima di migrare sull'infrastruttura AWS aziendale & VE RTB 4.1 \\
+\hline
+\rowcolor{gray!20}
+Adottare l'architettura S3 + CloudFront (Frontend) &  VE RTB 4.2 \\
+\hline
+\rowcolor{white}
+Utilizzare Amazon Cognito integrato con Google per la gestione utenti &  VE RTB 4.3 \\
+\hline
+\rowcolor{gray!20}
+Utilizzare Amazon Bedrock per i servizi AI (o Llama per test locali) & VE RTB 4.4 \\
+\hline
+\rowcolor{white}
+Adottare API Gateway + Lambda + DynamoDB (Backend) &  VE RTB 4.5 \\
+\hline
+\end{tabular}
+\end{center}
+
+% ---------- TO DO ----------
+\section{To Do}
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2} 
+\arrayrulecolor{black} 
+\begin{tabular}{|p{0.52\textwidth}|c|c|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Task} & \textbf{Codice decisione} & \textbf{N° issue Github} \\
+\hline
+\rowcolor{white}
+Setup ambiente di sviluppo PoC (AWS) & VE RTB 4.1 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/338}{\textbf{\#338}} \\
+\hline
+\rowcolor{gray!20}
+Setup per Frontend & VE RTB 4.2 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/344}{\textbf{\#344}} \\
+\hline
+\rowcolor{white}
+Modellare autenticazione con Google & VE RTB 4.3 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/343}{\textbf{\#343}} \\
+\hline
+\rowcolor{gray!20}
+Modellare chat con chatbot utilizzando Amazon Bedrock & VE RTB 4.4 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/342}{\textbf{\#342}} \\
+\hline
+\rowcolor{white}
+Modellare inserimento immagine in una nota & VE RTB 4.5 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/339}{\textbf{\#339}} \\
+\rowcolor{gray!20}
+Modellare invio mail a contatti fidati & VE RTB 4.5 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/340}{\textbf{\#340}} \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace*{\fill}
+\noindent
+\begin{minipage}{0.60\textwidth}
+    {\small
+    \textbf{Firma aziendale:}\\[0.3cm]
+    \textit{(Spazio riservato all’azienda per apporre firma o timbro)}\\[0.8cm]
+    \fbox{\rule{0pt}{2.5cm}\rule{5cm}{0pt}} 
+    }
+\end{minipage}
+
+\end{document}
