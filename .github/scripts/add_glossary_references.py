@@ -113,6 +113,11 @@ def wrap_terms(text: str, terms):
         r'\\href\{[^}]*\}\{[^}]*\}',                 # \href{url}{text} - protezione completa
         r'\\url\{[^}]*\}',                           # \url{...}
         r'%.*?$',                                    # % commento
+
+        # Titoli e sottotitoli
+        r'\\section\*?\s*(?:\[[^\]]*\])?\{[^}]*\}',         # \section[toc]{titolo}
+        r'\\subsection\*?\s*(?:\[[^\]]*\])?\{[^}]*\}',      # \subsection[toc]{titolo}
+        r'\\subsubsection\*?\s*(?:\[[^\]]*\])?\{[^}]*\}',   # \subsubsection[toc]{titolo}
         
         # Label e riferimenti
         r'\\label\{[^}]*\}',                         # \label{...}
