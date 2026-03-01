@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BitByBit</title>
+    <link rel="icon" href="resources/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="website/style.css" media="screen">
+</head>
+
+<body>
+    <header>
+        <img src="website/img/logo_small.png" alt="Logo BitByBit" class="logo">
+    </header>
+    <nav>  
+        <ul>
+            <li><a href="#pb">PB</a></li>
+            <li><a href="#rtb">RTB</a></li>
+            <li><a href="#candidatura">Candidatura</a></li>
+            <li><a href="#glossario">Glossario</a></li>
+            <li><a href="#team">Il Team</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        [docs]
+
+        <section id="team">
+            <h2>Il Team</h2>
+            <div class="team-grid">
+                
+                <div class="team-member">
+                    <img src="https://avatars.githubusercontent.com/u/239200264?v=4" alt="Foto Membro Team">
+                    <h3>Dennis Parolin</h3>
+                    <p>Matricola: 2113203</p>
+                </div>
+                
+                <div class="team-member">
+                    <img src="https://avatars.githubusercontent.com/u/239202428?v=4" alt="Foto Membro Team">
+                    <h3>Ferdinando Fracasso</h3>
+                    <p>Matricola: 2122649</p>
+                </div>
+                
+                <div class="team-member">
+                    <img src="https://avatars.githubusercontent.com/u/185974967?v=4" alt="Foto Membro Team">
+                    <h3>Riccardo Manisi</h3>
+                    <p>Matricola: 2111948</p>
+                </div>
+                
+                <div class="team-member">
+                    <img src="https://avatars.githubusercontent.com/u/186070663?v=4&size=64" alt="Foto Membro Team">
+                    <h3>Marco Sanguin</h3>
+                    <p>Matricola: 2103121</p>
+                </div>
+                
+                <div class="team-member">
+                    <img src="https://avatars.githubusercontent.com/u/52912673?v=4" alt="Foto Membro Team">
+                    <h3>Gabriele Scaggiante</h3>
+                    <p>Matricola: 2101076</p>
+                </div>
+                
+                <div class="team-member">
+                    <img src="https://avatars.githubusercontent.com/u/59048759?v=4" alt="Foto Membro Team">
+                    <h3>Giovanni Visentin</h3>
+                    <p>Matricola: 2101064</p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <footer>
+            <div class="footer-content">
+                
+                <div class="footer-description">
+                    <h4>Chi siamo</h4>
+                    <p>
+                        Il gruppo <strong>BitByBit</strong> nasce per il progetto didattico del corso di Ingegneria del Software (A.A. 2024/2025) dell'Università di Padova.
+                        <br>
+                        Il capitolato scelto è <strong>L'app che Protegge e Trasforma</strong>, proposto dall'azienda <strong>Miriade</strong>.
+                    </p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Link Utili</h4>
+                    <p>La nostra repo: <a href="https://github.com/SWE-BitByBit/SWE-project.git" target="_blank">Link Repository</a></p>
+                    <p>Sito dell'azienda: <a href="https://www.miriade.it" target="_blank">Link Azienda</a></p>
+                    <p>Informazioni sul capitolato: <a href="https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C4.pdf" target="_blank">Documento</a></p>
+                </div>
+
+            </div>
+            
+            <div class="footer-bottom">
+                <p>Copyright © 2025 - Gruppo BitByBit</p>
+            </div>
+        </footer>
+
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          // Seleziona tutti i link del menu laterale
+          const navLinks = document.querySelectorAll("nav ul li a");
+        
+          navLinks.forEach(link => {
+            const targetId = link.getAttribute("href").replace("#", "");
+            const section = document.getElementById(targetId);
+        
+            // Se la sezione esiste ma è nascosta (display: none), nascondi anche il link
+            if (section && window.getComputedStyle(section).display === "none") {
+              link.parentElement.style.display = "none";
+            }
+          });
+        });
+    </script>
+</body>
+</html>
