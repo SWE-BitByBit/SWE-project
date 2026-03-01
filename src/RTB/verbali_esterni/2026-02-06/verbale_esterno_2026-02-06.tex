@@ -41,6 +41,10 @@
 \titleformat{\section}{\Large\bfseries}{\thesection.}{0.5em}{}
 \titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.5em}{}
 
+\newcommand{\term}[1]{\textbf{#1}$^\mathbf{G}$}
+
+\newcommand{\ignoreglossary}{}
+
 \begin{document}
 
 % ======= HEADER UNIVERSITÀ E GRUPPO CENTRATI VERTICALMENTE =======
@@ -123,10 +127,10 @@ Prof. Cardin \\
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 \rowcolor{white}
-1.0.0 & 2026-02-28 & Giovanni Visentin & Approvazione del verbale e stabilizzazione versione del documento  & Dennis Parolin \\
+1.0.0 & 2026-02-28 & Giovanni Visentin & Approvazione del \term{Verbale} e stabilizzazione versione del documento  & Dennis Parolin \\
 \hline
 \rowcolor{white}
-0.0.1 & 2026-02-07 & Giovanni Visentin & Stesura verbale & Gabriele Scaggiante \\
+0.0.1 & 2026-02-07 & Giovanni Visentin & Stesura \term{Verbale} & Gabriele Scaggiante \\
 \hline
 \end{tabular}
 \end{center}
@@ -173,9 +177,9 @@ Parolin Dennis\\
 % ---------- ORDINE DEL GIORNO ----------
 \section{Ordine del Giorno}
 \begin{itemize}
-    \item Definizione architettura e infrastruttura AWS.
+    \item Definizione \term{Architettura} e infrastruttura AWS.
     \item Chiarimenti su credenziali e permessi (Certificazioni ISO).
-    \item Pianificazione del PoC e deploy.
+    \item Pianificazione del \term{Poc} e deploy.
     \item Dettagli tecnici su autenticazione, servizi AI e sviluppo mobile.
 \end{itemize}
 
@@ -190,8 +194,8 @@ L'azienda ha comunicato che, dovendo ottemperare a diverse certificazioni ISO, n
 \end{itemize}
 
 \subsection{Strategia di Deploy e PoC}
-Si è discusso il flusso di lavoro per lo sviluppo. L'idea approvata è di realizzare inizialmente il Proof of Concept (PoC) in locale.
-Una volta validato il PoC, si procederà con la migrazione sull'account AWS e la generazione dell'APK definitivo. 
+Si è discusso il flusso di lavoro per lo sviluppo. L'idea approvata è di realizzare inizialmente il Proof of Concept (\term{Poc}) in locale.
+Una volta validato il \term{Poc}, si procederà con la migrazione sull'account AWS e la generazione dell'APK definitivo. 
 
 \subsection{Architettura del Sistema}
 È stata definita la catena di servizi AWS per supportare l'applicativo:
@@ -204,8 +208,8 @@ Una volta validato il PoC, si procederà con la migrazione sull'account AWS e la
 
 \subsection{Autenticazione e Mobile}
 \begin{itemize}
-    \item \textbf{Cognito:} Gestirà l'autenticazione tramite User Pool, permettendo permessi differenziati. Sarà integrato il login con Google: il frontend comunicherà con il backend che creerà l'utente su Cognito.
-    \item \textbf{Mobile App:} L'APK verrà generato tramite Flutter. Si è notato che, anche in debug, l'app potrebbe richiedere permessi di sistema specifici all'utente.
+    \item \textbf{Cognito:} Gestirà l'autenticazione tramite User Pool, permettendo permessi differenziati. Sarà integrato il login con Google: il frontend comunicherà con il backend che creerà l'\term{Utente} su Cognito.
+    \item \textbf{Mobile App:} L'APK verrà generato tramite Flutter. Si è notato che, anche in debug, l'app potrebbe richiedere permessi di sistema specifici all'\term{Utente}.
 \end{itemize}
 
 % ---------- DECISIONI ----------
@@ -220,19 +224,19 @@ Una volta validato il PoC, si procederà con la migrazione sull'account AWS e la
 \textbf{Descrizione decisione} & \textbf{Codice decisione} \\
 \hline
 \rowcolor{white}
-Sviluppare il PoC in locale prima di migrare sull'infrastruttura AWS aziendale & VE RTB 4.1 \\
+Sviluppare il \term{Poc} in locale prima di migrare sull'infrastruttura AWS aziendale & VE \term{Rtb} 4.1 \\
 \hline
 \rowcolor{gray!20}
-Adottare l'architettura S3 + CloudFront (Frontend) &  VE RTB 4.2 \\
+Adottare l'\term{Architettura} S3 + CloudFront (Frontend) &  VE \term{Rtb} 4.2 \\
 \hline
 \rowcolor{white}
-Utilizzare Amazon Cognito integrato con Google per la gestione utenti &  VE RTB 4.3 \\
+Utilizzare Amazon Cognito integrato con Google per la gestione utenti &  VE \term{Rtb} 4.3 \\
 \hline
 \rowcolor{gray!20}
-Utilizzare Amazon Bedrock per i servizi AI (o Llama per test locali) & VE RTB 4.4 \\
+Utilizzare Amazon Bedrock per i servizi AI (o Llama per test locali) & VE \term{Rtb} 4.4 \\
 \hline
 \rowcolor{white}
-Adottare API Gateway + Lambda + DynamoDB (Backend) &  VE RTB 4.5 \\
+Adottare API Gateway + Lambda + DynamoDB (Backend) &  VE \term{Rtb} 4.5 \\
 \hline
 \end{tabular}
 \end{center}
@@ -246,24 +250,24 @@ Adottare API Gateway + Lambda + DynamoDB (Backend) &  VE RTB 4.5 \\
 \begin{tabular}{|p{0.52\textwidth}|c|c|}
 \hline
 \rowcolor{gray!60} 
-\textbf{Task} & \textbf{Codice decisione} & \textbf{N° issue Github} \\
+\textbf{Task} & \textbf{Codice decisione} & \textbf{N° \term{Issue} Github} \\
 \hline
 \rowcolor{white}
-Setup ambiente di sviluppo PoC (AWS) & VE RTB 4.1 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/338}{\textbf{\#338}} \\
+Setup ambiente di sviluppo \term{Poc} (AWS) & VE \term{Rtb} 4.1 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/338}{\textbf{\#338}} \\
 \hline
 \rowcolor{gray!20}
-Setup per Frontend & VE RTB 4.2 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/344}{\textbf{\#344}} \\
+Setup per Frontend & VE \term{Rtb} 4.2 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/344}{\textbf{\#344}} \\
 \hline
 \rowcolor{white}
-Modellare autenticazione con Google & VE RTB 4.3 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/343}{\textbf{\#343}} \\
+Modellare autenticazione con Google & VE \term{Rtb} 4.3 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/343}{\textbf{\#343}} \\
 \hline
 \rowcolor{gray!20}
-Modellare chat con chatbot utilizzando Amazon Bedrock & VE RTB 4.4 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/342}{\textbf{\#342}} \\
+Modellare chat con chatbot utilizzando Amazon Bedrock & VE \term{Rtb} 4.4 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/342}{\textbf{\#342}} \\
 \hline
 \rowcolor{white}
-Modellare inserimento immagine in una nota & VE RTB 4.5 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/339}{\textbf{\#339}} \\
+Modellare inserimento immagine in una nota & VE \term{Rtb} 4.5 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/339}{\textbf{\#339}} \\
 \rowcolor{gray!20}
-Modellare invio mail a contatti fidati & VE RTB 4.5 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/340}{\textbf{\#340}} \\
+Modellare invio mail a contatti fidati & VE \term{Rtb} 4.5 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/340}{\textbf{\#340}} \\
 \hline
 \end{tabular}
 \end{center}
