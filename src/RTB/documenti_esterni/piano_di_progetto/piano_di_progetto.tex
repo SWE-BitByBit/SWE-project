@@ -6,7 +6,7 @@
 % =======================================================
 \newcommand{\TitoloDocumento}{Piano di Progetto}
 \newcommand{\DataVersione}{AAAA/MM/GG}
-\newcommand{\VersioneAttuale}{0.5.0}
+\newcommand{\VersioneAttuale}{1.0.0}
 
 % =======================================================
 % 2. PACCHETTI
@@ -144,7 +144,7 @@
 
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
-\textbf{Stato:} & in lavorazione\\
+\textbf{Stato:} & Completato\\
 \textbf{Versione:} & \VersioneAttuale \\
 \textbf{Responsabile:} & Dennis Parolin\\
 \textbf{Redattori:} & 
@@ -186,7 +186,7 @@ Gruppo BitByBit\\\\
 \renewcommand{\arraystretch}{1.4}
 \arrayrulecolor{black}
 
-\begin{longtable}{|c|c|>{\raggedright\arraybackslash}p{0.20\linewidth}|>{\raggedright\arraybackslash}p{0.37\linewidth}|c|}
+\begin{longtable}{|c|c|>{\raggedright\arraybackslash}p{0.15\linewidth}|>{\raggedright\arraybackslash}p{0.3\linewidth}|c|}
 \hline
 
 \rowcolor{gray!60}
@@ -199,12 +199,17 @@ Gruppo BitByBit\\\\
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 \endhead
-
+\rowcolor{white}
+1.0.0 & 2026-03-03 & Gabriele Scaggiante & Approvazione del documento e stabilizzazione versione del PdP & Dennis Parolin \\
+\hline
+\rowcolor{gray!20}
+0.5.2 & 2026-03-01 & Gabriele Scaggiante & Completata la sezione "\term{Sprint} 7". Fatte correzioni generali e controllo completo dei consuntivi in vista della \term{Milestone} \term{Rtb}. & Dennis Parolin \\
+\hline
 \rowcolor{white}
 0.5.1 & 2026-02-25 & Dennis Parolin & Sistemati alcuni errori di visualizzazione. Aggiunto il rischio RO5. Modificati i rischi incontrati dello \term{Sprint} 6 e i rischi attesi dello \term{Sprint} 7. & Ferdinando Fracasso \\
 \hline
 \rowcolor{gray!20}
-0.5.0 & 2026-02-23 & Dennis Parolin & Completata la sezione "\term{Sprint} 6" (\ref{sec:sprint6_RTB}) e fatta la prima metà della sezione "\term{Sprint} 7" (\ref{sec:sprint7_RTB}). Corretti errori di compilazione ed & Giovanni Visentin \\
+0.5.0 & 2026-02-23 & Dennis Parolin & Completata la sezione "\term{Sprint} 6" (\ref{sec:sprint6_RTB}) e fatta la prima metà della sezione "\term{Sprint} 7" (\ref{sec:sprint7_RTB}). Corretti errori di compilazione. & Giovanni Visentin \\
 \hline
 \rowcolor{white}
 0.4.6 & 2026-02-12 & Ferdinando Fracasso & Redazione consuntivo \term{Sprint} nella sezione \ref{sec:sprint4_RTB}, redazione sezione \ref{sec:sprint5_RTB} e inizio sezione \ref{sec:sprint6_RTB} & Marco Sanguin \\
@@ -234,10 +239,10 @@ Gruppo BitByBit\\\\
 0.3.0 & 2025-12-05 & Dennis Parolin & Redazione dell'intera sezione \ref{sec:pianificazione_lungo_termine} & Giovanni Visentin \\
 \hline
 \rowcolor{gray!20}
-0.2.0 & 2025-12-4 & Dennis Parolin & Redazione delle sezioni \ref{sec:analisi_rischi} con relative sottosezioni \ref{sec:rischi_tecnologici}, \ref{sec:rischi_organizzativi} e \ref{sec:rischi_interpersonali} & Ferdinando Fracasso \\
+0.2.0 & 2025-12-04 & Dennis Parolin & Redazione delle sezioni \ref{sec:analisi_rischi} con relative sottosezioni \ref{sec:rischi_tecnologici}, \ref{sec:rischi_organizzativi} e \ref{sec:rischi_interpersonali} & Ferdinando Fracasso \\
 \hline
 \rowcolor{white}
-0.1.0 & 2025-12-3 & Dennis Parolin & Creazione del documento e redazione delle sezioni \ref{sec:scopo_documento}, \ref{sec:definizioni_acronimi_abbreviazioni}, \ref{sec:riferimenti}. & Giovanni Visentin \\
+0.1.0 & 2025-12-03 & Dennis Parolin & Creazione del documento e redazione delle sezioni \ref{sec:scopo_documento}, \ref{sec:definizioni_acronimi_abbreviazioni}, \ref{sec:riferimenti}. & Giovanni Visentin \\
 \hline
 \end{longtable}
 \end{center}
@@ -276,7 +281,7 @@ Data la natura mutevole dei requisiti e la metodologia agile adottata, il presen
 
 \subsection{Definizioni, acronimi e abbreviazioni} \label{sec:definizioni_acronimi_abbreviazioni}
 
-Al fine di evitare ambiguità relative al linguaggio e ai termini utilizzati all'interno dei documenti formali, viene allegato il \href{https://swe-bitbybit.github.io/SWE-docs/docs/documenti_interni/Glossario.pdf}{\textit{Glossario}}.
+Al fine di evitare ambiguità relative al linguaggio e ai termini utilizzati all'interno dei documenti formali, viene allegato il \href{https://swe-bitbybit.github.io/SWE-docs/docs/RTB/documenti_interni/Glossario.pdf}{\textit{Glossario}}.
 I termini tecnici, gli acronimi e le parole con significato specifico all'interno del progetto sono contrassegnati da una lettera 'G' in apice (es. Agile\textsuperscript{G}) e sono descritti in dettaglio nel documento apposito.
 
 % =======================RIFERIMENTI================================
@@ -287,13 +292,13 @@ I termini tecnici, gli acronimi e le parole con significato specifico all'intern
 \begin{itemize}
 \item \textbf{\term{Capitolato} d'appalto C4: \emph{L'app che Protegge e Trasforma}}\\
 Parti consultate: documento completo\\
-Versione: 1.0\\
+Versione: 1.0.0\\
 Ultimo accesso: \textit{2026-01-12}\\
 \url{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C4.pdf}
 
 \item \textbf{Norme di Progetto}\\
 Parti consultate: documento completo\\
-Versione: v.0.10.2\\
+Versione: 1.0.0\\
 Ultimo accesso: \textit{2026-01-14}\\
 \url{} %---Metterei il link nel sito web, ma al momento non è utilizzabile?---
 \end{itemize}
@@ -323,9 +328,9 @@ Ultimo accesso: \textit{2026-01-14}\\
         \url{https://www.math.unipd.it/~tullio/IS-1/2009/Approfondimenti/ISO_12207-1995.pdf}
     \item \textbf{Glossario}\\
         Parti consultate: documento completo\\
-        Versione: \textit{v.0.3.2}\\
-        Ultimo accesso: \textit{2026-01-15}\\
-        \url{https://swe-bitbybit.github.io/SWE-docs/docs/documenti_interni/Glossario.pdf}
+        Versione: \textit{1.0.0}\\
+        Ultimo accesso: \textit{2026-03-03}\\
+        \url{https://swe-bitbybit.github.io/SWE-docs/docs/RTB/documenti_interni/Glossario.pdf}
 \end{itemize}
 
 % =======================================================
@@ -2217,17 +2222,111 @@ Si prospetta l'utilizzo delle seguenti risorse:
 \end{figure}
 
 \paragraph{Consuntivo}
-% TODO
+Di seguito il resoconto delle ore effettivamente impiegate:
 
-% GRAFICO A TORTA CONSUNTIVO
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.4}
+    \footnotesize
+    \begin{tabularx}{\textwidth}{|l|C|C|C|C|C|C|}
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Membro} & \textbf{Resp} & \textbf{Amm} & \textbf{Anal} & \textbf{Pt} & \textbf{Pr} & \textbf{Ver} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        F. Fracasso & - & 3\textcolor{red}{(+1)} & - & - & - & 1.5\textcolor{red}{(-0.5)} \\
+        \hline
+        \rowcolor{tableLineEven}
+        R. Manisi & - & - & - & - & 6\textcolor{red}{(+2)} & - \\
+        \hline
+        \rowcolor{tableLineOdd}
+        D. Parolin & 5 & - & - & - & - & 2.5\textcolor{red}{(+0.5)} \\
+        \hline
+        \rowcolor{tableLineEven}
+        M. Sanguin & - & 2\textcolor{red}{(-2.5)} & 3 & - & - & - \\
+        \hline
+        \rowcolor{tableLineOdd}
+        G. Scaggiante & - & 1.5\textcolor{red}{(+0.5)} & - & - & 13\textcolor{red}{(+8)} & 1\textcolor{red}{(+1)} \\
+        \hline
+        \rowcolor{tableLineEven}
+        G. Visentin & - & - & - & - & 5\textcolor{red}{(+1)} & - \\
+        \hline
+    \end{tabularx}
+    \caption{Consuntivo orario per componente - \term{Sprint} 7}
+    \label{tab:consuntivo_sprint6}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1.2]
+
+        \draw[thick,fill=pieResp] (0,0) -- (0:1.5) arc (0:41.4:1.5) -- cycle;
+        \draw (20.7:1.95) node {11.5\%};
+
+        \draw[thick,fill=pieAmm] (0,0) -- (41.4:1.5) arc (41.4:95.04:1.5) -- cycle;
+        \draw (68:1.85) node {14.9\%};
+
+        \draw[thick,fill=pieAnal] (0,0) -- (95.04:1.5) arc (95.04:119.88:1.5) -- cycle;
+        \draw (107:1.9) node {6.9\%};
+
+        \draw[thick,fill=pieProg] (0,0) -- (119.88:1.5) arc (119.88:318.6:1.5) -- cycle;
+        \draw (219:1.85) node {55.2\%};
+
+        \draw[thick,fill=pieVer] (0,0) -- (318.6:1.5) arc (318.6:360:1.5) -- cycle;
+        \draw (339:1.9) node {11.5\%};
+
+        \matrix [below, draw=none, fill=none] at (0,-2.5) {
+            \node [fill=pieResp, label=right:Responsabile] {}; & 
+            \node [fill=pieAmm, label=right:Amministratore] {}; \\
+            \node [fill=pieAnal, label=right:Analista] {}; & 
+            \node [fill=pieVer, label=right:Verificatore] {}; \\
+            \node [fill=pieProg, label=right:Programmatore] {};\\
+        };
+
+    \end{tikzpicture}
+    \caption{Distribuzione ore per ruolo - Consuntivo \term{Sprint} 7}
+\end{figure}
 
 \paragraph{Aggiornamento delle risorse rimanenti}
-% TODO
+Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la chiusura dello \term{Sprint} 7.
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabularx}{\textwidth}{|l|c|c|c|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Ruolo} & \textbf{Costo} & \textbf{Ore} & \textbf{Costo} & \textbf{Ore rimanenti} & \textbf{Budget rimanente} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Responsabile & 30\euro/h & 5 & 150\euro & 37 \textcolor{red}{(-5)} & 1.110\euro \textcolor{red}{(-150\euro)} \\
+        \hline
+        \rowcolor{tableLineEven}
+        Amministratore & 20\euro/h & 6.5 & 130\euro & 40.25 \textcolor{red}{(-6.5)} & 805\euro \textcolor{red}{(-130\euro)} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Analista & 25\euro/h & 3 & 75\euro & 0.5 \textcolor{red}{(-3)} & 12,50\euro \textcolor{red}{(-75\euro)} \\
+        \hline
+        \rowcolor{tableLineEven}
+        Progettista & 25\euro/h & - & - & 102 & 2.550\euro \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Programmatore & 15\euro/h & 24 & 360\euro & 86 \textcolor{red}{(-24)} & 1.290\euro \textcolor{red}{(-360\euro)} \\
+        \hline
+        \rowcolor{tableLineEven}
+        Verificatore & 15\euro/h & 5 & 75\euro & 60 \textcolor{red}{(-5)} & 892,50\euro \textcolor{red}{(-75\euro)} \\
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Totale} & - & \textbf{43.5} & \textbf{790\euro} & \textbf{325.75 \textcolor{red}{(-43.5)}} & \textbf{6.660\euro \textcolor{red}{(-790\euro)}} \\
+        \hline
+    \end{tabularx}
+    \caption{\term{Sprint} 7 - Variazione nelle risorse disponibili}
+\end{table}
 
 \paragraph{Rischi incontrati}
-% TODO
-
+Durante lo \term{Sprint} si sono verificati molteplici rischi che hanno reso necessario un carico di lavoro superiore alle aspettative per vari membri del gruppo, in particolar modo per i Programmatori. I principali rischi che hanno interferito con l'avanzamento sono stati \textbf{RT1} ed \textbf{RT4}. Implementare alcune funzionalità, specialmente la funzionalità di autenticazione tramite Google e AWS Cognito, è risultato molto più dispendioso del previsto. Reperire informazioni chiare e complete su come implementare tali funzionalità è stato infatti molto complesso, e la fase di implementazione vera e propria si è scontrata con numerosi bug, alcuni dei quali molto difficili da scovare e correggere. 
+Nonostante vi siano stati brevi ritardi da parte della \term{Proponente} nel fornire accesso a funzionalità necessarie lato backend (\textbf{RT4}), siamo comunque riusciti ad utilizzare in maniera efficace il tempo di attesa risultante. Preoccupa, invece, la poca partecipazione di un membro del gruppo, che in più occasioni ha terminato in ritardo lo svolgimento delle attività a lui prefissate (\textbf{RO4}).
 \paragraph{Retrospettiva}
-% TODO
+La retrospettiva ha evidenziato una disponibilità maggiore da parte di quasi tutti i membri del gruppo, data la conclusione della sessione. Se così non fosse stato, probabilmente parte delle funzionalità del \term{Poc} non sarebbero state implementate entro il perimetro dello \term{Sprint} 7. La coordinazione generale delle attività è stata buona. Risulta però necessario bilanciare il carico di lavoro lato programmazione, e fare in modo che tutti i membri del gruppo conoscano le tecnologie utilizzate e comprendano il loro ruolo all'interno del sistema sviluppato per il \term{Poc}. Per tali ragioni, durante lo \term{Sprint}, si è deciso di documentare le funzionalità implementate e il funzionamento delle tecnologie attraverso la sezione \textit{wiki} dedicata della \term{Repository} GitHub, in modo da consentire a ognuno uno studio autonomo mirato su ciò che i programmatori hanno realizzato.
 
 \end{document}
