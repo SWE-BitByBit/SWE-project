@@ -110,9 +110,9 @@
 
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
-\textbf{Stato:} & In corso\\
-\textbf{Versione:} & 0.4.2 \\
-\textbf{Responsabile:} & Giovanni Visentin\\
+\textbf{Stato:} & Completato\\
+\textbf{Versione:} & 1.0.0 \\
+\textbf{Responsabile:} & Gabriele Scaggiante\\
 \textbf{Redattori:} & 
 \begin{tabular}[t]{@{}l@{}}
 Riccardo Manisi\\
@@ -123,6 +123,7 @@ Ferdinando Fracasso\\
 \begin{tabular}[t]{@{}l@{}}
 Gabriele Scaggiante\\
 Dennis Parolin\\
+Giovanni Visentin\\
 \end{tabular}\\
 \textbf{Destinatari:} &
 \begin{tabular}[t]{@{}l@{}}
@@ -149,6 +150,9 @@ Gruppo BitByBit\\
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 
+\rowcolor{white}
+1.0.0 & 2026-02-13 & Ferdinando Fracasso & Approvazione del Verbale e stabilizzazione versione del documento &  Dennis Parolin\\
+\hline
 \rowcolor{gray!20}
 0.4.2 & 2026-03-02 & Ferdinando Fracasso & Aggiunta sezione Cruscotto di valutazione della qualità (\ref{sec:cruscotto_valutazione}). & Dennis Parolin \\
 \hline
@@ -211,7 +215,7 @@ L'approccio si basa sull'adozione di uno specifico \textbf{\term{Way Of Working}
 % ==== RIFERIMENTI =====
 
 \subsection{Riferimenti} \label{sec:riferimenti}
-Al fine di evitare ambiguità relative al linguaggio e ai termini utilizzati all'interno dei documenti formali, viene allegato il \href{https://swe-bitbybit.github.io/SWE-docs/docs/documenti_interni/Glossario.pdf}{\textit{Glossario}}.
+Al fine di evitare ambiguità relative al linguaggio e ai termini utilizzati all'interno dei documenti formali, viene allegato il \href{https://swe-bitbybit.github.io/SWE-docs/docs/RTB/documenti_interni/Glossario.pdf}{\textit{Glossario}}.
 I termini tecnici, gli acronimi e le parole con significato specifico all'interno del progetto sono contrassegnati da una lettera 'G' in apice (es. Agile\textsuperscript{G}) e sono descritti in dettaglio nel documento apposito.
 
 \subsubsection{Riferimenti normativi}\label{sec:riferimenti_normativi}
@@ -225,8 +229,8 @@ Ultimo accesso: \textit{2026-01-12}\\
 
 \item \textbf{Norme di Progetto}\\
 Parti consultate: documento completo\\
-Versione: v.0.10.2\\
-Ultimo accesso: \textit{2026-01-14}\\
+Versione: v.1.0.0\\
+Ultimo accesso: \textit{2026-03-01}\\
 \url{https://swe-bitbybit.github.io/SWE-docs/docs/RTB/documenti_interni/norme_di_progetto.pdf}
 \end{itemize}
 
@@ -268,9 +272,9 @@ Ultimo accesso: \textit{2026-01-14}\\
         Ultimo accesso: \textit{2026-01-06}\\
     \item \textbf{Glossario}\\
         Parti consultate: documento completo\\
-        Versione: \textit{v.0.3.2}\\
-        Ultimo accesso: \textit{2026-01-06}\\
-        \url{https://swe-bitbybit.github.io/SWE-docs/docs/documenti_interni/Glossario.pdf}
+        Versione: \textit{v.1.0.0}\\
+        Ultimo accesso: \textit{2026-03-02}\\
+        \url{https://swe-bitbybit.github.io/SWE-docs/docs/RTB/documenti_interni/Glossario.pdf}
 \end{itemize}
 
 % ===== QUALITA DI PRODOTTO =====
@@ -993,7 +997,7 @@ Il grafico mostra che Earned Value e Planned Value rientrano nei rispettivi rang
     \label{fig:Grafico MPC03, MPC07 e MPC08}
 \end{figure}
 Il grafico mostra dell'instabilità nei valori Estimate at Completion e Estimate to Complete in corrispondenza degli \term{Sprint} sovrapposti alla sessione di esami universitari.\\
-Il valore di Estimate at Completion risulta frequentemente inferiore al suo valore accettabile, pari al Budget at Completion - 15\%, tranne che durante lo \term{Sprint} 3. Saranno prese misure per correggere questa mancanza il prima possibile.
+Il valore di Estimate at Completion risulta frequentemente inferiore al suo valore accettabile, pari al Budget at Completion - 15\%, tranne che durante lo \term{Sprint} 3. Questo è principalmente dovuto a una sovrastima iniziale del costo e della complessità di alcuni task, che ha portato a un consumo di ore inferiore al preventivato. Saranno effettuati dei ricalcoli preventivi più accurati nei prossimi \term{Sprint}.
 
 \subsection{MPC06: Schedule Performance Index}
 \begin{figure}[H]
@@ -1004,14 +1008,14 @@ Il valore di Estimate at Completion risulta frequentemente inferiore al suo valo
 \end{figure}
 Il grafico mostra che nonostante le fluttuazioni, lo Schedule Performance Index è rimasto prevalentemente nel range accettabile. Unica eccezione il valore durante lo \term{Sprint} 5 in cui è sceso sotto la soglia accettabile, per poi recuperare negli \term{Sprint} successivi e quindi plausibilmente causato dalla coincidenza con la sessione di esami universitari.
 
-\subsection{MPC07: Cost Performance Index}
+\subsection{MPC05: Cost Performance Index}
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{pdq/CPI-RTB.png}
     \caption{Cost Performance Index}
     \label{fig:Grafico MPC07}
 \end{figure}
-Il grafico mostra che l'indice Cost Performance Index è rimasto principalmente oltre il valore ottimo, e sempre al di sopra del valore accettabile eccetto nello \term{Sprint} 7. Sarà quindi necessario identificare le cause della diminuzione dell'indice, per fare in modo che vengano mitigate il prima possibile e per riportare l'indice oltre la soglia accettabile.
+Il grafico mostra che l'indice Cost Performance Index è rimasto principalmente oltre il valore ottimo, e sempre al di sopra del valore accettabile eccetto nello \term{Sprint} 7. Il calo dell'indice nello \term{Sprint} 7 è dovuto all'insorgere di complessità impreviste durante la fase di integrazione del codice e alle operazioni di bug-fixing per la RTB, che hanno richiesto un numero di ore maggiore rispetto all'Earned Value effettivamente prodotto. Questa perdita di efficienza andrà mitigata migliorando la pianificazione dei test e dividendo i task di consolidamento in unità più piccole.
 
 \subsection{MPC11: Indice di Gulpease}
 \begin{figure}[H]
@@ -1021,6 +1025,6 @@ Il grafico mostra che l'indice Cost Performance Index è rimasto principalmente 
     \label{fig:Grafico MPC11}
 \end{figure}
 Il grafico mostra che il valore dell'Indice di Gulpease della documentazione prodotta risulta sempre superiore alla soglia del valore accettabile, con la maggior parte della documentazione oltre la soglia ottima.\\
-Le Norme di Progetto e l'\term{Analisi Dei Requisiti} sono gli unici documenti sotto la soglia ottima, quindi in caso di lavoro futuro su tali documenti si porrà particolare attenzione sulla loro comprensibilità.
+Le Norme di Progetto e l'\term{Analisi Dei Requisiti} sono i documenti con l'indice più basso, ma va segnalato che anche il Glossario (59,68) sfiora appena la soglia ottima, senza tuttavia superarla. Poiché si tratta di documenti tecnici, la presenza di terminologia specifica e frasi articolate può abbassare marginalmente questo indice senza comprometterne la reale leggibilità per gli addetti ai lavori. Pertanto, un intervento correttivo mirato unicamente all'innalzamento dell'indice non è ritenuto prioritario, ma se in futuro si renderanno necessarie modifiche a questi documenti, si presterà attenzione a semplificarne la struttura linguistica.
 
 \end{document}
