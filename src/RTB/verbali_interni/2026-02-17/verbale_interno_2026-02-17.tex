@@ -25,7 +25,7 @@
 \usepackage{titlesec}
 \geometry{margin=2.5cm}
 % ===== Variabile per il titolo del documento =====
-\newcommand{\documenttitle}{Verbale Riunione Numero 10 - RTB}
+\newcommand{\documenttitle}{Verbale Riunione Interna - Numero 9 } 
 
 
 \setlength{\parindent}{0pt}
@@ -44,6 +44,8 @@
 \newcommand{\term}[1]{\textbf{#1}$^\mathbf{G}$}
 
 \newcommand{\ignoreglossary}{}
+
+\raggedbottom
 
 \begin{document}
 
@@ -230,7 +232,7 @@ Dalle discussioni e decisioni intraprese, sono emerse le seguenti attività:
 \small
 \renewcommand{\arraystretch}{1.2}
 \arrayrulecolor{black}
-\begin{longtable}{|p{0.52\textwidth}|c|c|}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{0.52\textwidth}|c|c|}
 \hline
 \rowcolor{gray!60}
 \textbf{Task} & \textbf{Codice decisione} & \textbf{N°\term{Issue} GitHub} \\
@@ -241,6 +243,7 @@ Dalle discussioni e decisioni intraprese, sono emerse le seguenti attività:
 \textbf{Task} & \textbf{Codice decisione} & \textbf{N°\term{Issue} GitHub} \\
 \hline
 \endhead
+\endfoot
 \hline
 \endlastfoot
 \rowcolor{white}
