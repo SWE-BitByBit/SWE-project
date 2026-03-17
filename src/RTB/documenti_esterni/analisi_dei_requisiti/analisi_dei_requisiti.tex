@@ -2041,11 +2041,12 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Trigger:} L'attore visualizza la lista delle note
 \end{itemize}
 
-\subsubsection{UC-28 - Creazione nota} \label{subsec:UC-28}
+% UC modifica e visualizzazione note diario criptato
+\subsubsection{UC-30 - Creazione nota} \label{subsec:UC-30}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-28-diario.png}
-    \caption{Diagramma del caso d'uso UC-28}
+    \includegraphics[width=1\textwidth]{use_case/UC-30-diario.png}
+    \caption{Diagramma del caso d'uso UC-30}
     \label{fig:UC-28}
 \end{figure}
 \begin{itemize}
@@ -2053,105 +2054,247 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'attore è autenticato al diario
+        \item L'attore si trova all'interno del diario criptato
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
-        \item Una nuova nota è stata creata e memorizzata nel diario
-        \item La nuova nota è visibile nella lista delle note
+        \item Il sistema memorizza la nuova nota nel diario criptato.
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'attore seleziona l'opzione per creare una nuova nota
-        \item Il sistema crea una nuova nota vuota e la memorizza nel diario
+        \item L'attore ha selezionato la voce per l'aggiunta di una nuova nota
+        \item La nuova nota viene creata ed è visibile nella lista delle note del diario criptato
     \end{itemize}
-    \item \textbf{Trigger:} L'attore seleziona l'opzione di creazione nota nel diario
+    \item \textbf{Trigger:} L'utente vuole creare una nuova nota nel diario criptato
 \end{itemize}
 
-\subsubsection{UC-29 - Eliminazione nota} \label{subsec:UC-29}
+\subsubsection{UC-30.1 - Inserimento testo in nota diario criptato} \label{subsec:UC-30.1}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-29-diario.png}
-    \caption{Diagramma del caso d'uso UC-29}
-    \label{fig:UC-29}
+    \includegraphics[width=1\textwidth]{use_case/UC-30_32-diario.png}
+    \caption{Diagramma dei casi d'uso UC-30.1, UC-30.2, UC-30.2.1 e UC-30.2.2}
+    \label{fig:UC-30.1, UC-30.2, UC-30.2.1, UC-30.2.2}
 \end{figure}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'attore è autenticato al diario
-        \item Esiste almeno una nota nel diario
-        \item L'attore ha selezionato una nota da eliminare
+        \item L'attore si trova all'interno del diario criptato
+        \item L'attore si trova all'interno di una nota del diario criptato
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema riceve correttamente il testo digitato da memorizzare nella nota
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item L'attore ha selezionato l'area apposita per l'inserimento del testo nella nota
+        \item L'attore digita il testo da inserire nella nota
+    \end{itemize}
+    \item \textbf{Trigger:} L'utente vuole aggiungere del testo ad una nota nel diario criptato
+\end{itemize}
+
+\subsubsection{UC-30.2 - Inserimento media in nota diario criptato} \label{subsec:UC-30.2}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova all'interno del diario criptato
+        \item L'attore si trova all'interno di una nota del diario criptato
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema riceve correttamente il media da memorizzare nella nota
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item L'attore ha selezionato la voce per l'aggiunta di un media
+        \item L'attore inserisce il media desiderato
+    \end{itemize}
+    \item \textbf{Specializzazioni}
+    \begin{itemize}
+        \item \ref{subsec:UC-30.2.1}
+        \item \ref{subsec:UC-30.2.2}
+    \end{itemize}
+    \item \textbf{Trigger:} L'utente vuole aggiungere del contenuto multimediale ad una nota nel diario criptato
+\end{itemize}
+
+\subsubsection{UC-30.2.1 - Inserimento immagine in nota diario criptato} \label{subsec:UC-30.2.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova all'interno del diario criptato
+        \item L'attore si trova all'interno di una nota del diario criptato
+        \item L'attore sta inserendo un media in una nota del diario criptato
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema riceve correttamente l'immagine da memorizzare nella nota
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item L'attore inserisce una immagine nella nota
+    \end{itemize}
+    \item \textbf{Trigger:} L'utente vuole aggiungere un'immagine ad una nota nel diario criptato
+\end{itemize}
+
+\subsubsection{UC-30.2.2 - Inserimento audio in nota diario criptato} \label{subsec:UC-30.2.2}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova all'interno del diario criptato
+        \item L'attore si trova all'interno di una nota del diario criptato
+        \item L'attore sta inserendo un media in una nota del diario criptato
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema riceve correttamente l'audio da memorizzare nella nota
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item L'attore inserisce un audio nella nota
+    \end{itemize}
+    \item \textbf{Trigger:} L'utente vuole aggiungere del contenuto audio ad una nota nel diario criptato
+\end{itemize}
+
+\subsubsection{UC-31 - Eliminazione nota} \label{subsec:UC-31}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{use_case/UC-31-diario.png}
+    \caption{Diagramma del caso d'uso UC-31}
+    \label{fig:UC-31}
+\end{figure}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore è all'interno del diario criptato
+        \item Esiste almeno una nota nel diario criptato
+        \item L'attore sta visualizzando la lista delle note del diario criptato
+        \item L'attore ha selezionato una nota nel diario criptato
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
-        \item La nota selezionata è stata rimossa dal diario
-        \item La nota non è più visibile nella lista delle note
+        \item La nota selezionata è stata rimossa dal diario criptato
+        \item La nota non è più visibile nella lista delle note del diario criptato
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'attore seleziona una nota dalla lista
+        \item L'attore seleziona una nota dalla lista delle note del diario criptato
         \item L'attore sceglie l'opzione di eliminazione
         \item Il sistema richiede conferma dell'operazione di eliminazione
         \item L'attore conferma l'eliminazione
-        \item Il sistema rimuove definitivamente la nota dal diario
+        \item Il sistema rimuove definitivamente la nota dal diario criptato
         \item Il sistema aggiorna la lista delle note
     \end{itemize}
-    \item \textbf{Trigger:} L'attore seleziona l'opzione di eliminazione nota nel diario
+    \item \textbf{Trigger:} L'attore seleziona l'opzione di eliminazione nota nel diario criptato
 \end{itemize}
 
-\subsubsection{UC-30 - Inserimento testo nella nota} \label{subsec:UC-30}
+\subsubsection{UC-31.1 - Modifica testo in nota diario criptato} \label{subsec:UC-31.1}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-30-31-diario.png}
-    \caption{Diagramma dei casi d'uso UC-30 e UC-31}
-    \label{fig:UC-30}
+    \includegraphics[width=1\textwidth]{use_case/UC-31_32-diario.png}
+    \caption{Diagramma dei casi d'uso UC-31.1, UC-31.2, UC-31.2.1 e UC-31.2.2}
+    \label{fig:UC-31.1, UC-31.2, UC-31.2.1, UC-31.2.2}
 \end{figure}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'attore è autenticato al diario
-        \item L'attore sta modificando una nota
+        \item L'attore è all'interno del diario criptato
+        \item L'attore si trova all'interno di una nota del diario criptato
     \end{itemize}
-    \item \textbf{Post-condizioni:} 
+    \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item Il testo inserito è stato memorizzato nella nota
+        \item L'attore ha modificato con successo il contenuto testuale nella nota
+        \item Il sistema ha ricevuto correttamente la modifica del contenuto testuale ed esso è stato salvato
     \end{itemize}
-    \item \textbf{Scenario principale:} 
+    \item \textbf{Scenario principale:}
     \begin{itemize}
-        \item L'attore seleziona la posizione in cui inserire il testo nella nota
-        \item L'attore digita il contenuto testuale desiderato
-        \item Il sistema memorizza il testo inserito nella nota
+        \item L'attore seleziona nella nota il contenuto testuale che intende modificare
+        \item L'attore modifica come desiderato il contenuto testuale selezionato
     \end{itemize}
-    \item \textbf{Trigger:} L'attore interagisce con una nota per modificarne il contenuto testuale
+    \item \textbf{Trigger:} L'attore vuole modificare del testo in una nota del diario criptato
 \end{itemize}
 
-\subsubsection{UC-31 - Inserimento media nella nota} \label{subsec:UC-31}
+\subsubsection{UC-31.2 - Inserimento media in nota diario criptato} \label{subsec:UC-31.2}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'attore è autenticato al diario
-        \item L'attore sta modificando una nota
+        \item L'attore si trova all'interno del diario criptato
+        \item L'attore si trova all'interno di una nota del diario criptato
+        \item La nota visualizzata presenta almeno un contenuto multimendiale
     \end{itemize}
-    \item \textbf{Post-condizioni:} 
+    \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item Il media è stato memorizzato nella nota
-        \item Il media è associato alla nota e visualizzabile
+        \item Il sistema riceve correttamente la rimozione del contenuto multimediale della nota
     \end{itemize}
-    \item \textbf{Scenario principale:} 
+    \item \textbf{Scenario principale:}
     \begin{itemize}
-        \item L'attore seleziona l'opzione per inserire contenuto media
-        \item L'attore sceglie il tipo di media da inserire tra audio e immagini
-        \item L'attore seleziona il media desiderato
-        \item L'attore conferma l'inserimento
-        \item Il sistema elabora e memorizza il contenuto media nella nota
+        \item L'attore seleziona il contenuto multimediale che vuole rimuovere
+        \item L'attore seleziona la voce apposita per la rimozione del contenuto multimediale
     \end{itemize}
-    \item \textbf{Trigger:} L'attore seleziona l'opzione di inserimento media
+    \item \textbf{Specializzazioni}
+    \begin{itemize}
+        \item \ref{subsec:UC-31.2.1}
+        \item \ref{subsec:UC-31.2.2}
+    \end{itemize}
+    \item \textbf{Trigger:} L'utente vuole rimuovere del contenuto multimediale da una nota nel diario criptato
+\end{itemize}
+
+\subsubsection{UC-31.2.1 - Inserimento immagine in nota diario criptato} \label{subsec:UC-31.2.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova all'interno del diario criptato
+        \item L'attore si trova all'interno di una nota del diario criptato
+        \item La nota visualizzata presenta almeno un'immagine
+        \item L'attore sta rimuovendo del contenuto multimediale dalla nota visualizzata
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema riceve correttamente la rimozione dell'immagine della nota
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item L'attore seleziona l'immagine che vuole rimuovere
+        \item L'attore seleziona la voce apposita per la rimozione dell'immagine
+    \end{itemize}
+    \item \textbf{Trigger:} L'utente vuole rimuovere un'immagine da una nota nel diario criptato
+\end{itemize}
+
+\subsubsection{UC-31.2.2 - Inserimento audio in nota diario criptato} \label{subsec:UC-31.2.2}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova all'interno del diario criptato
+        \item L'attore si trova all'interno di una nota del diario criptato
+        \item La nota visualizzata presenta almeno una traccia audio
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema riceve correttamente la rimozione della traccia audio della nota
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item L'attore seleziona la traccia audio che vuole rimuovere
+        \item L'attore seleziona la voce apposita per la rimozione dell'immagine
+    \end{itemize}
+    \item \textbf{Trigger:} L'utente vuole rimuovere una traccia audio da una nota nel diario criptato
 \end{itemize}
 
 \subsubsection{UC-32 - Visualizzazione contenuto nota} \label{subsec:UC-32}
@@ -2166,21 +2309,117 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'attore è autenticato al diario
-        \item Esiste almeno una nota nel diario
+        \item L'attore si trova all'interno del diario criptato
+        \item Esiste almeno una nota nel diario criptato
+        \item L'attore sta visualizzando la lista delle note nel diario criptato
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
-        \item Il sistema visualizza il contenuto completo della nota selezionata
+        \item Il sistema visualizza il contenuto della nota del diario criptato selezionata
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item L'attore seleziona una nota dalla lista
         \item Il sistema recupera il contenuto completo della nota
-        \item Il sistema visualizza tutto il contenuto testuale e media presente nella nota
+        \item Il sistema visualizza a schermo il contenuto testuale della nota $\rightarrow$ \ref{subsec:UC-32.1}
+        \item Il sistema visualizza a schermo il contenuto multimediale della nota $\rightarrow$ \ref{subsec:UC-32.2}
         \item L'attore può visualizzare e interagire con il contenuto della nota
     \end{itemize}
-    \item \textbf{Trigger:} L'attore interagisce con una nota nella lista note
+    \item \textbf{Inclusioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-32.1}
+        \item \ref{subsec:UC-32.2}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore seleziona una nota dalla lista delle note del diario criptato
+\end{itemize}
+
+\subsubsection{UC-32.1 - Visualizzazione contenuto testuale nota diario criptato} \label{subsec:UC-32.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova all'interno del diario criptato
+        \item Esiste almeno una nota nel diario criptato
+        \item L'attore sta visualizzando il contenuto di una nota del diario criptato
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza il contenuto testuale della nota
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item Il sistema mostra il contenuto testuale della nota 
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore sta cercando di visualizzare una nota selezionata
+\end{itemize}
+
+\subsubsection{UC-32.2 - Visualizzazione contenuto multimediale nota diario criptato} \label{subsec:UC-32.2}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova all'interno del diario criptato
+        \item Esiste almeno una nota nel diario criptato
+        \item L'attore sta visualizzando il contenuto di una nota del diario criptato
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza il contenuto multimediale della nota
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item Il sistema mostra il contenuto multimediale della nota 
+    \end{itemize}
+    \item \textbf{Specializzazioni:}
+    \begin{itemize}
+        \item \ref{subsec:UC-32.2.1}
+        \item \ref{subsec:UC-32.2.1}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore sta cercando di visualizzare una nota selezionata
+\end{itemize}
+
+\subsubsection{UC-32.2.1 - Visualizzazione immagini nota diario criptato} \label{subsec:UC-32.2.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova all'interno del diario criptato
+        \item Esiste almeno una nota nel diario criptato
+        \item L'attore sta visualizzando il contenuto di una nota del diario criptato
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza le immagini presenti nella nota
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item Il sistema mostra le immagini presenti nella nota 
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore sta cercando di visualizzare una nota selezionata
+\end{itemize}
+
+\subsubsection{UC-32.2.2 - Visualizzazione audio nota diario criptato} \label{subsec:UC-32.2.2}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova all'interno del diario criptato
+        \item Esiste almeno una nota nel diario criptato
+        \item L'attore sta visualizzando il contenuto di una nota del diario criptato
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza il contenuto audio presente nella nota
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item Il sistema mostra il contenuto audio presente nella nota 
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore sta cercando di visualizzare una nota selezionata
 \end{itemize}
 
 % ===== UC-S: SICUREZZA - GUARDIANO SILENZIOSO  ======
