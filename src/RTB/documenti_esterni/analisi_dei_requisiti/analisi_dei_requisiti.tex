@@ -2904,6 +2904,27 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Trigger:} L'attore seleziona una community dalla lista delle community
 \end{itemize}
 
+\subsubsection{UC-43.2 - Errore caricamento community} \label{subsec:UC-43.2}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato la sezione dedicata alle community
+        \item Si verifica un problema tecnico (es. timeout, assenza rete)
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema notifica l'errore all'attore e non mostra la lista delle community
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema rivela il fallimento della richiesta
+        \item Il sistema mostra un messaggio di errore all'utente
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore tenta di visitare una community ma il caricamento fallisce
+\end{itemize}
+
 \subsubsection{UC-44 - Visita community} \label{sec:UC-44}
 \begin{figure}[H]
     \centering
@@ -2934,28 +2955,6 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Estensioni:} \ref{subsec:UC-44.1}
     \item \textbf{Trigger:} L'attore seleziona una community per visualizzarne il contenuto
-\end{itemize}
-
-\subsubsection{UC-44.1 - Errore caricamento community} \label{subsec:UC-44.1}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item L'attore sta tentando di visualizzare la lista o i dettagli di una community
-        \item Si \term{Verifica} un problema tecnico (timeout server, assenza rete)
-    \end{itemize}
-    \item \textbf{Post-condizioni:}
-    \begin{itemize}
-        \item Il sistema notifica l'errore e non mostra dati parziali o corrotti
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item Il sistema rileva il fallimento della richiesta dati
-        \item Il sistema mostra un messaggio di errore all'\term{Utente}
-        \item Il sistema permette di ricaricare la pagina
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore tenta di visitare una community ma il caricamento fallisce
 \end{itemize}
 
 \subsubsection{UC-45 - Visualizzazione lista contatti d'emergenza} \label{sec:UC-45}
