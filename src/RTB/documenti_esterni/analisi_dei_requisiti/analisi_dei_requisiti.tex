@@ -155,6 +155,9 @@ Gruppo BitByBit\\
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
+\rowcolor{gray!20}
+1.0.1 & 2026-03-01 & Riccardo Manisi & Modificati caso d'uso UC-17 e aggiunti sottocasi UC-17.1, UC-17.2  &  Gabriele Scagginate\\
+\hline
 \rowcolor{white}
 1.0.0 & 2026-03-01 & Giovanni Visentin & Approvazione del documento & Riccardo Manisi \\
 \hline
@@ -536,13 +539,13 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 \hline
 \endhead
 \rowcolor{white}
-\centering \textbf{\term{Utente} Generico} & Un \term{Utente} che non ha ancora compiuto il \term{Processo} di autenticazione (che quindi non ha fornito la sua mail) e che non ha ancora creato una password per il diario \\
+\centering \textbf{\term{Utente} Generico} & Un \term{Utente} che non ha eseguito l'autenticazione all'applicazione e che non ha ancora creato una password per il diario criptato. Il sistema permette a questo attore di eseguire un sottoinsieme della totalità delle funzionalità. \\
 \hline
 \rowcolor{gray!20}
-\centering \textbf{\term{Utente} Autenticato} & Un \term{Utente} il quale ha attraversato e concluso il \term{Processo} di autenticazione e che quindi ha fornito la sua mail, ma non ha ancora creato una password per il diario. Ha accesso a delle funzionalità aggiuntive rispetto all'\term{Utente} Generico e all'\term{Utente} autenticato al diario \\
+\centering \textbf{\term{Utente} Autenticato} & Un \term{Utente} il quale ha eseguito l'autenticazione all'applicazione. Il sistema possiede l'inidizzo mail di questo attore. Ha accesso a delle funzionalità aggiuntive rispetto all'\term{Utente} Generico e all'\term{Utente} autenticato al diario. \\
 \hline
 \rowcolor{white}
-\centering \textbf{\term{Utente} autenticato al diario} & Un \term{Utente} il quale ha creato una password per il diario \\
+\centering \textbf{\term{Utente} autenticato al diario} & \term{Utente} che ha impostato la password per il diario criptato. \\
 \hline
 \rowcolor{gray!70}
 \centering \textbf{Attori secondari} & \centering \textbf{Descrizione} \tabularnewline
@@ -551,10 +554,10 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 \centering \textbf{Google Auth} & Servizio di autenticazione esterno che permette al sistema di identificare l'\term{Utente} tramite le proprie credenziali Google, evitando la creazione di nuovi account dedicati. \\
 \hline
 \rowcolor{gray!20}
-\centering \textbf{LLM} & Modello di Intelligenza Artificiale esterno che riceve i messaggi dell'\term{Utente} e il contesto della conversazione per generare risposte coerenti e simulare un'interazione umana nelle funzionalità di supporto. \\
+\centering \textbf{Google Maps} & Servizio di mappatura esterno invocato dal sistema per mostrare la posizione precisa dei luoghi sicuri e calcolare i percorsi per raggiungerli. \\
 \hline
 \rowcolor{white}
-\centering \textbf{Google Maps} & Servizio di mappatura esterno invocato dal sistema per mostrare la posizione precisa dei luoghi sicuri e calcolare i percorsi per raggiungerli. \\
+\centering \textbf{LLM} & Modello di Intelligenza Artificiale esterno che riceve i messaggi dell'\term{Utente} e il contesto della conversazione per generare risposte coerenti e simulare un'interazione umana nelle funzionalità di supporto. \\
 \hline
 
 \caption{Tabella di spiegazione degli attori} \label{tab:attori} \\
@@ -634,86 +637,14 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \item \textbf{Trigger:} Google Auth restituisce un codice di errore durante il \term{Processo} di autenticazione
 \end{itemize}
 
-\subsubsection{UC-3 - Esecuzione \ignoreglossary{Walkthrough} interattivo} \label{subsec:UC-3}
+% ==== UC-3 - SWITCH MODE ====
 
+\subsubsection{UC-3 - Selezione profilo} \label{subsec:UC-3}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-3-walkthrough.png}
+    \includegraphics[width=1\textwidth]{use_case/UC-3-switchmode.png}
     \caption{Diagramma del caso d'uso UC-3}
     \label{fig:UC-3}
-\end{figure}
-
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item L'attore apre per la prima volta l’applicazione
-    \end{itemize}
-    \item \textbf{Post-condizioni:}
-    \begin{itemize}
-        \item L’\term{Utente} ha visualizzato le funzionalità principali e ha preso familiarità con l'applicazione
-    \end{itemize}
-    \item \textbf{Scenario principale:}
-    \begin{itemize}
-        \item Il sistema mostra la schermata di benvenuto
-        \item Il sistema inizia il ciclo di presentazione delle schede informative dell'app
-        \item L'attore esegue la feature di autenticazione $\rightarrow$ \ref{subsec:UC-1}
-        \item L'attore esegue scelta della tipologia di utilizzo dell'applicazione $\rightarrow$ \ref{subsec:UC-3.1}
-        \item L'attore esegue la feature di aggiunta di una password per il diario criptato $\rightarrow$ \ref{subsec:UC-3.2}
-        \item L'attore esegue la feature di aggiunta di un contatto fidato $\rightarrow$ \ref{subsec:UC-3.3}
-        \item Il sistema mostra la Home Page
-    \end{itemize}
-    \item \textbf{Scenario secondario:}
-    \begin{itemize}
-        \item L'attore sceglie di saltare tutte le funzionalità del \term{Walkthrough} $\rightarrow$ \ref{subsec:UC-4}
-        \item L'attore sceglie di autenticarsi con Google $\rightarrow$ \ref{subsec:UC-1}
-    \end{itemize} 
-    \item \textbf{Inclusioni:}
-    \begin{itemize}
-        \item \hyperref[subsec:UC-1]{UC-1}
-        \item \hyperref[subsec:UC-3.1]{UC-3.1}
-        \item \hyperref[subsec:UC-3.2]{UC-3.2}
-        \item \hyperref[subsec:UC-3.3]{UC-3.3}
-    \end{itemize}
-    \item \textbf{Estensioni:}
-    \begin{itemize}
-        \item \hyperref[subsec:UC-4]{UC-4}
-        \item \hyperref[subsec:UC-1]{UC-1}
-    \end{itemize}
-    \item \textbf{Trigger:} Primo avvio dell'applicazione
-\end{itemize}
-
-\vspace{0.5cm}
-
-\subsubsection{UC-4 - Salta \ignoreglossary{Walkthrough}} \label{subsec:UC-4}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
-    
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item Il \term{Walkthrough} è in corso
-    \end{itemize}
-    \item \textbf{Post-condizioni:}
-    \begin{itemize}
-        \item L'attore ha saltato il \term{Walkthrough}
-        \item Il sistema mostra la Home Page
-    \end{itemize}
-    \item \textbf{Scenario principale:}
-    \begin{itemize}
-        \item L'attore seleziona l'opzione per saltare il \term{Walkthrough}
-        \item Il sistema interrompe la presentazione delle schede e apre direttamente la Home Page
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore decide di saltare il \term{Walkthrough}
-\end{itemize}
-
-\subsubsection{UC-3.1 - Selezione profilo} \label{subsec:UC-3.1}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-3_1-walkthrough.png}
-    \caption{Diagramma del caso d'uso UC-3.1}
-    \label{fig:UC-3.1}
 \end{figure}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
@@ -735,107 +666,6 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
         \item Il sistema salva il profilo scelto
     \end{itemize}
     \item \textbf{Trigger:} Il sistema richiede la selezione del profilo
-\end{itemize}
-
-\subsubsection{UC-3.2 - \ignoreglossary{Walkthrough} diario criptato} \label{subsec:UC-3.2}
-
-\begin{tcolorbox}[colback=gray!10,colframe=gray!50,title=Nota]
-{\small I casi d'uso \hyperref[subsec:UC-3.2]{UC-3.2} e \hyperref[subsec:UC-3.3]{UC-3.3} rappresentano inclusioni del caso d'uso \hyperref[subsec:UC-3]{UC-3}.
-Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\hyperref[subsec:UC-23.1]{UC-23.1}, \hyperref[subsec:UC-8]{UC-8} e \hyperref[subsec:UC-5]{UC-5}), la cui descrizione dettagliata è riportata nelle sezioni successive del documento.}
-\end{tcolorbox}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-3_2-3_3-walkthrough.png}
-    \caption{Diagramma dei casi d'uso UC-3.2 e UC-3.3}
-    \label{fig:UC-3.2}
-\end{figure}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item Sta avvenendo il primo accesso al sistema da parte dell'attore
-        \item Il \term{Walkthrough} è in corso
-    \end{itemize}
-    \item \textbf{Post-condizioni:}
-    \begin{itemize}
-        \item L'\term{Utente} ha configurato il diario
-        \item Il sistema passa al prossimo step del \term{Walkthrough}
-    \end{itemize}
-    \item \textbf{Scenario principale:}
-    \begin{itemize}
-        \item Il sistema mostra una schermata informativa sui vantaggi del diario criptato
-        \item L'attore decide di abilitare la funzionalità
-        \item L'attore esegue la procedura di impostazione password $\rightarrow$ \ref{subsec:UC-23.1}
-    \end{itemize}
-    \item \textbf{Scenario secondario:}
-    \begin{itemize}
-        \item L'attore sceglie di saltare la configurazione di questa feature $\rightarrow$ \ref{subsec:UC-5}
-    \end{itemize}
-    \item \textbf{Inclusioni:}
-    \begin{itemize}
-        \item \hyperref[subsec:UC-23.1]{UC-23.1}
-    \end{itemize}
-    \item \textbf{Estensioni:}
-    \begin{itemize}
-        \item \hyperref[subsec:UC-5]{UC-5}
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore completa lo step precedente del \term{Walkthrough}
-\end{itemize}
-
-\subsubsection{UC-3.3 - \ignoreglossary{Walkthrough} contatto fidato} \label{subsec:UC-3.3}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item Sta avvenendo il primo accesso al sistema da parte dell'attore
-        \item Il \term{Walkthrough} è in corso
-    \end{itemize}
-    \item \textbf{Post-condizioni:}
-    \begin{itemize}
-        \item Un contatto fidato è stato impostato
-    \end{itemize}
-    \item \textbf{Scenario principale:}
-    \begin{itemize}
-        \item Il sistema spiega i vantaggi dei contatti fidati per le situazioni di emergenza
-        \item L'attore decide di configurare il contatto
-        \item L'attore esegue la procedura di aggiunta contatto $\rightarrow$ \ref{subsec:UC-8}
-    \end{itemize}
-    \item \textbf{Scenario secondario:}
-    \begin{itemize}
-        \item L'attore sceglie di saltare la configurazione di questa feature $\rightarrow$ \ref{subsec:UC-5}
-    \end{itemize}
-    \item \textbf{Inclusioni:}
-    \begin{itemize}
-        \item \hyperref[subsec:UC-8]{UC-8}
-    \end{itemize}
-    \item \textbf{Estensioni:}
-    \begin{itemize}
-        \item \hyperref[subsec:UC-5]{UC-5}
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore completa lo step precedente del \term{Walkthrough}
-\end{itemize}
-
-\subsubsection{UC-5 - Salta feature} \label{subsec:UC-5}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item Il \term{Walkthrough} è in corso
-    \end{itemize}
-    \item \textbf{Post-condizioni:}
-    \begin{itemize}
-        \item L'attore ha saltato la funzionalità proposta dal \term{Walkthrough}
-        \item Il sistema procede allo step successivo o alla Home Page
-    \end{itemize}
-    \item \textbf{Scenario principale:}
-    \begin{itemize}
-        \item L'attore decide di saltare la funzionalità
-        \item Il sistema avanza nel flusso del \term{Walkthrough}
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore decide di non configurare la feature corrente
 \end{itemize}
 
 % ==== UC-6 - LISTA CONTATTI FIDATI ====
@@ -1462,7 +1292,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Trigger:} L'attore vuole definire quanto tempo ha per rispondere alla mail di controllo prima che parta l'allarme
 \end{itemize}
 
-\subsubsection{UC-17 - Modifica titolo mail di avviso} \label{sec:UC-17}
+\subsubsection{UC-17 - Modifica mail di avviso} \label{sec:UC-17}
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{use_case/UC-17-dmswitch.png}
@@ -1474,48 +1304,66 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item La funzionalità Dead Man's Switch è abilitata UC-57 $\rightarrow$ \ref{sec:UC-57}
-        \item L'attore ha selezionato l'opzione di modifica del contenuto della mail
+        \item La funzionalità Dead Man's Switch è abilitata UC-57 $\rightarrow$ \hyperref[sec:UC-57]{UC-57}
+        \item L'attore ha selezionato l'opzione di modifica della mail di avviso
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item Il nuovo oggetto della mail viene salvato nel sistema
+        \item Le preferenze dell'attore sono salvate nel sistema
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'attore seleziona il campo relativo al titolo della mail
-        \item L'attore modifica il testo che funge da oggetto della mail
-        \item L'attore salva le modifiche
+        \item L'attore modifica il titolo della mail \hyperref[sec:UC-17.1]{UC-17.1}
+        \item L'attore modifica il corpo della mail \hyperref[sec:UC-17.2]{UC-17.2}
+        \item L'attore seleziona la voce di salvataggio delle modifiche per la mail di avviso
     \end{itemize}
-    \item \textbf{Trigger:} L'attore vuole personalizzare il titolo della mail di avviso
+    \item \textbf{Inclusioni:}
+    \begin{itemize}
+        \item \hyperref[sec:UC-17.1]{UC-17.1}
+        \item \hyperref[sec:UC-17.2]{UC-17.2}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole personalizzare la mail di avviso che riceverà in caso di inutilizzo prolungato dell'applicazione
 \end{itemize}
 
-\subsubsection{UC-18 - Modifica corpo mail di avviso} \label{sec:UC-18}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-18-dmswitch.png}
-    \caption{Diagramma del caso d'uso UC-18}
-    \label{fig:UC-18}
-\end{figure}
+\subsubsection{UC-17.1 - Modifica titolo mail di avviso} \label{sec:UC-17.1}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item La funzionalità Dead Man's Switch è abilitata UC-57 $\rightarrow$ \ref{sec:UC-57}
-        \item L'attore ha selezionato l'opzione di modifica del contenuto della mail
+        \item La funzionalità Dead Man's Switch è abilitata UC-57 $\rightarrow$ \hyperref[sec:UC-57]{UC-57}
+        \item L'attore ha selezionato il campo per la modifica del titolo della mail di avviso
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item Il nuovo corpo del messaggio viene salvato nel sistema
+        \item La modifica del titolo della mail di avviso viene salvata dal sistema
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'attore seleziona il campo relativo al corpo della mail
-        \item L'attore modifica il corpo della mail
-        \item L'attore salva le modifiche
+        \item L'attore inserisce il titolo della mail di avviso
     \end{itemize}
-    \item \textbf{Trigger:} L'attore vuole personalizzare il corpo della mail di avviso
+    \item \textbf{Trigger:} L'attore vuole personalizzare il titolo della mail di avviso che riceverà in caso di inutilizzo prolungato dell'applicazione
+\end{itemize}
+
+\subsubsection{UC-17.2 - Modifica corpo mail di avviso} \label{sec:UC-17.2}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item La funzionalità Dead Man's Switch è abilitata UC-57 $\rightarrow$ \hyperref[sec:UC-57]{UC-57}
+        \item L'attore ha selezionato l'opzione di modifica della mail di avviso
+        \item L'attore ha selezionato il campo per la modifica del corpo della mail di avviso
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item La modifica del corpo della mail di avviso viene salvata dal sistema
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore inserisce il corpo della mail di avviso
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole personalizzare il corpo della mail che riceverà in caso di inutilizzo prolungato dell'applicazione
 \end{itemize}
 
 \subsubsection{UC-19 - Visualizzazione preview mail di avviso} \label{sec:UC-19}
