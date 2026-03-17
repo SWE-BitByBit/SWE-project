@@ -2867,9 +2867,8 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item Il sistema recupera l'elenco delle community attive dal server
-        \item Il sistema visualizza la lista delle community $\rightarrow$ \ref{subsec:UC-43.1}
-        \item L'attore può scorrere la lista per scegliere quale community visitare
+        \item Il sistema recupera l'elenco delle community da visualizzare 
+        \item L'attore guarda singolarmente le informazioni di una community dalla lista delle community $\rightarrow$ \ref{subsec:UC-43.1}
     \end{itemize}
     \item \textbf{Inclusioni:} 
     \begin{itemize}
@@ -2884,16 +2883,23 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
-        \item Il sistema sta renderizzando la lista delle community
+        \item L'attore ha selezionato la sezione dedicata alle communityù
+        \item L'attore visualizza l'elenco delle community online esterne
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item L'attore visualizza i dati riassuntivi della singola community
+        \item L'attore visualizza una singola community dalla lista
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item Il sistema mostra il nome della community
-        \item Il sistema mostra l'icona o l'immagine rappresentativa
+        \item L'attore visualizza una singola community nella lista
+        \item L'attore visualizza il nome della community  $\rightarrow$ \ref{subsec:UC-43.1.1}
+        \item L'attore visualizza il link della community  $\rightarrow$ \ref{subsec:UC-43.1.2}
+    \end{itemize}
+    \item \textbf{Inclusioni:} 
+    \begin{itemize}
+        \item \hyperref[subsec:UC-43.1.1]{UC-43.1.1}
+        \item \hyperref[subsec:UC-43.1.2]{UC-43.1.2}
     \end{itemize}
     \item \textbf{Trigger:} L'attore seleziona una community dalla lista delle community
 \end{itemize}
