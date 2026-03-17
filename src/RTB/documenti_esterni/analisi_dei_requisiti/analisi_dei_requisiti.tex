@@ -111,7 +111,7 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & Completo\\
-\textbf{Versione:} & 1.0.0 \\
+\textbf{Versione:} & 1.0.1 \\
 \textbf{Responsabile:} & Giovanni Visentin \\
 \textbf{Redattori:} & 
 \begin{tabular}[t]{@{}l@{}}
@@ -154,6 +154,10 @@ Gruppo BitByBit\\
 \hline
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+\hline
+
+\rowcolor{white}
+ & 2026-03-17 & Dennis Parolin & Riscrittura dei casi d'uso da \hyperref[sec:UC-4]{UC-4} a \hyperref[subsec:UC-14]{UC-14}. Il caso d'uso \hyperref[sec:UC-5]{UC-5} è stato aggiunto come nuovo caso d'uso. Rifatta tutta la sezione "Requisiti di vincolo" (\ref{subsection:requisiti_vincolo}) e "Requisiti di qualità" (\ref{subsection:requisiti_qualita}). & Riccardo Manisi \\
 \hline
 \rowcolor{gray!20}
 1.0.1 & 2026-03-01 & Riccardo Manisi & Modificati caso d'uso UC-17 e aggiunti sottocasi UC-17.1, UC-17.2  &  Gabriele Scagginate\\
@@ -667,14 +671,18 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \item \textbf{Trigger:} Il sistema richiede la selezione del profilo
 \end{itemize}
 
-% ==== UC-6 - LISTA CONTATTI FIDATI ====
+% ==== UC-4 - LISTA CONTATTI FIDATI ====
 
-\subsubsection{UC-6 - Visualizzazione lista contatti fidati} \label{sec:UC-6}
+\subsubsection{UC-4 - Visualizzazione lista contatti fidati} \label{sec:UC-4}
+\begin{tcolorbox}[colback=gray!10,colframe=gray!50,title=Nota]
+{\small Il caso d'uso \hyperref[sec:UC-4]{UC-4} è suddiviso nei casi d'uso inclusi \hyperref[subsec:UC-4.1]{UC-4.1} e \hyperref[subsec:UC-4.1.1]{UC-4.1.1}, che ne dettagliano il comportamento.
+Il diagramma riportato di seguito mostra anche un ulteriore caso d'uso correlato (\hyperref[sec:UC-5]{UC-5}), la cui descrizione dettagliata è riportata nelle sezioni successive del documento.}
+\end{tcolorbox}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-6-impostazioni.png}
-    \caption{Diagramma del caso d'uso UC-6}
-    \label{fig:UC-6}
+    \includegraphics[width=1\textwidth]{use_case/UC-4-lista-contatti-fidati.png}
+    \caption{Diagramma del caso d'uso UC-4 con relativi sottocasi d'uso}
+    \label{fig:UC-4}
 \end{figure}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
@@ -690,47 +698,98 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item L'attore visualizza le voci della lista dei contatti fidati
-        \item L'attore guarda singolarmente i contatti fidati (la preview delle informazioni del contatto) nella lista ma non cliccla su nessuna voce $\rightarrow$ \ref{subsec:UC-6.1} 
+        \item L'attore guarda singolarmente i contatti fidati (la preview delle informazioni del contatto) nella lista ma non cliccla su nessuna voce $\rightarrow$ \hyperref[subsec:UC-6.1]{UC-6.1}
+    \end{itemize}
+    \item \textbf{Scenario secondario:} 
+    \begin{itemize}
+        \item Si verifica un errore
+        \item Il sistema notifica l'errore all'attore $\rightarrow$ \hyperref[sec:UC-5]{UC-5}
     \end{itemize}
     \item \textbf{Inclusioni:} 
     \begin{itemize}
-        \item \hyperref[subsec:UC-6.1]{UC-6.1}
+        \item \hyperref[subsec:UC-4.1]{UC-4.1}
     \end{itemize}
-    \item \textbf{Trigger:} L'attore vuole vedere la rete dei contatti fidati che ha aggiunto
+    \item \textbf{Estensioni:} 
+    \begin{itemize}
+        \item \hyperref[sec:UC-5]{UC-5}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole vedere la sua rete dei contatti fidati
 \end{itemize}
 
-\subsubsection{UC-6.1 - Visualizzazione singolo contatto fidato nella lista} \label{subsec:UC-6.1}
+\subsubsection{UC-4.1 - Visualizzazione singolo contatto fidato della lista} \label{subsec:UC-4.1}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'attore sta visualizzando la lista dei contatti fidati
+        \item L'attore sta visualizzando la lista dei contatti fidati $\rightarrow$ \hyperref[sec:UC-4]{UC-4}
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item L'attore visualizza un singolo contatto fidato dalla lista selezionandolo dalla lista
+        \item L'attore visualizza un singolo contatto dalla lista
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'attore visualizza il nome del contatto fidato nella lista $\rightarrow$ \ref{subsec:UC-7.1}
+        \item L'attore visualizza un singolo contatto fidato nella lista
+        \item L'attore visualizza la preview del nome del contatto fidato $\rightarrow$ \hyperref[subsec:UC-4.1.1]{UC-4.1.1}
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \hyperref[subsec:UC-7.1]{UC-7.1}
+        \item \hyperref[subsec:UC-4.1.1]{UC-4.1.1}
     \end{itemize}
-    \item \textbf{Trigger:} L'attore vuole visualizzare la lista dei contatti fidati
+    \item \textbf{Trigger:} L'attore un singolo contatto fidato dalla lista
 \end{itemize}
 
-\subsubsection{UC-7 - Visualizzazione informazioni contatto fidato} \label{subsec:UC-7}
+\subsubsection{UC-4.1.1 - Preview Nome Contatto Fidato} \label{subsec:UC-4.1.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore sta visualizzando la lista dei contatti fidati $\rightarrow$ \hyperref[sec:UC-4]{UC-4}
+        \item L'attore visualizza un singolo contatto dalla lista $\rightarrow$ \hyperref[subsec:UC-4.1]{UC-4.1}
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza la preview del nome del contatto fidato
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore visualizza dalla lista, la preview del nome del singolo contatto fidato
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-5 -Errore caricamento dati} \label{sec:UC-5}
+
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato una sezione da dover caricare tramite database
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema notifica l'errore all'attore
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Si verifica un errore
+        \item Il sistema rivela il fallimento della richiesta a causa dell'errore
+        \item Il sistema mostra un messaggio di errore all'utente
+    \end{itemize}
+    \item \textbf{Trigger:} Si verifica un errore durante il caricamento dei dati
+\end{itemize}
+
+\subsubsection{UC-6 - Visualizzazione informazioni contatto fidato} \label{subsec:UC-6}
 \begin{tcolorbox}[colback=gray!10,colframe=gray!50,title=Nota]
-{\small Il caso d'uso \hyperref[subsec:UC-7]{UC-7} è suddiviso nei casi d'uso inclusi \hyperref[subsec:UC-7.1]{UC-7.1}, \hyperref[subsec:UC-7.2]{UC-7.2} e \hyperref[subsec:UC-7.3]{UC-7.3}, che ne dettagliano il comportamento}
+{\small Il caso d'uso \hyperref[subsec:UC-6]{UC-6} è suddiviso nei casi d'uso inclusi \hyperref[subsec:UC-6.1]{UC-6.1}, \hyperref[subsec:UC-6.2]{UC-6.2} e \hyperref[subsec:UC-6.3]{UC-6.3}, che ne dettagliano il comportamento}
 \end{tcolorbox}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-7-impostazioni.png}
-    \caption{Diagramma del caso d'uso UC-7}
-    \label{fig:UC-7}
+    \includegraphics[width=1\textwidth]{use_case/UC-6-visualizzazione-info-contatti-fidati.png}
+    \caption{Diagramma del caso d'uso UC-6 con relativi sottocasi d'uso}
+    \label{fig:UC-6}
 \end{figure}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
@@ -748,21 +807,21 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \begin{itemize}
         \item Per il contatto fidato presente il sistema mostra le relative informazioni quali:
         \begin{itemize}
-            \item il nome $\rightarrow$ \ref{subsec:UC-7.1}
-            \item il numero di telefono $\rightarrow$ \ref{subsec:UC-7.2}
-            \item l'indirizzo email $\rightarrow$ \ref{subsec:UC-7.3}
+            \item il nome $\rightarrow$ \hyperref[subsec:UC-6.1]{UC-6.1}
+            \item il numero di telefono $\rightarrow$ \hyperref[subsec:UC-6.2]{UC-6.2}
+            \item l'indirizzo email $\rightarrow$ \hyperref[subsec:UC-6.3]{UC-6.3}
         \end{itemize}
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \hyperref[subsec:UC-7.1]{UC-7.1}
-        \item \hyperref[subsec:UC-7.2]{UC-7.2}
-        \item \hyperref[subsec:UC-7.3]{UC-7.3}
+        \item \hyperref[subsec:UC-6.1]{UC-6.1}
+        \item \hyperref[subsec:UC-6.2]{UC-6.2}
+        \item \hyperref[subsec:UC-6.3]{UC-6.3}
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole visualizzare le informazioni di contatto per un contatto fidato
 \end{itemize}
 
-\subsubsection{UC-7.1 - Visualizzazione nome contatto fidato} \label{subsec:UC-7.1}
+\subsubsection{UC-6.1 - Visualizzazione nome contatto fidato} \label{subsec:UC-6.1}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:} 
@@ -780,7 +839,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-7.2 - Visualizzazione numero di telefono contatto fidato} \label{subsec:UC-7.2}
+\subsubsection{UC-6.2 - Visualizzazione numero di telefono contatto fidato} \label{subsec:UC-6.2}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:} 
@@ -798,7 +857,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-7.3 - Visualizzazione indirizzo email contatto fidato} \label{subsec:UC-7.3}
+\subsubsection{UC-6.3 - Visualizzazione indirizzo email contatto fidato} \label{subsec:UC-6.3}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:} 
@@ -818,16 +877,16 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 
 % ===== AGGIUNTA CONTATTO FIDATO =====
 
-\subsubsection{UC-8 - Aggiunta contatto fidato} \label{subsec:UC-8}
+\subsubsection{UC-7 - Aggiunta contatto fidato} \label{subsec:UC-7}
 \begin{tcolorbox}[colback=gray!10,colframe=gray!50,title=Nota]
-{\small Il caso d'uso \hyperref[subsec:UC-8]{UC-8} è suddiviso nei casi d'uso inclusi \hyperref[subsec:UC-8.1]{UC-8.1}, \hyperref[subsec:UC-8.2]{UC-8.2} e \hyperref[subsec:UC-8.3]{UC-8.3}, che ne dettagliano il comportamento.
-Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\hyperref[subsec:UC-10]{UC-10}, \hyperref[subsec:UC-59]{UC-59}, \hyperref[subsec:UC-60]{UC-60} e \hyperref[subsec:UC-11]{UC-11}), la cui descrizione dettagliata è riportata nelle sezioni successive del documento.}
+{\small Il caso d'uso \hyperref[subsec:UC-7]{UC-7} è suddiviso nei casi d'uso inclusi \hyperref[subsec:UC-7.1]{UC-7.1}, \hyperref[subsec:UC-7.2]{UC-7.2} e \hyperref[subsec:UC-7.3]{UC-7.3}, che ne dettagliano il comportamento.
+Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\hyperref[subsec:UC-8]{UC-8}, \hyperref[subsec:UC-9]{UC-9}, \hyperref[subsec:UC-10]{UC-10} e \hyperref[subsec:UC-11]{UC-11}), la cui descrizione dettagliata è riportata nelle sezioni successive del documento.}
 \end{tcolorbox}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-8-impostazioni.png}
-    \caption{Diagramma del caso d'uso UC-8}
-    \label{fig:UC-8}
+    \includegraphics[width=1\textwidth]{use_case/UC-7-aggiunta-contatto-fidato.png}
+    \caption{Diagramma del caso d'uso UC-7 con relativi sottocasi d'uso}
+    \label{fig:UC-7}
 \end{figure}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Autenticato
@@ -843,21 +902,21 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item L'attore seleziona la voce per l'aggiunta del contatto fidato
-        \item L'attore inserisce il nome del contatto fidato $\rightarrow$ \ref{subsec:UC-8.1}
-        \item L'attore inserisce il numero di telefono del contatto fidato $\rightarrow$ \ref{subsec:UC-8.2}
-        \item L'attore inserisce l'indirizzo email del contatto fidato $\rightarrow$ \ref{subsec:UC-8.3}
+        \item L'attore inserisce il nome del contatto fidato $\rightarrow$ \hyperref[subsec:UC-7.1]{UC-7.1}
+        \item L'attore inserisce il numero di telefono del contatto fidato $\rightarrow$ \hyperref[subsec:UC-7.2]{UC-7.2}
+        \item L'attore inserisce l'indirizzo email del contatto fidato $\rightarrow$ \hyperref[subsec:UC-7.3]{UC-7.3}
         \item L'attore seleziona la voce per il salvataggio del contatto fidato nella rete di contatti
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \hyperref[subsec:UC-8.1]{UC-8.1}
-        \item \hyperref[subsec:UC-8.2]{UC-8.2}
-        \item \hyperref[subsec:UC-8.3]{UC-8.3}
+        \item \hyperref[subsec:UC-7.1]{UC-7.1}
+        \item \hyperref[subsec:UC-7.2]{UC-7.2}
+        \item \hyperref[subsec:UC-7.3]{UC-7.3}
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole aggiungere un nuovo contatto fidato nella propria rete
 \end{itemize}
 
-\subsubsection{UC-8.1 - Inserimento nome contatto fidato} \label{subsec:UC-8.1}
+\subsubsection{UC-7.1 - Inserimento Nome Contatto Fidato} \label{subsec:UC-7.1}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:}
@@ -876,7 +935,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Trigger:} L'attore vuole inserire un nuovo contatto nella propria rete di contatti fidati
 \end{itemize}
 
-\subsubsection{UC-8.2 - Inserimento numero di telefono contatto fidato} \label{subsec:UC-8.2}
+\subsubsection{UC-7.2 - Inserimento Numero di Telefono Contatto Fidato} \label{subsec:UC-7.2}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:}
@@ -894,18 +953,18 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
-        \item Il numero inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \ref{subsec:UC-10}
-        \item Il numero inserito è già presente nel sistema $\rightarrow$ \ref{subsec:UC-59}
+        \item Il numero inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \hyperref[subsec:UC-8]{UC-8}
+        \item Il numero inserito è già presente nel sistema $\rightarrow$ \hyperref[subsec:UC-9]{UC-9}
     \end{itemize}
     \item \textbf{Estensioni:} 
     \begin{itemize}
-        \item \hyperref[subsec:UC-10]{UC-10}
-        \item \hyperref[subsec:UC-59]{UC-59}
+        \item \hyperref[subsec:UC-8]{UC-8}
+        \item \hyperref[subsec:UC-9]{UC-9}
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole inserire un nuovo contatto nella propria rete di contatti fidati
 \end{itemize}
 
-\subsubsection{UC-8.3 - Inserimento indirizzo email contatto fidato} \label{subsec:UC-8.3}
+\subsubsection{UC-7.3 - Inserimento Indirizzo Email Contatto Fidato} \label{subsec:UC-7.3}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:}
@@ -923,18 +982,41 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
-        \item L'indirizzo email inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \ref{subsec:UC-11}
-        \item L'indirizzo email inserito è già presente nel sistema $\rightarrow$ \ref{subsec:UC-60}
+        \item L'indirizzo email inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \hyperref[subsec:UC-11]{UC-11}
+        \item L'indirizzo email inserito è già presente nel sistema $\rightarrow$ \hyperref[subsec:UC-10]{UC-10}
     \end{itemize}
     \item \textbf{Estensioni:} 
     \begin{itemize}
         \item \hyperref[subsec:UC-11]{UC-11}
-        \item \hyperref[subsec:UC-60]{UC-60}
+        \item \hyperref[subsec:UC-10]{UC-10}
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole inserire un nuovo contatto nella propria rete di contatti fidati
 \end{itemize}
 
-\subsubsection{UC-59 - Numero di telefono già presente} \label{subsec:UC-59}
+\subsubsection{UC-8 Numero di telefono non conforme ai criteri} \label{subsec:UC-8}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato la voce per l'aggiunta di un nuovo contatto fidato
+        \item L'attore ha inserito un numero di telefono non conforme ai criteri dell'applicazione
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema notifica all'attore che il numero di telefono inserito non è valido
+        \item L'attore può correggere il numero di telefono inserito
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}        
+        \item L'attore inserisce un numero di telefono non conforme ai criteri dell'applicazione
+        \item Il sistema \term{Verifica} il numero di telefono e rileva che non è valido
+        \item Il sistema notifica all'attore l'errore e richiede la correzione del numero
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore ha inserito un numero di telefono non conforme ai criteri dell'applicazione
+\end{itemize}
+
+\subsubsection{UC-9 - Numero di telefono già presente} \label{subsec:UC-9}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
@@ -957,7 +1039,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Trigger:} Rilevamento di un numero di telefono duplicato durante il salvataggio o l'inserimento
 \end{itemize}
 
-\subsubsection{UC-60 - Email già presente} \label{subsec:UC-60}
+\subsubsection{UC-10 - Email già presente} \label{subsec:UC-10}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
@@ -978,29 +1060,6 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item Il sistema richiede all'attore di inserire un'email diversa
     \end{itemize}
     \item \textbf{Trigger:} Rilevamento di un'email duplicata durante il salvataggio o l'inserimento
-\end{itemize}
-
-\subsubsection{UC-10 Numero di telefono non conforme ai criteri} \label{subsec:UC-10}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item L'attore ha selezionato la voce per l'aggiunta di un nuovo contatto fidato
-        \item L'attore ha inserito un numero di telefono non conforme ai criteri dell'applicazione
-    \end{itemize}
-    \item \textbf{Post-condizioni:} 
-    \begin{itemize}
-        \item Il sistema notifica all'attore che il numero di telefono inserito non è valido
-        \item L'attore può correggere il numero di telefono inserito
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}        
-        \item L'attore inserisce un numero di telefono non conforme ai criteri dell'applicazione
-        \item Il sistema \term{Verifica} il numero di telefono e rileva che non è valido
-        \item Il sistema notifica all'attore l'errore e richiede la correzione del numero
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore ha inserito un numero di telefono non conforme ai criteri dell'applicazione
 \end{itemize}
 
 \subsubsection{UC-11 Indirizzo email non conforme ai criteri} \label{subsec:UC-11}
@@ -1031,11 +1090,11 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
 \subsubsection{UC-12 - Modifica contatto fidato} \label{subsec:UC-12}
 \begin{tcolorbox}[colback=gray!10,colframe=gray!50,title=Nota]
 {\small Il caso d'uso \hyperref[subsec:UC-12]{UC-12} è suddiviso nei casi d'uso inclusi \hyperref[subsec:UC-12.1]{UC-12.1}, \hyperref[subsec:UC-12.2]{UC-12.2} e \hyperref[subsec:UC-12.3]{UC-12.3}, che ne dettagliano il comportamento.
-Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\hyperref[subsec:UC-10]{UC-10}, \hyperref[subsec:UC-59]{UC-59}, \hyperref[subsec:UC-60]{UC-60} e \hyperref[subsec:UC-11]{UC-11}), la cui descrizione dettagliata è riportata nelle sezioni precedenti del documento.}
+Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\hyperref[subsec:UC-8]{UC-8}, \hyperref[subsec:UC-9]{UC-9}, \hyperref[subsec:UC-10]{UC-10} e \hyperref[subsec:UC-11]{UC-11}), la cui descrizione dettagliata è riportata nelle sezioni precedenti del documento.}
 \end{tcolorbox}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-12-impostazioni.png}
+    \includegraphics[width=1\textwidth]{use_case/UC-12-modifica-contatto-fidato.png}
     \caption{Diagramma del caso d'uso UC-12}
     \label{fig:UC-12}
 \end{figure}
@@ -1054,9 +1113,9 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item L'attore seleziona la voce per la modifica del contatto fidato
-        \item L'attore modifica il nome del contatto fidato $\rightarrow$ \ref{subsec:UC-12.1}
-        \item L'attore modifica il numero di telefono del contatto fidato $\rightarrow$ \ref{subsec:UC-12.2}
-        \item L'attore modifica l'indirizzo email del contatto fidato $\rightarrow$ \ref{subsec:UC-12.3}
+        \item L'attore modifica il nome del contatto fidato $\rightarrow$ \hyperref[subsec:UC-12.1]{UC-12.1}
+        \item L'attore modifica il numero di telefono del contatto fidato $\rightarrow$ \hyperref[subsec:UC-12.2]{UC-12.2}
+        \item L'attore modifica l'indirizzo email del contatto fidato $\rightarrow$ \hyperref[subsec:UC-12.3]{UC-12.3}
         \item L'attore seleziona la voce per il salvataggio delle modifiche del contatto fidato nella rete di contatti
     \end{itemize}
     \item \textbf{Inclusioni:}
@@ -1068,7 +1127,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Trigger:} L'attore vuole modificare un contatto fidato nella propria rete
 \end{itemize}
 
-\subsubsection{UC-12.1 - Modifica nome contatto fidato} \label{subsec:UC-12.1}
+\subsubsection{UC-12.1 - Modifica Nome Contatto Fidato} \label{subsec:UC-12.1}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
@@ -1089,7 +1148,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Trigger:} L'attore vuole modificare il nome di un contatto fidato presente nella propria rete di contatti fidati
 \end{itemize}
 
-\subsubsection{UC-12.2 - Modifica numero di telefono contatto fidato} \label{subsec:UC-12.2}
+\subsubsection{UC-12.2 - Modifica Numero di Telefono Contatto Fidato} \label{subsec:UC-12.2}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
@@ -1109,13 +1168,13 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
-        \item Il numero inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \ref{subsec:UC-10}
-        \item Il numero modificato è già presente nel sistema per un altro contatto $\rightarrow$ \ref{subsec:UC-59}
+        \item Il numero inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \hyperref[subsec:UC-8]{UC-8}
+        \item Il numero modificato è già presente nel sistema per un altro contatto $\rightarrow$ \hyperref[subsec:UC-9]{UC-9}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \hyperref[subsec:UC-10]{UC-10}
-        \item \hyperref[subsec:UC-59]{UC-59}
+        \item \hyperref[subsec:UC-8]{UC-8}
+        \item \hyperref[subsec:UC-9]{UC-9}
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole modificare il numero di telefono di un contatto fidato presente nella propria rete di contatti fidati
 \end{itemize}
@@ -1140,20 +1199,20 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
-        \item L'indirizzo email inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \ref{subsec:UC-11}
-        \item L'indirizzo email modificato è già presente nel sistema per un altro contatto $\rightarrow$ \ref{subsec:UC-60}
+        \item L'indirizzo email inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \hyperref[subsec:UC-11]{UC-11}
+        \item L'indirizzo email modificato è già presente nel sistema per un altro contatto $\rightarrow$ \hyperref[subsec:UC-10]{UC-10}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
         \item \hyperref[subsec:UC-11]{UC-11}
-        \item \hyperref[subsec:UC-60]{UC-60}
+        \item \hyperref[subsec:UC-10]{UC-10}
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole modificare l'indirizzo email di un contatto fidato presente nella propria rete di contatti fidati
 \end{itemize}
 
 % ===== UC-13 - CANCELLAZIONE CONTATTO FIDATO =====
 
-\subsubsection{UC-13 Eliminazione contatto fidato} \label{subsec:UC-13}
+\subsubsection{UC-13 Eliminazione Contatto Fidato} \label{subsec:UC-13}
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{use_case/UC-13-impostazioni.png}
@@ -1176,7 +1235,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \begin{itemize}
         \item L'attore seleziona un contatto dalla lista dei contatti fidati
         \item L'attore seleziona la voce di cancellazione per quel contatto fidato
-        \item L'attore conferma l'eliminazione del contatto fidato $\rightarrow$ \ref{subsec:UC-13.1}
+        \item L'attore conferma l'eliminazione del contatto fidato $\rightarrow$ \hyperref[subsec:UC-13.1]{UC-13.1}
         \item Il sistema rimuove il contatto fidato scelto dall'attore dalla rete dei contatti fidati dell'attore
     \end{itemize}
     \item \textbf{inclusioni:} 
@@ -1186,7 +1245,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Trigger:} L'attore vuole rimuovere un contatto dalla propria rete di contatti fidati
 \end{itemize}
 
-\subsubsection{UC-13.1 Conferma eliminazione contatto fidato} \label{subsec:UC-13.1}
+\subsubsection{UC-13.1 Conferma Eliminazione Contatto Fidato} \label{subsec:UC-13.1}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
@@ -1205,7 +1264,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
-        \item L'attore rifiuta la conferma dell'eliminazione del contatto fidato $\rightarrow$ \ref{subsec:UC-14}
+        \item L'attore rifiuta la conferma dell'eliminazione del contatto fidato $\rightarrow$ \hyperref[subsec:UC-14]{UC-14}
     \end{itemize}
     \item \textbf{Estensioni:} 
     \begin{itemize}
@@ -1214,7 +1273,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Trigger:} L'attore ha scelto la voce di cancellazione per quel contatto fidato
 \end{itemize}
 
-\subsubsection{UC-14 Rifiuto conferma eliminazione contatto fidato} \label{subsec:UC-14}
+\subsubsection{UC-14 Rifiuto Conferma Eliminazione Contatto Fidato} \label{subsec:UC-14}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
