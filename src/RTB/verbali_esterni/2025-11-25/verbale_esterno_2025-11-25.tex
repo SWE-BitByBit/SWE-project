@@ -19,14 +19,14 @@
 \usepackage{setspace}
 \usepackage{colortbl}
 \usepackage{hyperref} 
-\usepackage{fancyhdr} 
-\setlength{\headheight}{15pt}
+\usepackage{fancyhdr}
+\setlength{\headheight}{25pt}
+\setlength{\headsep}{1cm}
 \usepackage{titlesec}
 \usepackage{float}
 \geometry{margin=2.5cm}
 % ===== Variabile per il titolo del documento =====
-\newcommand{\documenttitle}{Verbale Riunione Esterna Numero 2}
-
+\newcommand{\documenttitle}{Verbale Riunione Esterna - Numero 2} 
 
 \setlength{\parindent}{0pt}
 \setstretch{1.2}
@@ -35,6 +35,7 @@
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\textcolor{gray}{\documenttitle - BitByBit}}
+\fancyhead[R]{\includegraphics[height=1cm]{solo_logo.jpg}}
 \fancyfoot[C]{\thepage}
 
 % ===== Formattazione sezioni =====
@@ -48,7 +49,7 @@
 \begin{document}
 
 % ======= HEADER UNIVERSITÀ E GRUPPO CENTRATI VERTICALMENTE =======
-\vspace*{\fill} % --- Spinge verso il basso l'inizio del contenuto
+\vspace*{\fill} 
 
 \begin{center}
     \begin{minipage}{0.25\textwidth}
@@ -91,80 +92,92 @@
     {\LARGE \textbf{\documenttitle}}
 \end{center}
 
-\vspace*{\fill} % --- Spinge verso l’alto la fine del contenuto, centrando tutto il blocco
+% ======= INFO GENERALI SUL DOCUMENTO =======
+\renewcommand{\arraystretch}{1.3}
+\vspace{0.1cm}
 
-\clearpage
+\begin{tcolorbox}
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\textbf{Stato:} & Completato \\
+\textbf{Versione:} & 1.0.0 \\
+\textbf{Redattori:} & Dennis Parolin \\
+\textbf{Verificatori:} & Marco Sanguin \\
+\textbf{Responsabile:} & Ferdinando Fracasso \\
+\textbf{Destinatari:} & 
+\begin{tabular}[t]{@{}l@{}}
+Miriade \\
+Prof. Tullio Vardanega \\
+Prof. Cardin \\
+\end{tabular} \\
+\end{tabularx}
+\end{tcolorbox}
+
+\vspace*{\fill} 
 
 % ---------- REDAZIONE E REVISIONE ----------
 \clearpage
-\section{Redazione e revisioni del documento}
 
+\section*{Registro delle modifiche}
 \begin{center}
 \small
 \renewcommand{\arraystretch}{1.2} 
 \arrayrulecolor{black}
-\begin{tabularx}{\textwidth}{|c|c|>{\raggedright\arraybackslash}p{0.2\textwidth}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{0.2\textwidth}|}
+\begin{tabular}{|c|c|p{0.21\linewidth}|p{0.23\linewidth}|c|}
 \hline
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
-
 \rowcolor{white}
-1.0.0 & 2026-02-23 & Dennis Parolin & Approvazione del \term{Verbale} e stabilizzazione versione del documento & Ferdinando Fracasso \\
+1.0.0 & 2026-03-05 & Dennis Parolin & Approvazione del \term{Verbale} e stabilizzazione versione del documento & Ferdinando Fracasso \\
 \hline
 \rowcolor{gray!20}
+0.1.1 & 2026-03-05 & Dennis Parolin & Aggioranto il template del documento alla versione più recente & Ferdinando Fracasso \\
+\hline
+\rowcolor{white}
 0.1.0 & 2025-11-26 & Dennis Parolin & Scrittura del documento & Marco Sanguin \\
 \hline
-\end{tabularx}
+\end{tabular}
 \end{center}
 
-% ======= INFO GENERALI =======
-\section*{Informazioni Generali}
-\renewcommand{\arraystretch}{1.3}
-
-\begin{tcolorbox}
-\begin{tabularx}{\textwidth}{@{}l X@{}}
-\textbf{Redattore:} & Dennis Parolin \\
-\textbf{Data:} & 25 novembre 2025 \\
-\textbf{Durata:} & 4h \\
-\textbf{Luogo:} & Padova (Sede Miriade), Via Giacinto Longhin 53 \\
-\end{tabularx}
-\end{tcolorbox}
-
-\vspace{0.4cm}
-\textbf{Partecipanti:}
-\begin{itemize}
-    \item Manisi Riccardo
-    \item Parolin Dennis
-    \item Scaggiante Gabriele
-    \item Sanguin Marco
-    \item Visentin Giovanni
-	\item Fracasso Ferdinando
-\end{itemize}
-
-\textbf{Miriade:}
-\begin{itemize}
-    \item Emanuele Righetto
-    \item Annalisa Egidi
-    \item Anna Baldo
-\end{itemize}
-
-\textbf{Assenti:}
-\begin{itemize}
-    \item (nessuno)
-\end{itemize}
-
 \clearpage
-
-\vspace{0.5cm}
-
-\vspace{0.8cm}
 
 % ======= INDICE SU PAGINA DEDICATA =======
 \clearpage
 \tableofcontents
-\thispagestyle{empty} % senza numero di pagina per l'indice
+\thispagestyle{empty} 
 \clearpage
+
+% ======= INFO GENERALI RIUNIONE =======
+\section{Informazioni generali}
+\renewcommand{\arraystretch}{1.3}
+
+\begin{tcolorbox}
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\textbf{Data:} & 25 novembre 2025 \\
+\textbf{Ora Inizio:} & 14.00 \\
+\textbf{Durata:} & 4h \\
+\textbf{Luogo:} & Padova (Sede Miriade), Via Giacinto Longhin 53 \\
+\textbf{Presenti:} & 
+\begin{tabular}[t]{@{}l@{}}
+Manisi Riccardo\\
+Parolin Dennis\\
+Scaggiante Gabriele\\
+Sanguin Marco\\
+Visentin Giovanni\\
+Fracasso Ferdinando\\
+\end{tabular} \\
+\textbf{Miriade:} & 
+\begin{tabular}[t]{@{}l@{}}
+Emanuele Righetto\\
+Annalisa Egidi\\
+Anna Baldo\\
+\end{tabular} \\
+\textbf{Assenti:} & 
+\begin{tabular}[t]{@{}l@{}}
+(nessuno)\\
+\end{tabular} \\
+\end{tabularx}
+\end{tcolorbox}
 
 % ---------- ORDINE DEL GIORNO ----------
 \section{Ordine del Giorno}
@@ -291,10 +304,10 @@ Non è stata ancora deliberata una veste grafica definitiva; tuttavia, l'attenzi
 \textbf{Descrizione decisione} & \textbf{Codice decisione} \\
 \hline
 \rowcolor{white}
-Definizione delle funzionalità operative da implementare & VE \term{Rtb} 2.1 \\
+Definizione delle funzionalità operative da implementare & VE \ignoreglossary{RTB} 2.1 \\
 \hline
 \rowcolor{gray!20}
-Definizione delle linee guida per l'Interfaccia \term{Utente} (UI) &  VE \term{Rtb} 2.2 \\
+Definizione delle linee guida per l'Interfaccia \term{Utente} (UI) &  VE \ignoreglossary{RTB} 2.2 \\
 \hline
 \end{tabular}
 \end{center}
@@ -310,27 +323,26 @@ Dalle discussioni e decisioni intraprese, sono emerse le seguenti attività:
 \begin{tabular}{|p{0.52\textwidth}|c|c|}
 \hline
 \rowcolor{gray!60} 
-\textbf{Task} & \textbf{Codice decisione} & \textbf{N°\term{Issue} GitHub} \\
+\textbf{Task} & \textbf{Codice decisione} & \textbf{N° \term{Issue} Github} \\
 \hline
 \rowcolor{white}
-Analisi tecnica preliminare dei servizi AWS per l'individuazione delle risorse idonee all'implementazione delle funzionalità & VE \term{Rtb} 2.1 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/85}{\textbf{\#85}} \\
+Analisi tecnica preliminare dei servizi AWS per l'individuazione delle risorse idonee all'implementazione delle funzionalità & VE \ignoreglossary{RTB} 2.1 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/85}{\textbf{\#85}} \\
 \hline
 \rowcolor{gray!20}
-Scelta e finalizzazione del design dell'Interfaccia \term{Utente} (UI) per il \term{Poc} & VE \term{Rtb} 2.2 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/86}{\textbf{\#86}} \\
+Scelta e finalizzazione del design dell'Interfaccia \term{Utente} (UI) per il \term{Poc} & VE \ignoreglossary{RTB} 2.2 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/86}{\textbf{\#86}} \\
 \hline
 \end{tabular}
 \end{center}
 
 \textbf{Nota Metodologica:} Si precisa che l'attuale fase progettuale è focalizzata sull'\term{Analisi Dei Requisiti} e sullo studio di fattibilità tecnologica. L'effettiva fase di sviluppo software e programmazione sarà avviata esclusivamente a seguito del consolidamento delle scelte architetturali e dello stack tecnologico.
 
-	% ---------- FIRMA AZIENDALE ----------
-\vspace*{\fill} % Spinge la firma in fondo alla pagina
+\vspace*{\fill}
 \noindent
 \begin{minipage}{0.60\textwidth}
     {\small
     \textbf{Firma aziendale:}\\[0.3cm]
     \textit{(Spazio riservato all’azienda per apporre firma o timbro)}\\[0.8cm]
-    \fbox{\rule{0pt}{2.5cm}\rule{5cm}{0pt}} % rettangolo segnaposto firma
+    \fbox{\rule{0pt}{2.5cm}\rule{5cm}{0pt}} 
     }
 \end{minipage}
 

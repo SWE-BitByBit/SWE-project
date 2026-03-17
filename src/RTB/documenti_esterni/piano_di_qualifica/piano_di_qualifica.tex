@@ -110,17 +110,20 @@
 
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
-\textbf{Stato:} & In corso\\
-\textbf{Versione:} & 0.4.1 \\
-\textbf{Responsabile:} & Giovanni Visentin\\
+\textbf{Stato:} & Completato\\
+\textbf{Versione:} & 1.0.0 \\
+\textbf{Responsabile:} & Gabriele Scaggiante\\
 \textbf{Redattori:} & 
 \begin{tabular}[t]{@{}l@{}}
 Riccardo Manisi\\
 Dennis Parolin\\
+Ferdinando Fracasso\\
 \end{tabular}\\
 \textbf{Verificatori:} &
 \begin{tabular}[t]{@{}l@{}}
 Gabriele Scaggiante\\
+Dennis Parolin\\
+Giovanni Visentin\\
 \end{tabular}\\
 \textbf{Destinatari:} &
 \begin{tabular}[t]{@{}l@{}}
@@ -147,6 +150,12 @@ Gruppo BitByBit\\
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 
+\rowcolor{white}
+1.0.0 & 2026-02-13 & Ferdinando Fracasso & Approvazione del \term{Verbale} e stabilizzazione versione del documento &  Dennis Parolin\\
+\hline
+\rowcolor{gray!20}
+0.4.2 & 2026-03-02 & Ferdinando Fracasso & Aggiunta sezione Cruscotto di valutazione della qualità (\ref{sec:cruscotto_valutazione}). & Dennis Parolin \\
+\hline
 \rowcolor{white}
 0.4.1 & 2026-02-13 & Dennis Parolin & Piccola correzione di alcuni errori di battitura. &  Giovanni Visentin\\
 \hline
@@ -176,7 +185,7 @@ Gruppo BitByBit\\
 % Indice dei contenuti
 \tableofcontents
 \listoftables
-
+\listoffigures
 \thispagestyle{empty}
 
 \clearpage
@@ -206,7 +215,7 @@ L'approccio si basa sull'adozione di uno specifico \textbf{\term{Way Of Working}
 % ==== RIFERIMENTI =====
 
 \subsection{Riferimenti} \label{sec:riferimenti}
-Al fine di evitare ambiguità relative al linguaggio e ai termini utilizzati all'interno dei documenti formali, viene allegato il \href{https://swe-bitbybit.github.io/SWE-docs/docs/documenti_interni/Glossario.pdf}{\textit{Glossario}}.
+Al fine di evitare ambiguità relative al linguaggio e ai termini utilizzati all'interno dei documenti formali, viene allegato il \href{https://swe-bitbybit.github.io/SWE-docs/docs/RTB/documenti_interni/Glossario.pdf}{\textit{Glossario}}.
 I termini tecnici, gli acronimi e le parole con significato specifico all'interno del progetto sono contrassegnati da una lettera 'G' in apice (es. Agile\textsuperscript{G}) e sono descritti in dettaglio nel documento apposito.
 
 \subsubsection{Riferimenti normativi}\label{sec:riferimenti_normativi}
@@ -220,8 +229,8 @@ Ultimo accesso: \textit{2026-01-12}\\
 
 \item \textbf{Norme di Progetto}\\
 Parti consultate: documento completo\\
-Versione: v.0.10.2\\
-Ultimo accesso: \textit{2026-01-14}\\
+Versione: v.1.0.0\\
+Ultimo accesso: \textit{2026-03-01}\\
 \url{https://swe-bitbybit.github.io/SWE-docs/docs/RTB/documenti_interni/norme_di_progetto.pdf}
 \end{itemize}
 
@@ -263,9 +272,9 @@ Ultimo accesso: \textit{2026-01-14}\\
         Ultimo accesso: \textit{2026-01-06}\\
     \item \textbf{Glossario}\\
         Parti consultate: documento completo\\
-        Versione: \textit{v.0.3.2}\\
-        Ultimo accesso: \textit{2026-01-06}\\
-        \url{https://swe-bitbybit.github.io/SWE-docs/docs/documenti_interni/Glossario.pdf}
+        Versione: \textit{v.1.0.0}\\
+        Ultimo accesso: \textit{2026-03-02}\\
+        \url{https://swe-bitbybit.github.io/SWE-docs/docs/RTB/documenti_interni/Glossario.pdf}
 \end{itemize}
 
 % ===== QUALITA DI PRODOTTO =====
@@ -395,7 +404,7 @@ I processi di supporto assicurano che la qualità del lavoro svolto sia costante
 \begin{tabularx}{\textwidth}{|c|Y|c|c|}
 \hline
 \rowcolor{gray!30} \textbf{ID} & \textbf{Nome} & \textbf{Valore accettabile} & \textbf{Valore ottimo} \\ \hline
-\textbf{MPC12} & \term{Sprint} Commitment Reliability (SCR) & $\ge 80\%$ & $\ge 90\%$ \\ \hline
+\textbf{MPC14} & \term{Sprint} Commitment Reliability (SCR) & $\ge 80\%$ & $\ge 90\%$ \\ \hline
 \end{tabularx}
 \caption{Soglie delle metriche per la gestione dei processi}
 \end{table}
@@ -970,5 +979,52 @@ T-16-A & Verificare la consistenza dei dati e la persistenza delle informazioni 
 \hline
 \end{longtable}
 
+\section{Cruscotto di valutazione della qualità}\label{sec:cruscotto_valutazione}
+\subsection{MPC02: Planned Value e MPC04: Earned Value totali}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{pdq/planned_earned-RTB.png}
+    \caption{Planned Value e Earned Value totali}
+    \label{fig:Grafico MPC02 e MPC04}
+\end{figure}
+Il grafico mostra che Earned Value e Planned Value rientrano nei rispettivi range ottimi, quindi nel futuro si mirerà a portare entrambe a coincidere per raggiungere il valore ottimo.
+
+\subsection{MPC03: Actual Cost, MPC07 Estimate at Completion e MPC08: Estimate to Complete}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{pdq/EAC_ETC-RTB.png}
+    \caption{Actual Cost, Estimate at Completion e Estimate to Complete}
+    \label{fig:Grafico MPC03, MPC07 e MPC08}
+\end{figure}
+Il grafico mostra dell'instabilità nei valori Estimate at Completion e Estimate to Complete in corrispondenza degli \term{Sprint} sovrapposti alla sessione di esami universitari.\\
+Il valore di Estimate at Completion risulta frequentemente inferiore al suo valore accettabile, pari al Budget at Completion - 15\%, tranne che durante lo \term{Sprint} 3. Questo è principalmente dovuto a una sovrastima iniziale del costo e della complessità di alcuni task, che ha portato a un consumo di ore inferiore al preventivato. Saranno effettuati dei ricalcoli preventivi più accurati nei prossimi \term{Sprint}.
+
+\subsection{MPC06: Schedule Performance Index}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{pdq/SPI-RTB.png}
+    \caption{Schedule Performance Index}
+    \label{fig:Grafico MPC06}
+\end{figure}
+Il grafico mostra che nonostante le fluttuazioni, lo Schedule Performance Index è rimasto prevalentemente nel range accettabile. Unica eccezione il valore durante lo \term{Sprint} 5 in cui è sceso sotto la soglia accettabile, per poi recuperare negli \term{Sprint} successivi e quindi plausibilmente causato dalla coincidenza con la sessione di esami universitari.
+
+\subsection{MPC05: Cost Performance Index}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{pdq/CPI-RTB.png}
+    \caption{Cost Performance Index}
+    \label{fig:Grafico MPC05}
+\end{figure}
+Il grafico mostra che l'indice Cost Performance Index è rimasto principalmente oltre il valore ottimo, e sempre al di sopra del valore accettabile eccetto nello \term{Sprint} 7. Il calo dell'indice nello \term{Sprint} 7 è dovuto all'insorgere di complessità impreviste durante la fase di integrazione del codice e alle operazioni di bug-fixing per la \term{Rtb}, che hanno richiesto un numero di ore maggiore rispetto all'Earned Value effettivamente prodotto. Questa perdita di efficienza andrà mitigata migliorando la pianificazione dei test e dividendo i task di consolidamento in unità più piccole.
+
+\subsection{MPC11: Indice di Gulpease}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{pdq/Gulpease-RTB.png}
+    \caption{Indice di Gulpease}
+    \label{fig:Grafico MPC11}
+\end{figure}
+Il grafico mostra che il valore dell'Indice di Gulpease della documentazione prodotta risulta sempre superiore alla soglia del valore accettabile, con la maggior parte della documentazione oltre la soglia ottima.\\
+Le Norme di Progetto e l'\term{Analisi Dei Requisiti} sono i documenti con l'indice più basso, ma va segnalato che anche il Glossario (59,68) sfiora appena la soglia ottima, senza tuttavia superarla. Poiché si tratta di documenti tecnici, la presenza di terminologia specifica e frasi articolate può abbassare marginalmente questo indice senza comprometterne la reale leggibilità per gli addetti ai lavori. Pertanto, un intervento correttivo mirato unicamente all'innalzamento dell'indice non è ritenuto prioritario, ma se in futuro si renderanno necessarie modifiche a questi documenti, si presterà attenzione a semplificarne la struttura linguistica.
 
 \end{document}
