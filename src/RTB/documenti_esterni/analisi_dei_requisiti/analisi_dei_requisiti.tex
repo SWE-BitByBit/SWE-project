@@ -2586,12 +2586,12 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
 
 \end{itemize}
 
-\subsubsection{UC-41 - Creazione nuova chat} \label{subsec:UC-41}
+\subsubsection{UC-54- Creazione nuova chat} \label{subsec:UC-54}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-41-42-detective.png}
-    \caption{Diagramma dei casi d'uso UC-41 e UC-42}
-    \label{fig:UC-41-42}
+    \includegraphics[width=1\textwidth]{use_case/UC-54-detective.png}
+    \caption{Diagramma dei casi d'uso UC-54}
+    \label{fig:UC-54}
 \end{figure}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
@@ -2610,16 +2610,16 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item L'attore seleziona la voce per avviare una nuova conversazione con il chatbot
         \item Il sistema inizializza un nuovo contesto di chat vuoto
         \item Il sistema reindirizza l'attore alla schermata della chat
-        \item L'attore visualizza la schermata della chat vuota $\rightarrow$ \ref{subsec:UC-40}
+        \item L'attore visualizza la schermata della chat vuota $\rightarrow$ \ref{subsec:UC-56}
     \end{itemize}
     \item \textbf{Inclusioni:} 
     \begin{itemize}
-        \item \hyperref[subsec:UC-40]{UC-40}
+        \item \hyperref[subsec:UC-56]{UC-56}
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole iniziare una nuova conversazione con il chatbot
 \end{itemize}
 
-\subsubsection{UC-42 - Eliminazione chat} \label{subsec:UC-42}
+\subsubsection{UC-55 - Eliminazione chat} \label{subsec:UC-55}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:}
@@ -2636,17 +2636,17 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \begin{itemize}
         \item L'attore attiva la modalità di gestione/modifica della cronologia
         \item L'attore seleziona la chat che desidera rimuovere
-        \item L'attore conferma l'intenzione di eliminare la chat $\rightarrow$ \ref{subsec:UC-42.1}
+        \item L'attore conferma l'intenzione di eliminare la chat $\rightarrow$ \ref{subsec:UC-55.1}
         \item Il sistema elimina la chat e aggiorna la lista della cronologia
     \end{itemize}
     \item \textbf{Inclusioni:} 
     \begin{itemize}
-        \item \hyperref[subsec:UC-42.1]{UC-42.1}
+        \item \hyperref[subsec:UC-55.1]{UC-55.1}
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole rimuovere una conversazione passata
 \end{itemize}
 
-\subsubsection{UC-42.1 - Conferma eliminazione chat} \label{subsec:UC-42.1}
+\subsubsection{UC-55.1 - Conferma eliminazione chat} \label{subsec:UC-55.1}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:}
@@ -2662,14 +2662,6 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \begin{itemize}
         \item Il sistema richiede una conferma esplicita per procedere con l'eliminazione
         \item L'attore conferma l'operazione
-    \end{itemize}
-    \item \textbf{Scenario secondario:}
-    \begin{itemize}
-        \item L'attore rifiuta la conferma dell'eliminazione della chat $\rightarrow$ \ref{subsec:UC-42.1.1}
-    \end{itemize}
-    \item \textbf{Estensioni:} 
-    \begin{itemize}
-        \item \hyperref[subsec:UC-42.1.1]{UC-42.1.1}
     \end{itemize}
     \item \textbf{Trigger:} L'attore sceglie di confermare l'eliminazione della chat
 \end{itemize}
