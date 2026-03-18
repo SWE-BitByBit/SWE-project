@@ -2374,85 +2374,6 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
 
 \end{itemize}
 
-\subsubsection{UC-39 - Visualizzazione cronologia chat} \label{subsec:UC-39}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-39-detective.png}
-    \caption{Diagramma del caso d'uso UC-39}
-    \label{fig:UC-39}
-\end{figure}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item L'attore ha selezionato la cronologia delle chat
-    \end{itemize}
-    \item \textbf{Post-condizioni:} 
-    \begin{itemize}
-        \item Il sistema mostra l'elenco completo delle chat in cronologia
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item Il sistema recupera tutte le chat memorizzate
-        \item Il sistema organizza le chat secondo ordine cronologico
-        \item Il sistema visualizza la lista delle chat con una preview del primo messaggio inviato dentro la chat
-        \item L'attore può visualizzare una singola chat dalla lista $\rightarrow$ \ref{subsec:UC-39.1}
-    \end{itemize}
-    \item \textbf{Inclusioni:}
-    \begin{itemize}
-        \item \hyperref[subsec:UC-39.1]{UC-39.1}
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore ha selezionato la cronologia delle chat
-\end{itemize}
-
-\subsubsection{UC-39.1 - Visualizzazione singola chat della lista} \label{subsec:UC-39.1}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item L'attore ha selezionato la cronologia delle chat
-        \item La cronologia delle chat è visibile
-    \end{itemize}
-    \item \textbf{Post-condizioni:} 
-    \begin{itemize}
-        \item L'attore ha visualizzato una singola chat
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item Il sistema recupera le informazioni della chat da visualizzare
-        \item Il sistema mostra la preview del primo messaggio della chat nella lista $\rightarrow$ \ref{subsec:UC-39.1.1}
-    \end{itemize}
-    \item \textbf{Inclusioni:}
-    \begin{itemize}
-        \item \hyperref[subsec:UC-39.1.1]{UC-39.1.1}
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore ha selezionato una singola chat dalla cronologia
-
-\end{itemize}
-
-\subsubsection{UC-39.1.1 - Visualizzazione preview inizio chat della lista} \label{subsec:UC-39.1.1}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item L'attore ha selezionato la cronologia delle chat
-        \item La cronologia delle chat è visibile
-        \item Le chat sono caricate
-    \end{itemize}
-    \item \textbf{Post-condizioni:} 
-    \begin{itemize}
-        \item L'attore ha visualizzato la preview di una chat
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item Il sistema mostra la preview del primo messaggio della chat nella lista
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore ha visualizzato una singola chat dalla cronologia delle chat
-\end{itemize}
-
 \subsubsection{UC-56 - Visualizzazione contenuto chat} \label{subsec:UC-56}
 \begin{tcolorbox}[colback=gray!10,colframe=gray!50,title=Nota]
 {\small Il caso d'uso \hyperref[subsec:UC-56]{UC-56} include il caso d'uso \hyperref[subsec:UC-56.1]{UC-56.1} e viene esteso da \hyperref[subsec:UC-56.2]{UC-56.2}.
@@ -2639,6 +2560,85 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item L'attore conferma l'operazione
     \end{itemize}
     \item \textbf{Trigger:} L'attore sceglie di confermare l'eliminazione della chat
+\end{itemize}
+
+\subsubsection{UC-57 - Visualizzazione cronologia chat} \label{subsec:UC-57}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{use_case/UC-57-detective.png}
+    \caption{Diagramma del caso d'uso UC-57}
+    \label{fig:UC-57}
+\end{figure}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato la cronologia delle chat
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema mostra l'elenco completo delle chat in cronologia
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema recupera tutte le chat memorizzate
+        \item Il sistema organizza le chat secondo ordine cronologico
+        \item Il sistema visualizza la lista delle chat con una preview del primo messaggio inviato dentro la chat
+        \item L'attore può visualizzare una singola chat dalla lista $\rightarrow$ \ref{subsec:UC-57.1}
+    \end{itemize}
+    \item \textbf{Inclusioni:}
+    \begin{itemize}
+        \item \hyperref[subsec:UC-57.1]{UC-57.1}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore ha selezionato la cronologia delle chat
+\end{itemize}
+
+\subsubsection{UC-57.1 - Visualizzazione singola chat della cronologia} \label{subsec:UC-57.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato la cronologia delle chat
+        \item La cronologia delle chat è visibile
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item L'attore ha visualizzato una singola chat
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema recupera le informazioni della chat da visualizzare
+        \item Il sistema mostra la preview del primo messaggio della chat nella lista $\rightarrow$ \ref{subsec:UC-57.1.1}
+    \end{itemize}
+    \item \textbf{Inclusioni:}
+    \begin{itemize}
+        \item \hyperref[subsec:UC-57.1.1]{UC-57.1.1}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore ha selezionato una singola chat dalla cronologia
+
+\end{itemize}
+
+\subsubsection{UC-57.1.1 - Visualizzazione preview inizio chat della cronologia} \label{subsec:UC-57.1.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato la cronologia delle chat
+        \item La cronologia delle chat è visibile
+        \item Le chat sono caricate
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item L'attore ha visualizzato la preview di una chat
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema mostra la preview del primo messaggio della chat nella lista
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore ha visualizzato una singola chat dalla cronologia delle chat
 \end{itemize}
 
 % ========================== UC-G: Guide ==============================
