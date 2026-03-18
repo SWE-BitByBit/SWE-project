@@ -1542,12 +1542,12 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
 
 % ==== DIARIO CRIPTATO =====
 
-\subsubsection{UC-19 - Impostazione password per diario criptato} \label{subsec:UC-19}
+\subsubsection{UC-21 - Impostazione password per diario criptato} \label{subsec:UC-21}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-19-impostazione-password-diario-criptato.png}
-    \caption{Diagramma del caso d'uso UC-19}
-    \label{fig:UC-19}
+    \includegraphics[width=1\textwidth]{use_case/UC-21-impostazione-password-diario-criptato.png}
+    \caption{Diagramma del caso d'uso UC-21}
+    \label{fig:UC-21}
 \end{figure}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
@@ -1570,16 +1570,16 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenari secondari:} 
     \begin{itemize}
-        \item La password non è conforme ai criteri di sicurezza minimi imposti dal sistema. La password non viene memorizzata e viene mostrato un messaggio di errore. $\rightarrow$ \hyperref[subsec:UC-20]{UC-20}
+        \item La password non è conforme ai criteri di sicurezza minimi imposti dal sistema. La password non viene memorizzata e viene mostrato un messaggio di errore. $\rightarrow$ \hyperref[subsec:UC-22]{UC-22}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \hyperref[subsec:UC-20]{UC-20}
+        \item \hyperref[subsec:UC-22]{UC-22}
     \end{itemize}
     \item \textbf{Trigger:} L'attore interagisce con il form di inserimento della password per il diario criptato
 \end{itemize}
 
-\subsubsection{UC-20 - Password non conforme ai criteri} \label{subsec:UC-20}
+\subsubsection{UC-22 - Password non conforme ai criteri} \label{subsec:UC-22}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:}
@@ -1604,12 +1604,12 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Trigger:} La password inserita non rispetta i criteri di sicurezza dell'applicazione
 \end{itemize}
 
-\subsubsection{UC-21 - Impostazione password per diario fittizio} \label{subsec:UC-21}
+\subsubsection{UC-23 - Impostazione password per diario fittizio} \label{subsec:UC-23}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-21-impostazione-password-diario-fittizio.png}
-    \caption{Diagramma del caso d'uso UC-21}
-    \label{fig:UC-21}
+    \includegraphics[width=1\textwidth]{use_case/UC-23-impostazione-password-diario-fittizio.png}
+    \caption{Diagramma del caso d'uso UC-23}
+    \label{fig:UC-23}
 \end{figure}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} autenticato al diario
@@ -1633,18 +1633,18 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenari secondari:} 
     \begin{itemize}
-        \item La password del diario fittizio combacia con quella già impostata del diario criptato. $\rightarrow$ \hyperref[subsec:UC-22]{UC-22}
-        \item La password non è conforme ai criteri di sicurezza minimi imposti dal sistema. La password non viene memorizzata e viene mostrato un messaggio di errore. $\rightarrow$ \hyperref[subsec:UC-20]{UC-20}
+        \item La password del diario fittizio combacia con quella già impostata del diario criptato. $\rightarrow$ \hyperref[subsec:UC-24]{UC-24}
+        \item La password non è conforme ai criteri di sicurezza minimi imposti dal sistema. La password non viene memorizzata e viene mostrato un messaggio di errore. $\rightarrow$ \hyperref[subsec:UC-22]{UC-22}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
+        \item \hyperref[subsec:UC-24]{UC-24}
         \item \hyperref[subsec:UC-22]{UC-22}
-        \item \hyperref[subsec:UC-20]{UC-20}
     \end{itemize}
     \item \textbf{Trigger:} L'attore interagisce con il form di inserimento della password per il diario fittizio
 \end{itemize}
 
-\subsubsection{UC-22 - Password uguale alla password del diario criptato} \label{subsec:UC-22}
+\subsubsection{UC-24 - Password uguale alla password del diario criptato} \label{subsec:UC-24}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} autenticato al diario
     \item \textbf{Pre-condizioni:}
@@ -1668,12 +1668,12 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Trigger:} La password inserita per il diario fittizio corrisponde alla password del diario criptato
 \end{itemize}
 
-\subsubsection{UC-23 - Inserimento password accesso diario} \label{subsec:UC-23}
+\subsubsection{UC-25 - Inserimento password accesso diario} \label{subsec:UC-25}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-23-inserimento-password-accesso-diario.png}
-    \caption{Diagramma del caso d'uso UC-23}
-    \label{fig:UC-23}
+    \includegraphics[width=1\textwidth]{use_case/UC-25-inserimento-password-accesso-diario.png}
+    \caption{Diagramma del caso d'uso UC-25}
+    \label{fig:UC-25}
 \end{figure}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} autenticato al diario
@@ -1695,24 +1695,93 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenari secondari:} 
     \begin{itemize}
-        \item L'attore inserisce la password errata. Il sistema notifica l'errore e impedisce l'accesso al diario. $\rightarrow$ \hyperref[subsec:UC-25]{UC-25}
-        \item L'attore ha inserito la password errata più volte di quanto consentito dal sistema. Il sistema nega l'accesso e disabilita l'inserimento della password per un periodo di tempo predefinito. $\rightarrow$ \hyperref[subsec:UC-24]{UC-24}
+        \item L'attore inserisce la password errata. Il sistema notifica l'errore e impedisce l'accesso al diario. $\rightarrow$ \hyperref[subsec:UC-27]{UC-27}
+        \item L'attore ha inserito la password errata più volte di quanto consentito dal sistema. Il sistema nega l'accesso e disabilita l'inserimento della password per un periodo di tempo predefinito. $\rightarrow$ \hyperref[subsec:UC-26]{UC-26}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \hyperref[subsec:UC-25]{UC-25}
-        \item \hyperref[subsec:UC-24]{UC-24}
+        \item \hyperref[subsec:UC-27]{UC-27}
+        \item \hyperref[subsec:UC-26]{UC-26}
     \end{itemize}
         \item \textbf{Trigger:} L'attore tenta di accedere al diario
         \item \textbf{Specializzazioni:}
     \begin{itemize}
-        \item \hyperref[subsec:UC-23.1]{UC-23.1}
-        \item \hyperref[subsec:UC-23.2]{UC-23.2}
+        \item \hyperref[subsec:UC-25.1]{UC-25.1}
+        \item \hyperref[subsec:UC-25.2]{UC-25.2}
     \end{itemize}
 
 \end{itemize}
 
-\subsubsection{UC-25 - Inserimento password errata} \label{subsec:UC-25}
+\subsubsection{UC-25.1 - Inserimento password accesso diario criptato} \label{subsec:UC-25.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova nella schermata di accesso al diario
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item L'\term{Utente} ha accesso al diario criptato
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore inserisce la password nel campo dedicato
+        \item L'attore conferma l'inserimento
+        \item Il sistema riceve la password e \ignoreglossary{verifica} che corrisponda alla password memorizzata per il diario criptato
+        \item L'attore ottiene l'accesso al diario criptato
+    \end{itemize}
+
+\end{itemize}
+
+\subsubsection{UC-25.2 - Inserimento password accesso diario fittizio} \label{subsec:UC-25.2}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova nella schermata di accesso al diario
+        \item Il diario fittizio è stato precedentemente configurato con una password
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item L'\term{Utente} ha accesso al diario fittizio
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore inserisce la password nel campo dedicato
+        \item L'attore conferma l'inserimento
+        \item Il sistema riceve la password e \ignoreglossary{verifica} che corrisponda alla password memorizzata per il diario fittizio
+        \item L'attore ottiene l'accesso al diario fittizio
+    \end{itemize}
+
+\end{itemize}
+
+\subsubsection{UC-26 - Password errata troppe volte} \label{subsec:UC-26}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha effettuato molteplici tentativi falliti di accesso al diario
+        \item Il numero di tentativi errati ha superato la soglia massima consentita
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item L'accesso al diario è temporaneamente bloccato
+        \item Il sistema ha attivato le misure di sicurezza previste
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema rileva il superamento del numero massimo di tentativi falliti
+        \item Il sistema blocca temporaneamente l'accesso alla funzionalità del diario
+        \item Il sistema visualizza un messaggio informando l'attore del blocco temporaneo
+        \item Il sistema attende un periodo di tempo predefinito prima di consentire nuovi tentativi
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore ha inserito la password errata per un numero di volte superiore alla soglia massima consentita
+\end{itemize}
+
+\subsubsection{UC-27 - Inserimento password errata} \label{subsec:UC-27}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} autenticato al diario
     \item \textbf{Pre-condizioni:}
@@ -1737,81 +1806,12 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
 
 \end{itemize}
 
-\subsubsection{UC-24 - Password errata troppe volte} \label{subsec:UC-24}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} autenticato al diario
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item L'attore ha effettuato molteplici tentativi falliti di accesso al diario
-        \item Il numero di tentativi errati ha superato la soglia massima consentita
-    \end{itemize}
-    \item \textbf{Post-condizioni:} 
-    \begin{itemize}
-        \item L'accesso al diario è temporaneamente bloccato
-        \item Il sistema ha attivato le misure di sicurezza previste
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item Il sistema rileva il superamento del numero massimo di tentativi falliti
-        \item Il sistema blocca temporaneamente l'accesso alla funzionalità del diario
-        \item Il sistema visualizza un messaggio informando l'attore del blocco temporaneo
-        \item Il sistema attende un periodo di tempo predefinito prima di consentire nuovi tentativi
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore ha inserito la password errata per un numero di volte superiore alla soglia massima consentita
-\end{itemize}
-
-\subsubsection{UC-23.1 - Inserimento password accesso diario criptato} \label{subsec:UC-23.1}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} autenticato al diario
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item L'attore si trova nella schermata di accesso al diario
-    \end{itemize}
-    \item \textbf{Post-condizioni:} 
-    \begin{itemize}
-        \item L'\term{Utente} ha accesso al diario criptato
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item L'attore inserisce la password nel campo dedicato
-        \item L'attore conferma l'inserimento
-        \item Il sistema riceve la password e \ignoreglossary{verifica} che corrisponda alla password memorizzata per il diario criptato
-        \item L'attore ottiene l'accesso al diario criptato
-    \end{itemize}
-
-\end{itemize}
-
-\subsubsection{UC-23.2 - Inserimento password accesso diario fittizio} \label{subsec:UC-23.2}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} autenticato al diario
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item L'attore si trova nella schermata di accesso al diario
-        \item Il diario fittizio è stato precedentemente configurato con una password
-    \end{itemize}
-    \item \textbf{Post-condizioni:} 
-    \begin{itemize}
-        \item L'\term{Utente} ha accesso al diario fittizio
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item L'attore inserisce la password nel campo dedicato
-        \item L'attore conferma l'inserimento
-        \item Il sistema riceve la password e \ignoreglossary{verifica} che corrisponda alla password memorizzata per il diario fittizio
-        \item L'attore ottiene l'accesso al diario fittizio
-    \end{itemize}
-
-\end{itemize}
-
-\subsubsection{UC-26 - Visualizzazione diario criptato} \label{subsec:UC-26}
+\subsubsection{UC-28 - Visualizzazione diario criptato} \label{subsec:UC-28}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-26-visualizzazione-diario-criptato.png}
-    \caption{Diagramma del caso d'uso UC-26}
-    \label{fig:UC-26}
+    \includegraphics[width=1\textwidth]{use_case/UC-28-visualizzazione-diario-criptato.png}
+    \caption{Diagramma del caso d'uso UC-28}
+    \label{fig:UC-28}
 \end{figure}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} autenticato al diario
@@ -1827,16 +1827,16 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item L'attore accede alla schermata principale del diario criptato
-        \item Il sistema carica e visualizza la lista delle note presenti $\rightarrow$ \hyperref[subsec:UC-27]{UC-27}
+        \item Il sistema carica e visualizza la lista delle note presenti $\rightarrow$ \hyperref[subsec:UC-28.1]{UC-28.1}
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \hyperref[subsec:UC-27]{UC-27}
+        \item \hyperref[subsec:UC-28.1]{UC-28.1}
     \end{itemize}
     \item \textbf{Trigger:} L'attore accede al diario criptato
 \end{itemize}
 
-\subsubsection{UC-27 - Visualizzazione lista note nel diario criptato} \label{subsec:UC-27}
+\subsubsection{UC-28.1 - Visualizzazione lista note nel diario criptato} \label{subsec:UC-28.1}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} autenticato al diario
     \item \textbf{Pre-condizioni:}
@@ -1852,7 +1852,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item Il sistema recupera tutte le note memorizzate nel diario criptato
-        \item Il sistema visualizza, in una lista, le anteprime di ogni singola nota $\rightarrow$ \hyperref[subsec:UC-28]{UC-28}
+        \item Il sistema visualizza, in una lista, le anteprime di ogni singola nota $\rightarrow$ \hyperref[subsec:UC-28.1.1]{UC-28.1.1}
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
@@ -1860,7 +1860,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \hyperref[subsec:UC-28]{UC-28}
+        \item \hyperref[subsec:UC-28.1.1]{UC-28.1.1}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
@@ -1869,7 +1869,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Trigger:} L'attore accede al diario criptato
 \end{itemize}
 
-\subsubsection{UC-28 - Visualizzazione anteprima singola nota della lista nel diario criptato} \label{subsec:UC-28}
+\subsubsection{UC-28.1.1 - Visualizzazione anteprima singola nota della lista nel diario criptato} \label{subsec:UC-28.1.1}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} autenticato al diario
     \item \textbf{Pre-condizioni:}
@@ -1891,12 +1891,12 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Trigger:} L'attore accede al diario criptato
 \end{itemize}
 
-\subsubsection{UC-33 - Visualizzazione diario fittizio} \label{subsec:UC-33}
+\subsubsection{UC-29 - Visualizzazione diario fittizio} \label{subsec:UC-29}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-33-visualizzazione-diario-fittizio.png}
-    \caption{Diagramma del caso d'uso UC-33}
-    \label{fig:UC-33}
+    \includegraphics[width=1\textwidth]{use_case/UC-29-visualizzazione-diario-fittizio.png}
+    \caption{Diagramma del caso d'uso UC-29}
+    \label{fig:UC-29}
 \end{figure}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} autenticato al diario
@@ -1912,16 +1912,16 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item L'attore accede alla schermata principale del diario fittizio
-        \item Il sistema carica e visualizza la lista delle note presenti $\rightarrow$ \hyperref[subsec:UC-34]{UC-34}
+        \item Il sistema carica e visualizza la lista delle note presenti $\rightarrow$ \hyperref[subsec:UC-29.1]{UC-29.1}
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \hyperref[subsec:UC-34]{UC-34}
+        \item \hyperref[subsec:UC-29.1]{UC-29.1}
     \end{itemize}
     \item \textbf{Trigger:} L'attore accede al diario fittizio
 \end{itemize}
 
-\subsubsection{UC-34 - Visualizzazione lista note nel diario fittizio} \label{subsec:UC-34}
+\subsubsection{UC-29.1 - Visualizzazione lista note nel diario fittizio} \label{subsec:UC-29.1}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} autenticato al diario
     \item \textbf{Pre-condizioni:}
@@ -1937,7 +1937,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item Il sistema recupera tutte le note memorizzate nel diario fittizio
-        \item Il sistema visualizza, in una lista, le anteprime di ogni singola nota $\rightarrow$ \hyperref[subsec:UC-35]{UC-35}
+        \item Il sistema visualizza, in una lista, le anteprime di ogni singola nota $\rightarrow$ \hyperref[subsec:UC-29.1.1]{UC-29.1.1}
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
@@ -1945,7 +1945,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \hyperref[subsec:UC-35]{UC-35}
+        \item \hyperref[subsec:UC-29.1.1]{UC-29.1.1}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
@@ -1954,7 +1954,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Trigger:} L'attore accede al diario fittizio
 \end{itemize}
 
-\subsubsection{UC-35 - Visualizzazione anteprima singola nota della lista nel diario fittizio} \label{subsec:UC-35}
+\subsubsection{UC-29.1.1 - Visualizzazione anteprima singola nota della lista nel diario fittizio} \label{subsec:UC-29.1.1}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} autenticato al diario
     \item \textbf{Pre-condizioni:}
