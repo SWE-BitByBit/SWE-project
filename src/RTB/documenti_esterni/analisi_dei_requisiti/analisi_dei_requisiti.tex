@@ -1512,7 +1512,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenari secondari:} 
     \begin{itemize}
-        \item La password non è conforme ai criteri di sicurezza minimi imposti dal sistema. La password non viene memorizzata e viene mostrato un messaggio di errore. $\rightarrow$ \ref{subsec:UC-20}
+        \item La password non è conforme ai criteri di sicurezza minimi imposti dal sistema. La password non viene memorizzata e viene mostrato un messaggio di errore. $\rightarrow$ \hyperref[subsec:UC-20]{UC-20}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
@@ -1575,8 +1575,8 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenari secondari:} 
     \begin{itemize}
-        \item La password del diario fittizio combacia con quella già impostata del diario criptato. $\rightarrow$ \ref{subsec:UC-22}
-        \item La password non è conforme ai criteri di sicurezza minimi imposti dal sistema. La password non viene memorizzata e viene mostrato un messaggio di errore. $\rightarrow$ \ref{subsec:UC-20}
+        \item La password del diario fittizio combacia con quella già impostata del diario criptato. $\rightarrow$ \hyperref[subsec:UC-22]{UC-22}
+        \item La password non è conforme ai criteri di sicurezza minimi imposti dal sistema. La password non viene memorizzata e viene mostrato un messaggio di errore. $\rightarrow$ \hyperref[subsec:UC-20]{UC-20}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
@@ -1623,7 +1623,6 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \begin{itemize}
         \item Il sistema è attivo
         \item L'attore si trova nella schermata di accesso al diario
-        \item Il diario è stato precedentemente configurato con una password
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
@@ -1638,8 +1637,8 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenari secondari:} 
     \begin{itemize}
-        \item L'attore inserisce la password errata. Il sistema notifica l'errore e impedisce l'accesso al diario. $\rightarrow$ \ref{subsec:UC-25}
-        \item L'attore ha inserito la password errata più volte di quanto consentito dal sistema. Il sistema nega l'accesso e disabilita l'inserimento della password per un periodo di tempo predefinito. $\rightarrow$ \ref{subsec:UC-24}
+        \item L'attore inserisce la password errata. Il sistema notifica l'errore e impedisce l'accesso al diario. $\rightarrow$ \hyperref[subsec:UC-25]{UC-25}
+        \item L'attore ha inserito la password errata più volte di quanto consentito dal sistema. Il sistema nega l'accesso e disabilita l'inserimento della password per un periodo di tempo predefinito. $\rightarrow$ \hyperref[subsec:UC-24]{UC-24}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
@@ -1647,7 +1646,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item \hyperref[subsec:UC-24]{UC-24}
     \end{itemize}
         \item \textbf{Trigger:} L'attore tenta di accedere al diario
-        \item \textbf{Caso d'uso generale di:}
+        \item \textbf{Specializzazioni:}
     \begin{itemize}
         \item \hyperref[subsec:UC-23.1]{UC-23.1}
         \item \hyperref[subsec:UC-23.2]{UC-23.2}
@@ -1668,16 +1667,13 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
         \item Il sistema ha negato l'accesso al diario
-        \item Il sistema ha incrementato il contatore dei tentativi falliti
+        \item Il sistema registra l'avvenuto inserimento di una password errata
         \item L'attore può effettuare un nuovo tentativo di accesso
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item Il sistema confronta la password inserita con quelle memorizzate
         \item Il sistema rileva che la password inserita non corrisponde a nessuna tra le password memorizzate
         \item Il sistema visualizza un messaggio di errore informando l'attore dell'inserimento errato
-        \item Il sistema incrementa il contatore dei tentativi falliti
-        \item Il sistema consente all'attore di inserire nuovamente la password
     \end{itemize}
     \item \textbf{Trigger:} L'attore inserisce una password errata per l'accesso al diario
 
@@ -1714,7 +1710,6 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \begin{itemize}
         \item Il sistema è attivo
         \item L'attore si trova nella schermata di accesso al diario
-        \item Il diario criptato è stato precedentemente configurato con una password
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
@@ -1774,7 +1769,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item L'attore accede alla schermata principale del diario criptato
-        \item Il sistema carica e visualizza la lista delle note presenti $\rightarrow$ \ref{subsec:UC-27}
+        \item Il sistema carica e visualizza la lista delle note presenti $\rightarrow$ \hyperref[subsec:UC-27]{UC-27}
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
@@ -1799,12 +1794,19 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item Il sistema recupera tutte le note memorizzate nel diario criptato
-        \item Il sistema organizza le anteprime delle note secondo un ordine prestabilito
-        \item Il sistema visualizza, in una lista, le anteprime di ogni singola nota $\rightarrow$ \ref{subsec:UC-28}
+        \item Il sistema visualizza, in una lista, le anteprime di ogni singola nota $\rightarrow$ \hyperref[subsec:UC-28]{UC-28}
+    \end{itemize}
+    \item \textbf{Scenario secondario:} 
+    \begin{itemize}
+        \item Il sistema non è in grado di soddisfare la richiesta dell'utente. $\rightarrow$ \hyperref[subsec:UC-5]{UC-5}
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
         \item \hyperref[subsec:UC-28]{UC-28}
+    \end{itemize}
+    \item \textbf{Estensioni:}
+    \begin{itemize}
+        \item \hyperref[subsec:UC-5]{UC-5}
     \end{itemize}
     \item \textbf{Trigger:} L'attore accede al diario criptato
 \end{itemize}
@@ -1826,7 +1828,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item Il sistema recupera le informazioni della nota da visualizzare
-        \item Il sistema visualizza l'anteprima della nota nella lista
+        \item Il sistema visualizza parte del contenuto testuale presente all'inizio della nota
     \end{itemize}
     \item \textbf{Trigger:} L'attore accede al diario criptato
 \end{itemize}
@@ -1852,7 +1854,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item L'attore accede alla schermata principale del diario fittizio
-        \item Il sistema carica e visualizza la lista delle note presenti $\rightarrow$ \ref{subsec:UC-34}
+        \item Il sistema carica e visualizza la lista delle note presenti $\rightarrow$ \hyperref[subsec:UC-34]{UC-34}
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
@@ -1877,12 +1879,19 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item Il sistema recupera tutte le note memorizzate nel diario fittizio
-        \item Il sistema organizza le anteprime delle note secondo un ordine prestabilito
-        \item Il sistema visualizza, in una lista, le anteprime di ogni singola nota $\rightarrow$ \ref{subsec:UC-35}
+        \item Il sistema visualizza, in una lista, le anteprime di ogni singola nota $\rightarrow$ \hyperref[subsec:UC-35]{UC-35}
+    \end{itemize}
+    \item \textbf{Scenario secondario:} 
+    \begin{itemize}
+        \item Il sistema non è in grado di soddisfare la richiesta dell'utente. $\rightarrow$ \hyperref[subsec:UC-5]{UC-5}
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
         \item \hyperref[subsec:UC-35]{UC-35}
+    \end{itemize}
+    \item \textbf{Estensioni:}
+    \begin{itemize}
+        \item \hyperref[subsec:UC-5]{UC-5}
     \end{itemize}
     \item \textbf{Trigger:} L'attore accede al diario fittizio
 \end{itemize}
@@ -1904,7 +1913,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item Il sistema recupera le informazioni della nota da visualizzare
-        \item Il sistema visualizza l'anteprima della nota nella lista
+        \item Il sistema visualizza parte del contenuto testuale presente all'inizio della nota
     \end{itemize}
     \item \textbf{Trigger:} L'attore accede al diario fittizio
 \end{itemize}
