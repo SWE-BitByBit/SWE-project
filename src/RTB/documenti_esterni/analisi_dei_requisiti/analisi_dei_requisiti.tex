@@ -698,11 +698,11 @@ Il diagramma riportato di seguito mostra anche un ulteriore caso d'uso correlato
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item L'attore visualizza le voci della lista dei contatti fidati
-        \item L'attore guarda singolarmente i contatti fidati (la preview delle informazioni del contatto) nella lista, ma non clicca su nessuna voce $\rightarrow$ \hyperref[subsec:UC-6.1]{UC-6.1}
+        \item L'attore guarda singolarmente i contatti fidati (e la preview delle informazioni del contatto) nella lista, ma non clicca su nessuna voce $\rightarrow$ \hyperref[subsec:UC-6.1]{UC-6.1}
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-        \item Si \term{Verifica} un errore
+        \item Si \ignoreglossary{verifica} un errore
         \item Il sistema notifica l'errore all'attore $\rightarrow$ \hyperref[sec:UC-5]{UC-5}
     \end{itemize}
     \item \textbf{Inclusioni:} 
@@ -731,16 +731,16 @@ Il diagramma riportato di seguito mostra anche un ulteriore caso d'uso correlato
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item L'attore visualizza un singolo contatto fidato nella lista
-        \item L'attore visualizza la preview del nome del contatto fidato $\rightarrow$ \hyperref[subsec:UC-4.1.1]{UC-4.1.1}
+        \item L'attore visualizza la anteprima del nome del contatto fidato $\rightarrow$ \hyperref[subsec:UC-4.1.1]{UC-4.1.1}
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
         \item \hyperref[subsec:UC-4.1.1]{UC-4.1.1}
     \end{itemize}
-    \item \textbf{Trigger:} L'attore un singolo contatto fidato dalla lista
+    \item \textbf{Trigger:} L'attore vuole visualizzare un singolo contatto fidato dalla lista
 \end{itemize}
 
-\subsubsection{UC-4.1.1 - Preview Nome Contatto Fidato} \label{subsec:UC-4.1.1}
+\subsubsection{UC-4.1.1 - Preview nome contatto fidato} \label{subsec:UC-4.1.1}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:}
@@ -751,15 +751,15 @@ Il diagramma riportato di seguito mostra anche un ulteriore caso d'uso correlato
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item L'attore visualizza la preview del nome del contatto fidato
+        \item L'attore visualizza la anteprima del nome del contatto fidato
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'attore visualizza la preview del nome del singolo contatto fidato dalla lista
+        \item L'attore visualizza la anteprima del nome del singolo contatto fidato dalla lista
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-5 -Errore caricamento dati} \label{sec:UC-5}
+\subsubsection{UC-5 - Errore caricamento dati} \label{sec:UC-5}
 
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
@@ -774,11 +774,11 @@ Il diagramma riportato di seguito mostra anche un ulteriore caso d'uso correlato
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item Si \term{Verifica} un errore
-        \item Il sistema rivela il fallimento della richiesta a causa dell'errore
+        \item Si \ignoreglossary{verifica} un errore
+        \item Il sistema rileva il fallimento della richiesta a causa dell'errore
         \item Il sistema mostra un messaggio di errore all'\term{Utente}
     \end{itemize}
-    \item \textbf{Trigger:} Si \term{Verifica} un errore durante il caricamento dei dati
+    \item \textbf{Trigger:} Si \ignoreglossary{verifica} un errore durante il caricamento dei dati
 \end{itemize}
 
 \subsubsection{UC-6 - Visualizzazione informazioni contatto fidato} \label{subsec:UC-6}
@@ -805,7 +805,7 @@ Il diagramma riportato di seguito mostra anche un ulteriore caso d'uso correlato
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item Per il contatto fidato presente il sistema mostra le relative informazioni quali:
+        \item Per il contatto fidato selezionato il sistema mostra le relative informazioni quali:
         \begin{itemize}
             \item il nome $\rightarrow$ \hyperref[subsec:UC-6.1]{UC-6.1}
             \item il numero di telefono $\rightarrow$ \hyperref[subsec:UC-6.2]{UC-6.2}
@@ -916,7 +916,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Trigger:} L'attore vuole aggiungere un nuovo contatto fidato nella propria rete
 \end{itemize}
 
-\subsubsection{UC-7.1 - Inserimento Nome Contatto Fidato} \label{subsec:UC-7.1}
+\subsubsection{UC-7.1 - Inserimento nome contatto fidato} \label{subsec:UC-7.1}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:}
@@ -935,7 +935,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Trigger:} L'attore vuole inserire un nuovo contatto nella propria rete di contatti fidati
 \end{itemize}
 
-\subsubsection{UC-7.2 - Inserimento Numero di Telefono Contatto Fidato} \label{subsec:UC-7.2}
+\subsubsection{UC-7.2 - Inserimento numero di telefono contatto fidato} \label{subsec:UC-7.2}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:}
@@ -964,7 +964,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Trigger:} L'attore vuole inserire un nuovo contatto nella propria rete di contatti fidati
 \end{itemize}
 
-\subsubsection{UC-7.3 - Inserimento Indirizzo Email Contatto Fidato} \label{subsec:UC-7.3}
+\subsubsection{UC-7.3 - Inserimento indirizzo email contatto fidato} \label{subsec:UC-7.3}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:}
@@ -1010,7 +1010,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Scenario principale:} 
     \begin{itemize}        
         \item L'attore inserisce un numero di telefono non conforme ai criteri dell'applicazione
-        \item Il sistema \term{Verifica} il numero di telefono e rileva che non è valido
+        \item Il sistema \ignoreglossary{verifica} il numero di telefono e rileva che non è valido
         \item Il sistema notifica all'attore l'errore e richiede la correzione del numero di telefono
     \end{itemize}
     \item \textbf{Trigger:} L'attore ha inserito un numero di telefono non conforme ai criteri dell'applicazione
@@ -1039,7 +1039,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Trigger:} Rilevamento di un numero di telefono duplicato durante il salvataggio o l'inserimento
 \end{itemize}
 
-\subsubsection{UC-10 - Email già presente} \label{subsec:UC-10}
+\subsubsection{UC-10 - Email già presente nel sistema} \label{subsec:UC-10}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
@@ -1079,7 +1079,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Scenario principale:} 
     \begin{itemize}        
         \item L'attore inserisce un indirizzo email non conforme ai criteri dell'applicazione
-        \item Il sistema \term{Verifica} l'indirizzo email e rileva che non è valido
+        \item Il sistema \ignoreglossary{verifica} l'indirizzo email e rileva che non è valido
         \item Il sistema notifica all'attore l'errore e richiede la correzione dell'indirizzo email
     \end{itemize}
     \item \textbf{Trigger:} L'attore ha inserito un indirizzo email non conforme ai criteri dell'applicazione
@@ -1127,7 +1127,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Trigger:} L'attore vuole modificare un contatto fidato nella propria rete
 \end{itemize}
 
-\subsubsection{UC-12.1 - Modifica Nome Contatto Fidato} \label{subsec:UC-12.1}
+\subsubsection{UC-12.1 - Modifica nome contatto fidato} \label{subsec:UC-12.1}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
@@ -1148,7 +1148,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Trigger:} L'attore vuole modificare il nome di un contatto fidato presente nella propria rete di contatti fidati
 \end{itemize}
 
-\subsubsection{UC-12.2 - Modifica Numero di Telefono Contatto Fidato} \label{subsec:UC-12.2}
+\subsubsection{UC-12.2 - Modifica numero di telefono contatto fidato} \label{subsec:UC-12.2}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
@@ -1212,7 +1212,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
 
 % ===== UC-13 - CANCELLAZIONE CONTATTO FIDATO =====
 
-\subsubsection{UC-13 Eliminazione Contatto Fidato} \label{subsec:UC-13}
+\subsubsection{UC-13 Eliminazione contatto fidato} \label{subsec:UC-13}
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{use_case/UC-13-impostazioni.png}
@@ -1245,7 +1245,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Trigger:} L'attore vuole rimuovere un contatto dalla propria rete di contatti fidati
 \end{itemize}
 
-\subsubsection{UC-13.1 Conferma Eliminazione Contatto Fidato} \label{subsec:UC-13.1}
+\subsubsection{UC-13.1 Conferma eliminazione contatto fidato} \label{subsec:UC-13.1}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
@@ -1273,7 +1273,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Trigger:} L'attore ha scelto la voce di cancellazione per quel contatto fidato
 \end{itemize}
 
-\subsubsection{UC-14 Rifiuto Conferma Eliminazione Contatto Fidato} \label{subsec:UC-14}
+\subsubsection{UC-14 Rifiuto conferma eliminazione contatto fidato} \label{subsec:UC-14}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
@@ -1284,7 +1284,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item Il sistema riceve responso negativo da parte dell'attore per rimuovere un contatto fidato dalla propria rete dei contatti fidati
+        \item Il sistema riceve il rifiuto da parte dell'attore all'eliminazione del contatto fidato dalla propria rete dei contatti fidati
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
@@ -1656,7 +1656,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \begin{itemize}
         \item L'attore seleziona l'opzione per accedere al diario
         \item L'attore procede con l'inserimento della password di accesso $\rightarrow$ \ref{subsec:UC-24}
-        \item Il sistema \term{Verifica} che la password corrisponda a quella del diario fittizio
+        \item Il sistema \ignoreglossary{verifica} che la password corrisponda a quella del diario fittizio
         \item Il sistema autentica l'attore e concede l'accesso al diario fittizio
     \end{itemize}
     \item \textbf{Scenario secondario:} 
@@ -1702,7 +1702,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \begin{itemize}
         \item L'attore seleziona l'opzione per accedere al diario
         \item L'attore procede con l'inserimento della password di accesso $\rightarrow$ \ref{subsec:UC-24}
-        \item Il sistema \term{Verifica} che la password corrisponda a quella del diario criptato
+        \item Il sistema \ignoreglossary{verifica} che la password corrisponda a quella del diario criptato
         \item Il sistema autentica l'attore e concede l'accesso al diario criptato
     \end{itemize}
     \item \textbf{Scenario secondario:} 
@@ -2114,7 +2114,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item L’attore interagisce con l'opzione di invio del messaggio SOS.
-        \item Il sistema \term{Verifica} la presenza di connessione.
+        \item Il sistema \ignoreglossary{verifica} la presenza di connessione.
 	    \item Il sistema invia una mail preimpostata ai contatti fidati memorizzati.
     \end{itemize}
     \item \textbf{Scenari secondari:} 
@@ -2411,7 +2411,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \begin{itemize}
         \item Il sistema è attivo
         \item L'attore ha richiesto il cambio di contesto
-        \item Si \term{Verifica} un errore durante l'operazione
+        \item Si \ignoreglossary{verifica} un errore durante l'operazione
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
@@ -2622,7 +2622,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \begin{itemize}
         \item Il sistema è attivo
         \item L'attore ha selezionato una chat
-        \item Si \term{Verifica} un errore tecnico (assenza di rete, errore server, timeout) durante il recupero dei dati
+        \item Si \ignoreglossary{verifica} un errore tecnico (assenza di rete, errore server, timeout) durante il recupero dei dati
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
@@ -2739,7 +2739,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item Il sistema riceve responso negativo da parte dell'attore per rimuovere la chat
+        \item Il sistema riceve il rifiuto da parte dell'attore per rimuovere la chat
         \item La chat non viene eliminata
     \end{itemize}
     \item \textbf{Scenario principale:} 
@@ -3169,7 +3169,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-         \item Si \term{Verifica} un errore durante il recupero del file (es. file corrotto o offline) $\rightarrow$ \ref{subsec:UC-53.1}
+         \item Si \ignoreglossary{verifica} un errore durante il recupero del file (es. file corrotto o offline) $\rightarrow$ \ref{subsec:UC-53.1}
     \end{itemize}
     \item \textbf{Estensioni:}
      \begin{itemize}
@@ -3256,7 +3256,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-         \item Si \term{Verifica} un errore nell'apertura dell'applicazione esterna $\rightarrow$ \ref{subsec:UC-56}
+         \item Si \ignoreglossary{verifica} un errore nell'apertura dell'applicazione esterna $\rightarrow$ \ref{subsec:UC-56}
     \end{itemize}
     \item \textbf{Estensioni:}
      \begin{itemize}
@@ -3656,7 +3656,7 @@ RV-OB-8 & I meccanismi di sicurezza, registrazione e autenticazione forte degli 
 RV-OB-9 & L'integrazione delle funzionalità di Intelligenza Artificiale Generativa e l'utilizzo dei modelli fondazionali (LLM) devono avvenire esclusivamente tramite il servizio Amazon Bedrock & Decisione interna \\
 \hline
 \rowcolor{gray!20}
-RV-OB-10 & L'interfaccia \term{Utente} deve essere utilizzabile senza perdita di funzionalità ed adattarsi dinamicamente alle seguenti dimensioni di schermo: 360 px (smartphone portrait), 640 px (smartphone landscape), 768 px (tablet portrait) e 1024 px (tablet landscape) & \href{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C4.pdf}{Capitolato} \newline Sez. 3.4 \\
+RV-OB-10 & L'interfaccia \ignoreglossary{utente} deve essere utilizzabile senza perdita di funzionalità ed adattarsi dinamicamente alle seguenti dimensioni di schermo: 360 px (smartphone portrait), 640 px (smartphone landscape), 768 px (tablet portrait) e 1024 px (tablet landscape) & \href{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C4.pdf}{Capitolato} \newline Sez. 3.4 \\
 \hline
 \rowcolor{white}
 RV-OB-11 & L'infrastruttura cloud del sistema deve essere configurata in modo da supportare l'alta disponibilità, delegando la resilienza dell'infrastruttura ai servizi gestiti AWS & Decisione interna; Decisione Esterna \\
