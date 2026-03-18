@@ -2674,29 +2674,6 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Trigger:} L'attore sceglie di confermare l'eliminazione della chat
 \end{itemize}
 
-\subsubsection{UC-42.1.1 - Rifiuto conferma eliminazione chat} \label{subsec:UC-42.1.1}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item L'attore ha selezionato l'opzione di cancellazione per una chat
-        \item Il sistema è in attesa di conferma
-    \end{itemize}
-    \item \textbf{Post-condizioni:}
-    \begin{itemize}
-        \item Il sistema riceve responso negativo da parte dell'attore per rimuovere la chat
-        \item La chat non viene eliminata
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item L'attore rifiuta l'eliminazione della chat
-        \item Il sistema non rimuove la chat dalla cronologia
-        \item Il sistema chiude la richiesta di conferma e ritorna alla visualizzazione precedente
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore sceglie di non confermare l'eliminazione della chat
-\end{itemize}
-
 % ========================== UC-G: Guide ==============================
 
 \subsubsection{UC-43 - Visualizzazione lista community} \label{sec:UC-43}
@@ -2722,13 +2699,17 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item Il sistema recupera l'elenco delle community da visualizzare 
         \item L'attore guarda singolarmente le informazioni di una community dalla lista delle community $\rightarrow$ \ref{subsec:UC-43.1}
     \end{itemize}
+    \item \textbf{Scenario secondario:} 
+    \begin{itemize}
+        \item Il sistema rileva un errore nel caricamento dei dati $\rightarrow$ \ref{subsec:UC-5}
+    \end{itemize}
     \item \textbf{Inclusioni:} 
     \begin{itemize}
         \item \hyperref[subsec:UC-43.1]{UC-43.1}
     \end{itemize}
     \item \textbf{Estensioni:} 
     \begin{itemize}
-        \item \hyperref[subsec:UC-43.2]{UC-43.2}
+        \item \hyperref[subsec:UC-5]{UC-5}
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole esplorare le community esistenti
 \end{itemize}
@@ -2758,27 +2739,6 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item \hyperref[subsec:UC-43.1.2]{UC-43.1.2}
     \end{itemize}
     \item \textbf{Trigger:} L'attore seleziona una community dalla lista delle community
-\end{itemize}
-
-\subsubsection{UC-43.2 - Errore caricamento community} \label{subsec:UC-43.2}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item L'attore ha selezionato la sezione dedicata alle community
-        \item Si \term{Verifica} un problema tecnico (es. timeout, assenza rete)
-    \end{itemize}
-    \item \textbf{Post-condizioni:}
-    \begin{itemize}
-        \item Il sistema notifica l'errore all'attore e non mostra la lista delle community
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item Il sistema rivela il fallimento della richiesta
-        \item Il sistema mostra un messaggio di errore all'\term{Utente}
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore tenta di visitare una community ma il caricamento fallisce
 \end{itemize}
 
 \subsubsection{UC-43.1.1 - Visualizzazione nome singola community nella lista} \label{subsec:UC-43.1.1}
@@ -3215,13 +3175,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item Il sistema carica i dati geolocalizzati dei luoghi sicuri
         \item Il sistema visualizza la mappa interattiva all'interno dell'applicazione
         \item Il sistema mostra i marker corrispondenti ai luoghi sicuri nelle vicinanze (Centri antiviolenza, Ospedali, Stazioni di Polizia)
-        \item L'attore può selezionare un luogo sicuro dalla mappa
-        \item L'attore può decidere di aprire la posizione su Google Maps $\rightarrow$ \ref{subsec:UC-55}
     \end{itemize}
-    \item \textbf{Estensioni:}
-     \begin{itemize}
-         \item \hyperref[subsec:UC-55]{UC-55}
-     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole localizzare i luoghi sicuri più vicini
 \end{itemize}
 
