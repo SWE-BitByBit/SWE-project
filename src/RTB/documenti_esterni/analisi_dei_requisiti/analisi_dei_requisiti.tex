@@ -2166,13 +2166,13 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
 % \end{figure}
 
 
-\subsubsection{UC-35 - Consultazione chatbot} \label{sec:UC-35}
+\subsubsection{UC-48 - Consultazione chatbot} \label{sec:UC-48}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-35-detective.png}
-    \caption{Diagramma del caso d'uso UC-35}
-    \label{fig:UC-35}
+    \includegraphics[width=1\textwidth]{use_case/UC-48-detective.png}
+    \caption{Diagramma del caso d'uso UC-48}
+    \label{fig:UC-48}
 \end{figure}
 
 \begin{itemize}
@@ -2198,20 +2198,20 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-        \item L'attore interrompe il \term{Processo} di analisi del messaggio dell'LLM \ref{sec:UC-35.1}
-        \item Il messaggio non riesce ad essere inviato causa mancanza di connessione \ref{sec:UC-35.2}
-        \item L'LLM riscontra un problema durante la lettura del messaggio \ref{sec:UC-35.3}
+        \item L'attore interrompe il \term{Processo} di analisi del messaggio dell'LLM \ref{sec:UC-49}
+        \item Il messaggio non riesce ad essere inviato causa mancanza di connessione \ref{sec:UC-58}
+        \item L'LLM riscontra un problema durante la lettura del messaggio \ref{sec:UC-50}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \hyperref[sec:UC-35.1]{UC-35.1}
-        \item \hyperref[sec:UC-35.2]{UC-35.2}
-        \item \hyperref[sec:UC-35.3]{UC-35.3}
+        \item \hyperref[sec:UC-49]{UC-49}
+        \item \hyperref[sec:UC-58]{UC-58}
+        \item \hyperref[sec:UC-50]{UC-50}
     \end{itemize}
     \item \textbf{Trigger:} L'\term{Utente} vuole consultarsi con il chatbot
 \end{itemize}
 
-\subsubsection{UC-35.1 - Interruzione risposta} \label{sec:UC-35.1}
+\subsubsection{UC-49 - Interruzione risposta} \label{sec:UC-49}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:} 
@@ -2234,7 +2234,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Trigger:} L'attore vuole interrompere la generazione della risposta dell'LLM
 \end{itemize}
 
-\subsubsection{UC-35.2 - Mancanza di connessione} \label{sec:UC-35.2}
+\subsubsection{UC-58 - Mancanza di connessione} \label{sec:UC-58}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:}
@@ -2257,7 +2257,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Trigger:} L'\term{Utente} vuole consultarsi con il chatbot ma manca la connessione internet.
 \end{itemize}
 
-\subsubsection{UC-35.3 - Errore di lettura del messaggio} \label{sec:UC-35.3}
+\subsubsection{UC-50 - Errore di lettura del messaggio} \label{sec:UC-50}
 \begin{itemize}
     \item \textbf{Attore principale:} LLM
     \item \textbf{Pre-condizioni:}
@@ -2274,17 +2274,17 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item Il sistema rileva un errore nella lettura del messaggio inviato
         \item Il sistema notifica l'\term{Utente} dell'errore
         \item L'\term{Utente} può mandare un nuovo messaggio
-        \item L'\term{Utente} può chiedere di riprovare a leggere il messaggio \ref{sec:UC-35.1}
+        \item L'\term{Utente} può chiedere di riprovare a leggere il messaggio \ref{sec:UC-49}
 	    \item Il sistema riceve il nuovo messaggio modificato.
     \end{itemize}
     \item \textbf{Trigger:} L'\term{Utente} vuole consultarsi con il chatbot ma il sistema non è riuscito a leggere il messaggio.
 \end{itemize}
 
-\subsubsection{UC-36 - Switch al "Detective delle Relazioni"} \label{sec:UC-36}
+\subsubsection{UC-51 - Switch al "Detective delle Relazioni"} \label{sec:UC-51}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-36-detective.png}
-    \caption{Diagramma del caso d'uso UC-36}
+    \includegraphics[width=1\textwidth]{use_case/UC-51-detective.png}
+    \caption{Diagramma del caso d'uso UC-51}
     \label{fig:UC-36}
 \end{figure}
 \begin{itemize}
@@ -2306,21 +2306,21 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-        \item Errore nello switch di contesto \ref{sec:UC-38}
+        \item Errore nello switch di contesto \ref{sec:UC-53}
     \end{itemize}
     \item \textbf{Estensioni:} 
     \begin{itemize}
-        \item \hyperref[sec:UC-38]{UC-38}
+        \item \hyperref[sec:UC-53]{UC-53}
     \end{itemize}
     \item \textbf{Trigger:} L’\term{Utente} ha premuto il pulsante per il cambio del contesto.
 \end{itemize}
 
-\subsubsection{UC-37 - Switch a "Specchio Intelligente"} \label{sec:UC-37}
+\subsubsection{UC-52 - Switch a "Specchio Intelligente"} \label{sec:UC-52}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-37-detective.png}
-    \caption{Diagramma del caso d'uso UC-37}
-    \label{fig:UC-37}
+    \includegraphics[width=1\textwidth]{use_case/UC-52-detective.png}
+    \caption{Diagramma del caso d'uso UC-52}
+    \label{fig:UC-52}
 \end{figure}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
@@ -2350,7 +2350,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Trigger:} L’\term{Utente} ha premuto il pulsante per il cambio del contesto.
 \end{itemize}
 
-\subsubsection{UC-38 - Errore switch contesto} \label{sec:UC-38}
+\subsubsection{UC-53 - Errore switch contesto} \label{sec:UC-53}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:}
