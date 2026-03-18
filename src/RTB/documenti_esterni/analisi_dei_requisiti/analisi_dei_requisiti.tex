@@ -111,7 +111,7 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & Completo\\
-\textbf{Versione:} & 1.0.0 \\
+\textbf{Versione:} & 1.0.1 \\
 \textbf{Responsabile:} & Giovanni Visentin \\
 \textbf{Redattori:} & 
 \begin{tabular}[t]{@{}l@{}}
@@ -156,7 +156,13 @@ Gruppo BitByBit\\
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 \rowcolor{white}
-1.0.2 & 2026-03-17 & Ferdinando Fracasso & Modificati UC-28, UC-29 e UC-32 (ora UC-30, UC-31 e UC-32 più sottocasi) & Riccardo Manisi \\
+1.3.1 & 2026-03-18 & Ferdinando Fracasso & Modificati UC-28, UC-29 e UC-32 (ora da \hyperref[subsec:UC-30]{UC-30} a \hyperref[subsec:UC-36]{UC-36} più sottocasi) & Dennis Parolin \\
+\hline
+\rowcolor{grey!20}
+1.2.1 & 2026-03-18 & Gabriele Scaggiante & Riscrittura dei casi d'uso da \hyperref[subsec:UC-19]{UC-19} a \hyperref[subsec:UC-25]{UC-25}. Inserimento nuovi casi UC-26, UC-27, UC-28, UC-33, UC-34, UC-35. & Riccardo Manisi \\
+\hline
+\rowcolor{white}
+1.1.1 & 2026-03-17 & Dennis Parolin & Riscrittura dei casi d'uso da \hyperref[subsec:UC-4]{UC-4} a \hyperref[subsec:UC-14]{UC-14}. Il caso d'uso \hyperref[sec:UC-5]{UC-5} è stato aggiunto come nuovo caso d'uso. Rifatta tutta la sezione "Requisiti di vincolo" (\ref{subsection:requisiti_vincolo}) e "Requisiti di qualità" (\ref{subsection:requisiti_qualita}). & Riccardo Manisi \\
 \hline
 \rowcolor{gray!20}
 1.0.1 & 2026-03-17 & Riccardo Manisi & Modificati caso d'uso UC-17 e aggiunti sottocasi UC-17.1, UC-17.2  &  Gabriele Scagginate\\
@@ -607,7 +613,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
-        \item Google Auth restituisce errore $\rightarrow$ \ref{subsec:UC-2}
+        \item Google Auth restituisce errore $\rightarrow$ \hyperref[subsec:UC-2]{UC-2}
     \end{itemize} 
     \item \textbf{Estensioni:}
     \begin{itemize}
@@ -727,7 +733,6 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \begin{itemize}
         \item Il sistema è attivo
         \item Sta avvenendo il primo accesso al sistema da parte dell'attore
-        \item Il \term{Walkthrough} è in corso
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
@@ -743,115 +748,18 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \item \textbf{Trigger:} Il sistema richiede la selezione del profilo
 \end{itemize}
 
-\subsubsection{UC-3.2 - \ignoreglossary{Walkthrough} diario criptato} \label{subsec:UC-3.2}
+% ==== UC-4 - LISTA CONTATTI FIDATI ====
 
+\subsubsection{UC-4 - Visualizzazione lista contatti fidati} \label{sec:UC-4}
 \begin{tcolorbox}[colback=gray!10,colframe=gray!50,title=Nota]
-{\small I casi d'uso \hyperref[subsec:UC-3.2]{UC-3.2} e \hyperref[subsec:UC-3.3]{UC-3.3} rappresentano inclusioni del caso d'uso \hyperref[subsec:UC-3]{UC-3}.
-Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\hyperref[subsec:UC-23.1]{UC-23.1}, \hyperref[subsec:UC-8]{UC-8} e \hyperref[subsec:UC-5]{UC-5}), la cui descrizione dettagliata è riportata nelle sezioni successive del documento.}
+{\small Il caso d'uso \hyperref[sec:UC-4]{UC-4} è suddiviso nei casi d'uso inclusi \hyperref[subsec:UC-4.1]{UC-4.1} e \hyperref[subsec:UC-4.1.1]{UC-4.1.1}, che ne dettagliano il comportamento.
+Il diagramma riportato di seguito mostra anche un ulteriore caso d'uso correlato (\hyperref[sec:UC-5]{UC-5}), la cui descrizione dettagliata è riportata nelle sezioni successive del documento.}
 \end{tcolorbox}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-3_2-3_3-walkthrough.png}
-    \caption{Diagramma dei casi d'uso UC-3.2 e UC-3.3}
-    \label{fig:UC-3.2}
-\end{figure}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item Sta avvenendo il primo accesso al sistema da parte dell'attore
-        \item Il \term{Walkthrough} è in corso
-    \end{itemize}
-    \item \textbf{Post-condizioni:}
-    \begin{itemize}
-        \item L'\term{Utente} ha configurato il diario
-        \item Il sistema passa al prossimo step del \term{Walkthrough}
-    \end{itemize}
-    \item \textbf{Scenario principale:}
-    \begin{itemize}
-        \item Il sistema mostra una schermata informativa sui vantaggi del diario criptato
-        \item L'attore decide di abilitare la funzionalità
-        \item L'attore esegue la procedura di impostazione password $\rightarrow$ \ref{subsec:UC-23.1}
-    \end{itemize}
-    \item \textbf{Scenario secondario:}
-    \begin{itemize}
-        \item L'attore sceglie di saltare la configurazione di questa feature $\rightarrow$ \ref{subsec:UC-5}
-    \end{itemize}
-    \item \textbf{Inclusioni:}
-    \begin{itemize}
-        \item \hyperref[subsec:UC-23.1]{UC-23.1}
-    \end{itemize}
-    \item \textbf{Estensioni:}
-    \begin{itemize}
-        \item \hyperref[subsec:UC-5]{UC-5}
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore completa lo step precedente del \term{Walkthrough}
-\end{itemize}
-
-\subsubsection{UC-3.3 - \ignoreglossary{Walkthrough} contatto fidato} \label{subsec:UC-3.3}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item Sta avvenendo il primo accesso al sistema da parte dell'attore
-        \item Il \term{Walkthrough} è in corso
-    \end{itemize}
-    \item \textbf{Post-condizioni:}
-    \begin{itemize}
-        \item Un contatto fidato è stato impostato
-    \end{itemize}
-    \item \textbf{Scenario principale:}
-    \begin{itemize}
-        \item Il sistema spiega i vantaggi dei contatti fidati per le situazioni di emergenza
-        \item L'attore decide di configurare il contatto
-        \item L'attore esegue la procedura di aggiunta contatto $\rightarrow$ \ref{subsec:UC-8}
-    \end{itemize}
-    \item \textbf{Scenario secondario:}
-    \begin{itemize}
-        \item L'attore sceglie di saltare la configurazione di questa feature $\rightarrow$ \ref{subsec:UC-5}
-    \end{itemize}
-    \item \textbf{Inclusioni:}
-    \begin{itemize}
-        \item \hyperref[subsec:UC-8]{UC-8}
-    \end{itemize}
-    \item \textbf{Estensioni:}
-    \begin{itemize}
-        \item \hyperref[subsec:UC-5]{UC-5}
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore completa lo step precedente del \term{Walkthrough}
-\end{itemize}
-
-\subsubsection{UC-5 - Salta feature} \label{subsec:UC-5}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item Il \term{Walkthrough} è in corso
-    \end{itemize}
-    \item \textbf{Post-condizioni:}
-    \begin{itemize}
-        \item L'attore ha saltato la funzionalità proposta dal \term{Walkthrough}
-        \item Il sistema procede allo step successivo o alla Home Page
-    \end{itemize}
-    \item \textbf{Scenario principale:}
-    \begin{itemize}
-        \item L'attore decide di saltare la funzionalità
-        \item Il sistema avanza nel flusso del \term{Walkthrough}
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore decide di non configurare la feature corrente
-\end{itemize}
-
-% ==== UC-6 - LISTA CONTATTI FIDATI ====
-
-\subsubsection{UC-6 - Visualizzazione lista contatti fidati} \label{sec:UC-6}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-6-impostazioni.png}
-    \caption{Diagramma del caso d'uso UC-6}
-    \label{fig:UC-6}
+    \includegraphics[width=1\textwidth]{use_case/UC-4-lista-contatti-fidati.png}
+    \caption{Diagramma del caso d'uso UC-4 con relativi sottocasi d'uso}
+    \label{fig:UC-4}
 \end{figure}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
@@ -867,16 +775,25 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item L'attore visualizza le voci della lista dei contatti fidati
-        \item L'attore guarda singolarmente i contatti fidati (la preview delle informazioni del contatto) nella lista ma non cliccla su nessuna voce $\rightarrow$ \ref{subsec:UC-6.1} 
+        \item L'attore guarda singolarmente i contatti fidati (e la preview delle informazioni del contatto) nella lista, ma non clicca su nessuna voce $\rightarrow$ \hyperref[subsec:UC-6.1]{UC-6.1}
+    \end{itemize}
+    \item \textbf{Scenario secondario:} 
+    \begin{itemize}
+        \item Si \ignoreglossary{verifica} un errore
+        \item Il sistema notifica l'errore all'attore $\rightarrow$ \hyperref[sec:UC-5]{UC-5}
     \end{itemize}
     \item \textbf{Inclusioni:} 
     \begin{itemize}
-        \item \hyperref[subsec:UC-6.1]{UC-6.1}
+        \item \hyperref[subsec:UC-4.1]{UC-4.1}
     \end{itemize}
-    \item \textbf{Trigger:} L'attore vuole vedere la rete dei contatti fidati che ha aggiunto
+    \item \textbf{Estensioni:} 
+    \begin{itemize}
+        \item \hyperref[sec:UC-5]{UC-5}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole vedere la sua rete dei contatti fidati
 \end{itemize}
 
-\subsubsection{UC-6.1 - Visualizzazione singolo contatto fidato nella lista} \label{subsec:UC-6.1}
+\subsubsection{UC-4.1 - Visualizzazione singolo contatto fidato della lista} \label{subsec:UC-4.1}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:} 
@@ -886,28 +803,70 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item L'attore visualizza un singolo contatto fidato dalla lista selezionandolo dalla lista
+        \item L'attore visualizza un singolo contatto dalla lista
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'attore visualizza il nome del contatto fidato nella lista $\rightarrow$ \ref{subsec:UC-7.1}
+        \item L'attore visualizza un singolo contatto fidato nella lista
+        \item L'attore visualizza la anteprima del nome del contatto fidato $\rightarrow$ \hyperref[subsec:UC-4.1.1]{UC-4.1.1}
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \hyperref[subsec:UC-7.1]{UC-7.1}
+        \item \hyperref[subsec:UC-4.1.1]{UC-4.1.1}
     \end{itemize}
-    \item \textbf{Trigger:} L'attore vuole visualizzare la lista dei contatti fidati
+    \item \textbf{Trigger:} L'attore vuole visualizzare un singolo contatto fidato dalla lista
 \end{itemize}
 
-\subsubsection{UC-7 - Visualizzazione informazioni contatto fidato} \label{subsec:UC-7}
+\subsubsection{UC-4.1.1 - Preview nome contatto fidato} \label{subsec:UC-4.1.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore sta visualizzando la lista dei contatti fidati
+        \item L'attore visualizza un singolo contatto dalla lista
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza la anteprima del nome del contatto fidato
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore visualizza la anteprima del nome del singolo contatto fidato dalla lista
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-5 - Errore caricamento dati} \label{sec:UC-5}
+
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato una sezione che prevede il recupero di dati dal database
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema notifica l'errore all'attore
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Si \ignoreglossary{verifica} un errore
+        \item Il sistema rileva il fallimento della richiesta a causa dell'errore
+        \item Il sistema mostra un messaggio di errore all'\term{Utente}
+    \end{itemize}
+    \item \textbf{Trigger:} Si \ignoreglossary{verifica} un errore durante il caricamento dei dati
+\end{itemize}
+
+\subsubsection{UC-6 - Visualizzazione informazioni contatto fidato} \label{subsec:UC-6}
 \begin{tcolorbox}[colback=gray!10,colframe=gray!50,title=Nota]
-{\small Il caso d'uso \hyperref[subsec:UC-7]{UC-7} è suddiviso nei casi d'uso inclusi \hyperref[subsec:UC-7.1]{UC-7.1}, \hyperref[subsec:UC-7.2]{UC-7.2} e \hyperref[subsec:UC-7.3]{UC-7.3}, che ne dettagliano il comportamento}
+{\small Il caso d'uso \hyperref[subsec:UC-6]{UC-6} è suddiviso nei casi d'uso inclusi \hyperref[subsec:UC-6.1]{UC-6.1}, \hyperref[subsec:UC-6.2]{UC-6.2} e \hyperref[subsec:UC-6.3]{UC-6.3}, che ne dettagliano il comportamento}
 \end{tcolorbox}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-7-impostazioni.png}
-    \caption{Diagramma del caso d'uso UC-7}
-    \label{fig:UC-7}
+    \includegraphics[width=1\textwidth]{use_case/UC-6-visualizzazione-info-contatti-fidati.png}
+    \caption{Diagramma del caso d'uso UC-6 con relativi sottocasi d'uso}
+    \label{fig:UC-6}
 \end{figure}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
@@ -923,23 +882,23 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item Per il contatto fidato presente il sistema mostra le relative informazioni quali:
+        \item Per il contatto fidato selezionato il sistema mostra le relative informazioni quali:
         \begin{itemize}
-            \item il nome $\rightarrow$ \ref{subsec:UC-7.1}
-            \item il numero di telefono $\rightarrow$ \ref{subsec:UC-7.2}
-            \item l'indirizzo email $\rightarrow$ \ref{subsec:UC-7.3}
+            \item il nome $\rightarrow$ \hyperref[subsec:UC-6.1]{UC-6.1}
+            \item il numero di telefono $\rightarrow$ \hyperref[subsec:UC-6.2]{UC-6.2}
+            \item l'indirizzo email $\rightarrow$ \hyperref[subsec:UC-6.3]{UC-6.3}
         \end{itemize}
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \hyperref[subsec:UC-7.1]{UC-7.1}
-        \item \hyperref[subsec:UC-7.2]{UC-7.2}
-        \item \hyperref[subsec:UC-7.3]{UC-7.3}
+        \item \hyperref[subsec:UC-6.1]{UC-6.1}
+        \item \hyperref[subsec:UC-6.2]{UC-6.2}
+        \item \hyperref[subsec:UC-6.3]{UC-6.3}
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole visualizzare le informazioni di contatto per un contatto fidato
 \end{itemize}
 
-\subsubsection{UC-7.1 - Visualizzazione nome contatto fidato} \label{subsec:UC-7.1}
+\subsubsection{UC-6.1 - Visualizzazione nome contatto fidato} \label{subsec:UC-6.1}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:} 
@@ -957,7 +916,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-7.2 - Visualizzazione numero di telefono contatto fidato} \label{subsec:UC-7.2}
+\subsubsection{UC-6.2 - Visualizzazione numero di telefono contatto fidato} \label{subsec:UC-6.2}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:} 
@@ -975,7 +934,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
 \end{itemize}
 
-\subsubsection{UC-7.3 - Visualizzazione indirizzo email contatto fidato} \label{subsec:UC-7.3}
+\subsubsection{UC-6.3 - Visualizzazione indirizzo email contatto fidato} \label{subsec:UC-6.3}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:} 
@@ -995,16 +954,16 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
 
 % ===== AGGIUNTA CONTATTO FIDATO =====
 
-\subsubsection{UC-8 - Aggiunta contatto fidato} \label{subsec:UC-8}
+\subsubsection{UC-7 - Aggiunta contatto fidato} \label{subsec:UC-7}
 \begin{tcolorbox}[colback=gray!10,colframe=gray!50,title=Nota]
-{\small Il caso d'uso \hyperref[subsec:UC-8]{UC-8} è suddiviso nei casi d'uso inclusi \hyperref[subsec:UC-8.1]{UC-8.1}, \hyperref[subsec:UC-8.2]{UC-8.2} e \hyperref[subsec:UC-8.3]{UC-8.3}, che ne dettagliano il comportamento.
-Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\hyperref[subsec:UC-10]{UC-10}, \hyperref[subsec:UC-59]{UC-59}, \hyperref[subsec:UC-60]{UC-60} e \hyperref[subsec:UC-11]{UC-11}), la cui descrizione dettagliata è riportata nelle sezioni successive del documento.}
+{\small Il caso d'uso \hyperref[subsec:UC-7]{UC-7} è suddiviso nei casi d'uso inclusi \hyperref[subsec:UC-7.1]{UC-7.1}, \hyperref[subsec:UC-7.2]{UC-7.2} e \hyperref[subsec:UC-7.3]{UC-7.3}, che ne dettagliano il comportamento.
+Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\hyperref[subsec:UC-8]{UC-8}, \hyperref[subsec:UC-9]{UC-9}, \hyperref[subsec:UC-10]{UC-10} e \hyperref[subsec:UC-11]{UC-11}), la cui descrizione dettagliata è riportata nelle sezioni successive del documento.}
 \end{tcolorbox}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-8-impostazioni.png}
-    \caption{Diagramma del caso d'uso UC-8}
-    \label{fig:UC-8}
+    \includegraphics[width=1\textwidth]{use_case/UC-7-aggiunta-contatto-fidato.png}
+    \caption{Diagramma del caso d'uso UC-7 con relativi sottocasi d'uso}
+    \label{fig:UC-7}
 \end{figure}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Autenticato
@@ -1020,21 +979,21 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item L'attore seleziona la voce per l'aggiunta del contatto fidato
-        \item L'attore inserisce il nome del contatto fidato $\rightarrow$ \ref{subsec:UC-8.1}
-        \item L'attore inserisce il numero di telefono del contatto fidato $\rightarrow$ \ref{subsec:UC-8.2}
-        \item L'attore inserisce l'indirizzo email del contatto fidato $\rightarrow$ \ref{subsec:UC-8.3}
+        \item L'attore inserisce il nome del contatto fidato $\rightarrow$ \hyperref[subsec:UC-7.1]{UC-7.1}
+        \item L'attore inserisce il numero di telefono del contatto fidato $\rightarrow$ \hyperref[subsec:UC-7.2]{UC-7.2}
+        \item L'attore inserisce l'indirizzo email del contatto fidato $\rightarrow$ \hyperref[subsec:UC-7.3]{UC-7.3}
         \item L'attore seleziona la voce per il salvataggio del contatto fidato nella rete di contatti
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \hyperref[subsec:UC-8.1]{UC-8.1}
-        \item \hyperref[subsec:UC-8.2]{UC-8.2}
-        \item \hyperref[subsec:UC-8.3]{UC-8.3}
+        \item \hyperref[subsec:UC-7.1]{UC-7.1}
+        \item \hyperref[subsec:UC-7.2]{UC-7.2}
+        \item \hyperref[subsec:UC-7.3]{UC-7.3}
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole aggiungere un nuovo contatto fidato nella propria rete
 \end{itemize}
 
-\subsubsection{UC-8.1 - Inserimento nome contatto fidato} \label{subsec:UC-8.1}
+\subsubsection{UC-7.1 - Inserimento nome contatto fidato} \label{subsec:UC-7.1}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:}
@@ -1053,7 +1012,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Trigger:} L'attore vuole inserire un nuovo contatto nella propria rete di contatti fidati
 \end{itemize}
 
-\subsubsection{UC-8.2 - Inserimento numero di telefono contatto fidato} \label{subsec:UC-8.2}
+\subsubsection{UC-7.2 - Inserimento numero di telefono contatto fidato} \label{subsec:UC-7.2}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:}
@@ -1071,18 +1030,18 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
-        \item Il numero inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \ref{subsec:UC-10}
-        \item Il numero inserito è già presente nel sistema $\rightarrow$ \ref{subsec:UC-59}
+        \item Il numero inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \hyperref[subsec:UC-8]{UC-8}
+        \item Il numero inserito è già presente nel sistema $\rightarrow$ \hyperref[subsec:UC-9]{UC-9}
     \end{itemize}
     \item \textbf{Estensioni:} 
     \begin{itemize}
-        \item \hyperref[subsec:UC-10]{UC-10}
-        \item \hyperref[subsec:UC-59]{UC-59}
+        \item \hyperref[subsec:UC-8]{UC-8}
+        \item \hyperref[subsec:UC-9]{UC-9}
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole inserire un nuovo contatto nella propria rete di contatti fidati
 \end{itemize}
 
-\subsubsection{UC-8.3 - Inserimento indirizzo email contatto fidato} \label{subsec:UC-8.3}
+\subsubsection{UC-7.3 - Inserimento indirizzo email contatto fidato} \label{subsec:UC-7.3}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:}
@@ -1100,18 +1059,41 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
-        \item L'indirizzo email inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \ref{subsec:UC-11}
-        \item L'indirizzo email inserito è già presente nel sistema $\rightarrow$ \ref{subsec:UC-60}
+        \item L'indirizzo email inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \hyperref[subsec:UC-11]{UC-11}
+        \item L'indirizzo email inserito è già presente nel sistema $\rightarrow$ \hyperref[subsec:UC-10]{UC-10}
     \end{itemize}
     \item \textbf{Estensioni:} 
     \begin{itemize}
         \item \hyperref[subsec:UC-11]{UC-11}
-        \item \hyperref[subsec:UC-60]{UC-60}
+        \item \hyperref[subsec:UC-10]{UC-10}
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole inserire un nuovo contatto nella propria rete di contatti fidati
 \end{itemize}
 
-\subsubsection{UC-59 - Numero di telefono già presente} \label{subsec:UC-59}
+\subsubsection{UC-8 Numero di telefono non conforme ai criteri} \label{subsec:UC-8}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato la voce per l'aggiunta di un nuovo contatto fidato
+        \item L'attore ha inserito un numero di telefono non conforme ai criteri dell'applicazione
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema notifica all'attore che il numero di telefono inserito non è valido
+        \item L'attore può correggere il numero di telefono inserito
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}        
+        \item L'attore inserisce un numero di telefono non conforme ai criteri dell'applicazione
+        \item Il sistema \ignoreglossary{verifica} il numero di telefono e rileva che non è valido
+        \item Il sistema notifica all'attore l'errore e richiede la correzione del numero di telefono
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore ha inserito un numero di telefono non conforme ai criteri dell'applicazione
+\end{itemize}
+
+\subsubsection{UC-9 - Numero di telefono già presente} \label{subsec:UC-9}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
@@ -1134,7 +1116,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Trigger:} Rilevamento di un numero di telefono duplicato durante il salvataggio o l'inserimento
 \end{itemize}
 
-\subsubsection{UC-60 - Email già presente} \label{subsec:UC-60}
+\subsubsection{UC-10 - Email già presente nel sistema} \label{subsec:UC-10}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
@@ -1157,29 +1139,6 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Trigger:} Rilevamento di un'email duplicata durante il salvataggio o l'inserimento
 \end{itemize}
 
-\subsubsection{UC-10 Numero di telefono non conforme ai criteri} \label{subsec:UC-10}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item L'attore ha selezionato la voce per l'aggiunta di un nuovo contatto fidato
-        \item L'attore ha inserito un numero di telefono non conforme ai criteri dell'applicazione
-    \end{itemize}
-    \item \textbf{Post-condizioni:} 
-    \begin{itemize}
-        \item Il sistema notifica all'attore che il numero di telefono inserito non è valido
-        \item L'attore può correggere il numero di telefono inserito
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}        
-        \item L'attore inserisce un numero di telefono non conforme ai criteri dell'applicazione
-        \item Il sistema \term{Verifica} il numero di telefono e rileva che non è valido
-        \item Il sistema notifica all'attore l'errore e richiede la correzione del numero
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore ha inserito un numero di telefono non conforme ai criteri dell'applicazione
-\end{itemize}
-
 \subsubsection{UC-11 Indirizzo email non conforme ai criteri} \label{subsec:UC-11}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
@@ -1197,7 +1156,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Scenario principale:} 
     \begin{itemize}        
         \item L'attore inserisce un indirizzo email non conforme ai criteri dell'applicazione
-        \item Il sistema \term{Verifica} l'indirizzo email e rileva che non è valido
+        \item Il sistema \ignoreglossary{verifica} l'indirizzo email e rileva che non è valido
         \item Il sistema notifica all'attore l'errore e richiede la correzione dell'indirizzo email
     \end{itemize}
     \item \textbf{Trigger:} L'attore ha inserito un indirizzo email non conforme ai criteri dell'applicazione
@@ -1208,11 +1167,11 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
 \subsubsection{UC-12 - Modifica contatto fidato} \label{subsec:UC-12}
 \begin{tcolorbox}[colback=gray!10,colframe=gray!50,title=Nota]
 {\small Il caso d'uso \hyperref[subsec:UC-12]{UC-12} è suddiviso nei casi d'uso inclusi \hyperref[subsec:UC-12.1]{UC-12.1}, \hyperref[subsec:UC-12.2]{UC-12.2} e \hyperref[subsec:UC-12.3]{UC-12.3}, che ne dettagliano il comportamento.
-Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\hyperref[subsec:UC-10]{UC-10}, \hyperref[subsec:UC-59]{UC-59}, \hyperref[subsec:UC-60]{UC-60} e \hyperref[subsec:UC-11]{UC-11}), la cui descrizione dettagliata è riportata nelle sezioni precedenti del documento.}
+Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\hyperref[subsec:UC-8]{UC-8}, \hyperref[subsec:UC-9]{UC-9}, \hyperref[subsec:UC-10]{UC-10} e \hyperref[subsec:UC-11]{UC-11}), la cui descrizione dettagliata è riportata nelle sezioni precedenti del documento.}
 \end{tcolorbox}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-12-impostazioni.png}
+    \includegraphics[width=1\textwidth]{use_case/UC-12-modifica-contatto-fidato.png}
     \caption{Diagramma del caso d'uso UC-12}
     \label{fig:UC-12}
 \end{figure}
@@ -1231,9 +1190,9 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item L'attore seleziona la voce per la modifica del contatto fidato
-        \item L'attore modifica il nome del contatto fidato $\rightarrow$ \ref{subsec:UC-12.1}
-        \item L'attore modifica il numero di telefono del contatto fidato $\rightarrow$ \ref{subsec:UC-12.2}
-        \item L'attore modifica l'indirizzo email del contatto fidato $\rightarrow$ \ref{subsec:UC-12.3}
+        \item L'attore modifica il nome del contatto fidato $\rightarrow$ \hyperref[subsec:UC-12.1]{UC-12.1}
+        \item L'attore modifica il numero di telefono del contatto fidato $\rightarrow$ \hyperref[subsec:UC-12.2]{UC-12.2}
+        \item L'attore modifica l'indirizzo email del contatto fidato $\rightarrow$ \hyperref[subsec:UC-12.3]{UC-12.3}
         \item L'attore seleziona la voce per il salvataggio delle modifiche del contatto fidato nella rete di contatti
     \end{itemize}
     \item \textbf{Inclusioni:}
@@ -1286,13 +1245,13 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
-        \item Il numero inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \ref{subsec:UC-10}
-        \item Il numero modificato è già presente nel sistema per un altro contatto $\rightarrow$ \ref{subsec:UC-59}
+        \item Il numero inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \hyperref[subsec:UC-8]{UC-8}
+        \item Il numero modificato è già presente nel sistema per un altro contatto $\rightarrow$ \hyperref[subsec:UC-9]{UC-9}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \hyperref[subsec:UC-10]{UC-10}
-        \item \hyperref[subsec:UC-59]{UC-59}
+        \item \hyperref[subsec:UC-8]{UC-8}
+        \item \hyperref[subsec:UC-9]{UC-9}
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole modificare il numero di telefono di un contatto fidato presente nella propria rete di contatti fidati
 \end{itemize}
@@ -1317,13 +1276,13 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
-        \item L'indirizzo email inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \ref{subsec:UC-11}
-        \item L'indirizzo email modificato è già presente nel sistema per un altro contatto $\rightarrow$ \ref{subsec:UC-60}
+        \item L'indirizzo email inserito dall'attore non è conforme ai criteri dell'applicazione $\rightarrow$ \hyperref[subsec:UC-11]{UC-11}
+        \item L'indirizzo email modificato è già presente nel sistema per un altro contatto $\rightarrow$ \hyperref[subsec:UC-10]{UC-10}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
         \item \hyperref[subsec:UC-11]{UC-11}
-        \item \hyperref[subsec:UC-60]{UC-60}
+        \item \hyperref[subsec:UC-10]{UC-10}
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole modificare l'indirizzo email di un contatto fidato presente nella propria rete di contatti fidati
 \end{itemize}
@@ -1353,7 +1312,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \begin{itemize}
         \item L'attore seleziona un contatto dalla lista dei contatti fidati
         \item L'attore seleziona la voce di cancellazione per quel contatto fidato
-        \item L'attore conferma l'eliminazione del contatto fidato $\rightarrow$ \ref{subsec:UC-13.1}
+        \item L'attore conferma l'eliminazione del contatto fidato $\rightarrow$ \hyperref[subsec:UC-13.1]{UC-13.1}
         \item Il sistema rimuove il contatto fidato scelto dall'attore dalla rete dei contatti fidati dell'attore
     \end{itemize}
     \item \textbf{inclusioni:} 
@@ -1382,7 +1341,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario secondario:}
     \begin{itemize}
-        \item L'attore rifiuta la conferma dell'eliminazione del contatto fidato $\rightarrow$ \ref{subsec:UC-14}
+        \item L'attore rifiuta la conferma dell'eliminazione del contatto fidato $\rightarrow$ \hyperref[subsec:UC-14]{UC-14}
     \end{itemize}
     \item \textbf{Estensioni:} 
     \begin{itemize}
@@ -1402,7 +1361,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item Il sistema riceve responso negativo da parte dell'attore per rimuovere un contatto fidato dalla propria rete dei contatti fidati
+        \item Il sistema riceve il rifiuto da parte dell'attore all'eliminazione del contatto fidato dalla propria rete dei contatti fidati
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
@@ -1427,7 +1386,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item La funzionalità Dead Man's Switch è abilitata UC-57 $\rightarrow$ \ref{sec:UC-57}
+        \item La funzionalità Dead Man's Switch è abilitata
         \item L'attore ha effettuato l'accesso alle impostazioni del Dead Man's Switch
     \end{itemize}
     \item \textbf{Post-condizioni:}
@@ -1436,7 +1395,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'attore seleziona l'opzione per il primo timer
+        \item L'attore seleziona la voce per l'impostazione del primo timer
         \item L'attore imposta la durata desiderata dopo la quale il sistema invierà la mail di controllo all'attore
         \item L'attore conferma la scelta
         \item Il sistema aggiorna la configurazione
@@ -1450,7 +1409,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item La funzionalità Dead Man's Switch è abilitata UC-57 $\rightarrow$ \ref{sec:UC-57}
+        \item La funzionalità Dead Man's Switch è abilitata
         \item L'attore si trova nelle impostazioni del Dead Man's Switch
         \item Il timer di prima inattività è stato configurato
     \end{itemize}
@@ -1460,7 +1419,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario principale:}
     \begin{itemize}
-        \item L'attore seleziona l'opzione per il secondo timer
+        \item L'attore seleziona la voce per l'impostazione del secondo timer
         \item L'attore imposta la durata che deve trascorrere tra la mail di controllo e l'invio del messaggio di SOS ai contatti fidati
         \item L'attore conferma la scelta
         \item Il sistema aggiorna la configurazione
@@ -1480,8 +1439,8 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item La funzionalità Dead Man's Switch è abilitata UC-57 $\rightarrow$ \ref{sec:UC-57}
-        \item L'attore ha selezionato l'opzione di modifica del contenuto della mail
+        \item La funzionalità Dead Man's Switch è abilitata
+        \item L'attore ha selezionato l'opzione di modifica della mail di avviso
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
@@ -1508,8 +1467,8 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item La funzionalità Dead Man's Switch è abilitata UC-57 $\rightarrow$ \ref{sec:UC-57}
-        \item L'attore ha selezionato l'opzione di modifica del contenuto della mail
+        \item La funzionalità Dead Man's Switch è abilitata
+        \item L'attore ha selezionato il campo per la modifica del titolo della mail di avviso
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
@@ -1521,34 +1480,55 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item L'attore modifica il corpo della mail
         \item L'attore salva le modifiche
     \end{itemize}
-    \item \textbf{Trigger:} L'attore vuole personalizzare il corpo della mail di avviso
+    \item \textbf{Trigger:} L'attore vuole personalizzare il titolo della mail di avviso che riceverà in caso di inutilizzo prolungato dell'applicazione
 \end{itemize}
 
-\subsubsection{UC-19 - Visualizzazione preview mail di avviso} \label{sec:UC-19}
+\subsubsection{UC-17.2 - Modifica corpo mail di avviso} \label{sec:UC-17.2}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item La funzionalità Dead Man's Switch è abilitata
+        \item L'attore ha selezionato l'opzione di modifica della mail di avviso
+        \item L'attore ha selezionato il campo per la modifica del corpo della mail di avviso
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item La modifica del corpo della mail di avviso viene salvata dal sistema
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore inserisce il corpo della mail di avviso
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole personalizzare il corpo della mail che riceverà in caso di inutilizzo prolungato dell'applicazione
+\end{itemize}
+
+\subsubsection{UC-18 - Visualizzazione preview mail di avviso} \label{sec:UC-18}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-19-dmswitch.png}
-    \caption{Diagramma del caso d'uso UC-19}
-    \label{fig:UC-19}
+    \includegraphics[width=1\textwidth]{use_case/UC-18-dmswitch.png}
+    \caption{Diagramma del caso d'uso UC-18}
+    \label{fig:UC-18}
 \end{figure}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item La funzionalità Dead Man's Switch è abilitata UC-57 $\rightarrow$ \ref{sec:UC-57}
+        \item La funzionalità Dead Man's Switch è abilitata
         \item L'attore vuole verificare l'aspetto della mail configurata
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item L'attore visualizza un'anteprima fedele della mail che verrà inviata
+        \item L'attore visualizza una preview fedele della mail che verrà inviata
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item Il sistema recupera i dati della mail
-        \item Il sistema compone l'anteprima del messaggio
-        \item Il sistema visualizza il titolo della mail $\rightarrow$ \ref{subsec:UC-19.1}
-        \item Il sistema visualizza il corpo della mail $\rightarrow$ \ref{subsec:UC-19.2}
+        \item Il sistema recupera le preferenze di formattazione della mail di avviso
+        \item Il sistema compone la preview del messaggio
+        \item Il sistema visualizza il titolo della mail $\rightarrow$ \hyperref[subsec:UC-18.1]{UC-18.1}
+        \item Il sistema visualizza il corpo della mail $\rightarrow$ \hyperref[subsec:UC-18.2]{UC-18.2}
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
@@ -1556,42 +1536,42 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \hyperref[subsec:UC-19.1]{UC-19.1}
-        \item \hyperref[subsec:UC-19.2]{UC-19.2}
+        \item \hyperref[subsec:UC-18.1]{UC-18.1}
+        \item \hyperref[subsec:UC-18.2]{UC-18.2}
     \end{itemize}
-    \item \textbf{Trigger:} L'attore seleziona il pulsante di anteprima
+    \item \textbf{Trigger:} L'attore vuole visualizzare le informazioni della mail che riceverà in caso di inutilizzo prolungato dell'applicazione
 \end{itemize}
 
-\subsubsection{UC-19.1 - Visualizzazione titolo mail di avviso} \label{subsec:UC-19.1}
+\subsubsection{UC-18.1 - Visualizzazione titolo mail di avviso} \label{subsec:UC-18.1}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
-        \item La funzionalità Dead Man's Switch è abilitata UC-57 $\rightarrow$ \ref{sec:UC-57}
-        \item Il sistema sta renderizzando l'anteprima
+        \item La funzionalità Dead Man's Switch è abilitata
+        \item Il sistema sta visualizzando la preview
     \end{itemize}
     \item \textbf{Post-condizioni:} L'oggetto della mail è visibile
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item Il sistema mostra il testo configurato come oggetto della mail nell'header dell'anteprima
+        \item Il sistema mostra il testo configurato come oggetto della mail nell'header della preview
     \end{itemize}
-    \item \textbf{Trigger:} L'attore visualizza l'anteprima della mail
+    \item \textbf{Trigger:} L'attore vuole visualizzare il titolo della mail che riceverà in caso di inutilizzo prolungato dell'applicazione
 \end{itemize}
 
-\subsubsection{UC-19.2 - Visualizzazione corpo della mail di avviso} \label{subsec:UC-19.2}
+\subsubsection{UC-18.2 - Visualizzazione corpo della mail di avviso} \label{subsec:UC-18.2}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
-        \item La funzionalità Dead Man's Switch è abilitata UC-57 $\rightarrow$ \ref{sec:UC-57}
-        \item Il sistema sta renderizzando l'anteprima
+        \item La funzionalità Dead Man's Switch è abilitata
+        \item Il sistema sta renderizzando la preview
     \end{itemize}
     \item \textbf{Post-condizioni:} Il contenuto principale della mail è visibile
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item Il sistema mostra il testo del messaggio nel corpo dell'anteprima
+        \item Il sistema mostra il testo del messaggio nel corpo della preview
     \end{itemize}
-    \item \textbf{Trigger:} L'attore vuole visualizzare l'anteprima della mail
+    \item \textbf{Trigger:} L'attore vuole visualizzare la preview della mail che riceverà in caso di inutilizzo prolungato dell'applicazione
 \end{itemize}
 
 \subsubsection{UC-57 - Attivazione Dead Man's Switch} \label{sec:UC-57}
@@ -1615,9 +1595,9 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'attore seleziona il pulsante di attivazione del Dead Man's Switch
+        \item L'attore seleziona l'opzione di attivazione del Dead Man's Switch
     \end{itemize}
-    \item \textbf{Trigger:} L'attore seleziona il pulsante di attivazione del Dead Man's Switch
+    \item \textbf{Trigger:} L'attore vuole attivare la funzionalità del Dead Man's Switch
 \end{itemize}
 
 \subsubsection{UC-58 - Disattivazione Dead Man's Switch} \label{sec:UC-58}
@@ -1635,76 +1615,51 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'attore seleziona il pulsante di disattivazione del Dead Man's Switch
+        \item L'attore seleziona l'opzione di disattivazione del Dead Man's Switch
     \end{itemize}
-    \item \textbf{Trigger:} L'attore seleziona il pulsante di disattivazione del Dead Man's Switch
+    \item \textbf{Trigger:} L'attore disattivare la funzionalità del Dead Man's Switch
 \end{itemize}
 
 % ==== DIARIO CRIPTATO =====
 
-\subsubsection{UC-20 - Impostazione password per diario fittizio} \label{subsec:UC-20}
+\subsubsection{UC-19 - Impostazione password per diario criptato} \label{subsec:UC-19}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-20-diario.png}
-    \caption{Diagramma del caso d'uso UC-20}
-    \label{fig:UC-20}
+    \includegraphics[width=1\textwidth]{use_case/UC-19-impostazione-password-diario-criptato.png}
+    \caption{Diagramma del caso d'uso UC-19}
+    \label{fig:UC-19}
 \end{figure}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'attore si trova nella schermata di impostazione password per il diario fittizio
+        \item L'attore si trova nella schermata di impostazione password per il diario criptato
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
-        \item La password del diario fittizio è validata e memorizzata
+        \item Il sistema ha validato e memorizzato la password del diario criptato
+        \item L'attore è autenticato al diario
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'attore digita la password desiderata per il diario fittizio nel campo dedicato
+        \item L'attore digita la password desiderata per il diario criptato nel campo dedicato
+        \item L'attore conferma l'inserimento della password
         \item Il sistema valida la password inserita
-        \item L'attore conferma la password inserita
-        \item Il sistema memorizza la password del diario fittizio
+        \item Il sistema memorizza la password del diario criptato
     \end{itemize}
     \item \textbf{Scenari secondari:} 
     \begin{itemize}
-        \item La password del diario fittizio combacia con quella già impostata del diario criptato. $\rightarrow$ \ref{subsec:UC-20.1}
-        \item La password non è conforme ai criteri di sicurezza minimi imposti dal sistema. La password non viene memorizzata e viene mostrato un messaggio di errore. $\rightarrow$ \ref{subsec:UC-21}
+        \item La password non è conforme ai criteri di sicurezza minimi imposti dal sistema. La password non viene memorizzata e viene mostrato un messaggio di errore. $\rightarrow$ \hyperref[subsec:UC-20]{UC-20}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \hyperref[subsec:UC-20.1]{UC-20.1}
-        \item \hyperref[subsec:UC-21]{UC-21}
+        \item \hyperref[subsec:UC-20]{UC-20}
     \end{itemize}
-    \item \textbf{Trigger:} L'attore interagisce con il form di inserimento della password per il diario fittizio
+    \item \textbf{Trigger:} L'attore interagisce con il form di inserimento della password per il diario criptato
 \end{itemize}
 
-\subsubsection{UC-20.1 - Password uguale alla password del diario criptato} \label{subsec:UC-20.1}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item L'attore sta impostando la password per il diario fittizio
-        \item La password inserita è identica alla password del diario criptato
-    \end{itemize}
-    \item \textbf{Post-condizioni:} 
-    \begin{itemize}
-        \item Il sistema ha notificato l'attore dell'errore
-        \item La password non è stata memorizzata
-        \item L'attore può inserire una nuova password
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item Il sistema rileva che la password inserita è identica a quella del diario criptato
-        \item Il sistema visualizza un messaggio di errore informando l'attore che le due password devono essere differenti
-        \item Il sistema richiede all'attore di inserire una password diversa
-    \end{itemize}
-    \item \textbf{Trigger:} La password inserita per il diario fittizio corrisponde alla password del diario criptato
-\end{itemize}
-
-\subsubsection{UC-21 - Password non conforme ai criteri} \label{subsec:UC-21}
+\subsubsection{UC-20 - Password non conforme ai criteri} \label{subsec:UC-20}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:}
@@ -1729,229 +1684,54 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Trigger:} La password inserita non rispetta i criteri di sicurezza dell'applicazione
 \end{itemize}
 
-\subsubsection{UC-22 - Accesso al diario fittizio} \label{subsec:UC-22}
-\begin{tcolorbox}[colback=gray!10,colframe=gray!50,title=Nota]
-{\small Il caso d'uso \hyperref[subsec:UC-22]{UC-22} include il caso d'uso \hyperref[subsec:UC-24]{UC-24} e viene esteso da \hyperref[subsec:UC-20]{UC-20}.
-Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\hyperref[subsec:UC-26]{UC-26} e \hyperref[subsec:UC-25]{UC-25}), la cui descrizione dettagliata è riportata nelle sezioni successive del documento.}
-\end{tcolorbox}
+\subsubsection{UC-21 - Impostazione password per diario fittizio} \label{subsec:UC-21}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-22-diario.png}
-    \caption{Diagramma del caso d'uso UC-22}
-    \label{fig:UC-22}
+    \includegraphics[width=1\textwidth]{use_case/UC-21-impostazione-password-diario-fittizio.png}
+    \caption{Diagramma del caso d'uso UC-21}
+    \label{fig:UC-21}
 \end{figure}
 \begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Attore principale:} \term{Utente} autenticato al diario
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'attore non è autenticato al diario fittizio
+        \item L'attore ha impostato la password per il diario criptato
+        \item L'attore si trova all'interno del diario criptato
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
-        \item L'attore è autenticato e ha accesso al diario fittizio
-        \item Il sistema visualizza il contenuto del diario fittizio
+        \item La password del diario fittizio è validata e memorizzata
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'attore seleziona l'opzione per accedere al diario
-        \item L'attore procede con l'inserimento della password di accesso $\rightarrow$ \ref{subsec:UC-24}
-        \item Il sistema \term{Verifica} che la password corrisponda a quella del diario fittizio
-        \item Il sistema autentica l'attore e concede l'accesso al diario fittizio
-    \end{itemize}
-    \item \textbf{Scenario secondario:} 
-    \begin{itemize}
-        \item Non è stata impostata la password per il diario fittizio. Il sistema richiede che venga impostata una password prima di procedere. $\rightarrow$ \ref{subsec:UC-20}
-    \end{itemize}
-    \item \textbf{Inclusioni:}
-    \begin{itemize}
-        \item \hyperref[subsec:UC-24]{UC-24}
-    \end{itemize}
-    \item \textbf{Estensioni:}
-    \begin{itemize}
-        \item \hyperref[subsec:UC-20]{UC-20}
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore desidera accedere al diario fittizio
-\end{itemize}
-
-\subsubsection{UC-23 - Accesso al diario criptato} \label{subsec:UC-23}
-\begin{tcolorbox}[colback=gray!10,colframe=gray!50,title=Nota]
-{\small Il caso d'uso \hyperref[subsec:UC-23]{UC-23} include il caso d'uso \hyperref[subsec:UC-24]{UC-24} e viene esteso da \hyperref[subsec:UC-23.1]{UC-23.1}.
-Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\hyperref[subsec:UC-26]{UC-26} e \hyperref[subsec:UC-25]{UC-25}), la cui descrizione dettagliata è riportata nelle sezioni successive del documento.}
-\end{tcolorbox}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-23-diario.png}
-    \caption{Diagramma del caso d'uso UC-23}
-    \label{fig:UC-23}
-\end{figure}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item Il diario criptato è stato precedentemente configurato
-        \item L'attore non è autenticato al diario criptato
-    \end{itemize}
-    \item \textbf{Post-condizioni:} 
-    \begin{itemize}
-        \item L'attore è autenticato e ha accesso al diario criptato
-        \item Il sistema visualizza il contenuto del diario criptato
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item L'attore seleziona l'opzione per accedere al diario
-        \item L'attore procede con l'inserimento della password di accesso $\rightarrow$ \ref{subsec:UC-24}
-        \item Il sistema \term{Verifica} che la password corrisponda a quella del diario criptato
-        \item Il sistema autentica l'attore e concede l'accesso al diario criptato
-    \end{itemize}
-    \item \textbf{Scenario secondario:} 
-    \begin{itemize}
-        \item Non è stata impostata la password per il diario criptato. Il sistema richiede che venga impostata una password prima di procedere. $\rightarrow$ \ref{subsec:UC-23.1}
-    \end{itemize}
-    \item \textbf{Inclusioni:}
-    \begin{itemize}
-        \item \hyperref[subsec:UC-24]{UC-24}
-    \end{itemize}
-    \item \textbf{Estensioni:}
-    \begin{itemize}
-        \item \hyperref[subsec:UC-23.1]{UC-23.1}
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore desidera accedere al diario criptato
-\end{itemize}
-
-\subsubsection{UC-23.1 - Impostazione password per diario criptato} \label{subsec:UC-23.1}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-23_1-diario.png}
-    \caption{Diagramma del caso d'uso UC-23.1}
-    \label{fig:UC-23.1}
-\end{figure}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item L'attore si trova nella schermata di impostazione password per il diario criptato
-    \end{itemize}
-    \item \textbf{Post-condizioni:} 
-    \begin{itemize}
-        \item Il sistema ha validato e memorizzato la password del diario criptato
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item L'attore digita la password desiderata per il diario criptato nel campo dedicato
+        \item L'attore seleziona la voce per l'impostazione della password per il diario fittizio
+        \item L'attore digita la password desiderata per il diario fittizio nel campo dedicato
         \item Il sistema valida la password inserita
         \item L'attore conferma la password inserita
-        \item Il sistema memorizza la password del diario criptato
+        \item Il sistema memorizza la password del diario fittizio
     \end{itemize}
     \item \textbf{Scenari secondari:} 
     \begin{itemize}
-        \item La password del diario criptato combacia con quella già impostata del diario fittizio. Il sistema non memorizza la password e mostra un messaggio di errore $\rightarrow$ \ref{subsec:UC-23.1.1}
-        \item La password non è conforme ai criteri di sicurezza minimi imposti dal sistema. La password non viene memorizzata e viene mostrato un messaggio di errore. $\rightarrow$ \ref{subsec:UC-21}
+        \item La password del diario fittizio combacia con quella già impostata del diario criptato. $\rightarrow$ \hyperref[subsec:UC-22]{UC-22}
+        \item La password non è conforme ai criteri di sicurezza minimi imposti dal sistema. La password non viene memorizzata e viene mostrato un messaggio di errore. $\rightarrow$ \hyperref[subsec:UC-20]{UC-20}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \hyperref[subsec:UC-23.1.1]{UC-23.1.1}
-        \item \hyperref[subsec:UC-21]{UC-21}
+        \item \hyperref[subsec:UC-22]{UC-22}
+        \item \hyperref[subsec:UC-20]{UC-20}
     \end{itemize}
-    \item \textbf{Trigger:} L'attore interagisce con il form di inserimento della password per il diario criptato
+    \item \textbf{Trigger:} L'attore interagisce con il form di inserimento della password per il diario fittizio
 \end{itemize}
 
-\subsubsection{UC-24 - Inserimento password accesso diario} \label{subsec:UC-24}
+\subsubsection{UC-22 - Password uguale alla password del diario criptato} \label{subsec:UC-22}
 \begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Attore principale:} \term{Utente} autenticato al diario
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'attore si trova nella schermata di accesso al diario
-        \item Il diario è stato precedentemente configurato con una password
-    \end{itemize}
-    \item \textbf{Post-condizioni:} 
-    \begin{itemize}
-        \item L'\term{Utente} ha accesso al diario corrispondente
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item L'attore inserisce la password nel campo dedicato
-        \item L'attore conferma l'inserimento
-        \item Il sistema riceve la password e \term{Verifica} che sia corretta
-        \item L'attore ottiene l'accesso al diario
-    \end{itemize}
-    \item \textbf{Scenari secondari:} 
-    \begin{itemize}
-        \item L'attore inserisce la password errata. Il sistema notifica l'errore e impedisce l'accesso al diario. $\rightarrow$ \ref{subsec:UC-25}
-        \item L'attore ha inserito la password errata più volte di quanto consentito dal sistema. Il sistema nega l'accesso e disabilita l'inserimento della password per un periodo di tempo predefinito. $\rightarrow$ \ref{subsec:UC-26}
-    \end{itemize}
-    \item \textbf{Estensioni:}
-    \begin{itemize}
-        \item \hyperref[subsec:UC-25]{UC-25}
-        \item \hyperref[subsec:UC-26]{UC-26}
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore tenta di accedere al diario criptato
-
-\end{itemize}
-
-\subsubsection{UC-25 - Inserimento password errata} \label{subsec:UC-25}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item L'attore ha inserito una password per l'accesso al diario
-        \item La password inserita non corrisponde a quella memorizzata dal sistema
-        \item Il numero di tentativi errati non ha superato la soglia massima consentita
-    \end{itemize}
-    \item \textbf{Post-condizioni:} 
-    \begin{itemize}
-        \item Il sistema ha negato l'accesso al diario
-        \item Il sistema ha incrementato il contatore dei tentativi falliti
-        \item L'attore può effettuare un nuovo tentativo di accesso
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item Il sistema confronta la password inserita con quella memorizzata
-        \item Il sistema rileva che le password non corrispondono
-        \item Il sistema visualizza un messaggio di errore informando l'attore dell'inserimento errato
-        \item Il sistema incrementa il contatore dei tentativi falliti
-        \item Il sistema consente all'attore di inserire nuovamente la password
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore inserisce una password errata per l'accesso al diario
-
-\end{itemize}
-
-\subsubsection{UC-26 - Password errata troppe volte} \label{subsec:UC-26}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item L'attore ha effettuato multipli tentativi falliti di accesso al diario
-        \item Il numero di tentativi errati ha raggiunto o superato la soglia massima consentita
-    \end{itemize}
-    \item \textbf{Post-condizioni:} 
-    \begin{itemize}
-        \item L'accesso al diario è temporaneamente bloccato
-        \item Il sistema ha attivato le misure di sicurezza previste
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item Il sistema rileva il superamento del numero massimo di tentativi falliti
-        \item Il sistema blocca temporaneamente l'accesso alla funzionalità di diario
-        \item Il sistema visualizza un messaggio informando l'attore del blocco temporaneo
-        \item Il sistema attende un periodo di tempo predefinito prima di consentire nuovi tentativi
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore ha inserito la password errata per un numero di volte superiore alla soglia massima consentita
-\end{itemize}
-
-\subsubsection{UC-23.1.1 - Password uguale alla password del diario fittizio} \label{subsec:UC-23.1.1}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item L'attore ha impostato la password del diario criptato
-        \item La password inserita è identica alla password del diario fittizio
+        \item L'attore sta impostando la password per il diario fittizio
+        \item La password inserita è identica alla password del diario criptato
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
@@ -1961,90 +1741,319 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item Il sistema rileva che la password inserita è identica a quella del diario fittizio
+        \item Il sistema rileva che la password inserita è identica a quella del diario criptato
         \item Il sistema visualizza un messaggio di errore informando l'attore che le due password devono essere differenti
         \item Il sistema richiede all'attore di inserire una password diversa
     \end{itemize}
-    \item \textbf{Trigger:} La password inserita per il diario criptato corrisponde alla password del diario fittizio
+    \item \textbf{Trigger:} La password inserita per il diario fittizio corrisponde alla password del diario criptato
 \end{itemize}
 
-\subsubsection{UC-27 - Visualizzazione diario} \label{subsec:UC-27}
+\subsubsection{UC-23 - Inserimento password accesso diario} \label{subsec:UC-23}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-27-diario.png}
-    \caption{Diagramma del caso d'uso UC-27}
-    \label{fig:UC-27}
+    \includegraphics[width=1\textwidth]{use_case/UC-23-inserimento-password-accesso-diario.png}
+    \caption{Diagramma del caso d'uso UC-23}
+    \label{fig:UC-23}
 \end{figure}
 \begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
+    \item \textbf{Attore principale:} \term{Utente} autenticato al diario
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'attore è autenticato al diario
+        \item L'attore si trova nella schermata di accesso al diario
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
-        \item Il sistema visualizza l'interfaccia principale del diario con la lista delle note
+        \item L'\term{Utente} ha accesso al diario corrispondente alla password inserita
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'attore accede alla schermata principale del diario
-        \item Il sistema carica e visualizza la lista delle note presenti $\rightarrow$ \ref{subsec:UC-27.1}
+        \item L'attore inserisce la password nel campo dedicato
+        \item L'attore conferma l'inserimento
+        \item Il sistema riceve la password inserita e \ignoreglossary{verifica} che corrisponda a una delle password memorizzate
+        \item L'attore ottiene l'accesso al diario a cui corrisponde la password inserita
     \end{itemize}
-    \item \textbf{Inclusioni:}
+    \item \textbf{Scenari secondari:} 
     \begin{itemize}
-        \item \hyperref[subsec:UC-27.1]{UC-27.1}
+        \item L'attore inserisce la password errata. Il sistema notifica l'errore e impedisce l'accesso al diario. $\rightarrow$ \hyperref[subsec:UC-25]{UC-25}
+        \item L'attore ha inserito la password errata più volte di quanto consentito dal sistema. Il sistema nega l'accesso e disabilita l'inserimento della password per un periodo di tempo predefinito. $\rightarrow$ \hyperref[subsec:UC-24]{UC-24}
     \end{itemize}
-    \item \textbf{Trigger:} L'attore accede al diario
+    \item \textbf{Estensioni:}
+    \begin{itemize}
+        \item \hyperref[subsec:UC-25]{UC-25}
+        \item \hyperref[subsec:UC-24]{UC-24}
+    \end{itemize}
+        \item \textbf{Trigger:} L'attore tenta di accedere al diario
+        \item \textbf{Specializzazioni:}
+    \begin{itemize}
+        \item \hyperref[subsec:UC-23.1]{UC-23.1}
+        \item \hyperref[subsec:UC-23.2]{UC-23.2}
+    \end{itemize}
+
 \end{itemize}
 
-\subsubsection{UC-27.1 - Visualizzazione lista note} \label{subsec:UC-27.1}
+\subsubsection{UC-25 - Inserimento password errata} \label{subsec:UC-25}
 \begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
+    \item \textbf{Attore principale:} \term{Utente} autenticato al diario
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'attore è autenticato al diario
-        \item L'attore si trova nella schermata principale del diario
+        \item L'attore ha inserito una password per l'accesso al diario
+        \item La password inserita non corrisponde né a quella del diario criptato, né a quella del diario fittizio
+        \item Il numero di tentativi errati non ha superato la soglia massima consentita
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
-        \item Il sistema visualizza l'elenco completo delle note presenti nel diario
+        \item Il sistema ha negato l'accesso al diario
+        \item Il sistema registra l'avvenuto inserimento di una password errata
+        \item L'attore può effettuare un nuovo tentativo di accesso
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item Il sistema recupera tutte le note memorizzate nel diario
-        \item Il sistema organizza le note secondo un ordine prestabilito
-        \item Il sistema visualizza la lista delle note con informazioni di anteprima
-        \item L'attore può visualizzare una singola nota dalla lista $\rightarrow$ \ref{subsec:UC-27.1.1}
+        \item Il sistema rileva che la password inserita non corrisponde a nessuna tra le password memorizzate
+        \item Il sistema visualizza un messaggio di errore informando l'attore dell'inserimento errato
     \end{itemize}
-    \item \textbf{Inclusioni:}
-    \begin{itemize}
-        \item \hyperref[subsec:UC-27.1.1]{UC-27.1.1}
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore visualizza il diario
+    \item \textbf{Trigger:} L'attore inserisce una password errata per l'accesso al diario
+
 \end{itemize}
 
-\subsubsection{UC-27.1.1 - Visualizzazione singola nota della lista} \label{subsec:UC-27.1.1}
+\subsubsection{UC-24 - Password errata troppe volte} \label{subsec:UC-24}
 \begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
+    \item \textbf{Attore principale:} \term{Utente} autenticato al diario
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'attore è autenticato al diario
-        \item La lista delle note è visualizzata
-        \item Esiste almeno una nota nel diario
+        \item L'attore ha effettuato molteplici tentativi falliti di accesso al diario
+        \item Il numero di tentativi errati ha superato la soglia massima consentita
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
-        \item Il sistema visualizza l'anteprima della nota selezionata all'interno della lista
+        \item L'accesso al diario è temporaneamente bloccato
+        \item Il sistema ha attivato le misure di sicurezza previste
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema rileva il superamento del numero massimo di tentativi falliti
+        \item Il sistema blocca temporaneamente l'accesso alla funzionalità del diario
+        \item Il sistema visualizza un messaggio informando l'attore del blocco temporaneo
+        \item Il sistema attende un periodo di tempo predefinito prima di consentire nuovi tentativi
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore ha inserito la password errata per un numero di volte superiore alla soglia massima consentita
+\end{itemize}
+
+\subsubsection{UC-23.1 - Inserimento password accesso diario criptato} \label{subsec:UC-23.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova nella schermata di accesso al diario
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item L'\term{Utente} ha accesso al diario criptato
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore inserisce la password nel campo dedicato
+        \item L'attore conferma l'inserimento
+        \item Il sistema riceve la password e \ignoreglossary{verifica} che corrisponda alla password memorizzata per il diario criptato
+        \item L'attore ottiene l'accesso al diario criptato
+    \end{itemize}
+
+\end{itemize}
+
+\subsubsection{UC-23.2 - Inserimento password accesso diario fittizio} \label{subsec:UC-23.2}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova nella schermata di accesso al diario
+        \item Il diario fittizio è stato precedentemente configurato con una password
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item L'\term{Utente} ha accesso al diario fittizio
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore inserisce la password nel campo dedicato
+        \item L'attore conferma l'inserimento
+        \item Il sistema riceve la password e \ignoreglossary{verifica} che corrisponda alla password memorizzata per il diario fittizio
+        \item L'attore ottiene l'accesso al diario fittizio
+    \end{itemize}
+
+\end{itemize}
+
+\subsubsection{UC-26 - Visualizzazione diario criptato} \label{subsec:UC-26}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{use_case/UC-26-visualizzazione-diario-criptato.png}
+    \caption{Diagramma del caso d'uso UC-26}
+    \label{fig:UC-26}
+\end{figure}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova all'interno del diario criptato
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema visualizza l'interfaccia principale del diario criptato con la lista delle note
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore accede alla schermata principale del diario criptato
+        \item Il sistema carica e visualizza la lista delle note presenti $\rightarrow$ \hyperref[subsec:UC-27]{UC-27}
+    \end{itemize}
+    \item \textbf{Inclusioni:}
+    \begin{itemize}
+        \item \hyperref[subsec:UC-27]{UC-27}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore accede al diario criptato
+\end{itemize}
+
+\subsubsection{UC-27 - Visualizzazione lista note nel diario criptato} \label{subsec:UC-27}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova all'interno del diario criptato
+        \item Esiste almeno una nota all'interno del diario criptato
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema visualizza l'elenco completo delle anteprime delle note presenti nel diario criptato
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema recupera tutte le note memorizzate nel diario criptato
+        \item Il sistema visualizza, in una lista, le anteprime di ogni singola nota $\rightarrow$ \hyperref[subsec:UC-28]{UC-28}
+    \end{itemize}
+    \item \textbf{Scenario secondario:} 
+    \begin{itemize}
+        \item Il sistema non è in grado di soddisfare la richiesta dell'\term{Utente}. $\rightarrow$ \hyperref[subsec:UC-5]{UC-5}
+    \end{itemize}
+    \item \textbf{Inclusioni:}
+    \begin{itemize}
+        \item \hyperref[subsec:UC-28]{UC-28}
+    \end{itemize}
+    \item \textbf{Estensioni:}
+    \begin{itemize}
+        \item \hyperref[subsec:UC-5]{UC-5}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore accede al diario criptato
+\end{itemize}
+
+\subsubsection{UC-28 - Visualizzazione anteprima singola nota della lista nel diario criptato} \label{subsec:UC-28}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova all'interno del diario criptato
+        \item Il sistema ha recuperato e organizzato le anteprime delle note da visualizzare
+        \item Esiste almeno una nota all'interno del diario criptato
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema visualizza l'anteprima di una nota all'interno della lista
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item Il sistema recupera le informazioni della nota da visualizzare
-        \item Il sistema mostra un'anteprima della nota nella lista
+        \item Il sistema visualizza parte del contenuto testuale presente all'inizio della nota
     \end{itemize}
-    \item \textbf{Trigger:} L'attore visualizza la lista delle note
+    \item \textbf{Trigger:} L'attore accede al diario criptato
+\end{itemize}
+
+\subsubsection{UC-33 - Visualizzazione diario fittizio} \label{subsec:UC-33}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{use_case/UC-33-visualizzazione-diario-fittizio.png}
+    \caption{Diagramma del caso d'uso UC-33}
+    \label{fig:UC-33}
+\end{figure}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova all'interno del diario fittizio
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema visualizza l'interfaccia principale del diario fittizio con la lista delle note
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore accede alla schermata principale del diario fittizio
+        \item Il sistema carica e visualizza la lista delle note presenti $\rightarrow$ \hyperref[subsec:UC-34]{UC-34}
+    \end{itemize}
+    \item \textbf{Inclusioni:}
+    \begin{itemize}
+        \item \hyperref[subsec:UC-34]{UC-34}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore accede al diario fittizio
+\end{itemize}
+
+\subsubsection{UC-34 - Visualizzazione lista note nel diario fittizio} \label{subsec:UC-34}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova all'interno del diario fittizio
+        \item Esiste almeno una nota all'interno del diario fittizio
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema visualizza l'elenco completo delle anteprime delle note presenti nel diario fittizio
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema recupera tutte le note memorizzate nel diario fittizio
+        \item Il sistema visualizza, in una lista, le anteprime di ogni singola nota $\rightarrow$ \hyperref[subsec:UC-35]{UC-35}
+    \end{itemize}
+    \item \textbf{Scenario secondario:} 
+    \begin{itemize}
+        \item Il sistema non è in grado di soddisfare la richiesta dell'\term{Utente}. $\rightarrow$ \hyperref[subsec:UC-5]{UC-5}
+    \end{itemize}
+    \item \textbf{Inclusioni:}
+    \begin{itemize}
+        \item \hyperref[subsec:UC-35]{UC-35}
+    \end{itemize}
+    \item \textbf{Estensioni:}
+    \begin{itemize}
+        \item \hyperref[subsec:UC-5]{UC-5}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore accede al diario fittizio
+\end{itemize}
+
+\subsubsection{UC-35 - Visualizzazione anteprima singola nota della lista nel diario fittizio} \label{subsec:UC-35}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova all'interno del diario fittizio
+        \item Il sistema ha recuperato e organizzato le anteprime delle note da visualizzare
+        \item Esiste almeno una nota all'interno del diario fittizio
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema visualizza l'anteprima di una nota all'interno della lista
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema recupera le informazioni della nota da visualizzare
+        \item Il sistema visualizza parte del contenuto testuale presente all'inizio della nota
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore accede al diario fittizio
 \end{itemize}
 
 % UC modifica e visualizzazione note diario criptato
@@ -2132,8 +2141,8 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \begin{itemize}
         \item L'attore seleziona una nota dalla lista
         \item Il sistema recupera il contenuto completo della nota
-        \item Il sistema visualizza a schermo il contenuto testuale della nota $\rightarrow$ \ref{subsec:UC-32.1}
-        \item Il sistema visualizza a schermo il contenuto multimediale della nota $\rightarrow$ \ref{subsec:UC-32.2}
+        \item Il sistema visualizza a schermo il contenuto testuale della nota $\rightarrow$ \hyperref[subsec:UC-32.1]{UC-32.1}
+        \item Il sistema visualizza a schermo il contenuto multimediale della nota $\rightarrow$ \hyperref[subsec:UC-32.2]{UC-32.2}
         \item L'attore può visualizzare e interagire con il contenuto della nota
     \end{itemize}
     \item \textbf{Inclusioni:}
@@ -2444,7 +2453,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo.
-        \item L'\term{Utente} ha cliccato sull'elemento (voce/pulsante) con funzione di invio del messaggio SOS.
+        \item L'\term{Utente} ha cliccato la voce per l'invio del messaggio SOS.
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
@@ -2453,7 +2462,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item L’attore interagisce con l'opzione di invio del messaggio SOS.
-        \item Il sistema \term{Verifica} la presenza di connessione.
+        \item Il sistema \ignoreglossary{verifica} la presenza di connessione.
 	    \item Il sistema invia una mail preimpostata ai contatti fidati memorizzati.
     \end{itemize}
     \item \textbf{Scenari secondari:} 
@@ -2705,7 +2714,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \begin{itemize}
         \item \hyperref[sec:UC-38]{UC-38}
     \end{itemize}
-    \item \textbf{Trigger:} L’\term{Utente} ha premuto il pulsante per il cambio del contesto.
+    \item \textbf{Trigger:} L’\term{Utente} ha selezionato la voce per il cambio del contesto.
 \end{itemize}
 
 \subsubsection{UC-37 - Switch a "Specchio Intelligente"} \label{sec:UC-37}
@@ -2740,7 +2749,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \begin{itemize}
         \item \hyperref[sec:UC-38]{UC-38}
     \end{itemize}
-    \item \textbf{Trigger:} L’\term{Utente} ha premuto il pulsante per il cambio del contesto.
+    \item \textbf{Trigger:} L’\term{Utente} ha selezionato la voce per il cambio del contesto.
 \end{itemize}
 
 \subsubsection{UC-38 - Errore switch contesto} \label{sec:UC-38}
@@ -2750,7 +2759,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \begin{itemize}
         \item Il sistema è attivo
         \item L'attore ha richiesto il cambio di contesto
-        \item Si \term{Verifica} un errore durante l'operazione
+        \item Si \ignoreglossary{verifica} un errore durante l'operazione
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
@@ -2961,7 +2970,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \begin{itemize}
         \item Il sistema è attivo
         \item L'attore ha selezionato una chat
-        \item Si \term{Verifica} un errore tecnico (assenza di rete, errore server, timeout) durante il recupero dei dati
+        \item Si \ignoreglossary{verifica} un errore tecnico (assenza di rete, errore server, timeout) durante il recupero dei dati
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
@@ -3078,7 +3087,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item Il sistema riceve responso negativo da parte dell'attore per rimuovere la chat
+        \item Il sistema riceve il rifiuto da parte dell'attore per rimuovere la chat
         \item La chat non viene eliminata
     \end{itemize}
     \item \textbf{Scenario principale:} 
@@ -3508,7 +3517,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-         \item Si \term{Verifica} un errore durante il recupero del file (es. file corrotto o offline) $\rightarrow$ \ref{subsec:UC-53.1}
+         \item Si \ignoreglossary{verifica} un errore durante il recupero del file (es. file corrotto o offline) $\rightarrow$ \ref{subsec:UC-53.1}
     \end{itemize}
     \item \textbf{Estensioni:}
      \begin{itemize}
@@ -3595,7 +3604,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-         \item Si \term{Verifica} un errore nell'apertura dell'applicazione esterna $\rightarrow$ \ref{subsec:UC-56}
+         \item Si \ignoreglossary{verifica} un errore nell'apertura dell'applicazione esterna $\rightarrow$ \ref{subsec:UC-56}
     \end{itemize}
     \item \textbf{Estensioni:}
      \begin{itemize}
@@ -3637,7 +3646,7 @@ La nomenclatura utilizzata per il codice dei requisiti è spiegata nel documento
 \begin{center}
 \renewcommand{\arraystretch}{1.5}
 \arrayrulecolor{black}
-\begin{longtable}{|c|p{9cm}|c|}
+\begin{longtable}{|c|p{8.5cm}|>{\centering\arraybackslash}p{4cm}|}
 
 \hline
 \rowcolor{gray!60}
@@ -3910,7 +3919,7 @@ RF-OB-84 & Il sistema deve gestire errori nell'apertura della mappa esterna & \h
 \begin{center}
 \renewcommand{\arraystretch}{1.5}
 \arrayrulecolor{black}
-\begin{longtable}{|c|p{9cm}|c|}
+\begin{longtable}{|c|p{8.5cm}|>{\centering\arraybackslash}p{4cm}|}
 \hline
 \rowcolor{gray!60}
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Riferimento} \\
@@ -3923,19 +3932,28 @@ RF-OB-84 & Il sistema deve gestire errori nell'apertura della mappa esterna & \h
 \hline
 \endhead
 \rowcolor{white}
-RQ-OB-1 & L'invio del segnale acustico deve essere udibile e indipendente dal volume di sistema & \hyperref[sec:UC-34]{UC-34} \\
+RQ-OB-1 & Il \term{Processo} di sviluppo del software deve prevedere un'attività di \term{Verifica} continua tramite la stesura e l'esecuzione di \term{Test Di Unità} per ogni componente implementato & \term{Capitolato} d'appalto \href{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C4.pdf}{Capitolato} \\
 \hline
 \rowcolor{gray!20}
-RQ-OB-2 & Il sistema deve fornire feedback immediato all'\term{Utente} in caso di assenza di rete & \hyperref[sec:UC-33.1]{UC-33.1}, \hyperref[sec:UC-35.2]{UC-35.2} \\
+RQ-OB-2 & Le verifiche effettuate, le misurazioni sui test e i relativi risultati devono essere tracciati sistematicamente all'interno del documento \term{Piano Di Qualifica} & Decisione interna \href{https://swe-bitbybit.github.io/SWE-docs/docs/RTB/documenti_esterni/piano_di_qualifica.pdf}{Piano di Qualifica} \\
 \hline
 \rowcolor{white}
-RQ-OB-3 & L'interfaccia \term{Utente} deve supportare l'apprendimento progressivo tramite \term{Walkthrough} & \hyperref[subsec:UC-3]{UC-3} \\
+RQ-OB-3 & Tutte le attività del \term{Ciclo Di Vita} del prodotto (efficienza dei processi, convenzioni di codifica e stesura) devono conformarsi a quanto regolamentato dalle Norme di Progetto & Decisione interna \href{https://swe-bitbybit.github.io/SWE-docs/docs/RTB/documenti_interni/norme_di_progetto.pdf}{Norme di Progetto} \\
 \hline
 \rowcolor{gray!20}
-RQ-OB-4 & I messaggi di errore devono essere chiari e comprensibili per l'\term{Utente} non tecnico & \hyperref[subsec:UC-2]{UC-2}, \hyperref[sec:UC-38]{UC-38}, \hyperref[subsec:UC-40.2]{UC-40.2} \\
+RQ-OB-4 & Il \term{Processo} di tracciamento e versionamento per tutto il materiale di progetto, deve appoggiarsi al software Git e alla piattaforma GitHub & Decisione interna \href{https://swe-bitbybit.github.io/SWE-docs/docs/RTB/documenti_interni/norme_di_progetto.pdf}{Norme di Progetto} \\
 \hline
 \rowcolor{white}
-RQ-OB-5 & Il sistema deve garantire la persistenza locale dei contatti fidati & \hyperref[subsec:UC-8]{UC-8} \\
+RQ-OB-5 & Il monitoraggio della qualità del software deve basarsi sul calcolo strutturato di metriche statiche e dinamiche, le cui soglie sono stabilite nel \term{Piano Di Qualifica} & Decisione interna \href{https://swe-bitbybit.github.io/SWE-docs/docs/RTB/documenti_esterni/piano_di_qualifica.pdf}{Piano di Qualifica} \\
+\hline
+\rowcolor{gray!20}
+RQ-OB-6 & Le procedure di controllo continuo sul materiale prodotto (come compilazione e analisi della qualità del codice) devono essere automatizzate mediante l'uso di una pipeline di Continuous Integration (\term{Github Actions}) & Decisione interna \href{https://swe-bitbybit.github.io/SWE-docs/docs/RTB/documenti_interni/norme_di_progetto.pdf}{Norme di Progetto} \\
+\hline
+\rowcolor{white}
+RQ-OB-7 & L'assegnazione e l'avanzamento delle attività \term{To-Do} e la progressione complessiva del lavoro devono essere guidate da un'opportuna pianificazione basata su un sistema di \term{Issue} Tracking (GitHub Projects) & Decisione interna \href{https://swe-bitbybit.github.io/SWE-docs/docs/RTB/documenti_interni/norme_di_progetto.pdf}{Norme di Progetto} \\
+\hline
+\rowcolor{gray!20}
+RQ-OB-8 & L'intera documentazione formale di progetto deve essere redatta esclusivamente formattandola tramite il linguaggio di markup tipografico \LaTeX & Decisione interna \href{https://swe-bitbybit.github.io/SWE-docs/docs/RTB/documenti_interni/norme_di_progetto.pdf}{Norme di Progetto} \\
 \hline
 \caption{Tabella Requisiti di Qualità} \label{tab:requisiti_qualita} \\
 \end{longtable}
@@ -3945,7 +3963,7 @@ RQ-OB-5 & Il sistema deve garantire la persistenza locale dei contatti fidati & 
 \begin{center}
 \renewcommand{\arraystretch}{1.5}
 \arrayrulecolor{black}
-\begin{longtable}{|c|p{9cm}|c|}
+\begin{longtable}{|c|p{8.5cm}|>{\centering\arraybackslash}p{4cm}|}
 
 \hline
 \rowcolor{gray!60}
@@ -3959,19 +3977,37 @@ RQ-OB-5 & Il sistema deve garantire la persistenza locale dei contatti fidati & 
 \hline
 \endhead
 \rowcolor{white}
-RV-OB-1 & L'applicazione deve utilizzare il servizio Google Auth per l'autenticazione & \hyperref[subsec:UC-1]{UC-1} \\
+RV-OB-1 & L'applicazione client deve garantire piena compatibilità con il sistema operativo Android, a partire dalla versione 8.0 (API 26) & \href{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C4.pdf}{Capitolato} \newline Sez. 3.4 \\
 \hline
 \rowcolor{gray!20}
-RV-OB-2 & L'integrazione per la navigazione verso luoghi sicuri deve avvenire tramite Google Maps & \hyperref[subsec:UC-55]{UC-55} \\
+RV-OB-2 & L'applicazione client deve garantire piena compatibilità con il sistema operativo iOS, a partire dalla versione 15.0 & \href{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C4.pdf}{Capitolato} \newline Sez. 3.4 \\
 \hline
 \rowcolor{white}
-RV-OB-3 & Il sistema deve utilizzare un modello LLM per le funzionalità di assistenza conversazionale & \hyperref[sec:UC-35]{UC-35} \\
+RV-OB-3 & Lo sviluppo dell'applicazione mobile e dell'interfaccia \term{Utente} deve essere condotto impiegando il framework cross-platform Flutter & \href{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C4.pdf}{Capitolato} \newline Sez. 3.4 \\
 \hline
 \rowcolor{gray!20}
-RV-OB-4 & La password del diario criptato e quella del diario fittizio devono essere obbligatoriamente diverse & \hyperref[subsec:UC-20.1]{UC-20.1} \\
+RV-OB-4 & L'infrastruttura di backend del sistema deve essere ospitata su servizi Cloud scalabili e sicuri, avvalendosi specificatamente del provider Amazon Web Services (AWS) & \href{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C4.pdf}{Capitolato} \newline Sez. 3.4 \\
 \hline
 \rowcolor{white}
-RV-OB-5 & Le comunicazioni SOS devono utilizzare canali standard (Email/SMS) quando possibile & \hyperref[sec:UC-33]{UC-33} \\
+RV-OB-5 & L'\term{Architettura} del backend deve basarsi su un modello a microservizi di tipo Serverless, avvalendosi dell'esecuzione di funzioni AWS Lambda & \href{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C4.pdf}{Capitolato} \newline Sez. 3.2 \\
+\hline
+\rowcolor{gray!20}
+RV-OB-6 & Le comunicazioni telematiche tra l'applicazione mobile (frontend) e i microservizi di backend devono avvenire in modo sicuro tramite Amazon API Gateway & \href{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C4.pdf}{Capitolato} \newline Sez. 3.4 \\
+\hline
+\rowcolor{white}
+RV-OB-7 & La persistenza ed organizzazione dei dati applicativi deve appoggiarsi su database adeguatamente scalabili e resilienti, prediligendo un approccio NoSQL gestito tramite Amazon DynamoDB & \href{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C4.pdf}{Capitolato} \newline Sez. 3.4 \\
+\hline
+\rowcolor{gray!20}
+RV-OB-8 & I meccanismi di sicurezza, registrazione e autenticazione forte degli utenti (autorizzazione granulare) previsti dal progetto devono essere garantiti tramite l'adozione attiva di Amazon Cognito & \href{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C4.pdf}{Capitolato} \newline Sez. 3.1 \\
+\hline
+\rowcolor{white}
+RV-OB-9 & L'integrazione delle funzionalità di Intelligenza Artificiale Generativa e l'utilizzo dei modelli fondazionali (LLM) devono avvenire esclusivamente tramite il servizio Amazon Bedrock & Decisione interna \\
+\hline
+\rowcolor{gray!20}
+RV-OB-10 & L'interfaccia \ignoreglossary{utente} deve essere utilizzabile senza perdita di funzionalità ed adattarsi dinamicamente alle seguenti dimensioni di schermo: 360 px (smartphone portrait), 640 px (smartphone landscape), 768 px (tablet portrait) e 1024 px (tablet landscape) & \href{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C4.pdf}{Capitolato} \newline Sez. 3.4 \\
+\hline
+\rowcolor{white}
+RV-OB-11 & L'infrastruttura cloud del sistema deve essere configurata in modo da supportare l'alta disponibilità, delegando la resilienza dell'infrastruttura ai servizi gestiti AWS & Decisione interna; Decisione Esterna \\
 \hline
 \caption{Tabella Requisiti di Vincolo} \label{tab:requisiti_vincolo} \\
 \end{longtable}
