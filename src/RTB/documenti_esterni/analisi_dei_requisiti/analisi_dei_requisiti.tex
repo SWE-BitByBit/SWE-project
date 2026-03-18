@@ -155,9 +155,11 @@ Gruppo BitByBit\\
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
-
 \rowcolor{white}
- & 2026-03-17 & Dennis Parolin & Riscrittura dei casi d'uso da \hyperref[sec:UC-4]{UC-4} a \hyperref[subsec:UC-14]{UC-14}. Il caso d'uso \hyperref[sec:UC-5]{UC-5} è stato aggiunto come nuovo caso d'uso. Rifatta tutta la sezione "Requisiti di vincolo" (\ref{subsection:requisiti_vincolo}) e "Requisiti di qualità" (\ref{subsection:requisiti_qualita}). & Riccardo Manisi \\
+1.2.1 & 2026-03-18 & Gabriele Scaggiante & Riscrittura dei casi d'uso da \hyperref[sec:UC-19]{UC-19} a \hyperref[subsec:UC-25]{UC-25}. Inserimento nuovi casi UC-26, UC-27, UC-28, UC-33, UC-34, UC-35. & Riccardo Manisi \\
+\hline
+\rowcolor{white}
+1.1.1 & 2026-03-17 & Dennis Parolin & Riscrittura dei casi d'uso da \hyperref[sec:UC-4]{UC-4} a \hyperref[subsec:UC-14]{UC-14}. Il caso d'uso \hyperref[sec:UC-5]{UC-5} è stato aggiunto come nuovo caso d'uso. Rifatta tutta la sezione "Requisiti di vincolo" (\ref{subsection:requisiti_vincolo}) e "Requisiti di qualità" (\ref{subsection:requisiti_qualita}). & Riccardo Manisi \\
 \hline
 \rowcolor{gray!20}
 1.0.1 & 2026-03-01 & Riccardo Manisi & Modificati caso d'uso UC-17 e aggiunti sottocasi UC-17.1, UC-17.2  &  Gabriele Scagginate\\
@@ -1309,7 +1311,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item La funzionalità Dead Man's Switch è abilitata UC-57 $\rightarrow$ \ref{sec:UC-57}
+        \item La funzionalità Dead Man's Switch è abilitata
         \item L'attore ha effettuato l'accesso alle impostazioni del Dead Man's Switch
     \end{itemize}
     \item \textbf{Post-condizioni:}
@@ -1318,7 +1320,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'attore seleziona l'opzione per il primo timer
+        \item L'attore seleziona la voce per l'impostazione del primo timer
         \item L'attore imposta la durata desiderata dopo la quale il sistema invierà la mail di controllo all'attore
         \item L'attore conferma la scelta
         \item Il sistema aggiorna la configurazione
@@ -1332,7 +1334,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item La funzionalità Dead Man's Switch è abilitata UC-57 $\rightarrow$ \ref{sec:UC-57}
+        \item La funzionalità Dead Man's Switch è abilitata
         \item L'attore si trova nelle impostazioni del Dead Man's Switch
         \item Il timer di prima inattività è stato configurato
     \end{itemize}
@@ -1342,7 +1344,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario principale:}
     \begin{itemize}
-        \item L'attore seleziona l'opzione per il secondo timer
+        \item L'attore seleziona la voce per l'impostazione del secondo timer
         \item L'attore imposta la durata che deve trascorrere tra la mail di controllo e l'invio del messaggio di SOS ai contatti fidati
         \item L'attore conferma la scelta
         \item Il sistema aggiorna la configurazione
@@ -1362,7 +1364,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item La funzionalità Dead Man's Switch è abilitata UC-57 $\rightarrow$ \hyperref[sec:UC-57]{UC-57}
+        \item La funzionalità Dead Man's Switch è abilitata
         \item L'attore ha selezionato l'opzione di modifica della mail di avviso
     \end{itemize}
     \item \textbf{Post-condizioni:}
@@ -1389,7 +1391,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item La funzionalità Dead Man's Switch è abilitata UC-57 $\rightarrow$ \hyperref[sec:UC-57]{UC-57}
+        \item La funzionalità Dead Man's Switch è abilitata
         \item L'attore ha selezionato il campo per la modifica del titolo della mail di avviso
     \end{itemize}
     \item \textbf{Post-condizioni:}
@@ -1409,7 +1411,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item La funzionalità Dead Man's Switch è abilitata UC-57 $\rightarrow$ \hyperref[sec:UC-57]{UC-57}
+        \item La funzionalità Dead Man's Switch è abilitata
         \item L'attore ha selezionato l'opzione di modifica della mail di avviso
         \item L'attore ha selezionato il campo per la modifica del corpo della mail di avviso
     \end{itemize}
@@ -1424,31 +1426,31 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Trigger:} L'attore vuole personalizzare il corpo della mail che riceverà in caso di inutilizzo prolungato dell'applicazione
 \end{itemize}
 
-\subsubsection{UC-19 - Visualizzazione preview mail di avviso} \label{sec:UC-19}
+\subsubsection{UC-18 - Visualizzazione preview mail di avviso} \label{sec:UC-18}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-19-dmswitch.png}
-    \caption{Diagramma del caso d'uso UC-19}
-    \label{fig:UC-19}
+    \includegraphics[width=1\textwidth]{use_case/UC-18-dmswitch.png}
+    \caption{Diagramma del caso d'uso UC-18}
+    \label{fig:UC-18}
 \end{figure}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item La funzionalità Dead Man's Switch è abilitata UC-57 $\rightarrow$ \ref{sec:UC-57}
+        \item La funzionalità Dead Man's Switch è abilitata
         \item L'attore vuole verificare l'aspetto della mail configurata
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item L'attore visualizza un'anteprima fedele della mail che verrà inviata
+        \item L'attore visualizza una preview fedele della mail che verrà inviata
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item Il sistema recupera i dati della mail
-        \item Il sistema compone l'anteprima del messaggio
-        \item Il sistema visualizza il titolo della mail $\rightarrow$ \ref{subsec:UC-19.1}
-        \item Il sistema visualizza il corpo della mail $\rightarrow$ \ref{subsec:UC-19.2}
+        \item Il sistema recupera le preferenze di formattazione della mail di avviso
+        \item Il sistema compone la preview del messaggio
+        \item Il sistema visualizza il titolo della mail $\rightarrow$ \hyperref[subsec:UC-18.1]{UC-18.1}
+        \item Il sistema visualizza il corpo della mail $\rightarrow$ \hyperref[subsec:UC-18.2]{UC-18.2}
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
@@ -1456,42 +1458,42 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \hyperref[subsec:UC-19.1]{UC-19.1}
-        \item \hyperref[subsec:UC-19.2]{UC-19.2}
+        \item \hyperref[subsec:UC-18.1]{UC-18.1}
+        \item \hyperref[subsec:UC-18.2]{UC-18.2}
     \end{itemize}
-    \item \textbf{Trigger:} L'attore seleziona il pulsante di anteprima
+    \item \textbf{Trigger:} L'attore vuole visualizzare le informazioni della mail che riceverà in caso di inutilizzo prolungato dell'applicazione
 \end{itemize}
 
-\subsubsection{UC-19.1 - Visualizzazione titolo mail di avviso} \label{subsec:UC-19.1}
+\subsubsection{UC-18.1 - Visualizzazione titolo mail di avviso} \label{subsec:UC-18.1}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
-        \item La funzionalità Dead Man's Switch è abilitata UC-57 $\rightarrow$ \ref{sec:UC-57}
-        \item Il sistema sta renderizzando l'anteprima
+        \item La funzionalità Dead Man's Switch è abilitata
+        \item Il sistema sta visualizzando la preview
     \end{itemize}
     \item \textbf{Post-condizioni:} L'oggetto della mail è visibile
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item Il sistema mostra il testo configurato come oggetto della mail nell'header dell'anteprima
+        \item Il sistema mostra il testo configurato come oggetto della mail nell'header della preview
     \end{itemize}
-    \item \textbf{Trigger:} L'attore visualizza l'anteprima della mail
+    \item \textbf{Trigger:} L'attore vuole visualizzare il titolo della mail che riceverà in caso di inutilizzo prolungato dell'applicazione
 \end{itemize}
 
-\subsubsection{UC-19.2 - Visualizzazione corpo della mail di avviso} \label{subsec:UC-19.2}
+\subsubsection{UC-18.2 - Visualizzazione corpo della mail di avviso} \label{subsec:UC-18.2}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
-        \item La funzionalità Dead Man's Switch è abilitata UC-57 $\rightarrow$ \ref{sec:UC-57}
-        \item Il sistema sta renderizzando l'anteprima
+        \item La funzionalità Dead Man's Switch è abilitata
+        \item Il sistema sta renderizzando la preview
     \end{itemize}
     \item \textbf{Post-condizioni:} Il contenuto principale della mail è visibile
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item Il sistema mostra il testo del messaggio nel corpo dell'anteprima
+        \item Il sistema mostra il testo del messaggio nel corpo della preview
     \end{itemize}
-    \item \textbf{Trigger:} L'attore vuole visualizzare l'anteprima della mail
+    \item \textbf{Trigger:} L'attore vuole visualizzare la preview della mail che riceverà in caso di inutilizzo prolungato dell'applicazione
 \end{itemize}
 
 \subsubsection{UC-57 - Attivazione Dead Man's Switch} \label{sec:UC-57}
@@ -1515,9 +1517,9 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'attore seleziona il pulsante di attivazione del Dead Man's Switch
+        \item L'attore seleziona l'opzione di attivazione del Dead Man's Switch
     \end{itemize}
-    \item \textbf{Trigger:} L'attore seleziona il pulsante di attivazione del Dead Man's Switch
+    \item \textbf{Trigger:} L'attore vuole attivare la funzionalità del Dead Man's Switch
 \end{itemize}
 
 \subsubsection{UC-58 - Disattivazione Dead Man's Switch} \label{sec:UC-58}
@@ -1535,9 +1537,9 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'attore seleziona il pulsante di disattivazione del Dead Man's Switch
+        \item L'attore seleziona l'opzione di disattivazione del Dead Man's Switch
     \end{itemize}
-    \item \textbf{Trigger:} L'attore seleziona il pulsante di disattivazione del Dead Man's Switch
+    \item \textbf{Trigger:} L'attore disattivare la funzionalità del Dead Man's Switch
 \end{itemize}
 
 % ==== DIARIO CRIPTATO =====
@@ -2134,7 +2136,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo.
-        \item L'\term{Utente} ha cliccato sull'elemento (voce/pulsante) con funzione di invio del messaggio SOS.
+        \item L'\term{Utente} ha cliccato la voce per l'invio del messaggio SOS.
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
@@ -2395,7 +2397,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \begin{itemize}
         \item \hyperref[sec:UC-38]{UC-38}
     \end{itemize}
-    \item \textbf{Trigger:} L’\term{Utente} ha premuto il pulsante per il cambio del contesto.
+    \item \textbf{Trigger:} L’\term{Utente} ha selezionato la voce per il cambio del contesto.
 \end{itemize}
 
 \subsubsection{UC-37 - Switch a "Specchio Intelligente"} \label{sec:UC-37}
@@ -2430,7 +2432,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \begin{itemize}
         \item \hyperref[sec:UC-38]{UC-38}
     \end{itemize}
-    \item \textbf{Trigger:} L’\term{Utente} ha premuto il pulsante per il cambio del contesto.
+    \item \textbf{Trigger:} L’\term{Utente} ha selezionato la voce per il cambio del contesto.
 \end{itemize}
 
 \subsubsection{UC-38 - Errore switch contesto} \label{sec:UC-38}
