@@ -1578,7 +1578,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \begin{itemize}
         \item \hyperref[subsec:UC-22]{UC-22}
     \end{itemize}
-    \item \textbf{Trigger:} L'attore interagisce con il form di inserimento della password per il diario criptato
+    \item \textbf{Trigger:} L'attore vuole impostare la password per il diario criptato
 \end{itemize}
 
 \subsubsection{UC-22 - Password non conforme ai criteri} \label{subsec:UC-22}
@@ -1618,7 +1618,6 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'attore ha impostato la password per il diario criptato
         \item L'attore si trova all'interno del diario criptato
     \end{itemize}
     \item \textbf{Post-condizioni:} 
@@ -1643,7 +1642,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item \hyperref[subsec:UC-24]{UC-24}
         \item \hyperref[subsec:UC-22]{UC-22}
     \end{itemize}
-    \item \textbf{Trigger:} L'attore interagisce con il form di inserimento della password per il diario fittizio
+    \item \textbf{Trigger:} L'attore vuole impostare la password per il diario fittizio
 \end{itemize}
 
 \subsubsection{UC-24 - Password uguale alla password del diario criptato} \label{subsec:UC-24}
@@ -1705,7 +1704,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item \hyperref[subsec:UC-27]{UC-27}
         \item \hyperref[subsec:UC-26]{UC-26}
     \end{itemize}
-        \item \textbf{Trigger:} L'attore tenta di accedere al diario
+        \item \textbf{Trigger:} L'attore vuole accedere al diario
         \item \textbf{Specializzazioni:}
     \begin{itemize}
         \item \hyperref[subsec:UC-25.1]{UC-25.1}
@@ -1765,13 +1764,14 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
+        \item L'attore si trova nella schermata di accesso al diario
         \item L'attore ha effettuato molteplici tentativi falliti di accesso al diario
         \item Il numero di tentativi errati ha superato la soglia massima consentita
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
-        \item L'accesso al diario è temporaneamente bloccato
         \item Il sistema ha attivato le misure di sicurezza previste
+        \item L'accesso al diario è temporaneamente bloccato
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
@@ -1789,6 +1789,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
+        \item L'attore si trova nella schermata di accesso al diario
         \item L'attore ha inserito una password per l'accesso al diario
         \item La password inserita non corrisponde né a quella del diario criptato, né a quella del diario fittizio
         \item Il numero di tentativi errati non ha superato la soglia massima consentita
@@ -1835,7 +1836,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \begin{itemize}
         \item \hyperref[subsec:UC-28.1]{UC-28.1}
     \end{itemize}
-    \item \textbf{Trigger:} L'attore accede al diario criptato
+    \item \textbf{Trigger:} L'attore vuole accedere al diario criptato
 \end{itemize}
 
 \subsubsection{UC-28.1 - Visualizzazione lista note nel diario criptato} \label{subsec:UC-28.1}
@@ -1858,7 +1859,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-        \item Il sistema non è in grado di soddisfare la richiesta dell'\term{Utente}. $\rightarrow$ \hyperref[subsec:UC-5]{UC-5}
+        \item Il sistema non è in grado di recuperare le note dal database $\rightarrow$ \hyperref[sec:UC-5]{UC-5}
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
@@ -1868,7 +1869,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \begin{itemize}
         \item \hyperref[subsec:UC-5]{UC-5}
     \end{itemize}
-    \item \textbf{Trigger:} L'attore accede al diario criptato
+    \item \textbf{Trigger:} L'attore vuole accedere al diario criptato
 \end{itemize}
 
 \subsubsection{UC-28.1.1 - Visualizzazione anteprima singola nota della lista nel diario criptato} \label{subsec:UC-28.1.1}
@@ -1878,8 +1879,9 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \begin{itemize}
         \item Il sistema è attivo
         \item L'attore si trova all'interno del diario criptato
-        \item Il sistema ha recuperato e organizzato le anteprime delle note da visualizzare
         \item Esiste almeno una nota all'interno del diario criptato
+        \item L'attore sta visualizzando la sezione contenente la lista delle note del diario criptato
+        \item Il sistema ha recuperato e organizzato le anteprime delle note da visualizzare
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
@@ -1890,7 +1892,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item Il sistema recupera le informazioni della nota da visualizzare
         \item Il sistema visualizza parte del contenuto testuale presente all'inizio della nota
     \end{itemize}
-    \item \textbf{Trigger:} L'attore accede al diario criptato
+    \item \textbf{Trigger:} L'attore vuole accedere al diario criptato
 \end{itemize}
 
 \subsubsection{UC-29 - Visualizzazione diario fittizio} \label{subsec:UC-29}
@@ -1920,7 +1922,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \begin{itemize}
         \item \hyperref[subsec:UC-29.1]{UC-29.1}
     \end{itemize}
-    \item \textbf{Trigger:} L'attore accede al diario fittizio
+    \item \textbf{Trigger:} L'attore vuole accedere al diario fittizio
 \end{itemize}
 
 \subsubsection{UC-29.1 - Visualizzazione lista note nel diario fittizio} \label{subsec:UC-29.1}
@@ -1943,7 +1945,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-        \item Il sistema non è in grado di soddisfare la richiesta dell'\term{Utente}. $\rightarrow$ \hyperref[subsec:UC-5]{UC-5}
+        \item Il sistema non è in grado di recuperare le note dal database $\rightarrow$ \hyperref[sec:UC-5]{UC-5}
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
@@ -1953,7 +1955,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \begin{itemize}
         \item \hyperref[subsec:UC-5]{UC-5}
     \end{itemize}
-    \item \textbf{Trigger:} L'attore accede al diario fittizio
+    \item \textbf{Trigger:} L'attore vuole accedere al diario fittizio
 \end{itemize}
 
 \subsubsection{UC-29.1.1 - Visualizzazione anteprima singola nota della lista nel diario fittizio} \label{subsec:UC-29.1.1}
@@ -1963,8 +1965,9 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \begin{itemize}
         \item Il sistema è attivo
         \item L'attore si trova all'interno del diario fittizio
-        \item Il sistema ha recuperato e organizzato le anteprime delle note da visualizzare
         \item Esiste almeno una nota all'interno del diario fittizio
+        \item L'attore sta visualizzando la sezione contenente la lista delle note del diario fittizio
+        \item Il sistema ha recuperato e organizzato le anteprime delle note da visualizzare
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
@@ -1975,7 +1978,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item Il sistema recupera le informazioni della nota da visualizzare
         \item Il sistema visualizza parte del contenuto testuale presente all'inizio della nota
     \end{itemize}
-    \item \textbf{Trigger:} L'attore accede al diario fittizio
+    \item \textbf{Trigger:} L'attore vuole accedere al diario fittizio
 \end{itemize}
 
 \subsubsection{UC-28 - Creazione nota} \label{subsec:UC-28}
