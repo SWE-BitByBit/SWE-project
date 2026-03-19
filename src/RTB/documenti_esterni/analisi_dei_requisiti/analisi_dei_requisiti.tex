@@ -1897,7 +1897,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
 \end{itemize}
 
 % UC modifica e visualizzazione note diario criptato
-\subsubsection{UC-30 - Eliminazione nota} \label{subsec:UC-30}
+\subsubsection{UC-30 - Eliminazione nota diario criptato} \label{subsec:UC-30}
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{use_case/UC-30-diario.png}
@@ -1935,7 +1935,26 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
 
 \subsubsection{UC-30.1 - Conferma eliminazione nota diario criptato}\label{subsec:UC-30.1}
 \begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
+    \item \textbf{Attore principale:} \term{Utente} autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore è all'interno del diario criptato
+        \item Esiste almeno una nota nel diario criptato
+        \item L'attore sta visualizzando la lista delle note del diario criptato
+        \item L'attore ha selezionato la voce per eliminare la nota dalla lista delle note del diario criptato
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore conferma l'eliminazione della nota del diario criptato
+        \item Il sistema elimina correttamente la nota del diario criptato
+        \item La nota non è più visibile nella lista delle note del diario criptato
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item Il sistema visualizza la rischiesta di conferma per l'eliminazione della nota del diario criptato
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore desidera elimanare una nota del diario criptato
 \end{itemize}
 
 \subsubsection{UC-31 - Creazione nota} \label{subsec:UC-31}
@@ -1962,10 +1981,10 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item L'attore ha selezionato la voce per l'aggiunta di una nuova nota
         \item La nuova nota viene creata ed è visibile nella lista delle note del diario criptato
     \end{itemize}
-    \item \textbf{Trigger:} L'\term{Utente} vuole creare una nuova nota nel diario criptato
+    \item \textbf{Trigger:} L'attore vuole creare una nuova nota nel diario criptato
 \end{itemize}
 
-\subsubsection{UC-32 - Visualizzazione contenuto nota} \label{subsec:UC-32}
+\subsubsection{UC-32 - Visualizzazione contenuto nota diario criptato} \label{subsec:UC-32}
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{use_case/UC-32-diario.png}
@@ -2060,13 +2079,13 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item L'attore visualizza il media player apposito per ascoltare l'audio contenuto nella nota
+        \item L'attore visualizza il contenuto audio presente nella nota
     \end{itemize}
     \item \textbf{Scenario principale:}
     \begin{itemize}
         \item Il sistema mostra il contenuto audio presente nella nota 
     \end{itemize}
-    \item \textbf{Trigger:} L'attore vuole visualizzare il contenuto multimediale di una nota del diario criptato
+    \item \textbf{Trigger:} L'attore vuole visualizzare il contenuto audio di una nota del diario criptato
 \end{itemize}
 
 \subsubsection{UC-32.2.2 - Visualizzazione immagini nota diario criptato} \label{subsec:UC-32.2.2}
@@ -2087,7 +2106,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \begin{itemize}
         \item Il sistema mostra le immagini presenti nella nota 
     \end{itemize}
-    \item \textbf{Trigger:} L'attore vuole visualizzare il contenuto multimediale di una nota del diario criptato
+    \item \textbf{Trigger:} L'attore vuole visualizzare le immagini presenti in una nota del diario criptato
 \end{itemize}
 
 \subsubsection{UC-33 - Inserimento testo in nota diario criptato} \label{subsec:UC-33}
@@ -2115,7 +2134,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item L'attore ha selezionato l'area apposita per l'inserimento del testo nella nota
         \item L'attore digita il testo da inserire nella nota
     \end{itemize}
-    \item \textbf{Trigger:} L'\term{Utente} vuole aggiungere del testo ad una nota nel diario criptato
+    \item \textbf{Trigger:} L'attore vuole aggiungere del testo ad una nota nel diario criptato
 \end{itemize}
 
 \subsubsection{UC-34 - Inserimento media in nota diario criptato} \label{subsec:UC-34}
@@ -2141,7 +2160,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item \hyperref[subsec:UC-34.1]{UC-34.1}
         \item \hyperref[subsec:UC-34.2]{UC-34.2}
     \end{itemize}
-    \item \textbf{Trigger:} L'\term{Utente} vuole aggiungere del contenuto multimediale ad una nota nel diario criptato
+    \item \textbf{Trigger:} L'attore vuole aggiungere del contenuto multimediale ad una nota nel diario criptato
 \end{itemize}
 
 \subsubsection{UC-34.1 - Inserimento immagine in nota diario criptato} \label{subsec:UC-34.1}
@@ -2162,7 +2181,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item L'attore ha selezionato la voce per l'aggiunta di un media
         \item L'attore inserisce una immagine nella nota
     \end{itemize}
-    \item \textbf{Trigger:} L'\term{Utente} vuole aggiungere un'immagine ad una nota nel diario criptato
+    \item \textbf{Trigger:} L'attore vuole aggiungere un'immagine ad una nota nel diario criptato
 \end{itemize}
 
 \subsubsection{UC-34.2 - Inserimento audio in nota diario criptato} \label{subsec:UC-34.2}
@@ -2183,7 +2202,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item L'attore ha selezionato la voce per l'aggiunta di un media
         \item L'attore inserisce un audio nella nota
     \end{itemize}
-    \item \textbf{Trigger:} L'\term{Utente} vuole aggiungere del contenuto audio ad una nota nel diario criptato
+    \item \textbf{Trigger:} L'attore vuole aggiungere del contenuto audio ad una nota nel diario criptato
 \end{itemize}
 
 \subsubsection{UC-35 - Modifica testo in nota diario criptato} \label{subsec:UC-35}
@@ -2223,7 +2242,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item Il sistema è attivo
         \item L'attore si trova all'interno del diario criptato
         \item L'attore sta visualizzando il contenuto di una nota del diario criptato
-        \item La nota visualizzata presenta almeno un contenuto multimendiale
+        \item La nota visualizzata contiene almeno un elemento multimediale
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
@@ -2240,7 +2259,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item \hyperref[subsec:UC-36.1]{UC-36.1}
         \item \hyperref[subsec:UC-36.2]{UC-36.2}
     \end{itemize}
-    \item \textbf{Trigger:} L'\term{Utente} vuole rimuovere del contenuto multimediale da una nota nel diario criptato
+    \item \textbf{Trigger:} L'\attore vuole rimuovere del contenuto multimediale da una nota nel diario criptato
 \end{itemize}
 
 \subsubsection{UC-36.1 - Rimozione immagine in nota diario criptato} \label{subsec:UC-36.1}
@@ -2251,7 +2270,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item Il sistema è attivo
         \item L'attore si trova all'interno del diario criptato
         \item L'attore sta visualizzando il contenuto di una nota del diario criptato
-        \item La nota visualizzata presenta almeno un'immagine
+        \item La nota visualizzata contiene almeno una immagine
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
@@ -2274,7 +2293,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item Il sistema è attivo
         \item L'attore si trova all'interno del diario criptato
         \item L'attore sta visualizzando il contenuto di una nota del diario criptato
-        \item La nota visualizzata presenta almeno una traccia audio
+        \item La nota visualizzata contiene almeno una traccia audio
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
@@ -2284,9 +2303,9 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Scenario principale:}
     \begin{itemize}
         \item L'attore seleziona la traccia audio che vuole rimuovere
-        \item L'attore seleziona la voce apposita per la rimozione dell'immagine
+        \item L'attore seleziona la voce apposita per la rimozione della traccia audio
     \end{itemize}
-    \item \textbf{Trigger:} L'\term{Utente} vuole rimuovere una traccia audio da una nota nel diario criptato
+    \item \textbf{Trigger:} L'attore vuole rimuovere una traccia audio da una nota nel diario criptato
 \end{itemize}
 
 \subsubsection{UC-33 - Visualizzazione diario fittizio} \label{subsec:UC-33}
