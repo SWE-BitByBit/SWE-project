@@ -2983,12 +2983,12 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Trigger:} L'attore seleziona il pulsante di chiamata di un contatto
 \end{itemize}
 
-\subsubsection{UC-52 - Visualizzazione lista materiale informativo} \label{sec:UC-52}
+\subsubsection{UC-65 - Visualizzazione lista materiale informativo} \label{sec:UC-65}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-52-coraggio.png}
-    \caption{Diagramma del caso d'uso UC-52}
-    \label{fig:UC-52}
+    \includegraphics[width=1\textwidth]{use_case/UC-65-coraggio.png}
+    \caption{Diagramma del caso d'uso UC-65}
+    \label{fig:UC-65}
 \end{figure}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
@@ -3005,17 +3005,17 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \begin{itemize}
         \item Il sistema recupera l'elenco delle risorse disponibili dal server
         \item Il sistema visualizza la lista dei materiali disponibili 
-        \item L'attore può visualizzare singolarmente ogni materiale nella lista $\rightarrow$ \ref{subsec:UC-52.1}
+        \item L'attore può visualizzare singolarmente ogni materiale nella lista $\rightarrow$ \ref{subsec:UC-65.1}
         \item L'attore può scorrere la lista per trovare il contenuto di interesse
     \end{itemize}
     \item \textbf{Inclusioni:}
      \begin{itemize}
-         \item \hyperref[subsec:UC-52.1]{UC-52.1}
+         \item \hyperref[subsec:UC-65.1]{UC-65.1}
      \end{itemize}
     \item \textbf{Trigger:} L'attore vuole consultare risorse educative o di supporto
 \end{itemize}
 
-\subsubsection{UC-52.1 - Visualizzazione singolo materiale informativo} \label{subsec:UC-52.1}
+\subsubsection{UC-65.1 - Visualizzazione singolo materiale informativo} \label{subsec:UC-65.1}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:} 
@@ -3032,15 +3032,15 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item Il sistema mostra il titolo del materiale
         \item Il sistema mostra l'icona relativa al formato
     \end{itemize}
-    \item \textbf{Trigger:} L'attore visualizza la lista del materiale informativo
+    \item \textbf{Trigger:} L'attore vuole visualizzare la lista del materiale informativo
 \end{itemize}
 
-\subsubsection{UC-53 - Visualizzazione dettagli materiale informativo} \label{sec:UC-53}
+\subsubsection{UC-66 - Visualizzazione dettagli materiale informativo} \label{sec:UC-66}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-53-coraggio.png}
-    \caption{Diagramma del caso d'uso UC-53}
-    \label{fig:UC-53}
+    \includegraphics[width=1\textwidth]{use_case/UC-66-coraggio.png}
+    \caption{Diagramma del caso d'uso UC-66}
+    \label{fig:UC-66}
 \end{figure}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
@@ -3061,44 +3061,21 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-         \item Si \term{Verifica} un errore durante il recupero del file (es. file corrotto o offline) $\rightarrow$ \ref{subsec:UC-53.1}
+         \item Si \term{Verifica} un errore durante il recupero dei dati $\rightarrow$ \ref{subsec:UC-5}
     \end{itemize}
     \item \textbf{Estensioni:}
      \begin{itemize}
-         \item \hyperref[subsec:UC-53.1]{UC-53.1}
+         \item \hyperref[subsec:UC-5]{UC-5}
      \end{itemize}
-    \item \textbf{Trigger:} L'attore seleziona una risorsa per visualizzarla
+    \item \textbf{Trigger:} L'attore vuole visualizzare i dettagli di una risorsa
 \end{itemize}
 
-\subsubsection{UC-53.1 - Errore caricamento materiale} \label{subsec:UC-53.1}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item L'attore ha richiesto l'apertura di un materiale informativo
-        \item Si \term{Verifica} un problema tecnico (timeout, assenza rete, risorsa rimossa)
-    \end{itemize}
-    \item \textbf{Post-condizioni:}
-    \begin{itemize}
-        \item L'\term{Utente} è notificato dell'errore
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item Il sistema rileva un errore durante il tentativo di accesso alla risorsa
-        \item Il sistema mostra un messaggio di errore
-        \item Il sistema visualizza la lista dei materiali
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore tenta di accedere a una risorsa ma il caricamento fallisce
-
-\end{itemize}
-
-\subsubsection{UC-54 - Visualizzazione mappa luoghi sicuri} \label{sec:UC-54}
+\subsubsection{UC-67 - Visualizzazione mappa luoghi sicuri} \label{sec:UC-67}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-54-coraggio.png}
-    \caption{Diagramma del caso d'uso UC-54}
-    \label{fig:UC-54}
+    \includegraphics[width=1\textwidth]{use_case/UC-67-coraggio.png}
+    \caption{Diagramma del caso d'uso UC-67}
+    \label{fig:UC-67}
 \end{figure}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
@@ -3120,7 +3097,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Trigger:} L'attore vuole localizzare i luoghi sicuri più vicini
 \end{itemize}
 
-\subsubsection{UC-55 - Apertura luogo in Google Maps} \label{subsec:UC-55}
+\subsubsection{UC-68 - Apertura luogo in Google Maps} \label{subsec:UC-68}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Attore secondario:} Google Maps
@@ -3142,16 +3119,16 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-         \item Si \term{Verifica} un errore nell'apertura dell'applicazione esterna $\rightarrow$ \ref{subsec:UC-56}
+         \item Si \term{Verifica} un errore nell'apertura dell'applicazione esterna $\rightarrow$ \ref{subsec:UC-69}
     \end{itemize}
     \item \textbf{Estensioni:}
      \begin{itemize}
-         \item \hyperref[subsec:UC-56]{UC-56}
+         \item \hyperref[subsec:UC-69]{UC-69}
      \end{itemize}
     \item \textbf{Trigger:} L'attore vuole avviare la navigazione o vedere dettagli aggiuntivi del luogo
 \end{itemize}
 
-\subsubsection{UC-56 - Errore apertura luogo in mappa esterna} \label{subsec:UC-56}
+\subsubsection{UC-69 - Errore apertura luogo in mappa esterna} \label{subsec:UC-69}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:}
