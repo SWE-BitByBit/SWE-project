@@ -548,13 +548,13 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 \hline
 \endhead
 \rowcolor{white}
-\centering \textbf{\term{Utente} Generico} & Un \term{Utente} che non ha ancora compiuto il \term{Processo} di autenticazione (che quindi non ha fornito la sua mail) e che non ha ancora creato una password per il diario \\
+\centering \textbf{\term{Utente} Generico} & Un \term{Utente} che non ha eseguito l'autenticazione all'applicazione e che non ha ancora creato una password per il diario criptato. Il sistema permette a questo attore di eseguire un sottoinsieme della totalità delle funzionalità. \\
 \hline
 \rowcolor{gray!20}
-\centering \textbf{\term{Utente} Autenticato} & Un \term{Utente} il quale ha attraversato e concluso il \term{Processo} di autenticazione e che quindi ha fornito la sua mail, ma non ha ancora creato una password per il diario. Ha accesso a delle funzionalità aggiuntive rispetto all'\term{Utente} Generico e all'\term{Utente} autenticato al diario \\
+\centering \textbf{\term{Utente} Autenticato} & Un \term{Utente} il quale ha eseguito l'autenticazione all'applicazione. Il sistema possiede l'inidizzo mail di questo attore. Ha accesso a delle funzionalità aggiuntive rispetto all'\term{Utente} Generico e all'\term{Utente} autenticato al diario. \\
 \hline
 \rowcolor{white}
-\centering \textbf{\term{Utente} autenticato al diario} & Un \term{Utente} il quale ha creato una password per il diario \\
+\centering \textbf{\term{Utente} autenticato al diario} & \term{Utente} che ha impostato la password per il diario criptato. \\
 \hline
 \rowcolor{gray!70}
 \centering \textbf{Attori secondari} & \centering \textbf{Descrizione} \tabularnewline
@@ -563,10 +563,10 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 \centering \textbf{Google Auth} & Servizio di autenticazione esterno che permette al sistema di identificare l'\term{Utente} tramite le proprie credenziali Google, evitando la creazione di nuovi account dedicati. \\
 \hline
 \rowcolor{gray!20}
-\centering \textbf{LLM} & Modello di Intelligenza Artificiale esterno che riceve i messaggi dell'\term{Utente} e il contesto della conversazione per generare risposte coerenti e simulare un'interazione umana nelle funzionalità di supporto. \\
+\centering \textbf{Google Maps} & Servizio di mappatura esterno invocato dal sistema per mostrare la posizione precisa dei luoghi sicuri e calcolare i percorsi per raggiungerli. \\
 \hline
 \rowcolor{white}
-\centering \textbf{Google Maps} & Servizio di mappatura esterno invocato dal sistema per mostrare la posizione precisa dei luoghi sicuri e calcolare i percorsi per raggiungerli. \\
+\centering \textbf{LLM} & Modello di Intelligenza Artificiale esterno che riceve i messaggi dell'\term{Utente} e il contesto della conversazione per generare risposte coerenti e simulare un'interazione umana nelle funzionalità di supporto. \\
 \hline
 
 \caption{Tabella di spiegazione degli attori} \label{tab:attori} \\
@@ -1355,7 +1355,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Trigger:} L'attore vuole definire quanto tempo ha per rispondere alla mail di controllo prima che parta l'allarme
 \end{itemize}
 
-\subsubsection{UC-17 - Modifica titolo mail di avviso} \label{sec:UC-17}
+\subsubsection{UC-17 - Modifica mail di avviso} \label{sec:UC-17}
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{use_case/UC-17-dmswitch.png}
@@ -1372,24 +1372,23 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item Il nuovo oggetto della mail viene salvato nel sistema
+        \item Le preferenze dell'attore sono salvate nel sistema
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'attore seleziona il campo relativo al titolo della mail
-        \item L'attore modifica il testo che funge da oggetto della mail
-        \item L'attore salva le modifiche
+        \item L'attore modifica il titolo della mail \hyperref[sec:UC-17.1]{UC-17.1}
+        \item L'attore modifica il corpo della mail \hyperref[sec:UC-17.2]{UC-17.2}
+        \item L'attore seleziona la voce di salvataggio delle modifiche per la mail di avviso
     \end{itemize}
-    \item \textbf{Trigger:} L'attore vuole personalizzare il titolo della mail di avviso
+    \item \textbf{Inclusioni:}
+    \begin{itemize}
+        \item \hyperref[sec:UC-17.1]{UC-17.1}
+        \item \hyperref[sec:UC-17.2]{UC-17.2}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole personalizzare la mail di avviso che riceverà in caso di inutilizzo prolungato dell'applicazione
 \end{itemize}
 
-\subsubsection{UC-18 - Modifica corpo mail di avviso} \label{sec:UC-18}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-18-dmswitch.png}
-    \caption{Diagramma del caso d'uso UC-18}
-    \label{fig:UC-18}
-\end{figure}
+\subsubsection{UC-17.1 - Modifica titolo mail di avviso} \label{sec:UC-17.1}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
@@ -1400,13 +1399,11 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item Il nuovo corpo del messaggio viene salvato nel sistema
+        \item La modifica del titolo della mail di avviso viene salvata dal sistema
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'attore seleziona il campo relativo al corpo della mail
-        \item L'attore modifica il corpo della mail
-        \item L'attore salva le modifiche
+        \item L'attore inserisce il titolo della mail di avviso
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole personalizzare il titolo della mail di avviso che riceverà in caso di inutilizzo prolungato dell'applicazione
 \end{itemize}
@@ -2376,8 +2373,6 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Trigger:} L'attore accede al diario fittizio
 \end{itemize}
-
-
 
 % ===== UC-S: SICUREZZA - GUARDIANO SILENZIOSO  ======
 
