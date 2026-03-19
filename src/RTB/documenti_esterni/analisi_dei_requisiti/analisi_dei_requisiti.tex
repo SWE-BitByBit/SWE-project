@@ -2772,6 +2772,93 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Trigger:} L'attore seleziona il link di una community per visualizzarne il contenuto
 \end{itemize}
 
+\subsubsection{UC-61 - Visualizzazione lista leggi} \label{sec:UC-61}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{use_case/UC-61-coraggio.png}
+    \caption{Diagramma del caso d'uso UC-61}
+    \label{fig:UC-61}
+\end{figure}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato la sezione informativa sulle normative vigenti
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza l'elenco delle leggi e dei diritti pertinenti
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema recupera l'elenco delle normative dal database
+        \item Il sistema visualizza le voci della lista delle leggi $\rightarrow$ \ref{subsec:UC-61.1}
+        \item L'attore può scorrere la lista per cercare l'argomento di interesse
+    \end{itemize}
+    \item \textbf{Inclusioni:} 
+    \begin{itemize}
+        \item \hyperref[subsec:UC-61.1]{UC-61.1}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole informarsi sui propri diritti legali
+\end{itemize}
+
+\subsubsection{UC-61.1 - Visualizzazione singola legge nella lista} \label{subsec:UC-61.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item Il sistema sta mostrando la lista delle leggi
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza il titolo
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema mostra il titolo della legge
+        \item L'attore può selezionare una legge per aprirne i dettagli
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore visualizza la lista delle leggi
+\end{itemize}
+
+\subsubsection{UC-62 - Visualizzazione dettagli legge} \label{sec:UC-62}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{use_case/UC-62-coraggio.png}
+    \caption{Diagramma del caso d'uso UC-62}
+    \label{fig:UC-62}
+\end{figure}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore visualizza la lista delle leggi
+        \item L'attore seleziona una legge dalla lista
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza interamente i dettagli della legge
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore seleziona una normativa specifica dalla lista
+        \item Il sistema recupera il contenuto dettagliato della legge
+        \item Il sistema presenta la schermata di dettaglio con il testo esplicativo completo
+    \end{itemize}
+    \item \textbf{Scenario secondario:} 
+    \begin{itemize}
+         \item Errore nel caricamento dei dati $\rightarrow$ \ref{subsec:UC-5}
+    \end{itemize}
+    \item \textbf{Estensioni:}
+    \begin{itemize}
+     \item \hyperref[subsec:UC-5]{UC-5}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole approfondire il contenuto di una legge
+\end{itemize}
+
 \subsubsection{UC-63 - Visualizzazione lista contatti d'emergenza} \label{sec:UC-63}
 \begin{tcolorbox}[colback=gray!10,colframe=gray!50,title=Nota]
 {\small Il caso d'uso \hyperref[sec:UC-63]{UC-63} include il caso d'uso \hyperref[subsec:UC-63.1]{UC-63.1}, si mostrano anche ulteriori casi d'uso correlati (\hyperref[subsec:UC-63.1.1]{UC-63.1.1} e \hyperref[subsec:UC-63.1.2]{UC-63.1.2}), la cui descrizione dettagliata è riportata nelle sezioni successive del documento.}
@@ -2894,115 +2981,6 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item Il sistema compila il numero sul dispositivo dell'attore
     \end{itemize}
     \item \textbf{Trigger:} L'attore seleziona il pulsante di chiamata di un contatto
-\end{itemize}
-
-\subsubsection{UC-49 - Visualizzazione lista leggi} \label{sec:UC-49}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-49-coraggio.png}
-    \caption{Diagramma del caso d'uso UC-49}
-    \label{fig:UC-49}
-\end{figure}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item L'attore ha selezionato la sezione informativa sulle normative vigenti
-    \end{itemize}
-    \item \textbf{Post-condizioni:}
-    \begin{itemize}
-        \item L'attore visualizza l'elenco delle leggi e dei diritti pertinenti
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item Il sistema recupera l'elenco delle normative dal database
-        \item Il sistema visualizza le voci della lista delle leggi $\rightarrow$ \ref{subsec:UC-49.1}
-        \item L'attore può scorrere la lista per cercare l'argomento di interesse
-    \end{itemize}
-    \item \textbf{Inclusioni:} 
-    \begin{itemize}
-        \item \hyperref[subsec:UC-49.1]{UC-49.1}
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore vuole informarsi sui propri diritti legali
-\end{itemize}
-
-\subsubsection{UC-49.1 - Visualizzazione singola legge nella lista} \label{subsec:UC-49.1}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
-    \item \textbf{Pre-condizioni:} 
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item Il sistema sta mostrando la lista delle leggi
-    \end{itemize}
-    \item \textbf{Post-condizioni:}
-    \begin{itemize}
-        \item L'attore visualizza il titolo
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item Il sistema mostra il titolo della legge
-        \item L'attore può selezionare una legge per aprirne i dettagli
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore visualizza la lista delle leggi
-\end{itemize}
-
-\subsubsection{UC-50 - Visualizzazione dettagli legge} \label{sec:UC-50}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-50-coraggio.png}
-    \caption{Diagramma del caso d'uso UC-50}
-    \label{fig:UC-50}
-\end{figure}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item L'attore visualizza la lista delle leggi
-        \item L'attore seleziona una legge dalla lista
-    \end{itemize}
-    \item \textbf{Post-condizioni:}
-    \begin{itemize}
-        \item L'attore visualizza interamente i dettagli della legge
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item L'attore seleziona una normativa specifica dalla lista
-        \item Il sistema recupera il contenuto dettagliato della legge
-        \item Il sistema presenta la schermata di dettaglio con il testo esplicativo completo
-    \end{itemize}
-    \item \textbf{Scenario secondario:} 
-    \begin{itemize}
-         \item Errore nel caricamento del contenuto della legge $\rightarrow$ \ref{subsec:UC-51}
-    \end{itemize}
-    \item \textbf{Estensioni:}
-    \begin{itemize}
-     \item \hyperref[subsec:UC-51]{UC-51}
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore vuole approfondire il contenuto di una legge
-\end{itemize}
-
-\subsubsection{UC-51 - Errore caricamento normativa} \label{subsec:UC-51}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item L'attore sta tentando di visualizzare i dettagli di una legge
-        \item Si \term{Verifica} un problema tecnico (timeout server, assenza rete)
-    \end{itemize}
-    \item \textbf{Post-condizioni:}
-    \begin{itemize}
-        \item Il sistema notifica l'errore all'attore
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item Il sistema rileva il fallimento della richiesta dati
-        \item Il sistema mostra un messaggio di errore esplicativo all'\term{Utente}
-        \item Il sistema permette di ricaricare la pagina o tornare indietro
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore tenta di visualizzare una legge ma il caricamento fallisce
 \end{itemize}
 
 \subsubsection{UC-52 - Visualizzazione lista materiale informativo} \label{sec:UC-52}
