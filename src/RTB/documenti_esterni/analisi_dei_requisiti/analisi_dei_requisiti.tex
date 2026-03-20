@@ -2815,12 +2815,12 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
 
 % ===== UC-S: SICUREZZA - GUARDIANO SILENZIOSO  ======
 
-\subsubsection{UC-33 - Invio messaggio SOS} \label{sec:UC-33}
+\subsubsection{UC-44 - Invio messaggio SOS} \label{sec:UC-44}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-33-guardiano.png}
-    \caption{Diagramma del caso d'uso UC-33}
+    \includegraphics[width=1\textwidth]{use_case/UC-44-47-guardiano.png}
+    \caption{Diagramma del caso d'uso UC-44}
     \label{fig:UC-33}
 \end{figure}
 
@@ -2843,18 +2843,18 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenari secondari:} 
     \begin{itemize}
-        \item Il sistema non è in grado di connettersi a internet. $\rightarrow$ \ref{sec:UC-33.1}
-        \item Il sistema non ha memorizzato nessun contatto fidato. $\rightarrow$ \ref{sec:UC-33.2}
+        \item Il sistema non è in grado di connettersi a internet. $\rightarrow$ \hyperref[sec:UC-45]{UC-45}
+        \item Il sistema non ha memorizzato nessun contatto fidato. $\rightarrow$ \hyperref[sec:UC-46]{UC-46}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \hyperref[sec:UC-33.1]{UC-33.1}
-        \item \hyperref[sec:UC-33.2]{UC-33.2}
+        \item \hyperref[sec:UC-45]{UC-45}
+        \item \hyperref[sec:UC-46]{UC-46}
     \end{itemize}
     \item \textbf{Trigger:} L'attore interagisce con l'opzione di invio del messaggio SOS.
 \end{itemize}
 
-\subsubsection{UC-33.1 - Assenza rete Internet} \label{sec:UC-33.1}
+\subsubsection{UC-45 - Assenza rete Internet SOS} \label{sec:UC-45}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:} 
@@ -2873,16 +2873,16 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \begin{itemize}
         \item Il sistema ha rilevato l'assenza di connessione.
         \item Il sistema mostra un messaggio di errore.
-        \item Il sistema dà la possibilità all'attore di inviare un segnale acustico $\rightarrow$ \ref{sec:UC-34}
+        \item Il sistema dà la possibilità all'attore di inviare un segnale acustico $\rightarrow$ \hyperref[sec:UC-47]{UC-47}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \hyperref[sec:UC-34]{UC-34}
+        \item \hyperref[sec:UC-47]{UC-47}
     \end{itemize}
     \item \textbf{Trigger:} L'attore ha cliccato l'elemento per inviare un messaggio di SOS ma il sistema rileva l'assenza di connessione internet.
 \end{itemize}
 
-\subsubsection{UC-33.2 - Mancanza di contatti fidati} \label{sec:UC-33.2}
+\subsubsection{UC-46 - Mancanza di contatti fidati} \label{sec:UC-46}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:}
@@ -2900,16 +2900,16 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \begin{itemize}
         \item Il sistema rileva che la lista dei contatti fidati è vuota
         \item Il sistema notifica L'attore con un messaggio di errore
-        \item Il sistema dà la possibilità all'attore di inviare un segnale acustico $\rightarrow$ \ref{sec:UC-34}
+        \item Il sistema dà la possibilità all'attore di inviare un segnale acustico $\rightarrow$  \hyperref[sec:UC-47]{UC-47}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \hyperref[sec:UC-34]{UC-34}
+        \item  \hyperref[sec:UC-47]{UC-47}
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole mandare un messaggio di SOS ai contatti fidati
 \end{itemize}
 
-\subsubsection{UC-34 - Invio segnale acustico} \label{sec:UC-34}
+\subsubsection{UC-47 - Invio segnale acustico} \label{sec:UC-47}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:}
@@ -2932,16 +2932,6 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
 \end{itemize}
 
 % ========================== UC-I: I - DETECTIVE DELLE RELAZIONI  ==============================
-
-%La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguardanti la funzionalità Detective delle Relazioni e Lo Specchio Intelligente.
-
-% Diagramma UC-IGenerico rimosso - file non disponibile
-% \begin{figure}[H] 
-%     \centering
-%     \includegraphics[width=0.9\textwidth]{../../../resources/UC-IGenerico.png}
-%     \caption{Diagramma dei casi d'uso UC-I}
-%     \label{fig:UC-IGenerico}
-% \end{figure}
 
 
 \subsubsection{UC-48 - Consultazione chatbot} \label{sec:UC-48}
