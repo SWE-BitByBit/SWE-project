@@ -2833,7 +2833,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item Il sistema ha preso in carico la richiesta di invio del messaggio SOS.
+        \item Il sistema ha inviato il messaggio di SOS ai contatti fidati dell'utente.
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
@@ -2844,7 +2844,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Scenari secondari:} 
     \begin{itemize}
         \item Il sistema non è in grado di connettersi a internet. $\rightarrow$ \hyperref[sec:UC-45]{UC-45}
-        \item Il sistema non ha memorizzato nessun contatto fidato. $\rightarrow$ \hyperref[sec:UC-46]{UC-46}
+        \item L'utente non ha inserito nessun contatto fidato nella rete dei contatti fidati. $\rightarrow$ \hyperref[sec:UC-46]{UC-46}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
@@ -2860,8 +2860,8 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo.
-        \item Il sistema non ha accesso alla connessione internet.
-	    \item È in corso la richiesta di invio del messaggio SOS.
+	    \item L'attore ha richiesto l'invio del messaggio di SOS.
+	    \item Il sistema non ha accesso alla connessione internet.
     \end{itemize}	
 
     \item \textbf{Post-condizioni:}
@@ -2888,7 +2888,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo.
-	    \item È in corso la richiesta di invio del messaggio SOS.
+	    \item L'attore ha richiesto l'invio del messaggio di SOS.
 	    \item La lista dei contatti fidati è vuota.
     \end{itemize}	
     \item \textbf{Post-condizioni:} 
@@ -2899,7 +2899,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item Il sistema rileva che la lista dei contatti fidati è vuota
-        \item Il sistema notifica L'attore con un messaggio di errore
+        \item Il sistema notifica l'attore con un messaggio di errore
         \item Il sistema dà la possibilità all'attore di inviare un segnale acustico $\rightarrow$  \hyperref[sec:UC-47]{UC-47}
     \end{itemize}
     \item \textbf{Estensioni:}
@@ -2915,7 +2915,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo.
-	    \item È in corso la richiesta di invio del messaggio SOS.
+	    \item L'attore ha richiesto l'invio del messaggio di SOS.
 	    \item Si è verificato un errore che ha impedito l'invio delle mail ai contatti fidati.
         \item L'attore ha selezionato l'opzione di invio del segnale acustico.
     \end{itemize}	
@@ -2928,7 +2928,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item L'attore seleziona l'opzione per inviare il segnale acustico.
         \item Il sistema invia il segnale acustico indipendente dalle impostazioni di volume del dispositivo.
     \end{itemize}
-    \item \textbf{Trigger:} L'attore seleziona l'opzione per inviare il segnale acustico.
+    \item \textbf{Trigger:} L'attore vuole avviare il segnale acustico data l'impossibilità di inviare il messaggio di SOS.
 \end{itemize}
 
 % ========================== UC-I: I - DETECTIVE DELLE RELAZIONI  ==============================
@@ -3111,6 +3111,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item Il sistema rileva un errore nel cambio del contesto
         \item Il sistema mostra un messaggio di errore
         \item Il sistema mantiene il contesto precedente
+        \item Il sistema permette all'attore di ritentare il cambio di contesto
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole cambiare il contesto del chatbot
 \end{itemize}
@@ -3159,12 +3160,11 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
-        \item La chat selezionata e i relativi dati vengono rimossi dal sistema
+        \item La chat selezionata e i relativi dati vengono rimossi dal sistema e non sono più visibili
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'attore attiva la modalità di gestione/modifica della cronologia
-        \item L'attore seleziona la chat che desidera rimuovere
+        \item L'attore seleziona la voce apposita per eliminare una chat dalla cronologia delle chat
         \item L'attore conferma l'intenzione di eliminare la chat $\rightarrow$ \hyperref[subsec:UC-55.1]{UC-55.1}
         \item Il sistema elimina la chat e aggiorna la lista della cronologia
     \end{itemize}
@@ -3197,8 +3197,8 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
 
 \subsubsection{UC-56 - Visualizzazione contenuto chat} \label{subsec:UC-56}
 \begin{tcolorbox}[colback=gray!10,colframe=gray!50,title=Nota]
-{\small Il caso d'uso \hyperref[subsec:UC-56]{UC-56} include il caso d'uso \hyperref[subsec:UC-56.1]{UC-56.1} e viene esteso da \hyperref[subsec:UC-56.2]{UC-56.2}.
-Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\hyperref[subsec:UC-56.1.1]{UC-56.1.1} e \hyperref[subsec:UC-56.1.2]{UC-56.1.2}), la cui descrizione dettagliata è riportata nelle sezioni successive del documento.}
+{\small Il seguente grafico rappresenta il caso d'uso \hyperref[subsec:UC-56]{UC-56} che include diversi casi d'uso quali \hyperref[subsec:UC-56.1]{UC-56.1}, \hyperref[subsec:UC-56.1.1]{UC-56.1.1} e \hyperref[subsec:UC-56.1.2]{UC-56.1.2} la cui descrizione dettagliata è riportata nelle sezioni successive del documento..
+Inoltre mostra un caso d'uso d'errore \hyperref[sec:UC-5]{UC-5} la quale descrizione è situata precedentemente nel documento. }
 \end{tcolorbox}
 \begin{figure}[H]
     \centering
@@ -3224,7 +3224,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-        \item Errore nel caricamento del contenuto della chat $\rightarrow$ \hyperref[sec:UC-5]{UC-5}
+        \item Si verifica un errore nel caricamento del contenuto della chat $\rightarrow$ \hyperref[sec:UC-5]{UC-5}
     \end{itemize}
     \item \textbf{Inclusioni:} 
     \begin{itemize}
@@ -3593,7 +3593,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-         \item Errore nel caricamento dei dati $\rightarrow$ \hyperref[sec:UC-5]{UC-5}
+         \item Si verifica un errore nel caricamento dei dati dal database $\rightarrow$ \hyperref[sec:UC-5]{UC-5}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
@@ -3702,7 +3702,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
 \subsubsection{UC-63 - Composizione automatica numero contatto} \label{sec:UC-63}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-64-coraggio.png}
+    \includegraphics[width=1\textwidth]{use_case/UC-63-coraggio.png}
     \caption{Diagramma del caso d'uso UC-63}
     \label{fig:UC-63}
 \end{figure}
@@ -3729,9 +3729,9 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
 \subsubsection{UC-64 - Visualizzazione lista materiale informativo} \label{sec:UC-64}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-65-coraggio.png}
+    \includegraphics[width=1\textwidth]{use_case/UC-64-coraggio.png}
     \caption{Diagramma del caso d'uso UC-64}
-    \label{fig:UC-65}
+    \label{fig:UC-64}
 \end{figure}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
@@ -3751,9 +3751,17 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item L'attore può visualizzare singolarmente ogni materiale nella lista $\rightarrow$ \hyperref[subsec:UC-64.1]{UC-64.1}
         \item L'attore può scorrere la lista per trovare il contenuto di interesse
     \end{itemize}
+    \item \textbf{Scenario secondario:} 
+    \begin{itemize}
+        \item Si verifica un errore nel caricamento dei dati dal database $\rightarrow$ \hyperref[sec:UC-5]{UC-5}
+    \end{itemize}
     \item \textbf{Inclusioni:}
      \begin{itemize}
          \item \hyperref[subsec:UC-64.1]{UC-64.1}
+     \end{itemize}
+     \item \textbf{Estensioni:}
+     \begin{itemize}
+         \item \hyperref[sec:UC-5]{UC-5}
      \end{itemize}
     \item \textbf{Trigger:} L'attore vuole consultare risorse educative o di supporto
 \end{itemize}
@@ -3781,7 +3789,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
 \subsubsection{UC-65 - Visualizzazione dettagli materiale informativo} \label{sec:UC-65}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-66-coraggio.png}
+    \includegraphics[width=1\textwidth]{use_case/UC-65-coraggio.png}
     \caption{Diagramma del caso d'uso UC-65}
     \label{fig:UC-65}
 \end{figure}
@@ -3816,8 +3824,8 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
 \subsubsection{UC-66 - Visualizzazione mappa} \label{sec:UC-66}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-67-68-coraggio.png}
-    \caption{Diagramma del caso d'uso UC-66}
+    \includegraphics[width=1\textwidth]{use_case/UC-66-67-coraggio.png}
+    \caption{Diagramma dei casi d'uso UC-66 e UC-67}
     \label{fig:UC-66}
 \end{figure}
 \begin{itemize}
