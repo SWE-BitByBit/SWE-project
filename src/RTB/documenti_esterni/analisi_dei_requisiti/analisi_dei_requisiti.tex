@@ -2261,7 +2261,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
 \end{figure}
 
 \begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Attore secondario:} LLM
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
@@ -2274,7 +2274,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'attore inserisce da tastiera il messaggio nella barra apposita
+        \item L'attore inserisce il messaggio nella sezione apposita
         \item L'attore invia il messaggio al chatbot impostato nel contesto scelto
         \item Il chatbot analizza il messaggio secondo i prompt impostati dal contesto
         \item Il chatbot analizza il messaggio secondo la cronologia dei messaggi
@@ -2293,12 +2293,12 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item \hyperref[sec:UC-58]{UC-58}
         \item \hyperref[sec:UC-50]{UC-50}
     \end{itemize}
-    \item \textbf{Trigger:} L'\term{Utente} vuole consultarsi con il chatbot
+    \item \textbf{Trigger:} L'attore vuole consultarsi con il chatbot
 \end{itemize}
 
 \subsubsection{UC-49 - Interruzione risposta} \label{sec:UC-49}
 \begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
@@ -2321,7 +2321,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
 
 \subsubsection{UC-58 - Mancanza di connessione} \label{sec:UC-58}
 \begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -2334,12 +2334,11 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item Il sistema ha rilevato che non c’è connessione.
+        \item Il sistema ha rilevato che non c’è connessione
         \item Il sistema notifica l'attore della mancanza di connessione
-        \item L'attore può riprovare
-        \item L'attore può scrivere un nuovo messaggio
-    \end{itemize}
-    \item \textbf{Trigger:} L'\term{Utente} vuole consultarsi con il chatbot ma manca la connessione internet.
+        \item L'attore può ripetere l'invio del messaggio o scriverne uno nuovo
+       \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole consultarsi con il chatbot ma manca la connessione internet.
 \end{itemize}
 
 \subsubsection{UC-50 - Errore di lettura del messaggio} \label{sec:UC-50}
@@ -2348,21 +2347,19 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-	    \item L’\term{Utente} ha mandato un messaggio
+	    \item L'attore ha mandato un messaggio
     \end{itemize}	
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item L’\term{Utente} è notificato dell'errore
+        \item L'attore è notificato dell'errore
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item Il sistema rileva un errore nella lettura del messaggio inviato
-        \item Il sistema notifica l'\term{Utente} dell'errore
-        \item L'\term{Utente} può mandare un nuovo messaggio
-        \item L'\term{Utente} può chiedere di riprovare a leggere il messaggio \ref{sec:UC-49}
-	    \item Il sistema riceve il nuovo messaggio modificato.
+        \item Il sistema rileva che il messaggio inviato non è stato letto correttamente dal chatbot
+        \item Il sistema notifica l'attore dell'errore
+        \item L'attore può mandare un nuovo messaggio \ref{sec:UC-48}
     \end{itemize}
-    \item \textbf{Trigger:} L'\term{Utente} vuole consultarsi con il chatbot ma il sistema non è riuscito a leggere il messaggio.
+    \item \textbf{Trigger:} L'attore vuole consultarsi con il chatbot ma il sistema non è riuscito a leggere il messaggio.
 \end{itemize}
 
 \subsubsection{UC-51 - Switch al "Detective delle Relazioni"} \label{sec:UC-51}
@@ -2373,7 +2370,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \label{fig:UC-36}
 \end{figure}
 \begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo.
@@ -2397,7 +2394,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \begin{itemize}
         \item \hyperref[sec:UC-53]{UC-53}
     \end{itemize}
-    \item \textbf{Trigger:} L’\term{Utente} ha selezionato la voce per il cambio del contesto.
+    \item \textbf{Trigger:} L’attore ha selezionato la voce per il cambio del contesto.
 \end{itemize}
 
 \subsubsection{UC-52 - Switch a "Specchio Intelligente"} \label{sec:UC-52}
@@ -2408,7 +2405,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \label{fig:UC-52}
 \end{figure}
 \begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo.
@@ -2432,12 +2429,12 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \begin{itemize}
         \item \hyperref[sec:UC-53]{UC-53}
     \end{itemize}
-    \item \textbf{Trigger:} L’\term{Utente} ha selezionato la voce per il cambio del contesto.
+    \item \textbf{Trigger:} L’attore ha selezionato la voce per il cambio del contesto.
 \end{itemize}
 
 \subsubsection{UC-53 - Errore switch contesto} \label{sec:UC-53}
 \begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -2455,7 +2452,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item Il sistema mostra un messaggio di errore
         \item Il sistema mantiene il contesto precedente
     \end{itemize}
-    \item \textbf{Trigger:} L'attore richiede il cambio di contesto ma si \term{Verifica} un errore tecnico
+    \item \textbf{Trigger:} L'attore richiede il cambio di contesto ma si \ignoreglossary{verifica} un errore tecnico
 
 \end{itemize}
 
@@ -2471,7 +2468,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \label{fig:UC-56}
 \end{figure}
 \begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -2488,7 +2485,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-        \item Errore nel caricamento del contenuto della chat $\rightarrow$ \ref{subsec:UC-5}
+        \item Errore nel caricamento del contenuto della chat $\rightarrow$ \ref{sec:UC-5}
     \end{itemize}
     \item \textbf{Inclusioni:} 
     \begin{itemize}
@@ -2496,14 +2493,14 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Estensioni:} 
     \begin{itemize}
-        \item \hyperref[subsec:UC-5]{UC-5}
+        \item \hyperref[sec:UC-5]{UC-5}
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole visualizzare il contenuto di una chat specifica
 \end{itemize}
 
 \subsubsection{UC-56.1 - Visualizzazione lista messaggi} \label{subsec:UC-56.1}
 \begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
@@ -2516,8 +2513,8 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item Il sistema recupera i messaggi dal database
-        \item Per ogni messaggio presente, il sistema ne identifica la tipologia (\term{Utente} o chatbot)
-        \item Il sistema visualizza i messaggi dell'\term{Utente} $\rightarrow$ \ref{subsec:UC-56.1.1}
+        \item Per ogni messaggio presente, il sistema ne identifica la tipologia (attore o chatbot)
+        \item Il sistema visualizza i messaggi dell'attore $\rightarrow$ \ref{subsec:UC-56.1.1}
         \item Il sistema visualizza i messaggi del chatbot $\rightarrow$ \ref{subsec:UC-56.1.2}
         \item L'attore può scorrere tra i messaggi
     \end{itemize}
@@ -2531,7 +2528,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
 
 \subsubsection{UC-56.1.1 - Visualizzazione messaggio \ignoreglossary{Utente}} \label{subsec:UC-56.1.1}
 \begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
@@ -2550,7 +2547,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
 
 \subsubsection{UC-56.1.2 - Visualizzazione messaggio chatbot} \label{subsec:UC-56.1.2}
 \begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
@@ -2575,7 +2572,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \label{fig:UC-54}
 \end{figure}
 \begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -2602,7 +2599,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
 
 \subsubsection{UC-55 - Eliminazione chat} \label{subsec:UC-55}
 \begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -2629,7 +2626,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
 
 \subsubsection{UC-55.1 - Conferma eliminazione chat} \label{subsec:UC-55.1}
 \begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -2655,7 +2652,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \label{fig:UC-57}
 \end{figure}
 \begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -2669,7 +2666,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \begin{itemize}
         \item Il sistema recupera tutte le chat memorizzate
         \item Il sistema organizza le chat secondo ordine cronologico
-        \item Il sistema visualizza la lista delle chat con una preview del primo messaggio inviato dentro la chat
+        \item Il sistema visualizza la lista delle chat con un titolo identificativo della chat
         \item L'attore può visualizzare una singola chat dalla lista $\rightarrow$ \ref{subsec:UC-57.1}
     \end{itemize}
     \item \textbf{Inclusioni:}
@@ -2681,7 +2678,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
 
 \subsubsection{UC-57.1 - Visualizzazione singola chat della cronologia} \label{subsec:UC-57.1}
 \begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -2695,7 +2692,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item Il sistema recupera le informazioni della chat da visualizzare
-        \item Il sistema mostra la preview del primo messaggio della chat nella lista $\rightarrow$ \ref{subsec:UC-57.1.1}
+        \item Il sistema mostra il titolo della chat nella lista $\rightarrow$ \ref{subsec:UC-57.1.1}
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
@@ -2705,9 +2702,9 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
 
 \end{itemize}
 
-\subsubsection{UC-57.1.1 - Visualizzazione preview inizio chat della cronologia} \label{subsec:UC-57.1.1}
+\subsubsection{UC-57.1.1 - Visualizzazione titolo chat della cronologia} \label{subsec:UC-57.1.1}
 \begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -2717,11 +2714,11 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
-        \item L'attore ha visualizzato la preview di una chat
+        \item L'attore ha visualizzato il titolo di una chat
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item Il sistema mostra la preview del primo messaggio della chat nella lista
+        \item Il sistema mostra il titolo della chat nella lista
     \end{itemize}
     \item \textbf{Trigger:} L'attore ha visualizzato una singola chat dalla cronologia delle chat
 \end{itemize}
@@ -2753,7 +2750,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-        \item Il sistema rileva un errore nel caricamento dei dati $\rightarrow$ \ref{subsec:UC-5}
+        \item Il sistema rileva un errore nel caricamento dei dati $\rightarrow$ \ref{sec:UC-5}
     \end{itemize}
     \item \textbf{Inclusioni:} 
     \begin{itemize}
@@ -2761,7 +2758,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Estensioni:} 
     \begin{itemize}
-        \item \hyperref[subsec:UC-5]{UC-5}
+        \item \hyperref[sec:UC-5]{UC-5}
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole vedere la lista delle community esistenti
 \end{itemize}
@@ -2889,7 +2886,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \begin{itemize}
         \item \hyperref[subsec:UC-61.1]{UC-61.1}
     \end{itemize}
-    \item \textbf{Trigger:} L'attore vuole informarsi sui propri diritti legali
+    \item \textbf{Trigger:} L'attore vuole visualizzare la lista delle leggi
 \end{itemize}
 
 \subsubsection{UC-61.1 - Visualizzazione singola legge nella lista} \label{subsec:UC-61.1}
@@ -2939,11 +2936,11 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-         \item Errore nel caricamento dei dati $\rightarrow$ \ref{subsec:UC-5}
+         \item Errore nel caricamento dei dati $\rightarrow$ \ref{sec:UC-5}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-     \item \hyperref[subsec:UC-5]{UC-5}
+     \item \hyperref[sec:UC-5]{UC-5}
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole approfondire il contenuto di una legge
 \end{itemize}
@@ -2979,7 +2976,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \begin{itemize}
         \item \hyperref[subsec:UC-63.1]{UC-63.1}
     \end{itemize}
-    \item \textbf{Trigger:} L'attore vuole consultare i numeri rapidi di emergenza
+    \item \textbf{Trigger:} L'attore vuole consultare i contatti di emergenza
 \end{itemize}
 
 \subsubsection{UC-63.1 - Visualizzazione singolo contatto ente d'emergenza} \label{subsec:UC-63.1}
@@ -3150,11 +3147,11 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-         \item Si \term{Verifica} un errore durante il recupero dei dati $\rightarrow$ \ref{subsec:UC-5}
+         \item Si \ignoreglossary{Verifica} un errore durante il recupero dei dati $\rightarrow$ \ref{sec:UC-5}
     \end{itemize}
     \item \textbf{Estensioni:}
      \begin{itemize}
-         \item \hyperref[subsec:UC-5]{UC-5}
+         \item \hyperref[sec:UC-5]{UC-5}
      \end{itemize}
     \item \textbf{Trigger:} L'attore vuole visualizzare i dettagli di una risorsa
 \end{itemize}
@@ -3208,7 +3205,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-         \item Si \term{Verifica} un errore nell'apertura dell'applicazione esterna $\rightarrow$ \ref{subsec:UC-69}
+         \item Si \ignoreglossary{Verifica} un errore nell'apertura dell'applicazione esterna $\rightarrow$ \ref{subsec:UC-69}
     \end{itemize}
     \item \textbf{Estensioni:}
      \begin{itemize}
@@ -3224,7 +3221,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \begin{itemize}
         \item Il sistema è attivo
         \item Il sistema tenta di aprire l'applicazione Google Maps
-        \item Si \term{Verifica} un problema nell'apertura
+        \item Si \ignoreglossary{Verifica} un problema nell'apertura
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
