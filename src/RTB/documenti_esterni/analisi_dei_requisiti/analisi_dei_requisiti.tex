@@ -2793,12 +2793,12 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
 
 % ===== UC-S: SICUREZZA - GUARDIANO SILENZIOSO  ======
 
-\subsubsection{UC-33 - Invio messaggio SOS} \label{sec:UC-33}
+\subsubsection{UC-44 - Invio messaggio SOS} \label{sec:UC-44}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-33-guardiano.png}
-    \caption{Diagramma del caso d'uso UC-33}
+    \includegraphics[width=1\textwidth]{use_case/UC-44-47-guardiano.png}
+    \caption{Diagramma del caso d'uso UC-44}
     \label{fig:UC-33}
 \end{figure}
 
@@ -2811,7 +2811,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item Il sistema ha preso in carico la richiesta di invio del messaggio SOS.
+        \item Il sistema ha inviato il messaggio di SOS ai contatti fidati dell'\term{Utente}.
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
@@ -2821,25 +2821,25 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenari secondari:} 
     \begin{itemize}
-        \item Il sistema non è in grado di connettersi a internet. $\rightarrow$ \ref{sec:UC-33.1}
-        \item Il sistema non ha memorizzato nessun contatto fidato. $\rightarrow$ \ref{sec:UC-33.2}
+        \item Il sistema non è in grado di connettersi a internet. $\rightarrow$ \hyperref[sec:UC-45]{UC-45}
+        \item L'\term{Utente} non ha inserito nessun contatto fidato nella rete dei contatti fidati. $\rightarrow$ \hyperref[sec:UC-46]{UC-46}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \hyperref[sec:UC-33.1]{UC-33.1}
-        \item \hyperref[sec:UC-33.2]{UC-33.2}
+        \item \hyperref[sec:UC-45]{UC-45}
+        \item \hyperref[sec:UC-46]{UC-46}
     \end{itemize}
     \item \textbf{Trigger:} L'attore interagisce con l'opzione di invio del messaggio SOS.
 \end{itemize}
 
-\subsubsection{UC-33.1 - Assenza rete Internet} \label{sec:UC-33.1}
+\subsubsection{UC-45 - Assenza rete Internet SOS} \label{sec:UC-45}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo.
-        \item Il sistema non ha accesso alla connessione internet.
-	    \item È in corso la richiesta di invio del messaggio SOS.
+	    \item L'attore ha richiesto l'invio del messaggio di SOS.
+	    \item Il sistema non ha accesso alla connessione internet.
     \end{itemize}	
 
     \item \textbf{Post-condizioni:}
@@ -2851,22 +2851,22 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \begin{itemize}
         \item Il sistema ha rilevato l'assenza di connessione.
         \item Il sistema mostra un messaggio di errore.
-        \item Il sistema dà la possibilità all'attore di inviare un segnale acustico $\rightarrow$ \ref{sec:UC-34}
+        \item Il sistema dà la possibilità all'attore di inviare un segnale acustico $\rightarrow$ \hyperref[sec:UC-47]{UC-47}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \hyperref[sec:UC-34]{UC-34}
+        \item \hyperref[sec:UC-47]{UC-47}
     \end{itemize}
     \item \textbf{Trigger:} L'attore ha cliccato l'elemento per inviare un messaggio di SOS ma il sistema rileva l'assenza di connessione internet.
 \end{itemize}
 
-\subsubsection{UC-33.2 - Mancanza di contatti fidati} \label{sec:UC-33.2}
+\subsubsection{UC-46 - Mancanza di contatti fidati} \label{sec:UC-46}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo.
-	    \item È in corso la richiesta di invio del messaggio SOS.
+	    \item L'attore ha richiesto l'invio del messaggio di SOS.
 	    \item La lista dei contatti fidati è vuota.
     \end{itemize}	
     \item \textbf{Post-condizioni:} 
@@ -2877,23 +2877,23 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item Il sistema rileva che la lista dei contatti fidati è vuota
-        \item Il sistema notifica L'attore con un messaggio di errore
-        \item Il sistema dà la possibilità all'attore di inviare un segnale acustico $\rightarrow$ \ref{sec:UC-34}
+        \item Il sistema notifica l'attore con un messaggio di errore
+        \item Il sistema dà la possibilità all'attore di inviare un segnale acustico $\rightarrow$  \hyperref[sec:UC-47]{UC-47}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \hyperref[sec:UC-34]{UC-34}
+        \item  \hyperref[sec:UC-47]{UC-47}
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole mandare un messaggio di SOS ai contatti fidati
 \end{itemize}
 
-\subsubsection{UC-34 - Invio segnale acustico} \label{sec:UC-34}
+\subsubsection{UC-47 - Invio segnale acustico} \label{sec:UC-47}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo.
-	    \item È in corso la richiesta di invio del messaggio SOS.
+	    \item L'attore ha richiesto l'invio del messaggio di SOS.
 	    \item Si è verificato un errore che ha impedito l'invio delle mail ai contatti fidati.
         \item L'attore ha selezionato l'opzione di invio del segnale acustico.
     \end{itemize}	
@@ -2906,33 +2906,23 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item L'attore seleziona l'opzione per inviare il segnale acustico.
         \item Il sistema invia il segnale acustico indipendente dalle impostazioni di volume del dispositivo.
     \end{itemize}
-    \item \textbf{Trigger:} L'attore seleziona l'opzione per inviare il segnale acustico.
+    \item \textbf{Trigger:} L'attore vuole avviare il segnale acustico data l'impossibilità di inviare il messaggio di SOS.
 \end{itemize}
 
 % ========================== UC-I: I - DETECTIVE DELLE RELAZIONI  ==============================
 
-%La seguente immagine rappresenta il diagramma UML di tutti i casi d'uso riguardanti la funzionalità Detective delle Relazioni e Lo Specchio Intelligente.
 
-% Diagramma UC-IGenerico rimosso - file non disponibile
-% \begin{figure}[H] 
-%     \centering
-%     \includegraphics[width=0.9\textwidth]{../../../resources/UC-IGenerico.png}
-%     \caption{Diagramma dei casi d'uso UC-I}
-%     \label{fig:UC-IGenerico}
-% \end{figure}
-
-
-\subsubsection{UC-35 - Consultazione chatbot} \label{sec:UC-35}
+\subsubsection{UC-48 - Consultazione chatbot} \label{sec:UC-48}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-35-detective.png}
-    \caption{Diagramma del caso d'uso UC-35}
-    \label{fig:UC-35}
+    \includegraphics[width=1\textwidth]{use_case/UC-48-detective.png}
+    \caption{Diagramma del caso d'uso UC-48}
+    \label{fig:UC-48}
 \end{figure}
 
 \begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Attore secondario:} LLM
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
@@ -2945,7 +2935,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'attore inserisce da tastiera il messaggio nella barra apposita
+        \item L'attore inserisce il messaggio nella sezione apposita
         \item L'attore invia il messaggio al chatbot impostato nel contesto scelto
         \item Il chatbot analizza il messaggio secondo i prompt impostati dal contesto
         \item Il chatbot analizza il messaggio secondo la cronologia dei messaggi
@@ -2954,22 +2944,20 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-        \item L'attore interrompe il \term{Processo} di analisi del messaggio dell'LLM \ref{sec:UC-35.1}
-        \item Il messaggio non riesce ad essere inviato causa mancanza di connessione \ref{sec:UC-35.2}
-        \item L'LLM riscontra un problema durante la lettura del messaggio \ref{sec:UC-35.3}
+        \item L'attore interrompe il \ignoreglossary{processo} di analisi del messaggio dell'LLM \hyperref[sec:UC-49]{UC-49}
+        \item Il messaggio non riesce ad essere inviato causa mancanza di connessione \hyperref[sec:UC-50]{UC-50}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-        \item \hyperref[sec:UC-35.1]{UC-35.1}
-        \item \hyperref[sec:UC-35.2]{UC-35.2}
-        \item \hyperref[sec:UC-35.3]{UC-35.3}
+        \item \hyperref[sec:UC-49]{UC-49}
+        \item \hyperref[sec:UC-50]{UC-50}
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole consultarsi con il chatbot
 \end{itemize}
 
-\subsubsection{UC-35.1 - Interruzione risposta} \label{sec:UC-35.1}
+\subsubsection{UC-49 - Interruzione risposta} \label{sec:UC-49}
 \begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
@@ -2990,9 +2978,9 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Trigger:} L'attore vuole interrompere la generazione della risposta dell'LLM
 \end{itemize}
 
-\subsubsection{UC-35.2 - Mancanza di connessione} \label{sec:UC-35.2}
+\subsubsection{UC-50 - Mancanza di connessione} \label{sec:UC-50}
 \begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -3001,50 +2989,26 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item Il sistema ha smesso di provare a leggere il messaggio
+        \item L'attore è notificato dell'errore
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item Il sistema ha rilevato che non c’è connessione.
+        \item Il sistema ha rilevato che non c'è connessione
         \item Il sistema notifica l'attore della mancanza di connessione
-        \item L'attore può riprovare
-        \item L'attore può scrivere un nuovo messaggio
-    \end{itemize}
+        \item L'attore può ripetere l'invio del messaggio o scriverne uno nuovo
+       \end{itemize}
     \item \textbf{Trigger:} L'attore vuole consultarsi con il chatbot ma manca la connessione internet.
 \end{itemize}
 
-\subsubsection{UC-35.3 - Errore di lettura del messaggio} \label{sec:UC-35.3}
-\begin{itemize}
-    \item \textbf{Attore principale:} LLM
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-	    \item L’\term{Utente} ha mandato un messaggio
-    \end{itemize}	
-    \item \textbf{Post-condizioni:}
-    \begin{itemize}
-        \item L’\term{Utente} è notificato dell'errore
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item Il sistema rileva un errore nella lettura del messaggio inviato
-        \item Il sistema notifica l'\term{Utente} dell'errore
-        \item L'attore può mandare un nuovo messaggio
-        \item L'attore può chiedere di riprovare a leggere il messaggio \ref{sec:UC-35.1}
-	    \item Il sistema riceve il nuovo messaggio modificato.
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore vuole consultarsi con il chatbot ma il sistema non è riuscito a leggere il messaggio.
-\end{itemize}
-
-\subsubsection{UC-36 - Switch al "Detective delle Relazioni"} \label{sec:UC-36}
+\subsubsection{UC-51 - Switch al "Detective delle Relazioni"} \label{sec:UC-51}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-36-detective.png}
-    \caption{Diagramma del caso d'uso UC-36}
-    \label{fig:UC-36}
+    \includegraphics[width=1\textwidth]{use_case/UC-51-detective.png}
+    \caption{Diagramma del caso d'uso UC-51}
+    \label{fig:UC-51}
 \end{figure}
 \begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo.
@@ -3062,24 +3026,24 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-        \item Errore nello switch di contesto \ref{sec:UC-38}
+        \item Errore nello switch di contesto \hyperref[sec:UC-53]{UC-53}
     \end{itemize}
     \item \textbf{Estensioni:} 
     \begin{itemize}
-        \item \hyperref[sec:UC-38]{UC-38}
+        \item \hyperref[sec:UC-53]{UC-53}
     \end{itemize}
-    \item \textbf{Trigger:} L’\term{Utente} ha selezionato la voce per il cambio del contesto.
+    \item \textbf{Trigger:} L'attore vuole cambiare il contesto del chatbot
 \end{itemize}
 
-\subsubsection{UC-37 - Switch a "Specchio Intelligente"} \label{sec:UC-37}
+\subsubsection{UC-52 - Switch a "Specchio Intelligente"} \label{sec:UC-52}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-37-detective.png}
-    \caption{Diagramma del caso d'uso UC-37}
-    \label{fig:UC-37}
+    \includegraphics[width=1\textwidth]{use_case/UC-52-detective.png}
+    \caption{Diagramma del caso d'uso UC-52}
+    \label{fig:UC-52}
 \end{figure}
 \begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo.
@@ -3097,18 +3061,18 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-        \item Errore nello switch di contesto \ref{sec:UC-38}
+        \item Errore nello switch di contesto \hyperref[sec:UC-53]{UC-53}
     \end{itemize}
     \item \textbf{Estensioni:} 
     \begin{itemize}
-        \item \hyperref[sec:UC-38]{UC-38}
+        \item \hyperref[sec:UC-53]{UC-53}
     \end{itemize}
-    \item \textbf{Trigger:} L’\term{Utente} ha selezionato la voce per il cambio del contesto.
+    \item \textbf{Trigger:} L'attore vuole cambiare il contesto del chatbot
 \end{itemize}
 
-\subsubsection{UC-38 - Errore switch contesto} \label{sec:UC-38}
+\subsubsection{UC-53 - Errore switch contesto} \label{sec:UC-53}
 \begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -3125,103 +3089,103 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item Il sistema rileva un errore nel cambio del contesto
         \item Il sistema mostra un messaggio di errore
         \item Il sistema mantiene il contesto precedente
+        \item Il sistema permette all'attore di ritentare il cambio di contesto
     \end{itemize}
-    \item \textbf{Trigger:} L'attore richiede il cambio di contesto ma si \term{Verifica} un errore tecnico
-
+    \item \textbf{Trigger:} L'attore vuole cambiare il contesto del chatbot
 \end{itemize}
 
-\subsubsection{UC-39 - Visualizzazione cronologia chat} \label{subsec:UC-39}
+\subsubsection{UC-54- Creazione nuova chat} \label{subsec:UC-54}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-39-detective.png}
-    \caption{Diagramma del caso d'uso UC-39}
-    \label{fig:UC-39}
+    \includegraphics[width=1\textwidth]{use_case/UC-54-55-detective.png}
+    \caption{Diagramma dei casi d'uso UC-54 e UC-55}
+    \label{fig:UC-54}
 \end{figure}
 \begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'attore ha selezionato la cronologia delle chat
+        \item L'attore si trova nella schermata principale
+        \item L'attore ha selezionato la voce per creare una nuova chat
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
-        \item Il sistema mostra l'elenco completo delle chat in cronologia
+        \item Una nuova sessione di chat viene creata
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item Il sistema recupera tutte le chat memorizzate
-        \item Il sistema organizza le chat secondo ordine cronologico
-        \item Il sistema visualizza la lista delle chat con una preview del primo messaggio inviato dentro la chat
-        \item L'attore può visualizzare una singola chat dalla lista $\rightarrow$ \ref{subsec:UC-39.1}
+        \item L'attore seleziona la voce per avviare una nuova conversazione con il chatbot
+        \item Il sistema inizializza un nuovo contesto di chat vuoto
+        \item Il sistema reindirizza l'attore alla schermata della chat
+        \item L'attore visualizza la schermata della chat vuota $\rightarrow$ \hyperref[subsec:UC-56]{UC-56}
     \end{itemize}
-    \item \textbf{Inclusioni:}
+    \item \textbf{Inclusioni:} 
     \begin{itemize}
-        \item \hyperref[subsec:UC-39.1]{UC-39.1}
+        \item \hyperref[subsec:UC-56]{UC-56}
     \end{itemize}
-    \item \textbf{Trigger:} L'attore ha selezionato la cronologia delle chat
+    \item \textbf{Trigger:} L'attore vuole iniziare una nuova conversazione con il chatbot
 \end{itemize}
 
-\subsubsection{UC-39.1 - Visualizzazione singola chat della lista} \label{subsec:UC-39.1}
+\subsubsection{UC-55 - Eliminazione chat} \label{subsec:UC-55}
 \begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'attore ha selezionato la cronologia delle chat
-        \item La cronologia delle chat è visibile
+        \item Esiste almeno una chat nella cronologia
+        \item L'attore sta visualizzando la cronologia
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
-        \item L'attore ha visualizzato una singola chat
+        \item La chat selezionata e i relativi dati vengono rimossi dal sistema e non sono più visibili
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item Il sistema recupera le informazioni della chat da visualizzare
-        \item Il sistema mostra la preview del primo messaggio della chat nella lista $\rightarrow$ \ref{subsec:UC-39.1.1}
+        \item L'attore seleziona la voce apposita per eliminare una chat dalla cronologia delle chat
+        \item L'attore conferma l'intenzione di eliminare la chat $\rightarrow$ \hyperref[subsec:UC-55.1]{UC-55.1}
+        \item Il sistema elimina la chat e aggiorna la lista della cronologia
     \end{itemize}
-    \item \textbf{Inclusioni:}
+    \item \textbf{Inclusioni:} 
     \begin{itemize}
-        \item \hyperref[subsec:UC-39.1.1]{UC-39.1.1}
+        \item \hyperref[subsec:UC-55.1]{UC-55.1}
     \end{itemize}
-    \item \textbf{Trigger:} L'attore ha selezionato una singola chat dalla cronologia
-
+    \item \textbf{Trigger:} L'attore vuole rimuovere una conversazione passata
 \end{itemize}
 
-\subsubsection{UC-39.1.1 - Visualizzazione preview inizio chat della lista} \label{subsec:UC-39.1.1}
+\subsubsection{UC-55.1 - Conferma eliminazione chat} \label{subsec:UC-55.1}
 \begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'attore ha selezionato la cronologia delle chat
-        \item La cronologia delle chat è visibile
-        \item Le chat sono caricate
+        \item L'attore ha richiesto l'eliminazione di una chat
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
-        \item L'attore ha visualizzato la preview di una chat
+        \item L'operazione di eliminazione viene confermata al sistema
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item Il sistema mostra la preview del primo messaggio della chat nella lista
+        \item Il sistema richiede una conferma esplicita per procedere con l'eliminazione
+        \item L'attore conferma l'operazione
     \end{itemize}
-    \item \textbf{Trigger:} L'attore ha visualizzato una singola chat dalla cronologia delle chat
+    \item \textbf{Trigger:} L'attore vuole confermare l'eliminazione della chat
 \end{itemize}
 
-\subsubsection{UC-40 - Visualizzazione contenuto chat} \label{subsec:UC-40}
+\subsubsection{UC-56 - Visualizzazione contenuto chat} \label{subsec:UC-56}
 \begin{tcolorbox}[colback=gray!10,colframe=gray!50,title=Nota]
-{\small Il caso d'uso \hyperref[subsec:UC-40]{UC-40} include il caso d'uso \hyperref[subsec:UC-40.1]{UC-40.1} e viene esteso da \hyperref[subsec:UC-40.2]{UC-40.2}.
-Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\hyperref[subsec:UC-40.1.1]{UC-40.1.1} e \hyperref[subsec:UC-40.1.2]{UC-40.1.2}), la cui descrizione dettagliata è riportata nelle sezioni successive del documento.}
+{\small Il seguente grafico rappresenta il caso d'uso \hyperref[subsec:UC-56]{UC-56} che include diversi casi d'uso quali \hyperref[subsec:UC-56.1]{UC-56.1}, \hyperref[subsec:UC-56.1.1]{UC-56.1.1} e \hyperref[subsec:UC-56.1.2]{UC-56.1.2} la cui descrizione dettagliata è riportata nelle sezioni successive del documento..
+Inoltre mostra un caso d'uso d'errore \hyperref[sec:UC-5]{UC-5} la quale descrizione è situata precedentemente nel documento. }
 \end{tcolorbox}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-40-detective.png}
-    \caption{Diagramma del caso d'uso UC-40}
-    \label{fig:UC-40}
+    \includegraphics[width=1\textwidth]{use_case/UC-56-detective.png}
+    \caption{Diagramma del caso d'uso UC-56}
+    \label{fig:UC-56}
 \end{figure}
 \begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -3234,26 +3198,26 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item Il sistema carica il contenuto della chat selezionata
-        \item Il sistema visualizza la lista dei messaggi scambiati tra attore e chatbot $\rightarrow$ \ref{subsec:UC-40.1}
+        \item Il sistema visualizza la lista dei messaggi scambiati tra attore e chatbot $\rightarrow$ \hyperref[subsec:UC-56.1]{UC-56.1}
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-        \item Errore nel caricamento del contenuto della chat $\rightarrow$ \ref{subsec:UC-40.2}
+        \item Si \term{Verifica} un errore nel caricamento del contenuto della chat $\rightarrow$ \hyperref[sec:UC-5]{UC-5}
     \end{itemize}
     \item \textbf{Inclusioni:} 
     \begin{itemize}
-        \item \hyperref[subsec:UC-40.1]{UC-40.1}
+        \item \hyperref[subsec:UC-56.1]{UC-56.1}
     \end{itemize}
     \item \textbf{Estensioni:} 
     \begin{itemize}
-        \item \hyperref[subsec:UC-40.2]{UC-40.2}
+        \item \hyperref[sec:UC-5]{UC-5}
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole visualizzare il contenuto di una chat specifica
 \end{itemize}
 
-\subsubsection{UC-40.1 - Visualizzazione lista messaggi} \label{subsec:UC-40.1}
+\subsubsection{UC-56.1 - Visualizzazione lista messaggi} \label{subsec:UC-56.1}
 \begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
@@ -3266,22 +3230,22 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item Il sistema recupera i messaggi dal database
-        \item Per ogni messaggio presente, il sistema ne identifica la tipologia (\term{Utente} o chatbot)
-        \item Il sistema visualizza i messaggi dell'\term{Utente} $\rightarrow$ \ref{subsec:UC-40.1.1}
-        \item Il sistema visualizza i messaggi del chatbot $\rightarrow$ \ref{subsec:UC-40.1.2}
+        \item Per ogni messaggio presente, il sistema ne identifica la tipologia (attore o chatbot)
+        \item Il sistema visualizza i messaggi dell'attore $\rightarrow$ \hyperref[subsec:UC-56.1.1]{UC-56.1.1}
+        \item Il sistema visualizza i messaggi del chatbot $\rightarrow$ \hyperref[subsec:UC-56.1.2]{UC-56.1.2}
         \item L'attore può scorrere tra i messaggi
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \hyperref[subsec:UC-40.1.1]{UC-40.1.1}
-        \item \hyperref[subsec:UC-40.1.2]{UC-40.1.2}
+        \item \hyperref[subsec:UC-56.1.1]{UC-56.1.1}
+        \item \hyperref[subsec:UC-56.1.2]{UC-56.1.2}
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole visualizzare la lista dei messaggi nella chat
 \end{itemize}
 
-\subsubsection{UC-40.1.1 - Visualizzazione messaggio \ignoreglossary{Utente}} \label{subsec:UC-40.1.1}
+\subsubsection{UC-56.1.1 - Visualizzazione messaggio \ignoreglossary{Utente}} \label{subsec:UC-56.1.1}
 \begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
@@ -3289,18 +3253,18 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item Il singolo messaggio inviato dall'\term{Utente} viene mostrato a schermo
+        \item Il singolo messaggio inviato dall'attore viene mostrato a schermo
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item Il sistema mostra il testo del messaggio inviato dall'\term{Utente} con la formattazione grafica allineata a destra
+        \item Il sistema mostra il testo del messaggio inviato dall'attore con la formattazione grafica allineata a destra
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole visualizzare la lista dei messaggi nella chat
 \end{itemize}
 
-\subsubsection{UC-40.1.2 - Visualizzazione messaggio chatbot} \label{subsec:UC-40.1.2}
+\subsubsection{UC-56.1.2 - Visualizzazione messaggio chatbot} \label{subsec:UC-56.1.2}
 \begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
@@ -3317,150 +3281,91 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Trigger:} L'attore vuole visualizzare la lista dei messaggi nella chat
 \end{itemize}
 
-\subsubsection{UC-40.2 - Errore caricamento chat} \label{subsec:UC-40.2}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item L'attore ha selezionato una chat
-        \item Si \ignoreglossary{verifica} un errore tecnico (assenza di rete, errore server, timeout) durante il recupero dei dati
-    \end{itemize}
-    \item \textbf{Post-condizioni:} 
-    \begin{itemize}
-        \item Il contenuto della chat non viene visualizzato
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item Il sistema tenta di recuperare il contenuto e la cronologia della chat
-        \item Il sistema rileva un fallimento nell'operazione di caricamento
-        \item Il sistema mostra un messaggio di errore
-        \item Il sistema propone all'attore di riprovare l'azione
-        \item L'attore visualizza la chat 
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore richiede la visualizzazione di una chat ma il caricamento fallisce
-
-\end{itemize}
-
-\subsubsection{UC-41 - Creazione nuova chat} \label{subsec:UC-41}
+\subsubsection{UC-57 - Visualizzazione cronologia chat} \label{subsec:UC-57}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-41-42-detective.png}
-    \caption{Diagramma dei casi d'uso UC-41 e UC-42}
-    \label{fig:UC-41-42}
+    \includegraphics[width=1\textwidth]{use_case/UC-57-detective.png}
+    \caption{Diagramma del caso d'uso UC-57}
+    \label{fig:UC-57}
 \end{figure}
 \begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'attore si trova nella schermata principale
-        \item L'attore ha selezionato la voce per creare una nuova chat
+        \item L'attore ha selezionato la cronologia delle chat
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
-        \item Una nuova sessione di chat viene creata
+        \item Il sistema mostra l'elenco completo delle chat in cronologia
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'attore seleziona la voce per avviare una nuova conversazione con il chatbot
-        \item Il sistema inizializza un nuovo contesto di chat vuoto
-        \item Il sistema reindirizza l'attore alla schermata della chat
-        \item L'attore visualizza la schermata della chat vuota $\rightarrow$ \ref{subsec:UC-40}
+        \item Il sistema recupera tutte le chat memorizzate
+        \item Il sistema visualizza la lista delle chat con un titolo identificativo della chat
+        \item L'attore può visualizzare una singola chat dalla lista $\rightarrow$ \hyperref[subsec:UC-57.1]{UC-57.1}
     \end{itemize}
-    \item \textbf{Inclusioni:} 
+    \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \hyperref[subsec:UC-40]{UC-40}
+        \item \hyperref[subsec:UC-57.1]{UC-57.1}
     \end{itemize}
-    \item \textbf{Trigger:} L'attore vuole iniziare una nuova conversazione con il chatbot
+    \item \textbf{Trigger:} L'attore vuole visualizzare la cronologia delle chat
 \end{itemize}
 
-\subsubsection{UC-42 - Eliminazione chat} \label{subsec:UC-42}
+\subsubsection{UC-57.1 - Visualizzazione singola chat della cronologia} \label{subsec:UC-57.1}
 \begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item Esiste almeno una chat nella cronologia
-        \item L'attore sta visualizzando la cronologia
+        \item La cronologia delle chat è visibile
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
-        \item La chat selezionata e i relativi dati vengono rimossi dal sistema
+        \item L'attore ha visualizzato una singola chat
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'attore attiva la modalità di gestione/modifica della cronologia
-        \item L'attore seleziona la chat che desidera rimuovere
-        \item L'attore conferma l'intenzione di eliminare la chat $\rightarrow$ \ref{subsec:UC-42.1}
-        \item Il sistema elimina la chat e aggiorna la lista della cronologia
+        \item Il sistema recupera le informazioni della chat da visualizzare
+        \item Il sistema mostra il titolo della chat nella lista $\rightarrow$ \hyperref[subsec:UC-57.1.1]{UC-57.1.1}
     \end{itemize}
-    \item \textbf{Inclusioni:} 
+    \item \textbf{Inclusioni:}
     \begin{itemize}
-        \item \hyperref[subsec:UC-42.1]{UC-42.1}
+        \item \hyperref[subsec:UC-57.1.1]{UC-57.1.1}
     \end{itemize}
-    \item \textbf{Trigger:} L'attore vuole rimuovere una conversazione passata
+    \item \textbf{Trigger:} L'attore vuole visualizzare una singola chat dalla cronologia
+
 \end{itemize}
 
-\subsubsection{UC-42.1 - Conferma eliminazione chat} \label{subsec:UC-42.1}
+\subsubsection{UC-57.1.1 - Visualizzazione titolo chat della cronologia} \label{subsec:UC-57.1.1}
 \begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'attore ha richiesto l'eliminazione di una chat
+        \item L'attore ha selezionato la cronologia delle chat
+        \item La cronologia delle chat è visibile
+        \item Le chat sono caricate
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
-        \item L'operazione di eliminazione viene confermata al sistema
+        \item L'attore ha visualizzato il titolo di una chat
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item Il sistema richiede una conferma esplicita per procedere con l'eliminazione
-        \item L'attore conferma l'operazione
+        \item Il sistema mostra il titolo della chat nella lista
     \end{itemize}
-    \item \textbf{Scenario secondario:}
-    \begin{itemize}
-        \item L'attore rifiuta la conferma dell'eliminazione della chat $\rightarrow$ \ref{subsec:UC-42.1.1}
-    \end{itemize}
-    \item \textbf{Estensioni:} 
-    \begin{itemize}
-        \item \hyperref[subsec:UC-42.1.1]{UC-42.1.1}
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore sceglie di confermare l'eliminazione della chat
-\end{itemize}
-
-\subsubsection{UC-42.1.1 - Rifiuto conferma eliminazione chat} \label{subsec:UC-42.1.1}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item L'attore ha selezionato l'opzione di cancellazione per una chat
-        \item Il sistema è in attesa di conferma
-    \end{itemize}
-    \item \textbf{Post-condizioni:}
-    \begin{itemize}
-        \item Il sistema riceve il rifiuto da parte dell'attore per rimuovere la chat
-        \item La chat non viene eliminata
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item L'attore rifiuta l'eliminazione della chat
-        \item Il sistema non rimuove la chat dalla cronologia
-        \item Il sistema chiude la richiesta di conferma e ritorna alla visualizzazione precedente
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore sceglie di non confermare l'eliminazione della chat
+    \item \textbf{Trigger:} L'attore vuole visualizzare il titolo di una chat dalla cronologia
 \end{itemize}
 
 % ========================== UC-G: Guide ==============================
 
-\subsubsection{UC-43 - Visualizzazione lista community} \label{sec:UC-43}
+\subsubsection{UC-58 - Visualizzazione lista community} \label{sec:UC-58}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-43-coraggio.png}
-    \caption{Diagramma del caso d'uso UC-43}
-    \label{fig:UC-43}
+    \includegraphics[width=1\textwidth]{use_case/UC-58-coraggio.png}
+    \caption{Diagramma del caso d'uso UC-58}
+    \label{fig:UC-58}
 \end{figure}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
@@ -3475,43 +3380,97 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item Il sistema recupera l'elenco delle community attive dal server
-        \item Il sistema visualizza la lista delle community $\rightarrow$ \ref{subsec:UC-43.1}
-        \item L'attore può scorrere la lista per scegliere quale community visitare
+        \item Il sistema recupera l'elenco delle community da visualizzare 
+        \item Il sistema visualizza a schermo la lista delle community $\rightarrow$ \hyperref[subsec:UC-58.1]{UC-58.1}
+    \end{itemize}
+    \item \textbf{Scenario secondario:} 
+    \begin{itemize}
+        \item Il sistema rileva un errore nel caricamento dei dati $\rightarrow$ \hyperref[sec:UC-5]{UC-5}
     \end{itemize}
     \item \textbf{Inclusioni:} 
     \begin{itemize}
-        \item \hyperref[subsec:UC-43.1]{UC-43.1}
+        \item \hyperref[subsec:UC-58.1]{UC-58.1}
     \end{itemize}
-    \item \textbf{Trigger:} L'attore vuole esplorare le community esistenti
+    \item \textbf{Estensioni:} 
+    \begin{itemize}
+        \item \hyperref[sec:UC-5]{UC-5}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole vedere la lista delle community esistenti
 \end{itemize}
 
-\subsubsection{UC-43.1 - Visualizzazione singola community nella lista} \label{subsec:UC-43.1}
+\subsubsection{UC-58.1 - Visualizzazione singola community nella lista} \label{subsec:UC-58.1}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
-        \item Il sistema sta renderizzando la lista delle community
+        \item L'attore si trova all'interno della sezione dedicata alle community
+        \item Il sistema ha recuperato le informazioni relative alle community da visualizzare
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item L'attore visualizza i dati riassuntivi della singola community
+        \item L'attore visualizza una singola community all'interno della lista
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item Il sistema mostra il nome della community
-        \item Il sistema mostra l'icona o l'immagine rappresentativa
+        \item L'attore visualizza una singola community all'interno della lista
+        \item L'attore visualizza il nome della community  $\rightarrow$ \hyperref[subsec:UC-58.1.1]{UC-58.1.1}
+        \item L'attore visualizza il link della community  $\rightarrow$ \hyperref[subsec:UC-58.1.2]{UC-58.1.2}
     \end{itemize}
-    \item \textbf{Trigger:} L'attore seleziona una community dalla lista delle community
+    \item \textbf{Inclusioni:} 
+    \begin{itemize}
+        \item \hyperref[subsec:UC-58.1.1]{UC-58.1.1}
+        \item \hyperref[subsec:UC-58.1.2]{UC-58.1.2}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole vedere la lista delle community esistenti
 \end{itemize}
 
-\subsubsection{UC-44 - Visita community} \label{sec:UC-44}
+\subsubsection{UC-58.1.1 - Visualizzazione nome singola community nella lista} \label{subsec:UC-58.1.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova all'interno della sezione dedicata alle community
+        \item Il sistema ha recuperato le informazioni relative alle community da visualizzare
+        \item L'attore visualizza una singola community all'interno della lista
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza il nome della singola community dalla lista
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore visualizza dalla lista delle community, il nome di una singola community
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-58.1.2 - Visualizzazione link singola community nella lista} \label{subsec:UC-58.1.2}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore ha selezionato la sezione dedicata alle community
+        \item L'attore visualizza l'elenco delle community online esterne
+        \item L'attore visualizza una singola community all'interno della lista
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza il link della singola community all'interno della lista
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore visualizza all'interno della lista delle community, il link di una singola community
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-59 - Apertura link della community} \label{sec:UC-59}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-44-coraggio.png}
-    \caption{Diagramma del caso d'uso UC-44}
-    \label{fig:UC-44}
+    \includegraphics[width=1\textwidth]{use_case/UC-59-coraggio.png}
+    \caption{Diagramma del caso d'uso UC-59}
+    \label{fig:UC-59}
 \end{figure}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
@@ -3519,177 +3478,27 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \begin{itemize}
         \item Il sistema è attivo
         \item L'attore visualizza la lista delle community
+        \item L'attore visualizza una singola community all'interno della lista
+        \item L'attore visualizza il link della singola community all'interno della lista
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item L'attore visualizza i post e le discussioni interne alla community
+        \item L'attore visualizza il sito web relativo al link della community selezionata
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'attore seleziona una community specifica dalla lista
-        \item Il sistema carica i dettagli della community scelta
-        \item Il sistema presenta la schermata di dettaglio della community
+        \item L'attore seleziona il link di una community specifica dalla lista
+        \item L'attore visita il link relativo alla community che è stata selezionata
     \end{itemize}
-    \item \textbf{Scenario secondario:} 
-    \begin{itemize}
-         \item Errore nel caricamento della pagina $\rightarrow$ \ref{subsec:UC-44.1}
-    \end{itemize}
-    \item \textbf{Estensioni:} \ref{subsec:UC-44.1}
-    \item \textbf{Trigger:} L'attore seleziona una community per visualizzarne il contenuto
+    \item \textbf{Trigger:} L'attore vuole visitare il link di una community
 \end{itemize}
 
-\subsubsection{UC-44.1 - Errore caricamento community} \label{subsec:UC-44.1}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item L'attore sta tentando di visualizzare la lista o i dettagli di una community
-        \item Si \term{Verifica} un problema tecnico (timeout server, assenza rete)
-    \end{itemize}
-    \item \textbf{Post-condizioni:}
-    \begin{itemize}
-        \item Il sistema notifica l'errore e non mostra dati parziali o corrotti
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item Il sistema rileva il fallimento della richiesta dati
-        \item Il sistema mostra un messaggio di errore all'\term{Utente}
-        \item Il sistema permette di ricaricare la pagina
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore tenta di visitare una community ma il caricamento fallisce
-\end{itemize}
-
-\subsubsection{UC-45 - Visualizzazione lista contatti d'emergenza} \label{sec:UC-45}
-\begin{tcolorbox}[colback=gray!10,colframe=gray!50,title=Nota]
-{\small Il caso d'uso \hyperref[sec:UC-45]{UC-45} include il caso d'uso \hyperref[subsec:UC-45.1]{UC-45.1}, si mostrano anche ulteriori casi d'uso correlati (\hyperref[subsec:UC-45.1.1]{UC-45.1.1} e \hyperref[subsec:UC-45.1.2]{UC-45.1.2}), la cui descrizione dettagliata è riportata nelle sezioni successive del documento.}
-\end{tcolorbox}
+\subsubsection{UC-60 - Visualizzazione lista leggi} \label{sec:UC-60}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-45-coraggio.png}
-    \caption{Diagramma del caso d'uso UC-45}
-    \label{fig:UC-45}
-\end{figure}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item L'attore ha selezionato la sezione dei numeri utili/emergenza
-    \end{itemize}
-    \item \textbf{Post-condizioni:}
-    \begin{itemize}
-        \item L'attore visualizza l'elenco dei numeri di emergenza
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item Il sistema recupera la lista dei contatti di emergenza nazionali
-        \item Il sistema recupera la lista dei numeri dei contatti fidati personali 
-        \item Il sistema visualizza le voci della lista $\rightarrow$ \ref{subsec:UC-45.1}
-    \end{itemize}
-    \item \textbf{Inclusioni:} 
-    \begin{itemize}
-        \item \hyperref[subsec:UC-45.1]{UC-45.1}
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore vuole consultare i numeri rapidi di emergenza
-\end{itemize}
-
-\subsubsection{UC-45.1 - Visualizzazione singolo contatto ente d'emergenza} \label{subsec:UC-45.1}
-\begin{itemize}
-    \item \textbf{Descrizione:} Questo caso d'uso generalizza la visualizzazione di un contatto, definendo la struttura comune (nome e numero) per qualsiasi tipo di contatto d'emergenza.
-    \item \textbf{Attore principale:} \term{Utente} Generico
-    \item \textbf{Pre-condizioni:} 
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item Il sistema sta renderizzando la lista dei contatti degli enti d'emergenza
-    \end{itemize}
-    \item \textbf{Post-condizioni:}
-    \begin{itemize}
-        \item I dettagli essenziali dell'ente sono visibili a schermo
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item Il sistema visualizza il nome identificativo del contatto $\rightarrow$ \ref{subsec:UC-45.1.1}
-        \item Il sistema visualizza il numero telefonico associato al contatto $\rightarrow$ \ref{subsec:UC-45.1.2}
-    \end{itemize}
-    \item \textbf{Inclusioni:}
-    \begin{itemize}
-        \item \hyperref[subsec:UC-45.1.1]{UC-45.1.1}
-        \item \hyperref[subsec:UC-45.1.2]{UC-45.1.2}
-    \end{itemize}
-\end{itemize}
-
-\subsubsection{UC-45.1.1 - Visualizzazione nome contatti d'emergenza} \label{subsec:UC-45.1.1}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
-    \item \textbf{Pre-condizioni:} 
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item Il sistema sta visualizzando un contatto d'emergenza
-    \end{itemize}
-    \item \textbf{Post-condizioni:}
-    \begin{itemize}
-        \item Il nome del contatto è visibile
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item Il sistema mostra la stringa di testo corrispondente al nome dell'ente o della persona
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore visualizza un contatto d'emergenza
-\end{itemize}
-
-\subsubsection{UC-45.1.2 - Visualizzazione numero contatti d'emergenza} \label{subsec:UC-45.1.2}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
-    \item \textbf{Pre-condizioni:} 
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item Il sistema sta visualizzando un contatto d'emergenza
-    \end{itemize}
-    \item \textbf{Post-condizioni:}
-    \begin{itemize}
-        \item Il numero di telefono è visibile
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item Il sistema mostra le cifre del numero telefonico associato al contatto
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore visualizza un contatto d'emergenza
-\end{itemize}
-
-\subsubsection{UC-48 - Composizione automatica numero contatto} \label{sec:UC-48}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-48-coraggio.png}
-    \caption{Diagramma del caso d'uso UC-48}
-    \label{fig:UC-48}
-\end{figure}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item L'attore visualizza la lista dei contatti d'emergenza
-    \end{itemize}
-    \item \textbf{Post-condizioni:}
-    \begin{itemize}
-        \item Il sistema compila il numero sul dispositivo
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item L'attore interagisce con un contatto
-        \item Il sistema rileva il numero associato
-        \item Il sistema compila il numero sul dispositivo dell'attore
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore seleziona il pulsante di chiamata di un contatto
-\end{itemize}
-
-\subsubsection{UC-49 - Visualizzazione lista leggi} \label{sec:UC-49}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-49-coraggio.png}
-    \caption{Diagramma del caso d'uso UC-49}
-    \label{fig:UC-49}
+    \includegraphics[width=1\textwidth]{use_case/UC-60-coraggio.png}
+    \caption{Diagramma del caso d'uso UC-60}
+    \label{fig:UC-61}
 \end{figure}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
@@ -3705,17 +3514,17 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item Il sistema recupera l'elenco delle normative dal database
-        \item Il sistema visualizza le voci della lista delle leggi $\rightarrow$ \ref{subsec:UC-49.1}
+        \item Il sistema visualizza le voci della lista delle leggi $\rightarrow$ \hyperref[subsec:UC-60.1]{UC-60.1}
         \item L'attore può scorrere la lista per cercare l'argomento di interesse
     \end{itemize}
     \item \textbf{Inclusioni:} 
     \begin{itemize}
-        \item \hyperref[subsec:UC-49.1]{UC-49.1}
+        \item \hyperref[subsec:UC-60.1]{UC-60.1}
     \end{itemize}
-    \item \textbf{Trigger:} L'attore vuole informarsi sui propri diritti legali
+    \item \textbf{Trigger:} L'attore vuole visualizzare la lista delle leggi
 \end{itemize}
 
-\subsubsection{UC-49.1 - Visualizzazione singola legge nella lista} \label{subsec:UC-49.1}
+\subsubsection{UC-60.1 - Visualizzazione singola legge nella lista} \label{subsec:UC-60.1}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:} 
@@ -3735,12 +3544,12 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Trigger:} L'attore visualizza la lista delle leggi
 \end{itemize}
 
-\subsubsection{UC-50 - Visualizzazione dettagli legge} \label{sec:UC-50}
+\subsubsection{UC-61 - Visualizzazione dettagli legge} \label{sec:UC-61}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-50-coraggio.png}
-    \caption{Diagramma del caso d'uso UC-50}
-    \label{fig:UC-50}
+    \includegraphics[width=1\textwidth]{use_case/UC-61-coraggio.png}
+    \caption{Diagramma del caso d'uso UC-61}
+    \label{fig:UC-61}
 \end{figure}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
@@ -3762,43 +3571,145 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-         \item Errore nel caricamento del contenuto della legge $\rightarrow$ \ref{subsec:UC-51}
+         \item Si \term{Verifica} un errore nel caricamento dei dati dal database $\rightarrow$ \hyperref[sec:UC-5]{UC-5}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
-     \item \hyperref[subsec:UC-51]{UC-51}
+     \item \hyperref[sec:UC-5]{UC-5}
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole approfondire il contenuto di una legge
 \end{itemize}
 
-\subsubsection{UC-51 - Errore caricamento normativa} \label{subsec:UC-51}
+\subsubsection{UC-62 - Visualizzazione lista contatti d'emergenza} \label{sec:UC-62}
+\begin{tcolorbox}[colback=gray!10,colframe=gray!50,title=Nota]
+{\small Il caso d'uso \hyperref[sec:UC-62]{UC-62} include il caso d'uso \hyperref[subsec:UC-62.1]{UC-62.1}, si mostrano anche ulteriori casi d'uso correlati (\hyperref[subsec:UC-62.1.1]{UC-62.1.1} e \hyperref[subsec:UC-62.1.2]{UC-62.1.2}), la cui descrizione dettagliata è riportata nelle sezioni successive del documento.}
+\end{tcolorbox}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{use_case/UC-62-coraggio.png}
+    \caption{Diagramma del caso d'uso UC-62}
+    \label{fig:UC-62}
+\end{figure}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'attore sta tentando di visualizzare i dettagli di una legge
-        \item Si \term{Verifica} un problema tecnico (timeout server, assenza rete)
+        \item L'attore ha selezionato la sezione dei numeri utili/emergenza
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item Il sistema notifica l'errore all'attore
+        \item L'attore visualizza l'elenco dei numeri di emergenza
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item Il sistema rileva il fallimento della richiesta dati
-        \item Il sistema mostra un messaggio di errore esplicativo all'\term{Utente}
-        \item Il sistema permette di ricaricare la pagina o tornare indietro
+        \item Il sistema recupera la lista dei contatti di emergenza nazionali
+        \item Il sistema recupera la lista dei numeri dei contatti fidati personali 
+        \item Il sistema visualizza le voci della lista $\rightarrow$ \hyperref[subsec:UC-62.1]{UC-62.1}
     \end{itemize}
-    \item \textbf{Trigger:} L'attore tenta di visualizzare una legge ma il caricamento fallisce
+    \item \textbf{Inclusioni:} 
+    \begin{itemize}
+        \item \hyperref[subsec:UC-62.1]{UC-62.1}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole consultare i contatti di emergenza
 \end{itemize}
 
-\subsubsection{UC-52 - Visualizzazione lista materiale informativo} \label{sec:UC-52}
+\subsubsection{UC-62.1 - Visualizzazione singolo contatto ente d'emergenza} \label{subsec:UC-62.1}
+\begin{itemize}
+    \item \textbf{Descrizione:} Questo caso d'uso generalizza la visualizzazione di un contatto, definendo la struttura comune (nome e numero) per qualsiasi tipo di contatto d'emergenza.
+    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item Il sistema sta renderizzando la lista dei contatti degli enti d'emergenza
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item I dettagli essenziali dell'ente sono visibili a schermo
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema visualizza il nome identificativo del contatto $\rightarrow$ \hyperref[subsec:UC-62.1.1]{UC-62.1.1}
+        \item Il sistema visualizza il numero telefonico associato al contatto $\rightarrow$ \hyperref[subsec:UC-62.1.2]{UC-62.1.2}
+    \end{itemize}
+    \item \textbf{Inclusioni:}
+    \begin{itemize}
+        \item \hyperref[subsec:UC-62.1.1]{UC-62.1.1}
+        \item \hyperref[subsec:UC-62.1.2]{UC-62.1.2}
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{UC-62.1.1 - Visualizzazione nome contatti d'emergenza} \label{subsec:UC-62.1.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item Il sistema sta visualizzando un contatto d'emergenza
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il nome del contatto è visibile
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema mostra la stringa di testo corrispondente al nome dell'ente o della persona
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole visualizzare un contatto d'emergenza
+\end{itemize}
+
+\subsubsection{UC-62.1.2 - Visualizzazione numero contatti d'emergenza} \label{subsec:UC-62.1.2}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item Il sistema sta visualizzando un contatto d'emergenza
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il numero di telefono è visibile
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema mostra le cifre del numero telefonico associato al contatto
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole visualizzare un contatto d'emergenza
+\end{itemize}
+
+\subsubsection{UC-63 - Composizione automatica numero contatto} \label{sec:UC-63}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-52-coraggio.png}
-    \caption{Diagramma del caso d'uso UC-52}
-    \label{fig:UC-52}
+    \includegraphics[width=1\textwidth]{use_case/UC-63-coraggio.png}
+    \caption{Diagramma del caso d'uso UC-63}
+    \label{fig:UC-63}
+\end{figure}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore visualizza la lista dei contatti d'emergenza
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema compila il numero sul dispositivo
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore interagisce con un contatto
+        \item Il sistema rileva il numero associato
+        \item Il sistema compila il numero sul dispositivo dell'attore
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole chiamare un contatto d'emergenza
+\end{itemize}
+
+\subsubsection{UC-64 - Visualizzazione lista materiale informativo} \label{sec:UC-64}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{use_case/UC-64-coraggio.png}
+    \caption{Diagramma del caso d'uso UC-64}
+    \label{fig:UC-64}
 \end{figure}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
@@ -3815,17 +3726,25 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \begin{itemize}
         \item Il sistema recupera l'elenco delle risorse disponibili dal server
         \item Il sistema visualizza la lista dei materiali disponibili 
-        \item L'attore può visualizzare singolarmente ogni materiale nella lista $\rightarrow$ \ref{subsec:UC-52.1}
+        \item L'attore può visualizzare singolarmente ogni materiale nella lista $\rightarrow$ \hyperref[subsec:UC-64.1]{UC-64.1}
         \item L'attore può scorrere la lista per trovare il contenuto di interesse
+    \end{itemize}
+    \item \textbf{Scenario secondario:} 
+    \begin{itemize}
+        \item Si \term{Verifica} un errore nel caricamento dei dati dal database $\rightarrow$ \hyperref[sec:UC-5]{UC-5}
     \end{itemize}
     \item \textbf{Inclusioni:}
      \begin{itemize}
-         \item \hyperref[subsec:UC-52.1]{UC-52.1}
+         \item \hyperref[subsec:UC-64.1]{UC-64.1}
+     \end{itemize}
+     \item \textbf{Estensioni:}
+     \begin{itemize}
+         \item \hyperref[sec:UC-5]{UC-5}
      \end{itemize}
     \item \textbf{Trigger:} L'attore vuole consultare risorse educative o di supporto
 \end{itemize}
 
-\subsubsection{UC-52.1 - Visualizzazione singolo materiale informativo} \label{subsec:UC-52.1}
+\subsubsection{UC-64.1 - Visualizzazione singolo materiale informativo} \label{subsec:UC-64.1}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:} 
@@ -3842,15 +3761,15 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item Il sistema mostra il titolo del materiale
         \item Il sistema mostra l'icona relativa al formato
     \end{itemize}
-    \item \textbf{Trigger:} L'attore visualizza la lista del materiale informativo
+    \item \textbf{Trigger:} L'attore vuole visualizzare la lista del materiale informativo
 \end{itemize}
 
-\subsubsection{UC-53 - Visualizzazione dettagli materiale informativo} \label{sec:UC-53}
+\subsubsection{UC-65 - Visualizzazione dettagli materiale informativo} \label{sec:UC-65}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-53-coraggio.png}
-    \caption{Diagramma del caso d'uso UC-53}
-    \label{fig:UC-53}
+    \includegraphics[width=1\textwidth]{use_case/UC-65-coraggio.png}
+    \caption{Diagramma del caso d'uso UC-65}
+    \label{fig:UC-65}
 \end{figure}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
@@ -3871,44 +3790,21 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-         \item Si \ignoreglossary{verifica} un errore durante il recupero del file (es. file corrotto o offline) $\rightarrow$ \ref{subsec:UC-53.1}
+         \item Si \ignoreglossary{Verifica} un errore durante il recupero dei dati $\rightarrow$ \hyperref[sec:UC-5]{UC-5}
     \end{itemize}
     \item \textbf{Estensioni:}
      \begin{itemize}
-         \item \hyperref[subsec:UC-53.1]{UC-53.1}
+         \item \hyperref[sec:UC-5]{UC-5}
      \end{itemize}
-    \item \textbf{Trigger:} L'attore seleziona una risorsa per visualizzarla
+    \item \textbf{Trigger:} L'attore vuole visualizzare i dettagli di una risorsa
 \end{itemize}
 
-\subsubsection{UC-53.1 - Errore caricamento materiale} \label{subsec:UC-53.1}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item L'attore ha richiesto l'apertura di un materiale informativo
-        \item Si \term{Verifica} un problema tecnico (timeout, assenza rete, risorsa rimossa)
-    \end{itemize}
-    \item \textbf{Post-condizioni:}
-    \begin{itemize}
-        \item L'attore è notificato dell'errore
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item Il sistema rileva un errore durante il tentativo di accesso alla risorsa
-        \item Il sistema mostra un messaggio di errore
-        \item Il sistema visualizza la lista dei materiali
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore tenta di accedere a una risorsa ma il caricamento fallisce
-
-\end{itemize}
-
-\subsubsection{UC-54 - Visualizzazione mappa luoghi sicuri} \label{sec:UC-54}
+\subsubsection{UC-66 - Visualizzazione mappa} \label{sec:UC-66}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-54-coraggio.png}
-    \caption{Diagramma del caso d'uso UC-54}
-    \label{fig:UC-54}
+    \includegraphics[width=1\textwidth]{use_case/UC-66-67-coraggio.png}
+    \caption{Diagramma dei casi d'uso UC-66 e UC-67}
+    \label{fig:UC-66}
 \end{figure}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
@@ -3926,17 +3822,11 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item Il sistema carica i dati geolocalizzati dei luoghi sicuri
         \item Il sistema visualizza la mappa interattiva all'interno dell'applicazione
         \item Il sistema mostra i marker corrispondenti ai luoghi sicuri nelle vicinanze (Centri antiviolenza, Ospedali, Stazioni di Polizia)
-        \item L'attore può selezionare un luogo sicuro dalla mappa
-        \item L'attore può decidere di aprire la posizione su Google Maps $\rightarrow$ \ref{subsec:UC-55}
     \end{itemize}
-    \item \textbf{Estensioni:}
-     \begin{itemize}
-         \item \hyperref[subsec:UC-55]{UC-55}
-     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole localizzare i luoghi sicuri più vicini
 \end{itemize}
 
-\subsubsection{UC-55 - Apertura luogo in Google Maps} \label{subsec:UC-55}
+\subsubsection{UC-67 - Apertura luogo in Google Maps} \label{subsec:UC-67}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Attore secondario:} Google Maps
@@ -3958,23 +3848,23 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-         \item Si \ignoreglossary{verifica} un errore nell'apertura dell'applicazione esterna $\rightarrow$ \ref{subsec:UC-56}
+         \item Si \ignoreglossary{Verifica} un errore nell'apertura dell'applicazione esterna $\rightarrow$ \hyperref[subsec:UC-68]{UC-68}
     \end{itemize}
     \item \textbf{Estensioni:}
      \begin{itemize}
-         \item \hyperref[subsec:UC-56]{UC-56}
+         \item \hyperref[subsec:UC-68]{UC-68}
      \end{itemize}
     \item \textbf{Trigger:} L'attore vuole avviare la navigazione o vedere dettagli aggiuntivi del luogo
 \end{itemize}
 
-\subsubsection{UC-56 - Errore apertura luogo in mappa esterna} \label{subsec:UC-56}
+\subsubsection{UC-68 - Errore apertura luogo in mappa esterna} \label{subsec:UC-68}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
         \item Il sistema tenta di aprire l'applicazione Google Maps
-        \item Si \term{Verifica} un problema nell'apertura
+        \item Si \ignoreglossary{Verifica} un problema nell'apertura
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
@@ -3986,7 +3876,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item Il sistema mostra un messaggio di errore
         \item Il sistema ritorna alla visualizzazione della mappa interna
     \end{itemize}
-    \item \textbf{Trigger:} L'attore tenta di aprire una mappa esterna ma l'operazione fallisce
+    \item \textbf{Trigger:} L'attore vuole tentare di aprire una mappa esterna ma l'operazione fallisce
 \end{itemize}
 
 % ======================= REQUISITI ========================
