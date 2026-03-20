@@ -159,10 +159,10 @@ Gruppo BitByBit\\
 1.6.0 & 2026-03-20 & Dennis Parolin & Riscrittura della sezione \hyperref[subsection:requisiti_funzionali]{Requisiti Funzionali} & Gabriele Scaggiante \\
 \hline
 \rowcolor{white}
-1.5.0 & 2026-03-20 & Giovanni Visentin & Riscrittura dei casi d'uso che erano stati segnalati dopo il colloquio con il professore (da \hyperref[sec:UC-44]{UC-44} a \hyperref[sec:UC-68]{UC-68}). & Dennis Parolin \\
+1.5.0 & 2026-03-20 & Giovanni Visentin & Riscrittura dei casi d'uso che erano stati segnalati dopo il colloquio con il professore (da \hyperref[sec:UC-44]{UC-44} a \hyperref[subsec:UC-68]{UC-68}). & Dennis Parolin \\
 \hline
 \rowcolor{gray!20}
-1.4.0 & 2026-03-19 & Marco Sanguin & Riscrittura dei casi d'uso per il diario fittizio da \hyperref[sec:UC-37]{UC-37} a \hyperref[subsec:UC-43]{UC-43}. & Riccardo Manisi \\
+1.4.0 & 2026-03-19 & Marco Sanguin & Riscrittura dei casi d'uso per il diario fittizio da \hyperref[subsec:UC-37]{UC-37} a \hyperref[subsec:UC-43]{UC-43}. & Riccardo Manisi \\
 \hline
 \rowcolor{white}
 1.3.0 & 2026-03-18 & Ferdinando Fracasso & Modificati \hyperref[subsec:UC-28]{UC-28}, \hyperref[subsec:UC-29]{UC-29} e \hyperref[subsec:UC-32]{UC-32}, ora da \hyperref[subsec:UC-30]{UC-30} a \hyperref[subsec:UC-36]{UC-36} più sottocasi & Dennis Parolin \\
@@ -3498,7 +3498,7 @@ Inoltre mostra un caso d'uso d'errore \hyperref[sec:UC-5]{UC-5} la quale descriz
     \centering
     \includegraphics[width=1\textwidth]{use_case/UC-60-coraggio.png}
     \caption{Diagramma del caso d'uso UC-60}
-    \label{fig:UC-61}
+    \label{fig:UC-60}
 \end{figure}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Generico
@@ -4198,151 +4198,149 @@ RF-OB-97 & L'\term{Utente} deve poter rimuovere una traccia audio presente all'i
 \rowcolor{gray!20}
 RF-OB-98 & L'\term{Utente} deve poter modificare il contenuto testuale presente all'interno di una nota del diario fittizio & \hyperref[subsec:UC-43]{UC-43} \\
 \hline
-
-
-
-
-
+\rowcolor{white}
+RF-OB-99 & L'\term{Utente} deve poter inviare un messaggio di SOS ai contatti fidati tramite un'apposita voce & \hyperref[sec:UC-44]{UC-44} \\
+\hline
 \rowcolor{gray!20}
-RF-OB-38 & Il sistema deve mostrare la lista delle note presenti nel diario & \hyperref[subsec:UC-27.1]{UC-27.1} \\
+RF-OB-100 & Il sistema deve notificare l'\term{Utente} dell'assenza di connessione internet durante il tentativo di invio del messaggio SOS e proporre l'invio di un segnale acustico & \hyperref[sec:UC-45]{UC-45} \\
 \hline
 \rowcolor{white}
-RF-OB-39 & L'\term{Utente} deve poter visualizzare l'anteprima di una singola nota & \hyperref[subsec:UC-27.1.1]{UC-27.1.1} \\
+RF-OB-101 & Il sistema deve notificare l'\term{Utente} della mancanza di contatti fidati configurati durante il tentativo di invio del messaggio SOS e proporre l'invio di un segnale acustico & \hyperref[sec:UC-46]{UC-46} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-40 & L'\term{Utente} deve poter creare una nuova nota & \hyperref[subsec:UC-28]{UC-28} \\
+RF-OB-102 & L'\term{Utente} deve poter avviare un segnale acustico di emergenza indipendente dalle impostazioni di volume del dispositivo & \hyperref[sec:UC-47]{UC-47} \\
 \hline
 \rowcolor{white}
-RF-OB-41 & L'\term{Utente} deve poter eliminare una nota esistente & \hyperref[subsec:UC-29]{UC-29} \\
+RF-OB-103 & L'\term{Utente} deve poter inviare un messaggio al chatbot e ricevere una risposta generata dall'LLM in base al contesto scelto & \hyperref[sec:UC-48]{UC-48} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-42 & L'\term{Utente} deve poter inserire contenuto testuale in una nota & \hyperref[subsec:UC-30]{UC-30} \\
+RF-OB-104 & L'\term{Utente} deve poter interrompere la generazione della risposta dell'LLM durante la consultazione del chatbot & \hyperref[sec:UC-49]{UC-49} \\
 \hline
 \rowcolor{white}
-RF-OB-43 & L'\term{Utente} deve poter inserire contenuti multimediali (audio/foto) in una nota & \hyperref[subsec:UC-31]{UC-31} \\
+RF-OB-105 & Il sistema deve notificare l'\term{Utente} della mancanza di connessione internet durante la consultazione del chatbot & \hyperref[sec:UC-50]{UC-50} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-44 & L'\term{Utente} deve poter visualizzare il contenuto completo (testo e media) di una nota & \hyperref[subsec:UC-32]{UC-32} \\
+RF-OB-106 & L'\term{Utente} deve poter ripetere l'invio del messaggio o scriverne uno nuovo dopo la notifica di assenza di connessione internet & \hyperref[sec:UC-50]{UC-50} \\
 \hline
 \rowcolor{white}
-RF-OB-45 & L'\term{Utente} deve poter inviare un messaggio di SOS ai contatti fidati & \hyperref[sec:UC-33]{UC-33} \\
+RF-OB-107 & L'\term{Utente} deve poter cambiare il contesto della chat a "Detective delle Relazioni" & \hyperref[sec:UC-51]{UC-51} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-46 & Il sistema deve gestire l'invio SOS in assenza di connessione internet & \hyperref[sec:UC-33.1]{UC-33.1} \\
+RF-OB-108 & L'\term{Utente} deve poter cambiare il contesto della chat a "Specchio Intelligente" & \hyperref[sec:UC-52]{UC-52} \\
 \hline
 \rowcolor{white}
-RF-OB-47 & Il sistema deve gestire l'invio SOS in assenza di contatti fidati configurati & \hyperref[sec:UC-33.2]{UC-33.2} \\
+RF-OB-109 & Il sistema deve notificare l'\term{Utente} di un errore durante il cambio di contesto del chatbot e mantenere il contesto precedente & \hyperref[sec:UC-53]{UC-53} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-48 & L'\term{Utente} deve poter inviare un segnale acustico di emergenza & \hyperref[sec:UC-34]{UC-34} \\
+RF-OB-110 & L'\term{Utente} deve poter ritentare il cambio di contesto del chatbot dopo la notifica di errore & \hyperref[sec:UC-53]{UC-53} \\
 \hline
 \rowcolor{white}
-RF-OB-49 & L'\term{Utente} deve poter consultare il chatbot & \hyperref[sec:UC-35]{UC-35} \\
+RF-OB-111 & L'\term{Utente} deve poter creare una nuova sessione di chat con il chatbot & \hyperref[subsec:UC-54]{UC-54} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-50 & L'\term{Utente} deve poter interrompere la generazione della risposta del chatbot & \hyperref[sec:UC-35.1]{UC-35.1} \\
+RF-OB-112 & L'\term{Utente} deve poter eliminare una chat dalla cronologia delle chat & \hyperref[subsec:UC-55]{UC-55} \\
 \hline
 \rowcolor{white}
-RF-OB-51 & Il sistema deve gestire la mancanza di connessione durante la chat & \hyperref[sec:UC-35.2]{UC-35.2} \\
+RF-OB-113 & Il sistema deve richiedere conferma esplicita prima dell'eliminazione definitiva di una chat & \hyperref[subsec:UC-55.1]{UC-55.1} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-52 & Il sistema deve gestire errori di lettura del messaggio da parte dell'LLM & \hyperref[sec:UC-35.3]{UC-35.3} \\
+RF-OB-114 & L'\term{Utente} deve poter confermare, con un'apposita voce, l'eliminazione di una chat quando il sistema ne richiede la conferma & \hyperref[subsec:UC-55.1]{UC-55.1} \\
 \hline
 \rowcolor{white}
-RF-OB-53 & L'\term{Utente} deve poter cambiare il contesto della chat a "Detective delle Relazioni" & \hyperref[sec:UC-36]{UC-36} \\
+RF-OB-115 & L'\term{Utente} deve poter visualizzare il contenuto di una chat selezionata, inclusa la lista dei messaggi scambiati & \hyperref[subsec:UC-56]{UC-56} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-54 & L'\term{Utente} deve poter cambiare il contesto della chat a "Specchio Intelligente" & \hyperref[sec:UC-37]{UC-37} \\
+RF-OB-116 & Il sistema deve notificare l'\term{Utente} di un errore nel caricamento del contenuto della chat & \hyperref[sec:UC-5]{UC-5}, \hyperref[subsec:UC-56]{UC-56} \\
 \hline
 \rowcolor{white}
-RF-OB-55 & Il sistema deve notificare errori durante il cambio di contesto & \hyperref[sec:UC-38]{UC-38} \\
+RF-OB-117 & Il sistema deve visualizzare la lista dei messaggi scambiati tra l'\term{Utente} e il chatbot all'interno di una chat & \hyperref[subsec:UC-56.1]{UC-56.1} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-56 & L'\term{Utente} deve poter visualizzare la cronologia delle chat & \hyperref[subsec:UC-39]{UC-39} \\
+RF-OB-118 & Il sistema deve distinguere visivamente i messaggi inviati dall'\term{Utente} da quelli generati dal chatbot & \hyperref[subsec:UC-56.1.1]{UC-56.1.1}, \hyperref[subsec:UC-56.1.2]{UC-56.1.2} \\
 \hline
 \rowcolor{white}
-RF-OB-57 & L'\term{Utente} deve poter selezionare una singola chat dalla cronologia & \hyperref[subsec:UC-39.1]{UC-39.1} \\
+RF-OB-119 & Il sistema deve visualizzare i messaggi inviati dall'\term{Utente} con la formattazione grafica allineata a destra & \hyperref[subsec:UC-56.1.1]{UC-56.1.1} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-58 & Il sistema deve mostrare una preview dell'inizio della chat in cronologia & \hyperref[subsec:UC-39.1.1]{UC-39.1.1} \\
+RF-OB-120 & Il sistema deve visualizzare i messaggi generati dal chatbot con la formattazione grafica allineata a sinistra & \hyperref[subsec:UC-56.1.2]{UC-56.1.2} \\
 \hline
 \rowcolor{white}
-RF-OB-59 & L'\term{Utente} deve poter visualizzare il contenuto completo di una chat passata o corrente & \hyperref[subsec:UC-40]{UC-40} \\
+RF-OB-121 & L'\term{Utente} deve poter visualizzare la cronologia delle chat con il chatbot & \hyperref[subsec:UC-57]{UC-57} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-60 & Il sistema deve visualizzare la lista dei messaggi scambiati & \hyperref[subsec:UC-40.1]{UC-40.1} \\
+RF-OB-122 & L'\term{Utente} deve poter selezionare e visualizzare una singola chat dalla cronologia & \hyperref[subsec:UC-57.1]{UC-57.1} \\
 \hline
 \rowcolor{white}
-RF-OB-61 & Il sistema deve distinguere visivamente i messaggi \term{Utente} da quelli del chatbot & \hyperref[subsec:UC-40.1.1]{UC-40.1.1}, \hyperref[subsec:UC-40.1.2]{UC-40.1.2} \\
+RF-OB-123 & Il sistema deve mostrare il titolo identificativo di ogni chat presente nella cronologia & \hyperref[subsec:UC-57.1.1]{UC-57.1.1} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-62 & Il sistema deve gestire errori nel caricamento della chat & \hyperref[subsec:UC-40.2]{UC-40.2} \\
+RF-OB-124 & L'\term{Utente} deve poter visualizzare la lista delle community disponibili & \hyperref[sec:UC-58]{UC-58} \\
 \hline
 \rowcolor{white}
-RF-OB-63 & L'\term{Utente} deve poter creare una nuova chat & \hyperref[subsec:UC-41]{UC-41} \\
+RF-OB-125 & Il sistema deve notificare l'\term{Utente} di un errore nel caricamento della lista delle community & \hyperref[sec:UC-5]{UC-5}, \hyperref[sec:UC-58]{UC-58} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-64 & L'\term{Utente} deve poter eliminare una chat dalla cronologia & \hyperref[subsec:UC-42]{UC-42} \\
+RF-OB-126 & Il sistema deve mostrare i dati riassuntivi di ogni singola community nella lista & \hyperref[subsec:UC-58.1]{UC-58.1} \\
 \hline
 \rowcolor{white}
-RF-OB-65 & Il sistema deve richiedere conferma per l'eliminazione di una chat & \hyperref[subsec:UC-42.1]{UC-42.1} \\
+RF-OB-127 & Il sistema deve mostrare il nome di ogni singola community nella lista & \hyperref[subsec:UC-58.1.1]{UC-58.1.1} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-66 & L'\term{Utente} deve poter rifiutare l'eliminazione di una chat & \hyperref[subsec:UC-42.1.1]{UC-42.1.1} \\
+RF-OB-128 & Il sistema deve mostrare il link di ogni singola community nella lista & \hyperref[subsec:UC-58.1.2]{UC-58.1.2} \\
 \hline
 \rowcolor{white}
-RF-OB-67 & L'\term{Utente} deve poter visualizzare la lista delle community & \hyperref[sec:UC-43]{UC-43} \\
+RF-OB-129 & L'\term{Utente} deve poter aprire il link di una community per visitarne il sito web esterno & \hyperref[sec:UC-59]{UC-59} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-68 & Il sistema deve mostrare i dettagli riassuntivi di una community & \hyperref[subsec:UC-43.1]{UC-43.1} \\
+RF-OB-130 & L'\term{Utente} deve poter visualizzare la lista delle leggi e normative disponibili & \hyperref[sec:UC-60]{UC-60} \\
 \hline
 \rowcolor{white}
-RF-OB-69 & L'\term{Utente} deve poter visitare una community e visualizzarne i contenuti & \hyperref[sec:UC-44]{UC-44} \\
+RF-OB-131 & Il sistema deve mostrare il titolo di ogni singola legge nella lista & \hyperref[subsec:UC-60.1]{UC-60.1} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-70 & Il sistema deve gestire errori nel caricamento delle community & \hyperref[subsec:UC-44.1]{UC-44.1} \\
+RF-OB-132 & L'\term{Utente} deve poter visualizzare i dettagli completi di una legge selezionata dalla lista & \hyperref[sec:UC-61]{UC-61} \\
 \hline
 \rowcolor{white}
-RF-OB-71 & L'\term{Utente} deve poter visualizzare la lista dei contatti/enti d'emergenza & \hyperref[sec:UC-45]{UC-45} \\
+RF-OB-133 & Il sistema deve notificare l'\term{Utente} di un errore nel caricamento dei dati di una legge & \hyperref[sec:UC-5]{UC-5}, \hyperref[sec:UC-61]{UC-61} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-72 & Il sistema deve mostrare nome e numero dei contatti d'emergenza & \hyperref[subsec:UC-45.1]{UC-45.1} \\
+RF-OB-134 & L'\term{Utente} deve poter visualizzare la lista dei contatti e degli enti d'emergenza & \hyperref[sec:UC-62]{UC-62} \\
 \hline
 \rowcolor{white}
-RF-OB-73 & L'\term{Utente} deve poter comporre automaticamente il numero di un contatto d'emergenza & \hyperref[sec:UC-48]{UC-48} \\
+RF-OB-135 & Il sistema deve mostrare i dati riassuntivi di ogni singolo contatto d'emergenza nella lista & \hyperref[subsec:UC-62.1]{UC-62.1} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-74 & L'\term{Utente} deve poter visualizzare la lista delle leggi e normative & \hyperref[sec:UC-49]{UC-49} \\
+RF-OB-136 & Il sistema deve mostrare il nome identificativo di ogni contatto d'emergenza & \hyperref[subsec:UC-62.1.1]{UC-62.1.1} \\
 \hline
 \rowcolor{white}
-RF-OB-75 & Il sistema deve mostrare il titolo delle leggi nella lista & \hyperref[subsec:UC-49.1]{UC-49.1} \\
+RF-OB-137 & Il sistema deve mostrare il numero di telefono associato ad ogni contatto d'emergenza & \hyperref[subsec:UC-62.1.2]{UC-62.1.2} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-76 & L'\term{Utente} deve poter visualizzare i dettagli completi di una legge & \hyperref[sec:UC-50]{UC-50} \\
+RF-OB-138 & L'\term{Utente} deve poter comporre automaticamente il numero di un contatto d'emergenza tramite l'apposita voce & \hyperref[sec:UC-63]{UC-63} \\
 \hline
 \rowcolor{white}
-RF-OB-77 & Il sistema deve gestire errori nel caricamento delle normative & \hyperref[subsec:UC-51]{UC-51} \\
+RF-OB-139 & L'\term{Utente} deve poter visualizzare la lista del materiale informativo disponibile & \hyperref[sec:UC-64]{UC-64} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-78 & L'\term{Utente} deve poter visualizzare la lista del materiale informativo & \hyperref[sec:UC-52]{UC-52} \\
+RF-OB-140 & Il sistema deve notificare l'\term{Utente} di un errore nel caricamento della lista del materiale informativo & \hyperref[sec:UC-5]{UC-5}, \hyperref[sec:UC-64]{UC-64} \\
 \hline
 \rowcolor{white}
-RF-OB-79 & Il sistema deve mostrare titolo e formato del materiale informativo & \hyperref[subsec:UC-52.1]{UC-52.1} \\
+RF-OB-141 & Il sistema deve mostrare il titolo e il formato di ogni singolo materiale informativo nella lista & \hyperref[subsec:UC-64.1]{UC-64.1} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-80 & L'\term{Utente} deve poter visualizzare/scaricare il dettaglio del materiale informativo & \hyperref[sec:UC-53]{UC-53} \\
+RF-OB-142 & L'\term{Utente} deve poter visualizzare il contenuto di un materiale informativo selezionato dalla lista & \hyperref[sec:UC-65]{UC-65} \\
 \hline
 \rowcolor{white}
-RF-OB-81 & Il sistema deve gestire errori nel caricamento del materiale informativo & \hyperref[subsec:UC-53.1]{UC-53.1} \\
+RF-OB-143 & Il sistema deve notificare l'\term{Utente} di un errore nel recupero dei dati del materiale informativo & \hyperref[sec:UC-5]{UC-5}, \hyperref[sec:UC-65]{UC-65} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-82 & L'\term{Utente} deve poter visualizzare la mappa dei luoghi sicuri & \hyperref[sec:UC-54]{UC-54} \\
+RF-OB-144 & L'\term{Utente} deve poter visualizzare la mappa interattiva con i marker dei luoghi sicuri nelle vicinanze & \hyperref[sec:UC-66]{UC-66} \\
 \hline
 \rowcolor{white}
-RF-OB-83 & L'\term{Utente} deve poter aprire la posizione di un luogo sicuro su Google Maps & \hyperref[subsec:UC-55]{UC-55} \\
+RF-OB-145 & L'\term{Utente} deve poter aprire un luogo sicuro nella mappa esterna Google Maps & \hyperref[subsec:UC-67]{UC-67} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-84 & Il sistema deve gestire errori nell'apertura della mappa esterna & \hyperref[subsec:UC-56]{UC-56} \\
+RF-OB-146 & Il sistema deve notificare l'\term{Utente} di un errore nell'apertura dell'applicazione Google Maps e mantenere la visualizzazione della mappa interna & \hyperref[subsec:UC-68]{UC-68} \\
 \hline
 \caption{Tabella Requisiti Funzionali} \label{tab:requisiti_funzionali} \\
 \end{longtable}
@@ -4443,6 +4441,390 @@ RV-OB-10 & L'interfaccia \ignoreglossary{utente} deve essere utilizzabile senza 
 RV-OB-11 & L'infrastruttura cloud del sistema deve essere configurata in modo da supportare l'alta disponibilità, delegando la resilienza dell'infrastruttura ai servizi gestiti AWS & Decisione interna; Decisione Esterna \\
 \hline
 \caption{Tabella Requisiti di Vincolo} \label{tab:requisiti_vincolo} \\
+\end{longtable}
+\end{center}
+
+\subsection{Tracciamento dei casi d'uso} \label{subsection:tracciamento_uc}
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\arrayrulecolor{black}
+\begin{longtable}{|>{\centering\arraybackslash}p{5cm}|>{\centering\arraybackslash}p{9cm}|}
+
+\hline
+\rowcolor{gray!60}
+\textbf{Caso d'Uso} & \textbf{Requisiti} \\
+\hline
+\endfirsthead
+\caption[]{Tracciamento dei casi d'uso (continua)} \\
+\hline
+\rowcolor{gray!60}
+\textbf{Caso d'Uso} & \textbf{Requisiti} \\
+\hline
+\endhead
+\rowcolor{white}
+\hyperref[subsec:UC-1]{UC-1} & RF-OB-1, RF-OB-2 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-2]{UC-2} & RF-OB-3 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-3]{UC-3} & RF-OB-4 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[sec:UC-4]{UC-4} & RF-OB-5, RF-OB-7 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-4.1]{UC-4.1} & RF-OB-8 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-4.1.1]{UC-4.1.1} & RF-OB-9 \\
+\hline
+\rowcolor{white}
+\hyperref[sec:UC-5]{UC-5} & RF-OB-6, RF-OB-7, RF-OB-60, RF-OB-81, RF-OB-116, RF-OB-125, RF-OB-133, RF-OB-140, RF-OB-143 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-6]{UC-6} & RF-OB-10 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-6.1]{UC-6.1} & RF-OB-11 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-6.2]{UC-6.2} & RF-OB-12 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-6.3]{UC-6.3} & RF-OB-13 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-7]{UC-7} & RF-OB-14 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-7.1]{UC-7.1} & RF-OB-15 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-7.2]{UC-7.2} & RF-OB-16, RF-OB-21 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-7.3]{UC-7.3} & RF-OB-17, RF-OB-23 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-8]{UC-8} & RF-OB-20, RF-OB-21, RF-OB-22 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-9]{UC-9} & RF-OB-18, RF-OB-19, RF-OB-20 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-10]{UC-10} & RF-OB-18, RF-OB-19, RF-OB-20 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-11]{UC-11} & RF-OB-20, RF-OB-23, RF-OB-24 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-12]{UC-12} & RF-OB-25 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-12.1]{UC-12.1} & RF-OB-26 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-12.2]{UC-12.2} & RF-OB-27, RF-OB-21 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-12.3]{UC-12.3} & RF-OB-28, RF-OB-23 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-13]{UC-13} & RF-OB-29 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-13.1]{UC-13.1} & RF-OB-30, RF-OB-31 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[sec:UC-15]{UC-15} & RF-OB-2, RF-OB-32 \\
+\hline
+\rowcolor{white}
+\hyperref[sec:UC-16]{UC-16} & RF-OB-33 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[sec:UC-17]{UC-17} & RF-OB-34 \\
+\hline
+\rowcolor{white}
+\hyperref[sec:UC-17.1]{UC-17.1} & RF-OB-35 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[sec:UC-17.2]{UC-17.2} & RF-OB-36 \\
+\hline
+\rowcolor{white}
+\hyperref[sec:UC-18]{UC-18} & RF-OB-37 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-18.1]{UC-18.1} & RF-OB-38 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-18.2]{UC-18.2} & RF-OB-39 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[sec:UC-19]{UC-19} & RF-OB-40 \\
+\hline
+\rowcolor{white}
+\hyperref[sec:UC-20]{UC-20} & RF-OB-41 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-21]{UC-21} & RF-OB-42, RF-OB-43 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-22]{UC-22} & RF-OB-43, RF-OB-44, RF-OB-45, RF-OB-47, RF-OB-48, RF-OB-50 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-23]{UC-23} & RF-OB-46, RF-OB-47 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-24]{UC-24} & RF-OB-47, RF-OB-49, RF-OB-50 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-25]{UC-25} & RF-OB-51 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-25.1]{UC-25.1} & RF-OB-52 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-25.2]{UC-25.2} & RF-OB-53 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-26]{UC-26} & RF-OB-56 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-27]{UC-27} & RF-OB-54, RF-OB-55 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-28]{UC-28} & RF-OB-57 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-28.1]{UC-28.1} & RF-OB-58, RF-OB-60 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-28.1.1]{UC-28.1.1} & RF-OB-59 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-29]{UC-29} & RF-OB-78 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-29.1]{UC-29.1} & RF-OB-79, RF-OB-81 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-29.1.1]{UC-29.1.1} & RF-OB-80 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-30]{UC-30} & RF-OB-62 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-30.1]{UC-30.1} & RF-OB-63, RF-OB-64 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-31]{UC-31} & RF-OB-61 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-32]{UC-32} & RF-OB-65 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-32.1]{UC-32.1} & RF-OB-66 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-32.2]{UC-32.2} & RF-OB-67 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-32.2.1]{UC-32.2.1} & RF-OB-68 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-32.2.2]{UC-32.2.2} & RF-OB-69 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-33]{UC-33} & RF-OB-70 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-34]{UC-34} & RF-OB-71 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-34.1]{UC-34.1} & RF-OB-72 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-34.2]{UC-34.2} & RF-OB-73 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-35]{UC-35} & RF-OB-74 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-36]{UC-36} & RF-OB-75 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-36.1]{UC-36.1} & RF-OB-76 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-36.2]{UC-36.2} & RF-OB-77 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-37]{UC-37} & RF-OB-82 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-37.1]{UC-37.1} & RF-OB-83, RF-OB-84 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-38]{UC-38} & RF-OB-85 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-39]{UC-39} & RF-OB-86 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-39.1]{UC-39.1} & RF-OB-87 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-39.2]{UC-39.2} & RF-OB-88 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-39.2.1]{UC-39.2.1} & RF-OB-89 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-39.2.2]{UC-39.2.2} & RF-OB-90 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-40]{UC-40} & RF-OB-91 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-41]{UC-41} & RF-OB-92 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-41.1]{UC-41.1} & RF-OB-93 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-41.2]{UC-41.2} & RF-OB-94 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-42]{UC-42} & RF-OB-95 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-42.1]{UC-42.1} & RF-OB-96 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-42.2]{UC-42.2} & RF-OB-97 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-43]{UC-43} & RF-OB-98 \\
+\hline
+\rowcolor{white}
+\hyperref[sec:UC-44]{UC-44} & RF-OB-99 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[sec:UC-45]{UC-45} & RF-OB-100 \\
+\hline
+\rowcolor{white}
+\hyperref[sec:UC-46]{UC-46} & RF-OB-101 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[sec:UC-47]{UC-47} & RF-OB-102 \\
+\hline
+\rowcolor{white}
+\hyperref[sec:UC-48]{UC-48} & RF-OB-103 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[sec:UC-49]{UC-49} & RF-OB-104 \\
+\hline
+\rowcolor{white}
+\hyperref[sec:UC-50]{UC-50} & RF-OB-105, RF-OB-106 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[sec:UC-51]{UC-51} & RF-OB-107 \\
+\hline
+\rowcolor{white}
+\hyperref[sec:UC-52]{UC-52} & RF-OB-108 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[sec:UC-53]{UC-53} & RF-OB-109, RF-OB-110 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-54]{UC-54} & RF-OB-111 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-55]{UC-55} & RF-OB-112 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-55.1]{UC-55.1} & RF-OB-113, RF-OB-114 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-56]{UC-56} & RF-OB-115, RF-OB-116 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-56.1]{UC-56.1} & RF-OB-117 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-56.1.1]{UC-56.1.1} & RF-OB-118, RF-OB-119 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-56.1.2]{UC-56.1.2} & RF-OB-118, RF-OB-120 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-57]{UC-57} & RF-OB-121 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-57.1]{UC-57.1} & RF-OB-122 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-57.1.1]{UC-57.1.1} & RF-OB-123 \\
+\hline
+\rowcolor{white}
+\hyperref[sec:UC-58]{UC-58} & RF-OB-124, RF-OB-125 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-58.1]{UC-58.1} & RF-OB-126 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-58.1.1]{UC-58.1.1} & RF-OB-127 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-58.1.2]{UC-58.1.2} & RF-OB-128 \\
+\hline
+\rowcolor{white}
+\hyperref[sec:UC-59]{UC-59} & RF-OB-129 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[sec:UC-60]{UC-60} & RF-OB-130 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-60.1]{UC-60.1} & RF-OB-131 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[sec:UC-61]{UC-61} & RF-OB-132, RF-OB-133 \\
+\hline
+\rowcolor{white}
+\hyperref[sec:UC-62]{UC-62} & RF-OB-134 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-62.1]{UC-62.1} & RF-OB-135 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-62.1.1]{UC-62.1.1} & RF-OB-136 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-62.1.2]{UC-62.1.2} & RF-OB-137 \\
+\hline
+\rowcolor{white}
+\hyperref[sec:UC-63]{UC-63} & RF-OB-138 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[sec:UC-64]{UC-64} & RF-OB-139, RF-OB-140 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-64.1]{UC-64.1} & RF-OB-141 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[sec:UC-65]{UC-65} & RF-OB-142, RF-OB-143 \\
+\hline
+\rowcolor{white}
+\hyperref[sec:UC-66]{UC-66} & RF-OB-144 \\
+\hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-67]{UC-67} & RF-OB-145 \\
+\hline
+\rowcolor{white}
+\hyperref[subsec:UC-68]{UC-68} & RF-OB-146 \\
+\hline
+\caption{Tracciamento dei casi d'uso} \label{tab:tracciamento_uc} \\
 \end{longtable}
 \end{center}
 
