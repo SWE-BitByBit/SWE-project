@@ -155,11 +155,17 @@ Gruppo BitByBit\\
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
-\rowcolor{white}
-1.2.0 & 2026-03-18 & Gabriele Scaggiante & Riscrittura dei casi d'uso da \hyperref[sec:UC-21]{UC-21} a \hyperref[subsec:UC-29]{UC-29}. Inserimento nuovi casi \hyperref[subsec:UC-28]{UC-28},\hyperref[subsec:UC-28.1]{UC-28.1},\hyperref[subsec:UC-28.1.1]{UC-28.1.1},\hyperref[subsec:UC-29]{UC-29},\hyperref[subsec:UC-29.1]{UC-29.1},\hyperref[subsec:UC-29.1.1]{UC-29.1.1}. & Riccardo Manisi \\
+\rowcolor{gray!20}
+1.4.0 & 2026-03-20 & Dennis Parolin & Riscrittura della sezione \hyperref[subsection:requisiti_funzionali]{Requisiti Funzionali} & Gabriele Scaggiante \\
 \hline
 \rowcolor{white}
-1.1.0 & 2026-03-17 & Dennis Parolin & Riscrittura dei casi d'uso da \hyperref[sec:UC-4]{UC-4} a \hyperref[subsec:UC-14]{UC-14}. Il caso d'uso \hyperref[sec:UC-5]{UC-5} è stato aggiunto come nuovo caso d'uso. Rifatta tutta la sezione "Requisiti di vincolo" (\ref{subsection:requisiti_vincolo}) e "Requisiti di qualità" (\ref{subsection:requisiti_qualita}). & Riccardo Manisi \\
+1.3.0 & 2026-03-19 & Marco Sanguin & Riscrittura dei casi d'uso per il diario fittizio da \hyperref[sec:UC-37]{UC-37} a \hyperref[subsec:UC-43]{UC-43}. & Riccardo Manisi \\
+\hline
+\rowcolor{gray!20}
+1.2.0 & 2026-03-18 & Gabriele Scaggiante & Riscrittura dei casi d'uso da \hyperref[subsec:UC-21]{UC-21} a \hyperref[subsec:UC-29]{UC-29}. Inserimento nuovi casi \hyperref[subsec:UC-28]{UC-28},\hyperref[subsec:UC-28.1]{UC-28.1},\hyperref[subsec:UC-28.1.1]{UC-28.1.1},\hyperref[subsec:UC-29]{UC-29},\hyperref[subsec:UC-29.1]{UC-29.1},\hyperref[subsec:UC-29.1.1]{UC-29.1.1}. & Riccardo Manisi \\
+\hline
+\rowcolor{white}
+1.1.0 & 2026-03-17 & Dennis Parolin & Riscrittura dei casi d'uso da \hyperref[sec:UC-4]{UC-4} a \hyperref[subsec:UC-13.1]{UC-13.1}. Il caso d'uso \hyperref[sec:UC-5]{UC-5} è stato aggiunto come nuovo caso d'uso. Rifatta tutta la sezione "Requisiti di vincolo" (\ref{subsection:requisiti_vincolo}) e "Requisiti di qualità" (\ref{subsection:requisiti_qualita}). & Riccardo Manisi \\
 \hline
 \rowcolor{gray!20}
 1.0.1 & 2026-03-01 & Riccardo Manisi & Modificati caso d'uso UC-17 e aggiunti sottocasi UC-17.1, UC-17.2  &  Gabriele Scagginate\\
@@ -1018,7 +1024,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Trigger:} L'attore ha inserito un numero di telefono non conforme ai criteri dell'applicazione
 \end{itemize}
 
-\subsubsection{UC-9 - Numero di telefono già presente} \label{subsec:UC-9}
+\subsubsection{UC-9 - Numero di telefono già presente nel sistema} \label{subsec:UC-9}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
@@ -1264,37 +1270,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item L'attore conferma l'eliminazione del contatto fidato
         \item Il sistema rimuove il contatto fidato scelto dall'attore dalla rete dei contatti fidati dell'attore
     \end{itemize}
-    \item \textbf{Scenario secondario:}
-    \begin{itemize}
-        \item L'attore rifiuta la conferma dell'eliminazione del contatto fidato $\rightarrow$ \hyperref[subsec:UC-14]{UC-14}
-    \end{itemize}
-    \item \textbf{Estensioni:} 
-    \begin{itemize}
-        \item \hyperref[subsec:UC-14]{UC-14}
-    \end{itemize}
     \item \textbf{Trigger:} L'attore ha scelto la voce di cancellazione per quel contatto fidato
-\end{itemize}
-
-\subsubsection{UC-14 Rifiuto conferma eliminazione contatto fidato} \label{subsec:UC-14}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Autenticato
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item L'attore ha selezionato la voce di cancellazione per quel contatto fidato
-        \item L'attore sta visualizzando la richiesta di conferma di cancellazione del contatto fidato
-    \end{itemize}
-    \item \textbf{Post-condizioni:}
-    \begin{itemize}
-        \item Il sistema riceve il rifiuto da parte dell'attore all'eliminazione del contatto fidato dalla propria rete dei contatti fidati
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item L'attore rifiuta l'eliminazione del contatto fidato
-        \item Il sistema non rimuove il contatto fidato dalla rete dei contatti fidati dell'attore
-        \item Il sistema ritorna alla visualizzazione della lista dei contatti fidati
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore ha scelto di non rimuovere il contatto fidato dalla propria rete dei contatti fidati
 \end{itemize}
 
 % ==== DEAD MAN'S SWITCH ====
@@ -3617,53 +3593,90 @@ La nomenclatura utilizzata per il codice dei requisiti è spiegata nel documento
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Riferimento} \\
 \hline
 \endhead
+
 \rowcolor{white}
-RF-OB-1 & L'\term{Utente} deve poter autenticarsi tramite Google Auth & \hyperref[subsec:UC-1]{UC-1} \\
+RF-OB-1 & L'\term{Utente} deve poter autenticarsi all'applicazione tramite l'utilizzo di Google Auth & \hyperref[subsec:UC-1]{UC-1} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-2 & Il sistema deve mostrare un errore in caso di fallimento dell'autenticazione & \hyperref[subsec:UC-2]{UC-2} \\
+RF-OB-2 & L'utente vede attivarsi automaticamente la funzionalità di Dead Man Switch a seguito del login. & \hyperref[subsec:UC-1]{UC-1}, \hyperref[sec:UC-15]{UC-15} \\
 \hline
 \rowcolor{white}
-RF-OB-3 & L'\term{Utente} deve poter visualizzare un \term{Walkthrough} interattivo al primo avvio & \hyperref[subsec:UC-3]{UC-3} \\
+RF-OB-3 & L'utente deve poter visualizzare un messaggio di errore esplicativo nel caso in cui l'autenticazione tramite Google Auth fallisca, venga annullata o restituisca parametri non validi. & \hyperref[subsec:UC-2]{UC-2} \\
+\hline
+\rowcolor{white}
+RF-OB-5 & L'\term{Utente} deve poter selezionare il profilo di utilizzo ("Per me" o "Per altri") & \hyperref[subsec:UC-3]{UC-3} \\
+\hline
+\rowcolor{white}
+RF-OB-9 & L'\term{Utente} deve poter visualizzare la lista dei contatti fidati & \hyperref[sec:UC-4]{UC-4} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-4 & L'\term{Utente} deve poter saltare il \term{Walkthrough} & \hyperref[subsec:UC-4]{UC-4} \\
-\hline
-\rowcolor{white}
-RF-OB-5 & L'\term{Utente} deve poter selezionare il profilo di utilizzo ("Per me" o "Per altri") & \hyperref[subsec:UC-3.1]{UC-3.1} \\
+RF-OB-4 & L'\term{Utente} deve poter visualizzare un messaggio di errore esplicativo nel caso in cui il recupero dei dati dal database fallisca & \hyperref[sec:UC-5]{UC-5} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-6 & L'\term{Utente} deve poter configurare il diario criptato durante il \term{Walkthrough} & \hyperref[subsec:UC-3.2]{UC-3.2} \\
-\hline
-\rowcolor{white}
-RF-OB-7 & L'\term{Utente} deve poter configurare un contatto fidato durante il \term{Walkthrough} & \hyperref[subsec:UC-3.3]{UC-3.3} \\
+RF-OB-4 & L'\term{Utente} deve poter ricaricare la sezione dei contatti fidati dopo la visualizzazione dell'errore di caricamento dei dati dal database. & \hyperref[sec:UC-4]{UC-4}, \hyperref[sec:UC-5]{UC-5} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-8 & L'\term{Utente} deve poter saltare la configurazione di una funzionalità specifica del \term{Walkthrough} & \hyperref[subsec:UC-5]{UC-5} \\
-\hline
-\rowcolor{white}
-RF-OB-9 & L'\term{Utente} deve poter visualizzare la lista dei contatti fidati & \hyperref[sec:UC-6]{UC-6} \\
+RF-OB-10 & Il sistema deve permettere la visualizzazione di un singolo contatto fidato dalla lista dei contatti fidati & \hyperref[subsec:UC-4.1]{UC-4.1} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-10 & Il sistema deve permettere la visualizzazione di un singolo contatto fidato dalla lista & \hyperref[subsec:UC-6.1]{UC-6.1} \\
+RF-OB-4 & L'\term{Utente} deve poter visualizzare la preview delle informazioni (il nome) del contatto fidato, che sta visualizzando dalla lista dei contatti fidati & \hyperref[subsec:UC-4.1.1]{UC-4.1.1} \\
 \hline
 \rowcolor{white}
-RF-OB-11 & L'\term{Utente} deve poter visualizzare i dettagli (nome, numero, email) di un contatto fidato & \hyperref[subsec:UC-7]{UC-7} \\
+RF-OB-11 & L'\term{Utente} deve poter visualizzare i dettagli di un contatto fidato selezionato dalla lista dei contatti fidati & \hyperref[subsec:UC-6]{UC-6} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-12 & L'\term{Utente} deve poter aggiungere un nuovo contatto fidato & \hyperref[subsec:UC-8]{UC-8} \\
-\hline
-\rowcolor{white}
-RF-OB-13 & Il sistema deve riconoscere e gestire le informazioni di contatto già presenti & \hyperref[subsec:UC-59]{UC-59}, \hyperref[subsec:UC-60]{UC-60} \\
+RF-OB-4 & L'\term{Utente} deve poter visualizzare il nome del contatto fidato selezionato dalla lista dei contatti fidati & \hyperref[subsec:UC-6.1]{UC-6.1} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-14 & Il sistema deve validare la conformità del numero di telefono inserito & \hyperref[subsec:UC-10]{UC-10} \\
+RF-OB-4 & L'\term{Utente} deve poter visualizzare il numero di telefono del contatto fidato selezionato dalla lista dei contatti fidati & \hyperref[subsec:UC-6.2]{UC-6.2} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-4 & L'\term{Utente} deve poter visualizzare l'indirizzo email del contatto fidato selezionato dalla lista dei contatti fidati & \hyperref[subsec:UC-6.3]{UC-6.3} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-12 & L'\term{Utente} deve poter aggiungere un nuovo contatto fidato alla lista dei contatti fidati & \hyperref[subsec:UC-7]{UC-7} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-12 & L'\term{Utente} deve poter inserire il nome del nuovo contatto fidato durante l'aggiunta di esso alla lista dei contatti fidati & \hyperref[subsec:UC-7.1]{UC-7.1} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-12 & L'\term{Utente} deve poter inserire il numero di telefono del nuovo contatto fidato durante l'aggiunta di esso alla lista dei contatti fidati & \hyperref[subsec:UC-7.2]{UC-7.2} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-12 & L'\term{Utente} deve poter inserire l'indirizzo email del nuovo contatto fidato durante l'aggiunta di esso alla lista dei contatti fidati & \hyperref[subsec:UC-7.3]{UC-7.3} \\
 \hline
 \rowcolor{white}
-RF-OB-15 & Il sistema deve validare la conformità dell'indirizzo email inserito & \hyperref[subsec:UC-11]{UC-11} \\
+RF-OB-13 & Il sistema deve riconoscere e gestire le informazioni di numero di telefono e email già presenti nel sistema & \hyperref[subsec:UC-9]{UC-9}, \hyperref[subsec:UC-10]{UC-10} \\
+\hline
+\rowcolor{white}
+RF-OB-13 & L'utente deve poter visualizzare un messaggio di errore esplicativo nel caso in cui le informazioni di numero di telefono e email siano già presenti nel sistema. & \hyperref[subsec:UC-9]{UC-9}, \hyperref[subsec:UC-10]{UC-10} \\
+\hline
+\rowcolor{white}
+RF-OB-13 & L'utente deve poter reinserire le informazioni di numero di telefono e email dopo la visualizzazione del messaggio di errore esplicativo & \hyperref[subsec:UC-8]{UC-8}, \hyperref[subsec:UC-9]{UC-9}, \hyperref[subsec:UC-10]{UC-10}, \hyperref[subsec:UC-11]{UC-11} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-14 & Il sistema deve validare la conformità del numero di telefono inserito o modificato & \hyperref[subsec:UC-8]{UC-8}, \hyperref[subsec:UC-7.2]{UC-7.2}, \hyperref[subsec:UC-12.2]{UC-12.2} \\
+\hline
+\rowcolor{white}
+RF-OB-14 & Il sistema deve visualizzare un messaggio di errore esplicativo nel caso in cui il numero di telefono inserito o modificato non sia conforme ai criteri prestabiliti & \hyperref[subsec:UC-8]{UC-8} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-15 & Il sistema deve validare la conformità dell'indirizzo email inserito o modificato & \hyperref[subsec:UC-11]{UC-11}, \hyperref[subsec:UC-7.3]{UC-7.3}, \hyperref[subsec:UC-12.3]{UC-12.3} \\
+\hline
+\rowcolor{white}
+RF-OB-15 & Il sistema deve visualizzare un messaggio di errore esplicativo nel caso in cui l'indirizzo email inserito o modificato non sia conforme ai criteri prestabiliti & \hyperref[subsec:UC-11]{UC-11} \\
 \hline
 \rowcolor{gray!20}
 RF-OB-16 & L'\term{Utente} deve poter modificare i dati di un contatto fidato esistente & \hyperref[subsec:UC-12]{UC-12} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-16 & L'\term{Utente} deve poter modificare il nome di un contatto fidato esistente & \hyperref[subsec:UC-12.1]{UC-12.1} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-16 & L'\term{Utente} deve poter modificare il numero di telefono di un contatto fidato esistente & \hyperref[subsec:UC-12.2]{UC-12.2} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-16 & L'\term{Utente} deve poter modificare l'indirizzo email di un contatto fidato esistente & \hyperref[subsec:UC-12.3]{UC-12.3} \\
 \hline
 \rowcolor{white}
 RF-OB-17 & L'\term{Utente} deve poter eliminare un contatto fidato & \hyperref[subsec:UC-13]{UC-13} \\
@@ -3671,60 +3684,90 @@ RF-OB-17 & L'\term{Utente} deve poter eliminare un contatto fidato & \hyperref[s
 \rowcolor{gray!20}
 RF-OB-18 & Il sistema deve richiedere conferma prima dell'eliminazione di un contatto fidato & \hyperref[subsec:UC-13.1]{UC-13.1} \\
 \hline
-\rowcolor{white}
-RF-OB-19 & L'\term{Utente} deve poter rifiutare la conferma di eliminazione & \hyperref[subsec:UC-14]{UC-14} \\
+\rowcolor{gray!20}
+RF-OB-18 & L'utente deve poter confermare, con un'apposita voce, l'eliminazione di un contatto fidato quando il sistema richiede la conferma. & \hyperref[subsec:UC-13.1]{UC-13.1} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-20 & L'\term{Utente} deve poter impostare il timer di prima inattività (Dead Man's Switch) & \hyperref[sec:UC-15]{UC-15} \\
+RF-OB-20 & L'\term{Utente} deve poter impostare il timer di prima inattività (per la funzionalità di Dead Man's Switch) & \hyperref[sec:UC-15]{UC-15} \\
 \hline
 \rowcolor{white}
-RF-OB-21 & L'\term{Utente} deve poter impostare il timer di seconda inattività & \hyperref[sec:UC-16]{UC-16} \\
+RF-OB-21 & L'\term{Utente} deve poter impostare il timer di seconda inattività (per la funzionalità di Dead Man's Switch) & \hyperref[sec:UC-16]{UC-16} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-22 & L'\term{Utente} deve poter modificare il titolo della mail di avviso & \hyperref[sec:UC-17]{UC-17} \\
+RF-OB-22 & L'\term{Utente} deve poter modificare le informazioni della mail di avviso & \hyperref[sec:UC-17]{UC-17} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-22 & L'\term{Utente} deve poter modificare il titolo della mail di avviso & \hyperref[sec:UC-17.1]{UC-17.1} \\
 \hline
 \rowcolor{white}
-RF-OB-23 & L'\term{Utente} deve poter modificare il corpo della mail di avviso & \hyperref[sec:UC-18]{UC-18} \\
+RF-OB-23 & L'\term{Utente} deve poter modificare il corpo della mail di avviso & \hyperref[sec:UC-17.2]{UC-17.2} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-24 & L'\term{Utente} deve poter visualizzare un'anteprima della mail di avviso & \hyperref[sec:UC-19]{UC-19} \\
+RF-OB-24 & L'\term{Utente} deve poter visualizzare un'anteprima della mail di avviso & \hyperref[sec:UC-18]{UC-18} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-24 & L'\term{Utente} deve poter visualizzare l'anteprima del corpo della mail di avviso & \hyperref[subsec:UC-18.1]{UC-18.1} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-24 & L'\term{Utente} deve poter visualizzare un'anteprima del titolo della mail di avviso & \hyperref[subsec:UC-18.2]{UC-18.2} \\
 \hline
 \rowcolor{white}
-RF-OB-25 & L'\term{Utente} deve poter attivare il Dead Man's Switch & \hyperref[sec:UC-57]{UC-57} \\
+RF-OB-25 & L'\term{Utente} deve poter attivare il Dead Man's Switch & \hyperref[sec:UC-19]{UC-19} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-26 & L'\term{Utente} deve poter disattivare il Dead Man's Switch & \hyperref[sec:UC-58]{UC-58} \\
+RF-OB-26 & L'\term{Utente} deve poter disattivare il Dead Man's Switch & \hyperref[sec:UC-20]{UC-20} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-32 & L'\term{Utente} deve poter impostare una password per il diario criptato & \hyperref[subsec:UC-21]{UC-21} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-32 & Il sistema deve validare la conformità della password del diario criptato secondo i criteri prestabiliti & \hyperref[subsec:UC-21]{UC-21}, \hyperref[subsec:UC-22]{UC-22} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-32 & Il sistema deve visualizzare un messaggio di errore esplicativo nel caso in cui la password del diario criptato non sia conforme ai criteri prestabiliti & \hyperref[subsec:UC-22]{UC-22} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-32 & L'utente deve poter reinserire la password del diario criptato dopo la visualizzazione del messaggio di errore esplicativo & \hyperref[subsec:UC-22]{UC-22} \\
 \hline
 \rowcolor{white}
-RF-OB-27 & L'\term{Utente} deve poter impostare una password per il diario fittizio & \hyperref[subsec:UC-20]{UC-20} \\
+RF-OB-27 & L'\term{Utente} deve poter impostare una password per il diario fittizio & \hyperref[subsec:UC-23]{UC-23} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-28 & Il sistema deve impedire che la password del diario fittizio sia uguale a quella del diario criptato & \hyperref[subsec:UC-20.1]{UC-20.1} \\
+RF-OB-27 & Il sistema deve validare la conformità e l'unicità della password del diario fittizio rispetto a quella del diario criptato & \hyperref[subsec:UC-22]{UC-22}, \hyperref[subsec:UC-23]{UC-23}, \hyperref[subsec:UC-24]{UC-24} \\
 \hline
 \rowcolor{white}
-RF-OB-29 & Il sistema deve verificare che la password rispetti i criteri di sicurezza & \hyperref[subsec:UC-21]{UC-21} \\
+RF-OB-27 & Il sistema deve visualizzare un messaggio di errore esplicativo nel caso in cui la password del diario fittizio non sia conforme ai criteri prestabiliti & \hyperref[subsec:UC-22]{UC-22} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-30 & L'\term{Utente} deve poter accedere al diario fittizio tramite password & \hyperref[subsec:UC-22]{UC-22} \\
+RF-OB-28 & Il sistema deve visualizzare un messaggio di errore esplicativo nel caso in cui la password del diario fittizio sia uguale a quella del diario criptato & \hyperref[subsec:UC-24]{UC-24} \\
 \hline
 \rowcolor{white}
-RF-OB-31 & L'\term{Utente} deve poter accedere al diario criptato tramite password & \hyperref[subsec:UC-23]{UC-23} \\
+RF-OB-28 & L'utente deve poter reinserire la password del diario fittizio dopo la visualizzazione del messaggio di errore esplicativo & \hyperref[subsec:UC-22]{UC-22}, \hyperref[subsec:UC-24]{UC-24} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-32 & L'\term{Utente} deve poter impostare una password per il diario criptato & \hyperref[subsec:UC-23.1]{UC-23.1} \\
+RF-OB-28 & L'utente deve poter inserire la password per accedere al diario desiderato & \hyperref[subsec:UC-25]{UC-25} \\
 \hline
 \rowcolor{white}
-RF-OB-33 & Il sistema deve impedire che la password del diario criptato sia uguale a quella del diario fittizio & \hyperref[subsec:UC-23.1.1]{UC-23.1.1} \\
+RF-OB-28 & L'utente deve poter inserire la password per accedere al diario criptato & \hyperref[subsec:UC-25.1]{UC-25.1} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-34 & L'\term{Utente} deve inserire la password per accedere al diario (fittizio o criptato) & \hyperref[subsec:UC-24]{UC-24} \\
+RF-OB-28 & L'utente deve poter inserire la password per accedere al diario fittizio & \hyperref[subsec:UC-25.2]{UC-25.2} \\
 \hline
 \rowcolor{white}
-RF-OB-35 & Il sistema deve notificare l'errore in caso di password errata & \hyperref[subsec:UC-25]{UC-25} \\
+RF-OB-35 & Il sistema deve visualizzare un messaggio di errore esplicativo nel caso in cui la password inserita per l'accesso al diario risulti errata & \hyperref[subsec:UC-27]{UC-27} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-36 & Il sistema deve bloccare temporaneamente l'accesso dopo troppi tentativi errati & \hyperref[subsec:UC-26]{UC-26} \\
+RF-OB-35 & L'utente deve poter reinserire la password di accesso al diario dopo la visualizzazione del messaggio di errore esplicativo & \hyperref[subsec:UC-27]{UC-27} \\
 \hline
+\rowcolor{white}
+RF-OB-36 & Il sistema deve bloccare temporaneamente l'accesso al diario in seguito al superamento del limite massimo di tentativi errati di inserimento password & \hyperref[subsec:UC-26]{UC-26} \\
+\hline
+
+
+
+
+
+
 \rowcolor{white}
 RF-OB-37 & L'\term{Utente} Autenticato deve poter visualizzare il contenuto del diario & \hyperref[subsec:UC-27]{UC-27} \\
 \hline
