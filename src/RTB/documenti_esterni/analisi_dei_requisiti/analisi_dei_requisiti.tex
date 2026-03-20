@@ -156,10 +156,10 @@ Gruppo BitByBit\\
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 \rowcolor{white}
-1.2.1 & 2026-03-18 & Gabriele Scaggiante & Riscrittura dei casi d'uso da \hyperref[sec:UC-19]{UC-19} a \hyperref[subsec:UC-25]{UC-25}. Inserimento nuovi casi UC-26, UC-27, UC-28, UC-33, UC-34, UC-35. & Riccardo Manisi \\
+1.2.0 & 2026-03-18 & Gabriele Scaggiante & Riscrittura dei casi d'uso da \hyperref[sec:UC-21]{UC-21} a \hyperref[subsec:UC-29]{UC-29}. Inserimento nuovi casi \hyperref[subsec:UC-28]{UC-28},\hyperref[subsec:UC-28.1]{UC-28.1},\hyperref[subsec:UC-28.1.1]{UC-28.1.1},\hyperref[subsec:UC-29]{UC-29},\hyperref[subsec:UC-29.1]{UC-29.1},\hyperref[subsec:UC-29.1.1]{UC-29.1.1}. & Riccardo Manisi \\
 \hline
 \rowcolor{white}
-1.1.1 & 2026-03-17 & Dennis Parolin & Riscrittura dei casi d'uso da \hyperref[sec:UC-4]{UC-4} a \hyperref[subsec:UC-14]{UC-14}. Il caso d'uso \hyperref[sec:UC-5]{UC-5} è stato aggiunto come nuovo caso d'uso. Rifatta tutta la sezione "Requisiti di vincolo" (\ref{subsection:requisiti_vincolo}) e "Requisiti di qualità" (\ref{subsection:requisiti_qualita}). & Riccardo Manisi \\
+1.1.0 & 2026-03-17 & Dennis Parolin & Riscrittura dei casi d'uso da \hyperref[sec:UC-4]{UC-4} a \hyperref[subsec:UC-14]{UC-14}. Il caso d'uso \hyperref[sec:UC-5]{UC-5} è stato aggiunto come nuovo caso d'uso. Rifatta tutta la sezione "Requisiti di vincolo" (\ref{subsection:requisiti_vincolo}) e "Requisiti di qualità" (\ref{subsection:requisiti_qualita}). & Riccardo Manisi \\
 \hline
 \rowcolor{gray!20}
 1.0.1 & 2026-03-01 & Riccardo Manisi & Modificati caso d'uso UC-17 e aggiunti sottocasi UC-17.1, UC-17.2  &  Gabriele Scagginate\\
@@ -1557,12 +1557,8 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \begin{itemize}
         \item Il sistema è attivo
         \item L'attore si trova nella schermata di impostazione password per il diario criptato
-\item \textbf{Pre-condizioni:}
-\begin{itemize}
-\item Il sistema è attivo
-\item L'attore si trova nella schermata di impostazione password per il diario criptato
-\item L'attore non ha nessuna password impostata per il diario criptato
-\end{itemize}
+        \item L'attore non ha nessuna password impostata per il diario criptato
+    \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
         \item Il sistema ha validato e memorizzato la password del diario criptato
@@ -1592,14 +1588,9 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'attore sta inserendo la password per l'accesso al diario
+        \item L'attore sta impostando la password per l'accesso al diario
         \item La password inserita non rispetta i criteri di sicurezza definiti dal sistema
-\item \textbf{Pre-condizioni:}
-\begin{itemize}
-\item Il sistema è attivo
-\item L'attore sta impostando la password per l'accesso al diario
-\item La password inserita non rispetta i criteri di sicurezza definiti dal sistema
-\end{itemize}
+    \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
         \item Il sistema ha notificato l'attore della non conformità
@@ -1639,9 +1630,8 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \begin{itemize}
         \item L'attore seleziona la voce per l'impostazione della password per il diario fittizio
         \item L'attore digita la password desiderata per il diario fittizio nel campo dedicato
+        \item L'attore conferma la password inserita
         \item Il sistema valida la password inserita
-\item L'attore conferma la password inserita
-\item Il sistema valida la password inserita
         \item Il sistema memorizza la password del diario fittizio
     \end{itemize}
     \item \textbf{Scenari secondari:} 
@@ -1833,8 +1823,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-\item Il sistema è attivo
-\item L'attore ha inserito la password del diario criptato e si trova quindi al suo interno
+        \item L'attore si trova all'interno del diario criptato
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
