@@ -156,6 +156,9 @@ Gruppo BitByBit\\
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 \rowcolor{white}
+1.3.0 & 2026-03-19 & Marco Sanguin & Aggiunta dei casi d'uso per il diario fittizio da \hyperref[sec:UC-37]{UC-37} a \hyperref[subsec:UC-43]{UC-43} & Riccardo Manisi \\
+\hline
+\rowcolor{gray!20}
 1.2.1 & 2026-03-18 & Gabriele Scaggiante & Riscrittura dei casi d'uso da \hyperref[sec:UC-19]{UC-19} a \hyperref[subsec:UC-25]{UC-25}. Inserimento nuovi casi UC-26, UC-27, UC-28, UC-33, UC-34, UC-35. & Riccardo Manisi \\
 \hline
 \rowcolor{white}
@@ -1686,7 +1689,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
-        \item L'\term{Utente} ha accesso al diario corrispondente alla password inserita
+        \item L'attore ha accesso al diario corrispondente alla password inserita
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
@@ -1773,7 +1776,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
-        \item L'\term{Utente} ha accesso al diario criptato
+        \item L'attore ha accesso al diario criptato
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
@@ -1796,7 +1799,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
-        \item L'\term{Utente} ha accesso al diario fittizio
+        \item L'attore ha accesso al diario fittizio
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
@@ -1893,232 +1896,418 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Trigger:} L'attore accede al diario criptato
 \end{itemize}
 
-\subsubsection{UC-33 - Visualizzazione diario fittizio} \label{subsec:UC-33}
+% UC modifica e visualizzazione note diario fittizio
+\subsubsection{UC-37 - Eliminazione nota diario fittizio} \label{subsec:UC-37}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-33-visualizzazione-diario-fittizio.png}
-    \caption{Diagramma del caso d'uso UC-33}
-    \label{fig:UC-33}
-\end{figure}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} autenticato al diario
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item L'attore si trova all'interno del diario fittizio
-    \end{itemize}
-    \item \textbf{Post-condizioni:} 
-    \begin{itemize}
-        \item Il sistema visualizza l'interfaccia principale del diario fittizio con la lista delle note
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item L'attore accede alla schermata principale del diario fittizio
-        \item Il sistema carica e visualizza la lista delle note presenti $\rightarrow$ \hyperref[subsec:UC-34]{UC-34}
-    \end{itemize}
-    \item \textbf{Inclusioni:}
-    \begin{itemize}
-        \item \hyperref[subsec:UC-34]{UC-34}
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore accede al diario fittizio
-\end{itemize}
-
-\subsubsection{UC-34 - Visualizzazione lista note nel diario fittizio} \label{subsec:UC-34}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} autenticato al diario
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item L'attore si trova all'interno del diario fittizio
-        \item Esiste almeno una nota all'interno del diario fittizio
-    \end{itemize}
-    \item \textbf{Post-condizioni:} 
-    \begin{itemize}
-        \item Il sistema visualizza l'elenco completo delle anteprime delle note presenti nel diario fittizio
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item Il sistema recupera tutte le note memorizzate nel diario fittizio
-        \item Il sistema visualizza, in una lista, le anteprime di ogni singola nota $\rightarrow$ \hyperref[subsec:UC-35]{UC-35}
-    \end{itemize}
-    \item \textbf{Scenario secondario:} 
-    \begin{itemize}
-        \item Il sistema non è in grado di soddisfare la richiesta dell'\term{Utente}. $\rightarrow$ \hyperref[subsec:UC-5]{UC-5}
-    \end{itemize}
-    \item \textbf{Inclusioni:}
-    \begin{itemize}
-        \item \hyperref[subsec:UC-35]{UC-35}
-    \end{itemize}
-    \item \textbf{Estensioni:}
-    \begin{itemize}
-        \item \hyperref[subsec:UC-5]{UC-5}
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore accede al diario fittizio
-\end{itemize}
-
-\subsubsection{UC-35 - Visualizzazione anteprima singola nota della lista nel diario fittizio} \label{subsec:UC-35}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} autenticato al diario
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item L'attore si trova all'interno del diario fittizio
-        \item Il sistema ha recuperato e organizzato le anteprime delle note da visualizzare
-        \item Esiste almeno una nota all'interno del diario fittizio
-    \end{itemize}
-    \item \textbf{Post-condizioni:} 
-    \begin{itemize}
-        \item Il sistema visualizza l'anteprima di una nota all'interno della lista
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item Il sistema recupera le informazioni della nota da visualizzare
-        \item Il sistema visualizza parte del contenuto testuale presente all'inizio della nota
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore accede al diario fittizio
-\end{itemize}
-
-\subsubsection{UC-28 - Creazione nota} \label{subsec:UC-28}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-28-diario.png}
-    \caption{Diagramma del caso d'uso UC-28}
-    \label{fig:UC-28}
+    \includegraphics[width=1\textwidth]{use_case/UC-37-diario_fittizio.png}
+    \caption{Diagramma dei casi d'uso UC-37 e UC-37.1}
+    \label{fig:UC-37, UC-37.1}
 \end{figure}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'attore è autenticato al diario
+        \item L'attore è all'interno del diario fittizio
+        \item Esiste almeno una nota nel diario fittizio
+        \item L'attore sta visualizzando la lista delle note del diario fittizio
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
-        \item Una nuova nota è stata creata e memorizzata nel diario
-        \item La nuova nota è visibile nella lista delle note
+        \item La nota è stata rimossa dal diario fittizio
+        \item La nota non è più visibile nella lista delle note del diario fittizio
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'attore seleziona l'opzione per creare una nuova nota
-        \item Il sistema crea una nuova nota vuota e la memorizza nel diario
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore seleziona l'opzione di creazione nota nel diario
-\end{itemize}
-
-\subsubsection{UC-29 - Eliminazione nota} \label{subsec:UC-29}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-29-diario.png}
-    \caption{Diagramma del caso d'uso UC-29}
-    \label{fig:UC-29}
-\end{figure}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item L'attore è autenticato al diario
-        \item Esiste almeno una nota nel diario
-        \item L'attore ha selezionato una nota da eliminare
-    \end{itemize}
-    \item \textbf{Post-condizioni:} 
-    \begin{itemize}
-        \item La nota selezionata è stata rimossa dal diario
-        \item La nota non è più visibile nella lista delle note
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item L'attore seleziona una nota dalla lista
-        \item L'attore sceglie l'opzione di eliminazione
-        \item Il sistema richiede conferma dell'operazione di eliminazione
+        \item L'attore seleziona la voce di eliminazione di una nota dalla lista di note del diario fittizio
+        \item Il sistema richiede conferma dell'operazione di eliminazione $\rightarrow$ \hyperref[subsec:UC-37.1]{UC-37.1}
         \item L'attore conferma l'eliminazione
-        \item Il sistema rimuove definitivamente la nota dal diario
+        \item Il sistema rimuove definitivamente la nota dal diario fittizio
         \item Il sistema aggiorna la lista delle note
     \end{itemize}
-    \item \textbf{Trigger:} L'attore seleziona l'opzione di eliminazione nota nel diario
+    \item \textbf{Inclusioni:}
+    \begin{itemize}
+        \item \hyperref[subsec:UC-37.1]{UC-37.1}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole eliminare una nota del diario fittizio
 \end{itemize}
 
-\subsubsection{UC-30 - Inserimento testo nella nota} \label{subsec:UC-30}
+\subsubsection{UC-37.1 - Conferma eliminazione nota diario fittizio}\label{subsec:UC-37.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore è all'interno del diario fittizio
+        \item L'attore ha selezionato la voce per eliminare una nota dalla lista delle note del diario fittizio
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema riceve la conferma dell'attore di eliminare la nota dalla lista delle note del diario fittizio
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore conferma  l'eliminazione di una nota dalla lista di note del diario fittizio
+        \item Il sistema rimuove la nota dalla lista delle note del diario fittizio
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole confermare l'eliminazione di una nota dal diario fittizio
+\end{itemize}
+
+\subsubsection{UC-38 - Creazione nota diario fittizio} \label{subsec:UC-38}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-30-31-diario.png}
-    \caption{Diagramma dei casi d'uso UC-30 e UC-31}
-    \label{fig:UC-30}
+    \includegraphics[width=1\textwidth]{use_case/UC-38-diario_fittizio.png}
+    \caption{Diagramma del caso d'uso UC-38}
+    \label{fig:UC-38}
 \end{figure}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'attore è autenticato al diario
-        \item L'attore sta modificando una nota
+        \item L'attore si trova all'interno del diario fittizio
+        \item L'attore sta visualizzando la lista delle note del diario fittizio
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
-        \item Il testo inserito è stato memorizzato nella nota
+        \item Il sistema crea una nuova nota vuota e la memorizza nel diario fittizio
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'attore seleziona la posizione in cui inserire il testo nella nota
-        \item L'attore digita il contenuto testuale desiderato
-        \item Il sistema memorizza il testo inserito nella nota
+        \item L'attore ha selezionato la voce per l'aggiunta di una nuova nota
+        \item La nuova nota viene creata ed è visibile nella lista delle note del diario fittizio
     \end{itemize}
-    \item \textbf{Trigger:} L'attore interagisce con una nota per modificarne il contenuto testuale
+    \item \textbf{Trigger:} L'attore vuole creare una nuova nota nel diario fittizio
 \end{itemize}
 
-\subsubsection{UC-31 - Inserimento media nella nota} \label{subsec:UC-31}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item Il sistema è attivo
-        \item L'attore è autenticato al diario
-        \item L'attore sta modificando una nota
-    \end{itemize}
-    \item \textbf{Post-condizioni:} 
-    \begin{itemize}
-        \item Il media è stato memorizzato nella nota
-        \item Il media è associato alla nota e visualizzabile
-    \end{itemize}
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item L'attore seleziona l'opzione per inserire contenuto media
-        \item L'attore sceglie il tipo di media da inserire tra audio e immagini
-        \item L'attore seleziona il media desiderato
-        \item L'attore conferma l'inserimento
-        \item Il sistema elabora e memorizza il contenuto media nella nota
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore seleziona l'opzione di inserimento media
-\end{itemize}
-
-\subsubsection{UC-32 - Visualizzazione contenuto nota} \label{subsec:UC-32}
+\subsubsection{UC-39 - Visualizzazione contenuto nota diario fittizio} \label{subsec:UC-39}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{use_case/UC-32-diario.png}
-    \caption{Diagramma del caso d'uso UC-32}
-    \label{fig:UC-32}
+    \includegraphics[width=1\textwidth]{use_case/UC-39-diario_fittizio.png}
+    \caption{Diagramma del caso d'uso UC-39}
+    \label{fig:UC-39}
 \end{figure}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'attore è autenticato al diario
-        \item Esiste almeno una nota nel diario
+        \item L'attore si trova all'interno del diario fittizio
+        \item Esiste almeno una nota nel diario fittizio
+        \item L'attore sta visualizzando la lista delle note nel diario fittizio
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
-        \item Il sistema visualizza il contenuto completo della nota selezionata
+        \item L'attore visualizza il contenuto di una nota del diario fittizio
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item L'attore seleziona una nota dalla lista
         \item Il sistema recupera il contenuto completo della nota
-        \item Il sistema visualizza tutto il contenuto testuale e media presente nella nota
+        \item Il sistema visualizza a schermo il contenuto testuale della nota $\rightarrow$ \hyperref[subsec:UC-39.1]{UC-39.1}
+        \item Il sistema visualizza a schermo il contenuto multimediale della nota $\rightarrow$ \hyperref[subsec:UC-39.2]{UC-39.2}
         \item L'attore può visualizzare e interagire con il contenuto della nota
     \end{itemize}
-    \item \textbf{Trigger:} L'attore interagisce con una nota nella lista note
+    \item \textbf{Inclusioni:}
+    \begin{itemize}
+        \item \hyperref[subsec:UC-39.1]{UC-39.1}
+        \item \hyperref[subsec:UC-39.2]{UC-39.2}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole visualizzare il contenuto di una nota nel diario fittizio
 \end{itemize}
+
+\subsubsection{UC-39.1 - Visualizzazione contenuto testuale nota diario fittizio} \label{subsec:UC-39.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova all'interno del diario fittizio
+        \item Esiste almeno una nota nel diario fittizio
+        \item L'attore sta visualizzando il contenuto di una nota del diario fittizio
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza il contenuto testuale della nota
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item Il sistema mostra il contenuto testuale della nota 
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole visualizzare il contenuto testuale di una nota del diario fittizio
+\end{itemize}
+
+\subsubsection{UC-39.2 - Visualizzazione contenuto multimediale nota diario fittizio} \label{subsec:UC-39.2}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova all'interno del diario fittizio
+        \item Esiste almeno una nota nel diario fittizio
+        \item L'attore sta visualizzando il contenuto di una nota del diario fittizio
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza il contenuto multimediale della nota
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item Il sistema mostra il contenuto multimediale della nota 
+    \end{itemize}
+    \item \textbf{Specializzazioni:}
+    \begin{itemize}
+        \item \hyperref[subsec:UC-39.2.1]{UC-39.2.1}
+        \item \hyperref[subsec:UC-39.2.1]{UC-39.2.1}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole visualizzare il contenuto multimediale di una nota del diario fittizio
+\end{itemize}
+
+\subsubsection{UC-39.2.1 - Visualizzazione audio nota diario fittizio} \label{subsec:UC-39.2.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova all'interno del diario fittizio
+        \item Esiste almeno una nota nel diario fittizio
+        \item L'attore sta visualizzando il contenuto di una nota del diario fittizio
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza una rappresentazione grafica dell'audio contenuto nella nota
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item Il sistema mostra il contenuto audio presente nella nota 
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole visualizzare il contenuto audio di una nota del diario fittizio
+\end{itemize}
+
+\subsubsection{UC-39.2.2 - Visualizzazione immagini nota diario fittizio} \label{subsec:UC-39.2.2}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova all'interno del diario fittizio
+        \item Esiste almeno una nota nel diario fittizio
+        \item L'attore sta visualizzando il contenuto di una nota del diario fittizio
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza le immagini presenti nella nota
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item Il sistema mostra le immagini presenti nella nota 
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole visualizzare le immagini contenute in una nota del diario fittizio
+\end{itemize}
+
+\subsubsection{UC-40 - Inserimento testo in nota diario fittizio} \label{subsec:UC-40}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{use_case/UC-40-41-diario_fittizio.png}
+    \caption{Diagramma dei casi d'uso UC-40, UC-41, UC-41.1 e UC-41.2}
+    \label{fig:UC-40, UC-341, UC-41.1, UC-41.2}
+\end{figure}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova all'interno del diario fittizio
+        \item L'attore sta visualizzando il contenuto di una nota del diario fittizio
+        \item Non è presente contenuto testuale nella nota
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema riceve correttamente il testo digitato da memorizzare nella nota
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item L'attore ha selezionato l'area apposita per l'inserimento del testo nella nota
+        \item L'attore digita il testo da inserire nella nota
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole aggiungere del testo ad una nota nel diario fittizio
+\end{itemize}
+
+\subsubsection{UC-41 - Inserimento media in nota diario fittizio} \label{subsec:UC-41}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova all'interno del diario fittizio
+        \item L'attore sta visualizzando il contenuto di una nota del diario fittizio
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema riceve correttamente il media da memorizzare nella nota
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item L'attore ha selezionato la voce per l'aggiunta di un media
+        \item L'attore inserisce il media desiderato
+    \end{itemize}
+    \item \textbf{Specializzazioni}
+    \begin{itemize}
+        \item \hyperref[subsec:UC-41.1]{UC-41.1}
+        \item \hyperref[subsec:UC-41.2]{UC-41.2}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole aggiungere del contenuto multimediale ad una nota nel diario fittizio
+\end{itemize}
+
+\subsubsection{UC-41.1 - Inserimento immagine nella nota diario fittizio} \label{subsec:UC-41.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova all'interno del diario fittizio
+        \item L'attore sta visualizzando il contenuto di una nota del diario fittizio
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema riceve correttamente l'immagine da memorizzare nella nota
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item L'attore ha selezionato la voce per l'aggiunta di un media
+        \item L'attore inserisce una immagine nella nota
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole aggiungere un'immagine ad una nota nel diario fittizio
+\end{itemize}
+
+\subsubsection{UC-41.2 - Inserimento audio nella nota diario fittizio} \label{subsec:UC-41.2}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova all'interno del diario fittizio
+        \item L'attore sta visualizzando il contenuto di una nota del diario fittizio
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema riceve correttamente l'audio da memorizzare nella nota
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item L'attore ha selezionato la voce per l'aggiunta di un media
+        \item L'attore inserisce un audio nella nota
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole aggiungere del contenuto audio ad una nota nel diario fittizio
+\end{itemize}
+
+\subsubsection{UC-42 - Rimozione contenuto multimediale in nota diario fittizio} \label{subsec:UC-42}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{use_case/UC-42-43-diario_fittizio.png}
+    \caption{Diagramma dei casi d'uso UC-42, UC-43, UC-42.1 e UC-42.2}
+    \label{fig:UC-42, UC-43, UC-42.1, UC-42.2}
+\end{figure}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova all'interno del diario fittizio
+        \item L'attore sta visualizzando il contenuto di una nota del diario fittizio
+        \item La nota visualizzata presenta almeno un contenuto multimendiale
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema riceve correttamente la rimozione del contenuto multimediale della nota
+        \item Il contenuto multimediale non è più visibile nella nota
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item L'attore seleziona il contenuto multimediale che vuole rimuovere
+        \item L'attore seleziona la voce apposita per la rimozione del contenuto multimediale
+        \item Il sistema rimuove il contenuto multimediale definitivamente dalla nota
+    \end{itemize}
+    \item \textbf{Specializzazioni}
+    \begin{itemize}
+        \item \hyperref[subsec:UC-42.1]{UC-42.1}
+        \item \hyperref[subsec:UC-42.2]{UC-42.2}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole rimuovere del contenuto multimediale da una nota nel diario fittizio
+\end{itemize}
+
+\subsubsection{UC-42.1 - Rimozione immagine in nota diario fittizio} \label{subsec:UC-42.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova all'interno del diario fittizio
+        \item L'attore sta visualizzando il contenuto di una nota del diario fittizio
+        \item La nota visualizzata presenta almeno un'immagine
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema riceve correttamente la rimozione dell'immagine della nota
+        \item L'immagine non è più visibile nella nota
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item L'attore seleziona l'immagine che vuole rimuovere
+        \item L'attore seleziona la voce apposita per la rimozione dell'immagine
+        \item Il sistema rimuove l'immagine definitivamente dalla nota
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole rimuovere un'immagine da una nota nel diario fittizio
+\end{itemize}
+
+\subsubsection{UC-42.2 - Rimozione audio in nota diario fittizio} \label{subsec:UC-42.2}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova all'interno del diario fittizio
+        \item L'attore sta visualizzando il contenuto di una nota del diario fittizio
+        \item La nota visualizzata presenta almeno una traccia audio
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema riceve correttamente la rimozione della traccia audio della nota
+        \item La traccia audio non è più presente nella nota
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item L'attore seleziona la traccia audio che vuole rimuovere
+        \item L'attore seleziona la voce apposita per la rimozione dell'immagine
+        \item Il sistema rimuove la traccia audio definitivamente dalla nota
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole rimuovere una traccia audio da una nota nel diario fittizio
+\end{itemize}
+
+\subsubsection{UC-43 - Modifica testo in nota diario fittizio} \label{subsec:UC-43}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore è all'interno del diario fittizio
+        \item L'attore sta visualizzando il contenuto di una nota del diario fittizio
+        \item È presente del contenuto testuale nella nota
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore ha modificato con successo il contenuto testuale nella nota
+        \item Il sistema ha ricevuto correttamente la modifica del contenuto testuale ed esso è stato salvato
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item L'attore seleziona nella nota il contenuto testuale che intende modificare
+        \item L'attore modifica come desiderato il contenuto testuale selezionato
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole modificare del testo in una nota del diario fittizio
+\end{itemize}
+
 
 % ===== UC-S: SICUREZZA - GUARDIANO SILENZIOSO  ======
 
@@ -2136,7 +2325,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo.
-        \item L'\term{Utente} ha cliccato la voce per l'invio del messaggio SOS.
+        \item L'attore ha cliccato la voce per l'invio del messaggio SOS.
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
@@ -2186,7 +2375,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \begin{itemize}
         \item \hyperref[sec:UC-34]{UC-34}
     \end{itemize}
-    \item \textbf{Trigger:} L'\term{Utente} ha cliccato l'elemento per inviare un messaggio di SOS ma il sistema rileva l'assenza di connessione internet.
+    \item \textbf{Trigger:} L'attore ha cliccato l'elemento per inviare un messaggio di SOS ma il sistema rileva l'assenza di connessione internet.
 \end{itemize}
 
 \subsubsection{UC-33.2 - Mancanza di contatti fidati} \label{sec:UC-33.2}
@@ -2206,14 +2395,14 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item Il sistema rileva che la lista dei contatti fidati è vuota
-        \item Il sistema notifica l'\term{Utente} con un messaggio di errore
+        \item Il sistema notifica L'attore con un messaggio di errore
         \item Il sistema dà la possibilità all'attore di inviare un segnale acustico $\rightarrow$ \ref{sec:UC-34}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
         \item \hyperref[sec:UC-34]{UC-34}
     \end{itemize}
-    \item \textbf{Trigger:} L'\term{Utente} vuole mandare un messaggio di SOS ai contatti fidati
+    \item \textbf{Trigger:} L'attore vuole mandare un messaggio di SOS ai contatti fidati
 \end{itemize}
 
 \subsubsection{UC-34 - Invio segnale acustico} \label{sec:UC-34}
@@ -2293,7 +2482,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item \hyperref[sec:UC-35.2]{UC-35.2}
         \item \hyperref[sec:UC-35.3]{UC-35.3}
     \end{itemize}
-    \item \textbf{Trigger:} L'\term{Utente} vuole consultarsi con il chatbot
+    \item \textbf{Trigger:} L'attore vuole consultarsi con il chatbot
 \end{itemize}
 
 \subsubsection{UC-35.1 - Interruzione risposta} \label{sec:UC-35.1}
@@ -2339,7 +2528,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item L'attore può riprovare
         \item L'attore può scrivere un nuovo messaggio
     \end{itemize}
-    \item \textbf{Trigger:} L'\term{Utente} vuole consultarsi con il chatbot ma manca la connessione internet.
+    \item \textbf{Trigger:} L'attore vuole consultarsi con il chatbot ma manca la connessione internet.
 \end{itemize}
 
 \subsubsection{UC-35.3 - Errore di lettura del messaggio} \label{sec:UC-35.3}
@@ -2358,11 +2547,11 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \begin{itemize}
         \item Il sistema rileva un errore nella lettura del messaggio inviato
         \item Il sistema notifica l'\term{Utente} dell'errore
-        \item L'\term{Utente} può mandare un nuovo messaggio
-        \item L'\term{Utente} può chiedere di riprovare a leggere il messaggio \ref{sec:UC-35.1}
+        \item L'attore può mandare un nuovo messaggio
+        \item L'attore può chiedere di riprovare a leggere il messaggio \ref{sec:UC-35.1}
 	    \item Il sistema riceve il nuovo messaggio modificato.
     \end{itemize}
-    \item \textbf{Trigger:} L'\term{Utente} vuole consultarsi con il chatbot ma il sistema non è riuscito a leggere il messaggio.
+    \item \textbf{Trigger:} L'attore vuole consultarsi con il chatbot ma il sistema non è riuscito a leggere il messaggio.
 \end{itemize}
 
 \subsubsection{UC-36 - Switch al "Detective delle Relazioni"} \label{sec:UC-36}
@@ -3220,7 +3409,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item L'\term{Utente} è notificato dell'errore
+        \item L'attore è notificato dell'errore
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
