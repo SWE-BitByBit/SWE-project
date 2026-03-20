@@ -111,7 +111,7 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & Completo\\
-\textbf{Versione:} & 1.0.1 \\
+\textbf{Versione:} & 1.5.0 \\
 \textbf{Responsabile:} & Giovanni Visentin \\
 \textbf{Redattori:} & 
 \begin{tabular}[t]{@{}l@{}}
@@ -155,11 +155,14 @@ Gruppo BitByBit\\
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
+\rowcolor{white}
+1.5.0 & 2026-03-20 & Dennis Parolin & Riscrittura della sezione \hyperref[subsection:requisiti_funzionali]{Requisiti Funzionali} & Gabriele Scaggiante \\
+\hline
 \rowcolor{gray!20}
-1.4.0 & 2026-03-20 & Dennis Parolin & Riscrittura della sezione \hyperref[subsection:requisiti_funzionali]{Requisiti Funzionali} & Gabriele Scaggiante \\
+1.4.0 & 2026-03-19 & Marco Sanguin & Riscrittura dei casi d'uso per il diario fittizio da \hyperref[sec:UC-37]{UC-37} a \hyperref[subsec:UC-43]{UC-43}. & Riccardo Manisi \\
 \hline
 \rowcolor{white}
-1.3.0 & 2026-03-19 & Marco Sanguin & Riscrittura dei casi d'uso per il diario fittizio da \hyperref[sec:UC-37]{UC-37} a \hyperref[subsec:UC-43]{UC-43}. & Riccardo Manisi \\
+1.3.0 & 2026-03-18 & Ferdinando Fracasso & Modificati \hyperref[subsec:UC-28]{UC-28}, \hyperref[subsec:UC-29]{UC-29} e \hyperref[subsec:UC-32]{UC-32}, ora da \hyperref[subsec:UC-30]{UC-30} a \hyperref[subsec:UC-36]{UC-36} più sottocasi & Dennis Parolin \\
 \hline
 \rowcolor{gray!20}
 1.2.0 & 2026-03-18 & Gabriele Scaggiante & Riscrittura dei casi d'uso da \hyperref[subsec:UC-21]{UC-21} a \hyperref[subsec:UC-29]{UC-29}. Inserimento nuovi casi \hyperref[subsec:UC-28]{UC-28},\hyperref[subsec:UC-28.1]{UC-28.1},\hyperref[subsec:UC-28.1.1]{UC-28.1.1},\hyperref[subsec:UC-29]{UC-29},\hyperref[subsec:UC-29.1]{UC-29.1},\hyperref[subsec:UC-29.1.1]{UC-29.1.1}. & Riccardo Manisi \\
@@ -168,7 +171,7 @@ Gruppo BitByBit\\
 1.1.0 & 2026-03-17 & Dennis Parolin & Riscrittura dei casi d'uso da \hyperref[sec:UC-4]{UC-4} a \hyperref[subsec:UC-13.1]{UC-13.1}. Il caso d'uso \hyperref[sec:UC-5]{UC-5} è stato aggiunto come nuovo caso d'uso. Rifatta tutta la sezione "Requisiti di vincolo" (\ref{subsection:requisiti_vincolo}) e "Requisiti di qualità" (\ref{subsection:requisiti_qualita}). & Riccardo Manisi \\
 \hline
 \rowcolor{gray!20}
-1.0.1 & 2026-03-01 & Riccardo Manisi & Modificati caso d'uso UC-17 e aggiunti sottocasi UC-17.1, UC-17.2  &  Gabriele Scagginate\\
+1.0.1 & 2026-03-17 & Riccardo Manisi & Modificati caso d'uso \hyperref[sec:UC-17]{UC-17} e aggiunti sottocasi \hyperref[sec:UC-17.1]{UC-17.1}, \hyperref[sec:UC-17.2]{UC-17.2}  &  Gabriele Scagginate\\
 \hline
 \rowcolor{white}
 1.0.0 & 2026-03-01 & Giovanni Visentin & Approvazione del documento & Riccardo Manisi \\
@@ -730,7 +733,7 @@ Il diagramma riportato di seguito mostra anche un ulteriore caso d'uso correlato
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'attore sta visualizzando la lista dei contatti fidati $\rightarrow$ \hyperref[sec:UC-4]{UC-4}
+        \item L'attore sta visualizzando la lista dei contatti fidati
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
@@ -754,8 +757,8 @@ Il diagramma riportato di seguito mostra anche un ulteriore caso d'uso correlato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
-        \item L'attore sta visualizzando la lista dei contatti fidati $\rightarrow$ \hyperref[sec:UC-4]{UC-4}
-        \item L'attore visualizza un singolo contatto dalla lista $\rightarrow$ \hyperref[subsec:UC-4.1]{UC-4.1}
+        \item L'attore sta visualizzando la lista dei contatti fidati
+        \item L'attore visualizza un singolo contatto dalla lista
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
@@ -1871,6 +1874,421 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item Il sistema visualizza parte del contenuto testuale presente all'inizio della nota
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole accedere al diario criptato
+\end{itemize}
+
+% UC modifica e visualizzazione note diario criptato
+\subsubsection{UC-30 - Eliminazione nota diario criptato} \label{subsec:UC-30}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{use_case/UC-30-diario.png}
+    \caption{Diagramma dei casi d'uso UC-30 e UC-30.1}
+    \label{fig:UC-30, UC-30.1}
+\end{figure}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore è all'interno del diario criptato
+        \item Esiste almeno una nota nel diario criptato
+        \item L'attore sta visualizzando la lista delle note del diario criptato
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item La nota è stata rimossa dal diario criptato
+        \item La nota non è più visibile nella lista delle note del diario criptato
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore seleziona la voce di eliminazione di una nota dalla lista di note del diario criptato
+        \item Il sistema richiede conferma dell'operazione di eliminazione $\rightarrow$ \hyperref[subsec:UC-30.1]{UC-30.1}
+        \item L'attore conferma l'eliminazione
+        \item Il sistema rimuove definitivamente la nota dal diario criptato
+        \item Il sistema aggiorna la lista delle note
+    \end{itemize}
+    \item \textbf{Inclusioni:}
+    \begin{itemize}
+        \item \hyperref[subsec:UC-30.1]{UC-30.1}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore desidera eliminare una nota del diario criptato
+\end{itemize}
+
+\subsubsection{UC-30.1 - Conferma eliminazione nota diario criptato}\label{subsec:UC-30.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore è all'interno del diario criptato
+        \item Esiste almeno una nota nel diario criptato
+        \item L'attore sta visualizzando la lista delle note del diario criptato
+        \item L'attore ha selezionato la voce per eliminare la nota dalla lista delle note del diario criptato
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore conferma l'eliminazione della nota del diario criptato
+        \item Il sistema elimina correttamente la nota del diario criptato
+        \item La nota non è più visibile nella lista delle note del diario criptato
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item Il sistema visualizza la rischiesta di conferma per l'eliminazione della nota del diario criptato
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore desidera elimanare una nota del diario criptato
+\end{itemize}
+
+\subsubsection{UC-31 - Creazione nota} \label{subsec:UC-31}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{use_case/UC-31-diario.png}
+    \caption{Diagramma del caso d'uso UC-31}
+    \label{fig:UC-31}
+\end{figure}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova all'interno del diario criptato
+        \item L'attore sta visualizzando la lista delle note del diario criptato
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item Il sistema crea una nuova nota vuota e la memorizza nel diario criptato
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore ha selezionato la voce per l'aggiunta di una nuova nota
+        \item La nuova nota viene creata ed è visibile nella lista delle note del diario criptato
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole creare una nuova nota nel diario criptato
+\end{itemize}
+
+\subsubsection{UC-32 - Visualizzazione contenuto nota diario criptato} \label{subsec:UC-32}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{use_case/UC-32-diario.png}
+    \caption{Diagramma del caso d'uso UC-32}
+    \label{fig:UC-32}
+\end{figure}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova all'interno del diario criptato
+        \item Esiste almeno una nota nel diario criptato
+        \item L'attore sta visualizzando la lista delle note nel diario criptato
+    \end{itemize}
+    \item \textbf{Post-condizioni:} 
+    \begin{itemize}
+        \item L'attore visualizza il contenuto di una nota del diario criptato
+    \end{itemize}
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item L'attore seleziona una nota dalla lista
+        \item Il sistema recupera il contenuto completo della nota
+        \item Il sistema visualizza a schermo il contenuto testuale della nota $\rightarrow$ \hyperref[subsec:UC-32.1]{UC-32.1}
+        \item Il sistema visualizza a schermo il contenuto multimediale della nota $\rightarrow$ \hyperref[subsec:UC-32.2]{UC-32.2}
+        \item L'attore può visualizzare e interagire con il contenuto della nota
+    \end{itemize}
+    \item \textbf{Inclusioni:}
+    \begin{itemize}
+        \item \hyperref[subsec:UC-32.1]{UC-32.1}
+        \item \hyperref[subsec:UC-32.2]{UC-32.2}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole visualizzare il contenuto di una nota nel diario criptato
+\end{itemize}
+
+\subsubsection{UC-32.1 - Visualizzazione contenuto testuale nota diario criptato} \label{subsec:UC-32.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova all'interno del diario criptato
+        \item Esiste almeno una nota nel diario criptato
+        \item L'attore sta visualizzando il contenuto di una nota del diario criptato
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza il contenuto testuale della nota
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item Il sistema mostra il contenuto testuale della nota 
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole visualizzare il contenuto testuale di una nota del diario criptato
+\end{itemize}
+
+\subsubsection{UC-32.2 - Visualizzazione contenuto multimediale nota diario criptato} \label{subsec:UC-32.2}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova all'interno del diario criptato
+        \item Esiste almeno una nota nel diario criptato
+        \item L'attore sta visualizzando il contenuto di una nota del diario criptato
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza il contenuto multimediale della nota
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item Il sistema mostra il contenuto multimediale della nota 
+    \end{itemize}
+    \item \textbf{Specializzazioni:}
+    \begin{itemize}
+        \item \hyperref[subsec:UC-32.2.1]{UC-32.2.1}
+        \item \hyperref[subsec:UC-32.2.1]{UC-32.2.1}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole visualizzare il contenuto multimediale di una nota del diario criptato
+\end{itemize}
+
+\subsubsection{UC-32.2.1 - Visualizzazione audio nota diario criptato} \label{subsec:UC-32.2.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova all'interno del diario criptato
+        \item Esiste almeno una nota nel diario criptato
+        \item L'attore sta visualizzando il contenuto di una nota del diario criptato
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza il contenuto audio presente nella nota
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item Il sistema mostra il contenuto audio presente nella nota 
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole visualizzare il contenuto audio di una nota del diario criptato
+\end{itemize}
+
+\subsubsection{UC-32.2.2 - Visualizzazione immagini nota diario criptato} \label{subsec:UC-32.2.2}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova all'interno del diario criptato
+        \item Esiste almeno una nota nel diario criptato
+        \item L'attore sta visualizzando il contenuto di una nota del diario criptato
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore visualizza le immagini presenti nella nota
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item Il sistema mostra le immagini presenti nella nota 
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole visualizzare le immagini presenti in una nota del diario criptato
+\end{itemize}
+
+\subsubsection{UC-33 - Inserimento testo in nota diario criptato} \label{subsec:UC-33}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{use_case/UC-33_32-diario.png}
+    \caption{Diagramma dei casi d'uso UC-33, UC-34, UC-34.1 e UC-34.2}
+    \label{fig:UC-33, UC-34, UC-34.1, UC-34.2}
+\end{figure}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova all'interno del diario criptato
+        \item L'attore sta visualizzando il contenuto di una nota del diario criptato
+        \item Non è presente contenuto testuale nella nota
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema riceve correttamente il testo digitato da memorizzare nella nota
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item L'attore ha selezionato l'area apposita per l'inserimento del testo nella nota
+        \item L'attore digita il testo da inserire nella nota
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole aggiungere del testo ad una nota nel diario criptato
+\end{itemize}
+
+\subsubsection{UC-34 - Inserimento media in nota diario criptato} \label{subsec:UC-34}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova all'interno del diario criptato
+        \item L'attore sta visualizzando il contenuto di una nota del diario criptato
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema riceve correttamente il media da memorizzare nella nota
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item L'attore ha selezionato la voce per l'aggiunta di un media
+        \item L'attore inserisce il media desiderato
+    \end{itemize}
+    \item \textbf{Specializzazioni}
+    \begin{itemize}
+        \item \hyperref[subsec:UC-34.1]{UC-34.1}
+        \item \hyperref[subsec:UC-34.2]{UC-34.2}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole aggiungere del contenuto multimediale ad una nota nel diario criptato
+\end{itemize}
+
+\subsubsection{UC-34.1 - Inserimento immagine in nota diario criptato} \label{subsec:UC-34.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova all'interno del diario criptato
+        \item L'attore sta visualizzando il contenuto di una nota del diario criptato
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema riceve correttamente l'immagine da memorizzare nella nota
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item L'attore ha selezionato la voce per l'aggiunta di un media
+        \item L'attore inserisce una immagine nella nota
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole aggiungere un'immagine ad una nota nel diario criptato
+\end{itemize}
+
+\subsubsection{UC-34.2 - Inserimento audio in nota diario criptato} \label{subsec:UC-34.2}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova all'interno del diario criptato
+        \item L'attore sta visualizzando il contenuto di una nota del diario criptato
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema riceve correttamente l'audio da memorizzare nella nota
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item L'attore ha selezionato la voce per l'aggiunta di un media
+        \item L'attore inserisce un audio nella nota
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole aggiungere del contenuto audio ad una nota nel diario criptato
+\end{itemize}
+
+\subsubsection{UC-35 - Modifica testo in nota diario criptato} \label{subsec:UC-35}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{use_case/UC-35_32-diario.png}
+    \caption{Diagramma dei casi d'uso UC-35, UC-36, UC-36.1 e UC-36.2}
+    \label{fig:UC-35, UC-36, UC-36.1, UC-36.2}
+\end{figure}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore è all'interno del diario criptato
+        \item L'attore sta visualizzando il contenuto di una nota del diario criptato
+        \item È presente del contenuto testuale nella nota
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L'attore ha modificato con successo il contenuto testuale nella nota
+        \item Il sistema ha ricevuto correttamente la modifica del contenuto testuale ed esso è stato salvato
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item L'attore seleziona nella nota il contenuto testuale che intende modificare
+        \item L'attore modifica come desiderato il contenuto testuale selezionato
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole modificare del testo in una nota del diario criptato
+\end{itemize}
+
+\subsubsection{UC-36 - Rimozione contenuto multimediale in nota diario criptato} \label{subsec:UC-36}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova all'interno del diario criptato
+        \item L'attore sta visualizzando il contenuto di una nota del diario criptato
+        \item La nota visualizzata contiene almeno un elemento multimediale
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema riceve correttamente la rimozione del contenuto multimediale della nota
+        \item Il contenuto multimediale non è più visibile nella nota
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item L'attore seleziona il contenuto multimediale che vuole rimuovere
+        \item L'attore seleziona la voce apposita per la rimozione del contenuto multimediale
+        \item Il sistema rimuove definitivamente dalla nota il contenuto multimediale selezionato
+    \end{itemize}
+    \item \textbf{Specializzazioni}
+    \begin{itemize}
+        \item \hyperref[subsec:UC-36.1]{UC-36.1}
+        \item \hyperref[subsec:UC-36.2]{UC-36.2}
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole rimuovere del contenuto multimediale da una nota nel diario criptato
+\end{itemize}
+
+\subsubsection{UC-36.1 - Rimozione immagine in nota diario criptato} \label{subsec:UC-36.1}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova all'interno del diario criptato
+        \item L'attore sta visualizzando il contenuto di una nota del diario criptato
+        \item La nota visualizzata contiene almeno una immagine
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema riceve correttamente la rimozione dell'immagine della nota
+        \item L'immagine non è più visibile nella nota
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item L'attore seleziona l'immagine che vuole rimuovere
+        \item L'attore seleziona la voce apposita per la rimozione dell'immagine
+        \item Il sistema rimuove definitivamente dalla nota l'immagine selezionata
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole rimuovere un'immagine da una nota nel diario criptato
+\end{itemize}
+
+\subsubsection{UC-36.2 - Rimozione audio in nota diario criptato} \label{subsec:UC-36.2}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato al diario
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item Il sistema è attivo
+        \item L'attore si trova all'interno del diario criptato
+        \item L'attore sta visualizzando il contenuto di una nota del diario criptato
+        \item La nota visualizzata contiene almeno una traccia audio
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item Il sistema riceve correttamente la rimozione della traccia audio della nota
+        \item La traccia audio non è più presente nella nota
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item L'attore seleziona la traccia audio che vuole rimuovere
+        \item L'attore seleziona la voce apposita per la rimozione della traccia audio
+        \item Il sistema rimuove definitivamente dalla nota la traccia audio selezionata
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole rimuovere una traccia audio da una nota nel diario criptato
 \end{itemize}
 
 \subsubsection{UC-29 - Visualizzazione diario fittizio} \label{subsec:UC-29}
@@ -3603,174 +4021,296 @@ RF-OB-2 & L'utente vede attivarsi automaticamente la funzionalità di Dead Man S
 \rowcolor{white}
 RF-OB-3 & L'utente deve poter visualizzare un messaggio di errore esplicativo nel caso in cui l'autenticazione tramite Google Auth fallisca, venga annullata o restituisca parametri non validi. & \hyperref[subsec:UC-2]{UC-2} \\
 \hline
-\rowcolor{white}
-RF-OB-5 & L'\term{Utente} deve poter selezionare il profilo di utilizzo ("Per me" o "Per altri") & \hyperref[subsec:UC-3]{UC-3} \\
-\hline
-\rowcolor{white}
-RF-OB-9 & L'\term{Utente} deve poter visualizzare la lista dei contatti fidati & \hyperref[sec:UC-4]{UC-4} \\
-\hline
 \rowcolor{gray!20}
-RF-OB-4 & L'\term{Utente} deve poter visualizzare un messaggio di errore esplicativo nel caso in cui il recupero dei dati dal database fallisca & \hyperref[sec:UC-5]{UC-5} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-4 & L'\term{Utente} deve poter ricaricare la sezione dei contatti fidati dopo la visualizzazione dell'errore di caricamento dei dati dal database. & \hyperref[sec:UC-4]{UC-4}, \hyperref[sec:UC-5]{UC-5} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-10 & Il sistema deve permettere la visualizzazione di un singolo contatto fidato dalla lista dei contatti fidati & \hyperref[subsec:UC-4.1]{UC-4.1} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-4 & L'\term{Utente} deve poter visualizzare la preview delle informazioni (il nome) del contatto fidato, che sta visualizzando dalla lista dei contatti fidati & \hyperref[subsec:UC-4.1.1]{UC-4.1.1} \\
+RF-OB-4 & L'\term{Utente} deve poter selezionare il profilo di utilizzo ("Per me" o "Per altri") & \hyperref[subsec:UC-3]{UC-3} \\
 \hline
 \rowcolor{white}
-RF-OB-11 & L'\term{Utente} deve poter visualizzare i dettagli di un contatto fidato selezionato dalla lista dei contatti fidati & \hyperref[subsec:UC-6]{UC-6} \\
+RF-OB-5 & L'\term{Utente} deve poter visualizzare la lista dei contatti fidati & \hyperref[sec:UC-4]{UC-4} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-4 & L'\term{Utente} deve poter visualizzare il nome del contatto fidato selezionato dalla lista dei contatti fidati & \hyperref[subsec:UC-6.1]{UC-6.1} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-4 & L'\term{Utente} deve poter visualizzare il numero di telefono del contatto fidato selezionato dalla lista dei contatti fidati & \hyperref[subsec:UC-6.2]{UC-6.2} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-4 & L'\term{Utente} deve poter visualizzare l'indirizzo email del contatto fidato selezionato dalla lista dei contatti fidati & \hyperref[subsec:UC-6.3]{UC-6.3} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-12 & L'\term{Utente} deve poter aggiungere un nuovo contatto fidato alla lista dei contatti fidati & \hyperref[subsec:UC-7]{UC-7} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-12 & L'\term{Utente} deve poter inserire il nome del nuovo contatto fidato durante l'aggiunta di esso alla lista dei contatti fidati & \hyperref[subsec:UC-7.1]{UC-7.1} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-12 & L'\term{Utente} deve poter inserire il numero di telefono del nuovo contatto fidato durante l'aggiunta di esso alla lista dei contatti fidati & \hyperref[subsec:UC-7.2]{UC-7.2} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-12 & L'\term{Utente} deve poter inserire l'indirizzo email del nuovo contatto fidato durante l'aggiunta di esso alla lista dei contatti fidati & \hyperref[subsec:UC-7.3]{UC-7.3} \\
+RF-OB-6 & L'\term{Utente} deve poter visualizzare un messaggio di errore esplicativo nel caso in cui il recupero dei dati dal database fallisca & \hyperref[sec:UC-5]{UC-5} \\
 \hline
 \rowcolor{white}
-RF-OB-13 & Il sistema deve riconoscere e gestire le informazioni di numero di telefono e email già presenti nel sistema & \hyperref[subsec:UC-9]{UC-9}, \hyperref[subsec:UC-10]{UC-10} \\
+RF-OB-7 & L'\term{Utente} deve poter ricaricare la sezione dei contatti fidati dopo la visualizzazione dell'errore di caricamento dei dati dal database. & \hyperref[sec:UC-4]{UC-4}, \hyperref[sec:UC-5]{UC-5} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-8 & Il sistema deve permettere la visualizzazione di un singolo contatto fidato dalla lista dei contatti fidati & \hyperref[subsec:UC-4.1]{UC-4.1} \\
 \hline
 \rowcolor{white}
-RF-OB-13 & L'utente deve poter visualizzare un messaggio di errore esplicativo nel caso in cui le informazioni di numero di telefono e email siano già presenti nel sistema. & \hyperref[subsec:UC-9]{UC-9}, \hyperref[subsec:UC-10]{UC-10} \\
+RF-OB-9 & L'\term{Utente} deve poter visualizzare la preview delle informazioni (il nome) del contatto fidato, che sta visualizzando dalla lista dei contatti fidati & \hyperref[subsec:UC-4.1.1]{UC-4.1.1} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-10 & L'\term{Utente} deve poter visualizzare i dettagli di un contatto fidato selezionato dalla lista dei contatti fidati & \hyperref[subsec:UC-6]{UC-6} \\
 \hline
 \rowcolor{white}
-RF-OB-13 & L'utente deve poter reinserire le informazioni di numero di telefono e email dopo la visualizzazione del messaggio di errore esplicativo & \hyperref[subsec:UC-8]{UC-8}, \hyperref[subsec:UC-9]{UC-9}, \hyperref[subsec:UC-10]{UC-10}, \hyperref[subsec:UC-11]{UC-11} \\
+RF-OB-11 & L'\term{Utente} deve poter visualizzare il nome del contatto fidato selezionato dalla lista dei contatti fidati & \hyperref[subsec:UC-6.1]{UC-6.1} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-14 & Il sistema deve validare la conformità del numero di telefono inserito o modificato & \hyperref[subsec:UC-8]{UC-8}, \hyperref[subsec:UC-7.2]{UC-7.2}, \hyperref[subsec:UC-12.2]{UC-12.2} \\
+RF-OB-12 & L'\term{Utente} deve poter visualizzare il numero di telefono del contatto fidato selezionato dalla lista dei contatti fidati & \hyperref[subsec:UC-6.2]{UC-6.2} \\
 \hline
 \rowcolor{white}
-RF-OB-14 & Il sistema deve visualizzare un messaggio di errore esplicativo nel caso in cui il numero di telefono inserito o modificato non sia conforme ai criteri prestabiliti & \hyperref[subsec:UC-8]{UC-8} \\
+RF-OB-13 & L'\term{Utente} deve poter visualizzare l'indirizzo email del contatto fidato selezionato dalla lista dei contatti fidati & \hyperref[subsec:UC-6.3]{UC-6.3} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-15 & Il sistema deve validare la conformità dell'indirizzo email inserito o modificato & \hyperref[subsec:UC-11]{UC-11}, \hyperref[subsec:UC-7.3]{UC-7.3}, \hyperref[subsec:UC-12.3]{UC-12.3} \\
+RF-OB-14 & L'\term{Utente} deve poter aggiungere un nuovo contatto fidato alla lista dei contatti fidati & \hyperref[subsec:UC-7]{UC-7} \\
 \hline
 \rowcolor{white}
-RF-OB-15 & Il sistema deve visualizzare un messaggio di errore esplicativo nel caso in cui l'indirizzo email inserito o modificato non sia conforme ai criteri prestabiliti & \hyperref[subsec:UC-11]{UC-11} \\
+RF-OB-15 & L'\term{Utente} deve poter inserire il nome del nuovo contatto fidato durante l'aggiunta di esso alla lista dei contatti fidati & \hyperref[subsec:UC-7.1]{UC-7.1} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-16 & L'\term{Utente} deve poter modificare i dati di un contatto fidato esistente & \hyperref[subsec:UC-12]{UC-12} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-16 & L'\term{Utente} deve poter modificare il nome di un contatto fidato esistente & \hyperref[subsec:UC-12.1]{UC-12.1} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-16 & L'\term{Utente} deve poter modificare il numero di telefono di un contatto fidato esistente & \hyperref[subsec:UC-12.2]{UC-12.2} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-16 & L'\term{Utente} deve poter modificare l'indirizzo email di un contatto fidato esistente & \hyperref[subsec:UC-12.3]{UC-12.3} \\
+RF-OB-16 & L'\term{Utente} deve poter inserire il numero di telefono del nuovo contatto fidato durante l'aggiunta di esso alla lista dei contatti fidati & \hyperref[subsec:UC-7.2]{UC-7.2} \\
 \hline
 \rowcolor{white}
-RF-OB-17 & L'\term{Utente} deve poter eliminare un contatto fidato & \hyperref[subsec:UC-13]{UC-13} \\
+RF-OB-17 & L'\term{Utente} deve poter inserire l'indirizzo email del nuovo contatto fidato durante l'aggiunta di esso alla lista dei contatti fidati & \hyperref[subsec:UC-7.3]{UC-7.3} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-18 & Il sistema deve richiedere conferma prima dell'eliminazione di un contatto fidato & \hyperref[subsec:UC-13.1]{UC-13.1} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-18 & L'utente deve poter confermare, con un'apposita voce, l'eliminazione di un contatto fidato quando il sistema richiede la conferma. & \hyperref[subsec:UC-13.1]{UC-13.1} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-20 & L'\term{Utente} deve poter impostare il timer di prima inattività (per la funzionalità di Dead Man's Switch) & \hyperref[sec:UC-15]{UC-15} \\
+RF-OB-18 & Il sistema deve riconoscere e gestire le informazioni di numero di telefono e email già presenti nel sistema & \hyperref[subsec:UC-9]{UC-9}, \hyperref[subsec:UC-10]{UC-10} \\
 \hline
 \rowcolor{white}
-RF-OB-21 & L'\term{Utente} deve poter impostare il timer di seconda inattività (per la funzionalità di Dead Man's Switch) & \hyperref[sec:UC-16]{UC-16} \\
+RF-OB-19 & L'utente deve poter visualizzare un messaggio di errore esplicativo nel caso in cui le informazioni di numero di telefono e email siano già presenti nel sistema. & \hyperref[subsec:UC-9]{UC-9}, \hyperref[subsec:UC-10]{UC-10} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-22 & L'\term{Utente} deve poter modificare le informazioni della mail di avviso & \hyperref[sec:UC-17]{UC-17} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-22 & L'\term{Utente} deve poter modificare il titolo della mail di avviso & \hyperref[sec:UC-17.1]{UC-17.1} \\
+RF-OB-20 & L'utente deve poter reinserire le informazioni di numero di telefono e email dopo la visualizzazione del messaggio di errore esplicativo & \hyperref[subsec:UC-8]{UC-8}, \hyperref[subsec:UC-9]{UC-9}, \hyperref[subsec:UC-10]{UC-10}, \hyperref[subsec:UC-11]{UC-11} \\
 \hline
 \rowcolor{white}
-RF-OB-23 & L'\term{Utente} deve poter modificare il corpo della mail di avviso & \hyperref[sec:UC-17.2]{UC-17.2} \\
+RF-OB-21 & Il sistema deve validare la conformità del numero di telefono inserito o modificato & \hyperref[subsec:UC-8]{UC-8}, \hyperref[subsec:UC-7.2]{UC-7.2}, \hyperref[subsec:UC-12.2]{UC-12.2} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-24 & L'\term{Utente} deve poter visualizzare un'anteprima della mail di avviso & \hyperref[sec:UC-18]{UC-18} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-24 & L'\term{Utente} deve poter visualizzare l'anteprima del corpo della mail di avviso & \hyperref[subsec:UC-18.1]{UC-18.1} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-24 & L'\term{Utente} deve poter visualizzare un'anteprima del titolo della mail di avviso & \hyperref[subsec:UC-18.2]{UC-18.2} \\
+RF-OB-22 & Il sistema deve visualizzare un messaggio di errore esplicativo nel caso in cui il numero di telefono inserito o modificato non sia conforme ai criteri prestabiliti & \hyperref[subsec:UC-8]{UC-8} \\
 \hline
 \rowcolor{white}
-RF-OB-25 & L'\term{Utente} deve poter attivare il Dead Man's Switch & \hyperref[sec:UC-19]{UC-19} \\
+RF-OB-23 & Il sistema deve validare la conformità dell'indirizzo email inserito o modificato & \hyperref[subsec:UC-11]{UC-11}, \hyperref[subsec:UC-7.3]{UC-7.3}, \hyperref[subsec:UC-12.3]{UC-12.3} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-26 & L'\term{Utente} deve poter disattivare il Dead Man's Switch & \hyperref[sec:UC-20]{UC-20} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-32 & L'\term{Utente} deve poter impostare una password per il diario criptato & \hyperref[subsec:UC-21]{UC-21} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-32 & Il sistema deve validare la conformità della password del diario criptato secondo i criteri prestabiliti & \hyperref[subsec:UC-21]{UC-21}, \hyperref[subsec:UC-22]{UC-22} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-32 & Il sistema deve visualizzare un messaggio di errore esplicativo nel caso in cui la password del diario criptato non sia conforme ai criteri prestabiliti & \hyperref[subsec:UC-22]{UC-22} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-32 & L'utente deve poter reinserire la password del diario criptato dopo la visualizzazione del messaggio di errore esplicativo & \hyperref[subsec:UC-22]{UC-22} \\
+RF-OB-24 & Il sistema deve visualizzare un messaggio di errore esplicativo nel caso in cui l'indirizzo email inserito o modificato non sia conforme ai criteri prestabiliti & \hyperref[subsec:UC-11]{UC-11} \\
 \hline
 \rowcolor{white}
-RF-OB-27 & L'\term{Utente} deve poter impostare una password per il diario fittizio & \hyperref[subsec:UC-23]{UC-23} \\
+RF-OB-25 & L'\term{Utente} deve poter modificare i dati di un contatto fidato esistente & \hyperref[subsec:UC-12]{UC-12} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-27 & Il sistema deve validare la conformità e l'unicità della password del diario fittizio rispetto a quella del diario criptato & \hyperref[subsec:UC-22]{UC-22}, \hyperref[subsec:UC-23]{UC-23}, \hyperref[subsec:UC-24]{UC-24} \\
+RF-OB-26 & L'\term{Utente} deve poter modificare il nome di un contatto fidato esistente & \hyperref[subsec:UC-12.1]{UC-12.1} \\
 \hline
 \rowcolor{white}
-RF-OB-27 & Il sistema deve visualizzare un messaggio di errore esplicativo nel caso in cui la password del diario fittizio non sia conforme ai criteri prestabiliti & \hyperref[subsec:UC-22]{UC-22} \\
+RF-OB-27 & L'\term{Utente} deve poter modificare il numero di telefono di un contatto fidato esistente & \hyperref[subsec:UC-12.2]{UC-12.2} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-28 & Il sistema deve visualizzare un messaggio di errore esplicativo nel caso in cui la password del diario fittizio sia uguale a quella del diario criptato & \hyperref[subsec:UC-24]{UC-24} \\
+RF-OB-28 & L'\term{Utente} deve poter modificare l'indirizzo email di un contatto fidato esistente & \hyperref[subsec:UC-12.3]{UC-12.3} \\
 \hline
 \rowcolor{white}
-RF-OB-28 & L'utente deve poter reinserire la password del diario fittizio dopo la visualizzazione del messaggio di errore esplicativo & \hyperref[subsec:UC-22]{UC-22}, \hyperref[subsec:UC-24]{UC-24} \\
+RF-OB-29 & L'\term{Utente} deve poter eliminare un contatto fidato & \hyperref[subsec:UC-13]{UC-13} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-28 & L'utente deve poter inserire la password per accedere al diario desiderato & \hyperref[subsec:UC-25]{UC-25} \\
+RF-OB-30 & Il sistema deve richiedere conferma prima dell'eliminazione di un contatto fidato & \hyperref[subsec:UC-13.1]{UC-13.1} \\
 \hline
 \rowcolor{white}
-RF-OB-28 & L'utente deve poter inserire la password per accedere al diario criptato & \hyperref[subsec:UC-25.1]{UC-25.1} \\
+RF-OB-31 & L'utente deve poter confermare, con un'apposita voce, l'eliminazione di un contatto fidato quando il sistema richiede la conferma. & \hyperref[subsec:UC-13.1]{UC-13.1} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-28 & L'utente deve poter inserire la password per accedere al diario fittizio & \hyperref[subsec:UC-25.2]{UC-25.2} \\
+RF-OB-32 & L'\term{Utente} deve poter impostare il timer di prima inattività (per la funzionalità di Dead Man's Switch) & \hyperref[sec:UC-15]{UC-15} \\
 \hline
 \rowcolor{white}
-RF-OB-35 & Il sistema deve visualizzare un messaggio di errore esplicativo nel caso in cui la password inserita per l'accesso al diario risulti errata & \hyperref[subsec:UC-27]{UC-27} \\
+RF-OB-33 & L'\term{Utente} deve poter impostare il timer di seconda inattività (per la funzionalità di Dead Man's Switch) & \hyperref[sec:UC-16]{UC-16} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-35 & L'utente deve poter reinserire la password di accesso al diario dopo la visualizzazione del messaggio di errore esplicativo & \hyperref[subsec:UC-27]{UC-27} \\
+RF-OB-34 & L'\term{Utente} deve poter modificare le informazioni della mail di avviso & \hyperref[sec:UC-17]{UC-17} \\
 \hline
 \rowcolor{white}
-RF-OB-36 & Il sistema deve bloccare temporaneamente l'accesso al diario in seguito al superamento del limite massimo di tentativi errati di inserimento password & \hyperref[subsec:UC-26]{UC-26} \\
+RF-OB-35 & L'\term{Utente} deve poter modificare il titolo della mail di avviso & \hyperref[sec:UC-17.1]{UC-17.1} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-36 & L'\term{Utente} deve poter modificare il corpo della mail di avviso & \hyperref[sec:UC-17.2]{UC-17.2} \\
+\hline
+\rowcolor{white}
+RF-OB-37 & L'\term{Utente} deve poter visualizzare un'anteprima della mail di avviso & \hyperref[sec:UC-18]{UC-18} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-38 & L'\term{Utente} deve poter visualizzare l'anteprima del corpo della mail di avviso & \hyperref[subsec:UC-18.1]{UC-18.1} \\
+\hline
+\rowcolor{white}
+RF-OB-39 & L'\term{Utente} deve poter visualizzare un'anteprima del titolo della mail di avviso & \hyperref[subsec:UC-18.2]{UC-18.2} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-40 & L'\term{Utente} deve poter attivare il Dead Man's Switch & \hyperref[sec:UC-19]{UC-19} \\
+\hline
+\rowcolor{white}
+RF-OB-41 & L'\term{Utente} deve poter disattivare la funzionalità di Dead Man's Switch & \hyperref[sec:UC-20]{UC-20} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-42 & L'\term{Utente} deve poter impostare una password per il diario criptato & \hyperref[subsec:UC-21]{UC-21} \\
+\hline
+\rowcolor{white}
+RF-OB-43 & Il sistema deve validare la conformità della password del diario criptato secondo i criteri prestabiliti & \hyperref[subsec:UC-21]{UC-21}, \hyperref[subsec:UC-22]{UC-22} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-44 & Il sistema deve visualizzare un messaggio di errore esplicativo nel caso in cui la password del diario criptato non sia conforme ai criteri prestabiliti & \hyperref[subsec:UC-22]{UC-22} \\
+\hline
+\rowcolor{white}
+RF-OB-45 & L'utente deve poter reinserire la password del diario criptato dopo la visualizzazione del messaggio di errore esplicativo & \hyperref[subsec:UC-22]{UC-22} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-46 & L'\term{Utente} deve poter impostare una password per il diario fittizio & \hyperref[subsec:UC-23]{UC-23} \\
+\hline
+\rowcolor{white}
+RF-OB-47 & Il sistema deve validare la conformità e l'unicità della password del diario fittizio rispetto a quella del diario criptato & \hyperref[subsec:UC-22]{UC-22}, \hyperref[subsec:UC-23]{UC-23}, \hyperref[subsec:UC-24]{UC-24} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-48 & Il sistema deve visualizzare un messaggio di errore esplicativo nel caso in cui la password del diario fittizio non sia conforme ai criteri prestabiliti & \hyperref[subsec:UC-22]{UC-22} \\
+\hline
+\rowcolor{white}
+RF-OB-49 & Il sistema deve visualizzare un messaggio di errore esplicativo nel caso in cui la password del diario fittizio sia uguale a quella del diario criptato & \hyperref[subsec:UC-24]{UC-24} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-50 & L'utente deve poter reinserire la password del diario fittizio dopo la visualizzazione del messaggio di errore esplicativo & \hyperref[subsec:UC-22]{UC-22}, \hyperref[subsec:UC-24]{UC-24} \\
+\hline
+\rowcolor{white}
+RF-OB-51 & L'utente deve poter inserire la password per accedere al diario desiderato & \hyperref[subsec:UC-25]{UC-25} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-52 & L'utente deve poter inserire la password per accedere al diario criptato & \hyperref[subsec:UC-25.1]{UC-25.1} \\
+\hline
+\rowcolor{white}
+RF-OB-53 & L'utente deve poter inserire la password per accedere al diario fittizio & \hyperref[subsec:UC-25.2]{UC-25.2} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-54 & Il sistema deve visualizzare un messaggio di errore esplicativo nel caso in cui la password inserita per l'accesso al diario risulti errata & \hyperref[subsec:UC-27]{UC-27} \\
+\hline
+\rowcolor{white}
+RF-OB-55 & L'utente deve poter reinserire la password di accesso al diario dopo la visualizzazione del messaggio di errore esplicativo & \hyperref[subsec:UC-27]{UC-27} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-56 & Il sistema deve bloccare temporaneamente l'accesso al diario in seguito al superamento del limite massimo di tentativi errati di inserimento password & \hyperref[subsec:UC-26]{UC-26} \\
+\hline
+\rowcolor{white}
+RF-OB-57 & L'\term{Utente} deve poter visualizzare il contenuto del diario criptato & \hyperref[subsec:UC-28]{UC-28} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-58 & L'\term{Utente} deve poter visualizzare la lista delle note presenti nel diario criptato & \hyperref[subsec:UC-28.1]{UC-28.1} \\
+\hline
+\rowcolor{white}
+RF-OB-59 & L'\term{Utente} deve poter visualizzare l'anteprima della singola nota all'interno della lista delle note del diario criptato & \hyperref[subsec:UC-28.1.1]{UC-28.1.1} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-60 & L'\term{Utente} deve poter ricaricare la sezione delle note del diario criptato dopo la visualizzazione dell'errore di caricamento dei dati dal database. & \hyperref[subsec:UC-28.1]{UC-28.1}, \hyperref[sec:UC-5]{UC-5} \\
+\hline
+\rowcolor{white}
+RF-OB-61 & L'\term{Utente} deve poter creare una nuova nota vuota all'interno del diario criptato & \hyperref[subsec:UC-31]{UC-31} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-62 & L'\term{Utente} deve poter eliminare una nota esistente dal diario criptato & \hyperref[subsec:UC-30]{UC-30} \\
+\hline
+\rowcolor{white}
+RF-OB-63 & Il sistema deve richiedere conferma prima dell'eliminazione definitiva di una nota del diario criptato & \hyperref[subsec:UC-30.1]{UC-30.1} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-64 & L'utente deve poter confermare, con un'apposita voce, l'eliminazione della nota dal diario criptato quando il sistema ne richiede la conferma & \hyperref[subsec:UC-30.1]{UC-30.1} \\
+\hline
+\rowcolor{white}
+RF-OB-65 & L'\term{Utente} deve poter visualizzare il contenuto completo di una nota selezionata dalla lista delle note del diario criptato & \hyperref[subsec:UC-32]{UC-32} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-66 & L'\term{Utente} deve poter visualizzare il contenuto testuale della nota del diario criptato & \hyperref[subsec:UC-32.1]{UC-32.1} \\
+\hline
+\rowcolor{white}
+RF-OB-67 & L'\term{Utente} deve poter visualizzare il contenuto multimediale della nota del diario criptato & \hyperref[subsec:UC-32.2]{UC-32.2} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-68 & L'\term{Utente} deve poter visualizzare il contenuto audio presente all'interno della nota del diario criptato & \hyperref[subsec:UC-32.2.1]{UC-32.2.1} \\
+\hline
+\rowcolor{white}
+RF-OB-69 & L'\term{Utente} deve poter visualizzare le immagini presenti all'interno della nota del diario criptato & \hyperref[subsec:UC-32.2.2]{UC-32.2.2} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-70 & L'\term{Utente} deve poter inserire del contenuto testuale all'interno di una nota del diario criptato & \hyperref[subsec:UC-33]{UC-33} \\
+\hline
+\rowcolor{white}
+RF-OB-71 & L'\term{Utente} deve poter inserire del contenuto multimediale all'interno di una nota del diario criptato & \hyperref[subsec:UC-34]{UC-34} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-72 & L'\term{Utente} deve poter inserire un'immagine all'interno di una nota del diario criptato & \hyperref[subsec:UC-34.1]{UC-34.1} \\
+\hline
+\rowcolor{white}
+RF-OB-73 & L'\term{Utente} deve poter inserire una traccia audio all'interno di una nota del diario criptato & \hyperref[subsec:UC-34.2]{UC-34.2} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-74 & L'\term{Utente} deve poter modificare il contenuto testuale presente all'interno di una nota del diario criptato & \hyperref[subsec:UC-35]{UC-35} \\
+\hline
+\rowcolor{white}
+RF-OB-75 & L'\term{Utente} deve poter rimuovere del contenuto multimediale presente all'interno di una nota del diario criptato & \hyperref[subsec:UC-36]{UC-36} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-76 & L'\term{Utente} deve poter rimuovere un'immagine presente all'interno di una nota del diario criptato & \hyperref[subsec:UC-36.1]{UC-36.1} \\
+\hline
+\rowcolor{white}
+RF-OB-77 & L'\term{Utente} deve poter rimuovere una traccia audio presente all'interno di una nota del diario criptato & \hyperref[subsec:UC-36.2]{UC-36.2} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-78 & L'\term{Utente} deve poter visualizzare la schermata del diario fittizio & \hyperref[subsec:UC-29]{UC-29} \\
+\hline
+\rowcolor{white}
+RF-OB-79 & L'\term{Utente} deve poter visualizzare la lista delle note presenti nel diario fittizio & \hyperref[subsec:UC-29.1]{UC-29.1} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-80 & L'\term{Utente} deve poter visualizzare l'anteprima della singola nota all'interno della lista delle note del diario fittizio & \hyperref[subsec:UC-29.1.1]{UC-29.1.1} \\
+\hline
+\rowcolor{white}
+RF-OB-81 & L'\term{Utente} deve poter ricaricare la sezione delle note del diario fittizio dopo la visualizzazione dell'errore di caricamento dei dati dal database. & \hyperref[subsec:UC-29.1]{UC-29.1}, \hyperref[sec:UC-5]{UC-5} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-82 & L'\term{Utente} deve poter eliminare una nota esistente dal diario fittizio & \hyperref[subsec:UC-37]{UC-37} \\
+\hline
+\rowcolor{white}
+RF-OB-83 & Il sistema deve richiedere conferma prima dell'eliminazione definitiva di una nota del diario fittizio & \hyperref[subsec:UC-37.1]{UC-37.1} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-84 & L'utente deve poter confermare, con un'apposita voce, l'eliminazione della nota dal diario fittizio quando il sistema ne richiede la conferma & \hyperref[subsec:UC-37.1]{UC-37.1} \\
+\hline
+\rowcolor{white}
+RF-OB-85 & L'\term{Utente} deve poter creare una nuova nota vuota all'interno del diario fittizio & \hyperref[subsec:UC-38]{UC-38} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-86 & L'\term{Utente} deve poter visualizzare il contenuto completo di una nota selezionata dalla lista delle note del diario fittizio & \hyperref[subsec:UC-39]{UC-39} \\
+\hline
+\rowcolor{white}
+RF-OB-87 & L'\term{Utente} deve poter visualizzare il contenuto testuale della nota del diario fittizio & \hyperref[subsec:UC-39.1]{UC-39.1} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-88 & L'\term{Utente} deve poter visualizzare il contenuto multimediale della nota del diario fittizio & \hyperref[subsec:UC-39.2]{UC-39.2} \\
+\hline
+\rowcolor{white}
+RF-OB-89 & L'\term{Utente} deve poter visualizzare il contenuto audio presente all'interno della nota del diario fittizio & \hyperref[subsec:UC-39.2.1]{UC-39.2.1} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-90 & L'\term{Utente} deve poter visualizzare le immagini presenti all'interno della nota del diario fittizio & \hyperref[subsec:UC-39.2.2]{UC-39.2.2} \\
+\hline
+\rowcolor{white}
+RF-OB-91 & L'\term{Utente} deve poter inserire del contenuto testuale all'interno di una nota del diario fittizio & \hyperref[subsec:UC-40]{UC-40} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-92 & L'\term{Utente} deve poter inserire del contenuto multimediale all'interno di una nota del diario fittizio & \hyperref[subsec:UC-41]{UC-41} \\
+\hline
+\rowcolor{white}
+RF-OB-93 & L'\term{Utente} deve poter inserire un'immagine all'interno di una nota del diario fittizio & \hyperref[subsec:UC-41.1]{UC-41.1} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-94 & L'\term{Utente} deve poter inserire una traccia audio all'interno di una nota del diario fittizio & \hyperref[subsec:UC-41.2]{UC-41.2} \\
+\hline
+\rowcolor{white}
+RF-OB-95 & L'\term{Utente} deve poter rimuovere del contenuto multimediale presente all'interno di una nota del diario fittizio & \hyperref[subsec:UC-42]{UC-42} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-96 & L'\term{Utente} deve poter rimuovere un'immagine presente all'interno di una nota del diario fittizio & \hyperref[subsec:UC-42.1]{UC-42.1} \\
+\hline
+\rowcolor{white}
+RF-OB-97 & L'\term{Utente} deve poter rimuovere una traccia audio presente all'interno di una nota del diario fittizio & \hyperref[subsec:UC-42.2]{UC-42.2} \\
+\hline
+\rowcolor{gray!20}
+RF-OB-98 & L'\term{Utente} deve poter modificare il contenuto testuale presente all'interno di una nota del diario fittizio & \hyperref[subsec:UC-43]{UC-43} \\
 \hline
 
 
 
 
 
-
-\rowcolor{white}
-RF-OB-37 & L'\term{Utente} Autenticato deve poter visualizzare il contenuto del diario & \hyperref[subsec:UC-27]{UC-27} \\
-\hline
 \rowcolor{gray!20}
 RF-OB-38 & Il sistema deve mostrare la lista delle note presenti nel diario & \hyperref[subsec:UC-27.1]{UC-27.1} \\
 \hline
