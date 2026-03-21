@@ -658,6 +658,33 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \item \textbf{Trigger:} Google Auth restituisce un codice di errore durante il \ignoreglossary{processo} di autenticazione
 \end{itemize}
 
+\subsubsection{UC-14 Logout} \label{subsec:UC-14}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{use_case/UC-14-logout.png}
+    \caption{Diagramma del caso d'uso UC-14}
+    \label{fig:UC-14}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L’attore non è più autenticato all'applicazione
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item L'attore interagisce con la voce per effettuare il logout dall'applicazione
+        \item Il sistema termina la sessione dell'attore
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole effettuare il logout
+\end{itemize}
+
 % ==== UC-3 - SWITCH MODE ====
 
 \subsubsection{UC-3 - Selezione profilo} \label{subsec:UC-3}
@@ -2945,6 +2972,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item L'attore invia il messaggio al chatbot impostato nel contesto scelto
         \item Il chatbot analizza il messaggio secondo i prompt impostati dal contesto
         \item Il chatbot analizza il messaggio secondo la cronologia dei messaggi
+        \item Il chatbot analizza il messaggio secondo il contenuto del diario criptato
         \item Il chatbot genera la risposta
         \item L'attore visualizza la risposta del chatbot a schermo
     \end{itemize}
@@ -3892,7 +3920,7 @@ Inoltre mostra un caso d'uso d'errore \hyperref[sec:UC-5]{UC-5} la quale descriz
 Di seguito vengono riportati i requisiti del sistema, individuati attraverso l'analisi dei casi d'uso.
 La nomenclatura utilizzata per il codice dei requisiti è spiegata nel documento \href{https://swe-bitbybit.github.io/SWE-docs/docs/RTB/documenti_interni/norme_di_progetto.pdf}{Norme di Progetto} alla sezione 2.2.3.2.
 
-\subsection{Requisiti Funzionali} \label{subsection:requisiti_funzionali}
+\subsection{Requisiti Funzionali obbligatori} \label{subsection:requisiti_funzionali_obbligatori}
 \begin{center}
 \renewcommand{\arraystretch}{1.5}
 \arrayrulecolor{black}
@@ -3903,7 +3931,7 @@ La nomenclatura utilizzata per il codice dei requisiti è spiegata nel documento
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Riferimento} \\
 \hline
 \endfirsthead
-\caption[]{Tabella Requisiti Funzionali (continua)} \\
+\caption[]{Tabella Requisiti Funzionali obbligatori (continua)} \\
 \hline
 \rowcolor{gray!60}
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Riferimento} \\
@@ -3914,7 +3942,7 @@ La nomenclatura utilizzata per il codice dei requisiti è spiegata nel documento
 RF-OB-1 & L'\term{Utente} deve poter autenticarsi all'applicazione tramite l'utilizzo di Google Auth & \hyperref[subsec:UC-1]{UC-1} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-2 & Il sistema deve attivare automaticamente la funzionalità di Dead Man's Switch a seguito del login dell'\term{Utente} & \hyperref[subsec:UC-1]{UC-1}, \hyperref[sec:UC-15]{UC-15} \\
+RF-OB-2 & Il sistema deve attivare automaticamente la funzionalità di Dead Man's Switch a seguito del login dell'\term{Utente} & \hyperref[subsec:UC-1]{UC-1}, \hyperref[sec:UC-19]{UC-19} \\
 \hline
 \rowcolor{white}
 RF-OB-3 & L'\term{Utente} deve poter visualizzare un messaggio di errore esplicativo nel caso in cui l'autenticazione tramite Google Auth fallisca, venga annullata o restituisca parametri non validi & \hyperref[subsec:UC-2]{UC-2} \\
@@ -4004,10 +4032,7 @@ RF-OB-30 & Il sistema deve richiedere conferma prima dell'eliminazione di un con
 RF-OB-31 & L'\term{Utente} deve poter confermare, con un'apposita voce, l'eliminazione di un contatto fidato quando il sistema richiede la conferma & \hyperref[subsec:UC-13.1]{UC-13.1} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-32 & L'\term{Utente} deve poter impostare il timer di prima inattività (per la funzionalità di Dead Man's Switch) & \hyperref[sec:UC-15]{UC-15} \\
-\hline
-\rowcolor{white}
-RF-OB-33 & L'\term{Utente} deve poter impostare il timer di seconda inattività (per la funzionalità di Dead Man's Switch) & \hyperref[sec:UC-16]{UC-16} \\
+RF-OB-32 & L'\term{Utente} deve poter effettuare il logout dopo essersi autenticato all'applicazione & \hyperref[sec:UC-14]{UC-14} \\
 \hline
 \rowcolor{gray!20}
 RF-OB-34 & L'\term{Utente} deve poter modificare le informazioni della mail di avviso & \hyperref[sec:UC-17]{UC-17} \\
@@ -4321,9 +4346,6 @@ RF-OB-136 & Il sistema deve mostrare il nome identificativo di ogni contatto d'e
 \rowcolor{white}
 RF-OB-137 & Il sistema deve mostrare il numero di telefono associato ad ogni contatto d'emergenza & \hyperref[subsec:UC-62.1.2]{UC-62.1.2} \\
 \hline
-\rowcolor{gray!20}
-RF-OB-138 & L'\term{Utente} deve poter comporre automaticamente il numero di un contatto d'emergenza tramite l'apposita voce & \hyperref[sec:UC-63]{UC-63} \\
-\hline
 \rowcolor{white}
 RF-OB-139 & L'\term{Utente} deve poter visualizzare la lista del materiale informativo disponibile & \hyperref[sec:UC-64]{UC-64} \\
 \hline
@@ -4348,9 +4370,128 @@ RF-OB-145 & L'\term{Utente} deve poter aprire un luogo sicuro nella mappa estern
 \rowcolor{gray!20}
 RF-OB-146 & Il sistema deve notificare l'\term{Utente} di un errore nell'apertura dell'applicazione Google Maps e mantenere la visualizzazione della mappa interna & \hyperref[subsec:UC-68]{UC-68} \\
 \hline
-\caption{Tabella Requisiti Funzionali} \label{tab:requisiti_funzionali} \\
+\caption{Tabella Requisiti Funzionali obbligatori} \label{tab:requisiti_funzionali_obbligatori} \\
 \end{longtable}
 \end{center}
+
+% REQUISITI DESIDERABILI %
+
+\subsection{Requisiti Funzionali desiderabili} \label{subsection:requisiti_funzionali_desiderabili}
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\arrayrulecolor{black}
+\begin{longtable}{|c|p{8.5cm}|>{\centering\arraybackslash}p{4cm}|}
+
+\hline
+\rowcolor{gray!60}
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Riferimento} \\
+\hline
+\endfirsthead
+\caption[]{Tabella Requisiti Funzionali desiderabili (continua)} \\
+\hline
+\rowcolor{gray!60}
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Riferimento} \\
+\hline
+\endhead
+
+\rowcolor{white}
+RF-DE-1 & Il sistema deve mostrare all'utente una spiegazione della differenza tra "per me" e "per altri" & \hyperref[subsec:UC-3]{UC-3} \\
+\hline
+\rowcolor{gray!20}
+RF-DE-2 & Il sistema mostra all'utente una breve descrizione del funzionamento del Dead Man's Switch & \hyperref[subsec:UC-19]{UC-19}, \hyperref[subsec:UC-20]{UC-20} \\
+\hline
+\rowcolor{white}
+RF-DE-3 & Il sistema deve permettere all'utente di inserire più contenuti multimediali con una singola azione nel diario criptato & \hyperref[subsec:UC-34]{UC-34} \\
+\hline
+\rowcolor{gray!20}
+RF-DE-4 & Il sistema deve permettere all'utente di inserire più immagini con una singola azione nel diario criptato & \hyperref[subsec:UC-34.1]{UC-34.1} \\
+\hline
+\rowcolor{white}
+RF-DE-5 & Il sistema deve permettere all'utente di inserire più tracce audio con una singola azione nel diario criptato & \hyperref[subsec:UC-34.2]{UC-34.2} \\
+\hline
+\rowcolor{gray!20}
+RF-DE-6 & Il sistema deve permettere all'utente di inserire più contenuti multimediali con una singola azione nel diario fittizio & \hyperref[subsec:UC-41]{UC-41} \\
+\hline
+\rowcolor{white}
+RF-DE-7 & Il sistema deve permettere all'utente di inserire più immagini con una singola azione nel diario fittizio & \hyperref[subsec:UC-41.1]{UC-41.1} \\
+\hline
+\rowcolor{gray!20}
+RF-DE-8 & Il sistema deve permettere all'utente di inserire più tracce audio con una singola azione nel diario fittizio & \hyperref[subsec:UC-41.2]{UC-41.2} \\
+\hline
+\rowcolor{white}
+RF-DE-9 & Il sistema deve permettere all'utente di riprodurre le tracce audio inserite nel diario criptato & \hyperref[subsec:UC-32.2.1]{UC-32.2.1} \\
+\hline
+\rowcolor{gray!20}
+RF-DE-10 & Il sistema deve permettere all'utente di riprodurre le tracce audio inserite nel diario fittizio & \hyperref[subsec:UC-39.2.1]{UC-39.2.1} \\
+\hline
+\rowcolor{white}
+RF-DE-11 & Il sistema deve indicare all'utente che il messaggio del chatbot è in fase di caricamento & \hyperref[sec:UC-48]{UC-48} \\
+\hline
+\rowcolor{gray!20}
+RF-DE-12 & Il sistema deve utilizzare i contenuti del diario criptato per personalizzare le risposte del chatbot & \hyperref[subsec:UC-48]{UC-48} \\
+\hline
+\rowcolor{white}
+RF-DE-13 & Il sistema deve mostrare all'utente una spiegazione del tipo di contesto a cui può passare (Detective delle relazioni) & \hyperref[subsec:UC-51]{UC-51} \\
+\hline
+\rowcolor{gray!20}
+RF-DE-14 & Il sistema deve mostrare all'utente una spiegazione del tipo di contesto a cui può passare (Specchio intelligente) & \hyperref[subsec:UC-52]{UC-52} \\
+\hline
+\rowcolor{white}
+RF-DE-15 & L'\term{Utente} deve poter comporre automaticamente il numero di un contatto d'emergenza tramite l'apposita voce & \hyperref[sec:UC-63]{UC-63} \\
+\hline
+
+
+\caption{Tabella Requisiti Funzionali obbligatori} \label{tab:requisiti_funzionali_desiderabili} \\
+\end{longtable}
+\end{center}
+
+% REQUISITI OPZIONALI %
+
+\subsection{Requisiti Funzionali opzionali} \label{subsection:requisiti_funzionali_opzionali}
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\arrayrulecolor{black}
+\begin{longtable}{|c|p{8.5cm}|>{\centering\arraybackslash}p{4cm}|}
+
+\hline
+\rowcolor{gray!60}
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Riferimento} \\
+\hline
+\endfirsthead
+\caption[]{Tabella Requisiti Funzionali opzionali (continua)} \\
+\hline
+\rowcolor{gray!60}
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Riferimento} \\
+\hline
+\endhead
+
+\rowcolor{gray!20}
+RF-OP-1 & L'\term{Utente} deve poter impostare il timer di prima inattività (per la funzionalità di Dead Man's Switch) & \hyperref[sec:UC-15]{UC-15} \\
+\hline
+\rowcolor{white}
+RF-OP-2 & L'\term{Utente} deve poter impostare il timer di seconda inattività (per la funzionalità di Dead Man's Switch) & \hyperref[sec:UC-16]{UC-16} \\
+\hline
+\rowcolor{gray!20}
+RF-OP-3 & Il sistema deve inviare un SMS ai numeri di telefono dei contatti fidati all'invio del segnale SOS & \hyperref[sec:UC-44]{UC-44} \\
+\hline
+\rowcolor{white}
+RF-OP-4 & Il sistema deve indicare all'utente se le risorse sono autorevoli e verificate & \hyperref[subsec:UC-59]{UC-59} \\
+\hline
+\rowcolor{gray!20}
+RF-OP-5 & Il sistema deve mettere a disposizione leggi estere & \hyperref[sec:UC-60]{UC-60} \\
+\hline
+\rowcolor{white}
+RF-OP-6 & Il sistema deve mostrare leggi aggiornate, giuridicamente valide e complete & \hyperref[subsec:UC-61]{UC-61} \\
+\hline
+\rowcolor{gray!20}
+RF-OP-7 & Il sistema deve indicare all'utente se i luoghi sicuri visualizzati nella mappa sono autorevoli e verificati & \hyperref[sec:UC-66]{UC-66} \\
+\hline
+
+\caption{Tabella Requisiti Funzionali obbligatori} \label{tab:requisiti_funzionali_opzionali} \\
+\end{longtable}
+\end{center}
+
+% REQUISITI DI QUALITA' %
 
 \subsection{Requisiti di Qualità} \label{subsection:requisiti_qualita}
 \begin{center}
@@ -4474,7 +4615,7 @@ RV-OB-11 & L'infrastruttura cloud del sistema deve essere configurata in modo da
 \hyperref[subsec:UC-2]{UC-2} & RF-OB-3 \\
 \hline
 \rowcolor{white}
-\hyperref[subsec:UC-3]{UC-3} & RF-OB-4 \\
+\hyperref[subsec:UC-3]{UC-3} & RF-OB-4, RF-DE-1 \\
 \hline
 \rowcolor{gray!20}
 \hyperref[sec:UC-4]{UC-4} & RF-OB-5, RF-OB-7 \\
@@ -4539,14 +4680,17 @@ RV-OB-11 & L'infrastruttura cloud del sistema deve essere configurata in modo da
 \rowcolor{gray!20}
 \hyperref[subsec:UC-13]{UC-13} & RF-OB-29 \\
 \hline
+\rowcolor{gray!20}
+\hyperref[subsec:UC-14]{UC-14} & RF-OB-32 \\
+\hline
 \rowcolor{white}
 \hyperref[subsec:UC-13.1]{UC-13.1} & RF-OB-30, RF-OB-31 \\
 \hline
 \rowcolor{gray!20}
-\hyperref[sec:UC-15]{UC-15} & RF-OB-2, RF-OB-32 \\
+\hyperref[sec:UC-15]{UC-15} & RF-OP-1 \\
 \hline
 \rowcolor{white}
-\hyperref[sec:UC-16]{UC-16} & RF-OB-33 \\
+\hyperref[sec:UC-16]{UC-16} & RF-OP-2 \\
 \hline
 \rowcolor{gray!20}
 \hyperref[sec:UC-17]{UC-17} & RF-OB-34 \\
@@ -4567,10 +4711,10 @@ RV-OB-11 & L'infrastruttura cloud del sistema deve essere configurata in modo da
 \hyperref[subsec:UC-18.2]{UC-18.2} & RF-OB-39 \\
 \hline
 \rowcolor{gray!20}
-\hyperref[sec:UC-19]{UC-19} & RF-OB-40 \\
+\hyperref[sec:UC-19]{UC-19} & RF-OB-2, RF-OB-40, RF-DE-2 \\
 \hline
 \rowcolor{white}
-\hyperref[sec:UC-20]{UC-20} & RF-OB-41 \\
+\hyperref[sec:UC-20]{UC-20} & RF-OB-41, RF-DE-2 \\
 \hline
 \rowcolor{gray!20}
 \hyperref[subsec:UC-21]{UC-21} & RF-OB-42, RF-OB-43 \\
@@ -4636,7 +4780,7 @@ RV-OB-11 & L'infrastruttura cloud del sistema deve essere configurata in modo da
 \hyperref[subsec:UC-32.2]{UC-32.2} & RF-OB-67 \\
 \hline
 \rowcolor{white}
-\hyperref[subsec:UC-32.2.1]{UC-32.2.1} & RF-OB-68 \\
+\hyperref[subsec:UC-32.2.1]{UC-32.2.1} & RF-OB-68, RF-DE-9 \\
 \hline
 \rowcolor{gray!20}
 \hyperref[subsec:UC-32.2.2]{UC-32.2.2} & RF-OB-69 \\
@@ -4645,13 +4789,13 @@ RV-OB-11 & L'infrastruttura cloud del sistema deve essere configurata in modo da
 \hyperref[subsec:UC-33]{UC-33} & RF-OB-70 \\
 \hline
 \rowcolor{gray!20}
-\hyperref[subsec:UC-34]{UC-34} & RF-OB-71 \\
+\hyperref[subsec:UC-34]{UC-34} & RF-OB-71, RF-DE-3 \\
 \hline
 \rowcolor{white}
-\hyperref[subsec:UC-34.1]{UC-34.1} & RF-OB-72 \\
+\hyperref[subsec:UC-34.1]{UC-34.1} & RF-OB-72, RF-DE-4 \\
 \hline
 \rowcolor{gray!20}
-\hyperref[subsec:UC-34.2]{UC-34.2} & RF-OB-73 \\
+\hyperref[subsec:UC-34.2]{UC-34.2} & RF-OB-73, RF-DE-5 \\
 \hline
 \rowcolor{white}
 \hyperref[subsec:UC-35]{UC-35} & RF-OB-74 \\
@@ -4684,7 +4828,7 @@ RV-OB-11 & L'infrastruttura cloud del sistema deve essere configurata in modo da
 \hyperref[subsec:UC-39.2]{UC-39.2} & RF-OB-88 \\
 \hline
 \rowcolor{white}
-\hyperref[subsec:UC-39.2.1]{UC-39.2.1} & RF-OB-89 \\
+\hyperref[subsec:UC-39.2.1]{UC-39.2.1} & RF-OB-89, RF-DE-10 \\
 \hline
 \rowcolor{gray!20}
 \hyperref[subsec:UC-39.2.2]{UC-39.2.2} & RF-OB-90 \\
@@ -4693,13 +4837,13 @@ RV-OB-11 & L'infrastruttura cloud del sistema deve essere configurata in modo da
 \hyperref[subsec:UC-40]{UC-40} & RF-OB-91 \\
 \hline
 \rowcolor{gray!20}
-\hyperref[subsec:UC-41]{UC-41} & RF-OB-92 \\
+\hyperref[subsec:UC-41]{UC-41} & RF-OB-92, RF-DE-6 \\
 \hline
 \rowcolor{white}
-\hyperref[subsec:UC-41.1]{UC-41.1} & RF-OB-93 \\
+\hyperref[subsec:UC-41.1]{UC-41.1} & RF-OB-93, RF-DE-7 \\
 \hline
 \rowcolor{gray!20}
-\hyperref[subsec:UC-41.2]{UC-41.2} & RF-OB-94 \\
+\hyperref[subsec:UC-41.2]{UC-41.2} & RF-OB-94, RF-DE-8 \\
 \hline
 \rowcolor{white}
 \hyperref[subsec:UC-42]{UC-42} & RF-OB-95 \\
@@ -4714,7 +4858,7 @@ RV-OB-11 & L'infrastruttura cloud del sistema deve essere configurata in modo da
 \hyperref[subsec:UC-43]{UC-43} & RF-OB-98 \\
 \hline
 \rowcolor{white}
-\hyperref[sec:UC-44]{UC-44} & RF-OB-99 \\
+\hyperref[sec:UC-44]{UC-44} & RF-OB-99, RF-OP-3 \\
 \hline
 \rowcolor{gray!20}
 \hyperref[sec:UC-45]{UC-45} & RF-OB-100 \\
@@ -4726,7 +4870,7 @@ RV-OB-11 & L'infrastruttura cloud del sistema deve essere configurata in modo da
 \hyperref[sec:UC-47]{UC-47} & RF-OB-102 \\
 \hline
 \rowcolor{white}
-\hyperref[sec:UC-48]{UC-48} & RF-OB-103 \\
+\hyperref[sec:UC-48]{UC-48} & RF-OB-103, RF-DE-11, RF-DE-12 \\
 \hline
 \rowcolor{gray!20}
 \hyperref[sec:UC-49]{UC-49} & RF-OB-104 \\
@@ -4735,10 +4879,10 @@ RV-OB-11 & L'infrastruttura cloud del sistema deve essere configurata in modo da
 \hyperref[sec:UC-50]{UC-50} & RF-OB-105, RF-OB-106 \\
 \hline
 \rowcolor{gray!20}
-\hyperref[sec:UC-51]{UC-51} & RF-OB-107 \\
+\hyperref[sec:UC-51]{UC-51} & RF-OB-107, RF-DE-13 \\
 \hline
 \rowcolor{white}
-\hyperref[sec:UC-52]{UC-52} & RF-OB-108 \\
+\hyperref[sec:UC-52]{UC-52} & RF-OB-108, RF-DE-14 \\
 \hline
 \rowcolor{gray!20}
 \hyperref[sec:UC-53]{UC-53} & RF-OB-109, RF-OB-110 \\
@@ -4786,16 +4930,16 @@ RV-OB-11 & L'infrastruttura cloud del sistema deve essere configurata in modo da
 \hyperref[subsec:UC-58.1.2]{UC-58.1.2} & RF-OB-128 \\
 \hline
 \rowcolor{white}
-\hyperref[sec:UC-59]{UC-59} & RF-OB-129 \\
+\hyperref[sec:UC-59]{UC-59} & RF-OB-129, RF-OP-4 \\
 \hline
 \rowcolor{gray!20}
-\hyperref[sec:UC-60]{UC-60} & RF-OB-130 \\
+\hyperref[sec:UC-60]{UC-60} & RF-OB-130, RF-OP-5 \\
 \hline
 \rowcolor{white}
 \hyperref[subsec:UC-60.1]{UC-60.1} & RF-OB-131 \\
 \hline
 \rowcolor{gray!20}
-\hyperref[sec:UC-61]{UC-61} & RF-OB-132, RF-OB-133 \\
+\hyperref[sec:UC-61]{UC-61} & RF-OB-132, RF-OB-133, RF-OP-6 \\
 \hline
 \rowcolor{white}
 \hyperref[sec:UC-62]{UC-62} & RF-OB-134 \\
@@ -4810,7 +4954,7 @@ RV-OB-11 & L'infrastruttura cloud del sistema deve essere configurata in modo da
 \hyperref[subsec:UC-62.1.2]{UC-62.1.2} & RF-OB-137 \\
 \hline
 \rowcolor{white}
-\hyperref[sec:UC-63]{UC-63} & RF-OB-138 \\
+\hyperref[sec:UC-63]{UC-63} & RF-OB-138, RF-DE-15 \\
 \hline
 \rowcolor{gray!20}
 \hyperref[sec:UC-64]{UC-64} & RF-OB-139, RF-OB-140 \\
@@ -4822,7 +4966,7 @@ RV-OB-11 & L'infrastruttura cloud del sistema deve essere configurata in modo da
 \hyperref[sec:UC-65]{UC-65} & RF-OB-142, RF-OB-143 \\
 \hline
 \rowcolor{white}
-\hyperref[sec:UC-66]{UC-66} & RF-OB-144 \\
+\hyperref[sec:UC-66]{UC-66} & RF-OB-144, RF-OP-7 \\
 \hline
 \rowcolor{gray!20}
 \hyperref[subsec:UC-67]{UC-67} & RF-OB-145 \\
@@ -4833,5 +4977,44 @@ RV-OB-11 & L'infrastruttura cloud del sistema deve essere configurata in modo da
 \caption{Tracciamento dei casi d'uso} \label{tab:tracciamento_uc} \\
 \end{longtable}
 \end{center}
+
+
+
+
+\subsection{Riepilogo dei requisiti} \label{subsection:riepilogo_requisiti}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\arrayrulecolor{black}
+\begin{longtable}{|c|c|c|c|}
+
+\hline
+\rowcolor{gray!60}
+\textbf{Tipologia} & \textbf{Obbligatori} & \textbf{Desiderabili} & \textbf{Opzionali} \\
+\hline
+\endfirsthead
+
+\caption[]{Riepilogo dei requisiti (continua)} \\
+\hline
+\rowcolor{gray!60}
+\textbf{Tipologia} & \textbf{Obbligatori} & \textbf{Desiderabili} & \textbf{Opzionali} \\
+\hline
+\endhead
+
+\rowcolor{gray!20}
+Funzionali & 144 & 15 & 7 \\
+\hline
+\rowcolor{white}
+Qualità & 8 & 0 & 0 \\
+\hline
+\rowcolor{gray!20}
+Vincolo & 11 & 0 & 0 \\
+\hline
+
+\caption{Riepilogo dei requisiti} \label{tab:riepilogo_requisiti} \\
+\end{longtable}
+\end{center}
+
+
 
 \end{document}
