@@ -174,7 +174,7 @@ Gruppo BitByBit\\
 1.1.0 & 2026-03-17 & Dennis Parolin & Riscrittura dei casi d'uso da \hyperref[sec:UC-4]{UC-4} a \hyperref[subsec:UC-13.1]{UC-13.1}. Il caso d'uso \hyperref[sec:UC-5]{UC-5} è stato aggiunto come nuovo caso d'uso. Rifatta tutta la sezione "Requisiti di vincolo" (\ref{subsection:requisiti_vincolo}) e "Requisiti di qualità" (\ref{subsection:requisiti_qualita}). & Riccardo Manisi \\
 \hline
 \rowcolor{gray!20}
-1.0.1 & 2026-03-17 & Riccardo Manisi & Modificati caso d'uso \hyperref[sec:UC-17]{UC-17} e aggiunti sottocasi \hyperref[sec:UC-17.1]{UC-17.1}, \hyperref[sec:UC-17.2]{UC-17.2}  &  Gabriele Scagginate\\
+1.0.1 & 2026-03-17 & Riccardo Manisi & Modificati caso d'uso \hyperref[sec:UC-17]{UC-17} e aggiunti sottocasi \hyperref[sec:UC-17.1]{UC-17.1}, \hyperref[sec:UC-17.2]{UC-17.2}  &  Gabriele Scaggiante\\
 \hline
 \rowcolor{white}
 1.0.0 & 2026-03-01 & Giovanni Visentin & Approvazione del documento & Riccardo Manisi \\
@@ -189,7 +189,7 @@ Gruppo BitByBit\\
 0.20.0 & 2026-02-09 & Dennis Parolin & Riscritta la sezione "Requisiti" (\ref{section:requisiti}) con le sue sottosezioni (\ref{subsection:requisiti_funzionali}, \ref{subsection:requisiti_qualita}, \ref{subsection:requisiti_vincolo}) sulla base dei nuovi casi d'uso redatti. & Giovanni Visentin \\
 \hline
 \rowcolor{white}
-0.19.7 & 2026-02-06 & Dennis Parolin & Modificati i termini ambigui. Aggiunti UC-59 e UC-60 per rimpiazzare UC-9. Sistemati casi d'usoUC-8, UC-8.2, UC-8.3, UC-12, UC-12.2 e UC-12.3 di conseguenza per integrarli con UC-59 e UC-60. & Marco Sanguin \\
+0.19.7 & 2026-02-06 & Dennis Parolin & Modificati i termini ambigui. Aggiunti UC-59 e UC-60 per rimpiazzare UC-9. Sistemati casi d'uso UC-8, UC-8.2, UC-8.3, UC-12, UC-12.2 e UC-12.3 di conseguenza per integrarli con UC-59 e UC-60. & Marco Sanguin \\
 \hline
 \rowcolor{gray!20}
 0.19.6 & 2026-02-05 & Dennis Parolin & Riscritta la sezione Attori (\ref{subsection:attori}) sulla base dei nuovi casi d'uso redatti. Aggiunto l'indice riassuntivo delle tabelle e l'indice riassuntivo delle immagini. & Marco Sanguin \\
@@ -310,7 +310,7 @@ Gruppo BitByBit\\
 
 \section{Introduzione}
 \subsection{Scopo del documento} \label{sec:scopo_documento}
-Il presente documento di \term{Analisi Dei Requisiti} ha l'obiettivo di esporre in modo esaustivo e non ambiguo le specifiche funzionali, prestazionali e vincolanti del sistema software oggetto di sviluppo.
+Il presente documento di \term{Analisi Dei Requisiti} ha l'obiettivo di esporre in modo esaustivo e non ambiguo le specifiche funzionali e vincolanti del sistema software oggetto di sviluppo.
 
 L'analisi qui condotta si basa sull'identificazione dei Casi d'Uso (Use Cases), supportati dai relativi diagrammi UML, utilizzati per modellare le interazioni previste tra gli attori e il sistema. Tale approccio permette di derivare puntualmente i requisiti software finali.
 
@@ -359,7 +359,7 @@ Il prodotto dovrà seguire le seguenti funzionalità principali:
 \end{itemize}
 
 \subsubsection{Welcome Page e \ignoreglossary{Walkthrough}}
-L'esperienza \term{Utente} avrà inizio con una schermata di benvenuto volta a comprendere la finalità dell'installazione. Tale interfaccia presenterà due opzioni: "Per me" o "Per altri". Questa distinzione è fondamentale per fornire un contesto iniziale al Large Language Model (LLM) e preconfigurare determinati parametri. Inoltre, tale struttura permetterà in futuro l'implementazione di funzionalità differenziate in base al beneficiario del servizio.
+L'esperienza \ignoreglossary{utente} avrà inizio con una schermata di benvenuto volta a comprendere la finalità dell'installazione. Tale interfaccia presenterà due opzioni: "Per me" o "Per altri". Questa distinzione è fondamentale per fornire un contesto iniziale al Large Language Model (LLM) e preconfigurare determinati parametri. Inoltre, tale struttura permetterà in futuro l'implementazione di funzionalità differenziate in base al beneficiario del servizio.
 
 Successivamente, sarà proposto un \term{Walkthrough} illustrativo delle funzionalità disponibili. È prevista la presenza di un comando per saltare tale guida, permettendo l'accesso diretto alle funzionalità dell'app.
 
@@ -504,10 +504,10 @@ Questa sezione raccoglie i termini tecnici specifici utilizzati nella descrizion
 \centering \textbf{Attore secondario} & Coloro che interagiscono passivamente con il sistema. \\
 \hline
 \rowcolor{white}
-\centering \textbf{Pre-condizioni} & Lista di elementi o condizioni che sono necessari affinché l'\term{Utente} possa eseguire gli scenari del caso d'uso. \\
+\centering \textbf{Pre-condizioni} & Lista di elementi o condizioni che sono necessari affinché l'attore possa eseguire gli scenari del caso d'uso. \\
 \hline
 \rowcolor{gray!20}
-\centering \textbf{Post-condizioni} & Condizioni che devono essere vere al termine dell'esecuzione del caso d'uso. Descrivono lo stato finale osservabile del sistema dopo la conclusione del caso d’uso.  \\
+\centering \textbf{Post-condizioni} & Condizioni che devono essere vere al termine dell'esecuzione del caso d'uso. Descrivono lo stato finale osservabile del sistema dopo la conclusione del caso d'uso.  \\
 \hline
 \rowcolor{white}
 \centering \textbf{Scenario principale} & Sequenza di passi che descrive il flusso standard del caso d'uso. Rappresenta l'happy path dell'esecuzione del caso d'uso che conduce al raggiungimento dell'obiettivo fissato. \\
@@ -522,7 +522,10 @@ Questa sezione raccoglie i termini tecnici specifici utilizzati nella descrizion
 \centering \textbf{Estensioni} & Relazione tra casi d'uso in cui il caso d'uso esteso viene eseguito solo quando si verificano le condizioni di estensione definite. \\
 \hline
 \rowcolor{white}
-\centering \textbf{Trigger} & Evento o condizione che avvia l’esecuzione del caso d’uso. \\
+\centering \textbf{Specializzazioni} & Relazione di generalizzazione tra casi d'uso in cui uno o più casi d'uso derivati ereditano comportamento, precondizioni e post-condizioni da un caso d'uso generale, introducendo eventuali variazioni o raffinamenti specifici. \\
+\hline
+\rowcolor{gray!20}
+\centering \textbf{Trigger} & Evento o condizione che avvia l'esecuzione del caso d'uso. \\
 \hline
 
 \caption{Tabella nomenclatura casi d'uso} \label{tab:nomenclatura} \\
@@ -560,7 +563,7 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
 \centering \textbf{\term{Utente} Generico} & Un \term{Utente} che non ha eseguito l'autenticazione all'applicazione e che non ha ancora creato una password per il diario criptato. Il sistema permette a questo attore di eseguire un sottoinsieme della totalità delle funzionalità. \\
 \hline
 \rowcolor{gray!20}
-\centering \textbf{\term{Utente} Autenticato} & Un \term{Utente} il quale ha eseguito l'autenticazione all'applicazione. Il sistema possiede l'inidizzo mail di questo attore. Ha accesso a delle funzionalità aggiuntive rispetto all'\term{Utente} Generico e all'\term{Utente} autenticato al diario. \\
+\centering \textbf{\term{Utente} Autenticato} & Un \term{Utente} il quale ha eseguito l'autenticazione all'applicazione. Il sistema possiede l'indirizzo mail di questo attore. Ha accesso a delle funzionalità aggiuntive rispetto all'\term{Utente} Generico e all'\term{Utente} autenticato al diario. \\
 \hline
 \rowcolor{white}
 \centering \textbf{\term{Utente} autenticato al diario} & \term{Utente} che ha impostato la password per il diario criptato. \\
@@ -650,9 +653,36 @@ Di seguito vengono rappresentati quali attori primari e secondari sono stati uti
     \item \textbf{Scenario principale:}
     \begin{itemize}
         \item Il servizio Google Auth comunica al sistema l’esito negativo dell’autenticazione
-        \item Il sistema mostra all’\term{Utente} un messaggio di errore relativo all’autenticazione fallita
+        \item Il sistema mostra all’attore un messaggio di errore relativo all’autenticazione fallita
     \end{itemize}
-    \item \textbf{Trigger:} Google Auth restituisce un codice di errore durante il \term{Processo} di autenticazione
+    \item \textbf{Trigger:} Google Auth restituisce un codice di errore durante il \ignoreglossary{processo} di autenticazione
+\end{itemize}
+
+\subsubsection{UC-14 Logout} \label{subsec:UC-14}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{use_case/UC-14-logout.png}
+    \caption{Diagramma del caso d'uso UC-14}
+    \label{fig:UC-14}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato
+    \item \textbf{Pre-condizioni:} 
+    \begin{itemize}
+        \item Il sistema è attivo
+    \end{itemize}
+    \item \textbf{Post-condizioni:}
+    \begin{itemize}
+        \item L’attore non è più autenticato all'applicazione
+    \end{itemize}
+    \item \textbf{Scenario principale:}
+    \begin{itemize}
+        \item L'attore interagisce con la voce per effettuare il logout dall'applicazione
+        \item Il sistema termina la sessione dell'attore
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole effettuare il logout
 \end{itemize}
 
 % ==== UC-3 - SWITCH MODE ====
@@ -699,7 +729,7 @@ Il diagramma riportato di seguito mostra anche un ulteriore caso d'uso correlato
     \label{fig:UC-4}
 \end{figure}
 \begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -712,12 +742,13 @@ Il diagramma riportato di seguito mostra anche un ulteriore caso d'uso correlato
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item L'attore visualizza le voci della lista dei contatti fidati
-        \item L'attore guarda singolarmente i contatti fidati (e la preview delle informazioni del contatto) nella lista, ma non clicca su nessuna voce $\rightarrow$ \hyperref[subsec:UC-6.1]{UC-6.1}
+        \item L'attore guarda singolarmente i contatti fidati (e la preview delle informazioni del contatto) nella lista, senza interagirvi
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
         \item Si \ignoreglossary{verifica} un errore
         \item Il sistema notifica l'errore all'attore $\rightarrow$ \hyperref[sec:UC-5]{UC-5}
+        \item L'attore può ricaricare la lista dei contatti fidati
     \end{itemize}
     \item \textbf{Inclusioni:} 
     \begin{itemize}
@@ -732,7 +763,7 @@ Il diagramma riportato di seguito mostra anche un ulteriore caso d'uso correlato
 
 \subsubsection{UC-4.1 - Visualizzazione singolo contatto fidato della lista} \label{subsec:UC-4.1}
 \begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:} 
     \begin{itemize}
         \item Il sistema è attivo
@@ -745,7 +776,7 @@ Il diagramma riportato di seguito mostra anche un ulteriore caso d'uso correlato
     \item \textbf{Scenario principale:} 
     \begin{itemize}
         \item L'attore visualizza un singolo contatto fidato nella lista
-        \item L'attore visualizza la anteprima del nome del contatto fidato $\rightarrow$ \hyperref[subsec:UC-4.1.1]{UC-4.1.1}
+        \item L'attore visualizza l'anteprima del nome del contatto fidato $\rightarrow$ \hyperref[subsec:UC-4.1.1]{UC-4.1.1}
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
@@ -756,7 +787,7 @@ Il diagramma riportato di seguito mostra anche un ulteriore caso d'uso correlato
 
 \subsubsection{UC-4.1.1 - Preview nome contatto fidato} \label{subsec:UC-4.1.1}
 \begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Generico
+    \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
     \begin{itemize}
         \item Il sistema è attivo
@@ -765,11 +796,11 @@ Il diagramma riportato di seguito mostra anche un ulteriore caso d'uso correlato
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item L'attore visualizza la anteprima del nome del contatto fidato
+        \item L'attore visualizza l'anteprima del nome del contatto fidato
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'attore visualizza la anteprima del nome del singolo contatto fidato dalla lista
+        \item L'attore visualizza l'anteprima del nome del singolo contatto fidato dalla lista
     \end{itemize}
 \end{itemize}
 
@@ -790,7 +821,7 @@ Il diagramma riportato di seguito mostra anche un ulteriore caso d'uso correlato
     \begin{itemize}
         \item Si \ignoreglossary{verifica} un errore
         \item Il sistema rileva il fallimento della richiesta a causa dell'errore
-        \item Il sistema mostra un messaggio di errore all'\term{Utente}
+        \item Il sistema mostra un messaggio di errore all'attore
     \end{itemize}
     \item \textbf{Trigger:} Si \ignoreglossary{verifica} un errore durante il caricamento dei dati
 \end{itemize}
@@ -988,7 +1019,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Post-condizioni:} 
     \begin{itemize}
-        \item Il sistema riceve l'indirizzo email del contatto fidato che l'\term{Utente} vuole inserire
+        \item Il sistema riceve l'indirizzo email del contatto fidato che l'attore vuole inserire
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
@@ -1243,7 +1274,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item Il sistema rimuove un contatto fidato dalla rete dei contatti fidati dell'\term{Utente}
+        \item Il sistema rimuove un contatto fidato dalla rete dei contatti fidati dell'attore
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
@@ -1252,7 +1283,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item L'attore conferma l'eliminazione del contatto fidato $\rightarrow$ \hyperref[subsec:UC-13.1]{UC-13.1}
         \item Il sistema rimuove il contatto fidato scelto dall'attore dalla rete dei contatti fidati dell'attore
     \end{itemize}
-    \item \textbf{inclusioni:} 
+    \item \textbf{Inclusioni:} 
     \begin{itemize}
         \item \hyperref[subsec:UC-13.1]{UC-13.1}
     \end{itemize}
@@ -1446,23 +1477,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Trigger:} L'attore vuole visualizzare le informazioni della mail che riceverà in caso di inutilizzo prolungato dell'applicazione
 \end{itemize}
 
-\subsubsection{UC-18.1 - Visualizzazione titolo mail di avviso} \label{subsec:UC-18.1}
-\begin{itemize}
-    \item \textbf{Attore principale:} \term{Utente} Autenticato
-    \item \textbf{Pre-condizioni:}
-    \begin{itemize}
-        \item La funzionalità Dead Man's Switch è abilitata
-        \item Il sistema sta visualizzando la preview
-    \end{itemize}
-    \item \textbf{Post-condizioni:} L'oggetto della mail è visibile
-    \item \textbf{Scenario principale:} 
-    \begin{itemize}
-        \item Il sistema mostra il testo configurato come oggetto della mail nell'header della preview
-    \end{itemize}
-    \item \textbf{Trigger:} L'attore vuole visualizzare il titolo della mail che riceverà in caso di inutilizzo prolungato dell'applicazione
-\end{itemize}
-
-\subsubsection{UC-18.2 - Visualizzazione corpo della mail di avviso} \label{subsec:UC-18.2}
+\subsubsection{UC-18.1 - Visualizzazione corpo della mail di avviso} \label{subsec:UC-18.1}
 \begin{itemize}
     \item \textbf{Attore principale:} \term{Utente} Autenticato
     \item \textbf{Pre-condizioni:}
@@ -1476,6 +1491,22 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item Il sistema mostra il testo del messaggio nel corpo della preview
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole visualizzare la preview della mail che riceverà in caso di inutilizzo prolungato dell'applicazione
+\end{itemize}
+
+\subsubsection{UC-18.2 - Visualizzazione titolo mail di avviso} \label{subsec:UC-18.2}
+\begin{itemize}
+    \item \textbf{Attore principale:} \term{Utente} Autenticato
+    \item \textbf{Pre-condizioni:}
+    \begin{itemize}
+        \item La funzionalità Dead Man's Switch è abilitata
+        \item Il sistema sta visualizzando la preview
+    \end{itemize}
+    \item \textbf{Post-condizioni:} L'oggetto della mail è visibile
+    \item \textbf{Scenario principale:} 
+    \begin{itemize}
+        \item Il sistema mostra il testo configurato come oggetto della mail nell'header della preview
+    \end{itemize}
+    \item \textbf{Trigger:} L'attore vuole visualizzare il titolo della mail che riceverà in caso di inutilizzo prolungato dell'applicazione
 \end{itemize}
 
 \subsubsection{UC-19 - Attivazione Dead Man's Switch} \label{sec:UC-19}
@@ -1521,7 +1552,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \begin{itemize}
         \item L'attore seleziona l'opzione di disattivazione del Dead Man's Switch
     \end{itemize}
-    \item \textbf{Trigger:} L'attore disattivare la funzionalità del Dead Man's Switch
+    \item \textbf{Trigger:} L'attore vuole disattivare la funzionalità del Dead Man's Switch
 \end{itemize}
 
 % ==== DIARIO CRIPTATO =====
@@ -1844,6 +1875,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
         \item Il sistema non è in grado di recuperare le note dal database $\rightarrow$ \hyperref[sec:UC-5]{UC-5}
+        \item L'attore può ricaricare la lista delle note del diario criptato
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
@@ -1936,7 +1968,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item L'attore conferma l'eliminazione di una nota dalla lista di note del diario criptato
         \item Il sistema rimuove la nota dalla lista delle note del diario criptato
     \end{itemize}
-    \item \textbf{Trigger:} L'attore desidera elimanare una nota del diario criptato
+    \item \textbf{Trigger:} L'attore desidera eliminare una nota del diario criptato
 \end{itemize}
 
 \subsubsection{UC-31 - Creazione nota} \label{subsec:UC-31}
@@ -2044,7 +2076,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Specializzazioni:}
     \begin{itemize}
         \item \hyperref[subsec:UC-32.2.1]{UC-32.2.1}
-        \item \hyperref[subsec:UC-32.2.1]{UC-32.2.1}
+        \item \hyperref[subsec:UC-32.2.2]{UC-32.2.2}
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole visualizzare il contenuto multimediale di una nota del diario criptato
 \end{itemize}
@@ -2344,6 +2376,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
         \item Il sistema non è in grado di recuperare le note dal database $\rightarrow$ \hyperref[sec:UC-5]{UC-5}
+        \item L'attore può ricaricare la lista delle note del diario fittizio
     \end{itemize}
     \item \textbf{Inclusioni:}
     \begin{itemize}
@@ -2430,7 +2463,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
-        \item L'attore conferma  l'eliminazione di una nota dalla lista di note del diario fittizio
+        \item L'attore conferma l'eliminazione di una nota dalla lista di note del diario fittizio
         \item Il sistema rimuove la nota dalla lista delle note del diario fittizio
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole confermare l'eliminazione di una nota dal diario fittizio
@@ -2541,7 +2574,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Specializzazioni:}
     \begin{itemize}
         \item \hyperref[subsec:UC-39.2.1]{UC-39.2.1}
-        \item \hyperref[subsec:UC-39.2.1]{UC-39.2.1}
+        \item \hyperref[subsec:UC-39.2.2]{UC-39.2.2}
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole visualizzare il contenuto multimediale di una nota del diario fittizio
 \end{itemize}
@@ -2761,7 +2794,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Scenario principale:}
     \begin{itemize}
         \item L'attore seleziona la traccia audio che vuole rimuovere
-        \item L'attore seleziona la voce apposita per la rimozione dell'immagine
+        \item L'attore seleziona la voce apposita per la rimozione della traccia audio
         \item Il sistema rimuove la traccia audio definitivamente dalla nota
     \end{itemize}
     \item \textbf{Trigger:} L'attore vuole rimuovere una traccia audio da una nota nel diario fittizio
@@ -2799,7 +2832,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \centering
     \includegraphics[width=1\textwidth]{use_case/UC-44-47-guardiano.png}
     \caption{Diagramma del caso d'uso UC-44}
-    \label{fig:UC-33}
+    \label{fig:UC-44}
 \end{figure}
 
 \begin{itemize}
@@ -2811,7 +2844,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item Il sistema ha inviato il messaggio di SOS ai contatti fidati dell'\term{Utente}.
+        \item Il sistema ha inviato il messaggio di SOS ai contatti fidati dell'attore.
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
@@ -2822,7 +2855,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
     \item \textbf{Scenari secondari:} 
     \begin{itemize}
         \item Il sistema non è in grado di connettersi a internet. $\rightarrow$ \hyperref[sec:UC-45]{UC-45}
-        \item L'\term{Utente} non ha inserito nessun contatto fidato nella rete dei contatti fidati. $\rightarrow$ \hyperref[sec:UC-46]{UC-46}
+        \item L'attore non ha inserito nessun contatto fidato nella rete dei contatti fidati. $\rightarrow$ \hyperref[sec:UC-46]{UC-46}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
@@ -2939,6 +2972,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
         \item L'attore invia il messaggio al chatbot impostato nel contesto scelto
         \item Il chatbot analizza il messaggio secondo i prompt impostati dal contesto
         \item Il chatbot analizza il messaggio secondo la cronologia dei messaggi
+        \item Il chatbot analizza il messaggio secondo il contenuto del diario criptato
         \item Il chatbot genera la risposta
         \item L'attore visualizza la risposta del chatbot a schermo
     \end{itemize}
@@ -3175,7 +3209,7 @@ Il diagramma riportato di seguito mostra anche ulteriori casi d'uso correlati (\
 
 \subsubsection{UC-56 - Visualizzazione contenuto chat} \label{subsec:UC-56}
 \begin{tcolorbox}[colback=gray!10,colframe=gray!50,title=Nota]
-{\small Il seguente grafico rappresenta il caso d'uso \hyperref[subsec:UC-56]{UC-56} che include diversi casi d'uso quali \hyperref[subsec:UC-56.1]{UC-56.1}, \hyperref[subsec:UC-56.1.1]{UC-56.1.1} e \hyperref[subsec:UC-56.1.2]{UC-56.1.2} la cui descrizione dettagliata è riportata nelle sezioni successive del documento..
+{\small Il seguente grafico rappresenta il caso d'uso \hyperref[subsec:UC-56]{UC-56} che include diversi casi d'uso quali \hyperref[subsec:UC-56.1]{UC-56.1}, \hyperref[subsec:UC-56.1.1]{UC-56.1.1} e \hyperref[subsec:UC-56.1.2]{UC-56.1.2} la cui descrizione dettagliata è riportata nelle sezioni successive del documento.
 Inoltre mostra un caso d'uso d'errore \hyperref[sec:UC-5]{UC-5} la quale descrizione è situata precedentemente nel documento. }
 \end{tcolorbox}
 \begin{figure}[H]
@@ -3202,7 +3236,7 @@ Inoltre mostra un caso d'uso d'errore \hyperref[sec:UC-5]{UC-5} la quale descriz
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-        \item Si \term{Verifica} un errore nel caricamento del contenuto della chat $\rightarrow$ \hyperref[sec:UC-5]{UC-5}
+        \item Si \ignoreglossary{verifica} un errore nel caricamento del contenuto della chat $\rightarrow$ \hyperref[sec:UC-5]{UC-5}
     \end{itemize}
     \item \textbf{Inclusioni:} 
     \begin{itemize}
@@ -3571,7 +3605,7 @@ Inoltre mostra un caso d'uso d'errore \hyperref[sec:UC-5]{UC-5} la quale descriz
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-         \item Si \term{Verifica} un errore nel caricamento dei dati dal database $\rightarrow$ \hyperref[sec:UC-5]{UC-5}
+         \item Si \ignoreglossary{verifica} un errore nel caricamento dei dati dal database $\rightarrow$ \hyperref[sec:UC-5]{UC-5}
     \end{itemize}
     \item \textbf{Estensioni:}
     \begin{itemize}
@@ -3731,7 +3765,7 @@ Inoltre mostra un caso d'uso d'errore \hyperref[sec:UC-5]{UC-5} la quale descriz
     \end{itemize}
     \item \textbf{Scenario secondario:} 
     \begin{itemize}
-        \item Si \term{Verifica} un errore nel caricamento dei dati dal database $\rightarrow$ \hyperref[sec:UC-5]{UC-5}
+        \item Si \ignoreglossary{verifica} un errore nel caricamento dei dati dal database $\rightarrow$ \hyperref[sec:UC-5]{UC-5}
     \end{itemize}
     \item \textbf{Inclusioni:}
      \begin{itemize}
@@ -3868,7 +3902,7 @@ Inoltre mostra un caso d'uso d'errore \hyperref[sec:UC-5]{UC-5} la quale descriz
     \end{itemize}
     \item \textbf{Post-condizioni:}
     \begin{itemize}
-        \item Il sistema notifica l'errore e mantiene l'\term{Utente} nell'applicazione corrente
+        \item Il sistema notifica l'errore e mantiene l'attore nell'applicazione corrente
     \end{itemize}
     \item \textbf{Scenario principale:} 
     \begin{itemize}
@@ -3886,7 +3920,465 @@ Inoltre mostra un caso d'uso d'errore \hyperref[sec:UC-5]{UC-5} la quale descriz
 Di seguito vengono riportati i requisiti del sistema, individuati attraverso l'analisi dei casi d'uso.
 La nomenclatura utilizzata per il codice dei requisiti è spiegata nel documento \href{https://swe-bitbybit.github.io/SWE-docs/docs/RTB/documenti_interni/norme_di_progetto.pdf}{Norme di Progetto} alla sezione 2.2.3.2.
 
-\subsection{Requisiti Funzionali} \label{subsection:requisiti_funzionali}
+\subsection{Requisiti Funzionali obbligatori} \label{subsection:requisiti_funzionali_obbligatori}
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\arrayrulecolor{black}
+\rowcolors{2}{gray!20}{white}
+
+\begin{longtable}{|c|p{8.5cm}|>{\centering\arraybackslash}p{4cm}|}
+
+\hline
+\rowcolor{gray!60}
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Riferimento} \\
+\hline
+\endfirsthead
+\caption[]{Tabella Requisiti Funzionali obbligatori (continua)} \\
+\hline
+\rowcolor{gray!60}
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Riferimento} \\
+\hline
+\endhead
+
+
+RF-OB-1 & L'\term{Utente} deve poter autenticarsi all'applicazione tramite l'utilizzo di Google Auth & \hyperref[subsec:UC-1]{UC-1} \\
+\hline
+
+RF-OB-2 & Il sistema deve attivare automaticamente la funzionalità di Dead Man's Switch a seguito del login dell'\term{Utente} & \hyperref[subsec:UC-1]{UC-1}, \hyperref[sec:UC-19]{UC-19} \\
+\hline
+
+RF-OB-3 & L'\term{Utente} deve poter visualizzare un messaggio di errore esplicativo nel caso in cui l'autenticazione tramite Google Auth fallisca, venga annullata o restituisca parametri non validi & \hyperref[subsec:UC-2]{UC-2} \\
+\hline
+
+RF-OB-4 & L'\term{Utente} deve poter selezionare il profilo di utilizzo ("Per me" o "Per altri") & \hyperref[subsec:UC-3]{UC-3} \\
+\hline
+
+RF-OB-5 & L'\term{Utente} deve poter visualizzare la lista dei contatti fidati & \hyperref[sec:UC-4]{UC-4} \\
+\hline
+
+RF-OB-6 & L'\term{Utente} deve poter visualizzare un messaggio di errore esplicativo nel caso in cui il recupero dei dati dal database fallisca & \hyperref[sec:UC-5]{UC-5} \\
+\hline
+
+RF-OB-7 & L'\term{Utente} deve poter ricaricare la sezione dei contatti fidati dopo la visualizzazione dell'errore di caricamento dei dati dal database & \hyperref[sec:UC-4]{UC-4}, \hyperref[sec:UC-5]{UC-5} \\
+\hline
+
+RF-OB-8 & Il sistema deve permettere la visualizzazione di un singolo contatto fidato dalla lista dei contatti fidati & \hyperref[subsec:UC-4.1]{UC-4.1} \\
+\hline
+
+RF-OB-9 & L'\term{Utente} deve poter visualizzare la preview delle informazioni (il nome) del contatto fidato che sta visualizzando dalla lista dei contatti fidati & \hyperref[subsec:UC-4.1.1]{UC-4.1.1} \\
+\hline
+
+RF-OB-10 & L'\term{Utente} deve poter visualizzare i dettagli di un contatto fidato selezionato dalla lista dei contatti fidati & \hyperref[subsec:UC-6]{UC-6} \\
+\hline
+
+RF-OB-11 & L'\term{Utente} deve poter visualizzare il nome del contatto fidato selezionato dalla lista dei contatti fidati & \hyperref[subsec:UC-6.1]{UC-6.1} \\
+\hline
+
+RF-OB-12 & L'\term{Utente} deve poter visualizzare il numero di telefono del contatto fidato selezionato dalla lista dei contatti fidati & \hyperref[subsec:UC-6.2]{UC-6.2} \\
+\hline
+
+RF-OB-13 & L'\term{Utente} deve poter visualizzare l'indirizzo email del contatto fidato selezionato dalla lista dei contatti fidati & \hyperref[subsec:UC-6.3]{UC-6.3} \\
+\hline
+
+RF-OB-14 & L'\term{Utente} deve poter aggiungere un nuovo contatto fidato alla lista dei contatti fidati & \hyperref[subsec:UC-7]{UC-7} \\
+\hline
+
+RF-OB-15 & L'\term{Utente} deve poter inserire il nome del nuovo contatto fidato durante l'aggiunta di esso alla lista dei contatti fidati & \hyperref[subsec:UC-7.1]{UC-7.1} \\
+\hline
+
+RF-OB-16 & L'\term{Utente} deve poter inserire il numero di telefono del nuovo contatto fidato durante l'aggiunta di esso alla lista dei contatti fidati & \hyperref[subsec:UC-7.2]{UC-7.2} \\
+\hline
+
+RF-OB-17 & L'\term{Utente} deve poter inserire l'indirizzo email del nuovo contatto fidato durante l'aggiunta di esso alla lista dei contatti fidati & \hyperref[subsec:UC-7.3]{UC-7.3} \\
+\hline
+
+RF-OB-18 & Il sistema deve riconoscere e gestire le informazioni di numero di telefono e email già presenti nel sistema & \hyperref[subsec:UC-9]{UC-9}, \hyperref[subsec:UC-10]{UC-10} \\
+\hline
+
+RF-OB-19 & L'\term{Utente} deve poter visualizzare un messaggio di errore esplicativo nel caso in cui le informazioni di numero di telefono e email siano già presenti nel sistema & \hyperref[subsec:UC-9]{UC-9}, \hyperref[subsec:UC-10]{UC-10} \\
+\hline
+
+RF-OB-20 & L'\term{Utente} deve poter reinserire le informazioni di numero di telefono e email dopo la visualizzazione del messaggio di errore esplicativo & \hyperref[subsec:UC-8]{UC-8}, \hyperref[subsec:UC-9]{UC-9}, \hyperref[subsec:UC-10]{UC-10}, \hyperref[subsec:UC-11]{UC-11} \\
+\hline
+
+RF-OB-21 & Il sistema deve validare la conformità del numero di telefono inserito o modificato & \hyperref[subsec:UC-8]{UC-8}, \hyperref[subsec:UC-7.2]{UC-7.2}, \hyperref[subsec:UC-12.2]{UC-12.2} \\
+\hline
+
+RF-OB-22 & Il sistema deve visualizzare un messaggio di errore esplicativo nel caso in cui il numero di telefono inserito o modificato non sia conforme ai criteri prestabiliti & \hyperref[subsec:UC-8]{UC-8} \\
+\hline
+
+RF-OB-23 & Il sistema deve validare la conformità dell'indirizzo email inserito o modificato & \hyperref[subsec:UC-11]{UC-11}, \hyperref[subsec:UC-7.3]{UC-7.3}, \hyperref[subsec:UC-12.3]{UC-12.3} \\
+\hline
+
+RF-OB-24 & Il sistema deve visualizzare un messaggio di errore esplicativo nel caso in cui l'indirizzo email inserito o modificato non sia conforme ai criteri prestabiliti & \hyperref[subsec:UC-11]{UC-11} \\
+\hline
+
+RF-OB-25 & L'\term{Utente} deve poter modificare i dati di un contatto fidato esistente & \hyperref[subsec:UC-12]{UC-12} \\
+\hline
+
+RF-OB-26 & L'\term{Utente} deve poter modificare il nome di un contatto fidato esistente & \hyperref[subsec:UC-12.1]{UC-12.1} \\
+\hline
+
+RF-OB-27 & L'\term{Utente} deve poter modificare il numero di telefono di un contatto fidato esistente & \hyperref[subsec:UC-12.2]{UC-12.2} \\
+\hline
+
+RF-OB-28 & L'\term{Utente} deve poter modificare l'indirizzo email di un contatto fidato esistente & \hyperref[subsec:UC-12.3]{UC-12.3} \\
+\hline
+
+RF-OB-29 & L'\term{Utente} deve poter eliminare un contatto fidato & \hyperref[subsec:UC-13]{UC-13} \\
+\hline
+
+RF-OB-30 & Il sistema deve richiedere conferma prima dell'eliminazione di un contatto fidato & \hyperref[subsec:UC-13.1]{UC-13.1} \\
+\hline
+
+RF-OB-31 & L'\term{Utente} deve poter confermare, con un'apposita voce, l'eliminazione di un contatto fidato quando il sistema richiede la conferma & \hyperref[subsec:UC-13.1]{UC-13.1} \\
+\hline
+
+RF-OB-32 & L'\term{Utente} deve poter effettuare il logout dopo essersi autenticato all'applicazione & \hyperref[subsec:UC-14]{UC-14} \\
+\hline
+
+RF-OB-34 & L'\term{Utente} deve poter modificare le informazioni della mail di avviso & \hyperref[sec:UC-17]{UC-17} \\
+\hline
+
+RF-OB-35 & L'\term{Utente} deve poter modificare il titolo della mail di avviso & \hyperref[sec:UC-17.1]{UC-17.1} \\
+\hline
+
+RF-OB-36 & L'\term{Utente} deve poter modificare il corpo della mail di avviso & \hyperref[sec:UC-17.2]{UC-17.2} \\
+\hline
+
+RF-OB-37 & L'\term{Utente} deve poter visualizzare un'anteprima della mail di avviso & \hyperref[sec:UC-18]{UC-18} \\
+\hline
+
+RF-OB-38 & L'\term{Utente} deve poter visualizzare l'anteprima del corpo della mail di avviso & \hyperref[subsec:UC-18.1]{UC-18.1} \\
+\hline
+
+RF-OB-39 & L'\term{Utente} deve poter visualizzare un'anteprima del titolo della mail di avviso & \hyperref[subsec:UC-18.2]{UC-18.2} \\
+\hline
+
+RF-OB-40 & L'\term{Utente} deve poter attivare il Dead Man's Switch & \hyperref[sec:UC-19]{UC-19} \\
+\hline
+
+RF-OB-41 & L'\term{Utente} deve poter disattivare la funzionalità di Dead Man's Switch & \hyperref[sec:UC-20]{UC-20} \\
+\hline
+
+RF-OB-42 & L'\term{Utente} deve poter impostare una password per il diario criptato & \hyperref[subsec:UC-21]{UC-21} \\
+\hline
+
+RF-OB-43 & Il sistema deve validare la conformità della password del diario criptato secondo i criteri prestabiliti & \hyperref[subsec:UC-21]{UC-21}, \hyperref[subsec:UC-22]{UC-22} \\
+\hline
+
+RF-OB-44 & Il sistema deve visualizzare un messaggio di errore esplicativo nel caso in cui la password del diario criptato non sia conforme ai criteri prestabiliti & \hyperref[subsec:UC-22]{UC-22} \\
+\hline
+
+RF-OB-45 & L'\term{Utente} deve poter reinserire la password del diario criptato dopo la visualizzazione del messaggio di errore esplicativo & \hyperref[subsec:UC-22]{UC-22} \\
+\hline
+
+RF-OB-46 & L'\term{Utente} deve poter impostare una password per il diario fittizio & \hyperref[subsec:UC-23]{UC-23} \\
+\hline
+
+RF-OB-47 & Il sistema deve validare la conformità e l'unicità della password del diario fittizio rispetto a quella del diario criptato & \hyperref[subsec:UC-22]{UC-22}, \hyperref[subsec:UC-23]{UC-23}, \hyperref[subsec:UC-24]{UC-24} \\
+\hline
+
+RF-OB-48 & Il sistema deve visualizzare un messaggio di errore esplicativo nel caso in cui la password del diario fittizio non sia conforme ai criteri prestabiliti & \hyperref[subsec:UC-22]{UC-22} \\
+\hline
+
+RF-OB-49 & Il sistema deve visualizzare un messaggio di errore esplicativo nel caso in cui la password del diario fittizio sia uguale a quella del diario criptato & \hyperref[subsec:UC-24]{UC-24} \\
+\hline
+
+RF-OB-50 & L'\term{Utente} deve poter reinserire la password del diario fittizio dopo la visualizzazione del messaggio di errore esplicativo & \hyperref[subsec:UC-22]{UC-22}, \hyperref[subsec:UC-24]{UC-24} \\
+\hline
+
+RF-OB-51 & L'\term{Utente} deve poter inserire la password per accedere al diario desiderato & \hyperref[subsec:UC-25]{UC-25} \\
+\hline
+
+RF-OB-52 & L'\term{Utente} deve poter inserire la password per accedere al diario criptato & \hyperref[subsec:UC-25.1]{UC-25.1} \\
+\hline
+
+RF-OB-53 & L'\term{Utente} deve poter inserire la password per accedere al diario fittizio & \hyperref[subsec:UC-25.2]{UC-25.2} \\
+\hline
+
+RF-OB-54 & Il sistema deve visualizzare un messaggio di errore esplicativo nel caso in cui la password inserita per l'accesso al diario risulti errata & \hyperref[subsec:UC-27]{UC-27} \\
+\hline
+
+RF-OB-55 & L'\term{Utente} deve poter reinserire la password di accesso al diario dopo la visualizzazione del messaggio di errore esplicativo & \hyperref[subsec:UC-27]{UC-27} \\
+\hline
+
+RF-OB-56 & Il sistema deve bloccare temporaneamente l'accesso al diario in seguito al superamento del limite massimo di tentativi errati di inserimento password & \hyperref[subsec:UC-26]{UC-26} \\
+\hline
+
+RF-OB-57 & L'\term{Utente} deve poter visualizzare il contenuto del diario criptato & \hyperref[subsec:UC-28]{UC-28} \\
+\hline
+
+RF-OB-58 & L'\term{Utente} deve poter visualizzare la lista delle note presenti nel diario criptato & \hyperref[subsec:UC-28.1]{UC-28.1} \\
+\hline
+
+RF-OB-59 & L'\term{Utente} deve poter visualizzare l'anteprima della singola nota all'interno della lista delle note del diario criptato & \hyperref[subsec:UC-28.1.1]{UC-28.1.1} \\
+\hline
+
+RF-OB-60 & L'\term{Utente} deve poter ricaricare la sezione delle note del diario criptato dopo la visualizzazione dell'errore di caricamento dei dati dal database & \hyperref[subsec:UC-28.1]{UC-28.1}, \hyperref[sec:UC-5]{UC-5} \\
+\hline
+
+RF-OB-61 & L'\term{Utente} deve poter creare una nuova nota vuota all'interno del diario criptato & \hyperref[subsec:UC-31]{UC-31} \\
+\hline
+
+RF-OB-62 & L'\term{Utente} deve poter eliminare una nota esistente dal diario criptato & \hyperref[subsec:UC-30]{UC-30} \\
+\hline
+
+RF-OB-63 & Il sistema deve richiedere conferma prima dell'eliminazione definitiva di una nota del diario criptato & \hyperref[subsec:UC-30.1]{UC-30.1} \\
+\hline
+
+RF-OB-64 & L'\term{Utente} deve poter confermare, con un'apposita voce, l'eliminazione della nota dal diario criptato quando il sistema ne richiede la conferma & \hyperref[subsec:UC-30.1]{UC-30.1} \\
+\hline
+
+RF-OB-65 & L'\term{Utente} deve poter visualizzare il contenuto completo di una nota selezionata dalla lista delle note del diario criptato & \hyperref[subsec:UC-32]{UC-32} \\
+\hline
+
+RF-OB-66 & L'\term{Utente} deve poter visualizzare il contenuto testuale della nota del diario criptato & \hyperref[subsec:UC-32.1]{UC-32.1} \\
+\hline
+
+RF-OB-67 & L'\term{Utente} deve poter visualizzare il contenuto multimediale della nota del diario criptato & \hyperref[subsec:UC-32.2]{UC-32.2} \\
+\hline
+
+RF-OB-68 & L'\term{Utente} deve poter visualizzare il contenuto audio presente all'interno della nota del diario criptato & \hyperref[subsec:UC-32.2.1]{UC-32.2.1} \\
+\hline
+
+RF-OB-69 & L'\term{Utente} deve poter visualizzare le immagini presenti all'interno della nota del diario criptato & \hyperref[subsec:UC-32.2.2]{UC-32.2.2} \\
+\hline
+
+RF-OB-70 & L'\term{Utente} deve poter inserire del contenuto testuale all'interno di una nota del diario criptato & \hyperref[subsec:UC-33]{UC-33} \\
+\hline
+
+RF-OB-71 & L'\term{Utente} deve poter inserire del contenuto multimediale all'interno di una nota del diario criptato & \hyperref[subsec:UC-34]{UC-34} \\
+\hline
+
+RF-OB-72 & L'\term{Utente} deve poter inserire un'immagine all'interno di una nota del diario criptato & \hyperref[subsec:UC-34.1]{UC-34.1} \\
+\hline
+
+RF-OB-73 & L'\term{Utente} deve poter inserire una traccia audio all'interno di una nota del diario criptato & \hyperref[subsec:UC-34.2]{UC-34.2} \\
+\hline
+
+RF-OB-74 & L'\term{Utente} deve poter modificare il contenuto testuale presente all'interno di una nota del diario criptato & \hyperref[subsec:UC-35]{UC-35} \\
+\hline
+
+RF-OB-75 & L'\term{Utente} deve poter rimuovere del contenuto multimediale presente all'interno di una nota del diario criptato & \hyperref[subsec:UC-36]{UC-36} \\
+\hline
+
+RF-OB-76 & L'\term{Utente} deve poter rimuovere un'immagine presente all'interno di una nota del diario criptato & \hyperref[subsec:UC-36.1]{UC-36.1} \\
+\hline
+
+RF-OB-77 & L'\term{Utente} deve poter rimuovere una traccia audio presente all'interno di una nota del diario criptato & \hyperref[subsec:UC-36.2]{UC-36.2} \\
+\hline
+
+RF-OB-78 & L'\term{Utente} deve poter visualizzare la schermata del diario fittizio & \hyperref[subsec:UC-29]{UC-29} \\
+\hline
+
+RF-OB-79 & L'\term{Utente} deve poter visualizzare la lista delle note presenti nel diario fittizio & \hyperref[subsec:UC-29.1]{UC-29.1} \\
+\hline
+
+RF-OB-80 & L'\term{Utente} deve poter visualizzare l'anteprima della singola nota all'interno della lista delle note del diario fittizio & \hyperref[subsec:UC-29.1.1]{UC-29.1.1} \\
+\hline
+
+RF-OB-81 & L'\term{Utente} deve poter ricaricare la sezione delle note del diario fittizio dopo la visualizzazione dell'errore di caricamento dei dati dal database & \hyperref[subsec:UC-29.1]{UC-29.1}, \hyperref[sec:UC-5]{UC-5} \\
+\hline
+
+RF-OB-82 & L'\term{Utente} deve poter eliminare una nota esistente dal diario fittizio & \hyperref[subsec:UC-37]{UC-37} \\
+\hline
+
+RF-OB-83 & Il sistema deve richiedere conferma prima dell'eliminazione definitiva di una nota del diario fittizio & \hyperref[subsec:UC-37.1]{UC-37.1} \\
+\hline
+
+RF-OB-84 & L'\term{Utente} deve poter confermare, con un'apposita voce, l'eliminazione della nota dal diario fittizio quando il sistema ne richiede la conferma & \hyperref[subsec:UC-37.1]{UC-37.1} \\
+\hline
+
+RF-OB-85 & L'\term{Utente} deve poter creare una nuova nota vuota all'interno del diario fittizio & \hyperref[subsec:UC-38]{UC-38} \\
+\hline
+
+RF-OB-86 & L'\term{Utente} deve poter visualizzare il contenuto completo di una nota selezionata dalla lista delle note del diario fittizio & \hyperref[subsec:UC-39]{UC-39} \\
+\hline
+
+RF-OB-87 & L'\term{Utente} deve poter visualizzare il contenuto testuale della nota del diario fittizio & \hyperref[subsec:UC-39.1]{UC-39.1} \\
+\hline
+
+RF-OB-88 & L'\term{Utente} deve poter visualizzare il contenuto multimediale della nota del diario fittizio & \hyperref[subsec:UC-39.2]{UC-39.2} \\
+\hline
+
+RF-OB-89 & L'\term{Utente} deve poter visualizzare il contenuto audio presente all'interno della nota del diario fittizio & \hyperref[subsec:UC-39.2.1]{UC-39.2.1} \\
+\hline
+
+RF-OB-90 & L'\term{Utente} deve poter visualizzare le immagini presenti all'interno della nota del diario fittizio & \hyperref[subsec:UC-39.2.2]{UC-39.2.2} \\
+\hline
+
+RF-OB-91 & L'\term{Utente} deve poter inserire del contenuto testuale all'interno di una nota del diario fittizio & \hyperref[subsec:UC-40]{UC-40} \\
+\hline
+
+RF-OB-92 & L'\term{Utente} deve poter inserire del contenuto multimediale all'interno di una nota del diario fittizio & \hyperref[subsec:UC-41]{UC-41} \\
+\hline
+
+RF-OB-93 & L'\term{Utente} deve poter inserire un'immagine all'interno di una nota del diario fittizio & \hyperref[subsec:UC-41.1]{UC-41.1} \\
+\hline
+
+RF-OB-94 & L'\term{Utente} deve poter inserire una traccia audio all'interno di una nota del diario fittizio & \hyperref[subsec:UC-41.2]{UC-41.2} \\
+\hline
+
+RF-OB-95 & L'\term{Utente} deve poter rimuovere del contenuto multimediale presente all'interno di una nota del diario fittizio & \hyperref[subsec:UC-42]{UC-42} \\
+\hline
+
+RF-OB-96 & L'\term{Utente} deve poter rimuovere un'immagine presente all'interno di una nota del diario fittizio & \hyperref[subsec:UC-42.1]{UC-42.1} \\
+\hline
+
+RF-OB-97 & L'\term{Utente} deve poter rimuovere una traccia audio presente all'interno di una nota del diario fittizio & \hyperref[subsec:UC-42.2]{UC-42.2} \\
+\hline
+
+RF-OB-98 & L'\term{Utente} deve poter modificare il contenuto testuale presente all'interno di una nota del diario fittizio & \hyperref[subsec:UC-43]{UC-43} \\
+\hline
+
+RF-OB-99 & L'\term{Utente} deve poter inviare un messaggio di SOS ai contatti fidati tramite un'apposita voce & \hyperref[sec:UC-44]{UC-44} \\
+\hline
+
+RF-OB-100 & Il sistema deve notificare l'\term{Utente} dell'assenza di connessione internet durante il tentativo di invio del messaggio SOS e proporre l'invio di un segnale acustico & \hyperref[sec:UC-45]{UC-45} \\
+\hline
+
+RF-OB-101 & Il sistema deve notificare l'\term{Utente} della mancanza di contatti fidati configurati durante il tentativo di invio del messaggio SOS e proporre l'invio di un segnale acustico & \hyperref[sec:UC-46]{UC-46} \\
+\hline
+
+RF-OB-102 & L'\term{Utente} deve poter avviare un segnale acustico di emergenza indipendente dalle impostazioni di volume del dispositivo & \hyperref[sec:UC-47]{UC-47} \\
+\hline
+
+RF-OB-103 & L'\term{Utente} deve poter inviare un messaggio al chatbot e ricevere una risposta generata dall'LLM in base al contesto scelto & \hyperref[sec:UC-48]{UC-48} \\
+\hline
+
+RF-OB-104 & L'\term{Utente} deve poter interrompere la generazione della risposta dell'LLM durante la consultazione del chatbot & \hyperref[sec:UC-49]{UC-49} \\
+\hline
+
+RF-OB-105 & Il sistema deve notificare l'\term{Utente} della mancanza di connessione internet durante la consultazione del chatbot & \hyperref[sec:UC-50]{UC-50} \\
+\hline
+
+RF-OB-106 & L'\term{Utente} deve poter ripetere l'invio del messaggio o scriverne uno nuovo dopo la notifica di assenza di connessione internet & \hyperref[sec:UC-50]{UC-50} \\
+\hline
+
+RF-OB-107 & L'\term{Utente} deve poter cambiare il contesto della chat a "Detective delle Relazioni" & \hyperref[sec:UC-51]{UC-51} \\
+\hline
+
+RF-OB-108 & L'\term{Utente} deve poter cambiare il contesto della chat a "Specchio Intelligente" & \hyperref[sec:UC-52]{UC-52} \\
+\hline
+
+RF-OB-109 & Il sistema deve notificare l'\term{Utente} di un errore durante il cambio di contesto del chatbot e mantenere il contesto precedente & \hyperref[sec:UC-53]{UC-53} \\
+\hline
+
+RF-OB-110 & L'\term{Utente} deve poter ritentare il cambio di contesto del chatbot dopo la notifica di errore & \hyperref[sec:UC-53]{UC-53} \\
+\hline
+
+RF-OB-111 & L'\term{Utente} deve poter creare una nuova sessione di chat con il chatbot & \hyperref[subsec:UC-54]{UC-54} \\
+\hline
+
+RF-OB-112 & L'\term{Utente} deve poter eliminare una chat dalla cronologia delle chat & \hyperref[subsec:UC-55]{UC-55} \\
+\hline
+
+RF-OB-113 & Il sistema deve richiedere conferma esplicita prima dell'eliminazione definitiva di una chat & \hyperref[subsec:UC-55.1]{UC-55.1} \\
+\hline
+
+RF-OB-114 & L'\term{Utente} deve poter confermare, con un'apposita voce, l'eliminazione di una chat quando il sistema ne richiede la conferma & \hyperref[subsec:UC-55.1]{UC-55.1} \\
+\hline
+
+RF-OB-115 & L'\term{Utente} deve poter visualizzare il contenuto di una chat selezionata, inclusa la lista dei messaggi scambiati & \hyperref[subsec:UC-56]{UC-56} \\
+\hline
+
+RF-OB-116 & Il sistema deve notificare l'\term{Utente} di un errore nel caricamento del contenuto della chat & \hyperref[sec:UC-5]{UC-5}, \hyperref[subsec:UC-56]{UC-56} \\
+\hline
+
+RF-OB-117 & Il sistema deve visualizzare la lista dei messaggi scambiati tra l'\term{Utente} e il chatbot all'interno di una chat & \hyperref[subsec:UC-56.1]{UC-56.1} \\
+\hline
+
+RF-OB-118 & Il sistema deve distinguere visivamente i messaggi inviati dall'\term{Utente} da quelli generati dal chatbot & \hyperref[subsec:UC-56.1.1]{UC-56.1.1}, \hyperref[subsec:UC-56.1.2]{UC-56.1.2} \\
+\hline
+
+RF-OB-119 & Il sistema deve visualizzare i messaggi inviati dall'\term{Utente} con la formattazione grafica allineata a destra & \hyperref[subsec:UC-56.1.1]{UC-56.1.1} \\
+\hline
+
+RF-OB-120 & Il sistema deve visualizzare i messaggi generati dal chatbot con la formattazione grafica allineata a sinistra & \hyperref[subsec:UC-56.1.2]{UC-56.1.2} \\
+\hline
+
+RF-OB-121 & L'\term{Utente} deve poter visualizzare la cronologia delle chat con il chatbot & \hyperref[subsec:UC-57]{UC-57} \\
+\hline
+
+RF-OB-122 & L'\term{Utente} deve poter selezionare e visualizzare una singola chat dalla cronologia & \hyperref[subsec:UC-57.1]{UC-57.1} \\
+\hline
+
+RF-OB-123 & Il sistema deve mostrare il titolo identificativo di ogni chat presente nella cronologia & \hyperref[subsec:UC-57.1.1]{UC-57.1.1} \\
+\hline
+
+RF-OB-124 & L'\term{Utente} deve poter visualizzare la lista delle community disponibili & \hyperref[sec:UC-58]{UC-58} \\
+\hline
+
+RF-OB-125 & Il sistema deve notificare l'\term{Utente} di un errore nel caricamento della lista delle community & \hyperref[sec:UC-5]{UC-5}, \hyperref[sec:UC-58]{UC-58} \\
+\hline
+
+RF-OB-126 & Il sistema deve mostrare i dati riassuntivi di ogni singola community nella lista & \hyperref[subsec:UC-58.1]{UC-58.1} \\
+\hline
+
+RF-OB-127 & Il sistema deve mostrare il nome di ogni singola community nella lista & \hyperref[subsec:UC-58.1.1]{UC-58.1.1} \\
+\hline
+
+RF-OB-128 & Il sistema deve mostrare il link di ogni singola community nella lista & \hyperref[subsec:UC-58.1.2]{UC-58.1.2} \\
+\hline
+
+RF-OB-129 & L'\term{Utente} deve poter aprire il link di una community per visitarne il sito web esterno & \hyperref[sec:UC-59]{UC-59} \\
+\hline
+
+RF-OB-130 & L'\term{Utente} deve poter visualizzare la lista delle leggi e normative disponibili & \hyperref[sec:UC-60]{UC-60} \\
+\hline
+
+RF-OB-131 & Il sistema deve mostrare il titolo di ogni singola legge nella lista & \hyperref[subsec:UC-60.1]{UC-60.1} \\
+\hline
+
+RF-OB-132 & L'\term{Utente} deve poter visualizzare i dettagli completi di una legge selezionata dalla lista & \hyperref[sec:UC-61]{UC-61} \\
+\hline
+
+RF-OB-133 & Il sistema deve notificare l'\term{Utente} di un errore nel caricamento dei dati di una legge & \hyperref[sec:UC-5]{UC-5}, \hyperref[sec:UC-61]{UC-61} \\
+\hline
+
+RF-OB-134 & L'\term{Utente} deve poter visualizzare la lista dei contatti e degli enti d'emergenza & \hyperref[sec:UC-62]{UC-62} \\
+\hline
+
+RF-OB-135 & Il sistema deve mostrare i dati riassuntivi di ogni singolo contatto d'emergenza nella lista & \hyperref[subsec:UC-62.1]{UC-62.1} \\
+\hline
+
+RF-OB-136 & Il sistema deve mostrare il nome identificativo di ogni contatto d'emergenza & \hyperref[subsec:UC-62.1.1]{UC-62.1.1} \\
+\hline
+
+RF-OB-137 & Il sistema deve mostrare il numero di telefono associato ad ogni contatto d'emergenza & \hyperref[subsec:UC-62.1.2]{UC-62.1.2} \\
+\hline
+
+RF-OB-139 & L'\term{Utente} deve poter visualizzare la lista del materiale informativo disponibile & \hyperref[sec:UC-64]{UC-64} \\
+\hline
+
+RF-OB-140 & Il sistema deve notificare l'\term{Utente} di un errore nel caricamento della lista del materiale informativo & \hyperref[sec:UC-5]{UC-5}, \hyperref[sec:UC-64]{UC-64} \\
+\hline
+
+RF-OB-141 & Il sistema deve mostrare il titolo e il formato di ogni singolo materiale informativo nella lista & \hyperref[subsec:UC-64.1]{UC-64.1} \\
+\hline
+
+RF-OB-142 & L'\term{Utente} deve poter visualizzare il contenuto di un materiale informativo selezionato dalla lista & \hyperref[sec:UC-65]{UC-65} \\
+\hline
+
+RF-OB-143 & Il sistema deve notificare l'\term{Utente} di un errore nel recupero dei dati del materiale informativo & \hyperref[sec:UC-5]{UC-5}, \hyperref[sec:UC-65]{UC-65} \\
+\hline
+
+RF-OB-144 & L'\term{Utente} deve poter visualizzare la mappa interattiva con i marker dei luoghi sicuri nelle vicinanze & \hyperref[sec:UC-66]{UC-66} \\
+\hline
+
+RF-OB-145 & L'\term{Utente} deve poter aprire un luogo sicuro nella mappa esterna Google Maps & \hyperref[subsec:UC-67]{UC-67} \\
+\hline
+
+RF-OB-146 & Il sistema deve notificare l'\term{Utente} di un errore nell'apertura dell'applicazione Google Maps e mantenere la visualizzazione della mappa interna & \hyperref[subsec:UC-68]{UC-68} \\
+\hline
+\caption{Tabella Requisiti Funzionali obbligatori} \label{tab:requisiti_funzionali_obbligatori} \\
+\end{longtable}
+\end{center}
+
+% REQUISITI DESIDERABILI %
+
+\subsection{Requisiti Funzionali desiderabili} \label{subsection:requisiti_funzionali_desiderabili}
 \begin{center}
 \renewcommand{\arraystretch}{1.5}
 \arrayrulecolor{black}
@@ -3897,7 +4389,7 @@ La nomenclatura utilizzata per il codice dei requisiti è spiegata nel documento
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Riferimento} \\
 \hline
 \endfirsthead
-\caption[]{Tabella Requisiti Funzionali (continua)} \\
+\caption[]{Tabella Requisiti Funzionali desiderabili (continua)} \\
 \hline
 \rowcolor{gray!60}
 \textbf{Codice} & \textbf{Descrizione} & \textbf{Riferimento} \\
@@ -3905,446 +4397,103 @@ La nomenclatura utilizzata per il codice dei requisiti è spiegata nel documento
 \endhead
 
 \rowcolor{white}
-RF-OB-1 & L'\term{Utente} deve poter autenticarsi all'applicazione tramite l'utilizzo di Google Auth & \hyperref[subsec:UC-1]{UC-1} \\
+RF-DE-1 & Il sistema deve mostrare all'\term{Utente} una spiegazione della differenza tra "per me" e "per altri" & \hyperref[subsec:UC-3]{UC-3} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-2 & L'\term{Utente} vede attivarsi automaticamente la funzionalità di Dead Man Switch a seguito del login. & \hyperref[subsec:UC-1]{UC-1}, \hyperref[sec:UC-15]{UC-15} \\
+RF-DE-2 & Il sistema mostra all'\term{Utente} una breve descrizione del funzionamento del Dead Man's Switch & \hyperref[sec:UC-19]{UC-19}, \hyperref[sec:UC-20]{UC-20} \\
 \hline
 \rowcolor{white}
-RF-OB-3 & L'\term{Utente} deve poter visualizzare un messaggio di errore esplicativo nel caso in cui l'autenticazione tramite Google Auth fallisca, venga annullata o restituisca parametri non validi. & \hyperref[subsec:UC-2]{UC-2} \\
+RF-DE-3 & Il sistema deve permettere all'\term{Utente} di inserire più contenuti multimediali con una singola azione nel diario criptato & \hyperref[subsec:UC-34]{UC-34} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-4 & L'\term{Utente} deve poter selezionare il profilo di utilizzo ("Per me" o "Per altri") & \hyperref[subsec:UC-3]{UC-3} \\
+RF-DE-4 & Il sistema deve permettere all'\term{Utente} di inserire più immagini con una singola azione nel diario criptato & \hyperref[subsec:UC-34.1]{UC-34.1} \\
 \hline
 \rowcolor{white}
-RF-OB-5 & L'\term{Utente} deve poter visualizzare la lista dei contatti fidati & \hyperref[sec:UC-4]{UC-4} \\
+RF-DE-5 & Il sistema deve permettere all'\term{Utente} di inserire più tracce audio con una singola azione nel diario criptato & \hyperref[subsec:UC-34.2]{UC-34.2} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-6 & L'\term{Utente} deve poter visualizzare un messaggio di errore esplicativo nel caso in cui il recupero dei dati dal database fallisca & \hyperref[sec:UC-5]{UC-5} \\
+RF-DE-6 & Il sistema deve permettere all'\term{Utente} di inserire più contenuti multimediali con una singola azione nel diario fittizio & \hyperref[subsec:UC-41]{UC-41} \\
 \hline
 \rowcolor{white}
-RF-OB-7 & L'\term{Utente} deve poter ricaricare la sezione dei contatti fidati dopo la visualizzazione dell'errore di caricamento dei dati dal database. & \hyperref[sec:UC-4]{UC-4}, \hyperref[sec:UC-5]{UC-5} \\
+RF-DE-7 & Il sistema deve permettere all'\term{Utente} di inserire più immagini con una singola azione nel diario fittizio & \hyperref[subsec:UC-41.1]{UC-41.1} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-8 & Il sistema deve permettere la visualizzazione di un singolo contatto fidato dalla lista dei contatti fidati & \hyperref[subsec:UC-4.1]{UC-4.1} \\
+RF-DE-8 & Il sistema deve permettere all'\term{Utente} di inserire più tracce audio con una singola azione nel diario fittizio & \hyperref[subsec:UC-41.2]{UC-41.2} \\
 \hline
 \rowcolor{white}
-RF-OB-9 & L'\term{Utente} deve poter visualizzare la preview delle informazioni (il nome) del contatto fidato, che sta visualizzando dalla lista dei contatti fidati & \hyperref[subsec:UC-4.1.1]{UC-4.1.1} \\
+RF-DE-9 & Il sistema deve permettere all'\term{Utente} di riprodurre le tracce audio inserite nel diario criptato & \hyperref[subsec:UC-32.2.1]{UC-32.2.1} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-10 & L'\term{Utente} deve poter visualizzare i dettagli di un contatto fidato selezionato dalla lista dei contatti fidati & \hyperref[subsec:UC-6]{UC-6} \\
+RF-DE-10 & Il sistema deve permettere all'\term{Utente} di riprodurre le tracce audio inserite nel diario fittizio & \hyperref[subsec:UC-39.2.1]{UC-39.2.1} \\
 \hline
 \rowcolor{white}
-RF-OB-11 & L'\term{Utente} deve poter visualizzare il nome del contatto fidato selezionato dalla lista dei contatti fidati & \hyperref[subsec:UC-6.1]{UC-6.1} \\
+RF-DE-11 & Il sistema deve indicare all'\term{Utente} che il messaggio del chatbot è in fase di caricamento & \hyperref[sec:UC-48]{UC-48} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-12 & L'\term{Utente} deve poter visualizzare il numero di telefono del contatto fidato selezionato dalla lista dei contatti fidati & \hyperref[subsec:UC-6.2]{UC-6.2} \\
+RF-DE-12 & Il sistema deve utilizzare i contenuti del diario criptato per personalizzare le risposte del chatbot & \hyperref[sec:UC-48]{UC-48} \\
 \hline
 \rowcolor{white}
-RF-OB-13 & L'\term{Utente} deve poter visualizzare l'indirizzo email del contatto fidato selezionato dalla lista dei contatti fidati & \hyperref[subsec:UC-6.3]{UC-6.3} \\
+RF-DE-13 & Il sistema deve mostrare all'\term{Utente} una spiegazione del tipo di contesto a cui può passare (Detective delle relazioni) & \hyperref[sec:UC-51]{UC-51} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-14 & L'\term{Utente} deve poter aggiungere un nuovo contatto fidato alla lista dei contatti fidati & \hyperref[subsec:UC-7]{UC-7} \\
+RF-DE-14 & Il sistema deve mostrare all'\term{Utente} una spiegazione del tipo di contesto a cui può passare (Specchio intelligente) & \hyperref[sec:UC-52]{UC-52} \\
 \hline
 \rowcolor{white}
-RF-OB-15 & L'\term{Utente} deve poter inserire il nome del nuovo contatto fidato durante l'aggiunta di esso alla lista dei contatti fidati & \hyperref[subsec:UC-7.1]{UC-7.1} \\
+RF-DE-15 & L'\term{Utente} deve poter comporre automaticamente il numero di un contatto d'emergenza tramite l'apposita voce & \hyperref[sec:UC-63]{UC-63} \\
 \hline
-\rowcolor{gray!20}
-RF-OB-16 & L'\term{Utente} deve poter inserire il numero di telefono del nuovo contatto fidato durante l'aggiunta di esso alla lista dei contatti fidati & \hyperref[subsec:UC-7.2]{UC-7.2} \\
-\hline
-\rowcolor{white}
-RF-OB-17 & L'\term{Utente} deve poter inserire l'indirizzo email del nuovo contatto fidato durante l'aggiunta di esso alla lista dei contatti fidati & \hyperref[subsec:UC-7.3]{UC-7.3} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-18 & Il sistema deve riconoscere e gestire le informazioni di numero di telefono e email già presenti nel sistema & \hyperref[subsec:UC-9]{UC-9}, \hyperref[subsec:UC-10]{UC-10} \\
-\hline
-\rowcolor{white}
-RF-OB-19 & L'\term{Utente} deve poter visualizzare un messaggio di errore esplicativo nel caso in cui le informazioni di numero di telefono e email siano già presenti nel sistema. & \hyperref[subsec:UC-9]{UC-9}, \hyperref[subsec:UC-10]{UC-10} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-20 & L'\term{Utente} deve poter reinserire le informazioni di numero di telefono e email dopo la visualizzazione del messaggio di errore esplicativo & \hyperref[subsec:UC-8]{UC-8}, \hyperref[subsec:UC-9]{UC-9}, \hyperref[subsec:UC-10]{UC-10}, \hyperref[subsec:UC-11]{UC-11} \\
-\hline
-\rowcolor{white}
-RF-OB-21 & Il sistema deve validare la conformità del numero di telefono inserito o modificato & \hyperref[subsec:UC-8]{UC-8}, \hyperref[subsec:UC-7.2]{UC-7.2}, \hyperref[subsec:UC-12.2]{UC-12.2} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-22 & Il sistema deve visualizzare un messaggio di errore esplicativo nel caso in cui il numero di telefono inserito o modificato non sia conforme ai criteri prestabiliti & \hyperref[subsec:UC-8]{UC-8} \\
-\hline
-\rowcolor{white}
-RF-OB-23 & Il sistema deve validare la conformità dell'indirizzo email inserito o modificato & \hyperref[subsec:UC-11]{UC-11}, \hyperref[subsec:UC-7.3]{UC-7.3}, \hyperref[subsec:UC-12.3]{UC-12.3} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-24 & Il sistema deve visualizzare un messaggio di errore esplicativo nel caso in cui l'indirizzo email inserito o modificato non sia conforme ai criteri prestabiliti & \hyperref[subsec:UC-11]{UC-11} \\
-\hline
-\rowcolor{white}
-RF-OB-25 & L'\term{Utente} deve poter modificare i dati di un contatto fidato esistente & \hyperref[subsec:UC-12]{UC-12} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-26 & L'\term{Utente} deve poter modificare il nome di un contatto fidato esistente & \hyperref[subsec:UC-12.1]{UC-12.1} \\
-\hline
-\rowcolor{white}
-RF-OB-27 & L'\term{Utente} deve poter modificare il numero di telefono di un contatto fidato esistente & \hyperref[subsec:UC-12.2]{UC-12.2} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-28 & L'\term{Utente} deve poter modificare l'indirizzo email di un contatto fidato esistente & \hyperref[subsec:UC-12.3]{UC-12.3} \\
-\hline
-\rowcolor{white}
-RF-OB-29 & L'\term{Utente} deve poter eliminare un contatto fidato & \hyperref[subsec:UC-13]{UC-13} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-30 & Il sistema deve richiedere conferma prima dell'eliminazione di un contatto fidato & \hyperref[subsec:UC-13.1]{UC-13.1} \\
-\hline
-\rowcolor{white}
-RF-OB-31 & L'\term{Utente} deve poter confermare, con un'apposita voce, l'eliminazione di un contatto fidato quando il sistema richiede la conferma. & \hyperref[subsec:UC-13.1]{UC-13.1} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-32 & L'\term{Utente} deve poter impostare il timer di prima inattività (per la funzionalità di Dead Man's Switch) & \hyperref[sec:UC-15]{UC-15} \\
-\hline
-\rowcolor{white}
-RF-OB-33 & L'\term{Utente} deve poter impostare il timer di seconda inattività (per la funzionalità di Dead Man's Switch) & \hyperref[sec:UC-16]{UC-16} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-34 & L'\term{Utente} deve poter modificare le informazioni della mail di avviso & \hyperref[sec:UC-17]{UC-17} \\
-\hline
-\rowcolor{white}
-RF-OB-35 & L'\term{Utente} deve poter modificare il titolo della mail di avviso & \hyperref[sec:UC-17.1]{UC-17.1} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-36 & L'\term{Utente} deve poter modificare il corpo della mail di avviso & \hyperref[sec:UC-17.2]{UC-17.2} \\
-\hline
-\rowcolor{white}
-RF-OB-37 & L'\term{Utente} deve poter visualizzare un'anteprima della mail di avviso & \hyperref[sec:UC-18]{UC-18} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-38 & L'\term{Utente} deve poter visualizzare l'anteprima del corpo della mail di avviso & \hyperref[subsec:UC-18.1]{UC-18.1} \\
-\hline
-\rowcolor{white}
-RF-OB-39 & L'\term{Utente} deve poter visualizzare un'anteprima del titolo della mail di avviso & \hyperref[subsec:UC-18.2]{UC-18.2} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-40 & L'\term{Utente} deve poter attivare il Dead Man's Switch & \hyperref[sec:UC-19]{UC-19} \\
-\hline
-\rowcolor{white}
-RF-OB-41 & L'\term{Utente} deve poter disattivare la funzionalità di Dead Man's Switch & \hyperref[sec:UC-20]{UC-20} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-42 & L'\term{Utente} deve poter impostare una password per il diario criptato & \hyperref[subsec:UC-21]{UC-21} \\
-\hline
-\rowcolor{white}
-RF-OB-43 & Il sistema deve validare la conformità della password del diario criptato secondo i criteri prestabiliti & \hyperref[subsec:UC-21]{UC-21}, \hyperref[subsec:UC-22]{UC-22} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-44 & Il sistema deve visualizzare un messaggio di errore esplicativo nel caso in cui la password del diario criptato non sia conforme ai criteri prestabiliti & \hyperref[subsec:UC-22]{UC-22} \\
-\hline
-\rowcolor{white}
-RF-OB-45 & L'\term{Utente} deve poter reinserire la password del diario criptato dopo la visualizzazione del messaggio di errore esplicativo & \hyperref[subsec:UC-22]{UC-22} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-46 & L'\term{Utente} deve poter impostare una password per il diario fittizio & \hyperref[subsec:UC-23]{UC-23} \\
-\hline
-\rowcolor{white}
-RF-OB-47 & Il sistema deve validare la conformità e l'unicità della password del diario fittizio rispetto a quella del diario criptato & \hyperref[subsec:UC-22]{UC-22}, \hyperref[subsec:UC-23]{UC-23}, \hyperref[subsec:UC-24]{UC-24} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-48 & Il sistema deve visualizzare un messaggio di errore esplicativo nel caso in cui la password del diario fittizio non sia conforme ai criteri prestabiliti & \hyperref[subsec:UC-22]{UC-22} \\
-\hline
-\rowcolor{white}
-RF-OB-49 & Il sistema deve visualizzare un messaggio di errore esplicativo nel caso in cui la password del diario fittizio sia uguale a quella del diario criptato & \hyperref[subsec:UC-24]{UC-24} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-50 & L'\term{Utente} deve poter reinserire la password del diario fittizio dopo la visualizzazione del messaggio di errore esplicativo & \hyperref[subsec:UC-22]{UC-22}, \hyperref[subsec:UC-24]{UC-24} \\
-\hline
-\rowcolor{white}
-RF-OB-51 & L'\term{Utente} deve poter inserire la password per accedere al diario desiderato & \hyperref[subsec:UC-25]{UC-25} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-52 & L'\term{Utente} deve poter inserire la password per accedere al diario criptato & \hyperref[subsec:UC-25.1]{UC-25.1} \\
-\hline
-\rowcolor{white}
-RF-OB-53 & L'\term{Utente} deve poter inserire la password per accedere al diario fittizio & \hyperref[subsec:UC-25.2]{UC-25.2} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-54 & Il sistema deve visualizzare un messaggio di errore esplicativo nel caso in cui la password inserita per l'accesso al diario risulti errata & \hyperref[subsec:UC-27]{UC-27} \\
-\hline
-\rowcolor{white}
-RF-OB-55 & L'\term{Utente} deve poter reinserire la password di accesso al diario dopo la visualizzazione del messaggio di errore esplicativo & \hyperref[subsec:UC-27]{UC-27} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-56 & Il sistema deve bloccare temporaneamente l'accesso al diario in seguito al superamento del limite massimo di tentativi errati di inserimento password & \hyperref[subsec:UC-26]{UC-26} \\
-\hline
-\rowcolor{white}
-RF-OB-57 & L'\term{Utente} deve poter visualizzare il contenuto del diario criptato & \hyperref[subsec:UC-28]{UC-28} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-58 & L'\term{Utente} deve poter visualizzare la lista delle note presenti nel diario criptato & \hyperref[subsec:UC-28.1]{UC-28.1} \\
-\hline
-\rowcolor{white}
-RF-OB-59 & L'\term{Utente} deve poter visualizzare l'anteprima della singola nota all'interno della lista delle note del diario criptato & \hyperref[subsec:UC-28.1.1]{UC-28.1.1} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-60 & L'\term{Utente} deve poter ricaricare la sezione delle note del diario criptato dopo la visualizzazione dell'errore di caricamento dei dati dal database. & \hyperref[subsec:UC-28.1]{UC-28.1}, \hyperref[sec:UC-5]{UC-5} \\
-\hline
-\rowcolor{white}
-RF-OB-61 & L'\term{Utente} deve poter creare una nuova nota vuota all'interno del diario criptato & \hyperref[subsec:UC-31]{UC-31} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-62 & L'\term{Utente} deve poter eliminare una nota esistente dal diario criptato & \hyperref[subsec:UC-30]{UC-30} \\
-\hline
-\rowcolor{white}
-RF-OB-63 & Il sistema deve richiedere conferma prima dell'eliminazione definitiva di una nota del diario criptato & \hyperref[subsec:UC-30.1]{UC-30.1} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-64 & L'\term{Utente} deve poter confermare, con un'apposita voce, l'eliminazione della nota dal diario criptato quando il sistema ne richiede la conferma & \hyperref[subsec:UC-30.1]{UC-30.1} \\
-\hline
-\rowcolor{white}
-RF-OB-65 & L'\term{Utente} deve poter visualizzare il contenuto completo di una nota selezionata dalla lista delle note del diario criptato & \hyperref[subsec:UC-32]{UC-32} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-66 & L'\term{Utente} deve poter visualizzare il contenuto testuale della nota del diario criptato & \hyperref[subsec:UC-32.1]{UC-32.1} \\
-\hline
-\rowcolor{white}
-RF-OB-67 & L'\term{Utente} deve poter visualizzare il contenuto multimediale della nota del diario criptato & \hyperref[subsec:UC-32.2]{UC-32.2} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-68 & L'\term{Utente} deve poter visualizzare il contenuto audio presente all'interno della nota del diario criptato & \hyperref[subsec:UC-32.2.1]{UC-32.2.1} \\
-\hline
-\rowcolor{white}
-RF-OB-69 & L'\term{Utente} deve poter visualizzare le immagini presenti all'interno della nota del diario criptato & \hyperref[subsec:UC-32.2.2]{UC-32.2.2} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-70 & L'\term{Utente} deve poter inserire del contenuto testuale all'interno di una nota del diario criptato & \hyperref[subsec:UC-33]{UC-33} \\
-\hline
-\rowcolor{white}
-RF-OB-71 & L'\term{Utente} deve poter inserire del contenuto multimediale all'interno di una nota del diario criptato & \hyperref[subsec:UC-34]{UC-34} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-72 & L'\term{Utente} deve poter inserire un'immagine all'interno di una nota del diario criptato & \hyperref[subsec:UC-34.1]{UC-34.1} \\
-\hline
-\rowcolor{white}
-RF-OB-73 & L'\term{Utente} deve poter inserire una traccia audio all'interno di una nota del diario criptato & \hyperref[subsec:UC-34.2]{UC-34.2} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-74 & L'\term{Utente} deve poter modificare il contenuto testuale presente all'interno di una nota del diario criptato & \hyperref[subsec:UC-35]{UC-35} \\
-\hline
-\rowcolor{white}
-RF-OB-75 & L'\term{Utente} deve poter rimuovere del contenuto multimediale presente all'interno di una nota del diario criptato & \hyperref[subsec:UC-36]{UC-36} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-76 & L'\term{Utente} deve poter rimuovere un'immagine presente all'interno di una nota del diario criptato & \hyperref[subsec:UC-36.1]{UC-36.1} \\
-\hline
-\rowcolor{white}
-RF-OB-77 & L'\term{Utente} deve poter rimuovere una traccia audio presente all'interno di una nota del diario criptato & \hyperref[subsec:UC-36.2]{UC-36.2} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-78 & L'\term{Utente} deve poter visualizzare la schermata del diario fittizio & \hyperref[subsec:UC-29]{UC-29} \\
-\hline
-\rowcolor{white}
-RF-OB-79 & L'\term{Utente} deve poter visualizzare la lista delle note presenti nel diario fittizio & \hyperref[subsec:UC-29.1]{UC-29.1} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-80 & L'\term{Utente} deve poter visualizzare l'anteprima della singola nota all'interno della lista delle note del diario fittizio & \hyperref[subsec:UC-29.1.1]{UC-29.1.1} \\
-\hline
-\rowcolor{white}
-RF-OB-81 & L'\term{Utente} deve poter ricaricare la sezione delle note del diario fittizio dopo la visualizzazione dell'errore di caricamento dei dati dal database. & \hyperref[subsec:UC-29.1]{UC-29.1}, \hyperref[sec:UC-5]{UC-5} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-82 & L'\term{Utente} deve poter eliminare una nota esistente dal diario fittizio & \hyperref[subsec:UC-37]{UC-37} \\
-\hline
-\rowcolor{white}
-RF-OB-83 & Il sistema deve richiedere conferma prima dell'eliminazione definitiva di una nota del diario fittizio & \hyperref[subsec:UC-37.1]{UC-37.1} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-84 & L'\term{Utente} deve poter confermare, con un'apposita voce, l'eliminazione della nota dal diario fittizio quando il sistema ne richiede la conferma & \hyperref[subsec:UC-37.1]{UC-37.1} \\
-\hline
-\rowcolor{white}
-RF-OB-85 & L'\term{Utente} deve poter creare una nuova nota vuota all'interno del diario fittizio & \hyperref[subsec:UC-38]{UC-38} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-86 & L'\term{Utente} deve poter visualizzare il contenuto completo di una nota selezionata dalla lista delle note del diario fittizio & \hyperref[subsec:UC-39]{UC-39} \\
-\hline
-\rowcolor{white}
-RF-OB-87 & L'\term{Utente} deve poter visualizzare il contenuto testuale della nota del diario fittizio & \hyperref[subsec:UC-39.1]{UC-39.1} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-88 & L'\term{Utente} deve poter visualizzare il contenuto multimediale della nota del diario fittizio & \hyperref[subsec:UC-39.2]{UC-39.2} \\
-\hline
-\rowcolor{white}
-RF-OB-89 & L'\term{Utente} deve poter visualizzare il contenuto audio presente all'interno della nota del diario fittizio & \hyperref[subsec:UC-39.2.1]{UC-39.2.1} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-90 & L'\term{Utente} deve poter visualizzare le immagini presenti all'interno della nota del diario fittizio & \hyperref[subsec:UC-39.2.2]{UC-39.2.2} \\
-\hline
-\rowcolor{white}
-RF-OB-91 & L'\term{Utente} deve poter inserire del contenuto testuale all'interno di una nota del diario fittizio & \hyperref[subsec:UC-40]{UC-40} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-92 & L'\term{Utente} deve poter inserire del contenuto multimediale all'interno di una nota del diario fittizio & \hyperref[subsec:UC-41]{UC-41} \\
-\hline
-\rowcolor{white}
-RF-OB-93 & L'\term{Utente} deve poter inserire un'immagine all'interno di una nota del diario fittizio & \hyperref[subsec:UC-41.1]{UC-41.1} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-94 & L'\term{Utente} deve poter inserire una traccia audio all'interno di una nota del diario fittizio & \hyperref[subsec:UC-41.2]{UC-41.2} \\
-\hline
-\rowcolor{white}
-RF-OB-95 & L'\term{Utente} deve poter rimuovere del contenuto multimediale presente all'interno di una nota del diario fittizio & \hyperref[subsec:UC-42]{UC-42} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-96 & L'\term{Utente} deve poter rimuovere un'immagine presente all'interno di una nota del diario fittizio & \hyperref[subsec:UC-42.1]{UC-42.1} \\
-\hline
-\rowcolor{white}
-RF-OB-97 & L'\term{Utente} deve poter rimuovere una traccia audio presente all'interno di una nota del diario fittizio & \hyperref[subsec:UC-42.2]{UC-42.2} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-98 & L'\term{Utente} deve poter modificare il contenuto testuale presente all'interno di una nota del diario fittizio & \hyperref[subsec:UC-43]{UC-43} \\
-\hline
-\rowcolor{white}
-RF-OB-99 & L'\term{Utente} deve poter inviare un messaggio di SOS ai contatti fidati tramite un'apposita voce & \hyperref[sec:UC-44]{UC-44} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-100 & Il sistema deve notificare l'\term{Utente} dell'assenza di connessione internet durante il tentativo di invio del messaggio SOS e proporre l'invio di un segnale acustico & \hyperref[sec:UC-45]{UC-45} \\
-\hline
-\rowcolor{white}
-RF-OB-101 & Il sistema deve notificare l'\term{Utente} della mancanza di contatti fidati configurati durante il tentativo di invio del messaggio SOS e proporre l'invio di un segnale acustico & \hyperref[sec:UC-46]{UC-46} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-102 & L'\term{Utente} deve poter avviare un segnale acustico di emergenza indipendente dalle impostazioni di volume del dispositivo & \hyperref[sec:UC-47]{UC-47} \\
-\hline
-\rowcolor{white}
-RF-OB-103 & L'\term{Utente} deve poter inviare un messaggio al chatbot e ricevere una risposta generata dall'LLM in base al contesto scelto & \hyperref[sec:UC-48]{UC-48} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-104 & L'\term{Utente} deve poter interrompere la generazione della risposta dell'LLM durante la consultazione del chatbot & \hyperref[sec:UC-49]{UC-49} \\
-\hline
-\rowcolor{white}
-RF-OB-105 & Il sistema deve notificare l'\term{Utente} della mancanza di connessione internet durante la consultazione del chatbot & \hyperref[sec:UC-50]{UC-50} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-106 & L'\term{Utente} deve poter ripetere l'invio del messaggio o scriverne uno nuovo dopo la notifica di assenza di connessione internet & \hyperref[sec:UC-50]{UC-50} \\
-\hline
-\rowcolor{white}
-RF-OB-107 & L'\term{Utente} deve poter cambiare il contesto della chat a "Detective delle Relazioni" & \hyperref[sec:UC-51]{UC-51} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-108 & L'\term{Utente} deve poter cambiare il contesto della chat a "Specchio Intelligente" & \hyperref[sec:UC-52]{UC-52} \\
-\hline
-\rowcolor{white}
-RF-OB-109 & Il sistema deve notificare l'\term{Utente} di un errore durante il cambio di contesto del chatbot e mantenere il contesto precedente & \hyperref[sec:UC-53]{UC-53} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-110 & L'\term{Utente} deve poter ritentare il cambio di contesto del chatbot dopo la notifica di errore & \hyperref[sec:UC-53]{UC-53} \\
-\hline
-\rowcolor{white}
-RF-OB-111 & L'\term{Utente} deve poter creare una nuova sessione di chat con il chatbot & \hyperref[subsec:UC-54]{UC-54} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-112 & L'\term{Utente} deve poter eliminare una chat dalla cronologia delle chat & \hyperref[subsec:UC-55]{UC-55} \\
-\hline
-\rowcolor{white}
-RF-OB-113 & Il sistema deve richiedere conferma esplicita prima dell'eliminazione definitiva di una chat & \hyperref[subsec:UC-55.1]{UC-55.1} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-114 & L'\term{Utente} deve poter confermare, con un'apposita voce, l'eliminazione di una chat quando il sistema ne richiede la conferma & \hyperref[subsec:UC-55.1]{UC-55.1} \\
-\hline
-\rowcolor{white}
-RF-OB-115 & L'\term{Utente} deve poter visualizzare il contenuto di una chat selezionata, inclusa la lista dei messaggi scambiati & \hyperref[subsec:UC-56]{UC-56} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-116 & Il sistema deve notificare l'\term{Utente} di un errore nel caricamento del contenuto della chat & \hyperref[sec:UC-5]{UC-5}, \hyperref[subsec:UC-56]{UC-56} \\
-\hline
-\rowcolor{white}
-RF-OB-117 & Il sistema deve visualizzare la lista dei messaggi scambiati tra l'\term{Utente} e il chatbot all'interno di una chat & \hyperref[subsec:UC-56.1]{UC-56.1} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-118 & Il sistema deve distinguere visivamente i messaggi inviati dall'\term{Utente} da quelli generati dal chatbot & \hyperref[subsec:UC-56.1.1]{UC-56.1.1}, \hyperref[subsec:UC-56.1.2]{UC-56.1.2} \\
-\hline
-\rowcolor{white}
-RF-OB-119 & Il sistema deve visualizzare i messaggi inviati dall'\term{Utente} con la formattazione grafica allineata a destra & \hyperref[subsec:UC-56.1.1]{UC-56.1.1} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-120 & Il sistema deve visualizzare i messaggi generati dal chatbot con la formattazione grafica allineata a sinistra & \hyperref[subsec:UC-56.1.2]{UC-56.1.2} \\
-\hline
-\rowcolor{white}
-RF-OB-121 & L'\term{Utente} deve poter visualizzare la cronologia delle chat con il chatbot & \hyperref[subsec:UC-57]{UC-57} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-122 & L'\term{Utente} deve poter selezionare e visualizzare una singola chat dalla cronologia & \hyperref[subsec:UC-57.1]{UC-57.1} \\
-\hline
-\rowcolor{white}
-RF-OB-123 & Il sistema deve mostrare il titolo identificativo di ogni chat presente nella cronologia & \hyperref[subsec:UC-57.1.1]{UC-57.1.1} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-124 & L'\term{Utente} deve poter visualizzare la lista delle community disponibili & \hyperref[sec:UC-58]{UC-58} \\
-\hline
-\rowcolor{white}
-RF-OB-125 & Il sistema deve notificare l'\term{Utente} di un errore nel caricamento della lista delle community & \hyperref[sec:UC-5]{UC-5}, \hyperref[sec:UC-58]{UC-58} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-126 & Il sistema deve mostrare i dati riassuntivi di ogni singola community nella lista & \hyperref[subsec:UC-58.1]{UC-58.1} \\
-\hline
-\rowcolor{white}
-RF-OB-127 & Il sistema deve mostrare il nome di ogni singola community nella lista & \hyperref[subsec:UC-58.1.1]{UC-58.1.1} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-128 & Il sistema deve mostrare il link di ogni singola community nella lista & \hyperref[subsec:UC-58.1.2]{UC-58.1.2} \\
-\hline
-\rowcolor{white}
-RF-OB-129 & L'\term{Utente} deve poter aprire il link di una community per visitarne il sito web esterno & \hyperref[sec:UC-59]{UC-59} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-130 & L'\term{Utente} deve poter visualizzare la lista delle leggi e normative disponibili & \hyperref[sec:UC-60]{UC-60} \\
-\hline
-\rowcolor{white}
-RF-OB-131 & Il sistema deve mostrare il titolo di ogni singola legge nella lista & \hyperref[subsec:UC-60.1]{UC-60.1} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-132 & L'\term{Utente} deve poter visualizzare i dettagli completi di una legge selezionata dalla lista & \hyperref[sec:UC-61]{UC-61} \\
-\hline
-\rowcolor{white}
-RF-OB-133 & Il sistema deve notificare l'\term{Utente} di un errore nel caricamento dei dati di una legge & \hyperref[sec:UC-5]{UC-5}, \hyperref[sec:UC-61]{UC-61} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-134 & L'\term{Utente} deve poter visualizzare la lista dei contatti e degli enti d'emergenza & \hyperref[sec:UC-62]{UC-62} \\
-\hline
-\rowcolor{white}
-RF-OB-135 & Il sistema deve mostrare i dati riassuntivi di ogni singolo contatto d'emergenza nella lista & \hyperref[subsec:UC-62.1]{UC-62.1} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-136 & Il sistema deve mostrare il nome identificativo di ogni contatto d'emergenza & \hyperref[subsec:UC-62.1.1]{UC-62.1.1} \\
-\hline
-\rowcolor{white}
-RF-OB-137 & Il sistema deve mostrare il numero di telefono associato ad ogni contatto d'emergenza & \hyperref[subsec:UC-62.1.2]{UC-62.1.2} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-138 & L'\term{Utente} deve poter comporre automaticamente il numero di un contatto d'emergenza tramite l'apposita voce & \hyperref[sec:UC-63]{UC-63} \\
-\hline
-\rowcolor{white}
-RF-OB-139 & L'\term{Utente} deve poter visualizzare la lista del materiale informativo disponibile & \hyperref[sec:UC-64]{UC-64} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-140 & Il sistema deve notificare l'\term{Utente} di un errore nel caricamento della lista del materiale informativo & \hyperref[sec:UC-5]{UC-5}, \hyperref[sec:UC-64]{UC-64} \\
-\hline
-\rowcolor{white}
-RF-OB-141 & Il sistema deve mostrare il titolo e il formato di ogni singolo materiale informativo nella lista & \hyperref[subsec:UC-64.1]{UC-64.1} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-142 & L'\term{Utente} deve poter visualizzare il contenuto di un materiale informativo selezionato dalla lista & \hyperref[sec:UC-65]{UC-65} \\
-\hline
-\rowcolor{white}
-RF-OB-143 & Il sistema deve notificare l'\term{Utente} di un errore nel recupero dei dati del materiale informativo & \hyperref[sec:UC-5]{UC-5}, \hyperref[sec:UC-65]{UC-65} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-144 & L'\term{Utente} deve poter visualizzare la mappa interattiva con i marker dei luoghi sicuri nelle vicinanze & \hyperref[sec:UC-66]{UC-66} \\
-\hline
-\rowcolor{white}
-RF-OB-145 & L'\term{Utente} deve poter aprire un luogo sicuro nella mappa esterna Google Maps & \hyperref[subsec:UC-67]{UC-67} \\
-\hline
-\rowcolor{gray!20}
-RF-OB-146 & Il sistema deve notificare l'\term{Utente} di un errore nell'apertura dell'applicazione Google Maps e mantenere la visualizzazione della mappa interna & \hyperref[subsec:UC-68]{UC-68} \\
-\hline
-\caption{Tabella Requisiti Funzionali} \label{tab:requisiti_funzionali} \\
+
+
+\caption{Tabella Requisiti Funzionali obbligatori} \label{tab:requisiti_funzionali_desiderabili} \\
 \end{longtable}
 \end{center}
+
+% REQUISITI OPZIONALI %
+
+\subsection{Requisiti Funzionali opzionali} \label{subsection:requisiti_funzionali_opzionali}
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\arrayrulecolor{black}
+\begin{longtable}{|c|p{8.5cm}|>{\centering\arraybackslash}p{4cm}|}
+
+\hline
+\rowcolor{gray!60}
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Riferimento} \\
+\hline
+\endfirsthead
+\caption[]{Tabella Requisiti Funzionali opzionali (continua)} \\
+\hline
+\rowcolor{gray!60}
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Riferimento} \\
+\hline
+\endhead
+
+\rowcolor{gray!20}
+RF-OP-1 & L'\term{Utente} deve poter impostare il timer di prima inattività (per la funzionalità di Dead Man's Switch) & \hyperref[sec:UC-15]{UC-15} \\
+\hline
+\rowcolor{white}
+RF-OP-2 & L'\term{Utente} deve poter impostare il timer di seconda inattività (per la funzionalità di Dead Man's Switch) & \hyperref[sec:UC-16]{UC-16} \\
+\hline
+\rowcolor{gray!20}
+RF-OP-3 & Il sistema deve inviare un SMS ai numeri di telefono dei contatti fidati all'invio del segnale SOS & \hyperref[sec:UC-44]{UC-44} \\
+\hline
+\rowcolor{white}
+RF-OP-4 & Il sistema deve indicare all'\term{Utente} se le risorse sono autorevoli e verificate & \hyperref[sec:UC-59]{UC-59} \\
+\hline
+\rowcolor{gray!20}
+RF-OP-5 & Il sistema deve mettere a disposizione leggi estere & \hyperref[sec:UC-60]{UC-60} \\
+\hline
+\rowcolor{white}
+RF-OP-6 & Il sistema deve mostrare leggi aggiornate, giuridicamente valide e complete & \hyperref[sec:UC-61]{UC-61} \\
+\hline
+\rowcolor{gray!20}
+RF-OP-7 & Il sistema deve indicare all'\term{Utente} se i luoghi sicuri visualizzati nella mappa sono autorevoli e verificati & \hyperref[sec:UC-66]{UC-66} \\
+\hline
+
+\caption{Tabella Requisiti Funzionali obbligatori} \label{tab:requisiti_funzionali_opzionali} \\
+\end{longtable}
+\end{center}
+
+% REQUISITI DI QUALITA' %
 
 \subsection{Requisiti di Qualità} \label{subsection:requisiti_qualita}
 \begin{center}
@@ -4448,6 +4597,8 @@ RV-OB-11 & L'infrastruttura cloud del sistema deve essere configurata in modo da
 \begin{center}
 \renewcommand{\arraystretch}{1.5}
 \arrayrulecolor{black}
+\rowcolors{2}{gray!20}{white}
+
 \begin{longtable}{|>{\centering\arraybackslash}p{5cm}|>{\centering\arraybackslash}p{9cm}|}
 
 \hline
@@ -4461,371 +4612,413 @@ RV-OB-11 & L'infrastruttura cloud del sistema deve essere configurata in modo da
 \textbf{Caso d'Uso} & \textbf{Requisiti} \\
 \hline
 \endhead
-\rowcolor{white}
+
 \hyperref[subsec:UC-1]{UC-1} & RF-OB-1, RF-OB-2 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[subsec:UC-2]{UC-2} & RF-OB-3 \\
 \hline
-\rowcolor{white}
-\hyperref[subsec:UC-3]{UC-3} & RF-OB-4 \\
+
+\hyperref[subsec:UC-3]{UC-3} & RF-OB-4, RF-DE-1 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[sec:UC-4]{UC-4} & RF-OB-5, RF-OB-7 \\
 \hline
-\rowcolor{white}
+
 \hyperref[subsec:UC-4.1]{UC-4.1} & RF-OB-8 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[subsec:UC-4.1.1]{UC-4.1.1} & RF-OB-9 \\
 \hline
-\rowcolor{white}
+
 \hyperref[sec:UC-5]{UC-5} & RF-OB-6, RF-OB-7, RF-OB-60, RF-OB-81, RF-OB-116, RF-OB-125, RF-OB-133, RF-OB-140, RF-OB-143 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[subsec:UC-6]{UC-6} & RF-OB-10 \\
 \hline
-\rowcolor{white}
+
 \hyperref[subsec:UC-6.1]{UC-6.1} & RF-OB-11 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[subsec:UC-6.2]{UC-6.2} & RF-OB-12 \\
 \hline
-\rowcolor{white}
+
 \hyperref[subsec:UC-6.3]{UC-6.3} & RF-OB-13 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[subsec:UC-7]{UC-7} & RF-OB-14 \\
 \hline
-\rowcolor{white}
+
 \hyperref[subsec:UC-7.1]{UC-7.1} & RF-OB-15 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[subsec:UC-7.2]{UC-7.2} & RF-OB-16, RF-OB-21 \\
 \hline
-\rowcolor{white}
+
 \hyperref[subsec:UC-7.3]{UC-7.3} & RF-OB-17, RF-OB-23 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[subsec:UC-8]{UC-8} & RF-OB-20, RF-OB-21, RF-OB-22 \\
 \hline
-\rowcolor{white}
+
 \hyperref[subsec:UC-9]{UC-9} & RF-OB-18, RF-OB-19, RF-OB-20 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[subsec:UC-10]{UC-10} & RF-OB-18, RF-OB-19, RF-OB-20 \\
 \hline
-\rowcolor{white}
+
 \hyperref[subsec:UC-11]{UC-11} & RF-OB-20, RF-OB-23, RF-OB-24 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[subsec:UC-12]{UC-12} & RF-OB-25 \\
 \hline
-\rowcolor{white}
+
 \hyperref[subsec:UC-12.1]{UC-12.1} & RF-OB-26 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[subsec:UC-12.2]{UC-12.2} & RF-OB-27, RF-OB-21 \\
 \hline
-\rowcolor{white}
+
 \hyperref[subsec:UC-12.3]{UC-12.3} & RF-OB-28, RF-OB-23 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[subsec:UC-13]{UC-13} & RF-OB-29 \\
 \hline
-\rowcolor{white}
+
+\hyperref[subsec:UC-14]{UC-14} & RF-OB-32 \\
+\hline
+
 \hyperref[subsec:UC-13.1]{UC-13.1} & RF-OB-30, RF-OB-31 \\
 \hline
-\rowcolor{gray!20}
-\hyperref[sec:UC-15]{UC-15} & RF-OB-2, RF-OB-32 \\
+
+\hyperref[sec:UC-15]{UC-15} & RF-OP-1 \\
 \hline
-\rowcolor{white}
-\hyperref[sec:UC-16]{UC-16} & RF-OB-33 \\
+
+\hyperref[sec:UC-16]{UC-16} & RF-OP-2 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[sec:UC-17]{UC-17} & RF-OB-34 \\
 \hline
-\rowcolor{white}
+
 \hyperref[sec:UC-17.1]{UC-17.1} & RF-OB-35 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[sec:UC-17.2]{UC-17.2} & RF-OB-36 \\
 \hline
-\rowcolor{white}
+
 \hyperref[sec:UC-18]{UC-18} & RF-OB-37 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[subsec:UC-18.1]{UC-18.1} & RF-OB-38 \\
 \hline
-\rowcolor{white}
+
 \hyperref[subsec:UC-18.2]{UC-18.2} & RF-OB-39 \\
 \hline
-\rowcolor{gray!20}
-\hyperref[sec:UC-19]{UC-19} & RF-OB-40 \\
+
+\hyperref[sec:UC-19]{UC-19} & RF-OB-2, RF-OB-40, RF-DE-2 \\
 \hline
-\rowcolor{white}
-\hyperref[sec:UC-20]{UC-20} & RF-OB-41 \\
+
+\hyperref[sec:UC-20]{UC-20} & RF-OB-41, RF-DE-2 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[subsec:UC-21]{UC-21} & RF-OB-42, RF-OB-43 \\
 \hline
-\rowcolor{white}
+
 \hyperref[subsec:UC-22]{UC-22} & RF-OB-43, RF-OB-44, RF-OB-45, RF-OB-47, RF-OB-48, RF-OB-50 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[subsec:UC-23]{UC-23} & RF-OB-46, RF-OB-47 \\
 \hline
-\rowcolor{white}
+
 \hyperref[subsec:UC-24]{UC-24} & RF-OB-47, RF-OB-49, RF-OB-50 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[subsec:UC-25]{UC-25} & RF-OB-51 \\
 \hline
-\rowcolor{white}
+
 \hyperref[subsec:UC-25.1]{UC-25.1} & RF-OB-52 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[subsec:UC-25.2]{UC-25.2} & RF-OB-53 \\
 \hline
-\rowcolor{white}
+
 \hyperref[subsec:UC-26]{UC-26} & RF-OB-56 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[subsec:UC-27]{UC-27} & RF-OB-54, RF-OB-55 \\
 \hline
-\rowcolor{white}
+
 \hyperref[subsec:UC-28]{UC-28} & RF-OB-57 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[subsec:UC-28.1]{UC-28.1} & RF-OB-58, RF-OB-60 \\
 \hline
-\rowcolor{white}
+
 \hyperref[subsec:UC-28.1.1]{UC-28.1.1} & RF-OB-59 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[subsec:UC-29]{UC-29} & RF-OB-78 \\
 \hline
-\rowcolor{white}
+
 \hyperref[subsec:UC-29.1]{UC-29.1} & RF-OB-79, RF-OB-81 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[subsec:UC-29.1.1]{UC-29.1.1} & RF-OB-80 \\
 \hline
-\rowcolor{white}
+
 \hyperref[subsec:UC-30]{UC-30} & RF-OB-62 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[subsec:UC-30.1]{UC-30.1} & RF-OB-63, RF-OB-64 \\
 \hline
-\rowcolor{white}
+
 \hyperref[subsec:UC-31]{UC-31} & RF-OB-61 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[subsec:UC-32]{UC-32} & RF-OB-65 \\
 \hline
-\rowcolor{white}
+
 \hyperref[subsec:UC-32.1]{UC-32.1} & RF-OB-66 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[subsec:UC-32.2]{UC-32.2} & RF-OB-67 \\
 \hline
-\rowcolor{white}
-\hyperref[subsec:UC-32.2.1]{UC-32.2.1} & RF-OB-68 \\
+
+\hyperref[subsec:UC-32.2.1]{UC-32.2.1} & RF-OB-68, RF-DE-9 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[subsec:UC-32.2.2]{UC-32.2.2} & RF-OB-69 \\
 \hline
-\rowcolor{white}
+
 \hyperref[subsec:UC-33]{UC-33} & RF-OB-70 \\
 \hline
-\rowcolor{gray!20}
-\hyperref[subsec:UC-34]{UC-34} & RF-OB-71 \\
+
+\hyperref[subsec:UC-34]{UC-34} & RF-OB-71, RF-DE-3 \\
 \hline
-\rowcolor{white}
-\hyperref[subsec:UC-34.1]{UC-34.1} & RF-OB-72 \\
+
+\hyperref[subsec:UC-34.1]{UC-34.1} & RF-OB-72, RF-DE-4 \\
 \hline
-\rowcolor{gray!20}
-\hyperref[subsec:UC-34.2]{UC-34.2} & RF-OB-73 \\
+
+\hyperref[subsec:UC-34.2]{UC-34.2} & RF-OB-73, RF-DE-5 \\
 \hline
-\rowcolor{white}
+
 \hyperref[subsec:UC-35]{UC-35} & RF-OB-74 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[subsec:UC-36]{UC-36} & RF-OB-75 \\
 \hline
-\rowcolor{white}
+
 \hyperref[subsec:UC-36.1]{UC-36.1} & RF-OB-76 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[subsec:UC-36.2]{UC-36.2} & RF-OB-77 \\
 \hline
-\rowcolor{white}
+
 \hyperref[subsec:UC-37]{UC-37} & RF-OB-82 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[subsec:UC-37.1]{UC-37.1} & RF-OB-83, RF-OB-84 \\
 \hline
-\rowcolor{white}
+
 \hyperref[subsec:UC-38]{UC-38} & RF-OB-85 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[subsec:UC-39]{UC-39} & RF-OB-86 \\
 \hline
-\rowcolor{white}
+
 \hyperref[subsec:UC-39.1]{UC-39.1} & RF-OB-87 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[subsec:UC-39.2]{UC-39.2} & RF-OB-88 \\
 \hline
-\rowcolor{white}
-\hyperref[subsec:UC-39.2.1]{UC-39.2.1} & RF-OB-89 \\
+
+\hyperref[subsec:UC-39.2.1]{UC-39.2.1} & RF-OB-89, RF-DE-10 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[subsec:UC-39.2.2]{UC-39.2.2} & RF-OB-90 \\
 \hline
-\rowcolor{white}
+
 \hyperref[subsec:UC-40]{UC-40} & RF-OB-91 \\
 \hline
-\rowcolor{gray!20}
-\hyperref[subsec:UC-41]{UC-41} & RF-OB-92 \\
+
+\hyperref[subsec:UC-41]{UC-41} & RF-OB-92, RF-DE-6 \\
 \hline
-\rowcolor{white}
-\hyperref[subsec:UC-41.1]{UC-41.1} & RF-OB-93 \\
+
+\hyperref[subsec:UC-41.1]{UC-41.1} & RF-OB-93, RF-DE-7 \\
 \hline
-\rowcolor{gray!20}
-\hyperref[subsec:UC-41.2]{UC-41.2} & RF-OB-94 \\
+
+\hyperref[subsec:UC-41.2]{UC-41.2} & RF-OB-94, RF-DE-8 \\
 \hline
-\rowcolor{white}
+
 \hyperref[subsec:UC-42]{UC-42} & RF-OB-95 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[subsec:UC-42.1]{UC-42.1} & RF-OB-96 \\
 \hline
-\rowcolor{white}
+
 \hyperref[subsec:UC-42.2]{UC-42.2} & RF-OB-97 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[subsec:UC-43]{UC-43} & RF-OB-98 \\
 \hline
-\rowcolor{white}
-\hyperref[sec:UC-44]{UC-44} & RF-OB-99 \\
+
+\hyperref[sec:UC-44]{UC-44} & RF-OB-99, RF-OP-3 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[sec:UC-45]{UC-45} & RF-OB-100 \\
 \hline
-\rowcolor{white}
+
 \hyperref[sec:UC-46]{UC-46} & RF-OB-101 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[sec:UC-47]{UC-47} & RF-OB-102 \\
 \hline
-\rowcolor{white}
-\hyperref[sec:UC-48]{UC-48} & RF-OB-103 \\
+
+\hyperref[sec:UC-48]{UC-48} & RF-OB-103, RF-DE-11, RF-DE-12 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[sec:UC-49]{UC-49} & RF-OB-104 \\
 \hline
-\rowcolor{white}
+
 \hyperref[sec:UC-50]{UC-50} & RF-OB-105, RF-OB-106 \\
 \hline
-\rowcolor{gray!20}
-\hyperref[sec:UC-51]{UC-51} & RF-OB-107 \\
+
+\hyperref[sec:UC-51]{UC-51} & RF-OB-107, RF-DE-13 \\
 \hline
-\rowcolor{white}
-\hyperref[sec:UC-52]{UC-52} & RF-OB-108 \\
+
+\hyperref[sec:UC-52]{UC-52} & RF-OB-108, RF-DE-14 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[sec:UC-53]{UC-53} & RF-OB-109, RF-OB-110 \\
 \hline
-\rowcolor{white}
+
 \hyperref[subsec:UC-54]{UC-54} & RF-OB-111 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[subsec:UC-55]{UC-55} & RF-OB-112 \\
 \hline
-\rowcolor{white}
+
 \hyperref[subsec:UC-55.1]{UC-55.1} & RF-OB-113, RF-OB-114 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[subsec:UC-56]{UC-56} & RF-OB-115, RF-OB-116 \\
 \hline
-\rowcolor{white}
+
 \hyperref[subsec:UC-56.1]{UC-56.1} & RF-OB-117 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[subsec:UC-56.1.1]{UC-56.1.1} & RF-OB-118, RF-OB-119 \\
 \hline
-\rowcolor{white}
+
 \hyperref[subsec:UC-56.1.2]{UC-56.1.2} & RF-OB-118, RF-OB-120 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[subsec:UC-57]{UC-57} & RF-OB-121 \\
 \hline
-\rowcolor{white}
+
 \hyperref[subsec:UC-57.1]{UC-57.1} & RF-OB-122 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[subsec:UC-57.1.1]{UC-57.1.1} & RF-OB-123 \\
 \hline
-\rowcolor{white}
+
 \hyperref[sec:UC-58]{UC-58} & RF-OB-124, RF-OB-125 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[subsec:UC-58.1]{UC-58.1} & RF-OB-126 \\
 \hline
-\rowcolor{white}
+
 \hyperref[subsec:UC-58.1.1]{UC-58.1.1} & RF-OB-127 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[subsec:UC-58.1.2]{UC-58.1.2} & RF-OB-128 \\
 \hline
-\rowcolor{white}
-\hyperref[sec:UC-59]{UC-59} & RF-OB-129 \\
+
+\hyperref[sec:UC-59]{UC-59} & RF-OB-129, RF-OP-4 \\
 \hline
-\rowcolor{gray!20}
-\hyperref[sec:UC-60]{UC-60} & RF-OB-130 \\
+
+\hyperref[sec:UC-60]{UC-60} & RF-OB-130, RF-OP-5 \\
 \hline
-\rowcolor{white}
+
 \hyperref[subsec:UC-60.1]{UC-60.1} & RF-OB-131 \\
 \hline
-\rowcolor{gray!20}
-\hyperref[sec:UC-61]{UC-61} & RF-OB-132, RF-OB-133 \\
+
+\hyperref[sec:UC-61]{UC-61} & RF-OB-132, RF-OB-133, RF-OP-6 \\
 \hline
-\rowcolor{white}
+
 \hyperref[sec:UC-62]{UC-62} & RF-OB-134 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[subsec:UC-62.1]{UC-62.1} & RF-OB-135 \\
 \hline
-\rowcolor{white}
+
 \hyperref[subsec:UC-62.1.1]{UC-62.1.1} & RF-OB-136 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[subsec:UC-62.1.2]{UC-62.1.2} & RF-OB-137 \\
 \hline
-\rowcolor{white}
-\hyperref[sec:UC-63]{UC-63} & RF-OB-138 \\
+
+\hyperref[sec:UC-63]{UC-63} & RF-OB-138, RF-DE-15 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[sec:UC-64]{UC-64} & RF-OB-139, RF-OB-140 \\
 \hline
-\rowcolor{white}
+
 \hyperref[subsec:UC-64.1]{UC-64.1} & RF-OB-141 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[sec:UC-65]{UC-65} & RF-OB-142, RF-OB-143 \\
 \hline
-\rowcolor{white}
-\hyperref[sec:UC-66]{UC-66} & RF-OB-144 \\
+
+\hyperref[sec:UC-66]{UC-66} & RF-OB-144, RF-OP-7 \\
 \hline
-\rowcolor{gray!20}
+
 \hyperref[subsec:UC-67]{UC-67} & RF-OB-145 \\
 \hline
-\rowcolor{white}
+
 \hyperref[subsec:UC-68]{UC-68} & RF-OB-146 \\
 \hline
 \caption{Tracciamento dei casi d'uso} \label{tab:tracciamento_uc} \\
 \end{longtable}
 \end{center}
+
+
+
+
+\subsection{Riepilogo dei requisiti} \label{subsection:riepilogo_requisiti}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\arrayrulecolor{black}
+\begin{longtable}{|c|c|c|c|}
+
+\hline
+\rowcolor{gray!60}
+\textbf{Tipologia} & \textbf{Obbligatori} & \textbf{Desiderabili} & \textbf{Opzionali} \\
+\hline
+\endfirsthead
+
+\caption[]{Riepilogo dei requisiti (continua)} \\
+\hline
+\rowcolor{gray!60}
+\textbf{Tipologia} & \textbf{Obbligatori} & \textbf{Desiderabili} & \textbf{Opzionali} \\
+\hline
+\endhead
+
+\rowcolor{gray!20}
+Funzionali & 144 & 15 & 7 \\
+\hline
+\rowcolor{white}
+Qualità & 8 & 0 & 0 \\
+\hline
+\rowcolor{gray!20}
+Vincolo & 11 & 0 & 0 \\
+\hline
+
+\caption{Riepilogo dei requisiti} \label{tab:riepilogo_requisiti} \\
+\end{longtable}
+\end{center}
+
+
 
 \end{document}
