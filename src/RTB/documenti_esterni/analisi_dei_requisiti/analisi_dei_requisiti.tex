@@ -3911,10 +3911,10 @@ La nomenclatura utilizzata per il codice dei requisiti è spiegata nel documento
 RF-OB-1 & L'\term{Utente} deve poter autenticarsi all'applicazione tramite l'utilizzo di Google Auth & \hyperref[subsec:UC-1]{UC-1} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-2 & L'\term{Utente} vede attivarsi automaticamente la funzionalità di Dead Man's Switch a seguito del login. & \hyperref[subsec:UC-1]{UC-1}, \hyperref[sec:UC-15]{UC-15} \\
+RF-OB-2 & Il sistema deve attivare automaticamente la funzionalità di Dead Man's Switch a seguito del login dell'\term{Utente} & \hyperref[subsec:UC-1]{UC-1}, \hyperref[sec:UC-15]{UC-15} \\
 \hline
 \rowcolor{white}
-RF-OB-3 & L'\term{Utente} deve poter visualizzare un messaggio di errore esplicativo nel caso in cui l'autenticazione tramite Google Auth fallisca, venga annullata o restituisca parametri non validi. & \hyperref[subsec:UC-2]{UC-2} \\
+RF-OB-3 & L'\term{Utente} deve poter visualizzare un messaggio di errore esplicativo nel caso in cui l'autenticazione tramite Google Auth fallisca, venga annullata o restituisca parametri non validi & \hyperref[subsec:UC-2]{UC-2} \\
 \hline
 \rowcolor{gray!20}
 RF-OB-4 & L'\term{Utente} deve poter selezionare il profilo di utilizzo ("Per me" o "Per altri") & \hyperref[subsec:UC-3]{UC-3} \\
@@ -3926,13 +3926,13 @@ RF-OB-5 & L'\term{Utente} deve poter visualizzare la lista dei contatti fidati &
 RF-OB-6 & L'\term{Utente} deve poter visualizzare un messaggio di errore esplicativo nel caso in cui il recupero dei dati dal database fallisca & \hyperref[sec:UC-5]{UC-5} \\
 \hline
 \rowcolor{white}
-RF-OB-7 & L'\term{Utente} deve poter ricaricare la sezione dei contatti fidati dopo la visualizzazione dell'errore di caricamento dei dati dal database. & \hyperref[sec:UC-4]{UC-4}, \hyperref[sec:UC-5]{UC-5} \\
+RF-OB-7 & L'\term{Utente} deve poter ricaricare la sezione dei contatti fidati dopo la visualizzazione dell'errore di caricamento dei dati dal database & \hyperref[sec:UC-4]{UC-4}, \hyperref[sec:UC-5]{UC-5} \\
 \hline
 \rowcolor{gray!20}
 RF-OB-8 & Il sistema deve permettere la visualizzazione di un singolo contatto fidato dalla lista dei contatti fidati & \hyperref[subsec:UC-4.1]{UC-4.1} \\
 \hline
 \rowcolor{white}
-RF-OB-9 & L'\term{Utente} deve poter visualizzare la preview delle informazioni (il nome) del contatto fidato, che sta visualizzando dalla lista dei contatti fidati & \hyperref[subsec:UC-4.1.1]{UC-4.1.1} \\
+RF-OB-9 & L'\term{Utente} deve poter visualizzare la preview delle informazioni (il nome) del contatto fidato che sta visualizzando dalla lista dei contatti fidati & \hyperref[subsec:UC-4.1.1]{UC-4.1.1} \\
 \hline
 \rowcolor{gray!20}
 RF-OB-10 & L'\term{Utente} deve poter visualizzare i dettagli di un contatto fidato selezionato dalla lista dei contatti fidati & \hyperref[subsec:UC-6]{UC-6} \\
@@ -3962,7 +3962,7 @@ RF-OB-17 & L'\term{Utente} deve poter inserire l'indirizzo email del nuovo conta
 RF-OB-18 & Il sistema deve riconoscere e gestire le informazioni di numero di telefono e email già presenti nel sistema & \hyperref[subsec:UC-9]{UC-9}, \hyperref[subsec:UC-10]{UC-10} \\
 \hline
 \rowcolor{white}
-RF-OB-19 & L'\term{Utente} deve poter visualizzare un messaggio di errore esplicativo nel caso in cui le informazioni di numero di telefono e email siano già presenti nel sistema. & \hyperref[subsec:UC-9]{UC-9}, \hyperref[subsec:UC-10]{UC-10} \\
+RF-OB-19 & L'\term{Utente} deve poter visualizzare un messaggio di errore esplicativo nel caso in cui le informazioni di numero di telefono e email siano già presenti nel sistema & \hyperref[subsec:UC-9]{UC-9}, \hyperref[subsec:UC-10]{UC-10} \\
 \hline
 \rowcolor{gray!20}
 RF-OB-20 & L'\term{Utente} deve poter reinserire le informazioni di numero di telefono e email dopo la visualizzazione del messaggio di errore esplicativo & \hyperref[subsec:UC-8]{UC-8}, \hyperref[subsec:UC-9]{UC-9}, \hyperref[subsec:UC-10]{UC-10}, \hyperref[subsec:UC-11]{UC-11} \\
@@ -3998,7 +3998,7 @@ RF-OB-29 & L'\term{Utente} deve poter eliminare un contatto fidato & \hyperref[s
 RF-OB-30 & Il sistema deve richiedere conferma prima dell'eliminazione di un contatto fidato & \hyperref[subsec:UC-13.1]{UC-13.1} \\
 \hline
 \rowcolor{white}
-RF-OB-31 & L'\term{Utente} deve poter confermare, con un'apposita voce, l'eliminazione di un contatto fidato quando il sistema richiede la conferma. & \hyperref[subsec:UC-13.1]{UC-13.1} \\
+RF-OB-31 & L'\term{Utente} deve poter confermare, con un'apposita voce, l'eliminazione di un contatto fidato quando il sistema richiede la conferma & \hyperref[subsec:UC-13.1]{UC-13.1} \\
 \hline
 \rowcolor{gray!20}
 RF-OB-32 & L'\term{Utente} deve poter impostare il timer di prima inattività (per la funzionalità di Dead Man's Switch) & \hyperref[sec:UC-15]{UC-15} \\
@@ -4085,7 +4085,7 @@ RF-OB-58 & L'\term{Utente} deve poter visualizzare la lista delle note presenti 
 RF-OB-59 & L'\term{Utente} deve poter visualizzare l'anteprima della singola nota all'interno della lista delle note del diario criptato & \hyperref[subsec:UC-28.1.1]{UC-28.1.1} \\
 \hline
 \rowcolor{gray!20}
-RF-OB-60 & L'\term{Utente} deve poter ricaricare la sezione delle note del diario criptato dopo la visualizzazione dell'errore di caricamento dei dati dal database. & \hyperref[subsec:UC-28.1]{UC-28.1}, \hyperref[sec:UC-5]{UC-5} \\
+RF-OB-60 & L'\term{Utente} deve poter ricaricare la sezione delle note del diario criptato dopo la visualizzazione dell'errore di caricamento dei dati dal database & \hyperref[subsec:UC-28.1]{UC-28.1}, \hyperref[sec:UC-5]{UC-5} \\
 \hline
 \rowcolor{white}
 RF-OB-61 & L'\term{Utente} deve poter creare una nuova nota vuota all'interno del diario criptato & \hyperref[subsec:UC-31]{UC-31} \\
@@ -4148,7 +4148,7 @@ RF-OB-79 & L'\term{Utente} deve poter visualizzare la lista delle note presenti 
 RF-OB-80 & L'\term{Utente} deve poter visualizzare l'anteprima della singola nota all'interno della lista delle note del diario fittizio & \hyperref[subsec:UC-29.1.1]{UC-29.1.1} \\
 \hline
 \rowcolor{white}
-RF-OB-81 & L'\term{Utente} deve poter ricaricare la sezione delle note del diario fittizio dopo la visualizzazione dell'errore di caricamento dei dati dal database. & \hyperref[subsec:UC-29.1]{UC-29.1}, \hyperref[sec:UC-5]{UC-5} \\
+RF-OB-81 & L'\term{Utente} deve poter ricaricare la sezione delle note del diario fittizio dopo la visualizzazione dell'errore di caricamento dei dati dal database & \hyperref[subsec:UC-29.1]{UC-29.1}, \hyperref[sec:UC-5]{UC-5} \\
 \hline
 \rowcolor{gray!20}
 RF-OB-82 & L'\term{Utente} deve poter eliminare una nota esistente dal diario fittizio & \hyperref[subsec:UC-37]{UC-37} \\
