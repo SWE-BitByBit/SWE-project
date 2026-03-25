@@ -111,7 +111,7 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & Completato\\
-\textbf{Versione:} & 1.0.0 \\
+\textbf{Versione:} & 1.1.0 \\
 \textbf{Responsabile:} & Gabriele Scaggiante\\
 \textbf{Redattori:} & 
 \begin{tabular}[t]{@{}l@{}}
@@ -150,6 +150,9 @@ Gruppo BitByBit\\
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 
+\rowcolor{gray!20}
+1.1.0 & 2026-03-21 & Dennis Parolin & Riscrittura dei test nella sezione \hyperref[sec:metodi_testing]{Metodi di testing} sulla base dei nuovi requisiti descritti nel documento \href{https://swe-bitbybit.github.io/SWE-docs/docs/RTB/documenti_esterni/analisi_dei_requisiti/analisi_dei_requisiti.pdf}{Analisi dei requisiti}. & Gabriele Scaggiante \\
+\hline
 \rowcolor{white}
 1.0.0 & 2026-02-13 & Ferdinando Fracasso & Approvazione del \term{Verbale} e stabilizzazione versione del documento &  Dennis Parolin\\
 \hline
@@ -432,486 +435,653 @@ Il gruppo BitByBit identificherà i \term{Test Di Integrazione}, \term{Regressio
 \hline
 \caption{Tabella dei \term{Test Di Sistema}} \\
 \endlastfoot
-\rowcolor{gray!20}
-T-1-S & Verificare che la pagina di login venga visualizzata correttamente. & RF-OB-1 & NI \\
-\hline
 \rowcolor{white}
+T-1-S & Verificare l'autenticazione all'applicazione tramite Google Auth. & RF-OB-1 & NI \\
+\hline
+\rowcolor{gray!20}
 T-2-S & Verificare che l'\term{Utente} venga reindirizzato correttamente alla pagina principale dopo un login effettuato con successo. & RF-OB-1 & NI \\
 \hline
-\rowcolor{gray!20}
+\rowcolor{white}
 T-3-S & Verificare che la sessione rimanga attiva e consistente dopo il ricaricamento della pagina. & RF-OB-1 & NI \\
 \hline
-\rowcolor{white}
+\rowcolor{gray!20}
 T-4-S & Verificare che un \term{Utente} già autenticato non possa accedere nuovamente alla pagina di login. & RF-OB-1 & NI \\
 \hline
+\rowcolor{white}
+T-5-S & Verificare l'attivazione automatica della funzionalità di Dead Man's Switch a seguito del login dell'\term{Utente}. & RF-OB-2 & NI \\
+\hline
+\rowcolor{gray!20}
+T-6-S & Verificare la visualizzazione di un messaggio di errore esplicativo nel caso in cui l'autenticazione tramite Google Auth fallisca, venga annullata o restituisca parametri non validi. & RF-OB-3 & NI \\
+\hline
+\rowcolor{white}
+T-7-S & Verificare che l'\term{Utente} possa selezionare il profilo di utilizzo ("Per me" o "Per altri"). & RF-OB-4 & NI \\
+\hline
+\rowcolor{gray!20}
+T-8-S & Verificare la visualizzazione della lista dei contatti fidati. & RF-OB-5 & NI \\
+\hline
+\rowcolor{white}
+T-9-S & Verificare che la lista dei contatti fidati venga visualizzata correttamente anche quando è vuota. & RF-OB-5 & NI \\
+\hline
+\rowcolor{gray!20}
+T-10-S & Verificare la visualizzazione di un messaggio di errore esplicativo nel caso in cui il recupero dei dati dal database fallisca. & RF-OB-6 & NI \\
+\hline
+\rowcolor{white}
+T-11-S & Verificare che l'\term{Utente} possa ricaricare la sezione dei contatti fidati dopo la visualizzazione dell'errore di caricamento dei dati dal database. & RF-OB-7 & NI \\
+\hline
+\rowcolor{gray!20}
+T-12-S & Verificare che il sistema permetta la visualizzazione di un singolo contatto fidato dalla lista dei contatti fidati. & RF-OB-8 & NI \\
+\hline
+\rowcolor{white}
+T-13-S & Verificare che l'\term{Utente} possa visualizzare la preview delle informazioni (il nome) del contatto fidato che sta visualizzando dalla lista dei contatti fidati. & RF-OB-9 & NI \\
+\hline
+\rowcolor{gray!20}
+T-14-S & Verificare che l'\term{Utente} possa visualizzare i dettagli di un contatto fidato selezionato dalla lista dei contatti fidati. & RF-OB-10 & NI \\
+\hline
+\rowcolor{white}
+T-15-S & Verificare che l'\term{Utente} venga disconnesso correttamente dopo aver effettuato il logout. & RF-OB-32 & NI \\
+\hline
+\rowcolor{gray!20}
+T-16-S & Verificare che la sessione venga invalidata correttamente dopo il logout, impedendo accessi successivi. & RF-OB-32 & NI \\
+\hline
+\rowcolor{white}
+T-17-S & Verificare che l'accesso alle aree riservate venga negato dopo aver effettuato il logout. & RF-OB-32 & NI \\
+\hline
+\rowcolor{gray!20}
+T-18-S & Verificare che il nuovo contatto aggiunto appaia correttamente nella lista dei contatti. & RF-OB-14 & NI \\
+\hline
+\rowcolor{white}
+T-19-S & Verificare che la lista dei contatti venga ordinata correttamente secondo i criteri stabiliti. & RF-OB-14 & NI \\
+\hline
+\rowcolor{gray!20}
+T-20-S & Verificare che l'\term{Utente} possa visualizzare il nome del contatto fidato selezionato dalla lista dei contatti fidati. & RF-OB-11 & NI \\
+\hline
+\rowcolor{white}
+T-21-S & Verificare che l'\term{Utente} possa visualizzare il numero di telefono del contatto fidato selezionato dalla lista dei contatti fidati. & RF-OB-12 & NI \\
+\hline
+\rowcolor{gray!20}
+T-22-S & Verificare che il pulsante per aggiungere un nuovo contatto sia visibile e accessibile. & RF-OB-14 & NI \\
+\hline
+\rowcolor{white}
+T-23-S & Verificare che l'\term{Utente} possa visualizzare l'indirizzo email del contatto fidato selezionato. & RF-OB-13 & NI \\
+\hline
+\rowcolor{gray!20}
+T-24-S & Verificare che il modulo per l'aggiunta di un nuovo contatto si apra correttamente. & RF-OB-14 & NI \\
+\hline
+\rowcolor{white}
+T-25-S & Verificare che il sistema permetta l'inserimento del nome del nuovo contatto. & RF-OB-15 & NI \\
+\hline
+\rowcolor{gray!20}
+T-26-S & Verificare che il sistema permetta l'inserimento di un numero di telefono per il contatto. & RF-OB-16 & NI \\
+\hline
+\rowcolor{white}
+T-27-S & Verificare che il sistema permetta l'inserimento di un indirizzo email per il contatto. & RF-OB-17 & NI \\
+\hline
+\rowcolor{gray!20}
+T-28-S & Verificare che i dati del nuovo contatto vengano salvati e persistiti correttamente nel sistema. & RF-OB-14 & NI \\
+\hline
+\rowcolor{white}
+T-29-S & Verificare che il sistema impedisca il salvataggio se il nome del contatto è mancante. & RF-OB-15 & NI \\
+\hline
+\rowcolor{gray!20}
+T-30-S & Verificare che il sistema impedisca il salvataggio se mancano sia numero che email. & RF-OB-16 & NI \\
+\hline
+\rowcolor{white}
+T-31-S & Verificare che il sistema riconosca e gestisca le informazioni di numero e email già presenti. & RF-OB-18 & NI \\
+\hline
+\rowcolor{gray!20}
+T-32-S & Verificare la visualizzazione di un messaggio di errore in caso di contatti duplicati. & RF-OB-19 & NI \\
+\hline
+\rowcolor{white}
+T-33-S & Verificare la possibilità di reinserire i dati del contatto dopo un messaggio di errore. & RF-OB-20 & NI \\
+\hline
+\rowcolor{gray!20}
+T-34-S & Verificare che il sistema validi correttamente la conformità del numero di telefono. & RF-OB-21 & NI \\
+\hline
+\rowcolor{white}
+T-35-S & Verificare la visualizzazione di un errore se il numero di telefono non è conforme. & RF-OB-22 & NI \\
+\hline
+\rowcolor{gray!20}
+T-36-S & Verificare che il sistema validi correttamente la conformità dell'indirizzo email. & RF-OB-23 & NI \\
+\hline
+\rowcolor{white}
+T-37-S & Verificare la visualizzazione di un errore se l'indirizzo email non è conforme. & RF-OB-24 & NI \\
+\hline
+\rowcolor{gray!20}
+T-38-S & Verificare che l'\term{Utente} possa modificare i dati generali di un contatto esistente. & RF-OB-25 & NI \\
+\hline
+\rowcolor{white}
+T-39-S & Verificare che la modifica del nome del contatto venga salvata correttamente. & RF-OB-26 & NI \\
+\hline
+\rowcolor{gray!20}
+T-40-S & Verificare che la modifica del numero di telefono venga salvata correttamente. & RF-OB-27 & NI \\
+\hline
+\rowcolor{white}
+T-41-S & Verificare che la modifica dell'email del contatto venga salvata correttamente. & RF-OB-28 & NI \\
+\hline
+\rowcolor{gray!20}
+T-42-S & Verificare che l'eliminazione di un contatto rimuova definitivamente i suoi dati. & RF-OB-29 & NI \\
+\hline
+\rowcolor{white}
+T-43-S & Verificare che il sistema richieda conferma esplicita prima di eliminare un contatto. & RF-OB-30 & NI \\
+\hline
+\rowcolor{gray!20}
+T-44-S & Verificare che l'\term{Utente} possa confermare l'eliminazione tramite l'apposita voce. & RF-OB-31 & NI \\
+\hline
+\rowcolor{white}
+T-45-S & Verificare che l'\term{Utente} possa modificare le informazioni della mail di avviso. & RF-OB-34 & NI \\
+\hline
+\rowcolor{gray!20}
+T-46-S & Verificare che la modifica del titolo della mail di avviso venga salvata. & RF-OB-35 & NI \\
+\hline
+\rowcolor{white}
+T-47-S & Verificare che la modifica del corpo della mail di avviso venga salvata. & RF-OB-36 & NI \\
+\hline
+\rowcolor{gray!20}
+T-48-S & Verificare che l'\term{Utente} possa visualizzare un'anteprima generale della mail di avviso. & RF-OB-37 & NI \\
+\hline
+\rowcolor{white}
+T-49-S & Verificare che l'\term{Utente} possa visualizzare l'anteprima del corpo della mail. & RF-OB-38 & NI \\
+\hline
+\rowcolor{gray!20}
+T-50-S & Verificare che l'\term{Utente} possa visualizzare l'anteprima del titolo della mail. & RF-OB-39 & NI \\
+\hline
+\rowcolor{white}
+T-51-S & Verificare l'attivazione manuale del Dead Man's Switch da parte dell'\term{Utente}. & RF-OB-40 & NI \\
+\hline
+\rowcolor{gray!20}
+T-52-S & Verificare che l'\term{Utente} possa disattivare la funzionalità di Dead Man's Switch. & RF-OB-41 & NI \\
+\hline
+\rowcolor{white}
+T-53-S & Verificare che se l'\term{Utente} disattiva la funzionalità, allora questa sia disattivata a tutti gli effetti. & RF-OB-41 & NI \\
+\hline
 \rowcolor{gray!20}
-T-5-S & Verificare che l'\term{Utente} venga disconnesso correttamente dopo aver effettuato il logout. & RF-OB-1 & NI \\
+T-54-S & Verificare che l'\term{Utente} possa impostare una password per il diario criptato. & RF-OB-42 & NI \\
 \hline
 \rowcolor{white}
-T-6-S & Verificare che la sessione venga invalidata correttamente dopo il logout, impedendo accessi successivi. & RF-OB-1 & NI \\
+T-55-S & Verificare che la password impostata per il diario criptato venga salvata correttamente. & RF-OB-42 & NI \\
 \hline
 \rowcolor{gray!20}
-T-7-S & Verificare che l'accesso alle aree riservate venga negato dopo aver effettuato il logout. & RF-OB-1 & NI \\
+T-56-S & Verificare che il sistema validi la conformità della password del diario criptato ai criteri prestabiliti. & RF-OB-43 & NI \\
 \hline
 \rowcolor{white}
-T-8-S & Verificare che il sistema mostri un errore in caso di fallimento dell'autenticazione. & RF-OB-2 & NI \\
+T-57-S & Verificare che il sistema mostri un messaggio di errore se la password del diario criptato non rispetta i criteri di sicurezza. & RF-OB-44 & NI \\
 \hline
 \rowcolor{gray!20}
-T-9-S & Verificare che il \term{Walkthrough} interattivo si avvii automaticamente al primo accesso dell'\term{Utente}. & RF-OB-3 & NI \\
+T-58-S & Verificare che l'\term{Utente} possa reinserire la password del diario criptato dopo un errore. & RF-OB-45 & NI \\
 \hline
 \rowcolor{white}
-T-10-S & Verificare che il sistema permetta di chiudere correttamente il \term{Walkthrough}. & RF-OB-3 & NI \\
+T-59-S & Verificare che l'\term{Utente} possa impostare una password per il diario fittizio. & RF-OB-46 & NI \\
 \hline
 \rowcolor{gray!20}
-T-11-S & Verificare che il \term{Walkthrough} non venga riproposto automaticamente agli accessi successivi al primo. & RF-OB-3 & NI \\
+T-60-S & Verificare che la password impostata per il diario fittizio venga salvata correttamente. & RF-OB-46 & NI \\
 \hline
 \rowcolor{white}
-T-12-S & Verificare che l'\term{Utente} possa saltare il \term{Walkthrough} se desidera non completarlo. & RF-OB-4 & NI \\
+T-61-S & Verificare che il sistema validi la conformità e l'unicità della password del diario fittizio rispetto ai criteri prestabiliti. & RF-OB-47 & NI \\
 \hline
 \rowcolor{gray!20}
-T-13-S & Verificare che l'\term{Utente} possa selezionare il profilo di utilizzo ("Per me" o "Per altri"). & RF-OB-5 & NI \\
+T-62-S & Verificare che il sistema mostri un messaggio di errore se la password del diario fittizio non rispetta i criteri di sicurezza. & RF-OB-48 & NI \\
 \hline
 \rowcolor{white}
-T-14-S & Verificare che l'\term{Utente} possa configurare la password del diario criptato durante il \term{Walkthrough}. & RF-OB-6 & NI \\
+T-63-S & Verificare che il sistema impedisca che la password del diario fittizio sia uguale a quella del diario criptato, mostrando un errore. & RF-OB-49 & NI \\
 \hline
 \rowcolor{gray!20}
-T-15-S & Verificare che l'\term{Utente} possa configurare un contatto fidato durante il \term{Walkthrough}. & RF-OB-7 & NI \\
+T-64-S & Verificare che l'\term{Utente} possa reinserire la password del diario fittizio dopo un errore. & RF-OB-50 & NI \\
 \hline
 \rowcolor{white}
-T-16-S & Verificare che l'\term{Utente} possa saltare la configurazione di una funzionalità specifica del \term{Walkthrough} facendogli visualizzare la scheda successiva o completando il \term{Walkthrough} correttamente. & RF-OB-8 & NI \\
+T-65-S & Verificare che il sistema richieda l'inserimento della password per accedere al diario personale. & RF-OB-51 & NI \\
 \hline
 \rowcolor{gray!20}
-T-17-S & Verificare che la lista dei contatti venga visualizzata correttamente anche quando è vuota. & RF-OB-9 & NI \\
+T-66-S & Verificare che l'\term{Utente} possa accedere al diario criptato inserendo la password corretta. & RF-OB-52 & NI \\
 \hline
 \rowcolor{white}
-T-18-S & Verificare che il nuovo contatto aggiunto appaia correttamente nella lista dei contatti. & RF-OB-9 & NI \\
+T-67-S & Verificare che l'\term{Utente} possa accedere al diario fittizio inserendo la password corretta. & RF-OB-53 & NI \\
 \hline
 \rowcolor{gray!20}
-T-19-S & Verificare che la lista dei contatti venga ordinata correttamente secondo i criteri stabiliti. & RF-OB-9 & NI \\
+T-68-S & Verificare che il sistema mostri un messaggio di errore appropriato in caso di password errata per l'accesso al diario. & RF-OB-54 & NI \\
 \hline
 \rowcolor{white}
-T-20-S & Verificare che il sistema permetta la visualizzazione di un singolo contatto fidato dalla lista. & RF-OB-10 & NI \\
+T-69-S & Verificare che l'\term{Utente} possa reinserire la password di accesso al diario dopo un errore. & RF-OB-55 & NI \\
 \hline
 \rowcolor{gray!20}
-T-21-S & Verificare che la scheda con i dettagli del contatto selezionato si apra correttamente. & RF-OB-11 & NI \\
+T-70-S & Verificare che il sistema blocchi temporaneamente l'accesso al diario dopo troppi tentativi errati. & RF-OB-56 & NI \\
 \hline
 \rowcolor{white}
-T-22-S & Verificare che il pulsante per aggiungere un nuovo contatto sia visibile e accessibile. & RF-OB-12 & NI \\
+T-71-S & Verificare che l'\term{Utente} autenticato possa visualizzare correttamente la schermata del diario criptato. & RF-OB-57 & NI \\
 \hline
 \rowcolor{gray!20}
-T-23-S & Verificare che il modulo per l'aggiunta di un nuovo contatto si apra correttamente. & RF-OB-12 & NI \\
+T-72-S & Verificare che il sistema mostri la lista delle note presenti nel diario criptato. & RF-OB-58 & NI \\
 \hline
 \rowcolor{white}
-T-24-S & Verificare che il sistema accetti e validi correttamente l'inserimento del nome del contatto. & RF-OB-12 & NI \\
+T-73-S & Verificare che l'\term{Utente} possa visualizzare l'anteprima di una singola nota nella lista del diario criptato. & RF-OB-59 & NI \\
 \hline
 \rowcolor{gray!20}
-T-25-S & Verificare che il sistema accetti e validi correttamente l'inserimento di un numero di telefono. & RF-OB-12 & NI \\
+T-74-S & Verificare che l'\term{Utente} possa ricaricare la sezione delle note del diario criptato dopo un errore dal database. & RF-OB-60 & NI \\
 \hline
 \rowcolor{white}
-T-26-S & Verificare che il sistema accetti e validi correttamente l'inserimento di un indirizzo email per il contatto. & RF-OB-12 & NI \\
+T-75-S & Verificare che l'\term{Utente} possa creare una nuova nota vuota all'interno del diario criptato. & RF-OB-61 & NI \\
 \hline
 \rowcolor{gray!20}
-T-27-S & Verificare che i dati del nuovo contatto vengano salvati e persistiti correttamente nel sistema. & RF-OB-12 & NI \\
+T-76-S & Verificare che la nuova nota creata nel diario criptato venga salvata e visualizzata correttamente. & RF-OB-61 & NI \\
 \hline
 \rowcolor{white}
-T-28-S & Verificare che il sistema impedisca il salvataggio e mostri un errore se il nome del contatto è mancante. & RF-OB-12 & NI \\
+T-77-S & Verificare che l'eliminazione di una nota rimuova definitivamente i suoi dati dal diario criptato. & RF-OB-62 & NI \\
 \hline
 \rowcolor{gray!20}
-T-29-S & Verificare che il sistema impedisca il salvataggio e mostri un errore se mancano sia il numero telefono che l'email. & RF-OB-12 & NI \\
+T-78-S & Verificare che il sistema richieda conferma prima dell'eliminazione definitiva di una nota del diario criptato. & RF-OB-63 & NI \\
 \hline
 \rowcolor{white}
-T-30-S & Verificare che il sistema riconosca e gestire le informazioni di contatto già presenti. & RF-OB-13 & NI \\
+T-79-S & Verificare che l'\term{Utente} possa confermare l'eliminazione della nota del diario criptato tramite l'apposita voce. & RF-OB-64 & NI \\
 \hline
 \rowcolor{gray!20}
-T-31-S & Verificare che il sistema segnali un errore se non è valido il formato del numero di telefono inserito durante l'aggiunta o la modifica di un contatto. & RF-OB-14 & NI \\
+T-80-S & Verificare che l'\term{Utente} possa visualizzare l'intero contenuto di una nota aperta del diario criptato. & RF-OB-65 & NI \\
 \hline
 \rowcolor{white}
-T-32-S & Verificare che il sistema segnali un errore se non è valido il formato dell'indirizzo email inserito durante l'aggiunta o la modifica di un contatto. & RF-OB-15 & NI \\
+T-81-S & Verificare che l'\term{Utente} possa visualizzare il contenuto testuale della nota del diario criptato. & RF-OB-66 & NI \\
 \hline
 \rowcolor{gray!20}
-T-33-S & Verificare che la modifica del nome del contatto venga salvata e visualizzata correttamente. & RF-OB-16 & NI \\
+T-82-S & Verificare che l'\term{Utente} possa visualizzare il contenuto multimediale della nota del diario criptato. & RF-OB-67 & NI \\
 \hline
 \rowcolor{white}
-T-34-S & Verificare che la modifica del numero di telefono del contatto venga salvata e visualizzata correttamente. & RF-OB-16 & NI \\
+T-83-S & Verificare che l'\term{Utente} possa riprodurre correttamente la nota vocale nel diario criptato. & RF-OB-68 & NI \\
 \hline
 \rowcolor{gray!20}
-T-35-S & Verificare che la modifica della mail del contatto venga salvata e visualizzata correttamente. & RF-OB-16 & NI \\
+T-84-S & Verificare che l'\term{Utente} possa visualizzare correttamente l'immagine allegata alla nota nel diario criptato. & RF-OB-69 & NI \\
 \hline
 \rowcolor{white}
-T-36-S & Verificare che l'eliminazione di un contatto rimuova definitivamente i suoi dati dal sistema. & RF-OB-17 & NI \\
+T-85-S & Verificare che l'\term{Utente} possa inserire del contenuto testuale all'interno di una nota del diario criptato. & RF-OB-70 & NI \\
 \hline
 \rowcolor{gray!20}
-T-37-S & Verificare che il sistema richieda una conferma esplicita prima di eliminare definitivamente un contatto. & RF-OB-18 & NI \\
+T-86-S & Verificare che il contenuto testuale inserito nel diario criptato venga salvato correttamente. & RF-OB-70 & NI \\
 \hline
 \rowcolor{white}
-T-38-S & Verificare che l'annullamento dell'operazione di eliminazione lasci il contatto inalterato. & RF-OB-19 & NI \\
+T-87-S & Verificare che l'\term{Utente} possa inserire del contenuto multimediale all'interno di una nota del diario criptato. & RF-OB-71 & NI \\
 \hline
 \rowcolor{gray!20}
-T-39-S & Verificare che la configurazione del timer per il 'Dead Man Switch' venga salvata correttamente. & RF-OB-20 & NI \\
+T-88-S & Verificare che l'\term{Utente} possa allegare un'immagine all'interno di una nota del diario criptato. & RF-OB-72 & NI \\
 \hline
 \rowcolor{white}
-T-40-S & Verificare che il conto alla rovescia di inattività si avvii correttamente secondo le impostazioni. & RF-OB-20, RF-OB-21 & NI \\
+T-89-S & Verificare che il sistema salvi correttamente l'immagine inserita nel diario criptato. & RF-OB-72 & NI \\
 \hline
 \rowcolor{gray!20}
-T-41-S & Verificare che l'interazione dell'\term{Utente} col sistema resetti correttamente il timer di inattività. & RF-OB-20, RF-OB-21 & NI \\
+T-90-S & Verificare che il sistema mostri un errore se il formato dell'immagine non è supportato nel diario criptato. & RF-OB-72 & NI \\
 \hline
 \rowcolor{white}
-T-42-S & Verificare che l'\term{Utente} possa impostare il timer di seconda inattività. & RF-OB-21 & NI \\
+T-91-S & Verificare che il sistema mostri un errore se l'immagine supera la dimensione massima consentita nel diario criptato. & RF-OB-72 & NI \\
 \hline
 \rowcolor{gray!20}
-T-43-S & Verificare che l'\term{Utente} possa modificare il titolo della mail di avviso. & RF-OB-22 & NI \\
+T-92-S & Verificare che l'\term{Utente} possa registrare e salvare una traccia audio all'interno di una nota del diario criptato. & RF-OB-73 & NI \\
 \hline
 \rowcolor{white}
-T-44-S & Verificare che la modifica del titolo della mail di avviso venga salvata e visualizzata correttamente. & RF-OB-22 & NI \\
+T-93-S & Verificare che l'\term{Utente} possa rimuovere del contenuto multimediale presente in una nota del diario criptato. & RF-OB-75 & NI \\
 \hline
 \rowcolor{gray!20}
-T-45-S & Verificare che l'\term{Utente} possa modificare il corpo della mail di avviso. & RF-OB-23 & NI \\
+T-94-S & Verificare che l'\term{Utente} possa rimuovere un'immagine allegata da una nota del diario criptato. & RF-OB-76 & NI \\
 \hline
 \rowcolor{white}
-T-46-S & Verificare che la modifica del corpo della mail di avviso venga salvata e visualizzata correttamente. & RF-OB-23 & NI \\
+T-95-S & Verificare che l'\term{Utente} possa rimuovere una traccia audio allegata da una nota del diario criptato. & RF-OB-77 & NI \\
 \hline
 \rowcolor{gray!20}
-T-47-S & Verificare che l'\term{Utente} possa visualizzare un'anteprima della mail di avviso. & RF-OB-24 & NI \\
+T-96-S & Verificare che l'\term{Utente} possa modificare il contenuto testuale presente all'interno di una nota del diario criptato. & RF-OB-74 & NI \\
 \hline
 \rowcolor{white}
-T-48-S & Verificare che l'\term{Utente} possa attivare il Dead Man's Switch. & RF-OB-25 & NI \\
+T-97-S & Verificare che l'\term{Utente} autenticato possa visualizzare correttamente la schermata del diario fittizio. & RF-OB-78 & NI \\
 \hline
 \rowcolor{gray!20}
-T-49-S & Verificare che se l'\term{Utente} attivi la funzionalità, allora questa funzioni correttamente. & RF-OB-25 & NI \\
+T-98-S & Verificare che il sistema mostri la lista delle note presenti nel diario fittizio. & RF-OB-79 & NI \\
 \hline
 \rowcolor{white}
-T-50-S & Verificare che l'\term{Utente} possa disattivare il Dead Man's Switch. & RF-OB-26 & NI \\
+T-99-S & Verificare che l'\term{Utente} possa visualizzare l'anteprima di una singola nota nella lista del diario fittizio. & RF-OB-80 & NI \\
 \hline
 \rowcolor{gray!20}
-T-51-S & Verificare che se l'\term{Utente} disattiva la funzionalità, allora questa sia disattivata a tutti gli effetti. & RF-OB-26 & NI \\
+T-100-S & Verificare che l'\term{Utente} possa ricaricare la sezione delle note del diario fittizio dopo un errore dal database. & RF-OB-81 & NI \\
 \hline
 \rowcolor{white}
-T-52-S & Verificare che l'\term{Utente} possa impostare una password per il diario fittizio. & RF-OB-27 & NI \\
+T-101-S & Verificare che l'\term{Utente} possa creare una nuova nota vuota all'interno del diario fittizio. & RF-OB-85 & NI \\
 \hline
 \rowcolor{gray!20}
-T-53-S & Verificare che la password impostata per il diario fittizio venga salvata correttamente. & RF-OB-27 & NI \\
+T-102-S & Verificare che la nuova nota creata nel diario fittizio venga salvata e visualizzata correttamente. & RF-OB-85 & NI \\
 \hline
 \rowcolor{white}
-T-54-S & Verificare che il sistema impedisca che la password del diario fittizio sia uguale a quella del diario criptato. & RF-OB-28 & NI \\
+T-103-S & Verificare che l'eliminazione di una nota rimuova definitivamente i suoi dati dal diario fittizio. & RF-OB-82 & NI \\
 \hline
 \rowcolor{gray!20}
-T-55-S & Verificare che il sistema mostri un messaggio di errore se la password non rispetta i criteri di sicurezza. & RF-OB-29 & NI \\
+T-104-S & Verificare che il sistema richieda conferma prima dell'eliminazione definitiva di una nota del diario fittizio. & RF-OB-83 & NI \\
 \hline
 \rowcolor{white}
-T-56-S & Verificare che l'\term{Utente} possa accedere al diario fittizio tramite la password impostata. & RF-OB-30 & NI \\
+T-105-S & Verificare che l'\term{Utente} possa confermare l'eliminazione della nota del diario fittizio tramite l'apposita voce. & RF-OB-84 & NI \\
 \hline
 \rowcolor{gray!20}
-T-57-S & Verificare che l'\term{Utente} possa accedere al diario criptato tramite la password impostata. & RF-OB-31 & NI \\
+T-106-S & Verificare che l'\term{Utente} possa visualizzare l'intero contenuto di una nota aperta del diario fittizio. & RF-OB-86 & NI \\
 \hline
 \rowcolor{white}
-T-58-S & Verificare che l'\term{Utente} possa impostare una password per il diario criptato. & RF-OB-32 & NI \\
+T-107-S & Verificare che l'\term{Utente} possa visualizzare il contenuto testuale della nota del diario fittizio. & RF-OB-87 & NI \\
 \hline
 \rowcolor{gray!20}
-T-59-S & Verificare che la password impostata venga salvata correttamente. & RF-OB-32 & NI \\
+T-108-S & Verificare che l'\term{Utente} possa visualizzare il contenuto multimediale della nota del diario fittizio. & RF-OB-88 & NI \\
 \hline
 \rowcolor{white}
-T-60-S & Verificare che il sistema impedisca che la password del diario criptato sia uguale a quella del diario fittizio. & RF-OB-33 & NI \\
+T-109-S & Verificare che l'\term{Utente} possa riprodurre correttamente la nota vocale nel diario fittizio. & RF-OB-89 & NI \\
 \hline
 \rowcolor{gray!20}
-T-61-S & Verificare che il sistema richieda l'inserimento della password per accedere al diario personale. & RF-OB-34 & NI \\
+T-110-S & Verificare che l'\term{Utente} possa visualizzare correttamente l'immagine allegata alla nota nel diario fittizio. & RF-OB-90 & NI \\
 \hline
 \rowcolor{white}
-T-62-S & Verificare che l'accesso al diario sia consentito inserendo la password corretta. & RF-OB-34 & NI \\
+T-111-S & Verificare che l'\term{Utente} possa inserire del contenuto testuale all'interno di una nota del diario fittizio. & RF-OB-91 & NI \\
 \hline
 \rowcolor{gray!20}
-T-63-S & Verificare che il sistema mostri un messaggio di errore appropriato in caso di password errata per il diario. & RF-OB-35 & NI \\
+T-112-S & Verificare che il contenuto testuale inserito nel diario fittizio venga salvato correttamente. & RF-OB-91 & NI \\
 \hline
 \rowcolor{white}
-T-64-S & Verificare che il sistema blocchi temporaneamente l'accesso dopo troppi tentativi errati. & RF-OB-36 & NI \\
+T-113-S & Verificare che l'\term{Utente} possa inserire del contenuto multimediale all'interno di una nota del diario fittizio. & RF-OB-92 & NI \\
 \hline
 \rowcolor{gray!20}
-T-65-S & Verificare che l'\term{Utente} autenticato riesca a vedere correttamente il contenuto del diario. & RF-OB-37 & NI \\
+T-114-S & Verificare che l'\term{Utente} possa allegare un'immagine all'interno di una nota del diario fittizio. & RF-OB-93 & NI \\
 \hline
 \rowcolor{white}
-T-66-S & Verificare che il sistema mostri la lista delle note presenti nel diario. & RF-OB-38 & NI \\
+T-115-S & Verificare che il sistema salvi correttamente l'immagine inserita nel diario fittizio. & RF-OB-93 & NI \\
 \hline
 \rowcolor{gray!20}
-T-67-S & Verificare che l'\term{Utente} possa visualizzare l'anteprima di una singola nota. & RF-OB-39 & NI \\
+T-116-S & Verificare che il sistema mostri un errore se il formato dell'immagine non è supportato nel diario fittizio. & RF-OB-93 & NI \\
 \hline
 \rowcolor{white}
-T-68-S & Verificare che l'\term{Utente} possa creare una nuova nota. & RF-OB-40 & NI \\
+T-117-S & Verificare che il sistema mostri un errore se l'immagine supera la dimensione massima consentita nel diario fittizio. & RF-OB-93 & NI \\
 \hline
 \rowcolor{gray!20}
-T-69-S & Verificare che la nuova nota creata venga salvata e visualizzata correttamente. & RF-OB-40 & NI \\
+T-118-S & Verificare che l'\term{Utente} possa registrare e salvare una traccia audio all'interno di una nota del diario fittizio. & RF-OB-94 & NI \\
 \hline
 \rowcolor{white}
-T-70-S & Verificare che l'eliminazione di una nota rimuova definitivamente i suoi dati dal sistema. & RF-OB-41 & NI \\
+T-119-S & Verificare che l'\term{Utente} possa rimuovere del contenuto multimediale presente in una nota del diario fittizio. & RF-OB-95 & NI \\
 \hline
 \rowcolor{gray!20}
-T-71-S & Verificare che l'\term{Utente} possa inserire contenuto testuale in una nota. & RF-OB-42 & NI \\
+T-120-S & Verificare che l'\term{Utente} possa rimuovere un'immagine allegata da una nota del diario fittizio. & RF-OB-96 & NI \\
 \hline
 \rowcolor{white}
-T-72-S & Verificare che il contenuto testuale inserito in una nota venga salvato correttamente e che sia persistente. & RF-OB-42 & NI \\
+T-121-S & Verificare che l'\term{Utente} possa rimuovere una traccia audio allegata da una nota del diario fittizio. & RF-OB-97 & NI \\
 \hline
 \rowcolor{gray!20}
-T-73-S & Verificare che il sistema permetta di allegare correttamente un'immagine alla nota. & RF-OB-43 & NI \\
+T-122-S & Verificare che l'\term{Utente} possa modificare il contenuto testuale presente all'interno di una nota del diario fittizio. & RF-OB-98 & NI \\
 \hline
+\hline
+\rowcolor{white}
+T-123-S & Verificare che il pulsante SOS rapido sia visibile e facilmente accessibile nell'interfaccia. & RF-OB-99 & NI \\
+\hline
+\rowcolor{gray!20}
+T-124-S & Verificare che l'attivazione della procedura di SOS avvenga correttamente. & RF-OB-99 & NI \\
+\hline
+\rowcolor{white}
+T-125-S & Verificare che, in caso di SOS, vengano inviati automaticamente SMS e/o email ai contatti fidati. & RF-OB-99 & NI \\
+\hline
+\rowcolor{gray!20}
+T-126-S & Verificare che l'\term{Utente} riceva un feedback di conferma dopo l'invio della richiesta di SOS. & RF-OB-99 & NI \\
+\hline
+\rowcolor{white}
+T-127-S & Verificare la notifica in caso di assenza di rete durante l'invio SOS e la proposta di segnale acustico. & RF-OB-100 & NI \\
+\hline
+\rowcolor{gray!20}
+T-128-S & Verificare la notifica in assenza di contatti fidati configurati durante SOS e la proposta di allarme sonoro. & RF-OB-101 & NI \\
+\hline
 \rowcolor{white}
-T-74-S & Verificare che il sistema salvi correttamente l'immagine inserita dall'\term{Utente} e che questa sia persistente. & RF-OB-43 & NI \\
+T-129-S & Verificare che l'attivazione manuale dell'allarme sonoro funzioni correttamente. & RF-OB-102 & NI \\
 \hline
 \rowcolor{gray!20}
-T-75-S & Verificare che il sistema mostri un errore se si tenta di caricare un formato di file non supportato. & RF-OB-43 & NI \\
+T-130-S & Verificare che la disattivazione dell'allarme sonoro avvenga correttamente. & RF-OB-102 & NI \\
 \hline
 \rowcolor{white}
-T-76-S & Verificare che il sistema mostri un errore se il file allegato supera la dimensione massima consentita. & RF-OB-43 & NI \\
+T-131-S & Verificare che l'accesso alla sezione Chatbot con l'AI avvenga correttamente. & RF-OB-103 & NI \\
 \hline
 \rowcolor{gray!20}
-T-77-S & Verificare che l'immagine allegata alla nota venga visualizzata correttamente. & RF-OB-43 & NI \\
+T-132-S & Verificare che il messaggio testuale inviato all'AI venga elaborato correttamente. & RF-OB-103 & NI \\
 \hline
 \rowcolor{white}
-T-78-S & Verificare che la rimozione di un allegato dalla nota avvenga correttamente. & RF-OB-43 & NI \\
+T-133-S & Verificare che la risposta generata dall'AI venga ricevuta e visualizzata correttamente. & RF-OB-103 & NI \\
 \hline
 \rowcolor{gray!20}
-T-79-S & Verificare che il sistema permetta di registrare e salvare correttamente una nota vocale. & RF-OB-43 & NI \\
+T-134-S & Verificare che l'indicatore di digitazione sia visibile mentre l'AI sta elaborando la risposta. & RF-OB-103 & NI \\
 \hline
 \rowcolor{white}
-T-80-S & Verificare che la riproduzione della nota vocale funzioni correttamente. & RF-OB-43 & NI \\
+T-135-S & Verificare che il sistema impedisca l'invio di messaggi vuoti al chatbot. & RF-OB-103 & NI \\
 \hline
 \rowcolor{gray!20}
-T-81-S & Verificare che una nota aperta mostri correttamente l'intero contenuto al suo interno (testuale e multimediale assieme). & RF-OB-44 & NI \\
+T-136-S & Verificare che l'\term{Utente} possa interrompere la generazione della risposta del chatbot. & RF-OB-104 & NI \\
 \hline
 \rowcolor{white}
-T-82-S & Verificare che il pulsante SOS rapido sia visibile e facilmente accessibile nell'interfaccia. & RF-OB-45 & NI \\
+T-137-S & Verificare che venga mostrato un errore appropriato in caso di mancata connessione internet durante la chat. & RF-OB-105 & NI \\
 \hline
 \rowcolor{gray!20}
-T-83-S & Verificare che l'attivazione della procedura di SOS avvenga correttamente. & RF-OB-45 & NI \\
+T-138-S & Verificare che l'\term{Utente} possa ripetere l'invio del messaggio dopo un errore di connessione. & RF-OB-106 & NI \\
 \hline
 \rowcolor{white}
-T-84-S & Verificare che, in caso di SOS, vengano inviati correttamente SMS e/o email ai contatti fidati. & RF-OB-45 & NI \\
+T-139-S & Verificare che il sistema gestisca correttamente il cambio di contesto in "Detective delle Relazioni". & RF-OB-107 & NI \\
 \hline
 \rowcolor{gray!20}
-T-85-S & Verificare che l'\term{Utente} riceva un feedback di conferma avvenuto invio della richiesta di SOS. & RF-OB-45 & NI \\
+T-140-S & Verificare che il sistema gestisca correttamente il cambio di contesto in "Specchio Intelligente". & RF-OB-108 & NI \\
 \hline
 \rowcolor{white}
-T-86-S & Verificare che il sistema mostri un messaggio appropriato se la rete non è disponibile durante l'invio dell'SOS. & RF-OB-46 & NI \\
+T-141-S & Verificare che il sistema notifichi errori all'\term{Utente} durante il cambio di contesto. & RF-OB-109 & NI \\
 \hline
 \rowcolor{gray!20}
-T-87-S & Verificare che il sistema gestisca correttamente la richiesta d'invio SOS in assenza di contatti fidati configurati. & RF-OB-47 & NI \\
+T-142-S & Verificare che l'\term{Utente} possa ritentare il cambio di contesto a seguito di un errore. & RF-OB-110 & NI \\
 \hline
 \rowcolor{white}
-T-88-S & Verificare che l'attivazione manuale dell'allarme sonoro funzioni correttamente. & RF-OB-48 & NI \\
+T-143-S & Verificare che sia possibile avviare correttamente una nuova sessione conversazionale (chat). & RF-OB-111 & NI \\
 \hline
 \rowcolor{gray!20}
-T-89-S & Verificare che la disattivazione dell'allarme sonoro avvenga correttamente. & RF-OB-48 & NI \\
+T-144-S & Verificare che l'eliminazione di una conversazione rimuova definitivamente i suoi dati dalla cronologia. & RF-OB-112 & NI \\
 \hline
 \rowcolor{white}
-T-90-S & Verificare che l'accesso alla sezione Chatbot con l'AI avvenga correttamente. & RF-OB-49 & NI \\
+T-145-S & Verificare che il sistema richieda conferma per l'eliminazione di una chat dalla cronologia. & RF-OB-113 & NI \\
 \hline
 \rowcolor{gray!20}
-T-91-S & Verificare che il messaggio testuale inviato all'AI venga elaborato correttamente. & RF-OB-49 & NI \\
+T-146-S & Verificare che l'\term{Utente} possa confermare l'eliminazione della chat tramite l'apposita voce. & RF-OB-114 & NI \\
 \hline
 \rowcolor{white}
-T-92-S & Verificare che la risposta generata dall'AI venga ricevuta e visualizzata correttamente. & RF-OB-49 & NI \\
+T-147-S & Verificare che l'\term{Utente} possa visualizzare il contenuto completo di una chat passata o corrente. & RF-OB-115 & NI \\
 \hline
 \rowcolor{gray!20}
-T-93-S & Verificare che l'indicatore di digitazione sia visibile mentre l'AI sta elaborando la risposta. & RF-OB-49 & NI \\
+T-148-S & Verificare che il sistema mostri un messaggio d'errore in caso di errore di caricamento della chat. & RF-OB-116 & NI \\
 \hline
 \rowcolor{white}
-T-94-S & Verificare che il sistema impedisca l'invio di messaggi vuoti al chatbot. & RF-OB-49 & NI \\
+T-149-S & Verificare la corretta visualizzazione della lista dei messaggi scambiati nella chat. & RF-OB-117 & NI \\
 \hline
 \rowcolor{gray!20}
-T-95-S & Verificare che sia possibile avviare correttamente una nuova conversazione. & RF-OB-49 & NI \\
+T-150-S & Verificare che il sistema distingua visivamente i messaggi \term{Utente} da quelli del chatbot. & RF-OB-118 & NI \\
 \hline
 \rowcolor{white}
-T-96-S & Verificare che i messaggi della chat vengano mantenuti passando da una schermata all'altra. & RF-OB-49 & NI \\
+T-151-S & Verificare che i messaggi inviati dall'\term{Utente} siano posizionati logicamente (es. a destra). & RF-OB-119 & NI \\
 \hline
 \rowcolor{gray!20}
-T-97-S & Verificare che la chat scorra automaticamente all'ultimo messaggio ricevuto o inviato. & RF-OB-49 & NI \\
+T-152-S & Verificare che i messaggi ricevuti dal chatbot siano posizionati logicamente (es. a sinistra). & RF-OB-120 & NI \\
 \hline
 \rowcolor{white}
-T-98-S & Verificare che sia possibile copiare correttamente il testo dei messaggi del bot. & RF-OB-49 & NI \\
+T-153-S & Verificare il raggruppamento visivo dei messaggi consecutivi inviati dallo stesso mittente. & RF-OB-115 & NI \\
 \hline
 \rowcolor{gray!20}
-T-99-S & Verificare il comportamento corretto della chat durante l'utilizzo della tastiera emoji. & RF-OB-49 & NI \\
+T-154-S & Verificare che l'\term{Utente} possa rifiutare l'eliminazione di una chat. & RF-OB-113 & NI \\
 \hline
 \rowcolor{white}
-T-100-S & Verificare che l'\term{Utente} possa interrompere la generazione della risposta del chatbot. & RF-OB-50 & NI \\
+T-155-S & Verificare che la chat rimanga invariata se l'\term{Utente} rifiuta l'eliminazione. & RF-OB-113 & NI \\
 \hline
 \rowcolor{gray!20}
-T-101-S & Verificare che venga mostrato un errore appropriato in caso di mancata connessione con il servizio AI. & RF-OB-51 & NI \\
+T-156-S & Verificare che la chat scorra automaticamente all'ultimo messaggio ricevuto o inviato. & RF-OB-115 & NI \\
 \hline
 \rowcolor{white}
-T-102-S & Verificare che il sistema gestisca correttamente gli errori di lettura del messaggio da parte dell'LLM. & RF-OB-52 & NI \\
+T-157-S & Verificare che sia possibile copiare correttamente il testo dei messaggi del bot. & RF-OB-115 & NI \\
 \hline
 \rowcolor{gray!20}
-T-103-S & Verificare che il sistema gestisca correttamente il cambio di contesto in "Detective delle Relazioni". & RF-OB-53 & NI \\
+T-158-S & Verificare il comportamento corretto della chat durante l'utilizzo della tastiera emoji. & RF-OB-115 & NI \\
 \hline
 \rowcolor{white}
-T-104-S & Verificare che l'\term{Utente} riceva un feedback del cambio di contesto in "Detective delle Relazioni". & RF-OB-53 & NI \\
+T-159-S & Verificare che lo storico delle conversazioni recenti venga visualizzato correttamente. & RF-OB-121 & NI \\
 \hline
 \rowcolor{gray!20}
-T-105-S & Verificare che l'AI fornisca risposte coerenti con il contesto "Detective delle Relazioni". & RF-OB-53 & NI \\
+T-160-S & Verificare che l'\term{Utente} possa selezionare e visualizzare una singola chat dalla cronologia. & RF-OB-122 & NI \\
 \hline
 \rowcolor{white}
-T-106-S & Verificare che il sistema gestisca correttamente il cambio di contesto in "Specchio Intelligente". & RF-OB-54 & NI \\
+T-161-S & Verificare che il sistema mostri il titolo identificativo di ogni chat presente nella cronologia. & RF-OB-123 & NI \\
 \hline
 \rowcolor{gray!20}
-T-107-S & Verificare che l'\term{Utente} riceva un feedback del cambio di contesto in "Specchio Intelligente". & RF-OB-54 & NI \\
+T-162-S & Verificare che l'\term{Utente} possa visualizzare correttamente la lista delle community. & RF-OB-124 & NI \\
 \hline
 \rowcolor{white}
-T-108-S & Verificare che l'AI fornisca risposte coerenti con il contesto "Specchio Intelligente". & RF-OB-54 & NI \\
+T-163-S & Verificare che il sistema gestisca e notifichi errori nel caricamento della lista delle community. & RF-OB-125 & NI \\
 \hline
 \rowcolor{gray!20}
-T-109-S & Verificare che il sistema notifichi errori durante il cambio di contesto. & RF-OB-55 & NI \\
+T-164-S & Verificare che il sistema mostri i dati riassuntivi di ogni singola community nella lista. & RF-OB-126 & NI \\
 \hline
 \rowcolor{white}
-T-110-S & Verificare che lo storico delle conversazioni recenti venga visualizzato correttamente. & RF-OB-56 & NI \\
+T-165-S & Verificare che il sistema mostri il nome di ogni singola community nella lista. & RF-OB-127 & NI \\
 \hline
 \rowcolor{gray!20}
-T-111-S & Verificare che l'eliminazione di una conversazione rimuova definitivamente i suoi dati. & RF-OB-56 & NI \\
+T-166-S & Verificare che il sistema mostri il link associato ad ogni singola community. & RF-OB-128 & NI \\
 \hline
 \rowcolor{white}
-T-112-S & Verificare che l'\term{Utente} possa selezionare una singola chat dalla cronologia. & RF-OB-57 & NI \\
+T-167-S & Verificare che l'\term{Utente} possa aprire il link di una community per visitarne il sito web esterno. & RF-OB-129 & NI \\
 \hline
 \rowcolor{gray!20}
-T-113-S & Verificare che il sistema mostri una preview dell'inizio della chat in cronologia. & RF-OB-58 & NI \\
+T-168-S & Verificare che l'\term{Utente} possa visualizzare la lista delle leggi e normative. & RF-OB-130 & NI \\
 \hline
 \rowcolor{white}
-T-114-S & Verificare che l'\term{Utente} possa visualizzare il contenuto completo di una chat passata o corrente. & RF-OB-59 & NI \\
+T-169-S & Verificare che il sistema mostri il titolo di ogni singola legge nella lista. & RF-OB-131 & NI \\
 \hline
 \rowcolor{gray!20}
-T-115-S & Verificare la corretta visualizzazione della lista dei messaggi scambiati nella chat. & RF-OB-60 & NI \\
+T-170-S & Verificare che l'\term{Utente} possa visualizzare i dettagli completi di una legge. & RF-OB-132 & NI \\
 \hline
 \rowcolor{white}
-T-116-S & Verificare la corretta visualizzazione degli orari (timestamp) dei messaggi. & RF-OB-60 & NI \\
+T-171-S & Verificare che il sistema notifichi l'\term{Utente} di un errore nel caricamento dei dati di una legge. & RF-OB-133 & NI \\
 \hline
 \rowcolor{gray!20}
-T-117-S & Verificare il raggruppamento visivo dei messaggi consecutivi inviati dallo stesso mittente. & RF-OB-60 & NI \\
+T-172-S & Verificare che l'\term{Utente} possa visualizzare la lista dei contatti e degli enti d'emergenza. & RF-OB-134 & NI \\
 \hline
 \rowcolor{white}
-T-118-S & Verificare che il sistema distingua visivamente i messaggi \term{Utente} da quelli del chatbot (colore e posizione differenti). & RF-OB-61 & NI \\
+T-173-S & Verificare che il sistema mostri i dati riassuntivi di ogni singolo contatto d'emergenza nella lista. & RF-OB-135 & NI \\
 \hline
 \rowcolor{gray!20}
-T-119-S & Verificare che il sistema gestisca errori nel caricamento della chat. & RF-OB-62 & NI \\
+T-174-S & Verificare che il sistema mostri il nome identificativo di ogni contatto d'emergenza. & RF-OB-136 & NI \\
 \hline
 \rowcolor{white}
-T-120-S & Verificare che il sistema mostri un messaggio d'errore appropriato in caso di errore di caricamento della chat. & RF-OB-62 & NI \\
+T-175-S & Verificare che il sistema mostri il numero di telefono associato ad ogni contatto d'emergenza. & RF-OB-137 & NI \\
 \hline
 \rowcolor{gray!20}
-T-121-S & Verificare che l'\term{Utente} possa creare una nuova chat. & RF-OB-63 & NI \\
+T-176-S & Verificare che l'\term{Utente} possa visualizzare la lista del materiale informativo disponibile. & RF-OB-139 & NI \\
 \hline
 \rowcolor{white}
-T-122-S & Verificare che la nuova chat creata esista e sia funzionante. & RF-OB-63 & NI \\
+T-177-S & Verificare che il sistema notifichi errori nel caricamento della lista del materiale informativo. & RF-OB-140 & NI \\
 \hline
 \rowcolor{gray!20}
-T-123-S & Verificare che l'\term{Utente} possa eliminare una chat dalla cronologia. & RF-OB-64 & NI \\
+T-178-S & Verificare che il sistema mostri titolo e formato di ogni materiale informativo nella lista. & RF-OB-141 & NI \\
 \hline
 \rowcolor{white}
-T-124-S & Verificare che l'eliminazione della chat dalla cronologia, elimini definitivamente i dati della chat. & RF-OB-64 & NI \\
+T-179-S & Verificare che l'\term{Utente} possa visualizzare il contenuto di un materiale informativo selezionato. & RF-OB-142 & NI \\
 \hline
 \rowcolor{gray!20}
-T-125-S & Verificare che il sistema richieda conferma per l'eliminazione di una chat. & RF-OB-65 & NI \\
+T-180-S & Verificare che il sistema notifichi un errore nel recupero dei dati di uno specifico materiale informativo. & RF-OB-143 & NI \\
 \hline
 \rowcolor{white}
-T-126-S & Verificare che l'\term{Utente} possa rifiutare l'eliminazione di una chat. & RF-OB-66 & NI \\
+T-181-S & Verificare che l'\term{Utente} possa visualizzare la mappa interattiva con i marker dei luoghi sicuri. & RF-OB-144 & NI \\
 \hline
 \rowcolor{gray!20}
-T-127-S & Verificare che la chat rimanga invariata se l'\term{Utente} rifiuta l'eliminazione. & RF-OB-66 & NI \\
+T-182-S & Verificare che l'\term{Utente} possa aprire un luogo sicuro tramite l'applicazione Google Maps esterna. & RF-OB-145 & NI \\
 \hline
 \rowcolor{white}
-T-128-S & Verificare che l'\term{Utente} possa visualizzare correttamente la lista delle community. & RF-OB-67 & NI \\
+T-183-S & Verificare che il sistema notifichi errori di connessione alla mappa esterna mantenendo quella interna. & RF-OB-146 & NI \\
 \hline
 \rowcolor{gray!20}
-T-129-S & Verificare che il sistema mostri i dettagli riassuntivi di una community. & RF-OB-68 & NI \\
+T-184-S & Verificare che la posizione corrente dell'\term{Utente} venga visualizzata correttamente. & RF-OB-144 & NI \\
 \hline
 \rowcolor{white}
-T-130-S & Verificare che l'\term{Utente} possa visitare una community e visualizzarne i contenuti. & RF-OB-69 & NI \\
+T-185-S & Verificare che cliccando su un marcatore vengano mostrati i dettagli del luogo sicuro. & RF-OB-144 & NI \\
 \hline
 \rowcolor{gray!20}
-T-131-S & Verificare che il sistema gestisca errori nel caricamento delle community. & RF-OB-70 & NI \\
+T-186-S & Verificare che l'indirizzo del luogo sicuro sia visibile e corretto nei dettagli. & RF-OB-144 & NI \\
 \hline
 \rowcolor{white}
-T-132-S & Verificare che il sistema mostri un messaggio di errore appropriato in caso fallisca il caricamento delle community. & RF-OB-70 & NI \\
+T-187-S & Verificare che la mappa si ricarichi al variare della connessione o della posizione. & RF-OB-144 & NI \\
 \hline
 \rowcolor{gray!20}
-T-133-S & Verificare che l'\term{Utente} possa visualizzare la lista dei contatti/enti d'emergenza. & RF-OB-71 & NI \\
+T-188-S & Verificare che la posizione dell'\term{Utente} si aggiorni in tempo reale sulla mappa. & RF-OB-144 & NI \\
 \hline
 \rowcolor{white}
-T-134-S & Verificare che il sistema mostri nome e numero dei contatti d'emergenza. & RF-OB-72 & NI \\
+T-189-S & Verificare che il sistema gestisca correttamente la disattivazione del GPS. & RF-OB-144 & NI \\
 \hline
 \rowcolor{gray!20}
-T-135-S & Verificare che l'\term{Utente} possa comporre automaticamente il numero di un contatto d'emergenza. & RF-OB-73 & NI \\
+T-190-S & Verificare che gli orari di apertura del luogo sicuro vengano visualizzati correttamente. & RF-OB-144 & NI \\
 \hline
 \rowcolor{white}
-T-136-S & Verificare che l'\term{Utente} possa visualizzare la lista delle leggi e normative. & RF-OB-74 & NI \\
+T-191-S & Verificare che i contatti telefonici del luogo sicuro siano visibili e corretti. & RF-OB-144 & NI \\
 \hline
 \rowcolor{gray!20}
-T-137-S & Verificare che il sistema mostri il titolo delle leggi nella lista. & RF-OB-75 & NI \\
+T-192-S & Verificare che la riproduzione dei video educativi funzioni correttamente. & RF-OB-142 & NI \\
 \hline
 \rowcolor{white}
-T-138-S & Verificare che l'\term{Utente} possa visualizzare i dettagli completi di una legge. & RF-OB-76 & NI \\
+T-193-S & Verificare che il download del materiale informativo funzioni correttamente. & RF-OB-142 & NI \\
 \hline
 \rowcolor{gray!20}
-T-139-S & Verificare che il sistema gestisca errori nel caricamento delle normative. & RF-OB-77 & NI \\
+T-194-S & Verificare che il sistema mostri all'\term{Utente} la spiegazione della differenza tra le modalità "per me" e "per altri". & RF-DE-1 & NI \\
 \hline
 \rowcolor{white}
-T-140-S & Verificare che il sistema mostri un messaggio di errore appropriato nel caso di errori nel caricamento delle normative. & RF-OB-77 & NI \\
+T-195-S & Verificare che il sistema mostri all'\term{Utente} una breve descrizione del funzionamento della funzionalità di Dead Man's Switch. & RF-DE-2 & NI \\
 \hline
 \rowcolor{gray!20}
-T-141-S & Verificare che l'accesso alla sezione del materiale informativo avvenga correttamente. & RF-OB-78 & NI \\
+T-196-S & Verificare che l'\term{Utente} possa inserire più contenuti multimediali con una singola azione all'interno di una nota del diario criptato. & RF-DE-3 & NI \\
 \hline
 \rowcolor{white}
-T-142-S & Verificare che la lista degli articoli e video educativi venga visualizzata correttamente. & RF-OB-78 & NI \\
+T-197-S & Verificare che l'\term{Utente} possa allegare più immagini con una singola azione all'interno di una nota del diario criptato. & RF-DE-4 & NI \\
 \hline
 \rowcolor{gray!20}
-T-143-S & Verificare che il sistema mostri titolo e formato del materiale informativo. & RF-OB-79 & NI \\
+T-198-S & Verificare che l'\term{Utente} possa inserire più tracce audio con una singola azione all'interno di una nota del diario criptato. & RF-DE-5 & NI \\
 \hline
 \rowcolor{white}
-T-144-S & Verificare che il dettaglio di un articolo informativo si apra correttamente. & RF-OB-80 & NI \\
+T-199-S & Verificare che l'\term{Utente} possa inserire più contenuti multimediali con una singola azione all'interno di una nota del diario fittizio. & RF-DE-6 & NI \\
 \hline
 \rowcolor{gray!20}
-T-145-S & Verificare che la riproduzione dei video educativi funzioni correttamente. & RF-OB-80 & NI \\
+T-200-S & Verificare che l'\term{Utente} possa allegare più immagini con una singola azione all'interno di una nota del diario fittizio. & RF-DE-7 & NI \\
 \hline
 \rowcolor{white}
-T-146-S & Verificare che il download del materiale informativo funzioni correttamente. & RF-OB-80 & NI \\
+T-201-S & Verificare che l'\term{Utente} possa inserire più tracce audio con una singola azione all'interno di una nota del diario fittizio. & RF-DE-8 & NI \\
 \hline
 \rowcolor{gray!20}
-T-147-S & Verificare che il sistema mostri un errore appropriato se il caricamento del materiale fallisce. & RF-OB-81 & NI \\
+T-202-S & Verificare che l'\term{Utente} possa riprodurre le tracce audio inserite in precedenza all'interno del diario criptato. & RF-DE-9 & NI \\
 \hline
 \rowcolor{white}
-T-148-S & Verificare che l'accesso alla mappa dei luoghi sicuri avvenga correttamente. & RF-OB-82 & NI \\
+T-203-S & Verificare che l'\term{Utente} possa riprodurre le tracce audio inserite in precedenza all'interno del diario fittizio. & RF-DE-10 & NI \\
 \hline
 \rowcolor{gray!20}
-T-149-S & Verificare che la posizione corrente dell'\term{Utente} venga visualizzata correttamente sulla mappa. & RF-OB-82 & NI \\
+T-204-S & Verificare che il sistema indichi visivamente all'\term{Utente} che il messaggio in risposta del chatbot è in fase di caricamento. & RF-DE-11 & NI \\
 \hline
 \rowcolor{white}
-T-150-S & Verificare che i marcatori dei luoghi sicuri vengano visualizzati correttamente sulla mappa. & RF-OB-82 & NI \\
+T-205-S & Verificare che il chatbot utilizzi correttamente i contenuti del diario criptato per personalizzare le proprie risposte. & RF-DE-12 & NI \\
 \hline
 \rowcolor{gray!20}
-T-151-S & Verificare che cliccando su un marcatore vengano mostrati i dettagli del luogo sicuro. & RF-OB-82 & NI \\
+T-206-S & Verificare che il sistema mostri all'\term{Utente} la spiegazione relativa al contesto conversazionale "Detective delle Relazioni". & RF-DE-13 & NI \\
 \hline
 \rowcolor{white}
-T-152-S & Verificare che l'indirizzo del luogo sicuro sia visibile e corretto nei dettagli. & RF-OB-82 & NI \\
+T-207-S & Verificare che il sistema mostri all'\term{Utente} la spiegazione relativa al contesto conversazionale "Specchio Intelligente". & RF-DE-14 & NI \\
 \hline
 \rowcolor{gray!20}
-T-153-S & Verificare che la mappa si ricarichi correttamente al variare della connessione o della posizione. & RF-OB-82 & NI \\
+T-208-S & Verificare che l'\term{Utente} possa comporre automaticamente il numero di un contatto d'emergenza tramite l'apposita voce. & RF-DE-15 & NI \\
 \hline
 \rowcolor{white}
-T-154-S & Verificare che la posizione dell'\term{Utente} si aggiorni in tempo reale sulla mappa. & RF-OB-82 & NI \\
+T-209-S & Verificare che l'\term{Utente} possa impostare il timer di prima inattività per la funzionalità di Dead Man's Switch. & RF-OP-1 & NI \\
 \hline
 \rowcolor{gray!20}
-T-155-S & Verificare che il sistema gestisca correttamente la disattivazione del GPS. & RF-OB-82 & NI \\
+T-210-S & Verificare che l'\term{Utente} possa impostare il timer di seconda inattività per la funzionalità di Dead Man's Switch. & RF-OP-2 & NI \\
 \hline
 \rowcolor{white}
-T-156-S & Verificare che gli orari di apertura del luogo sicuro vengano visualizzati correttamente. & RF-OB-82 & NI \\
+T-211-S & Verificare che il sistema invii automaticamente un SMS ai numeri di telefono dei contatti fidati all'invio del segnale SOS. & RF-OP-3 & NI \\
 \hline
 \rowcolor{gray!20}
-T-157-S & Verificare che i contatti telefonici del luogo sicuro siano visibili e corretti. & RF-OB-82 & NI \\
+T-212-S & Verificare che il sistema indichi visivamente all'\term{Utente} se le risorse consultate sono autorevoli e verificate. & RF-OP-4 & NI \\
 \hline
 \rowcolor{white}
-T-158-S & Verificare che il sistema apra correttamente l'applicazione di navigazione esterna per le indicazioni. & RF-OB-83 & NI \\
+T-213-S & Verificare che il sistema metta a disposizione dell'\term{Utente} la consultazione di leggi estere. & RF-OP-5 & NI \\
 \hline
 \rowcolor{gray!20}
-T-159-S & Verificare che venga mostrato un errore appropriato se l'apertura della mappa esterna fallisce. & RF-OB-84 & NI \\
+T-214-S & Verificare che il sistema mostri leggi aggiornate, giuridicamente valide e complete. & RF-OP-6 & NI \\
+\hline
+\rowcolor{white}
+T-215-S & Verificare che il sistema indichi visivamente all'\term{Utente} se i luoghi sicuri visualizzati nella mappa sono autorevoli e verificati. & RF-OP-7 & NI \\
 \hline
 \end{longtable}
-
-\clearpage
 
 
 \subsection{Test Di Accettazione}
@@ -929,55 +1099,81 @@ T-159-S & Verificare che venga mostrato un errore appropriato se l'apertura dell
 \hline
 \caption{Tabella dei \term{Test Di Accettazione}} \\
 \endlastfoot
-\rowcolor{white}
-T-1-A & Verificare il completamento o il salto del \term{Walkthrough} Interattivo iniziale. & NI \\
-\hline
+
 \rowcolor{gray!20}
-T-2-A & Verificare la creazione e gestione del profilo \term{Utente}. & NI \\
+T-1-A & Verificare la creazione e gestione del profilo \term{Utente}. & NI \\
 \hline
 \rowcolor{white}
-T-3-A & Verificare il flusso completo di gestione dei contatti fidati (aggiunta, modifica, visualizzazione, \term{Validazione} ed errori). & NI \\
+T-2-A & Verificare il flusso completo di gestione dei contatti fidati (aggiunta, modifica, visualizzazione, \term{Validazione} ed errori). & NI \\
 \hline
 \rowcolor{gray!20}
-T-4-A & Verificare la configurazione completa delle funzionalità di sicurezza (timer inattività e personalizzazione messaggi di avviso). & NI \\
+T-3-A & Verificare la configurazione completa delle funzionalità di sicurezza (timer inattività e personalizzazione messaggi di avviso). & NI \\
 \hline
 \rowcolor{white}
-T-5-A & Verificare il \term{Ciclo Di Vita} della funzionalità Dead Man's Switch (attivazione, disattivazione, countdown e trigger dei messaggi). & NI \\
+T-4-A & Verificare il \term{Ciclo Di Vita} della funzionalità Dead Man's Switch (attivazione, disattivazione, countdown e trigger dei messaggi). & NI \\
 \hline
 \rowcolor{gray!20}
-T-6-A & Verificare l'accesso e la gestione della sicurezza del diario (impostazione password diario fittizio e criptato). & NI \\
+T-5-A & Verificare l'accesso e la gestione della sicurezza del diario (impostazione password diario fittizio e criptato). & NI \\
 \hline
 \rowcolor{white}
-T-7-A & Verificare le operazioni CRUD (Create, Read, Update, Delete) sulle note del diario, inclusi allegati multimediali. & NI \\
+T-6-A & Verificare le operazioni CRUD (Create, Read, Update, Delete) sulle note del diario, inclusi allegati multimediali. & NI \\
 \hline
 \rowcolor{gray!20}
-T-8-A & Verificare l'attivazione e l'esecuzione corretta della procedura di emergenza (SOS immediato). & NI \\
+T-7-A & Verificare l'attivazione e l'esecuzione corretta della procedura di emergenza (SOS immediato). & NI \\
 \hline
 \rowcolor{white}
-T-9-A & Verificare il flusso completo di interazione con il Chatbot e la gestione del cambio contesto AI (Detective, Specchio). & NI \\
+T-8-A & Verificare il flusso completo di interazione con il Chatbot e la gestione del cambio contesto AI (Detective, Specchio). & NI \\
 \hline
 \rowcolor{gray!20}
-T-10-A & Verificare la gestione della cronologia chat (visualizzazione lista, dettaglio conversazione). & NI \\
+T-9-A & Verificare la gestione della cronologia chat (visualizzazione lista, dettaglio conversazione). & NI \\
 \hline
 \rowcolor{white}
-T-11-A & Verificare il \term{Processo} di eliminazione sicura di una chat (richiesta, conferma, annullamento). & NI \\
+T-10-A & Verificare il \term{Processo} di eliminazione sicura di una chat (richiesta, conferma, annullamento). & NI \\
 \hline
 \rowcolor{gray!20}
-T-12-A & Verificare l'accesso e la consultazione delle risorse esterne (Community, Numeri di Emergenza). & NI \\
+T-11-A & Verificare l'accesso e la consultazione delle risorse esterne (Community, Numeri di Emergenza). & NI \\
 \hline
 \rowcolor{white}
-T-13-A & Verificare la consultazione del materiale informativo e giuridico (Leggi, Normative, Guide). & NI \\
+T-12-A & Verificare la consultazione del materiale informativo e giuridico (Leggi, Normative, Guide). & NI \\
 \hline
 \rowcolor{gray!20}
-T-14-A & Verificare la funzionalità di localizzazione e navigazione verso i Luoghi Sicuri. & NI \\
+T-13-A & Verificare la funzionalità di localizzazione e navigazione verso i Luoghi Sicuri. & NI \\
 \hline
 \rowcolor{white}
-T-15-A & Verificare il comportamento del sistema in condizioni di errore (assenza rete, timeout API, dati non disponibili). & NI \\
+T-14-A & Verificare il comportamento del sistema in condizioni di errore (assenza rete, timeout API, dati non disponibili). & NI \\
 \hline
 \rowcolor{gray!20}
-T-16-A & Verificare la consistenza dei dati e la persistenza delle informazioni attraverso sessioni \term{Utente} multiple. & NI \\
+T-15-A & Verificare la consistenza dei dati e la persistenza delle informazioni attraverso sessioni \term{Utente} multiple. & NI \\
 \hline
 \end{longtable}
+
+\subsection{Tracciamento dei Test di Sistema} \label{subsection:tracciamento_test_sistema}
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\arrayrulecolor{black}
+\rowcolors{2}{gray!20}{white}
+
+\begin{longtable}{|>{\centering\arraybackslash}p{5cm}|>{\centering\arraybackslash}p{9cm}|}
+
+\hline
+\rowcolor{gray!60}
+\textbf{Codice Test} & \textbf{Codice Requisito} \\
+\hline
+\endfirsthead
+\caption[]{Tracciamento dei casi d'uso (continua)} \\
+\hline
+\rowcolor{gray!60}
+\textbf{Caso d'Uso} & \textbf{Requisiti} \\
+\hline
+\endhead
+
+\hyperref[X]{X} & X \\
+\hline
+
+\caption{Tracciamento dei casi d'uso} \label{tab:tracciamento_uc} \\
+\end{longtable}
+\end{center}
+
 
 \section{Cruscotto di valutazione della qualità}\label{sec:cruscotto_valutazione}
 \subsection{MPC02: Planned Value e MPC04: Earned Value totali}
