@@ -1250,9 +1250,28 @@ e gravità dei bug rilevati dall'analisi statica. Fornisce un indicatore immedia
 del software dal punto di vista dell'affidabilità.
 \end{itemize}
 
+\paragraph{Maintainability Rating}
+\begin{itemize}
+\item \textbf{Codice:} \texttt{M-PD5}
+\item \textbf{Formula:} $DR = \dfrac{\text{Technical Debt}}{\text{cost\_per\_line} 
+\times NCLOC} \cdot 100$, assegnata automaticamente da SonarQube secondo la scala:
+\begin{itemize}
+    \item \textbf{A} $\rightarrow$ $0\% \leq DR \leq 5\%$
+    \item \textbf{B} $\rightarrow$ $5\% \leq DR < 10\%$
+    \item \textbf{C} $\rightarrow$ $10\% \leq DR < 20\%$
+    \item \textbf{D} $\rightarrow$ $20\% \leq DR < 50\%$
+    \item \textbf{E} $\rightarrow$ $DR \geq 50\%$
+\end{itemize}
+\item \textbf{Descrizione:} misura la manutenibilità del codice tramite un rating, calcolato a partire dal 
+\textit{Debt Ratio} ($DR$), ovvero il rapporto tra il \textit{Technical Debt} 
+(stima in minuti del costo per correggere tutti i problemi di manutenibilità 
+rilevati) e il costo stimato per sviluppare l'intero codice, dove il costo per 
+linea è predefinito a 30 minuti \cite{sonarqube-metrics}.
+\end{itemize}
+
 \paragraph{Cyclomatic Complexity (CYC)}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PD5}
+    \item \textbf{Codice:} \texttt{M-PD6}
     \item \textbf{Formula:} $CC = 1 + \# \text{rami condizionali}$
     \item \textbf{Descrizione:} misura il numero di percorsi linearmente indipendenti 
 nel flusso di controllo del codice. Il valore viene calcolato a livello di funzione 
@@ -1262,14 +1281,14 @@ generando un nuovo ramo condizionale.
 
 \paragraph{Length of code}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PD6}
+    \item \textbf{Codice:} \texttt{M-PD7}
     \item \textbf{Formula:} $\text{\# di linee di codice per una componente software}$
     \item \textbf{Descrizione:} misura la dimensione di un componente software. Più è grande una componente software maggiore sarà la possibilità di sviluppare errori.
 \end{itemize}
 
 \paragraph{Cognitive Complexity (COC)}
 \begin{itemize}
-\item \textbf{Codice:} \texttt{M-PD7}
+\item \textbf{Codice:} \texttt{M-PD8}
 \item \textbf{Formula:} $COC = \sum_{i=1}^{n} w_i$
 \item \textbf{Descrizione:} misura quanto è difficile comprendere il flusso di controllo 
 del codice. Penalizza in modo progressivo l'annidamento delle strutture condizionali 
@@ -1277,25 +1296,41 @@ del codice. Penalizza in modo progressivo l'annidamento delle strutture condizio
 \end{itemize}
 
 \subsubsection{Metriche dinamiche}
+\paragraph{Code Coverage}
+\begin{itemize}
+\item \textbf{Codice:} \texttt{M-PD9}
+\item \textbf{Formula:} 
+$Code Coverage = \dfrac{CT + LC}{B + EL} \cdot 100$
+\begin{itemize}
+    \item \textbf{$CT$} = numero di condizioni valutate come vere almeno una volta
+    \item \textbf{$LC$} = linee coperte dai test 
+    ($LC = \#\ \text{linee eseguibili} - \#\ \text{linee non coperte}$)
+    \item \textbf{$B$} = numero totale di condizioni
+    \item \textbf{$EL$} = numero totale di linee eseguibili
+\end{itemize}
+\item \textbf{Descrizione:} fornisce una stima accurata di quanta parte 
+del codice è stata effettivamente verificata dai test.
+\end{itemize}
+
 \paragraph{Defect Leakeage}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PD8}
+    \item \textbf{Codice:} \texttt{M-PD10}
     \item \textbf{Formula:} $\frac{\text{\# difetti dopo il rilascio}}{\text{\# difetti trovati durante fase di test}}*100$
     \item \textbf{Descrizione:} Tiene traccia di quanti difetti vengono trasferiti in produzione dopo i test.
 \end{itemize}
 
 \paragraph{Defect Removal Efficiency (DRE)}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PD9}
+    \item \textbf{Codice:} \texttt{M-PD11}
         \item \textbf{Formula:} $DRE=\frac{\text{difetti trovati prima del rilascio}}{\text{difetti prima del rilascio + difetti dopo}}*100$
     \item \textbf{Descrizione:} mostra la percentuale di difetti rilevati e rimossi prima del rilascio. Aiuta a misurare l'efficacia del \term{Processo} di accertamento della qualità. 
 \end{itemize}
 
-\paragraph{Unit Test Success Density}
+\paragraph{Unit Test Success Density (UTSD)}
 \begin{itemize}
-\item \textbf{Codice:} \texttt{M-PD10}
-\item \textbf{Formula:} $UTSD = \dfrac{\#\ \text{test} - (\#\ \text{errori} + 
-\#\ \text{fallimenti})}{\#\ \text{test}} \cdot 100$
+\item \textbf{Codice:} \texttt{M-PD12}
+\item \textbf{Formula:} $UTSD = \dfrac{\#\ \text{test} - (\#\ \text{test errors} + 
+\#\ \text{test failures})}{\#\ \text{test}} \cdot 100$
 \item \textbf{Descrizione:} misura la percentuale di test unitari eseguiti con 
 successo. Vengono considerati come esito negativo sia i test che terminano con 
 un errore (\textit{test errors}), ovvero fallimenti attesi dalla logica del test, 
