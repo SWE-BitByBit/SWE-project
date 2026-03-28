@@ -1241,10 +1241,10 @@ Le metriche di prodotto adottate nel progetto sono suddivise nelle seguenti due 
     \item \textbf{Descrizione:} misura quanti difetti vengono trovati in 1000 linee di codice (\textbf{KLOC}, \textbf{Kilo Lines Of Code}). Migliora la qualità del codice e la sua mantenibilità.
 \end{itemize}
 
-\paragraph{Cyclomatic Complexity}
+\paragraph{Cyclomatic Complexity (CYC)}
 \begin{itemize}
     \item \textbf{Codice:} \texttt{M-PD5}
-    \item \textbf{Formula:} $E - N + 2P$
+    \item \textbf{Formula:} $CC = E - N + 2P$
     \item \textbf{Descrizione:} misura la complessità di un programma contandone i percorsi linearmente indipendenti. Fornisce un indice sulla complessità logica del codice.
     \begin{itemize}
         \item \textbf{$E$} = numero di archi nel grafo
@@ -1260,11 +1260,13 @@ Le metriche di prodotto adottate nel progetto sono suddivise nelle seguenti due 
     \item \textbf{Descrizione:} misura la dimensione di un componente software. Più è grande una componente software maggiore sarà la possibilità di sviluppare errori.
 \end{itemize}
 
-\paragraph{Depth of Conditional Nesting (DCN)}
+\paragraph{Cognitive Complexity (COC)}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PD7}
-    \item \textbf{Formula:} $DCN=\max(\text{\# di strutture annidate})$
-    \item \textbf{Descrizione:} misura la profondità massima di annidamento delle strutture condizionali (\texttt{if}, \texttt{else if}, \texttt{switch}) presenti nel codice. Un maggiore annidamento rende difficile la comprensione del codice.
+\item \textbf{Codice:} \texttt{M-PD7}
+\item \textbf{Formula:} $COC = \sum_{i=1}^{n} w_i$
+\item \textbf{Descrizione:} misura quanto è difficile comprendere il flusso di controllo 
+del codice. Penalizza in modo progressivo l'annidamento delle strutture condizionali 
+(\texttt{if}, \texttt{else}, \texttt{switch}, cicli): ogni livello aggiuntivo di annidamento aumenta il peso $w_i$ del costrutto.
 \end{itemize}
 
 \subsubsection{Metriche dinamiche}
