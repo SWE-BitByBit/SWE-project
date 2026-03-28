@@ -1,0 +1,393 @@
+% template presente
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{tabularx}
+\usepackage{tcolorbox}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{hyperref}
+\usepackage{xurl}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    urlcolor=blue,     
+}
+\usepackage{graphicx}
+% Percorsi di ricerca per le immagini
+\graphicspath{{resources/}{../resources/}{../../resources/}{../../../resources/}{../../../../resources/}}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{longtable}
+\usepackage{colortbl}
+\usepackage{fancyhdr}
+\usepackage{float} 
+\usepackage{enumitem} 
+\usepackage{titlesec}
+\usepackage{amssymb} 
+\usepackage{titlesec}
+\usepackage[T1]{fontenc}
+
+\setlength{\headheight}{30pt}
+
+\geometry{margin=2.5cm}
+
+% ===== Variabile per il titolo del documento =====
+\newcommand{\documenttitle}{Specifica Tecnica} 
+
+\setlength{\parindent}{0pt}
+\setstretch{1.2}
+
+% ===== Stile intestazione =====
+\setlength{\headheight}{33pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{gray}{\documenttitle\ - BitByBit}}
+\fancyhead[R]{\includegraphics[height=1cm]{solo_logo.jpg}}
+\fancyfoot[C]{\thepage}
+
+% ===== Formattazione sezioni =====
+\titleformat{\section}{\Large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.5em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection}{0.5em}{}
+
+\newcommand{\term}[1]{\textbf{#1}$^\mathbf{G}$}
+
+\newcommand{\ignoreglossary}{}
+
+\begin{document}
+
+% ====== FRONT PAGE ======
+
+\vspace*{5cm}
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logoUni.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\color{red}\LARGE \textbf{Università degli Studi di Padova}}\\[0.3cm]
+        {\large
+        Laurea: Informatica\\
+        Corso: Ingegneria del Software\\
+        Anno Accademico: 2025/26
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1cm}
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logo.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\LARGE \textbf{Gruppo 17}}\\[0.3cm]
+        {\large
+        Nome: BitByBit\\
+        Email: swe.bitbybit@gmail.com
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1.5cm}
+
+\begin{center}
+    {\LARGE \textbf{\documenttitle}}
+\end{center}
+
+\vspace*{\fill}
+
+% ======= INFO GENERALI =======
+\renewcommand{\arraystretch}{1.3}
+
+\begin{tcolorbox}
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\textbf{Stato:} & In lavorazione\\
+\textbf{Versione:} & 0.1.0 \\
+\textbf{Responsabile:} & Gabriele Scaggiante \\
+\textbf{Redattori:} & 
+\begin{tabular}[t]{@{}l@{}}
+Gabriele Scaggiante\\
+\end{tabular} \\
+\textbf{Verificatori:} & 
+\begin{tabular}[t]{@{}l@{}}
+Riccardo Manisi\\
+\end{tabular} \\
+\textbf{Destinatari:} &
+\begin{tabular}[t]{@{}l@{}}
+Miriade srl\\
+Prof. Tullio Vardanega\\
+Prof. Riccardo Cardin\\
+Gruppo BitByBit\\
+\end{tabular} \\
+\end{tabularx}
+\end{tcolorbox}
+
+\vspace*{\fill} 
+
+% ===== REGISTRO MODIFICHE =======
+\clearpage
+\section*{Registro delle modifiche}
+\begingroup
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2} 
+\arrayrulecolor{black}
+\rowcolors{1}{gray!20}{white}
+\begin{longtable}{|c|c|>{\raggedright\arraybackslash}p{0.21\linewidth}|>{\raggedright\arraybackslash}p{0.23\linewidth}|c|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+\hline
+0.1.0 & 2026-03-30 & Gabriele Scaggiante & Creazione del documento. Scrittura dell'introduzione e delle tecnologie utilizzate. & Riccardo Manisi \\
+\hline
+
+\end{longtable}
+\end{center}
+\endgroup
+
+\clearpage
+
+% Indice dei contenuti
+\tableofcontents
+\thispagestyle{empty}
+
+\clearpage
+
+% Indice delle tabelle
+\listoftables
+
+% Indice delle figure
+\listoffigures
+
+\clearpage
+
+% ======= INTRODUZIONE ========
+
+\section{Introduzione}
+\subsection{Scopo del documento} \label{sec:scopo_documento}
+Il presente documento ha lo scopo di fornire una descrizione completa, formale e strutturata del prodotto software, delineandone in modo rigoroso le caratteristiche tecniche e architetturali.
+
+La Specifica Tecnica rappresenta il riferimento principale per tutte le attività di progettazione, sviluppo, verifica e manutenzione del sistema, assicurando coerenza rispetto ai requisiti definiti nel documento di Analisi dei Requisiti e alle scelte progettuali adottate.
+
+In particolare, il documento si propone di:
+
+\begin{itemize}
+    \item Definire l'architettura complessiva del sistema, descrivendo le componenti software, le loro responsabilità e le modalità di interazione attraverso appositi diagrammi
+    
+    \item Specificare i moduli funzionali e le interfacce esposte, includendo i contratti di comunicazione e i formati dei dati scambiati
+    
+    \item Descrivere l'architettura di deployment, evidenziando la distribuzione delle componenti nei diversi ambienti di esecuzione e le relative dipendenze infrastrutturali
+    
+    \item Documentare le tecnologie, i linguaggi di programmazione, i framework e gli strumenti adottati, motivando le scelte effettuate in relazione ai requisiti di progetto e al Capitolato
+    
+    \item Illustrare i principali design pattern e le soluzioni architetturali utilizzate, con particolare attenzione agli aspetti di scalabilità, manutenibilità e sicurezza
+        
+    \item Fornire indicazioni sui metodi di testing e di validazione
+    
+    \item Supportare le attività di evoluzione e manutenzione del software, garantendo una base documentale chiara e coerente.
+\end{itemize}
+
+% ====== RIFERIMENTI ======
+
+\subsection{Riferimenti} \label{sec:riferimenti}
+
+
+% ====== DEFINIZIONI, ACRINIMI E ABBREVIAZIONI ======
+
+Al fine di evitare ambiguità relative al linguaggio e ai termini utilizzati all'interno dei documenti formali, viene allegato il \href{https://swe-bitbybit.github.io/SWE-docs/docs/RTB/documenti_interni/Glossario.pdf}{\textit{Glossario}}.
+I termini tecnici, gli acronimi e le parole con significato specifico all'interno del progetto sono contrassegnati da una lettera 'G' in apice (es. \textbf{Agile\textsuperscript{G}}) e sono descritti in dettaglio nel documento apposito.
+
+\subsubsection{Riferimenti normativi}\label{sec:riferimenti_normativi}
+\begin{itemize}
+\item \textbf{\term{Capitolato} d'appalto C4: \emph{L'app che Protegge e Trasforma}}\\
+Parti consultate: documento completo\\
+Versione: 1.0\\
+Ultimo accesso: \textit{2026-01-14}\\
+\url{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C4.pdf}
+
+\pagebreak %---Inserito perchè altrimenti il riferimento successivo viene tagliato in due
+
+\item \textbf{Norme di Progetto}\\
+Parti consultate: documento completo\\
+Versione: v.1.0.0\\
+Ultimo accesso: \textit{2026-02-09}\\
+\url{https://swe-bitbybit.github.io/SWE-docs/docs/RTB/documenti_interni/norme_di_progetto.pdf}
+\end{itemize}
+
+\subsubsection{Riferimenti informativi} \label{sec:riferimenti_informativi}
+\begin{itemize}
+    \item \textbf{Slide sulla Progettazione Software del Prof. Vardanega}\\
+        Parti consultate: documento completo\\
+        Versione: \textit{A.A.2025/2026}\\
+        Ultimo accesso: \textit{2026-03-30}\\
+        \url{https://www.math.unipd.it/~tullio/IS-1/2025/Dispense/T06.pdf}
+    \item \textbf{Materiale relativo alla parte pratica del corso di Ingegneria del Software}\\
+        Parti consultate: documento completo\\
+        Versione: \textit{A.A.2022/2023}\\
+        Ultimo accesso: \textit{2026-03-30}\\
+        \url{https://www.math.unipd.it/~rcardin/swea/2022/}
+    \item \textbf{\emph{\term{Repository} Github} del Prof. Cardin}\\
+        Ultimo accesso: \textit{2026-03-30}\\
+        \url{https://github.com/rcardin/swe-imdb}
+    \item \textbf{Guida Flutter sull'architettura di un'applicazione}\\
+        Ultimo accesso: \textit{2026-03-30}\\
+        \url{https://docs.flutter.dev/app-architecture/guide} 
+    \item \textbf{Glossario}\\
+        Parti consultate: documento completo\\
+        Versione: \textit{v.1.0.0}\\
+        Ultimo accesso: \textit{2026-02-27}\\
+        \url{https://swe-bitbybit.github.io/SWE-docs/docs/RTB/documenti_interni/Glossario.pdf}
+\end{itemize}
+
+\section{Tecnologie} \label{sec:tecnologie}
+Le tecnologie utilizzate sono state scelte trovando un punto d'incontro tra la necessità di garantire la sicurezza e la tutela dei dati personali degli utenti e il bisogno di realizzare un'architettura solida, modulare e facilmente estendibile. Di seguito sono riportate tutte le tecnologie adottate 
+\subsection{Framework} \label{subsec:framework}
+
+\subsubsection{Flutter}
+Flutter è un framework open-source sviluppato da Google per la creazione di applicazioni multi-piattaforma a partire da un unico codice sorgente. Consente di sviluppare interfacce per dispositivi mobili, web e desktop utilizzando il linguaggio Dart. Flutter si basa su un sistema di widget componibili, che possono rappresentare qualsiasi elemento dell’interfaccia utente. Flutter include un proprio motore grafico (Skia) che disegna direttamente i componenti a schermo, garantendo elevata coerenza visiva e prestazioni indipendenti dalla piattaforma sottostante. È il framework alla base dell'App Che Protegge e Trasforma, il che consente di poter generare build per iOS e Android da un unico codice sorgente, al fronte di un maggiore utilizzo di risorse rispetto alle soluzioni native.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 3.41.6
+    \item \textbf{Documentazione}: \url{https://docs.flutter.dev/}
+\end{itemize}
+
+\subsection{Linguaggi di programmazione} \label{subsec:linguaggi}
+
+\subsubsection{Dart}
+Dart è un linguaggio di programmazione sviluppato da Google, progettato per la realizzazione di applicazioni client moderne. È un linguaggio tipizzato (con supporto sia statico che dinamico) e orientato agli oggetti. Viene utilizzato principalmente in combinazione con Flutter, dove il codice Dart viene compilato  ahead-of-time in codice nativo per migliorare le prestazioni, oppure eseguito tramite compilazione just-in-time durante lo sviluppo. L'utilizzo di Flutter rende di fatto quasi obbligatoria l'adozione di Dart come linguaggio.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 3.11.4
+    \item \textbf{Documentazione}: \url{https://dart.dev/docs}
+\end{itemize}
+
+\subsubsection{Python}
+Python è un linguaggio di programmazione ad alto livello, interpretato e orientato agli oggetti, noto per la sua sintassi semplice e leggibile. Il codice Python viene eseguito da un interprete che traduce le istruzioni in bytecode, poi eseguito dalla macchina virtuale Python. Nel progetto è utilizzato lato backend per la scrittura delle funzioni AWS Lambda e per i test tramite Pytest.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 3.14.3
+    \item \textbf{Documentazione}: \url{https://docs.python.org/3/}
+\end{itemize}
+
+\subsection{Servizi AWS} \label{subsec:aws}
+
+\subsubsection{Lambda}
+AWS Lambda è un servizio serverless che consente di eseguire codice senza gestire direttamente server o infrastruttura. Le funzioni vengono attivate in risposta a eventi e scalano automaticamente in base al carico. Nel progetto è utilizzato per implementare la logica backend, eseguendo funzioni scritte in Python invocate tramite API Gateway.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: Runtime Python 3.14
+    \item \textbf{Documentazione}: \url{https://docs.aws.amazon.com/lambda/}
+\end{itemize}
+
+\subsubsection{API Gateway}
+AWS API Gateway è un servizio che permette di creare, pubblicare e gestire API REST e HTTP, fungendo da punto di ingresso per le richieste client. Gestisce autenticazione, routing e integrazione con altri servizi AWS. Nel progetto è utilizzato per esporre endpoint HTTP che invocano le funzioni Lambda.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: HTTP API (v2)
+    \item \textbf{Documentazione}: \url{https://docs.aws.amazon.com/apigateway/}
+\end{itemize}
+
+\subsubsection{DynamoDB}
+Amazon DynamoDB è un database NoSQL completamente gestito, progettato per offrire alte prestazioni e scalabilità automatica. I dati sono memorizzati in tabelle con chiavi primarie e accessibili con bassa latenza. Nel progetto è utilizzato per memorizzare dati strutturati come le note testuali del diario criptato e le chat con il chatbot.
+\begin{itemize}
+    \item \textbf{Documentazione}: \url{https://docs.aws.amazon.com/dynamodb/}
+\end{itemize}
+
+\subsubsection{S3}
+Amazon S3 (Simple Storage Service) è un servizio di storage a oggetti che consente di archiviare e recuperare dati in modo scalabile e sicuro. I file sono organizzati in bucket e accessibili tramite API. Nel progetto è utilizzato per memorizzare contenuti multimediali come immagini e file audio.
+\begin{itemize}
+    \item \textbf{Documentazione}: \url{https://docs.aws.amazon.com/s3/}
+\end{itemize}
+
+\subsubsection{Cognito}
+Amazon Cognito è un servizio di gestione delle identità che consente autenticazione, autorizzazione e gestione degli utenti. Supporta integrazione con provider esterni come Google. Nel progetto è utilizzato per gestire l’autenticazione degli utenti tramite account Google e per il controllo degli accessi.
+\begin{itemize}
+    \item \textbf{Documentazione}: \url{https://docs.aws.amazon.com/cognito/}
+\end{itemize}
+
+\subsubsection{Bedrock}
+Amazon Bedrock è un servizio che consente di utilizzare modelli di intelligenza artificiale generativa tramite API, senza gestire direttamente l’infrastruttura sottostante. Permette l’accesso a diversi modelli foundation per task come generazione di testo. Nel progetto è utilizzato per implementare la funzionalità di chatbot.
+\begin{itemize}
+    \item \textbf{Documentazione}: \url{https://docs.aws.amazon.com/bedrock/}
+\end{itemize}
+
+\subsubsection{SES}
+Amazon SES (Simple Email Service) è un servizio per l’invio e la ricezione di email in modo scalabile e affidabile. Supporta integrazione via API e SMTP. Nel progetto è utilizzato per inviare email ai contatti fidati degli utenti.
+\begin{itemize}
+    \item \textbf{Documentazione}: \url{https://docs.aws.amazon.com/ses/}
+\end{itemize}
+
+\subsubsection{CloudWatch}
+Amazon CloudWatch è un servizio di monitoraggio e osservabilità che raccoglie metriche, log ed eventi dai servizi AWS. Consente analisi, visualizzazione e configurazione di allarmi. Nel progetto è utilizzato per la raccolta e l’analisi dei log generati dalle funzioni Lambda.
+\begin{itemize}
+    \item \textbf{Documentazione}: \url{https://docs.aws.amazon.com/cloudwatch/}
+\end{itemize}
+
+\subsection{Librerie} \label{subsec:librerie}
+
+\subsubsection{http.dart}
+http è una libreria per il linguaggio Dart che consente di effettuare richieste HTTP in modo semplice e asincrono. Fornisce metodi per eseguire operazioni come GET, POST, PUT e DELETE, gestendo automaticamente la serializzazione delle richieste e la ricezione delle risposte. È progettata per essere leggera e facilmente integrabile in applicazioni client.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 1.6.0
+    \item \textbf{Documentazione}: \url{https://pub.dev/packages/http}
+\end{itemize}
+
+\subsubsection{image\_picker.dart}
+\texttt{image\_picker} è una libreria Flutter che permette di accedere alla fotocamera e alla galleria del dispositivo per selezionare o acquisire immagini e video. Fornisce un’interfaccia unificata tra piattaforme diverse, gestendo le differenze tra iOS e Android.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 1.2.1
+    \item \textbf{Documentazione}: \url{https://pub.dev/packages/image_picker}
+\end{itemize}
+
+\subsubsection{path\_provider.dart}
+\texttt{path\_provider} è una libreria Flutter che consente di ottenere i percorsi delle directory del file system del dispositivo, come directory temporanee o documenti applicativi. Facilita l’accesso a percorsi corretti e compatibili tra piattaforme per la gestione dei file.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 2.1.5
+    \item \textbf{Documentazione}: \url{https://pub.dev/packages/path_provider}
+\end{itemize}
+
+\subsection{Analisi statica e dinamica} \label{subsec:analisi_statica_dinamica}
+
+\subsubsection{SonarQube}
+SonarQube è una piattaforma open-source per l’analisi continua della qualità del codice. Esegue analisi statica su diversi linguaggi di programmazione per individuare bug, vulnerabilità, code smells e problemi di copertura dei test. Il funzionamento si basa su scanner che analizzano il codice sorgente e inviano i risultati a un server centrale, dove vengono aggregati e visualizzati tramite dashboard e report.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 26.3.0
+    \item \textbf{Documentazione}: \url{https://docs.sonarsource.com/sonarqube/}
+\end{itemize}
+
+\subsection{Testing} \label{subsec:testing}
+
+\subsubsection{Pytest}
+Pytest è un framework di testing per il linguaggio Python che consente di scrivere test in modo semplice e scalabile. Supporta test funzionali, unitari e di integrazione, offrendo funzionalità come fixture, parametrizzazione dei test e scoperta automatica dei test. L’esecuzione avviene tramite un runner che individua i file di test e ne esegue le funzioni.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 9.0.2
+    \item \textbf{Documentazione}: \url{https://docs.pytest.org/}
+\end{itemize}
+
+\subsubsection{Moto}
+Moto è una libreria Python che consente di mockare i servizi AWS durante i test. Simula il comportamento delle API AWS, permettendo di testare codice che interagisce con servizi cloud senza effettuare chiamate reali. Funziona intercettando le richieste e restituendo risposte simulate coerenti con quelle dei servizi AWS.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 5.1.23
+    \item \textbf{Documentazione}: \url{https://docs.getmoto.org/}
+\end{itemize}
+
+\subsection{Altro} \label{subsec:altro}
+
+\subsubsection{Ollama}
+Ollama è una piattaforma che consente di eseguire e gestire LLM in locale tramite una semplice interfaccia. Permette il download, l’esecuzione e l’interazione con modelli di intelligenza artificiale direttamente in ambiente locale, senza necessità di servizi cloud esterni. Il funzionamento si basa su un runtime che gestisce i modelli e espone endpoint per inferenza.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: Ollama 0.18.3
+    \item \textbf{Documentazione}: \url{https://ollama.com/docs}
+\end{itemize}
+
+\section{Architettura logica} \label{subsec:architettura_logica}
+
+\section{Architettura di deployment} \label{subsec:architettura_deployment}
+
+
+
+\end{document}
