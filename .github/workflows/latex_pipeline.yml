@@ -62,11 +62,13 @@ jobs:
         uses: actions/cache@v4
         with:
           path: |
-            src/**/*.aux
-            src/**/*.fls
-            src/**/*.fdb_latexmk
-            src/**/*.log
-          key: latex-${{ hashFiles('src/**/*.tex') }}
+            **/*.aux
+            **/*.fls
+            **/*.fdb_latexmk
+            **/*.log
+          key: latex-cache-v1
+          restore-keys: |
+            latex-cache-
 
       - name: Build all LaTeX files
         id: build
