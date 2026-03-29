@@ -62,13 +62,18 @@ jobs:
           fetch-depth: 0
 
       - name: Build all LaTeX files
+        id: build
+        continue-on-error: true
         run: |
           python .github/scripts/build_pdfs.py
-        continue-on-error: true
 
       - name: Show LaTeX logs on failure
-        if: failure()
+        if: steps.build.outcome == 'failure'
         run: find . -name "*.log" | xargs tail -n 50
+
+      - name: Fail if build failed
+        if: steps.build.outcome == 'failure'
+        run: exit 1
 
       - name: Commit generated PDFs
         run: |
