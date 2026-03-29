@@ -64,6 +64,11 @@ jobs:
       - name: Build all LaTeX files
         run: |
           python .github/scripts/build_pdfs.py
+        continue-on-error: true
+
+      - name: Show LaTeX logs on failure
+        if: failure()
+        run: find . -name "*.log" | xargs tail -n 50
 
       - name: Commit generated PDFs
         run: |
