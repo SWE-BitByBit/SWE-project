@@ -58,6 +58,16 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
+      - name: Cache LaTeX intermediates
+        uses: actions/cache@v4
+        with:
+          path: |
+            src/**/*.aux
+            src/**/*.fls
+            src/**/*.fdb_latexmk
+            src/**/*.log
+          key: latex-${{ hashFiles('src/**/*.tex') }}
+
       - name: Build all LaTeX files
         id: build
         continue-on-error: true
