@@ -69,7 +69,13 @@ jobs:
 
       - name: Show LaTeX logs on failure
         if: steps.build.outcome == 'failure'
-        run: find . -name "*.log" | xargs tail -n 50
+        run: |
+          find . -name "*.log" | while read log; do
+            if grep -q "^!" "$log"; then
+              echo "=== ERRORE IN: $log ==="
+              grep -B 2 -A 5 "^!" "$log"
+            fi
+          done
 
       - name: Fail if build failed
         if: steps.build.outcome == 'failure'
