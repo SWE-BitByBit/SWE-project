@@ -36,7 +36,7 @@ def main():
                 "bash",
                 "-c",
                 f"cd '{tex_file.parent}' && "
-                f"latexmk -pdf -interaction=nonstopmode -halt-on-error "
+                f"latexmk -pdf -interaction=nonstopmode -halt-on-error -silent "
                 f"-outdir='{output_dir.resolve()}' '{tex_file.name}'"
             ]
         )
