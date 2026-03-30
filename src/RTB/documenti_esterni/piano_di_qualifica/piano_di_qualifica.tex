@@ -1,6 +1,7 @@
 % template presente
 \documentclass[a4paper,12pt]{article}
 
+\usepackage[table]{xcolor}
 \usepackage{tabularx}
 \usepackage{tcolorbox}
 \usepackage[utf8]{inputenc}
@@ -15,12 +16,10 @@
 \usepackage{graphicx}
 % Percorsi di ricerca per le immagini
 \graphicspath{{resources/}{../resources/}{../../resources/}{../../../resources/}{../../../../resources/}}
-\usepackage{xcolor}
 \usepackage{geometry}
 \usepackage{setspace}
 \usepackage{array}
 \usepackage{longtable}
-\usepackage{colortbl}
 \usepackage{fancyhdr}
 \usepackage{float} 
 \usepackage{enumitem} 
@@ -2020,7 +2019,7 @@ Il gruppo BitByBit identificherà i \term{Test Di Integrazione}, \term{Regressio
     \caption{Planned Value e Earned Value totali}
     \label{fig:Grafico MPC02 e MPC04}
 \end{figure}
-Il grafico mostra che Earned Value e Planned Value rientrano nei rispettivi range ottimi, quindi nel futuro si mirerà a portare entrambe a coincidere per raggiungere il valore ottimo.
+Il grafico mostra che Earned Value e Planned Value rientrano nei rispettivi intervalli accettabili, quindi nel futuro si mirerà a portare entrambe a coincidere per raggiungere il valore ottimo.
 
 \subsection{MPC03: Actual Cost, MPC07 Estimate at Completion e MPC08: Estimate to Complete}
 \begin{figure}[H]
@@ -2029,8 +2028,8 @@ Il grafico mostra che Earned Value e Planned Value rientrano nei rispettivi rang
     \caption{Actual Cost, Estimate at Completion e Estimate to Complete}
     \label{fig:Grafico MPC03, MPC07 e MPC08}
 \end{figure}
-Il grafico mostra dell'instabilità nei valori Estimate at Completion e Estimate to Complete in corrispondenza degli \term{Sprint} sovrapposti alla sessione di esami universitari.\\
-Il valore di Estimate at Completion risulta frequentemente inferiore al suo valore accettabile, pari al Budget at Completion - 15\%, tranne che durante lo \term{Sprint} 3. Questo è principalmente dovuto a una sovrastima iniziale del costo e della complessità di alcuni task, che ha portato a un consumo di ore inferiore al preventivato. Saranno effettuati dei ricalcoli preventivi più accurati nei prossimi \term{Sprint}.
+Il grafico mostra che l'Estimate at Completion è principalmente oltre il valore accettabile del Budget at Completion, ad eccezione per lo \term{Sprint} 5. La differenza in quest'ultimo è dovuta alle condizioni causate dalla sessione di esami che hanno portato a notevole differenza tra le ore stimate e le ore effettivamente impiegate durante lo \term{Sprint}.\\
+L'Estimate to Complete mostra un trend positivo tra lo \term{Sprint} 6 e 7 che si riflette positivamente sull'Estimate at Completion; sarà quindi necessario prendere misure atte a mantenere tale trend, in modo da riportare l'EAC dentro l'intervallo accettabile.
 
 \subsection{MPC06: Schedule Performance Index}
 \begin{figure}[H]
@@ -2048,7 +2047,8 @@ Il grafico mostra che nonostante le fluttuazioni, lo Schedule Performance Index 
     \caption{Cost Performance Index}
     \label{fig:Grafico MPC05}
 \end{figure}
-Il grafico mostra che l'indice Cost Performance Index è rimasto principalmente oltre il valore ottimo, e sempre al di sopra del valore accettabile eccetto nello \term{Sprint} 7. Il calo dell'indice nello \term{Sprint} 7 è dovuto all'insorgere di complessità impreviste durante la fase di integrazione del codice e alle operazioni di bug-fixing per la \term{Rtb}, che hanno richiesto un numero di ore maggiore rispetto all'Earned Value effettivamente prodotto. Questa perdita di efficienza andrà mitigata migliorando la pianificazione dei test e dividendo i task di consolidamento in unità più piccole.
+Il grafico mostra che l'indice Cost Performance Index ha prevalentemente avuto valori inferiori alla soglia minima accettabile, ad eccezione degli \term{Sprint} 1, 4 e 5 che sono entro o oltre l'intervallo accettabile.\\
+I valori negli \term{Sprint} 6 e 7, nonostante la non sufficienza, mostrano un trend positivo dell'indice che sarà necessario mantenere nelle fasi successive per fare in modo che rientri nella zona accettabile.
 
 \subsection{MPC11: Indice di Gulpease}
 \begin{figure}[H]

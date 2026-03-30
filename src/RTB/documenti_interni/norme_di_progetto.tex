@@ -1,6 +1,7 @@
 % template presente
 \documentclass[a4paper,12pt]{article}
 
+\usepackage[table]{xcolor}
 \usepackage{amsmath}
 \usepackage{tabularx}
 \usepackage{tcolorbox}
@@ -15,7 +16,6 @@
 }
 \usepackage{graphicx}
 \graphicspath{{resources/}{../resources/}{../../resources/}{../../../resources/}{../../../../resources/}}
-\usepackage{xcolor}
 \usepackage{geometry}
 \usepackage{setspace}
 \usepackage{colortbl}
@@ -229,7 +229,7 @@ Ferdinando Fracasso\\
 \section{Introduzione}
 \subsection{Scopo del documento}
 Il presente documento è volto a definire i processi del \term{Way Of Working} per il gruppo BitByBit che si impegna a mantenerlo per tutta la durata del progetto.
-Per la sua redazione è stato preso come riferimento lo Standard ISO/IEC 12007:1995 che identifica 3 tipologie di \term{Processo}:
+La sua redazione si ispira, a scopo puramente informativo, allo standard ISO/IEC 12207:1995, dal quale vengono riprese alcune classificazioni dei \term{Processo}, senza assumerlo come riferimento normativo. In particolare, lo standard individua tre tipologie di \term{Processo}:
 \begin{enumerate}
     \item \textbf{processi primari:} atti alla produzione di un prodotto software;
     \item \textbf{processi di supporto:} supportano altri processi come parte integrante e contribuiscono al successo e alla qualità del prodotto software;
@@ -1339,14 +1339,14 @@ Le metriche di prodotto adottate nel progetto sono suddivise nelle seguenti due 
 \paragraph{Estimate at Completion (EAC)}
 \begin{itemize}
     \item \textbf{Codice:} \texttt{M-PC7}
-    \item \textbf{Formula:} $EAC=\frac{\text{BAC}-\text{EV}}{\text{CPI}}$
+    \item \textbf{Formula:} $EAC=\text{ETC}+\text{AC}$
     \item \textbf{Descrizione:} stima il costo totale del progetto al completamento, assumendo che l’andamento futuro segua l’efficienza attuale. Viene confrontato con il Budget at Completion per individuare potenziali scostamenti.
 \end{itemize}
 
 \paragraph{Estimate to Complete (ETC)}
 \begin{itemize}
     \item \textbf{Codice:} \texttt{M-PC8}
-    \item \textbf{Formula:} $ETC=EAC-AC$
+    \item \textbf{Formula:} $ETC=\frac{\text{BAC}-\text{EV}}{\text{CPI}}$
     \item \textbf{Descrizione:} misura il costo previsto per completare il lavoro rimanente del progetto escludendo i costi già sostenuti.
 \end{itemize}
 
