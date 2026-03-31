@@ -30,7 +30,8 @@ def create_doc_link(file):
     return out
 
 def create_link_special(s):
-    filename = s.with_suffix("").name.capitalize().replace('_', ' ')
+    filename = s.with_suffix("").name.replace('_', ' ')
+    filename = filename[0].upper() + filename[1:]
     if(filename == 'Glossario'):
         filename = filename + get_file_vers(s)
     return '<h3>\n<a href="' + s.as_posix() + '" target="blank">' + filename + '</a>\n</h3>'
@@ -66,7 +67,7 @@ with open(Path('site_template.txt'), 'r') as temp:
 #Ottieni lista di file dai percorsi
 doc_candidatura = list(C_PATH_DOCS.rglob("*.pdf"))
 #rimuovi verbali da doc candidatura
-doc_candidatura = [f for f in doc_candidatura if f.exists and (not(fn.fnmatch(f.name,"*verbale*")) and f.name not in {"lettera_di_presentazione", "lettera_di_seconda_presentazione"})]
+doc_candidatura = [f for f in doc_candidatura if f.exists and (not(fn.fnmatch(f.name,"*verbale*")) and f.name not in {"lettera_di_presentazione.pdf", "lettera_di_seconda_presentazione.pdf"})]
 verb_esterni_candidatura = list(C_PATH_VERB_EXT.rglob("*.pdf"))
 verb_esterni_candidatura.sort(key=lambda f: f.name, reverse=True)
 verb_interni_candidatura = list(C_PATH_VERB_INT.rglob("*.pdf"))
@@ -76,7 +77,7 @@ esterni_rtb = list(RTB_PATH_ESTERNI.rglob("*.pdf"))
 interni_rtb = list(RTB_PATH_INTERNI.rglob("*.pdf"))
 
 #Togli glossario da doc rtb
-interni_rtb = [f for f in interni_rtb if f.exists() and f.name not in {"Glossario.pdf", "lettera_di_presentazione_PB"}]
+interni_rtb = [f for f in interni_rtb if f.exists() and f.name not in {"Glossario.pdf", "lettera_di_presentazione_RTB.pdf"}]
 verb_esterni_rtb = list(RTB_PATH_VERB_EXT.rglob("*.pdf"))
 verb_esterni_rtb.sort(key=lambda f: f.name, reverse=True)
 verb_interni_rtb = list(RTB_PATH_VERB_INT.rglob("*.pdf"))
@@ -88,15 +89,15 @@ esterni_pb = list(PB_PATH_ESTERNI.rglob("*.pdf"))
 interni_pb = list(PB_PATH_INTERNI.rglob("*.pdf"))
 
 #Togli glossario da doc pb
-interni_pb = [f for f in interni_pb if f.exists() and f.name not in {"Glossario.pdf", "lettera_di_presentazione_PB"}]
+interni_pb = [f for f in interni_pb if f.exists() and f.name not in {"Glossario.pdf", "lettera_di_presentazione_PB.pdf"}]
 verb_esterni_pb = list(PB_PATH_VERB_EXT.rglob("*.pdf"))
 verb_esterni_pb.sort(key=lambda f: f.name, reverse=True)
 verb_interni_pb = list(PB_PATH_VERB_INT.rglob("*.pdf"))
 verb_interni_pb.sort(key=lambda f: f.name, reverse=True)
 
-#Recupero glossario - recupera quello della milestone più recente
-#file_glossario = list(RTB_PATH_INTERNI.rglob("*Glossario.pdf"))
-file_glossario = list(PB_PATH_INTERNI.rglob("*Glossario.pdf"))
+#Recupero glossario
+file_glossario_rtb = list(RTB_PATH_INTERNI.rglob("*Glossario.pdf"))
+file_glossario_pb = list(PB_PATH_INTERNI.rglob("*Glossario.pdf"))
 
 
 #Crea sezioni
@@ -131,8 +132,8 @@ if esterni_pb or interni_pb or verb_interni_pb or verb_esterni_pb:
 
     sez_glossario = ''
     #Glossario
-    if file_glossario:
-        for f in file_glossario:
+    if file_glossario_pb:
+        for f in file_glossario_pb:
             sez_glossario = create_link_special(f)
 
     docsections = docsections + docs + verb_ext + verb_int + sez_glossario + '</section>\n'
@@ -151,7 +152,7 @@ if esterni_rtb or interni_rtb or verb_interni_rtb or verb_esterni_rtb:
     sez_lettera_rtb = ''
     sez_gl_rtb = ''
 
-    lettera_rtb = list(PB_PATH_ESTERNI.rglob("*lettera_di_presentazione_RTB.pdf"))
+    lettera_rtb = list(RTB_PATH_ESTERNI.rglob("*lettera_di_presentazione_RTB.pdf"))
     print(f"lettera rtb trovata: {len(lettera_rtb)}")
     if(lettera_rtb):
         for l in lettera_rtb:
@@ -178,10 +179,9 @@ if esterni_rtb or interni_rtb or verb_interni_rtb or verb_esterni_rtb:
             verb_int = verb_int + create_verb_link(file)
         verb_int = verb_int + '</ul>\n'
     
-    gl = list(RTB_PATH_INTERNI.rglob("*Glossario.pdf"))
-    if gl:
-        for f in gl:
-            sez_glossario = create_link_special(f)
+    if file_glossario_rtb:
+        for f in file_glossario_rtb:
+            sez_gl_rtb = create_link_special(f)
     
 
     docsections = docsections + sez_lettera_rtb + docs + verb_ext + verb_int + sez_gl_rtb + '</section>\n'
@@ -194,14 +194,15 @@ if doc_candidatura or verb_interni_candidatura or verb_esterni_candidatura:
     verb_int = ''
     sez_lettere_ca = ''
     
-    lettera_ca = list(PB_PATH_ESTERNI.rglob("*lettera_di_presentazione.pdf"))
+    lettera_ca = list(C_PATH_DOCS.rglob("*lettera_di_presentazione.pdf"))
     if(lettera_ca):
         for l in lettera_ca:
             sez_lettere_ca = sez_lettere_ca + create_link_special(l)
 
+    docs = docs + '<ul>\n'
     for file in doc_candidatura:
         docs = docs + create_doc_link(file)
-
+    docs = docs + '</ul>\n'
     if verb_esterni_candidatura:
         verb_ext = '<h3>Verbali esterni</h3>\n<ul>\n'
         for file in verb_esterni_candidatura:
