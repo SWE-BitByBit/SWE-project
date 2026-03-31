@@ -35,7 +35,8 @@ def get_file_vers(file) -> str:
     srcfile = list(Path(srcfilepath).rglob("*.tex"))[0]
     versione = ''
     with open(srcfile, "r", encoding="utf-8", errors="ignore") as f:
-        section = re.search(r"\\textbf{Versione:}\s*&\s([\d\.]+)\s*\\\\", f)
+        readfile = f.read(5000)
+        section = re.search(r"\\textbf{Versione:}\s*&\s([\d\.]+)\s*\\\\", readfile)
         if section:
             versione = versione + ' v' + section.group(1)
     return versione
