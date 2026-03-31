@@ -148,7 +148,7 @@ if esterni_pb or interni_pb or verb_interni_pb or verb_esterni_pb:
 
 
 #Archivio'
-docsections = docsections + '<button class="dropdown-toggle" type="button" onClick="toggleArchivio()"><h2>Archivio</h2></button>\n <div id="area-archivio" style="display:none">\n<section id="archivio">\n'
+docsections = docsections + '<section id="archivio">\n<button class="dropdown-toggle" type="button" onClick="toggleArchivio()"><h2>Archivio</h2></button>\n <div id="area-archivio" style="display:none">\n'
 
 #documenti RTB (archiviati)
 if esterni_rtb or interni_rtb or verb_interni_rtb or verb_esterni_rtb:
@@ -224,7 +224,7 @@ if doc_candidatura or verb_interni_candidatura or verb_esterni_candidatura:
     docsections = docsections + sez_lettere_ca + docs + verb_ext + verb_int + '</div>\n'
 
 
-docsections = docsections + '</section>\n</div>\n'
+docsections = docsections + '</div>\n</section>\n'
 
 #Rimpiazza placeholder nel template
 template = template.replace('[docs]', docsections)
