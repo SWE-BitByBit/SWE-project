@@ -25,16 +25,16 @@ def create_doc_link(file):
     #Si assume che il documento non sia un verbale
     out = ''
     filename = file.with_suffix("").name.capitalize().replace('_', ' ') + get_file_vers(file)
-    out = out + '<h3>\n<a href="' + file.as_posix() + '" target="blank">' + filename + '</a>\n</h3>\n'
+    out = out + '<li>\n<h4>\n<a href="' + file.as_posix() + '" target="blank">' + filename + '</a>\n</h4>\n</li>\n'
     print(f"{filename}\n")
     return out
 
 def get_file_vers(file) -> str:
     #Apri file tex src e recupera le informazioni di versione
-    srcfile = file.as_posix().replace('docs','src').replace('.pdf','.tex')
+    srcfile = list(Path(file.as_posix().replace('docs','src').replace('.pdf','.tex')).rglob("*"))[0]
     versione = ''
     with open(srcfile, "r", encoding="utf-8", errors="ignore") as f:
-        section = re.search(r"\\textbf{Versione:}\s*&\s([\d\.]+)\s*\\\\", srcfile)
+        section = re.search(r"\\textbf{Versione:}\s*&\s([\d\.]+)\s*\\\\", f)
         if section:
             versione = versione + ' v' + section.group(1)
     return versione
@@ -100,12 +100,14 @@ if esterni_pb or interni_pb or verb_interni_pb or verb_esterni_pb:
     docs = ''
     verb_ext = ''
     verb_int = ''
-    docs = docs + '<h3>Documenti esterni</h3>'
+    docs = docs + '<h3>Documenti esterni</h3>\n'
     for file in esterni_pb:
         docs = docs + create_doc_link(file)
-    docs = docs + '<h3>Documenti interni</h3>'
+    docs = docs + '</ul>\n'
+    docs = docs + '<h3>Documenti interni</h3>\n<ul>\n'
     for file in interni_pb:
         docs = docs + create_doc_link(file)
+    docs = docs + '</ul>\n'
 
     if verb_esterni_pb:
         verb_ext = "<h3>Verbali esterni</h3>\n<ul>\n"
