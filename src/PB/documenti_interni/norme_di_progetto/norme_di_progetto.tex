@@ -145,7 +145,7 @@ Ferdinando Fracasso\\
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 \rowcolor{gray!20}
-1.2.0 & 2026-03-31 & Riccardo Manisi & Miglioramento del processo di verifica secondo standard ISO elencato. & Ferdinando Fracasso \\
+1.2.0 & 2026-03-31 & Riccardo Manisi & Miglioramento del \term{Processo} di \term{Verifica} secondo standard ISO elencato. & Ferdinando Fracasso \\
 \hline
 \rowcolor{gray!20}
 1.1.0 & 2026-03-31 & Riccardo Manisi & Creazione sezioni per normative attività di codifica \ref{par:stile-cod-dart} \ref{par:stile-cod-py} & Dennis Parolin \\
@@ -307,16 +307,16 @@ intraprese dal fornitore. Il \term{Processo} consta dell’analisi e pianificazi
 per garantire l’efficienza e la conformità del progetto ai requisiti discussi con la \term{Proponente}.
 
 \subsubsection{Strumenti a supporto}
-Per svolgere le attività previste dal processo di fornitura il gruppo utilizza gli strumenti elencati di seguito.
+Per svolgere le attività previste dal \term{Processo} di fornitura il gruppo utilizza gli strumenti elencati di seguito.
 \begin{itemize}
-    \item \textbf{Gmail}: comunicazione asincrona con la proponente e i professori.
-    \item \textbf{Google Chat}: comunicazione sincrona con la proponente.
+    \item \textbf{Gmail}: comunicazione asincrona con la \term{Proponente} e i professori.
+    \item \textbf{Google Chat}: comunicazione sincrona con la \term{Proponente}.
     \item \textbf{Discord}: pianificazione e svolgimento delle riunioni interne.
     \item \textbf{Google Docs}: redazione di documenti preliminari da utilizzare come base informativa per le riunioni interne.
 \end{itemize}
 
 \subsubsection{Implementazione di Processo}
-Le attività identificate dal gruppo per il Processo di Fonitura sono:
+Le attività identificate dal gruppo per il \term{Processo} di Fonitura sono:
 \begin{itemize}
     \item \textbf{Inizializzazione:}
     Il fornitore effettua una \term{Analisi Dei Requisiti} nelle richieste del \term{Proponente}, tenendo conto di eventuali vincoli e valutando la propria capacità di realizzare la proposta, valutando possibili requisiti da ritrattare con il \term{Proponente}.
@@ -388,9 +388,9 @@ Questa sezione elenca e descrive brevemente tutta la documentazione che verrà p
         \item Documento in cui viene definita la strategia adottata dal gruppo al fine di garantire la qualità del prodotto finale, sotto forma di metriche e relativi obiettivi, metodi di testing e resoconti.
     \end{itemize}
 
-    \item \textbf{\term{Specifica Tecnica}}
+    \item \textbf{Specifica Tecnica}
     \begin{itemize}
-        \item Documento in cui il \textbf{BitByBit} definisce l'architettura logica del prodotto; ha lo scopo di guidare l'attività 
+        \item Documento in cui il \textbf{BitByBit} definisce l'\term{Architettura} logica del prodotto; ha lo scopo di guidare l'attività 
     di codifica (\hyperref[subsec:codifica]{vedi sezione~\ref*{subsec:codifica}}).
     \end{itemize}
     
@@ -410,7 +410,7 @@ Per sostenere i processi di sviluppo sono stati utilizzati i seguenti strumenti:
 \begin{itemize}
     \item \textbf{Lucidchart}: piattaforma per la modellazione UML. Lo strumento consente la creazione di diagrammi UML (tra cui diagrammi dei casi d'uso, delle classi e di sequenza) direttamente in ambiente web, favorendo la collaborazione sincrona tra i membri del gruppo sullo stesso documento.
     \item \textbf{Flutter}: framework utilizzato nell'ambito del progetto per lo sviluppo dell'interfaccia \term{Utente} dell'applicazione mobile richiesta dall'applicazione;
-    \item \textbf{Visual Studio Code}: IDE che permette di avere una configurazione comune tra i componenti del gruppo;
+    \item \textbf{Visual Studio Code}: \term{Ide} che permette di avere una configurazione comune tra i componenti del gruppo;
     \item \textbf{draw.io}: strumento open source usato dal gruppo per la creazione di diagrammi UML delle classi, utilizzabile sia in ambiente web che desktop. Integra funzionalità di intelligenza artificiale che velocizzano la produzione della documentazione grafica.
 \end{itemize}
 
@@ -429,7 +429,7 @@ Le attività che compongono il \textbf{\term{Processo} di sviluppo} adattate al 
     \item \textbf{Supporto per l'approvazione},  il fornitore e il cliente collaudano il prodotto per accertare che tutti i requisiti stabiliti sono presenti nel software consegnato.
 \end{itemize}
 
-% ==== ATTIVITÀ DI ANALISI DEI REQUISITI =====
+% ==== ATTIVITÀ DI \term{Analisi Dei Requisiti} =====
 \subsubsection{Analisi Dei Requisiti}
 L'attività di \term{Analisi Dei Requisiti} ha l’obiettivo di trasformare i requisiti \term{Utente} espressi nel \term{Capitolato}, nel nostro caso il \textbf{\term{Capitolato} C4} proposto da \textbf{Miriade S.r.l.}, in requisiti di sistema chiari, completi e verificabili. 
 Tale attività produce il documento dell'\term{Analisi Dei Requisiti} che stabilisce le basi per un accordo tra la \term{Proponente} e il fornitore sulle funzionalità che verranno implementate nel prodotto..
@@ -528,9 +528,9 @@ La formattazione del codice Dart viene delegata al comando nativo \texttt{dart f
 Per garantirne il rispetto su tutto il progetto, la formattazione automatica viene integrata su due livelli per un maggiore controllo sul 
 codice che i membri del gruppo producono durante questa attività:
 \begin{itemize}
-    \item \textbf{Locale}: l'IDE adottato dal gruppo è configurato per eseguire il comando \texttt{dart format} al salvataggio del file.
-    \item \textbf{Remoto}: la pipeline di Github Actions per eseguire la CI applica la formattazione Dart ad ogni \textit{push}, 
-    impedendo il Merge di codice non formattato correttamente nel ramo principale.
+    \item \textbf{Locale}: l'\term{Ide} adottato dal gruppo è configurato per eseguire il comando \texttt{dart format} al salvataggio del file.
+    \item \textbf{Remoto}: la pipeline di \term{Github Actions} per eseguire la \term{Ci} applica la formattazione Dart ad ogni \textit{push}, 
+    impedendo il \term{Merge} di codice non formattato correttamente nel ramo principale.
 \end{itemize}
 
 \subparagraph{Convenzioni sulla struttura gerarchia delle directory} \label{subpar:convenzioni-gerarchia-dir-fe}
@@ -551,13 +551,13 @@ Di seguito viene riportata la struttura delle directory principali e il contenut
         \item \texttt{domain/}, contiene le classi che rappresentano i dati nel formato consumato dal layer ui, indipendenti da qualsiasi sorgente dati;
         \item \texttt{data/}, contiene il layer di accesso ai dati, suddiviso in:
         \begin{itemize}
-            \item \texttt{repositories/}, contiene le classi Repository, che rappresentano la fonte di verità per un tipo di dato e orchestrano l'accesso ai Service;
+            \item \texttt{repositories/}, contiene le classi \term{Repository}, che rappresentano la fonte di verità per un tipo di dato e orchestrano l'accesso ai Service;
             \item \texttt{services/}, contiene le classi Service, che comunicano con sorgenti dati esterne (API REST, database locali, ecc.);
             \item \texttt{model/}, contiene le classi Model, che rappresentano la struttura dei dati così come vengono ricevuti dalla sorgente dati, prima di eventuali trasformazioni.
         \end{itemize}
     \end{itemize}
     \item \texttt{test/}, contiene gli unit test del codice Dart. La struttura interna rispecchia quella di \texttt{lib/}, in modo che ogni file sorgente abbia il corrispondente file di test con suffisso \texttt{\_test.dart};
-    \item \texttt{testing/}, contiene le classi dedicate ai mock e alle utilities condivise tra i test, come le implementazioni fittizie dei Repository e dei Service.
+    \item \texttt{testing/}, contiene le classi dedicate ai mock e alle utilities condivise tra i test, come le implementazioni fittizie dei \term{Repository} e dei Service.
 \end{itemize}
 
 %==== SEZIONE CODICE PY ====
@@ -589,8 +589,8 @@ Al fine di rendere immediatamente riconoscibile il ruolo di una classe dalla sua
 La formattazione del codice Python viene delegata al tool \texttt{black}, che applica automaticamente le regole stilistiche definite da \textit{PEP 8}.
 Per garantirne il rispetto su tutto il progetto, la formattazione automatica viene integrata su due livelli:
 \begin{itemize}
-    \item \textbf{Locale}: l'IDE adottato dal gruppo (Visual Studio Code) è configurato per eseguire \texttt{black} al salvataggio del file tramite l'estensione ufficiale.
-    \item \textbf{Remoto}: la pipeline di Github Actions per eseguire la CI applica la formattazione Python ad ogni \textit{push}, impedendo il Merge di codice non formattato correttamente nel ramo principale.
+    \item \textbf{Locale}: l'\term{Ide} adottato dal gruppo (Visual Studio Code) è configurato per eseguire \texttt{black} al salvataggio del file tramite l'estensione ufficiale.
+    \item \textbf{Remoto}: la pipeline di \term{Github Actions} per eseguire la \term{Ci} applica la formattazione Python ad ogni \textit{push}, impedendo il \term{Merge} di codice non formattato correttamente nel ramo principale.
 \end{itemize}
 
 \paragraph{Vincoli implementativi}
@@ -604,12 +604,12 @@ Al fine di mantenere il codice robusto e testabile, il gruppo adotta le seguenti
 L'applicazione delle norme di codifica è facilitata da un set di strumenti che accompagna lo sviluppatore dalla scrittura fino all'integrazione.
 
 \paragraph{Ambiente di Sviluppo}
-Il gruppo ha uniformato l'ambiente di lavoro adottando \textbf{Visual Studio Code} come \term{IDE} di riferimento.
+Il gruppo ha uniformato l'ambiente di lavoro adottando \textbf{Visual Studio Code} come \term{Ide} di riferimento.
 
 \paragraph{Automazione e \ignoreglossary{CI}}
-Gli strumenti critici per il mantenimento dello standard, le cui specifiche tecniche verranno consolidate durante la Product \term{Baseline} (\term{PB}), sono classificabili in:
+Gli strumenti critici per il mantenimento dello standard, le cui specifiche tecniche verranno consolidate durante la Product \term{Baseline} (\term{Pb}), sono classificabili in:
 \begin{itemize}
-    \item \textbf{\term{Linter} e Formatter}: strumenti di \term{Analisi Statica} specifici per linguaggio che rilevano violazioni stilistiche in tempo reale all'interno dell'\term{IDE}.
+    \item \textbf{\term{Linter} e Formatter}: strumenti di \term{Analisi Statica} specifici per linguaggio che rilevano violazioni stilistiche in tempo reale all'interno dell'\term{Ide}.
     \item \textbf{\term{Github Actions}}: piattaforma utilizzata per i controlli remoti bloccanti (\term{Quality Gate}), che assicura che nessun codice non conforme venga integrato nel ramo \texttt{develop}.
 \end{itemize}
 
@@ -849,7 +849,7 @@ Per le attività previste, il gruppo BitByBit utilizza gli strumenti elencati di
 \end{itemize}
 
 \subsubsection{Attività previste}
-Le attività identificate dal gruppo per il Processo di gestione della configurazione sono:
+Le attività identificate dal gruppo per il \term{Processo} di gestione della configurazione sono:
 \begin{itemize}
     \item \textbf{identificazione della configurazione}, viene definito uno schema uniforme di versionamento e naming, per identificare ogni componente del sistema;
     \item \textbf{controllo della configurazione}, metodologie per stabilire l'identificazione, l'approvazione o rifiuto, la \term{Verifica} e l'eventuale rilascio delle richieste di modifica; 
@@ -952,10 +952,10 @@ Il \term{Processo} di \term{Verifica} è l'insieme delle attività volte ad acce
 L'obiettivo è rispondere alla domanda «Did we build the product right?» (Abbiamo costruito il prodotto nel modo corretto?), intercettando difetti ed errori prima che questi si propaghino alle fasi successive.
 
 \subsubsection{Strumenti a supporto}
-Per le attività previste dal processo di Verifica, il gruppo \textbf{BitByBit} ha identificato gli strumenti elencati di seguito.
+Per le attività previste dal \term{Processo} di \term{Verifica}, il gruppo \textbf{BitByBit} ha identificato gli strumenti elencati di seguito.
 \begin{itemize}
     \item \textbf{SonarQube}: piattaforma di \term{Analisi Statica} per la rilevazione di bug, 
-    vulnerabilità di sicurezza e code smell. Fornisce una serie di metriche già consolidate e la viasualizzazione tramite indicatori dei report dei test di unità.
+    vulnerabilità di sicurezza e code smell. Fornisce una serie di metriche già consolidate e la viasualizzazione tramite indicatori dei report dei \term{Test Di Unità}.
     I risultati sono consultabili tramite dashboard web, che fornisce una visione aggregata dello stato del codice nel tempo.
     \item \textbf{GitHub}: tramite l'interfaccia delle \term{Pull Request} permette ai verificatori di commentare righe specifiche del documento, richiedere modifiche e approvare il lavoro solo quando la \term{Checklist} di \term{Verifica} è soddisfatta.
     \item \textbf{VS Code}: tramite file di configurazione versionati permette di avere degli strumenti comuni per l'individuazione 
@@ -963,18 +963,18 @@ Per le attività previste dal processo di Verifica, il gruppo \textbf{BitByBit} 
 \end{itemize}
 
 \subsubsection{Attività previste}
-Le attività identificate dal gruppo per il Processo di verifica sono le seguenti.
+Le attività identificate dal gruppo per il \term{Processo} di \term{Verifica} sono le seguenti.
 \begin{itemize}
-    \item \textbf{Implementazione di processo}, si stabilisce il grado di verifica e lo sforzo che deve essere svolto affinchè questo 
+    \item \textbf{Implementazione di \term{Processo}}, si stabilisce il grado di \term{Verifica} e lo sforzo che deve essere svolto affinchè questo 
     ossa essere raggiunto. Devono essere identificate le parti del sistema che possono causare le maggiori problematiche in modo che possano essere 
-    soggette ad una verifica più approfondita tenendo conto anche delle risorse disponibili.
-    \item \textbf{Attività di verifica}, insieme di verifiche condotte sistematicamente durante il \term{Ciclo Di Vita} del progetto per 
+    soggette ad una \term{Verifica} più approfondita tenendo conto anche delle risorse disponibili.
+    \item \textbf{Attività di \term{Verifica}}, insieme di verifiche condotte sistematicamente durante il \term{Ciclo Di Vita} del progetto per 
     accertare che i prodotti di ogni fase siano corretti, completi e coerenti con i requisiti. 
-    Le verifiche riguardano il contratto, i processi, i requisiti, la progettazione, il codice, l'integrazione e la documentazione.
+    Le verifiche riguardano il \term{Contratto}, i processi, i requisiti, la progettazione, il codice, l'integrazione e la documentazione.
 \end{itemize}
 
 \subsubsection{Implementazione di processo}
-Il gruppo \textit{BitByBit} integra la \term{Verifica} direttamente nel flusso di sviluppo quotidiano (Git Flow), adottando la politica del \textbf{\term{Continuous Verification}}.
+Il gruppo \textit{BitByBit} integra la \term{Verifica} direttamente nel flusso di sviluppo quotidiano (\term{Git Flow}), adottando la politica del \textbf{\term{Continuous Verification}}.
 Le regole operative sono le seguenti:
 \begin{itemize}
     \item \textbf{Policy "No Verify, No \term{Merge}"}: nessun artefatto può essere integrato nel ramo di sviluppo principale (\texttt{develop}) se non ha superato con successo i controlli di \term{Verifica}.
@@ -995,7 +995,7 @@ Tra le due, il gruppo \textit{BitByBit} adotta come standard l'\textbf{\term{Isp
 La \term{Verifica} del software si articola in due momenti distinti: l'analisi del codice sorgente (statica) e l'esecuzione dei test (dinamica).
 
 \paragraph{\ignoreglossary{Analisi Statica}} \label{par:analisi-statica}
-Prima di essere eseguito, il codice viene analizzato da strumenti automatici integrati nella pipeline di \term{CI}/\term{CD}.
+Prima di essere eseguito, il codice viene analizzato da strumenti automatici integrati nella pipeline di \term{Ci}/\term{Cd}.
 Questo passaggio serve a rilevare:
 \begin{itemize}
     \item violazioni delle norme di codifica (\hyperref[subsec:codifica]{vedi Sezione~\ref*{subsec:codifica}});
@@ -1003,11 +1003,11 @@ Questo passaggio serve a rilevare:
     \item code smell e violazioni dei principi di progettazione;
     \item il valore delle metriche di qualità definite nel \term{Piano Di Qualifica}, ottenendo un riscontro immediato prima che gli errori vengano introdotti nella code base.
 \end{itemize}
-L'analisi statica viene eseguita su ogni \textit{push} nella pipeline di \term{CI}/\term{CD}: un esito negativo blocca il \term{Merge} nel 
+L'\term{Analisi Statica} viene eseguita su ogni \textit{push} nella pipeline di \term{Ci}/\term{Cd}: un esito negativo blocca il \term{Merge} nel 
 ramo principale, garantendo che solo codice conforme agli standard definiti venga integrato.
 A supporto di questa attività il gruppo ha adottato \textbf{SonarQube}, scelto per la sua capacità di aggregare in un'unica dashboard 
-i risultati dell'analisi statica sull'intera code base del sistema sviluppato.\\
-SonarQube viene eseguito nella pipeline di \term{CI}/\term{CD} tramite \term{Github Actions}.
+i risultati dell'\term{Analisi Statica} sull'intera code base del sistema sviluppato.\\
+SonarQube viene eseguito nella pipeline di \term{Ci}/\term{Cd} tramite \term{Github Actions}.
 
 \paragraph{\ignoreglossary{Analisi Dinamica} (Testing)}
 L'\term{Analisi Dinamica} \term{Verifica} il comportamento del software tramite la sua esecuzione.
@@ -1383,7 +1383,7 @@ Le metriche di prodotto adottate nel progetto sono suddivise nelle seguenti due 
     \item \textbf{E} $\rightarrow$ almeno 1 bug bloccante
 \end{itemize}
 \item \textbf{Descrizione:} misura l'affidabilità del codice sulla base della presenza 
-e gravità dei bug rilevati dall'analisi statica. Fornisce un indicatore immediato della qualità 
+e gravità dei bug rilevati dall'\term{Analisi Statica}. Fornisce un indicatore immediato della qualità 
 del software dal punto di vista dell'affidabilità.
 \end{itemize}
 
