@@ -44,8 +44,13 @@ def get_file_vers(file) -> str:
     with open(srcfile, "r", encoding="utf-8", errors="ignore") as f:
         readfile = f.read(5000)
         section = re.search(r"\\textbf{Versione:}\s*&\s([\d\.]+)\s*\\\\", readfile)
+        
         if section:
             versione = versione + ' v' + section.group(1)
+        else:
+            fallback_section = re.search(r"\\newcommand{\\VersioneAttuale}{([\d\.]+)}", readfile) #Casi speciali come il Piano di Progetto che usano una sintassi diversa
+            if fallback_section:
+                versione = versione + ' v' + fallback_section.group(1)
     return versione
 
 def create_verb_link(file):
@@ -141,7 +146,7 @@ if esterni_pb or interni_pb or verb_interni_pb or verb_esterni_pb:
 
 
 #Archivio'
-docsections = docsections + '<button class="dropdown-toggle" type="button" onClick="toggleArchivio()"><h2>Archivio</h2></button>\n <div id="area-archivio" style="display:none">\n'
+docsections = docsections + '<section id="archivio"><button class="dropdown-toggle" type="button" onClick="toggleArchivio()"><h2>Archivio</h2></button>\n <div id="area-archivio" style="display:none">\n'
 
 #documenti RTB (archiviati)
 if esterni_rtb or interni_rtb or verb_interni_rtb or verb_esterni_rtb:
@@ -217,7 +222,7 @@ if doc_candidatura or verb_interni_candidatura or verb_esterni_candidatura:
     docsections = docsections + sez_lettere_ca + docs + verb_ext + verb_int + '</section>\n'
 
 
-docsections = docsections + '</div>\n'
+docsections = docsections + '</div>\n</section>\n'
 
 #Rimpiazza placeholder nel template
 template = template.replace('[docs]', docsections)
