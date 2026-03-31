@@ -82,7 +82,8 @@ esterni_rtb = list(RTB_PATH_ESTERNI.rglob("*.pdf"))
 interni_rtb = list(RTB_PATH_INTERNI.rglob("*.pdf"))
 
 #Togli glossario da doc rtb
-interni_rtb = [f for f in interni_rtb if f.exists() and f.name not in {"Glossario.pdf", "lettera_di_presentazione_RTB.pdf"}]
+interni_rtb = [f for f in interni_rtb if f.exists() and f.name not in {"Glossario.pdf"}]
+esterni_rtb = [f for f in esterni_rtb if f.exists() and f.name not in {"lettera_di_presentazione_RTB.pdf"}]
 verb_esterni_rtb = list(RTB_PATH_VERB_EXT.rglob("*.pdf"))
 verb_esterni_rtb.sort(key=lambda f: f.name, reverse=True)
 verb_interni_rtb = list(RTB_PATH_VERB_INT.rglob("*.pdf"))
@@ -94,7 +95,8 @@ esterni_pb = list(PB_PATH_ESTERNI.rglob("*.pdf"))
 interni_pb = list(PB_PATH_INTERNI.rglob("*.pdf"))
 
 #Togli glossario da doc pb
-interni_pb = [f for f in interni_pb if f.exists() and f.name not in {"Glossario.pdf", "lettera_di_presentazione_PB.pdf"}]
+interni_pb = [f for f in interni_pb if f.exists() and f.name not in {"Glossario.pdf"}]
+esterni_pb = [f for f in esterni_pb if f.exists() and f.name not in {"lettera_di_presentazione_PB.pdf"}]
 verb_esterni_pb = list(PB_PATH_VERB_EXT.rglob("*.pdf"))
 verb_esterni_pb.sort(key=lambda f: f.name, reverse=True)
 verb_interni_pb = list(PB_PATH_VERB_INT.rglob("*.pdf"))
@@ -150,7 +152,7 @@ docsections = docsections + '<section id="archivio"><button class="dropdown-togg
 
 #documenti RTB (archiviati)
 if esterni_rtb or interni_rtb or verb_interni_rtb or verb_esterni_rtb:
-    docsections = docsections + '<section id="rtb">\n<h2>RTB</h2>\n'
+    docsections = docsections + '<div id="rtb" class="subsection">\n<h2>RTB</h2>\n'
     docs = ''
     verb_ext = ''
     verb_int = ''
@@ -189,17 +191,17 @@ if esterni_rtb or interni_rtb or verb_interni_rtb or verb_esterni_rtb:
             sez_gl_rtb = create_link_special(f)
     
 
-    docsections = docsections + sez_lettera_rtb + docs + verb_ext + verb_int + sez_gl_rtb + '</section>\n'
+    docsections = docsections + sez_lettera_rtb + docs + verb_ext + verb_int + sez_gl_rtb + '</div>\n'
 
 #documenti candidatura (archiviati)
 if doc_candidatura or verb_interni_candidatura or verb_esterni_candidatura:
-    docsections = docsections + '<section id="candidatura">\n<h2>Candidatura</h2>\n'
+    docsections = docsections + '<div id="candidatura" class="subsection">\n<h2>Candidatura</h2>\n'
     docs = ''
     verb_ext = ''
     verb_int = ''
     sez_lettere_ca = ''
     
-    lettera_ca = list(C_PATH_DOCS.rglob("*lettera_di_*"))
+    lettera_ca = list(C_PATH_DOCS.rglob("*lettera_di_*.pdf"))
     if(lettera_ca):
         for l in lettera_ca:
             sez_lettere_ca = sez_lettere_ca + create_link_special(l)
@@ -219,7 +221,7 @@ if doc_candidatura or verb_interni_candidatura or verb_esterni_candidatura:
         for file in verb_interni_candidatura:
             verb_int = verb_int + create_verb_link(file)
         verb_int = verb_int + '</ul>\n'
-    docsections = docsections + sez_lettere_ca + docs + verb_ext + verb_int + '</section>\n'
+    docsections = docsections + sez_lettere_ca + docs + verb_ext + verb_int + '</div>\n'
 
 
 docsections = docsections + '</div>\n</section>\n'

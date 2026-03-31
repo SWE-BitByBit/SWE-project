@@ -8,6 +8,7 @@
     --text-light: #E2E8F0; /* Bianco sporco per il testo */
     --text-muted: #8fa4ca; /* Grigio per testo secondario */
     --bg-lighter-dark: #092956; /* Un po' più chiaro del primary-dark per elementi secondari */
+    --bg-darker: #051946; /* Per subsection, leggermente più scuro del precedente*/
     --border-color: #3C5A6B; /* Bordo più scuro */
 }
 
@@ -115,7 +116,15 @@ section:hover {
     padding-left: 1.78rem;
 }
 
-button #dropdown-toggle{
+#subsection {
+    background-color: var(--bg-darker);
+}
+
+#subsection {
+    border-left-width: 0em;
+}
+
+#dropdown-toggle{
     margin-bottom: 3rem; 
     background-color: var(--bg-lighter-dark);
     border-radius: 8px;
@@ -124,7 +133,7 @@ button #dropdown-toggle{
     transition: 0.3s ease-in-out;
 }
 
-button:hover #dropdown-toggle {
+#dropdown-toggle:hover {
     border-left-width: 15px;
     padding-left: 1.78rem;
 }
