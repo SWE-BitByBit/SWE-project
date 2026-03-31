@@ -12,6 +12,7 @@ jobs:
   process-glossary:
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
+
     permissions:
       contents: write
     
@@ -45,6 +46,7 @@ jobs:
   # Build dei pdf a partire dai file latex
   latex-pipeline:
     runs-on: ubuntu-latest
+
     permissions:
       contents: write
 
@@ -55,26 +57,50 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - name: Cache LaTeX intermediates
+        uses: actions/cache@v4
         with:
-          python-version: "3.x"
+          path: |
+            **/*.aux
+            **/*.fls
+            **/*.fdb_latexmk
+            **/*.log
+          key: latex-cache-v1
+          restore-keys: |
+            latex-cache-
 
-      - name: Install LaTeX environment
+      - name: Prepare workspace
         run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y --no-install-recommends \
-            texlive-latex-extra \
-            texlive-fonts-recommended \
-            texlive-fonts-extra \
-            texlive-lang-italian \
-            texlive-pictures \
-            latexmk
+          sudo chown -R $USER:$USER .
+          git clean -fd
 
-      # 🔥 Compila SEMPRE tutti i .tex
       - name: Build all LaTeX files
+        id: build
+        continue-on-error: true
         run: |
-          python .github/scripts/build_pdfs.py
+          docker run \
+            -v "$GITHUB_WORKSPACE:$GITHUB_WORKSPACE" \
+            -w "$GITHUB_WORKSPACE" \
+            bigbuckbunny/latex-pdf-build-env:latest \
+            python .github/scripts/build_pdfs.py
+
+      - name: Fix file permissions
+        run: |
+          sudo chown -R $USER:$USER .
+
+      - name: Show LaTeX logs on failure
+        if: steps.build.outcome == 'failure'
+        run: |
+          find . -name "*.log" | while read log; do
+            if grep -q "^!" "$log"; then
+              echo "=== ERRORE IN: $log ==="
+              grep -B 2 -A 5 "^!" "$log"
+            fi
+          done
+
+      - name: Fail if build failed
+        if: steps.build.outcome == 'failure'
+        run: exit 1
 
       - name: Commit generated PDFs
         run: |
@@ -88,6 +114,6 @@ jobs:
           git commit -m "Auto-generated PDFs via GitHub Actions" || echo "No changes to commit"
 
           # Rebase per evitare errori di push non fast-forward
-          git pull --rebase origin ${{ github.ref_name }}
+          git pull --no-rebase origin ${{ github.ref_name }}
 
           git push origin HEAD:${{ github.ref_name }}
