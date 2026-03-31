@@ -211,7 +211,7 @@ if doc_candidatura or verb_interni_candidatura or verb_esterni_candidatura:
     docsections = docsections + sez_lettere_ca + docs + verb_ext + verb_int + '</section>\n'
 
 
-docsections = docsections + '<\div>\n'
+docsections = docsections + '</div>\n'
 
 #Rimpiazza placeholder nel template
 template = template.replace('[docs]', docsections)
