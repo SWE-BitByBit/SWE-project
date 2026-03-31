@@ -194,12 +194,12 @@ if doc_candidatura or verb_interni_candidatura or verb_esterni_candidatura:
     verb_int = ''
     sez_lettere_ca = ''
     
-    lettera_ca = list(C_PATH_DOCS.rglob("*lettera_di_presentazione.pdf"))
+    lettera_ca = list(C_PATH_DOCS.rglob("*lettera_di_*"))
     if(lettera_ca):
         for l in lettera_ca:
             sez_lettere_ca = sez_lettere_ca + create_link_special(l)
 
-    docs = docs + '<ul>\n'
+    docs = docs + '<h3>Documenti candidatura</h3><ul>\n'
     for file in doc_candidatura:
         docs = docs + create_doc_link(file)
     docs = docs + '</ul>\n'
