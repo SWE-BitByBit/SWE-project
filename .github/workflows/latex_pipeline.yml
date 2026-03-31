@@ -93,12 +93,18 @@ jobs:
         if: steps.build.outcome == 'failure'
         run: exit 1
 
+      - name: Fix file permissions
+        run: |
+          sudo chown -R $USER:$USER .
+
       - name: Commit generated PDFs
         run: |
           echo "Committo i PDF generati..."
 
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
+
+          git clean -fd
 
           git add docs || echo "No PDFs to add"
 
