@@ -154,7 +154,7 @@ if esterni_rtb or interni_rtb or verb_interni_rtb or verb_esterni_rtb:
     lettera_rtb = list(PB_PATH_ESTERNI.rglob("*lettera_di_presentazione_RTB.pdf"))
     if(lettera_rtb):
         for l in lettera_rtb:
-            sez_lettera_rtb = create_link_special(lettera_rtb)
+            sez_lettera_rtb = create_link_special(l)
 
     for file in esterni_rtb:
         docs = docs + create_doc_link(file)
@@ -176,7 +176,7 @@ if esterni_rtb or interni_rtb or verb_interni_rtb or verb_esterni_rtb:
     gl = list(RTB_PATH_INTERNI.rglob("*Glossario.pdf"))
     if gl:
         for f in gl:
-            sez_glossario = create_link_special(gl)
+            sez_glossario = create_link_special(f)
     
 
     docsections = docsections + sez_lettera_rtb + docs + verb_ext + verb_int + sez_gl_rtb + '</section>\n'
@@ -192,7 +192,7 @@ if doc_candidatura or verb_interni_candidatura or verb_esterni_candidatura:
     lettera_ca = list(PB_PATH_ESTERNI.rglob("*lettera_di_presentazione.pdf"))
     if(lettera_ca):
         for l in lettera_ca:
-            sez_lettere_ca = sez_lettere_ca + create_link_special(lettera_ca)
+            sez_lettere_ca = sez_lettere_ca + create_link_special(l)
 
     for file in doc_candidatura:
         docs = docs + create_doc_link(file)
