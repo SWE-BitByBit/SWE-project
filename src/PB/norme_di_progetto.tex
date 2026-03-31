@@ -468,47 +468,63 @@ L'obiettivo principale delle norme qui esposte è garantire l'\textbf{uniformit�
 
 \subparagraph{Convenzioni di nomenclatura}
 Il gruppo adotta le convenzioni ufficiali definite da \textit{Dart} per garantire uniformità e leggibilità del codice:
-\begin{itemize}
-    \item \textbf{Classi, enum, typedef ed estensioni}: si utilizza \texttt{UpperCamelCase} (es. \texttt{UserRepository}, \texttt{AuthService}).
-    \item \textbf{Variabili, parametri, metodi e costanti}: si utilizza \texttt{lowerCamelCase} (es. \texttt{userName}, \texttt{fetchData}).
-    \item \textbf{File, directory e prefissi di import}: si utilizza \texttt{lowercase\_with\_underscores} (es. \texttt{user\_repository.dart}, \texttt{auth\_service.dart}).
-    \item \textbf{Lingua codice}: nomi di classi, variabili, metodi e file devono essere in \textbf{lingua inglese}.
-    \item \textbf{Lingua commenti}: i commenti nel codice devono essere redatti in \textbf{lingua italiana}.
-    \item \textbf{Commenti di documentazione}: ogni metodo deve essere documentato tramite un commento (usando il comando \texttt{///}).
+\begin{enumerate}
+    \item \textbf{Nomi di classi, enum, typedef ed estensioni}: si utilizza \texttt{UpperCamelCase} (es. \texttt{UserRepository}, \texttt{AuthService}).
+    \item \textbf{Nomi di variabili, parametri, metodi e costanti}: si utilizza \texttt{lowerCamelCase} (es. \texttt{userName}, \texttt{fetchData}).
+    \item \textbf{Nomi di file, directory e prefissi di import}: si utilizza \texttt{lowercase\_with\_underscores} (es. \texttt{user\_repository.dart}, \texttt{auth\_service.dart}).
+    \item \textbf{Lingua del codice}: nomi di classi, variabili, metodi e file devono essere in \textbf{lingua inglese}.
+    \item \textbf{Lingua dei commenti}: i commenti nel codice devono essere redatti in \textbf{lingua italiana}.
+    \item \textbf{Nomenclatura file}: la nomenclatura di ogni file deve corrispondere al nome della classe al suo interno.
+    \item \textbf{Commenti di documentazione}: ogni metodo deve essere documentato tramite un commento (usando il comando \texttt{///}) che ne descrive il suo scopo.
     I riferimenti a variabili o parametri all'interno dei commenti vanno racchiusi tra parentesi quadre (es. \texttt{/// Restituisce il valore di [userId]}).
     \item \textbf{File di test}: i file contenenti test unitari devono terminare con il suffisso \texttt{\_test.dart} (es. \texttt{user\_repository\_test.dart}).
+\end{enumerate}
+
+\subparagraph{Convenzioni nomenclatura delle classi}
+Al fine di rendere immediatamente riconoscibile il ruolo architetturale di una classe dalla sua dichiarazione, il gruppo adotta i seguenti suffissi obbligatori:
+\begin{itemize}
+    \item \texttt{ViewModel}: classi della componente view model del UI layer per la gestione dello stato e della logica di presentazione di una schermata (es. \texttt{LoginViewModel}).
+    \item \texttt{Screen}: classi widget Flutter del UI layer che rappresentano una schermata completa (es. \texttt{LoginScreen}).
+    \item \texttt{Widget}: classi widget Flutter del layer UI non associatw a una singola schermata (es. \texttt{AvatarWidget}).
+    \item \texttt{Repository}: classi del data layer responsabili della Persistance (es. \texttt{UserRepository}).
+    \item \texttt{Service}: classi del data layer repsonsabili della Business Logic (es. \texttt{AuthService}).
 \end{itemize}
 
 \subparagraph{Formattazione automatica del codice} 
-La formattazione del codice Dart viene delegata al tool ufficiale \texttt{dart format}, che applica automaticamente le regole stilistiche definite da \textit{Dart}. 
+La formattazione del codice Dart viene delegata al comando nativo \texttt{dart format}, che applica automaticamente le regole stilistiche definite da \textit{Dart}. 
 Per garantirne il rispetto su tutto il progetto, la formattazione automatica viene integrata su due livelli per un maggiore controllo sul 
 codice che i membri del gruppo producono durante questa attività:
 \begin{itemize}
-    \item \textbf{Locale}: l'IDE adottato dal gruppo (Visual Studio Code) è configurato per eseguire \texttt{dart format} al salvataggio del file.
+    \item \textbf{Locale}: l'IDE adottato dal gruppo è configurato per eseguire il comando \texttt{dart format} al salvataggio del file.
     \item \textbf{Remoto}: la pipeline di Github Actions per eseguire la CI applica la formattazione Dart ad ogni \textit{push}, 
     impedendo il Merge di codice non formattato correttamente nel ramo principale.
 \end{itemize}
 
-\subparagraph{Struttura della repository frontend} \label{subpar:struttura-repo-frontend}
+\subparagraph{Convenzioni sulla struttura gerarchia delle directory frontend} \label{subpar:convenzioni-gerarchia-dir-fe}
 La struttura del codice del progetto Flutter segue la suddivisione per layer raccomandata dalla documentazione ufficiale di Flutter. 
 Di seguito viene riportata la struttura delle directory principali e il contenuto atteso per ciascuna:
 \begin{itemize}
     \item \texttt{lib/}, directory del codice sorgente dell'applicazione:
     \begin{itemize}
-        \item \texttt{ui/} — contiene tutto il codice relativo alla presentazione, organizzato per funzionalità. Per ciascuna funzionalità sono presenti:
+        \item \texttt{ui/}, contiene tutto il codice relativo alla presentazione:
         \begin{itemize}
-            \item file \textit{View} (widget Flutter che descrivono l'interfaccia utente);
-            \item file \textit{ViewModel} (classi Dart che gestiscono lo stato e la logica della view, una per ogni view).
+            \item \texttt{core/}, contiene i widget riutilizzabili condivisi da più schermate (classi con suffisso Widget);
+            \item \texttt{<feature\_name>/}, ogni funzionalità ha una directory dedicata, al suo interno:
+            \begin{itemize}
+                \item \texttt{view\_model/}, contiene le classi ViewModel associate alle schermate della funzionalità;
+                \item \texttt{widget/}, contiene le classi Screen e gli eventuali widget specifici della funzionalità.
+            \end{itemize}
         \end{itemize}
-        \item \texttt{domain/} — contiene i modelli di dominio dell'applicazione, ovvero le classi che rappresentano i dati nel formato consumato dal layer \texttt{ui}. Non dipende da \texttt{data} né da \texttt{ui}.
-        \item \texttt{data/} — contiene il layer di accesso ai dati, suddiviso in:
+        \item \texttt{domain/}, contiene le classi che rappresentano i dati nel formato consumato dal layer ui, indipendenti da qualsiasi sorgente dati;
+        \item \texttt{data/}, contiene il layer di accesso ai dati, suddiviso in:
         \begin{itemize}
-            \item \textit{Repository}: classi che rappresentano la fonte di verità per un tipo di dato; si occupano di recuperare, trasformare e memorizzare i dati provenienti dai \textit{Service};
-            \item \textit{Service}: classi che comunicano con sorgenti dati esterne (API REST, database locali, ecc.).
+            \item \texttt{repositories/}, contiene le classi Repository, che rappresentano la fonte di verità per un tipo di dato e orchestrano l'accesso ai Service;
+            \item \texttt{services/}, contiene le classi Service, che comunicano con sorgenti dati esterne (API REST, database locali, ecc.);
+            \item \texttt{model/}, contiene le classi Model, che rappresentano la struttura dei dati così come vengono ricevuti dalla sorgente dati, prima di eventuali trasformazioni.
         \end{itemize}
     \end{itemize}
-    \item \texttt{test/} — contiene i test unitari del progetto. La struttura interna rispecchia quella di \texttt{lib/}, in modo che ogni file sorgente abbia il corrispondente file di test con suffisso \texttt{\_test.dart}.
-    \item \texttt{testing/} — sotto-pacchetto dedicato ai mock e alle utilities condivise tra i test. Contiene le implementazioni fittizie delle classi (mock di \textit{Repository} e \textit{Service}) che i file in \texttt{test/} devono utilizzare, evitando dipendenze da servizi reali durante l'esecuzione dei test.
+    \item \texttt{test/}, contiene gli unit test del codice Dart. La struttura interna rispecchia quella di \texttt{lib/}, in modo che ogni file sorgente abbia il corrispondente file di test con suffisso \texttt{\_test.dart};
+    \item \texttt{testing/}, contiene le classi dedicate ai mock e alle utilities condivise tra i test, come le implementazioni fittizie dei Repository e dei Service.
 \end{itemize}
 
 \paragraph{Automazione e controllo qualità}
