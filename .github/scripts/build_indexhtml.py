@@ -88,8 +88,7 @@ verb_interni_pb.sort(key=lambda f: f.name, reverse=True)
 
 #Recupero glossario - recupera quello della milestone più recente
 #file_glossario = list(RTB_PATH_INTERNI.rglob("*Glossario.pdf"))
-if interni_pb:
-    file_glossario = list(PB_PATH_INTERNI.rglob("*Glossario.pdf"))
+file_glossario = list(PB_PATH_INTERNI.rglob("*Glossario.pdf"))
 
 
 #Crea sezioni
