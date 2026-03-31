@@ -151,10 +151,10 @@ Ferdinando Fracasso\\
 0.11.5 & 2026-02-09 & Dennis Parolin & Aggiunta una descrizione mancante. & Marco Sanguin \\
 \hline
 \rowcolor{white}
-0.11.4 & 2026-02-06 & Dennis Parolin & Modificata la sezione "Stesura dei reqauisiti" modificando la nomenclatura degli identificatori dei requisiti. Risolti problemi di compilazione. & Giovanni Visentin \\
+0.11.4 & 2026-02-06 & Dennis Parolin & Modificata la sezione "Stesura dei requisiti" modificando la nomenclatura degli identificatori dei requisiti. Risolti problemi di compilazione. & Giovanni Visentin \\
 \hline
 \rowcolor{gray!20}
-0.11.3 & 2026-02-03 & Dennis Parolin & Fatti dei controlli generici del documento. Sistemati riferimenti a sezioni non esistenti o errate. Aggiunti i placeholder per raggiungere sezioni esistenti ma non raggiungibili (perché senza riferimento). Sistemati vari errori di battitura, errori grammaticali, refusi e errori logici. Aggiunti ad esempio degli strumenti citati ma che non erano presenti nella tabella degli strumenti utilizzati & Giovanni Visentin\\
+0.11.3 & 2026-02-03 & Dennis Parolin & Fix riferimenti a sezioni. Aggiunti i placeholder per raggiungere sezioni esistenti ma non raggiungibili. Sistemati vari errori di battitura, errori grammaticali, refusi e errori logici. & Giovanni Visentin\\
 \hline
 \rowcolor{white}
 0.11.2 & 2026-01-11 & Dennis Parolin & Aggiunti gli strumenti di supporto delle sezioni "\term{Processo} di \term{Verifica}", "\term{Processo} di \term{Validazione}" e "Codifica". Aggiunta la lista delle tabelle. & Riccardo Manisi \\
@@ -377,7 +377,8 @@ Il \textbf{\term{Processo} di sviluppo} comprende le attività svolte dal team d
 Per sostenere i processi di sviluppo sono stati utilizzati i seguenti strumenti:
 \begin{itemize}
     \item \textbf{Lucidchart}: piattaforma per la modellazione UML. Lo strumento consente la creazione di diagrammi UML (tra cui diagrammi dei casi d'uso, delle classi e di sequenza) direttamente in ambiente web, favorendo la collaborazione sincrona tra i membri del gruppo sullo stesso documento.
-    \item \textbf{Flutter}: framework utilizzato nell'ambito del progetto per lo sviluppo dell'interfaccia \term{Utente} dell'applicazione mobile richiesta dall'applicazione.
+    \item \textbf{Flutter}: framework utilizzato nell'ambito del progetto per lo sviluppo dell'interfaccia \term{Utente} dell'applicazione mobile richiesta dall'applicazione;
+    \item \textbf{draw.io}: strumento open source usato dal gruppo per la creazione di diagrammi UML delle classi, utilizzabile sia in ambiente web che desktop. Integra funzionalità di intelligenza artificiale che consentono la generazione automatica di diagrammi a partire da descrizioni testuali, velocizzando la produzione della documentazione grafica.
 \end{itemize}
 
 \subsubsection{Attività previste}
@@ -395,6 +396,7 @@ Le attività che compongono il \textbf{\term{Processo} di sviluppo} adattate al 
     \item \textbf{Supporto per l'approvazione},  il fornitore e il cliente collaudano il prodotto per accertare che tutti i requisiti stabiliti sono presenti nel software consegnato.
 \end{itemize}
 
+% ==== ATTIVITÀ DI ANALISI DEI REQUISITI =====
 \subsubsection{Analisi Dei Requisiti}
 L'attività di \term{Analisi Dei Requisiti} ha l’obiettivo di trasformare i requisiti \term{Utente} espressi nel \term{Capitolato}, nel nostro caso il \textbf{\term{Capitolato} C4} proposto da \textbf{Miriade S.r.l.}, in requisiti di sistema chiari, completi e verificabili. 
 Tale attività produce il documento dell'\term{Analisi Dei Requisiti} che stabilisce le basi per un accordo tra la \term{Proponente} e il fornitore sulle funzionalità che verranno implementate nel prodotto..
@@ -452,10 +454,62 @@ Dove:
 
 Tale classificazione supporta la tracciabilità, la \term{Verifica} e la gestione dell’evoluzione dei requisiti durante l’intero \term{Ciclo Di Vita}.
 
+% ===== SEZIONE PROGETTAZIONE ARCHITETTURALE =====
+\subsubsection{Progettazione dell'architetura} \label{subsubsec:progettazione-arc}
+
+
 % ==== SEZIONE CODIFICA ====
 \subsubsection{Codifica}
 L'attività di codifica ha lo scopo di realizzare tecnicamente quanto definito nelle fasi di analisi e progettazione.
 L'obiettivo principale delle norme qui esposte è garantire l'\textbf{uniformità}: il codice deve risultare omogeneo, leggibile e manutenibile, indipendentemente dal membro del gruppo che lo ha scritto.
+
+% ==== SEZIONE CODICE DART ====
+\paragraph{Stile di Codifica: Dart} \label{par:stile-cod-dart}
+
+\subparagraph{Convenzioni di nomenclatura}
+Il gruppo adotta le convenzioni ufficiali definite da \textit{Dart} per garantire uniformità e leggibilità del codice:
+\begin{itemize}
+    \item \textbf{Classi, enum, typedef ed estensioni}: si utilizza \texttt{UpperCamelCase} (es. \texttt{UserRepository}, \texttt{AuthService}).
+    \item \textbf{Variabili, parametri, metodi e costanti}: si utilizza \texttt{lowerCamelCase} (es. \texttt{userName}, \texttt{fetchData}).
+    \item \textbf{File, directory e prefissi di import}: si utilizza \texttt{lowercase\_with\_underscores} (es. \texttt{user\_repository.dart}, \texttt{auth\_service.dart}).
+    \item \textbf{Lingua codice}: nomi di classi, variabili, metodi e file devono essere in \textbf{lingua inglese}.
+    \item \textbf{Lingua commenti}: i commenti nel codice devono essere redatti in \textbf{lingua italiana}.
+    \item \textbf{Commenti di documentazione}: ogni metodo deve essere documentato tramite un commento (usando il comando \texttt{///}).
+    I riferimenti a variabili o parametri all'interno dei commenti vanno racchiusi tra parentesi quadre (es. \texttt{/// Restituisce il valore di [userId]}).
+    \item \textbf{File di test}: i file contenenti test unitari devono terminare con il suffisso \texttt{\_test.dart} (es. \texttt{user\_repository\_test.dart}).
+\end{itemize}
+
+\subparagraph{Formattazione automatica del codice} 
+La formattazione del codice Dart viene delegata al tool ufficiale \texttt{dart format}, che applica automaticamente le regole stilistiche definite da \textit{Dart}. 
+Per garantirne il rispetto su tutto il progetto, la formattazione automatica viene integrata su due livelli per un maggiore controllo sul 
+codice che i membri del gruppo producono durante questa attività:
+\begin{itemize}
+    \item \textbf{Locale}: l'IDE adottato dal gruppo (Visual Studio Code) è configurato per eseguire \texttt{dart format} al salvataggio del file.
+    \item \textbf{Remoto}: la pipeline di Github Actions per eseguire la CI applica la formattazione Dart ad ogni \textit{push}, 
+    impedendo il Merge di codice non formattato correttamente nel ramo principale.
+\end{itemize}
+
+\subparagraph{Struttura della repository frontend} \label{subpar:struttura-repo-frontend}
+La struttura del codice del progetto Flutter segue la suddivisione per layer raccomandata dalla documentazione ufficiale di Flutter. 
+Di seguito viene riportata la struttura delle directory principali e il contenuto atteso per ciascuna:
+\begin{itemize}
+    \item \texttt{lib/}, directory del codice sorgente dell'applicazione:
+    \begin{itemize}
+        \item \texttt{ui/} — contiene tutto il codice relativo alla presentazione, organizzato per funzionalità. Per ciascuna funzionalità sono presenti:
+        \begin{itemize}
+            \item file \textit{View} (widget Flutter che descrivono l'interfaccia utente);
+            \item file \textit{ViewModel} (classi Dart che gestiscono lo stato e la logica della view, una per ogni view).
+        \end{itemize}
+        \item \texttt{domain/} — contiene i modelli di dominio dell'applicazione, ovvero le classi che rappresentano i dati nel formato consumato dal layer \texttt{ui}. Non dipende da \texttt{data} né da \texttt{ui}.
+        \item \texttt{data/} — contiene il layer di accesso ai dati, suddiviso in:
+        \begin{itemize}
+            \item \textit{Repository}: classi che rappresentano la fonte di verità per un tipo di dato; si occupano di recuperare, trasformare e memorizzare i dati provenienti dai \textit{Service};
+            \item \textit{Service}: classi che comunicano con sorgenti dati esterne (API REST, database locali, ecc.).
+        \end{itemize}
+    \end{itemize}
+    \item \texttt{test/} — contiene i test unitari del progetto. La struttura interna rispecchia quella di \texttt{lib/}, in modo che ogni file sorgente abbia il corrispondente file di test con suffisso \texttt{\_test.dart}.
+    \item \texttt{testing/} — sotto-pacchetto dedicato ai mock e alle utilities condivise tra i test. Contiene le implementazioni fittizie delle classi (mock di \textit{Repository} e \textit{Service}) che i file in \texttt{test/} devono utilizzare, evitando dipendenze da servizi reali durante l'esecuzione dei test.
+\end{itemize}
 
 \paragraph{Automazione e controllo qualità}
 Per garantire il rispetto rigoroso dello stile senza rallentare lo sviluppo, il gruppo affida il controllo formale agli strumenti di automazione, riducendo l'errore umano.
