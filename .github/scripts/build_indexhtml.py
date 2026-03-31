@@ -108,7 +108,7 @@ if esterni_pb or interni_pb or verb_interni_pb or verb_esterni_pb:
     docs = ''
     verb_ext = ''
     verb_int = ''
-    docs = docs + '<h3>Documenti esterni</h3>\n'
+    docs = docs + '<h3>Documenti esterni</h3>\n<ul>\n'
     for file in esterni_pb:
         docs = docs + create_doc_link(file)
     docs = docs + '</ul>\n'
