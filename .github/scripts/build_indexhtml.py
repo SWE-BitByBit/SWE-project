@@ -1,16 +1,16 @@
 from pathlib import Path
-import fnmatch as fn
-
+import re
 
 #Path scomposti perchè altrimenti non si riesce a ordinare i link
-C_PATH_DOCS = Path("docs/candidatura")
+#Commentato parti pertinenti alle fasi precedenti e quindi da non visualizzare nel sito
+"""C_PATH_DOCS = Path("docs/candidatura")
 C_PATH_VERB_EXT = Path("docs/candidatura/verbali_esterni")
 C_PATH_VERB_INT = Path("docs/candidatura/verbali_interni")
 
 RTB_PATH_ESTERNI = Path("docs/RTB/documenti_esterni")
 RTB_PATH_INTERNI = Path("docs/RTB/documenti_interni")
 RTB_PATH_VERB_EXT = Path("docs/RTB/verbali_esterni")
-RTB_PATH_VERB_INT = Path("docs/RTB/verbali_interni")
+RTB_PATH_VERB_INT = Path("docs/RTB/verbali_interni")"""
 
 PB_PATH_ESTERNI = Path("docs/PB/documenti_esterni")
 PB_PATH_INTERNI = Path("docs/PB/documenti_interni")
@@ -24,10 +24,20 @@ PB_PATH_VERB_INT = Path("docs/PB/verbali_interni")
 def create_doc_link(file):
     #Si assume che il documento non sia un verbale
     out = ''
-    filename = file.with_suffix("").name.capitalize().replace('_', ' ')
-    out = out + '<h3>' + filename +'</h3>\n<ul>\n<li>\n<a href="' + file.as_posix() + '" target="blank">' + filename + '</a>\n</li>\n</ul>\n'
+    filename = file.with_suffix("").name.capitalize().replace('_', ' ') + get_file_vers(file)
+    out = out + '<h3>\n<a href="' + file.as_posix() + '" target="blank">' + filename + '</a>\n</h3>\n'
     print(f"{filename}\n")
     return out
+
+def get_file_vers(file) -> str:
+    #Apri file tex src e recupera le informazioni di versione
+    srcfile = file.as_posix().replace('docs','src').replace('.pdf','.tex')
+    versione = ''
+    with open(srcfile, "r", encoding="utf-8", errors="ignore") as f:
+        section = re.search(r"\\textbf{Versione:}\s*&\s([\d\.]+)\s*\\\\", srcfile)
+        if section:
+            versione = versione + ' v' + section.group(1)
+    return versione
 
 def create_verb_link(file):
     out = ''
@@ -46,7 +56,7 @@ with open(Path('site_template.txt'), 'r') as temp:
     template = temp.read()
 
 #Ottieni lista di file dai percorsi
-doc_candidatura = list(C_PATH_DOCS.rglob("*.pdf"))
+"""doc_candidatura = list(C_PATH_DOCS.rglob("*.pdf"))
 #rimuovi verbali da doc candidatura
 doc_candidatura = [f for f in doc_candidatura if f.exists and not(fn.fnmatch(f.name,"*verbale*"))]
 verb_esterni_candidatura = list(C_PATH_VERB_EXT.rglob("*.pdf"))
@@ -56,15 +66,19 @@ verb_interni_candidatura.sort(key=lambda f: f.name, reverse=True)
 
 esterni_rtb = list(RTB_PATH_ESTERNI.rglob("*.pdf"))
 interni_rtb = list(RTB_PATH_INTERNI.rglob("*.pdf"))
+
 #Togli glossario da doc rtb
 interni_rtb = [f for f in interni_rtb if f.exists() and f.name not in {"Glossario.pdf"}]
 verb_esterni_rtb = list(RTB_PATH_VERB_EXT.rglob("*.pdf"))
 verb_esterni_rtb.sort(key=lambda f: f.name, reverse=True)
 verb_interni_rtb = list(RTB_PATH_VERB_INT.rglob("*.pdf"))
-verb_interni_rtb.sort(key=lambda f: f.name, reverse=True)
+verb_interni_rtb.sort(key=lambda f: f.name, reverse=True)"""
+
+
 
 esterni_pb = list(PB_PATH_ESTERNI.rglob("*.pdf"))
 interni_pb = list(PB_PATH_INTERNI.rglob("*.pdf"))
+
 #Togli glossario da doc pb
 interni_pb = [f for f in interni_pb if f.exists() and f.name not in {"Glossario.pdf"}]
 verb_esterni_pb = list(PB_PATH_VERB_EXT.rglob("*.pdf"))
@@ -73,7 +87,7 @@ verb_interni_pb = list(PB_PATH_VERB_INT.rglob("*.pdf"))
 verb_interni_pb.sort(key=lambda f: f.name, reverse=True)
 
 #Recupero glossario - recupera quello della milestone più recente
-file_glossario = list(RTB_PATH_INTERNI.rglob("*Glossario.pdf"))
+#file_glossario = list(RTB_PATH_INTERNI.rglob("*Glossario.pdf"))
 if interni_pb:
     file_glossario = list(PB_PATH_INTERNI.rglob("*Glossario.pdf"))
 
@@ -87,9 +101,10 @@ if esterni_pb or interni_pb or verb_interni_pb or verb_esterni_pb:
     docs = ''
     verb_ext = ''
     verb_int = ''
-    
+    docs = docs + '<h3>Documenti esterni</h3>'
     for file in esterni_pb:
         docs = docs + create_doc_link(file)
+    docs = docs + '<h3>Documenti interni</h3>'
     for file in interni_pb:
         docs = docs + create_doc_link(file)
 
@@ -107,7 +122,7 @@ if esterni_pb or interni_pb or verb_interni_pb or verb_esterni_pb:
     docsections = docsections + docs + verb_ext + verb_int + '</section>\n'
 
 #documenti RTB
-if esterni_rtb or interni_rtb or verb_interni_rtb or verb_esterni_rtb:
+"""if esterni_rtb or interni_rtb or verb_interni_rtb or verb_esterni_rtb:
     docsections = docsections + '<section id="rtb">\n<h2>RTB</h2>\n'
     docs = ''
     verb_ext = ''
@@ -119,20 +134,20 @@ if esterni_rtb or interni_rtb or verb_interni_rtb or verb_esterni_rtb:
         docs = docs + create_doc_link(file)
 
     if verb_esterni_rtb:
-        verb_ext = "<h3>Verbali esterni</h3>\n<ul>\n"
+        verb_ext = '<h3>Verbali esterni</h3>\n<ul>\n'
         for file in verb_esterni_rtb:
             verb_ext = verb_ext + create_verb_link(file)
-        verb_ext = verb_ext + "</ul>\n"
+        verb_ext = verb_ext + '</ul>\n'
 
     if verb_interni_rtb:
-        verb_int = "<h3>Verbali interni</h3>\n<ul>\n"
+        verb_int = '<h3>Verbali interni</h3>\n<ul>\n'
         for file in verb_interni_rtb:
             verb_int = verb_int + create_verb_link(file)
-        verb_int = verb_int + "</ul>\n"
-    docsections = docsections + docs + verb_ext + verb_int + '</section>\n'
+        verb_int = verb_int + '</ul>\n'
+    docsections = docsections + docs + verb_ext + verb_int + '</section>\n'"""
 
 #documenti candidatura
-if doc_candidatura or verb_interni_candidatura or verb_esterni_candidatura:
+"""if doc_candidatura or verb_interni_candidatura or verb_esterni_candidatura:
     docsections = docsections + '<section id="candidatura">\n<h2>Candidatura</h2>\n'
     docs = ''
     verb_ext = ''
@@ -142,17 +157,17 @@ if doc_candidatura or verb_interni_candidatura or verb_esterni_candidatura:
         docs = docs + create_doc_link(file)
 
     if verb_esterni_candidatura:
-        verb_ext = "<h3>Verbali esterni</h3>\n<ul>\n"
+        verb_ext = '<h3>Verbali esterni</h3>\n<ul>\n'
         for file in verb_esterni_candidatura:
             verb_ext = verb_ext + create_verb_link(file)
         verb_ext = verb_ext + "</ul>\n"
 
     if verb_interni_candidatura:
-        verb_int = "<h3>Verbali interni</h3>\n<ul>\n"
+        verb_int = '<h3>Verbali interni</h3>\n<ul>\n'
         for file in verb_interni_candidatura:
             verb_int = verb_int + create_verb_link(file)
-        verb_int = verb_int + "</ul>\n"
-    docsections = docsections + docs + verb_ext + verb_int + '</section>\n'
+        verb_int = verb_int + '</ul>\n'
+    docsections = docsections + docs + verb_ext + verb_int + '</section>\n'"""
 
 #Glossario
 if file_glossario:
