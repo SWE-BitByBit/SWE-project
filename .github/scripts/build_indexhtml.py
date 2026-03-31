@@ -152,14 +152,19 @@ if esterni_rtb or interni_rtb or verb_interni_rtb or verb_esterni_rtb:
     sez_gl_rtb = ''
 
     lettera_rtb = list(PB_PATH_ESTERNI.rglob("*lettera_di_presentazione_RTB.pdf"))
+    print(f"lettera rtb trovata: {len(lettera_rtb)}")
     if(lettera_rtb):
         for l in lettera_rtb:
             sez_lettera_rtb = create_link_special(l)
-
+    
+    docs = docs + '<h3>Documenti esterni</h3>\n<ul>\n'
     for file in esterni_rtb:
         docs = docs + create_doc_link(file)
+    docs = docs + '</ul>\n'
+    docs = docs + '<h3>Documenti interni</h3>\n<ul>\n'
     for file in interni_rtb:
         docs = docs + create_doc_link(file)
+    docs = docs + '</ul>\n'
 
     if verb_esterni_rtb:
         verb_ext = '<h3>Verbali esterni</h3>\n<ul>\n'
