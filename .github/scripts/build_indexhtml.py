@@ -31,7 +31,7 @@ def create_doc_link(file):
 
 def get_file_vers(file) -> str:
     #Apri file tex src e recupera le informazioni di versione
-    srcfile = list(Path(file.as_posix().replace('docs','src').replace('.pdf','.tex')).rglob("*"))[0]
+    srcfile = list(Path(file.parent().replace('docs','src')).rglob("*.tex"))[0]
     versione = ''
     with open(srcfile, "r", encoding="utf-8", errors="ignore") as f:
         section = re.search(r"\\textbf{Versione:}\s*&\s([\d\.]+)\s*\\\\", f)
