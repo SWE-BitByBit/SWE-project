@@ -66,7 +66,7 @@ with open(Path('site_template.txt'), 'r') as temp:
 #Ottieni lista di file dai percorsi
 doc_candidatura = list(C_PATH_DOCS.rglob("*.pdf"))
 #rimuovi verbali da doc candidatura
-doc_candidatura = [f for f in doc_candidatura if f.exists and not(fn.fnmatch(f.name,"*verbale*"))]
+doc_candidatura = [f for f in doc_candidatura if f.exists and (not(fn.fnmatch(f.name,"*verbale*")) and f.name not in {"lettera_di_presentazione", "lettera_di_seconda_presentazione"})]
 verb_esterni_candidatura = list(C_PATH_VERB_EXT.rglob("*.pdf"))
 verb_esterni_candidatura.sort(key=lambda f: f.name, reverse=True)
 verb_interni_candidatura = list(C_PATH_VERB_INT.rglob("*.pdf"))
@@ -133,7 +133,7 @@ if esterni_pb or interni_pb or verb_interni_pb or verb_esterni_pb:
     #Glossario
     if file_glossario:
         for f in file_glossario:
-            sez_glossario = '<section id="glossario">\n<h2>Glossario</h2>\n' + create_doc_link(f) + '</section>\n'
+            sez_glossario = create_link_special(f)
 
     docsections = docsections + docs + verb_ext + verb_int + sez_glossario + '</section>\n'
 
@@ -148,9 +148,13 @@ if esterni_rtb or interni_rtb or verb_interni_rtb or verb_esterni_rtb:
     docs = ''
     verb_ext = ''
     verb_int = ''
-    
-    lettera_rtb = list(PB_PATH_ESTERNI.rglob("*lettera_di_presentazione_RTB.pdf"))[0]
-    sez_lettera_rtb = create_link_special(lettera_rtb)
+    sez_lettera_rtb = ''
+    sez_gl_rtb = ''
+
+    lettera_rtb = list(PB_PATH_ESTERNI.rglob("*lettera_di_presentazione_RTB.pdf"))
+    if(lettera_rtb):
+        for l in lettera_rtb:
+            sez_lettera_rtb = create_link_special(lettera_rtb)
 
     for file in esterni_rtb:
         docs = docs + create_doc_link(file)
@@ -169,8 +173,11 @@ if esterni_rtb or interni_rtb or verb_interni_rtb or verb_esterni_rtb:
             verb_int = verb_int + create_verb_link(file)
         verb_int = verb_int + '</ul>\n'
     
-    gl = list(PB_PATH_INTERNI.rglob("*Glossario.pdf"))[0]
-    sez_gl_rtb = create_link_special(gl)
+    gl = list(RTB_PATH_INTERNI.rglob("*Glossario.pdf"))
+    if gl:
+        for f in gl:
+            sez_glossario = create_link_special(gl)
+    
 
     docsections = docsections + sez_lettera_rtb + docs + verb_ext + verb_int + sez_gl_rtb + '</section>\n'
 
@@ -180,7 +187,13 @@ if doc_candidatura or verb_interni_candidatura or verb_esterni_candidatura:
     docs = ''
     verb_ext = ''
     verb_int = ''
+    sez_lettere_ca = ''
     
+    lettera_ca = list(PB_PATH_ESTERNI.rglob("*lettera_di_presentazione.pdf"))
+    if(lettera_ca):
+        for l in lettera_ca:
+            sez_lettere_ca = sez_lettere_ca + create_link_special(lettera_ca)
+
     for file in doc_candidatura:
         docs = docs + create_doc_link(file)
 
@@ -195,7 +208,7 @@ if doc_candidatura or verb_interni_candidatura or verb_esterni_candidatura:
         for file in verb_interni_candidatura:
             verb_int = verb_int + create_verb_link(file)
         verb_int = verb_int + '</ul>\n'
-    docsections = docsections + docs + verb_ext + verb_int + '</section>\n'
+    docsections = docsections + sez_lettere_ca + docs + verb_ext + verb_int + '</section>\n'
 
 
 docsections = docsections + '<\div>\n'
