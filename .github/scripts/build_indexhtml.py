@@ -31,7 +31,7 @@ def create_doc_link(file):
 
 def get_file_vers(file) -> str:
     #Apri file tex src e recupera le informazioni di versione
-    srcfilepath = file.with_suffix('').replace('docs','src')
+    srcfilepath = file.with_suffix('').as_posix().replace('docs','src')
     srcfile = list(Path(srcfilepath).rglob("*.tex"))[0]
     versione = ''
     with open(srcfile, "r", encoding="utf-8", errors="ignore") as f:
