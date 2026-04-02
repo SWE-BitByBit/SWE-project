@@ -35,6 +35,7 @@
 \setstretch{1.2}
 
 % ===== Stile intestazione =====
+\setlength{\headheight}{15pt}
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\textcolor{gray}{Glossario - Gruppo BitByBit}}
@@ -97,7 +98,7 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & Completato \\
-\textbf{Versione:} & 1.0.0 \\
+\textbf{Versione:} & 1.0.1 \\
 \textbf{Redattori:} & 
 \begin{tabular}[t]{@{}l@{}}
 Ferdinando Fracasso \\
@@ -133,6 +134,9 @@ Gruppo BitByBit \\
 \hline
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+\hline
+\rowcolor{gray!20}
+1.0.1 & 2026-04-02 & Dennis Parolin & Aggiunti Termini & Marco Sanguin \\
 \hline
 \rowcolor{white}
 1.0.0 & 2026-03-02 & Giovanni Visentin & Documento in versione stabilizzata & Dennis Parolin \\
@@ -210,8 +214,14 @@ Tecnica di verifica che non prevede l'esecuzione del codice.
     \item Include attività come l'ispezione, il walkthrough e l'uso di strumenti automatici (linter).
 \end{itemize}
 
+\termdefinition{API REST}
+Acronimo di \textit{Representational State Transfer}. Stile architetturale per sistemi distribuiti che definisce un set di vincoli e princìpi per la creazione di interfacce web, basato sullo scambio logico di messaggi senza stato tramite il protocollo HTTP.
+
 \termdefinition{Architettura}
 Organizzazione generale del sistema e dei suoi componenti.
+
+\termdefinition{Architettura a Strati}
+Modello architetturale (noto come \textit{Layered Architecture}) in cui i componenti del software sono disposti in livelli gerarchici isolati. Ogni strato ha una responsabilità specifica e comunica solitamente solo con gli strati adiacenti, favorendo la separazione degli intenti e la manutenibilità.
 
 \clearpage
 
@@ -220,6 +230,9 @@ Organizzazione generale del sistema e dei suoi componenti.
 
 \termdefinition{Baseline}
 Versione approvata di un prodotto di lavoro (di progetto) che può essere modificato solo attraverso procedure formali di controllo delle modifiche.
+
+\termdefinition{Backend}
+Parte del sistema software non direttamente visibile o accessibile all'utente finale, responsabile dell'elaborazione della logica di business, dell'accesso ai database e della gestione dell'infrastruttura di calcolo.
 
 \termdefinition{Black-box}
 Metodologia di test in cui il verificatore non conosce o ignora la struttura interna del sistema (codice sorgente).
@@ -265,6 +278,12 @@ Si riferisce alla completa durata dello sviluppo del prodotto, dal concepimento 
 È composto da stati in cui si ha una certa sequenza di passaggi da seguire. La transizione da uno stato all’altro avviene come conseguenza di un processo di ciclo di vita. 
 In seguito al ritiro il prodotto può essere rimesso in vita, per questo viene indicato con ciclo.
 
+\termdefinition{Clean Architecture}
+Modello di progettazione del software finalizzato alla creazione di sistemi scalabili, testabili e manutenibili. Separa il codice in fasce concentriche in cui la logica di business è totalmente isolata e indipendente da dettagli esterni quali database, framework e interfacce utente.
+
+\termdefinition{Cloud}
+Modello di erogazione di risorse informatiche (server, storage, database, calcolo) su richiesta tramite Internet, che svincola l'acquirente dalla necessità di possedere e manutenere hardware fisico in loco.
+
 \termdefinition{Committente}
 Colui che ordina l'esecuzione di un prodotto ad un ente esterno, il fornitore. È colui che ha il maggior peso contrattuale.
 
@@ -282,6 +301,9 @@ Documento (legale) stilato tra committente e fornitore.
 % ==============================
 \section{D}
 
+\termdefinition{Data Access Layer}
+Acronimo DAL. Strato architetturale che semplifica e uniforma l'accesso ai dati persistenti. Espone operazioni fondamentali ai layer superiori celando loro l'implementazione fisica e i dettagli del database sottostante.
+
 \termdefinition{Deployment}
 Il processo di messa in opera di un sistema software o di un aggiornamento in un ambiente specifico (es. ambiente di staging o di produzione), rendendolo disponibile per l'uso o per il collaudo.
 
@@ -293,8 +315,14 @@ Componente software fittizio utilizzato nei test di integrazione (strategia Bott
 % ==============================
 \section{E}
 
+\termdefinition{Event-Driven}
+Paradigma architetturale in cui il flusso del programma, i servizi e lo scambio di dati sono guidati dalla produzione e dal rilevamento di eventi asincroni. Favorisce una fortissima riduzione dell'accoppiamento tra i componenti applicativi.
+
 % ==============================
 \section{F}
+
+\termdefinition{Framework}
+Architettura logica di supporto su cui il software viene strutturato. Fornisce funzionalità predefinite e detta precise regole implementative per velocizzare lo sviluppo ed estendere la standardizzazione del codice.
 
 % ==============================
 \section{G}
@@ -315,6 +343,9 @@ Piattaforma di integrazione continua (CI) e distribuzione continua (CD) integrat
 
 \termdefinition{IDE}
 Applicazione software che fornisce agli sviluppatori strumenti completi per lo sviluppo software. Include solitamente un editor di codice, strumenti di build automation, un debugger e funzionalità di intellisense (es. Visual Studio Code).
+
+\termdefinition{Infrastructure as Code}
+Prassi che consiste nel tracciamento e nel provisioning di data center e infrastrutture in cloud tramite file di testo leggibili dalla macchina (detti \textit{template}), anziché mediante l'uso di interfacce grafiche o configurazioni manuali.
 
 \termdefinition{Ispezione}
 Tecnica formale di analisi statica in cui un verificatore esamina un artefatto (codice o documento) in autonomia, utilizzando una checklist per individuare discrepanze rispetto agli standard. È un processo rigoroso e documentato.
@@ -358,8 +389,14 @@ Ogni milestone deve essere:
 \termdefinition{Merge}
 Metodo per integrare i cambiamenti fatti in un branch di lavoro in un altro branch, definito di destinazione. Può essere eseguito con le pull request o tramite la command line.
 
+\termdefinition{Message Bus}
+Infrastruttura middleware di comunicazione che consente il passaggio di eventi tra componenti in modo disaccoppiato. Funge da intermediario che riceve i messaggi e provvede ad inviarli ai servizi destinatari, garantendone l'inoltro e la resilienza agli errori.
+
 \termdefinition{Metrica}
 Qualsiasi tipo di misurazione relativa a un sistema software, processo o documentazione. Permette di quantificare un attributi di un prodotto o un processo.
+
+\termdefinition{Model-View-ViewModel (MVVM)}
+Pattern architetturale ideato per separare nettamente lo sviluppo dell'interfaccia utente grafica (View) dalla logica di business e dai dati (Model). Tale separazione avviene per mezzo del ViewModel, che funge da intermediario reattivo per la conversione dei dati.
 
 \termdefinition{MVP}
 Sigla per \textbf{Minimum Viable Product}. Artefatto che definisce la versione di un prodotto dotata di funzionalità sufficienti per essere distribuito efficacemente.
@@ -376,6 +413,9 @@ La creazione di questo prodotto deve consumare la minima quantità di risorse de
 
 % ==============================
 \section{P}
+
+\termdefinition{Payload}
+La porzione di dati utili e significativi trasportata all'interno di un messaggio scambiato in rete (come una richiesta HTTP), escludendo i metadati o le intestazioni tecniche (\textit{headers}) necessarie per formattare il pacchetto.
 
 \termdefinition{PB}
 Sigla per \textbf{Product Baseline}. Baseline di progetto per validare l'architettura del prodotto software e la sua realizzazione. Espone il design definitivo del prodotto descritto nel documento delle specifiche tecniche.
@@ -474,11 +514,23 @@ Sigla per \textbf{Requirements and Technology Baseline}. Rappresenta una baselin
 % ==============================
 \section{S}
 
+\termdefinition{Scalabilità dinamica}
+Capacità di un sistema cloud di adattare, allocare o liberare automaticamente le risorse computazionali in tempo reale, allo scopo di seguire attivamente le variazioni imprevedibili del traffico applicativo.
+
 \termdefinition{Self-documenting code}
 Codice scritto in modo talmente chiaro (tramite nomi significativi di variabili e funzioni) da rendere superflui i commenti esplicativi per comprenderne il funzionamento logico.
 
 \termdefinition{SemVer}
 Sigla per \textbf{Semantic Versioning}. Metodologia composta da un insieme di regole e vincoli che specifica come i numeri di versione sono incrementati e assegnati.
+
+\termdefinition{Separation of Concerns}
+Principio di progettazione informatica in cui un programma è diviso in sezioni o ambiti logicamente distinti. Ciascuna sezione è responsabile di un'unica e sola area di interesse senza sovrapposizioni logiche con le altre.
+
+\termdefinition{Serverless}
+Modello di esecuzione o paradigma afferente al cloud computing in cui il fornitore infrastrutturale gestisce dinamicamente l'assegnazione e lo spegnimento dei server. Il consumatore del servizio provvede esclusivamente allo sviluppo della logica di calcolo.
+
+\termdefinition{Single Point of Entry}
+Nodo applicativo o gateway infrastrutturale concepito per essere l'unica interfaccia di accesso che il sistema espone per accettare input esterni. Tale limitazione facilita la centralizzazione del traffico, delle validazioni e dei controlli di sicurezza.
 
 \termdefinition{Sprint}
 Breve periodo di tempo, dalla durata prefissata, in cui un team lavora per completare le attività elencate nello sprint backlog di quel preciso sprint.
@@ -495,6 +547,9 @@ Riunione, fatta alla fine di uno sprint, che consta di una revisione per identif
 
 \termdefinition{Stakeholder}
 Tutti coloro che a vario titolo hanno influenza sul prodotto e sul progetto: utenti, committente, fornitore, regolatori.
+
+\termdefinition{State Management}
+Nello sviluppo frontend, identifica l'approccio centralizzato per tracciare e gestire le variabili di stato reattivo di un'applicazione. Il suo scopo è garantire che qualsiasi interazione dell'utente modifichi i dati globali o locali e li rifletta automaticamente nel render visivo.
 
 \termdefinition{Statement Coverage}
 Metrica di copertura del codice che indica la percentuale di istruzioni (righe di codice) eseguite almeno una volta durante i test automatici.
@@ -581,7 +636,13 @@ Metodologia di test in cui il verificatore conosce la struttura interna del codi
 % ==============================
 \section{Y}
 
+\termdefinition{YAML}
+Acronimo ricorsivo per \textit{YAML Ain't Markup Language}. Linguaggio di rappresentazione per la serializzazione dei dati, leggibile universalmente dall'uomo e largamente utilizzato per la stesura di file di configurazione per logiche CI/CD o per infrastrutture.
+
 % ==============================
 \section{Z}
+
+\termdefinition{Zero Ops}
+Acronimo di \textit{Zero Operations}. Paradigma aziendale e logico in cui i team di sviluppo responsabili del prodotto sono sollevati da tutte le operazioni manuali di manutenzione, aggiornamento o allocazione dei servizi fisici che ospitano il sistema.
 
 \end{document}
