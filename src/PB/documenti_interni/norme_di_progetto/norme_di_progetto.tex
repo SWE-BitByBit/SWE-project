@@ -530,7 +530,7 @@ codice che i membri del gruppo producono durante questa attività:
     impedendo il \term{Merge} di codice non formattato correttamente nel ramo principale.
 \end{itemize}
 
-\subparagraph{Convenzioni sulla struttura gerarchia delle directory} \label{subpar:convenzioni-gerarchia-dir-fe}
+\subparagraph{Convenzioni sulla struttura gerarchica delle directory} \label{subpar:convenzioni-gerarchia-dir-fe}
 La struttura del codice del progetto Flutter segue la suddivisione per layer raccomandata dalla documentazione ufficiale di Flutter. 
 Di seguito viene riportata la struttura delle directory principali e il contenuto atteso per ciascuna:
 \begin{itemize}
@@ -545,7 +545,7 @@ Di seguito viene riportata la struttura delle directory principali e il contenut
                 \item \texttt{widget/}, contiene le classi Screen e gli eventuali widget specifici della funzionalità.
             \end{itemize}
         \end{itemize}
-        \item \texttt{domain/}, contiene le classi che rappresentano i dati nel formato consumato dal layer ui, indipendenti da qualsiasi sorgente dati;
+        \item \texttt{domain/}, contiene le classi che rappresentano i dati nel formato consumato dal layer UI, indipendenti da qualsiasi sorgente dati;
         \item \texttt{data/}, contiene il layer di accesso ai dati, suddiviso in:
         \begin{itemize}
             \item \texttt{repositories/}, contiene le classi \term{Repository}, che rappresentano la fonte di verità per un tipo di dato e orchestrano l'accesso ai Service;
@@ -595,7 +595,7 @@ Al fine di mantenere il codice robusto e testabile, il gruppo adotta le seguenti
 \begin{itemize}
     \item \textbf{Assenza di stato globale}: è vietato l'utilizzo di variabili globali, in quanto introducono dipendenze nascoste e rendono imprevedibile il comportamento del software.
     \item \textbf{Semplicità delle funzioni}: le funzioni devono essere brevi e focalizzate su una singola responsabilità. Una funzione eccessivamente lunga o complessa è indice di cattiva progettazione e deve essere rifattorizzata.
-    \item \item \textbf{Immutabilità}: si preferisce l'uso di strutture dati immutabili e variabili dichiarate \texttt{final} (Dart) o \texttt{const} (Python) ove possibile, riducendo il rischio di modifiche accidentali allo stato.
+    \item \textbf{Immutabilità}: si preferisce l'uso di strutture dati immutabili e variabili dichiarate \texttt{final} (Dart) o tipizzate come \texttt{Final} (Python) ove possibile, riducendo il rischio di modifiche accidentali allo stato.
 \end{itemize}
 
 % ==== SEZIONE PROCESSI DI SUPPORTO ====
