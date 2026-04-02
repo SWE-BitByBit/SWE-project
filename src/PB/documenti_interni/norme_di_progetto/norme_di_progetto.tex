@@ -1050,15 +1050,7 @@ Tra le due, il gruppo \textit{BitByBit} adotta come standard l'\textbf{\term{Isp
 La \term{Verifica} del software si articola in due momenti distinti: l'analisi del codice sorgente (statica) e l'esecuzione dei test (dinamica).
 
 \paragraph{\ignoreglossary{Analisi Statica}} \label{par:analisi-statica}
-<<<<<<< HEAD
 Prima di essere eseguito, il codice viene analizzato da strumenti automatici integrati nella pipeline di \term{Ci}/\term{Cd}.
-=======
-Prima di essere eseguito, il codice viene analizzato da strumenti automatici integrati nella pipeline di \term{CI/CD}.
-=======
-\paragraph{\ignoreglossary{Analisi Statica} Automatizzata}
-Prima di essere eseguito, il codice viene analizzato da strumenti automatici (Linter e Static Analyzers) integrati nella pipeline di \term{CI/CD}.
->>>>>>> develop
->>>>>>> c5c27873dcd3777b76d0fc40e8902f801965aa57
 Questo passaggio serve a rilevare:
 \begin{itemize}
     \item violazioni delle norme di codifica (\hyperref[subsec:codifica]{vedi Sezione~\ref*{subsec:codifica}});
@@ -1077,60 +1069,21 @@ L'\term{Analisi Dinamica} \term{Verifica} il comportamento del software tramite 
 Per essere valido, ogni test deve garantire due proprietà: \textbf{ripetibilità} (stesso output a parità di input) e \textbf{automatizzabilità} (esecuzione senza intervento umano).
 Il gruppo struttura i test secondo il modello a V, coprendo i seguenti livelli:
 \begin{enumerate}
-<<<<<<< HEAD
     \item \textbf{\term{Test Di Unità}}: \term{Verifica} delle singole componenti (funzioni/classi) in isolamento, tramite \texttt{flutter\_test} per il codice Dart e \texttt{pytest} per il codice Python.
-=======
-<<<<<<< HEAD
-    \item \textbf{\term{Test di Unità}}: \term{Verifica} delle singole componenti (funzioni/classi) in isolamento, tramite \texttt{flutter\_test} per il codice Dart e \texttt{pytest} per il codice Python.
-=======
-    \item \textbf{\term{Test di Unità}}: \term{Verifica} delle singole componenti (funzioni/classi) in isolamento.
->>>>>>> develop
->>>>>>> c5c27873dcd3777b76d0fc40e8902f801965aa57
     \begin{itemize}
         \item \textit{\term{White-box}}: test strutturali che mirano alla copertura dei percorsi logici interni (\term{Statement Coverage}).
         \item \textit{\term{Black-box}}: test funzionali che verificano l'output dato un input, analizzando valori validi, non validi e casi limite (\term{Boundary Analysis}).
     \end{itemize}
-<<<<<<< HEAD
     \item \textbf{\term{Test Di Integrazione}}: \term{Verifica} della collaborazione tra unità già testate.
-=======
-<<<<<<< HEAD
-    \item \textbf{\term{Test di Integrazione}}: \term{Verifica} della collaborazione tra unità già testate.
-=======
-    
-    \item \textbf{\term{Test di Integrazione}}: \term{Verifica} della collaborazione tra unità già testate.
->>>>>>> develop
->>>>>>> c5c27873dcd3777b76d0fc40e8902f801965aa57
     \begin{itemize}
         \item \textit{Top-Down}: integrazione dalle componenti di alto livello a quelle basse (richiede \textbf{\term{Stub}}).
         \item \textit{Bottom-Up}: integrazione dalle componenti base verso l'interfaccia (richiede \textbf{\term{Driver}}).
     \end{itemize}
-<<<<<<< HEAD
     \item \textbf{\term{Test Di Sistema}}: \term{Verifica} del sistema completo rispetto ai requisiti funzionali e prestazionali mappati nell'\term{Analisi Dei Requisiti}.
     \item \textbf{\term{Test Di Regressione}}: riesecuzione automatica della suite di test ad ogni \textit{push} tramite \term{Github Actions}, per garantire che le nuove modifiche non compromettano funzionalità preesistenti. I risultati di copertura vengono raccolti da SonarQube e sono consultabili tramite la sua dashboard.
     \item \textbf{\term{Test Di Accettazione}}: verifiche formali condotte con la \term{Proponente} per confermare che il software soddisfi i requisiti concordati prima del rilascio.
 \end{enumerate}
 
-=======
-<<<<<<< HEAD
-    \item \textbf{\term{Test di Sistema}}: \term{Verifica} del sistema completo rispetto ai requisiti funzionali e prestazionali mappati nell'\term{Analisi dei requisiti}.
-    \item \textbf{\term{Test di Regressione}}: riesecuzione automatica della suite di test ad ogni \textit{push} tramite \term{GitHub Actions}, per garantire che le nuove modifiche non compromettano funzionalità preesistenti. I risultati di copertura vengono raccolti da SonarQube e sono consultabili tramite la sua dashboard.
-    \item \textbf{\term{Test di Accettazione}}: verifiche formali condotte con la \term{Proponente} per confermare che il software soddisfi i requisiti concordati prima del rilascio.
-\end{enumerate}
-
-=======
-    
-    \item \textbf{\term{Test di Sistema}}: \term{Verifica} del sistema completo rispetto ai requisiti funzionali e prestazionali mappati nell'\term{Analisi dei requisiti}.
-    
-    \item \textbf{\term{Test di Regressione}}: Riesecuzione automatica della suite di test esistente ad ogni modifica, per garantire che le nuove feature non abbiano corrotto funzionalità preesistenti.
-
-    \item \textbf{\term{Test di Accettazione}}: Verifiche formali finali, condotte da utenti o \term{Stakeholder}, per confermare che un software soddisfi i requisiti aziendali e funzionali prima del rilascio in produzione.
-\end{enumerate}
-
-\paragraph{Strumenti per la \ignoreglossary{Verifica} del codice}
-La definizione puntuale degli strumenti tecnici per la \term{Verifica} del codice (es. framework di unit testing, Linter specifici per linguaggio, strumenti di \term{Analisi Statica} e coverage) sarà effettuata e dettagliata durante lo svolgimento della \textbf{Product \term{Baseline}} (\term{PB}), in coerenza con le tecnologie che verranno consolidate in quella fase.
-
->>>>>>> develop
->>>>>>> c5c27873dcd3777b76d0fc40e8902f801965aa57
 \subsubsection{Classificazione dei Test}
 Per garantire l'ordine nel \textbf{\term{Piano di qualifica}}, il gruppo adotta una nomenclatura univoca per il tracciamento:
 \begin{center}
