@@ -12,9 +12,9 @@ terms = []
 matches = re.findall(regex, content)
 
 for match in matches:
-    if '/' in match:
+    if ' / ' in match:
         # Split dei termini che hanno sinonimi, es: JavaScript / JS
-        sub_terms = [term.strip() for term in match.split('/')]
+        sub_terms = [term.strip() for term in match.split(' / ')]
         sub_terms = [term for term in sub_terms if term]
         terms.extend(sub_terms)
     else:
