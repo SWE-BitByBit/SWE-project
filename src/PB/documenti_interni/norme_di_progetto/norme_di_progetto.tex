@@ -412,6 +412,8 @@ Per sostenere i processi di sviluppo sono stati utilizzati i seguenti strumenti:
     \item \textbf{Flutter}: framework utilizzato nell'ambito del progetto per lo sviluppo dell'interfaccia \term{Utente} dell'applicazione mobile richiesta dall'applicazione;
     \item \textbf{Visual Studio Code}: \term{Ide} che permette di avere una configurazione comune tra i componenti del gruppo;
     \item \textbf{draw.io}: strumento open source usato dal gruppo per la creazione di diagrammi UML delle classi, utilizzabile sia in ambiente web che desktop. Integra funzionalità di intelligenza artificiale che velocizzano la produzione della documentazione grafica.
+    \item \textbf{Visual Studio Code}: \term{IDE} adottato dal gruppo come ambiente di sviluppo comune, configurato con le estensioni necessarie per supportare la formattazione automatica del codice Dart e Python (\hyperref[par:stile-cod-dart]{vedi Sezione~\ref*{par:stile-cod-dart}}, \hyperref[par:stile-cod-py]{vedi Sezione~\ref*{par:stile-cod-py}}).
+    \item \textbf{GitHub Actions}: piattaforma di CI/CD utilizzata per automatizzare i controlli di qualità ad ogni \textit{push}. Esegue la formattazione automatica del codice, l'\term{Analisi Statica} tramite SonarQube e blocca il \term{Merge} nel ramo principale in caso di esito negativo.
 \end{itemize}
 
 \subsubsection{Attività previste}
@@ -487,10 +489,6 @@ Dove:
 
 Tale classificazione supporta la tracciabilità, la \term{Verifica} e la gestione dell’evoluzione dei requisiti durante l’intero \term{Ciclo Di Vita}.
 
-% ===== SEZIONE PROGETTAZIONE ARCHITETTURALE =====
-\subsubsection{Progettazione dell'architetura} \label{subsubsec:progettazione-arc}
-
-
 % ==== SEZIONE CODIFICA ====
 \subsubsection{Codifica} \label{subsec:codifica}
 L'attività di codifica ha lo scopo di realizzare tecnicamente quanto definito nelle fasi di analisi e progettazione.
@@ -502,8 +500,8 @@ L'obiettivo principale delle norme qui esposte è garantire l'\textbf{uniformit�
 \subparagraph{Convenzioni di nomenclatura Dart}
 Il gruppo adotta le convenzioni ufficiali definite da \textit{Dart} per garantire uniformità e leggibilità del codice:
 \begin{enumerate}
-    \item \textbf{Nomi di classi, enum, typedef ed estensioni}: si utilizza \texttt{UpperCamelCase} (es. \texttt{UserRepository}, \texttt{AuthService}).
-    \item \textbf{Nomi di variabili, parametri, metodi e costanti}: si utilizza \texttt{lowerCamelCase} (es. \texttt{userName}, \texttt{fetchData}).
+    \item \textbf{Nomi di classi, enum, typedef ed estensioni}: si utilizza UpperCamelCase (es. \texttt{UserRepository}, \texttt{AuthService}).
+    \item \textbf{Nomi di variabili, parametri, metodi e costanti}: si utilizza lowerCamelCase (es. \texttt{userName}, \texttt{fetchData}).
     \item \textbf{Nomi di file, directory e prefissi di import}: si utilizza \texttt{lowercase\_with\_underscores} (es. \texttt{user\_repository.dart}, \texttt{auth\_service.dart}).
     \item \textbf{Lingua del codice}: nomi di classi, variabili, metodi e file devono essere in \textbf{lingua inglese}.
     \item \textbf{Lingua dei commenti}: i commenti nel codice devono essere redatti in \textbf{lingua italiana}.
@@ -516,11 +514,11 @@ Il gruppo adotta le convenzioni ufficiali definite da \textit{Dart} per garantir
 \subparagraph{Convenzioni nomenclatura delle classi Dart}
 Al fine di rendere immediatamente riconoscibile il ruolo architetturale di una classe dalla sua dichiarazione, il gruppo adotta i seguenti suffissi obbligatori:
 \begin{itemize}
-    \item \texttt{ViewModel}: classi della componente view model del UI layer per la gestione dello stato e della logica di presentazione di una schermata (es. \texttt{LoginViewModel}).
-    \item \texttt{Screen}: classi widget Flutter del UI layer che rappresentano una schermata completa (es. \texttt{LoginScreen}).
-    \item \texttt{Widget}: classi widget Flutter del layer UI non associatw a una singola schermata (es. \texttt{AvatarWidget}).
-    \item \texttt{Repository}: classi del data layer responsabili della Persistance (es. \texttt{UserRepository}).
-    \item \texttt{Service}: classi del data layer repsonsabili della Business Logic (es. \texttt{AuthService}).
+    \item \texttt{ViewModel}: classi della componente view model del UI Layer per la gestione dello stato e della logica di presentazione di una schermata (es. \texttt{LoginViewModel}).
+    \item \texttt{Screen}: classi widget Flutter del UI Layer che rappresentano una schermata completa (es. \texttt{LoginScreen}).
+    \item \texttt{Widget}: classi che rappresentano un widget Flutter del UI Layer non associato a una singola schermata (es. \texttt{AvatarWidget}).
+    \item \texttt{Repository}: classi del Data Layer responsabili della Persistance Logic (es. \texttt{UserRepository}).
+    \item \texttt{Service}: classi del Data Layer repsonsabili della Business Logic (es. \texttt{AuthService}).
 \end{itemize}
 
 \subparagraph{Formattazione automatica del codice Dart} 
@@ -528,7 +526,7 @@ La formattazione del codice Dart viene delegata al comando nativo \texttt{dart f
 Per garantirne il rispetto su tutto il progetto, la formattazione automatica viene integrata su due livelli per un maggiore controllo sul 
 codice che i membri del gruppo producono durante questa attività:
 \begin{itemize}
-    \item \textbf{Locale}: l'\term{Ide} adottato dal gruppo è configurato per eseguire il comando \texttt{dart format} al salvataggio del file.
+    \item \textbf{Locale}: l'\term{IDE} adottato dal gruppo è configurato per eseguire il comando \texttt{dart format} al salvataggio del file.
     \item \textbf{Remoto}: la pipeline di \term{Github Actions} per eseguire la \term{Ci} applica la formattazione Dart ad ogni \textit{push}, 
     impedendo il \term{Merge} di codice non formattato correttamente nel ramo principale.
 \end{itemize}
@@ -566,7 +564,7 @@ Di seguito viene riportata la struttura delle directory principali e il contenut
 \subparagraph{Convenzioni di nomenclatura Python}
 Il gruppo adotta le convenzioni ufficiali definite da \textit{PEP 8} per garantire uniformità e leggibilità del codice Python utilizzato nelle funzioni Lambda:
 \begin{enumerate}
-    \item \textbf{Classi}: si utilizza \texttt{UpperCamelCase} (es. \texttt{UserHandler}, \texttt{ApiResponse}).
+    \item \textbf{Classi}: si utilizza UpperCamelCase (es. \texttt{UserHandler}, \texttt{ApiResponse}).
     \item \textbf{Funzioni, variabili e parametri}: si utilizza \texttt{lowercase\_with\_underscores} (es. \texttt{user\_id}, \texttt{get\_user}).
     \item \textbf{Costanti}: si utilizza \texttt{UPPER\_CASE\_WITH\_UNDERSCORES} (es. \texttt{MAX\_RETRY\_COUNT}, \texttt{BASE\_URL}).
     \item \textbf{File e moduli}: si utilizza \texttt{lowercase\_with\_underscores} (es. \texttt{user\_handler.py}, \texttt{api\_utils.py}).
@@ -580,7 +578,7 @@ Il gruppo adotta le convenzioni ufficiali definite da \textit{PEP 8} per garanti
 Al fine di rendere immediatamente riconoscibile il ruolo di una classe dalla sua dichiarazione, il gruppo adotta i seguenti suffissi obbligatori:
 \begin{itemize}
     \item \texttt{Handler}: classi che gestiscono l'evento in ingresso alla funzione Lambda e orchestrano la risposta (es. \texttt{UserHandler}).
-    \item \texttt{Service}: classi che incapsulano la logica di business, indipendentemente dal tipo di evento ricevuto (es. \texttt{NotificationService}).
+    \item \texttt{Service}: classi che incapsulano la Business Logic, indipendentemente dal tipo di evento ricevuto (es. \texttt{NotificationService}).
     \item \texttt{Repository}: classi che gestiscono l'accesso ai dati, ad esempio verso DynamoDB o RDS (es. \texttt{UserRepository}).
     \item \texttt{Client}: classi che incapsulano la comunicazione con servizi AWS esterni alla Lambda, come S3 o SNS (es. \texttt{S3Client}).
 \end{itemize}
@@ -589,8 +587,8 @@ Al fine di rendere immediatamente riconoscibile il ruolo di una classe dalla sua
 La formattazione del codice Python viene delegata al tool \texttt{black}, che applica automaticamente le regole stilistiche definite da \textit{PEP 8}.
 Per garantirne il rispetto su tutto il progetto, la formattazione automatica viene integrata su due livelli:
 \begin{itemize}
-    \item \textbf{Locale}: l'\term{Ide} adottato dal gruppo (Visual Studio Code) è configurato per eseguire \texttt{black} al salvataggio del file tramite l'estensione ufficiale.
-    \item \textbf{Remoto}: la pipeline di \term{Github Actions} per eseguire la \term{Ci} applica la formattazione Python ad ogni \textit{push}, impedendo il \term{Merge} di codice non formattato correttamente nel ramo principale.
+    \item \textbf{Locale}: l'\term{IDE} adottato dal gruppo è configurato per eseguire \texttt{black} al salvataggio del file tramite l'estensione ufficiale.
+    \item \textbf{Remoto}: la pipeline di \term{Github Actions} per eseguire la \term{CI} applica la formattazione Python ad ogni \textit{push}, impedendo il \term{Merge} di codice non formattato correttamente nel branch principale.
 \end{itemize}
 
 \paragraph{Vincoli implementativi}
@@ -598,19 +596,7 @@ Al fine di mantenere il codice robusto e testabile, il gruppo adotta le seguenti
 \begin{itemize}
     \item \textbf{Assenza di stato globale}: è vietato l'utilizzo di variabili globali, in quanto introducono dipendenze nascoste e rendono imprevedibile il comportamento del software.
     \item \textbf{Semplicità delle funzioni}: le funzioni devono essere brevi e focalizzate su una singola responsabilità. Una funzione eccessivamente lunga o complessa è indice di cattiva progettazione e deve essere rifattorizzata.
-\end{itemize}
-
-\subsubsection{Strumenti a supporto della codifica}
-L'applicazione delle norme di codifica è facilitata da un set di strumenti che accompagna lo sviluppatore dalla scrittura fino all'integrazione.
-
-\paragraph{Ambiente di Sviluppo}
-Il gruppo ha uniformato l'ambiente di lavoro adottando \textbf{Visual Studio Code} come \term{Ide} di riferimento.
-
-\paragraph{Automazione e \ignoreglossary{CI}}
-Gli strumenti critici per il mantenimento dello standard, le cui specifiche tecniche verranno consolidate durante la Product \term{Baseline} (\term{Pb}), sono classificabili in:
-\begin{itemize}
-    \item \textbf{\term{Linter} e Formatter}: strumenti di \term{Analisi Statica} specifici per linguaggio che rilevano violazioni stilistiche in tempo reale all'interno dell'\term{Ide}.
-    \item \textbf{\term{Github Actions}}: piattaforma utilizzata per i controlli remoti bloccanti (\term{Quality Gate}), che assicura che nessun codice non conforme venga integrato nel ramo \texttt{develop}.
+    \item \item \textbf{Immutabilità}: si preferisce l'uso di strutture dati immutabili e variabili dichiarate \texttt{final} (Dart) o \texttt{const} (Python) ove possibile, riducendo il rischio di modifiche accidentali allo stato.
 \end{itemize}
 
 % ==== SEZIONE PROCESSI DI SUPPORTO ====
@@ -940,13 +926,13 @@ Nel \term{Piano Di Qualifica} vengono definite specifiche metriche di qualità d
 Le misurazioni eseguite vengono confrontate con i valori ottimali stabiliti per ciascuna \term{Metrica}, al fine di valutare in modo oggettivo la qualità del software realizzato.\\
 Le metriche di prodotto costituiscono un supporto decisionale per determinare se il software implementato soddisfa i criteri di qualità richiesti ed è pertanto idoneo al rilascio.
 
-\subsubsection{Accertamento della qualità di Processo}
+\subsubsection{Accertamento della qualità di \ignoreglossary{processo}}
 L’attività di \textbf{accertamento della qualità di \term{Processo}} ha lo scopo di assicurare che i processi di \term{Ciclo Di Vita} siano eseguiti in conformità agli standard e alle procedure definiti per ciascun \term{Processo}.\\
 Nel \term{Piano Di Qualifica} vengono formalizzate le metriche di \term{Processo} e i relativi valori ottimali stabiliti dal gruppo.
 Le misurazioni effettuate vengono successivamente confrontate con tali valori di riferimento, consentendo di valutare l’efficacia e l’adeguatezza dei processi adottati.\\
 Le metriche di \term{Processo} sono utilizzate dal responsabile di progetto come strumento di supporto decisionale per individuare eventuali criticità e valutare la necessità di apportare modifiche o miglioramenti ai processi in uso.
 
-% ==== SEZIONE \term{Processo} DI \term{Verifica} ====
+% ==== SEZIONE \term{Processo} DI \ignoreglossary{Verifica} ====
 \subsection{Processo di \ignoreglossary{Verifica}} \label{sec:processo-verifica}
 Il \term{Processo} di \term{Verifica} è l'insieme delle attività volte ad accertare che ogni prodotto del \term{Ciclo Di Vita} (codice, documenti, \term{Architettura}) sia conforme ai requisiti e agli standard di qualità stabiliti.
 L'obiettivo è rispondere alla domanda «Did we build the product right?» (Abbiamo costruito il prodotto nel modo corretto?), intercettando difetti ed errori prima che questi si propaghino alle fasi successive.
@@ -1013,25 +999,20 @@ SonarQube viene eseguito nella pipeline di \term{Ci}/\term{Cd} tramite \term{Git
 L'\term{Analisi Dinamica} \term{Verifica} il comportamento del software tramite la sua esecuzione.
 Per essere valido, ogni test deve garantire due proprietà: \textbf{ripetibilità} (stesso output a parità di input) e \textbf{automatizzabilità} (esecuzione senza intervento umano).
 Il gruppo struttura i test secondo il modello a V, coprendo i seguenti livelli:
-
 \begin{enumerate}
-    \item \textbf{\term{Test Di Unità}}: \term{Verifica} delle singole componenti (funzioni/classi) in isolamento.
+    \item \textbf{\term{Test Di Unità}}: \term{Verifica} delle singole componenti (funzioni/classi) in isolamento, tramite \texttt{flutter\_test} per il codice Dart e \texttt{pytest} per il codice Python.
     \begin{itemize}
         \item \textit{\term{White-Box}}: test strutturali che mirano alla copertura dei percorsi logici interni (\term{Statement Coverage}).
         \item \textit{\term{Black-Box}}: test funzionali che verificano l'output dato un input, analizzando valori validi, non validi e casi limite (\term{Boundary Analysis}).
     \end{itemize}
-    
     \item \textbf{\term{Test Di Integrazione}}: \term{Verifica} della collaborazione tra unità già testate.
     \begin{itemize}
         \item \textit{Top-Down}: integrazione dalle componenti di alto livello a quelle basse (richiede \textbf{\term{Stub}}).
         \item \textit{Bottom-Up}: integrazione dalle componenti base verso l'interfaccia (richiede \textbf{\term{Driver}}).
     \end{itemize}
-    
     \item \textbf{\term{Test Di Sistema}}: \term{Verifica} del sistema completo rispetto ai requisiti funzionali e prestazionali mappati nell'\term{Analisi Dei Requisiti}.
-    
-    \item \textbf{\term{Test Di Regressione}}: Riesecuzione automatica della suite di test esistente ad ogni modifica, per garantire che le nuove feature non abbiano corrotto funzionalità preesistenti.
-
-    \item \textbf{\term{Test Di Accettazione}}: Verifiche formali finali, condotte da utenti o \term{Stakeholder}, per confermare che un software soddisfi i requisiti aziendali e funzionali prima del rilascio in produzione.
+    \item \textbf{\term{Test Di Regressione}}: riesecuzione automatica della suite di test ad ogni \textit{push} tramite \term{Github Actions}, per garantire che le nuove modifiche non compromettano funzionalità preesistenti. I risultati di copertura vengono raccolti da SonarQube e consultabili tramite la sua dashboard.
+    \item \textbf{\term{Test Di Accettazione}}: verifiche formali condotte con la \term{Proponente} per confermare che il software soddisfi i requisiti concordati prima del rilascio.
 \end{enumerate}
 
 \subsubsection{Classificazione dei Test}

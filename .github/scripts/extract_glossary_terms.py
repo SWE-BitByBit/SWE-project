@@ -1,7 +1,7 @@
 import re
 import json
 
-with open('src/RTB/documenti_interni/Glossario.tex', 'r', encoding='utf-8') as f:
+with open('src/PB/documenti_interni/glossario/Glossario.tex', 'r', encoding='utf-8') as f:
     content = f.read()
 
 # Espressione regolare per estrarre i termini dal glossario
