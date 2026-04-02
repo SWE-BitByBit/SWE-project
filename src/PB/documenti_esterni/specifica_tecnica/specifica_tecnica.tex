@@ -110,7 +110,7 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & In lavorazione\\
-\textbf{Versione:} & 0.1.0 \\
+\textbf{Versione:} & 0.1.1 \\
 \textbf{Responsabile:} & Gabriele Scaggiante \\
 \textbf{Redattori:} & 
 \begin{tabular}[t]{@{}l@{}}
@@ -145,6 +145,8 @@ Gruppo BitByBit\\
 \hline
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+\hline
+0.1.1 & 2026-03-31 & Gabriele Scaggiante & Aggiunta di EventBridge, SAM, CloudFormation e Docker nella sezione tecnologie. & Dennis Parolin \\
 \hline
 0.1.0 & 2026-03-30 & Gabriele Scaggiante & Creazione del documento. Scrittura dell'introduzione e delle tecnologie utilizzate. & Riccardo Manisi \\
 \hline
@@ -250,7 +252,7 @@ Le tecnologie utilizzate sono state scelte trovando un punto d'incontro tra la n
 \subsection{Framework} \label{subsec:framework}
 
 \subsubsection{Flutter}
-Flutter è un framework open-source sviluppato da Google per la creazione di applicazioni multi-piattaforma a partire da un unico codice sorgente. Consente di sviluppare interfacce per dispositivi mobili, web e desktop utilizzando il linguaggio Dart. Flutter si basa su un sistema di widget componibili, che possono rappresentare qualsiasi elemento dell’interfaccia \term{Utente}. Flutter include un proprio motore grafico (Skia) che disegna direttamente i componenti a schermo, garantendo elevata coerenza visiva e prestazioni indipendenti dalla piattaforma sottostante. È il framework alla base dell'App Che Protegge e Trasforma, il che consente di poter generare build per iOS e Android da un unico codice sorgente, al fronte di un maggiore utilizzo di risorse rispetto alle soluzioni native.
+Flutter è un framework open-source sviluppato da Google per la creazione di applicazioni multi-piattaforma a partire da un unico codice sorgente. Consente di sviluppare interfacce per dispositivi mobili, web e desktop utilizzando il linguaggio Dart. Flutter si basa su un sistema di widget componibili, che possono rappresentare qualsiasi elemento dell’interfaccia \term{Utente}. Flutter include un proprio motore grafico (come Impeller o storicamente Skia) che disegna direttamente i componenti a schermo, garantendo elevata coerenza visiva e prestazioni indipendenti dalla piattaforma sottostante. È il framework alla base dell'App Che Protegge e Trasforma, il che consente di poter generare build per iOS e Android da un unico codice sorgente, a fronte di un maggiore utilizzo di risorse rispetto alle soluzioni native e di una minore possibilità di controllo diretto e personalizzazione delle funzionalità native della piattaforma.
 \begin{itemize}
     \item \textbf{Versione utilizzata}: 3.41.6
     \item \textbf{Documentazione}: \url{https://docs.flutter.dev/}
@@ -259,7 +261,7 @@ Flutter è un framework open-source sviluppato da Google per la creazione di app
 \subsection{Linguaggi di programmazione} \label{subsec:linguaggi}
 
 \subsubsection{Dart}
-Dart è un linguaggio di programmazione sviluppato da Google, progettato per la realizzazione di applicazioni client moderne. È un linguaggio tipizzato (con supporto sia statico che dinamico) e orientato agli oggetti. Viene utilizzato principalmente in combinazione con Flutter, dove il codice Dart viene compilato  ahead-of-time in codice nativo per migliorare le prestazioni, oppure eseguito tramite compilazione just-in-time durante lo sviluppo. L'utilizzo di Flutter rende di fatto quasi obbligatoria l'adozione di Dart come linguaggio.
+Dart è un linguaggio di programmazione sviluppato da Google, progettato per la realizzazione di applicazioni client moderne. È un linguaggio tipizzato (con supporto sia statico che dinamico) e orientato agli oggetti. Viene utilizzato principalmente in combinazione con Flutter, dove il codice Dart viene compilato ahead-of-time in codice nativo per migliorare le prestazioni, oppure eseguito tramite compilazione just-in-time durante lo sviluppo. L'utilizzo di Flutter rende di fatto quasi obbligatoria l'adozione di Dart come linguaggio.
 \begin{itemize}
     \item \textbf{Versione utilizzata}: 3.11.4
     \item \textbf{Documentazione}: \url{https://dart.dev/docs}
@@ -324,6 +326,25 @@ Amazon CloudWatch è un servizio di monitoraggio e osservabilità che raccoglie 
     \item \textbf{Documentazione}: \url{https://docs.aws.amazon.com/cloudwatch/}
 \end{itemize}
 
+\subsubsection{EventBridge}
+Amazon EventBridge è un servizio di event bus serverless che consente di gestire e instradare eventi tra diversi servizi AWS. Esso permette di definire regole per reagire automaticamente a eventi generati da servizi AWS o da fonti esterne. Nel progetto è utilizzato per orchestrare i flussi di controllo di utilizzo dell'app da parte degli utenti, e l'invio delle email secondo le tempistiche stabilite dal Dead man's switch.
+\begin{itemize}
+    \item \textbf{Documentazione}: \url{https://docs.aws.amazon.com/eventbridge/}
+\end{itemize}
+
+\subsubsection{SAM}
+AWS Serverless Application Model (SAM) è un framework open-source che semplifica la definizione e il \term{Deployment} di applicazioni serverless su AWS. Estende AWS CloudFormation introducendo una sintassi più compatta per risorse come Lambda, API Gateway e DynamoDB e include strumenti per build, testing locale e deploy delle applicazioni. Nel progetto è utilizzato per definire e distribuire l’infrastruttura serverless in modo semplificato.
+\begin{itemize}
+    \item \textbf{Documentazione}: \url{https://docs.aws.amazon.com/serverless-application-model/}
+\end{itemize}
+
+\subsubsection{CloudFormation}
+AWS CloudFormation è un servizio di Infrastructure as Code che consente di modellare e gestire risorse AWS tramite template dichiarativi in formato YAML o JSON. Nel progetto è utilizzato come base per il provisioning dell’infrastruttura, anche tramite template generati da SAM.
+\begin{itemize}
+    \item \textbf{Documentazione}: \url{https://docs.aws.amazon.com/cloudformation/}
+    \item \textbf{Versioni}: CloudFormation non prevede versioni di servizio esplicite; eventuali aggiornamenti sono gestiti direttamente da AWS. I template possono però utilizzare versioni di specifiche risorse e trasformazioni (es. AWS::Serverless).
+\end{itemize}
+
 \subsection{Librerie} \label{subsec:librerie}
 
 \subsubsection{http.dart}
@@ -347,19 +368,18 @@ http è una libreria per il linguaggio Dart che consente di effettuare richieste
     \item \textbf{Documentazione}: \url{https://pub.dev/packages/path_provider}
 \end{itemize}
 
-\subsection{Analisi statica e dinamica} \label{subsec:analisi_statica_dinamica}
-
+\subsection{Tecnologie di analisi statica} \label{subsec:tecnologie_analisi_statica}
 \subsubsection{SonarQube}
-SonarQube è una piattaforma open-source per l’analisi continua della qualità del codice. Esegue \term{Analisi Statica} su diversi linguaggi di programmazione per individuare bug, vulnerabilità, code smells e problemi di copertura dei test. Il funzionamento si basa su scanner che analizzano il codice sorgente e inviano i risultati a un server centrale, dove vengono aggregati e visualizzati tramite dashboard e report.
+SonarQube è una piattaforma open-source per l’analisi continua della qualità del codice. Esegue \term{Analisi Statica} su diversi linguaggi di programmazione per individuare bug, vulnerabilità, code smells e problemi di copertura dei test. Il funzionamento si basa su scanner che analizzano il codice sorgente e inviano i risultati a un server centrale, dove vengono aggregati e visualizzati tramite una dashboard dedicata.
 \begin{itemize}
     \item \textbf{Versione utilizzata}: 26.3.0
     \item \textbf{Documentazione}: \url{https://docs.sonarsource.com/sonarqube/}
 \end{itemize}
 
-\subsection{Testing} \label{subsec:testing}
+\subsection{Tecnologie di analisi dinamica} \label{subsec:tecnologie_analisi_dinamica}
 
 \subsubsection{Pytest}
-Pytest è un framework di testing per il linguaggio Python che consente di scrivere test in modo semplice e scalabile. Supporta test funzionali, unitari e di integrazione, offrendo funzionalità come fixture, parametrizzazione dei test e scoperta automatica dei test. L’esecuzione avviene tramite un runner che individua i file di test e ne esegue le funzioni.
+Pytest è un framework di testing per il linguaggio Python che consente di scrivere test in modo semplice e scalabile. Supporta test funzionali, unitari e di integrazione, offrendo funzionalità come fixture, parametrizzazione dei test e scoperta automatica dei test.
 \begin{itemize}
     \item \textbf{Versione utilizzata}: 9.0.2
     \item \textbf{Documentazione}: \url{https://docs.pytest.org/}
@@ -377,14 +397,20 @@ Moto è una libreria Python che consente di mockare i servizi AWS durante i test
 \subsubsection{Ollama}
 Ollama è una piattaforma che consente di eseguire e gestire LLM in locale tramite una semplice interfaccia. Permette il download, l’esecuzione e l’interazione con modelli di intelligenza artificiale direttamente in ambiente locale, senza necessità di servizi cloud esterni. Il funzionamento si basa su un runtime che gestisce i modelli e espone endpoint per inferenza.
 \begin{itemize}
-    \item \textbf{Versione utilizzata}: Ollama 0.18.3
+    \item \textbf{Versione utilizzata}: 0.18.3
     \item \textbf{Documentazione}: \url{https://ollama.com/docs}
+\end{itemize}
+
+\subsubsection{Docker}
+Docker è una piattaforma di containerizzazione che consente di creare, distribuire ed eseguire applicazioni all’interno di ambienti isolati (container). I container includono tutto il necessario per eseguire un’applicazione (codice, runtime, librerie e dipendenze), garantendo portabilità e consistenza tra ambienti diversi. Nel progetto è utilizzato a supporto delle pipeline di \term{CI/CD} e per testare in locale servizi come DynamoDB e S3.
+
+\begin{itemize}
+    \item \textbf{Documentazione}: \url{https://docs.docker.com/}
 \end{itemize}
 
 \section{Architettura logica} \label{subsec:architettura_logica}
 
 \section{Architettura di deployment} \label{subsec:architettura_deployment}
-
 
 
 \end{document}
