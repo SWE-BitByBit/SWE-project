@@ -608,24 +608,6 @@ Al fine di mantenere il codice robusto e testabile, il gruppo adotta le seguenti
     \item \textbf{Assenza di stato globale}: è vietato l'utilizzo di variabili globali, in quanto introducono dipendenze nascoste e rendono imprevedibile il comportamento del software.
     \item \textbf{Semplicità delle funzioni}: le funzioni devono essere brevi e focalizzate su una singola responsabilità. Una funzione eccessivamente lunga o complessa è indice di cattiva progettazione e deve essere rifattorizzata.
     \item \textbf{Immutabilità}: si preferisce l'uso di strutture dati immutabili e variabili dichiarate \texttt{final} (Dart) o tipizzate come \texttt{Final} (Python) ove possibile, riducendo il rischio di modifiche accidentali allo stato.
-<<<<<<< HEAD
-=======
-=======
-\end{itemize}
-
-\subsubsection{Strumenti a supporto della codifica}
-L'applicazione delle norme di codifica è facilitata da un set di strumenti che accompagna lo sviluppatore dalla scrittura fino all'integrazione.
-
-\paragraph{Ambiente di Sviluppo}
-Il gruppo ha uniformato l'ambiente di lavoro adottando \textbf{Visual Studio Code} come \term{IDE} di riferimento.
-
-\paragraph{Automazione e \ignoreglossary{Ci}}
-Gli strumenti critici per il mantenimento dello standard, le cui specifiche tecniche verranno consolidate durante la Product \term{Baseline} (\term{PB}), sono classificabili in:
-\begin{itemize}
-    \item \textbf{Linter e Formatter}: strumenti di \term{Analisi Statica} specifici per linguaggio che rilevano violazioni stilistiche in tempo reale all'interno dell'\term{IDE}.
-    \item \textbf{\term{GitHub Actions}}: piattaforma utilizzata per i controlli remoti bloccanti (\term{Quality Gate}), che assicura che nessun codice non conforme venga integrato nel ramo \texttt{develop}.
->>>>>>> develop
->>>>>>> c5c27873dcd3777b76d0fc40e8902f801965aa57
 \end{itemize}
 
 % ==== SEZIONE PROCESSI DI SUPPORTO ====
@@ -956,18 +938,8 @@ Le misurazioni eseguite vengono confrontate con i valori ottimali stabiliti per 
 Le metriche di prodotto costituiscono un supporto decisionale per determinare se il software implementato soddisfa i criteri di qualità richiesti ed è pertanto idoneo al rilascio.
 
 \subsubsection{Accertamento della qualità di \ignoreglossary{processo}}
-<<<<<<< HEAD
 L’attività di \textbf{accertamento della qualità di \term{Processo}} ha lo scopo di assicurare che i processi di \term{Ciclo di vita} siano eseguiti in conformità agli standard e alle procedure definiti per ciascun \term{Processo}.\\
 Nel \term{Piano di qualifica} vengono formalizzate le metriche di \term{Processo} e i relativi valori ottimali stabiliti dal gruppo.
-=======
-L’attività di \textbf{accertamento della qualità di \term{Processo}} ha lo scopo di assicurare che i processi di \term{Ciclo di vita} siano eseguiti in conformità agli standard e alle procedure definiti per ciascun \term{Processo}.\\
-Nel \term{Piano di qualifica} vengono formalizzate le metriche di \term{Processo} e i relativi valori ottimali stabiliti dal gruppo.
-=======
-\subsubsection{Accertamento della qualità di Processo}
-L’attività di \textbf{accertamento della qualità di \term{Processo}} ha lo scopo di assicurare che i processi di \term{Ciclo di vita} siano eseguiti in conformità agli standard e alle procedure definiti per ciascun \term{Processo}.\\
-Nel \term{Piano di qualifica} vengono formalizzate le metriche di \term{Processo} e i relativi valori ottimali stabiliti dal gruppo.
->>>>>>> develop
->>>>>>> c5c27873dcd3777b76d0fc40e8902f801965aa57
 Le misurazioni effettuate vengono successivamente confrontate con tali valori di riferimento, consentendo di valutare l’efficacia e l’adeguatezza dei processi adottati.\\
 Le metriche di \term{Processo} sono utilizzate dal responsabile di progetto come strumento di supporto decisionale per individuare eventuali criticità e valutare la necessità di apportare modifiche o miglioramenti ai processi in uso.
 
@@ -1020,19 +992,7 @@ Tra le due, il gruppo \textit{BitByBit} adotta come standard l'\textbf{\term{Isp
 La \term{Verifica} del software si articola in due momenti distinti: l'analisi del codice sorgente (statica) e l'esecuzione dei test (dinamica).
 
 \paragraph{\ignoreglossary{Analisi Statica}} \label{par:analisi-statica}
-<<<<<<< HEAD
 Prima di essere eseguito, il codice viene analizzato da strumenti automatici integrati nella pipeline di \term{Ci}/\term{Cd}.
-=======
-<<<<<<< HEAD
-Prima di essere eseguito, il codice viene analizzato da strumenti automatici integrati nella pipeline di \term{CI/CD}.
-=======
-Prima di essere eseguito, il codice viene analizzato da strumenti automatici integrati nella pipeline di \term{CI/CD}.
-=======
-\paragraph{\ignoreglossary{Analisi Statica} Automatizzata}
-Prima di essere eseguito, il codice viene analizzato da strumenti automatici (Linter e Static Analyzers) integrati nella pipeline di \term{CI/CD}.
->>>>>>> develop
->>>>>>> c5c27873dcd3777b76d0fc40e8902f801965aa57
->>>>>>> a75d53d610799b77de14455e9d4b9588e6d8e9ed
 Questo passaggio serve a rilevare:
 \begin{itemize}
     \item violazioni delle norme di codifica (\hyperref[subsec:codifica]{vedi Sezione~\ref*{subsec:codifica}});
@@ -1051,51 +1011,20 @@ L'\term{Analisi Dinamica} \term{Verifica} il comportamento del software tramite 
 Per essere valido, ogni test deve garantire due proprietà: \textbf{ripetibilità} (stesso output a parità di input) e \textbf{automatizzabilità} (esecuzione senza intervento umano).
 Il gruppo struttura i test secondo il modello a V, coprendo i seguenti livelli:
 \begin{enumerate}
-<<<<<<< HEAD
     \item \textbf{\term{Test Di Unità}}: \term{Verifica} delle singole componenti (funzioni/classi) in isolamento, tramite \texttt{flutter\_test} per il codice Dart e \texttt{pytest} per il codice Python.
-=======
-<<<<<<< HEAD
-    \item \textbf{\term{Test di Unità}}: \term{Verifica} delle singole componenti (funzioni/classi) in isolamento, tramite \texttt{flutter\_test} per il codice Dart e \texttt{pytest} per il codice Python.
-=======
-<<<<<<< HEAD
-    \item \textbf{\term{Test di Unità}}: \term{Verifica} delle singole componenti (funzioni/classi) in isolamento, tramite \texttt{flutter\_test} per il codice Dart e \texttt{pytest} per il codice Python.
-=======
-    \item \textbf{\term{Test di Unità}}: \term{Verifica} delle singole componenti (funzioni/classi) in isolamento.
->>>>>>> develop
->>>>>>> c5c27873dcd3777b76d0fc40e8902f801965aa57
->>>>>>> a75d53d610799b77de14455e9d4b9588e6d8e9ed
     \begin{itemize}
         \item \textit{\term{White-box}}: test strutturali che mirano alla copertura dei percorsi logici interni (\term{Statement Coverage}).
         \item \textit{\term{Black-box}}: test funzionali che verificano l'output dato un input, analizzando valori validi, non validi e casi limite (\term{Boundary Analysis}).
     \end{itemize}
-<<<<<<< HEAD
     \item \textbf{\term{Test Di Integrazione}}: \term{Verifica} della collaborazione tra unità già testate.
-=======
-<<<<<<< HEAD
     \item \textbf{\term{Test di Integrazione}}: \term{Verifica} della collaborazione tra unità già testate.
-=======
-<<<<<<< HEAD
-    \item \textbf{\term{Test di Integrazione}}: \term{Verifica} della collaborazione tra unità già testate.
-=======
-    
-    \item \textbf{\term{Test di Integrazione}}: \term{Verifica} della collaborazione tra unità già testate.
->>>>>>> develop
->>>>>>> c5c27873dcd3777b76d0fc40e8902f801965aa57
->>>>>>> a75d53d610799b77de14455e9d4b9588e6d8e9ed
     \begin{itemize}
         \item \textit{Top-Down}: integrazione dalle componenti di alto livello a quelle basse (richiede \textbf{\term{Stub}}).
         \item \textit{Bottom-Up}: integrazione dalle componenti base verso l'interfaccia (richiede \textbf{\term{Driver}}).
     \end{itemize}
-<<<<<<< HEAD
     \item \textbf{\term{Test Di Sistema}}: \term{Verifica} del sistema completo rispetto ai requisiti funzionali e prestazionali mappati nell'\term{Analisi Dei Requisiti}.
     \item \textbf{\term{Test Di Regressione}}: riesecuzione automatica della suite di test ad ogni \textit{push} tramite \term{Github Actions}, per garantire che le nuove modifiche non compromettano funzionalità preesistenti. I risultati di copertura vengono raccolti da SonarQube e sono consultabili tramite la sua dashboard.
     \item \textbf{\term{Test Di Accettazione}}: verifiche formali condotte con la \term{Proponente} per confermare che il software soddisfi i requisiti concordati prima del rilascio.
-=======
-<<<<<<< HEAD
-    \item \textbf{\term{Test di Sistema}}: \term{Verifica} del sistema completo rispetto ai requisiti funzionali e prestazionali mappati nell'\term{Analisi dei requisiti}.
-    \item \textbf{\term{Test di Regressione}}: riesecuzione automatica della suite di test ad ogni \textit{push} tramite \term{GitHub Actions}, per garantire che le nuove modifiche non compromettano funzionalità preesistenti. I risultati di copertura vengono raccolti da SonarQube e sono consultabili tramite la sua dashboard.
-    \item \textbf{\term{Test di Accettazione}}: verifiche formali condotte con la \term{Proponente} per confermare che il software soddisfi i requisiti concordati prima del rilascio.
->>>>>>> a75d53d610799b77de14455e9d4b9588e6d8e9ed
 \end{enumerate}
 
 \subsubsection{Classificazione dei Test}
