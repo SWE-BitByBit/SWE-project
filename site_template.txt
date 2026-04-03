@@ -16,16 +16,13 @@
     <nav>  
         <ul>
             <li><a href="#pb">PB</a></li>
-            <li><a href="#rtb">RTB</a></li>
-            <li><a href="#candidatura">Candidatura</a></li>
-            <li><a href="#glossario">Glossario</a></li>
+            <li><a href="#archivio">Archivio</a></li>
             <li><a href="#team">Il Team</a></li>
         </ul>
     </nav>
 
     <main>
         [docs]
-
         <section id="team">
             <h2>Il Team</h2>
             <div class="team-grid">
@@ -98,6 +95,15 @@
 
     </main>
     <script>
+        function toggleArchivio() {
+            var target = document.getElementById("area-archivio");
+            if(target.style.display === "none") {
+                target.style.display = "block"
+            } else {
+                target.style.display = "none"
+            }
+        }
+
         document.addEventListener("DOMContentLoaded", () => {
           // Seleziona tutti i link del menu laterale
           const navLinks = document.querySelectorAll("nav ul li a");

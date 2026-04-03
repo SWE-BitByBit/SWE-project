@@ -1,8 +1,9 @@
 from pathlib import Path
 import fnmatch as fn
-
+import re
 
 #Path scomposti perchè altrimenti non si riesce a ordinare i link
+#Commentato parti pertinenti alle fasi precedenti e quindi da non visualizzare nel sito
 C_PATH_DOCS = Path("docs/candidatura")
 C_PATH_VERB_EXT = Path("docs/candidatura/verbali_esterni")
 C_PATH_VERB_INT = Path("docs/candidatura/verbali_interni")
@@ -24,10 +25,33 @@ PB_PATH_VERB_INT = Path("docs/PB/verbali_interni")
 def create_doc_link(file):
     #Si assume che il documento non sia un verbale
     out = ''
-    filename = file.with_suffix("").name.capitalize().replace('_', ' ')
-    out = out + '<h3>' + filename +'</h3>\n<ul>\n<li>\n<a href="' + file.as_posix() + '" target="blank">' + filename + '</a>\n</li>\n</ul>\n'
-    print(f"{filename}\n")
+    filename = file.with_suffix("").name.capitalize().replace('_', ' ') + get_file_vers(file)
+    out = out + '<li>\n<h4>\n<a href="' + file.as_posix() + '" target="blank">' + filename + '</a>\n</h4>\n</li>\n'
     return out
+
+def create_link_special(s):
+    filename = s.with_suffix("").name.replace('_', ' ')
+    filename = filename[0].upper() + filename[1:]
+    if(filename == 'Glossario'):
+        filename = filename + get_file_vers(s)
+    return '<h3>\n<a href="' + s.as_posix() + '" target="blank">' + filename + '</a>\n</h3>'
+
+def get_file_vers(file) -> str:
+    #Apri file tex src e recupera le informazioni di versione
+    srcfilepath = file.parents[0].as_posix().replace('docs','src')
+    srcfile = list(Path(srcfilepath).rglob("*.tex"))[0]
+    versione = ''
+    with open(srcfile, "r", encoding="utf-8", errors="ignore") as f:
+        readfile = f.read(5000)
+        section = re.search(r"\\textbf{Versione:}\s*&\s([\d\.]+)\s*\\\\", readfile)
+        
+        if section:
+            versione = versione + ' v' + section.group(1)
+        else:
+            fallback_section = re.search(r"\\newcommand{\\VersioneAttuale}{([\d\.]+)}", readfile) #Casi speciali come il Piano di Progetto che usano una sintassi diversa
+            if fallback_section:
+                versione = versione + ' v' + fallback_section.group(1)
+    return versione
 
 def create_verb_link(file):
     out = ''
@@ -48,7 +72,7 @@ with open(Path('site_template.txt'), 'r') as temp:
 #Ottieni lista di file dai percorsi
 doc_candidatura = list(C_PATH_DOCS.rglob("*.pdf"))
 #rimuovi verbali da doc candidatura
-doc_candidatura = [f for f in doc_candidatura if f.exists and not(fn.fnmatch(f.name,"*verbale*"))]
+doc_candidatura = [f for f in doc_candidatura if f.exists and (not(fn.fnmatch(f.name,"*verbale*")) and f.name not in {"lettera_di_presentazione.pdf", "lettera_di_seconda_presentazione.pdf"})]
 verb_esterni_candidatura = list(C_PATH_VERB_EXT.rglob("*.pdf"))
 verb_esterni_candidatura.sort(key=lambda f: f.name, reverse=True)
 verb_interni_candidatura = list(C_PATH_VERB_INT.rglob("*.pdf"))
@@ -56,26 +80,31 @@ verb_interni_candidatura.sort(key=lambda f: f.name, reverse=True)
 
 esterni_rtb = list(RTB_PATH_ESTERNI.rglob("*.pdf"))
 interni_rtb = list(RTB_PATH_INTERNI.rglob("*.pdf"))
+
 #Togli glossario da doc rtb
 interni_rtb = [f for f in interni_rtb if f.exists() and f.name not in {"Glossario.pdf"}]
+esterni_rtb = [f for f in esterni_rtb if f.exists() and f.name not in {"lettera_di_presentazione_RTB.pdf"}]
 verb_esterni_rtb = list(RTB_PATH_VERB_EXT.rglob("*.pdf"))
 verb_esterni_rtb.sort(key=lambda f: f.name, reverse=True)
 verb_interni_rtb = list(RTB_PATH_VERB_INT.rglob("*.pdf"))
 verb_interni_rtb.sort(key=lambda f: f.name, reverse=True)
 
+
+
 esterni_pb = list(PB_PATH_ESTERNI.rglob("*.pdf"))
 interni_pb = list(PB_PATH_INTERNI.rglob("*.pdf"))
+
 #Togli glossario da doc pb
 interni_pb = [f for f in interni_pb if f.exists() and f.name not in {"Glossario.pdf"}]
+esterni_pb = [f for f in esterni_pb if f.exists() and f.name not in {"lettera_di_presentazione_PB.pdf"}]
 verb_esterni_pb = list(PB_PATH_VERB_EXT.rglob("*.pdf"))
 verb_esterni_pb.sort(key=lambda f: f.name, reverse=True)
 verb_interni_pb = list(PB_PATH_VERB_INT.rglob("*.pdf"))
 verb_interni_pb.sort(key=lambda f: f.name, reverse=True)
 
-#Recupero glossario - recupera quello della milestone più recente
-file_glossario = list(RTB_PATH_INTERNI.rglob("*Glossario.pdf"))
-if interni_pb:
-    file_glossario = list(PB_PATH_INTERNI.rglob("*Glossario.pdf"))
+#Recupero glossario
+file_glossario_rtb = list(RTB_PATH_INTERNI.rglob("*Glossario.pdf"))
+file_glossario_pb = list(PB_PATH_INTERNI.rglob("*Glossario.pdf"))
 
 
 #Crea sezioni
@@ -87,11 +116,14 @@ if esterni_pb or interni_pb or verb_interni_pb or verb_esterni_pb:
     docs = ''
     verb_ext = ''
     verb_int = ''
-    
+    docs = docs + '<h3>Documenti esterni</h3>\n<ul>\n'
     for file in esterni_pb:
         docs = docs + create_doc_link(file)
+    docs = docs + '</ul>\n'
+    docs = docs + '<h3>Documenti interni</h3>\n<ul>\n'
     for file in interni_pb:
         docs = docs + create_doc_link(file)
+    docs = docs + '</ul>\n'
 
     if verb_esterni_pb:
         verb_ext = "<h3>Verbali esterni</h3>\n<ul>\n"
@@ -104,60 +136,95 @@ if esterni_pb or interni_pb or verb_interni_pb or verb_esterni_pb:
         for file in verb_interni_pb:
             verb_int = verb_int + create_verb_link(file)
         verb_int = verb_int + "</ul>\n"
-    docsections = docsections + docs + verb_ext + verb_int + '</section>\n'
 
-#documenti RTB
+    sez_glossario = ''
+    #Glossario
+    if file_glossario_pb:
+        for f in file_glossario_pb:
+            sez_glossario = create_link_special(f)
+
+    docsections = docsections + docs + verb_ext + verb_int + sez_glossario + '</section>\n'
+
+
+
+#Archivio'
+docsections = docsections + '<section id="archivio">\n<button class="dropdown-toggle" type="button" onClick="toggleArchivio()"><h2>Archivio</h2></button>\n <div id="area-archivio" style="display:none">\n'
+
+#documenti RTB (archiviati)
 if esterni_rtb or interni_rtb or verb_interni_rtb or verb_esterni_rtb:
-    docsections = docsections + '<section id="rtb">\n<h2>RTB</h2>\n'
+    docsections = docsections + '<div id="rtb" class="subsection">\n<h2>RTB</h2>\n'
     docs = ''
     verb_ext = ''
     verb_int = ''
+    sez_lettera_rtb = ''
+    sez_gl_rtb = ''
+
+    lettera_rtb = list(RTB_PATH_ESTERNI.rglob("*lettera_di_presentazione_RTB.pdf"))
+    print(f"lettera rtb trovata: {len(lettera_rtb)}")
+    if(lettera_rtb):
+        for l in lettera_rtb:
+            sez_lettera_rtb = create_link_special(l)
     
+    docs = docs + '<h3>Documenti esterni</h3>\n<ul>\n'
     for file in esterni_rtb:
         docs = docs + create_doc_link(file)
+    docs = docs + '</ul>\n'
+    docs = docs + '<h3>Documenti interni</h3>\n<ul>\n'
     for file in interni_rtb:
         docs = docs + create_doc_link(file)
+    docs = docs + '</ul>\n'
 
     if verb_esterni_rtb:
-        verb_ext = "<h3>Verbali esterni</h3>\n<ul>\n"
+        verb_ext = '<h3>Verbali esterni</h3>\n<ul>\n'
         for file in verb_esterni_rtb:
             verb_ext = verb_ext + create_verb_link(file)
-        verb_ext = verb_ext + "</ul>\n"
+        verb_ext = verb_ext + '</ul>\n'
 
     if verb_interni_rtb:
-        verb_int = "<h3>Verbali interni</h3>\n<ul>\n"
+        verb_int = '<h3>Verbali interni</h3>\n<ul>\n'
         for file in verb_interni_rtb:
             verb_int = verb_int + create_verb_link(file)
-        verb_int = verb_int + "</ul>\n"
-    docsections = docsections + docs + verb_ext + verb_int + '</section>\n'
+        verb_int = verb_int + '</ul>\n'
+    
+    if file_glossario_rtb:
+        for f in file_glossario_rtb:
+            sez_gl_rtb = create_link_special(f)
+    
 
-#documenti candidatura
+    docsections = docsections + sez_lettera_rtb + docs + verb_ext + verb_int + sez_gl_rtb + '</div>\n'
+
+#documenti candidatura (archiviati)
 if doc_candidatura or verb_interni_candidatura or verb_esterni_candidatura:
-    docsections = docsections + '<section id="candidatura">\n<h2>Candidatura</h2>\n'
+    docsections = docsections + '<div id="candidatura" class="subsection">\n<h2>Candidatura</h2>\n'
     docs = ''
     verb_ext = ''
     verb_int = ''
+    sez_lettere_ca = ''
     
+    lettera_ca = list(C_PATH_DOCS.rglob("*lettera_di_*.pdf"))
+    if(lettera_ca):
+        for l in lettera_ca:
+            sez_lettere_ca = sez_lettere_ca + create_link_special(l)
+
+    docs = docs + '<h3>Documenti candidatura</h3><ul>\n'
     for file in doc_candidatura:
         docs = docs + create_doc_link(file)
-
+    docs = docs + '</ul>\n'
     if verb_esterni_candidatura:
-        verb_ext = "<h3>Verbali esterni</h3>\n<ul>\n"
+        verb_ext = '<h3>Verbali esterni</h3>\n<ul>\n'
         for file in verb_esterni_candidatura:
             verb_ext = verb_ext + create_verb_link(file)
         verb_ext = verb_ext + "</ul>\n"
 
     if verb_interni_candidatura:
-        verb_int = "<h3>Verbali interni</h3>\n<ul>\n"
+        verb_int = '<h3>Verbali interni</h3>\n<ul>\n'
         for file in verb_interni_candidatura:
             verb_int = verb_int + create_verb_link(file)
-        verb_int = verb_int + "</ul>\n"
-    docsections = docsections + docs + verb_ext + verb_int + '</section>\n'
+        verb_int = verb_int + '</ul>\n'
+    docsections = docsections + sez_lettere_ca + docs + verb_ext + verb_int + '</div>\n'
 
-#Glossario
-if file_glossario:
-    for f in file_glossario:
-        docsections = docsections + '<section id="glossario">\n<h2>Glossario</h2>\n' + create_doc_link(f) + '</section>\n'
+
+docsections = docsections + '</div>\n</section>\n'
 
 #Rimpiazza placeholder nel template
 template = template.replace('[docs]', docsections)
