@@ -123,7 +123,7 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & Completato\\
-\textbf{Versione:} & 1.1.0 \\
+\textbf{Versione:} & 1.2.0 \\
 \textbf{Responsabile:} & Gabriele Scaggiante\\
 \textbf{Redattori:} & 
 \begin{tabular}[t]{@{}l@{}}
@@ -162,6 +162,8 @@ Gruppo BitByBit\\
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 
+\rowcolor{white}
+1.2.0 & 2026-04-03 & Ferdinando Fracasso & Modifica metriche nella sezione \hyperref[sec:qualità_prodotto]{Qualità di Prodotto} e \hyperref[sec:qualità_processo]{Qualità di Processo} in base alle modifiche delle Norme di Progetto & Marco Sanguin \\
 \rowcolor{gray!20}
 1.1.0 & 2026-03-21 & Dennis Parolin & Riscrittura dei test nella sezione \hyperref[sec:metodi_testing]{Metodi di testing} sulla base dei nuovi requisiti descritti nel documento \href{https://swe-bitbybit.github.io/SWE-docs/docs/RTB/documenti_esterni/analisi_dei_requisiti/analisi_dei_requisiti.pdf}{Analisi dei requisiti}. & Gabriele Scaggiante \\
 \hline
@@ -300,20 +302,20 @@ Le soglie di accettabilità e di optimalità definite per ciascuna \term{Metrica
 
 % ----- METRICHE STATICHE ------
 \subsection{Metriche statiche}\label{subsec:metriche-statiche}
-
 \begin{table}[H]
 \centering
 \renewcommand{\arraystretch}{1.5}
 \begin{tabularx}{\textwidth}{|c|Y|c|c|}
 \hline
-\rowcolor{gray!30} \textbf{ID} & \textbf{Nome} & \textbf{Valore accettabile} & \textbf{Valore ottimo} \\ \hline
-\textbf{MPD1} & Requisiti obbligatori soddisfatti & $100\%$ & $100\%$ \\ \hline
-\textbf{MPD2} & Requisiti desiderabili soddisfatti & $\ge 30\%$ & $\ge 60\%$ \\ \hline
-\textbf{MPD3} & Requisiti opzionali soddisfatti & $\ge 10\%$ & $\ge 40\%$ \\ \hline
-\textbf{MPD4} & Defect Density (DD) & $\le 5$ difetti/KLOC & $\le 1$ difetto/KLOC \\ \hline
-\textbf{MPD5} & Cyclomatic Complexity & $\le 10$ per funzione & $\le 5$ per funzione \\ \hline
-\textbf{MPD6} & Length of code & $\le 300$ LOC per funzione & $\le 100$ LOC per funzione \\ \hline
-\textbf{MPD7} & Depth of Conditional Nesting (DCN) & $\le 4$ livelli & $\le 2$ livelli \\ \hline
+    \rowcolor{gray!30} \textbf{ID} & \textbf{Nome} & \textbf{Valore accettabile} & \textbf{Valore ottimo} \\ \hline
+    \textbf{MPD1} & Requisiti obbligatori soddisfatti & $100\%$ & $100\%$ \\ \hline
+    \textbf{MPD2} & Requisiti desiderabili soddisfatti & $\ge 30\%$ & $\ge 60\%$ \\ \hline
+    \textbf{MPD3} & Requisiti opzionali soddisfatti & $\ge 10\%$ & $\ge 40\%$ \\ \hline
+    \textbf{MPD4} & Reliability Rating (RR) & $\ge B$ & $A$ \\ \hline
+    \textbf{MPD5} & Maintanability Rating & $\ge B$ & $A$ \\ \hline
+    \textbf{MPD6} & Cyclomatic Complexity & $\le 10$ per funzione & $\le 5$ per funzione \\ \hline
+    \textbf{MPD7} & Length of code & $\le 300$ LOC per funzione & $\le 100$ LOC per funzione \\ \hline
+    \textbf{MPD8} & Cognitive Complexity (COC) & $\le15$ & $\le8$ \\ \hline
 \end{tabularx}
 \caption{Soglie delle metriche statiche}
 \end{table}
@@ -326,9 +328,10 @@ Le soglie di accettabilità e di optimalità definite per ciascuna \term{Metrica
 \begin{tabularx}{\textwidth}{|c|Y|c|c|}
 \hline
 \rowcolor{gray!30} \textbf{ID} & \textbf{Nome} & \textbf{Valore accettabile} & \textbf{Valore ottimo} \\ \hline
-\textbf{MPD8} & Defect Leakage & $\le 20\%$ & $\le 5\%$ \\ \hline
-\textbf{MPD9} & Defect Removal Efficiency (DRE) & $\ge 80\%$ & $\ge 95\%$ \\ \hline
-\textbf{MPD10} & Bug Rate per Test Case & $\le 0.3$ & $\le 0.1$ \\ \hline
+\textbf{MPD9} & Code Coverage (CC) & $\ge70\%$ & $\ge85\%$ \\ \hline
+\textbf{MPD10} & Defect Leakage & $\le 20\%$ & $\le 5\%$ \\ \hline
+\textbf{MPD11} & Defect Removal Efficiency (DRE) & $\ge 80\%$ & $\ge 95\%$ \\ \hline
+\textbf{MPD12} & Unit Test Success Density (UTSD) & $\ge 90\%$ & $100\%$ \\ \hline
 \end{tabularx}
 \caption{Soglie delle metriche dinamiche}
 \end{table}
@@ -377,8 +380,7 @@ Il gruppo BitByBit monitora i seguenti processi primari attraverso metriche ogge
 \begin{tabularx}{\textwidth}{|c|Y|c|c|}
 \hline
 \rowcolor{gray!30} \textbf{ID} & \textbf{Nome} & \textbf{Valore accettabile} & \textbf{Valore ottimo} \\ \hline
-\textbf{MPC9} & Code Coverage & $\ge 70\%$ & $\ge 85\%$ \\ \hline
-\textbf{MPC10} & Requirements Coverage (RC) & $100\%$ & $100\%$ \\ \hline
+\textbf{MPC9} & Requirements Coverage (RC) & $100\%$ & $100\%$ \\ \hline
 \end{tabularx}
 \caption{Soglie delle metriche per il \term{Processo} di \term{Verifica}}
 \end{table}
@@ -394,8 +396,8 @@ I processi di supporto assicurano che la qualità del lavoro svolto sia costante
 \begin{tabularx}{\textwidth}{|c|Y|c|c|}
 \hline
 \rowcolor{gray!30} \textbf{ID} & \textbf{Nome} & \textbf{Valore accettabile} & \textbf{Valore ottimo} \\ \hline
-\textbf{MPC11} & Indice di Gulpease & $50-59$ & $\ge 60$ \\ \hline
-\textbf{MPC12} & Document Coverage Ratio (DCR) & $\ge 80$ & $\ge 100$ \\ \hline
+\textbf{MPC10} & Indice di Gulpease & $50-59$ & $\ge 60$ \\ \hline
+\textbf{MPC11} & Document Coverage Ratio (DCR) & $\ge 80$ & $\ge 100$ \\ \hline
 \end{tabularx}
 \caption{Soglie delle metriche per il \term{Processo} di documentazione}
 \end{table}
@@ -407,7 +409,7 @@ I processi di supporto assicurano che la qualità del lavoro svolto sia costante
 \begin{tabularx}{\textwidth}{|c|Y|c|c|}
 \hline
 \rowcolor{gray!30} \textbf{ID} & \textbf{Nome} & \textbf{Valore accettabile} & \textbf{Valore ottimo} \\ \hline
-\textbf{MPC13} & Satisfied Metrics & $\ge 85\%$ & $\ge 90\%$ \\ \hline
+\textbf{MPC12} & Satisfied Metrics & $\ge 85\%$ & $\ge 90\%$ \\ \hline
 \end{tabularx}
 \caption{Soglie delle metriche per il \term{Processo} di accertamento della qualità}
 \end{table}
@@ -419,7 +421,7 @@ I processi di supporto assicurano che la qualità del lavoro svolto sia costante
 \begin{tabularx}{\textwidth}{|c|Y|c|c|}
 \hline
 \rowcolor{gray!30} \textbf{ID} & \textbf{Nome} & \textbf{Valore accettabile} & \textbf{Valore ottimo} \\ \hline
-\textbf{MPC14} & \term{Sprint} Commitment Reliability (SCR) & $\ge 80\%$ & $\ge 90\%$ \\ \hline
+\textbf{MPC13} & \term{Sprint} Commitment Reliability (SCR) & $\ge 80\%$ & $\ge 90\%$ \\ \hline
 \end{tabularx}
 \caption{Soglie delle metriche per la gestione dei processi}
 \end{table}
@@ -2050,12 +2052,12 @@ Il grafico mostra che nonostante le fluttuazioni, lo Schedule Performance Index 
 Il grafico mostra che l'indice Cost Performance Index ha prevalentemente avuto valori inferiori alla soglia minima accettabile, ad eccezione degli \term{Sprint} 1, 4 e 5 che sono entro o oltre l'intervallo accettabile.\\
 I valori negli \term{Sprint} 6 e 7, nonostante la non sufficienza, mostrano un trend positivo dell'indice che sarà necessario mantenere nelle fasi successive per fare in modo che rientri nella zona accettabile.
 
-\subsection{MPC11: Indice di Gulpease}
+\subsection{MPC10: Indice di Gulpease}
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{pdq/Gulpease-RTB.png}
     \caption{Indice di Gulpease}
-    \label{fig:Grafico MPC11}
+    \label{fig:Grafico MPC10}
 \end{figure}
 Il grafico mostra che il valore dell'Indice di Gulpease della documentazione prodotta risulta sempre superiore alla soglia del valore accettabile, con la maggior parte della documentazione oltre la soglia ottima.\\
 Le Norme di Progetto e l'\term{Analisi dei requisiti} sono i documenti con l'indice più basso, ma va segnalato che anche il Glossario (59,68) sfiora appena la soglia ottima, senza tuttavia superarla. Poiché si tratta di documenti tecnici, la presenza di terminologia specifica e frasi articolate può abbassare marginalmente questo indice senza comprometterne la reale leggibilità per gli addetti ai lavori. Pertanto, un intervento correttivo mirato unicamente all'innalzamento dell'indice non è ritenuto prioritario, ma se in futuro si renderanno necessarie modifiche a questi documenti, si presterà attenzione a semplificarne la struttura linguistica.
