@@ -1,0 +1,268 @@
+% template presente
+\documentclass[a4paper,12pt]{article}
+
+% =======================================================
+% 1. CONFIGURAZIONE VARIABILI
+% =======================================================
+\newcommand{\TitoloDocumento}{Manuale Utente}
+\newcommand{\DataVersione}{AAAA/MM/GG}
+\newcommand{\VersioneAttuale}{0.1.0}
+
+% =======================================================
+% 2. PACCHETTI
+% =======================================================
+% Carica xcolor con opzione table (include già colortbl)
+\usepackage[table]{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{setspace}
+\usepackage{tabularx} % Per tabelle larghe quanto la pagina
+\usepackage{longtable} % Per tabelle su più pagine
+\usepackage{fancyhdr} % Per header e footer
+\setlength{\headheight}{15pt}
+\addtolength{\topmargin}{-2.5pt}
+\usepackage{titlesec} % Per formattare i titoli
+\setlength{\marginparwidth}{2cm}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{xurl}     % Per gestire gli url lunghi ed evitare Overfull \hbox
+\usepackage{eurosym}
+\usepackage{tikz}     % Necessario per i grafici a torta
+\usepackage{tcolorbox}
+
+% Percorsi immagini (aggiusta se necessario)
+\graphicspath{{resources/}{../resources/}{../../resources/}{../../../resources/}{../../../../resources/}}
+
+% Hyperref va sempre caricato per ultimo
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue, % Colore link interni
+    filecolor=blue,
+    urlcolor=blue,  % Colore link web
+    pdftitle={\TitoloDocumento},
+}
+
+% --- DEFINIZIONE COLORI ---
+\definecolor{tableHeader}{RGB}{200, 200, 200}
+\definecolor{tableLineOdd}{RGB}{245, 245, 245}
+\definecolor{tableLineEven}{RGB}{255, 255, 255}
+
+% Colori per il grafico a torta (ispirati ai ruoli)
+\definecolor{pieResp}{RGB}{255, 100, 100} % Rosso chiaro
+\definecolor{pieAmm}{RGB}{255, 180, 100}  % Arancione
+\definecolor{pieAnal}{RGB}{255, 255, 100}  % Giallo
+\definecolor{pieProg}{RGB}{100, 200, 100}  % Verde
+\definecolor{pieDes}{RGB}{100, 200, 255}   % Blu chiaro
+\definecolor{pieVer}{RGB}{200, 100, 255}   % Viola
+
+% --- DEFINIZIONE COLONNE PERSONALIZZATE ---
+\newcolumntype{L}{>{\raggedright\arraybackslash\bfseries}p{4.5cm}}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\newcolumntype{Z}{>{\raggedright\arraybackslash}X}
+% Colonna C definita come X centrata (Necessaria per tabularx)
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+
+% =======================================================
+% 3. IMPOSTAZIONI VISIVE
+% =======================================================
+\geometry{margin=2.5cm}
+\raggedbottom               % Evita Overfull/Underfull \vbox verticali sulle pagine
+\setlength{\parindent}{0pt} % Niente rientro prima riga
+\setstretch{1.2}            % Interlinea 1.2
+
+% Stile Header e Footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{gray}{\TitoloDocumento \ - BitByBit}}
+\fancyfoot[C]{\thepage}
+
+% Formattazione Titoli
+\titleformat{\section}{\Large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.5em}{}
+\titleformat{\subsubsection}{\bfseries}{\thesubsubsection.}{0.5em}{}
+
+% =======================================================
+% 4. INIZIO DOCUMENTO
+% =======================================================
+\newcommand{\term}[1]{\textbf{#1}$^\mathbf{G}$}
+
+\newcommand{\ignoreglossary}{}
+
+\begin{document}
+
+% --- FRONT PAGE (Loghi e Titoli) ---
+\vspace*{\fill}
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        % Assicurati che il file esista
+        \includegraphics[width=\linewidth]{logoUni.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\color{red}\LARGE \textbf{Università degli Studi di Padova}}\\[0.3cm]
+        {\large
+        Laurea: Informatica\\
+        Corso: Ingegneria del Software\\
+        Anno Accademico: 2025/26
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1cm}
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        % Assicurati che il file esista
+        \includegraphics[width=\linewidth]{logo.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\LARGE \textbf{Gruppo 17}}\\[0.3cm]
+        {\large
+        Nome: BitByBit\\
+        Email: swe.bitbybit@gmail.com
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1.5cm}
+
+\begin{center}
+    {\LARGE \textbf{\TitoloDocumento}}
+\end{center}
+
+% ======= INFO GENERALI =======
+\renewcommand{\arraystretch}{1.3}
+
+\begin{tcolorbox}
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\textbf{Stato:} & In corso\\
+\textbf{Versione:} & \VersioneAttuale \\
+\textbf{Responsabile:} & X\\
+\textbf{Redattori:} & 
+\begin{tabular}[t]{@{}l@{}}
+Dennis Parolin\\
+\end{tabular} \\
+\textbf{Verificatori:} & 
+\begin{tabular}[t]{@{}l@{}}
+Giovanni Visentin \\
+\end{tabular} \\
+\textbf{Destinatari:} &
+\begin{tabular}[t]{@{}l@{}}
+Miriade srl\\
+Prof. Tullio Vardanega\\
+Prof. Riccardo Cardin\\
+Gruppo BitByBit\\\\
+\end{tabular}
+\end{tabularx}
+\end{tcolorbox}
+
+\vspace*{\fill}
+
+% =======================================================
+% REGISTRO DELLE MODIFICHE
+% =======================================================
+\clearpage
+\section*{Redazione, modifiche e revisioni del documento} \label{sec:registro_modifiche}
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.4}
+\arrayrulecolor{black}
+
+\begin{longtable}{|c|c|>{\raggedright\arraybackslash}p{0.15\linewidth}|>{\raggedright\arraybackslash}p{0.3\linewidth}|c|}
+\hline
+
+\rowcolor{gray!60}
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+\hline
+\endfirsthead
+
+\hline
+\rowcolor{gray!60}
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+\hline
+\endhead
+
+\rowcolor{white}
+0.1.0 & 2026-03-28 & Dennis Parolin & Creazione del documento e redazione della sezione \hyperref[sec:introduzione]{Introduzione} con relative sottosezioni. & Giovanni Visentin \\
+\hline
+\end{longtable}
+\end{center}
+
+% --- INDICE ---
+\clearpage
+\tableofcontents
+\thispagestyle{empty}
+\clearpage
+
+% --- ELENCO TABELLE ---
+\listoftables
+\clearpage
+
+% =======================================================
+% SEZIONE: INTRODUZIONE
+% =======================================================
+
+\section{Introduzione} \label{sec:introduzione}
+
+% =======================SCOPO DOCUMENTO================================
+\subsection{Scopo del documento} \label{sec:scopo_documento}
+Il presente \textit{Manuale \term{Utente}} è stato redatto dal gruppo \textit{BitByBit} per fornire un supporto metodico e completo riguardo all'utilizzo del sistema sviluppato in risposta al \href{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C4.pdf}{Capitolato d'appalto C4: \emph{L'app che Protegge e Trasforma}}.
+
+Il documento si propone come una guida operativa generica e trasversale, concepita per accompagnare l'utenza finale nell'interazione quotidiana con le interfacce dell'applicativo e per descriverne tutte le potenzialità. In aggiunta, questo manuale funge da punto di riferimento per eventuali figure amministrative o tecniche che dovranno interfacciarsi con il sistema o occuparsi della sua gestione e configurazione. L'obiettivo primario è duplice: da un lato, far sì che qualunque \term{Utente} possa apprendere velocemente e in autonomia come muoversi e operare attraverso il software; dall'altro, mitigare la probabilità di errori accidentali offrendo linee guida e soluzioni a dubbi comuni. 
+
+Per facilitare la ricerca delle informazioni, i contenuti sono stati suddivisi nelle seguenti aree chiave:
+
+\todo[inline, color=yellow!40]{Completare l'elenco puntato sottostante con le sezioni definitive del manuale (es. Installazione, Setup, Guide, Troubleshooting, ecc.) non appena il perimetro dell'applicazione sarà delineato.}
+\begin{itemize}
+    \item \dots
+\end{itemize}
+
+% =======================DEFINIZIONI, ACRONIMI E ABBREVIAZIONI================================
+
+\subsection{Definizioni, acronimi e abbreviazioni} \label{sec:definizioni_acronimi_abbreviazioni}
+
+Al fine di evitare ambiguità relative al linguaggio e ai termini utilizzati all'interno dei documenti formali, viene allegato il \href{https://swe-bitbybit.github.io/SWE-docs/docs/RTB/documenti_interni/Glossario.pdf}{\textit{Glossario}}.
+I termini tecnici, gli acronimi e le parole con significato specifico all'interno del progetto sono contrassegnati da una lettera 'G' in apice (es. Agile) e sono descritti in dettaglio nel documento apposito.
+
+% =======================RIFERIMENTI================================
+
+\subsection{Riferimenti} \label{sec:riferimenti}
+
+\subsubsection{Riferimenti normativi}\label{sec:riferimenti_normativi}
+\begin{itemize}
+\item \textbf{\term{Capitolato} d'appalto C4: \emph{L'app che Protegge e Trasforma}}\\
+Parti consultate: documento completo\\
+Versione: 1.0.0\\
+Ultimo accesso: \textit{2026-01-12}\\
+\url{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C4.pdf}
+
+\item \textbf{Norme di Progetto}\\
+Parti consultate: documento completo\\
+Versione: 1.2.0\\
+Ultimo accesso: \textit{2026-03-31}\\
+\url{https://swe-bitbybit.github.io/SWE-docs/docs/RTB/documenti_interni/norme_di_progetto.pdf}
+\end{itemize}
+
+
+\subsubsection{Riferimenti informativi} \label{sec:riferimenti_informativi}
+\begin{itemize}
+    \item \textbf{Glossario}\\
+        Parti consultate: documento completo\\
+        Versione: \textit{1.0.0}\\
+        Ultimo accesso: \textit{2026-03-03}\\
+        \url{https://swe-bitbybit.github.io/SWE-docs/docs/RTB/documenti_interni/Glossario.pdf}
+\end{itemize}
+
+
+
+\end{document}

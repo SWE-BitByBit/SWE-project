@@ -8,6 +8,7 @@
     --text-light: #E2E8F0; /* Bianco sporco per il testo */
     --text-muted: #8fa4ca; /* Grigio per testo secondario */
     --bg-lighter-dark: #092956; /* Un po' più chiaro del primary-dark per elementi secondari */
+    --bg-darker: #051946; /* Per subsection, leggermente più scuro del precedente*/
     --border-color: #3C5A6B; /* Bordo più scuro */
 }
 
@@ -113,6 +114,29 @@ section {
 section:hover {
     border-left-width: 15px;
     padding-left: 1.78rem;
+}
+
+.subsection {
+    background-color: var(--bg-darker);
+    border-radius: 4px;
+    margin-bottom: 1.5rem; 
+    padding: 1rem
+}
+
+.dropdown-toggle{
+    margin-bottom: 1rem; 
+    background-color: var(--bg-darker);
+    border-radius: 8px;
+    border: #0AF6C5 solid 0px;
+    padding: 1rem;
+    align-self: center;
+    width:100%;
+    transition: 0.3s ease-in-out;
+}
+
+.dropdown-toggle:hover {
+    border-bottom-width: 15px;
+    padding-bottom: 1rem;
 }
 
 .hidden {
