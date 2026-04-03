@@ -195,7 +195,7 @@ def wrap_terms(text: str, terms):
         for i in range(0, len(parts), 2):
             pattern = r'\b' + re.escape(t) + r'\b'
             regex = re.compile(pattern, flags=re.IGNORECASE)
-            parts[i] = regex.sub(lambda m: r"\term{" + m.group(0).title() + "}", parts[i])
+            parts[i] = regex.sub(lambda m: r"\term{" + t + "}", parts[i])
         
         text = ''.join(parts)
 
