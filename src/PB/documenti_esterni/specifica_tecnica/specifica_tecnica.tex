@@ -190,7 +190,7 @@ In particolare, il documento si propone di:
     
     \item Descrivere l'\term{Architettura} di \term{Deployment}, evidenziando la distribuzione delle componenti nei diversi ambienti di esecuzione e le relative dipendenze infrastrutturali
     
-    \item Documentare le tecnologie, i linguaggi di programmazione, i framework e gli strumenti adottati, motivando le scelte effettuate in relazione ai requisiti di progetto e al \term{Capitolato}
+    \item Documentare le tecnologie, i linguaggi di programmazione, i \term{Framework} e gli strumenti adottati, motivando le scelte effettuate in relazione ai requisiti di progetto e al \term{Capitolato}
     
     \item Illustrare i principali design pattern e le soluzioni architetturali utilizzate, con particolare attenzione agli aspetti di scalabilità, manutenibilità e sicurezza
         
@@ -254,7 +254,7 @@ Le tecnologie utilizzate sono state scelte trovando un punto d'incontro tra la n
 \subsection{Framework} \label{subsec:framework}
 
 \subsubsection{Flutter}
-Flutter è un framework open-source sviluppato da Google per la creazione di applicazioni multi-piattaforma a partire da un unico codice sorgente. Consente di sviluppare interfacce per dispositivi mobili, web e desktop utilizzando il linguaggio Dart. Flutter si basa su un sistema di widget componibili, che possono rappresentare qualsiasi elemento dell’interfaccia \term{Utente}. Flutter include un proprio motore grafico (come Impeller o storicamente Skia) che disegna direttamente i componenti a schermo, garantendo elevata coerenza visiva e prestazioni indipendenti dalla piattaforma sottostante. È il framework alla base dell'App Che Protegge e Trasforma, il che consente di poter generare build per iOS e Android da un unico codice sorgente, a fronte di un maggiore utilizzo di risorse rispetto alle soluzioni native e di una minore possibilità di controllo diretto e personalizzazione delle funzionalità native della piattaforma.
+Flutter è un \term{Framework} open-source sviluppato da Google per la creazione di applicazioni multi-piattaforma a partire da un unico codice sorgente. Consente di sviluppare interfacce per dispositivi mobili, web e desktop utilizzando il linguaggio Dart. Flutter si basa su un sistema di widget componibili, che possono rappresentare qualsiasi elemento dell’interfaccia \term{Utente}. Flutter include un proprio motore grafico (come Impeller o storicamente Skia) che disegna direttamente i componenti a schermo, garantendo elevata coerenza visiva e prestazioni indipendenti dalla piattaforma sottostante. È il \term{Framework} alla base dell'App Che Protegge e Trasforma, il che consente di poter generare build per iOS e Android da un unico codice sorgente, a fronte di un maggiore utilizzo di risorse rispetto alle soluzioni native e di una minore possibilità di controllo diretto e personalizzazione delle funzionalità native della piattaforma.
 \begin{itemize}
     \item \textbf{Versione utilizzata}: 3.41.6
     \item \textbf{Documentazione}: \url{https://docs.flutter.dev/}
@@ -270,7 +270,7 @@ Dart è un linguaggio di programmazione sviluppato da Google, progettato per la 
 \end{itemize}
 
 \subsubsection{Python}
-Python è un linguaggio di programmazione ad alto livello, interpretato e orientato agli oggetti, noto per la sua sintassi semplice e leggibile. Il codice Python viene eseguito da un interprete che traduce le istruzioni in bytecode, poi eseguito dalla macchina virtuale Python. Nel progetto è utilizzato lato backend per la scrittura delle funzioni AWS Lambda e per i test tramite Pytest.
+Python è un linguaggio di programmazione ad alto livello, interpretato e orientato agli oggetti, noto per la sua sintassi semplice e leggibile. Il codice Python viene eseguito da un interprete che traduce le istruzioni in bytecode, poi eseguito dalla macchina virtuale Python. Nel progetto è utilizzato lato \term{Backend} per la scrittura delle funzioni AWS Lambda e per i test tramite Pytest.
 \begin{itemize}
     \item \textbf{Versione utilizzata}: 3.14.3
     \item \textbf{Documentazione}: \url{https://docs.python.org/3/}
@@ -279,14 +279,14 @@ Python è un linguaggio di programmazione ad alto livello, interpretato e orient
 \subsection{Servizi AWS} \label{subsec:aws}
 
 \subsubsection{Lambda}
-AWS Lambda è un servizio serverless che consente di eseguire codice senza gestire direttamente server o infrastruttura. Le funzioni vengono attivate in risposta a eventi e scalano automaticamente in base al carico. Nel progetto è utilizzato per implementare la logica backend, eseguendo funzioni scritte in Python invocate tramite API Gateway.
+AWS Lambda è un servizio \term{Serverless} che consente di eseguire codice senza gestire direttamente server o infrastruttura. Le funzioni vengono attivate in risposta a eventi e scalano automaticamente in base al carico. Nel progetto è utilizzato per implementare la logica \term{Backend}, eseguendo funzioni scritte in Python invocate tramite API Gateway.
 \begin{itemize}
     \item \textbf{Versione utilizzata}: Runtime Python 3.14
     \item \textbf{Documentazione}: \url{https://docs.aws.amazon.com/lambda/}
 \end{itemize}
 
 \subsubsection{API Gateway}
-AWS API Gateway è un servizio che permette di creare, pubblicare e gestire API REST e HTTP, fungendo da punto di ingresso per le richieste client. Gestisce autenticazione, routing e integrazione con altri servizi AWS. Nel progetto è utilizzato per esporre endpoint HTTP che invocano le funzioni Lambda.
+AWS API Gateway è un servizio che permette di creare, pubblicare e gestire \term{API REST} e HTTP, fungendo da punto di ingresso per le richieste client. Gestisce autenticazione, routing e integrazione con altri servizi AWS. Nel progetto è utilizzato per esporre endpoint HTTP che invocano le funzioni Lambda.
 \begin{itemize}
     \item \textbf{Versione utilizzata}: HTTP API (v2)
     \item \textbf{Documentazione}: \url{https://docs.aws.amazon.com/apigateway/}
@@ -329,22 +329,22 @@ Amazon CloudWatch è un servizio di monitoraggio e osservabilità che raccoglie 
 \end{itemize}
 
 \subsubsection{EventBridge}
-Amazon EventBridge è un servizio di event bus serverless che consente di gestire e instradare eventi tra diversi servizi AWS. Esso permette di definire regole per reagire automaticamente a eventi generati da servizi AWS o da fonti esterne. Nel progetto è utilizzato per orchestrare i flussi di controllo di utilizzo dell'app da parte degli utenti, e l'invio delle email secondo le tempistiche stabilite dal Dead man's switch.
+Amazon EventBridge è un servizio di event bus \term{Serverless} che consente di gestire e instradare eventi tra diversi servizi AWS. Esso permette di definire regole per reagire automaticamente a eventi generati da servizi AWS o da fonti esterne. Nel progetto è utilizzato per orchestrare i flussi di controllo di utilizzo dell'app da parte degli utenti, e l'invio delle email secondo le tempistiche stabilite dal Dead man's switch.
 \begin{itemize}
     \item \textbf{Documentazione}: \url{https://docs.aws.amazon.com/eventbridge/}
 \end{itemize}
 
 \subsubsection{SAM}
-AWS Serverless Application Model (SAM) è un framework open-source che semplifica la definizione e il \term{Deployment} di applicazioni serverless su AWS. Estende AWS CloudFormation introducendo una sintassi più compatta per risorse come Lambda, API Gateway e DynamoDB e include strumenti per build, testing locale e deploy delle applicazioni. Nel progetto è utilizzato per definire e distribuire l’infrastruttura serverless in modo semplificato.
+AWS \term{Serverless} Application Model (SAM) è un \term{Framework} open-source che semplifica la definizione e il \term{Deployment} di applicazioni \term{Serverless} su AWS. Estende AWS CloudFormation introducendo una sintassi più compatta per risorse come Lambda, API Gateway e DynamoDB e include strumenti per build, testing locale e deploy delle applicazioni. Nel progetto è utilizzato per definire e distribuire l’infrastruttura \term{Serverless} in modo semplificato.
 \begin{itemize}
     \item \textbf{Documentazione}: \url{https://docs.aws.amazon.com/serverless-application-model/}
 \end{itemize}
 
 \subsubsection{CloudFormation}
-AWS CloudFormation è un servizio di Infrastructure as Code che consente di modellare e gestire risorse AWS tramite template dichiarativi in formato YAML o JSON. Nel progetto è utilizzato come base per il provisioning dell’infrastruttura, anche tramite template generati da SAM.
+AWS CloudFormation è un servizio di \term{Infrastructure as Code} che consente di modellare e gestire risorse AWS tramite template dichiarativi in formato \term{YAML} o JSON. Nel progetto è utilizzato come base per il provisioning dell’infrastruttura, anche tramite template generati da SAM.
 \begin{itemize}
     \item \textbf{Documentazione}: \url{https://docs.aws.amazon.com/cloudformation/}
-    \item \textbf{Versioni}: CloudFormation non prevede versioni di servizio esplicite; eventuali aggiornamenti sono gestiti direttamente da AWS. I template possono però utilizzare versioni di specifiche risorse e trasformazioni (es. AWS::Serverless).
+    \item \textbf{Versioni}: CloudFormation non prevede versioni di servizio esplicite; eventuali aggiornamenti sono gestiti direttamente da AWS. I template possono però utilizzare versioni di specifiche risorse e trasformazioni (es. AWS::\term{Serverless}).
 \end{itemize}
 
 \subsection{Librerie} \label{subsec:librerie}
@@ -381,14 +381,14 @@ SonarQube è una piattaforma open-source per l’analisi continua della qualità
 \subsection{Tecnologie di analisi dinamica} \label{subsec:tecnologie_analisi_dinamica}
 
 \subsubsection{Pytest}
-Pytest è un framework di testing per il linguaggio Python che consente di scrivere test in modo semplice e scalabile. Supporta test funzionali, unitari e di integrazione, offrendo funzionalità come fixture, parametrizzazione dei test e scoperta automatica dei test.
+Pytest è un \term{Framework} di testing per il linguaggio Python che consente di scrivere test in modo semplice e scalabile. Supporta test funzionali, unitari e di integrazione, offrendo funzionalità come fixture, parametrizzazione dei test e scoperta automatica dei test.
 \begin{itemize}
     \item \textbf{Versione utilizzata}: 9.0.2
     \item \textbf{Documentazione}: \url{https://docs.pytest.org/}
 \end{itemize}
 
 \subsubsection{Moto}
-Moto è una libreria Python che consente di mockare i servizi AWS durante i test. Simula il comportamento delle API AWS, permettendo di testare codice che interagisce con servizi cloud senza effettuare chiamate reali. Funziona intercettando le richieste e restituendo risposte simulate coerenti con quelle dei servizi AWS.
+Moto è una libreria Python che consente di mockare i servizi AWS durante i test. Simula il comportamento delle API AWS, permettendo di testare codice che interagisce con servizi \term{Cloud} senza effettuare chiamate reali. Funziona intercettando le richieste e restituendo risposte simulate coerenti con quelle dei servizi AWS.
 \begin{itemize}
     \item \textbf{Versione utilizzata}: 5.1.23
     \item \textbf{Documentazione}: \url{https://docs.getmoto.org/}
@@ -397,7 +397,7 @@ Moto è una libreria Python che consente di mockare i servizi AWS durante i test
 \subsection{Altro} \label{subsec:altro}
 
 \subsubsection{Ollama}
-Ollama è una piattaforma che consente di eseguire e gestire LLM in locale tramite una semplice interfaccia. Permette il download, l’esecuzione e l’interazione con modelli di intelligenza artificiale direttamente in ambiente locale, senza necessità di servizi cloud esterni. Il funzionamento si basa su un runtime che gestisce i modelli e espone endpoint per inferenza.
+Ollama è una piattaforma che consente di eseguire e gestire LLM in locale tramite una semplice interfaccia. Permette il download, l’esecuzione e l’interazione con modelli di intelligenza artificiale direttamente in ambiente locale, senza necessità di servizi \term{Cloud} esterni. Il funzionamento si basa su un runtime che gestisce i modelli e espone endpoint per inferenza.
 \begin{itemize}
     \item \textbf{Versione utilizzata}: 0.18.3
     \item \textbf{Documentazione}: \url{https://ollama.com/docs}
@@ -413,50 +413,50 @@ Docker è una piattaforma di containerizzazione che consente di creare, distribu
 \section{Architettura}
 \subsection{Architettura logica} \label{subsec:architettura_logica}
 
-Il sistema software è progettato secondo i princìpi di un'\textbf{\term{Architettura} a Strati} (o \textit{Layered Architecture}), che impone una chiara separazione delle responsabilità tra i diversi livelli applicativi del sistema.
-L'obiettivo cardine di questa scelta è massimizzare l'indipendenza formale della logica di business dalle interfacce grafiche \term{Utente} e dai meccanismi fisici di gestione del dato, favorendo così la facilità di test, la manutenzione nel tempo e il forte disaccoppiamento (\textit{Separation of Concerns}).
+Il sistema software è progettato secondo i princìpi di un'\textbf{\term{Architettura a Strati}} (o \textit{Layered Architecture}), che impone una chiara separazione delle responsabilità tra i diversi livelli applicativi del sistema.
+L'obiettivo cardine di questa scelta è massimizzare l'indipendenza formale della logica di business dalle interfacce grafiche \term{Utente} e dai meccanismi fisici di gestione del dato, favorendo così la facilità di test, la manutenzione nel tempo e il forte disaccoppiamento (\textit{\term{Separation of Concerns}}).
 
 All'ingresso superiore dell'applicazione si posiziona l'ecosistema logico del dispositivo, mentre le fondamenta sono governate e calcolate dall'infrastruttura di servizio. L'interfaccia tra questi due mondi è ben definita tramite API e totalmente slegata dai linguaggi di programmazione o dai sistemi operativi utilizzati.
 
 \subsubsection{Livello Client (Frontend Mobile)}
-Il client mobile è sviluppato incapsulando il codice secondo i dettami moderni di una \textit{Clean Architecture} (fortemente affine al noto pattern architetturale \textit{Model-View-ViewModel} - MVVM). Il codice dell'applicazione è suddiviso in almeno tre strati logici indipendenti e gerarchici:
+Il client mobile è sviluppato incapsulando il codice secondo i dettami moderni di una \textit{\term{Clean Architecture}} (fortemente affine al noto pattern architetturale \textit{Model-View-ViewModel} - MVVM). Il codice dell'applicazione è suddiviso in almeno tre strati logici indipendenti e gerarchici:
 
 \begin{itemize}
     \item \textbf{Presentation Layer (View)}: Costituisce il livello più visibile e frontale dell'applicazione. Eredita gli input visivi tattili e si occupa unicamente di aggregare e renderizzare il layout grafico a schermo tramite widget componenti, senza mai eseguire logica complessa.
-    \item \textbf{State Management Layer (ViewModel)}: Rappresenta il controllore dello stato locale dell'applicativo. Intercetta gli eventi sollevati dalla vista grafica, muta la visualizzazione attuale (es. da "In caricamento" a "Successo") e gestisce le validazioni elementari dei dati inseriti, comandando ai servizi sottostanti le operazioni formali da compiere.
-    \item \textbf{Data e \term{Repository} Layer}: È lo strato più basso dell'ambiente Client ed è incaricato unicamente della gestione e dell'acquisizione dei dati. Interroga le librerie hardware native del dispositivo (la fotocamera, l'immagazzinamento dei file, le autorizzazioni di sistema) ed esegue le indispensabili chiamate asincrone HTTP verso il backend remoto, informando il ViewModel dei risultati delle chiamate.
+    \item \textbf{\term{State Management} Layer (ViewModel)}: Rappresenta il controllore dello stato locale dell'applicativo. Intercetta gli eventi sollevati dalla vista grafica, muta la visualizzazione attuale (es. da "In caricamento" a "Successo") e gestisce le validazioni elementari dei dati inseriti, comandando ai servizi sottostanti le operazioni formali da compiere.
+    \item \textbf{Data e \term{Repository} Layer}: È lo strato più basso dell'ambiente Client ed è incaricato unicamente della gestione e dell'acquisizione dei dati. Interroga le librerie hardware native del dispositivo (la fotocamera, l'immagazzinamento dei file, le autorizzazioni di sistema) ed esegue le indispensabili chiamate asincrone HTTP verso il \term{Backend} remoto, informando il ViewModel dei risultati delle chiamate.
 \end{itemize}
 
 \subsubsection{Livello di Servizio (Backend)}
-L'\term{Architettura} logica adibita all'interazione tra i device mobili e l'ambiente computazionale in cloud si fonda su un analogo approccio modulare disaccoppiato in tre sotto-livelli principali:
+L'\term{Architettura} logica adibita all'interazione tra i device mobili e l'ambiente computazionale in \term{Cloud} si fonda su un analogo approccio modulare disaccoppiato in tre sotto-livelli principali:
 
 \begin{itemize}
-    \item \textbf{Presentation e Routing Layer}: Costituisce il \textit{Single Point of Entry} dell'infrastruttura esposto al software. Ha la pura e unica responsabilità di tracciare e smistare le richieste esterne verso i rami corretti. Intercetta validazioni e autorizzazioni per poi rilasciare formalmente il payload agli strati contigui.
-    \item \textbf{Business Core / Logic Layer}: Al netto centro del dominio applicativo e infrastrutturale risiedono i manipolatori della business logic e le piccole unità logiche funzionali distribuite (\textit{Funzioni Lambda}). È la porzione logica in cui si applicano manipolazioni e controlli mirati alle strutture asincrone a eventi, esenti da dettagli legati al trasporto HTTP. Riceve input grezzi dal layer precedente, esegue la computazione core e restituisce informazioni analizzate.
-    \item \textbf{Data Access Layer}: Un livello totalmente passivo ed estrapolato che offre un'astrazione tramite moduli e \term{Driver}. Consente una persistenza dati logica e mascherata ai database sottostanti (quali storage documentali, array non relazionali o conservazione audio/video grezza), celando alla logica di business i layer fisici o i linguaggi di interrogazione diretti della persistenza cloud.
+    \item \textbf{Presentation e Routing Layer}: Costituisce il \textit{\term{Single Point of Entry}} dell'infrastruttura esposto al software. Ha la pura e unica responsabilità di tracciare e smistare le richieste esterne verso i rami corretti. Intercetta validazioni e autorizzazioni per poi rilasciare formalmente il \term{Payload} agli strati contigui.
+    \item \textbf{Business Core / Logic Layer}: Al netto centro del dominio applicativo e infrastrutturale risiedono i manipolatori della \term{Business Logic} e le piccole unità logiche funzionali distribuite (\textit{Funzioni Lambda}). È la porzione logica in cui si applicano manipolazioni e controlli mirati alle strutture asincrone a eventi, esenti da dettagli legati al trasporto HTTP. Riceve input grezzi dal layer precedente, esegue la computazione core e restituisce informazioni analizzate.
+    \item \textbf{\term{Data Access Layer}}: Un livello totalmente passivo ed estrapolato che offre un'astrazione tramite moduli e \term{Driver}. Consente una persistenza dati logica e mascherata ai database sottostanti (quali storage documentali, array non relazionali o conservazione audio/video grezza), celando alla logica di business i layer fisici o i linguaggi di interrogazione diretti della persistenza \term{Cloud}.
 \end{itemize}
 \subsection{Architettura di deployment} \label{subsec:architettura_deployment}
 
-L'\term{Architettura} di \term{Deployment} del sistema si divide in due componenti principali: l'applicazione Client (eseguita sul dispositivo dell'\term{Utente}) e l'infrastruttura di Backend (eseguita in Cloud). Il sistema si basa su un paradigma \textbf{Serverless} ed \textbf{Event-Driven}, per garantire scalabilità, elevata disponibilità e abbattimento dei costi legati alla gestione manuale dei server.
+L'\term{Architettura} di \term{Deployment} del sistema si divide in due componenti principali: l'applicazione Client (eseguita sul dispositivo dell'\term{Utente}) e l'infrastruttura di \term{Backend} (eseguita in \term{Cloud}). Il sistema si basa su un paradigma \textbf{\term{Serverless}} ed \textbf{\term{Event-Driven}}, per garantire scalabilità, elevata disponibilità e abbattimento dei costi legati alla gestione manuale dei server.
 
 \subsubsection{Client Mobile}
-L'applicazione viene rilasciata come eseguibile nativo sui dispositivi mobili degli utenti (Android/iOS). Essendo sviluppata tramite il framework \textbf{Flutter}, il codice scritto in Dart viene compilato in formato binario specifico per l'\term{Architettura} hardware del dispositivo ospite.
-Il Client si interfaccia in modo del tutto indipendente ai servizi di Backend unicamente tramite la rete Internet, sfruttando protocolli di comunicazione sicuri.
+L'applicazione viene rilasciata come eseguibile nativo sui dispositivi mobili degli utenti (Android/iOS). Essendo sviluppata tramite il \term{Framework} \textbf{Flutter}, il codice scritto in Dart viene compilato in formato binario specifico per l'\term{Architettura} hardware del dispositivo ospite.
+Il Client si interfaccia in modo del tutto indipendente ai servizi di \term{Backend} unicamente tramite la rete Internet, sfruttando protocolli di comunicazione sicuri.
 
 \subsubsection{Infrastruttura AWS (Serverless Cloud)}
-L'intero ecosistema di Backend è ospitato e gestito all'interno di \textbf{Amazon Web Services (AWS)}.
+L'intero ecosistema di \term{Backend} è ospitato e gestito all'interno di \textbf{Amazon Web Services (AWS)}.
 Questa scelta architetturale consente:
 \begin{itemize}
-    \item \textbf{Scalabilità dinamica}: le risorse allocate (il calcolo e lo storage) scalano o si accendono/spengono automaticamente in base al volume di richieste ricevute dai Client;
+    \item \textbf{\term{Scalabilità dinamica}}: le risorse allocate (il calcolo e lo storage) scalano o si accendono/spengono automaticamente in base al volume di richieste ricevute dai Client;
     \item \textbf{Isolamento e Sicurezza}: ogni funzione ha una specifica responsabilità e policy di accesso minima verso le altre risorse, limitando l'esposizione al minimo indispensabile;
-    \item \textbf{Gestione del servizio (Zero Ops)}: l'uso di infrastrutture completamente gestite e la persistenza dei dati automatizzata tramite \textbf{Amazon DynamoDB} e \textbf{Amazon S3} solleva il team dalla manutenzione sistemistica.
+    \item \textbf{Gestione del servizio (\term{Zero Ops})}: l'uso di infrastrutture completamente gestite e la persistenza dei dati automatizzata tramite \textbf{Amazon DynamoDB} e \textbf{Amazon S3} solleva il team dalla manutenzione sistemistica.
 \end{itemize}
 
 L'ingresso e il bilanciamento delle richieste provenienti dal Client sono affidati ad \textbf{Amazon API Gateway}, il quale provvede all'autenticazione degli utenti tramite \textbf{Amazon Cognito} e instrada le chiamate verso le appropriate funzioni di calcolo \textbf{AWS Lambda}.
 
 \subsubsection{Orchestrazione Event-Driven}
 Oltre alle comunicazioni sincrone HTTP per le API \textit{REST}, l'\term{Architettura} di \term{Deployment} prevede un'orchestrazione asincrona fondamentale per le funzionalità dell'applicazione (es. le notifiche del sistema \textit{Dead Man's Switch}).
-I componenti comunicano internamente tramite eventi gestiti da \textbf{Amazon EventBridge}, che funge da \textit{Message Bus} e permette:
+I componenti comunicano internamente tramite eventi gestiti da \textbf{Amazon EventBridge}, che funge da \textit{\term{Message Bus}} e permette:
 \begin{itemize}
     \item \textbf{Comunicazione asincrona e disaccoppiata}: riducendo la dipendenza operativa tra i servizi;
     \item L'esecuzione ritardata e pianificata di check sui dati salvati nel database;
@@ -464,5 +464,5 @@ I componenti comunicano internamente tramite eventi gestiti da \textbf{Amazon Ev
 \end{itemize}
 
 \subsubsection{Infrastructure as Code (IaC)}
-Il \term{Deployment} materiale di tutte le risorse in ambiente AWS non è eseguito manualmente, ma viene automatizzato in modo riproducibile attraverso l'impiego di \textbf{AWS SAM (Serverless Application Model)} e \textbf{AWS CloudFormation}. L'infrastruttura logica e fisica è versionata sotto forma di file YAML, aderendo interamente al paradigma dell'\textit{Infrastructure as Code}.
+Il \term{Deployment} materiale di tutte le risorse in ambiente AWS non è eseguito manualmente, ma viene automatizzato in modo riproducibile attraverso l'impiego di \textbf{AWS SAM (\term{Serverless} Application Model)} e \textbf{AWS CloudFormation}. L'infrastruttura logica e fisica è versionata sotto forma di file \term{YAML}, aderendo interamente al paradigma dell'\textit{\term{Infrastructure as Code}}.
 \end{document}
