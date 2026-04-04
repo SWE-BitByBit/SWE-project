@@ -240,6 +240,10 @@ Versione parallela del repository. È contenuto all'interno del repository, ma n
 \termdefinition{Bugfix}
 Intervento di manutenzione correttiva volto a risolvere un difetto (bug) riscontrato nel software. Include la diagnosi del problema, la modifica del codice e la successiva verifica.
 
+\termdefinition{Business Logic}
+Insieme delle regole, dei calcoli e dei processi che definiscono il comportamento funzionale di un'applicazione, indipendentemente dalla presentazione visiva e dall'accesso ai dati.
+Nel contesto dell'architettura Flutter adottata dal gruppo, la Business Logic risiede nel Data Layer, all'interno delle classi \texttt{Service}.
+
 \clearpage
 
 % ==============================
@@ -265,6 +269,9 @@ Si riferisce alla completa durata dello sviluppo del prodotto, dal concepimento 
 È composto da stati in cui si ha una certa sequenza di passaggi da seguire. La transizione da uno stato all’altro avviene come conseguenza di un processo di ciclo di vita. 
 In seguito al ritiro il prodotto può essere rimesso in vita, per questo viene indicato con ciclo.
 
+\termdefinition{Code Base}
+Insieme completo del codice sorgente che costituisce un'applicazione o un sistema software, tipicamente gestito all'interno di un repository di controllo di versione.
+
 \termdefinition{Committente}
 Colui che ordina l'esecuzione di un prodotto ad un ente esterno, il fornitore. È colui che ha il maggior peso contrattuale.
 
@@ -281,6 +288,10 @@ Documento (legale) stilato tra committente e fornitore.
 
 % ==============================
 \section{D}
+
+\termdefinition{Data Layer}
+Strato architetturale responsabile della gestione e dell'accesso ai dati dell'applicazione.
+Nel contesto dell'architettura Flutter adottata dal gruppo, è composto dalle classi \texttt{Repository}, \texttt{Service} e \texttt{Model}, ed è l'unico strato autorizzato a comunicare con sorgenti dati esterne.
 
 \termdefinition{Deployment}
 Il processo di messa in opera di un sistema software o di un aggiornamento in un ambiente specifico (es. ambiente di staging o di produzione), rendendolo disponibile per l'uso o per il collaudo.
@@ -333,8 +344,9 @@ Unità di lavoro tracciata su un sistema di gestione progetti (es. GitHub). Nel 
 % ==============================
 \section{L}
 
-\termdefinition{Linter}
-Strumento di analisi statica automatizzata che analizza il codice sorgente per segnalare errori di programmazione, bug, errori stilistici e costrutti sospetti.
+\termdefinition{lowerCamelCase}
+Convenzione di nomenclatura in cui la prima parola inizia con lettera minuscola e ogni parola successiva inizia con lettera maiuscola, senza separatori (es. \texttt{userName}, \texttt{fetchData}).
+In Dart è utilizzata per variabili, parametri, metodi e costanti.
 
 \clearpage
 
@@ -379,6 +391,10 @@ La creazione di questo prodotto deve consumare la minima quantità di risorse de
 
 \termdefinition{PB}
 Sigla per \textbf{Product Baseline}. Baseline di progetto per validare l'architettura del prodotto software e la sua realizzazione. Espone il design definitivo del prodotto descritto nel documento delle specifiche tecniche.
+
+\termdefinition{Persistence Logic}
+Insieme delle operazioni responsabili del salvataggio, del recupero e della trasformazione dei dati verso e da una sorgente dati persistente (es. database, API REST).
+Nel contesto dell'architettura Flutter adottata dal gruppo, la Persistence Logic risiede nel Data Layer, all'interno delle classi \texttt{Repository}.
 
 \termdefinition{Piano di progetto}
 Documento ufficiale di tipo esterno, soggetto ad approvazioni, con il quale si descrivono gli obiettivi di progetto e gli elementi necessari al loro raggiungimento.  
@@ -474,6 +490,9 @@ Sigla per \textbf{Requirements and Technology Baseline}. Rappresenta una baselin
 % ==============================
 \section{S}
 
+\termdefinition{Scenari d'uso}
+Descrizioni narrative di come un utente interagisce con il sistema per raggiungere un obiettivo specifico. Sono utilizzati durante la validazione per verificare che il flusso di lavoro supporti le esigenze reali.
+
 \termdefinition{Self-documenting code}
 Codice scritto in modo talmente chiaro (tramite nomi significativi di variabili e funzioni) da rendere superflui i commenti esplicativi per comprenderne il funzionamento logico.
 
@@ -537,8 +556,13 @@ Attività che derivano da decisioni prese dai componenti del gruppo. Ogni To-Do 
 % ============================== 
 \section{U}
 
-\termdefinition{Scenari d'uso}
-Descrizioni narrative di come un utente interagisce con il sistema per raggiungere un obiettivo specifico. Sono utilizzati durante la validazione per verificare che il flusso di lavoro supporti le esigenze reali.
+\termdefinition{UI Layer}
+Strato architetturale responsabile della presentazione dei dati all'utente e della gestione degli input.
+Nel contesto dell'architettura Flutter adottata dal gruppo, è composto dalle classi \texttt{Screen}, \texttt{ViewModel} e \texttt{Widget}, e non deve contenere logica di business o accesso diretto ai dati.
+
+\termdefinition{UpperCamelCase}
+Convenzione di nomenclatura in cui ogni parola, inclusa la prima, inizia con lettera maiuscola, senza separatori (es. \texttt{UserRepository}, \texttt{AuthService}).
+In Dart è utilizzata per classi, enum, typedef ed estensioni.
 
 \termdefinition{Utente}
 La persona che usa e interagisce direttamente col sistema (spesso si identifica col committente).
