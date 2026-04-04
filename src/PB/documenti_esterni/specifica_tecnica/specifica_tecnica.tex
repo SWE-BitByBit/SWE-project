@@ -923,4 +923,57 @@ La classe \code{NoteRepository} funge da strato di astrazione tra \code{DiaryVie
     \label{DC-NoteDTO}
 \end{figure}
 
+\subsubsection{Livello Client (Frontend Mobile)}
+Il client mobile è sviluppato incapsulando il codice secondo i dettami moderni di una \textit{\term{Clean Architecture}} (fortemente affine al noto pattern architetturale \textit{Model-View-ViewModel} - MVVM). Il codice dell'applicazione è suddiviso in almeno tre strati logici indipendenti e gerarchici:
+
+\begin{itemize}
+    \item \textbf{Presentation Layer (View)}: Costituisce il livello più visibile e frontale dell'applicazione. Riceve gli input da parte dell'\term{Utente} e si occupa unicamente di aggregare e renderizzare il layout grafico a schermo tramite widget componenti, senza mai eseguire logica complessa.
+    \item \textbf{\term{State Management} Layer (ViewModel)}: Funge da mediatore tra View e dominio, gestendo lo stato della view. Riceve input dalla view, muta lo stato dell'UI e notifica la view che si aggiornerà sulla base del nuovo stato incapsulato (es. passando da "In caricamento" a "Successo"). Inoltre, gestisce le validazioni elementari dei dati inseriti, comandando ai servizi sottostanti le operazioni formali da compiere.
+    \item \textbf{\term{Data Layer}}: È lo strato più basso dell'ambiente Client, incaricato unicamente dell'acquisizione e gestione dei dati, ed è logicamente suddiviso in \textit{Service} e \textit{\term{Repository}}. I Service sono gli unici componenti ad interfacciarsi con l'esterno, conoscendo gli endpoint del \term{Backend} per eseguire le chiamate asincrone HTTP e gestendo l'accesso a dati memorizzati localmente o in remoto. I \term{Repository} fungono da intermediari: raccolgono i dati grezzi provenienti dai Service e li formattano in modelli di dominio strutturati (es. un oggetto \textit{Note}), fornendoli al ViewModel puliti e pronti all'uso.
+\end{itemize}
+
+\subsubsection{Livello di Servizio (Backend)}
+L'\term{Architettura} logica adibita all'interazione tra i device mobili e l'ambiente computazionale in \term{Cloud} si fonda su un analogo approccio modulare disaccoppiato in tre sotto-livelli principali:
+
+\begin{itemize}
+    \item \textbf{Presentation e Routing Layer}: Costituisce il \textit{\term{Single Point of Entry}} dell'infrastruttura esposto al software. Ha la pura e unica responsabilità di tracciare e smistare le richieste esterne verso i rami corretti. Intercetta validazioni e autorizzazioni per poi rilasciare formalmente il \term{Payload} agli strati contigui.
+    \item \textbf{Business Core / Logic Layer}: Costituisce il cuore elaborativo del sistema, dove risiede l'intera \textit{\term{Business Logic}}. Questo strato è implementato tramite unità funzionali indipendenti e distribuite (\textit{Funzioni Lambda}) ed è progettato per essere completamente agnostico rispetto ai dettagli di trasporto e comunicazione (come il protocollo HTTP). Il suo compito esclusivo è ricevere i dati già validati dal livello di \textit{Routing}, applicare le regole di dominio, coordinare l'elaborazione degli eventi asincroni e restituire le informazioni elaborate e strutturate.
+    \item \textbf{\term{Data Access Layer}}: Un livello totalmente passivo ed estrapolato che offre un'astrazione tramite moduli e \term{Driver}. Consente una persistenza dati logica e mascherata ai database sottostanti (quali storage documentali, array non relazionali o conservazione audio/video grezza), celando alla logica di business i layer fisici o i linguaggi di interrogazione diretti della persistenza \term{Cloud}.
+\end{itemize}
+\subsection{Architettura di deployment} \label{subsec:architettura_deployment}
+
+L'\term{Architettura} di \term{Deployment} del sistema si divide in due componenti principali: l'applicazione Client (eseguita sul dispositivo dell'\term{Utente}) e l'infrastruttura di \term{Backend} (eseguita in \term{Cloud}). Il sistema si basa su un paradigma \textbf{\term{Serverless}} ed \textbf{\term{Event-Driven}}, per garantire scalabilità, elevata disponibilità e abbattimento dei costi legati alla gestione manuale dei server.
+
+\subsubsection{Client Mobile}
+L'applicazione viene rilasciata come eseguibile nativo sui dispositivi mobili degli utenti (Android/iOS). Essendo sviluppata tramite il \term{Framework} \textbf{Flutter}, il codice scritto in Dart viene compilato in formato binario specifico per l'\term{Architettura} hardware del dispositivo ospite.
+Il Client si interfaccia in modo del tutto indipendente ai servizi di \term{Backend} unicamente tramite la rete Internet, sfruttando protocolli di comunicazione sicuri.
+
+\subsubsection{Infrastruttura AWS (Serverless Cloud)}
+L'intero ecosistema di \term{Backend} è ospitato e gestito all'interno di \textbf{Amazon Web Services (AWS)}.
+Questa scelta architetturale consente:
+\begin{itemize}
+    \item \textbf{\term{Scalabilità dinamica}}: le risorse allocate (il calcolo e lo storage) scalano o si accendono/spengono automaticamente in base al volume di richieste ricevute dai Client;
+    \item \textbf{Isolamento e Sicurezza}: ogni funzione ha una specifica responsabilità e policy di accesso minima verso le altre risorse, limitando l'esposizione al minimo indispensabile;
+    \item \textbf{Gestione del servizio (\term{Zero Ops})}: l'uso di infrastrutture completamente gestite e la persistenza dei dati automatizzata tramite \textbf{Amazon DynamoDB} e \textbf{Amazon S3} solleva il team dalla manutenzione sistemistica.
+\end{itemize}
+
+Il flusso operativo del sistema e la connessione tra i componenti AWS si articolano nei seguenti layer di \term{Deployment}:
+\begin{itemize}
+    \item \textbf{Amazon API Gateway}: costituisce l'unico punto di ingresso espositivo e si occupa di orchestrare e bilanciare le richieste HTTP provenienti dal Client.
+    \item \textbf{Amazon Cognito}: agisce come filtro primario in stretta collaborazione con l'API Gateway, validando i token \term{Utente} e negando le richieste non autorizzate.
+    \item \textbf{AWS Lambda}: rappresenta il cuore elaborativo decentralizzato; l'infrastruttura crea dinamicamente container di esecuzione che accolgono le richieste smistate e processano la \term{Business Logic} interna.
+    \item \textbf{Amazon DynamoDB e Amazon S3}: compongono lo strato di persistenza profondo ospitando, in alta disponibilità, i dati relazionali/JSON e i contenuti multimediali grezzi sollevando il livello server della necessità di memoria sul disco.
+\end{itemize}
+
+\subsubsection{Orchestrazione Event-Driven}
+Oltre alle comunicazioni sincrone HTTP per le API \textit{REST}, l'\term{Architettura} di \term{Deployment} prevede un'orchestrazione asincrona fondamentale per le funzionalità dell'applicazione (es. le notifiche del sistema \textit{Dead Man's Switch}).
+I componenti comunicano internamente tramite eventi gestiti da \textbf{Amazon EventBridge}, che funge da \textit{\term{Message Bus}} e permette:
+\begin{itemize}
+    \item \textbf{Comunicazione asincrona e disaccoppiata}: riducendo la dipendenza operativa tra i servizi;
+    \item L'esecuzione ritardata e pianificata di check sui dati salvati nel database;
+    \item L'instradamento di Eventi critici e allerte verso il servizio \textbf{Amazon SES} per l'invio automatizzato di e-mail.
+\end{itemize}
+
+\subsubsection{Infrastructure as Code (IaC)}
+Il \term{Deployment} materiale di tutte le risorse in ambiente AWS non è eseguito manualmente, ma viene automatizzato in modo riproducibile attraverso l'impiego di \textbf{AWS SAM (\term{Serverless} Application Model)} e \textbf{AWS CloudFormation}. L'infrastruttura logica e fisica è versionata sotto forma di file \term{YAML}, aderendo interamente al paradigma dell'\textit{\term{Infrastructure as Code}}.
 \end{document}
