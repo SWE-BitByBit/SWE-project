@@ -179,14 +179,14 @@ Una volta validato il \term{PoC}, si procederà con la migrazione sull'account A
 È stata definita la catena di servizi AWS per supportare l'applicativo:
 \begin{itemize}
     \item \textbf{Frontend:} Ospitato su bucket S3 e distribuito tramite CloudFront.
-    \item \textbf{Backend:} API Gateway gestirà le richieste (es. GET) connettendosi alle Lambda. Le Lambda conterranno la logica applicativa, ricevendo input JSON e interagendo con Amazon DynamoDB per i dati.
+    \item \textbf{\term{Backend}:} API Gateway gestirà le richieste (es. GET) connettendosi alle Lambda. Le Lambda conterranno la logica applicativa, ricevendo input JSON e interagendo con Amazon DynamoDB per i dati.
     \item \textbf{Intelligenza Artificiale:} Verrà utilizzato Amazon Bedrock tramite chiamate API. In fase di test locale o per il piano free, è possibile utilizzare modelli alternativi (es. Llama) deployati localmente.
     \item \textbf{Email (SES):} Il servizio SES verrà organizzato in topic a cui collegare le email; l'azienda verificherà internamente la gestione specifica.
 \end{itemize}
 
 \subsection{Autenticazione e Mobile}
 \begin{itemize}
-    \item \textbf{Cognito:} Gestirà l'autenticazione tramite User Pool, permettendo permessi differenziati. Sarà integrato il login con Google: il frontend comunicherà con il backend che creerà l'\term{Utente} su Cognito.
+    \item \textbf{Cognito:} Gestirà l'autenticazione tramite User Pool, permettendo permessi differenziati. Sarà integrato il login con Google: il frontend comunicherà con il \term{Backend} che creerà l'\term{Utente} su Cognito.
     \item \textbf{Mobile App:} L'APK verrà generato tramite Flutter. Si è notato che, anche in debug, l'app potrebbe richiedere permessi di sistema specifici all'\term{Utente}.
 \end{itemize}
 
@@ -214,7 +214,7 @@ Utilizzare Amazon Cognito integrato con Google per la gestione utenti &  VE \ign
 Utilizzare Amazon Bedrock per i servizi AI (o Llama per test locali) & VE \ignoreglossary{RTB} 4.4 \\
 \hline
 \rowcolor{white}
-Adottare API Gateway + Lambda + DynamoDB (Backend) &  VE \ignoreglossary{RTB} 4.5 \\
+Adottare API Gateway + Lambda + DynamoDB (\term{Backend}) &  VE \ignoreglossary{RTB} 4.5 \\
 \hline
 \end{tabular}
 \end{center}
