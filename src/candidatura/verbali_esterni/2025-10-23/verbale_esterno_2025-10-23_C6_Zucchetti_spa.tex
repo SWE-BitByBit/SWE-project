@@ -142,7 +142,7 @@ La discussione è cominciata con una domanda sui “6 cappelli per pensare” e 
 
 \subsection{Utilizzo dell'AI e infrastruttura}
 Zucchetti dispone di tre macchine con GPU di fascia media, utilizzate per l’elaborazione dei prompt.
-I server ospitano localmente vari modelli LLM (tra 7B e 27B) gestiti tramite \textbf{Ollama}, un framework che permette l’accesso ai modelli via \textbf{API endpoint}.
+I server ospitano localmente vari modelli LLM (tra 7B e 27B) gestiti tramite \textbf{Ollama}, un \term{Framework} che permette l’accesso ai modelli via \textbf{API endpoint}.
 Alcuni modelli sono open source e locali (senza costi per token), mentre altri, come \textbf{Gemini}, comportano un costo per token e vengono serviti tramite proxy aziendale.
 
 L’utilizzo dei modelli è consentito fino al raggiungimento di una soglia di spesa massima non specificata; superato tale limite sarà necessario richiedere la riattivazione del servizio.
@@ -157,7 +157,7 @@ L’interazione con i modelli avverrà tramite un’API che consente di:
 Non è previsto il training o la progettazione di modelli personalizzati. La possibilità di sviluppare modelli non parametrici non è stata esclusa, ma non è un \term{Requisito} del progetto.
 
 \subsection{Gestione utenti e \texorpdfstring{Architettura}{\term{Architettura}} applicativa}
-È stato consigliato di implementare un sistema di \textbf{login} e un backend di gestione utenti e note. Tuttavia, la gestione dei dati dovrà avvenire in locale per un singolo \term{Utente}, mantenendo il focus sull’aspetto personale dell’applicazione.
+È stato consigliato di implementare un sistema di \textbf{login} e un \term{Backend} di gestione utenti e note. Tuttavia, la gestione dei dati dovrà avvenire in locale per un singolo \term{Utente}, mantenendo il focus sull’aspetto personale dell’applicazione.
 
 È stato sconsigliato implementare funzionalità complesse come un grafo di link in stile \textit{Obsidian}, privilegiando invece quelle legate all’utilizzo dell’AI.
 
