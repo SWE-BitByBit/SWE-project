@@ -389,7 +389,7 @@ Questa sezione elenca e descrive brevemente tutta la documentazione che verrà p
         \item Documento in cui viene definita la strategia adottata dal gruppo al fine di garantire la qualità del prodotto finale, sotto forma di metriche e relativi obiettivi, metodi di testing e resoconti.
     \end{itemize}
 
-    \item \textbf{\term{Specifica Tecnica}}
+    \item \textbf{Specifica Tecnica}
     \begin{itemize}
         \item Documento in cui il gruppo BitByBit fornisce la descrizione completa delle scelte tecnologiche e progettuali adottate per lo sviluppo del software. Oltre a definire l'\term{Architettura} logica e di \term{Deployment}, il documento espone i moduli del sistema, le tecnologie impiegate e i design pattern scelti, con lo scopo primario di fornire una base solida che guidi tutte le attività di codifica (\hyperref[subsec:codifica]{vedi sezione~\ref*{subsec:codifica}}).
     \end{itemize}
@@ -408,8 +408,23 @@ Il \textbf{\term{Processo} di sviluppo} comprende le attività svolte dal team d
 \subsubsection{Strumenti a supporto}
 Per sostenere i processi di sviluppo sono stati utilizzati i seguenti strumenti:
 \begin{itemize}
-    \item \textbf{Lucidchart}: piattaforma per la modellazione UML. Lo strumento consente la creazione di diagrammi UML (tra cui diagrammi dei casi d'uso, delle classi e di sequenza) direttamente in ambiente web, favorendo la collaborazione sincrona tra i membri del gruppo sullo stesso documento.
-    \item \textbf{Flutter}: \term{Framework} utilizzato nell'ambito del progetto per lo sviluppo dell'interfaccia \term{Utente} dell'applicazione mobile richiesta dall'applicazione.
+    \item \textbf{Lucidchart}: piattaforma per la modellazione UML. Consente la creazione di diagrammi UML 
+    (tra cui diagrammi dei casi d'uso, delle classi e di sequenza) direttamente in ambiente web, favorendo la collaborazione sincrona tra i membri del gruppo.
+    \item \textbf{draw.io}: strumento open source per la creazione di diagrammi UML, utilizzabile sia in ambiente web che 
+    desktop. Integra funzionalità di intelligenza artificiale che velocizzano la produzione della documentazione grafica a partire da descrizioni testuali.
+    \item \textbf{Flutter}: \term{Framework} utilizzato per lo sviluppo dell'interfaccia \term{Utente} dell'applicazione mobile.
+    \item \textbf{Visual Studio Code}: \term{IDE} adottato dal gruppo come ambiente di sviluppo comune, configurato 
+    con le estensioni necessarie per supportare la formattazione automatica del codice Dart e 
+    Python (\hyperref[par:stile-cod-dart]{vedi Sezione~\ref*{par:stile-cod-dart}}, \hyperref[par:stile-cod-py]{vedi Sezione~\ref*{par:stile-cod-py}}).
+    \item \textbf{Git}: sistema di controllo di versione distribuito utilizzato per tracciare le modifiche al codice 
+    sorgente e coordinare il lavoro tra i membri del gruppo.
+    \item \textbf{GitHub}: piattaforma di hosting per \term{Repository} Git, utilizzata per la gestione del codice sorgente, 
+    il tracciamento delle \term{Issue} e la revisione del codice tramite \term{Pull Request}.
+    \item \textbf{\term{GitHub Actions}}: piattaforma di \term{CI/CD} utilizzata per 
+    automatizzare i controlli di qualità ad ogni \textit{push}. Esegue la formattazione automatica del codice, 
+    l'\term{Analisi Statica} tramite SonarQube e blocca il \term{Merge} nel ramo principale in caso di esito negativo.
+    \item \textbf{AWS SAM}: \term{Framework} open source utilizzato per la build e il deploy dei servizi AWS. Consente 
+    di definire l'infrastruttura \term{Serverless} tramite file di configurazione e di automatizzarne il rilascio tramite la pipeline di \term{CI/CD}.
 \end{itemize}
 
 \subsubsection{Attività previste}
