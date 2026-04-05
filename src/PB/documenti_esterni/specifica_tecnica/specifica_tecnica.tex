@@ -527,7 +527,7 @@ La classe \code{ChatWidget} è responsabile della visualizzazione della conversa
 
 \paragraph{ChatbotModeToggleWidget}
 
-Questo componente dell'interfaccia consente all'\term{Utente} di selezionare la modalità operativa del chatbot. Tali modalità, che sono, rispettivamente, il Detective delle Relazioni e lo Specchio Intelligente, determinano come il chatbot risponde ai messaggi dell'\term{Utente}.
+Questo componente dell'interfaccia consente all'\term{Utente} di selezionare la modalità operativa del chatbot. Le due modalità disponibili sono il Detective delle Relazioni e lo Specchio Intelligente. Queste determinano come il chatbot risponde ai messaggi dell'\term{Utente}.
 
 \begin{figure}[H]
     \centering
@@ -572,7 +572,7 @@ Questo widget fornisce all'\term{Utente} la possibilità di avviare una nuova co
 
 \paragraph{Chat}
 
-L'interfaccia \code{Chat} definisce il modello astratto di una conversazione tra \term{Utente} e il chatbot. Insieme a \code{ProxyChat} e \code{LocalChat} viene usata nell'implementazione del pattern Proxy.
+L'interfaccia \code{Chat} definisce il modello astratto di una conversazione tra \term{Utente} e il chatbot. Insieme a \code{ProxyChat} e \code{LocalChat}, è utilizzata nell'implementazione del pattern Proxy.
 
 \begin{figure}[H]
     \centering
@@ -583,7 +583,7 @@ L'interfaccia \code{Chat} definisce il modello astratto di una conversazione tra
 
 \paragraph{ProxyChat}
 
-\code{ProxyChat} rappresenta una realizzazione del pattern \textit{Proxy}, utilizzata per ottimizzare il caricamento delle chat. Essa funge da intermediario tra il dominio e il \term{Repository}, ritardando il recupero completo dei dati fino a quando questi non sono effettivamente necessari. Un \term{Utente} potrebbe infatti dover caricare centinaia di conversazioni, e caricare interamente tutti i messaggi di ogni conversazione ad ogni accesso alla funzionalità chatbot rappresenterebbe uno spreco in termini di larghezza di banda e memoria. 
+\code{ProxyChat} rappresenta una realizzazione del pattern \textit{Proxy}, utilizzata per ottimizzare il caricamento delle chat. Essa funge da intermediaria tra il dominio e il \term{Repository}, ritardando il recupero completo dei dati fino a quando questi non sono effettivamente necessari. Un \term{Utente} potrebbe infatti dover caricare centinaia di conversazioni, e caricare interamente tutti i messaggi di ogni conversazione ad ogni accesso alla funzionalità chatbot rappresenterebbe uno spreco in termini di larghezza di banda e memoria. 
 
 \code{ProxyChat} contiene un riferimento a \code{LocalChat}, in modo da poter essere utilizzato come se fosse l'oggetto reale.
 
