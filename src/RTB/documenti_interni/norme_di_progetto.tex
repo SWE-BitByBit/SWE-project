@@ -1,7 +1,6 @@
 % template presente
 \documentclass[a4paper,12pt]{article}
 
-\usepackage[table]{xcolor}
 \usepackage{amsmath}
 \usepackage{tabularx}
 \usepackage{tcolorbox}
@@ -16,6 +15,7 @@
 }
 \usepackage{graphicx}
 \graphicspath{{resources/}{../resources/}{../../resources/}{../../../resources/}{../../../../resources/}}
+\usepackage{xcolor}
 \usepackage{geometry}
 \usepackage{setspace}
 \usepackage{colortbl}
@@ -109,7 +109,7 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & Completo\\
-\textbf{Versione:} & 1.0.0 \\
+\textbf{Versione:} & 1.2.0 \\
 \textbf{Responsabile:} & Riccardo Manisi\\
 \textbf{Redattori:} & 
 \begin{tabular}[t]{@{}l@{}}
@@ -145,16 +145,22 @@ Ferdinando Fracasso\\
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 \rowcolor{white}
+1.2.0 & 2026-03-31 & Riccardo Manisi & Miglioramento del \term{Processo} di \term{Verifica} secondo standard ISO elencato. & Dennis Parolin \\
+\hline
+\rowcolor{gray!20}
+1.1.0 & 2026-03-31 & Riccardo Manisi & Creazione sezioni per normative attività di codifica \ref{par:stile-cod-dart} \ref{par:stile-cod-py} & Dennis Parolin \\
+\hline
+\rowcolor{white}
 1.0.0 & 2026-03-01 & Dennis Parolin & Approvazione documento. & Giovanni Visentin \\
 \hline
 \rowcolor{gray!20}
 0.11.5 & 2026-02-09 & Dennis Parolin & Aggiunta una descrizione mancante. & Marco Sanguin \\
 \hline
 \rowcolor{white}
-0.11.4 & 2026-02-06 & Dennis Parolin & Modificata la sezione "Stesura dei reqauisiti" modificando la nomenclatura degli identificatori dei requisiti. Risolti problemi di compilazione. & Giovanni Visentin \\
+0.11.4 & 2026-02-06 & Dennis Parolin & Modificata la sezione "Stesura dei requisiti" modificando la nomenclatura degli identificatori dei requisiti. & Giovanni Visentin \\
 \hline
 \rowcolor{gray!20}
-0.11.3 & 2026-02-03 & Dennis Parolin & Fatti dei controlli generici del documento. Sistemati riferimenti a sezioni non esistenti o errate. Aggiunti i placeholder per raggiungere sezioni esistenti ma non raggiungibili (perché senza riferimento). Sistemati vari errori di battitura, errori grammaticali, refusi e errori logici. Aggiunti ad esempio degli strumenti citati ma che non erano presenti nella tabella degli strumenti utilizzati & Giovanni Visentin\\
+0.11.3 & 2026-02-03 & Dennis Parolin & Fix riferimenti a sezioni. Aggiunti i placeholder per raggiungere sezioni esistenti ma non raggiungibili. Sistemati vari errori di battitura, errori grammaticali, refusi e errori logici. Aggiunto strumento non tracciato nella tabella degli strumenti utilizzati & Giovanni Visentin\\
 \hline
 \rowcolor{white}
 0.11.2 & 2026-01-11 & Dennis Parolin & Aggiunti gli strumenti di supporto delle sezioni "\term{Processo} di \term{Verifica}", "\term{Processo} di \term{Validazione}" e "Codifica". Aggiunta la lista delle tabelle. & Riccardo Manisi \\
@@ -269,10 +275,20 @@ Il glossario è considerato parte integrante del \term{Processo} di documentazio
     Parti consultate: Capitoli 2, 24\\
     Versione: \textit{X Edizione}\\
     Ultimo accesso: \textit{2026-01-12}\\
+    \item \textbf{Effective Dart}\\
+        Parti consultate: pagina web intera\\
+        Versione: \textit{Page last updated on 2026-02-05}\\
+        Ultimo accesso: \textit{2026-03-31}\\
+        \url{https://dart.dev/effective-dart/style}
+    \item \textbf{Architecture Flutter}\\
+        Parti consultate: architecture concepts, architecture case study\\
+        Versione: \textit{Page last updated on 2025-09-05}\\
+        Ultimo accesso: \textit{2026-03-31}\\
+        \url{https://docs.flutter.dev/app-architecture}
     \item \textbf{Glossario}\\
         Parti consultate: documento completo\\
         Versione: \textit{v.1.0.0}\\
-        Ultimo accesso: \textit{2026-02-27}\\
+        Ultimo accesso: \textit{2026-03-30}\\
         \url{https://swe-bitbybit.github.io/SWE-docs/docs/RTB/documenti_interni/Glossario.pdf}
 \end{itemize}
 
@@ -286,11 +302,22 @@ La presente sezione espone i seguenti processi primari:
 
 % ===== SEZIONE \term{Processo} DI FORNITURA ====
 \subsection{Fornitura} \label{sec:processo-fornitura}
-\subsubsection{Scopo}
-Il \term{Processo} primario di fornitura definisce le attività che devono essere intraprese dal fornitore. Il \term{Processo} consta dell’analisi e pianificazione delle risorse necessarie per garantire l’efficienza e la conformità del progetto ai requisiti discussi con la \term{Proponente}.
+Il \term{Processo} primario di fornitura definisce le attività che devono essere 
+intraprese dal fornitore. Il \term{Processo} consta dell’analisi e pianificazione delle risorse necessarie 
+per garantire l’efficienza e la conformità del progetto ai requisiti discussi con la \term{Proponente}.
 
-\subsubsection{Implementazione di Processo}
-Il \term{Processo} di fornitura è suddiviso nelle seguenti attività:
+\subsubsection{Strumenti a supporto}
+Per svolgere le attività previste dal \term{Processo} di fornitura il gruppo utilizza gli strumenti elencati di seguito.
+\begin{itemize}
+    \item \textbf{Gmail}: comunicazione asincrona con la \term{Proponente} e i professori.
+    \item \textbf{Google Chat}: comunicazione asincrona con la \term{Proponente}.
+    \item \textbf{Discord}: pianificazione e svolgimento delle riunioni interne.
+    \item \textbf{Google Docs}: redazione di documenti preliminari da utilizzare come base informativa per le riunioni interne.
+    \item \textbf{GitHub Pages}: servizio di hosting statico integrato in GitHub, utilizzato per la pubblicazione automatica della documentazione prodotta dal gruppo
+\end{itemize}
+
+\subsubsection{Attività previste}
+Le attività identificate dal gruppo per il \term{Processo} di Fonitura sono:
 \begin{itemize}
     \item \textbf{Inizializzazione:}
     Il fornitore effettua una \term{Analisi dei requisiti} nelle richieste del \term{Proponente}, tenendo conto di eventuali vincoli e valutando la propria capacità di realizzare la proposta, valutando possibili requisiti da ritrattare con il \term{Proponente}.
@@ -324,7 +351,7 @@ Questa sezione elenca e descrive brevemente tutta la documentazione che verrà p
 \begin{itemize}
     \item \textbf{Lettera di presentazione}
     \begin{itemize}
-        \item Documento in cui il gruppo \textbf{BitByBit} ufficializza la propria candidatura al \term{Capitolato} dell’azienda \textbf{Miriade S.r.l.}.
+        \item Documento in cui il gruppo \textbf{BitByBit} formalizza la propria candidatura al \term{Capitolato} dell’azienda \textbf{Miriade S.r.l.}.
         \\Il documento contiene una versione riassunta delle ragioni per la scelta del \term{Capitolato}, un resoconto generale degli incontri preliminari effettuati con delle aziende proponenti e informazioni riguardanti il budget e la data di consegna prevista del progetto.
     \end{itemize}
     
@@ -335,7 +362,7 @@ Questa sezione elenca e descrive brevemente tutta la documentazione che verrà p
 
     \item \textbf{Valutazione di costi e rischi}
     \begin{itemize}
-        \item Documento in cui il gruppo BitByBit ha svolto una analisi preliminare dei rischi durante lo svolgimento del progetto e descritto dei possibili metodi di mitigazione di tali rischi.
+        \item Documento in cui il gruppo \textbf{BitByBit} ha svolto una analisi preliminare dei rischi durante lo svolgimento del progetto e descritto dei possibili metodi di mitigazione di tali rischi.
         \\Il documento inoltre contiene una analisi dei ruoli richiesti dal progetto e delle ore assegnate per ciascun ruolo ai membri del gruppo, il calcolo del preventivo costi per lo svolgimento del progetto, e la data di consegna prevista per il prodotto finale.
 
     \end{itemize}
@@ -348,18 +375,23 @@ Questa sezione elenca e descrive brevemente tutta la documentazione che verrà p
 
     \item \textbf{Norme di progetto}
     \begin{itemize}
-        \item Il presente documento, avente l'obiettivo di definire i processi del \term{Way of working} e le norme che il gruppo BitByBit si impegna a seguire per l'intera durata del progetto.
+        \item Il presente documento, avente l'obiettivo di definire i processi del \term{Way of working} e le norme che il gruppo \textbf{BitByBit} si impegna a seguire per l'intera durata del progetto.
     \end{itemize}
 
     \item \textbf{\term{Piano di progetto}}
     \begin{itemize}
-        \item Documento in cui viene definita la pianificazione strategica e operativa delle attività intraprese dal gruppo BitByBit durante lo sviluppo del progetto. 
+        \item Documento in cui viene definita la pianificazione strategica e operativa delle attività intraprese dal gruppo \textbf{BitByBit} durante lo sviluppo del progetto. 
         \\Il \term{Piano di progetto} ha l’obiettivo di tenere sotto controllo l’avanzamento delle attività e di garantire l’efficienza e la qualità dello sviluppo, mediante la pianificazione delle attività e relative scadenze, monitorando i costi di ciascun periodo e identificando le potenziali criticità che ostacolerebbero lo sviluppo.
     \end{itemize}
     
     \item \textbf{\term{Piano di qualifica}}
     \begin{itemize}
         \item Documento in cui viene definita la strategia adottata dal gruppo al fine di garantire la qualità del prodotto finale, sotto forma di metriche e relativi obiettivi, metodi di testing e resoconti.
+    \end{itemize}
+
+    \item \textbf{Specifica Tecnica}
+    \begin{itemize}
+        \item Documento in cui il gruppo BitByBit fornisce la descrizione completa delle scelte tecnologiche e progettuali adottate per lo sviluppo del software. Oltre a definire l'\term{Architettura} logica e di \term{Deployment}, il documento espone i moduli del sistema, le tecnologie impiegate e i design pattern scelti, con lo scopo primario di fornire una base solida che guidi tutte le attività di codifica (\hyperref[subsec:codifica]{vedi sezione~\ref*{subsec:codifica}}).
     \end{itemize}
     
     \item \textbf{Glossario}
@@ -376,8 +408,23 @@ Il \textbf{\term{Processo} di sviluppo} comprende le attività svolte dal team d
 \subsubsection{Strumenti a supporto}
 Per sostenere i processi di sviluppo sono stati utilizzati i seguenti strumenti:
 \begin{itemize}
-    \item \textbf{Lucidchart}: piattaforma per la modellazione UML. Lo strumento consente la creazione di diagrammi UML (tra cui diagrammi dei casi d'uso, delle classi e di sequenza) direttamente in ambiente web, favorendo la collaborazione sincrona tra i membri del gruppo sullo stesso documento.
-    \item \textbf{Flutter}: \term{Framework} utilizzato nell'ambito del progetto per lo sviluppo dell'interfaccia \term{Utente} dell'applicazione mobile richiesta dall'applicazione.
+    \item \textbf{Lucidchart}: piattaforma per la modellazione UML. Consente la creazione di diagrammi UML 
+    (tra cui diagrammi dei casi d'uso, delle classi e di sequenza) direttamente in ambiente web, favorendo la collaborazione sincrona tra i membri del gruppo.
+    \item \textbf{draw.io}: strumento open source per la creazione di diagrammi UML, utilizzabile sia in ambiente web che 
+    desktop. Integra funzionalità di intelligenza artificiale che velocizzano la produzione della documentazione grafica a partire da descrizioni testuali.
+    \item \textbf{Flutter}: \term{Framework} utilizzato per lo sviluppo dell'interfaccia \term{Utente} dell'applicazione mobile.
+    \item \textbf{Visual Studio Code}: \term{IDE} adottato dal gruppo come ambiente di sviluppo comune, configurato 
+    con le estensioni necessarie per supportare la formattazione automatica del codice Dart e 
+    Python (\hyperref[par:stile-cod-dart]{vedi Sezione~\ref*{par:stile-cod-dart}}, \hyperref[par:stile-cod-py]{vedi Sezione~\ref*{par:stile-cod-py}}).
+    \item \textbf{Git}: sistema di controllo di versione distribuito utilizzato per tracciare le modifiche al codice 
+    sorgente e coordinare il lavoro tra i membri del gruppo.
+    \item \textbf{GitHub}: piattaforma di hosting per \term{Repository} Git, utilizzata per la gestione del codice sorgente, 
+    il tracciamento delle \term{Issue} e la revisione del codice tramite \term{Pull Request}.
+    \item \textbf{\term{GitHub Actions}}: piattaforma di \term{CI/CD} utilizzata per 
+    automatizzare i controlli di qualità ad ogni \textit{push}. Esegue la formattazione automatica del codice, 
+    l'\term{Analisi Statica} tramite SonarQube e blocca il \term{Merge} nel ramo principale in caso di esito negativo.
+    \item \textbf{AWS SAM}: \term{Framework} open source utilizzato per la build e il deploy dei servizi AWS. Consente 
+    di definire l'infrastruttura \term{Serverless} tramite file di configurazione e di automatizzarne il rilascio tramite la pipeline di \term{CI/CD}.
 \end{itemize}
 
 \subsubsection{Attività previste}
@@ -395,6 +442,7 @@ Le attività che compongono il \textbf{\term{Processo} di sviluppo} adattate al 
     \item \textbf{Supporto per l'approvazione},  il fornitore e il cliente collaudano il prodotto per accertare che tutti i requisiti stabiliti sono presenti nel software consegnato.
 \end{itemize}
 
+% ==== ATTIVITÀ DI \term{Analisi dei requisiti} =====
 \subsubsection{Analisi Dei Requisiti}
 L'attività di \term{Analisi dei requisiti} ha l’obiettivo di trasformare i requisiti \term{Utente} espressi nel \term{Capitolato}, nel nostro caso il \textbf{\term{Capitolato} C4} proposto da \textbf{Miriade S.r.l.}, in requisiti di sistema chiari, completi e verificabili. 
 Tale attività produce il documento dell'\term{Analisi dei requisiti} che stabilisce le basi per un accordo tra la \term{Proponente} e il fornitore sulle funzionalità che verranno implementate nel prodotto..
@@ -453,25 +501,105 @@ Dove:
 Tale classificazione supporta la tracciabilità, la \term{Verifica} e la gestione dell’evoluzione dei requisiti durante l’intero \term{Ciclo di vita}.
 
 % ==== SEZIONE CODIFICA ====
-\subsubsection{Codifica}
+\subsubsection{Codifica} \label{subsec:codifica}
 L'attività di codifica ha lo scopo di realizzare tecnicamente quanto definito nelle fasi di analisi e progettazione.
 L'obiettivo principale delle norme qui esposte è garantire l'\textbf{uniformità}: il codice deve risultare omogeneo, leggibile e manutenibile, indipendentemente dal membro del gruppo che lo ha scritto.
 
-\paragraph{Automazione e controllo qualità}
-Per garantire il rispetto rigoroso dello stile senza rallentare lo sviluppo, il gruppo affida il controllo formale agli strumenti di automazione, riducendo l'errore umano.
-Il \term{Processo} di \term{Verifica} dello stile avviene su due livelli:
+% ==== SEZIONE CODICE DART ====
+\paragraph{Stile di Codifica: Dart} \label{par:stile-cod-dart}
+
+\subparagraph{Convenzioni di nomenclatura Dart}
+Il gruppo adotta le convenzioni ufficiali definite da \textit{Dart} per garantire uniformità e leggibilità del codice:
+\begin{enumerate}
+    \item \textbf{Nomi di classi, enum, typedef ed estensioni}: si utilizza \term{UpperCamelCase} (es. \texttt{UserRepository}, \texttt{AuthService}).
+    \item \textbf{Nomi di variabili, parametri, metodi e costanti}: si utilizza \term{lowerCamelCase} (es. \texttt{userName}, \texttt{fetchData}).
+    \item \textbf{Nomi di file, directory e prefissi di import}: si utilizza \texttt{lowercase\_with\_underscores} (es. \texttt{user\_repository.dart}, \texttt{auth\_service.dart}).
+    \item \textbf{Lingua del codice}: nomi di classi, variabili, metodi e file devono essere in \textbf{lingua inglese}.
+    \item \textbf{Lingua dei commenti}: i commenti nel codice devono essere redatti in \textbf{lingua italiana}.
+    \item \textbf{Nomenclatura file}: la nomenclatura di ogni file deve corrispondere al nome della classe al suo interno.
+    \item \textbf{Commenti di documentazione}: ogni metodo deve essere documentato tramite un commento (usando il comando \texttt{///}) che ne descrive il suo scopo.
+    I riferimenti a variabili o parametri all'interno dei commenti vanno racchiusi tra parentesi quadre (es. \texttt{/// Restituisce il valore di [userId]}).
+    \item \textbf{File di test}: i file contenenti test unitari devono terminare con il suffisso \texttt{\_test.dart} (es. \texttt{user\_repository\_test.dart}).
+\end{enumerate}
+
+\subparagraph{Convenzioni nomenclatura delle classi Dart}
+Al fine di rendere immediatamente riconoscibile il ruolo architetturale di una classe dalla sua dichiarazione, il gruppo adotta i seguenti suffissi obbligatori:
 \begin{itemize}
-    \item \textbf{Locale}: l'ambiente di sviluppo (\term{IDE}) di ogni membro è configurato per formattare automaticamente il codice al salvataggio, applicando le regole di indentazione e spaziatura condivise.
-    \item \textbf{Remoto}: la pipeline di \textbf{\term{GitHub Actions}} \term{Verifica} la conformità del codice ad ogni \textit{push}. Come da policy, il mancato rispetto delle norme di formattazione impedisce tecnicamente il \term{Merge} delle modifiche nel ramo principale.
+    \item \texttt{ViewModel}: classi della componente view model del \term{UI Layer} per la gestione dello stato e della logica di presentazione di una schermata (es. \texttt{LoginViewModel}).
+    \item \texttt{Screen}: classi widget Flutter del \term{UI Layer} che rappresentano una schermata completa (es. \texttt{LoginScreen}).
+    \item \texttt{Widget}: classi che rappresentano un widget Flutter del \term{UI Layer} non associato a una singola schermata (es. \texttt{AvatarWidget}).
+    \item \texttt{Repository}: classi del \term{Data Layer} responsabili della Persistance Logic (es. \texttt{UserRepository}).
+    \item \texttt{Service}: classi del \term{Data Layer} responsabili della \term{Business Logic} (es. \texttt{AuthService}).
 \end{itemize}
 
-\paragraph{Norme stilistiche e sintattiche}
-Per favorire la comprensione globale del progetto, vengono imposte le seguenti regole di scrittura:
+\subparagraph{Formattazione automatica del codice Dart} 
+La formattazione del codice Dart viene delegata al comando nativo \texttt{dart format}, che applica automaticamente le regole stilistiche definite da \textit{Dart}. 
+Per garantirne il rispetto su tutto il progetto, la formattazione automatica viene integrata su due livelli per un maggiore controllo sul 
+codice che i membri del gruppo producono durante questa attività:
 \begin{itemize}
-    \item \textbf{Lingua e Nomenclatura}: l'intera base di codice (variabili, funzioni, commenti) deve essere redatta in \textbf{lingua inglese}. I nomi scelti devono essere significativi ed auto-esplicativi, evitando abbreviazioni criptiche che richiedano interpretazione.
-    \item \textbf{Formattazione}: l'indentazione è fissata a 4 spazi (o 1 tabulazione) ed è mantenuta coerente dagli strumenti automatici.
-    \item \textbf{Leggibilità}: per facilitare il debugging e la lettura, è vietato scrivere più istruzioni sulla stessa riga.
-    \item \textbf{Commenti}: si predilige un codice che si "autodocumenta" tramite nomi chiari. Tuttavia, è obbligatorio commentare tutte le interfacce pubbliche (metodi e classi esportate) specificando parametri e valori di ritorno.
+    \item \textbf{Locale}: l'\term{IDE} adottato dal gruppo è configurato per eseguire il comando \texttt{dart format} al salvataggio del file.
+    \item \textbf{Remoto}: la pipeline di \term{GitHub Actions} per eseguire la Ci applica la formattazione Dart ad ogni \textit{push}, 
+    impedendo il \term{Merge} di codice non formattato correttamente nel ramo principale.
+\end{itemize}
+
+\subparagraph{Convenzioni sulla struttura gerarchica delle directory} \label{subpar:convenzioni-gerarchia-dir-fe}
+La struttura del codice del progetto Flutter segue la suddivisione per layer raccomandata dalla documentazione ufficiale di Flutter. 
+Di seguito viene riportata la struttura delle directory principali e il contenuto atteso per ciascuna:
+\begin{itemize}
+    \item \texttt{lib/}, directory del codice sorgente dell'applicazione:
+    \begin{itemize}
+        \item \texttt{ui/}, contiene tutto il codice relativo alla presentazione:
+        \begin{itemize}
+            \item \texttt{core/}, contiene i widget riutilizzabili condivisi da più schermate (classi con suffisso Widget);
+            \item \texttt{<feature\_name>/}, ogni funzionalità ha una directory dedicata, al suo interno:
+            \begin{itemize}
+                \item \texttt{view\_model/}, contiene le classi ViewModel associate alle schermate della funzionalità;
+                \item \texttt{widget/}, contiene le classi Screen e gli eventuali widget specifici della funzionalità.
+            \end{itemize}
+        \end{itemize}
+        \item \texttt{domain/}, contiene le classi che rappresentano i dati nel formato consumato dal layer UI, indipendenti da qualsiasi sorgente dati;
+        \item \texttt{data/}, contiene il layer di accesso ai dati, suddiviso in:
+        \begin{itemize}
+            \item \texttt{repositories/}, contiene le classi \term{Repository}, che rappresentano la fonte di verità per un tipo di dato e orchestrano l'accesso ai Service;
+            \item \texttt{services/}, contiene le classi Service, che comunicano con sorgenti dati esterne (\term{API REST}, database locali, ecc.);
+            \item \texttt{model/}, contiene le classi Model, che rappresentano la struttura dei dati così come vengono ricevuti dalla sorgente dati, prima di eventuali trasformazioni.
+        \end{itemize}
+    \end{itemize}
+    \item \texttt{test/}, contiene gli unit test del codice Dart. La struttura interna rispecchia quella di \texttt{lib/}, in modo che ogni file sorgente abbia il corrispondente file di test con suffisso \texttt{\_test.dart};
+    \item \texttt{testing/}, contiene le classi dedicate ai mock e alle utilities condivise tra i test, come le implementazioni fittizie dei \term{Repository} e dei Service.
+\end{itemize}
+
+%==== SEZIONE CODICE PY ====
+\paragraph{Stile di Codifica: Python} \label{par:stile-cod-py}
+
+\subparagraph{Convenzioni di nomenclatura Python}
+Il gruppo adotta le convenzioni ufficiali definite da \textit{PEP 8} per garantire uniformità e leggibilità del codice Python utilizzato nelle funzioni Lambda:
+\begin{enumerate}
+    \item \textbf{Classi}: si utilizza \term{UpperCamelCase} (es. \texttt{UserHandler}, \texttt{ApiResponse}).
+    \item \textbf{Funzioni, variabili e parametri}: si utilizza \texttt{lowercase\_with\_underscores} (es. \texttt{user\_id}, \texttt{get\_user}).
+    \item \textbf{Costanti}: si utilizza \texttt{UPPER\_CASE\_WITH\_UNDERSCORES} (es. \texttt{MAX\_RETRY\_COUNT}, \texttt{BASE\_URL}).
+    \item \textbf{File e moduli}: si utilizza \texttt{lowercase\_with\_underscores} (es. \texttt{user\_handler.py}, \texttt{api\_utils.py}).
+    \item \textbf{Lingua codice}: nomi di classi, variabili, funzioni e file devono essere in \textbf{lingua inglese}.
+    \item \textbf{Lingua commenti}: i commenti nel codice devono essere redatti in \textbf{lingua italiana}.
+    \item \textbf{Commenti di documentazione}: ogni funzione deve essere documentata tramite una \textit{docstring} (usando le triple virgolette \texttt{"""}) che ne descrive lo scopo, i parametri e il valore di ritorno.
+    \item \textbf{File di test}: i file contenenti test unitari devono iniziare con il prefisso \texttt{test\_} (es. \texttt{test\_user\_handler.py}).
+\end{enumerate}
+
+\subparagraph{Convenzioni sui suffissi delle classi Python}
+Al fine di rendere immediatamente riconoscibile il ruolo di una classe dalla sua dichiarazione, il gruppo adotta i seguenti suffissi obbligatori:
+\begin{itemize}
+    \item \texttt{Handler}: classi che gestiscono l'evento in ingresso alla funzione Lambda e orchestrano la risposta (es. \texttt{UserHandler}).
+    \item \texttt{Service}: classi che incapsulano la \term{Business Logic}, indipendentemente dal tipo di evento ricevuto (es. \texttt{NotificationService}).
+    \item \texttt{Repository}: classi che gestiscono l'accesso ai dati, ad esempio verso DynamoDB o RDS (es. \texttt{UserRepository}).
+    \item \texttt{Client}: classi che incapsulano la comunicazione con servizi AWS esterni alla Lambda, come S3 o SNS (es. \texttt{S3Client}).
+\end{itemize}
+
+\subparagraph{Formattazione automatica del codice Python}
+La formattazione del codice Python viene delegata al tool \texttt{black}, che applica automaticamente le regole stilistiche definite da \textit{PEP 8}.
+Per garantirne il rispetto su tutto il progetto, la formattazione automatica viene integrata su due livelli:
+\begin{itemize}
+    \item \textbf{Locale}: l'\term{IDE} adottato dal gruppo è configurato per eseguire \texttt{black} al salvataggio del file tramite l'estensione ufficiale.
+    \item \textbf{Remoto}: la pipeline di \term{GitHub Actions} per eseguire la Ci applica la formattazione Python ad ogni \textit{push}, impedendo il \term{Merge} di codice non formattato correttamente nel \term{Branch} principale.
 \end{itemize}
 
 \paragraph{Vincoli implementativi}
@@ -479,19 +607,7 @@ Al fine di mantenere il codice robusto e testabile, il gruppo adotta le seguenti
 \begin{itemize}
     \item \textbf{Assenza di stato globale}: è vietato l'utilizzo di variabili globali, in quanto introducono dipendenze nascoste e rendono imprevedibile il comportamento del software.
     \item \textbf{Semplicità delle funzioni}: le funzioni devono essere brevi e focalizzate su una singola responsabilità. Una funzione eccessivamente lunga o complessa è indice di cattiva progettazione e deve essere rifattorizzata.
-\end{itemize}
-
-\subsubsection{Strumenti a supporto della codifica}
-L'applicazione delle norme di codifica è facilitata da un set di strumenti che accompagna lo sviluppatore dalla scrittura fino all'integrazione.
-
-\paragraph{Ambiente di Sviluppo}
-Il gruppo ha uniformato l'ambiente di lavoro adottando \textbf{Visual Studio Code} come \term{IDE} di riferimento.
-
-\paragraph{Automazione e \ignoreglossary{Ci}}
-Gli strumenti critici per il mantenimento dello standard, le cui specifiche tecniche verranno consolidate durante la Product \term{Baseline} (\term{PB}), sono classificabili in:
-\begin{itemize}
-    \item \textbf{Linter e Formatter}: strumenti di \term{Analisi Statica} specifici per linguaggio che rilevano violazioni stilistiche in tempo reale all'interno dell'\term{IDE}.
-    \item \textbf{\term{GitHub Actions}}: piattaforma utilizzata per i controlli remoti bloccanti (\term{Quality Gate}), che assicura che nessun codice non conforme venga integrato nel ramo \texttt{develop}.
+    \item \textbf{Immutabilità}: si preferisce l'uso di strutture dati immutabili e variabili dichiarate \texttt{final} (Dart) o tipizzate come \texttt{Final} (Python) ove possibile, riducendo il rischio di modifiche accidentali allo stato.
 \end{itemize}
 
 % ==== SEZIONE PROCESSI DI SUPPORTO ====
@@ -729,8 +845,8 @@ Per le attività previste, il gruppo BitByBit utilizza gli strumenti elencati di
     \item \textbf{\term{Branch} protection rules}: utilizzate per impedire modifiche non autorizzate sul \term{Branch} principale e garantire che ogni integrazione avvenga secondo le regole di \term{Verifica} previste dal gruppo.
 \end{itemize}
 
-\subsubsection{Implementazione di Processo}
-Le attività principali del \term{Processo} di gestione della configurazione sono:
+\subsubsection{Attività previste}
+Le attività identificate dal gruppo per il \term{Processo} di gestione della configurazione sono:
 \begin{itemize}
     \item \textbf{identificazione della configurazione}, viene definito uno schema uniforme di versionamento e naming, per identificare ogni componente del sistema;
     \item \textbf{controllo della configurazione}, metodologie per stabilire l'identificazione, l'approvazione o rifiuto, la \term{Verifica} e l'eventuale rilascio delle richieste di modifica; 
@@ -821,18 +937,40 @@ Nel \term{Piano di qualifica} vengono definite specifiche metriche di qualità d
 Le misurazioni eseguite vengono confrontate con i valori ottimali stabiliti per ciascuna \term{Metrica}, al fine di valutare in modo oggettivo la qualità del software realizzato.\\
 Le metriche di prodotto costituiscono un supporto decisionale per determinare se il software implementato soddisfa i criteri di qualità richiesti ed è pertanto idoneo al rilascio.
 
-\subsubsection{Accertamento della qualità di Processo}
+\subsubsection{Accertamento della qualità di \ignoreglossary{processo}}
 L’attività di \textbf{accertamento della qualità di \term{Processo}} ha lo scopo di assicurare che i processi di \term{Ciclo di vita} siano eseguiti in conformità agli standard e alle procedure definiti per ciascun \term{Processo}.\\
 Nel \term{Piano di qualifica} vengono formalizzate le metriche di \term{Processo} e i relativi valori ottimali stabiliti dal gruppo.
 Le misurazioni effettuate vengono successivamente confrontate con tali valori di riferimento, consentendo di valutare l’efficacia e l’adeguatezza dei processi adottati.\\
 Le metriche di \term{Processo} sono utilizzate dal responsabile di progetto come strumento di supporto decisionale per individuare eventuali criticità e valutare la necessità di apportare modifiche o miglioramenti ai processi in uso.
 
-% ==== SEZIONE \term{Processo} DI \term{Verifica} ====
+% ==== SEZIONE \term{Processo} DI \ignoreglossary{Verifica} ====
 \subsection{Processo di \ignoreglossary{Verifica}} \label{sec:processo-verifica}
 Il \term{Processo} di \term{Verifica} è l'insieme delle attività volte ad accertare che ogni prodotto del \term{Ciclo di vita} (codice, documenti, \term{Architettura}) sia conforme ai requisiti e agli standard di qualità stabiliti.
 L'obiettivo è rispondere alla domanda «Did we build the product right?» (Abbiamo costruito il prodotto nel modo corretto?), intercettando difetti ed errori prima che questi si propaghino alle fasi successive.
 
-\subsubsection{Strategia e Workflow}
+\subsubsection{Strumenti a supporto}
+Per le attività previste dal \term{Processo} di \term{Verifica}, il gruppo \textbf{BitByBit} ha identificato gli strumenti elencati di seguito.
+\begin{itemize}
+    \item \textbf{SonarQube}: piattaforma di \term{Analisi Statica} per la rilevazione di bug, 
+    vulnerabilità di sicurezza e code smell. Fornisce una serie di metriche già consolidate e la visualizzazione tramite indicatori dei report dei \term{Test di Unità}.
+    I risultati sono consultabili tramite dashboard web, che fornisce una visione aggregata dello stato del codice nel tempo.
+    \item \textbf{GitHub}: tramite l'interfaccia delle \term{Pull Request} permette ai verificatori di commentare righe specifiche del documento, richiedere modifiche e approvare il lavoro solo quando la \term{Checklist} di \term{Verifica} è soddisfatta.
+    \item \textbf{VS Code}: tramite file di configurazione versionati permette di avere degli strumenti comuni per l'individuazione 
+    di errori di sintassi nei documenti e per l'allineamento del codice alla nomenclatura (\hyperref[subsec:codifica]{vedi Sezione~\ref*{subsec:codifica}}).
+\end{itemize}
+
+\subsubsection{Attività previste}
+Le attività identificate dal gruppo per il \term{Processo} di \term{Verifica} sono le seguenti.
+\begin{itemize}
+    \item \textbf{Implementazione di \term{Processo}}, si stabilisce il grado di \term{Verifica} e lo sforzo che deve essere svolto affinché questo 
+    possa essere raggiunto. Devono essere identificate le parti del sistema che possono causare le maggiori problematiche in modo che possano essere 
+    soggette ad una \term{Verifica} più approfondita tenendo conto anche delle risorse disponibili.
+    \item \textbf{Attività di \term{Verifica}}, insieme di verifiche condotte sistematicamente durante il \term{Ciclo di vita} del progetto per 
+    accertare che i prodotti di ogni fase siano corretti, completi e coerenti con i requisiti. 
+    Le verifiche riguardano il \term{Contratto}, i processi, i requisiti, la progettazione, il codice, l'integrazione e la documentazione.
+\end{itemize}
+
+\subsubsection{Implementazione di processo}
 Il gruppo \textit{BitByBit} integra la \term{Verifica} direttamente nel flusso di sviluppo quotidiano (\term{Git Flow}), adottando la politica del \textbf{\term{Continuous Verification}}.
 Le regole operative sono le seguenti:
 \begin{itemize}
@@ -841,7 +979,7 @@ Le regole operative sono le seguenti:
     \item \textbf{Rami Stabili}: il ramo \texttt{main} è protetto e accoglie solo versioni del software che hanno superato l'intero ciclo di test (inclusi quelli di sistema).
 \end{itemize}
 
-\subsubsection{\ignoreglossary{Verifica} della Documentazione}
+\subsubsection{\ignoreglossary{Verifica} documentale}
 La documentazione è soggetta esclusivamente ad \textbf{\term{Analisi Statica}}, ovvero controlli che non richiedono l'esecuzione.
 Per garantire la qualità dei documenti, il gruppo valuta due metodologie:
 \begin{itemize}
@@ -850,48 +988,43 @@ Per garantire la qualità dei documenti, il gruppo valuta due metodologie:
 \end{itemize}
 Tra le due, il gruppo \textit{BitByBit} adotta come standard l'\textbf{\term{Ispezione}}. L'uso di \term{Checklist} predefinite garantisce infatti un \term{Processo} ripetibile, oggettivo e meno soggetto a errori umani rispetto alla revisione libera.
 
-\paragraph{Strumenti per la \ignoreglossary{Verifica} della documentazione}
-Poiché il gruppo ha adottato la tecnica dell'\textbf{\term{Ispezione}} basata su \term{Checklist}, la \term{Verifica} della documentazione non richiede strumenti di automazione complessi, ma si avvale delle piattaforme di sviluppo e collaborazione:
-\begin{itemize}
-    \item \textbf{GitHub}: è lo strumento principale. L'interfaccia delle \term{Pull Request} permette ai verificatori di commentare righe specifiche del documento, richiedere modifiche e approvare il lavoro solo quando la \term{Checklist} di \term{Verifica} è soddisfatta.
-    \item \textbf{VS Code}: viene utilizzato dai verificatori per il controllo locale dei file sorgente (\LaTeX/Markdown), permettendo di individuare errori di sintassi o formattazione non visibili dall'interfaccia web prima di dare l'approvazione.
-\end{itemize}
-
-\subsubsection{\ignoreglossary{Verifica} del Codice Software}
+\subsubsection{\ignoreglossary{Verifica} Software}
 La \term{Verifica} del software si articola in due momenti distinti: l'analisi del codice sorgente (statica) e l'esecuzione dei test (dinamica).
 
-\paragraph{\ignoreglossary{Analisi Statica} Automatizzata}
-Prima di essere eseguito, il codice viene analizzato da strumenti automatici (Linter e Static Analyzers) integrati nella pipeline di \term{CI/CD}.
+\paragraph{\ignoreglossary{Analisi Statica}} \label{par:analisi-statica}
+Prima di essere eseguito, il codice viene analizzato da strumenti automatici integrati nella pipeline di \term{CI/CD}.
 Questo passaggio serve a rilevare:
 \begin{itemize}
-    \item violazioni delle norme di codifica (indentazione, naming);
-    \item potenziali bug logici o di sicurezza (es. variabili non utilizzate, cicli infiniti);
-    \item calcolo delle metriche di complessità.
+    \item violazioni delle norme di codifica (\hyperref[subsec:codifica]{vedi Sezione~\ref*{subsec:codifica}});
+    \item potenziali bug logici o di sicurezza (es. variabili non utilizzate, accessi non controllati a risorse);
+    \item code smell e violazioni dei principi di progettazione;
+    \item il valore delle metriche di qualità definite nel \term{Piano di qualifica}, ottenendo un riscontro immediato prima che gli errori vengano introdotti nella \term{Code Base}.
 \end{itemize}
+L'\term{Analisi Statica} viene eseguita su ogni \textit{push} nella pipeline di \term{CI/CD}: un esito negativo blocca il \term{Merge} nel 
+ramo principale, garantendo che solo codice conforme agli standard definiti venga integrato.
+A supporto di questa attività il gruppo ha adottato \textbf{SonarQube}, scelto per la sua capacità di aggregare in un'unica dashboard 
+i risultati dell'\term{Analisi Statica} sull'intera \term{Code Base} del sistema sviluppato.\\
+SonarQube viene eseguito nella pipeline di \term{CI/CD} tramite \term{GitHub Actions}.
 
 \paragraph{\ignoreglossary{Analisi Dinamica} (Testing)}
 L'\term{Analisi Dinamica} \term{Verifica} il comportamento del software tramite la sua esecuzione.
 Per essere valido, ogni test deve garantire due proprietà: \textbf{ripetibilità} (stesso output a parità di input) e \textbf{automatizzabilità} (esecuzione senza intervento umano).
 Il gruppo struttura i test secondo il modello a V, coprendo i seguenti livelli:
-
 \begin{enumerate}
-    \item \textbf{\term{Test di Unità}}: \term{Verifica} delle singole componenti (funzioni/classi) in isolamento.
+    \item \textbf{\term{Test di Unità}}: \term{Verifica} delle singole componenti (funzioni/classi) in isolamento, tramite \texttt{flutter\_test} per il codice Dart e \texttt{pytest} per il codice Python.
     \begin{itemize}
         \item \textit{\term{White-box}}: test strutturali che mirano alla copertura dei percorsi logici interni (\term{Statement Coverage}).
         \item \textit{\term{Black-box}}: test funzionali che verificano l'output dato un input, analizzando valori validi, non validi e casi limite (\term{Boundary Analysis}).
     \end{itemize}
-    
+    \item \textbf{\term{Test di Integrazione}}: \term{Verifica} della collaborazione tra unità già testate.
     \item \textbf{\term{Test di Integrazione}}: \term{Verifica} della collaborazione tra unità già testate.
     \begin{itemize}
         \item \textit{Top-Down}: integrazione dalle componenti di alto livello a quelle basse (richiede \textbf{\term{Stub}}).
         \item \textit{Bottom-Up}: integrazione dalle componenti base verso l'interfaccia (richiede \textbf{\term{Driver}}).
     \end{itemize}
-    
     \item \textbf{\term{Test di Sistema}}: \term{Verifica} del sistema completo rispetto ai requisiti funzionali e prestazionali mappati nell'\term{Analisi dei requisiti}.
-    
-    \item \textbf{\term{Test di Regressione}}: Riesecuzione automatica della suite di test esistente ad ogni modifica, per garantire che le nuove feature non abbiano corrotto funzionalità preesistenti.
-
-    \item \textbf{\term{Test di Accettazione}}: Verifiche formali finali, condotte da utenti o \term{Stakeholder}, per confermare che un software soddisfi i requisiti aziendali e funzionali prima del rilascio in produzione.
+    \item \textbf{\term{Test di Regressione}}: riesecuzione automatica della suite di test ad ogni \textit{push} tramite \term{GitHub Actions}, per garantire che le nuove modifiche non compromettano funzionalità preesistenti. I risultati di copertura vengono raccolti da SonarQube e sono consultabili tramite la sua dashboard.
+    \item \textbf{\term{Test di Accettazione}}: verifiche formali condotte con la \term{Proponente} per confermare che il software soddisfi i requisiti concordati prima del rilascio.
 \end{enumerate}
 
 \paragraph{Strumenti per la \ignoreglossary{Verifica} del codice}
@@ -1196,7 +1329,7 @@ dove:
 \end{itemize}
 
 \subsection{Metriche di Prodotto}
-La qualità del software dipende da un insieme di attributi che caratterizzano il comportamento, la struttura e l’evolvibilità del sistema nel tempo.\\
+La qualità del software dipende da un insieme di attributi che caratterizzano il comportamento, la struttura e l’scalabilità del sistema nel tempo.\\
 Gli attributi di qualità considerati nel progetto sono i seguenti:
 \begin{itemize}
     \item \textbf{complessità (complexity)}, rappresenta il grado di articolazione logica e strutturale del sistema;
@@ -1234,59 +1367,107 @@ Le metriche di prodotto adottate nel progetto sono suddivise nelle seguenti due 
     \item \textbf{Descrizione:} fornisce un'indicazione del grado di requisiti opzionali che sono stati implementati nel prodotto software fino a quel momento. 
 \end{itemize}
 
-\paragraph{Defect Density (DD)}
+\paragraph{Reliability Rating (RR)}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PD4} 
-    \item \textbf{Formula:} $DD=\frac{\text{\# di difetti}}{KLOC}$
-    \item \textbf{Descrizione:} misura quanti difetti vengono trovati in 1000 linee di codice (\textbf{KLOC}, \textbf{Kilo Lines Of Code}). Migliora la qualità del codice e la sua mantenibilità.
+\item \textbf{Codice:} \texttt{M-PD4}
+\item \textbf{Formula:} assegnata automaticamente da SonarQube secondo la scala:
+\begin{itemize}
+    \item \textbf{A} $\rightarrow$ 0 bug
+    \item \textbf{B} $\rightarrow$ almeno 1 bug minore
+    \item \textbf{C} $\rightarrow$ almeno 1 bug maggiore
+    \item \textbf{D} $\rightarrow$ almeno 1 bug critico
+    \item \textbf{E} $\rightarrow$ almeno 1 bug bloccante
+\end{itemize}
+\item \textbf{Descrizione:} misura l'affidabilità del codice sulla base della presenza 
+e gravità dei bug rilevati dall'\term{Analisi Statica}. Fornisce un indicatore immediato della qualità 
+del software dal punto di vista dell'affidabilità.
 \end{itemize}
 
-\paragraph{Cyclomatic Complexity}
+\paragraph{Maintainability Rating}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PD5}
-    \item \textbf{Formula:} $E - N + 2P$
-    \item \textbf{Descrizione:} misura la complessità di un programma contandone i percorsi linearmente indipendenti. Fornisce un indice sulla complessità logica del codice.
-    \begin{itemize}
-        \item \textbf{$E$} = numero di archi nel grafo
-        \item \textbf{$N$} = numero di nodi nel grafo
-        \item \textbf{$P$} = numero di componenti connesse ad ogni arco
-    \end{itemize}
+\item \textbf{Codice:} \texttt{M-PD5}
+\item \textbf{Formula:} $DR = \dfrac{\text{Technical Debt}}{\text{cost\_per\_line} 
+\times NCLOC} \cdot 100$, assegnata automaticamente da SonarQube secondo la scala:
+\begin{itemize}
+    \item \textbf{A} $\rightarrow$ $0\% \leq DR \leq 5\%$
+    \item \textbf{B} $\rightarrow$ $5\% \leq DR < 10\%$
+    \item \textbf{C} $\rightarrow$ $10\% \leq DR < 20\%$
+    \item \textbf{D} $\rightarrow$ $20\% \leq DR < 50\%$
+    \item \textbf{E} $\rightarrow$ $DR \geq 50\%$
+\end{itemize}
+\item \textbf{Descrizione:} misura la manutenibilità del codice tramite un rating, calcolato a partire dal 
+\textit{Debt Ratio} ($DR$), ovvero il rapporto tra il \textit{Technical Debt} 
+(stima in minuti del costo per correggere tutti i problemi di manutenibilità 
+rilevati) e il costo stimato per sviluppare l'intero codice, dove il costo per 
+linea è predefinito a 30 minuti sonarqube-metrics.
+\end{itemize}
+
+\paragraph{Cyclomatic Complexity (CYC)}
+\begin{itemize}
+    \item \textbf{Codice:} \texttt{M-PD6}
+    \item \textbf{Formula:} $CC = 1 + \# \text{rami condizionali}$
+    \item \textbf{Descrizione:} misura il numero di percorsi linearmente indipendenti 
+nel flusso di controllo del codice. Il valore viene calcolato a livello di funzione 
+incrementando un contatore di uno ogni volta che il flusso di controllo si divide 
+generando un nuovo ramo condizionale.
 \end{itemize}
 
 \paragraph{Length of code}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PD6}
+    \item \textbf{Codice:} \texttt{M-PD7}
     \item \textbf{Formula:} $\text{\# di linee di codice per una componente software}$
-    \item \textbf{Descrizione:} misura la dimensione di un componente software. Più è grande una componente software maggiore sarà la possibilità di sviluppare errori.
+    \item \textbf{Descrizione:} misura la dimensione di un componente software, più è grande una componente software maggiore sarà la possibilità di introdurre errori.
 \end{itemize}
 
-\paragraph{Depth of Conditional Nesting (DCN)}
+\paragraph{Cognitive Complexity (COC)}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PD7}
-    \item \textbf{Formula:} $DCN=\max(\text{\# di strutture annidate})$
-    \item \textbf{Descrizione:} misura la profondità massima di annidamento delle strutture condizionali (\texttt{if}, \texttt{else if}, \texttt{switch}) presenti nel codice. Un maggiore annidamento rende difficile la comprensione del codice.
+\item \textbf{Codice:} \texttt{M-PD8}
+\item \textbf{Formula:} $COC = \sum_{i=1}^{n} w_i$
+\item \textbf{Descrizione:} misura quanto è difficile comprendere il flusso di controllo 
+del codice. Penalizza in modo progressivo l'annidamento delle strutture condizionali 
+(\texttt{if}, \texttt{else}, \texttt{switch}, cicli): ogni livello aggiuntivo di annidamento aumenta il peso $w_i$ del costrutto.
 \end{itemize}
 
 \subsubsection{Metriche dinamiche}
-\paragraph{Defect Leakeage}
+\paragraph{Code Coverage}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PD8}
-    \item \textbf{Formula:} $\frac{\text{\# difetti dopo il rilascio}}{\text{\# difetti trovati durante fase di test}}*100$
+\item \textbf{Codice:} \texttt{M-PD9}
+\item \textbf{Formula:} 
+$Code Coverage = \dfrac{CT + LC}{B + EL} \cdot 100$
+\begin{itemize}
+    \item \textbf{$CT$} = numero di condizioni valutate come vere almeno una volta
+    \item \textbf{$LC$} = linee coperte dai test 
+    ($LC = \#\ \text{linee eseguibili} - \#\ \text{linee non coperte}$)
+    \item \textbf{$B$} = numero totale di condizioni
+    \item \textbf{$EL$} = numero totale di linee eseguibili
+\end{itemize}
+\item \textbf{Descrizione:} fornisce una stima accurata di quanta parte 
+del codice è stata effettivamente verificata dai test.
+\end{itemize}
+
+\paragraph{Defect Leakage}
+\begin{itemize}
+    \item \textbf{Codice:} \texttt{M-PD10}
+    \item \textbf{Formula:} $\frac{\text{\# difetti dopo il rilascio}}{\text{\# difetti trovati durante fase di test}}\cdot 100$
     \item \textbf{Descrizione:} Tiene traccia di quanti difetti vengono trasferiti in produzione dopo i test.
 \end{itemize}
 
 \paragraph{Defect Removal Efficiency (DRE)}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PD9}
-        \item \textbf{Formula:} $DRE=\frac{\text{difetti trovati prima del rilascio}}{\text{difetti prima del rilascio + difetti dopo}}*100$
+    \item \textbf{Codice:} \texttt{M-PD11}
+        \item \textbf{Formula:} $DRE=\frac{\text{difetti trovati prima del rilascio}}{\text{difetti prima del rilascio + difetti dopo}}\cdot 100$
     \item \textbf{Descrizione:} mostra la percentuale di difetti rilevati e rimossi prima del rilascio. Aiuta a misurare l'efficacia del \term{Processo} di accertamento della qualità. 
 \end{itemize}
 
-\paragraph{Bug Rate per Test Case}
+\paragraph{Unit Test Success Density (UTSD)}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PD10}
-    \item \textbf{Formula:} $\frac{\text{\# bug individuati}}{\text{\# test case eseguiti}}\cdot 100$
-    \item \textbf{Descrizione:} misura il numero medio di difetti rilevati. La \term{Metrica} fornisce un’indicazione dell’efficacia dei test e della qualità del software nelle fasi di test.
+\item \textbf{Codice:} \texttt{M-PD12}
+\item \textbf{Formula:} $UTSD = \dfrac{\#\ \text{test} - (\#\ \text{test errors} + 
+\#\ \text{test failures})}{\#\ \text{test}} \cdot 100$
+\item \textbf{Descrizione:} misura la percentuale di test unitari eseguiti con 
+successo. Vengono considerati come esito negativo sia i test che non superano 
+le condizioni di \term{Verifica} e le asserzioni previste (\textit{test failures}), 
+sia quelli che si interrompono anomaliamente a causa di un'eccezione imprevista (\textit{test errors}).
 \end{itemize}
 
 % ==== METRICHE DI PROCESSSO ====
@@ -1318,7 +1499,7 @@ Le metriche di prodotto adottate nel progetto sono suddivise nelle seguenti due 
 \paragraph{Earned Value (EV)}
 \begin{itemize}
     \item \textbf{Codice:} \texttt{M-PC4}
-    \item \textbf{Formula:} $EV=\frac{\text{\# di \term{Issue} completate}}{\text{\# di \term{Issue} pianificate}}*PV$
+    \item \textbf{Formula:} $EV=\frac{\text{\# di \term{Issue} completate}}{\text{\# di \term{Issue} pianificate}}\cdot PV$
     \item \textbf{Descrizione:} rappresenta il valore del lavoro realmente completato rispetto a quanto pianificato. Consente di valutare l’avanzamento effettivo del progetto indipendentemente dai costi sostenuti.
 \end{itemize}
 
@@ -1326,7 +1507,8 @@ Le metriche di prodotto adottate nel progetto sono suddivise nelle seguenti due 
 \begin{itemize}
     \item \textbf{Codice:} \texttt{M-PC5}
     \item \textbf{Formula:} $SPI=\frac{\text{EV}}{\text{PV}}$
-    \item \textbf{Descrizione:} misura l'efficacia della gestione del tempo. Esso confronta la quantità di lavoro effettivamente completata con la quantità di lavoro pianificata. Un valore $=1$ indica che il progetto è in linea con il piano stabilito, un valore $<1$ evidenzia un ritardo.
+    \item \textbf{Descrizione:} misura l'efficacia della gestione del tempo. 
+    Esso confronta la quantità di lavoro effettivamente completata con la quantità di lavoro pianificata. Un valore $=1$ indica che il progetto è in linea con il piano stabilito, un valore $<1$ evidenzia un ritardo.
 \end{itemize}
 
 \paragraph{Cost Performance Index (CPI)}
@@ -1339,28 +1521,22 @@ Le metriche di prodotto adottate nel progetto sono suddivise nelle seguenti due 
 \paragraph{Estimate at Completion (EAC)}
 \begin{itemize}
     \item \textbf{Codice:} \texttt{M-PC7}
-    \item \textbf{Formula:} $EAC=\text{ETC}+\text{AC}$
+    \item \textbf{Formula:} $EAC=\frac{\text{BAC}-\text{EV}}{\text{CPI}}$
     \item \textbf{Descrizione:} stima il costo totale del progetto al completamento, assumendo che l’andamento futuro segua l’efficienza attuale. Viene confrontato con il Budget at Completion per individuare potenziali scostamenti.
 \end{itemize}
 
 \paragraph{Estimate to Complete (ETC)}
 \begin{itemize}
     \item \textbf{Codice:} \texttt{M-PC8}
-    \item \textbf{Formula:} $ETC=\frac{\text{BAC}-\text{EV}}{\text{CPI}}$
+    \item \textbf{Formula:} $ETC=EAC-AC$
     \item \textbf{Descrizione:} misura il costo previsto per completare il lavoro rimanente del progetto escludendo i costi già sostenuti.
 \end{itemize}
 
 \subsubsection{Verifica}
-\paragraph{Code Coverage}
-\begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PC9}
-    \item \textbf{Formula:} $CC=\frac{\text{\# linee di codice testate}}{\text{\# linee di codice totali}}*100$
-    \item \textbf{Descrizione:} misura la percentuale di codice soggetto a test. 
-\end{itemize}
 
 \paragraph{Requirements Coverage (RC)}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PC10}
+    \item \textbf{Codice:} \texttt{M-PC9}
     \item \textbf{Formula:} $\frac{\text{\# requisiti testati}}{\text{\# requisiti totali}}*100$
     \item \textbf{Descrizione:} Indica la percentuale di requisiti che hanno test case corrispondenti. Garantisce che tutti i requisiti documentati siano verificati.
 \end{itemize}
@@ -1368,7 +1544,7 @@ Le metriche di prodotto adottate nel progetto sono suddivise nelle seguenti due 
 \subsubsection{Documentazione}
 \paragraph{Indice di Gulpease}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PC11}
+    \item \textbf{Codice:} \texttt{M-PC10}
     \item \textbf{Formula:} $89 + \frac{300 \cdot (\text{numero di frasi}) - 10 \cdot (\text{numero di lettere})}{\text{numero di parole}}$
     \item \textbf{Descrizione:} indice di leggibilità tarato su testi in lingua italiana. In generale risulta che testi con un indice:
     \begin{itemize}
@@ -1380,8 +1556,8 @@ Le metriche di prodotto adottate nel progetto sono suddivise nelle seguenti due 
 
 \paragraph{Document Coverage Ratio (DCR)}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PC12}
-    \item \textbf{Formula:} $\frac{\text{\# sezioni documentate}}{\text{\# sezioni previste dallo standard o dal piano}} * 100$
+    \item \textbf{Codice:} \texttt{M-PC11}
+    \item \textbf{Formula:} $\frac{\text{\# sezioni documentate}}{\text{\# sezioni previste dallo standard o dal piano}} \cdot 100$
     \item \textbf{Descrizione:} misura il grado di completezza della documentazione prodotta rispetto alle sezioni previste dai piani e dagli standard adottati. 
     Supporta il \term{Processo} di documentazione e l’accertamento della conformità agli standard di progetto.
 \end{itemize}
@@ -1389,16 +1565,16 @@ Le metriche di prodotto adottate nel progetto sono suddivise nelle seguenti due 
 \subsubsection{Accertamento della qualità}
 \paragraph{Satisfied Metrics}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PC13}
-    \item \textbf{Formula:} $MS=\frac{\text{\# metriche soddisfatte}}{\text{\# metriche totali}}*100$
+    \item \textbf{Codice:} \texttt{M-PC12}
+    \item \textbf{Formula:} $MS=\frac{\text{\# metriche soddisfatte}}{\text{\# metriche totali}}\cdot 100$
     \item \textbf{Descrizione:} misura la percentuale di metriche che sono state soddisfatte durante uno \term{Sprint}. Una \term{Metrica} viene considerata soddisfatta quando presenta un valore accettabile.
 \end{itemize}
 
 \subsubsection{Gestione dei processi}
 \paragraph{\ignoreglossary{Sprint} Commitment Reliability (SCR)}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PC14}
-    \item \textbf{Formula:} $\frac{\text{\# \term{Issue} completate nello \term{Sprint}}}{\text{\# \term{Issue} pianificate}} * 100$
+    \item \textbf{Codice:} \texttt{M-PC13}
+    \item \textbf{Formula:} $\frac{\text{\# \term{Issue} completate nello \term{Sprint}}}{\text{\# \term{Issue} pianificate}} \cdot 100$
     \item \textbf{Descrizione:} misura la capacità del team di rispettare gli impegni pianificati per lo \term{Sprint}.
     Supporta la valutazione della qualità della pianificazione e della stabilità del \term{Processo} di sviluppo.
 \end{itemize}
