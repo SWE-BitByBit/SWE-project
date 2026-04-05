@@ -440,7 +440,7 @@ L'\term{Architettura} logica adibita all'interazione tra i device mobili e l'amb
 \begin{itemize}
     \item \textbf{Presentation e Routing Layer}: Costituisce il \textit{\term{Single Point of Entry}} dell'infrastruttura esposto al software. Ha la pura e unica responsabilità di tracciare e smistare le richieste esterne verso i rami corretti. Intercetta validazioni e autorizzazioni per poi rilasciare formalmente il \term{Payload} agli strati contigui.
     \item \textbf{Business Core / Logic Layer}: Costituisce il cuore elaborativo del sistema, dove risiede l'intera \textit{\term{Business Logic}}. Questo strato è implementato tramite unità funzionali indipendenti e distribuite (\textit{Funzioni Lambda}) ed è progettato per essere completamente agnostico rispetto ai dettagli di trasporto e comunicazione (come il protocollo HTTP). Il suo compito esclusivo è ricevere i dati già validati dal livello di \textit{Routing}, applicare le regole di dominio, coordinare l'elaborazione degli eventi asincroni e restituire le informazioni elaborate e strutturate.
-    \item \textbf{\term{Data Access Layer}}: Un livello totalmente passivo ed estrapolato che offre un'astrazione tramite moduli e \term{Driver}. Consente una persistenza dati logica e mascherata ai database sottostanti (quali storage documentali, array non relazionali o conservazione audio/video grezza), celando alla logica di business i layer fisici o i linguaggi di interrogazione diretti della persistenza \term{Cloud}.
+    \item \textbf{\term{Data Access Layer}}: Un livello totalmente passivo e disaccoppiato che offre un'astrazione tramite moduli e \term{Driver}. Consente una persistenza dati logica e mascherata ai database sottostanti (quali storage documentali, array non relazionali o conservazione audio/video grezza), celando alla logica di business i layer fisici o i linguaggi di interrogazione diretti della persistenza \term{Cloud}.
 \end{itemize}
 \subsection{Architettura di deployment} \label{subsec:architettura_deployment}
 
@@ -456,7 +456,7 @@ Questa scelta architetturale consente:
 \begin{itemize}
     \item \textbf{\term{Scalabilità dinamica}}: le risorse allocate (il calcolo e lo storage) scalano o si accendono/spengono automaticamente in base al volume di richieste ricevute dai Client;
     \item \textbf{Isolamento e Sicurezza}: ogni funzione ha una specifica responsabilità e policy di accesso minima verso le altre risorse, limitando l'esposizione al minimo indispensabile;
-    \item \textbf{Gestione del servizio (\term{Zero Ops})}: l'uso di infrastrutture completamente gestite e la persistenza dei dati automatizzata tramite \textbf{Amazon DynamoDB} e \textbf{Amazon S3} solleva il team dalla manutenzione sistemistica.
+    \item \textbf{Gestione del servizio (\term{Zero Ops})}: l'uso di infrastrutture completamente gestite e la persistenza dei dati automatizzata tramite \textbf{Amazon DynamoDB} e \textbf{Amazon S3} libera il team dagli oneri di manutenzione sistemistica.
 \end{itemize}
 
 Il flusso operativo del sistema e la connessione tra i componenti AWS si articolano nei seguenti layer di \term{Deployment}:
@@ -494,7 +494,7 @@ La funzionalità del chatbot permette all'\term{Utente} di comunicare via chat c
 
 \paragraph{ChatbotScreen}
 
-La classe \code{ChatbotScreen} rappresenta la schermata dell'applicazione dedicata al Chatbot all'interno del \textit{Presentation Layer}. La classe è composta a sua volta da numerosi widget e contiene la minima logica necessaria al rendering di tali componenti visivi, permettendo quindi una netta separazione tra presentazione e logica secondo il pattern \textit{MVVM}.
+La classe \code{ChatbotScreen} rappresenta la schermata dell'applicazione dedicata al Chatbot all'interno del \textit{Presentation Layer}. La classe è composta a sua volta da numerosi widget e contiene la minima logica necessaria al rendering di tali componenti visivi, permettendo quindi una netta separazione tra presentazione e logica secondo il pattern \textit{MVVM}. Tra i numerosi widget che la costituiscono, i principali sono \code{ChatWidget}, \code{ChatHistoryWidget}, \code{ChatbotModeToggleWidget} e \code{ChatbotSendMessageWidget}.
 
 \begin{figure}[H]
     \centering
@@ -505,7 +505,7 @@ La classe \code{ChatbotScreen} rappresenta la schermata dell'applicazione dedica
 
 \paragraph{ChatWidget}
 
-La classe \code{ChatWidget} è responsabile della visualizzazione della conversazione attiva. In quanto \code{Consumer}, essa osserva il ViewModel per ottenere i dati aggiornati e reagisce ai cambiamenti dello stato applicativo, garantendo la costruzione automatica dei widget rappresentanti i messaggi scambiati in chat.
+La classe \code{ChatWidget} è responsabile della visualizzazione della conversazione attiva. In quanto \code{Consumer}, essa osserva il \code{ChatbotViewModel} per ottenere i dati aggiornati e reagisce ai cambiamenti dello stato applicativo, garantendo la costruzione automatica dei widget rappresentanti i messaggi scambiati in chat.
 
 \begin{figure}[H]
     \centering
@@ -516,7 +516,7 @@ La classe \code{ChatWidget} è responsabile della visualizzazione della conversa
 
 \paragraph{ChatHistoryWidget}
 
-\code{ChatHistoryWidget} si occupa di mostrare l'elenco delle conversazioni passate sotto forma di anteprime. Tale widget è inserito all'interno di un menu a tendina dedicato, e, in quanto \code{Consumer}, osserva il ViewModel per recuperare i dati aggiornati relativi alle chat passate.
+\code{ChatHistoryWidget} si occupa di mostrare l'elenco delle conversazioni passate sotto forma di anteprime. Tale widget è inserito all'interno di un menu a tendina dedicato, e, in quanto \code{Consumer}, osserva il \code{ChatbotViewModel} per recuperare i dati aggiornati relativi alle chat passate. Questo widget trae grande beneficio dall'utilizzo del pattern Proxy per il fetch delle chat. Tale pattern consente infatti di generare la lista di anteprime delle conversazioni passate senza dover recuperare l'intero contenuto di ogni singola chat.
 
 \begin{figure}[H]
     \centering
@@ -527,7 +527,7 @@ La classe \code{ChatWidget} è responsabile della visualizzazione della conversa
 
 \paragraph{ChatbotModeToggleWidget}
 
-Questo componente dell'interfaccia consente all'\term{Utente} di selezionare la modalità operativa del chatbot. Le due modalità disponibili sono il Detective delle Relazioni e lo Specchio Intelligente. Queste determinano come il chatbot risponde ai messaggi dell'\term{Utente}.
+Questo componente dell'interfaccia consente all'\term{Utente} di selezionare la modalità operativa del chatbot. Le due modalità disponibili sono il Detective delle Relazioni e lo Specchio Intelligente. La modalità in uso viene specificata nell'invocazione dei metodi relativi all'invio di un messaggio in chat e determinano come il chatbot risponde ai messaggi dell'\term{Utente}. La generazione della risposta è a completo carico del backend.
 
 \begin{figure}[H]
     \centering
@@ -538,7 +538,7 @@ Questo componente dell'interfaccia consente all'\term{Utente} di selezionare la 
 
 \paragraph{ChatbotSendMessageWidget}
 
-\code{ChatbotSendMessageWidget} è un pulsante che gestisce l'invio dei messaggi da parte dell'\term{Utente}, delegando la gestione dei nuovi messaggi al ViewModel.
+\code{ChatbotSendMessageWidget} è un pulsante che gestisce l'invio dei messaggi da parte dell'\term{Utente}, delegando la gestione dei nuovi messaggi al ViewModel. Quando \code{ChatbotSendMessageWidget} viene premuto, il messaggio contenuto nel campo d'inserimento testuale viene inoltrato a \code{ChatbotViewModel}, che a sua volta comunica con \code{ChatbotRepository} in modo da memorizzare il messaggio nella chat corrente e di ricevere la risposta dal LLM.
 
 \begin{figure}[H]
     \centering
@@ -560,8 +560,7 @@ Questo widget fornisce all'\term{Utente} la possibilità di avviare una nuova co
 
 \paragraph{ChatbotViewModel}
 
-\code{ChatbotViewModel} è responsabile della gestione dello stato dell'applicazione e della coordinazione delle operazioni tra interfaccia e \term{Data Layer}. Tiene traccia delle conversazioni passate, della chat attualmente aperta e della modalità di conversazione selezionata, delegando al \term{Repository} l'accesso ai dati e notificando la View in caso di aggiornamenti. 
-\code{ChatbotViewModel} è un \code{ChangeNotifier} e implementa quindi il pattern Observer, mantenendo una lista di \textit{listeners} che notifica in caso di cambiamenti a cui tali \textit{listeners} devono reagire.
+\code{ChatbotViewModel} gestisce lo stato dell'interfaccia chatbot: mantiene la lista delle conversazioni passate, la chat correntemente aperta e la modalità operativa selezionata. In quanto \code{ChangeNotifier}, notifica automaticamente le classi View (\code{ChatWidget}, \code{ChatHistoryWidget} e i widget di azione) ogni volta che lo stato cambia. Per accedere ai dati si affida a \code{ChatbotRepository}, al quale delega il recupero e la persistenza delle conversazioni.
 
 \begin{figure}[H]
     \centering
@@ -583,9 +582,7 @@ L'interfaccia \code{Chat} definisce il modello astratto di una conversazione tra
 
 \paragraph{ProxyChat}
 
-\code{ProxyChat} rappresenta una realizzazione del pattern \textit{Proxy}, utilizzata per ottimizzare il caricamento delle chat. Essa funge da intermediaria tra il dominio e il \term{Repository}, ritardando il recupero completo dei dati fino a quando questi non sono effettivamente necessari. Un \term{Utente} potrebbe infatti dover caricare centinaia di conversazioni, e caricare interamente tutti i messaggi di ogni conversazione ad ogni accesso alla funzionalità chatbot rappresenterebbe uno spreco in termini di larghezza di banda e memoria. 
-
-\code{ProxyChat} contiene un riferimento a \code{LocalChat}, in modo da poter essere utilizzato come se fosse l'oggetto reale.
+\code{ProxyChat} implementa l'interfaccia \code{Chat} e viene utilizzata da \code{ChatbotViewModel} per rappresentare le conversazioni storiche. Ritarda il caricamento completo dei messaggi, delegandolo a \code{ChatbotRepository} solo quando necessario, e mantiene internamente un riferimento a \code{LocalChat}, che istanzia e popola al primo accesso effettivo ai dati.
 
 \begin{figure}[H]
     \centering
@@ -596,7 +593,7 @@ L'interfaccia \code{Chat} definisce il modello astratto di una conversazione tra
 
 \paragraph{LocalChat}
 
-\code{LocalChat} è l'implementazione del modello di conversazione che mantiene in memoria tutte le informazioni e i messaggi associati alla chat. Essa rappresenta l'oggetto reale utilizzato dal proxy quando c'è effettivamente bisogno di caricare i messaggi della chat, ad esempio per visualizzarli a schermo.
+\code{LocalChat} è l'implementazione del modello di conversazione che mantiene in memoria tutte le informazioni e i messaggi associati alla chat. Essa rappresenta l'oggetto reale utilizzato da \code{ProxyChat} quando c'è effettivamente bisogno di caricare i messaggi della chat, ad esempio per visualizzarli a schermo.
 
 \begin{figure}[H]
     \centering
@@ -618,7 +615,7 @@ L'interfaccia \code{Chat} definisce il modello astratto di una conversazione tra
 
 \paragraph{ChatMode}
 
-\code{ChatMode} è un'enumerazione che rappresenta le due diverse modalità operative del chatbot. Viene utilizzato dal ViewModel per adattare il comportamento dell'applicazione.
+\code{ChatMode} è un'enumerazione che rappresenta le due diverse modalità operative del chatbot. Viene utilizzato da \code{ChatbotViewModel}, che lo inoltra a \code{ChatbotRepository}, il quale lo utilizza per invocare i metodi del \code{ChatbotService} relativi all'invio dei messaggi in chat. Sarà poi il backend a interpretarlo e utilizzarlo per generare la risposta al messaggio inviato dall'utente.
 
 \begin{figure}[H]
     \centering
@@ -629,7 +626,7 @@ L'interfaccia \code{Chat} definisce il modello astratto di una conversazione tra
 
 \paragraph{MessageType}
 
-\code{MessageType} è un'enumerazione che consente di classificare i messaggi in base alla loro origine, distinguendo tra input dell'\term{Utente} e output del LLM.
+\code{MessageType} è un'enumerazione che consente di classificare i messaggi in base alla loro origine, distinguendo tra input dell'\term{Utente} e output del LLM. È utilizzata nella classe \code{ChatMessage} e necessaria per stabilire l'impaginazione dei messaggi all'interno di \code{ChatWidget}.
 
 \begin{figure}[H]
     \centering
@@ -640,7 +637,7 @@ L'interfaccia \code{Chat} definisce il modello astratto di una conversazione tra
 
 \paragraph{MessageResponse}
 
-\code{MessageResponse} incapsula il risultato di un'interazione con il LLM, includendo il messaggio generato e, eventualmente, il titolo generato a partire dal messaggio originale.
+\code{MessageResponse} incapsula il risultato di un'interazione con il LLM, includendo il messaggio generato e, eventualmente, il titolo generato a partire dal messaggio originale. È utilizzato da \code{ChatbotRepository}, che a sua volta lo ritorna in risposta a \code{ChatbotViewModel} per l'aggiornamento dello stato della View.
 
 \begin{figure}[H]
     \centering
@@ -651,7 +648,8 @@ L'interfaccia \code{Chat} definisce il modello astratto di una conversazione tra
 
 \paragraph{ChatbotRepository}
 
-\code{ChatbotRepository} funge da livello di astrazione tra il ViewModel e le sorgenti dati, occupandosi di recuperare dati grezzi dal \textit{service} e trasformarli in oggetti di dominio, nascondendo i dettagli relativi alla persistenza e alla comunicazione remota.
+\code{ChatbotRepository} è il tramite tra \code{ChatbotViewModel} e la comunicazione di rete: riceve le richieste dal ViewModel, le inoltra a \code{ChatbotService} e trasforma le risposte grezze in oggetti di dominio (\code{LocalChat}, \code{ChatMessage}) tramite \code{ChatDTO}, restituendoli al ViewModel in un formato pronto all'uso.
+
 
 \begin{figure}[H]
     \centering
@@ -662,7 +660,7 @@ L'interfaccia \code{Chat} definisce il modello astratto di una conversazione tra
 
 \paragraph{ChatbotService}
 
-\code{ChatbotService} rappresenta il livello infrastrutturale responsabile della comunicazione con le API remote. Si occupa della gestione delle richieste e delle risposte, operando su rappresentazioni dei dati adatte allo scambio su rete.
+\code{ChatbotService} rappresenta il livello infrastrutturale responsabile della comunicazione con le API remote. Si occupa della gestione delle richieste e delle risposte, operando su rappresentazioni dei dati adatte allo scambio su rete. Inoltra i dati grezzi a \code{ChatbotRepository}, che li trasforma in modelli di dominio.
 
 \begin{figure}[H]
     \centering
