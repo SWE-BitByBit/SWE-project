@@ -474,4 +474,113 @@ Il \term{Deployment} materiale di tutte le risorse in ambiente AWS non è esegui
 \end{document}
 
 \subsection{Architettura Front End} \label{subsec:architettura_frontend}
-\subsubsection{Chatbot} \label{subsubsec:architettura_chatbot}
+\subsubsection{Contatti Fidati} \label{subsubsec:architettura_contatti_fidati}
+
+La funzionalità dei Contatti Fidati permette all'\term{Utente} di gestire una lista di persone di fiducia da avvisare in caso di inattività tramite il sistema di \textit{Dead Man's Switch}. Analogamente al resto dell'applicazione, la funzionalità è implementata secondo il pattern MVVM e le linee guida architetturali di Flutter, distinguendo un \term{Data Layer}, composto da Service e \term{Repository}, e un \term{UI Layer}, composto da View e ViewModel.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{diagrammi_classi/contatti_fidati/DC-feature-contatti_fidati.pdf}
+    \caption{Diagramma delle classi relativo alle funzionalità dei Contatti Fidati}
+    \label{DC-ContattiFidati}
+\end{figure}
+\newpage
+
+\paragraph{TrustedContactScreen}
+
+La classe \code{TrustedContactScreen} rappresenta la schermata principale dedicata alla gestione dei contatti fidati all'interno del \textit{Presentation Layer}. Essa funge da compositore, unendo i vari widget presenti e ordinandoli secondo il layout stabilito, delegando la logica di stato ai componenti sottostanti.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/contatti_fidati/DC-TrustedContactScreen.pdf}
+    \caption[Diagramma della classe TrustedContactScreen]{Diagramma della classe \code{TrustedContactScreen}}
+    \label{DC-TrustedContactScreen}
+\end{figure}
+
+\paragraph{TrustedContactListWidget}
+
+La classe \code{TrustedContactListWidget} è responsabile della visualizzazione dell'elenco dei contatti attualmente salvati. Implementando l'interfaccia \code{Consumer}, osserva il ViewModel per reagire ai cambiamenti di stato e aggiornare dinamicamente l'interfaccia grafica.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/contatti_fidati/DC-TrustedContactListWidget.pdf}
+    \caption[Diagramma della classe TrustedContactListWidget]{Diagramma della classe \code{TrustedContactListWidget}}
+    \label{DC-TrustedContactListWidget}
+\end{figure}
+
+\paragraph{TrustedContactFormWidget}
+
+\code{TrustedContactFormWidget} gestisce i campi di input necessari per l'inserimento o la modifica dei dati di un contatto fidato. In quanto \code{Consumer}, si aggiorna in base allo stato del ViewModel.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/contatti_fidati/DC-TrustedContactFormWidget.pdf}
+    \caption[Diagramma della classe TrustedContactFormWidget]{Diagramma della classe \code{TrustedContactFormWidget}}
+    \label{DC-TrustedContactFormWidget}
+\end{figure}
+
+\paragraph{TrustedContactActionsWidget}
+
+Questo widget raggruppa i bottoni e le azioni specifiche per la gestione dei contatti fidati (ad esempio i pulsanti per l'aggiunta di un nuovo contatto o l'eliminazione di uno esistente). Comunica le intenzioni dell'\term{Utente} direttamente al ViewModel.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/contatti_fidati/DC-TrustedContactActionsWidget.pdf}
+    \caption[Diagramma della classe TrustedContactActionsWidget]{Diagramma della classe \code{TrustedContactActionsWidget}}
+    \label{DC-TrustedContactActionsWidget}
+\end{figure}
+
+\paragraph{TrustedContactViewModel}
+
+\code{TrustedContactViewModel} è il nucleo della gestione dello stato per questa funzionalità. Mantiene la lista dei contatti (\code{tcontacts}), lo stato di caricamento (\code{isLoading}) e la gestione degli errori (\code{error}). Espone i metodi per caricare, creare e cancellare i contatti, facendo da ponte tra la View e il \term{Repository}. Utilizza il mixin \code{ChangeNotifier} per notificare i widget in ascolto.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/contatti_fidati/DC-TrustedContactViewModel.pdf}
+    \caption[Diagramma della classe TrustedContactViewModel]{Diagramma della classe \code{TrustedContactViewModel}}
+    \label{DC-TrustedContactViewModel}
+\end{figure}
+
+\paragraph{TrustedContact}
+
+\code{TrustedContact} è la classe di dominio che modella il singolo contatto fidato. Contiene le informazioni anagrafiche e di recapito essenziali, quali l'identificativo unico, il nome, l'indirizzo email e il numero di telefono, fornendo i relativi metodi di accesso e modifica.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/contatti_fidati/DC-TrustedContact.pdf}
+    \caption[Diagramma della classe TrustedContact]{Diagramma della classe \code{TrustedContact}}
+    \label{DC-TrustedContact}
+\end{figure}
+
+\paragraph{TrustedContactRepository}
+
+\code{TrustedContactRepository} astrae la sorgente dei dati per il ViewModel. Utilizza \code{TrustedContactService} per eseguire le operazioni CRUD (creazione, lettura, eliminazione), trasformando i dati ricevuti in oggetti di dominio \code{TrustedContact} e isolando la logica di business dai dettagli di implementazione del network.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{diagrammi_classi/contatti_fidati/DC-TrustedContactRepository.pdf}
+    \caption[Diagramma della classe TrustedContactRepository]{Diagramma della classe \code{TrustedContactRepository}}
+    \label{DC-TrustedContactRepository}
+\end{figure}
+
+\paragraph{TrustedContactService}
+
+\code{TrustedContactService} appartiene al livello infrastrutturale e si occupa di effettuare fisicamente le chiamate API verso il \term{Backend}. Gestisce le richieste HTTP per ottenere l'elenco dei contatti, aggiungerne di nuovi o eliminarli.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{diagrammi_classi/contatti_fidati/DC-TrustedContactService.pdf}
+    \caption[Diagramma della classe TrustedContactService]{Diagramma della classe \code{TrustedContactService}}
+    \label{DC-TrustedContactService}
+\end{figure}
+
+\paragraph{TrustedContactDTO}
+
+\code{TrustedContactDTO} (\textit{Data Transfer Object}) gestisce la serializzazione e deserializzazione dei dati. Mappa i dati JSON provenienti dall'esterno in oggetti \code{TrustedContact} e viceversa, garantendo la compatibilità del formato scambiato con le API.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/contatti_fidati/DC-TrustedContactDTO.pdf}
+    \caption[Diagramma della classe TrustedContactDTO]{Diagramma della classe \code{TrustedContactDTO}}
+    \label{DC-TrustedContactDTO}
+\end{figure}
