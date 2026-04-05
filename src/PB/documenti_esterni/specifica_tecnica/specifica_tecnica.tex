@@ -527,7 +527,7 @@ La classe \code{ChatWidget} è responsabile della visualizzazione della conversa
 
 \paragraph{ChatbotModeToggleWidget}
 
-Questo componente dell'interfaccia consente all'\term{Utente} di selezionare la modalità operativa del chatbot. Le due modalità disponibili sono il Detective delle Relazioni e lo Specchio Intelligente. La modalità in uso viene specificata nell'invocazione dei metodi relativi all'invio di un messaggio in chat e determinano come il chatbot risponde ai messaggi dell'\term{Utente}. La generazione della risposta è a completo carico del backend.
+Questo componente dell'interfaccia consente all'\term{Utente} di selezionare la modalità operativa del chatbot. Le due modalità disponibili sono il Detective delle Relazioni e lo Specchio Intelligente. La modalità in uso viene specificata nell'invocazione dei metodi relativi all'invio di un messaggio in chat e determinano come il chatbot risponde ai messaggi dell'\term{Utente}. La generazione della risposta è a completo carico del \term{Backend}.
 
 \begin{figure}[H]
     \centering
@@ -615,7 +615,7 @@ L'interfaccia \code{Chat} definisce il modello astratto di una conversazione tra
 
 \paragraph{ChatMode}
 
-\code{ChatMode} è un'enumerazione che rappresenta le due diverse modalità operative del chatbot. Viene utilizzato da \code{ChatbotViewModel}, che lo inoltra a \code{ChatbotRepository}, il quale lo utilizza per invocare i metodi del \code{ChatbotService} relativi all'invio dei messaggi in chat. Sarà poi il backend a interpretarlo e utilizzarlo per generare la risposta al messaggio inviato dall'utente.
+\code{ChatMode} è un'enumerazione che rappresenta le due diverse modalità operative del chatbot. Viene utilizzato da \code{ChatbotViewModel}, che lo inoltra a \code{ChatbotRepository}, il quale lo utilizza per invocare i metodi del \code{ChatbotService} relativi all'invio dei messaggi in chat. Sarà poi il \term{Backend} a interpretarlo e utilizzarlo per generare la risposta al messaggio inviato dall'\term{Utente}.
 
 \begin{figure}[H]
     \centering
