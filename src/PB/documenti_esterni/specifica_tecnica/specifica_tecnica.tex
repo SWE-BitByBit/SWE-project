@@ -660,7 +660,7 @@ L'interfaccia \code{Chat} definisce il modello astratto di una conversazione tra
 
 \paragraph{ChatbotService}
 
-\code{ChatbotService} rappresenta il livello infrastrutturale responsabile della comunicazione con le API remote. Si occupa della gestione delle richieste e delle risposte, operando su rappresentazioni dei dati adatte allo scambio su rete. Inoltra i dati grezzi a \code{ChatbotRepository}, che li trasforma in modelli di dominio.
+\code{ChatbotService} rappresenta il livello infrastrutturale responsabile della comunicazione con le API remote. Si occupa della gestione delle richieste e delle risposte, operando su rappresentazioni dei dati adatte allo scambio su rete. Restituisce i dati grezzi a \code{ChatbotRepository}, il quale si occupa poi di trasformarli in modelli di dominio.
 
 \begin{figure}[H]
     \centering
