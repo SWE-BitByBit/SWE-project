@@ -55,6 +55,8 @@
 
 \newcommand{\ignoreglossary}{}
 
+\newcommand{\code}[1]{{\ttfamily\textcolor{purple!85!black}{#1}}}
+
 \begin{document}
 
 % ====== FRONT PAGE ======
@@ -110,15 +112,18 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & In lavorazione\\
-\textbf{Versione:} & 0.1.1 \\
+\textbf{Versione:} & 0.1.3 \\
 \textbf{Responsabile:} & Gabriele Scaggiante \\
 \textbf{Redattori:} & 
 \begin{tabular}[t]{@{}l@{}}
 Gabriele Scaggiante\\
+Dennis Parolin\\
 \end{tabular} \\
 \textbf{Verificatori:} & 
 \begin{tabular}[t]{@{}l@{}}
 Riccardo Manisi\\
+Dennis Parolin\\
+Marco Sanguin\\
 \end{tabular} \\
 \textbf{Destinatari:} &
 \begin{tabular}[t]{@{}l@{}}
@@ -145,6 +150,10 @@ Gruppo BitByBit\\
 \hline
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+\hline
+0.1.3 & 2026-04-04 & Gabriele Scaggiante & Iniziata la sezione \hyperref[subsec:architettura_frontend]{Architettura frontend}, completata \hyperref[subsubsec:architettura_chatbot]{Architettura chatbot} & Marco Sanguin \\
+\hline
+0.1.2 & 2026-04-02 & Dennis Parolin & Redatta la sezione \hyperref[subsec:architettura_logica]{Architettura logica} e \hyperref[subsec:architettura_deployment]{Architettura di deployment} & Marco Sanguin \\
 \hline
 0.1.1 & 2026-03-31 & Gabriele Scaggiante & Aggiunta di EventBridge, SAM, CloudFormation e Docker nella sezione tecnologie. & Dennis Parolin \\
 \hline
@@ -188,7 +197,7 @@ In particolare, il documento si propone di:
     
     \item Descrivere l'\term{Architettura} di \term{Deployment}, evidenziando la distribuzione delle componenti nei diversi ambienti di esecuzione e le relative dipendenze infrastrutturali
     
-    \item Documentare le tecnologie, i linguaggi di programmazione, i framework e gli strumenti adottati, motivando le scelte effettuate in relazione ai requisiti di progetto e al \term{Capitolato}
+    \item Documentare le tecnologie, i linguaggi di programmazione, i \term{Framework} e gli strumenti adottati, motivando le scelte effettuate in relazione ai requisiti di progetto e al \term{Capitolato}
     
     \item Illustrare i principali design pattern e le soluzioni architetturali utilizzate, con particolare attenzione agli aspetti di scalabilità, manutenibilità e sicurezza
         
@@ -252,7 +261,7 @@ Le tecnologie utilizzate sono state scelte trovando un punto d'incontro tra la n
 \subsection{Framework} \label{subsec:framework}
 
 \subsubsection{Flutter}
-Flutter è un framework open-source sviluppato da Google per la creazione di applicazioni multi-piattaforma a partire da un unico codice sorgente. Consente di sviluppare interfacce per dispositivi mobili, web e desktop utilizzando il linguaggio Dart. Flutter si basa su un sistema di widget componibili, che possono rappresentare qualsiasi elemento dell’interfaccia \term{Utente}. Flutter include un proprio motore grafico (come Impeller o storicamente Skia) che disegna direttamente i componenti a schermo, garantendo elevata coerenza visiva e prestazioni indipendenti dalla piattaforma sottostante. È il framework alla base dell'App Che Protegge e Trasforma, il che consente di poter generare build per iOS e Android da un unico codice sorgente, a fronte di un maggiore utilizzo di risorse rispetto alle soluzioni native e di una minore possibilità di controllo diretto e personalizzazione delle funzionalità native della piattaforma.
+Flutter è un \term{Framework} open-source sviluppato da Google per la creazione di applicazioni multi-piattaforma a partire da un unico codice sorgente. Consente di sviluppare interfacce per dispositivi mobili, web e desktop utilizzando il linguaggio Dart. Flutter si basa su un sistema di widget componibili, che possono rappresentare qualsiasi elemento dell’interfaccia \term{Utente}. Flutter include un proprio motore grafico (come Impeller o storicamente Skia) che disegna direttamente i componenti a schermo, garantendo elevata coerenza visiva e prestazioni indipendenti dalla piattaforma sottostante. È il \term{Framework} alla base dell'App Che Protegge e Trasforma, il che consente di poter generare build per iOS e Android da un unico codice sorgente, a fronte di un maggiore utilizzo di risorse rispetto alle soluzioni native e di una minore possibilità di controllo diretto e personalizzazione delle funzionalità native della piattaforma.
 \begin{itemize}
     \item \textbf{Versione utilizzata}: 3.41.6
     \item \textbf{Documentazione}: \url{https://docs.flutter.dev/}
@@ -268,7 +277,7 @@ Dart è un linguaggio di programmazione sviluppato da Google, progettato per la 
 \end{itemize}
 
 \subsubsection{Python}
-Python è un linguaggio di programmazione ad alto livello, interpretato e orientato agli oggetti, noto per la sua sintassi semplice e leggibile. Il codice Python viene eseguito da un interprete che traduce le istruzioni in bytecode, poi eseguito dalla macchina virtuale Python. Nel progetto è utilizzato lato backend per la scrittura delle funzioni AWS Lambda e per i test tramite Pytest.
+Python è un linguaggio di programmazione ad alto livello, interpretato e orientato agli oggetti, noto per la sua sintassi semplice e leggibile. Il codice Python viene eseguito da un interprete che traduce le istruzioni in bytecode, poi eseguito dalla macchina virtuale Python. Nel progetto è utilizzato lato \term{Backend} per la scrittura delle funzioni AWS Lambda e per i test tramite Pytest.
 \begin{itemize}
     \item \textbf{Versione utilizzata}: 3.14.3
     \item \textbf{Documentazione}: \url{https://docs.python.org/3/}
@@ -277,14 +286,14 @@ Python è un linguaggio di programmazione ad alto livello, interpretato e orient
 \subsection{Servizi AWS} \label{subsec:aws}
 
 \subsubsection{Lambda}
-AWS Lambda è un servizio serverless che consente di eseguire codice senza gestire direttamente server o infrastruttura. Le funzioni vengono attivate in risposta a eventi e scalano automaticamente in base al carico. Nel progetto è utilizzato per implementare la logica backend, eseguendo funzioni scritte in Python invocate tramite API Gateway.
+AWS Lambda è un servizio \term{Serverless} che consente di eseguire codice senza gestire direttamente server o infrastruttura. Le funzioni vengono attivate in risposta a eventi e scalano automaticamente in base al carico. Nel progetto è utilizzato per implementare la logica \term{Backend}, eseguendo funzioni scritte in Python invocate tramite API Gateway.
 \begin{itemize}
     \item \textbf{Versione utilizzata}: Runtime Python 3.14
     \item \textbf{Documentazione}: \url{https://docs.aws.amazon.com/lambda/}
 \end{itemize}
 
 \subsubsection{API Gateway}
-AWS API Gateway è un servizio che permette di creare, pubblicare e gestire API REST e HTTP, fungendo da punto di ingresso per le richieste client. Gestisce autenticazione, routing e integrazione con altri servizi AWS. Nel progetto è utilizzato per esporre endpoint HTTP che invocano le funzioni Lambda.
+AWS API Gateway è un servizio che permette di creare, pubblicare e gestire \term{API REST} e HTTP, fungendo da punto di ingresso per le richieste client. Gestisce autenticazione, routing e integrazione con altri servizi AWS. Nel progetto è utilizzato per esporre endpoint HTTP che invocano le funzioni Lambda.
 \begin{itemize}
     \item \textbf{Versione utilizzata}: HTTP API (v2)
     \item \textbf{Documentazione}: \url{https://docs.aws.amazon.com/apigateway/}
@@ -327,22 +336,22 @@ Amazon CloudWatch è un servizio di monitoraggio e osservabilità che raccoglie 
 \end{itemize}
 
 \subsubsection{EventBridge}
-Amazon EventBridge è un servizio di event bus serverless che consente di gestire e instradare eventi tra diversi servizi AWS. Esso permette di definire regole per reagire automaticamente a eventi generati da servizi AWS o da fonti esterne. Nel progetto è utilizzato per orchestrare i flussi di controllo di utilizzo dell'app da parte degli utenti, e l'invio delle email secondo le tempistiche stabilite dal Dead man's switch.
+Amazon EventBridge è un servizio di event bus \term{Serverless} che consente di gestire e instradare eventi tra diversi servizi AWS. Esso permette di definire regole per reagire automaticamente a eventi generati da servizi AWS o da fonti esterne. Nel progetto è utilizzato per orchestrare i flussi di controllo di utilizzo dell'app da parte degli utenti, e l'invio delle email secondo le tempistiche stabilite dal Dead man's switch.
 \begin{itemize}
     \item \textbf{Documentazione}: \url{https://docs.aws.amazon.com/eventbridge/}
 \end{itemize}
 
 \subsubsection{SAM}
-AWS Serverless Application Model (SAM) è un framework open-source che semplifica la definizione e il \term{Deployment} di applicazioni serverless su AWS. Estende AWS CloudFormation introducendo una sintassi più compatta per risorse come Lambda, API Gateway e DynamoDB e include strumenti per build, testing locale e deploy delle applicazioni. Nel progetto è utilizzato per definire e distribuire l’infrastruttura serverless in modo semplificato.
+AWS \term{Serverless} Application Model (SAM) è un \term{Framework} open-source che semplifica la definizione e il \term{Deployment} di applicazioni \term{Serverless} su AWS. Estende AWS CloudFormation introducendo una sintassi più compatta per risorse come Lambda, API Gateway e DynamoDB e include strumenti per build, testing locale e deploy delle applicazioni. Nel progetto è utilizzato per definire e distribuire l’infrastruttura \term{Serverless} in modo semplificato.
 \begin{itemize}
     \item \textbf{Documentazione}: \url{https://docs.aws.amazon.com/serverless-application-model/}
 \end{itemize}
 
 \subsubsection{CloudFormation}
-AWS CloudFormation è un servizio di Infrastructure as Code che consente di modellare e gestire risorse AWS tramite template dichiarativi in formato YAML o JSON. Nel progetto è utilizzato come base per il provisioning dell’infrastruttura, anche tramite template generati da SAM.
+AWS CloudFormation è un servizio di \term{Infrastructure as Code} che consente di modellare e gestire risorse AWS tramite template dichiarativi in formato \term{YAML} o JSON. Nel progetto è utilizzato come base per il provisioning dell’infrastruttura, anche tramite template generati da SAM.
 \begin{itemize}
     \item \textbf{Documentazione}: \url{https://docs.aws.amazon.com/cloudformation/}
-    \item \textbf{Versioni}: CloudFormation non prevede versioni di servizio esplicite; eventuali aggiornamenti sono gestiti direttamente da AWS. I template possono però utilizzare versioni di specifiche risorse e trasformazioni (es. AWS::Serverless).
+    \item \textbf{Versioni}: CloudFormation non prevede versioni di servizio esplicite; eventuali aggiornamenti sono gestiti direttamente da AWS. I template possono però utilizzare versioni di specifiche risorse e trasformazioni (es. AWS::\term{Serverless}).
 \end{itemize}
 
 \subsection{Librerie} \label{subsec:librerie}
@@ -379,14 +388,14 @@ SonarQube è una piattaforma open-source per l’analisi continua della qualità
 \subsection{Tecnologie di analisi dinamica} \label{subsec:tecnologie_analisi_dinamica}
 
 \subsubsection{Pytest}
-Pytest è un framework di testing per il linguaggio Python che consente di scrivere test in modo semplice e scalabile. Supporta test funzionali, unitari e di integrazione, offrendo funzionalità come fixture, parametrizzazione dei test e scoperta automatica dei test.
+Pytest è un \term{Framework} di testing per il linguaggio Python che consente di scrivere test in modo semplice e scalabile. Supporta test funzionali, unitari e di integrazione, offrendo funzionalità come fixture, parametrizzazione dei test e scoperta automatica dei test.
 \begin{itemize}
     \item \textbf{Versione utilizzata}: 9.0.2
     \item \textbf{Documentazione}: \url{https://docs.pytest.org/}
 \end{itemize}
 
 \subsubsection{Moto}
-Moto è una libreria Python che consente di mockare i servizi AWS durante i test. Simula il comportamento delle API AWS, permettendo di testare codice che interagisce con servizi cloud senza effettuare chiamate reali. Funziona intercettando le richieste e restituendo risposte simulate coerenti con quelle dei servizi AWS.
+Moto è una libreria Python che consente di mockare i servizi AWS durante i test. Simula il comportamento delle API AWS, permettendo di testare codice che interagisce con servizi \term{Cloud} senza effettuare chiamate reali. Funziona intercettando le richieste e restituendo risposte simulate coerenti con quelle dei servizi AWS.
 \begin{itemize}
     \item \textbf{Versione utilizzata}: 5.1.23
     \item \textbf{Documentazione}: \url{https://docs.getmoto.org/}
@@ -395,7 +404,7 @@ Moto è una libreria Python che consente di mockare i servizi AWS durante i test
 \subsection{Altro} \label{subsec:altro}
 
 \subsubsection{Ollama}
-Ollama è una piattaforma che consente di eseguire e gestire LLM in locale tramite una semplice interfaccia. Permette il download, l’esecuzione e l’interazione con modelli di intelligenza artificiale direttamente in ambiente locale, senza necessità di servizi cloud esterni. Il funzionamento si basa su un runtime che gestisce i modelli e espone endpoint per inferenza.
+Ollama è una piattaforma che consente di eseguire e gestire LLM in locale tramite una semplice interfaccia. Permette il download, l’esecuzione e l’interazione con modelli di intelligenza artificiale direttamente in ambiente locale, senza necessità di servizi \term{Cloud} esterni. Il funzionamento si basa su un runtime che gestisce i modelli e espone endpoint per inferenza.
 \begin{itemize}
     \item \textbf{Versione utilizzata}: 0.18.3
     \item \textbf{Documentazione}: \url{https://ollama.com/docs}
@@ -408,9 +417,272 @@ Docker è una piattaforma di containerizzazione che consente di creare, distribu
     \item \textbf{Documentazione}: \url{https://docs.docker.com/}
 \end{itemize}
 
-\section{Architettura logica} \label{subsec:architettura_logica}
+\section{Architettura}
+\subsection{Architettura logica} \label{subsec:architettura_logica}
 
-\section{Architettura di deployment} \label{subsec:architettura_deployment}
+Il sistema software è progettato secondo i princìpi di un'\textbf{\term{Architettura a Strati}} (o \textit{Layered Architecture}), che impone una chiara separazione delle responsabilità tra i diversi livelli applicativi del sistema.
+L'obiettivo cardine di questa scelta è massimizzare l'indipendenza formale della logica di business dalle interfacce grafiche \term{Utente} e dai meccanismi fisici di gestione del dato, favorendo così la facilità di test, la manutenzione nel tempo e il forte disaccoppiamento (\textit{\term{Separation of Concerns}}).
 
+All'ingresso superiore dell'applicazione si posiziona l'ecosistema logico del dispositivo, mentre le fondamenta sono governate e calcolate dall'infrastruttura di servizio. L'interfaccia tra questi due mondi è ben definita tramite API e totalmente slegata dai linguaggi di programmazione o dai sistemi operativi utilizzati.
+
+\subsubsection{Livello Client (Frontend Mobile)}
+Il client mobile è sviluppato incapsulando il codice secondo i dettami moderni di una \textit{\term{Clean Architecture}} (fortemente affine al noto pattern architetturale \textit{Model-View-ViewModel} - MVVM). Il codice dell'applicazione è suddiviso in almeno tre strati logici indipendenti e gerarchici:
+
+\begin{itemize}
+    \item \textbf{Presentation Layer (View)}: Costituisce il livello più visibile e frontale dell'applicazione. Riceve gli input da parte dell'\term{Utente} e si occupa unicamente di aggregare e renderizzare il layout grafico a schermo tramite widget componenti, senza mai eseguire logica complessa.
+    \item \textbf{\term{State Management} Layer (ViewModel)}: Funge da mediatore tra View e dominio, gestendo lo stato della view. Riceve input dalla view, muta lo stato dell'UI e notifica la view che si aggiornerà sulla base del nuovo stato incapsulato (es. passando da "In caricamento" a "Successo"). Inoltre, gestisce le validazioni elementari dei dati inseriti, comandando ai servizi sottostanti le operazioni formali da compiere.
+    \item \textbf{\term{Data Layer}}: È lo strato più basso dell'ambiente Client, incaricato unicamente dell'acquisizione e gestione dei dati, ed è logicamente suddiviso in \textit{Service} e \textit{\term{Repository}}. I Service sono gli unici componenti ad interfacciarsi con l'esterno, conoscendo gli endpoint del \term{Backend} per eseguire le chiamate asincrone HTTP e gestendo l'accesso a dati memorizzati localmente o in remoto. I \term{Repository} fungono da intermediari: raccolgono i dati grezzi provenienti dai Service e li formattano in modelli di dominio strutturati (es. un oggetto \textit{Note}), fornendoli al ViewModel puliti e pronti all'uso.
+\end{itemize}
+
+\subsubsection{Livello di Servizio (Backend)}
+L'\term{Architettura} logica adibita all'interazione tra i device mobili e l'ambiente computazionale in \term{Cloud} si fonda su un analogo approccio modulare disaccoppiato in tre sotto-livelli principali:
+
+\begin{itemize}
+    \item \textbf{Presentation e Routing Layer}: Costituisce il \textit{\term{Single Point of Entry}} dell'infrastruttura esposto al software. Ha la pura e unica responsabilità di tracciare e smistare le richieste esterne verso i rami corretti. Intercetta validazioni e autorizzazioni per poi rilasciare formalmente il \term{Payload} agli strati contigui.
+    \item \textbf{Business Core / Logic Layer}: Costituisce il cuore elaborativo del sistema, dove risiede l'intera \textit{\term{Business Logic}}. Questo strato è implementato tramite unità funzionali indipendenti e distribuite (\textit{Funzioni Lambda}) ed è progettato per essere completamente agnostico rispetto ai dettagli di trasporto e comunicazione (come il protocollo HTTP). Il suo compito esclusivo è ricevere i dati già validati dal livello di \textit{Routing}, applicare le regole di dominio, coordinare l'elaborazione degli eventi asincroni e restituire le informazioni elaborate e strutturate.
+    \item \textbf{\term{Data Access Layer}}: Un livello totalmente passivo e disaccoppiato che offre un'astrazione tramite moduli e \term{Driver}. Consente una persistenza dati logica e mascherata ai database sottostanti (quali storage documentali, array non relazionali o conservazione audio/video grezza), celando alla logica di business i layer fisici o i linguaggi di interrogazione diretti della persistenza \term{Cloud}.
+\end{itemize}
+\subsection{Architettura di deployment} \label{subsec:architettura_deployment}
+
+L'\term{Architettura} di \term{Deployment} del sistema si divide in due componenti principali: l'applicazione Client (eseguita sul dispositivo dell'\term{Utente}) e l'infrastruttura di \term{Backend} (eseguita in \term{Cloud}). Il sistema si basa su un paradigma \textbf{\term{Serverless}} ed \textbf{\term{Event-Driven}}, per garantire scalabilità, elevata disponibilità e abbattimento dei costi legati alla gestione manuale dei server.
+
+\subsubsection{Client Mobile}
+L'applicazione viene rilasciata come eseguibile nativo sui dispositivi mobili degli utenti (Android/iOS). Essendo sviluppata tramite il \term{Framework} \textbf{Flutter}, il codice scritto in Dart viene compilato in formato binario specifico per l'\term{Architettura} hardware del dispositivo ospite.
+Il Client si interfaccia in modo del tutto indipendente ai servizi di \term{Backend} unicamente tramite la rete Internet, sfruttando protocolli di comunicazione sicuri.
+
+\subsubsection{Infrastruttura AWS (Serverless Cloud)}
+L'intero ecosistema di \term{Backend} è ospitato e gestito all'interno di \textbf{Amazon Web Services (AWS)}.
+Questa scelta architetturale consente:
+\begin{itemize}
+    \item \textbf{\term{Scalabilità dinamica}}: le risorse allocate (il calcolo e lo storage) scalano o si accendono/spengono automaticamente in base al volume di richieste ricevute dai Client;
+    \item \textbf{Isolamento e Sicurezza}: ogni funzione ha una specifica responsabilità e policy di accesso minima verso le altre risorse, limitando l'esposizione al minimo indispensabile;
+    \item \textbf{Gestione del servizio (\term{Zero Ops})}: l'uso di infrastrutture completamente gestite e la persistenza dei dati automatizzata tramite \textbf{Amazon DynamoDB} e \textbf{Amazon S3} libera il team dagli oneri di manutenzione sistemistica.
+\end{itemize}
+
+Il flusso operativo del sistema e la connessione tra i componenti AWS si articolano nei seguenti layer di \term{Deployment}:
+\begin{itemize}
+    \item \textbf{Amazon API Gateway}: costituisce l'unico punto di ingresso espositivo e si occupa di orchestrare e bilanciare le richieste HTTP provenienti dal Client.
+    \item \textbf{Amazon Cognito}: agisce come filtro primario in stretta collaborazione con l'API Gateway, validando i token \term{Utente} e negando le richieste non autorizzate.
+    \item \textbf{AWS Lambda}: rappresenta il cuore elaborativo decentralizzato; l'infrastruttura crea dinamicamente container di esecuzione che accolgono le richieste smistate e processano la \term{Business Logic} interna.
+    \item \textbf{Amazon DynamoDB e Amazon S3}: compongono lo strato di persistenza profondo ospitando, in alta disponibilità, i dati relazionali/JSON e i contenuti multimediali grezzi sollevando il livello server della necessità di memoria sul disco.
+\end{itemize}
+
+\subsubsection{Orchestrazione Event-Driven}
+Oltre alle comunicazioni sincrone HTTP per le API \textit{REST}, l'\term{Architettura} di \term{Deployment} prevede un'orchestrazione asincrona fondamentale per le funzionalità dell'applicazione (es. le notifiche del sistema \textit{Dead Man's Switch}).
+I componenti comunicano internamente tramite eventi gestiti da \textbf{Amazon EventBridge}, che funge da \textit{\term{Message Bus}} e permette:
+\begin{itemize}
+    \item \textbf{Comunicazione asincrona e disaccoppiata}: riducendo la dipendenza operativa tra i servizi;
+    \item L'esecuzione ritardata e pianificata di check sui dati salvati nel database;
+    \item L'instradamento di Eventi critici e allerte verso il servizio \textbf{Amazon SES} per l'invio automatizzato di e-mail.
+\end{itemize}
+
+\subsubsection{Infrastructure as Code (IaC)}
+Il \term{Deployment} materiale di tutte le risorse in ambiente AWS non è eseguito manualmente, ma viene automatizzato in modo riproducibile attraverso l'impiego di \textbf{AWS SAM (\term{Serverless} Application Model)} e \textbf{AWS CloudFormation}. L'infrastruttura logica e fisica è versionata sotto forma di file \term{YAML}, aderendo interamente al paradigma dell'\textit{\term{Infrastructure as Code}}.
+
+\subsection{Architettura Front End} \label{subsec:architettura_frontend}
+\subsubsection{Chatbot} \label{subsubsec:architettura_chatbot}
+
+La funzionalità del chatbot permette all'\term{Utente} di comunicare via chat con un modello di intelligenza artificiale (LLM) e di memorizzare e caricare tutte le chat passate. La funzionalità del chatbot è implementata secondo il pattern MVVM e le linee guida architetturali di Flutter, distinguendo quindi un \term{Data Layer}, composto da Service e \term{Repository}, e un \term{UI Layer}, composto da View e ViewModel. Tra questi layer figurano i vari domain models: le classi Chat (\code{ProxyChat} e \code{LocalChat}), \code{ChatMessage} e \code{MessageResponse}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{diagrammi_classi/chatbot/DC-Feature-Chatbot.pdf}
+    \caption{Diagramma delle classi relativo alle funzionalità del Chatbot}
+    \label{DC-Chatbot}
+\end{figure}
+\newpage
+
+\paragraph{ChatbotScreen}
+
+La classe \code{ChatbotScreen} rappresenta la schermata dell'applicazione dedicata al Chatbot all'interno del \textit{Presentation Layer}. La classe è composta a sua volta da numerosi widget e contiene la minima logica necessaria al rendering di tali componenti visivi, permettendo quindi una netta separazione tra presentazione e logica secondo il pattern \textit{MVVM}. Tra i numerosi widget che la costituiscono, i principali sono \code{ChatWidget}, \code{ChatHistoryWidget}, \code{ChatbotModeToggleWidget} e \code{ChatbotSendMessageWidget}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-ChatbotScreen.pdf}
+    \caption[Diagramma della classe ChatbotScreen]{Diagramma della classe \code{ChatbotScreen}}
+    \label{DC-ChatbotScreen}
+\end{figure}
+
+\paragraph{ChatWidget}
+
+La classe \code{ChatWidget} è responsabile della visualizzazione della conversazione attiva. In quanto \code{Consumer}, essa osserva il \code{ChatbotViewModel} per ottenere i dati aggiornati e reagisce ai cambiamenti dello stato applicativo, garantendo la costruzione automatica dei widget rappresentanti i messaggi scambiati in chat.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-ChatWidget.pdf}
+    \caption[Diagramma della classe ChatWidget]{Diagramma della classe \code{ChatWidget}}
+    \label{DC-ChatWidget}
+\end{figure}
+
+\paragraph{ChatHistoryWidget}
+
+\code{ChatHistoryWidget} si occupa di mostrare l'elenco delle conversazioni passate sotto forma di anteprime. Tale widget è inserito all'interno di un menu a tendina dedicato, e, in quanto \code{Consumer}, osserva il \code{ChatbotViewModel} per recuperare i dati aggiornati relativi alle chat passate. Questo widget trae grande beneficio dall'utilizzo del pattern Proxy per il fetch delle chat. Tale pattern consente infatti di generare la lista di anteprime delle conversazioni passate senza dover recuperare l'intero contenuto di ogni singola chat.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-ChatHistoryWidget.pdf}
+    \caption[Diagramma della classe ChatHistoryWidget]{Diagramma della classe \code{ChatHistoryWidget}}
+    \label{DC-ChatHistoryWidget}
+\end{figure}
+
+\paragraph{ChatbotModeToggleWidget}
+
+Questo componente dell'interfaccia consente all'\term{Utente} di selezionare la modalità operativa del chatbot. Le due modalità disponibili sono il Detective delle Relazioni e lo Specchio Intelligente. La modalità in uso viene specificata nell'invocazione dei metodi relativi all'invio di un messaggio in chat e determinano come il chatbot risponde ai messaggi dell'\term{Utente}. La generazione della risposta è a completo carico del \term{Backend}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-ChatbotModeToggleWidget.pdf}
+    \caption[Diagramma della classe ChatbotModeToggleWidget]{Diagramma della classe \code{ChatbotModeToggleWidget}}
+    \label{DC-ChatbotModeToggleWidget}
+\end{figure}
+
+\paragraph{ChatbotSendMessageWidget}
+
+\code{ChatbotSendMessageWidget} è un pulsante che gestisce l'invio dei messaggi da parte dell'\term{Utente}, delegando la gestione dei nuovi messaggi al ViewModel. Quando \code{ChatbotSendMessageWidget} viene premuto, il messaggio contenuto nel campo d'inserimento testuale viene inoltrato a \code{ChatbotViewModel}, che a sua volta comunica con \code{ChatbotRepository} in modo da memorizzare il messaggio nella chat corrente e di ricevere la risposta dal LLM.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-ChatbotSendMessageWidget.pdf}
+    \caption[Diagramma della classe ChatbotSendMessageWidget]{Diagramma della classe \code{ChatbotSendMessageWidget}}
+    \label{DC-ChatbotSendMessageWidget}
+\end{figure}
+
+\paragraph{ChatbotCreateChatWidget}
+
+Questo widget fornisce all'\term{Utente} la possibilità di avviare una nuova conversazione. Anche in questo caso, la logica viene delegata al ViewModel, preservando il disaccoppiamento tra interfaccia e dominio applicativo.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-ChatbotCreateChatWidget.pdf}
+    \caption[Diagramma della classe ChatbotCreateChatWidget]{Diagramma della classe \code{ChatbotCreateChatWidget}}
+    \label{DC-ChatbotCreateChatWidget}
+\end{figure}
+
+\paragraph{ChatbotViewModel}
+
+\code{ChatbotViewModel} gestisce lo stato dell'interfaccia chatbot: mantiene la lista delle conversazioni passate, la chat correntemente aperta e la modalità operativa selezionata. In quanto \code{ChangeNotifier}, notifica automaticamente le classi View (\code{ChatWidget}, \code{ChatHistoryWidget} e i widget di azione) ogni volta che lo stato cambia. Per accedere ai dati si affida a \code{ChatbotRepository}, al quale delega il recupero e la persistenza delle conversazioni.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-ChatbotViewModel.pdf}
+    \caption[Diagramma della classe ChatbotViewModel]{Diagramma della classe \code{ChatbotViewModel}}
+    \label{DC-ChatbotViewModel}
+\end{figure}
+
+\paragraph{Chat}
+
+L'interfaccia \code{Chat} definisce il modello astratto di una conversazione tra \term{Utente} e il chatbot. Insieme a \code{ProxyChat} e \code{LocalChat}, è utilizzata nell'implementazione del pattern Proxy.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-Chat.pdf}
+    \caption[Diagramma della classe Chat]{Diagramma della classe \code{Chat}}
+    \label{DC-Chat}
+\end{figure}
+
+\paragraph{ProxyChat}
+
+\code{ProxyChat} implementa l'interfaccia \code{Chat} e viene utilizzata da \code{ChatbotViewModel} per rappresentare le conversazioni storiche. Ritarda il caricamento completo dei messaggi, delegandolo a \code{ChatbotRepository} solo quando necessario, e mantiene internamente un riferimento a \code{LocalChat}, che istanzia e popola al primo accesso effettivo ai dati.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-ProxyChat.pdf}
+    \caption[Diagramma della classe ProxyChat]{Diagramma della classe \code{ProxyChat}}
+    \label{DC-ProxyChat}
+\end{figure}
+
+\paragraph{LocalChat}
+
+\code{LocalChat} è l'implementazione del modello di conversazione che mantiene in memoria tutte le informazioni e i messaggi associati alla chat. Essa rappresenta l'oggetto reale utilizzato da \code{ProxyChat} quando c'è effettivamente bisogno di caricare i messaggi della chat, ad esempio per visualizzarli a schermo.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-LocalChat.pdf}
+    \caption[Diagramma della classe LocalChat]{Diagramma della classe \code{LocalChat}}
+    \label{DC-LocalChat}
+\end{figure}
+
+\paragraph{ChatMessage}
+
+\code{ChatMessage} modella un singolo messaggio all'interno di una conversazione, includendo contenuto, tipologia e data di creazione e di aggiornamento. Fornisce inoltre un modo per distinguere tra messaggi generati dall'\term{Utente} e quelli prodotti dal LLM.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-ChatMessage.pdf}
+    \caption[Diagramma della classe ChatMessage]{Diagramma della classe \code{ChatMessage}}
+    \label{DC-ChatMessage}
+\end{figure}
+
+\paragraph{ChatMode}
+
+\code{ChatMode} è un'enumerazione che rappresenta le due diverse modalità operative del chatbot. Viene utilizzato da \code{ChatbotViewModel}, che lo inoltra a \code{ChatbotRepository}, il quale lo utilizza per invocare i metodi del \code{ChatbotService} relativi all'invio dei messaggi in chat. Sarà poi il \term{Backend} a interpretarlo e utilizzarlo per generare la risposta al messaggio inviato dall'\term{Utente}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-ChatMode.pdf}
+    \caption[Diagramma della classe ChatMode]{Diagramma della classe \code{ChatMode}}
+    \label{DC-ChatMode}
+\end{figure}
+
+\paragraph{MessageType}
+
+\code{MessageType} è un'enumerazione che consente di classificare i messaggi in base alla loro origine, distinguendo tra input dell'\term{Utente} e output del LLM. È utilizzata nella classe \code{ChatMessage} e necessaria per stabilire l'impaginazione dei messaggi all'interno di \code{ChatWidget}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-MessageType.pdf}
+    \caption[Diagramma della classe MessageType]{Diagramma della classe \code{MessageType}}
+    \label{DC-MessageType}
+\end{figure}
+
+\paragraph{MessageResponse}
+
+\code{MessageResponse} incapsula il risultato di un'interazione con il LLM, includendo il messaggio generato e, eventualmente, il titolo generato a partire dal messaggio originale. È utilizzato da \code{ChatbotRepository}, che a sua volta lo ritorna in risposta a \code{ChatbotViewModel} per l'aggiornamento dello stato della View.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-MessageResponse.pdf}
+    \caption[Diagramma della classe MessageResponse]{Diagramma della classe \code{MessageResponse}}
+    \label{DC-MessageResponse}
+\end{figure}
+
+\paragraph{ChatbotRepository}
+
+\code{ChatbotRepository} è il tramite tra \code{ChatbotViewModel} e la comunicazione di rete: riceve le richieste dal ViewModel, le inoltra a \code{ChatbotService} e trasforma le risposte grezze in oggetti di dominio (\code{LocalChat}, \code{ChatMessage}) tramite \code{ChatDTO}, restituendoli al ViewModel in un formato pronto all'uso.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{diagrammi_classi/chatbot/DC-ChatbotRepository.pdf}
+    \caption[Diagramma della classe ChatbotRepository]{Diagramma della classe \code{ChatbotRepository}}
+    \label{DC-ChatbotRepository}
+\end{figure}
+
+\paragraph{ChatbotService}
+
+\code{ChatbotService} rappresenta il livello infrastrutturale responsabile della comunicazione con le API remote. Si occupa della gestione delle richieste e delle risposte, operando su rappresentazioni dei dati adatte allo scambio su rete. Restituisce i dati grezzi a \code{ChatbotRepository}, il quale si occupa poi di trasformarli in modelli di dominio.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{diagrammi_classi/chatbot/DC-ChatbotService.pdf}
+    \caption[Diagramma della classe ChatbotService]{Diagramma della classe \code{ChatbotService}}
+    \label{DC-ChatbotService}
+\end{figure}
+
+\paragraph{ChatDTO}
+
+\code{ChatDTO} è un oggetto di trasferimento dati utilizzato per convertire le informazioni tra il formato utilizzato dal sistema esterno e quello del dominio applicativo. Ha due ruoli principali:
+\begin{itemize}
+    \item trasformare i risultati delle chiamate ad API da JSON a oggetti di tipo \code{Chat}
+    \item serializzare oggetti di tipo \code{Chat}, generando la loro rappresentazione JSON per l'invio alle API.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-ChatDTO.pdf}
+    \caption[Diagramma della classe ChatDTO]{Diagramma della classe \code{ChatDTO}}
+    \label{DC-ChatDTO}
+\end{figure}
 
 \end{document}
+
