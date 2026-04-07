@@ -112,7 +112,7 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & In lavorazione\\
-\textbf{Versione:} & 0.1.3 \\
+\textbf{Versione:} & 0.1.4 \\
 \textbf{Responsabile:} & Gabriele Scaggiante \\
 \textbf{Redattori:} & 
 \begin{tabular}[t]{@{}l@{}}
@@ -688,19 +688,19 @@ L'interfaccia \code{Chat} definisce il modello astratto di una conversazione tra
 
 \newpage
 \subsubsection{Diario criptato e diario fittizio} \label{subsubsec:architettura_diari}
-La funzionalità di diario criptato e diario fittizio permette all'\term{Utente} di utilizzare due archivi separati in cui memorizzare note, contenenti testo, immagini e/o contenuti audio, protetti da password . L'implementazione della funzionalità segue il pattern MVVM e le linee guida del \term{Framework} Flutter, risultanti nella suddivisione tra un \term{Data Layer}, composto da classi Service e \term{Repository}, responsabili per la \textit{\term{Business Logic}} e per la \textit{\term{Persistence Logic}} rispetivamente, ed un \term{UI Layer}, composto da classi View e Viewmodel. Gli oggetti principali della funzionalità sono le classi Note (\code{ProxyNote} e \code{LocalNote}), \code{NoteElement} e \code{DiarySession}. 
+La funzionalità di diario criptato e diario fittizio permette all'\term{Utente} di utilizzare due archivi separati in cui memorizzare note, contenenti testo, immagini e/o contenuti audio, protetti da password . L'implementazione della funzionalità segue il pattern MVVM e le linee guida del \term{Framework} Flutter, risultanti nella suddivisione tra un \term{Data Layer}, composto da classi Service e \term{Repository}, responsabili per la \textit{\term{Business Logic}} e per la \textit{\term{Persistence Logic}} rispettivamente, ed un \term{UI Layer}, composto da classi View e Viewmodel. Gli oggetti principali della funzionalità sono le classi Note (\code{ProxyNote} e \code{LocalNote}), \code{NoteElement} e \code{DiarySession}. 
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{diagrammi_classi/diari/DC-Feature-Diari.pdf}
     \caption{Diagramma delle classi relativo alle funzionalità del diario criptato}
-    \label{DC-Chatbot}
+    \label{DC-Diari}
 \end{figure}
 
 \newpage
 
 \paragraph{DiaryAccessScreen}
-La classe \code{DiaryAccessScreen} si occupa della rappresentazione visiva della schermata per l'accesso alla funzionalità dei diari. Contiene solamente la logica necessaria per il rendering dei widget che la compongono per garantire la separazione tra presentazione e logica, come previsto dal pattern MVVM.
+La classe \code{DiaryAccessScreen} si occupa della rappresentazione visiva della schermata per l'accesso alla funzionalità dei diari. Contiene solamente la logica necessaria per il rendering dei widget che la compongono, tra cui \code{PasswordFormWidget}, per garantire la separazione tra presentazione e logica, come previsto dal pattern MVVM. Per questo delega la gestione dello stato a \code{DiaryAccessViewModel}.
 
 \begin{figure}[H]
     \centering
@@ -720,7 +720,7 @@ La classe \code{PasswordFormWidget} è responsabile della visualizzazione dei ca
 \end{figure}
 
 \paragraph{DiaryAccessViewModel}
-La classe \code{DiaryAccessViewModel} gestisce lo stato dell'applicazione e coordina le operazioni tra i Layer, implementando il pattern Observer. la classe è un \code{ChangeNotifier} e mantiene una lista di \textit{listeners} che vengono notificati quando avvengono cambiamenti che necessitano di un loro aggiornamento, in questo caso componenti che devono reagire a tentativi di accesso ai diari da parte dell'\term{Utente}.
+La classe \code{DiaryAccessViewModel} gestisce lo stato dell'applicazione e coordina le operazioni tra i Layer, implementando il pattern Observer. la classe è un \code{ChangeNotifier} e mantiene una lista di \textit{listeners} che vengono notificati quando avvengono cambiamenti che necessitano di un loro aggiornamento, in questo caso componenti che devono reagire a tentativi di accesso ai diari da parte dell'\term{Utente}. Per accedere ai dati e verificare le credenziali si affida alla classe \code{DiaryAccountRepository}.
 
 \begin{figure}[H]
     \centering
@@ -740,7 +740,7 @@ La classe \code{DiaryAccessViewModel} gestisce lo stato dell'applicazione e coor
 \end{figure}
 
 \paragraph{DiaryAccountService}
-La classe \code{DiaryAccountService} rappresenta lo strato responsabile della gestione delle richieste verso e risposte da API remota. 
+La classe \code{DiaryAccountService} rappresenta lo strato infrastrutturale responsabile della comunicazione con le API remote, occupandosi della gestione delle richieste verso e delle risposte. Restituisce i dati grezzi a \code{DiaryAccountRepository}, il quale si occupa poi di trasformarli in oggetti di dominio. 
 
 \begin{figure}[H]
     \centering
@@ -760,7 +760,7 @@ L'enumerazione \code{DiaryAccessResult} permette la classificazione della rispos
 \end{figure}
 
 \paragraph{DiaryScreen}
-La classe \code{DiaryScreen} gestisce la rappresentazione visiva della schermata principale dei diari nel \textit{presentation layer}, e quindi contiene solamente la logica necesseria al rendering dei suoi componenti widget.
+La classe \code{DiaryScreen} gestisce la rappresentazione visiva della schermata principale dei diari nel \textit{presentation layer}, contenendo solamente la logica necessaria al rendering dei suoi componenti widget, tra cui \code{NoteListWidget} e \code{NoteActionsWidget}. La gestione dello stato è delegata alla classe \code{DiaryViewModel}.
 
 \begin{figure}[H]
     \centering
@@ -770,7 +770,7 @@ La classe \code{DiaryScreen} gestisce la rappresentazione visiva della schermata
 \end{figure}
 
 \paragraph{NoteListWidget}
-La classe \code{NoteListWidget} si occupa della visualizzazione della lista delle note contenute nel diario in cui l'\term{Utente} ha effettuato l'accesso e l'eventuale visualizzazione dei contenuti di una nota selezionata. Trattandosi di un \code{consumer}, la classe osserva gli aggiornamenti dei dati nel ViewModel in modo da reagire di conseguenza alla selezione, modifica o eliminazione delle note. 
+La classe \code{NoteListWidget} si occupa della visualizzazione della lista delle note contenute nel diario in cui l'\term{Utente} ha effettuato l'accesso e l'eventuale visualizzazione dei contenuti di una nota selezionata. Trattandosi di un \code{Consumer}, la classe osserva gli aggiornamenti dei dati in \code{DiaryViewModel} in modo da reagire di conseguenza alla selezione, modifica o eliminazione delle note. 
 
 \begin{figure}[H]
     \centering
@@ -780,7 +780,7 @@ La classe \code{NoteListWidget} si occupa della visualizzazione della lista dell
 \end{figure}
 
 \paragraph{NoteActionsWidget}
-La classe \code{NoteActionsWidget} si occupa della visualizzazione delle componenti di interazione della funzionalità di diario.
+La classe \code{NoteActionsWidget} si occupa della visualizzazione delle componenti di interazione della funzionalità di diario. La logica applicativa viene delegata a \code{DiaryViewModel}, preservando il disaccoppiamento tra interfaccia e dominio applicativo.
 
 \begin{figure}[H]
     \centering
@@ -790,7 +790,7 @@ La classe \code{NoteActionsWidget} si occupa della visualizzazione delle compone
 \end{figure}
 
 \paragraph{DiaryViewModel}
-\code{DiaryViewModel} si occupa della gestione dello stato dell'applicazione e del coordinamento delle operazioni tra UI e \term{Data Layer}. La classe tiene conto della lista di note presenti all'interno del diario attualmente aperto e della nota attualmente aperta dall'\term{Utente}. Inoltre delega alla classe \code{NoteRepository} l'accesso e la gestione dei dati delle note per le operazioni di memoria. La classe implementa il Mixin \code{ChangeNotifier}, e quindi il pattern Observer, mantenendo una lista di \textit{listeners} che vengono notificati a seguito di operazioni a loro rilevanti.
+\code{DiaryViewModel} si occupa della gestione dello stato dell'applicazione e del coordinamento delle operazioni tra UI e \term{Data Layer}. La classe tiene conto della lista di note presenti all'interno del diario attualmente aperto e della nota attualmente aperta dall'\term{Utente}. Inoltre delega alla classe \code{NoteRepository} l'accesso e la gestione dei dati delle note per le operazioni di memoria. La classe implementa il Mixin \code{ChangeNotifier}, e quindi il pattern Observer, mantenendo una lista di \textit{listeners} che vengono notificati a seguito di operazioni a loro rilevanti, in questo caso \code{NoteListWidget} e \code{NoteActionsWidget}.
 
 \begin{figure}[H]
     \centering
@@ -800,7 +800,7 @@ La classe \code{NoteActionsWidget} si occupa della visualizzazione delle compone
 \end{figure}
 
 \paragraph{DiarySession}
-La classe \code{DiarySession} modella l'istanza effettiva del diario, tenendo traccia del tipo di diario a cui l'\term{Utente} ha effettuato l'accesso e gestendo le informazioni di sessione. La classe implementa il pattern Singleton per fare in modo che in ogni dato momento di utilizzo dell'applicazione possa esistera al più una singola istanza di diario.
+La classe \code{DiarySession} modella l'istanza effettiva del diario, tenendo traccia del tipo di diario a cui l'\term{Utente} ha effettuato l'accesso e gestendo le informazioni di sessione. La classe implementa il pattern Singleton per fare in modo che in ogni dato momento di utilizzo dell'applicazione possa esistere al più una singola istanza di diario.
 
 \begin{figure}[H]
     \centering
@@ -810,7 +810,7 @@ La classe \code{DiarySession} modella l'istanza effettiva del diario, tenendo tr
 \end{figure}
 
 \paragraph{DiaryType}
-L'enumerazione \code{DiaryType} rappresenta le due tipologie di diario disponibili e viene utilizzata da \code{DiarySession} per comunicare al ViewModel quale archivio di note visualizzare.
+L'enumerazione \code{DiaryType} rappresenta le due tipologie di diario disponibili e viene utilizzata da \code{DiarySession} per comunicare a \code{DiaryViewModel} quale archivio di note visualizzare.
 
 \begin{figure}[H]
     \centering
@@ -890,7 +890,7 @@ La classe concreta \code{NoteAudioElement} è la specializzazione di \code{NoteE
 \end{figure}
 
 \paragraph{NoteService}
-La classe \code{NoteService} rappresenta il livello infrastrutturale dedicato alla comunicazione con le API remote, gestendo richieste e risposte durante le operazioni di memoria sulle note.
+La classe \code{NoteService} rappresenta il livello infrastrutturale dedicato alla comunicazione con le API remote, gestendo richieste e risposte durante le operazioni sulle note. Restituisce i dati grezzi a \code{NoteRepository}, il quale si occupa poi di trasformarli in modelli di dominio tramite \code{NoteDTO}.
 
 \begin{figure}[H]
     \centering
@@ -900,7 +900,7 @@ La classe \code{NoteService} rappresenta il livello infrastrutturale dedicato al
 \end{figure}
 
 \paragraph{NoteRepository}
-La classe \code{NoteRepository} funge da strato di astrazione tra \code{DiaryViewModel} e la \term{Persistence Logic} di \code{NoteService}, nascondendola al resto dell'applicazione.
+La classe \code{NoteRepository} funge da strato di astrazione tra \code{DiaryViewModel} e la \term{Persistence Logic} di \code{NoteService}, trasformando i dati grezzi in oggetti di dominio tramite \code{NoteDTO} e nascondendone la natura al resto dell'applicazione.
 
 \begin{figure}[H]
     \centering
@@ -910,7 +910,11 @@ La classe \code{NoteRepository} funge da strato di astrazione tra \code{DiaryVie
 \end{figure}
 
 \paragraph{NoteDTO}
-\code{NoteDTO} è un Data Transfer Object che si occupa della deserializzazione dei risultati delle chiamate API, in formato JSON, e loro trasformazione in oggetti di tipo \code{Note}, e della serializzazione di oggetti di tipo \code{Note} per operazioni che richiedono l'invio dei dati alle API come il salvataggio di una nuova nota.
+\code{NoteDTO} è un Data Transfer Object con due ruoli principali:
+\begin{itemize}
+    \item deserializzare i risultati delle chiamate API, in formato JSON, traformandoli in oggetti di tipo \code{Note}.
+    \item serializzare oggetti di tipo \code{Note}, generando la loro rappresentazione JSON per operazioni che richiedono l'invio dei dati alle API, come il salvataggio di una nuova nota.
+\end{itemize}
 
 \begin{figure}[H]
     \centering
