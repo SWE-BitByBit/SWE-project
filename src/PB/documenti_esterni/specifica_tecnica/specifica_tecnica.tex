@@ -710,7 +710,7 @@ La classe \code{DiaryAccessScreen} si occupa della rappresentazione visiva della
 \end{figure}
 
 \paragraph{PasswordFormWidget}
-La classe \code{PasswordFormWidget} è responsabile della visualizzazione dei campi utilizzati per l'accesso ai diari. \code{PasswordFormWidget} è un \code{consumer} che osserva il ViewModel per ottenere i dati aggiornati e reagire di conseguenza.
+La classe \code{PasswordFormWidget} è responsabile della visualizzazione dei campi utilizzati per l'accesso ai diari. \code{PasswordFormWidget} è un \code{Consumer} che osserva \code{DiaryAccessViewModel} per ottenere i dati aggiornati e reagire di conseguenza.
 
 \begin{figure}[H]
     \centering
@@ -740,7 +740,7 @@ La classe \code{DiaryAccessViewModel} gestisce lo stato dell'applicazione e coor
 \end{figure}
 
 \paragraph{DiaryAccountService}
-La classe \code{DiaryAccountService} rappresenta lo strato infrastrutturale responsabile della comunicazione con le API remote, occupandosi della gestione delle richieste verso e delle risposte. Restituisce i dati grezzi a \code{DiaryAccountRepository}, il quale si occupa poi di trasformarli in oggetti di dominio. 
+La classe \code{DiaryAccountService} rappresenta lo strato infrastrutturale responsabile della comunicazione con le API remote, occupandosi della gestione delle richieste e delle risposte. Restituisce i dati grezzi a \code{DiaryAccountRepository}, il quale si occupa poi di trasformarli in oggetti di dominio. 
 
 \begin{figure}[H]
     \centering
@@ -912,7 +912,7 @@ La classe \code{NoteRepository} funge da strato di astrazione tra \code{DiaryVie
 \paragraph{NoteDTO}
 \code{NoteDTO} è un Data Transfer Object con due ruoli principali:
 \begin{itemize}
-    \item deserializzare i risultati delle chiamate API, in formato JSON, traformandoli in oggetti di tipo \code{Note}.
+    \item deserializzare i risultati delle chiamate API, in formato JSON, trasformandoli in oggetti di tipo \code{Note}.
     \item serializzare oggetti di tipo \code{Note}, generando la loro rappresentazione JSON per operazioni che richiedono l'invio dei dati alle API, come il salvataggio di una nuova nota.
 \end{itemize}
 
