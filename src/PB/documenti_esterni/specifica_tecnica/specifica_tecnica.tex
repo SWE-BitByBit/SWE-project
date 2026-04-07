@@ -55,6 +55,8 @@
 
 \newcommand{\ignoreglossary}{}
 
+\newcommand{\code}[1]{{\ttfamily\textcolor{purple!85!black}{#1}}}
+
 \begin{document}
 
 % ====== FRONT PAGE ======
@@ -110,15 +112,18 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & In lavorazione\\
-\textbf{Versione:} & 0.1.2 \\
+\textbf{Versione:} & 0.1.3 \\
 \textbf{Responsabile:} & Gabriele Scaggiante \\
 \textbf{Redattori:} & 
 \begin{tabular}[t]{@{}l@{}}
 Gabriele Scaggiante\\
+Dennis Parolin\\
 \end{tabular} \\
 \textbf{Verificatori:} & 
 \begin{tabular}[t]{@{}l@{}}
 Riccardo Manisi\\
+Dennis Parolin\\
+Marco Sanguin\\
 \end{tabular} \\
 \textbf{Destinatari:} &
 \begin{tabular}[t]{@{}l@{}}
@@ -145,6 +150,8 @@ Gruppo BitByBit\\
 \hline
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+\hline
+0.1.3 & 2026-04-04 & Gabriele Scaggiante & Iniziata la sezione \hyperref[subsec:architettura_frontend]{Architettura frontend}, completata \hyperref[subsubsec:architettura_chatbot]{Architettura chatbot} & Marco Sanguin \\
 \hline
 0.1.2 & 2026-04-02 & Dennis Parolin & Redatta la sezione \hyperref[subsec:architettura_logica]{Architettura logica} e \hyperref[subsec:architettura_deployment]{Architettura di deployment} & Marco Sanguin \\
 \hline
@@ -433,7 +440,7 @@ L'\term{Architettura} logica adibita all'interazione tra i device mobili e l'amb
 \begin{itemize}
     \item \textbf{Presentation e Routing Layer}: Costituisce il \textit{\term{Single Point of Entry}} dell'infrastruttura esposto al software. Ha la pura e unica responsabilità di tracciare e smistare le richieste esterne verso i rami corretti. Intercetta validazioni e autorizzazioni per poi rilasciare formalmente il \term{Payload} agli strati contigui.
     \item \textbf{Business Core / Logic Layer}: Costituisce il cuore elaborativo del sistema, dove risiede l'intera \textit{\term{Business Logic}}. Questo strato è implementato tramite unità funzionali indipendenti e distribuite (\textit{Funzioni Lambda}) ed è progettato per essere completamente agnostico rispetto ai dettagli di trasporto e comunicazione (come il protocollo HTTP). Il suo compito esclusivo è ricevere i dati già validati dal livello di \textit{Routing}, applicare le regole di dominio, coordinare l'elaborazione degli eventi asincroni e restituire le informazioni elaborate e strutturate.
-    \item \textbf{\term{Data Access Layer}}: Un livello totalmente passivo ed estrapolato che offre un'astrazione tramite moduli e \term{Driver}. Consente una persistenza dati logica e mascherata ai database sottostanti (quali storage documentali, array non relazionali o conservazione audio/video grezza), celando alla logica di business i layer fisici o i linguaggi di interrogazione diretti della persistenza \term{Cloud}.
+    \item \textbf{\term{Data Access Layer}}: Un livello totalmente passivo e disaccoppiato che offre un'astrazione tramite moduli e \term{Driver}. Consente una persistenza dati logica e mascherata ai database sottostanti (quali storage documentali, array non relazionali o conservazione audio/video grezza), celando alla logica di business i layer fisici o i linguaggi di interrogazione diretti della persistenza \term{Cloud}.
 \end{itemize}
 \subsection{Architettura di deployment} \label{subsec:architettura_deployment}
 
@@ -449,7 +456,7 @@ Questa scelta architetturale consente:
 \begin{itemize}
     \item \textbf{\term{Scalabilità dinamica}}: le risorse allocate (il calcolo e lo storage) scalano o si accendono/spengono automaticamente in base al volume di richieste ricevute dai Client;
     \item \textbf{Isolamento e Sicurezza}: ogni funzione ha una specifica responsabilità e policy di accesso minima verso le altre risorse, limitando l'esposizione al minimo indispensabile;
-    \item \textbf{Gestione del servizio (\term{Zero Ops})}: l'uso di infrastrutture completamente gestite e la persistenza dei dati automatizzata tramite \textbf{Amazon DynamoDB} e \textbf{Amazon S3} solleva il team dalla manutenzione sistemistica.
+    \item \textbf{Gestione del servizio (\term{Zero Ops})}: l'uso di infrastrutture completamente gestite e la persistenza dei dati automatizzata tramite \textbf{Amazon DynamoDB} e \textbf{Amazon S3} libera il team dagli oneri di manutenzione sistemistica.
 \end{itemize}
 
 Il flusso operativo del sistema e la connessione tra i componenti AWS si articolano nei seguenti layer di \term{Deployment}:
@@ -471,4 +478,211 @@ I componenti comunicano internamente tramite eventi gestiti da \textbf{Amazon Ev
 
 \subsubsection{Infrastructure as Code (IaC)}
 Il \term{Deployment} materiale di tutte le risorse in ambiente AWS non è eseguito manualmente, ma viene automatizzato in modo riproducibile attraverso l'impiego di \textbf{AWS SAM (\term{Serverless} Application Model)} e \textbf{AWS CloudFormation}. L'infrastruttura logica e fisica è versionata sotto forma di file \term{YAML}, aderendo interamente al paradigma dell'\textit{\term{Infrastructure as Code}}.
+
+\subsection{Architettura Front End} \label{subsec:architettura_frontend}
+\subsubsection{Chatbot} \label{subsubsec:architettura_chatbot}
+
+La funzionalità del chatbot permette all'\term{Utente} di comunicare via chat con un modello di intelligenza artificiale (LLM) e di memorizzare e caricare tutte le chat passate. La funzionalità del chatbot è implementata secondo il pattern MVVM e le linee guida architetturali di Flutter, distinguendo quindi un \term{Data Layer}, composto da Service e \term{Repository}, e un \term{UI Layer}, composto da View e ViewModel. Tra questi layer figurano i vari domain models: le classi Chat (\code{ProxyChat} e \code{LocalChat}), \code{ChatMessage} e \code{MessageResponse}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{diagrammi_classi/chatbot/DC-Feature-Chatbot.pdf}
+    \caption{Diagramma delle classi relativo alle funzionalità del Chatbot}
+    \label{DC-Chatbot}
+\end{figure}
+\newpage
+
+\paragraph{ChatbotScreen}
+
+La classe \code{ChatbotScreen} rappresenta la schermata dell'applicazione dedicata al Chatbot all'interno del \textit{Presentation Layer}. La classe è composta a sua volta da numerosi widget e contiene la minima logica necessaria al rendering di tali componenti visivi, permettendo quindi una netta separazione tra presentazione e logica secondo il pattern \textit{MVVM}. Tra i numerosi widget che la costituiscono, i principali sono \code{ChatWidget}, \code{ChatHistoryWidget}, \code{ChatbotModeToggleWidget} e \code{ChatbotSendMessageWidget}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-ChatbotScreen.pdf}
+    \caption[Diagramma della classe ChatbotScreen]{Diagramma della classe \code{ChatbotScreen}}
+    \label{DC-ChatbotScreen}
+\end{figure}
+
+\paragraph{ChatWidget}
+
+La classe \code{ChatWidget} è responsabile della visualizzazione della conversazione attiva. In quanto \code{Consumer}, essa osserva il \code{ChatbotViewModel} per ottenere i dati aggiornati e reagisce ai cambiamenti dello stato applicativo, garantendo la costruzione automatica dei widget rappresentanti i messaggi scambiati in chat.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-ChatWidget.pdf}
+    \caption[Diagramma della classe ChatWidget]{Diagramma della classe \code{ChatWidget}}
+    \label{DC-ChatWidget}
+\end{figure}
+
+\paragraph{ChatHistoryWidget}
+
+\code{ChatHistoryWidget} si occupa di mostrare l'elenco delle conversazioni passate sotto forma di anteprime. Tale widget è inserito all'interno di un menu a tendina dedicato, e, in quanto \code{Consumer}, osserva il \code{ChatbotViewModel} per recuperare i dati aggiornati relativi alle chat passate. Questo widget trae grande beneficio dall'utilizzo del pattern Proxy per il fetch delle chat. Tale pattern consente infatti di generare la lista di anteprime delle conversazioni passate senza dover recuperare l'intero contenuto di ogni singola chat.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-ChatHistoryWidget.pdf}
+    \caption[Diagramma della classe ChatHistoryWidget]{Diagramma della classe \code{ChatHistoryWidget}}
+    \label{DC-ChatHistoryWidget}
+\end{figure}
+
+\paragraph{ChatbotModeToggleWidget}
+
+Questo componente dell'interfaccia consente all'\term{Utente} di selezionare la modalità operativa del chatbot. Le due modalità disponibili sono il Detective delle Relazioni e lo Specchio Intelligente. La modalità in uso viene specificata nell'invocazione dei metodi relativi all'invio di un messaggio in chat e determinano come il chatbot risponde ai messaggi dell'\term{Utente}. La generazione della risposta è a completo carico del \term{Backend}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-ChatbotModeToggleWidget.pdf}
+    \caption[Diagramma della classe ChatbotModeToggleWidget]{Diagramma della classe \code{ChatbotModeToggleWidget}}
+    \label{DC-ChatbotModeToggleWidget}
+\end{figure}
+
+\paragraph{ChatbotSendMessageWidget}
+
+\code{ChatbotSendMessageWidget} è un pulsante che gestisce l'invio dei messaggi da parte dell'\term{Utente}, delegando la gestione dei nuovi messaggi al ViewModel. Quando \code{ChatbotSendMessageWidget} viene premuto, il messaggio contenuto nel campo d'inserimento testuale viene inoltrato a \code{ChatbotViewModel}, che a sua volta comunica con \code{ChatbotRepository} in modo da memorizzare il messaggio nella chat corrente e di ricevere la risposta dal LLM.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-ChatbotSendMessageWidget.pdf}
+    \caption[Diagramma della classe ChatbotSendMessageWidget]{Diagramma della classe \code{ChatbotSendMessageWidget}}
+    \label{DC-ChatbotSendMessageWidget}
+\end{figure}
+
+\paragraph{ChatbotCreateChatWidget}
+
+Questo widget fornisce all'\term{Utente} la possibilità di avviare una nuova conversazione. Anche in questo caso, la logica viene delegata al ViewModel, preservando il disaccoppiamento tra interfaccia e dominio applicativo.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-ChatbotCreateChatWidget.pdf}
+    \caption[Diagramma della classe ChatbotCreateChatWidget]{Diagramma della classe \code{ChatbotCreateChatWidget}}
+    \label{DC-ChatbotCreateChatWidget}
+\end{figure}
+
+\paragraph{ChatbotViewModel}
+
+\code{ChatbotViewModel} gestisce lo stato dell'interfaccia chatbot: mantiene la lista delle conversazioni passate, la chat correntemente aperta e la modalità operativa selezionata. In quanto \code{ChangeNotifier}, notifica automaticamente le classi View (\code{ChatWidget}, \code{ChatHistoryWidget} e i widget di azione) ogni volta che lo stato cambia. Per accedere ai dati si affida a \code{ChatbotRepository}, al quale delega il recupero e la persistenza delle conversazioni.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-ChatbotViewModel.pdf}
+    \caption[Diagramma della classe ChatbotViewModel]{Diagramma della classe \code{ChatbotViewModel}}
+    \label{DC-ChatbotViewModel}
+\end{figure}
+
+\paragraph{Chat}
+
+L'interfaccia \code{Chat} definisce il modello astratto di una conversazione tra \term{Utente} e il chatbot. Insieme a \code{ProxyChat} e \code{LocalChat}, è utilizzata nell'implementazione del pattern Proxy.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-Chat.pdf}
+    \caption[Diagramma della classe Chat]{Diagramma della classe \code{Chat}}
+    \label{DC-Chat}
+\end{figure}
+
+\paragraph{ProxyChat}
+
+\code{ProxyChat} implementa l'interfaccia \code{Chat} e viene utilizzata da \code{ChatbotViewModel} per rappresentare le conversazioni storiche. Ritarda il caricamento completo dei messaggi, delegandolo a \code{ChatbotRepository} solo quando necessario, e mantiene internamente un riferimento a \code{LocalChat}, che istanzia e popola al primo accesso effettivo ai dati.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-ProxyChat.pdf}
+    \caption[Diagramma della classe ProxyChat]{Diagramma della classe \code{ProxyChat}}
+    \label{DC-ProxyChat}
+\end{figure}
+
+\paragraph{LocalChat}
+
+\code{LocalChat} è l'implementazione del modello di conversazione che mantiene in memoria tutte le informazioni e i messaggi associati alla chat. Essa rappresenta l'oggetto reale utilizzato da \code{ProxyChat} quando c'è effettivamente bisogno di caricare i messaggi della chat, ad esempio per visualizzarli a schermo.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-LocalChat.pdf}
+    \caption[Diagramma della classe LocalChat]{Diagramma della classe \code{LocalChat}}
+    \label{DC-LocalChat}
+\end{figure}
+
+\paragraph{ChatMessage}
+
+\code{ChatMessage} modella un singolo messaggio all'interno di una conversazione, includendo contenuto, tipologia e data di creazione e di aggiornamento. Fornisce inoltre un modo per distinguere tra messaggi generati dall'\term{Utente} e quelli prodotti dal LLM.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-ChatMessage.pdf}
+    \caption[Diagramma della classe ChatMessage]{Diagramma della classe \code{ChatMessage}}
+    \label{DC-ChatMessage}
+\end{figure}
+
+\paragraph{ChatMode}
+
+\code{ChatMode} è un'enumerazione che rappresenta le due diverse modalità operative del chatbot. Viene utilizzato da \code{ChatbotViewModel}, che lo inoltra a \code{ChatbotRepository}, il quale lo utilizza per invocare i metodi del \code{ChatbotService} relativi all'invio dei messaggi in chat. Sarà poi il \term{Backend} a interpretarlo e utilizzarlo per generare la risposta al messaggio inviato dall'\term{Utente}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-ChatMode.pdf}
+    \caption[Diagramma della classe ChatMode]{Diagramma della classe \code{ChatMode}}
+    \label{DC-ChatMode}
+\end{figure}
+
+\paragraph{MessageType}
+
+\code{MessageType} è un'enumerazione che consente di classificare i messaggi in base alla loro origine, distinguendo tra input dell'\term{Utente} e output del LLM. È utilizzata nella classe \code{ChatMessage} e necessaria per stabilire l'impaginazione dei messaggi all'interno di \code{ChatWidget}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-MessageType.pdf}
+    \caption[Diagramma della classe MessageType]{Diagramma della classe \code{MessageType}}
+    \label{DC-MessageType}
+\end{figure}
+
+\paragraph{MessageResponse}
+
+\code{MessageResponse} incapsula il risultato di un'interazione con il LLM, includendo il messaggio generato e, eventualmente, il titolo generato a partire dal messaggio originale. È utilizzato da \code{ChatbotRepository}, che a sua volta lo ritorna in risposta a \code{ChatbotViewModel} per l'aggiornamento dello stato della View.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-MessageResponse.pdf}
+    \caption[Diagramma della classe MessageResponse]{Diagramma della classe \code{MessageResponse}}
+    \label{DC-MessageResponse}
+\end{figure}
+
+\paragraph{ChatbotRepository}
+
+\code{ChatbotRepository} è il tramite tra \code{ChatbotViewModel} e la comunicazione di rete: riceve le richieste dal ViewModel, le inoltra a \code{ChatbotService} e trasforma le risposte grezze in oggetti di dominio (\code{LocalChat}, \code{ChatMessage}) tramite \code{ChatDTO}, restituendoli al ViewModel in un formato pronto all'uso.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{diagrammi_classi/chatbot/DC-ChatbotRepository.pdf}
+    \caption[Diagramma della classe ChatbotRepository]{Diagramma della classe \code{ChatbotRepository}}
+    \label{DC-ChatbotRepository}
+\end{figure}
+
+\paragraph{ChatbotService}
+
+\code{ChatbotService} rappresenta il livello infrastrutturale responsabile della comunicazione con le API remote. Si occupa della gestione delle richieste e delle risposte, operando su rappresentazioni dei dati adatte allo scambio su rete. Restituisce i dati grezzi a \code{ChatbotRepository}, il quale si occupa poi di trasformarli in modelli di dominio.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{diagrammi_classi/chatbot/DC-ChatbotService.pdf}
+    \caption[Diagramma della classe ChatbotService]{Diagramma della classe \code{ChatbotService}}
+    \label{DC-ChatbotService}
+\end{figure}
+
+\paragraph{ChatDTO}
+
+\code{ChatDTO} è un oggetto di trasferimento dati utilizzato per convertire le informazioni tra il formato utilizzato dal sistema esterno e quello del dominio applicativo. Ha due ruoli principali:
+\begin{itemize}
+    \item trasformare i risultati delle chiamate ad API da JSON a oggetti di tipo \code{Chat}
+    \item serializzare oggetti di tipo \code{Chat}, generando la loro rappresentazione JSON per l'invio alle API.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-ChatDTO.pdf}
+    \caption[Diagramma della classe ChatDTO]{Diagramma della classe \code{ChatDTO}}
+    \label{DC-ChatDTO}
+\end{figure}
+
 \end{document}
+
