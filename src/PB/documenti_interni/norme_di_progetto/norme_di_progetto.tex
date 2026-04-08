@@ -329,7 +329,7 @@ Le attività identificate dal gruppo per il \term{Processo} di Fonitura sono:
     Il fornitore presenta la propria risposta, definita nell’attività precedente, al \term{Proponente} al fine di stipulare un accordo per la fornitura del progetto finale.
 
     \item \textbf{Pianificazione:}
-    Il fornitore stabilisce un framework per la gestione del progetto e per garantire la qualità del prodotto finale, e, nel caso non fosse definito negli accordi con il \term{Proponente}, il fornitore sceglie anche un modello di \term{Ciclo di vita} del software appropriato per il progetto. Il fornitore inoltre si occupa anche di individuare le risorse e tecnologie necessarie per il progetto, considerandone anche i relativi rischi.
+    Il fornitore stabilisce un \term{Framework} per la gestione del progetto e per garantire la qualità del prodotto finale, e, nel caso non fosse definito negli accordi con il \term{Proponente}, il fornitore sceglie anche un modello di \term{Ciclo di vita} del software appropriato per il progetto. Il fornitore inoltre si occupa anche di individuare le risorse e tecnologie necessarie per il progetto, considerandone anche i relativi rischi.
 
     \item \textbf{Esecuzione e controllo:}
     Il fornitore esegue e implementa il piano definito nella fase precedente, monitorandone progresso e qualità del prodotto durante il \term{Ciclo di vita} precedentemente definito, interfacciandosi con il \term{Proponente} quando necessario.
@@ -412,7 +412,7 @@ Per sostenere i processi di sviluppo sono stati utilizzati i seguenti strumenti:
     (tra cui diagrammi dei casi d'uso, delle classi e di sequenza) direttamente in ambiente web, favorendo la collaborazione sincrona tra i membri del gruppo.
     \item \textbf{draw.io}: strumento open source per la creazione di diagrammi UML, utilizzabile sia in ambiente web che 
     desktop. Integra funzionalità di intelligenza artificiale che velocizzano la produzione della documentazione grafica a partire da descrizioni testuali.
-    \item \textbf{Flutter}: framework utilizzato per lo sviluppo dell'interfaccia \term{Utente} dell'applicazione mobile.
+    \item \textbf{Flutter}: \term{Framework} utilizzato per lo sviluppo dell'interfaccia \term{Utente} dell'applicazione mobile.
     \item \textbf{Visual Studio Code}: \term{IDE} adottato dal gruppo come ambiente di sviluppo comune, configurato 
     con le estensioni necessarie per supportare la formattazione automatica del codice Dart e 
     Python (\hyperref[par:stile-cod-dart]{vedi Sezione~\ref*{par:stile-cod-dart}}, \hyperref[par:stile-cod-py]{vedi Sezione~\ref*{par:stile-cod-py}}).
@@ -423,8 +423,8 @@ Per sostenere i processi di sviluppo sono stati utilizzati i seguenti strumenti:
     \item \textbf{\term{GitHub Actions}}: piattaforma di \term{CI/CD} utilizzata per 
     automatizzare i controlli di qualità ad ogni \textit{push}. Esegue la formattazione automatica del codice, 
     l'\term{Analisi Statica} tramite SonarQube e blocca il \term{Merge} nel ramo principale in caso di esito negativo.
-    \item \textbf{AWS SAM}: framework open source utilizzato per la build e il deploy dei servizi AWS. Consente 
-    di definire l'infrastruttura serverless tramite file di configurazione e di automatizzarne il rilascio tramite la pipeline di \term{CI/CD}.
+    \item \textbf{AWS SAM}: \term{Framework} open source utilizzato per la build e il deploy dei servizi AWS. Consente 
+    di definire l'infrastruttura \term{Serverless} tramite file di configurazione e di automatizzarne il rilascio tramite la pipeline di \term{CI/CD}.
 \end{itemize}
 
 \subsubsection{Attività previste}
@@ -561,7 +561,7 @@ Di seguito viene riportata la struttura delle directory principali e il contenut
         \item \texttt{data/}, contiene il layer di accesso ai dati, suddiviso in:
         \begin{itemize}
             \item \texttt{repositories/}, contiene le classi \term{Repository}, che rappresentano la fonte di verità per un tipo di dato e orchestrano l'accesso ai Service;
-            \item \texttt{services/}, contiene le classi Service, che comunicano con sorgenti dati esterne (API REST, database locali, ecc.);
+            \item \texttt{services/}, contiene le classi Service, che comunicano con sorgenti dati esterne (\term{API REST}, database locali, ecc.);
             \item \texttt{model/}, contiene le classi Model, che rappresentano la struttura dei dati così come vengono ricevuti dalla sorgente dati, prima di eventuali trasformazioni.
         \end{itemize}
     \end{itemize}
@@ -1208,7 +1208,7 @@ L’infrastruttura operativa del progetto viene implementata in modo da soddisfa
 \centering Git & Sistema di versionamento distribuito utilizzato per tracciare l’evoluzione del progetto, gestire i rami di sviluppo e mantenere l’integrità dello storico. Scelto per la diffusione nel settore e la capacità di supportare efficacemente lavori collaborativi.\\
 \hline
 \rowcolor{gray!20}
-\centering GitHub & Piattaforma cloud-based di hosting per \term{Repository} Git, utilizzata per la gestione collaborativa del codice. Scelta per le funzionalità integrate (\term{Issue} tracking, \term{Pull Request}, branching rules, code review) che supportano il \term{Processo} di sviluppo.\\
+\centering GitHub & Piattaforma \term{Cloud}-based di hosting per \term{Repository} Git, utilizzata per la gestione collaborativa del codice. Scelta per le funzionalità integrate (\term{Issue} tracking, \term{Pull Request}, branching rules, code review) che supportano il \term{Processo} di sviluppo.\\
 \hline
 \rowcolor{white}
 \centering \LaTeX & Linguaggio di markup per la produzione di documenti tecnici e accademici. Scelto per l’elevata qualità tipografica e per la possibilità di definire template uniformi, garantendo coerenza e mantenibilità della documentazione.\\
@@ -1220,7 +1220,7 @@ L’infrastruttura operativa del progetto viene implementata in modo da soddisfa
 \centering Google Mail & Servizio di posta elettronica utilizzato come canale asincrono formale di comunicazione verso l’esterno. Scelto per la sua affidabilità e per l’integrazione con gli altri strumenti Google.\\
 \hline
 \rowcolor{gray!20}
-\centering Google Drive & Spazio di archiviazione cloud utilizzato dal gruppo per raccogliere documenti correlati, appunti delle riunioni, fogli di calcolo in cui il gruppo registra le informazioni informali riguardanti i periodi di \term{Sprint}. Scelto per la centralizzazione dei contenuti, l’accessibilità da qualsiasi dispositivo e la possibilità di modifica concorrente.\\
+\centering Google Drive & Spazio di archiviazione \term{Cloud} utilizzato dal gruppo per raccogliere documenti correlati, appunti delle riunioni, fogli di calcolo in cui il gruppo registra le informazioni informali riguardanti i periodi di \term{Sprint}. Scelto per la centralizzazione dei contenuti, l’accessibilità da qualsiasi dispositivo e la possibilità di modifica concorrente.\\
 \hline
 \rowcolor{white}
 \centering Google Sheets & Foglio di calcolo online utilizzato per i dati riguardanti i singoli \term{Sprint} e rappresentarli in appositi grafici per una visualizzazione migliore. Scelto per la collaborazione sincrona e la facilità di aggiornamento in tempo reale.\\
