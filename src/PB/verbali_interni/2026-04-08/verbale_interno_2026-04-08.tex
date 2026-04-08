@@ -1,0 +1,277 @@
+% template presente
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[table]{xcolor}
+\usepackage{tabularx}
+\usepackage{tcolorbox}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    urlcolor=blue,     
+}
+\usepackage{graphicx}
+\graphicspath{{resources/}{../resources/}{../../resources/}{../../../resources/}{../../../../resources/}}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{fancyhdr} 
+\setlength{\headheight}{15pt}
+\usepackage{longtable}
+\usepackage{titlesec}
+\geometry{margin=2.5cm}
+% ===== Variabile per il titolo del documento =====
+\newcommand{\documenttitle}{Verbale Riunione Interna - Numero 2 } 
+
+
+\setlength{\parindent}{0pt}
+\setstretch{1.2}
+
+% ===== Stile intestazione =====
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{gray}{\documenttitle - BitByBit}}
+\fancyfoot[C]{\thepage}
+
+% ===== Formattazione sezioni =====
+\titleformat{\section}{\Large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.5em}{}
+
+\newcommand{\term}[1]{\textbf{#1}$^\mathbf{G}$}
+
+\newcommand{\ignoreglossary}{}
+
+\raggedbottom
+
+\begin{document}
+
+% ======= HEADER UNIVERSITÀ E GRUPPO CENTRATI VERTICALMENTE =======
+\vspace*{\fill} % --- Spinge verso il basso l'inizio del contenuto
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logoUni.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\color{red}\LARGE \textbf{Università degli Studi di Padova}}\\[0.3cm]
+        {\large
+        Laurea: Informatica\\
+        Corso: Ingegneria del Software\\
+        Anno Accademico: 2025/26
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1cm}
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logo.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\LARGE \textbf{Gruppo 17}}\\[0.3cm]
+        {\large
+        Nome: BitByBit\\
+        Email: swe.bitbybit@gmail.com
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1.5cm}
+
+\begin{center}
+    {\LARGE \textbf{\documenttitle}}
+\end{center}
+
+\vspace*{\fill} % --- Spinge verso l’alto la fine del contenuto, centrando tutto il blocco
+
+\clearpage
+% ======= INFO GENERALI =======
+\section*{Informazioni Generali}
+\renewcommand{\arraystretch}{1.3}
+
+\begin{tcolorbox}
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\textbf{Stato:} & Completo\\
+\textbf{Versione:} & 1.0.0\\
+\textbf{Responsabile:} & Gabriele Scaggiante\\
+\textbf{Redattore:} & Gabriele Scaggiante \\
+\textbf{Verificatori:} & Ferdinando Fracasso\\
+\textbf{Destinatari:} & Gruppo BitByBit\\
+\textbf{Data:} & 7 aprile 2026 \\
+\textbf{Ora Inizio:} & 14:30 \\
+\textbf{Durata:} & 2h \\
+\textbf{Luogo:} & Discord \\
+\end{tabularx}
+\end{tcolorbox}
+
+\vspace{0.4cm}
+\textbf{Partecipanti:}
+\begin{itemize}
+    \item Manisi Riccardo
+    \item Parolin Dennis
+    \item Scaggiante Gabriele
+    \item Sanguin Marco
+    \item Ferdinando Fracasso
+\end{itemize}
+
+\textbf{Assenti:}
+\begin{itemize}
+    \item Visentin Giovanni
+\end{itemize}
+
+\clearpage
+
+\vspace{0.5cm}
+
+\vspace{0.8cm}
+
+% ======= INDICE SU PAGINA DEDICATA =======
+\clearpage
+\tableofcontents
+\thispagestyle{empty} % senza numero di pagina per l'indice
+\clearpage
+
+% ---------- ORDINE DEL GIORNO ----------
+\section{Ordine del Giorno}
+\begin{itemize}
+    \item Ripartizione dei ruoli per componente del gruppo.
+    \item Riallineamento dei vari componenti del gruppo. Capire quali sono state le attività svolte, quali le attività da svolgere e quali le attività non iniziate che quindi sono in ritardo.
+\end{itemize}
+
+% ---------- DISCUSSIONI ----------
+\section{Discussioni}
+\begin{itemize}
+    \item La riunione odierna è stata dedicata principalmente al riallineamento delle diverse componenti del gruppo. In una prima fase, ciascun membro ha illustrato le attività completate durante lo \term{Sprint} precedente; successivamente sono stati esposti anche i compiti non portati a termine entro i tempi previsti. Sulla base di tali riscontri, verificati e condivisi, sono state individuate le attività da posticipare e includere nel nuovo \term{Sprint}.
+    \item In una seconda fase è stata condotta un’analisi approfondita delle attività necessarie per proseguire lo sviluppo del progetto, in modo da riuscire, in questo \term{Sprint}, a portare a compimento il documento di Specifica Tecnica e di avviare la codifica. A partire da questa valutazione, sono state definite ulteriori attività, successivamente inserite dal responsabile nelle \term{Repository} del gruppo. Ogni attività è stata quindi assegnata a un membro specifico, in funzione del ruolo ricoperto nello \term{Sprint} corrente, cercando di assegnare a più membri del gruppo i compiti più complessi per favorire la collaborazione.
+    \item Infine, si è proceduto alla redistribuzione dei ruoli tra i componenti del gruppo, mantenendo l’approccio già adottato in precedenza basato sulla rotazione periodica delle responsabilità, ma assegnando un numero di compiti maggiore ai membri del gruppo con ancora molte ore di lavoro da svolgere. La nuova assegnazione dei ruoli è la seguente:
+    \begin{center}
+        \textbf{Amministratore} $\rightarrow$ Marco Sanguin, Giovanni Visentin\\
+        \textbf{Responsabile} $\rightarrow$ Gabriele Scaggiante\\
+        \textbf{Analista} $\rightarrow$ Gabriele Scaggiante, Dennis Parolin, Marco Sanguin, Giovanni Visentin, Ferdinando Fracasso, Riccardo Manisi\\
+        \textbf{Programmatore} $\rightarrow$ Marco Sanguin, Ferdinando Fracasso, Dennis Parolin\\
+        \textbf{Verificatore} $\rightarrow$ Ferdinando Fracasso, Giovanni Visentin, Riccardo Manisi
+    \end{center}
+\end{itemize}
+
+\pagebreak
+% ---------- DECISIONI, METTERE SE DOC È UN \term{Verbale} ----------
+\section{Decisioni}
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2} 
+\arrayrulecolor{black} 
+\begin{tabular}{|p{0.73\textwidth}|c|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Descrizione decisione} & \textbf{Codice decisione} \\
+\hline
+\rowcolor{white}
+Ultimare il documento di Specifica Tecnica & VI \ignoreglossary{PB} 2.1 \\
+\hline
+\rowcolor{gray!20}
+Avviare lo sviluppo di funzionalità già progettate nello \term{Sprint} 8 & VI \ignoreglossary{PB} 2.2 \\
+\hline
+\rowcolor{white}
+Rivedere le metriche di \term{Processo} & VI \ignoreglossary{PB} 2.3 \\
+\hline
+\rowcolor{gray!20}
+Avviare il tracciamento dei requisiti soddisfatti ad ogni \term{Sprint} a partire dallo \term{Sprint} 9 & VI \ignoreglossary{PB} 2.4 \\
+\hline
+\rowcolor{white}
+Programmare una riunione esterna con la \term{Proponente} per il setup di Amazon SAM & VI \ignoreglossary{PB} 2.5 \\
+\hline
+\rowcolor{gray!20}
+Per la progettazione e la scrittura di codice, una \term{Pull Request} non può chiudere più di una singola \term{Issue} & VI \ignoreglossary{PB} 2.6 \\
+\hline
+\rowcolor{gray!20}
+Aggiornare il documento \term{Piano di progetto} alla versione 2.0.0 & VI \ignoreglossary{PB} 2.7 \\
+\hline
+\end{tabular}
+\end{center}
+\pagebreak
+% ---------- TO DO, METTERE SE DOC È UN \term{Verbale}  ----------
+\section{To Do}
+Dalle discussioni e decisioni intraprese, sono emerse le seguenti attività:
+\small
+\renewcommand{\arraystretch}{1.2}
+\arrayrulecolor{black}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{0.52\textwidth}|c|c|}
+\hline
+\rowcolor{gray!60}
+\textbf{Task} & \textbf{Codice decisione} & \textbf{N°\term{Issue} GitHub} \\
+\hline
+\endfirsthead
+\hline
+\rowcolor{gray!60}
+\textbf{Task} & \textbf{Codice decisione} & \textbf{N°\term{Issue} GitHub} \\
+\hline
+\endhead
+\endfoot
+\hline
+\endlastfoot
+\rowcolor{white}
+Scrittura della sezione materiale informativo nella Specifica Tecnica. & VI \ignoreglossary{PB} 2.1 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/560}{\textbf{\#560}} \\
+\hline
+\rowcolor{gray!20}
+Scrittura della sezione Dead Man's Switch nella Specifica Tecnica. & VI \ignoreglossary{PB} 2.1 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/562}{\textbf{\#562}} \\
+\hline
+\rowcolor{white}
+Scrittura della sezione autenticazione e integrazione nei diagrammi nella Specifica Tecnica. & VI \ignoreglossary{PB} 2.1 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/563}{\textbf{\#563}} \\
+\hline
+\rowcolor{gray!20}
+Scrittura della sezione invio SOS nella Specifica Tecnica. & VI \ignoreglossary{PB} 2.1 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/564}{\textbf{\#564}} \\
+\hline
+\rowcolor{white}
+Scrittura della sezione Google Maps nella Specifica Tecnica. & VI \ignoreglossary{PB} 2.1 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/565}{\textbf{\#565}} \\
+\hline
+\rowcolor{gray!20}
+Scrittura della sezione Lambda / Microservizi nella Specifica Tecnica. & VI \ignoreglossary{PB} 2.1 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/566}{\textbf{\#566}} \\
+\hline
+\rowcolor{white}
+Scrittura della sezione \term{Architettura} di \term{Backend} nella Specifica Tecnica. & VI \ignoreglossary{PB} 2.1 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/567}{\textbf{\#567}} \\
+\hline
+\rowcolor{gray!20}
+Scrittura della sezione API nella Specifica Tecnica. & VI \ignoreglossary{PB} 2.1 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/568}{\textbf{\#568}} \\
+\hline
+\rowcolor{white}
+Scrittura della sezione sui design patterns nella Specifica Tecnica. & VI \ignoreglossary{PB} 2.1 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/569}{\textbf{\#569}} \\
+\hline
+\rowcolor{gray!20}
+Scrittura della tabella dei Requisiti Funzionali Obbligatori soddisfatti nella Specifica Tecnica. & VI \ignoreglossary{PB} 2.1 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/570}{\textbf{\#570}} \\
+\hline
+\rowcolor{white}
+Implementazione dei grafici delle metriche di \term{Processo} su Google Sheets. & VI \ignoreglossary{PB} 2.3 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/573}{\textbf{\#573}} \\
+\hline
+\rowcolor{gray!20}
+Creazione della tabella di tracciamento dei requisiti su Google Sheets. & VI \ignoreglossary{PB} 2.4 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/574}{\textbf{\#574}} \\
+\hline
+\rowcolor{white}
+Scrittura del riassunto di periodo per lo \term{Sprint} 9. & VI \ignoreglossary{PB} 2.7 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/576}{\textbf{\#576}} \\
+\hline
+\rowcolor{gray!20}
+Sviluppo della schermata di homepage. & VI \ignoreglossary{PB} 2.2 & \href{https://github.com/SWE-BitByBit/project-MVP/issues/11}{\textbf{\#11}} \\
+\hline
+\rowcolor{white}
+Sviluppo della schermata per il diario criptato e fittizio. & VI \ignoreglossary{PB} 2.2 & \href{https://github.com/SWE-BitByBit/project-MVP/issues/12}{\textbf{\#12}} \\
+\hline
+\rowcolor{gray!20}
+Sviluppo della schermata dei contatti fidati. & VI \ignoreglossary{PB} 2.2 & \href{https://github.com/SWE-BitByBit/project-MVP/issues/13}{\textbf{\#13}} \\
+\hline
+\rowcolor{white}
+Sviluppo della schermata del chatbot. & VI \ignoreglossary{PB} 2.2 & \href{https://github.com/SWE-BitByBit/project-MVP/issues/14}{\textbf{\#14}} \\
+\hline
+\end{longtable}
+\normalsize
+
+
+\end{document}
