@@ -1419,11 +1419,11 @@ del codice. Penalizza in modo progressivo l'annidamento delle strutture condizio
 \end{itemize}
 
 \subsubsection{Metriche dinamiche}
-\paragraph{Code Coverage}
+\paragraph{Code Coverage (CC)}
 \begin{itemize}
 \item \textbf{Codice:} \texttt{M-PD08}
 \item \textbf{Formula:} 
-$Code Coverage = \dfrac{CT + LC}{B + EL} \cdot 100$
+$CC = \dfrac{CT + LC}{B + EL} \cdot 100$
 \begin{itemize}
     \item \textbf{$CT$} = numero di condizioni valutate come vere almeno una volta
     \item \textbf{$LC$} = linee coperte dai test 
@@ -1497,15 +1497,17 @@ sia quelli che si interrompono anomaliamente a causa di un'eccezione imprevista 
 \paragraph{Estimate at Completion (EAC)}
 \begin{itemize}
     \item \textbf{Codice:} \texttt{M-PC07}
-    \item \textbf{Formula:} $EAC=\frac{\text{BAC}-\text{EV}}{\text{CPI}}$
-    \item \textbf{Descrizione:} stima il costo totale del progetto al completamento, assumendo che l’andamento futuro segua l’efficienza attuale. Viene confrontato con il Budget at Completion per individuare potenziali scostamenti.
+    \item \textbf{Formula:} $EAC=ETC + \displaystyle \sum_{i=1}^{n} AC_i$
+    \item \textbf{Descrizione:} stima il costo totale del progetto al completamento, assumendo che 
+    l’andamento futuro segua l’efficienza attuale. Viene confrontato con il Budget at Completion per individuare potenziali scostamenti. 
+    LA sommatoria viene calcolata sull'Actual Cost di ogni Spirnt concluso.
 \end{itemize}
 
 \paragraph{Estimate to Complete (ETC)}
 \begin{itemize}
     \item \textbf{Codice:} \texttt{M-PC08}
-    \item \textbf{Formula:} $ETC=EAC-AC$
-    \item \textbf{Descrizione:} misura il costo previsto per completare il lavoro rimanente del progetto escludendo i costi già sostenuti.
+    \item \textbf{Formula:} $ETC=\frac{BAC - \displaystyle \sum_{i=1}^{n} EV_i}{CPI}$
+    \item \textbf{Descrizione:} misura il costo previsto per completare il lavoro rimanente del progetto escludendo i costi già sostenuti. La sommatoria si riferisce 
 \end{itemize}
 
 \subsubsection{Documentazione}
