@@ -1345,28 +1345,28 @@ Le metriche di prodotto adottate nel progetto sono suddivise nelle seguenti due 
 
 \paragraph{Requisiti obbligatori soddisfatti}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PD1}
+    \item \textbf{Codice:} \texttt{M-PD01}
     \item \textbf{Formula:} $\frac{\text{\# di requisiti obbligatori soddisfatti}}{\text{\# di requisiti obbligatori totali}}*100$
     \item \textbf{Descrizione:} fornisce un'indicazione del grado di requisiti obbligatori che sono stati implementati nel prodotto software fino a quel momento.
 \end{itemize}
 
 \paragraph{Requisiti desiderabili soddisfatti}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PD2} 
+    \item \textbf{Codice:} \texttt{M-PD02} 
     \item \textbf{Formula:} $\frac{\text{\# di requisiti desiderabili soddisfatti}}{\text{\# di requisiti desiderabili totali}}*100$
     \item \textbf{Descrizione:} fornisce un'indicazione del grado di requisiti desiderabili che sono stati implementati nel prodotto software fino a quel momento.
 \end{itemize}
 
 \paragraph{Requisiti opzionali soddisfatti}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PD3} 
+    \item \textbf{Codice:} \texttt{M-PD03} 
     \item \textbf{Formula:} $\frac{\text{\# di requisiti opzionali soddisfatti}}{\text{\# di requisiti opzionali totali}}*100$
     \item \textbf{Descrizione:} fornisce un'indicazione del grado di requisiti opzionali che sono stati implementati nel prodotto software fino a quel momento. 
 \end{itemize}
 
 \paragraph{Reliability Rating (RR)}
 \begin{itemize}
-\item \textbf{Codice:} \texttt{M-PD4}
+\item \textbf{Codice:} \texttt{M-PD04}
 \item \textbf{Formula:} assegnata automaticamente da SonarQube secondo la scala:
 \begin{itemize}
     \item \textbf{A} $\rightarrow$ 0 bug
@@ -1382,7 +1382,7 @@ del software dal punto di vista dell'affidabilità.
 
 \paragraph{Maintainability Rating}
 \begin{itemize}
-\item \textbf{Codice:} \texttt{M-PD5}
+\item \textbf{Codice:} \texttt{M-PD05}
 \item \textbf{Formula:} $DR = \dfrac{\text{Technical Debt}}{\text{cost\_per\_line} 
 \times NCLOC} \cdot 100$, assegnata automaticamente da SonarQube secondo la scala:
 \begin{itemize}
@@ -1401,7 +1401,7 @@ linea è predefinito a 30 minuti sonarqube-metrics.
 
 \paragraph{Cyclomatic Complexity (CYC)}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PD6}
+    \item \textbf{Codice:} \texttt{M-PD06}
     \item \textbf{Formula:} $CC = 1 + \# \text{rami condizionali}$
     \item \textbf{Descrizione:} misura il numero di percorsi linearmente indipendenti 
 nel flusso di controllo del codice. Il valore viene calcolato a livello di funzione 
@@ -1409,16 +1409,9 @@ incrementando un contatore di uno ogni volta che il flusso di controllo si divid
 generando un nuovo ramo condizionale.
 \end{itemize}
 
-\paragraph{Length of code}
-\begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PD7}
-    \item \textbf{Formula:} $\text{\# di linee di codice per una componente software}$
-    \item \textbf{Descrizione:} misura la dimensione di un componente software, più è grande una componente software maggiore sarà la possibilità di introdurre errori.
-\end{itemize}
-
 \paragraph{Cognitive Complexity (COC)}
 \begin{itemize}
-\item \textbf{Codice:} \texttt{M-PD8}
+\item \textbf{Codice:} \texttt{M-PD07}
 \item \textbf{Formula:} $COC = \sum_{i=1}^{n} w_i$
 \item \textbf{Descrizione:} misura quanto è difficile comprendere il flusso di controllo 
 del codice. Penalizza in modo progressivo l'annidamento delle strutture condizionali 
@@ -1426,11 +1419,11 @@ del codice. Penalizza in modo progressivo l'annidamento delle strutture condizio
 \end{itemize}
 
 \subsubsection{Metriche dinamiche}
-\paragraph{Code Coverage}
+\paragraph{Code Coverage (CC)}
 \begin{itemize}
-\item \textbf{Codice:} \texttt{M-PD9}
+\item \textbf{Codice:} \texttt{M-PD08}
 \item \textbf{Formula:} 
-$Code Coverage = \dfrac{CT + LC}{B + EL} \cdot 100$
+$CC = \dfrac{CT + LC}{B + EL} \cdot 100$
 \begin{itemize}
     \item \textbf{$CT$} = numero di condizioni valutate come vere almeno una volta
     \item \textbf{$LC$} = linee coperte dai test 
@@ -1442,23 +1435,9 @@ $Code Coverage = \dfrac{CT + LC}{B + EL} \cdot 100$
 del codice è stata effettivamente verificata dai test.
 \end{itemize}
 
-\paragraph{Defect Leakage}
-\begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PD10}
-    \item \textbf{Formula:} $\frac{\text{\# difetti dopo il rilascio}}{\text{\# difetti trovati durante fase di test}}\cdot 100$
-    \item \textbf{Descrizione:} Tiene traccia di quanti difetti vengono trasferiti in produzione dopo i test.
-\end{itemize}
-
-\paragraph{Defect Removal Efficiency (DRE)}
-\begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PD11}
-        \item \textbf{Formula:} $DRE=\frac{\text{difetti trovati prima del rilascio}}{\text{difetti prima del rilascio + difetti dopo}}\cdot 100$
-    \item \textbf{Descrizione:} mostra la percentuale di difetti rilevati e rimossi prima del rilascio. Aiuta a misurare l'efficacia del \term{Processo} di accertamento della qualità. 
-\end{itemize}
-
 \paragraph{Unit Test Success Density (UTSD)}
 \begin{itemize}
-\item \textbf{Codice:} \texttt{M-PD12}
+\item \textbf{Codice:} \texttt{M-PD09}
 \item \textbf{Formula:} $UTSD = \dfrac{\#\ \text{test} - (\#\ \text{test errors} + 
 \#\ \text{test failures})}{\#\ \text{test}} \cdot 100$
 \item \textbf{Descrizione:} misura la percentuale di test unitari eseguiti con 
@@ -1474,35 +1453,35 @@ sia quelli che si interrompono anomaliamente a causa di un'eccezione imprevista 
 
 \paragraph{Budget at Completion (BAC)}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PC1}
+    \item \textbf{Codice:} \texttt{M-PC01}
     \item \textbf{Formula:} $BAC=\text{budget totale pianificato per il progetto}$
     \item \textbf{Descrizione:} rappresenta il costo totale pianificato del progetto al momento della definizione del piano. Rappresenta una \term{Metrica} di riferimento per altre misurazioni.
 \end{itemize}
 
 \paragraph{Planned Value (PV)}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PC2}
+    \item \textbf{Codice:} \texttt{M-PC02}
     \item \textbf{Formula:} $PV=(\text{BAC})\cdot(\text{\% di lavoro pianificata nello \term{Sprint}})$
     \item \textbf{Descrizione:} rappresenta il preventivo per i costi del lavoro che si intende eseguire durante uno \term{Sprint} di progetto. La percentuale di lavoro pianficato corrisponde a $\frac{\text{ore previste in uno \term{Sprint}}}{\text{ore totali}}$. \texttt{Ore totali} corrisponde alla somma delle ore che da progetto ogni componente del gruppo deve eseguire.
 \end{itemize}
 
 \paragraph{Actual Cost (AC)}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PC3}
+    \item \textbf{Codice:} \texttt{M-PC03}
     \item \textbf{Formula:} $AC=\text{costo effettivo sostenuto in uno \term{Sprint}}$
     \item \textbf{Descrizione:} rappresenta i costi effettivamente sostenuti per completare il lavoro svolto durante uno \term{Sprint} di progetto.
 \end{itemize}
 
 \paragraph{Earned Value (EV)}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PC4}
+    \item \textbf{Codice:} \texttt{M-PC04}
     \item \textbf{Formula:} $EV=\frac{\text{\# di \term{Issue} completate}}{\text{\# di \term{Issue} pianificate}}\cdot PV$
     \item \textbf{Descrizione:} rappresenta il valore del lavoro realmente completato rispetto a quanto pianificato. Consente di valutare l’avanzamento effettivo del progetto indipendentemente dai costi sostenuti.
 \end{itemize}
 
 \paragraph{Schedule Performance Index (SPI)}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PC5}
+    \item \textbf{Codice:} \texttt{M-PC05}
     \item \textbf{Formula:} $SPI=\frac{\text{EV}}{\text{PV}}$
     \item \textbf{Descrizione:} misura l'efficacia della gestione del tempo. 
     Esso confronta la quantità di lavoro effettivamente completata con la quantità di lavoro pianificata. Un valore $=1$ indica che il progetto è in linea con il piano stabilito, un valore $<1$ evidenzia un ritardo.
@@ -1510,44 +1489,31 @@ sia quelli che si interrompono anomaliamente a causa di un'eccezione imprevista 
 
 \paragraph{Cost Performance Index (CPI)}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PC6}
+    \item \textbf{Codice:} \texttt{M-PC06}
     \item \textbf{Formula:} $CPI=\frac{\text{EV}}{\text{AC}}$
     \item \textbf{Descrizione:} misura l'efficienza con cui il progetto utilizza il proprio budget. Un valore $\geq 1$ indica che si sta rispettando il budget prefissato.
 \end{itemize}
 
 \paragraph{Estimate at Completion (EAC)}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PC7}
-    \item \textbf{Formula:} $EAC=\frac{\text{BAC}-\text{EV}}{\text{CPI}}$
-    \item \textbf{Descrizione:} stima il costo totale del progetto al completamento, assumendo che l’andamento futuro segua l’efficienza attuale. Viene confrontato con il Budget at Completion per individuare potenziali scostamenti.
+    \item \textbf{Codice:} \texttt{M-PC07}
+    \item \textbf{Formula:} $EAC=ETC + \displaystyle \sum_{i=1}^{n} AC_i$
+    \item \textbf{Descrizione:} stima il costo totale del progetto al completamento, assumendo che 
+    l’andamento futuro segua l’efficienza attuale. Viene confrontato con il Budget at Completion per individuare potenziali scostamenti. 
+    LA sommatoria viene calcolata sull'Actual Cost di ogni Spirnt concluso.
 \end{itemize}
 
 \paragraph{Estimate to Complete (ETC)}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PC8}
-    \item \textbf{Formula:} $ETC=EAC-AC$
-    \item \textbf{Descrizione:} misura il costo previsto per completare il lavoro rimanente del progetto escludendo i costi già sostenuti.
-\end{itemize}
-
-\subsubsection{Verifica}
-\paragraph{Code Coverage}
-\begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PC9}
-    \item \textbf{Formula:} $CC=\frac{\text{\# linee di codice testate}}{\text{\# linee di codice totali}}\cdot 100$
-    \item \textbf{Descrizione:} misura la percentuale di codice soggetto a test. 
-\end{itemize}
-
-\paragraph{Requirements Coverage (RC)}
-\begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PC10}
-    \item \textbf{Formula:} $\frac{\text{\# requisiti testati}}{\text{\# requisiti totali}}*100$
-    \item \textbf{Descrizione:} Indica la percentuale di requisiti che hanno test case corrispondenti. Garantisce che tutti i requisiti documentati siano verificati.
+    \item \textbf{Codice:} \texttt{M-PC08}
+    \item \textbf{Formula:} $ETC=\frac{BAC - \displaystyle \sum_{i=1}^{n} EV_i}{CPI}$
+    \item \textbf{Descrizione:} misura il costo previsto per completare il lavoro rimanente del progetto escludendo i costi già sostenuti. La sommatoria si riferisce 
 \end{itemize}
 
 \subsubsection{Documentazione}
 \paragraph{Indice di Gulpease}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PC11}
+    \item \textbf{Codice:} \texttt{M-PC09}
     \item \textbf{Formula:} $89 + \frac{300 \cdot (\text{numero di frasi}) - 10 \cdot (\text{numero di lettere})}{\text{numero di parole}}$
     \item \textbf{Descrizione:} indice di leggibilità tarato su testi in lingua italiana. In generale risulta che testi con un indice:
     \begin{itemize}
@@ -1557,26 +1523,10 @@ sia quelli che si interrompono anomaliamente a causa di un'eccezione imprevista 
     \end{itemize}
 \end{itemize}
 
-\paragraph{Document Coverage Ratio (DCR)}
-\begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PC12}
-    \item \textbf{Formula:} $\frac{\text{\# sezioni documentate}}{\text{\# sezioni previste dallo standard o dal piano}} \cdot 100$
-    \item \textbf{Descrizione:} misura il grado di completezza della documentazione prodotta rispetto alle sezioni previste dai piani e dagli standard adottati. 
-    Supporta il \term{Processo} di documentazione e l’accertamento della conformità agli standard di progetto.
-\end{itemize}
-
-\subsubsection{Accertamento della qualità}
-\paragraph{Satisfied Metrics}
-\begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PC13}
-    \item \textbf{Formula:} $MS=\frac{\text{\# metriche soddisfatte}}{\text{\# metriche totali}}\cdot 100$
-    \item \textbf{Descrizione:} misura la percentuale di metriche che sono state soddisfatte durante uno \term{Sprint}. Una \term{Metrica} viene considerata soddisfatta quando presenta un valore accettabile.
-\end{itemize}
-
 \subsubsection{Gestione dei processi}
 \paragraph{\ignoreglossary{Sprint} Commitment Reliability (SCR)}
 \begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PC14}
+    \item \textbf{Codice:} \texttt{M-PC10}
     \item \textbf{Formula:} $\frac{\text{\# \term{Issue} completate nello \term{Sprint}}}{\text{\# \term{Issue} pianificate}} \cdot 100$
     \item \textbf{Descrizione:} misura la capacità del team di rispettare gli impegni pianificati per lo \term{Sprint}.
     Supporta la valutazione della qualità della pianificazione e della stabilità del \term{Processo} di sviluppo.
