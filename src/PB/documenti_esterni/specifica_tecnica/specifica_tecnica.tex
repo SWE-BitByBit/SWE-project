@@ -454,10 +454,10 @@ L'\term{Architettura} logica adibita all'interazione tra i device mobili e l'amb
 \subsection{Design pattern utilizzati} \label{subsec:design_pattern}
 \subsubsection{Model-view-viewmodel}
 \paragraph{Descrizione del pattern:}
-Il pattern Model-view-viewmodel (MVVM) prevede la separazione della parte software responsabile per la resa grafica dalle parti responsabili della presentation e business logic in tre componenti principali:
+Il pattern Model-view-viewmodel (MVVM) prevede la separazione della parte software responsabile per la resa grafica dalle parti responsabili della presentation e \term{Business Logic} in tre componenti principali:
 \begin{itemize}
-    \item \textbf{Model:} contiene il codice responsabile per la business logic dell'applicazione.
-    \item \textbf{View:} contiene la parte responsabile esclusivamente per la resa grafica del software, e delega la gestione dell'interazione utente alla componente \textit{ViewModel}.
+    \item \textbf{Model:} contiene il codice responsabile per la \term{Business Logic} dell'applicazione.
+    \item \textbf{View:} contiene la parte responsabile esclusivamente per la resa grafica del software, e delega la gestione dell'interazione \term{Utente} alla componente \textit{ViewModel}.
     \item \textbf{ViewModel:} contiene il codice responsabile per la gestione della presentation logic e per la coordinazione tra i componenti \textit{View} e \textit{Model}.
 \end{itemize} 
 \paragraph{Ragioni per l'utilizzo:} L'utilizzo del pattern permette una più semplice gestione delle varie parti dell'applicazione, dato che limita notevolmente il coupling tra UI e logica sottostante, migliorandone quindi la manutenibilità, e rende lo sviluppo degli unit test più semplice.
@@ -466,7 +466,7 @@ Il pattern Model-view-viewmodel (MVVM) prevede la separazione della parte softwa
 \paragraph{Descrizione del pattern:}
 Il pattern Observer definisce la capacità per un oggetto \textit{Publisher} di definire un meccanismo di "iscrizione" per cui un insieme di oggetti \textit{Subscriber} può "osservarlo" ed essere notificato solo in seguito ad un suo cambiamento di stato. 
 \paragraph{Ragioni per l'utilizzo:}
-L'uso principale del pattern nell'applicazione è nelle classi ViewModel, dato che permette di notificare solo i widget che richiedono modifiche dopo un cambiamento di stato del ViewModel, invece di dover ricostruire la schermata dopo una qualsiasi interazione, permettendo così una maggiore fluidità dell'interfaccia durante l'uso da parte dell'utente. Inoltre il meccanismo di "iscrizione" rimuove la necessità di verifiche frequenti sullo stato del \textit{Publisher} da parte dei \textit{Subscriber} e rende il codice più facilmente estendibile e mantenibile dato che la modifica di una componente non va a influire sulle altre, per esempio, l'aggiunta di un widget alla \textit{View} non richiederebbe modifiche al \textit{ViewModel}.
+L'uso principale del pattern nell'applicazione è nelle classi ViewModel, dato che permette di notificare solo i widget che richiedono modifiche dopo un cambiamento di stato del ViewModel, invece di dover ricostruire la schermata dopo una qualsiasi interazione, permettendo così una maggiore fluidità dell'interfaccia durante l'uso da parte dell'\term{Utente}. Inoltre il meccanismo di "iscrizione" rimuove la necessità di verifiche frequenti sullo stato del \textit{Publisher} da parte dei \textit{Subscriber} e rende il codice più facilmente estendibile e mantenibile dato che la modifica di una componente non va a influire sulle altre, per esempio, l'aggiunta di un widget alla \textit{View} non richiederebbe modifiche al \textit{ViewModel}.
 
 \subsubsection{Proxy}
 \paragraph{Descrizione del pattern:}
@@ -478,7 +478,7 @@ L'utilizzo del pattern Proxy per le strutture dati delle classi \code{Chat} e \c
 \paragraph{Descrizione del pattern:}
 Il pattern Singleton permette di avere la garanzia che in un dato momento esista al più una singola istanza della classe a cui è applicato. Questo si ottiene facendo in modo che il costruttore dell'oggetto ne crei uno nuovo solamente se non ne esiste già una copia, altrimenti ritorna un puntatore alla copia esistente.
 \paragraph{Ragioni per l'utilizzo:}
-Nell'applicazione questo pattern viene utilizzato per garantire l'esistenza di una sola istanza della classe \code{DiarySession} in un dato momento, in modo che l'utente abbia accesso ad un solo versione del diario, criptato o fittizio, alla volta, evitando la condivisione accidentale dei dati tra le due versioni.
+Nell'applicazione questo pattern viene utilizzato per garantire l'esistenza di una sola istanza della classe \code{DiarySession} in un dato momento, in modo che l'\term{Utente} abbia accesso ad un solo versione del diario, criptato o fittizio, alla volta, evitando la condivisione accidentale dei dati tra le due versioni.
 
 \subsection{Architettura di deployment} \label{subsec:architettura_deployment}
 
