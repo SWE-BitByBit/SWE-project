@@ -112,7 +112,7 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & In lavorazione\\
-\textbf{Versione:} & 0.1.4 \\
+\textbf{Versione:} & 0.1.7 \\
 \textbf{Responsabile:} & Gabriele Scaggiante \\
 \textbf{Redattori:} & 
 \begin{tabular}[t]{@{}l@{}}
@@ -125,6 +125,7 @@ Ferdinando Fracasso\\
 Riccardo Manisi\\
 Dennis Parolin\\
 Marco Sanguin\\
+Giovanni Visentin\\
 \end{tabular} \\
 \textbf{Destinatari:} &
 \begin{tabular}[t]{@{}l@{}}
@@ -153,6 +154,8 @@ Gruppo BitByBit\\
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+0.1.7 & 2026-04-11 & Dennis Parolin & Creata la sezione \hyperref[subsec:architettura_backend]{Architettura backend} con sottosezioni \hyperref[subsubsec:architettura_autenticazione]{Architettura autenticazione}, \hyperref[subsubsec:architettura_luoghi_sicuri]{Architettura luoghi sicuri}, \hyperref[subsubsec:architettura_materiale_informativo]{Architettura materiale informativo}. & Giovanni Visentin \\
+\hline
 0.1.6 & 2026-04-09 & Ferdinando Fracasso & Redatta la sezione \hyperref[subsec:design_pattern]{Design pattern utilizzati} & Giovanni Visentin\\
 \hline
 0.1.5 & 2026-04-06 & Ferdinando Fracasso & Redatta la sezione \hyperref[subsubsec:architettura_diari]{Architettura funzionalità diari} & Marco Sanguin \\
@@ -1068,5 +1071,88 @@ Questo widget raggruppa i bottoni e le azioni specifiche per la gestione dei con
     \caption[Diagramma della classe TrustedContactDTO]{Diagramma della classe \code{TrustedContactDTO}}
     \label{DC-TrustedContactDTO}
 \end{figure}
+
+\subsection{Architettura Back End} \label{subsec:architettura_backend}
+
+\subsubsection{Autenticazione} \label{subsubsec:architettura_autenticazione}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{diagrammi_architettura/autenticazione/autenticazione.pdf}
+    \caption{Architettura e Flusso di Autenticazione}
+    \label{fig:architettura_autenticazione}
+\end{figure}
+
+\paragraph{Architettura e Flusso di Autenticazione: Modulo Federated Login}
+La presente sezione descrive l'architettura logica e il flusso dei dati relativi al modulo di autenticazione e autorizzazione dell'applicazione. Il sistema adotta un modello di federated login basato su Amazon Cognito integrato con Google come Identity Provider (IdP), progettato per garantire un accesso sicuro e standardizzato alle risorse di backend senza demandare la gestione crittografica delle credenziali all'applicazione client.
+
+\paragraph{Iniziazione del Flusso e Autenticazione Federata}
+Il processo di autenticazione ha inizio quando l'utente interagisce con l'applicazione client (Flutter) richiedendo l'accesso al sistema. L'applicazione delega interamente la gestione dell'identità inoltrando una richiesta di login ad Amazon Cognito. Cognito, fungendo da Service Provider, intercetta la richiesta e avvia una procedura di autenticazione basata sullo standard OpenID Connect (OIDC) delegandola ai server di Google. L'utente completa la fase di riconoscimento interfacciandosi direttamente con l'infrastruttura del provider esterno. A seguito della corretta verifica delle credenziali, Google restituisce ad Amazon Cognito un codice di autorizzazione attestante il successo dell'operazione e l'identità dell'utente.
+
+\paragraph{Emissione dei Token di Sessione}
+Acquisita la conferma dal provider federato, Amazon Cognito processa il codice di autorizzazione e genera un set di token crittografici aderenti allo standard JWT (JSON Web Token). Questi token vengono trasmessi in modo sicuro all'applicazione mobile, concludendo la fase di autenticazione. Da questo momento, il client dispone di una prova di identità verificata e utilizzerà l'Access Token JWT per autorizzare le successive chiamate di rete dirette ai servizi di backend.
+
+\paragraph{Validazione Perimetrale e Instradamento Sicuro}
+Per accedere alle logiche applicative, l'app Flutter compone una richiesta HTTPS indirizzata all'Amazon API Gateway, includendo il token JWT nelle intestazioni di autorizzazione. L'API Gateway assume il ruolo di strato di sicurezza perimetrale (edge security). Prima di instradare il traffico, il Gateway utilizza un Cognito Authorizer nativo per eseguire un rigoroso controllo di validità sul token ricevuto. Tale procedura verifica l'autenticità della firma crittografica, l'integrità del payload e la validità temporale della sessione direttamente contro le configurazioni dello User Pool di Cognito.
+
+Questa specifica impostazione architetturale assicura che qualsiasi richiesta malevola, non autorizzata o provvista di credenziali scadute venga respinta al livello di rete. Solamente le richieste che superano con successo la validazione del token vengono instradate dall'API Gateway verso la specifica funzione AWS Lambda designata, garantendo che le risorse computazionali elaborino esclusivamente traffico certificato e sicuro.
+
+
+\subsubsection{Luoghi sicuri} \label{subsubsec:architettura_luoghi_sicuri}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{diagrammi_architettura/luoghi_sicuri/luoghi_sicuri.pdf}
+    \caption{Architettura moduli Luoghi Sicuri}
+    \label{fig:architettura_luoghi_sicuri}
+\end{figure}
+
+\paragraph{Architettura e Flusso di Elaborazione: Modulo Luoghi Sicuri (Integrazione Diretta)}
+Il modulo "Luoghi Sicuri" è stato ingegnerizzato adottando una rigorosa separazione delle responsabilità (\textit{Separation of Concerns}) tra l'elaborazione lato client (Frontend) e l'infrastruttura Cloud (Backend). L'obiettivo primario è stato quello di minimizzare il carico computazionale server-side ed eliminare del tutto i costi legati ai calcoli geospaziali.
+
+Analogamente a quanto strutturato per il modulo informativo, l'architettura si avvale del pattern di Integrazione Diretta (AWS Service Integration) tra Amazon API Gateway e Amazon DynamoDB. Questa topologia di rete consente un recupero altamente performante dei dati, eludendo la necessità di allocare funzioni AWS Lambda.
+
+Il flusso di elaborazione si articola nei seguenti passaggi:
+\begin{itemize}
+    \item \textbf{Ingestione della Richiesta}: L'utente accede alla sezione della mappa tramite l'applicazione. Il client Flutter genera una richiesta HTTPS (metodo \texttt{GET /luoghi-sicuri}), allegando nell'header il Token di sessione.
+    \item \textbf{Validazione e Sicurezza Perimetrale}: L'API Gateway intercetta la chiamata e delega immediatamente il Token all'Authorizer di Amazon Cognito. Questo passaggio è cruciale per garantire che il database sia interrogabile esclusivamente da utenti registrati e autenticati, prevenendo abusi delle API pubbliche.
+    \item \textbf{Mappatura VTL di Andata}: Superato il controllo di sicurezza, l'API Gateway applica un Mapping Template in linguaggio VTL (Velocity Template Language). Questo script traduce la richiesta HTTP in un'istruzione di lettura diretta verso la tabella \texttt{safe\_locations\_mvp} ospitata su DynamoDB.
+    \item \textbf{Lettura e Risposta del Database}: Il database NoSQL esegue l'interrogazione e restituisce i record crudi all'API Gateway. I dati estratti comprendono metadati descrittivi e coordinate geospaziali puntuali (latitudine e longitudine) per ogni rifugio.
+    \item \textbf{Mappatura VTL di Ritorno e Serializzazione}: L'API Gateway applica un template inverso (Response Mapping) per "pulire" i dati nativi di DynamoDB, serializzandoli in un formato JSON standard, leggero e pronto all'uso, inoltrando infine la risposta HTTP \texttt{200 OK} al client.
+\end{itemize}
+
+\paragraph{Delega della Logica Geospaziale al Livello Client (Edge Computing)}
+Al fine di ottimizzare ulteriormente i costi, l'intera logica di rendering visivo e di routing è delegata all'applicazione sul dispositivo dell'utente. Il backend AWS si configura esclusivamente come Data Provider di coordinate statiche. Alla ricezione del payload JSON, l'applicativo Flutter si fa carico di istanziare la mappa nativa e posizionare i marker grafici (pin). L'azione di navigazione guidata (es. pulsante "Portami lì") sfrutta le Intents (su Android) o le URL Schemes (su iOS) del sistema operativo per invocare applicazioni di navigazione di terze parti (come Google Maps o Apple Maps). Questo approccio demanda il tracciamento GPS e il calcolo dinamico dell'itinerario al dispositivo locale, garantendo la scalabilità infinita del sistema AWS anche in condizioni di massiccio utilizzo concorrente.
+
+\paragraph{API associate}
+\begin{itemize}
+    \item \texttt{GET /safe\_locations/}: ritorna le informazioni di tutti i posti sicuri.
+\end{itemize}
+\textit{Nota di sicurezza}: Poiché la conoscenza dei luoghi sicuri è di interesse pubblico e vitale, questa API è stata ingegnerizzata in modo da essere esposta pubblicamente anche agli utenti non autenticati. A differenza della stragrande maggioranza delle funzionalità del sistema (per le quali l'intervento dell'Authorizer Cognito è un requisito essenziale e perciò dato per assunto), in queste rotte la verifica dell'autorizzazione non viene considerata o applicata.
+
+\subsubsection{Materiale informativo} \label{subsubsec:architettura_materiale_informativo}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{diagrammi_architettura/materiale_informativo/materiale_informativo.pdf}
+    \caption{Architettura moduli Materiale Informativo}
+    \label{fig:architettura_materiale_informativo}
+\end{figure}
+
+\paragraph{Architettura e Flusso di Elaborazione: Modulo Materiale Informativo (Integrazione Diretta)}
+La sezione dedicata al "Materiale Informativo" è stata progettata privilegiando la massima efficienza e l'ottimizzazione dei costi operativi. Trattandosi di un modulo a prevalenza di lettura (Read-Heavy) e privo di logiche di business complesse per la manipolazione dei dati, l'architettura sfrutta il pattern di Integrazione Diretta (AWS Service Integration) tra Amazon API Gateway e Amazon DynamoDB. Questa scelta ingegneristica permette di elidere del tutto il livello computazionale intermedio, rimuovendo la necessità di allocare e invocare funzioni AWS Lambda.
+
+Il ciclo di elaborazione si innesca quando l'applicazione client necessita di recuperare il catalogo delle informazioni, generando una richiesta HTTPS (metodo \texttt{GET}) verso l'endpoint dedicato. A valle della validazione del Token JWT tramite l'Authorizer di Amazon Cognito, l'API Gateway intercetta la chiamata e utilizza un Mapping Template basato su Velocity Template Language (VTL). Questo template agisce da traduttore nativo: decodifica la richiesta HTTP e la trasforma istantaneamente in un'istruzione compatibile con l'API di DynamoDB (nello specifico, un'operazione di lettura sulla tabella \texttt{materiale\_info\_mvp}).
+
+Il database esegue l'interrogazione e restituisce i record crudi all'API Gateway. Quest'ultimo applica un template di trasformazione inverso (Response Mapping) per serializzare e mappare i dati nativi di DynamoDB in un formato JSON standard, leggero e facilmente consumabile dal frontend. Il ciclo sincrono si conclude con l'inoltro della risposta HTTP all'applicazione Flutter.
+
+Tale paradigma architetturale non solo azzera i costi legati all'invocazione di risorse serverless, ma abbatte drasticamente la latenza percepita dall'utente finale. Eliminando alla radice il rischio temporale legato al \textit{Cold Start} delle funzioni computazionali, questa si conferma la soluzione più performante e scalabile per la consultazione di cataloghi informativi.
+
+\paragraph{API associate}
+\begin{itemize}
+    \item \texttt{GET /learning/}: ritorna le \textit{preview} di tutti i materiali di apprendimento.
+    \item \texttt{GET /learning/\{learning\_id\}}: ritorna il contenuto di uno specifico materiale di apprendimento.
+\end{itemize}
+\textit{Nota di sicurezza}: In maniera analoga a quanto previsto per i luoghi sicuri, anche le API relative al materiale informativo sono state rese disponibili del tutto pubblicamente, in assenza di un Authorizer. Questa scelta architetturale mira a garantire a chiunque e in qualsiasi circostanza la più rapida fruizione possibile di contenuti educativi, distaccandosi deliberatamente dalle altre rotte di servizio dove l'adozione del sistema di autenticazione è tassativa e data per scontata.
 
 \end{document}
