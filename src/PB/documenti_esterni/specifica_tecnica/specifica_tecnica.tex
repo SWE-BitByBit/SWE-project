@@ -454,7 +454,7 @@ L'\term{Architettura} logica adibita all'interazione tra i device mobili e l'amb
 \subsection{Design pattern utilizzati} \label{subsec:design_pattern}
 \subsubsection{Model-view-viewmodel}
 \paragraph{Descrizione del pattern:}
-Il pattern Model-view-viewmodel (MVVM) prevede la separazione della parte software responsabile per la resa grafica dalle parti responsabili della presentation e \term{Business Logic} in tre componenti principali:
+Il pattern Model-view-viewmodel (MVVM) prevede la separazione della parte software responsabile per la resa grafica dalle parti responsabili della Presentation Logic e \term{Business Logic} in tre componenti principali:
 \begin{itemize}
     \item \textbf{Model:} contiene il codice responsabile per la \term{Business Logic} dell'applicazione.
     \item \textbf{View:} contiene la parte responsabile esclusivamente per la resa grafica del software, e delega la gestione dell'interazione \term{Utente} alla componente \textit{ViewModel}.
@@ -472,7 +472,7 @@ L'uso principale del pattern nell'applicazione è nelle classi ViewModel, dato c
 \paragraph{Descrizione del pattern:}
 Il pattern Proxy permette la creazione di un oggetto \textit{Proxy} che va a controllare l'accesso all'oggetto reale. L'oggetto \textit{Proxy} deve implementare la stessa interfaccia dell'oggetto reale, in modo da essere sempre utilizzabile quando il codice si aspetta l'oggetto reale, e una volta ricevuta una richiesta deve delegarla ad una istanza dell'oggetto reale. 
 \paragraph{Ragioni per l'utilizzo:}
-L'utilizzo del pattern Proxy per le strutture dati delle classi \code{Chat} e \code{Note} permette di rimandare la creazione di un loro oggetto fino a quando non effettivamente necessario, evitando così la creazione di tutti gli oggetti e dei loro componenti in una singola volta quando vengono inizialmente caricati, risparmiando
+L'utilizzo del pattern Proxy per le strutture dati delle classi \code{Chat} e \code{Note} permette di rimandare la creazione di un loro oggetto fino a quando non effettivamente necessario, evitando così la creazione di tutti gli oggetti e dei loro componenti in una singola volta quando vengono inizialmente caricati, così risparmiando memoria che altrimenti sarebbe sprecata con oggetti pesanti.
 
 \subsubsection{Singleton}
 \paragraph{Descrizione del pattern:}
