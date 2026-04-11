@@ -200,6 +200,9 @@ Gruppo BitByBit\\\\
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 \endhead
+\rowcolor{gray!20}
+1.1.0 & 2026-04-06 & Marco Sanguin & Iniziato riepilogo \term{Sprint} 8 & Dennis Parolin \\
+\hline
 \rowcolor{white}
 1.0.0 & 2026-03-03 & Gabriele Scaggiante & Approvazione del documento e stabilizzazione versione del PdP & Dennis Parolin \\
 \hline
@@ -758,7 +761,7 @@ Per facilitare la gestione e la consultazione, i rischi sono stati catalogati in
 \section{Pianificazione nel lungo termine}\label{sec:pianificazione_lungo_termine}
 
 \subsection{Introduzione}
-Come dichiarato nel documento di \href{https://swe-bitbybit.github.io/SWE-docs/docs/candidatura/valutazione_costi_rischi/valutazione_costi_rischi.pdf}{valutazione costo e rischi}, il gruppo si impegna a terminare il progetto entro e non oltre il giorno \textbf{2026-04-15} con un budget di spesa fissato a \textbf{11.370\euro}.
+Come dichiarato nel documento di \href{https://swe-bitbybit.github.io/SWE-docs/docs/candidatura/valutazione_costi_rischi/valutazione_costi_rischi.pdf}{valutazione costo e rischi}, il gruppo si impegna a terminare il progetto entro e non oltre il giorno \textbf{2026-04-30} con un budget di spesa fissato a \textbf{11.370\euro}.
 
 Nella fase di candidatura si è teorizzato il seguente prospetto di ripartizione oraria e dei costi:
 
@@ -2330,4 +2333,205 @@ Nonostante vi siano stati brevi ritardi da parte della \term{Proponente} nel for
 \paragraph{Retrospettiva}
 La retrospettiva ha evidenziato una disponibilità maggiore da parte di quasi tutti i membri del gruppo, data la conclusione della sessione. Se così non fosse stato, probabilmente parte delle funzionalità del \term{PoC} non sarebbero state implementate entro il perimetro dello \term{Sprint} 7. La coordinazione generale delle attività è stata buona. Risulta però necessario bilanciare il carico di lavoro lato programmazione, e fare in modo che tutti i membri del gruppo conoscano le tecnologie utilizzate e comprendano il loro ruolo all'interno del sistema sviluppato per il \term{PoC}. Per tali ragioni, durante lo \term{Sprint}, si è deciso di documentare le funzionalità implementate e il funzionamento delle tecnologie attraverso la sezione \textit{wiki} dedicata della \term{Repository} GitHub, in modo da consentire a ognuno uno studio autonomo mirato su ciò che i programmatori hanno realizzato.
 
+%-------------------------------------------------------------------------------------------------%
+\subsubsection{Sprint 8}\label{sec:sprint8_PB}
+
+% --- TABELLA RIEPILOGATIVA \term{Sprint} ---
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabularx}{\textwidth}{|>{\columncolor{tableHeader}\bfseries}l|X|>{\columncolor{tableHeader}\bfseries}l|X|}
+        \hline
+        Inizio & 2026-03-30 & Fine prevista & 2026-04-05 \\
+        \hline
+        Stato & \textbf{Concluso} & Fine reale & 2026-04-05 \\
+        \hline
+        \multicolumn{2}{|c|}{\cellcolor{tableHeader}\textbf{Giorni di ritardo}} & \multicolumn{2}{c|}{0} \\
+        \hline
+    \end{tabularx}
+    \caption{Riepilogo temporale \term{Sprint} 8}
+\end{table}
+
+\paragraph{Informazioni generali e attività da svolgere}
+Lo \term{Sprint} 8 segna l'inizio dei lavori per la Product \term{Baseline} (\term{PB}), spostando il focus sull'impostazione architetturale dell'\term{MVP}, la ripianificazione a lungo termine e l'aggiornamento della documentazione a seguito dei feedback ricevuti dai docenti (Prof. Vardanega e Prof. Cardin) in seguito alla revisione \term{RTB}.
+Le attività pianificate e svolte includono:
+\begin{itemize}
+    \item \textbf{Amministrazione:} Setup della \term{Repository} per l'\term{MVP} (progetto Flutter, directory sorgente/test, progetto AWS SAM). Configurazione delle pipeline di \term{CI/CD} tramite \term{GitHub Actions} per il deploy su AWS e integrazione di SonarQube \ignoreglossary{Cloud} per l'\term{Analisi Statica} di Python e Dart (verificando il supporto per quest'ultimo). Aggiornamento corposo delle \textit{Norme di Progetto} con convenzioni di scrittura codice, linee guida architetturali per Flutter e documentazione del \term{Processo} di sviluppo sulla wiki. Correzioni strutturali sui processi (gerarchia \term{Processo}-attività-procedure-strumenti) e sulla veste del sito web (es. riposizionamento della Lettera di Presentazione, rimozione etichette "File pdf").
+    \item \textbf{Analisi:} Revisione e ampliamento dell'\textit{\term{Analisi dei requisiti}} in risposta ai feedback ricevuti. Modifica dei diagrammi UML, aggiornamento del tracciamento requisiti e in particolare l'ampliamento dell'UC48 (Consultazione chatbot), precedentemente giudicato troppo generico.
+    \item \textbf{Progettazione:} Creazione del documento \textit{\term{Specifica Tecnica}} (scopo, tecnologie impiegate). Inizio della progettazione dell'\term{Architettura} logica e di \term{Deployment}, con focus sulle funzionalità primarie (chatbot, diario criptato/fittizio, contatti fidati). Realizzazione di bozze su Figma per l'aspetto dell'app.
+\end{itemize}
+
+\paragraph{Rischi attesi}
+Tra i principali rischi identificati per questo periodo pre-implementativo troviamo:
+\begin{itemize}
+    \item \textbf{RT1 (Inesperienza tecnologica)}: Possibili ostacoli nell'integrazione di SonarQube con il codice Dart (essendo il supporto non nativo/ufficiale) e configurazioni errate nelle \term{GitHub Actions} per la \term{CI/CD}.
+    \item \textbf{RO1 (Errata stima dei tempi)}: Rischio di sottovalutare il tempo necessario per assorbire ed applicare le numerose correzioni strutturali richieste dai docenti (modifiche al sito, gerarchie dei processi, tracciamenti).
+    \item \textbf{RO5 (Dipendenza da risorse e permessi esterni)}: Necessità di verificare se i permessi attualmente in possesso sull'account AWS siano sufficienti per un deploy completo tramite le pipeline configurate.
+\end{itemize}
+
+\paragraph{Preventivo}
+Si prospetta l'utilizzo delle seguenti risorse:
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \small 
+    \begin{tabularx}{\textwidth}{|l|C|C|C|C|C|C|}
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Membro} & \textbf{Resp} & \textbf{Amm} & \textbf{Anal} & \textbf{Pt} & \textbf{Pr} & \textbf{Ver} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        F. Fracasso & - & 5 & - & 8 & - & - \\
+        \hline
+        \rowcolor{tableLineEven}
+        R. Manisi & - & 12 & - & - & - & - \\
+        \hline
+        \rowcolor{tableLineOdd}
+        D. Parolin & - & - & - & 7 & - & 3 \\
+        \hline
+        \rowcolor{tableLineEven}
+        M. Sanguin & 10 & - & - & - & - & 3 \\
+        \hline
+        \rowcolor{tableLineOdd}
+        G. Scaggiante & - & - & - & 10 & - & - \\
+        \hline
+        \rowcolor{tableLineEven}
+        G. Visentin & - & - & 0.5 & 10 & - & - \\
+        \hline
+    \end{tabularx}
+    \caption{Preventivo orario per componente - \term{Sprint} 8}
+    \label{tab:preventivo_sprint8}
+\end{table}
+
+% GRAFICO A TORTA PREVENTIVO
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1.2]
+        \draw[thick,fill=pieResp] (0,0) -- (0:1.5) arc (0:52.6:1.5) -- cycle;
+        \draw (26.3:1.95) node {14.6\%};
+        
+        \draw[thick,fill=pieAmm] (0,0) -- (52.6:1.5) arc (52.6:141.8:1.5) -- cycle;
+        \draw (97.2:1.85) node {24.8\%};
+
+        \draw[thick,fill=pieAnal] (0,0) -- (141.8:1.5) arc (141.8:144.4:1.5) -- cycle;
+        \draw (143:2.1) node {0.7\%};
+        
+        \draw[thick,fill=pieDes] (0,0) -- (144.4:1.5) arc (144.4:328.3:1.5) -- cycle;
+        \draw (236.3:1.8) node {51.1\%};
+
+        \draw[thick,fill=pieVer] (0,0) -- (328.3:1.5) arc (328.3:360:1.5) -- cycle;
+        \draw (344.1:1.95) node {8.8\%};
+
+        \matrix [below, draw=none, fill=none] at (0,-2.5) {
+            \node [fill=pieResp, label=right:Responsabile] {}; & \node [fill=pieAmm, label=right:Amministratore] {}; \\
+            \node [fill=pieAnal, label=right:Analista] {};     & \node [fill=pieDes, label=right:Progettista] {}; \\
+            \node [fill=pieVer, label=right:Verificatore] {};  & \\
+        };
+    \end{tikzpicture}
+    \caption{Distribuzione ore per ruolo - Preventivo \term{Sprint} 8}
+\end{figure}
+
+\paragraph{Consuntivo}
+Di seguito il resoconto delle ore effettivamente impiegate. 
+
+\begin{table}[H] %da aggiornare
+    \centering
+    \renewcommand{\arraystretch}{1.4}
+    \footnotesize
+    \begin{tabularx}{\textwidth}{|l|C|C|C|C|C|C|}
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Membro} & \textbf{Resp} & \textbf{Amm} & \textbf{Anal} & \textbf{Pt} & \textbf{Pr} & \textbf{Ver} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        F. Fracasso & - & - & - & - & - & - \\
+        \hline
+        \rowcolor{tableLineEven}
+        R. Manisi & - & - & - & - & - & - \\
+        \hline
+        \rowcolor{tableLineOdd}
+        D. Parolin & - & - & - & - & - & - \\
+        \hline
+        \rowcolor{tableLineEven}
+        M. Sanguin & - & - & - & - & - & - \\
+        \hline
+        \rowcolor{tableLineOdd}
+        G. Scaggiante & - & - & - & - & - & - \\
+        \hline
+        \rowcolor{tableLineEven}
+        G. Visentin & - & - & - & - & - & - \\
+        \hline
+    \end{tabularx}
+    \caption{Consuntivo orario per componente - \term{Sprint} 8}
+    \label{tab:consuntivo_sprint8}
+\end{table}
+
+\begin{figure}[H] %da aggiornare
+    \centering
+    \begin{tikzpicture}[scale=1.2]
+        \draw[thick,fill=pieResp] (0,0) -- (0:1.5) arc (0:52.6:1.5) -- cycle;
+        \draw (26.3:1.95) node {14.6\%};
+        
+        \draw[thick,fill=pieAmm] (0,0) -- (52.6:1.5) arc (52.6:141.8:1.5) -- cycle;
+        \draw (97.2:1.85) node {24.8\%};
+
+        \draw[thick,fill=pieAnal] (0,0) -- (141.8:1.5) arc (141.8:144.4:1.5) -- cycle;
+        \draw (143:2.1) node {0.7\%};
+        
+        \draw[thick,fill=pieDes] (0,0) -- (144.4:1.5) arc (144.4:328.3:1.5) -- cycle;
+        \draw (236.3:1.8) node {51.1\%};
+
+        \draw[thick,fill=pieVer] (0,0) -- (328.3:1.5) arc (328.3:360:1.5) -- cycle;
+        \draw (344.1:1.95) node {8.8\%};
+
+        \matrix [below, draw=none, fill=none] at (0,-2.5) {
+            \node [fill=pieResp, label=right:Responsabile] {}; & \node [fill=pieAmm, label=right:Amministratore] {}; \\
+            \node [fill=pieAnal, label=right:Analista] {};     & \node [fill=pieDes, label=right:Progettista] {}; \\
+            \node [fill=pieVer, label=right:Verificatore] {};  & \\
+        };
+    \end{tikzpicture}
+    \caption{Distribuzione ore per ruolo - Consuntivo \term{Sprint} 8}
+\end{figure}
+
+\paragraph{Aggiornamento delle risorse rimanenti}
+Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la chiusura dello \term{Sprint} 8. 
+
+\begin{table}[H] %da aggiornare
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabularx}{\textwidth}{|l|c|c|c|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Ruolo} & \textbf{Costo} & \textbf{Ore} & \textbf{Costo} & \textbf{Ore rimanenti} & \textbf{Budget rimanente} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Responsabile & 30\euro/h & 5 & 150\euro & 37 \textcolor{red}{(-5)} & 1.110\euro \textcolor{red}{(-150\euro)} \\
+        \hline
+        \rowcolor{tableLineEven}
+        Amministratore & 20\euro/h & 6.5 & 130\euro & 40.25 \textcolor{red}{(-6.5)} & 805\euro \textcolor{red}{(-130\euro)} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Analista & 25\euro/h & 3 & 75\euro & 0.5 \textcolor{red}{(-3)} & 12,50\euro \textcolor{red}{(-75\euro)} \\
+        \hline
+        \rowcolor{tableLineEven}
+        Progettista & 25\euro/h & - & - & 102 & 2.550\euro \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Programmatore & 15\euro/h & 24 & 360\euro & 86 \textcolor{red}{(-24)} & 1.290\euro \textcolor{red}{(-360\euro)} \\
+        \hline
+        \rowcolor{tableLineEven}
+        Verificatore & 15\euro/h & 5 & 75\euro & 60 \textcolor{red}{(-5)} & 892,50\euro \textcolor{red}{(-75\euro)} \\
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Totale} & - & \textbf{43.5} & \textbf{790\euro} & \textbf{325.75 \textcolor{red}{(-43.5)}} & \textbf{6.660\euro \textcolor{red}{(-790\euro)}} \\
+        \hline
+    \end{tabularx}
+    \caption{\term{Sprint} 8 - Variazione nelle risorse disponibili}
+\end{table}
+
+\paragraph{Rischi incontrati}
+-
+\paragraph{Retrospettiva}
+-
 \end{document}
