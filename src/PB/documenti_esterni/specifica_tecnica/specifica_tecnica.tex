@@ -1042,7 +1042,7 @@ Questo widget raggruppa i bottoni e le azioni specifiche per la gestione dei con
 
 \subsubsection{Dead Man's Switch} \label{subsubsec:architettura_dead_man_switch}
 
-La funzionalità del \textit{Dead Man's Switch} (Interruttore dell'Uomo Morto) rappresenta un sistema di sicurezza critico che invia avvisi automatici in caso di inattività prolungata dell'\term{Utente}. L'architettura frontend è focalizzata sulla gestione sicura della configurazione di tale sistema. Il frontend non interagisce direttamente con servizi di posta elettronica, ma demanda la gestione dei timer e l'invio delle email tramite AWS SES al \term{Backend}, garantendo così la sicurezza e l'affidabilità del servizio anche ad applicazione chiusa. Analogamente al resto dell'applicazione, la funzionalità è implementata secondo il pattern MVVM e le linee guida architetturali di Flutter, distinguendo un \term{Data Layer}, composto da Service e \term{Repository}, e un \term{UI Layer}, composto da View e ViewModel.
+La funzionalità del \textit{Dead Man's Switch} (Interruttore dell'Uomo Morto) rappresenta un sistema di sicurezza critico che invia avvisi automatici in caso di inattività prolungata dell'\term{Utente}. L'\term{Architettura} frontend è focalizzata sulla gestione sicura della configurazione di tale sistema. Il frontend non interagisce direttamente con servizi di posta elettronica, ma demanda la gestione dei timer e l'invio delle email tramite AWS SES al \term{Backend}, garantendo così la sicurezza e l'affidabilità del servizio anche ad applicazione chiusa. Analogamente al resto dell'applicazione, la funzionalità è implementata secondo il pattern MVVM e le linee guida architetturali di Flutter, distinguendo un \term{Data Layer}, composto da Service e \term{Repository}, e un \term{UI Layer}, composto da View e ViewModel.
 
 
 \begin{figure}[H]
@@ -1077,7 +1077,7 @@ Questo componente incapsula gli elementi interattivi dell'interfaccia, come i se
 
 \paragraph{DeadManViewModel}
 
-\code{DeadManViewModel} orchestra la logica di business di questa sezione. Mantiene in memoria le configurazioni attuali dell'utente (\code{settings}) e lo stato di sincronizzazione (\code{isLoading}). Implementa il mixin \code{ChangeNotifier} per notificare la UI a ogni interazione. Oltre a recuperare i dati, espone metodi fondamentali come \code{saveConfiguration()}, che permette di confermare e trasmettere al \term{Repository} le nuove impostazioni scelte dall'utente.
+\code{DeadManViewModel} orchestra la logica di business di questa sezione. Mantiene in memoria le configurazioni attuali dell'\term{Utente} (\code{settings}) e lo stato di sincronizzazione (\code{isLoading}). Implementa il mixin \code{ChangeNotifier} per notificare la UI a ogni interazione. Oltre a recuperare i dati, espone metodi fondamentali come \code{saveConfiguration()}, che permette di confermare e trasmettere al \term{Repository} le nuove impostazioni scelte dall'\term{Utente}.
 
 \begin{figure}[H]
     \centering
@@ -1088,7 +1088,7 @@ Questo componente incapsula gli elementi interattivi dell'interfaccia, come i se
 
 \paragraph{DeadManSettings}
 
-\code{DeadManSettings} è l'entità di dominio che modella le preferenze di sicurezza. Contiene gli attributi necessari a configurare l'allarme: uno stato booleano di attivazione (\code{isActive}), un valore temporale che definisce la soglia di tolleranza (\code{inactivityHours}) e il corpo del messaggio testuale (\code{customMessage}) che il backend inoltrerà ai contatti fidati tramite AWS SES.
+\code{DeadManSettings} è l'entità di dominio che modella le preferenze di sicurezza. Contiene gli attributi necessari a configurare l'allarme: uno stato booleano di attivazione (\code{isActive}), un valore temporale che definisce la soglia di tolleranza (\code{inactivityHours}) e il corpo del messaggio testuale (\code{customMessage}) che il \term{Backend} inoltrerà ai contatti fidati tramite AWS SES.
 
 \begin{figure}[H]
     \centering
@@ -1121,7 +1121,7 @@ Appartenente al \term{Data Layer}, \code{DeadManService} si occupa della comunic
 
 \paragraph{DeadManSettingsDTO}
 
-Il \code{DeadManSettingsDTO} è l'oggetto di trasferimento dati incaricato della serializzazione. Consente di mappare i campi JSON inviati e ricevuti dal server, assicurando che la comunicazione tra l'app Flutter e il Backend mantenga un contratto dati rigoroso.
+Il \code{DeadManSettingsDTO} è l'oggetto di trasferimento dati incaricato della serializzazione. Consente di mappare i campi JSON inviati e ricevuti dal server, assicurando che la comunicazione tra l'app Flutter e il \term{Backend} mantenga un \term{Contratto} dati rigoroso.
 
 \begin{figure}[H]
     \centering
