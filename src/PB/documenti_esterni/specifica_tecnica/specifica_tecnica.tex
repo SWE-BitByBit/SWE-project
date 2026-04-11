@@ -1299,6 +1299,85 @@ Il \code{InfoMaterialDTO} gestisce la logica di mappatura dei dati. Implementa i
 \end{figure}
 
 
+% --- SOTTOSEZIONE CONTATTI DI EMERGENZA ---
+\paragraph{EmergencyContactScreen}
+
+\code{EmergencyContactScreen} rappresenta la vista principale per la consultazione rapida dei contatti di emergenza o degli enti di supporto preposti. Delega il recupero e la gestione dei numeri telefonici al relativo ViewModel, mantenendo un layout pulito e immediato.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-EmergencyContactScreen.pdf}
+    \caption[Diagramma della classe EmergencyContactScreen]{Diagramma della classe \code{EmergencyContactScreen}}
+    \label{DC-EmergencyContactScreen}
+\end{figure}
+
+\paragraph{EmergencyContactListWidget}
+
+Responsabile della renderizzazione dell'elenco dei contatti, \code{EmergencyContactListWidget} implementa l'interfaccia \code{Consumer}. Oltre ad aggiornare l'interfaccia reattivamente allo stato del ViewModel, gestisce l'interazione dell'utente: alla selezione di una voce, intercetta l'evento e segnala l'intenzione di avviare una chiamata telefonica.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-EmergencyContactListWidget.pdf}
+    \caption[Diagramma della classe EmergencyContactListWidget]{Diagramma della classe \code{EmergencyContactListWidget}}
+    \label{DC-EmergencyContactListWidget}
+\end{figure}
+
+\paragraph{EmergencyContactViewModel}
+
+\code{EmergencyContactViewModel} è il nucleo logico della sezione. Gestisce la lista di oggetti \code{EmergencyContact} e lo stato di \code{isLoading}. Tramite \code{ChangeNotifier}, notifica la View a seguito del completamento del recupero dati. Inoltre, espone metodi per gestire l'avvio della telefonata (ad esempio interfacciandosi con servizi di sistema tramite \textit{intent} o URL launcher) quando un contatto viene selezionato.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-EmergencyContactViewModel.pdf}
+    \caption[Diagramma della classe EmergencyContactViewModel]{Diagramma della classe \code{EmergencyContactViewModel}}
+    \label{DC-EmergencyContactViewModel}
+\end{figure}
+
+\paragraph{EmergencyContact}
+
+Classe di dominio che modella le informazioni di un ente o contatto di emergenza. Include attributi fondamentali e immediati quali l'identificativo, il nome dell'ente e il numero di telefono (\code{phoneNumber}), fornendo i metodi necessari per l'accesso ai dati.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-EmergencyContact.pdf}
+    \caption[Diagramma della classe EmergencyContact]{Diagramma della classe \code{EmergencyContact}}
+    \label{DC-EmergencyContact}
+\end{figure}
+
+\paragraph{EmergencyContactRepository}
+
+Il \code{EmergencyContactRepository} funge da intermediario tra il ViewModel e il Service. Richiede i dati grezzi, ne gestisce la conversione tramite il DTO e restituisce oggetti di dominio \code{EmergencyContact}, garantendo l'astrazione dalla sorgente dati.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-EmergencyContactRepository.pdf}
+    \caption[Diagramma della classe EmergencyContactRepository]{Diagramma della classe \code{EmergencyContactRepository}}
+    \label{DC-EmergencyContactRepository}
+\end{figure}
+
+\paragraph{EmergencyContactService}
+
+Appartenente al \term{Data Layer}, \code{EmergencyContactService} esegue le richieste verso il \term{Backend} per ottenere l'elenco aggiornato dei contatti di emergenza salvati nel database.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-EmergencyContactService.pdf}
+    \caption[Diagramma della classe EmergencyContactService]{Diagramma della classe \code{EmergencyContactService}}
+    \label{DC-EmergencyContactService}
+\end{figure}
+
+\paragraph{EmergencyContactDTO}
+
+Il \code{EmergencyContactDTO} gestisce la logica di mappatura dei dati. Implementa i metodi di conversione JSON per trasformare i payload di rete in istanze della classe \code{EmergencyContact}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-EmergencyContactDTO.pdf}
+    \caption[Diagramma della classe EmergencyContactDTO]{Diagramma della classe \code{EmergencyContactDTO}}
+    \label{DC-EmergencyContactDTO}
+\end{figure}
+
+
 
 
 
