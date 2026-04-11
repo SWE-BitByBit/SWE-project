@@ -153,6 +153,8 @@ Gruppo BitByBit\\
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+0.1.7 & 2026-04-11 & Marco Sanguin & Aggiunta la sezione \hyperref[sec:stato_requisiti_funzionali]{Stato dei requisiti funzionali} & Ferdinando Fracasso\\
+\hline
 0.1.6 & 2026-04-09 & Ferdinando Fracasso & Redatta la sezione \hyperref[subsec:design_pattern]{Design pattern utilizzati} & Giovanni Visentin\\
 \hline
 0.1.5 & 2026-04-06 & Ferdinando Fracasso & Redatta la sezione \hyperref[subsubsec:architettura_diari]{Architettura funzionalità diari} & Marco Sanguin \\
@@ -1068,5 +1070,508 @@ Questo widget raggruppa i bottoni e le azioni specifiche per la gestione dei con
     \caption[Diagramma della classe TrustedContactDTO]{Diagramma della classe \code{TrustedContactDTO}}
     \label{DC-TrustedContactDTO}
 \end{figure}
+
+
+\section{Stato dei requisiti funzionali} \label{sec:stato_requisiti_funzionali}
+\subsection{Requisiti Funzionali obbligatori} \label{subsection:requisiti_funzionali_obbligatori}
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\arrayrulecolor{black}
+\rowcolors{2}{gray!20}{white}
+
+\begin{longtable}{|c|p{8.5cm}|>{\centering\arraybackslash}p{4cm}|}
+
+\hline
+\rowcolor{gray!60}
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\
+\hline
+\endfirsthead
+\caption[]{Tabella dello stato dei requisiti funzionali obbligatori (continua)} \\
+\hline
+\rowcolor{gray!60}
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\
+\hline
+\endhead
+
+RF-OB-1 & L'\term{Utente} deve poter autenticarsi all'applicazione tramite l'utilizzo di Google Auth & Non soddisfatto \\
+\hline
+
+RF-OB-2 & Il sistema deve attivare automaticamente la funzionalità di Dead Man's Switch a seguito del login dell'\term{Utente} & Non soddisfatto \\
+\hline
+
+RF-OB-3 & L'\term{Utente} deve poter visualizzare un messaggio di errore esplicativo nel caso in cui l'autenticazione tramite Google Auth fallisca, venga annullata o restituisca parametri non validi & Non soddisfatto \\
+\hline
+
+RF-OB-4 & L'\term{Utente} deve poter selezionare il profilo di utilizzo ("Per me" o "Per altri") & Non soddisfatto \\
+\hline
+
+RF-OB-5 & L'\term{Utente} deve poter visualizzare la lista dei contatti fidati & Non soddisfatto \\
+\hline
+
+RF-OB-6 & L'\term{Utente} deve poter visualizzare un messaggio di errore esplicativo nel caso in cui il recupero dei dati dal database fallisca & Non soddisfatto \\
+\hline
+
+RF-OB-7 & L'\term{Utente} deve poter ricaricare la sezione dei contatti fidati dopo la visualizzazione dell'errore di caricamento dei dati dal database & Non soddisfatto \\
+\hline
+
+RF-OB-8 & Il sistema deve permettere la visualizzazione di un singolo contatto fidato dalla lista dei contatti fidati & Non soddisfatto \\
+\hline
+
+    RF-OB-9 & L'\term{Utente} deve poter visualizzare la preview delle informazioni (il nome) del contatto fidato che sta visualizzando dalla lista dei contatti fidati & Non soddisfatto \\
+    \hline
+
+RF-OB-10 & L'\term{Utente} deve poter visualizzare i dettagli di un contatto fidato selezionato dalla lista dei contatti fidati & Non soddisfatto \\
+\hline
+
+RF-OB-11 & L'\term{Utente} deve poter visualizzare il nome del contatto fidato selezionato dalla lista dei contatti fidati & Non soddisfatto \\
+\hline
+
+RF-OB-12 & L'\term{Utente} deve poter visualizzare il numero di telefono del contatto fidato selezionato dalla lista dei contatti fidati & Non soddisfatto \\
+\hline
+
+RF-OB-13 & L'\term{Utente} deve poter visualizzare l'indirizzo email del contatto fidato selezionato dalla lista dei contatti fidati & Non soddisfatto \\
+\hline
+
+RF-OB-14 & L'\term{Utente} deve poter aggiungere un nuovo contatto fidato alla lista dei contatti fidati & Non soddisfatto \\
+\hline
+
+RF-OB-15 & L'\term{Utente} deve poter inserire il nome del nuovo contatto fidato durante l'aggiunta di esso alla lista dei contatti fidati & Non soddisfatto \\
+\hline
+
+RF-OB-16 & L'\term{Utente} deve poter inserire il numero di telefono del nuovo contatto fidato durante l'aggiunta di esso alla lista dei contatti fidati & Non soddisfatto \\
+\hline
+
+RF-OB-17 & L'\term{Utente} deve poter inserire l'indirizzo email del nuovo contatto fidato durante l'aggiunta di esso alla lista dei contatti fidati & Non soddisfatto \\
+\hline
+
+RF-OB-18 & Il sistema deve riconoscere e gestire le informazioni di numero di telefono e email già presenti nel sistema & Non soddisfatto \\
+\hline
+
+RF-OB-19 & L'\term{Utente} deve poter visualizzare un messaggio di errore esplicativo nel caso in cui le informazioni di numero di telefono e email siano già presenti nel sistema & Non soddisfatto \\
+\hline
+
+RF-OB-20 & L'\term{Utente} deve poter reinserire le informazioni di numero di telefono e email dopo la visualizzazione del messaggio di errore esplicativo & Non soddisfatto \\
+\hline
+
+RF-OB-21 & Il sistema deve validare la conformità del numero di telefono inserito o modificato & Non soddisfatto \\
+\hline
+
+RF-OB-22 & Il sistema deve visualizzare un messaggio di errore esplicativo nel caso in cui il numero di telefono inserito o modificato non sia conforme ai criteri prestabiliti & Non soddisfatto \\
+\hline
+
+RF-OB-23 & Il sistema deve validare la conformità dell'indirizzo email inserito o modificato & Non soddisfatto \\
+\hline
+
+RF-OB-24 & Il sistema deve visualizzare un messaggio di errore esplicativo nel caso in cui l'indirizzo email inserito o modificato non sia conforme ai criteri prestabiliti & Non soddisfatto \\
+\hline
+
+RF-OB-25 & L'\term{Utente} deve poter modificare i dati di un contatto fidato esistente & Non soddisfatto \\
+\hline
+
+RF-OB-26 & L'\term{Utente} deve poter modificare il nome di un contatto fidato esistente & Non soddisfatto \\
+\hline
+
+RF-OB-27 & L'\term{Utente} deve poter modificare il numero di telefono di un contatto fidato esistente & Non soddisfatto \\
+\hline
+
+RF-OB-28 & L'\term{Utente} deve poter modificare l'indirizzo email di un contatto fidato esistente & Non soddisfatto \\
+\hline
+
+RF-OB-29 & L'\term{Utente} deve poter eliminare un contatto fidato & Non soddisfatto \\
+\hline
+
+RF-OB-30 & Il sistema deve richiedere conferma prima dell'eliminazione di un contatto fidato & Non soddisfatto \\
+\hline
+
+RF-OB-31 & L'\term{Utente} deve poter confermare, con un'apposita voce, l'eliminazione di un contatto fidato quando il sistema richiede la conferma & Non soddisfatto \\
+\hline
+
+RF-OB-32 & L'\term{Utente} deve poter effettuare il logout dopo essersi autenticato all'applicazione & Non soddisfatto \\
+\hline
+
+RF-OB-34 & L'\term{Utente} deve poter modificare le informazioni della mail di avviso & Non soddisfatto \\
+\hline
+
+RF-OB-35 & L'\term{Utente} deve poter modificare il titolo della mail di avviso & Non soddisfatto \\
+\hline
+
+RF-OB-36 & L'\term{Utente} deve poter modificare il corpo della mail di avviso & Non soddisfatto \\
+\hline
+
+RF-OB-37 & L'\term{Utente} deve poter visualizzare un'anteprima della mail di avviso & Non soddisfatto \\
+\hline
+
+RF-OB-38 & L'\term{Utente} deve poter visualizzare l'anteprima del corpo della mail di avviso & Non soddisfatto \\
+\hline
+
+RF-OB-39 & L'\term{Utente} deve poter visualizzare un'anteprima del titolo della mail di avviso & Non soddisfatto \\
+\hline
+
+RF-OB-40 & L'\term{Utente} deve poter attivare il Dead Man's Switch & Non soddisfatto \\
+\hline
+
+RF-OB-41 & L'\term{Utente} deve poter disattivare la funzionalità di Dead Man's Switch & Non soddisfatto \\
+\hline
+
+RF-OB-42 & L'\term{Utente} deve poter impostare una password per il diario criptato & Non soddisfatto \\
+\hline
+
+RF-OB-43 & Il sistema deve validare la conformità della password del diario criptato secondo i criteri prestabiliti & Non soddisfatto \\
+\hline
+
+RF-OB-44 & Il sistema deve visualizzare un messaggio di errore esplicativo nel caso in cui la password del diario criptato non sia conforme ai criteri prestabiliti & Non soddisfatto \\
+\hline
+
+RF-OB-45 & L'\term{Utente} deve poter reinserire la password del diario criptato dopo la visualizzazione del messaggio di errore esplicativo & Non soddisfatto \\
+\hline
+
+RF-OB-46 & L'\term{Utente} deve poter impostare una password per il diario fittizio & Non soddisfatto \\
+\hline
+
+RF-OB-47 & Il sistema deve validare la conformità e l'unicità della password del diario fittizio rispetto a quella del diario criptato & Non soddisfatto \\
+\hline
+
+RF-OB-48 & Il sistema deve visualizzare un messaggio di errore esplicativo nel caso in cui la password del diario fittizio non sia conforme ai criteri prestabiliti & Non soddisfatto \\
+\hline
+
+RF-OB-49 & Il sistema deve visualizzare un messaggio di errore esplicativo nel caso in cui la password del diario fittizio sia uguale a quella del diario criptato & Non soddisfatto \\
+\hline
+
+RF-OB-50 & L'\term{Utente} deve poter reinserire la password del diario fittizio dopo la visualizzazione del messaggio di errore esplicativo & Non soddisfatto \\
+\hline
+
+RF-OB-51 & L'\term{Utente} deve poter inserire la password per accedere al diario desiderato & Non soddisfatto \\
+\hline
+
+RF-OB-52 & L'\term{Utente} deve poter inserire la password per accedere al diario criptato & Non soddisfatto \\
+\hline
+
+RF-OB-53 & L'\term{Utente} deve poter inserire la password per accedere al diario fittizio & Non soddisfatto \\
+\hline
+
+RF-OB-54 & Il sistema deve visualizzare un messaggio di errore esplicativo nel caso in cui la password inserita per l'accesso al diario risulti errata & Non soddisfatto \\
+\hline
+
+RF-OB-55 & L'\term{Utente} deve poter reinserire la password di accesso al diario dopo la visualizzazione del messaggio di errore esplicativo & Non soddisfatto \\
+\hline
+
+RF-OB-56 & Il sistema deve bloccare temporaneamente l'accesso al diario in seguito al superamento del limite massimo di tentativi errati di inserimento password & Non soddisfatto \\
+\hline
+
+RF-OB-57 & L'\term{Utente} deve poter visualizzare il contenuto del diario criptato & Non soddisfatto \\
+\hline
+
+RF-OB-58 & L'\term{Utente} deve poter visualizzare la lista delle note presenti nel diario criptato & Non soddisfatto \\
+\hline
+
+RF-OB-59 & L'\term{Utente} deve poter visualizzare l'anteprima della singola nota all'interno della lista delle note del diario criptato & Non soddisfatto \\
+\hline
+
+RF-OB-60 & L'\term{Utente} deve poter ricaricare la sezione delle note del diario criptato dopo la visualizzazione dell'errore di caricamento dei dati dal database & Non soddisfatto \\
+\hline
+
+RF-OB-61 & L'\term{Utente} deve poter creare una nuova nota vuota all'interno del diario criptato & Non soddisfatto \\
+\hline
+
+RF-OB-62 & L'\term{Utente} deve poter eliminare una nota esistente dal diario criptato & Non soddisfatto \\
+\hline
+
+RF-OB-63 & Il sistema deve richiedere conferma prima dell'eliminazione definitiva di una nota del diario criptato & Non soddisfatto \\
+\hline
+
+RF-OB-64 & L'\term{Utente} deve poter confermare, con un'apposita voce, l'eliminazione della nota dal diario criptato quando il sistema ne richiede la conferma & Non soddisfatto \\
+\hline
+
+RF-OB-65 & L'\term{Utente} deve poter visualizzare il contenuto completo di una nota selezionata dalla lista delle note del diario criptato & Non soddisfatto \\
+\hline
+
+RF-OB-66 & L'\term{Utente} deve poter visualizzare il contenuto testuale della nota del diario criptato & Non soddisfatto \\
+\hline
+
+RF-OB-67 & L'\term{Utente} deve poter visualizzare il contenuto multimediale della nota del diario criptato & Non soddisfatto \\
+\hline
+
+RF-OB-68 & L'\term{Utente} deve poter visualizzare il contenuto audio presente all'interno della nota del diario criptato & Non soddisfatto \\
+\hline
+
+RF-OB-69 & L'\term{Utente} deve poter visualizzare le immagini presenti all'interno della nota del diario criptato & Non soddisfatto \\
+\hline
+
+RF-OB-70 & L'\term{Utente} deve poter inserire del contenuto testuale all'interno di una nota del diario criptato & Non soddisfatto \\
+\hline
+
+RF-OB-71 & L'\term{Utente} deve poter inserire del contenuto multimediale all'interno di una nota del diario criptato & Non soddisfatto \\
+\hline
+
+RF-OB-72 & L'\term{Utente} deve poter inserire un'immagine all'interno di una nota del diario criptato & Non soddisfatto \\
+\hline
+
+RF-OB-73 & L'\term{Utente} deve poter inserire una traccia audio all'interno di una nota del diario criptato & Non soddisfatto \\
+\hline
+
+RF-OB-74 & L'\term{Utente} deve poter modificare il contenuto testuale presente all'interno di una nota del diario criptato & Non soddisfatto \\
+\hline
+
+RF-OB-75 & L'\term{Utente} deve poter rimuovere del contenuto multimediale presente all'interno di una nota del diario criptato & Non soddisfatto \\
+\hline
+
+RF-OB-76 & L'\term{Utente} deve poter rimuovere un'immagine presente all'interno di una nota del diario criptato & Non soddisfatto \\
+\hline
+
+RF-OB-77 & L'\term{Utente} deve poter rimuovere una traccia audio presente all'interno di una nota del diario criptato & Non soddisfatto \\
+\hline
+
+RF-OB-78 & L'\term{Utente} deve poter visualizzare la schermata del diario fittizio & Non soddisfatto \\
+\hline
+
+RF-OB-79 & L'\term{Utente} deve poter visualizzare la lista delle note presenti nel diario fittizio & Non soddisfatto \\
+\hline
+
+RF-OB-80 & L'\term{Utente} deve poter visualizzare l'anteprima della singola nota all'interno della lista delle note del diario fittizio & Non soddisfatto \\
+\hline
+
+RF-OB-81 & L'\term{Utente} deve poter ricaricare la sezione delle note del diario fittizio dopo la visualizzazione dell'errore di caricamento dei dati dal database & Non soddisfatto \\
+\hline
+
+RF-OB-82 & L'\term{Utente} deve poter eliminare una nota esistente dal diario fittizio & Non soddisfatto \\
+\hline
+
+RF-OB-83 & Il sistema deve richiedere conferma prima dell'eliminazione definitiva di una nota del diario fittizio & Non soddisfatto \\
+\hline
+
+RF-OB-84 & L'\term{Utente} deve poter confermare, con un'apposita voce, l'eliminazione della nota dal diario fittizio quando il sistema ne richiede la conferma & Non soddisfatto \\
+\hline
+
+RF-OB-85 & L'\term{Utente} deve poter creare una nuova nota vuota all'interno del diario fittizio & Non soddisfatto \\
+\hline
+
+RF-OB-86 & L'\term{Utente} deve poter visualizzare il contenuto completo di una nota selezionata dalla lista delle note del diario fittizio & Non soddisfatto \\
+\hline
+
+RF-OB-87 & L'\term{Utente} deve poter visualizzare il contenuto testuale della nota del diario fittizio & Non soddisfatto \\
+\hline
+
+RF-OB-88 & L'\term{Utente} deve poter visualizzare il contenuto multimediale della nota del diario fittizio & Non soddisfatto \\
+\hline
+
+RF-OB-89 & L'\term{Utente} deve poter visualizzare il contenuto audio presente all'interno della nota del diario fittizio & Non soddisfatto \\
+\hline
+
+RF-OB-90 & L'\term{Utente} deve poter visualizzare le immagini presenti all'interno della nota del diario fittizio & Non soddisfatto \\
+\hline
+
+RF-OB-91 & L'\term{Utente} deve poter inserire del contenuto testuale all'interno di una nota del diario fittizio & Non soddisfatto \\
+\hline
+
+RF-OB-92 & L'\term{Utente} deve poter inserire del contenuto multimediale all'interno di una nota del diario fittizio & Non soddisfatto \\
+\hline
+
+RF-OB-93 & L'\term{Utente} deve poter inserire un'immagine all'interno di una nota del diario fittizio & Non soddisfatto \\
+\hline
+
+RF-OB-94 & L'\term{Utente} deve poter inserire una traccia audio all'interno di una nota del diario fittizio & Non soddisfatto \\
+\hline
+
+RF-OB-95 & L'\term{Utente} deve poter rimuovere del contenuto multimediale presente all'interno di una nota del diario fittizio & Non soddisfatto \\
+\hline
+
+RF-OB-96 & L'\term{Utente} deve poter rimuovere un'immagine presente all'interno di una nota del diario fittizio & Non soddisfatto \\
+\hline
+
+RF-OB-97 & L'\term{Utente} deve poter rimuovere una traccia audio presente all'interno di una nota del diario fittizio & Non soddisfatto \\
+\hline
+
+RF-OB-98 & L'\term{Utente} deve poter modificare il contenuto testuale presente all'interno di una nota del diario fittizio & Non soddisfatto \\
+\hline
+
+RF-OB-99 & L'\term{Utente} deve poter inviare un messaggio di SOS ai contatti fidati tramite un'apposita voce & Non soddisfatto \\
+\hline
+
+RF-OB-100 & Il sistema deve notificare l'\term{Utente} dell'assenza di connessione internet durante il tentativo di invio del messaggio SOS e proporre l'invio di un segnale acustico & Non soddisfatto \\
+\hline
+
+RF-OB-101 & Il sistema deve notificare l'\term{Utente} della mancanza di contatti fidati configurati durante il tentativo di invio del messaggio SOS e proporre l'invio di un segnale acustico & Non soddisfatto \\
+\hline
+
+RF-OB-102 & L'\term{Utente} deve poter avviare un segnale acustico di emergenza indipendente dalle impostazioni di volume del dispositivo & Non soddisfatto \\
+\hline
+
+RF-OB-103 & L'\term{Utente} deve poter inviare un messaggio al chatbot e ricevere una risposta generata dall'LLM in base al contesto scelto & Non soddisfatto \\
+\hline
+
+RF-OB-104 & L'\term{Utente} deve poter interrompere la generazione della risposta dell'LLM durante la consultazione del chatbot & Non soddisfatto \\
+\hline
+
+RF-OB-105 & Il sistema deve notificare l'\term{Utente} della mancanza di connessione internet durante la consultazione del chatbot & Non soddisfatto \\
+\hline
+
+RF-OB-106 & L'\term{Utente} deve poter ripetere l'invio del messaggio o scriverne uno nuovo dopo la notifica di assenza di connessione internet & Non soddisfatto \\
+\hline
+
+RF-OB-107 & L'\term{Utente} deve poter cambiare il contesto della chat a "Detective delle Relazioni" & Non soddisfatto \\
+\hline
+
+RF-OB-108 & L'\term{Utente} deve poter cambiare il contesto della chat a "Specchio Intelligente" & Non soddisfatto \\
+\hline
+
+RF-OB-109 & Il sistema deve notificare l'\term{Utente} di un errore durante il cambio di contesto del chatbot e mantenere il contesto precedente & Non soddisfatto \\
+\hline
+
+RF-OB-110 & L'\term{Utente} deve poter ritentare il cambio di contesto del chatbot dopo la notifica di errore & Non soddisfatto \\
+\hline
+
+RF-OB-111 & L'\term{Utente} deve poter creare una nuova sessione di chat con il chatbot & Non soddisfatto \\
+\hline
+
+RF-OB-112 & L'\term{Utente} deve poter eliminare una chat dalla cronologia delle chat & Non soddisfatto \\
+\hline
+
+RF-OB-113 & Il sistema deve richiedere conferma esplicita prima dell'eliminazione definitiva di una chat & Non soddisfatto \\
+\hline
+
+RF-OB-114 & L'\term{Utente} deve poter confermare, con un'apposita voce, l'eliminazione di una chat quando il sistema ne richiede la conferma & Non soddisfatto \\
+\hline
+
+RF-OB-115 & L'\term{Utente} deve poter visualizzare il contenuto di una chat selezionata, inclusa la lista dei messaggi scambiati & Non soddisfatto \\
+\hline
+
+RF-OB-116 & Il sistema deve notificare l'\term{Utente} di un errore nel caricamento del contenuto della chat & Non soddisfatto \\
+\hline
+
+RF-OB-117 & Il sistema deve visualizzare la lista dei messaggi scambiati tra l'\term{Utente} e il chatbot all'interno di una chat & Non soddisfatto \\
+\hline
+
+RF-OB-118 & Il sistema deve distinguere visivamente i messaggi inviati dall'\term{Utente} da quelli generati dal chatbot & Non soddisfatto \\
+\hline
+
+RF-OB-119 & Il sistema deve visualizzare i messaggi inviati dall'\term{Utente} con la formattazione grafica allineata a destra & Non soddisfatto \\
+\hline
+
+RF-OB-120 & Il sistema deve visualizzare i messaggi generati dal chatbot con la formattazione grafica allineata a sinistra & Non soddisfatto \\
+\hline
+
+RF-OB-121 & L'\term{Utente} deve poter visualizzare la cronologia delle chat con il chatbot & Non soddisfatto \\
+\hline
+
+RF-OB-122 & L'\term{Utente} deve poter selezionare e visualizzare una singola chat dalla cronologia & Non soddisfatto \\
+\hline
+
+RF-OB-123 & Il sistema deve mostrare il titolo identificativo di ogni chat presente nella cronologia & Non soddisfatto \\
+\hline
+
+RF-OB-124 & L'\term{Utente} deve poter visualizzare la lista delle community disponibili & Non soddisfatto \\
+\hline
+
+RF-OB-125 & Il sistema deve notificare l'\term{Utente} di un errore nel caricamento della lista delle community & Non soddisfatto \\
+\hline
+
+RF-OB-126 & Il sistema deve mostrare i dati riassuntivi di ogni singola community nella lista & Non soddisfatto \\
+\hline
+
+RF-OB-127 & Il sistema deve mostrare il nome di ogni singola community nella lista & Non soddisfatto \\
+\hline
+
+RF-OB-128 & Il sistema deve mostrare il link di ogni singola community nella lista & Non soddisfatto \\
+\hline
+
+RF-OB-129 & L'\term{Utente} deve poter aprire il link di una community per visitarne il sito web esterno & Non soddisfatto \\
+\hline
+
+RF-OB-130 & L'\term{Utente} deve poter visualizzare la lista delle leggi e normative disponibili & Non soddisfatto \\
+\hline
+
+RF-OB-131 & Il sistema deve mostrare il titolo di ogni singola legge nella lista & Non soddisfatto \\
+\hline
+
+RF-OB-132 & L'\term{Utente} deve poter visualizzare i dettagli completi di una legge selezionata dalla lista & Non soddisfatto \\
+\hline
+
+RF-OB-133 & Il sistema deve notificare l'\term{Utente} di un errore nel caricamento dei dati di una legge & Non soddisfatto \\
+\hline
+
+RF-OB-134 & L'\term{Utente} deve poter visualizzare la lista dei contatti e degli enti d'emergenza & Non soddisfatto \\
+\hline
+
+RF-OB-135 & Il sistema deve mostrare i dati riassuntivi di ogni singolo contatto d'emergenza nella lista & Non soddisfatto \\
+\hline
+
+RF-OB-136 & Il sistema deve mostrare il nome identificativo di ogni contatto d'emergenza & Non soddisfatto \\
+\hline
+
+RF-OB-137 & Il sistema deve mostrare il numero di telefono associato ad ogni contatto d'emergenza & Non soddisfatto \\
+\hline
+
+RF-OB-139 & L'\term{Utente} deve poter visualizzare la lista del materiale informativo disponibile & Non soddisfatto \\
+\hline
+
+RF-OB-140 & Il sistema deve notificare l'\term{Utente} di un errore nel caricamento della lista del materiale informativo & Non soddisfatto \\
+\hline
+
+RF-OB-141 & Il sistema deve mostrare il titolo e il formato di ogni singolo materiale informativo nella lista & Non soddisfatto \\
+\hline
+
+RF-OB-142 & L'\term{Utente} deve poter visualizzare il contenuto di un materiale informativo selezionato dalla lista & Non soddisfatto \\
+\hline
+
+RF-OB-143 & Il sistema deve notificare l'\term{Utente} di un errore nel recupero dei dati del materiale informativo & Non soddisfatto \\
+\hline
+
+RF-OB-144 & L'\term{Utente} deve poter visualizzare la mappa interattiva con i marker dei luoghi sicuri nelle vicinanze & Non soddisfatto \\
+\hline
+
+RF-OB-145 & L'\term{Utente} deve poter aprire un luogo sicuro nella mappa esterna Google Maps & Non soddisfatto \\
+\hline
+
+RF-OB-146 & Il sistema deve notificare l'\term{Utente} di un errore nell'apertura dell'applicazione Google Maps e mantenere la visualizzazione della mappa interna & Non soddisfatto \\
+\hline
+\caption{Tabella dello stato dei requisiti funzionali obbligatori} \label{tab:stato_requisiti_funzionali_obbligatori} \\
+\end{longtable}
+\end{center}
+
+% REQUISITI OPZIONALI %
+\subsection{Requisiti Funzionali opzionali} \label{subsection:requisiti_funzionali_opzionali}
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\arrayrulecolor{black}
+\begin{longtable}{|c|p{8.5cm}|>{\centering\arraybackslash}p{4cm}|}
+
+\hline
+\rowcolor{gray!60}
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Riferimento} \\
+\hline
+\endfirsthead
+\caption[]{Tabella dello stato dei requisiti funzionali opzionali (continua)} \\
+\hline
+\rowcolor{gray!60}
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Riferimento} \\
+\hline
+\endhead
+
+\rowcolor{gray!20}
+RF-OP-1 & L'\term{Utente} deve poter impostare il timer di prima inattività (per la funzionalità di Dead Man's Switch) & Non Soddisfatto \\
+\hline
+\rowcolor{white}
+RF-OP-2 & L'\term{Utente} deve poter impostare il timer di seconda inattività (per la funzionalità di Dead Man's Switch) & Non Soddisfatto \\
+\hline
+\rowcolor{gray!20}
+RF-OP-3 & Il sistema deve inviare un SMS ai numeri di telefono dei contatti fidati all'invio del segnale SOS & Non Soddisfatto \\
+\hline
+\rowcolor{white}
+RF-OP-4 & Il sistema deve indicare all'\term{Utente} se le risorse sono autorevoli e verificate & Non Soddisfatto \\
+\hline
+\rowcolor{gray!20}
+RF-OP-5 & Il sistema deve mettere a disposizione leggi estere & Non Soddisfatto \\
+\hline
+\rowcolor{white}
+RF-OP-6 & Il sistema deve mostrare leggi aggiornate, giuridicamente valide e complete & Non Soddisfatto \\
+\hline
+\rowcolor{gray!20}
+RF-OP-7 & Il sistema deve indicare all'\term{Utente} se i luoghi sicuri visualizzati nella mappa sono autorevoli e verificati & Non Soddisfatto \\
+\hline
+
+\caption{Tabella dello stato dei requisiti funzionali opzionali} \label{tab:stato_requisiti_funzionali_opzionali} \\
+\end{longtable}
+\end{center}
+
 
 \end{document}
