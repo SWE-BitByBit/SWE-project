@@ -152,6 +152,8 @@ Gruppo BitByBit\\
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
+0.1.6 & 2026-04-11 & Marco Sanguin & Redatta la sezione \hyperref[subsubsec:architettura_dead_man_switch]{Architettura funzionalità dead man switch} & Riccardo Manisi \\
+\hline
 0.1.5 & 2026-04-06 & Ferdinando Fracasso & Redatta la sezione \hyperref[subsubsec:architettura_diari]{Architettura funzionalità diari} & Marco Sanguin \\
 \hline
 0.1.4 & 2026-04-05 & Giovanni Visentin & Aggiunta della funzionalità dei contatti fidati & Dennis Parolin \\
@@ -1034,6 +1036,98 @@ Questo widget raggruppa i bottoni e le azioni specifiche per la gestione dei con
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/contatti_fidati/DC-TrustedContactDTO.pdf}
     \caption[Diagramma della classe TrustedContactDTO]{Diagramma della classe \code{TrustedContactDTO}}
     \label{DC-TrustedContactDTO}
+\end{figure}
+
+%DEAD MAN SWITCH
+
+\subsubsection{Dead Man's Switch} \label{subsubsec:architettura_dead_man_switch}
+
+La funzionalità del \textit{Dead Man's Switch} (Interruttore dell'Uomo Morto) rappresenta un sistema di sicurezza critico che invia avvisi automatici in caso di inattività prolungata dell'\term{Utente}. L'architettura frontend è focalizzata sulla gestione sicura della configurazione di tale sistema. Il frontend non interagisce direttamente con servizi di posta elettronica, ma demanda la gestione dei timer e l'invio delle email tramite AWS SES al \term{Backend}, garantendo così la sicurezza e l'affidabilità del servizio anche ad applicazione chiusa. Analogamente al resto dell'applicazione, la funzionalità è implementata secondo il pattern MVVM e le linee guida architetturali di Flutter, distinguendo un \term{Data Layer}, composto da Service e \term{Repository}, e un \term{UI Layer}, composto da View e ViewModel.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{diagrammi_classi/dead_man_switch/DC-feature-dead_man_switch.pdf}
+    \caption{Diagramma delle classi relativo alla funzionalità del Dead Man's Switch}
+    \label{DC-DeadManSwitch}
+\end{figure}
+\newpage
+
+\paragraph{DeadManScreen}
+
+La classe \code{DeadManScreen} rappresenta la schermata principale del pannello di controllo per la sicurezza. Funge da compositore, strutturando il layout della pagina e ospitando i form interattivi, delegando al ViewModel la reattività e la logica di salvataggio.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/dead_man_switch/DC-DeadManScreen.pdf}
+    \caption[Diagramma della classe DeadManScreen]{Diagramma della classe \code{DeadManScreen}}
+    \label{DC-DeadManScreen}
+\end{figure}
+
+\paragraph{DeadManFormWidget}
+
+Questo componente incapsula gli elementi interattivi dell'interfaccia, come i selettori (switch) per l'attivazione del servizio, i campi di input per la soglia di inattività (es. ore o giorni) e le aree di testo per il messaggio di emergenza personalizzato. Implementando \code{Consumer}, aggiorna i propri campi riflettendo fedelmente lo stato mantenuto nel ViewModel.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/dead_man_switch/DC-DeadManFormWidget.pdf}
+    \caption[Diagramma della classe DeadManFormWidget]{Diagramma della classe \code{DeadManFormWidget}}
+    \label{DC-DeadManFormWidget}
+\end{figure}
+
+\paragraph{DeadManViewModel}
+
+\code{DeadManViewModel} orchestra la logica di business di questa sezione. Mantiene in memoria le configurazioni attuali dell'utente (\code{settings}) e lo stato di sincronizzazione (\code{isLoading}). Implementa il mixin \code{ChangeNotifier} per notificare la UI a ogni interazione. Oltre a recuperare i dati, espone metodi fondamentali come \code{saveConfiguration()}, che permette di confermare e trasmettere al \term{Repository} le nuove impostazioni scelte dall'utente.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/dead_man_switch/DC-DeadManViewModel.pdf}
+    \caption[Diagramma della classe DeadManViewModel]{Diagramma della classe \code{DeadManViewModel}}
+    \label{DC-DeadManViewModel}
+\end{figure}
+
+\paragraph{DeadManSettings}
+
+\code{DeadManSettings} è l'entità di dominio che modella le preferenze di sicurezza. Contiene gli attributi necessari a configurare l'allarme: uno stato booleano di attivazione (\code{isActive}), un valore temporale che definisce la soglia di tolleranza (\code{inactivityHours}) e il corpo del messaggio testuale (\code{customMessage}) che il backend inoltrerà ai contatti fidati tramite AWS SES.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/dead_man_switch/DC-DeadManSettings.pdf}
+    \caption[Diagramma della classe DeadManSettings]{Diagramma della classe \code{DeadManSettings}}
+    \label{DC-DeadManSettings}
+\end{figure}
+
+\paragraph{DeadManRepository}
+
+Il \code{DeadManRepository} gestisce la persistenza e il recupero delle configurazioni. Agisce da ponte tra la logica di presentazione e il livello infrastrutturale, utilizzando \code{DeadManService} per inviare le preferenze aggiornate e convertendo le risposte di rete in oggetti di dominio \code{DeadManSettings} sicuri e validati tramite il DTO.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/dead_man_switch/DC-DeadManRepository.pdf}
+    \caption[Diagramma della classe DeadManRepository]{Diagramma della classe \code{DeadManRepository}}
+    \label{DC-DeadManRepository}
+\end{figure}
+
+\paragraph{DeadManService}
+
+Appartenente al \term{Data Layer}, \code{DeadManService} si occupa della comunicazione HTTP/REST con le API del \term{Backend}. Dispone dei metodi necessari per effettuare le operazioni di \textit{GET} (lettura parametri) e \textit{PUT/POST} (aggiornamento configurazioni) sul database remoto.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/dead_man_switch/DC-DeadManService.pdf}
+    \caption[Diagramma della classe DeadManService]{Diagramma della classe \code{DeadManService}}
+    \label{DC-DeadManService}
+\end{figure}
+
+\paragraph{DeadManSettingsDTO}
+
+Il \code{DeadManSettingsDTO} è l'oggetto di trasferimento dati incaricato della serializzazione. Consente di mappare i campi JSON inviati e ricevuti dal server, assicurando che la comunicazione tra l'app Flutter e il Backend mantenga un contratto dati rigoroso.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/dead_man_switch/DC-DeadManSettingsDTO.pdf}
+    \caption[Diagramma della classe DeadManSettingsDTO]{Diagramma della classe \code{DeadManSettingsDTO}}
+    \label{DC-DeadManSettingsDTO}
 \end{figure}
 
 \end{document}
