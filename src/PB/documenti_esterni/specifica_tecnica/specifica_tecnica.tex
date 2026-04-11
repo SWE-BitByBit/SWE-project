@@ -1095,11 +1095,10 @@ La classe \code{InfoHubScreen} funge da punto di ingresso per l'intera area info
     \caption[Diagramma della classe InfoHubScreen]{Diagramma della classe \code{InfoHubScreen}}
     \label{DC-InfoHubScreen}
 \end{figure}
-
 % --- SOTTOSEZIONE COMMUNITY ---
 \paragraph{CommunityScreen}
 
-\code{CommunityScreen} rappresenta la vista principale per la funzionalità di consultazione delle community. Coordina la visualizzazione della lista e del dettaglio, delegando il recupero dei dati al relativo ViewModel.
+\code{CommunityScreen} rappresenta la vista principale per la funzionalità di consultazione delle community. Organizza la struttura e l'ordinamento dei widget per la lista e il dettaglio, delegando la \textit{Presentation Logic} e il recupero dei dati al relativo ViewModel.
 
 \begin{figure}[H]
     \centering
@@ -1110,7 +1109,7 @@ La classe \code{InfoHubScreen} funge da punto di ingresso per l'intera area info
 
 \paragraph{CommunityListWidget}
 
-Responsabile della renderizzazione dell'elenco delle community, \code{CommunityListWidget} implementa l'interfaccia \code{Consumer}. Questo gli permette di osservare il \code{CommunityViewModel} e aggiornare l'interfaccia non appena i dati passano dallo stato di caricamento a quello di disponibilità.
+Responsabile della renderizzazione dell'elenco delle community, \code{CommunityListWidget} implementa l'interfaccia \code{Consumer}. Questo gli permette di osservare il \code{CommunityViewModel} e aggiornare la visualizzazione in seguito ad una notifica dal ViewModel.
 
 \begin{figure}[H]
     \centering
@@ -1121,7 +1120,7 @@ Responsabile della renderizzazione dell'elenco delle community, \code{CommunityL
 
 \paragraph{CommunityViewModel}
 
-\code{CommunityViewModel} è il nucleo logico della sezione. Gestisce la lista di oggetti \code{Community}, lo stato di \code{isLoading} per la gestione dei feedback visivi (spinner) e i messaggi di errore. Utilizza \code{ChangeNotifier} per notificare la View a seguito del completamento delle operazioni asincrone richieste al \term{Repository}.
+\code{CommunityViewModel} è il nucleo logico della sezione. Gestisce la lista di oggetti \code{Community}, lo stato di caricamento (\code{isLoading}) per la gestione dei feedback visivi (spinner) e i messaggi di errore. Utilizza il mixin \code{ChangeNotifier} per notificare la View in seguito ad un cambiamento di stato dei dati.
 
 \begin{figure}[H]
     \centering
@@ -1143,7 +1142,7 @@ Classe di dominio che modella le informazioni di una community di supporto. Incl
 
 \paragraph{CommunityRepository}
 
-Il \code{CommunityRepository} funge da intermediario tra il ViewModel e il Service. Si occupa di richiedere i dati grezzi, gestirne la conversione tramite il DTO e restituire oggetti di dominio \code{Community} "puliti", isolando l'applicazione dalla logica specifica di comunicazione di rete.
+La classe \code{CommunityRepository} funge da intermediario tra il ViewModel e il Service. Si occupa di richiedere i dati grezzi, gestirne la conversione tramite il DTO e restituire oggetti di dominio \code{Community} "puliti", isolando la \textit{Business Logic} dai dettagli di implementazione della rete.
 
 \begin{figure}[H]
     \centering
@@ -1154,7 +1153,7 @@ Il \code{CommunityRepository} funge da intermediario tra il ViewModel e il Servi
 
 \paragraph{CommunityService}
 
-Appartenente al \term{Data Layer}, \code{CommunityService} esegue fisicamente le richieste HTTP verso le API del \term{Backend} per ottenere l'elenco delle community salvate nel database.
+Appartenente al \term{Data Layer}, \code{CommunityService} esegue le richieste HTTP verso le API del \term{Backend} per ottenere l'elenco delle community salvate nel database.
 
 \begin{figure}[H]
     \centering
@@ -1165,7 +1164,7 @@ Appartenente al \term{Data Layer}, \code{CommunityService} esegue fisicamente le
 
 \paragraph{CommunityDTO}
 
-Il \code{CommunityDTO} gestisce la logica di mappatura dei dati. Implementa i metodi \code{fromJson} e \code{toJson} per trasformare le risposte JSON provenienti dal network in istanze della classe \code{Community}, garantendo la robustezza del sistema di tipizzazione.
+La classe \code{CommunityDTO} gestisce la logica di mappatura dei dati. Implementa i metodi \code{fromJson} e \code{toJson} per trasformare le risposte JSON provenienti dal network in istanze della classe \code{Community}.
 
 \begin{figure}[H]
     \centering
@@ -1177,7 +1176,7 @@ Il \code{CommunityDTO} gestisce la logica di mappatura dei dati. Implementa i me
 % --- SOTTOSEZIONE LEGISLATION---
 \paragraph{LegislationScreen}
 
-\code{LegislationScreen} rappresenta la vista principale per la funzionalità di consultazione delle leggi. Coordina la visualizzazione della lista e del dettaglio, delegando il recupero dei dati al relativo ViewModel.
+\code{LegislationScreen} rappresenta la vista principale per la funzionalità di consultazione delle leggi. Organizza la struttura e l'ordinamento dei widget per la lista e il dettaglio, delegando la \textit{Presentation Logic} e il recupero dei dati al relativo ViewModel.
 
 \begin{figure}[H]
     \centering
@@ -1188,7 +1187,7 @@ Il \code{CommunityDTO} gestisce la logica di mappatura dei dati. Implementa i me
 
 \paragraph{LegislationListWidget}
 
-Responsabile della renderizzazione dell'elenco delle leggi, \code{LegislationListWidget} implementa l'interfaccia \code{Consumer}. Questo gli permette di osservare il \code{LegislationViewModel} e aggiornare l'interfaccia non appena i dati passano dallo stato di caricamento a quello di disponibilità.
+Responsabile della renderizzazione dell'elenco delle leggi, \code{LegislationListWidget} implementa l'interfaccia \code{Consumer}. Questo gli permette di osservare il \code{LegislationViewModel} e aggiornare la visualizzazione in seguito ad una notifica dal ViewModel.
 
 \begin{figure}[H]
     \centering
@@ -1199,7 +1198,7 @@ Responsabile della renderizzazione dell'elenco delle leggi, \code{LegislationLis
 
 \paragraph{LegislationViewModel}
 
-\code{LegislationViewModel} è il nucleo logico della sezione. Gestisce la lista di oggetti \code{Legislation}, lo stato di \code{isLoading} per la gestione dei feedback visivi (spinner) e i messaggi di errore. Utilizza \code{ChangeNotifier} per notificare la View a seguito del completamento delle operazioni asincrone richieste al \term{Repository}.
+\code{LegislationViewModel} è il nucleo logico della sezione. Gestisce la lista di oggetti \code{Legislation}, lo stato di caricamento (\code{isLoading}) per la gestione dei feedback visivi (spinner) e i messaggi di errore. Utilizza il mixin \code{ChangeNotifier} per notificare la View in seguito ad un cambiamento di stato dei dati.
 
 \begin{figure}[H]
     \centering
@@ -1221,7 +1220,7 @@ Classe di dominio che modella le informazioni di una legge o di un riferimento n
 
 \paragraph{LegislationRepository}
 
-Il \code{LegislationRepository} funge da intermediario tra il ViewModel e il Service. Si occupa di richiedere i dati grezzi, gestirne la conversione tramite il DTO e restituire oggetti di dominio \code{Legislation} "puliti", isolando l'applicazione dalla logica specifica di comunicazione di rete.
+La classe \code{LegislationRepository} funge da intermediario tra il ViewModel e il Service. Si occupa di richiedere i dati grezzi, gestirne la conversione tramite il DTO e restituire oggetti di dominio \code{Legislation} "puliti", isolando la \textit{Business Logic} dai dettagli di implementazione della rete.
 
 \begin{figure}[H]
     \centering
@@ -1232,7 +1231,7 @@ Il \code{LegislationRepository} funge da intermediario tra il ViewModel e il Ser
 
 \paragraph{LegislationService}
 
-Appartenente al \term{Data Layer}, \code{LegislationService} esegue fisicamente le richieste HTTP verso le API del \term{Backend} per ottenere l'elenco delle leggi salvate nel database.
+Appartenente al \term{Data Layer}, \code{LegislationService} esegue le richieste HTTP verso le API del \term{Backend} per ottenere l'elenco delle leggi salvate nel database.
 
 \begin{figure}[H]
     \centering
@@ -1243,7 +1242,7 @@ Appartenente al \term{Data Layer}, \code{LegislationService} esegue fisicamente 
 
 \paragraph{LegislationDTO}
 
-Il \code{LegislationDTO} gestisce la logica di mappatura dei dati. Implementa i metodi \code{fromJson} e \code{toJson} per trasformare le risposte JSON provenienti dal network in istanze della classe \code{Legislation}, garantendo la robustezza del sistema di tipizzazione.
+La classe \code{LegislationDTO} gestisce la logica di mappatura dei dati. Implementa i metodi \code{fromJson} e \code{toJson} per trasformare le risposte JSON provenienti dal network in istanze della classe \code{Legislation}.
 
 \begin{figure}[H]
     \centering
@@ -1255,7 +1254,7 @@ Il \code{LegislationDTO} gestisce la logica di mappatura dei dati. Implementa i 
 % --- SOTTOSEZIONE MATERIALE INFORMATIVO ---
 \paragraph{InfoMaterialScreen}
 
-\code{InfoMaterialScreen} rappresenta la vista principale per la funzionalità di consultazione di materiale informativo e divulgativo. Coordina la visualizzazione della lista e del dettaglio, delegando il recupero dei dati al relativo ViewModel.
+\code{InfoMaterialScreen} rappresenta la vista principale per la funzionalità di consultazione di materiale informativo e divulgativo. Organizza la struttura e l'ordinamento dei widget per la lista e il dettaglio, delegando la \textit{Presentation Logic} e il recupero dei dati al relativo ViewModel.
 
 \begin{figure}[H]
     \centering
@@ -1266,7 +1265,7 @@ Il \code{LegislationDTO} gestisce la logica di mappatura dei dati. Implementa i 
 
 \paragraph{InfoMaterialListWidget}
 
-Responsabile della renderizzazione dell'elenco del materiale informativo, \code{InfoMaterialListWidget} implementa l'interfaccia \code{Consumer}. Questo gli permette di osservare il \code{InfoMaterialViewModel} e aggiornare l'interfaccia non appena i dati passano dallo stato di caricamento a quello di disponibilità.
+Responsabile della renderizzazione dell'elenco del materiale informativo, \code{InfoMaterialListWidget} implementa l'interfaccia \code{Consumer}. Questo gli permette di osservare il \code{InfoMaterialViewModel} e aggiornare la visualizzazione in seguito ad una notifica dal ViewModel.
 
 \begin{figure}[H]
     \centering
@@ -1277,7 +1276,7 @@ Responsabile della renderizzazione dell'elenco del materiale informativo, \code{
 
 \paragraph{InfoMaterialViewModel}
 
-\code{InfoMaterialViewModel} è il nucleo logico della sezione. Gestisce la lista di oggetti \code{InfoMaterial}, lo stato di \code{isLoading} per la gestione dei feedback visivi (spinner) e i messaggi di errore. Utilizza \code{ChangeNotifier} per notificare la View a seguito del completamento delle operazioni asincrone richieste al \term{Repository}.
+\code{InfoMaterialViewModel} è il nucleo logico della sezione. Gestisce la lista di oggetti \code{InfoMaterial}, lo stato di caricamento (\code{isLoading}) per la gestione dei feedback visivi (spinner) e i messaggi di errore. Utilizza il mixin \code{ChangeNotifier} per notificare la View in seguito ad un cambiamento di stato dei dati.
 
 \begin{figure}[H]
     \centering
@@ -1299,7 +1298,7 @@ Classe di dominio che modella le informazioni di un materiale informativo. Inclu
 
 \paragraph{InfoMaterialRepository}
 
-Il \code{InfoMaterialRepository} funge da intermediario tra il ViewModel e il Service. Si occupa di richiedere i dati grezzi, gestirne la conversione tramite il DTO e restituire oggetti di dominio \code{InfoMaterial} "puliti", isolando l'applicazione dalla logica specifica di comunicazione di rete.
+La classe \code{InfoMaterialRepository} funge da intermediario tra il ViewModel e il Service. Si occupa di richiedere i dati grezzi, gestirne la conversione tramite il DTO e restituire oggetti di dominio \code{InfoMaterial} "puliti", isolando la \textit{Business Logic} dai dettagli di implementazione della rete.
 
 \begin{figure}[H]
     \centering
@@ -1310,7 +1309,7 @@ Il \code{InfoMaterialRepository} funge da intermediario tra il ViewModel e il Se
 
 \paragraph{InfoMaterialService}
 
-Appartenente al \term{Data Layer}, \code{InfoMaterialService} esegue fisicamente le richieste HTTP verso le API del \term{Backend} per ottenere l'elenco dei materiali informativi salvati nel database.
+Appartenente al \term{Data Layer}, \code{InfoMaterialService} esegue le richieste HTTP verso le API del \term{Backend} per ottenere l'elenco dei materiali informativi salvati nel database.
 
 \begin{figure}[H]
     \centering
@@ -1321,7 +1320,7 @@ Appartenente al \term{Data Layer}, \code{InfoMaterialService} esegue fisicamente
 
 \paragraph{InfoMaterialDTO}
 
-Il \code{InfoMaterialDTO} gestisce la logica di mappatura dei dati. Implementa i metodi \code{fromJson} e \code{toJson} per trasformare le risposte JSON provenienti dal network in istanze della classe \code{InfoMaterial}, garantendo la robustezza del sistema di tipizzazione.
+La classe \code{InfoMaterialDTO} gestisce la logica di mappatura dei dati. Implementa i metodi \code{fromJson} e \code{toJson} per trasformare le risposte JSON provenienti dal network in istanze della classe \code{InfoMaterial}.
 
 \begin{figure}[H]
     \centering
@@ -1334,7 +1333,7 @@ Il \code{InfoMaterialDTO} gestisce la logica di mappatura dei dati. Implementa i
 % --- SOTTOSEZIONE CONTATTI DI EMERGENZA ---
 \paragraph{EmergencyContactScreen}
 
-\code{EmergencyContactScreen} rappresenta la vista principale per la consultazione rapida dei contatti di emergenza o degli enti di supporto preposti. Delega il recupero e la gestione dei numeri telefonici al relativo ViewModel, mantenendo un layout pulito e immediato.
+\code{EmergencyContactScreen} rappresenta la vista principale per la consultazione rapida dei contatti di emergenza o degli enti di supporto preposti. Organizza la struttura e l'ordinamento dei widget, delegando la \textit{Presentation Logic} e il recupero dei dati al relativo ViewModel.
 
 \begin{figure}[H]
     \centering
@@ -1345,7 +1344,7 @@ Il \code{InfoMaterialDTO} gestisce la logica di mappatura dei dati. Implementa i
 
 \paragraph{EmergencyContactListWidget}
 
-Responsabile della renderizzazione dell'elenco dei contatti, \code{EmergencyContactListWidget} implementa l'interfaccia \code{Consumer}. Oltre ad aggiornare l'interfaccia reattivamente allo stato del ViewModel, gestisce l'interazione dell'\term{Utente}: alla selezione di una voce, intercetta l'evento e segnala l'intenzione di avviare una chiamata telefonica.
+Responsabile della renderizzazione dell'elenco dei contatti, \code{EmergencyContactListWidget} implementa l'interfaccia \code{Consumer}. Questo gli permette di osservare il \code{EmergencyContactViewModel} e aggiornare la visualizzazione in seguito ad una notifica dal ViewModel. Inoltre, gestisce l'interazione dell'\term{Utente}: alla selezione di una voce, intercetta l'evento e segnala l'intenzione di avviare una chiamata telefonica.
 
 \begin{figure}[H]
     \centering
@@ -1356,7 +1355,7 @@ Responsabile della renderizzazione dell'elenco dei contatti, \code{EmergencyCont
 
 \paragraph{EmergencyContactViewModel}
 
-\code{EmergencyContactViewModel} è il nucleo logico della sezione. Gestisce la lista di oggetti \code{EmergencyContact} e lo stato di \code{isLoading}. Tramite \code{ChangeNotifier}, notifica la View a seguito del completamento del recupero dati. Inoltre, espone metodi per gestire l'avvio della telefonata (ad esempio interfacciandosi con servizi di sistema tramite \textit{intent} o URL launcher) quando un contatto viene selezionato.
+\code{EmergencyContactViewModel} è il nucleo logico della sezione. Gestisce la lista di oggetti \code{EmergencyContact} e lo stato di caricamento (\code{isLoading}). Utilizza il mixin \code{ChangeNotifier} per notificare la View in seguito ad un cambiamento di stato dei dati. Inoltre, espone metodi per gestire l'avvio della telefonata (ad esempio interfacciandosi con servizi di sistema tramite \textit{intent} o URL launcher) quando un contatto viene selezionato.
 
 \begin{figure}[H]
     \centering
@@ -1367,7 +1366,7 @@ Responsabile della renderizzazione dell'elenco dei contatti, \code{EmergencyCont
 
 \paragraph{EmergencyContact}
 
-Classe di dominio che modella le informazioni di un ente o contatto di emergenza. Include attributi fondamentali e immediati quali l'identificativo, il nome dell'ente e il numero di telefono (\code{phoneNumber}), fornendo i metodi necessari per l'accesso ai dati.
+Classe di dominio che modella le informazioni di un ente o contatto di emergenza. Include attributi fondamentali e immediati quali l'identificativo, il nome dell'ente e il numero di telefono (\code{phoneNumber}), fornendo i metodi necessari per l'accesso ai dati in sola lettura.
 
 \begin{figure}[H]
     \centering
@@ -1378,7 +1377,7 @@ Classe di dominio che modella le informazioni di un ente o contatto di emergenza
 
 \paragraph{EmergencyContactRepository}
 
-Il \code{EmergencyContactRepository} funge da intermediario tra il ViewModel e il Service. Richiede i dati grezzi, ne gestisce la conversione tramite il DTO e restituisce oggetti di dominio \code{EmergencyContact}, garantendo l'astrazione dalla sorgente dati.
+La classe \code{EmergencyContactRepository} funge da intermediario tra il ViewModel e il Service. Si occupa di richiedere i dati grezzi, gestirne la conversione tramite il DTO e restituire oggetti di dominio \code{EmergencyContact} "puliti", isolando la \textit{Business Logic} dai dettagli di implementazione della rete.
 
 \begin{figure}[H]
     \centering
@@ -1400,7 +1399,7 @@ Appartenente al \term{Data Layer}, \code{EmergencyContactService} esegue le rich
 
 \paragraph{EmergencyContactDTO}
 
-Il \code{EmergencyContactDTO} gestisce la logica di mappatura dei dati. Implementa i metodi di conversione JSON per trasformare i \term{Payload} di rete in istanze della classe \code{EmergencyContact}.
+La classe \code{EmergencyContactDTO} gestisce la logica di mappatura dei dati. Implementa i metodi di conversione JSON per trasformare i \term{Payload} di rete in istanze della classe \code{EmergencyContact}.
 
 \begin{figure}[H]
     \centering
