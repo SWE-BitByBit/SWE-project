@@ -1036,4 +1036,267 @@ Questo widget raggruppa i bottoni e le azioni specifiche per la gestione dei con
     \label{DC-TrustedContactDTO}
 \end{figure}
 
+
+\subsubsection{Area Informativa} \label{subsubsec:architettura_area_informativa}
+
+L'Area Informativa costituisce un centro di risorse in sola lettura per l'\term{Utente}, aggregando informazioni su community di supporto, riferimenti normativi e materiale divulgativo. La funzionalità è implementata secondo il pattern MVVM e le linee guida architetturali di Flutter, distinguendo un \term{Data Layer}, composto da Service e \term{Repository}, e un \term{UI Layer}, composto da View e ViewModel.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{diagrammi_classi/area_informativa/DC-feature-area_informativa.pdf}
+    \caption{Diagramma delle classi complessivo dell'Area Informativa}
+    \label{DC-AreaInformativa}
+\end{figure}
+\newpage
+
+\paragraph{InfoHubScreen}
+
+La classe \code{InfoHubScreen} funge da punto di ingresso per l'intera area informativa. Come componente del \textit{Presentation Layer}, organizza il layout principale e gestisce la navigazione verso le tre sottosezioni specifiche: Community, Legislazioni e Materiale Informativo, senza contenere logica di business diretta.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-InfoHubScreen.pdf}
+    \caption[Diagramma della classe InfoHubScreen]{Diagramma della classe \code{InfoHubScreen}}
+    \label{DC-InfoHubScreen}
+\end{figure}
+
+% --- SOTTOSEZIONE COMMUNITY ---
+\paragraph{CommunityScreen}
+
+\code{CommunityScreen} rappresenta la vista principale per la funzionalità di consultazione delle community. Coordina la visualizzazione della lista e del dettaglio, delegando il recupero dei dati al relativo ViewModel.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-CommunityScreen.pdf}
+    \caption[Diagramma della classe CommunityScreen]{Diagramma della classe \code{CommunityScreen}}
+    \label{DC-CommunityScreen}
+\end{figure}
+
+\paragraph{CommunityListWidget}
+
+Responsabile della renderizzazione dell'elenco delle community, \code{CommunityListWidget} implementa l'interfaccia \code{Consumer}. Questo gli permette di osservare il \code{CommunityViewModel} e aggiornare l'interfaccia non appena i dati passano dallo stato di caricamento a quello di disponibilità.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-CommunityListWidget.pdf}
+    \caption[Diagramma della classe CommunityListWidget]{Diagramma della classe \code{CommunityListWidget}}
+    \label{DC-CommunityListWidget}
+\end{figure}
+
+\paragraph{CommunityViewModel}
+
+\code{CommunityViewModel} è il nucleo logico della sezione. Gestisce la lista di oggetti \code{Community}, lo stato di \code{isLoading} per la gestione dei feedback visivi (spinner) e i messaggi di errore. Utilizza \code{ChangeNotifier} per notificare la View a seguito del completamento delle operazioni asincrone richieste al \term{Repository}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-CommunityViewModel.pdf}
+    \caption[Diagramma della classe CommunityViewModel]{Diagramma della classe \code{CommunityViewModel}}
+    \label{DC-CommunityViewModel}
+\end{figure}
+
+\paragraph{Community}
+
+Classe di dominio che modella le informazioni di una community di supporto. Include attributi fondamentali quali l'identificativo, il nome, la descrizione e l'URL di riferimento, fornendo i metodi necessari per l'accesso ai dati in sola lettura.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-Community.pdf}
+    \caption[Diagramma della classe Community]{Diagramma della classe \code{Community}}
+    \label{DC-Community}
+\end{figure}
+
+\paragraph{CommunityRepository}
+
+Il \code{CommunityRepository} funge da intermediario tra il ViewModel e il Service. Si occupa di richiedere i dati grezzi, gestirne la conversione tramite il DTO e restituire oggetti di dominio \code{Community} "puliti", isolando l'applicazione dalla logica specifica di comunicazione di rete.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-CommunityRepository.pdf}
+    \caption[Diagramma della classe CommunityRepository]{Diagramma della classe \code{CommunityRepository}}
+    \label{DC-CommunityRepository}
+\end{figure}
+
+\paragraph{CommunityService}
+
+Appartenente al \term{Data Layer}, \code{CommunityService} esegue fisicamente le richieste HTTP verso le API del \term{Backend} per ottenere l'elenco delle community salvate nel database.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-CommunityService.pdf}
+    \caption[Diagramma della classe CommunityService]{Diagramma della classe \code{CommunityService}}
+    \label{DC-CommunityService}
+\end{figure}
+
+\paragraph{CommunityDTO}
+
+Il \code{CommunityDTO} gestisce la logica di mappatura dei dati. Implementa i metodi \code{fromJson} e \code{toJson} per trasformare le risposte JSON provenienti dal network in istanze della classe \code{Community}, garantendo la robustezza del sistema di tipizzazione.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-CommunityDTO.pdf}
+    \caption[Diagramma della classe CommunityDTO]{Diagramma della classe \code{CommunityDTO}}
+    \label{DC-CommunityDTO}
+\end{figure}
+
+% --- SOTTOSEZIONE LEGISLATION---
+\paragraph{LegislationScreen}
+
+\code{LegislationScreen} rappresenta la vista principale per la funzionalità di consultazione delle leggi. Coordina la visualizzazione della lista e del dettaglio, delegando il recupero dei dati al relativo ViewModel.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-LegislationScreen.pdf}
+    \caption[Diagramma della classe LegislationScreen]{Diagramma della classe \code{LegislationScreen}}
+    \label{DC-LegislationScreen}
+\end{figure}
+
+\paragraph{LegislationListWidget}
+
+Responsabile della renderizzazione dell'elenco delle leggi, \code{LegislationListWidget} implementa l'interfaccia \code{Consumer}. Questo gli permette di osservare il \code{LegislationViewModel} e aggiornare l'interfaccia non appena i dati passano dallo stato di caricamento a quello di disponibilità.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-LegislationListWidget.pdf}
+    \caption[Diagramma della classe LegislationListWidget]{Diagramma della classe \code{LegislationListWidget}}
+    \label{DC-LegislationListWidget}
+\end{figure}
+
+\paragraph{LegislationViewModel}
+
+\code{LegislationViewModel} è il nucleo logico della sezione. Gestisce la lista di oggetti \code{Legislation}, lo stato di \code{isLoading} per la gestione dei feedback visivi (spinner) e i messaggi di errore. Utilizza \code{ChangeNotifier} per notificare la View a seguito del completamento delle operazioni asincrone richieste al \term{Repository}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-LegislationViewModel.pdf}
+    \caption[Diagramma della classe LegislationViewModel]{Diagramma della classe \code{LegislationViewModel}}
+    \label{DC-LegislationViewModel}
+\end{figure}
+
+\paragraph{Legislation}
+
+Classe di dominio che modella le informazioni di una legge o di un riferimento normativo. Include attributi fondamentali quali l'identificativo, il titolo, il testo o la descrizione dell'articolo e l'URL di riferimento alla fonte ufficiale, fornendo i metodi necessari per l'accesso ai dati in sola lettura.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-Legislation.pdf}
+    \caption[Diagramma della classe Legislation]{Diagramma della classe \code{Legislation}}
+    \label{DC-Legislation}
+\end{figure}
+
+\paragraph{LegislationRepository}
+
+Il \code{LegislationRepository} funge da intermediario tra il ViewModel e il Service. Si occupa di richiedere i dati grezzi, gestirne la conversione tramite il DTO e restituire oggetti di dominio \code{Legislation} "puliti", isolando l'applicazione dalla logica specifica di comunicazione di rete.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-LegislationRepository.pdf}
+    \caption[Diagramma della classe LegislationRepository]{Diagramma della classe \code{LegislationRepository}}
+    \label{DC-LegislationRepository}
+\end{figure}
+
+\paragraph{LegislationService}
+
+Appartenente al \term{Data Layer}, \code{LegislationService} esegue fisicamente le richieste HTTP verso le API del \term{Backend} per ottenere l'elenco delle leggi salvate nel database.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-LegislationService.pdf}
+    \caption[Diagramma della classe LegislationService]{Diagramma della classe \code{LegislationService}}
+    \label{DC-LegislationService}
+\end{figure}
+
+\paragraph{LegislationDTO}
+
+Il \code{LegislationDTO} gestisce la logica di mappatura dei dati. Implementa i metodi \code{fromJson} e \code{toJson} per trasformare le risposte JSON provenienti dal network in istanze della classe \code{Legislation}, garantendo la robustezza del sistema di tipizzazione.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-LegislationDTO.pdf}
+    \caption[Diagramma della classe LegislationDTO]{Diagramma della classe \code{LegislationDTO}}
+    \label{DC-LegislationDTO}
+\end{figure}
+
+% --- SOTTOSEZIONE MATERIALE INFORMATIVO ---
+\paragraph{InfoMaterialScreen}
+
+\code{InfoMaterialScreen} rappresenta la vista principale per la funzionalità di consultazione di materiale informativo e divulgativo. Coordina la visualizzazione della lista e del dettaglio, delegando il recupero dei dati al relativo ViewModel.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-InfoMaterialScreen.pdf}
+    \caption[Diagramma della classe InfoMaterialScreen]{Diagramma della classe \code{InfoMaterialScreen}}
+    \label{DC-InfoMaterialScreen}
+\end{figure}
+
+\paragraph{InfoMaterialListWidget}
+
+Responsabile della renderizzazione dell'elenco del materiale informativo, \code{InfoMaterialListWidget} implementa l'interfaccia \code{Consumer}. Questo gli permette di osservare il \code{InfoMaterialViewModel} e aggiornare l'interfaccia non appena i dati passano dallo stato di caricamento a quello di disponibilità.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-InfoMaterialListWidget.pdf}
+    \caption[Diagramma della classe InfoMaterialListWidget]{Diagramma della classe \code{InfoMaterialListWidget}}
+    \label{DC-InfoMaterialListWidget}
+\end{figure}
+
+\paragraph{InfoMaterialViewModel}
+
+\code{InfoMaterialViewModel} è il nucleo logico della sezione. Gestisce la lista di oggetti \code{InfoMaterial}, lo stato di \code{isLoading} per la gestione dei feedback visivi (spinner) e i messaggi di errore. Utilizza \code{ChangeNotifier} per notificare la View a seguito del completamento delle operazioni asincrone richieste al \term{Repository}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-InfoMaterialViewModel.pdf}
+    \caption[Diagramma della classe InfoMaterialViewModel]{Diagramma della classe \code{InfoMaterialViewModel}}
+    \label{DC-InfoMaterialViewModel}
+\end{figure}
+
+\paragraph{InfoMaterial}
+
+Classe di dominio che modella le informazioni di un materiale informativo. Include attributi fondamentali quali l'identificativo, il titolo, il contenuto e eventuale URL di riferimento, fornendo i metodi necessari per l'accesso ai dati in sola lettura.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-InfoMaterial.pdf}
+    \caption[Diagramma della classe InfoMaterial]{Diagramma della classe \code{InfoMaterial}}
+    \label{DC-InfoMaterial}
+\end{figure}
+
+\paragraph{InfoMaterialRepository}
+
+Il \code{InfoMaterialRepository} funge da intermediario tra il ViewModel e il Service. Si occupa di richiedere i dati grezzi, gestirne la conversione tramite il DTO e restituire oggetti di dominio \code{InfoMaterial} "puliti", isolando l'applicazione dalla logica specifica di comunicazione di rete.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-InfoMaterialRepository.pdf}
+    \caption[Diagramma della classe InfoMaterialRepository]{Diagramma della classe \code{InfoMaterialRepository}}
+    \label{DC-InfoMaterialRepository}
+\end{figure}
+
+\paragraph{InfoMaterialService}
+
+Appartenente al \term{Data Layer}, \code{InfoMaterialService} esegue fisicamente le richieste HTTP verso le API del \term{Backend} per ottenere l'elenco dei materiali informativi salvati nel database.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-InfoMaterialService.pdf}
+    \caption[Diagramma della classe InfoMaterialService]{Diagramma della classe \code{InfoMaterialService}}
+    \label{DC-InfoMaterialService}
+\end{figure}
+
+\paragraph{InfoMaterialDTO}
+
+Il \code{InfoMaterialDTO} gestisce la logica di mappatura dei dati. Implementa i metodi \code{fromJson} e \code{toJson} per trasformare le risposte JSON provenienti dal network in istanze della classe \code{InfoMaterial}, garantendo la robustezza del sistema di tipizzazione.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-InfoMaterialDTO.pdf}
+    \caption[Diagramma della classe InfoMaterialDTO]{Diagramma della classe \code{InfoMaterialDTO}}
+    \label{DC-InfoMaterialDTO}
+\end{figure}
+
+
+
+
+
+
 \end{document}
