@@ -112,7 +112,7 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & In lavorazione\\
-\textbf{Versione:} & 0.2.0 \\
+\textbf{Versione:} & 0.2.1 \\
 \textbf{Responsabile:} & Gabriele Scaggiante \\
 \textbf{Redattori:} & 
 \begin{tabular}[t]{@{}l@{}}
@@ -155,7 +155,9 @@ Gruppo BitByBit\\
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
-0.2.0 & 2026-04-12 & Marco Sanguin & Redatta la sezione \hyperref[subsubsec:architettura_dead_man_switch]{Architettura funzionalità dead man switch} & Riccardo Manisi \\
+0.2.1 & 2026-04-12 & Marco Sanguin & Redatta la sezione \hyperref[subsubsec:architettura_luoghi_sicuri]{Architettura luoghi sicuri} & Riccardo Manisi \\
+\hline
+0.2.0 & 2026-04-12 & Marco Sanguin & Redatta la sezione \hyperref[subsubsec:architettura_dead_man_switch]{Architettura funzionalità dead man switch} & Ferdinando Fracasso \\
 \hline
 0.1.9 & 2026-04-12 & Dennis Parolin & Creata la sezione \hyperref[subsec:architettura_backend]{Architettura Back End} con relative sottosezioni \hyperref[subsubsec:architettura_autenticazione]{Autenticazione}, \hyperref[subsubsec:architettura_luoghi_sicuri]{Luoghi sicuri} e \hyperref[subsubsec:architettura_materiale_informativo]{Materiale informativo} & Giovanni Visentin\\
 \hline
@@ -1078,6 +1080,97 @@ Questo widget raggruppa i bottoni e le azioni specifiche per la gestione dei con
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/contatti_fidati/DC-TrustedContactDTO.pdf}
     \caption[Diagramma della classe TrustedContactDTO]{Diagramma della classe \code{TrustedContactDTO}}
     \label{DC-TrustedContactDTO}
+\end{figure}
+
+%SEZIONE LUOGHI SICURI
+
+\subsubsection{Luoghi Sicuri} \label{subsubsec:architettura_luoghi_sicuri}
+
+La funzionalità dei Luoghi Sicuri permette all'\term{Utente} di visualizzare geograficamente, tramite un'interfaccia cartografica, le strutture di supporto, i centri anti-violenza e altri punti di interesse rilevanti. Analogamente al resto dell'applicazione, la funzionalità è implementata secondo il pattern MVVM e le linee guida architetturali di Flutter, distinguendo un \term{Data Layer}, composto da Service e \term{Repository}, e un \term{UI Layer}, composto da View e ViewModel, integrando la libreria ufficiale \code{google\_maps\_flutter} per il rendering della mappa.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{diagrammi_classi/luoghi_sicuri/DC-feature-mappa_luoghi_sicuri.pdf}
+    \caption{Diagramma delle classi complessivo della funzionalità Luoghi Sicuri}
+    \label{DC-MappaLuoghiSicuri}
+\end{figure}
+\newpage
+
+\paragraph{SafePlaceMapScreen}
+
+La classe \code{SafePlaceMapScreen} rappresenta la schermata principale dedicata alla visualizzazione dei luoghi sicuri all'interno del \textit{Presentation Layer}. Essa funge da compositore, organizzando il layout della pagina e delegando la logica di visualizzazione cartografica al widget figlio specializzato.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/luoghi_sicuri/DC-SafePlaceMapScreen.pdf}
+    \caption[Diagramma della classe SafePlaceMapScreen]{Diagramma della classe \code{SafePlaceMapScreen}}
+    \label{DC-SafePlaceMapScreen}
+\end{figure}
+
+\paragraph{SafePlaceMapWidget}
+
+Il componente \code{SafePlaceMapWidget} incapsula la logica necessaria all'interazione con la cartografia digitale. Implementando l'interfaccia \code{Consumer}, osserva il ViewModel per reagire ai cambiamenti dei dati. Al suo interno, utilizza il widget \code{GoogleMap} fornito dal \term{Framework} per visualizzare la mappa e si occupa di mappare gli oggetti di dominio \code{SafePlace} in entità \code{Marker} (i "pin" grafici) posizionati in base alle coordinate geografiche caricate.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/luoghi_sicuri/DC-SafePlaceMapWidget.pdf}
+    \caption[Diagramma della classe SafePlaceMapWidget]{Diagramma della classe \code{SafePlaceMapWidget}}
+    \label{DC-SafePlaceMapWidget}
+\end{figure}
+
+\paragraph{SafePlaceViewModel}
+
+\code{SafePlaceViewModel} rappresenta il nucleo della gestione dello stato per questa funzionalità. Mantiene la lista dei luoghi sicuri (\code{safePlaces}), gestisce lo stato di caricamento (\code{isLoading}) e la gestione degli errori. Espone i metodi per il caricamento dei dati dal \term{Repository} e utilizza il mixin \code{ChangeNotifier} per notificare i widget della View non appena i dati geografici sono pronti per essere visualizzati sulla mappa.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/luoghi_sicuri/DC-SafePlaceViewModel.pdf}
+    \caption[Diagramma della classe SafePlaceViewModel]{Diagramma della classe \code{SafePlaceViewModel}}
+    \label{DC-SafePlaceViewModel}
+\end{figure}
+
+\paragraph{SafePlace}
+
+\code{SafePlace} è la classe di dominio che modella il singolo luogo fisico di interesse. Oltre agli attributi identificativi e descrittivi (nome, indirizzo, categoria), include le proprietà fondamentali di latitudine (\code{latitude}) e longitudine (\code{longitude}), necessarie per il corretto posizionamento del marker sulla superficie cartografica.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/luoghi_sicuri/DC-SafePlace.pdf}
+    \caption[Diagramma della classe SafePlace]{Diagramma della classe \code{SafePlace}}
+    \label{DC-SafePlace}
+\end{figure}
+
+\paragraph{SafePlaceRepository}
+
+Il \code{SafePlaceRepository} astrae la sorgente dei dati geografici per il ViewModel. Utilizza \code{SafePlaceService} per prelevare le informazioni grezze e le converte in oggetti di dominio \code{SafePlace} tramite il relativo DTO, garantendo che la logica di business riceva dati tipizzati e pronti all'uso, indipendentemente dalla specifica sorgente dati.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/luoghi_sicuri/DC-SafePlaceRepository.pdf}
+    \caption[Diagramma della classe SafePlaceRepository]{Diagramma della classe \code{SafePlaceRepository}}
+    \label{DC-SafePlaceRepository}
+\end{figure}
+
+\paragraph{SafePlaceService}
+
+Appartenente al livello infrastrutturale, \code{SafePlaceService} si occupa di effettuare le chiamate verso il \term{Backend} o sorgenti dati esterne per ottenere l'elenco dei luoghi sicuri in formato grezzo, restituendo le risposte al \term{Repository}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/luoghi_sicuri/DC-SafePlaceService.pdf}
+    \caption[Diagramma della classe SafePlaceService]{Diagramma della classe \code{SafePlaceService}}
+    \label{DC-SafePlaceService}
+\end{figure}
+
+\paragraph{SafePlaceDTO}
+
+La classe \code{SafePlaceDTO} (\textit{Data Transfer Object}) gestisce la serializzazione e deserializzazione dei dati geografici. Mappa le chiavi dei campi JSON (incluse le coordinate) in istanze della classe \code{SafePlace}, assicurando che il formato dei dati scambiati con l'esterno sia compatibile con il modello interno dell'applicazione.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/luoghi_sicuri/DC-SafePlaceDTO.pdf}
+    \caption[Diagramma della classe SafePlaceDTO]{Diagramma della classe \code{SafePlaceDTO}}
+    \label{DC-SafePlaceDTO}
 \end{figure}
 
 %DEAD MAN SWITCH
