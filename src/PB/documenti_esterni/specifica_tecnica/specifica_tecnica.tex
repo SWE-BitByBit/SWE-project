@@ -1093,7 +1093,7 @@ La funzionalità del \textit{Dead Man's Switch} (Interruttore dell'Uomo Morto) r
 
 \paragraph{DeadManScreen}
 
-La classe \code{DeadManScreen} rappresenta la schermata principale del pannello di controllo per la sicurezza. Funge da compositore, strutturando il layout della pagina e ospitando i form interattivi, delegando al ViewModel la reattività e la logica di salvataggio.
+La classe \code{DeadManScreen} rappresenta la schermata principale del pannello di controllo per la sicurezza. Funge da compositore, strutturando il layout della pagina e ospitando i form interattivi, delegando al ViewModel la reattività e la Persistence Logic.
 
 \begin{figure}[H]
     \centering
@@ -1137,7 +1137,7 @@ Questo componente incapsula gli elementi interattivi dell'interfaccia, come i se
 
 \paragraph{DeadManRepository}
 
-Il \code{DeadManRepository} gestisce la persistenza e il recupero delle configurazioni. Agisce da ponte tra la logica di presentazione e il livello infrastrutturale, utilizzando \code{DeadManService} per inviare le preferenze aggiornate e convertendo le risposte di rete in oggetti di dominio \code{DeadManSettings} sicuri e validati tramite il DTO.
+Il \code{DeadManRepository} gestisce la persistenza e il recupero delle configurazioni. Agisce da ponte tra la Presentation Logic e il livello infrastrutturale, utilizzando \code{DeadManService} per inviare le preferenze aggiornate e convertendo le risposte di rete in oggetti di dominio \code{DeadManSettings} sicuri e validati tramite il DTO.
 
 \begin{figure}[H]
     \centering
