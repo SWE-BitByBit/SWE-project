@@ -112,7 +112,7 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & In lavorazione\\
-\textbf{Versione:} & 0.1.9 \\
+\textbf{Versione:} & 0.2.0 \\
 \textbf{Responsabile:} & Gabriele Scaggiante \\
 \textbf{Redattori:} & 
 \begin{tabular}[t]{@{}l@{}}
@@ -127,6 +127,7 @@ Marco Sanguin\\
 Riccardo Manisi\\
 Dennis Parolin\\
 Marco Sanguin\\
+Giovanni Visentin\\
 \end{tabular} \\
 \textbf{Destinatari:} &
 \begin{tabular}[t]{@{}l@{}}
@@ -154,9 +155,11 @@ Gruppo BitByBit\\
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
-0.1.9 & 2026-04-11 & Marco Sanguin & Redatta la sezione \hyperref[subsubsec:architettura_dead_man_switch]{Architettura funzionalità dead man switch} & Riccardo Manisi \\
+0.2.0 & 2026-04-11 & Marco Sanguin & Redatta la sezione \hyperref[subsubsec:architettura_dead_man_switch]{Architettura funzionalità dead man switch} & Riccardo Manisi \\
 \hline
-0.1.8 & 2026-04-11 & Marco Sanguin & Aggiunta la sezione \hyperref[sec:stato_requisiti_funzionali]{Stato dei requisiti funzionali} & Giovanni Visentin\\
+0.1.9 & 2026-04-12 & Dennis Parolin & Creata la sezione \hyperref[subsec:architettura_backend]{Architettura Back End} con relative sottosezioni \hyperref[subsubsec:architettura_autenticazione]{Autenticazione}, \hyperref[subsubsec:architettura_luoghi_sicuri]{Luoghi sicuri} e \hyperref[subsubsec:architettura_materiale_informativo]{Materiale informativo} & Giovanni Visentin\\
+\hline
+0.1.8 & 2026-04-11 & Marco Sanguin & Aggiunta la sezione \hyperref[sec:stato_requisiti_funzionali]{Stato dei requisiti funzionali} & Ferdinando Fracasso\\
 \hline
 0.1.7 & 2026-04-10 & Marco Sanguin & Redatta la sezione \hyperref[subsubsec:architettura_area_informativa]{Architettura Area Informativa} & Ferdinando Fracasso \\
 \hline
@@ -460,31 +463,32 @@ L'\term{Architettura} logica adibita all'interazione tra i device mobili e l'amb
 
 \subsection{Design pattern utilizzati} \label{subsec:design_pattern}
 \subsubsection{Model-view-viewmodel}
-\paragraph{Descrizione del pattern:}
+\paragraph{Descrizione del pattern:}\mbox{}\\
 Il pattern Model-view-viewmodel (MVVM) prevede la separazione della parte software responsabile per la resa grafica dalle parti responsabili della \term{Presentation Logic} e \term{Business Logic} in tre componenti principali:
 \begin{itemize}
     \item \textbf{Model:} contiene il codice responsabile per la \term{Business Logic} dell'applicazione.
     \item \textbf{View:} contiene la parte responsabile esclusivamente per la resa grafica del software, e delega la gestione dell'interazione \term{Utente} alla componente \textit{ViewModel}.
     \item \textbf{ViewModel:} contiene il codice responsabile per la gestione della \term{Presentation Logic} e per la coordinazione tra i componenti \textit{View} e \textit{Model}.
 \end{itemize} 
-\paragraph{Ragioni per l'utilizzo:} L'utilizzo del pattern permette una più semplice gestione delle varie parti dell'applicazione, dato che limita notevolmente il coupling tra UI e logica sottostante, migliorandone quindi la manutenibilità, e rende lo sviluppo degli unit test più semplice.
+\paragraph{Ragioni per l'utilizzo:}\mbox{}\\
+L'utilizzo del pattern permette una più semplice gestione delle varie parti dell'applicazione, dato che limita notevolmente il coupling tra UI e logica sottostante, migliorandone quindi la manutenibilità, e rende lo sviluppo degli unit test più semplice.
 
 \subsubsection{Observer}
-\paragraph{Descrizione del pattern:}
+\paragraph{Descrizione del pattern:}\mbox{}\\
 Il pattern Observer definisce la capacità per un oggetto \textit{Publisher} di definire un meccanismo di "iscrizione" per cui un insieme di oggetti \textit{Subscriber} può "osservarlo" ed essere notificato solo in seguito ad un suo cambiamento di stato. 
-\paragraph{Ragioni per l'utilizzo:}
+\paragraph{Ragioni per l'utilizzo:}\mbox{}\\
 L'uso principale del pattern nell'applicazione è nelle classi ViewModel, dato che permette di notificare solo i widget che richiedono modifiche dopo un cambiamento di stato del ViewModel, invece di dover ricostruire la schermata dopo una qualsiasi interazione, permettendo così una maggiore fluidità dell'interfaccia durante l'uso da parte dell'\term{Utente}. Inoltre il meccanismo di "iscrizione" rimuove la necessità di verifiche frequenti sullo stato del \textit{Publisher} da parte dei \textit{Subscriber} e rende il codice più facilmente estendibile e mantenibile dato che la modifica di una componente non va a influire sulle altre, per esempio, l'aggiunta di un widget alla \textit{View} non richiederebbe modifiche al \textit{ViewModel}.
 
 \subsubsection{Proxy}
-\paragraph{Descrizione del pattern:}
+\paragraph{Descrizione del pattern:}\mbox{}\\
 Il pattern Proxy permette la creazione di un oggetto \textit{Proxy} che va a controllare l'accesso all'oggetto reale. L'oggetto \textit{Proxy} deve implementare la stessa interfaccia dell'oggetto reale, in modo da essere sempre utilizzabile quando il codice si aspetta l'oggetto reale, e una volta ricevuta una richiesta deve delegarla ad una istanza dell'oggetto reale. 
-\paragraph{Ragioni per l'utilizzo:}
+\paragraph{Ragioni per l'utilizzo:}\mbox{}\\
 L'utilizzo del pattern Proxy per le strutture dati delle classi \code{Chat} e \code{Note} permette di rimandare la creazione di un loro oggetto fino a quando non effettivamente necessario, evitando così la creazione di tutti gli oggetti e dei loro componenti in una singola volta quando vengono inizialmente caricati, così risparmiando memoria che altrimenti sarebbe sprecata con oggetti pesanti.
 
 \subsubsection{Singleton}
-\paragraph{Descrizione del pattern:}
+\paragraph{Descrizione del pattern:}\mbox{}\\
 Il pattern Singleton permette di avere la garanzia che in un dato momento esista al più una singola istanza della classe a cui è applicato. Questo si ottiene facendo in modo che il costruttore dell'oggetto ne crei uno nuovo solamente se non ne esiste già una copia, altrimenti ritorna un puntatore alla copia esistente.
-\paragraph{Ragioni per l'utilizzo:}
+\paragraph{Ragioni per l'utilizzo:}\mbox{}\\
 Nell'applicazione questo pattern viene utilizzato per garantire l'esistenza di una sola istanza della classe \code{DiarySession} in un dato momento, in modo che l'\term{Utente} abbia accesso ad un solo versione del diario, criptato o fittizio, alla volta, evitando la condivisione accidentale dei dati tra le due versioni.
 
 \subsection{Architettura di deployment} \label{subsec:architettura_deployment}
@@ -537,7 +541,7 @@ La funzionalità del chatbot permette all'\term{Utente} di comunicare via chat c
 \end{figure}
 \newpage
 
-\paragraph{ChatbotScreen}
+\paragraph{ChatbotScreen}\mbox{}\\
 
 La classe \code{ChatbotScreen} rappresenta la schermata dell'applicazione dedicata al Chatbot all'interno del \textit{Presentation Layer}. La classe è composta a sua volta da numerosi widget e contiene la minima logica necessaria al rendering di tali componenti visivi, permettendo quindi una netta separazione tra presentazione e logica secondo il pattern \textit{MVVM}. Tra i numerosi widget che la costituiscono, i principali sono \code{ChatWidget}, \code{ChatHistoryWidget}, \code{ChatbotModeToggleWidget} e \code{ChatbotSendMessageWidget}.
 
@@ -548,7 +552,7 @@ La classe \code{ChatbotScreen} rappresenta la schermata dell'applicazione dedica
     \label{DC-ChatbotScreen}
 \end{figure}
 
-\paragraph{ChatWidget}
+\paragraph{ChatWidget}\mbox{}\\
 
 La classe \code{ChatWidget} è responsabile della visualizzazione della conversazione attiva. In quanto \code{Consumer}, essa osserva il \code{ChatbotViewModel} per ottenere i dati aggiornati e reagisce ai cambiamenti dello stato applicativo, garantendo la costruzione automatica dei widget rappresentanti i messaggi scambiati in chat.
 
@@ -559,7 +563,7 @@ La classe \code{ChatWidget} è responsabile della visualizzazione della conversa
     \label{DC-ChatWidget}
 \end{figure}
 
-\paragraph{ChatHistoryWidget}
+\paragraph{ChatHistoryWidget}\mbox{}\\
 
 \code{ChatHistoryWidget} si occupa di mostrare l'elenco delle conversazioni passate sotto forma di anteprime. Tale widget è inserito all'interno di un menu a tendina dedicato, e, in quanto \code{Consumer}, osserva il \code{ChatbotViewModel} per recuperare i dati aggiornati relativi alle chat passate. Questo widget trae grande beneficio dall'utilizzo del pattern Proxy per il fetch delle chat. Tale pattern consente infatti di generare la lista di anteprime delle conversazioni passate senza dover recuperare l'intero contenuto di ogni singola chat.
 
@@ -570,7 +574,7 @@ La classe \code{ChatWidget} è responsabile della visualizzazione della conversa
     \label{DC-ChatHistoryWidget}
 \end{figure}
 
-\paragraph{ChatbotModeToggleWidget}
+\paragraph{ChatbotModeToggleWidget}\mbox{}\\
 
 Questo componente dell'interfaccia consente all'\term{Utente} di selezionare la modalità operativa del chatbot. Le due modalità disponibili sono il Detective delle Relazioni e lo Specchio Intelligente. La modalità in uso viene specificata nell'invocazione dei metodi relativi all'invio di un messaggio in chat e determinano come il chatbot risponde ai messaggi dell'\term{Utente}. La generazione della risposta è a completo carico del \term{Backend}.
 
@@ -581,7 +585,7 @@ Questo componente dell'interfaccia consente all'\term{Utente} di selezionare la 
     \label{DC-ChatbotModeToggleWidget}
 \end{figure}
 
-\paragraph{ChatbotSendMessageWidget}
+\paragraph{ChatbotSendMessageWidget}\mbox{}\\
 
 \code{ChatbotSendMessageWidget} è un pulsante che gestisce l'invio dei messaggi da parte dell'\term{Utente}, delegando la gestione dei nuovi messaggi al ViewModel. Quando \code{ChatbotSendMessageWidget} viene premuto, il messaggio contenuto nel campo d'inserimento testuale viene inoltrato a \code{ChatbotViewModel}, che a sua volta comunica con \code{ChatbotRepository} in modo da memorizzare il messaggio nella chat corrente e di ricevere la risposta dal LLM.
 
@@ -592,7 +596,7 @@ Questo componente dell'interfaccia consente all'\term{Utente} di selezionare la 
     \label{DC-ChatbotSendMessageWidget}
 \end{figure}
 
-\paragraph{ChatbotCreateChatWidget}
+\paragraph{ChatbotCreateChatWidget}\mbox{}\\
 
 Questo widget fornisce all'\term{Utente} la possibilità di avviare una nuova conversazione. Anche in questo caso, la logica viene delegata al ViewModel, preservando il disaccoppiamento tra interfaccia e dominio applicativo.
 
@@ -603,7 +607,7 @@ Questo widget fornisce all'\term{Utente} la possibilità di avviare una nuova co
     \label{DC-ChatbotCreateChatWidget}
 \end{figure}
 
-\paragraph{ChatbotViewModel}
+\paragraph{ChatbotViewModel}\mbox{}\\
 
 \code{ChatbotViewModel} gestisce lo stato dell'interfaccia chatbot: mantiene la lista delle conversazioni passate, la chat correntemente aperta e la modalità operativa selezionata. In quanto \code{ChangeNotifier}, notifica automaticamente le classi View (\code{ChatWidget}, \code{ChatHistoryWidget} e i widget di azione) ogni volta che lo stato cambia. Per accedere ai dati si affida a \code{ChatbotRepository}, al quale delega il recupero e la persistenza delle conversazioni.
 
@@ -614,7 +618,7 @@ Questo widget fornisce all'\term{Utente} la possibilità di avviare una nuova co
     \label{DC-ChatbotViewModel}
 \end{figure}
 
-\paragraph{Chat}
+\paragraph{Chat}\mbox{}\\
 
 L'interfaccia \code{Chat} definisce il modello astratto di una conversazione tra \term{Utente} e il chatbot. Insieme a \code{ProxyChat} e \code{LocalChat}, è utilizzata nell'implementazione del pattern Proxy.
 
@@ -625,7 +629,7 @@ L'interfaccia \code{Chat} definisce il modello astratto di una conversazione tra
     \label{DC-Chat}
 \end{figure}
 
-\paragraph{ProxyChat}
+\paragraph{ProxyChat}\mbox{}\\
 
 \code{ProxyChat} implementa l'interfaccia \code{Chat} e viene utilizzata da \code{ChatbotViewModel} per rappresentare le conversazioni storiche. Ritarda il caricamento completo dei messaggi, delegandolo a \code{ChatbotRepository} solo quando necessario, e mantiene internamente un riferimento a \code{LocalChat}, che istanzia e popola al primo accesso effettivo ai dati.
 
@@ -636,7 +640,7 @@ L'interfaccia \code{Chat} definisce il modello astratto di una conversazione tra
     \label{DC-ProxyChat}
 \end{figure}
 
-\paragraph{LocalChat}
+\paragraph{LocalChat}\mbox{}\\
 
 \code{LocalChat} è l'implementazione del modello di conversazione che mantiene in memoria tutte le informazioni e i messaggi associati alla chat. Essa rappresenta l'oggetto reale utilizzato da \code{ProxyChat} quando c'è effettivamente bisogno di caricare i messaggi della chat, ad esempio per visualizzarli a schermo.
 
@@ -647,7 +651,7 @@ L'interfaccia \code{Chat} definisce il modello astratto di una conversazione tra
     \label{DC-LocalChat}
 \end{figure}
 
-\paragraph{ChatMessage}
+\paragraph{ChatMessage}\mbox{}\\
 
 \code{ChatMessage} modella un singolo messaggio all'interno di una conversazione, includendo contenuto, tipologia e data di creazione e di aggiornamento. Fornisce inoltre un modo per distinguere tra messaggi generati dall'\term{Utente} e quelli prodotti dal LLM.
 
@@ -658,7 +662,7 @@ L'interfaccia \code{Chat} definisce il modello astratto di una conversazione tra
     \label{DC-ChatMessage}
 \end{figure}
 
-\paragraph{ChatMode}
+\paragraph{ChatMode}\mbox{}\\
 
 \code{ChatMode} è un'enumerazione che rappresenta le due diverse modalità operative del chatbot. Viene utilizzato da \code{ChatbotViewModel}, che lo inoltra a \code{ChatbotRepository}, il quale lo utilizza per invocare i metodi del \code{ChatbotService} relativi all'invio dei messaggi in chat. Sarà poi il \term{Backend} a interpretarlo e utilizzarlo per generare la risposta al messaggio inviato dall'\term{Utente}.
 
@@ -669,7 +673,7 @@ L'interfaccia \code{Chat} definisce il modello astratto di una conversazione tra
     \label{DC-ChatMode}
 \end{figure}
 
-\paragraph{MessageType}
+\paragraph{MessageType}\mbox{}\\
 
 \code{MessageType} è un'enumerazione che consente di classificare i messaggi in base alla loro origine, distinguendo tra input dell'\term{Utente} e output del LLM. È utilizzata nella classe \code{ChatMessage} e necessaria per stabilire l'impaginazione dei messaggi all'interno di \code{ChatWidget}.
 
@@ -680,7 +684,7 @@ L'interfaccia \code{Chat} definisce il modello astratto di una conversazione tra
     \label{DC-MessageType}
 \end{figure}
 
-\paragraph{MessageResponse}
+\paragraph{MessageResponse}\mbox{}\\
 
 \code{MessageResponse} incapsula il risultato di un'interazione con il LLM, includendo il messaggio generato e, eventualmente, il titolo generato a partire dal messaggio originale. È utilizzato da \code{ChatbotRepository}, che a sua volta lo ritorna in risposta a \code{ChatbotViewModel} per l'aggiornamento dello stato della View.
 
@@ -691,7 +695,7 @@ L'interfaccia \code{Chat} definisce il modello astratto di una conversazione tra
     \label{DC-MessageResponse}
 \end{figure}
 
-\paragraph{ChatbotRepository}
+\paragraph{ChatbotRepository}\mbox{}\\
 
 \code{ChatbotRepository} è il tramite tra \code{ChatbotViewModel} e la comunicazione di rete: riceve le richieste dal ViewModel, le inoltra a \code{ChatbotService} e trasforma le risposte grezze in oggetti di dominio (\code{LocalChat}, \code{ChatMessage}) tramite \code{ChatDTO}, restituendoli al ViewModel in un formato pronto all'uso.
 
@@ -702,7 +706,7 @@ L'interfaccia \code{Chat} definisce il modello astratto di una conversazione tra
     \label{DC-ChatbotRepository}
 \end{figure}
 
-\paragraph{ChatbotService}
+\paragraph{ChatbotService}\mbox{}\\
 
 \code{ChatbotService} rappresenta il livello infrastrutturale responsabile della comunicazione con le API remote. Si occupa della gestione delle richieste e delle risposte, operando su rappresentazioni dei dati adatte allo scambio su rete. Restituisce i dati grezzi a \code{ChatbotRepository}, il quale si occupa poi di trasformarli in modelli di dominio.
 
@@ -713,7 +717,7 @@ L'interfaccia \code{Chat} definisce il modello astratto di una conversazione tra
     \label{DC-ChatbotService}
 \end{figure}
 
-\paragraph{ChatDTO}
+\paragraph{ChatDTO}\mbox{}\\
 
 \code{ChatDTO} è un oggetto di trasferimento dati utilizzato per convertire le informazioni tra il formato utilizzato dal sistema esterno e quello del dominio applicativo. Ha due ruoli principali:
 \begin{itemize}
@@ -741,7 +745,7 @@ La funzionalità di diario criptato e diario fittizio permette all'\term{Utente}
 
 \newpage
 
-\paragraph{DiaryAccessScreen}
+\paragraph{DiaryAccessScreen}\mbox{}\\
 La classe \code{DiaryAccessScreen} si occupa della rappresentazione visiva della schermata per l'accesso alla funzionalità dei diari. Contiene solamente la logica necessaria per il rendering dei widget che la compongono, tra cui \code{PasswordFormWidget}, per garantire la separazione tra presentazione e logica, come previsto dal pattern MVVM. Per questo delega la gestione dello stato a \code{DiaryAccessViewModel}.
 
 \begin{figure}[H]
@@ -751,7 +755,7 @@ La classe \code{DiaryAccessScreen} si occupa della rappresentazione visiva della
     \label{DC-DiaryAccessScreen}
 \end{figure}
 
-\paragraph{PasswordFormWidget}
+\paragraph{PasswordFormWidget}\mbox{}\\
 La classe \code{PasswordFormWidget} è responsabile della visualizzazione dei campi utilizzati per l'accesso ai diari. \code{PasswordFormWidget} è un \code{Consumer} che osserva \code{DiaryAccessViewModel} per ottenere i dati aggiornati e reagire di conseguenza.
 
 \begin{figure}[H]
@@ -761,7 +765,7 @@ La classe \code{PasswordFormWidget} è responsabile della visualizzazione dei ca
     \label{DC-PasswordFormWidget}
 \end{figure}
 
-\paragraph{DiaryAccessViewModel}
+\paragraph{DiaryAccessViewModel}\mbox{}\\
 La classe \code{DiaryAccessViewModel} gestisce lo stato dell'applicazione e coordina le operazioni tra i Layer, implementando il pattern Observer. la classe è un \code{ChangeNotifier} e mantiene una lista di \textit{listeners} che vengono notificati quando avvengono cambiamenti che necessitano di un loro aggiornamento, in questo caso componenti che devono reagire a tentativi di accesso ai diari da parte dell'\term{Utente}. Per accedere ai dati e verificare le credenziali si affida alla classe \code{DiaryAccountRepository}.
 
 \begin{figure}[H]
@@ -771,7 +775,7 @@ La classe \code{DiaryAccessViewModel} gestisce lo stato dell'applicazione e coor
     \label{DC-DiaryAccessViewModel}
 \end{figure}
 
-\paragraph{DiaryAccountRepository}
+\paragraph{DiaryAccountRepository}\mbox{}\\
 \code{DiaryAccountRepository} si occupa della trasformazione delle risposte ricevute da \code{DiaryAccountService} in oggetti di dominio e nascondendone la natura al resto dell'applicazione, fungendo da strato di astrazione tra il \textit{service} ed il ViewModel.
 
 \begin{figure}[H]
@@ -781,7 +785,7 @@ La classe \code{DiaryAccessViewModel} gestisce lo stato dell'applicazione e coor
     \label{DC-DiaryAccountRepository}
 \end{figure}
 
-\paragraph{DiaryAccountService}
+\paragraph{DiaryAccountService}\mbox{}\\
 La classe \code{DiaryAccountService} rappresenta lo strato infrastrutturale responsabile della comunicazione con le API remote, occupandosi della gestione delle richieste e delle risposte. Restituisce i dati grezzi a \code{DiaryAccountRepository}, il quale si occupa poi di trasformarli in oggetti di dominio. 
 
 \begin{figure}[H]
@@ -791,7 +795,7 @@ La classe \code{DiaryAccountService} rappresenta lo strato infrastrutturale resp
     \label{DC-DiaryAccountService}
 \end{figure}
 
-\paragraph{DiaryAccessResult}
+\paragraph{DiaryAccessResult}\mbox{}\\
 L'enumerazione \code{DiaryAccessResult} permette la classificazione della risposta ad un tentativo di accesso ai diari da parte dell'\term{Utente}, distinguendo tra accesso avvenuto con successo ad uno dei due tipi di diario, e accesso fallito con errore o superamento del limite di tentativi di accesso.
 
 \begin{figure}[H]
@@ -801,7 +805,7 @@ L'enumerazione \code{DiaryAccessResult} permette la classificazione della rispos
     \label{DC-DiaryAccessResult}
 \end{figure}
 
-\paragraph{DiaryScreen}
+\paragraph{DiaryScreen}\mbox{}\\
 La classe \code{DiaryScreen} gestisce la rappresentazione visiva della schermata principale dei diari nel \textit{presentation layer}, contenendo solamente la logica necessaria al rendering dei suoi componenti widget, tra cui \code{NoteListWidget} e \code{NoteActionsWidget}. La gestione dello stato è delegata alla classe \code{DiaryViewModel}.
 
 \begin{figure}[H]
@@ -811,7 +815,7 @@ La classe \code{DiaryScreen} gestisce la rappresentazione visiva della schermata
     \label{DC-DiaryScreen}
 \end{figure}
 
-\paragraph{NoteListWidget}
+\paragraph{NoteListWidget}\mbox{}\\
 La classe \code{NoteListWidget} si occupa della visualizzazione della lista delle note contenute nel diario in cui l'\term{Utente} ha effettuato l'accesso e l'eventuale visualizzazione dei contenuti di una nota selezionata. Trattandosi di un \code{Consumer}, la classe osserva gli aggiornamenti dei dati in \code{DiaryViewModel} in modo da reagire di conseguenza alla selezione, modifica o eliminazione delle note. 
 
 \begin{figure}[H]
@@ -821,7 +825,7 @@ La classe \code{NoteListWidget} si occupa della visualizzazione della lista dell
     \label{DC-NoteListWidget}
 \end{figure}
 
-\paragraph{NoteActionsWidget}
+\paragraph{NoteActionsWidget}\mbox{}\\
 La classe \code{NoteActionsWidget} si occupa della visualizzazione delle componenti di interazione della funzionalità di diario. La logica applicativa viene delegata a \code{DiaryViewModel}, preservando il disaccoppiamento tra interfaccia e dominio applicativo.
 
 \begin{figure}[H]
@@ -831,7 +835,7 @@ La classe \code{NoteActionsWidget} si occupa della visualizzazione delle compone
     \label{DC-NoteActionsWidget}
 \end{figure}
 
-\paragraph{DiaryViewModel}
+\paragraph{DiaryViewModel}\mbox{}\\
 \code{DiaryViewModel} si occupa della gestione dello stato dell'applicazione e del coordinamento delle operazioni tra UI e \term{Data Layer}. La classe tiene conto della lista di note presenti all'interno del diario attualmente aperto e della nota attualmente aperta dall'\term{Utente}. Inoltre delega alla classe \code{NoteRepository} l'accesso e la gestione dei dati delle note per le operazioni di memoria. La classe implementa il Mixin \code{ChangeNotifier}, e quindi il pattern Observer, mantenendo una lista di \textit{listeners} che vengono notificati a seguito di operazioni a loro rilevanti, in questo caso \code{NoteListWidget} e \code{NoteActionsWidget}.
 
 \begin{figure}[H]
@@ -841,7 +845,7 @@ La classe \code{NoteActionsWidget} si occupa della visualizzazione delle compone
     \label{DC-DiaryViewModel}
 \end{figure}
 
-\paragraph{DiarySession}
+\paragraph{DiarySession}\mbox{}\\
 La classe \code{DiarySession} modella l'istanza effettiva del diario, tenendo traccia del tipo di diario a cui l'\term{Utente} ha effettuato l'accesso e gestendo le informazioni di sessione. La classe implementa il pattern Singleton per fare in modo che in ogni dato momento di utilizzo dell'applicazione possa esistere al più una singola istanza di diario.
 
 \begin{figure}[H]
@@ -851,7 +855,7 @@ La classe \code{DiarySession} modella l'istanza effettiva del diario, tenendo tr
     \label{DC-DiarySession}
 \end{figure}
 
-\paragraph{DiaryType}
+\paragraph{DiaryType}\mbox{}\\
 L'enumerazione \code{DiaryType} rappresenta le due tipologie di diario disponibili e viene utilizzata da \code{DiarySession} per comunicare a \code{DiaryViewModel} quale archivio di note visualizzare.
 
 \begin{figure}[H]
@@ -861,7 +865,7 @@ L'enumerazione \code{DiaryType} rappresenta le due tipologie di diario disponibi
     \label{DC-DiaryType}
 \end{figure}
 
-\paragraph{Note}
+\paragraph{Note}\mbox{}\\
 L'interfaccia \code{Note} definisce i metodi necessari per gli oggetti rappresentanti le note all'interno dei diari. Implementa il pattern Proxy insieme alle classi \code{ProxyNote} e \code{LocalNote}.
 
 \begin{figure}[H]
@@ -871,7 +875,7 @@ L'interfaccia \code{Note} definisce i metodi necessari per gli oggetti rappresen
     \label{DC-Note}
 \end{figure}
 
-\paragraph{ProxyNote}
+\paragraph{ProxyNote}\mbox{}\\
 La classe \code{ProxyNote} realizza il pattern Proxy per rendere più efficiente il caricamento da \term{Repository} delle note, permettendo di rimandare il caricamento dei dati interni di una nota fino a quando non è effettivamente necessario, e così risparmiando risorse di sistema.
 La classe contiene un riferimento ad un oggetto \code{LocalNote} a cui delega le operazioni una volta effettuato il caricamento della nota.
 \begin{figure}[H]
@@ -881,7 +885,7 @@ La classe contiene un riferimento ad un oggetto \code{LocalNote} a cui delega le
     \label{DC-ProxyNote}
 \end{figure}
 
-\paragraph{LocalNote}
+\paragraph{LocalNote}\mbox{}\\
 \code{LocalNote} è l'implementazione dell'interfaccia \code{Note} che rappresenta l'oggetto reale, utilizzato dall'implementazione proxy per le operazioni sulla nota una volta effettuato il suo caricamento.
 
 \begin{figure}[H]
@@ -891,7 +895,7 @@ La classe contiene un riferimento ad un oggetto \code{LocalNote} a cui delega le
     \label{DC-LocalNote}
 \end{figure}
 
-\paragraph{NoteElement}
+\paragraph{NoteElement}\mbox{}\\
 La classe astratta \code{NoteElement} rappresenta un elemento presente all'interno di una nota e ha delle specializzazioni in base al tipo di contenuto dell'oggetto, che può essere testuale, un'immagine oppure del contenuto audio.
 
 \begin{figure}[H]
@@ -901,7 +905,7 @@ La classe astratta \code{NoteElement} rappresenta un elemento presente all'inter
     \label{DC-NoteElement}
 \end{figure}
 
-\paragraph{NoteTextElement}
+\paragraph{NoteTextElement}\mbox{}\\
 La classe concreta \code{NoteTextElement} è la specializzazione di \code{NoteElement} per contenuti testuali.
 
 \begin{figure}[H]
@@ -911,7 +915,7 @@ La classe concreta \code{NoteTextElement} è la specializzazione di \code{NoteEl
     \label{DC-NoteTextElement}
 \end{figure}
 
-\paragraph{NoteImgElement}
+\paragraph{NoteImgElement}\mbox{}\\
 La classe concreta \code{NoteImgElement} è la specializzazione di \code{NoteElement} per contenuti di tipo grafico.
 
 \begin{figure}[H]
@@ -921,7 +925,7 @@ La classe concreta \code{NoteImgElement} è la specializzazione di \code{NoteEle
     \label{DC-NoteImgElement}
 \end{figure}
 
-\paragraph{NoteAudioElement}
+\paragraph{NoteAudioElement}\mbox{}\\
 La classe concreta \code{NoteAudioElement} è la specializzazione di \code{NoteElement} per contenuti audio.
 
 \begin{figure}[H]
@@ -931,7 +935,7 @@ La classe concreta \code{NoteAudioElement} è la specializzazione di \code{NoteE
     \label{DC-NoteAudioElement}
 \end{figure}
 
-\paragraph{NoteService}
+\paragraph{NoteService}\mbox{}\\
 La classe \code{NoteService} rappresenta il livello infrastrutturale dedicato alla comunicazione con le API remote, gestendo richieste e risposte durante le operazioni sulle note. Restituisce i dati grezzi a \code{NoteRepository}, il quale si occupa poi di trasformarli in modelli di dominio tramite \code{NoteDTO}.
 
 \begin{figure}[H]
@@ -941,7 +945,7 @@ La classe \code{NoteService} rappresenta il livello infrastrutturale dedicato al
     \label{DC-NoteService}
 \end{figure}
 
-\paragraph{NoteRepository}
+\paragraph{NoteRepository}\mbox{}\\
 La classe \code{NoteRepository} funge da strato di astrazione tra \code{DiaryViewModel} e la \term{Persistence Logic} di \code{NoteService}, trasformando i dati grezzi in oggetti di dominio tramite \code{NoteDTO} e nascondendone la natura al resto dell'applicazione.
 
 \begin{figure}[H]
@@ -951,7 +955,7 @@ La classe \code{NoteRepository} funge da strato di astrazione tra \code{DiaryVie
     \label{DC-NoteRepository}
 \end{figure}
 
-\paragraph{NoteDTO}
+\paragraph{NoteDTO}\mbox{}\\
 \code{NoteDTO} è un Data Transfer Object con due ruoli principali:
 \begin{itemize}
     \item deserializzare i risultati delle chiamate API, in formato JSON, trasformandoli in oggetti di tipo \code{Note}.
@@ -977,7 +981,7 @@ La funzionalità dei Contatti Fidati permette all'\term{Utente} di gestire una l
 \end{figure}
 \newpage
 
-\paragraph{TrustedContactScreen}
+\paragraph{TrustedContactScreen}\mbox{}\\
 
 La classe \code{TrustedContactScreen} rappresenta la schermata principale dedicata alla gestione dei contatti fidati all'interno del \textit{Presentation Layer}. Essa funge da compositore, unendo i vari widget presenti e ordinandoli secondo il layout stabilito, delegando la logica di stato ai componenti sottostanti.
 
@@ -988,7 +992,7 @@ La classe \code{TrustedContactScreen} rappresenta la schermata principale dedica
     \label{DC-TrustedContactScreen}
 \end{figure}
 
-\paragraph{TrustedContactListWidget}
+\paragraph{TrustedContactListWidget}\mbox{}\\
 
 La classe \code{TrustedContactListWidget} è responsabile della visualizzazione dell'elenco dei contatti attualmente salvati. Implementando l'interfaccia \code{Consumer}, osserva il ViewModel per reagire ai cambiamenti di stato e aggiornare dinamicamente l'interfaccia grafica.
 
@@ -999,7 +1003,7 @@ La classe \code{TrustedContactListWidget} è responsabile della visualizzazione 
     \label{DC-TrustedContactListWidget}
 \end{figure}
 
-\paragraph{TrustedContactFormWidget}
+\paragraph{TrustedContactFormWidget}\mbox{}\\
 
 \code{TrustedContactFormWidget} gestisce i campi di input necessari per l'inserimento o la modifica dei dati di un contatto fidato. In quanto \code{Consumer}, si aggiorna in base allo stato del ViewModel.
 
@@ -1010,7 +1014,7 @@ La classe \code{TrustedContactListWidget} è responsabile della visualizzazione 
     \label{DC-TrustedContactFormWidget}
 \end{figure}
 
-\paragraph{TrustedContactActionsWidget}
+\paragraph{TrustedContactActionsWidget}\mbox{}\\
 
 Questo widget raggruppa i bottoni e le azioni specifiche per la gestione dei contatti fidati (ad esempio i pulsanti per l'aggiunta di un nuovo contatto o l'eliminazione di uno esistente). Comunica le intenzioni dell'\term{Utente} direttamente al ViewModel.
 
@@ -1021,7 +1025,7 @@ Questo widget raggruppa i bottoni e le azioni specifiche per la gestione dei con
     \label{DC-TrustedContactActionsWidget}
 \end{figure}
 
-\paragraph{TrustedContactViewModel}
+\paragraph{TrustedContactViewModel}\mbox{}\\
 
 \code{TrustedContactViewModel} è il nucleo della gestione dello stato per questa funzionalità. Mantiene la lista dei contatti (\code{tcontacts}), lo stato di caricamento (\code{isLoading}) e la gestione degli errori (\code{error}). Espone i metodi per caricare, creare e cancellare i contatti, facendo da ponte tra la View e il \term{Repository}. Utilizza il mixin \code{ChangeNotifier} per notificare i widget in ascolto.
 
@@ -1032,7 +1036,7 @@ Questo widget raggruppa i bottoni e le azioni specifiche per la gestione dei con
     \label{DC-TrustedContactViewModel}
 \end{figure}
 
-\paragraph{TrustedContact}
+\paragraph{TrustedContact}\mbox{}\\
 
 \code{TrustedContact} è la classe di dominio che modella il singolo contatto fidato. Contiene le informazioni anagrafiche e di recapito essenziali, quali l'identificativo unico, il nome, l'indirizzo email e il numero di telefono, fornendo i relativi metodi di accesso e modifica.
 
@@ -1043,7 +1047,7 @@ Questo widget raggruppa i bottoni e le azioni specifiche per la gestione dei con
     \label{DC-TrustedContact}
 \end{figure}
 
-\paragraph{TrustedContactRepository}
+\paragraph{TrustedContactRepository}\mbox{}\\
 
 \code{TrustedContactRepository} astrae la sorgente dei dati per il ViewModel. Utilizza \code{TrustedContactService} per eseguire le operazioni CRUD (creazione, lettura, eliminazione), trasformando i dati ricevuti in oggetti di dominio \code{TrustedContact} e isolando la logica di business dai dettagli di implementazione del network.
 
@@ -1054,7 +1058,7 @@ Questo widget raggruppa i bottoni e le azioni specifiche per la gestione dei con
     \label{DC-TrustedContactRepository}
 \end{figure}
 
-\paragraph{TrustedContactService}
+\paragraph{TrustedContactService}\mbox{}\\
 
 \code{TrustedContactService} appartiene al livello infrastrutturale e si occupa di effettuare fisicamente le chiamate API verso il \term{Backend}. Gestisce le richieste HTTP per ottenere l'elenco dei contatti, aggiungerne di nuovi o eliminarli, restituendo le risposte grezze al \term{Repository}.
 
@@ -1065,7 +1069,7 @@ Questo widget raggruppa i bottoni e le azioni specifiche per la gestione dei con
     \label{DC-TrustedContactService}
 \end{figure}
 
-\paragraph{TrustedContactDTO}
+\paragraph{TrustedContactDTO}\mbox{}\\
 
 \code{TrustedContactDTO} (\textit{Data Transfer Object}) gestisce la serializzazione e deserializzazione dei dati. Mappa i dati JSON provenienti dall'esterno in oggetti \code{TrustedContact} e viceversa, garantendo la compatibilità del formato scambiato con le API.
 
@@ -1505,6 +1509,88 @@ La classe \code{EmergencyContactDTO} gestisce la logica di mappatura dei dati. I
     \label{DC-EmergencyContactDTO}
 \end{figure}
 
+\subsection{Architettura Back End} \label{subsec:architettura_backend}
+
+\subsubsection{Autenticazione} \label{subsubsec:architettura_autenticazione}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{diagrammi_architettura/autenticazione/autenticazione.pdf}
+    \caption{\term{Architettura} e Flusso di Autenticazione}
+    \label{fig:architettura_autenticazione}
+\end{figure}
+
+\paragraph{\term{Architettura} e Flusso di Autenticazione: Modulo Federated Login}\mbox{}\\
+La presente sezione descrive l'\term{Architettura} logica e il flusso dei dati relativi al modulo di autenticazione e autorizzazione dell'applicazione. Il sistema adotta un modello di federated login basato su Amazon Cognito integrato con Google come Identity Provider (IdP), progettato per garantire un accesso sicuro e standardizzato alle risorse di \term{Backend} senza demandare la gestione crittografica delle credenziali all'applicazione client.
+
+\paragraph{Iniziazione del Flusso e Autenticazione Federata}\mbox{}\\
+Il \term{Processo} di autenticazione ha inizio quando l'\term{Utente} interagisce con l'applicazione client (Flutter) richiedendo l'accesso al sistema. L'applicazione delega interamente la gestione dell'identità inoltrando una richiesta di login ad Amazon Cognito. Cognito, fungendo da Service Provider, intercetta la richiesta e avvia una procedura di autenticazione basata sullo standard OpenID Connect (OIDC) delegandola ai server di Google. L'\term{Utente} completa la fase di riconoscimento interfacciandosi direttamente con l'infrastruttura del provider esterno. A seguito della corretta \term{Verifica} delle credenziali, Google restituisce ad Amazon Cognito un codice di autorizzazione attestante il successo dell'operazione e l'identità dell'\term{Utente}.
+
+\paragraph{Emissione dei Token di Sessione}\mbox{}\\
+Acquisita la conferma dal provider federato, Amazon Cognito processa il codice di autorizzazione e genera un set di token crittografici aderenti allo standard JWT (JSON Web Token). Questi token vengono trasmessi in modo sicuro all'applicazione mobile, concludendo la fase di autenticazione. Da questo momento, il client dispone di una prova di identità verificata e utilizzerà l'Access Token JWT per autorizzare le successive chiamate di rete dirette ai servizi di \term{Backend}.
+
+\paragraph{\term{Validazione} Perimetrale e Instradamento Sicuro}\mbox{}\\
+Per accedere alle logiche applicative, l'app Flutter compone una richiesta HTTPS indirizzata all'Amazon API Gateway, includendo il token JWT nelle intestazioni di autorizzazione. L'API Gateway assume il ruolo di strato di sicurezza perimetrale (edge security). Prima di instradare il traffico, il Gateway utilizza un Cognito Authorizer nativo per eseguire un rigoroso controllo di validità sul token ricevuto. Tale procedura \term{Verifica} l'autenticità della firma crittografica, l'integrità del \term{Payload} e la validità temporale della sessione direttamente contro le configurazioni dello User Pool di Cognito.
+
+Questa specifica impostazione architetturale assicura che qualsiasi richiesta malevola, non autorizzata o provvista di credenziali scadute venga respinta al livello di rete. Solamente le richieste che superano con successo la \term{Validazione} del token vengono instradate dall'API Gateway verso la specifica funzione AWS Lambda designata, garantendo che le risorse computazionali elaborino esclusivamente traffico certificato e sicuro.
+
+
+\subsubsection{Luoghi sicuri} \label{subsubsec:architettura_luoghi_sicuri}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{diagrammi_architettura/luoghi_sicuri/luoghi_sicuri.pdf}
+    \caption{\term{Architettura} moduli Luoghi Sicuri}
+    \label{fig:architettura_luoghi_sicuri}
+\end{figure}
+
+\paragraph{\term{Architettura} e Flusso di Elaborazione: Modulo Luoghi Sicuri (Integrazione Diretta)}\mbox{}\\
+Il modulo "Luoghi Sicuri" è stato ingegnerizzato adottando una rigorosa separazione delle responsabilità (\textit{\term{Separation of Concerns}}) tra l'elaborazione lato client (Frontend) e l'infrastruttura \term{Cloud} (\term{Backend}). L'obiettivo primario è stato quello di minimizzare il carico computazionale server-side ed eliminare del tutto i costi legati ai calcoli geospaziali.
+
+L'\term{Architettura} si avvale del pattern di Integrazione Diretta (AWS Service Integration) tra Amazon API Gateway e Amazon DynamoDB. Questa topologia di rete consente un recupero altamente performante dei dati, eludendo la necessità di allocare funzioni AWS Lambda.
+
+Il flusso di elaborazione si articola nei seguenti passaggi:
+\begin{itemize}
+    \item \textbf{Ingestione della Richiesta}: L'\term{Utente} accede alla sezione della mappa tramite l'applicazione. Il client Flutter genera una richiesta HTTPS (metodo \texttt{GET /luoghi-sicuri}).
+    \item \textbf{Mappatura VTL di Andata}: L'API Gateway intercetta la chiamata e applica un Mapping Template in linguaggio VTL (Velocity Template Language). Questo script traduce la richiesta HTTP in un'istruzione di lettura diretta verso la tabella \texttt{safe\_locations\_mvp} ospitata su DynamoDB.
+    \item \textbf{Lettura e Risposta del Database}: Il database NoSQL esegue l'interrogazione e restituisce i record crudi all'API Gateway. I dati estratti comprendono metadati descrittivi e coordinate geospaziali puntuali (latitudine e longitudine) per ogni rifugio.
+    \item \textbf{Mappatura VTL di Ritorno e Serializzazione}: L'API Gateway applica un template inverso (Response Mapping) per "pulire" i dati nativi di DynamoDB, serializzandoli in un formato JSON standard, leggero e pronto all'uso, inoltrando infine la risposta HTTP \texttt{200 OK} al client.
+\end{itemize}
+
+\paragraph{Delega della Logica Geospaziale al Livello Client (Edge Computing)}\mbox{}\\
+Al fine di ottimizzare ulteriormente i costi, l'intera logica di rendering visivo e di routing è delegata all'applicazione sul dispositivo dell'\term{Utente}. Il \term{Backend} AWS si configura esclusivamente come Data Provider di coordinate statiche. Alla ricezione del \term{Payload} JSON, l'applicativo Flutter si fa carico di istanziare la mappa nativa e posizionare i marker grafici (pin). L'azione di navigazione guidata (es. pulsante "Portami lì") sfrutta le Intents (su Android) o le URL Schemes (su iOS) del sistema operativo per invocare applicazioni di navigazione di terze parti (come Google Maps o Apple Maps). Questo approccio demanda il tracciamento GPS e il calcolo dinamico dell'itinerario al dispositivo locale, garantendo la scalabilità infinita del sistema AWS anche in condizioni di massiccio utilizzo concorrente.
+
+\paragraph{API associate}\mbox{}\\
+\begin{itemize}
+    \item \texttt{GET /safe\_locations/}: ritorna le informazioni di tutti i posti sicuri.
+\end{itemize}
+\textit{Nota di sicurezza}: L'integrazione di un Authorizer Cognito per la \term{Verifica} delle autorizzazioni è stata deliberatamente omessa per questa rotta. L'assenza dell'Authorizer in quest'area è difatti una scelta architetturale mirata a rimuovere complessità infrastrutturale non necessaria e ad abbattere i costi operativi associati al recupero di questi specifici dati.
+
+\subsubsection{Materiale informativo} \label{subsubsec:architettura_materiale_informativo}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{diagrammi_architettura/materiale_informativo/materiale_informativo.pdf}
+    \caption{\term{Architettura} moduli Materiale Informativo}
+    \label{fig:architettura_materiale_informativo}
+\end{figure}
+
+\paragraph{\term{Architettura} e Flusso di Elaborazione: Modulo Materiale Informativo (Integrazione Diretta)}\mbox{}\\
+La sezione dedicata al "Materiale Informativo" è stata progettata privilegiando la massima efficienza e l'ottimizzazione dei costi operativi. Trattandosi di un modulo a prevalenza di lettura (Read-Heavy) e privo di logiche di business complesse per la manipolazione dei dati, l'\term{Architettura} sfrutta il pattern di Integrazione Diretta (AWS Service Integration) tra Amazon API Gateway e Amazon DynamoDB. Questa scelta ingegneristica permette di elidere del tutto il livello computazionale intermedio, rimuovendo la necessità di allocare e invocare funzioni AWS Lambda.
+
+Il ciclo di elaborazione si innesca quando l'applicazione client necessita di recuperare il catalogo delle informazioni, generando una richiesta HTTPS (metodo \texttt{GET}) verso l'endpoint dedicato. L'API Gateway intercetta la chiamata e utilizza un Mapping Template basato su Velocity Template Language (VTL). Questo template agisce da traduttore nativo: decodifica la richiesta HTTP e la trasforma istantaneamente in un'istruzione compatibile con l'API di DynamoDB (nello specifico, un'operazione di lettura sulla tabella \texttt{materiale\_info\_mvp}).
+
+Il database esegue l'interrogazione e restituisce i record crudi all'API Gateway. Quest'ultimo applica un template di trasformazione inverso (Response Mapping) per serializzare e mappare i dati nativi di DynamoDB in un formato JSON standard, leggero e facilmente consumabile dal frontend. Il ciclo sincrono si conclude con l'inoltro della risposta HTTP all'applicazione Flutter.
+
+Tale paradigma architetturale non solo azzera i costi legati all'invocazione di risorse \term{Serverless}, ma abbatte drasticamente la latenza percepita dall'\term{Utente} finale. Eliminando alla radice il rischio temporale legato al \textit{Cold Start} delle funzioni computazionali, questa si conferma la soluzione più performante e scalabile per la consultazione di cataloghi informativi.
+
+\paragraph{API associate}\mbox{}\\
+\begin{itemize}
+    \item \texttt{GET /learning/}: ritorna le \textit{preview} di tutti i materiali di apprendimento.
+    \item \texttt{GET /learning/\{learning\_id\}}: ritorna il contenuto di uno specifico materiale di apprendimento.
+\end{itemize}
+\textit{Nota di sicurezza}: In maniera analoga a quanto previsto per i luoghi sicuri, anche per l'accesso al materiale informativo si è optato per non implementare l'Authorizer Cognito. Questa decisione è dettata dalla volontà di snellire l'\term{Architettura}, riducendo le complessità superflue ed evitando di incorrere nei costi operativi aggiuntivi dell'infrastruttura di autenticazione.
+
 \section{Stato dei requisiti funzionali} \label{sec:stato_requisiti_funzionali}
 \subsection{Requisiti Funzionali obbligatori} \label{subsection:requisiti_funzionali_obbligatori}
 \begin{center}
@@ -1550,8 +1636,8 @@ RF-OB-7 & L'\term{Utente} deve poter ricaricare la sezione dei contatti fidati d
 RF-OB-8 & Il sistema deve permettere la visualizzazione di un singolo contatto fidato dalla lista dei contatti fidati & Non soddisfatto \\
 \hline
 
-    RF-OB-9 & L'\term{Utente} deve poter visualizzare la preview delle informazioni (il nome) del contatto fidato che sta visualizzando dalla lista dei contatti fidati & Non soddisfatto \\
-    \hline
+RF-OB-9 & L'\term{Utente} deve poter visualizzare la preview delle informazioni (il nome) del contatto fidato che sta visualizzando dalla lista dei contatti fidati & Non soddisfatto \\
+\hline
 
 RF-OB-10 & L'\term{Utente} deve poter visualizzare i dettagli di un contatto fidato selezionato dalla lista dei contatti fidati & Non soddisfatto \\
 \hline
@@ -2006,6 +2092,4 @@ RF-OP-7 & Il sistema deve indicare all'\term{Utente} se i luoghi sicuri visualiz
 \end{longtable}
 \end{center}
 
-
 \end{document}
-
