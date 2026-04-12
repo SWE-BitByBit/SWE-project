@@ -6,7 +6,7 @@
 % =======================================================
 \newcommand{\TitoloDocumento}{Piano di Progetto}
 \newcommand{\DataVersione}{AAAA/MM/GG}
-\newcommand{\VersioneAttuale}{1.0.0}
+\newcommand{\VersioneAttuale}{1.1.1}
 
 % =======================================================
 % 2. PACCHETTI
@@ -94,7 +94,7 @@
 \begin{document}
 
 % --- FRONT PAGE (Loghi e Titoli) ---
-\vspace*{\fill}
+\vspace*{5cm}
 
 \begin{center}
     \begin{minipage}{0.25\textwidth}
@@ -138,6 +138,8 @@
 \begin{center}
     {\LARGE \textbf{\TitoloDocumento}}
 \end{center}
+
+\vspace*{\fill}
 
 % ======= INFO GENERALI =======
 \renewcommand{\arraystretch}{1.3}
@@ -200,6 +202,9 @@ Gruppo BitByBit\\\\
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 \endhead
+\rowcolor{gray!20}
+1.1.1 & 2026-04-11 & Marco Sanguin & Consuntivo \term{Sprint} 8 & Gabriele Scaggiante \\
+\hline
 \rowcolor{gray!20}
 1.1.0 & 2026-04-06 & Marco Sanguin & Iniziato riepilogo \term{Sprint} 8 & Dennis Parolin \\
 \hline
@@ -2433,9 +2438,9 @@ Si prospetta l'utilizzo delle seguenti risorse:
 \end{figure}
 
 \paragraph{Consuntivo}
-Di seguito il resoconto delle ore effettivamente impiegate. 
+Di seguito il resoconto delle ore effettivamente impiegate.
 
-\begin{table}[H] %da aggiornare
+\begin{table}[H]
     \centering
     \renewcommand{\arraystretch}{1.4}
     \footnotesize
@@ -2445,45 +2450,50 @@ Di seguito il resoconto delle ore effettivamente impiegate.
         \textbf{Membro} & \textbf{Resp} & \textbf{Amm} & \textbf{Anal} & \textbf{Pt} & \textbf{Pr} & \textbf{Ver} \\
         \hline
         \rowcolor{tableLineOdd}
-        F. Fracasso & - & - & - & - & - & - \\
+        F. Fracasso & - & 5 & - & 9\textcolor{red}{(+1)} & - & - \\
         \hline
         \rowcolor{tableLineEven}
-        R. Manisi & - & - & - & - & - & - \\
+        R. Manisi & - & 13\textcolor{red}{(+1)} & - & - & - & - \\
         \hline
         \rowcolor{tableLineOdd}
-        D. Parolin & - & - & - & - & - & - \\
+        D. Parolin & - & - & - & 7 & - & 3 \\
         \hline
         \rowcolor{tableLineEven}
-        M. Sanguin & - & - & - & - & - & - \\
+        M. Sanguin & 10 & - & - & - & - & 0\textcolor{red}{(-3)} \\
         \hline
         \rowcolor{tableLineOdd}
-        G. Scaggiante & - & - & - & - & - & - \\
+        G. Scaggiante & - & - & - & 8\textcolor{red}{(-2)} & - & - \\
         \hline
         \rowcolor{tableLineEven}
-        G. Visentin & - & - & - & - & - & - \\
+        G. Visentin & - & - & 1\textcolor{red}{(+0.5)} & 7\textcolor{red}{(-3)} & - & - \\
         \hline
     \end{tabularx}
     \caption{Consuntivo orario per componente - \term{Sprint} 8}
     \label{tab:consuntivo_sprint8}
 \end{table}
 
-\begin{figure}[H] %da aggiornare
+\begin{figure}[H]
     \centering
     \begin{tikzpicture}[scale=1.2]
-        \draw[thick,fill=pieResp] (0,0) -- (0:1.5) arc (0:52.6:1.5) -- cycle;
-        \draw (26.3:1.95) node {14.6\%};
-        
-        \draw[thick,fill=pieAmm] (0,0) -- (52.6:1.5) arc (52.6:141.8:1.5) -- cycle;
-        \draw (97.2:1.85) node {24.8\%};
+        % Responsabile: 15.9% -> 57.2°
+        \draw[thick,fill=pieResp] (0,0) -- (0:1.5) arc (0:57.2:1.5) -- cycle;
+        \draw (28.6:1.95) node {15.9\%};
 
-        \draw[thick,fill=pieAnal] (0,0) -- (141.8:1.5) arc (141.8:144.4:1.5) -- cycle;
-        \draw (143:2.1) node {0.7\%};
-        
-        \draw[thick,fill=pieDes] (0,0) -- (144.4:1.5) arc (144.4:328.3:1.5) -- cycle;
-        \draw (236.3:1.8) node {51.1\%};
+        % Amministratore: 28.6% -> 103° (Cumulato: 160.2°)
+        \draw[thick,fill=pieAmm] (0,0) -- (57.2:1.5) arc (57.2:160.2:1.5) -- cycle;
+        \draw (108.7:1.85) node {28.6\%};
 
-        \draw[thick,fill=pieVer] (0,0) -- (328.3:1.5) arc (328.3:360:1.5) -- cycle;
-        \draw (344.1:1.95) node {8.8\%};
+        % Analista: 1.6% -> 5.8° (Cumulato: 166.0°)
+        \draw[thick,fill=pieAnal] (0,0) -- (160.2:1.5) arc (160.2:166.0:1.5) -- cycle;
+        \draw (163.1:2.1) node {1.6\%};
+
+        % Progettista: 49.2% -> 177.1° (Cumulato: 343.1°)
+        \draw[thick,fill=pieDes] (0,0) -- (166.0:1.5) arc (166.0:343.1:1.5) -- cycle;
+        \draw (254.5:1.85) node {49.2\%};
+
+        % Verificatore: 4.7% -> 16.9° (Cumulato: 360°)
+        \draw[thick,fill=pieVer] (0,0) -- (343.1:1.5) arc (343.1:360:1.5) -- cycle;
+        \draw (351.5:1.95) node {4.8\%};
 
         \matrix [below, draw=none, fill=none] at (0,-2.5) {
             \node [fill=pieResp, label=right:Responsabile] {}; & \node [fill=pieAmm, label=right:Amministratore] {}; \\
@@ -2495,9 +2505,9 @@ Di seguito il resoconto delle ore effettivamente impiegate.
 \end{figure}
 
 \paragraph{Aggiornamento delle risorse rimanenti}
-Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la chiusura dello \term{Sprint} 8. 
+Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la chiusura dello \term{Sprint} 8. Si segnala un lievissimo sforamento nel budget previsto unicamente per le ore di Analista (debito di 12.50\euro), che viene tuttavia ampiamente riassorbito dal margine economico complessivo ancora disponibile.
 
-\begin{table}[H] %da aggiornare
+\begin{table}[H]
     \centering
     \renewcommand{\arraystretch}{1.5}
     \begin{tabularx}{\textwidth}{|l|c|c|c|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
@@ -2506,32 +2516,36 @@ Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la
         \textbf{Ruolo} & \textbf{Costo} & \textbf{Ore} & \textbf{Costo} & \textbf{Ore rimanenti} & \textbf{Budget rimanente} \\
         \hline
         \rowcolor{tableLineOdd}
-        Responsabile & 30\euro/h & 5 & 150\euro & 37 \textcolor{red}{(-5)} & 1.110\euro \textcolor{red}{(-150\euro)} \\
+        Responsabile & 30\euro/h & 10 & 300\euro & 27 \textcolor{red}{(-10)} & 810\euro \textcolor{red}{(-300\euro)} \\
         \hline
         \rowcolor{tableLineEven}
-        Amministratore & 20\euro/h & 6.5 & 130\euro & 40.25 \textcolor{red}{(-6.5)} & 805\euro \textcolor{red}{(-130\euro)} \\
+        Amministratore & 20\euro/h & 18 & 360\euro & 22.25 \textcolor{red}{(-18)} & 445\euro \textcolor{red}{(-360\euro)} \\
         \hline
         \rowcolor{tableLineOdd}
-        Analista & 25\euro/h & 3 & 75\euro & 0.5 \textcolor{red}{(-3)} & 12,50\euro \textcolor{red}{(-75\euro)} \\
+        Analista & 25\euro/h & 1 & 25\euro & -0.5 \textcolor{red}{(-1)} & -12,50\euro \textcolor{red}{(-25\euro)} \\
         \hline
         \rowcolor{tableLineEven}
-        Progettista & 25\euro/h & - & - & 102 & 2.550\euro \\
+        Progettista & 25\euro/h & 31 & 775\euro & 71 \textcolor{red}{(-31)} & 1.775\euro \textcolor{red}{(-775\euro)} \\
         \hline
         \rowcolor{tableLineOdd}
-        Programmatore & 15\euro/h & 24 & 360\euro & 86 \textcolor{red}{(-24)} & 1.290\euro \textcolor{red}{(-360\euro)} \\
+        Programmatore & 15\euro/h & 0 & 0\euro & 86 \textcolor{red}{(0)} & 1.290\euro \textcolor{red}{(0\euro)} \\
         \hline
         \rowcolor{tableLineEven}
-        Verificatore & 15\euro/h & 5 & 75\euro & 60 \textcolor{red}{(-5)} & 892,50\euro \textcolor{red}{(-75\euro)} \\
+        Verificatore & 15\euro/h & 3 & 45\euro & 56.5 \textcolor{red}{(-3)} & 847,50\euro \textcolor{red}{(-45\euro)} \\
         \hline
         \rowcolor{tableHeader}
-        \textbf{Totale} & - & \textbf{43.5} & \textbf{790\euro} & \textbf{325.75 \textcolor{red}{(-43.5)}} & \textbf{6.660\euro \textcolor{red}{(-790\euro)}} \\
+        \textbf{Totale} & - & \textbf{63} & \textbf{1.505\euro} & \textbf{262.25 \textcolor{red}{(-63)}} & \textbf{5.155\euro \textcolor{red}{(-1.505\euro)}} \\
         \hline
     \end{tabularx}
     \caption{\term{Sprint} 8 - Variazione nelle risorse disponibili}
 \end{table}
 
 \paragraph{Rischi incontrati}
--
+Durante lo \term{Sprint} l'integrazione delle correzioni richieste dal Prof. Vardanega e dal Prof. Cardin ha comportato uno sforzo organizzativo notevole. Nonostante questo, il rischio \textbf{RO1 (Errata stima dei tempi)} è stato arginato egregiamente, comportando solo un lieve sforzo in più nel ruolo di Amministratore e Analista. 
+Tuttavia, con l'avvio della configurazione delle \term{GitHub Actions} per il deploy effettivo su AWS, si è parzialmente concretizzato il rischio \textbf{RO5 (Dipendenza da permessi esterni)}: i test di rilascio completi sono stati messi momentaneamente in attesa per permettere un'ulteriore \term{Verifica} con la \term{Proponente} circa le autorizzazioni IAM dell'account.
+
 \paragraph{Retrospettiva}
--
+La retrospettiva evidenzia un eccellente livello di partecipazione e produttività dell'intero gruppo. Il bilancio delle ore lavorate (63 svolte contro le 68.5 pianificate) dimostra una ritrovata affidabilità nelle stime e nella capacità di esecuzione, lasciando alle spalle le difficoltà degli \term{Sprint} precedenti. L'infrastruttura dell'\term{MVP} è stata configurata con successo, l'integrazione con SonarQube è operativa e la gestione documentale è stata stabilizzata e validata in base ai feedback.
+La definizione precisa delle \textit{macro-\term{Issue}} tramite diagramma di Gantt ha permesso di stabilire scadenze chiare: l'infrastruttura normativa è conclusa, mentre il documento di \textit{\term{Specifica Tecnica}} dovrà essere completato entro lo \term{Sprint} 9 per lanciare la fase di vera programmazione dell'\term{MVP}. 
+Per ovviare ai blocchi legati all'ambiente \term{Cloud} reale (\textbf{RO5}), il gruppo continuerà a sviluppare e testare localmente sfruttando i container Docker (\textit{dynamodb-local} e Minio per S3), mantenendo un ritmo elevato in vista della Product \term{Baseline}.
 \end{document}
