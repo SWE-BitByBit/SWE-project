@@ -42,6 +42,10 @@
 \titleformat{\section}{\Large\bfseries}{\thesection.}{0.5em}{}
 \titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.5em}{}
 
+\newcommand{\term}[1]{\textbf{#1}$^\mathbf{G}$}
+
+\newcommand{\ignoreglossary}{}
+
 \begin{document}
 
 % ======= HEADER UNIVERSITÀ E GRUPPO CENTRATI VERTICALMENTE =======
@@ -90,7 +94,7 @@
 
 \vspace*{\fill} % --- Spinge verso l’alto la fine del contenuto, centrando tutto il blocco
 
-% ======= INFO GENERALI RIUNIONE, METTERE SE DOC È UN VERBALE =======
+% ======= INFO GENERALI RIUNIONE, METTERE SE DOC È UN \term{Verbale} =======
 \section{Informazioni generali}
 \renewcommand{\arraystretch}{1.3}
 
@@ -116,24 +120,24 @@ nessuno\\
 \end{tabularx}
 \end{tcolorbox}
 
-% ---------- ORDINE DEL GIORNO, METTERE SE DOC È UN VERBALE  ----------
+% ---------- ORDINE DEL GIORNO, METTERE SE DOC È UN \term{Verbale}  ----------
 \section{Ordine del Giorno}
 \begin{itemize}
-    \item Iniziare Sprint 10.
-    \item Distribuzione attività e ruoli per lo Sprint 10.
-    \item Definire le attività da svolgere durante lo Sprint 10.
-    \item Definire le domande da porre alla proponente nell'incontro previsto.
+    \item Iniziare \term{Sprint} 10.
+    \item Distribuzione attività e ruoli per lo \term{Sprint} 10.
+    \item Definire le attività da svolgere durante lo \term{Sprint} 10.
+    \item Definire le domande da porre alla \term{Proponente} nell'incontro previsto.
     \item Discutere le domande da porre al professor Cardin per l'incontro previsto per il 14-04.
 \end{itemize}
 
-% ---------- DISCUSSIONI, METTERE SE DOC È UN VERBALE ----------
+% ---------- DISCUSSIONI, METTERE SE DOC È UN \term{Verbale} ----------
 \section{Discussioni}
 \begin{itemize}
     \item %modifica
 \end{itemize}
 %modifica
 
-% ---------- DECISIONI, METTERE SE DOC È UN VERBALE ----------
+% ---------- DECISIONI, METTERE SE DOC È UN \term{Verbale} ----------
 \section{Decisioni}
 \begin{center}
 \small
@@ -154,7 +158,7 @@ Inserire descrizione &  VI C 1.3\\
 \end{tabular}
 \end{center}
 
-% ---------- TO DO, METTERE SE DOC È UN VERBALE ----------
+% ---------- TO DO, METTERE SE DOC È UN \term{Verbale} ----------
 \section{To Do}
 Dalle discussioni e decisioni intraprese, sono emerse le seguenti attività:
 
@@ -166,7 +170,7 @@ Dalle discussioni e decisioni intraprese, sono emerse le seguenti attività:
 \begin{tabular}{|p{0.52\textwidth}|c|c|}
 \hline
 \rowcolor{gray!60} 
-\textbf{Task} & \textbf{Codice decisione} & \textbf{N°issue GitHub} \\
+\textbf{Task} & \textbf{Codice decisione} & \textbf{N°\term{Issue} GitHub} \\
 \hline
 Esempio Task 1 & VI C 1.1 & \href{https://github.com/<repo>/issues/1}{\textbf{issue}} \\
 \hline
