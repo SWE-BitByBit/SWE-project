@@ -2635,22 +2635,22 @@ Si prospetta l'utilizzo delle seguenti risorse:
         
         % Amministratore
         \draw[thick,fill=pieAmm] (0,0) -- (34.8:1.5) arc (34.8:61.9:1.5) -- cycle;
-        \draw (48.4:1.95) node {7.5\%};
+        \draw (48.4:1.9) node {7.5\%};
 
         % Analista (0%)
         \draw[thick,fill=pieAnal] (0,0) -- (61.9:1.5) arc (61.9:61.9:1.5) -- cycle;
         
         % Progettista
         \draw[thick,fill=pieDes] (0,0) -- (61.9:1.5) arc (61.9:251.6:1.5) -- cycle;
-        \draw (156.8:1.8) node {52.7\%};
+        \draw (156.8:2) node {52.7\%};
 
         % Programmatore
         \draw[thick,fill=pieProg] (0,0) -- (251.6:1.5) arc (251.6:309.7:1.5) -- cycle;
-        \draw (280.7:1.95) node {16.1\%};
+        \draw (280.7:1.8) node {16.1\%};
 
         % Verificatore
         \draw[thick,fill=pieVer] (0,0) -- (309.7:1.5) arc (309.7:360:1.5) -- cycle;
-        \draw (334.9:1.95) node {14.0\%};
+        \draw (334.9:2) node {14.0\%};
 
         \matrix [below, draw=none, fill=none] at (0,-2.5) {
             \node [fill=pieResp, label=right:Responsabile] {}; & \node [fill=pieAmm, label=right:Amministratore] {}; \\
@@ -2685,7 +2685,7 @@ Di seguito il resoconto delle ore effettivamente impiegate.
         M. Sanguin & - & 2 & - & 11 & 6 & - \\
         \hline
         \rowcolor{tableLineOdd}
-        G. Scaggiante & 9 & - & - & - & 4 & - \\
+        G. Scaggiante & 9 & - & - & 4 & - & - \\
         \hline
         \rowcolor{tableLineEven}
         G. Visentin & - & 4 & - & 6 & - & 4 \\
@@ -2699,19 +2699,19 @@ Di seguito il resoconto delle ore effettivamente impiegate.
     \centering
     \begin{tikzpicture}[scale=1.2]
         \draw[thick,fill=pieResp] (0,0) -- (0:1.5) arc (0:40.5:1.5) -- cycle;
-        \draw (20.25:1.95) node {11.3\%};
+        \draw (20.25:2) node {11.3\%};
         
         \draw[thick,fill=pieAmm] (0,0) -- (40.5:1.5) arc (40.5:67.5:1.5) -- cycle;
         \draw (54:1.85) node {7.5\%};
         
         \draw[thick,fill=pieDes] (0,0) -- (67.5:1.5) arc (67.5:261:1.5) -- cycle;
-        \draw (164.25:1.8) node {53.8\%};
+        \draw (164.25:1.95) node {53.8\%};
 
         \draw[thick,fill=pieProg] (0,0) -- (261:1.5) arc (261:319.5:1.5) -- cycle;
         \draw (290.25:1.85) node {16.3\%};
 
         \draw[thick,fill=pieVer] (0,0) -- (319.5:1.5) arc (319.5:360:1.5) -- cycle;
-        \draw (339.75:1.95) node {11.3\%};
+        \draw (339.75:2) node {11.3\%};
 
         \matrix [below, draw=none, fill=none] at (0,-2.5) {
             \node [fill=pieResp, label=right:Responsabile] {}; & \node [fill=pieAmm, label=right:Amministratore] {}; \\
@@ -2734,22 +2734,22 @@ Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la
         \textbf{Ruolo} & \textbf{Costo} & \textbf{Ore} & \textbf{Costo} & \textbf{Ore rimanenti} & \textbf{Budget rimanente} \\
         \hline
         \rowcolor{tableLineOdd}
-        Responsabile & 30\euro/h & 9 & 150\euro & 18 \textcolor{red}{(-9)} & 540\euro \textcolor{red}{(-270\euro)} \\
+        Responsabile & 30\euro/h & 9 & 270\euro & 18 \textcolor{red}{(-9)} & 540\euro \textcolor{red}{(-270\euro)} \\
         \hline
         \rowcolor{tableLineEven}
-        Amministratore & 20\euro/h & 6 & 130\euro & 16.25 \textcolor{red}{(-6)} & 325\euro \textcolor{red}{(-120\euro)} \\
+        Amministratore & 20\euro/h & 6 & 120\euro & 16.25 \textcolor{red}{(-6)} & 325\euro \textcolor{red}{(-120\euro)} \\
         \hline
         \rowcolor{tableLineOdd}
         Analista & 25\euro/h & - & - & 0.5  & 12,50\euro \\
         \hline
         \rowcolor{tableLineEven}
-        Progettista & 25\euro/h & 43 & - & 28 \textcolor{red}{(-43)} & 700 \textcolor{red}{(-1.075\euro)} \\
+        Progettista & 25\euro/h & 43 & 1.075\euro & 28 \textcolor{red}{(-43)} & 700\euro \textcolor{red}{(-1.075\euro)} \\
         \hline
         \rowcolor{tableLineOdd}
-        Programmatore & 15\euro/h & 13 & 360\euro & 73 \textcolor{red}{(-13)} & 1.095\euro \textcolor{red}{(-195\euro)} \\
+        Programmatore & 15\euro/h & 13 & 195\euro & 73 \textcolor{red}{(-13)} & 1.095\euro \textcolor{red}{(-195\euro)} \\
         \hline
         \rowcolor{tableLineEven}
-        Verificatore & 15\euro/h & 9 & 75\euro & 47.5 \textcolor{red}{(-9)} & 712,50\euro \textcolor{red}{(-75\euro)} \\
+        Verificatore & 15\euro/h & 9 & 135\euro & 47.5 \textcolor{red}{(-9)} & 712,50\euro \textcolor{red}{(-135\euro)} \\
         \hline
         \rowcolor{tableHeader}
         \textbf{Totale} & - & \textbf{80} & \textbf{1.795\euro} & \textbf{182.25 \textcolor{red}{(-80)}} & \textbf{3.360\euro \textcolor{red}{(-1.795\euro)}} \\
