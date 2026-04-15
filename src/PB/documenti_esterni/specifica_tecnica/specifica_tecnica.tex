@@ -531,6 +531,91 @@ I componenti comunicano internamente tramite eventi gestiti da \textbf{Amazon Ev
 Il \term{Deployment} materiale di tutte le risorse in ambiente AWS non è eseguito manualmente, ma viene automatizzato in modo riproducibile attraverso l'impiego di \textbf{AWS SAM (\term{Serverless} Application Model)} e \textbf{AWS CloudFormation}. L'infrastruttura logica e fisica è versionata sotto forma di file \term{YAML}, aderendo interamente al paradigma dell'\textit{\term{Infrastructure as Code}}.
 
 \subsection{Architettura Front End} \label{subsec:architettura_frontend}
+
+\subsubsection{Autenticazione} \label{subsubsec:diagrammi_classi_auth}
+La funzionalità di autenticazione è stata implementata seguendo il pattern architetturale MVVM raccomandato 
+dalle linee guida di Flutter, adattato al flusso OAuth 2.0 con OpenID Connect descritto nelle specifiche. 
+La struttura separa nettamente le responsabilità tra i layer: il Service gestisce la comunicazione con 
+gli endpoint di Cognito e il flusso OAuth, il Repository mantiene lo stato dell'utente autenticato e orchestra la traduzione dei dati grezzi 
+in oggetti di dominio tramite i DTO, il ViewModel espone lo stato e le azioni alla View tramite i Command del pattern MVVM. 
+Per la modellazione di un utente viene utilizzato il domain model \code{User}.\\
+
+L'istanza unica dell'utente autenticato viene gestita tramite il Provider di Flutter a livello di app per mantenere 
+una sola istanza attiva per tutta la durata della sessione.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{resources/diagrammi_classi/auth/DC-Auth.pdf}
+    \caption{Diagramma delle classi relativo all'autenticazione}
+    \label{DC-Auth}
+\end{figure}
+
+\paragraph{AuthScreen} \mbox{}\\
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{resources/diagrammi_classi/auth/DC-AuthScreen.pdf}
+    \caption{Diagramma della classe \code{AuthScreen}}
+    \label{DC-AuthScreen}
+\end{figure}
+
+\paragraph{AuthHeaderWidget} \mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{resources/diagrammi_classi/auth/DC-AuthHeaderWidget.pdf}
+    \caption{Diagramma della classe \code{AuthHeaderWidget}}
+    \label{DC-AuthHeaderWidget}
+\end{figure}
+
+\paragraph{GoogleLoginButtonWidget} \mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{resources/diagrammi_classi/auth/DC-GoogleLoginButtonWidget.pdf}
+    \caption{Diagramma della classe \code{GoogleLoginButtonWidget}}
+    \label{DC-GoogleLoginButtonWidget}
+\end{figure}
+
+\paragraph{User} \mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{resources/diagrammi_classi/auth/DC-User.pdf}
+    \caption{Diagramma della classe \code{User}}
+    \label{DC-User}
+\end{figure}
+
+\paragraph{UserDTO} \mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{resources/diagrammi_classi/auth/DC-UserDTO.pdf}
+    \caption{Diagramma della classe \code{UserDTO}}
+    \label{DC-UserDTO}
+\end{figure}
+
+\paragraph{AuthViewModel} \mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{resources/diagrammi_classi/auth/DC-AuthViewModel.pdf}
+    \caption{Diagramma della classe \code{AuthViewModel}}
+    \label{DC-AuthViewModel}
+\end{figure}
+
+\paragraph{AuthRepository} \mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{resources/diagrammi_classi/auth/DC-AuthRepository.pdf}
+    \caption{Diagramma della classe \code{AuthRepository}}
+    \label{DC-AuthRepository}
+\end{figure}
+
+\paragraph{AuthenticationService} \mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{resources/diagrammi_classi/auth/DC-AuthenticationService.pdf}
+    \caption{Diagramma della classe \code{AuthenticationService}}
+    \label{DC-AuthenticationService}
+\end{figure}
+
+
 \subsubsection{Chatbot} \label{subsubsec:architettura_chatbot}
 
 La funzionalità del chatbot permette all'\term{Utente} di comunicare via chat con un modello di intelligenza artificiale (LLM) e di memorizzare e caricare tutte le chat passate. La funzionalità del chatbot è implementata secondo il pattern MVVM e le linee guida architetturali di Flutter, distinguendo quindi un \term{Data Layer}, composto da Service e \term{Repository}, e un \term{UI Layer}, composto da View e ViewModel. Tra questi layer figurano i vari domain models: le classi Chat (\code{ProxyChat} e \code{LocalChat}), \code{ChatMessage} e \code{MessageResponse}.
@@ -541,7 +626,6 @@ La funzionalità del chatbot permette all'\term{Utente} di comunicare via chat c
     \caption{Diagramma delle classi relativo alle funzionalità del Chatbot}
     \label{DC-Chatbot}
 \end{figure}
-\newpage
 
 \paragraph{ChatbotScreen}\mbox{}\\
 
@@ -1265,6 +1349,17 @@ Il \code{DeadManSettingsDTO} è l'oggetto di trasferimento dati incaricato della
     \label{DC-DeadManSettingsDTO}
 \end{figure}
 
+% ===== SEZIONE INVIO SOS ======
+\subsubsection{Invio SOS} \label{subsubsec:diagramma_classi_invio_sos}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{resources/diagrammi_classi/invio_sos/DC-InvioSOS.pdf}
+    \caption{Diagramma delle classi relativo alla funzionalità dell'invio email di soccorso}
+    \label{DC-InvioSOS}
+\end{figure}
+
+
 %SEZIONE AREA INFORMATIVA
 
 \subsubsection{Area Informativa} \label{subsubsec:architettura_area_informativa}
@@ -1274,7 +1369,7 @@ L'Area Informativa costituisce un centro di risorse in sola lettura per l'\term{
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{diagrammi_classi/area_informativa/DC-feature-area_informativa.pdf}
-    \caption{Diagramma delle classi complessivo dell'Area Informativa}
+    \caption{Diagramma delle classi complessivo per l'Area Informativa}
     \label{DC-AreaInformativa}
 \end{figure}
 \newpage
