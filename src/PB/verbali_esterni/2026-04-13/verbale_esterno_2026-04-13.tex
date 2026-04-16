@@ -42,6 +42,10 @@
 \titleformat{\section}{\Large\bfseries}{\thesection.}{0.5em}{}
 \titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.5em}{}
 
+\newcommand{\term}[1]{\textbf{#1}$^\mathbf{G}$}
+
+\newcommand{\ignoreglossary}{}
+
 \begin{document}
 
 % ======= HEADER UNIVERSITÀ E GRUPPO CENTRATI VERTICALMENTE =======
@@ -117,7 +121,7 @@ Prof. Cardin \\
 \thispagestyle{empty} % senza numero di pagina per l'indice
 \clearpage
 
-% ======= INFO GENERALI RIUNIONE, METTERE SE DOC È UN VERBALE =======
+% ======= INFO GENERALI RIUNIONE, METTERE SE DOC È UN \term{Verbale} =======
 \section{Informazioni generali}
 \renewcommand{\arraystretch}{1.3}
 
@@ -148,24 +152,24 @@ nessuno\\
 \end{tabularx}
 \end{tcolorbox}
 
-% ---------- ORDINE DEL GIORNO, METTERE SE DOC È UN VERBALE  ----------
+% ---------- ORDINE DEL GIORNO, METTERE SE DOC È UN \term{Verbale}  ----------
 \section{Ordine del Giorno}
 \begin{itemize}
     \item Discutere i progressi fatti fino ad ora.
     \item Discutere sugli errori nella fase di implementazione, a causa dei permessi AWS.
-    \item Risolvere alcuni dubbi riguardo l'architettura del sistema.
+    \item Risolvere alcuni dubbi riguardo l'\term{Architettura} del sistema.
 \end{itemize}
 
-% ---------- DISCUSSIONI, METTERE SE DOC È UN VERBALE ----------
+% ---------- DISCUSSIONI, METTERE SE DOC È UN \term{Verbale} ----------
 \section{Discussioni}
 \begin{itemize}
-    \item Riguardo i progressi fatti, è stato discusso che il team ha completato la fase di progettazione e ha iniziato l'implementazione. Tuttavia, sono emersi alcuni problemi legati ai permessi AWS, in particolare con CloudFormation e le Lambda, che hanno e stanno rallentando il processo.
-    \item Per risolvere, la proponente ad ogni errore ha cercato di sistemare il problema. In alcuni casi il problema è stato risolto, in altri invece no. Il team ha deciso di continuare a lavorare sui permessi, cercando di risolvere i problemi man mano che si presentano. E' stato deciso di continuare a sentirsi in maniera asincrona per risolvere tutti gli errori, in modo da non perdere tempo durante le riunioni.
+    \item Riguardo i progressi fatti, è stato discusso che il team ha completato la fase di progettazione e ha iniziato l'implementazione. Tuttavia, sono emersi alcuni problemi legati ai permessi AWS, in particolare con CloudFormation e le Lambda, che hanno e stanno rallentando il \term{Processo}.
+    \item Per risolvere, la \term{Proponente} ad ogni errore ha cercato di sistemare il problema. In alcuni casi il problema è stato risolto, in altri invece no. Il team ha deciso di continuare a lavorare sui permessi, cercando di risolvere i problemi man mano che si presentano. E' stato deciso di continuare a sentirsi in maniera asincrona per risolvere tutti gli errori, in modo da non perdere tempo durante le riunioni.
     \item 
 \end{itemize}
 %modifica
 
-% ---------- DECISIONI, METTERE SE DOC È UN VERBALE ----------
+% ---------- DECISIONI, METTERE SE DOC È UN \term{Verbale} ----------
 \section{Decisioni}
 \begin{center}
 \small
@@ -186,7 +190,7 @@ Inserire descrizione &  VI C 1.3\\
 \end{tabular}
 \end{center}
 
-% ---------- TO DO, METTERE SE DOC È UN VERBALE ----------
+% ---------- TO DO, METTERE SE DOC È UN \term{Verbale} ----------
 \section{To Do}
 Dalle discussioni e decisioni intraprese, sono emerse le seguenti attività:
 
@@ -198,7 +202,7 @@ Dalle discussioni e decisioni intraprese, sono emerse le seguenti attività:
 \begin{tabular}{|p{0.52\textwidth}|c|c|}
 \hline
 \rowcolor{gray!60} 
-\textbf{Task} & \textbf{Codice decisione} & \textbf{N°issue GitHub} \\
+\textbf{Task} & \textbf{Codice decisione} & \textbf{N°\term{Issue} GitHub} \\
 \hline
 Esempio Task 1 & VI C 1.1 & \href{https://github.com/<repo>/issues/1}{\textbf{issue}} \\
 \hline
