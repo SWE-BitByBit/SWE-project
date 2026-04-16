@@ -530,19 +530,18 @@ I componenti comunicano internamente tramite eventi gestiti da \textbf{Amazon Ev
 \subsubsection{Infrastructure as Code (IaC)}
 Il \term{Deployment} materiale di tutte le risorse in ambiente AWS non è eseguito manualmente, ma viene automatizzato in modo riproducibile attraverso l'impiego di \textbf{AWS SAM (\term{Serverless} Application Model)} e \textbf{AWS CloudFormation}. L'infrastruttura logica e fisica è versionata sotto forma di file \term{YAML}, aderendo interamente al paradigma dell'\textit{\term{Infrastructure as Code}}.
 
+% ===== AUTENTICAZIONE =====
 \subsection{Architettura Front End} \label{subsec:architettura_frontend}
 
 \subsubsection{Autenticazione} \label{subsubsec:diagrammi_classi_auth}
 La funzionalità di autenticazione è stata implementata seguendo il pattern architetturale MVVM raccomandato 
 dalle linee guida di Flutter, adattato al flusso OAuth 2.0 con OpenID Connect descritto nelle specifiche. 
 La struttura separa nettamente le responsabilità tra i layer: il Service gestisce la comunicazione con 
-gli endpoint di Cognito e il flusso OAuth, il Repository mantiene lo stato dell'utente autenticato e orchestra la traduzione dei dati grezzi 
+gli endpoint e il flusso OAuth, il Repository mantiene lo stato dell'utente autenticato e orchestra la traduzione dei dati grezzi 
 in oggetti di dominio tramite i DTO, il ViewModel espone lo stato e le azioni alla View tramite i Command del pattern MVVM. 
 Per la modellazione di un utente viene utilizzato il domain model \code{User}.\\
-
 L'istanza unica dell'utente autenticato viene gestita tramite il Provider di Flutter a livello di app per mantenere 
 una sola istanza attiva per tutta la durata della sessione.
-
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{resources/diagrammi_classi/auth/DC-Auth.pdf}
@@ -615,7 +614,104 @@ una sola istanza attiva per tutta la durata della sessione.
     \label{DC-AuthenticationService}
 \end{figure}
 
+% ===== SEZIONE INVIO SOS ======
+\subsubsection{Invio SOS} \label{subsubsec:diagramma_classi_invio_sos}
+La funzionalità di invio dell'alert SOS è strutturata seguendo il pattern MVVM raccomandato dalla guida ufficiale di Flutter, 
+integrato con il pattern Command. Il diagramma descrive l'insieme delle classi che collaborano per permettere all'utente di inviare un messaggio di soccorso 
+ai propri contatti fidati tramite la pressione di un pulsante nel \code{SosBottomSheetWidget}, visibile in tutte le schermate dell'applicazione. 
+La classe \code{SosAlertViewModel} coordina le precondizioni necessarie all'invio, verificando la presenza di contatti fidati tramite le informazioni contenute nel \code{TrustedContactRepository}, 
+prima di inoltrare l'operazione al \code{SosAlertRepository}. 
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{resources/diagrammi_classi/invio_sos/DC-InvioSOS.pdf}
+    \caption{Diagramma delle classi relativo alla funzionalità dell'invio email di soccorso}
+    \label{DC-InvioSOS}
+\end{figure}
+
+\paragraph{SosBottomSheetWidget}\mbox{}\\
+Widget che funge da punto di ingresso visivo per la funzionalità. Viene mostrato e nascosto in 
+risposta allo scroll dell'utente tramite \code{_onScroll()} ed è presente in tutte le schermate dell'applicazione. 
+Mantiene un riferimento al \code{SosAlertViewModel} da cui riceve lo stato corrente dell'operazione e a cui delega l'esecuzione 
+dell'invio quando l'utente preme il pulsante.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{resources/diagrammi_classi/invio_sos/DC-SosBottomSheetWidget.pdf}
+    \caption{Diagramma delle classe \code{SosBottomSheetWidget}}
+    \label{DC-SosBottomSheetWidget}
+\end{figure}
+
+\paragraph{SosAlertViewModel}\mbox{}\\
+Layer di presentazione della funzionalità. Coordina le dipendenze necessarie all'invio dei segnali d'allarme:
+\begin{itemize}
+    \item \code{TrustedContactRepository} per la verifica della presenza di contatti;
+    \item \code{SosAlertRepository} per l'invio effettivo;
+    \item \code{AuthRepository} per recuperare l'identità dell'utente autenticat.
+\end{itemize}
+Espone \code{sendAlert} come \code{Command0} che la View può eseguire direttamente. La logica di orchestrazione delle precondizioni è contenuta nel metodo privato \code{_sendSosAlert()}, che viene passato come action al Command nel costruttore.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{resources/diagrammi_classi/invio_sos/DC-SosAlertViewModel.pdf}
+    \caption{Diagramma delle classe \code{SosAlertViewModel}}
+    \label{DC-SosAlertViewModel}
+\end{figure}
+
+\paragraph{SosAlertRepository}\mbox{}\\
+Ha la singola responsabilità di orchestrare l'invio dell'alert SOS. Delega la chiamata HTTP al backend 
+tramite \code{SosAlertService} e rappresenta il punto di separazione tra il layer di presentazione e il layer di accesso ai dati per questa funzionalità specifica.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{resources/diagrammi_classi/invio_sos/DC-SosAlertRepository.pdf}
+    \caption{Diagramma delle classe \code{SosAlertRepository}}
+    \label{DC-SosAlertRepository}
+\end{figure}
+
+\paragraph{SosAlertService}\mbox{}\\
+Gestisce la comunicazione con l'endpoint dedicato all'invio dell'alert. 
+Riceve dal repository la richiesta di invio e si occupa esclusivamente della chiamata di rete, restituendo i dati grezzi della risposta.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{resources/diagrammi_classi/invio_sos/DC-SosAlertService.pdf}
+    \caption{Diagramma delle classe \code{SosAlertService}}
+    \label{DC-SosAlertService}
+\end{figure}
+
+\paragraph{Command<T>}\mbox{}\\
+È la classe base astratta del pattern. Mantiene internamente lo stato dell'azione tramite 
+i campi privati \code{_running}, \code{_result} e \code{_error}. Espone questi stati tramite 
+getter pubblici che la View utilizza per aggiornare l'interfaccia. Il metodo privato \code{_execute()} 
+contiene la logica comune a tutte le implementazioni concrete: impedisce esecuzioni multiple simultanee, aggiorna lo stato prima e 
+dopo l'esecuzione dell'azione, e gestisce le eccezioni.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{resources/diagrammi_classi/invio_sos/DC-Command_T_.pdf}
+    \caption{Diagramma delle classe \code{Command<T>}}
+    \label{DC-Command<T>}
+\end{figure}
+
+\paragraph{Command0<T>}\mbox{}\\
+È l'implementazione concreta di \code{Command<T>} per azioni senza argomenti. Riceve nel 
+costruttore una funzione di tipo \code{Future<T> Function()} che rappresenta l'azione da eseguire. 
+Espone il metodo pubblico \code{execute()} che delega a \code{_execute()} della classe base passando l'azione ricevuta nel costruttore. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{resources/diagrammi_classi/invio_sos/DC-Command0_T_.pdf}
+    \caption{Diagramma delle classe \code{Command0<T>}}
+    \label{DC-Command0<T>}
+\end{figure}
+
+\paragraph{Command1<T, A>}\mbox{}\\
+È l'implementazione concreta di \code{Command<T>} per azioni che richiedono un argomento di tipo A. 
+Riceve nel costruttore una funzione di tipo \code{Future<T> Function(A)} e il metodo pubblico \code{execute()} accetta l'argomento che viene 
+passato all'azione al momento dell'esecuzione.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{resources/diagrammi_classi/invio_sos/DC-Command1_T,A_.pdf}
+    \caption{Diagramma delle classe \code{Command1<T, A>}}
+    \label{DC-Command1<T, A>}
+\end{figure}
+
+% ====== CHATBOT ======
 \subsubsection{Chatbot} \label{subsubsec:architettura_chatbot}
 
 La funzionalità del chatbot permette all'\term{Utente} di comunicare via chat con un modello di intelligenza artificiale (LLM) e di memorizzare e caricare tutte le chat passate. La funzionalità del chatbot è implementata secondo il pattern MVVM e le linee guida architetturali di Flutter, distinguendo quindi un \term{Data Layer}, composto da Service e \term{Repository}, e un \term{UI Layer}, composto da View e ViewModel. Tra questi layer figurano i vari domain models: le classi Chat (\code{ProxyChat} e \code{LocalChat}), \code{ChatMessage} e \code{MessageResponse}.
@@ -1168,7 +1264,7 @@ Questo widget raggruppa i bottoni e le azioni specifiche per la gestione dei con
 
 %SEZIONE LUOGHI SICURI
 
-\subsubsection{Luoghi Sicuri} \label{subsubsec:architettura_luoghi_sicuri}
+\subsubsection{Luoghi Sicuri} \label{subsubsec:architettura_classi_luoghi_sicuri}
 
 La funzionalità dei Luoghi Sicuri permette all'\term{Utente} di visualizzare geograficamente, tramite un'interfaccia cartografica, le strutture di supporto, i centri anti-violenza e altri punti di interesse rilevanti. Analogamente al resto dell'applicazione, la funzionalità è implementata secondo il pattern MVVM e le linee guida architetturali di Flutter, distinguendo un \term{Data Layer}, composto da Service e \term{Repository}, e un \term{UI Layer}, composto da View e ViewModel, integrando la libreria ufficiale \code{google\_maps\_flutter} per il rendering della mappa.
 
@@ -1348,17 +1444,6 @@ Il \code{DeadManSettingsDTO} è l'oggetto di trasferimento dati incaricato della
     \caption[Diagramma della classe DeadManSettingsDTO]{Diagramma della classe \code{DeadManSettingsDTO}}
     \label{DC-DeadManSettingsDTO}
 \end{figure}
-
-% ===== SEZIONE INVIO SOS ======
-\subsubsection{Invio SOS} \label{subsubsec:diagramma_classi_invio_sos}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{resources/diagrammi_classi/invio_sos/DC-InvioSOS.pdf}
-    \caption{Diagramma delle classi relativo alla funzionalità dell'invio email di soccorso}
-    \label{DC-InvioSOS}
-\end{figure}
-
 
 %SEZIONE AREA INFORMATIVA
 
