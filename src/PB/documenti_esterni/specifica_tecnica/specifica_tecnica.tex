@@ -659,7 +659,7 @@ prima di inoltrare l'operazione al \code{SosAlertRepository}.
 
 \paragraph{SosBottomSheetWidget}\mbox{}\\
 Widget che funge da punto di ingresso visivo per la funzionalità. Viene mostrato e nascosto in 
-risposta allo scroll dell'\term{Utente} tramite \code{_onScroll()} ed è presente in tutte le schermate dell'applicazione. 
+risposta allo scroll dell'\term{Utente} tramite \code{\_onScroll()} ed è presente in tutte le schermate dell'applicazione. 
 Mantiene un riferimento al \code{SosAlertViewModel} da cui riceve lo stato corrente dell'operazione e a cui delega l'esecuzione 
 dell'invio quando l'\term{Utente} preme il pulsante.
 \begin{figure}[H]
@@ -706,8 +706,8 @@ Riceve dal \term{Repository} la richiesta di invio e si occupa esclusivamente de
 
 \paragraph{Command<T>}\mbox{}\\
 È la classe base astratta del pattern. Mantiene internamente lo stato dell'azione tramite 
-i campi privati \code{_running}, \code{_result} e \code{_error}. Espone questi stati tramite 
-getter pubblici che la View utilizza per aggiornare l'interfaccia. Il metodo privato \code{_execute()} 
+i campi privati \code{\_running}, \code{\_result} e \code{\_error}. Espone questi stati tramite 
+getter pubblici che la View utilizza per aggiornare l'interfaccia. Il metodo privato \code{\_execute()} 
 contiene la logica comune a tutte le implementazioni concrete: impedisce esecuzioni multiple simultanee, aggiorna lo stato prima e 
 dopo l'esecuzione dell'azione, e gestisce le eccezioni.
 \begin{figure}[H]
