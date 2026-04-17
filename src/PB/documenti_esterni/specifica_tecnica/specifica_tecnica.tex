@@ -676,7 +676,7 @@ Layer di presentazione della funzionalità. Coordina le dipendenze necessarie al
     \item \code{SosAlertRepository} per l'invio effettivo;
     \item \code{AuthRepository} per recuperare l'identità dell'\term{Utente} autenticat.
 \end{itemize}
-Espone \code{sendAlert} come \code{Command0} che la View può eseguire direttamente. La logica di orchestrazione delle precondizioni è contenuta nel metodo privato \code{_sendSosAlert()}, che viene passato come action al Command nel costruttore.
+Espone \code{sendAlert} come \code{Command0} che la View può eseguire direttamente. La logica di orchestrazione delle precondizioni è contenuta nel metodo privato \code{\_sendSosAlert()}, che viene passato come action al Command nel costruttore.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-SosAlertViewModel.pdf}
@@ -720,7 +720,7 @@ dopo l'esecuzione dell'azione, e gestisce le eccezioni.
 \paragraph{Command0<T>}\mbox{}\\
 È l'implementazione concreta di \code{Command<T>} per azioni senza argomenti. Riceve nel 
 costruttore una funzione di tipo \code{Future<T> Function()} che rappresenta l'azione da eseguire. 
-Espone il metodo pubblico \code{execute()} che delega a \code{_execute()} della classe base passando l'azione ricevuta nel costruttore. 
+Espone il metodo pubblico \code{execute()} che delega a \code{\_execute()} della classe base passando l'azione ricevuta nel costruttore. 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-Command0_T_.pdf}
