@@ -548,7 +548,7 @@ L'istanza unica dell'\term{Utente} autenticato viene gestita tramite il Provider
 una sola istanza attiva per tutta la durata della sessione.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{resources/diagrammi_classi/auth/DC-Auth.pdf}
+    \includegraphics[width=\textwidth]{diagrammi_classi/auth/DC-Auth.pdf}
     \caption{Diagramma delle classi relativo all'autenticazione}
     \label{DC-Auth}
 \end{figure}
@@ -560,7 +560,7 @@ Mantiene un riferimento al \code{AuthViewModel}, dal quale osserva lo stato dell
 La schermata è composta da widget più piccoli come \code{AuthHeaderWidget} e \code{GoogleLoginButtonWidget}, favorendo modularità e riusabilità.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{resources/diagrammi_classi/auth/DC-AuthScreen.pdf}
+    \includegraphics[width=\textwidth]{diagrammi_classi/auth/DC-AuthScreen.pdf}
     \caption{Diagramma della classe \code{AuthScreen}}
     \label{DC-AuthScreen}
 \end{figure}
@@ -571,7 +571,7 @@ costruire la porzione superiore dell’interfaccia, come titolo o elementi grafi
 logica applicativa e contribuisce alla separazione delle responsabilità tra UI e gestione dello stato.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{resources/diagrammi_classi/auth/DC-AuthHeaderWidget.pdf}
+    \includegraphics[width=\textwidth]{diagrammi_classi/auth/DC-AuthHeaderWidget.pdf}
     \caption{Diagramma della classe \code{AuthHeaderWidget}}
     \label{DC-AuthHeaderWidget}
 \end{figure}
@@ -581,7 +581,7 @@ Rappresenta il pulsante che consente all’\term{Utente} di avviare il \term{Pro
 \code{AuthScreen} tramite composizione e riceve una callback \code{onPressedCallback} che viene eseguita alla pressione del pulsante.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{resources/diagrammi_classi/auth/DC-GoogleLoginButtonWidget.pdf}
+    \includegraphics[width=\textwidth]{diagrammi_classi/auth/DC-GoogleLoginButtonWidget.pdf}
     \caption{Diagramma della classe \code{GoogleLoginButtonWidget}}
     \label{DC-GoogleLoginButtonWidget}
 \end{figure}
@@ -592,7 +592,7 @@ informazioni essenziali legate all’identità e alla sessione, come l’identif
 ed è utilizzata dal resto del sistema per gestire lo stato dell’autenticazione in modo indipendente dal formato dei dati provenienti dall’esterno.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{resources/diagrammi_classi/auth/DC-User.pdf}
+    \includegraphics[width=\textwidth]{diagrammi_classi/auth/DC-User.pdf}
     \caption{Diagramma della classe \code{User}}
     \label{DC-User}
 \end{figure}
@@ -603,7 +603,7 @@ rappresentazione serializzata dei dati. Attraverso i metodi \code{toJson} e \cod
 formato JSON e di ricostruirlo a partire da dati serializzati.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{resources/diagrammi_classi/auth/DC-UserDTO.pdf}
+    \includegraphics[width=\textwidth]{diagrammi_classi/auth/DC-UserDTO.pdf}
     \caption{Diagramma della classe \code{UserDTO}}
     \label{DC-UserDTO}
 \end{figure}
@@ -615,7 +615,7 @@ La logica concreta è incapsulata nei metodi \code{login()} e \code{logout()}, c
 Command, mentre il metodo \code{checkExistingSession()} consente di verificare la presenza di una sessione già attiva al momento dell’avvio.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{resources/diagrammi_classi/auth/DC-AuthViewModel.pdf}
+    \includegraphics[width=\textwidth]{diagrammi_classi/auth/DC-AuthViewModel.pdf}
     \caption{Diagramma della classe \code{AuthViewModel}}
     \label{DC-AuthViewModel}
 \end{figure}
@@ -626,7 +626,7 @@ necessaria per gestire l’autenticazione. Mantiene lo stato dell’\term{Utente
 Il \term{Repository} espone metodi per effettuare il login, il logout, recuperare l’\term{Utente} corrente e verificare se esiste una sessione attiva.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{resources/diagrammi_classi/auth/DC-AuthRepository.pdf}
+    \includegraphics[width=\textwidth]{diagrammi_classi/auth/DC-AuthRepository.pdf}
     \caption{Diagramma della classe \code{AuthRepository}}
     \label{DC-AuthRepository}
 \end{figure}
@@ -637,7 +637,7 @@ OAuth o AWS Cognito. Contiene le informazioni di configurazione necessarie, tra 
 scope richiesti. Si occupa esclusivamente di eseguire le chiamate di rete per il login e il logout
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{resources/diagrammi_classi/auth/DC-AuthenticationService.pdf}
+    \includegraphics[width=\textwidth]{diagrammi_classi/auth/DC-AuthenticationService.pdf}
     \caption{Diagramma della classe \code{AuthenticationService}}
     \label{DC-AuthenticationService}
 \end{figure}
@@ -652,7 +652,7 @@ prima di inoltrare l'operazione al \code{SosAlertRepository}.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{resources/diagrammi_classi/invio_sos/DC-InvioSOS.pdf}
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-InvioSOS.pdf}
     \caption{Diagramma delle classi relativo alla funzionalità dell'invio email di soccorso}
     \label{DC-InvioSOS}
 \end{figure}
@@ -664,7 +664,7 @@ Mantiene un riferimento al \code{SosAlertViewModel} da cui riceve lo stato corre
 dell'invio quando l'\term{Utente} preme il pulsante.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{resources/diagrammi_classi/invio_sos/DC-SosBottomSheetWidget.pdf}
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-SosBottomSheetWidget.pdf}
     \caption{Diagramma delle classe \code{SosBottomSheetWidget}}
     \label{DC-SosBottomSheetWidget}
 \end{figure}
@@ -679,7 +679,7 @@ Layer di presentazione della funzionalità. Coordina le dipendenze necessarie al
 Espone \code{sendAlert} come \code{Command0} che la View può eseguire direttamente. La logica di orchestrazione delle precondizioni è contenuta nel metodo privato \code{_sendSosAlert()}, che viene passato come action al Command nel costruttore.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{resources/diagrammi_classi/invio_sos/DC-SosAlertViewModel.pdf}
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-SosAlertViewModel.pdf}
     \caption{Diagramma delle classe \code{SosAlertViewModel}}
     \label{DC-SosAlertViewModel}
 \end{figure}
@@ -689,7 +689,7 @@ Ha la singola responsabilità di orchestrare l'invio dell'alert SOS. Delega la c
 tramite \code{SosAlertService} e rappresenta il punto di separazione tra il layer di presentazione e il layer di accesso ai dati per questa funzionalità specifica.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{resources/diagrammi_classi/invio_sos/DC-SosAlertRepository.pdf}
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-SosAlertRepository.pdf}
     \caption{Diagramma delle classe \code{SosAlertRepository}}
     \label{DC-SosAlertRepository}
 \end{figure}
@@ -699,7 +699,7 @@ Gestisce la comunicazione con l'endpoint dedicato all'invio dell'alert.
 Riceve dal \term{Repository} la richiesta di invio e si occupa esclusivamente della chiamata di rete, restituendo i dati grezzi della risposta.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{resources/diagrammi_classi/invio_sos/DC-SosAlertService.pdf}
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-SosAlertService.pdf}
     \caption{Diagramma delle classe \code{SosAlertService}}
     \label{DC-SosAlertService}
 \end{figure}
@@ -712,7 +712,7 @@ contiene la logica comune a tutte le implementazioni concrete: impedisce esecuzi
 dopo l'esecuzione dell'azione, e gestisce le eccezioni.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{resources/diagrammi_classi/invio_sos/DC-Command_T_.pdf}
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-Command_T_.pdf}
     \caption{Diagramma delle classe \code{Command<T>}}
     \label{DC-Command<T>}
 \end{figure}
@@ -723,7 +723,7 @@ costruttore una funzione di tipo \code{Future<T> Function()} che rappresenta l'a
 Espone il metodo pubblico \code{execute()} che delega a \code{_execute()} della classe base passando l'azione ricevuta nel costruttore. 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{resources/diagrammi_classi/invio_sos/DC-Command0_T_.pdf}
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-Command0_T_.pdf}
     \caption{Diagramma delle classe \code{Command0<T>}}
     \label{DC-Command0<T>}
 \end{figure}
@@ -734,7 +734,7 @@ Riceve nel costruttore una funzione di tipo \code{Future<T> Function(A)} e il me
 passato all'azione al momento dell'esecuzione.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{resources/diagrammi_classi/invio_sos/DC-Command1_T,A_.pdf}
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-Command1_T,A_.pdf}
     \caption{Diagramma delle classe \code{Command1<T, A>}}
     \label{DC-Command1<T, A>}
 \end{figure}
