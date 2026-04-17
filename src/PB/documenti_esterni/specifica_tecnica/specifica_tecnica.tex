@@ -541,10 +541,10 @@ Il \term{Deployment} materiale di tutte le risorse in ambiente AWS non è esegui
 La funzionalità di autenticazione è stata implementata seguendo il pattern architetturale MVVM raccomandato 
 dalle linee guida di Flutter, adattato al flusso OAuth 2.0 con OpenID Connect descritto nelle specifiche. 
 La struttura separa nettamente le responsabilità tra i layer: il Service gestisce la comunicazione con 
-gli endpoint e il flusso OAuth, il Repository mantiene lo stato dell'utente autenticato e orchestra la traduzione dei dati grezzi 
+gli endpoint e il flusso OAuth, il \term{Repository} mantiene lo stato dell'\term{Utente} autenticato e orchestra la traduzione dei dati grezzi 
 in oggetti di dominio tramite i DTO, il ViewModel espone lo stato e le azioni alla View tramite i Command del pattern MVVM. 
-Per la modellazione di un utente viene utilizzato il domain model \code{User}.\\
-L'istanza unica dell'utente autenticato viene gestita tramite il Provider di Flutter a livello di app per mantenere 
+Per la modellazione di un \term{Utente} viene utilizzato il domain model \code{User}.\\
+L'istanza unica dell'\term{Utente} autenticato viene gestita tramite il Provider di Flutter a livello di app per mantenere 
 una sola istanza attiva per tutta la durata della sessione.
 \begin{figure}[H]
     \centering
@@ -555,8 +555,8 @@ una sola istanza attiva per tutta la durata della sessione.
 
 \paragraph{AuthScreen} \mbox{}\\
 Widget principale che rappresenta la schermata di autenticazione dell’applicazione.
-Nel contesto del pattern MVVM, svolge il ruolo di View, occupandosi esclusivamente della costruzione dell’interfaccia utente tramite il metodo \code{build(BuildContext context)}.
-Mantiene un riferimento al \code{AuthViewModel}, dal quale osserva lo stato dell’autenticazione e a cui delega le azioni dell’utente.
+Nel contesto del pattern MVVM, svolge il ruolo di View, occupandosi esclusivamente della costruzione dell’interfaccia \term{Utente} tramite il metodo \code{build(BuildContext context)}.
+Mantiene un riferimento al \code{AuthViewModel}, dal quale osserva lo stato dell’autenticazione e a cui delega le azioni dell’\term{Utente}.
 La schermata è composta da widget più piccoli come \code{AuthHeaderWidget} e \code{GoogleLoginButtonWidget}, favorendo modularità e riusabilità.
 \begin{figure}[H]
     \centering
@@ -577,7 +577,7 @@ logica applicativa e contribuisce alla separazione delle responsabilità tra UI 
 \end{figure}
 
 \paragraph{GoogleLoginButtonWidget} \mbox{}\\
-Rappresenta il pulsante che consente all’utente di avviare il processo di autenticazione. È incluso nella 
+Rappresenta il pulsante che consente all’\term{Utente} di avviare il \term{Processo} di autenticazione. È incluso nella 
 \code{AuthScreen} tramite composizione e riceve una callback \code{onPressedCallback} che viene eseguita alla pressione del pulsante.
 \begin{figure}[H]
     \centering
@@ -587,7 +587,7 @@ Rappresenta il pulsante che consente all’utente di avviare il processo di aute
 \end{figure}
 
 \paragraph{User} \mbox{}\\
-Rappresenta il modello di dominio dell’utente autenticato all’interno dell’applicazione. Contiene le 
+Rappresenta il modello di dominio dell’\term{Utente} autenticato all’interno dell’applicazione. Contiene le 
 informazioni essenziali legate all’identità e alla sessione, come l’identificativo univoco e i token di accesso, 
 ed è utilizzata dal resto del sistema per gestire lo stato dell’autenticazione in modo indipendente dal formato dei dati provenienti dall’esterno.
 \begin{figure}[H]
@@ -622,8 +622,8 @@ Command, mentre il metodo \code{checkExistingSession()} consente di verificare l
 
 \paragraph{AuthRepository} \mbox{}\\
 Funge da intermediario tra il ViewModel e il livello di accesso ai dati, incapsulando la logica 
-necessaria per gestire l’autenticazione. Mantiene lo stato dell’utente corrente tramite \code{currentUser} e delega le operazioni di comunicazione remota a \code{AuthenticationService}. 
-Il repository espone metodi per effettuare il login, il logout, recuperare l’utente corrente e verificare se esiste una sessione attiva.
+necessaria per gestire l’autenticazione. Mantiene lo stato dell’\term{Utente} corrente tramite \code{currentUser} e delega le operazioni di comunicazione remota a \code{AuthenticationService}. 
+Il \term{Repository} espone metodi per effettuare il login, il logout, recuperare l’\term{Utente} corrente e verificare se esiste una sessione attiva.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{resources/diagrammi_classi/auth/DC-AuthRepository.pdf}
@@ -645,7 +645,7 @@ scope richiesti. Si occupa esclusivamente di eseguire le chiamate di rete per il
 % ===== SEZIONE INVIO SOS ======
 \subsubsection{Invio SOS} \label{subsubsec:diagramma_classi_invio_sos}
 La funzionalità di invio dell'alert SOS è strutturata seguendo il pattern MVVM raccomandato dalla guida ufficiale di Flutter, 
-integrato con il pattern Command. Il diagramma descrive l'insieme delle classi che collaborano per permettere all'utente di inviare un messaggio di soccorso 
+integrato con il pattern Command. Il diagramma descrive l'insieme delle classi che collaborano per permettere all'\term{Utente} di inviare un messaggio di soccorso 
 ai propri contatti fidati tramite la pressione di un pulsante nel \code{SosBottomSheetWidget}, visibile in tutte le schermate dell'applicazione. 
 La classe \code{SosAlertViewModel} coordina le precondizioni necessarie all'invio, verificando la presenza di contatti fidati tramite le informazioni contenute nel \code{TrustedContactRepository}, 
 prima di inoltrare l'operazione al \code{SosAlertRepository}. 
@@ -659,9 +659,9 @@ prima di inoltrare l'operazione al \code{SosAlertRepository}.
 
 \paragraph{SosBottomSheetWidget}\mbox{}\\
 Widget che funge da punto di ingresso visivo per la funzionalità. Viene mostrato e nascosto in 
-risposta allo scroll dell'utente tramite \code{_onScroll()} ed è presente in tutte le schermate dell'applicazione. 
+risposta allo scroll dell'\term{Utente} tramite \code{_onScroll()} ed è presente in tutte le schermate dell'applicazione. 
 Mantiene un riferimento al \code{SosAlertViewModel} da cui riceve lo stato corrente dell'operazione e a cui delega l'esecuzione 
-dell'invio quando l'utente preme il pulsante.
+dell'invio quando l'\term{Utente} preme il pulsante.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{resources/diagrammi_classi/invio_sos/DC-SosBottomSheetWidget.pdf}
@@ -672,9 +672,9 @@ dell'invio quando l'utente preme il pulsante.
 \paragraph{SosAlertViewModel}\mbox{}\\
 Layer di presentazione della funzionalità. Coordina le dipendenze necessarie all'invio dei segnali d'allarme:
 \begin{itemize}
-    \item \code{TrustedContactRepository} per la verifica della presenza di contatti;
+    \item \code{TrustedContactRepository} per la \term{Verifica} della presenza di contatti;
     \item \code{SosAlertRepository} per l'invio effettivo;
-    \item \code{AuthRepository} per recuperare l'identità dell'utente autenticat.
+    \item \code{AuthRepository} per recuperare l'identità dell'\term{Utente} autenticat.
 \end{itemize}
 Espone \code{sendAlert} come \code{Command0} che la View può eseguire direttamente. La logica di orchestrazione delle precondizioni è contenuta nel metodo privato \code{_sendSosAlert()}, che viene passato come action al Command nel costruttore.
 \begin{figure}[H]
@@ -685,7 +685,7 @@ Espone \code{sendAlert} come \code{Command0} che la View può eseguire direttame
 \end{figure}
 
 \paragraph{SosAlertRepository}\mbox{}\\
-Ha la singola responsabilità di orchestrare l'invio dell'alert SOS. Delega la chiamata HTTP al backend 
+Ha la singola responsabilità di orchestrare l'invio dell'alert SOS. Delega la chiamata HTTP al \term{Backend} 
 tramite \code{SosAlertService} e rappresenta il punto di separazione tra il layer di presentazione e il layer di accesso ai dati per questa funzionalità specifica.
 \begin{figure}[H]
     \centering
@@ -696,7 +696,7 @@ tramite \code{SosAlertService} e rappresenta il punto di separazione tra il laye
 
 \paragraph{SosAlertService}\mbox{}\\
 Gestisce la comunicazione con l'endpoint dedicato all'invio dell'alert. 
-Riceve dal repository la richiesta di invio e si occupa esclusivamente della chiamata di rete, restituendo i dati grezzi della risposta.
+Riceve dal \term{Repository} la richiesta di invio e si occupa esclusivamente della chiamata di rete, restituendo i dati grezzi della risposta.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{resources/diagrammi_classi/invio_sos/DC-SosAlertService.pdf}
