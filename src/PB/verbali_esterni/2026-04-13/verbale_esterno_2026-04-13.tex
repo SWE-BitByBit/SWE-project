@@ -165,10 +165,10 @@ nessuno\\
 \begin{itemize}
     \item Il team ha analizzato i problemi relativi ai permessi AWS riscontrati durante l'implementazione. Nello specifico, mancano i permessi IAM necessari per l'assegnazione e la creazione di ruoli legati all'invio di email tramite SES e all'esecuzione di operazioni pianificate su EventBridge.
     \item Sono stati evidenziati errori durante la creazione e l'aggiornamento degli stack CloudFormation tramite AWS SAM a causa di permessi insufficienti per la gestione dei ChangeSet e degli eventi dello stack. Questo comporta blocchi nel deploy e possibili inconsistenze con i bucket non eliminati correttamente in caso di rollback.
-    \item È stata discussa l'architettura per la gestione degli invii automatizzati per le funzioni di Dead man's switch e SOS. Sono state valutate due opzioni: l'uso di uno scheduler EventBridge per ogni singolo utente, oppure un singolo scheduler globale che interroga il database DynamoDB per elaborare gli invii in batch.
+    \item È stata discussa l'\term{Architettura} per la gestione degli invii automatizzati per le funzioni di Dead man's switch e SOS. Sono state valutate due opzioni: l'uso di uno scheduler EventBridge per ogni singolo \term{Utente}, oppure un singolo scheduler globale che interroga il database DynamoDB per elaborare gli invii in batch.
     \item Riguardo ad AWS SES, trovandosi l'ambiente in modalità sandbox, è stata confermata la necessità di limitare l'invio ad account verificati. È emersa l'idea di testare la funzionalità aggiungendo altri indirizzi email per verificarne il corretto comportamento per le finalità del progetto.
     \item Il team ha affrontato il design delle funzionalità "segrete" dell'app, ovvero il diario criptato e il segnale SOS. Si è deciso di mantenere i pulsanti di attivazione accessibili senza nasconderli in modo eccessivo per non complicare lo sviluppo del progetto, valutando eventualmente in futuro l'utilizzo di tasti hardware per l'invio dell'SOS.
-    \item Per aggirare temporaneamente i problemi di deploy automatizzato tramite stack, è stato suggerito di effettuare i test localmente e successivamente eseguire il deploy delle Lambda direttamente dall'IDE (VSCode).
+    \item Per aggirare temporaneamente i problemi di deploy automatizzato tramite stack, è stato suggerito di effettuare i test localmente e successivamente eseguire il deploy delle Lambda direttamente dall'\term{IDE} (VSCode).
 \end{itemize}
 
 % ---------- DECISIONI, METTERE SE DOC È UN \term{Verbale} ----------
@@ -183,11 +183,11 @@ nessuno\\
 \rowcolor{gray!60} 
 \textbf{Descrizione decisione} & \textbf{Codice decisione} \\
 \hline
-Utilizzare l'account email di progetto dedicato (swe.bitbybit) per la creazione delle risorse Lambda, anziché gli account personali. & VI PB 2.1 \\
+Utilizzare l'account email di progetto dedicato (swe.bitbybit) per la creazione delle risorse Lambda, anziché gli account personali. & VI \term{PB} 2.1 \\
 \hline
-Temporaneamente, effettuare il deploy e il test delle Lambda direttamente dall'IDE, in attesa di risolvere i permessi di CloudFormation. &  VI PB 2.2 \\
+Temporaneamente, effettuare il deploy e il test delle Lambda direttamente dall'\term{IDE}, in attesa di risolvere i permessi di CloudFormation. &  VI \term{PB} 2.2 \\
 \hline
-Mantenere visibili e accessibili i pulsanti delle funzionalità "segrete" nell'interfaccia utente, senza nasconderli in modo eccessivo per i fini progettuali. &  VI PB 2.3\\
+Mantenere visibili e accessibili i pulsanti delle funzionalità "segrete" nell'interfaccia \term{Utente}, senza nasconderli in modo eccessivo per i fini progettuali. &  VI \term{PB} 2.3\\
 \hline
 \end{tabular}
 \end{center}
