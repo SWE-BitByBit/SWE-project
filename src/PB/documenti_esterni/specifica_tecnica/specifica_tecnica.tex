@@ -155,6 +155,10 @@ Gruppo BitByBit\\
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
+0.4.0 & 2026-04-17 & Riccardo Manisi & Redatta la sezione \hyperref[subsubsec:diagramma_classi_invio_sos]{Architettura InvioSOS} & Gabriele Scaggiante \\
+\hline
+0.3.0 & 2026-04-17 & Riccardo Manisi & Redatta la sezione \hyperref[subsubsec:diagrammi_classi_auth]{Architettura auth} & Ferdinando Fracasso \\
+\hline
 0.2.1 & 2026-04-12 & Marco Sanguin & Redatta la sezione \hyperref[subsubsec:architettura_luoghi_sicuri]{Architettura luoghi sicuri} & Riccardo Manisi \\
 \hline
 0.2.0 & 2026-04-12 & Marco Sanguin & Redatta la sezione \hyperref[subsubsec:architettura_dead_man_switch]{Architettura funzionalità dead man switch} & Ferdinando Fracasso \\
@@ -550,7 +554,10 @@ una sola istanza attiva per tutta la durata della sessione.
 \end{figure}
 
 \paragraph{AuthScreen} \mbox{}\\
-
+Widget principale che rappresenta la schermata di autenticazione dell’applicazione.
+Nel contesto del pattern MVVM, svolge il ruolo di View, occupandosi esclusivamente della costruzione dell’interfaccia utente tramite il metodo \code{build(BuildContext context)}.
+Mantiene un riferimento al \code{AuthViewModel}, dal quale osserva lo stato dell’autenticazione e a cui delega le azioni dell’utente.
+La schermata è composta da widget più piccoli come \code{AuthHeaderWidget} e \code{GoogleLoginButtonWidget}, favorendo modularità e riusabilità.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{resources/diagrammi_classi/auth/DC-AuthScreen.pdf}
@@ -559,6 +566,9 @@ una sola istanza attiva per tutta la durata della sessione.
 \end{figure}
 
 \paragraph{AuthHeaderWidget} \mbox{}\\
+La classe AuthHeaderWidget rientra nel livello View del pattern MVVM e ha il solo compito di 
+costruire la porzione superiore dell’interfaccia, come titolo o elementi grafici identificativi. Non contiene alcuna 
+logica applicativa e contribuisce alla separazione delle responsabilità tra UI e gestione dello stato.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{resources/diagrammi_classi/auth/DC-AuthHeaderWidget.pdf}
@@ -567,6 +577,8 @@ una sola istanza attiva per tutta la durata della sessione.
 \end{figure}
 
 \paragraph{GoogleLoginButtonWidget} \mbox{}\\
+Rappresenta il pulsante che consente all’utente di avviare il processo di autenticazione. È incluso nella 
+\code{AuthScreen} tramite composizione e riceve una callback \code{onPressedCallback} che viene eseguita alla pressione del pulsante.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{resources/diagrammi_classi/auth/DC-GoogleLoginButtonWidget.pdf}
@@ -575,6 +587,9 @@ una sola istanza attiva per tutta la durata della sessione.
 \end{figure}
 
 \paragraph{User} \mbox{}\\
+Rappresenta il modello di dominio dell’utente autenticato all’interno dell’applicazione. Contiene le 
+informazioni essenziali legate all’identità e alla sessione, come l’identificativo univoco e i token di accesso, 
+ed è utilizzata dal resto del sistema per gestire lo stato dell’autenticazione in modo indipendente dal formato dei dati provenienti dall’esterno.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{resources/diagrammi_classi/auth/DC-User.pdf}
@@ -583,6 +598,9 @@ una sola istanza attiva per tutta la durata della sessione.
 \end{figure}
 
 \paragraph{UserDTO} \mbox{}\\
+Ha il compito di gestire la conversione tra il modello di dominio \code{User} e la 
+rappresentazione serializzata dei dati. Attraverso i metodi \code{toJson} e \code{fromJson}, consente rispettivamente di trasformare un oggetto \code{User} in 
+formato JSON e di ricostruirlo a partire da dati serializzati.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{resources/diagrammi_classi/auth/DC-UserDTO.pdf}
@@ -591,6 +609,10 @@ una sola istanza attiva per tutta la durata della sessione.
 \end{figure}
 
 \paragraph{AuthViewModel} \mbox{}\\
+Essa gestisce lo stato dell’autenticazione e coordina le operazioni richieste dalla 
+View interagendo con il \code{AuthRepository}. Le funzionalità principali, come il login e il logout, sono esposte tramite il Command pattern. 
+La logica concreta è incapsulata nei metodi \code{login()} e \code{logout()}, che vengono tipicamente passati come azioni ai rispettivi 
+Command, mentre il metodo \code{checkExistingSession()} consente di verificare la presenza di una sessione già attiva al momento dell’avvio.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{resources/diagrammi_classi/auth/DC-AuthViewModel.pdf}
@@ -599,6 +621,9 @@ una sola istanza attiva per tutta la durata della sessione.
 \end{figure}
 
 \paragraph{AuthRepository} \mbox{}\\
+Funge da intermediario tra il ViewModel e il livello di accesso ai dati, incapsulando la logica 
+necessaria per gestire l’autenticazione. Mantiene lo stato dell’utente corrente tramite \code{currentUser} e delega le operazioni di comunicazione remota a \code{AuthenticationService}. 
+Il repository espone metodi per effettuare il login, il logout, recuperare l’utente corrente e verificare se esiste una sessione attiva.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{resources/diagrammi_classi/auth/DC-AuthRepository.pdf}
@@ -607,6 +632,9 @@ una sola istanza attiva per tutta la durata della sessione.
 \end{figure}
 
 \paragraph{AuthenticationService} \mbox{}\\
+È responsabile della comunicazione con il sistema di autenticazione esterno, come ad esempio un provider basato su 
+OAuth o AWS Cognito. Contiene le informazioni di configurazione necessarie, tra cui dominio, credenziali del client, URI di redirect e 
+scope richiesti. Si occupa esclusivamente di eseguire le chiamate di rete per il login e il logout
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{resources/diagrammi_classi/auth/DC-AuthenticationService.pdf}
