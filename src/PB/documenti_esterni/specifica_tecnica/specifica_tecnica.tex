@@ -555,7 +555,7 @@ una sola istanza attiva per tutta la durata della sessione.
 
 \paragraph{AuthScreen} \mbox{}\\
 Widget principale che rappresenta la schermata di autenticazione dell’applicazione.
-Nel contesto del pattern MVVM, svolge il ruolo di View, occupandosi esclusivamente della costruzione dell’interfaccia \term{Utente} tramite il metodo \code{build(BuildContext context)}.
+Nel contesto del pattern MVVM, svolge il ruolo di View, occupandosi esclusivamente della costruzione dell’interfaccia \ignoreglossary{Utente} tramite il metodo \code{build(BuildContext context)}.
 Mantiene un riferimento al \code{AuthViewModel}, dal quale osserva lo stato dell’autenticazione e a cui delega le azioni dell’\term{Utente}.
 La schermata è composta da widget più piccoli come \code{AuthHeaderWidget} e \code{GoogleLoginButtonWidget}, favorendo modularità e riusabilità.
 \begin{figure}[H]
@@ -567,7 +567,7 @@ La schermata è composta da widget più piccoli come \code{AuthHeaderWidget} e \
 
 \paragraph{AuthHeaderWidget} \mbox{}\\
 La classe AuthHeaderWidget rientra nel livello View del pattern MVVM e ha il solo compito di 
-costruire la porzione superiore dell’interfaccia, come titolo o elementi grafici identificativi. Non contiene alcuna 
+costruire la porzione superiore dell’interfaccia, contenente titolo e altri elementi grafici identificativi. Non contiene alcuna 
 logica applicativa e contribuisce alla separazione delle responsabilità tra UI e gestione dello stato.
 \begin{figure}[H]
     \centering
@@ -577,7 +577,7 @@ logica applicativa e contribuisce alla separazione delle responsabilità tra UI 
 \end{figure}
 
 \paragraph{GoogleLoginButtonWidget} \mbox{}\\
-Rappresenta il pulsante che consente all’\term{Utente} di avviare il \term{Processo} di autenticazione. È incluso nella 
+Rappresenta il pulsante che consente all’\term{Utente} di avviare il \ignoreglossary{Processo} di autenticazione. È incluso nella 
 \code{AuthScreen} tramite composizione e riceve una callback \code{onPressedCallback} che viene eseguita alla pressione del pulsante.
 \begin{figure}[H]
     \centering
@@ -609,7 +609,7 @@ formato JSON e di ricostruirlo a partire da dati serializzati.
 \end{figure}
 
 \paragraph{AuthViewModel} \mbox{}\\
-Essa gestisce lo stato dell’autenticazione e coordina le operazioni richieste dalla 
+Gestisce lo stato dell’autenticazione e coordina le operazioni richieste dalla 
 View interagendo con il \code{AuthRepository}. Le funzionalità principali, come il login e il logout, sono esposte tramite il Command pattern. 
 La logica concreta è incapsulata nei metodi \code{login()} e \code{logout()}, che vengono tipicamente passati come azioni ai rispettivi 
 Command, mentre il metodo \code{checkExistingSession()} consente di verificare la presenza di una sessione già attiva al momento dell’avvio.
@@ -621,7 +621,7 @@ Command, mentre il metodo \code{checkExistingSession()} consente di verificare l
 \end{figure}
 
 \paragraph{AuthRepository} \mbox{}\\
-Funge da intermediario tra il ViewModel e il livello di accesso ai dati, incapsulando la logica 
+Funge da intermediario tra il \code{AuthViewModel} e il livello di accesso ai dati, incapsulando la logica 
 necessaria per gestire l’autenticazione. Mantiene lo stato dell’\term{Utente} corrente tramite \code{currentUser} e delega le operazioni di comunicazione remota a \code{AuthenticationService}. 
 Il \term{Repository} espone metodi per effettuare il login, il logout, recuperare l’\term{Utente} corrente e verificare se esiste una sessione attiva.
 \begin{figure}[H]
@@ -631,21 +631,21 @@ Il \term{Repository} espone metodi per effettuare il login, il logout, recuperar
     \label{DC-AuthRepository}
 \end{figure}
 
-\paragraph{AuthenticationService} \mbox{}\\
-È responsabile della comunicazione con il sistema di autenticazione esterno, come ad esempio un provider basato su 
+\paragraph{AuthService} \mbox{}\\
+È responsabile della comunicazione con il sistema di autenticazione esterno, ad esempio un provider basato su 
 OAuth o AWS Cognito. Contiene le informazioni di configurazione necessarie, tra cui dominio, credenziali del client, URI di redirect e 
 scope richiesti. Si occupa esclusivamente di eseguire le chiamate di rete per il login e il logout
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{diagrammi_classi/auth/DC-AuthenticationService.pdf}
+    \includegraphics[width=\textwidth]{diagrammi_classi/auth/DC-AuthService.pdf}
     \caption{Diagramma della classe \code{AuthenticationService}}
-    \label{DC-AuthenticationService}
+    \label{DC-AuthService}
 \end{figure}
 
 % ===== SEZIONE INVIO SOS ======
 \subsubsection{Invio SOS} \label{subsubsec:diagramma_classi_invio_sos}
 La funzionalità di invio dell'alert SOS è strutturata seguendo il pattern MVVM raccomandato dalla guida ufficiale di Flutter, 
-integrato con il pattern Command. Il diagramma descrive l'insieme delle classi che collaborano per permettere all'\term{Utente} di inviare un messaggio di soccorso 
+ed utilizza anch'essa il pattern Command. Il diagramma descrive l'insieme delle classi che collaborano per permettere all'\term{Utente} di inviare un messaggio di soccorso 
 ai propri contatti fidati tramite la pressione di un pulsante nel \code{SosBottomSheetWidget}, visibile in tutte le schermate dell'applicazione. 
 La classe \code{SosAlertViewModel} coordina le precondizioni necessarie all'invio, verificando la presenza di contatti fidati tramite le informazioni contenute nel \code{TrustedContactRepository}, 
 prima di inoltrare l'operazione al \code{SosAlertRepository}. 
@@ -665,22 +665,22 @@ dell'invio quando l'\term{Utente} preme il pulsante.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-SosBottomSheetWidget.pdf}
-    \caption{Diagramma delle classe \code{SosBottomSheetWidget}}
+    \caption{Diagramma della classe \code{SosBottomSheetWidget}}
     \label{DC-SosBottomSheetWidget}
 \end{figure}
 
 \paragraph{SosAlertViewModel}\mbox{}\\
 Layer di presentazione della funzionalità. Coordina le dipendenze necessarie all'invio dei segnali d'allarme:
 \begin{itemize}
-    \item \code{TrustedContactRepository} per la \term{Verifica} della presenza di contatti;
+    \item \code{TrustedContactRepository} per la \ignoreglossary{verifica} della presenza di contatti;
     \item \code{SosAlertRepository} per l'invio effettivo;
-    \item \code{AuthRepository} per recuperare l'identità dell'\term{Utente} autenticat.
+    \item \code{AuthRepository} per recuperare l'identità dell'\term{Utente} autenticato.
 \end{itemize}
 Espone \code{sendAlert} come \code{Command0} che la View può eseguire direttamente. La logica di orchestrazione delle precondizioni è contenuta nel metodo privato \code{\_sendSosAlert()}, che viene passato come action al Command nel costruttore.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-SosAlertViewModel.pdf}
-    \caption{Diagramma delle classe \code{SosAlertViewModel}}
+    \caption{Diagramma della classe \code{SosAlertViewModel}}
     \label{DC-SosAlertViewModel}
 \end{figure}
 
@@ -690,30 +690,30 @@ tramite \code{SosAlertService} e rappresenta il punto di separazione tra il laye
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-SosAlertRepository.pdf}
-    \caption{Diagramma delle classe \code{SosAlertRepository}}
+    \caption{Diagramma della classe \code{SosAlertRepository}}
     \label{DC-SosAlertRepository}
 \end{figure}
 
 \paragraph{SosAlertService}\mbox{}\\
 Gestisce la comunicazione con l'endpoint dedicato all'invio dell'alert. 
-Riceve dal \term{Repository} la richiesta di invio e si occupa esclusivamente della chiamata di rete, restituendo i dati grezzi della risposta.
+Riceve da \code{SosAlertRepository} la richiesta di invio e si occupa esclusivamente della chiamata di rete, restituendo i dati grezzi della risposta.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-SosAlertService.pdf}
-    \caption{Diagramma delle classe \code{SosAlertService}}
+    \caption{Diagramma della classe \code{SosAlertService}}
     \label{DC-SosAlertService}
 \end{figure}
 
 \paragraph{Command<T>}\mbox{}\\
 È la classe base astratta del pattern. Mantiene internamente lo stato dell'azione tramite 
-i campi privati \code{\_running}, \code{\_result} e \code{\_error}. Espone questi stati tramite 
+i campi privati \code{\_running}, \code{\_result} e \code{\_error}. Espone queste informazioni tramite 
 getter pubblici che la View utilizza per aggiornare l'interfaccia. Il metodo privato \code{\_execute()} 
 contiene la logica comune a tutte le implementazioni concrete: impedisce esecuzioni multiple simultanee, aggiorna lo stato prima e 
 dopo l'esecuzione dell'azione, e gestisce le eccezioni.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-Command_T_.pdf}
-    \caption{Diagramma delle classe \code{Command<T>}}
+    \caption{Diagramma della classe \code{Command<T>}}
     \label{DC-Command<T>}
 \end{figure}
 
@@ -724,7 +724,7 @@ Espone il metodo pubblico \code{execute()} che delega a \code{\_execute()} della
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-Command0_T_.pdf}
-    \caption{Diagramma delle classe \code{Command0<T>}}
+    \caption{Diagramma della classe \code{Command0<T>}}
     \label{DC-Command0<T>}
 \end{figure}
 
@@ -735,7 +735,7 @@ passato all'azione al momento dell'esecuzione.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-Command1_T,A_.pdf}
-    \caption{Diagramma delle classe \code{Command1<T, A>}}
+    \caption{Diagramma della classe \code{Command1<T, A>}}
     \label{DC-Command1<T, A>}
 \end{figure}
 
