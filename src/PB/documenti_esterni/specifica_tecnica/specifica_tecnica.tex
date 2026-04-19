@@ -1856,7 +1856,7 @@ Il flusso di elaborazione si articola nei seguenti passaggi:
     \item \textbf{Ingestione della Richiesta}: L'\term{Utente} accede alla sezione della mappa tramite l'applicazione. Il client Flutter genera una richiesta HTTPS (metodo \texttt{GET /safe\_locations}).
     \item \textbf{Instradamento verso Lambda}: API Gateway intercetta la richiesta, ne valida il contesto e la inoltra alla funzione AWS Lambda dedicata alla gestione dei luoghi sicuri.
     \item \textbf{Accesso ai dati e logica applicativa}: la Lambda esegue la logica applicativa necessaria e recupera i dati dal bucket S3 dedicato. Al suo interno sono infatti memorizzati sia i metadati descrittivi che coordinate geospaziali (latitudine e longitudine) per ciascun punto di interesse.
-    \item \textbf{Elaborazione e serializzazione}: la funzione Lambda elabora i dati estratti e li converte in un payload JSON standardizzato e ottimizzato per il consumo lato client.
+    \item \textbf{Elaborazione e serializzazione}: la funzione Lambda elabora i dati estratti e li converte in un \term{Payload} JSON standardizzato e ottimizzato per il consumo lato client.
     \item \textbf{Risposta al client}: API Gateway inoltra la risposta HTTP \texttt{200 OK} al client Flutter contenente l’elenco dei luoghi sicuri.
 \end{itemize}
 
@@ -1910,29 +1910,29 @@ Il risultato elaborato viene restituito all'API Gateway, che lo inoltra al clien
 \end{figure}
 
 \paragraph{\term{Architettura} e Flusso di Elaborazione: diario criptato e fittizio}\mbox{}\\
-La sezione dedicata al diario criptato e fittizio è progettata per garantire la sicurezza delle informazioni dell'utente e la corretta gestione e archiviazione di diverse tipologie di dati, quali contenuti testuali, immagini e tracce audio. A differenza delle altre funzionalità, il diario è l'unica componente protetta da una password aggiuntiva, distinta da quella utilizzata per l'account principale.
+La sezione dedicata al diario criptato e fittizio è progettata per garantire la sicurezza delle informazioni dell'\term{Utente} e la corretta gestione e archiviazione di diverse tipologie di dati, quali contenuti testuali, immagini e tracce audio. A differenza delle altre funzionalità, il diario è l'unica componente protetta da una password aggiuntiva, distinta da quella utilizzata per l'account principale.
 
-Questo approccio consente all'applicazione di fornire accesso a risorse differenti in base alla password inserita, dato che i due diari sono protetti da credenziali separate. Poiché Amazon Cognito non supporta direttamente flussi di autenticazione di questo tipo, la gestione dell'accesso al diario avviene tramite la memorizzazione in DynamoDB degli hash delle due password. Quando l'utente tenta l'accesso, viene generato l'hash della password inserita tramite Argon2id. Questo hash viene quindi confrontato con quello salvato nella tabella utenti. In caso di corrispondenza, la password fornita viene utilizzata per derivare una chiave crittografica, impiegata per decifrare le note del diario corrispondente. In entrambi i casi viene utilizzato Argon2id, ma con parametri di memory cost, time cost, salt length e parallelism diversi.
+Questo approccio consente all'applicazione di fornire accesso a risorse differenti in base alla password inserita, dato che i due diari sono protetti da credenziali separate. Poiché Amazon Cognito non supporta direttamente flussi di autenticazione di questo tipo, la gestione dell'accesso al diario avviene tramite la memorizzazione in DynamoDB degli hash delle due password. Quando l'\term{Utente} tenta l'accesso, viene generato l'hash della password inserita tramite Argon2id. Questo hash viene quindi confrontato con quello salvato nella tabella utenti. In caso di corrispondenza, la password fornita viene utilizzata per derivare una chiave crittografica, impiegata per decifrare le note del diario corrispondente. In entrambi i casi viene utilizzato Argon2id, ma con parametri di memory cost, time cost, salt length e parallelism diversi.
 
-Una volta completato con successo l'accesso, viene creata una sessione lato backend, così da rendere più efficienti le successive operazioni CRUD. La creazione della sessione consiste nella generazione di un token casuale che viene inviato in risposta al client. Tale token ha durata limitata e viene memorizzato nella tabella DynamoDB relativa all'accesos al diario. In caso di un numero di tentativi di accesso errati superiore alla soglia consentita, viene applicato un meccanismo di timeout incrementale che blocca temporaneamente ulteriori tentativi.
+Una volta completato con successo l'accesso, viene creata una sessione lato \term{Backend}, così da rendere più efficienti le successive operazioni CRUD. La creazione della sessione consiste nella generazione di un token casuale che viene inviato in risposta al client. Tale token ha durata limitata e viene memorizzato nella tabella DynamoDB relativa all'accesos al diario. In caso di un numero di tentativi di accesso errati superiore alla soglia consentita, viene applicato un meccanismo di timeout incrementale che blocca temporaneamente ulteriori tentativi.
 
-L'archiviazione delle note avviene su due servizi AWS distinti. I contenuti testuali sono memorizzati in DynamoDB, che mantiene le informazioni per ciascun utente e per ciascun diario. I file binari, come immagini e tracce audio, sono invece salvati in bucket S3. Il recupero di tali risorse avviene tramite URL presigned, al fine di ridurre la quantità di dati trasferiti sulla rete.
+L'archiviazione delle note avviene su due servizi AWS distinti. I contenuti testuali sono memorizzati in DynamoDB, che mantiene le informazioni per ciascun \term{Utente} e per ciascun diario. I file binari, come immagini e tracce audio, sono invece salvati in bucket S3. Il recupero di tali risorse avviene tramite URL presigned, al fine di ridurre la quantità di dati trasferiti sulla rete.
 
 Il flusso di elaborazione è dunque il seguente:
 \begin{itemize}
-    \item \textbf{Invio della Richiesta di Autenticazione}: L'Utente inserisce la password del diario tramite app. Il client genera una richiesta HTTPS (metodo \texttt{POST /diary/auth/}) includendo la password nel body della richiesta.
+    \item \textbf{Invio della Richiesta di Autenticazione}: L'\term{Utente} inserisce la password del diario tramite app. Il client genera una richiesta HTTPS (metodo \texttt{POST /diary/auth/}) includendo la password nel body della richiesta.
     
-    \item \textbf{Verifica delle Credenziali}: API Gateway verifica che l'utente sia autenticato all'applicazione. Dopodiché inoltra la richiesta alla funzione Lambda, che calcola l'hash della password ricevuta e lo confronta con gli hash memorizzati in DynamoDB. In caso di corrispondenza, viene identificato il tipo di diario associato.
+    \item \textbf{\term{Verifica} delle Credenziali}: API Gateway \term{Verifica} che l'\term{Utente} sia autenticato all'applicazione. Dopodiché inoltra la richiesta alla funzione Lambda, che calcola l'hash della password ricevuta e lo confronta con gli hash memorizzati in DynamoDB. In caso di corrispondenza, viene identificato il tipo di diario associato.
     
     \item \textbf{Derivazione della Chiave Crittografica}: La funzione Lambda utilizza la password fornita per derivare una chiave crittografica tramite Argon2id, impiegando un salt dedicato. Tale chiave viene utilizzata per le successive operazioni di decrittazione.
     
-    \item \textbf{Creazione della Sessione}: A seguito dell'autenticazione, il backend genera una sessione associata all'utente, che consente di effettuare operazioni sul diario senza ripetere il processo di autenticazione per ogni richiesta.
+    \item \textbf{Creazione della Sessione}: A seguito dell'autenticazione, il \term{Backend} genera una sessione associata all'\term{Utente}, che consente di effettuare operazioni sul diario senza ripetere il \term{Processo} di autenticazione per ogni richiesta.
     
-    \item \textbf{Recupero delle Note}: Quando l'Utente richiede di recuperare la lista di note di uno dei diari (metodo \texttt{GET /diary/\{diary\_type\}/}), API Gateway invia la richiesta alla Lambda, che recupera le \textit{preview} dal database DynamoDB e le restituisce al client.
+    \item \textbf{Recupero delle Note}: Quando l'\term{Utente} richiede di recuperare la lista di note di uno dei diari (metodo \texttt{GET /diary/\{diary\_type\}/}), API Gateway invia la richiesta alla Lambda, che recupera le \textit{preview} dal database DynamoDB e le restituisce al client.
     
     \item \textbf{Recupero di una Nota}: Per ottenere il contenuto completo di una nota (metodo \texttt{GET /diary/\{diary\_type\}/\{note\_id\}/}), la Lambda recupera i dati cifrati da DynamoDB e gli eventuali riferimenti a file su S3, decrittando il contenuto tramite la chiave derivata e restituendolo al client.
     
-    \item \textbf{Gestione dei Contenuti Binari}: In presenza di immagini o tracce audio, la Lambda genera URL presigned per gli oggetti memorizzati su S3, permettendo al client di accedere direttamente alle risorse senza transitare dal backend.
+    \item \textbf{Gestione dei Contenuti Binari}: In presenza di immagini o tracce audio, la Lambda genera URL presigned per gli oggetti memorizzati su S3, permettendo al client di accedere direttamente alle risorse senza transitare dal \term{Backend}.
     
     \item \textbf{Operazioni di Scrittura}: Per la creazione o modifica di note (metodi \texttt{POST /diary/\{diary\_type\}/} e \texttt{PUT /diary/\{diary\_type\}/\{note\_id\}/}), la Lambda cifra i contenuti tramite la chiave derivata e li memorizza in DynamoDB, salvando eventuali file binari su S3.
     
@@ -1944,7 +1944,7 @@ Il flusso di elaborazione è dunque il seguente:
     \item \texttt{POST /diary/auth/}: invia la password per l’autenticazione; ritorna l’esito dell’autenticazione e il tipo di diario associato.
     
     \item \texttt{GET /diary/\{diary\_type\}/}: ritorna le \textit{preview} di tutte le note del diario specificato.
-    \item \texttt{POST /diary/\{diary\_type\}/}: crea una nuova nota per l’utente nel diario specificato.
+    \item \texttt{POST /diary/\{diary\_type\}/}: crea una nuova nota per l’\term{Utente} nel diario specificato.
     
     \item \texttt{GET /diary/\{diary\_type\}/\{note\_id\}/}: ritorna il contenuto completo della nota specificata.
     \item \texttt{PUT /diary/\{diary\_type\}/\{note\_id\}/}: aggiorna la nota specificata nel database.
@@ -1961,37 +1961,37 @@ Il flusso di elaborazione è dunque il seguente:
 \end{figure}
 
 \paragraph{\term{Architettura} e Flusso di Elaborazione: chatbot (detective delle relazioni e specchio intelligente)}\mbox{}\\
-L'architettura di backend dedicata al chatbot è progettata per gestire conversazioni persistenti tra utente e modello linguistico, garantendo scalabilità, efficienza nell’accesso ai dati e qualità delle risposte generate.
+L'\term{Architettura} di \term{Backend} dedicata al chatbot è progettata per gestire conversazioni persistenti tra \term{Utente} e modello linguistico, garantendo scalabilità, efficienza nell’accesso ai dati e qualità delle risposte generate.
 
-API Gateway rappresenta il punto di ingresso per tutte le richieste client e si occupa della verifica dell’autenticazione dell’utente. Una volta validata la richiesta, questa viene inoltrata a una funzione Lambda che implementa la logica applicativa del chatbot, inclusa la gestione delle chat e l’interazione con il modello linguistico.
+API Gateway rappresenta il punto di ingresso per tutte le richieste client e si occupa della \term{Verifica} dell’autenticazione dell’\term{Utente}. Una volta validata la richiesta, questa viene inoltrata a una funzione Lambda che implementa la logica applicativa del chatbot, inclusa la gestione delle chat e l’interazione con il modello linguistico.
 
-Le conversazioni sono strutturate come entità persistenti (chat), ciascuna identificata da un \texttt{chat\_id} univoco all'interno dell'intero sistema. Ogni chat contiene una sequenza di messaggi (utente e assistente artificiale), memorizzati in DynamoDB. Per ottimizzare le prestazioni e ridurre il carico di rete, le operazioni di recupero dello storico restituiscono esclusivamente le informazioni di sintesi (ad esempio titolo e metadata), mentre il contenuto completo viene fornito solo su richiesta esplicita.
+Le conversazioni sono strutturate come entità persistenti (chat), ciascuna identificata da un \texttt{chat\_id} univoco all'interno dell'intero sistema. Ogni chat contiene una sequenza di messaggi (\term{Utente} e assistente artificiale), memorizzati in DynamoDB. Per ottimizzare le prestazioni e ridurre il carico di rete, le operazioni di recupero dello storico restituiscono esclusivamente le informazioni di sintesi (ad esempio titolo e metadata), mentre il contenuto completo viene fornito solo su richiesta esplicita.
 
-Quando l’utente invia un messaggio, il sistema non si limita a inoltrarlo direttamente al modello, ma recupera le informazioni più rilevanti dalla chat in corso. In particolare, la Lambda recupera il contesto rilevante della conversazione dalla base dati (DynamoDB), costruendo un prompt arricchito che include la cronologia significativa dei messaggi. Per estrarre tali informazioni, la Lambda utilizza tecniche di ricerca lessicale basate su BM25, evitando di concatenare l'intera conversazione al testo inviato dall'utente. Questo approccio consente di migliorare la coerenza e la pertinenza delle risposte generate dal modello.
+Quando l’\term{Utente} invia un messaggio, il sistema non si limita a inoltrarlo direttamente al modello, ma recupera le informazioni più rilevanti dalla chat in corso. In particolare, la Lambda recupera il contesto rilevante della conversazione dalla base dati (DynamoDB), costruendo un prompt arricchito che include la cronologia significativa dei messaggi. Per estrarre tali informazioni, la Lambda utilizza tecniche di ricerca lessicale basate su BM25, evitando di concatenare l'intera conversazione al testo inviato dall'\term{Utente}. Questo approccio consente di migliorare la coerenza e la pertinenza delle risposte generate dal modello.
 
-Il prompt così costruito viene inviato a Bedrock, che restituisce la risposta generata dal LLM. La risposta, insieme al messaggio dell’utente, viene quindi memorizzata in DynamoDB come parte della chat. Nel caso in cui il messaggio inviato sia il primo di una nuova chat, la Lambda imposta il titolo della chat alle prime 3 parole del messaggio dell'utente.
+Il prompt così costruito viene inviato a Bedrock, che restituisce la risposta generata dal LLM. La risposta, insieme al messaggio dell’\term{Utente}, viene quindi memorizzata in DynamoDB come parte della chat. Nel caso in cui il messaggio inviato sia il primo di una nuova chat, la Lambda imposta il titolo della chat alle prime 3 parole del messaggio dell'\term{Utente}.
 
 Il flusso di elaborazione è dunque il seguente:
 \begin{itemize}
-    \item \textbf{Invio della Richiesta}: L’Utente interagisce con il chatbot tramite app, generando una richiesta HTTPS verso uno degli endpoint disponibili (ad esempio \texttt{POST /chats/\{chat\_id\}/messages}).
+    \item \textbf{Invio della Richiesta}: L’\term{Utente} interagisce con il chatbot tramite app, generando una richiesta HTTPS verso uno degli endpoint disponibili (ad esempio \texttt{POST /chats/\{chat\_id\}/messages}).
     
-    \item \textbf{Autenticazione}: API Gateway verifica che l’utente sia autenticato all’applicazione. In caso positivo, la richiesta viene inoltrata alla funzione Lambda responsabile della logica del chatbot.
+    \item \textbf{Autenticazione}: API Gateway \term{Verifica} che l’\term{Utente} sia autenticato all’applicazione. In caso positivo, la richiesta viene inoltrata alla funzione Lambda responsabile della logica del chatbot.
     
-    \item \textbf{Gestione della Chat}: La Lambda identifica la chat di riferimento tramite \texttt{chat\_id}. Se necessario, recupera i metadati o verifica l’esistenza della chat in DynamoDB.
+    \item \textbf{Gestione della Chat}: La Lambda identifica la chat di riferimento tramite \texttt{chat\_id}. Se necessario, recupera i metadati o \term{Verifica} l’esistenza della chat in DynamoDB.
     
     \item \textbf{Recupero del Contesto (RAG)}: Prima di inviare il messaggio al modello, la Lambda esegue una query su DynamoDB per ottenere i messaggi precedenti rilevanti della conversazione, costruendo il contesto da includere nel prompt.
     
-    \item \textbf{Costruzione del Prompt}: Il messaggio dell’utente viene combinato con il contesto recuperato, formando un prompt strutturato da inviare al modello linguistico.
+    \item \textbf{Costruzione del Prompt}: Il messaggio dell’\term{Utente} viene combinato con il contesto recuperato, formando un prompt strutturato da inviare al modello linguistico.
     
     \item \textbf{Invocazione del Modello}: La Lambda invia il prompt a Bedrock, che elabora la richiesta e restituisce una risposta generata.
     
-    \item \textbf{Persistenza dei Messaggi}: La Lambda salva sia il messaggio dell’utente sia la risposta del modello in DynamoDB, associandoli alla chat corrente.
+    \item \textbf{Persistenza dei Messaggi}: La Lambda salva sia il messaggio dell’\term{Utente} sia la risposta del modello in DynamoDB, associandoli alla chat corrente.
     
     \item \textbf{Aggiornamento dei Metadati}: Se necessario, la Lambda aggiorna le informazioni della chat (ad esempio titolo o timestamp dell’ultima attività).
     
     \item \textbf{Restituzione della Risposta}: La risposta generata dal modello, insieme ai metadati aggiornati, viene restituita al client.
     
-    \item \textbf{Recupero dello Storico}: Quando l’utente richiede la lista delle chat (metodo \texttt{GET /chats/}), la Lambda restituisce solo le \textit{preview} delle chat, senza includere l’intero contenuto dei messaggi.
+    \item \textbf{Recupero dello Storico}: Quando l’\term{Utente} richiede la lista delle chat (metodo \texttt{GET /chats/}), la Lambda restituisce solo le \textit{preview} delle chat, senza includere l’intero contenuto dei messaggi.
     
     \item \textbf{Recupero di una Chat}: Per ottenere il contenuto completo di una chat (metodo \texttt{GET /chats/\{chat\_id\}}), la Lambda recupera tutti i messaggi associati da DynamoDB e li restituisce al client.
     
@@ -2000,8 +2000,8 @@ Il flusso di elaborazione è dunque il seguente:
 
 \paragraph{API associate}\mbox{}\\
 \begin{itemize}
-    \item \texttt{GET /chats/}: ritorna le \textit{preview} di tutte le chat dell’utente.
-    \item \texttt{POST /chats/}: crea una nuova chat per l’utente.
+    \item \texttt{GET /chats/}: ritorna le \textit{preview} di tutte le chat dell’\term{Utente}.
+    \item \texttt{POST /chats/}: crea una nuova chat per l’\term{Utente}.
     
     \item \texttt{GET /chats/\{chat\_id\}}: ritorna la chat specificata con il contenuto completo dei messaggi.
     \item \texttt{PUT /chats/\{chat\_id\}}: aggiorna i dati della chat specificata.
@@ -2021,18 +2021,18 @@ Il flusso di elaborazione è dunque il seguente:
 \end{figure}
 
 \paragraph{\term{Architettura} e Flusso di Elaborazione: contatti fidati, SOS e Dead man's switch}\mbox{}\\
-La sezione relativa ai contatti fidati, all’invio di messaggi di emergenza e al meccanismo di Dead man's switch è progettata per garantire la gestione automatizzata dello stato di attività dell’utente e la possibilità di attivare procedure di emergenza sia manualmente che in modo automatico.
+La sezione relativa ai contatti fidati, all’invio di messaggi di emergenza e al meccanismo di Dead man's switch è progettata per garantire la gestione automatizzata dello stato di attività dell’\term{Utente} e la possibilità di attivare procedure di emergenza sia manualmente che in modo automatico.
 
-API Gateway gestisce l’esposizione delle API e verifica, per ogni richiesta, che l’utente sia correttamente autenticato all’applicazione. Le richieste valide vengono inoltrate a una funzione Lambda centrale, responsabile della gestione della logica applicativa relativa ai contatti fidati, alla configurazione del Dead man's switch e all’orchestrazione dell’invio delle email tramite Amazon SES.
+API Gateway gestisce l’esposizione delle API e \term{Verifica}, per ogni richiesta, che l’\term{Utente} sia correttamente autenticato all’applicazione. Le richieste valide vengono inoltrate a una funzione Lambda centrale, responsabile della gestione della logica applicativa relativa ai contatti fidati, alla configurazione del Dead man's switch e all’orchestrazione dell’invio delle email tramite Amazon SES.
 
 I dati sono memorizzati su due database DynamoDB distinti:
 \begin{itemize}
-    \item \texttt{dms\_config\_mvp}: contiene la configurazione del Dead man's switch, includendo il titolo e il corpo dell’email di inattività, il primo e secondo timer di inattività, l’ultimo accesso dell’utente e lo stato corrente del sistema (attivo, prima inattività, seconda inattività).
+    \item \texttt{dms\_config\_mvp}: contiene la configurazione del Dead man's switch, includendo il titolo e il corpo dell’email di inattività, il primo e secondo timer di inattività, l’ultimo accesso dell’\term{Utente} e lo stato corrente del sistema (attivo, prima inattività, seconda inattività).
     
-    \item \texttt{trusted\_contact\_mvp}: memorizza le informazioni relative ai contatti fidati associati a ciascun utente, inclusi nome, email e numero di telefono.
+    \item \texttt{trusted\_contact\_mvp}: memorizza le informazioni relative ai contatti fidati associati a ciascun \term{Utente}, inclusi nome, email e numero di telefono.
 \end{itemize}
 
-Il sistema implementa inoltre un meccanismo di monitoraggio automatico basato su AWS EventBridge. Uno scheduler giornaliero attiva la Lambda centrale che verifica lo stato di attività degli utenti e determina eventuali condizioni di inattività prolungata.
+Il sistema implementa inoltre un meccanismo di monitoraggio automatico basato su AWS EventBridge. Uno scheduler giornaliero attiva la Lambda centrale che \term{Verifica} lo stato di attività degli utenti e determina eventuali condizioni di inattività prolungata.
 
 Il flusso di elaborazione del Dead man's switch è il seguente:
 \begin{itemize}
@@ -2040,43 +2040,43 @@ Il flusso di elaborazione del Dead man's switch è il seguente:
     
     \item \textbf{Recupero configurazioni}: la Lambda effettua il fetch dei dati presenti in \texttt{dms\_config\_mvp}, ottenendo i timer di inattività, l’ultimo accesso registrato e lo stato corrente del Dead man's switch.
     
-    \item \textbf{Valutazione dello stato di inattività}: la funzione confronta il tempo corrente con l’ultimo accesso dell’utente. Se viene superata la prima soglia di inattività, il sistema entra nello stato di “prima inattività”; Al raggiungimento della seconda soglia di inattività, viene attivato lo stato di “seconda inattività”.
+    \item \textbf{Valutazione dello stato di inattività}: la funzione confronta il tempo corrente con l’ultimo accesso dell’\term{Utente}. Se viene superata la prima soglia di inattività, il sistema entra nello stato di “prima inattività”; Al raggiungimento della seconda soglia di inattività, viene attivato lo stato di “seconda inattività”.
     
-    \item \textbf{Invio email di prima inattività}: al superamento della prima soglia, la Lambda invia tramite Amazon SES un’email all’utente utilizzando il titolo e il corpo configurati, notificando lo stato di inattività.
+    \item \textbf{Invio email di prima inattività}: al superamento della prima soglia, la Lambda invia tramite Amazon SES un’email all’\term{Utente} utilizzando il titolo e il corpo configurati, notificando lo stato di inattività.
     
     \item \textbf{Attivazione SOS (seconda inattività)}: al superamento della seconda soglia, la Lambda recupera l’elenco dei contatti fidati da \texttt{trusted\_contact\_mvp} e invia, tramite SES, un’email di SOS predefinita a ciascun contatto.
     
     \item \textbf{Aggiornamento stato}: lo stato del sistema viene aggiornato in DynamoDB per evitare invii ripetuti non necessari.
 \end{itemize}
 
-Oltre al flusso automatico, il sistema supporta l’invio manuale di SOS e la gestione in tempo reale dello stato di attività dell’utente tramite heartbeat.
+Oltre al flusso automatico, il sistema supporta l’invio manuale di SOS e la gestione in tempo reale dello stato di attività dell’\term{Utente} tramite heartbeat.
 
 Il flusso di heartbeat è il seguente:
 \begin{itemize}
     \item \textbf{Invio heartbeat}: All'avvio dell'app, il client invia una richiesta alla API \texttt{POST /dms/heartbeat/} per notificare l’utilizzo attivo dell’applicazione.
     
-    \item \textbf{Aggiornamento stato backend}: la Lambda aggiorna il campo “ultimo accesso” nella tabella \texttt{dms\_config\_mvp} e, se necessario, resetta lo stato di inattività.
+    \item \textbf{Aggiornamento stato \term{Backend}}: la Lambda aggiorna il campo “ultimo accesso” nella tabella \texttt{dms\_config\_mvp} e, se necessario, resetta lo stato di inattività.
 \end{itemize}
 
 L’invio SOS \textbf{manuale} segue invece il seguente flusso:
 \begin{itemize}
     \item \textbf{Richiesta di emergenza}: il client invia una richiesta HTTPS alla API \texttt{POST /trusted\_contacts/sos/}.
     
-    \item \textbf{Recupero contatti}: la Lambda recupera tutti i contatti fidati associati all’utente da \texttt{trusted\_contact\_mvp}.
+    \item \textbf{Recupero contatti}: la Lambda recupera tutti i contatti fidati associati all’\term{Utente} da \texttt{trusted\_contact\_mvp}.
     
     \item \textbf{Invio email SES}: la funzione Lambda invia immediatamente una email di emergenza a tutti i contatti fidati tramite Amazon SES.
 \end{itemize}
 
-La gestione dei contatti fidati è completamente CRUD e permette all’utente di mantenere aggiornato il proprio elenco di destinatari di emergenza.
+La gestione dei contatti fidati è completamente CRUD e permette all’\term{Utente} di mantenere aggiornato il proprio elenco di destinatari di emergenza.
 
 \paragraph{API associate}\mbox{}\\
 \begin{itemize}
     \item \texttt{GET /dms/}: restituisce tutte le opzioni configurabili del Dead man's switch, incluse soglie di inattività e template email.
-    \item \texttt{POST /dms/}: salva o aggiorna la configurazione del Dead man's switch dell’utente.
+    \item \texttt{POST /dms/}: salva o aggiorna la configurazione del Dead man's switch dell’\term{Utente}.
     
-    \item \texttt{POST /dms/heartbeat/}: registra il segnale di attività dell’utente aggiornando l’ultimo accesso.
+    \item \texttt{POST /dms/heartbeat/}: registra il segnale di attività dell’\term{Utente} aggiornando l’ultimo accesso.
     
-    \item \texttt{GET /trusted\_contacts/}: restituisce la lista dei contatti fidati associati all’utente.
+    \item \texttt{GET /trusted\_contacts/}: restituisce la lista dei contatti fidati associati all’\term{Utente}.
     \item \texttt{POST /trusted\_contacts/}: crea un nuovo contatto fidato.
     \item \texttt{PUT /trusted\_contacts/\{trusted\_contact\_id\}/}: aggiorna un contatto fidato esistente.
     \item \texttt{DELETE /trusted\_contacts/\{trusted\_contact\_id\}/}: elimina un contatto fidato.
