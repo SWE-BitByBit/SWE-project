@@ -172,7 +172,7 @@ Gruppo BitByBit\\
 \hline
 0.1.6 & 2026-04-09 & Ferdinando Fracasso & Redatta la sezione \hyperref[subsec:design_pattern]{Design pattern utilizzati} & Giovanni Visentin\\
 \hline
-0.1.5 & 2026-04-06 & Ferdinando Fracasso & Redatta la sezione \hyperref[subsubsec:architettura_diari]{Architettura funzionalità diari} & Marco Sanguin \\
+0.1.5 & 2026-04-06 & Ferdinando Fracasso & Redatta la sezione \hyperref[subsubsec:architettura_diari_frontend]{Architettura funzionalità diari} & Marco Sanguin \\
 \hline
 0.1.4 & 2026-04-05 & Giovanni Visentin & Aggiunta della funzionalità dei contatti fidati & Dennis Parolin \\
 \hline
@@ -944,7 +944,7 @@ L'interfaccia \code{Chat} definisce il modello astratto di una conversazione tra
 \end{figure}
 
 \newpage
-\subsubsection{Diario criptato e diario fittizio} \label{subsubsec:architettura_diari}
+\subsubsection{Diario criptato e diario fittizio} \label{subsubsec:architettura_diari_frontend}
 La funzionalità di diario criptato e diario fittizio permette all'\term{Utente} di utilizzare due archivi separati in cui memorizzare note, contenenti testo, immagini e/o contenuti audio, protetti da password . L'implementazione della funzionalità segue il pattern MVVM e le linee guida del \term{Framework} Flutter, risultanti nella suddivisione tra un \term{Data Layer}, composto da classi Service e \term{Repository}, responsabili per la \textit{\term{Business Logic}} e per la \textit{\term{Persistence Logic}} rispettivamente, ed un \term{UI Layer}, composto da classi View e Viewmodel. Gli oggetti principali della funzionalità sono le classi Note (\code{ProxyNote} e \code{LocalNote}), \code{NoteElement} e \code{DiarySession}. 
 
 \begin{figure}[H]
