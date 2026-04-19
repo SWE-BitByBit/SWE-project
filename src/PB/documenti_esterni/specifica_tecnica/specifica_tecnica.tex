@@ -176,7 +176,7 @@ Gruppo BitByBit\\
 \hline
 0.1.4 & 2026-04-05 & Giovanni Visentin & Aggiunta della funzionalità dei contatti fidati & Dennis Parolin \\
 \hline
-0.1.3 & 2026-04-04 & Gabriele Scaggiante & Iniziata la sezione \hyperref[subsec:architettura_frontend]{Architettura frontend}, completata \hyperref[subsubsec:architettura_chatbot]{Architettura chatbot} & Marco Sanguin \\
+0.1.3 & 2026-04-04 & Gabriele Scaggiante & Iniziata la sezione \hyperref[subsec:architettura_frontend]{Architettura frontend}, completata \hyperref[subsubsec:architettura_chatbot_frontend]{Architettura chatbot} & Marco Sanguin \\
 \hline
 0.1.2 & 2026-04-02 & Dennis Parolin & Redatta la sezione \hyperref[subsec:architettura_logica]{Architettura logica} e \hyperref[subsec:architettura_deployment]{Architettura di deployment} & Marco Sanguin \\
 \hline
@@ -741,7 +741,7 @@ passato all'azione al momento dell'esecuzione.
 \end{figure}
 
 % ====== CHATBOT ======
-\subsubsection{Chatbot} \label{subsubsec:architettura_chatbot}
+\subsubsection{Chatbot} \label{subsubsec:architettura_chatbot_frontend}
 
 La funzionalità del chatbot permette all'\term{Utente} di comunicare via chat con un modello di intelligenza artificiale (LLM) e di memorizzare e caricare tutte le chat passate. La funzionalità del chatbot è implementata secondo il pattern MVVM e le linee guida architetturali di Flutter, distinguendo quindi un \term{Data Layer}, composto da Service e \term{Repository}, e un \term{UI Layer}, composto da View e ViewModel. Tra questi layer figurano i vari domain models: le classi Chat (\code{ProxyChat} e \code{LocalChat}), \code{ChatMessage} e \code{MessageResponse}.
 
