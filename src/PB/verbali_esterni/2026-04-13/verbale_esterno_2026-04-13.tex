@@ -1,0 +1,211 @@
+% template presente
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{tabularx}
+\usepackage[table]{xcolor}
+\usepackage{tcolorbox}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    urlcolor=blue,     
+}
+\usepackage{graphicx}
+\graphicspath{{resources/}{../resources/}{../../resources/}{../../../resources/}{../../../../resources/}}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{colortbl}
+\usepackage{fancyhdr}
+\setlength{\headheight}{25pt}
+\setlength{\headsep}{1cm}
+\usepackage{titlesec}
+\geometry{margin=2.5cm}
+% ===== Variabile per il titolo del documento =====
+\newcommand{\documenttitle}{Verbale Riunione Numero 2 } %serve l'ultimo spazio
+
+
+\setlength{\parindent}{0pt}
+\setstretch{1.2}
+
+% ===== Stile intestazione =====
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{gray}{\documenttitle - BitByBit}}
+\fancyhead[R]{\includegraphics[height=1cm]{solo_logo.jpg}}
+\fancyfoot[C]{\thepage}
+
+% ===== Formattazione sezioni =====
+\titleformat{\section}{\Large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.5em}{}
+
+\newcommand{\term}[1]{\textbf{#1}$^\mathbf{G}$}
+
+\newcommand{\ignoreglossary}{}
+
+\begin{document}
+
+% ======= HEADER UNIVERSITÀ E GRUPPO CENTRATI VERTICALMENTE =======
+\vspace*{\fill} % --- Spinge verso il basso l'inizio del contenuto
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logoUni.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\color{red}\LARGE \textbf{Università degli Studi di Padova}}\\[0.3cm]
+        {\large
+        Laurea: Informatica\\
+        Corso: Ingegneria del Software\\
+        Anno Accademico: 2025/26
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1cm}
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logo.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\LARGE \textbf{Gruppo 17}}\\[0.3cm]
+        {\large
+        Nome: BitByBit\\
+        Email: swe.bitbybit@gmail.com
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1.5cm}
+
+\begin{center}
+    {\LARGE \textbf{\documenttitle}}
+\end{center}
+
+% ======= INFO GENERALI SUL DOCUMENTO, DA TENERE SU OGNI DOC =======
+\renewcommand{\arraystretch}{1.3}
+\vspace{0.1cm}
+
+\begin{tcolorbox}
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\textbf{Stato:} & In Revisione \\
+\textbf{Versione:} & 0.1.0 \\
+\textbf{Redattori:} & Giovanni Visentin \\
+\textbf{Verificatori:} & Ferdinando Fracasso, Gabriele Scaggiante, Marco Sanguin \\
+\textbf{Responsabile:} & Giovanni Visentin \\
+\textbf{Destinatari:} & 
+\begin{tabular}[t]{@{}l@{}}
+Miriade \\
+Prof. Tullio Vardanega \\
+Prof. Cardin \\
+\end{tabular} \\
+\end{tabularx}
+\end{tcolorbox}
+
+\vspace*{\fill} % --- Spinge verso l’alto la fine del contenuto, centrando tutto il blocco
+\clearpage
+
+% ======= INDICE SU PAGINA DEDICATA =======
+\clearpage
+\tableofcontents
+\thispagestyle{empty} % senza numero di pagina per l'indice
+\clearpage
+
+% ======= INFO GENERALI RIUNIONE, METTERE SE DOC È UN \term{Verbale} =======
+\section{Informazioni generali}
+\renewcommand{\arraystretch}{1.3}
+
+\begin{tcolorbox}
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\textbf{Data:} & 13 aprile 2026 \\
+\textbf{Ora Inizio:} & 15:00 \\
+\textbf{Durata:} & 1h 30m \\
+\textbf{Luogo:} & Google Meet \\
+\textbf{Presenti:} & 
+\begin{tabular}[t]{@{}l@{}}
+Fracasso Ferdinando\\
+Manisi Riccardo\\
+Parolin Dennis\\
+Scaggiante Gabriele\\
+Sanguin Marco\\
+Visentin Giovanni \\
+\end{tabular} \\
+\textbf{Miriade:} & 
+\begin{tabular}[t]{@{}l@{}}
+Annalisa Egidi\\
+Yostina Sameh Samy Riad\\
+\end{tabular} \\
+\textbf{Assenti:} & 
+\begin{tabular}[t]{@{}l@{}}
+nessuno\\
+\end{tabular} \\
+\end{tabularx}
+\end{tcolorbox}
+\clearpage
+
+% ---------- ORDINE DEL GIORNO, METTERE SE DOC È UN \term{Verbale}  ----------
+\section{Ordine del Giorno}
+\begin{itemize}
+    \item Discutere i progressi fatti fino ad ora.
+    \item Discutere sugli errori nella fase di implementazione, a causa dei permessi AWS.
+    \item Risolvere alcuni dubbi riguardo l'\term{Architettura} del sistema.
+\end{itemize}
+
+% ---------- DISCUSSIONI, METTERE SE DOC È UN \term{Verbale} ----------
+\section{Discussioni}
+\begin{itemize}
+    \item Il team ha analizzato i problemi relativi ai permessi AWS riscontrati durante l'implementazione. Nello specifico, mancano i permessi IAM necessari per l'assegnazione e la creazione di ruoli legati all'invio di email tramite SES e all'esecuzione di operazioni pianificate su EventBridge.
+    \item Sono stati evidenziati errori durante la creazione e l'aggiornamento degli stack CloudFormation tramite AWS SAM a causa di permessi insufficienti per la gestione dei ChangeSet e degli eventi dello stack. Questo comporta blocchi nel deploy e possibili inconsistenze con i bucket non eliminati correttamente in caso di rollback.
+    \item È stata discussa l'\term{Architettura} per la gestione degli invii automatizzati per le funzioni di Dead man's switch e SOS. Sono state valutate due opzioni: l'uso di uno scheduler EventBridge per ogni singolo \term{Utente}, oppure un singolo scheduler globale che interroga il database DynamoDB per elaborare gli invii in batch.
+    \item Riguardo ad AWS SES, trovandosi l'ambiente in modalità sandbox, è stata confermata la necessità di limitare l'invio ad account verificati. È emersa l'idea di testare la funzionalità aggiungendo altri indirizzi email per verificarne il corretto comportamento per le finalità del progetto.
+    \item Il team ha affrontato il design delle funzionalità "segrete" dell'app, ovvero il diario criptato e il segnale SOS. Si è deciso di mantenere i pulsanti di attivazione accessibili senza nasconderli in modo eccessivo per non complicare lo sviluppo del progetto, valutando eventualmente in futuro l'utilizzo di tasti hardware per l'invio dell'SOS.
+    \item Per aggirare temporaneamente i problemi di deploy automatizzato tramite stack, è stato suggerito di effettuare i test localmente e successivamente eseguire il deploy delle Lambda direttamente dall'\term{IDE} (VSCode).
+\end{itemize}
+
+% ---------- DECISIONI, METTERE SE DOC È UN \term{Verbale} ----------
+\section{Decisioni}
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2} 
+\arrayrulecolor{black}
+\rowcolors{1}{gray!20}{white}
+\begin{tabular}{|p{0.73\textwidth}|c|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Descrizione decisione} & \textbf{Codice decisione} \\
+\hline
+Utilizzare l'account email di progetto dedicato (swe.bitbybit) per la creazione delle risorse Lambda, anziché gli account personali. & VE \ignoreglossary{PB} 2.1 \\
+\hline
+Temporaneamente, effettuare il deploy e il test delle Lambda direttamente dall'\term{IDE}, in attesa di risolvere i permessi di CloudFormation. &  VE \ignoreglossary{PB} 2.2 \\
+\hline
+Mantenere visibili e accessibili i pulsanti delle funzionalità "segrete" nell'interfaccia \term{Utente}, senza nasconderli in modo eccessivo per i fini progettuali. &  VE \ignoreglossary{PB} 2.3\\
+\hline
+\end{tabular}
+\end{center}
+
+% ---------- TO DO, METTERE SE DOC È UN \term{Verbale} ----------
+\section{To Do}
+Non sono state programmate ulteriori attività per lo \term{Sprint} corrente perchè la riunione è stata dedicata interamente al coordinamento con la \term{Proponente} e all'allineamento sulle scelte tecnologiche e architettoniche. Le attività proseguiranno secondo la pianificazione già stabilita.
+
+
+\vspace*{\fill}
+\noindent
+\begin{minipage}{0.60\textwidth}
+    {\small
+    \textbf{Firma aziendale:}\\[0.3cm]
+    \textit{(Spazio riservato all’azienda per apporre firma o timbro)}\\[0.8cm]
+    \fbox{\rule{0pt}{2.5cm}\rule{5cm}{0pt}} 
+    }
+\end{minipage}
+
+
+\end{document}
