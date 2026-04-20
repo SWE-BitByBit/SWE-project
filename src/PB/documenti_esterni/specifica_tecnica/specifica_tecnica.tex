@@ -112,7 +112,7 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & In lavorazione\\
-\textbf{Versione:} & 0.5.0 \\
+\textbf{Versione:} & 0.5.1 \\
 \textbf{Responsabile:} & Gabriele Scaggiante \\
 \textbf{Redattori:} & 
 \begin{tabular}[t]{@{}l@{}}
@@ -154,6 +154,8 @@ Gruppo BitByBit\\
 \hline
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+0.5.1 & 2026-04-20 & Dennis Parolin & Aggiornati i pattern presenti nella la sezione \hyperref[subsec:design_pattern]{Design pattern utilizzati}, aggiunti i pattern \hyperref[sec:pattern_dependency_injection]{Dependency Injection}, \hyperref[sec:pattern_command]{Command} e \hyperref[sec:pattern_adapter]{Adapter}. & Gabriele Scaggiante \\
+\hline
 0.5.0 & 2026-04-18 & Gabriele Scaggiante & Nella sezione \hyperref[subsec:architettura_backend]{Architettura backend}, aggiornata \term{Architettura} Auth, Luoghi Sicuri e Materiale Informativo; redatte sezioni Diario, Chatbot e DMS. & Dennis Parolin \\
 \hline
 0.4.0 & 2026-04-17 & Riccardo Manisi & Redatta la sezione \hyperref[subsubsec:diagramma_classi_invio_sos]{Architettura InvioSOS} & Gabriele Scaggiante \\
@@ -402,6 +404,35 @@ http è una libreria per il linguaggio Dart che consente di effettuare richieste
     \item \textbf{Documentazione}: \url{https://pub.dev/packages/path_provider}
 \end{itemize}
 
+\subsubsection{provider}
+\texttt{provider} è una libreria per Flutter che offre un meccanismo di gestione dello stato e di propagazione delle dipendenze lungo l'albero dei widget. Si basa sul sistema nativo di \texttt{InheritedWidget} di Flutter, semplificandone notevolmente l'utilizzo attraverso un'API dichiarativa. Consente di rendere disponibili oggetti (come i ViewModel) a interi sottoalberi dell'interfaccia, facilitando la comunicazione reattiva tra i layer dell'applicazione.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 6.1.5+1
+    \item \textbf{Documentazione}: \url{https://pub.dev/packages/provider}
+\end{itemize}
+
+\subsubsection{url\_launcher}
+\texttt{url\_launcher} è una libreria Flutter che consente di aprire URL nel browser predefinito del dispositivo, avviare applicazioni di posta elettronica, effettuare chiamate telefoniche o aprire altri tipi di risorse tramite i rispettivi handler nativi. Fornisce un'interfaccia unificata e compatibile tra le diverse piattaforme supportate da Flutter.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 6.3.2
+    \item \textbf{Documentazione}: \url{https://pub.dev/packages/url_launcher}
+\end{itemize}
+
+\subsubsection{flutter\_dotenv}
+\texttt{flutter\_dotenv} è una libreria che permette di caricare variabili di configurazione da un file \texttt{.env} all'interno di un'applicazione Flutter. Consente di separare le configurazioni sensibili o dipendenti dall'ambiente (come chiavi API o endpoint) dal codice sorgente, rendendo più agevole la gestione di ambienti diversi senza modificare il codice dell'applicazione.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 6.0.0
+    \item \textbf{Documentazione}: \url{https://pub.dev/packages/flutter_dotenv}
+\end{itemize}
+
+\subsubsection{flutter\_web\_auth\_2}
+\texttt{flutter\_web\_auth\_2} è una libreria Flutter progettata per gestire flussi di autenticazione basati su protocolli web standard come OAuth 2.0 e OpenID Connect. Apre una sessione browser controllata, intercetta il redirect dell'URL di callback e restituisce il codice di autorizzazione all'applicazione, abilitando l'integrazione con provider di identità esterni senza esporre le credenziali nel codice nativo.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 5.0.2
+    \item \textbf{Documentazione}: \url{https://pub.dev/packages/flutter_web_auth_2}
+\end{itemize}
+
+
 \subsection{Tecnologie di analisi statica} \label{subsec:tecnologie_analisi_statica}
 \subsubsection{SonarQube}
 SonarQube è una piattaforma open-source per l’analisi continua della qualità del codice. Esegue \term{Analisi Statica} su diversi linguaggi di programmazione per individuare bug, vulnerabilità, code smells e problemi di copertura dei test. Il funzionamento si basa su scanner che analizzano il codice sorgente e inviano i risultati a un server centrale, dove vengono aggregati e visualizzati tramite una dashboard dedicata.
@@ -472,7 +503,7 @@ L'\term{Architettura} logica adibita all'interazione tra i device mobili e l'amb
 \subsubsection{Model-view-viewmodel}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{diagrammi_classi/auth/DC-Auth.pdf}
+    \includegraphics[width=\textwidth]{diagrammi_classi/pattern_utilizzati/PatternMVVM.pdf}
     \caption{Rappresentazione del pattern MVVM nel modulo di Autenticazione}
     \label{fig:pattern_mvvm}
 \end{figure}
@@ -498,8 +529,8 @@ Tale pattern viene usato diffusamente per definire l'intera parte grafica e l'in
 \subsubsection{Observer}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{diagrammi_classi/chatbot/DC-Feature-Chatbot.pdf}
-    \caption{Rappresentazione del pattern Observer applicato tra View e ViewModel nel modulo Chatbot}
+    \includegraphics[width=\textwidth]{diagrammi_classi/pattern_utilizzati/PatternObserver.pdf}
+    \caption{Rappresentazione del pattern Observer applicato nel modulo dei contatti fidati}
     \label{fig:pattern_observer}
 \end{figure}
 \paragraph{Descrizione del pattern:}\mbox{}\\
@@ -520,7 +551,7 @@ Essendo strettamente interconnesso al MVVM, l'Observer pervade l'intera UI. Di s
 \subsubsection{Proxy}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{diagrammi_classi/chatbot/DC-ProxyChat.pdf}
+    \includegraphics[width=0.7\textwidth]{diagrammi_classi/pattern_utilizzati/PatternProxy.pdf}
     \caption{Rappresentazione del pattern Proxy applicato alla gestione delle chat}
     \label{fig:pattern_proxy}
 \end{figure}
@@ -554,32 +585,32 @@ Il pattern Singleton è utilizzato per il coordinamento dei componenti di sessio
     \item Diari Personali $\rightarrow$ \hyperref[DC-DiarySession]{\code{DiarySession}}
 \end{itemize}
 
-\subsubsection{Dependency Injection}
+\subsubsection{Dependency Injection} \label{sec:pattern_dependency_injection}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{diagrammi_classi/auth/DC-Auth.pdf}
-    \caption{Rappresentazione delle dipendenze architetturali nel modulo Autenticazione}
+    \includegraphics[width=\textwidth]{diagrammi_classi/pattern_utilizzati/PatternDependencyInjection.pdf}
+    \caption{Rappresentazione del pattern Dependency Injection nel modulo di Autenticazione}
     \label{fig:pattern_di}
 \end{figure}
 \paragraph{Descrizione del pattern:}\mbox{}\\
-Il pattern Dependency Injection (DI) è una tecnica in cui un oggetto riceve dall'esterno le istanze degli oggetti da cui dipende, anziché doverle creare internamente. Nella sua forma più comune, nota come \textit{constructor injection}, le dipendenze vengono passate all'oggetto direttamente come parametri del costruttore durante la fase di istanziazione.
+Il pattern Dependency Injection (DI) è una tecnica in cui un oggetto riceve dall'esterno le istanze degli oggetti da cui dipende, anziché doverle creare internamente. Nel progetto viene adottata la forma di \textit{constructor injection}: le dipendenze vengono passate ai componenti direttamente come parametri del costruttore durante la fase di istanziazione.
 
-Nel contesto dello sviluppo in Flutter, questo pattern è ampiamente utilizzato per orchestrare i collegamenti tra i vari strati architetturali. Più nello specifico, i componenti logici come i \textit{ViewModel} non si occupano mai di instanziare direttamente i propri \textit{Repository} o \textit{Service}, ma li ricevono come dipendenze già iniettate e configurate, spesso sfruttando il sistema di dependency injection globale del client.
+Questo approccio permette di slegare i componenti logici dalla creazione delle proprie risorse. I \textit{ViewModel}, ad esempio, non istanziano mai i propri \textit{Repository}, ma li ricevono già configurati dal punto di ingresso del modulo o dell'applicazione, garantendo che ogni componente operi esclusivamente con le interfacce necessarie.
 \paragraph{Ragioni per l'utilizzo:}\mbox{}\\
-L'implementazione della Dependency Injection concretizza il principio di inversione del controllo, separando nettamente la responsabilità di costruzione degli oggetti dalla loro effettiva logica d'uso. Questo approccio favorisce una struttura incredibilmente più modulare, flessibile e coesa, ma il vantaggio principale ricade nell'ambito del testing: l'iniezione tramite costruttore consente di rimpiazzare agevolmente e senza vincoli strutturali le dipendenze reali con oggetti fittizi (\textit{mock}), permettendo così di eseguire unit test rigorosi su ogni singola classe in completo isolamento dal sistema.
+L'utilizzo della DI favorisce un'architettura modulare e flessibile, riducendo l'accoppiamento tra le classi. Il vantaggio principale risiede nella testabilità: l'iniezione tramite costruttore permette di sostituire facilmente le dipendenze reali con oggetti fittizi (\textit{mock}), consentendo l'esecuzione di unit test in isolamento. Inoltre, centralizzare la logica di creazione degli oggetti facilita la manutenzione e l'eventuale sostituzione di implementazioni specifiche senza dover modificare i client che le utilizzano.
 \paragraph{Riferimenti nel progetto:}\mbox{}\\
-Il pattern è applicato in modo capillare e sistematico lungo l'intera struttura architetturale. Di seguito le classi che fungono da esempio per la ricezione delle dipendenze (es. \code{Repository}) al loro interno:
+Il pattern è applicato diffusamente lungo l'intera struttura architetturale. Di seguito alcune classi che integrano attivamente questo approccio:
 \begin{itemize}
     \item Autenticazione $\rightarrow$ \hyperref[DC-AuthViewModel]{\code{AuthViewModel}}
     \item Chatbot $\rightarrow$ \hyperref[DC-ChatbotViewModel]{\code{ChatbotViewModel}}
-    \item Diario $\rightarrow$ \hyperref[DC-DiaryViewModel]{\code{DiaryViewModel}}
     \item Contatti Fidati $\rightarrow$ \hyperref[DC-TrustedContactViewModel]{\code{TrustedContactViewModel}}
 \end{itemize}
+
 
 \subsubsection{Command} \label{sec:pattern_command}
 \begin{figure}[H]
     \centering
-    %\includegraphics[width=\textwidth]{immagine_mancante.png}
+    \includegraphics[width=\textwidth]{diagrammi_classi/pattern_utilizzati/PatternCommand.pdf}
     \caption{Rappresentazione del pattern Command}
     \label{fig:pattern_command}
 \end{figure}
@@ -626,18 +657,12 @@ passato all'azione al momento dell'esecuzione.
 \end{figure}
 
 \subsubsection{Adapter} \label{sec:pattern_adapter}
-\begin{figure}[H]
-    \centering
-    %\includegraphics[width=\textwidth]{immagine_mancante_adapter.png}
-    \caption{Rappresentazione del pattern Adapter}
-    \label{fig:pattern_adapter}
-\end{figure}
 \paragraph{Descrizione del pattern:}\mbox{}\\
-Il pattern Adapter è un design pattern strutturale che permette la collaborazione tra interfacce incompatibili. Esso agisce come un traduttore, incapsulando un oggetto esistente e fornendo un'interfaccia differente che sia conforme alle necessità del client.
+Il pattern Adapter è un design pattern strutturale che permette la collaborazione tra interfacce incompatibili, agendo come un mediatore che converte l'interfaccia di una classe in un'altra attesa dal client. Nel progetto, questo pattern viene impiegato per interfacciare il nucleo logico del sistema con servizi esterni, driver o librerie di terze parti.
 \paragraph{Ragioni per l'utilizzo:}\mbox{}\\
-L'integrazione di questo pattern è fondamentale per sostenere l'architettura esagonale adottata nel progetto. L'obiettivo primario è isolare la \textit{Business Logic} del sistema, rendendola indipendente dalle tecnologie di persistenza o dai servizi esterni utilizzati. Attraverso l'uso degli Adapter, i moduli centrali possono interagire con database, sistemi di storage o API di terze parti senza conoscerne i dettagli implementativi o i protocolli specifici. Questo garantisce un'elevata manutenibilità e facilita l'eventuale sostituzione di componenti infrastrutturali senza dover modificare il cuore logico dell'applicativo.
+L'integrazione di questo pattern è fondamentale per preservare l'integrità della \textit{Business Logic}. Attraverso l'uso degli Adapter, i moduli centrali possono interagire con database o API esterne senza dipendere dai loro protocolli specifici o dai formati di dati grezzi. Questo isolamento garantisce che il cuore del sistema rimanga agnostico rispetto alle scelte tecnologiche infrastrutturali, facilitando sostituzioni o aggiornamenti di componenti esterni con un impatto minimo o nullo sul codice di dominio.
 \paragraph{Riferimenti nel progetto:}\mbox{}\\
-Il pattern è impiegato diffusamente nel layer di accesso ai dati sia nel frontend che nel backend. In particolare, viene utilizzato per adattare le risposte grezze provenienti dai servizi AWS o dalle API esterne ai modelli di dominio utilizzati dall'applicazione, e per tradurre le richieste del dominio nei formati richiesti dai driver o dai servizi di comunicazione specifici.
+Il pattern è impiegato nel layer di accesso ai dati. Viene utilizzato per mappare le risposte provenienti dai servizi esterni in oggetti di dominio validi per l'applicazione e, specularmente, per tradurre le richieste del sistema nel formato richiesto dai destinatari esterni, garantendo una comunicazione fluida tra layer con responsabilità differenti.
 
 
 \subsection{Architettura di deployment} \label{subsec:architettura_deployment}
