@@ -575,6 +575,71 @@ Il pattern è applicato in modo capillare e sistematico lungo l'intera struttura
     \item Diario $\rightarrow$ \hyperref[DC-DiaryViewModel]{\code{DiaryViewModel}}
     \item Contatti Fidati $\rightarrow$ \hyperref[DC-TrustedContactViewModel]{\code{TrustedContactViewModel}}
 \end{itemize}
+
+\subsubsection{Command} \label{sec:pattern_command}
+\begin{figure}[H]
+    \centering
+    %\includegraphics[width=\textwidth]{immagine_mancante.png}
+    \caption{Rappresentazione del pattern Command}
+    \label{fig:pattern_command}
+\end{figure}
+\paragraph{Descrizione del pattern:}\mbox{}\\
+Il pattern Command è un design pattern comportamentale che incapsula una richiesta come un oggetto autonomo, consentendo di parametrizzare i client con diverse richieste, accodare o registrare le esecuzioni e supportare operazioni annullabili. Nel contesto di un'applicazione Flutter governata dall'architettura MVVM, il pattern Command è utilizzato per incapsulare e standardizzare le azioni invocabili dall'interfaccia utente (ad esempio, recuperi di dati di rete, click di invio form o interazioni con il backend), esponendo comandi robusti e isolati dal layer di View.
+\paragraph{Ragioni per l'utilizzo:}\mbox{}\\
+Questa soluzione architetturale favorisce un severo disaccoppiamento tra la componente visiva che invoca l'azione (la View) e il modulo deputato all'esecuzione logica (il ViewModel o strati inferiori). Isolando e reificando l'interazione in un oggetto \textit{Command}, lo sviluppo beneficia in standardizzazione, accentrando il controllo della gestione di esecuzione asincrona e dei relativi stati interni dell'azione (attesa di elaborazione, conferme di successo o eccezioni previste). Questo elimina quasi integralmente le ridondanze nel codice e blinda attivamente interazioni non volute come, per esempio, l'avvio accidentale e simultaneo di richieste doppie a seguito di pressioni ripetute sull'interfaccia.
+\paragraph{Riferimenti nel progetto:}\mbox{}\\
+Il pattern viene implementato sistematicamente in tutti i ViewModel dell'applicazione per la gestione delle interazioni utente e delle operazioni asincrone. Di seguito le classi pilastro che compongono l'infrastruttura del pattern Command nel progetto:
+
+\paragraph{Command<T>}\mbox{}\\
+È la classe base astratta del pattern. Mantiene internamente lo stato dell'azione tramite 
+i campi privati \code{\_running}, \code{\_result} e \code{\_error}. Espone queste informazioni tramite 
+getter pubblici che la View utilizza per aggiornare l'interfaccia. Il metodo privato \code{\_execute()} 
+contiene la logica comune a tutte le implementazioni concrete: impedisce esecuzioni multiple simultanee, aggiorna lo stato prima e 
+dopo l'esecuzione dell'azione, e gestisce le eccezioni.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-Command_T_.pdf}
+    \caption{Diagramma della classe \code{Command<T>}}
+    \label{DC-Command<T>}
+\end{figure}
+
+\paragraph{Command0<T>}\mbox{}\\
+È l'implementazione concreta di \code{Command<T>} per azioni senza argomenti. Riceve nel 
+costruttore una funzione di tipo \code{Future<T> Function()} che rappresenta l'azione da eseguire. 
+Espone il metodo pubblico \code{execute()} che delega a \code{\_execute()} della classe base passando l'azione ricevuta nel costruttore. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-Command0_T_.pdf}
+    \caption{Diagramma della classe \code{Command0<T>}}
+    \label{DC-Command0<T>}
+\end{figure}
+
+\paragraph{Command1<T, A>}\mbox{}\\
+È l'implementazione concreta di \code{Command<T>} per azioni che richiedono un argomento di tipo A. 
+Riceve nel costruttore una funzione di tipo \code{Future<T> Function(A)} e il metodo pubblico \code{execute()} accetta l'argomento che viene 
+passato all'azione al momento dell'esecuzione.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-Command1_T,A_.pdf}
+    \caption{Diagramma della classe \code{Command1<T, A>}}
+    \label{DC-Command1<T, A>}
+\end{figure}
+
+\subsubsection{Adapter} \label{sec:pattern_adapter}
+\begin{figure}[H]
+    \centering
+    %\includegraphics[width=\textwidth]{immagine_mancante_adapter.png}
+    \caption{Rappresentazione del pattern Adapter}
+    \label{fig:pattern_adapter}
+\end{figure}
+\paragraph{Descrizione del pattern:}\mbox{}\\
+Il pattern Adapter è un design pattern strutturale che permette la collaborazione tra interfacce incompatibili. Esso agisce come un traduttore, incapsulando un oggetto esistente e fornendo un'interfaccia differente che sia conforme alle necessità del client.
+\paragraph{Ragioni per l'utilizzo:}\mbox{}\\
+L'integrazione di questo pattern è fondamentale per sostenere l'architettura esagonale adottata nel progetto. L'obiettivo primario è isolare la \textit{Business Logic} del sistema, rendendola indipendente dalle tecnologie di persistenza o dai servizi esterni utilizzati. Attraverso l'uso degli Adapter, i moduli centrali possono interagire con database, sistemi di storage o API di terze parti senza conoscerne i dettagli implementativi o i protocolli specifici. Questo garantisce un'elevata manutenibilità e facilita l'eventuale sostituzione di componenti infrastrutturali senza dover modificare il cuore logico dell'applicativo.
+\paragraph{Riferimenti nel progetto:}\mbox{}\\
+Il pattern è impiegato diffusamente nel layer di accesso ai dati sia nel frontend che nel backend. In particolare, viene utilizzato per adattare le risposte grezze provenienti dai servizi AWS o dalle API esterne ai modelli di dominio utilizzati dall'applicazione, e per tradurre le richieste del dominio nei formati richiesti dai driver o dai servizi di comunicazione specifici.
+
+
 \subsection{Architettura di deployment} \label{subsec:architettura_deployment}
 
 L'\term{Architettura} di \term{Deployment} del sistema si divide in due componenti principali: l'applicazione Client (eseguita sul dispositivo dell'\term{Utente}) e l'infrastruttura di \term{Backend} (eseguita in \term{Cloud}). Il sistema si basa su un paradigma \textbf{\term{Serverless}} ed \textbf{\term{Event-Driven}}, per garantire scalabilità, elevata disponibilità e abbattimento dei costi legati alla gestione manuale dei server.
@@ -782,40 +847,8 @@ Riceve da \code{SosAlertRepository} la richiesta di invio e si occupa esclusivam
     \label{DC-SosAlertService}
 \end{figure}
 
-\paragraph{Command<T>}\mbox{}\\
-È la classe base astratta del pattern. Mantiene internamente lo stato dell'azione tramite 
-i campi privati \code{\_running}, \code{\_result} e \code{\_error}. Espone queste informazioni tramite 
-getter pubblici che la View utilizza per aggiornare l'interfaccia. Il metodo privato \code{\_execute()} 
-contiene la logica comune a tutte le implementazioni concrete: impedisce esecuzioni multiple simultanee, aggiorna lo stato prima e 
-dopo l'esecuzione dell'azione, e gestisce le eccezioni.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-Command_T_.pdf}
-    \caption{Diagramma della classe \code{Command<T>}}
-    \label{DC-Command<T>}
-\end{figure}
+Le tre classi principali alla base di questo pattern, ovvero il nucleo astratto e generico di partenza (\code{Command<T>}, \code{Command0<T>} e \code{Command1<T, A>}), vengono analizzate e spiegate nel dettaglio all'interno della corrispondente sezione architetturale analitica \hyperref[sec:pattern_command]{Command}.
 
-\paragraph{Command0<T>}\mbox{}\\
-È l'implementazione concreta di \code{Command<T>} per azioni senza argomenti. Riceve nel 
-costruttore una funzione di tipo \code{Future<T> Function()} che rappresenta l'azione da eseguire. 
-Espone il metodo pubblico \code{execute()} che delega a \code{\_execute()} della classe base passando l'azione ricevuta nel costruttore. 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-Command0_T_.pdf}
-    \caption{Diagramma della classe \code{Command0<T>}}
-    \label{DC-Command0<T>}
-\end{figure}
-
-\paragraph{Command1<T, A>}\mbox{}\\
-È l'implementazione concreta di \code{Command<T>} per azioni che richiedono un argomento di tipo A. 
-Riceve nel costruttore una funzione di tipo \code{Future<T> Function(A)} e il metodo pubblico \code{execute()} accetta l'argomento che viene 
-passato all'azione al momento dell'esecuzione.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-Command1_T,A_.pdf}
-    \caption{Diagramma della classe \code{Command1<T, A>}}
-    \label{DC-Command1<T, A>}
-\end{figure}
 
 % ====== CHATBOT ======
 \subsubsection{Chatbot} \label{subsubsec:architettura_chatbot_frontend}
