@@ -518,7 +518,7 @@ Nel contesto del \term{Framework} Flutter, l'implementazione di questo pattern v
 \paragraph{Ragioni per l'utilizzo:}\mbox{}\\
 L'utilizzo del pattern espone notevoli vantaggi poiché permette una più semplice ed efficace gestione delle varie parti dell'applicazione limitando il forte accoppiamento (\textit{coupling}) tra l'interfaccia \term{Utente} visiva e la logica di business o di presentazione sottostante. Questo netto disaccoppiamento esalta la manutenibilità del codice dell'applicativo nel tempo e agevola considerevolmente lo sviluppo e l'esecuzione degli unit test, in quanto permette di testare i ViewModel e i Model isolandoli dal \term{Ciclo di vita} visivo tipico del sistema operativo e del \term{Framework}.
 \paragraph{Riferimenti nel progetto:}\mbox{}\\
-Tale pattern viene usato diffusamente per definire l'intera parte grafica e l'interfaccia \term{Utente} dell'applicazione. Di seguito sono elencati i punti principali dove viene impiegato; all'interno di tali sezioni si possono trovare delle spiegazioni dettagliate di come esso interagisca col sistema a lui circostante:
+Il pattern MVVM è ampiamente utilizzato per strutturare l’interfaccia utente dell'applicazione e la logica ad essa associata, separando la resa grafica dalla gestione dello stato e dei dati. Di seguito sono elencati i punti principali dove viene impiegato; all’interno di tali sezioni sono fornite spiegazioni dettagliate su come il pattern interagisce con il sistema circostante:
 \begin{itemize}
     \item Autenticazione $\rightarrow$ \hyperref[DC-AuthViewModel]{\code{AuthViewModel}}
     \item Chatbot $\rightarrow$ \hyperref[DC-ChatbotViewModel]{\code{ChatbotViewModel}}
@@ -626,7 +626,7 @@ Il pattern viene implementato sistematicamente in tutti i ViewModel dell'applica
 i campi privati \code{\_running}, \code{\_result} e \code{\_error}. Espone queste informazioni tramite 
 getter pubblici che la View utilizza per aggiornare l'interfaccia. Il metodo privato \code{\_execute()} 
 contiene la logica comune a tutte le implementazioni concrete: impedisce esecuzioni multiple simultanee, aggiorna lo stato prima e 
-dopo l'esecuzione dell'azione, e gestisce le eccezioni.
+dopo l'esecuzione dell'azione e gestisce le eccezioni.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-Command_T_.pdf}
@@ -658,7 +658,7 @@ passato all'azione al momento dell'esecuzione.
 
 \subsubsection{Adapter} \label{sec:pattern_adapter}
 \paragraph{Descrizione del pattern:}\mbox{}\\
-Il pattern Adapter è un design pattern strutturale che permette la collaborazione tra interfacce incompatibili, agendo come un mediatore che converte l'interfaccia di una classe in un'altra attesa dal client. Nel progetto, questo pattern viene impiegato per interfacciare il nucleo logico del sistema con servizi esterni, \term{Driver} o librerie di terze parti.
+Il pattern Adapter è un design pattern strutturale che permette l'interazione tra interfacce incompatibili, agendo come un mediatore che converte l'interfaccia di una classe in un'altra attesa dal client. Nell'applicazione, questo pattern viene impiegato per interfacciare il nucleo logico del sistema con servizi esterni, \term{Driver} o librerie di terze parti.
 \paragraph{Ragioni per l'utilizzo:}\mbox{}\\
 L'integrazione di questo pattern è fondamentale per preservare l'integrità della \textit{\term{Business Logic}}. Attraverso l'uso degli Adapter, i moduli centrali possono interagire con database o API esterne senza dipendere dai loro protocolli specifici o dai formati di dati grezzi. Questo isolamento garantisce che il cuore del sistema rimanga agnostico rispetto alle scelte tecnologiche infrastrutturali, facilitando sostituzioni o aggiornamenti di componenti esterni con un impatto minimo o nullo sul resto del codice.
 \paragraph{Riferimenti nel progetto:}\mbox{}\\
