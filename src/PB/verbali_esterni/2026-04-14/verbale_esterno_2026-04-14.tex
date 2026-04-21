@@ -153,20 +153,20 @@ Sanguin Marco\\
 % ---------- ORDINE DEL GIORNO, METTERE SE DOC È UN \term{Verbale}  ----------
 \section{Ordine del Giorno}
 \begin{itemize}
-    \item Chiarimento sul pattern architetturale da adottare in AWS: Serverless vs Microservizi.
+    \item Chiarimento sul pattern architetturale da adottare in AWS: \term{Serverless} vs Microservizi.
     \item Valutazione della condivisione di database tra diverse funzioni Lambda.
-    \item Utilizzo del \term{Provider} in Flutter per la gestione dello stato e delle dipendenze.
-    \item Dettagli sull'implementazione dell'architettura esagonale.
+    \item Utilizzo del Provider in Flutter per la gestione dello stato e delle dipendenze.
+    \item Dettagli sull'implementazione dell'\term{Architettura} esagonale.
     \item Ottimizzazione della gestione dei dati statici.
 \end{itemize}
 
 % ---------- DISCUSSIONI, METTERE SE DOC È UN \term{Verbale} ----------
 \section{Discussioni}
 \begin{itemize}
-    \item \textbf{Architettura Backend e Pattern}: È stata discussa la differenza tra architettura a microservizi e approccio serverless. Il Prof. Cardin ha chiarito che non si può definire "microservizio" un'architettura in cui più Lambda condividono lo stesso database. Attualmente il sistema è orientato verso un "serverless che tende ai microservizi", ma il consiglio principale è quello di adottare un pattern pienamente \term{Serverless}, assegnando una singola funzionalità o operazione a ciascuna funzione Lambda per evitare sovraccarichi di responsabilità.
-    \item \textbf{Dependency Injection in Flutter}: È stato confermato che l'utilizzo del framework Provider in Flutter rappresenta la scelta architetturale più corretta. L'uso di Singleton è sconsigliato in quanto crea dipendenze implicite non evidenti dal costruttore e lega il ciclo di vita all'intera app, impedendone la ricreazione flessibile.
-    \item \textbf{Architettura Esagonale}: Si è discusso del ruolo di \term{adapter} e interfacce. È emerso che la Business Logic non deve mai dipendere da dati o risorse esterne e deve operare unicamente utilizzando le classi di dominio. L'impiego di Inbound Adapter (come un ipotetico \textit{SesEventAdapter}) per decodificare gli input esterni e convertirli in oggetti di dominio è un approccio validato e incoraggiato.
-    \item \textbf{Gestione Dati Statici}: Per il recupero di dati statici che non necessitano di modifiche da parte dell'utente (come la posizione dei luoghi sicuri), è stato sconsigliato l'uso intermedio di API Gateway o Lambda verso DynamoDB. L'approccio raccomandato è archiviare tali risorse all'interno di Amazon S3, permettendo al client di accedervi direttamente per ridurre ritardi e costi operativi.
+    \item \textbf{\term{Architettura} \term{Backend} e Pattern}: È stata discussa la differenza tra \term{Architettura} a microservizi e approccio \term{Serverless}. Il Prof. Cardin ha chiarito che non si può definire "microservizio" un'\term{Architettura} in cui più Lambda condividono lo stesso database. Attualmente il sistema è orientato verso un "\term{Serverless} che tende ai microservizi", ma il consiglio principale è quello di adottare un pattern pienamente \term{Serverless}, assegnando una singola funzionalità o operazione a ciascuna funzione Lambda per evitare sovraccarichi di responsabilità.
+    \item \textbf{Dependency Injection in Flutter}: È stato confermato che l'utilizzo del \term{Framework} Provider in Flutter rappresenta la scelta architetturale più corretta. L'uso di Singleton è sconsigliato in quanto crea dipendenze implicite non evidenti dal costruttore e lega il \term{Ciclo di vita} all'intera app, impedendone la ricreazione flessibile.
+    \item \textbf{\term{Architettura} Esagonale}: Si è discusso del ruolo di adapter e interfacce. È emerso che la \term{Business Logic} non deve mai dipendere da dati o risorse esterne e deve operare unicamente utilizzando le classi di dominio. L'impiego di Inbound Adapter (come un ipotetico \textit{SesEventAdapter}) per decodificare gli input esterni e convertirli in oggetti di dominio è un approccio validato e incoraggiato.
+    \item \textbf{Gestione Dati Statici}: Per il recupero di dati statici che non necessitano di modifiche da parte dell'\term{Utente} (come la posizione dei luoghi sicuri), è stato sconsigliato l'uso intermedio di API Gateway o Lambda verso DynamoDB. L'approccio raccomandato è archiviare tali risorse all'interno di Amazon S3, permettendo al client di accedervi direttamente per ridurre ritardi e costi operativi.
 \end{itemize}
 
 % ---------- DECISIONI, METTERE SE DOC È UN \term{Verbale} ----------
@@ -181,23 +181,23 @@ Sanguin Marco\\
 \rowcolor{gray!60} 
 \textbf{Descrizione decisione} & \textbf{Codice decisione} \\
 \hline
-Adottare un pattern architetturale Serverless, assegnando preferibilmente una singola funzionalità (per esempio singola operazione CRUD) per ogni funzione Lambda. & VE \ignoreglossary{PB} 3.1 \\
+Adottare un pattern architetturale \term{Serverless}, assegnando preferibilmente una singola funzionalità (per esempio singola operazione CRUD) per ogni funzione Lambda. & VE \ignoreglossary{PB} 3.1 \\
 \hline
 Utilizzare ufficialmente il pacchetto Provider di Flutter per la Dependency Injection e abbandonare il pattern Singleton. &  VE \ignoreglossary{PB} 3.2 \\
 \hline
-Isolare strettamente la Business Logic dai dati esterni avvalendosi di Inbound Adapter e oggetti di dominio secondo i principi dell'Architettura Esagonale. &  VE \ignoreglossary{PB} 3.3\\
+Isolare strettamente la \term{Business Logic} dai dati esterni avvalendosi di Inbound Adapter e oggetti di dominio secondo i principi dell'\term{Architettura} Esagonale. &  VE \ignoreglossary{PB} 3.3\\
 \hline
-Migrare la memorizzazione dei dati non modificabili dall'utente su Amazon S3, eludendo passaggi superflui su Lambda e DynamoDB. &  VE \ignoreglossary{PB} 3.4\\
+Migrare la memorizzazione dei dati non modificabili dall'\term{Utente} su Amazon S3, eludendo passaggi superflui su Lambda e DynamoDB. &  VE \ignoreglossary{PB} 3.4\\
 \hline
 \end{tabular}
 \end{center}
 
 % ---------- TO DO, METTERE SE DOC È UN \term{Verbale} ----------
 \section{To Do}
-Le prossime attività saranno discusse e assegnate in dettaglio durante la riunione interna di inizio Sprint. Le direttive generali emerse dall'incontro prevedono:
+Le prossime attività saranno discusse e assegnate in dettaglio durante la riunione interna di inizio \term{Sprint}. Le direttive generali emerse dall'incontro prevedono:
 \begin{itemize}
-    \item Revisione e refactoring dell'architettura AWS al fine di disaccoppiare le responsabilità delle attuali Lambda condivise, orientandosi verso un pattern prettamente \term{Serverless}.
-    \item Aggiornamento dei diagrammi delle classi e dell'architettura per riflettere le variazioni apportate alla gestione delle dipendenze e degli adapter.
+    \item Revisione e \term{Refactoring} dell'\term{Architettura} AWS al fine di disaccoppiare le responsabilità delle attuali Lambda condivise, orientandosi verso un pattern prettamente \term{Serverless}.
+    \item Aggiornamento dei diagrammi delle classi e dell'\term{Architettura} per riflettere le variazioni apportate alla gestione delle dipendenze e degli adapter.
     \item Predisposizione di bucket S3 e migrazione degli attuali dati statici, configurando opportunamente il client Flutter per il loro recupero.
 \end{itemize}
 
