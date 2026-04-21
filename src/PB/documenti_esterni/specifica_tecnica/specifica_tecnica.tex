@@ -511,12 +511,12 @@ L'\term{Architettura} logica adibita all'interazione tra i device mobili e l'amb
 Il pattern MVVM prevede la separazione tra la resa grafica, la \term{Presentation Logic} e la \term{Business Logic} in tre componenti principali:
 \begin{itemize}
     \item \textbf{Model:} contiene il codice responsabile per la \term{Business Logic} dell'applicazione.
-    \item \textbf{View:} contiene la parte responsabile esclusivamente per la resa grafica del software, e delega la gestione dell'interazione dell'\term{Utente} alla componente \textit{ViewModel}.
-    \item \textbf{ViewModel:} contiene il codice responsabile per la gestione della \term{Presentation Logic} e per la coordinazione tra i componenti \textit{View} e \textit{Model}.
+    \item \textbf{View:} contiene la parte responsabile della resa grafica del software e della cattura delle interazioni dell'\term{Utente}, a cui reagisce invocando i metodi o i comandi messi a disposizione dal \textit{ViewModel}.
+    \item \textbf{ViewModel:} mantiene e gestisce lo stato della \textit{View} e coordina le interazioni tra quest'ultima e il \textit{Model}. La \textit{View} può modificare il proprio stato esclusivamente attraverso l'interazione con i metodi e i \code{Command} esposti dal \textit{ViewModel}.
 \end{itemize}
 Nel contesto del \term{Framework} Flutter, l'implementazione di questo pattern viene riadattata per assecondare la natura dichiarativa dell'interfaccia. Nello specifico, il ViewModel è tipicamente implementato sfruttando una classe o un mixin proprietario chiamato \code{ChangeNotifier}, il quale consente di notificare esplicitamente la View dei cambiamenti di stato interno. La View, composta a sua volta da Widget, ascolta reattivamente tali notifiche potendo ricostruire e aggiornare solo le specifiche porzioni grafiche necessarie.
 \paragraph{Ragioni per l'utilizzo:}\mbox{}\\
-L'utilizzo del pattern espone notevoli vantaggi poiché permette una più semplice ed efficace gestione delle varie parti dell'applicazione limitando il forte accoppiamento (\textit{coupling}) tra l'interfaccia \term{Utente} visiva e la logica di business o di presentazione sottostante. Questo netto disaccoppiamento esalta la manutenibilità del codice dell'applicativo nel tempo e agevola considerevolmente lo sviluppo e l'esecuzione degli unit test, in quanto permette di testare i ViewModel e i Model isolandoli dal \term{Ciclo di vita} visivo tipico del sistema operativo e del \term{Framework}.
+L'utilizzo del pattern garantisce notevoli vantaggi poiché permette una più semplice ed efficace gestione delle varie parti dell'applicazione, limitando il forte accoppiamento (\textit{coupling}) tra l'interfaccia \ignoreglossary{utente} visiva e la logica di business o di presentazione sottostante. Questo netto disaccoppiamento migliora la manutenibilità del codice dell'applicativo e agevola considerevolmente lo sviluppo e l'esecuzione degli unit test, in quanto permette di testare i ViewModel e i Model isolandoli dal \ignoreglossary{ciclo di vita} visivo tipico del sistema operativo e del \term{Framework}.
 \paragraph{Riferimenti nel progetto:}\mbox{}\\
 Il pattern MVVM è ampiamente utilizzato per strutturare l’interfaccia utente dell'applicazione e la logica ad essa associata, separando la resa grafica dalla gestione dello stato e dei dati. Di seguito sono elencati i punti principali dove viene impiegato; all’interno di tali sezioni sono fornite spiegazioni dettagliate su come il pattern interagisce con il sistema circostante:
 \begin{itemize}
@@ -536,11 +536,11 @@ Il pattern MVVM è ampiamente utilizzato per strutturare l’interfaccia utente 
 \paragraph{Descrizione del pattern:}\mbox{}\\
 Il pattern Observer definisce la capacità per un oggetto \textit{Publisher} di definire un meccanismo di "iscrizione" per cui un insieme di oggetti \textit{Subscriber} può "osservarlo" ed essere notificato solo in seguito ad un suo cambiamento di stato. 
 
-Nel contesto di Flutter, l'integrazione di questo pattern avviene tramite il binomio composto dal mixin \code{ChangeNotifier} e dal widget specializzato \code{Consumer}. Il \textit{ViewModel} agisce da \textit{Publisher}: ogni qualvolta rileva un cambiamento rilevante nei dati o nello stato, invoca il metodo \code{notifyListeners()} per segnalare la necessità di un aggiornamento. Il \textit{Consumer} funge da \textit{Subscriber}: esso è un widget che osserva e utilizza i dati forniti dal ViewModel e, ricevuta la notifica di cambiamento, innesca la ricostruzione automatica della propria interfaccia in modo reattivo. Questo meccanismo è fondamentale nel nostro caso poiché assicura che solo la porzione di interfaccia racchiusa nel \code{Consumer} (ovvero quella che effettivamente dipende dai dati mutati) venga aggiornata, ottimizzando le prestazioni ed evitando ricostruzioni costose e inutili dell'intera schermata.
+Nel contesto di Flutter, l'integrazione di questo pattern avviene tramite l'utilizzo del mixin \code{ChangeNotifier} e dal widget specializzato \code{Consumer}. Il \textit{ViewModel} agisce da \textit{Publisher}: ogni qualvolta rileva un cambiamento rilevante nei dati o nello stato, invoca il metodo \code{notifyListeners()} per segnalare la necessità di un aggiornamento. Il \textit{Consumer} funge da \textit{Subscriber}: esso è un widget che osserva e utilizza i dati forniti dal ViewModel e, ricevuta la notifica di cambiamento, innesca la ricostruzione automatica della propria interfaccia. Questo meccanismo è fondamentale nel nostro caso, perché assicura che solo la porzione di interfaccia racchiusa nel \code{Consumer} (ovvero quella che effettivamente dipende dai dati mutati) venga aggiornata, ottimizzando le prestazioni ed evitando ricostruzioni costose e inutili dell'intera schermata.
 \paragraph{Ragioni per l'utilizzo:}\mbox{}\\
-L'uso principale del pattern nell'applicazione è nelle classi ViewModel, dato che permette di notificare solo i widget che richiedono modifiche dopo un cambiamento di stato del ViewModel, invece di dover ricostruire la schermata dopo una qualsiasi interazione, permettendo così una maggiore fluidità dell'interfaccia durante l'uso da parte dell'\term{Utente}. Inoltre il meccanismo di "iscrizione" rimuove la necessità di verifiche frequenti sullo stato del \textit{Publisher} da parte dei \textit{Subscriber} e rende il codice più facilmente estendibile e mantenibile dato che la modifica di una componente non va a influire sulle altre, per esempio, l'aggiunta di un widget alla \textit{View} non richiederebbe modifiche al \textit{ViewModel}.
+Il pattern Observer è utilizzato per permettere ai ViewModel di notificare solo i widget che richiedono modifiche dopo un cambiamento di stato, ottimizzando la ricostruzione dell'UI in modo da non dover ricostruire l'intera schermata dopo una qualsiasi interazione. Il meccanismo di "iscrizione" rimuove la necessità di verifiche frequenti sullo stato del \textit{Publisher} da parte dei \textit{Subscriber} e rende il codice più facilmente estendibile e mantenibile, dato che la modifica di una componente non va a influire sulle altre. Ad esempio, l’introduzione di un nuovo widget nella \textit{View} non implica la necessità di modificare il \textit{ViewModel}.
 \paragraph{Riferimenti nel progetto:}\mbox{}\\
-Essendo strettamente interconnesso al MVVM, l'Observer pervade l'intera UI. Di seguito i punti principali dove i ViewModel agiscono da \textit{Publisher} per le rispettive schermate:
+Essendo strettamente interconnesso al MVVM, il pattern Observer è utilizzato per la gestione dell'intera UI. Di seguito i punti principali dove i ViewModel agiscono da \textit{Publisher} per le rispettive schermate:
 \begin{itemize}
     \item Autenticazione $\rightarrow$ \hyperref[DC-AuthViewModel]{\code{AuthViewModel}}
     \item Chatbot $\rightarrow$ \hyperref[DC-ChatbotViewModel]{\code{ChatbotViewModel}}
@@ -558,7 +558,7 @@ Essendo strettamente interconnesso al MVVM, l'Observer pervade l'intera UI. Di s
 \paragraph{Descrizione del pattern:}\mbox{}\\
 Il pattern Proxy permette la creazione di un oggetto \textit{Proxy} che controlla l'accesso all'oggetto reale. L'oggetto \textit{Proxy} implementa la medesima interfaccia dell'oggetto reale, rendendolo perfettamente intercambiabile agli occhi del codice che lo utilizza, e ha il compito di delegare le richieste a un'istanza dell'oggetto reale solo quando necessario.
 \paragraph{Ragioni per l'utilizzo:}\mbox{}\\
-L'utilizzo di questo pattern permette di implementare il caricamento ritardato di strutture dati potenzialmente voluminose; nello specifico, le classi che fungono da Proxy operano come segnaposti leggeri contenenti solo metadati essenziali, rimandando il caricamento completo dei contenuti pesanti (come l'intera cronologia di una chat) al momento del loro effettivo accesso. Questo approccio evita di sovraccaricare la memoria del dispositivo con dati che l'\term{Utente} potrebbe non consultare mai, garantendo una maggiore fluidità nel caricamento degli elenchi e un consumo di risorse computazionali estremamente ottimizzato.
+L'utilizzo di questo pattern permette di implementare il caricamento ritardato di strutture dati potenzialmente voluminose; nello specifico, le classi che fungono da Proxy operano come segnaposti leggeri contenenti solo metadati essenziali, rimandando il caricamento completo dei contenuti (come i messaggi di una singola chat) al momento del loro effettivo accesso. Questo approccio permette di ridurre sensibilmente l'utilizzo di banda, limitando la quantità di dati recuperati dal \term{Backend} a quelli strettamente necessari, garantendo al contempo una maggiore fluidità nel caricamento degli elenchi e un consumo di risorse sul dispositivo più efficiente.
 \paragraph{Riferimenti nel progetto:}\mbox{}\\
 Il pattern Proxy è utilizzato principalmente per la gestione dei modelli di dati persistenti:
 \begin{itemize}
@@ -574,7 +574,7 @@ Il pattern Proxy è utilizzato principalmente per la gestione dei modelli di dat
     \label{fig:pattern_singleton}
 \end{figure}
 \paragraph{Descrizione del pattern:}\mbox{}\\
-Il pattern Singleton garantisce che una classe abbia una sola istanza attiva in ogni momento e fornisce un punto di accesso globale a tale istanza. Questo obiettivo si ottiene rendendo privato il costruttore della classe, impedendone l'instanziazione diretta dall'esterno, e mettendo a disposizione un metodo statico o una proprietà (\textit{getter}) che restituisce l'unica copia esistente del componente.
+Il pattern Singleton garantisce che una classe abbia una sola istanza attiva in ogni momento e fornisce un punto di accesso globale a tale istanza. Questa proprietà si ottiene rendendo privato il costruttore della classe, impedendone l'instanziazione diretta dall'esterno, e mettendo a disposizione un metodo statico o una proprietà (\textit{getter}) che restituisce l'unica istanza disponibile.
 
 Nell'applicazione, questo pattern viene implementato seguendo gli standard del linguaggio Dart, utilizzando un costruttore privato e una variabile statica per mantenere il riferimento all'unica istanza creata al primo accesso.
 \paragraph{Ragioni per l'utilizzo:}\mbox{}\\
@@ -593,13 +593,13 @@ Il pattern Singleton è utilizzato per il coordinamento dei componenti di sessio
     \label{fig:pattern_di}
 \end{figure}
 \paragraph{Descrizione del pattern:}\mbox{}\\
-Il pattern Dependency Injection (DI) è una tecnica in cui un oggetto riceve dall'esterno le istanze degli oggetti da cui dipende, anziché doverle creare internamente. Nel progetto viene adottata la forma di \textit{constructor injection}: le dipendenze vengono passate ai componenti direttamente come parametri del costruttore durante la fase di istanziazione.
+Il pattern Dependency Injection (DI) è una tecnica in cui un oggetto riceve dall'esterno le istanze degli oggetti da cui dipende, anziché doverle creare internamente. Nel contesto dell'applicazione viene utilizzata in forma di \textit{constructor injection}: le dipendenze vengono passate ai componenti direttamente come parametri del costruttore durante la fase di istanziazione.
 
 Questo approccio permette di slegare i componenti logici dalla creazione delle proprie risorse. I \textit{ViewModel}, ad esempio, non istanziano mai i propri \textit{\term{Repository}}, ma li ricevono già configurati dal punto di ingresso del modulo o dell'applicazione, garantendo che ogni componente operi esclusivamente con le interfacce necessarie.
 \paragraph{Ragioni per l'utilizzo:}\mbox{}\\
 L'utilizzo della DI favorisce un'\term{Architettura} modulare e flessibile, riducendo l'accoppiamento tra le classi. Il vantaggio principale risiede nella testabilità: l'iniezione tramite costruttore permette di sostituire facilmente le dipendenze reali con oggetti fittizi (\textit{mock}), consentendo l'esecuzione di unit test in isolamento. Inoltre, centralizzare la logica di creazione degli oggetti facilita la manutenzione e l'eventuale sostituzione di implementazioni specifiche senza dover modificare i client che le utilizzano.
 \paragraph{Riferimenti nel progetto:}\mbox{}\\
-Il pattern è applicato diffusamente lungo l'intera struttura architetturale. Di seguito alcune classi che integrano attivamente questo approccio:
+Il pattern è applicato diffusamente in tutta l'applicazione. Di seguito alcune classi che integrano attivamente questo approccio:
 \begin{itemize}
     \item Autenticazione $\rightarrow$ \hyperref[DC-AuthViewModel]{\code{AuthViewModel}}
     \item Chatbot $\rightarrow$ \hyperref[DC-ChatbotViewModel]{\code{ChatbotViewModel}}
@@ -615,11 +615,11 @@ Il pattern è applicato diffusamente lungo l'intera struttura architetturale. Di
     \label{fig:pattern_command}
 \end{figure}
 \paragraph{Descrizione del pattern:}\mbox{}\\
-Il pattern Command è un design pattern comportamentale che incapsula una richiesta come un oggetto autonomo, consentendo di parametrizzare i client con diverse richieste, accodare o registrare le esecuzioni e supportare operazioni annullabili. Nel contesto di un'applicazione Flutter governata dall'\term{Architettura} MVVM, il pattern Command è utilizzato per incapsulare e standardizzare le azioni invocabili dall'interfaccia \term{Utente} (ad esempio, recuperi di dati di rete, click di invio form o interazioni con il \term{Backend}), esponendo comandi robusti e isolati dal layer di View.
+Il pattern Command è un design pattern comportamentale che incapsula una richiesta come un oggetto autonomo, consentendo di parametrizzare i client con diverse richieste, accodare o registrare le esecuzioni e supportare operazioni annullabili. Nel contesto di un'applicazione Flutter governata dal pattern MVVM, il pattern Command è utilizzato per incapsulare e standardizzare le azioni invocabili dall'interfaccia \ignoreglossary{utente}, esponendo comandi robusti e isolati dal layer di View.
 \paragraph{Ragioni per l'utilizzo:}\mbox{}\\
-Questa soluzione architetturale favorisce un severo disaccoppiamento tra la componente visiva che invoca l'azione (la View) e il modulo deputato all'esecuzione logica (il ViewModel o strati inferiori). Isolando e reificando l'interazione in un oggetto \textit{Command}, lo sviluppo beneficia in standardizzazione, accentrando il controllo della gestione di esecuzione asincrona e dei relativi stati interni dell'azione (attesa di elaborazione, conferme di successo o eccezioni previste). Questo elimina quasi integralmente le ridondanze nel codice e blinda attivamente interazioni non volute come, per esempio, l'avvio accidentale e simultaneo di richieste doppie a seguito di pressioni ripetute sull'interfaccia.
+Il pattern command permette di ottenere un forte disaccoppiamento tra la componente visiva che invoca l'azione (la View) e il modulo deputato all'esecuzione logica (il ViewModel o strati inferiori). Isolando e reificando l'interazione in un oggetto \textit{Command}, lo sviluppo beneficia in standardizzazione, accentrando il controllo della gestione di esecuzione asincrona e dei relativi stati interni dell'azione (attesa di elaborazione, conferme di successo o eccezioni previste). Questo elimina quasi integralmente le ridondanze nel codice e mitiga il verificarsi di interazioni non volute, come l'avvio accidentale e simultaneo di richieste doppie a seguito di pressioni ripetute sull'interfaccia.
 \paragraph{Riferimenti nel progetto:}\mbox{}\\
-Il pattern viene implementato sistematicamente in tutti i ViewModel dell'applicazione per la gestione delle interazioni \term{Utente} e delle operazioni asincrone. Di seguito le classi pilastro che compongono l'infrastruttura del pattern Command nel progetto:
+Il pattern viene implementato sistematicamente in tutti i ViewModel dell'applicazione per la gestione delle interazioni \term{Utente} e delle operazioni asincrone. Di seguito sono riportate le principali classi che costituiscono l’infrastruttura del pattern Command nell'applicazione:
 
 \paragraph{Command<T>}\mbox{}\\
 È la classe base astratta del pattern. Mantiene internamente lo stato dell'azione tramite 
@@ -630,7 +630,7 @@ dopo l'esecuzione dell'azione e gestisce le eccezioni.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-Command_T_.pdf}
-    \caption{Diagramma della classe \code{Command<T>}}
+    \caption[Diagramma della classe Command<T>]{Diagramma della classe \code{Command<T>}}
     \label{DC-Command<T>}
 \end{figure}
 
@@ -641,7 +641,7 @@ Espone il metodo pubblico \code{execute()} che delega a \code{\_execute()} della
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-Command0_T_.pdf}
-    \caption{Diagramma della classe \code{Command0<T>}}
+    \caption[Diagramma della classe Command0<T>]{Diagramma della classe \code{Command0<T>}}
     \label{DC-Command0<T>}
 \end{figure}
 
@@ -652,7 +652,7 @@ passato all'azione al momento dell'esecuzione.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-Command1_T,A_.pdf}
-    \caption{Diagramma della classe \code{Command1<T, A>}}
+    \caption[Diagramma della classe Command1<T, A>]{Diagramma della classe \code{Command1<T, A>}}
     \label{DC-Command1<T, A>}
 \end{figure}
 
@@ -729,7 +729,7 @@ La schermata è composta da widget più piccoli come \code{AuthHeaderWidget} e \
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{diagrammi_classi/auth/DC-AuthScreen.pdf}
-    \caption{Diagramma della classe \code{AuthScreen}}
+    \caption[Diagramma della classe AuthScreen]{Diagramma della classe \code{AuthScreen}}
     \label{DC-AuthScreen}
 \end{figure}
 
@@ -740,7 +740,7 @@ logica applicativa e contribuisce alla separazione delle responsabilità tra UI 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{diagrammi_classi/auth/DC-AuthHeaderWidget.pdf}
-    \caption{Diagramma della classe \code{AuthHeaderWidget}}
+    \caption[Diagramma della classe AuthHeaderWidget]{Diagramma della classe \code{AuthHeaderWidget}}
     \label{DC-AuthHeaderWidget}
 \end{figure}
 
@@ -750,7 +750,7 @@ Rappresenta il pulsante che consente all’\term{Utente} di avviare il \ignoregl
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{diagrammi_classi/auth/DC-GoogleLoginButtonWidget.pdf}
-    \caption{Diagramma della classe \code{GoogleLoginButtonWidget}}
+    \caption[Diagramma della classe GoogleLoginButtonWidget]{Diagramma della classe \code{GoogleLoginButtonWidget}}
     \label{DC-GoogleLoginButtonWidget}
 \end{figure}
 
@@ -761,7 +761,7 @@ ed è utilizzata dal resto del sistema per gestire lo stato dell’autenticazion
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{diagrammi_classi/auth/DC-User.pdf}
-    \caption{Diagramma della classe \code{User}}
+    \caption[Diagramma della classe User]{Diagramma della classe \code{User}}
     \label{DC-User}
 \end{figure}
 
@@ -772,7 +772,7 @@ formato JSON e di ricostruirlo a partire da dati serializzati.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{diagrammi_classi/auth/DC-UserDTO.pdf}
-    \caption{Diagramma della classe \code{UserDTO}}
+    \caption[Diagramma della classe UserDTO]{Diagramma della classe \code{UserDTO}}
     \label{DC-UserDTO}
 \end{figure}
 
@@ -784,7 +784,7 @@ Command, mentre il metodo \code{checkExistingSession()} consente di verificare l
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{diagrammi_classi/auth/DC-AuthViewModel.pdf}
-    \caption{Diagramma della classe \code{AuthViewModel}}
+    \caption[Diagramma della classe AuthViewModel]{Diagramma della classe \code{AuthViewModel}}
     \label{DC-AuthViewModel}
 \end{figure}
 
@@ -795,7 +795,7 @@ Il \term{Repository} espone metodi per effettuare il login, il logout, recuperar
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{diagrammi_classi/auth/DC-AuthRepository.pdf}
-    \caption{Diagramma della classe \code{AuthRepository}}
+    \caption[Diagramma della classe AuthRepository]{Diagramma della classe \code{AuthRepository}}
     \label{DC-AuthRepository}
 \end{figure}
 
@@ -806,7 +806,7 @@ scope richiesti. Si occupa esclusivamente di eseguire le chiamate di rete per il
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{diagrammi_classi/auth/DC-AuthService.pdf}
-    \caption{Diagramma della classe \code{AuthenticationService}}
+    \caption[Diagramma della classe AuthenticationService]{Diagramma della classe \code{AuthenticationService}}
     \label{DC-AuthService}
 \end{figure}
 
@@ -833,7 +833,7 @@ dell'invio quando l'\term{Utente} preme il pulsante.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-SosBottomSheetWidget.pdf}
-    \caption{Diagramma della classe \code{SosBottomSheetWidget}}
+    \caption[Diagramma della classe SosBottomSheetWidget]{Diagramma della classe \code{SosBottomSheetWidget}}
     \label{DC-SosBottomSheetWidget}
 \end{figure}
 
@@ -848,7 +848,7 @@ Espone \code{sendAlert} come \code{Command0} che la View può eseguire direttame
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-SosAlertViewModel.pdf}
-    \caption{Diagramma della classe \code{SosAlertViewModel}}
+    \caption[Diagramma della classe SosAlertViewModel]{Diagramma della classe \code{SosAlertViewModel}}
     \label{DC-SosAlertViewModel}
 \end{figure}
 
@@ -858,7 +858,7 @@ tramite \code{SosAlertService} e rappresenta il punto di separazione tra il laye
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-SosAlertRepository.pdf}
-    \caption{Diagramma della classe \code{SosAlertRepository}}
+    \caption[Diagramma della classe SosAlertRepository]{Diagramma della classe \code{SosAlertRepository}}
     \label{DC-SosAlertRepository}
 \end{figure}
 
@@ -868,7 +868,7 @@ Riceve da \code{SosAlertRepository} la richiesta di invio e si occupa esclusivam
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-SosAlertService.pdf}
-    \caption{Diagramma della classe \code{SosAlertService}}
+    \caption[Diagramma della classe SosAlertService]{Diagramma della classe \code{SosAlertService}}
     \label{DC-SosAlertService}
 \end{figure}
 
@@ -894,7 +894,7 @@ La classe \code{ChatbotScreen} rappresenta la schermata dell'applicazione dedica
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-ChatbotScreen.pdf}
-    \caption[Diagramma della classe \code{ChatbotScreen}]{Diagramma della classe \code{ChatbotScreen}}
+    \caption[Diagramma della classe ChatbotScreen]{Diagramma della classe \code{ChatbotScreen}}
     \label{DC-ChatbotScreen}
 \end{figure}
 
@@ -905,7 +905,7 @@ La classe \code{ChatWidget} è responsabile della visualizzazione della conversa
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-ChatWidget.pdf}
-    \caption[Diagramma della classe \code{ChatWidget}]{Diagramma della classe \code{ChatWidget}}
+    \caption[Diagramma della classe ChatWidget]{Diagramma della classe \code{ChatWidget}}
     \label{DC-ChatWidget}
 \end{figure}
 
@@ -916,7 +916,7 @@ La classe \code{ChatWidget} è responsabile della visualizzazione della conversa
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-ChatHistoryWidget.pdf}
-    \caption[Diagramma della classe \code{ChatHistoryWidget}]{Diagramma della classe \code{ChatHistoryWidget}}
+    \caption[Diagramma della classe ChatHistoryWidget]{Diagramma della classe \code{ChatHistoryWidget}}
     \label{DC-ChatHistoryWidget}
 \end{figure}
 
@@ -927,7 +927,7 @@ Questo componente dell'interfaccia consente all'\term{Utente} di selezionare la 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-ChatbotModeToggleWidget.pdf}
-    \caption[Diagramma della classe \code{ChatbotModeToggleWidget}]{Diagramma della classe \code{ChatbotModeToggleWidget}}
+    \caption[Diagramma della classe ChatbotModeToggleWidget]{Diagramma della classe \code{ChatbotModeToggleWidget}}
     \label{DC-ChatbotModeToggleWidget}
 \end{figure}
 
@@ -938,7 +938,7 @@ Questo componente dell'interfaccia consente all'\term{Utente} di selezionare la 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-ChatbotSendMessageWidget.pdf}
-    \caption[Diagramma della classe \code{ChatbotSendMessageWidget}]{Diagramma della classe \code{ChatbotSendMessageWidget}}
+    \caption[Diagramma della classe ChatbotSendMessageWidget]{Diagramma della classe \code{ChatbotSendMessageWidget}}
     \label{DC-ChatbotSendMessageWidget}
 \end{figure}
 
@@ -949,7 +949,7 @@ Questo widget fornisce all'\term{Utente} la possibilità di avviare una nuova co
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-ChatbotCreateChatWidget.pdf}
-    \caption[Diagramma della classe \code{ChatbotCreateChatWidget}]{Diagramma della classe \code{ChatbotCreateChatWidget}}
+    \caption[Diagramma della classe ChatbotCreateChatWidget]{Diagramma della classe \code{ChatbotCreateChatWidget}}
     \label{DC-ChatbotCreateChatWidget}
 \end{figure}
 
@@ -960,7 +960,7 @@ Questo widget fornisce all'\term{Utente} la possibilità di avviare una nuova co
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-ChatbotViewModel.pdf}
-    \caption[Diagramma della classe \code{ChatbotViewModel}]{Diagramma della classe \code{ChatbotViewModel}}
+    \caption[Diagramma della classe ChatbotViewModel]{Diagramma della classe \code{ChatbotViewModel}}
     \label{DC-ChatbotViewModel}
 \end{figure}
 
@@ -971,7 +971,7 @@ L'interfaccia \code{Chat} definisce il modello astratto di una conversazione tra
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-Chat.pdf}
-    \caption[Diagramma della classe \code{Chat}]{Diagramma della classe \code{Chat}}
+    \caption[Diagramma della classe Chat]{Diagramma della classe \code{Chat}}
     \label{DC-Chat}
 \end{figure}
 
@@ -982,7 +982,7 @@ L'interfaccia \code{Chat} definisce il modello astratto di una conversazione tra
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-ProxyChat.pdf}
-    \caption[Diagramma della classe \code{ProxyChat}]{Diagramma della classe \code{ProxyChat}}
+    \caption[Diagramma della classe ProxyChat]{Diagramma della classe \code{ProxyChat}}
     \label{DC-ProxyChat}
 \end{figure}
 
@@ -993,7 +993,7 @@ L'interfaccia \code{Chat} definisce il modello astratto di una conversazione tra
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-LocalChat.pdf}
-    \caption[Diagramma della classe \code{LocalChat}]{Diagramma della classe \code{LocalChat}}
+    \caption[Diagramma della classe LocalChat]{Diagramma della classe \code{LocalChat}}
     \label{DC-LocalChat}
 \end{figure}
 
@@ -1004,7 +1004,7 @@ L'interfaccia \code{Chat} definisce il modello astratto di una conversazione tra
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-ChatMessage.pdf}
-    \caption[Diagramma della classe \code{ChatMessage}]{Diagramma della classe \code{ChatMessage}}
+    \caption[Diagramma della classe ChatMessage]{Diagramma della classe \code{ChatMessage}}
     \label{DC-ChatMessage}
 \end{figure}
 
@@ -1015,7 +1015,7 @@ L'interfaccia \code{Chat} definisce il modello astratto di una conversazione tra
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-ChatMode.pdf}
-    \caption[Diagramma della classe \code{ChatMode}]{Diagramma della classe \code{ChatMode}}
+    \caption[Diagramma della classe ChatMode]{Diagramma della classe \code{ChatMode}}
     \label{DC-ChatMode}
 \end{figure}
 
@@ -1026,7 +1026,7 @@ L'interfaccia \code{Chat} definisce il modello astratto di una conversazione tra
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-MessageType.pdf}
-    \caption[Diagramma della classe \code{MessageType}]{Diagramma della classe \code{MessageType}}
+    \caption[Diagramma della classe MessageType]{Diagramma della classe \code{MessageType}}
     \label{DC-MessageType}
 \end{figure}
 
@@ -1037,7 +1037,7 @@ L'interfaccia \code{Chat} definisce il modello astratto di una conversazione tra
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-MessageResponse.pdf}
-    \caption[Diagramma della classe \code{MessageResponse}]{Diagramma della classe \code{MessageResponse}}
+    \caption[Diagramma della classe MessageResponse]{Diagramma della classe \code{MessageResponse}}
     \label{DC-MessageResponse}
 \end{figure}
 
@@ -1048,7 +1048,7 @@ L'interfaccia \code{Chat} definisce il modello astratto di una conversazione tra
 \begin{figure}[H]
     \centering
         \includegraphics[width=0.6\textwidth]{diagrammi_classi/chatbot/DC-ChatbotRepository.pdf}
-    \caption[Diagramma della classe \code{ChatbotRepository}]{Diagramma della classe \code{ChatbotRepository}}
+    \caption[Diagramma della classe ChatbotRepository]{Diagramma della classe \code{ChatbotRepository}}
     \label{DC-ChatbotRepository}
 \end{figure}
 
@@ -1059,7 +1059,7 @@ L'interfaccia \code{Chat} definisce il modello astratto di una conversazione tra
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\textwidth]{diagrammi_classi/chatbot/DC-ChatbotService.pdf}
-    \caption[Diagramma della classe \code{ChatbotService}]{Diagramma della classe \code{ChatbotService}}
+    \caption[Diagramma della classe ChatbotService]{Diagramma della classe \code{ChatbotService}}
     \label{DC-ChatbotService}
 \end{figure}
 
@@ -1074,7 +1074,7 @@ L'interfaccia \code{Chat} definisce il modello astratto di una conversazione tra
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-ChatDTO.pdf}
-    \caption[Diagramma della classe \code{ChatDTO}]{Diagramma della classe \code{ChatDTO}}
+    \caption[Diagramma della classe ChatDTO]{Diagramma della classe \code{ChatDTO}}
     \label{DC-ChatDTO}
 \end{figure}
 
@@ -1097,7 +1097,7 @@ La classe \code{DiaryAccessScreen} si occupa della rappresentazione visiva della
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/diari/DC-DiaryAccessScreen.pdf}
-    \caption[Diagramma della classe \code{DiaryAccessScreen}]{Diagramma della classe \code{DiaryAccessScreen}}
+    \caption[Diagramma della classe DiaryAccessScreen]{Diagramma della classe \code{DiaryAccessScreen}}
     \label{DC-DiaryAccessScreen}
 \end{figure}
 
@@ -1107,7 +1107,7 @@ La classe \code{PasswordFormWidget} è responsabile della visualizzazione dei ca
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/diari/DC-PasswordFormWidget.pdf}
-    \caption[Diagramma della classe \code{PasswordFormWidget}]{Diagramma della classe \code{PasswordFormWidget}}
+    \caption[Diagramma della classe PasswordFormWidget]{Diagramma della classe \code{PasswordFormWidget}}
     \label{DC-PasswordFormWidget}
 \end{figure}
 
@@ -1117,7 +1117,7 @@ La classe \code{DiaryAccessViewModel} gestisce lo stato dell'applicazione e coor
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/diari/DC-DiaryAccessViewModel.pdf}
-    \caption[Diagramma della classe \code{DiaryAccessViewModel}]{Diagramma della classe \code{DiaryAccessViewModel}}
+    \caption[Diagramma della classe DiaryAccessViewModel]{Diagramma della classe \code{DiaryAccessViewModel}}
     \label{DC-DiaryAccessViewModel}
 \end{figure}
 
@@ -1127,7 +1127,7 @@ La classe \code{DiaryAccessViewModel} gestisce lo stato dell'applicazione e coor
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/diari/DC-DiaryAccountRepository.pdf}
-    \caption[Diagramma della classe \code{DiaryAccountRepository}]{Diagramma della classe \code{DiaryAccountRepository}}
+    \caption[Diagramma della classe DiaryAccountRepository]{Diagramma della classe \code{DiaryAccountRepository}}
     \label{DC-DiaryAccountRepository}
 \end{figure}
 
@@ -1137,7 +1137,7 @@ La classe \code{DiaryAccountService} rappresenta lo strato infrastrutturale resp
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/diari/DC-DiaryAccountService.pdf}
-    \caption[Diagramma della classe \code{DiaryAccountService}]{Diagramma della classe \code{DiaryAccountService}}
+    \caption[Diagramma della classe DiaryAccountService]{Diagramma della classe \code{DiaryAccountService}}
     \label{DC-DiaryAccountService}
 \end{figure}
 
@@ -1147,7 +1147,7 @@ L'enumerazione \code{DiaryAccessResult} permette la classificazione della rispos
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/diari/DC-DiaryAccessResult.pdf}
-    \caption[Diagramma della classe \code{DiaryAccessResult}]{Diagramma della classe \code{DiaryAccessResult}}
+    \caption[Diagramma della classe DiaryAccessResult]{Diagramma della classe \code{DiaryAccessResult}}
     \label{DC-DiaryAccessResult}
 \end{figure}
 
@@ -1157,7 +1157,7 @@ La classe \code{DiaryScreen} gestisce la rappresentazione visiva della schermata
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/diari/DC-DiaryScreen.pdf}
-    \caption[Diagramma della classe \code{DiaryScreen}]{Diagramma della classe \code{DiaryScreen}}
+    \caption[Diagramma della classe DiaryScreen]{Diagramma della classe \code{DiaryScreen}}
     \label{DC-DiaryScreen}
 \end{figure}
 
@@ -1167,7 +1167,7 @@ La classe \code{NoteListWidget} si occupa della visualizzazione della lista dell
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/diari/DC-NoteListWidget.pdf}
-    \caption[Diagramma della classe \code{NoteListWidget}]{Diagramma della classe \code{NoteListWidget}}
+    \caption[Diagramma della classe NoteListWidget]{Diagramma della classe \code{NoteListWidget}}
     \label{DC-NoteListWidget}
 \end{figure}
 
@@ -1177,7 +1177,7 @@ La classe \code{NoteActionsWidget} si occupa della visualizzazione delle compone
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/diari/DC-NoteActionsWidget.pdf}
-    \caption[Diagramma della classe \code{NoteActionsWidget}]{Diagramma della classe \code{NoteActionsWidget}}
+    \caption[Diagramma della classe NoteActionsWidget]{Diagramma della classe \code{NoteActionsWidget}}
     \label{DC-NoteActionsWidget}
 \end{figure}
 
@@ -1187,7 +1187,7 @@ La classe \code{NoteActionsWidget} si occupa della visualizzazione delle compone
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/diari/DC-DiaryViewModel.pdf}
-    \caption[Diagramma della classe \code{DiaryViewModel}]{Diagramma della classe \code{DiaryViewModel}}
+    \caption[Diagramma della classe DiaryViewModel]{Diagramma della classe \code{DiaryViewModel}}
     \label{DC-DiaryViewModel}
 \end{figure}
 
@@ -1197,7 +1197,7 @@ La classe \code{DiarySession} modella l'istanza effettiva del diario, tenendo tr
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/diari/DC-DiarySession.pdf}
-    \caption[Diagramma della classe \code{DiarySession}]{Diagramma della classe \code{DiarySession}}
+    \caption[Diagramma della classe DiarySession]{Diagramma della classe \code{DiarySession}}
     \label{DC-DiarySession}
 \end{figure}
 
@@ -1207,7 +1207,7 @@ L'enumerazione \code{DiaryType} rappresenta le due tipologie di diario disponibi
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/diari/DC-DiaryType.pdf}
-    \caption[Diagramma della classe \code{DiaryType}]{Diagramma della classe \code{DiaryType}}
+    \caption[Diagramma della classe DiaryType]{Diagramma della classe \code{DiaryType}}
     \label{DC-DiaryType}
 \end{figure}
 
@@ -1217,7 +1217,7 @@ L'interfaccia \code{Note} definisce i metodi necessari per gli oggetti rappresen
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/diari/DC-Note.pdf}
-    \caption[Diagramma della classe \code{Note}]{Diagramma della classe \code{Note}}
+    \caption[Diagramma della classe Note]{Diagramma della classe \code{Note}}
     \label{DC-Note}
 \end{figure}
 
@@ -1227,7 +1227,7 @@ La classe contiene un riferimento ad un oggetto \code{LocalNote} a cui delega le
 \begin{figure}[H]
     \centering    
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/diari/DC-ProxyNote.pdf}
-    \caption[Diagramma della classe \code{ProxyNote}]{Diagramma della classe \code{ProxyNote}}
+    \caption[Diagramma della classe ProxyNote]{Diagramma della classe \code{ProxyNote}}
     \label{DC-ProxyNote}
 \end{figure}
 
@@ -1237,7 +1237,7 @@ La classe contiene un riferimento ad un oggetto \code{LocalNote} a cui delega le
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/diari/DC-LocalNote.pdf}
-    \caption[Diagramma della classe \code{LocalNote}]{Diagramma della classe \code{LocalNote}}
+    \caption[Diagramma della classe LocalNote]{Diagramma della classe \code{LocalNote}}
     \label{DC-LocalNote}
 \end{figure}
 
@@ -1247,7 +1247,7 @@ La classe astratta \code{NoteElement} rappresenta un elemento presente all'inter
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/diari/DC-NoteElement.pdf}
-    \caption[Diagramma della classe \code{NoteElement}]{Diagramma della classe \code{NoteElement}}
+    \caption[Diagramma della classe NoteElement]{Diagramma della classe \code{NoteElement}}
     \label{DC-NoteElement}
 \end{figure}
 
@@ -1257,7 +1257,7 @@ La classe concreta \code{NoteTextElement} è la specializzazione di \code{NoteEl
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/diari/DC-NoteTextElement.pdf}
-    \caption[Diagramma della classe \code{NoteTextElement}]{Diagramma della classe \code{NoteTextElement}}
+    \caption[Diagramma della classe NoteTextElement]{Diagramma della classe \code{NoteTextElement}}
     \label{DC-NoteTextElement}
 \end{figure}
 
@@ -1267,7 +1267,7 @@ La classe concreta \code{NoteImgElement} è la specializzazione di \code{NoteEle
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/diari/DC-NoteImgElement.pdf}
-    \caption[Diagramma della classe \code{NoteImgElement}]{Diagramma della classe \code{NoteImgElement}}
+    \caption[Diagramma della classe NoteImgElement]{Diagramma della classe \code{NoteImgElement}}
     \label{DC-NoteImgElement}
 \end{figure}
 
@@ -1277,7 +1277,7 @@ La classe concreta \code{NoteAudioElement} è la specializzazione di \code{NoteE
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/diari/DC-NoteAudioElement.pdf}
-    \caption[Diagramma della classe \code{NoteAudioElement}]{Diagramma della classe \code{NoteAudioElement}}
+    \caption[Diagramma della classe NoteAudioElement]{Diagramma della classe \code{NoteAudioElement}}
     \label{DC-NoteAudioElement}
 \end{figure}
 
@@ -1287,7 +1287,7 @@ La classe \code{NoteService} rappresenta il livello infrastrutturale dedicato al
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/diari/DC-NoteService.pdf}
-    \caption[Diagramma della classe \code{NoteService}]{Diagramma della classe \code{NoteService}}
+    \caption[Diagramma della classe NoteService]{Diagramma della classe \code{NoteService}}
     \label{DC-NoteService}
 \end{figure}
 
@@ -1297,7 +1297,7 @@ La classe \code{NoteRepository} funge da strato di astrazione tra \code{DiaryVie
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/diari/DC-NoteRepository.pdf}
-    \caption[Diagramma della classe \code{NoteRepository}]{Diagramma della classe \code{NoteRepository}}
+    \caption[Diagramma della classe NoteRepository]{Diagramma della classe \code{NoteRepository}}
     \label{DC-NoteRepository}
 \end{figure}
 
@@ -1311,7 +1311,7 @@ La classe \code{NoteRepository} funge da strato di astrazione tra \code{DiaryVie
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/diari/DC-NoteDTO.pdf}
-    \caption[Diagramma della classe \code{NoteDTO}]{Diagramma della classe \code{NoteDTO}}
+    \caption[Diagramma della classe NoteDTO]{Diagramma della classe \code{NoteDTO}}
     \label{DC-NoteDTO}
 \end{figure}
 
@@ -1334,7 +1334,7 @@ La classe \code{TrustedContactScreen} rappresenta la schermata principale dedica
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/contatti_fidati/DC-TrustedContactScreen.pdf}
-    \caption[Diagramma della classe \code{TrustedContactScreen}]{Diagramma della classe \code{TrustedContactScreen}}
+    \caption[Diagramma della classe TrustedContactScreen]{Diagramma della classe \code{TrustedContactScreen}}
     \label{DC-TrustedContactScreen}
 \end{figure}
 
@@ -1345,7 +1345,7 @@ La classe \code{TrustedContactListWidget} è responsabile della visualizzazione 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/contatti_fidati/DC-TrustedContactListWidget.pdf}
-    \caption[Diagramma della classe \code{TrustedContactListWidget}]{Diagramma della classe \code{TrustedContactListWidget}}
+    \caption[Diagramma della classe TrustedContactListWidget]{Diagramma della classe \code{TrustedContactListWidget}}
     \label{DC-TrustedContactListWidget}
 \end{figure}
 
@@ -1356,7 +1356,7 @@ La classe \code{TrustedContactListWidget} è responsabile della visualizzazione 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/contatti_fidati/DC-TrustedContactFormWidget.pdf}
-    \caption[Diagramma della classe \code{TrustedContactFormWidget}]{Diagramma della classe \code{TrustedContactFormWidget}}
+    \caption[Diagramma della classe TrustedContactFormWidget]{Diagramma della classe \code{TrustedContactFormWidget}}
     \label{DC-TrustedContactFormWidget}
 \end{figure}
 
@@ -1367,7 +1367,7 @@ Questo widget raggruppa i bottoni e le azioni specifiche per la gestione dei con
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/contatti_fidati/DC-TrustedContactActionsWidget.pdf}
-    \caption[Diagramma della classe \code{TrustedContactActionsWidget}]{Diagramma della classe \code{TrustedContactActionsWidget}}
+    \caption[Diagramma della classe TrustedContactActionsWidget]{Diagramma della classe \code{TrustedContactActionsWidget}}
     \label{DC-TrustedContactActionsWidget}
 \end{figure}
 
@@ -1378,7 +1378,7 @@ Questo widget raggruppa i bottoni e le azioni specifiche per la gestione dei con
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/contatti_fidati/DC-TrustedContactViewModel.pdf}
-    \caption[Diagramma della classe \code{TrustedContactViewModel}]{Diagramma della classe \code{TrustedContactViewModel}}
+    \caption[Diagramma della classe TrustedContactViewModel]{Diagramma della classe \code{TrustedContactViewModel}}
     \label{DC-TrustedContactViewModel}
 \end{figure}
 
@@ -1389,7 +1389,7 @@ Questo widget raggruppa i bottoni e le azioni specifiche per la gestione dei con
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/contatti_fidati/DC-TrustedContact.pdf}
-    \caption[Diagramma della classe \code{TrustedContact}]{Diagramma della classe \code{TrustedContact}}
+    \caption[Diagramma della classe TrustedContact]{Diagramma della classe \code{TrustedContact}}
     \label{DC-TrustedContact}
 \end{figure}
 
@@ -1400,7 +1400,7 @@ Questo widget raggruppa i bottoni e le azioni specifiche per la gestione dei con
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{diagrammi_classi/contatti_fidati/DC-TrustedContactRepository.pdf}
-    \caption[Diagramma della classe \code{TrustedContactRepository}]{Diagramma della classe \code{TrustedContactRepository}}
+    \caption[Diagramma della classe TrustedContactRepository]{Diagramma della classe \code{TrustedContactRepository}}
     \label{DC-TrustedContactRepository}
 \end{figure}
 
@@ -1411,7 +1411,7 @@ Questo widget raggruppa i bottoni e le azioni specifiche per la gestione dei con
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{diagrammi_classi/contatti_fidati/DC-TrustedContactService.pdf}
-    \caption[Diagramma della classe \code{TrustedContactService}]{Diagramma della classe \code{TrustedContactService}}
+    \caption[Diagramma della classe TrustedContactService]{Diagramma della classe \code{TrustedContactService}}
     \label{DC-TrustedContactService}
 \end{figure}
 
@@ -1422,7 +1422,7 @@ Questo widget raggruppa i bottoni e le azioni specifiche per la gestione dei con
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/contatti_fidati/DC-TrustedContactDTO.pdf}
-    \caption[Diagramma della classe \code{TrustedContactDTO}]{Diagramma della classe \code{TrustedContactDTO}}
+    \caption[Diagramma della classe TrustedContactDTO]{Diagramma della classe \code{TrustedContactDTO}}
     \label{DC-TrustedContactDTO}
 \end{figure}
 
@@ -1447,7 +1447,7 @@ La classe \code{SafePlaceMapScreen} rappresenta la schermata principale dedicata
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/luoghi_sicuri/DC-SafePlaceMapScreen.pdf}
-    \caption[Diagramma della classe \code{SafePlaceMapScreen}]{Diagramma della classe \code{SafePlaceMapScreen}}
+    \caption[Diagramma della classe SafePlaceMapScreen]{Diagramma della classe \code{SafePlaceMapScreen}}
     \label{DC-SafePlaceMapScreen}
 \end{figure}
 
@@ -1458,7 +1458,7 @@ Il componente \code{SafePlaceMapWidget} incapsula la logica necessaria all'inter
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/luoghi_sicuri/DC-SafePlaceMapWidget.pdf}
-    \caption[Diagramma della classe \code{SafePlaceMapWidget}]{Diagramma della classe \code{SafePlaceMapWidget}}
+    \caption[Diagramma della classe SafePlaceMapWidget]{Diagramma della classe \code{SafePlaceMapWidget}}
     \label{DC-SafePlaceMapWidget}
 \end{figure}
 
@@ -1469,7 +1469,7 @@ Il componente \code{SafePlaceMapWidget} incapsula la logica necessaria all'inter
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/luoghi_sicuri/DC-SafePlaceViewModel.pdf}
-    \caption[Diagramma della classe \code{SafePlaceViewModel}]{Diagramma della classe \code{SafePlaceViewModel}}
+    \caption[Diagramma della classe SafePlaceViewModel]{Diagramma della classe \code{SafePlaceViewModel}}
     \label{DC-SafePlaceViewModel}
 \end{figure}
 
@@ -1480,7 +1480,7 @@ Il componente \code{SafePlaceMapWidget} incapsula la logica necessaria all'inter
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/luoghi_sicuri/DC-SafePlace.pdf}
-    \caption[Diagramma della classe \code{SafePlace}]{Diagramma della classe \code{SafePlace}}
+    \caption[Diagramma della classe SafePlace]{Diagramma della classe \code{SafePlace}}
     \label{DC-SafePlace}
 \end{figure}
 
@@ -1491,7 +1491,7 @@ Il \code{SafePlaceRepository} astrae la sorgente dei dati geografici per il View
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/luoghi_sicuri/DC-SafePlaceRepository.pdf}
-    \caption[Diagramma della classe \code{SafePlaceRepository}]{Diagramma della classe \code{SafePlaceRepository}}
+    \caption[Diagramma della classe SafePlaceRepository]{Diagramma della classe \code{SafePlaceRepository}}
     \label{DC-SafePlaceRepository}
 \end{figure}
 
@@ -1502,7 +1502,7 @@ Appartenente al livello infrastrutturale, \code{SafePlaceService} si occupa di e
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/luoghi_sicuri/DC-SafePlaceService.pdf}
-    \caption[Diagramma della classe \code{SafePlaceService}]{Diagramma della classe \code{SafePlaceService}}
+    \caption[Diagramma della classe SafePlaceService]{Diagramma della classe \code{SafePlaceService}}
     \label{DC-SafePlaceService}
 \end{figure}
 
@@ -1513,7 +1513,7 @@ La classe \code{SafePlaceDTO} (\textit{Data Transfer Object}) gestisce la serial
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/luoghi_sicuri/DC-SafePlaceDTO.pdf}
-    \caption[Diagramma della classe \code{SafePlaceDTO}]{Diagramma della classe \code{SafePlaceDTO}}
+    \caption[Diagramma della classe SafePlaceDTO]{Diagramma della classe \code{SafePlaceDTO}}
     \label{DC-SafePlaceDTO}
 \end{figure}
 
@@ -1539,7 +1539,7 @@ La classe \code{DeadManScreen} rappresenta la schermata principale del pannello 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/dead_man_switch/DC-DeadManScreen.pdf}
-    \caption[Diagramma della classe \code{DeadManScreen}]{Diagramma della classe \code{DeadManScreen}}
+    \caption[Diagramma della classe DeadManScreen]{Diagramma della classe \code{DeadManScreen}}
     \label{DC-DeadManScreen}
 \end{figure}
 
@@ -1550,7 +1550,7 @@ Questo componente incapsula gli elementi interattivi dell'interfaccia, come i se
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/dead_man_switch/DC-DeadManFormWidget.pdf}
-    \caption[Diagramma della classe \code{DeadManFormWidget}]{Diagramma della classe \code{DeadManFormWidget}}
+    \caption[Diagramma della classe DeadManFormWidget]{Diagramma della classe \code{DeadManFormWidget}}
     \label{DC-DeadManFormWidget}
 \end{figure}
 
@@ -1561,7 +1561,7 @@ Questo componente incapsula gli elementi interattivi dell'interfaccia, come i se
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/dead_man_switch/DC-DeadManViewModel.pdf}
-    \caption[Diagramma della classe \code{DeadManViewModel}]{Diagramma della classe \code{DeadManViewModel}}
+    \caption[Diagramma della classe DeadManViewModel]{Diagramma della classe \code{DeadManViewModel}}
     \label{DC-DeadManViewModel}
 \end{figure}
 
@@ -1572,7 +1572,7 @@ Questo componente incapsula gli elementi interattivi dell'interfaccia, come i se
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/dead_man_switch/DC-DeadManSettings.pdf}
-    \caption[Diagramma della classe \code{DeadManSettings}]{Diagramma della classe \code{DeadManSettings}}
+    \caption[Diagramma della classe DeadManSettings]{Diagramma della classe \code{DeadManSettings}}
     \label{DC-DeadManSettings}
 \end{figure}
 
@@ -1583,7 +1583,7 @@ Il \code{DeadManRepository} gestisce la persistenza e il recupero delle configur
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/dead_man_switch/DC-DeadManRepository.pdf}
-    \caption[Diagramma della classe \code{DeadManRepository}]{Diagramma della classe \code{DeadManRepository}}
+    \caption[Diagramma della classe DeadManRepository]{Diagramma della classe \code{DeadManRepository}}
     \label{DC-DeadManRepository}
 \end{figure}
 
@@ -1594,7 +1594,7 @@ Appartenente al \term{Data Layer}, \code{DeadManService} si occupa della comunic
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/dead_man_switch/DC-DeadManService.pdf}
-    \caption[Diagramma della classe \code{DeadManService}]{Diagramma della classe \code{DeadManService}}
+    \caption[Diagramma della classe DeadManService]{Diagramma della classe \code{DeadManService}}
     \label{DC-DeadManService}
 \end{figure}
 
@@ -1605,7 +1605,7 @@ Il \code{DeadManSettingsDTO} è l'oggetto di trasferimento dati incaricato della
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/dead_man_switch/DC-DeadManSettingsDTO.pdf}
-    \caption[Diagramma della classe \code{DeadManSettingsDTO}]{Diagramma della classe \code{DeadManSettingsDTO}}
+    \caption[Diagramma della classe DeadManSettingsDTO]{Diagramma della classe \code{DeadManSettingsDTO}}
     \label{DC-DeadManSettingsDTO}
 \end{figure}
 
@@ -1630,7 +1630,7 @@ La classe \code{InfoHubScreen} funge da punto di ingresso per l'intera area info
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-InfoHubScreen.pdf}
-    \caption[Diagramma della classe \code{InfoHubScreen}]{Diagramma della classe \code{InfoHubScreen}}
+    \caption[Diagramma della classe InfoHubScreen]{Diagramma della classe \code{InfoHubScreen}}
     \label{DC-InfoHubScreen}
 \end{figure}
 % --- SOTTOSEZIONE COMMUNITY ---
@@ -1641,7 +1641,7 @@ La classe \code{InfoHubScreen} funge da punto di ingresso per l'intera area info
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-CommunityScreen.pdf}
-    \caption[Diagramma della classe \code{CommunityScreen}]{Diagramma della classe \code{CommunityScreen}}
+    \caption[Diagramma della classe CommunityScreen]{Diagramma della classe \code{CommunityScreen}}
     \label{DC-CommunityScreen}
 \end{figure}
 
@@ -1652,7 +1652,7 @@ Responsabile della renderizzazione dell'elenco delle community, \code{CommunityL
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-CommunityListWidget.pdf}
-    \caption[Diagramma della classe \code{CommunityListWidget}]{Diagramma della classe \code{CommunityListWidget}}
+    \caption[Diagramma della classe CommunityListWidget]{Diagramma della classe \code{CommunityListWidget}}
     \label{DC-CommunityListWidget}
 \end{figure}
 
@@ -1663,7 +1663,7 @@ Responsabile della renderizzazione dell'elenco delle community, \code{CommunityL
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-CommunityViewModel.pdf}
-    \caption[Diagramma della classe \code{CommunityViewModel}]{Diagramma della classe \code{CommunityViewModel}}
+    \caption[Diagramma della classe CommunityViewModel]{Diagramma della classe \code{CommunityViewModel}}
     \label{DC-CommunityViewModel}
 \end{figure}
 
@@ -1674,7 +1674,7 @@ Classe di dominio che modella le informazioni di una community di supporto. Incl
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-Community.pdf}
-    \caption[Diagramma della classe \code{Community}]{Diagramma della classe \code{Community}}
+    \caption[Diagramma della classe Community]{Diagramma della classe \code{Community}}
     \label{DC-Community}
 \end{figure}
 
@@ -1685,7 +1685,7 @@ La classe \code{CommunityRepository} funge da intermediario tra il ViewModel e i
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-CommunityRepository.pdf}
-    \caption[Diagramma della classe \code{CommunityRepository}]{Diagramma della classe \code{CommunityRepository}}
+    \caption[Diagramma della classe CommunityRepository]{Diagramma della classe \code{CommunityRepository}}
     \label{DC-CommunityRepository}
 \end{figure}
 
@@ -1696,7 +1696,7 @@ Appartenente al \term{Data Layer}, \code{CommunityService} esegue le richieste H
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-CommunityService.pdf}
-    \caption[Diagramma della classe \code{CommunityService}]{Diagramma della classe \code{CommunityService}}
+    \caption[Diagramma della classe CommunityService]{Diagramma della classe \code{CommunityService}}
     \label{DC-CommunityService}
 \end{figure}
 
@@ -1707,7 +1707,7 @@ La classe \code{CommunityDTO} gestisce la logica di mappatura dei dati. Implemen
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-CommunityDTO.pdf}
-    \caption[Diagramma della classe \code{CommunityDTO}]{Diagramma della classe \code{CommunityDTO}}
+    \caption[Diagramma della classe CommunityDTO]{Diagramma della classe \code{CommunityDTO}}
     \label{DC-CommunityDTO}
 \end{figure}
 
@@ -1719,7 +1719,7 @@ La classe \code{CommunityDTO} gestisce la logica di mappatura dei dati. Implemen
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-LegislationScreen.pdf}
-    \caption[Diagramma della classe \code{LegislationScreen}]{Diagramma della classe \code{LegislationScreen}}
+    \caption[Diagramma della classe LegislationScreen]{Diagramma della classe \code{LegislationScreen}}
     \label{DC-LegislationScreen}
 \end{figure}
 
@@ -1730,7 +1730,7 @@ Responsabile della renderizzazione dell'elenco delle leggi, \code{LegislationLis
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-LegislationListWidget.pdf}
-    \caption[Diagramma della classe \code{LegislationListWidget}]{Diagramma della classe \code{LegislationListWidget}}
+    \caption[Diagramma della classe LegislationListWidget]{Diagramma della classe \code{LegislationListWidget}}
     \label{DC-LegislationListWidget}
 \end{figure}
 
@@ -1741,7 +1741,7 @@ Responsabile della renderizzazione dell'elenco delle leggi, \code{LegislationLis
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-LegislationViewModel.pdf}
-    \caption[Diagramma della classe \code{LegislationViewModel}]{Diagramma della classe \code{LegislationViewModel}}
+    \caption[Diagramma della classe LegislationViewModel]{Diagramma della classe \code{LegislationViewModel}}
     \label{DC-LegislationViewModel}
 \end{figure}
 
@@ -1752,7 +1752,7 @@ Classe di dominio che modella le informazioni di una legge o di un riferimento n
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-Legislation.pdf}
-    \caption[Diagramma della classe \code{Legislation}]{Diagramma della classe \code{Legislation}}
+    \caption[Diagramma della classe Legislation]{Diagramma della classe \code{Legislation}}
     \label{DC-Legislation}
 \end{figure}
 
@@ -1763,7 +1763,7 @@ La classe \code{LegislationRepository} funge da intermediario tra il ViewModel e
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-LegislationRepository.pdf}
-    \caption[Diagramma della classe \code{LegislationRepository}]{Diagramma della classe \code{LegislationRepository}}
+    \caption[Diagramma della classe LegislationRepository]{Diagramma della classe \code{LegislationRepository}}
     \label{DC-LegislationRepository}
 \end{figure}
 
@@ -1774,7 +1774,7 @@ Appartenente al \term{Data Layer}, \code{LegislationService} esegue le richieste
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-LegislationService.pdf}
-    \caption[Diagramma della classe \code{LegislationService}]{Diagramma della classe \code{LegislationService}}
+    \caption[Diagramma della classe LegislationService]{Diagramma della classe \code{LegislationService}}
     \label{DC-LegislationService}
 \end{figure}
 
@@ -1785,7 +1785,7 @@ La classe \code{LegislationDTO} gestisce la logica di mappatura dei dati. Implem
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-LegislationDTO.pdf}
-    \caption[Diagramma della classe \code{LegislationDTO}]{Diagramma della classe \code{LegislationDTO}}
+    \caption[Diagramma della classe LegislationDTO]{Diagramma della classe \code{LegislationDTO}}
     \label{DC-LegislationDTO}
 \end{figure}
 
@@ -1797,7 +1797,7 @@ La classe \code{LegislationDTO} gestisce la logica di mappatura dei dati. Implem
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-InfoMaterialScreen.pdf}
-    \caption[Diagramma della classe \code{InfoMaterialScreen}]{Diagramma della classe \code{InfoMaterialScreen}}
+    \caption[Diagramma della classe InfoMaterialScreen]{Diagramma della classe \code{InfoMaterialScreen}}
     \label{DC-InfoMaterialScreen}
 \end{figure}
 
@@ -1808,7 +1808,7 @@ Responsabile della renderizzazione dell'elenco del materiale informativo, \code{
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-InfoMaterialListWidget.pdf}
-    \caption[Diagramma della classe \code{InfoMaterialListWidget}]{Diagramma della classe \code{InfoMaterialListWidget}}
+    \caption[Diagramma della classe InfoMaterialListWidget]{Diagramma della classe \code{InfoMaterialListWidget}}
     \label{DC-InfoMaterialListWidget}
 \end{figure}
 
@@ -1819,7 +1819,7 @@ Responsabile della renderizzazione dell'elenco del materiale informativo, \code{
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-InfoMaterialViewModel.pdf}
-    \caption[Diagramma della classe \code{InfoMaterialViewModel}]{Diagramma della classe \code{InfoMaterialViewModel}}
+    \caption[Diagramma della classe InfoMaterialViewModel]{Diagramma della classe \code{InfoMaterialViewModel}}
     \label{DC-InfoMaterialViewModel}
 \end{figure}
 
@@ -1830,7 +1830,7 @@ Classe di dominio che modella le informazioni di un materiale informativo. Inclu
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-InfoMaterial.pdf}
-    \caption[Diagramma della classe \code{InfoMaterial}]{Diagramma della classe \code{InfoMaterial}}
+    \caption[Diagramma della classe InfoMaterial]{Diagramma della classe \code{InfoMaterial}}
     \label{DC-InfoMaterial}
 \end{figure}
 
@@ -1841,7 +1841,7 @@ La classe \code{InfoMaterialRepository} funge da intermediario tra il ViewModel 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-InfoMaterialRepository.pdf}
-    \caption[Diagramma della classe \code{InfoMaterialRepository}]{Diagramma della classe \code{InfoMaterialRepository}}
+    \caption[Diagramma della classe InfoMaterialRepository]{Diagramma della classe \code{InfoMaterialRepository}}
     \label{DC-InfoMaterialRepository}
 \end{figure}
 
@@ -1852,7 +1852,7 @@ Appartenente al \term{Data Layer}, \code{InfoMaterialService} esegue le richiest
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-InfoMaterialService.pdf}
-    \caption[Diagramma della classe \code{InfoMaterialService}]{Diagramma della classe \code{InfoMaterialService}}
+    \caption[Diagramma della classe InfoMaterialService]{Diagramma della classe \code{InfoMaterialService}}
     \label{DC-InfoMaterialService}
 \end{figure}
 
@@ -1863,7 +1863,7 @@ La classe \code{InfoMaterialDTO} gestisce la logica di mappatura dei dati. Imple
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-InfoMaterialDTO.pdf}
-    \caption[Diagramma della classe \code{InfoMaterialDTO}]{Diagramma della classe \code{InfoMaterialDTO}}
+    \caption[Diagramma della classe InfoMaterialDTO]{Diagramma della classe \code{InfoMaterialDTO}}
     \label{DC-InfoMaterialDTO}
 \end{figure}
 
@@ -1876,7 +1876,7 @@ La classe \code{InfoMaterialDTO} gestisce la logica di mappatura dei dati. Imple
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-EmergencyContactScreen.pdf}
-    \caption[Diagramma della classe \code{EmergencyContactScreen}]{Diagramma della classe \code{EmergencyContactScreen}}
+    \caption[Diagramma della classe EmergencyContactScreen]{Diagramma della classe \code{EmergencyContactScreen}}
     \label{DC-EmergencyContactScreen}
 \end{figure}
 
@@ -1887,7 +1887,7 @@ Responsabile della renderizzazione dell'elenco dei contatti, \code{EmergencyCont
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-EmergencyContactListWidget.pdf}
-    \caption[Diagramma della classe \code{EmergencyContactListWidget}]{Diagramma della classe \code{EmergencyContactListWidget}}
+    \caption[Diagramma della classe EmergencyContactListWidget]{Diagramma della classe \code{EmergencyContactListWidget}}
     \label{DC-EmergencyContactListWidget}
 \end{figure}
 
@@ -1898,7 +1898,7 @@ Responsabile della renderizzazione dell'elenco dei contatti, \code{EmergencyCont
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-EmergencyContactViewModel.pdf}
-    \caption[Diagramma della classe \code{EmergencyContactViewModel}]{Diagramma della classe \code{EmergencyContactViewModel}}
+    \caption[Diagramma della classe EmergencyContactViewModel]{Diagramma della classe \code{EmergencyContactViewModel}}
     \label{DC-EmergencyContactViewModel}
 \end{figure}
 
@@ -1909,7 +1909,7 @@ Classe di dominio che modella le informazioni di un ente o contatto di emergenza
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-EmergencyContact.pdf}
-    \caption[Diagramma della classe \code{EmergencyContact}]{Diagramma della classe \code{EmergencyContact}}
+    \caption[Diagramma della classe EmergencyContact]{Diagramma della classe \code{EmergencyContact}}
     \label{DC-EmergencyContact}
 \end{figure}
 
@@ -1920,7 +1920,7 @@ La classe \code{EmergencyContactRepository} funge da intermediario tra il ViewMo
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-EmergencyContactRepository.pdf}
-    \caption[Diagramma della classe \code{EmergencyContactRepository}]{Diagramma della classe \code{EmergencyContactRepository}}
+    \caption[Diagramma della classe EmergencyContactRepository]{Diagramma della classe \code{EmergencyContactRepository}}
     \label{DC-EmergencyContactRepository}
 \end{figure}
 
@@ -1931,7 +1931,7 @@ Appartenente al \term{Data Layer}, \code{EmergencyContactService} esegue le rich
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-EmergencyContactService.pdf}
-    \caption[Diagramma della classe \code{EmergencyContactService}]{Diagramma della classe \code{EmergencyContactService}}
+    \caption[Diagramma della classe EmergencyContactService]{Diagramma della classe \code{EmergencyContactService}}
     \label{DC-EmergencyContactService}
 \end{figure}
 
@@ -1942,7 +1942,7 @@ La classe \code{EmergencyContactDTO} gestisce la logica di mappatura dei dati. I
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/area_informativa/DC-EmergencyContactDTO.pdf}
-    \caption[Diagramma della classe \code{EmergencyContactDTO}]{Diagramma della classe \code{EmergencyContactDTO}}
+    \caption[Diagramma della classe EmergencyContactDTO]{Diagramma della classe \code{EmergencyContactDTO}}
     \label{DC-EmergencyContactDTO}
 \end{figure}
 
