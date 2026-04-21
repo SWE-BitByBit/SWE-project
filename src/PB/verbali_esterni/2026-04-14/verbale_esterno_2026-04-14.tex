@@ -1,4 +1,204 @@
-\newcommand{\ignoreglossary}{}
+% template presente
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{tabularx}
+\usepackage[table]{xcolor}
+\usepackage{tcolorbox}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    urlcolor=blue,     
+}
+\usepackage{graphicx}
+\graphicspath{{resources/}{../resources/}{../../resources/}{../../../resources/}{../../../../resources/}}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{colortbl}
+\usepackage{fancyhdr}
+\setlength{\headheight}{25pt}
+\setlength{\headsep}{1cm}
+\usepackage{titlesec}
+\geometry{margin=2.5cm}
+% ===== Variabile per il titolo del documento =====
+\newcommand{\documenttitle}{Verbale Riunione Esterna Numero 3 } %serve l'ultimo spazio
+
+
+\setlength{\parindent}{0pt}
+\setstretch{1.2}
+
+% ===== Stile intestazione =====
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{gray}{\documenttitle - BitByBit}}
+\fancyhead[R]{\includegraphics[height=1cm]{solo_logo.jpg}}
+\fancyfoot[C]{\thepage}
+
+% ===== Formattazione sezioni =====
+\titleformat{\section}{\Large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.5em}{}
 
 \newcommand{\term}[1]{\textbf{#1}$^\mathbf{G}$}
 
+\newcommand{\ignoreglossary}{}
+
+\begin{document}
+
+% ======= HEADER UNIVERSITÀ E GRUPPO CENTRATI VERTICALMENTE =======
+\vspace*{\fill} % --- Spinge verso il basso l'inizio del contenuto
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logoUni.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\color{red}\LARGE \textbf{Università degli Studi di Padova}}\\[0.3cm]
+        {\large
+        Laurea: Informatica\\
+        Corso: Ingegneria del Software\\
+        Anno Accademico: 2025/26
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1cm}
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logo.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\LARGE \textbf{Gruppo 17}}\\[0.3cm]
+        {\large
+        Nome: BitByBit\\
+        Email: swe.bitbybit@gmail.com
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1.5cm}
+
+\begin{center}
+    {\LARGE \textbf{\documenttitle}}
+\end{center}
+
+% ======= INFO GENERALI SUL DOCUMENTO, DA TENERE SU OGNI DOC =======
+\renewcommand{\arraystretch}{1.3}
+\vspace{0.1cm}
+
+\begin{tcolorbox}
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\textbf{Stato:} & Completato \\
+\textbf{Versione:} & 1.0.0 \\
+\textbf{Redattori:} & Giovanni Visentin \\
+\textbf{Verificatori:} & Ferdinando Fracasso, Marco Sanguin \\
+\textbf{Responsabile:} & Dennis Parolin \\
+\textbf{Destinatari:} & 
+\begin{tabular}[t]{@{}l@{}}
+Prof. Tullio Vardanega \\
+Prof. Cardin \\
+Miriade
+\end{tabular} \\
+\end{tabularx}
+\end{tcolorbox}
+
+\vspace*{\fill} % --- Spinge verso l’alto la fine del contenuto, centrando tutto il blocco
+\clearpage
+
+% ======= INDICE SU PAGINA DEDICATA =======
+\clearpage
+\tableofcontents
+\thispagestyle{empty} % senza numero di pagina per l'indice
+\clearpage
+
+% ======= INFO GENERALI RIUNIONE, METTERE SE DOC È UN \term{Verbale} =======
+\section{Informazioni generali}
+\renewcommand{\arraystretch}{1.3}
+
+\begin{tcolorbox}
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\textbf{Data:} & 14 aprile 2026 \\
+\textbf{Ora Inizio:} & 9:10 \\
+\textbf{Durata:} & 30 min \\
+\textbf{Luogo:} & Google Meet \\
+\textbf{Presenti:} & 
+\begin{tabular}[t]{@{}l@{}}
+Fracasso Ferdinando\\
+Manisi Riccardo\\
+Parolin Dennis\\
+Scaggiante Gabriele\\
+Visentin Giovanni \\
+\end{tabular} \\
+\textbf{Docenti:} & 
+\begin{tabular}[t]{@{}l@{}}
+Prof. Cardin \\
+\end{tabular} \\
+\textbf{Assenti:} & 
+\begin{tabular}[t]{@{}l@{}}
+Sanguin Marco\\
+\end{tabular} \\
+\end{tabularx}
+\end{tcolorbox}
+\clearpage
+
+% ---------- ORDINE DEL GIORNO, METTERE SE DOC È UN \term{Verbale}  ----------
+\section{Ordine del Giorno}
+\begin{itemize}
+    \item Chiarimento sul pattern architetturale da adottare in AWS: Serverless vs Microservizi.
+    \item Valutazione della condivisione di database tra diverse funzioni Lambda.
+    \item Utilizzo del \term{Provider} in Flutter per la gestione dello stato e delle dipendenze.
+    \item Dettagli sull'implementazione dell'architettura esagonale.
+    \item Ottimizzazione della gestione dei dati statici.
+\end{itemize}
+
+% ---------- DISCUSSIONI, METTERE SE DOC È UN \term{Verbale} ----------
+\section{Discussioni}
+\begin{itemize}
+    \item \textbf{Architettura Backend e Pattern}: È stata discussa la differenza tra architettura a microservizi e approccio serverless. Il Prof. Cardin ha chiarito che non si può definire "microservizio" un'architettura in cui più Lambda condividono lo stesso database. Attualmente il sistema è orientato verso un "serverless che tende ai microservizi", ma il consiglio principale è quello di adottare un pattern pienamente \term{Serverless}, assegnando una singola funzionalità o operazione a ciascuna funzione Lambda per evitare sovraccarichi di responsabilità.
+    \item \textbf{Dependency Injection in Flutter}: È stato confermato che l'utilizzo del framework Provider in Flutter rappresenta la scelta architetturale più corretta. L'uso di Singleton è sconsigliato in quanto crea dipendenze implicite non evidenti dal costruttore e lega il ciclo di vita all'intera app, impedendone la ricreazione flessibile.
+    \item \textbf{Architettura Esagonale}: Si è discusso del ruolo di \term{adapter} e interfacce. È emerso che la Business Logic non deve mai dipendere da dati o risorse esterne e deve operare unicamente utilizzando le classi di dominio. L'impiego di Inbound Adapter (come un ipotetico \textit{SesEventAdapter}) per decodificare gli input esterni e convertirli in oggetti di dominio è un approccio validato e incoraggiato.
+    \item \textbf{Gestione Dati Statici}: Per il recupero di dati statici che non necessitano di modifiche da parte dell'utente (come la posizione dei luoghi sicuri), è stato sconsigliato l'uso intermedio di API Gateway o Lambda verso DynamoDB. L'approccio raccomandato è archiviare tali risorse all'interno di Amazon S3, permettendo al client di accedervi direttamente per ridurre ritardi e costi operativi.
+\end{itemize}
+
+% ---------- DECISIONI, METTERE SE DOC È UN \term{Verbale} ----------
+\section{Decisioni}
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2} 
+\arrayrulecolor{black}
+\rowcolors{1}{gray!20}{white}
+\begin{tabular}{|p{0.73\textwidth}|c|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Descrizione decisione} & \textbf{Codice decisione} \\
+\hline
+Adottare un pattern architetturale Serverless, assegnando preferibilmente una singola funzionalità (per esempio singola operazione CRUD) per ogni funzione Lambda. & VE \ignoreglossary{PB} 3.1 \\
+\hline
+Utilizzare ufficialmente il pacchetto Provider di Flutter per la Dependency Injection e abbandonare il pattern Singleton. &  VE \ignoreglossary{PB} 3.2 \\
+\hline
+Isolare strettamente la Business Logic dai dati esterni avvalendosi di Inbound Adapter e oggetti di dominio secondo i principi dell'Architettura Esagonale. &  VE \ignoreglossary{PB} 3.3\\
+\hline
+Migrare la memorizzazione dei dati non modificabili dall'utente su Amazon S3, eludendo passaggi superflui su Lambda e DynamoDB. &  VE \ignoreglossary{PB} 3.4\\
+\hline
+\end{tabular}
+\end{center}
+
+% ---------- TO DO, METTERE SE DOC È UN \term{Verbale} ----------
+\section{To Do}
+Le prossime attività saranno discusse e assegnate in dettaglio durante la riunione interna di inizio Sprint. Le direttive generali emerse dall'incontro prevedono:
+\begin{itemize}
+    \item Revisione e refactoring dell'architettura AWS al fine di disaccoppiare le responsabilità delle attuali Lambda condivise, orientandosi verso un pattern prettamente \term{Serverless}.
+    \item Aggiornamento dei diagrammi delle classi e dell'architettura per riflettere le variazioni apportate alla gestione delle dipendenze e degli adapter.
+    \item Predisposizione di bucket S3 e migrazione degli attuali dati statici, configurando opportunamente il client Flutter per il loro recupero.
+\end{itemize}
+
+\end{document}
