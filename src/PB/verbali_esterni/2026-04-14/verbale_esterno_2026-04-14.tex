@@ -153,11 +153,10 @@ Sanguin Marco\\
 % ---------- ORDINE DEL GIORNO, METTERE SE DOC È UN \term{Verbale}  ----------
 \section{Ordine del Giorno}
 \begin{itemize}
-    \item Chiarimento sul pattern architetturale da adottare in AWS: \term{Serverless} vs Microservizi.
-    \item Valutazione della condivisione di database tra diverse funzioni Lambda.
-    \item Utilizzo del Provider in Flutter per la gestione dello stato e delle dipendenze.
-    \item Dettagli sull'implementazione dell'\term{Architettura} esagonale.
-    \item Ottimizzazione della gestione dei dati statici.
+    \item Analisi della distinzione tra pattern di deployment Serverless e Microservizi[cite: 1].
+    \item Valutazione della granularità delle Lambda e vincoli di persistenza[cite: 1].
+    \item Revisione dell'Architettura Esagonale: gestione di Business Objects e DTO[cite: 1].
+    \item Definizione formale dello stereotipo UML \texttt{<<module>>}[cite: 1].
 \end{itemize}
 
 % ---------- DISCUSSIONI, METTERE SE DOC È UN \term{Verbale} ----------
@@ -194,11 +193,22 @@ Migrare la memorizzazione dei dati non modificabili dall'\term{Utente} su Amazon
 
 % ---------- TO DO, METTERE SE DOC È UN \term{Verbale} ----------
 \section{To Do}
-Le prossime attività saranno discusse e assegnate in dettaglio durante la riunione interna di inizio \term{Sprint}. Le direttive generali emerse dall'incontro prevedono:
-\begin{itemize}
-    \item Revisione e \term{Refactoring} dell'\term{Architettura} AWS al fine di disaccoppiare le responsabilità delle attuali Lambda condivise, orientandosi verso un pattern prettamente \term{Serverless}.
-    \item Aggiornamento dei diagrammi delle classi e dell'\term{Architettura} per riflettere le variazioni apportate alla gestione delle dipendenze e degli adapter.
-    \item Predisposizione di bucket S3 e migrazione degli attuali dati statici, configurando opportunamente il client Flutter per il loro recupero.
-\end{itemize}
+Le prossime attività da svolgere a seguito di questa riunione sono:
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2} 
+\arrayrulecolor{black} 
+\rowcolors{1}{gray!20}{white}
+\begin{tabular}{|p{0.52\textwidth}|c|c|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Task} & \textbf{Codice decisione} & \textbf{N°\term{Issue} GitHub} \\
+\hline
+Adottare un pattern architetturale \term{Serverless}, assegnando preferibilmente una singola funzionalità (per esempio singola operazione CRUD) per ogni funzione Lambda. & VE \ignoreglossary{PB} 3.1 & nessuna \\
+\hline
+Ristruttirare i diagrammi UML per riflettere l'adozione del pattern \term{Serverless} e chiarire le responsabilità di ogni Lambda. & VE \ignoreglossary{PB} 3.1 & nessuna \\
+\hline
+\end{tabular}
+\end{center}
 
 \end{document}
