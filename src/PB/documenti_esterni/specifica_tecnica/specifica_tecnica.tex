@@ -1862,7 +1862,7 @@ Al fine di ottimizzare ulteriormente i costi, l'intera logica di rendering visiv
 \end{itemize}
 \textit{Nota di sicurezza}: L'integrazione di un Authorizer Cognito per la \term{Verifica} delle autorizzazioni è stata deliberatamente omessa per questa rotta. L'assenza dell'Authorizer in quest'area è difatti una scelta architetturale mirata a rimuovere complessità infrastrutturale non necessaria e ad abbattere i costi operativi associati al recupero di questi specifici dati.
 
-\paragraph{Architettura logica: Modulo Luoghi Sicuri}
+\paragraph{\term{Architettura} logica: Modulo Luoghi Sicuri}
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{diagrammi_classi_lambda/luoghi_sicuri/DCB-luoghi-sicuri.pdf}
@@ -1873,8 +1873,8 @@ Il microservizio \textbf{luoghi sicuri} viene utilizzato per eseguire il fetch d
 bucket S3 in cui sono memorizzati i marker da visualizzare nella mappa. È formato da tre componenti principali:
 \begin{itemize}
     \item \textbf{SafePlacesController}, che rappresenta l'application logic e corrisponde al controller del pattern esagonale. Riceve l'evento grezzo di API Gateway, lo instrada verso la port primaria e costruisce la risposta HTTP da restituire al client;
-    \item \textbf{SafePlacesService}, che rappresenta la business logic e corrisponde alla domain logic del pattern esagonale. Implementa la port primaria \code{GetMarkerPort} e orchestra la comunicazione con il layer di persistenza tramite la port secondaria \code{SafePlacesRepositoryPort};
-    \item \textbf{S3SafePlacesRepository}, che rappresenta la persistence logic e corrisponde all'adapter secondario del pattern esagonale. Contiene tutta la logica specifica per il recupero dei marker da un bucket S3 tramite il client boto3.
+    \item \textbf{SafePlacesService}, che rappresenta la \term{Business Logic} e corrisponde alla domain logic del pattern esagonale. Implementa la port primaria \code{GetMarkerPort} e orchestra la comunicazione con il layer di persistenza tramite la port secondaria \code{SafePlacesRepositoryPort};
+    \item \textbf{S3SafePlacesRepository}, che rappresenta la \term{Persistence Logic} e corrisponde all'adapter secondario del pattern esagonale. Contiene tutta la logica specifica per il recupero dei marker da un bucket S3 tramite il client boto3.
 \end{itemize}
 
 \paragraph{Marker}\mbox{}\\
@@ -1914,7 +1914,7 @@ Descrizione metodi:
     \caption{Diagramma dell'interfaccia \code{GetMarkerPort}}
     \label{fig:architettura_logica_luoghi_sicuri_getmarkerport}
 \end{figure}
-È la port primaria del pattern esagonale. Definisce il contratto tra il controller e la domain logic, 
+È la port primaria del pattern esagonale. Definisce il \term{Contratto} tra il controller e la domain logic, 
 imponendo la separazione tra il layer di trasporto HTTP e il dominio applicativo. 
 Descrizione metodi:
 \begin{itemize}
@@ -1930,7 +1930,7 @@ Descrizione metodi:
 \end{figure}
 È la domain logic del microservizio e implementa la port primaria \code{GetMarkerPort}. Contiene l'application logic per 
 il recupero dei luoghi sicuri e orchestra la comunicazione con il layer di persistenza tramite la port secondaria \code{SafePlacesRepositoryPort}. 
-La dipendenza verso il repository è espressa esclusivamente tramite interfaccia, rendendo il dominio indipendente dalla sorgente concreta in cui i marker sono memorizzati.
+La dipendenza verso il \term{Repository} è espressa esclusivamente tramite interfaccia, rendendo il dominio indipendente dalla sorgente concreta in cui i marker sono memorizzati.
 
 \paragraph{SafePlacesRepositoryPort}\mbox{}\\
 \begin{figure}[H]
@@ -1939,7 +1939,7 @@ La dipendenza verso il repository è espressa esclusivamente tramite interfaccia
     \caption{Diagramma dell'interfaccia \code{SafePlacesRepositoryPort}}
     \label{fig:architettura_logica_luoghi_sicuri_SafePlacesRepositoryPort}
 \end{figure}
-È la port secondaria del pattern esagonale orientata alla persistenza. Definisce il contratto tra 
+È la port secondaria del pattern esagonale orientata alla persistenza. Definisce il \term{Contratto} tra 
 la domain logic e il layer di accesso ai dati, rendendo il dominio indipendente dalla sorgente concreta 
 in cui i marker sono memorizzati. 
 Descrizione metodi:
@@ -1988,7 +1988,7 @@ Il risultato elaborato viene restituito all'API Gateway, che lo inoltra al clien
 \end{itemize}
 \textit{Nota di sicurezza}: In maniera analoga a quanto previsto per i luoghi sicuri, anche per l'accesso al materiale informativo si è optato per non implementare l'Authorizer Cognito. Questa decisione è dettata dalla volontà di snellire l'\term{Architettura}, riducendo le complessità superflue ed evitando di incorrere nei costi operativi aggiuntivi dell'infrastruttura di autenticazione.
 
-\paragraph{Architettura logica: Modulo Materiale Informativo} \label{par:architettura_backend_materiale_info}
+\paragraph{\term{Architettura} logica: Modulo Materiale Informativo} \label{par:architettura_backend_materiale_info}
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{diagrammi_classi_lambda/materiale_informativo/DCB-materiale-info.pdf}
@@ -1999,8 +1999,8 @@ Il microservizio \textbf{materiale informativo} viene utilizzato per eseguire il
 bucket S3 in cui sono memorizzate le risorse informative da visualizzare nell'applicazione. È formato da tre componenti principali:
 \begin{itemize}
     \item \textbf{ResourcesController}, che rappresenta l'application logic e corrisponde al controller del pattern esagonale. Riceve l'evento grezzo di API Gateway, lo instrada verso la port primaria e costruisce la risposta HTTP da restituire al client;
-    \item \textbf{ResourcesService}, che rappresenta la business logic e corrisponde alla domain logic del pattern esagonale. Implementa la port primaria \code{GetResourcesPort} e orchestra la comunicazione con il layer di persistenza tramite la port secondaria \code{ResourcesRepositoryPort};
-    \item \textbf{S3ResourcesRepository}, che rappresenta la persistence logic e corrisponde all'adapter secondario del pattern esagonale. Contiene tutta la logica specifica per il recupero delle risorse da un bucket S3 tramite il client boto3.
+    \item \textbf{ResourcesService}, che rappresenta la \term{Business Logic} e corrisponde alla domain logic del pattern esagonale. Implementa la port primaria \code{GetResourcesPort} e orchestra la comunicazione con il layer di persistenza tramite la port secondaria \code{ResourcesRepositoryPort};
+    \item \textbf{S3ResourcesRepository}, che rappresenta la \term{Persistence Logic} e corrisponde all'adapter secondario del pattern esagonale. Contiene tutta la logica specifica per il recupero delle risorse da un bucket S3 tramite il client boto3.
 \end{itemize}
 
 \paragraph{Resource}\mbox{}\\
@@ -2043,7 +2043,7 @@ Descrizione metodi:
     \caption{Diagramma della classe \code{GetResourcesPort}}
     \label{fig:architettura_logica_luoghi_GetResourcesPort}
 \end{figure}
-È la port primaria del pattern esagonale. Definisce il contratto tra il controller e la domain logic, imponendo la separazione tra il layer di 
+È la port primaria del pattern esagonale. Definisce il \term{Contratto} tra il controller e la domain logic, imponendo la separazione tra il layer di 
 trasporto HTTP e il dominio applicativo. 
 Descrizione metodi:
 \begin{itemize}
@@ -2066,7 +2066,7 @@ Descrizione metodi:
     \caption{Diagramma della classe \code{ResourcesRepositoryPort}}
     \label{fig:architettura_logica_luoghi_ResourcesRepositoryPort}
 \end{figure}
-È la port secondaria del pattern esagonale. Definisce il contratto tra la domain logic e il layer di accesso ai dati, rendendo il dominio indipendente dalla sorgente concreta in cui le risorse sono memorizzate. 
+È la port secondaria del pattern esagonale. Definisce il \term{Contratto} tra la domain logic e il layer di accesso ai dati, rendendo il dominio indipendente dalla sorgente concreta in cui le risorse sono memorizzate. 
 Descrizione metodi:
 \begin{itemize}
     \item \code{list\_all\_resources()}, restituisce la lista completa delle risorse disponibili senza esporre dettagli su S3.
