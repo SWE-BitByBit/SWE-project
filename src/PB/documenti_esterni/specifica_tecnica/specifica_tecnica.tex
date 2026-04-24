@@ -1902,8 +1902,9 @@ Descrizione attributi:
 costruisce la risposta HTTP da restituire al client. Dipende dalla port primaria \code{GetMarkerPort}.
 Descrizione metodi:
 \begin{itemize}
-    \item \code{get\_marker(event, context)} costituisce il punto di ingresso del controller;
-    \item \code{response(status, body)} costruisce il dizionario di risposta nel formato atteso da API Gateway
+    \item \code{marker\_get(event)} fa il parsing della richiesta e chiama la funzione appropriata della specifica port primaria;
+    \item \code{handle_request(event)} chiama la funzione appropriata del controller in base alla route della richiesta;
+    \item \code{response(status, body)} costruisce il dizionario di risposta nel formato atteso da API Gateway.
 \end{itemize}
 
 \paragraph{GetMarkerPort}\mbox{}\\
