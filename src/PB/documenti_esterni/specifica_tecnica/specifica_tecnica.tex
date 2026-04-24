@@ -112,7 +112,7 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & In lavorazione\\
-\textbf{Versione:} & 0.5.1 \\
+\textbf{Versione:} & 0.5.2 \\
 \textbf{Responsabile:} & Gabriele Scaggiante \\
 \textbf{Redattori:} & 
 \begin{tabular}[t]{@{}l@{}}
@@ -154,6 +154,9 @@ Gruppo BitByBit\\
 \hline
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+\hline
+0.5.2 & 2026-04-24 & Ferdinando Fracasso & Aggiornato la sezione \hyperref[subsubsec:architettura_diari_frontend]{Architettura funzionalità diari} a seguito dell'implementazione della funzionalità & Marco Sanguin \\
+\hline
 0.5.1 & 2026-04-20 & Dennis Parolin & Aggiornati i pattern presenti nella la sezione \hyperref[subsec:design_pattern]{Design pattern utilizzati}, aggiunti i pattern \hyperref[sec:pattern_dependency_injection]{Dependency Injection}, \hyperref[sec:pattern_command]{Command} e \hyperref[sec:pattern_adapter]{Adapter}. & Gabriele Scaggiante \\
 \hline
 0.5.0 & 2026-04-18 & Gabriele Scaggiante & Nella sezione \hyperref[subsec:architettura_backend]{Architettura backend}, aggiornata \term{Architettura} Auth, Luoghi Sicuri e Materiale Informativo; redatte sezioni Diario, Chatbot e DMS. & Dennis Parolin \\
@@ -1179,6 +1182,26 @@ La classe \code{NoteActionsWidget} si occupa della visualizzazione delle compone
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/diari/DC-NoteActionsWidget.pdf}
     \caption[Diagramma della classe NoteActionsWidget]{Diagramma della classe \code{NoteActionsWidget}}
     \label{DC-NoteActionsWidget}
+\end{figure}
+
+\paragraph{NoteEditorWidget}\mbox{}\\
+La classe \code{NoteEditorWidget} gestisce la visualizzazione di una nota del diario selezionata dall'utente, offrendo la possibilità di visualizzarne gli elementi che la compongono e permettendone l'aggiunta e modifica da parte dell'utente.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{resources/diagrammi_classi/diari/DC-NoteEditorWidget.pdf}
+    \caption[Diagramma della classe NoteEditorWidget]{Diagramma della classe \code{NoteEditorWidget}}
+    \label{DC-NoteEditorWidget}
+\end{figure}
+
+\paragraph{NoteAudioPlayerWidget}\mbox{}\\
+La classe \code{NoteAudioPlayerWidget} è responsabile per la visualizzazione delle tracce audio inserite in una nota, sotto forma di audio player.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{resources/diagrammi_classi/diari/DC-NoteAudioPlayerWidget.pdf}
+    \caption[Diagramma della classe NoteActionsWidget]{Diagramma della classe \code{NoteAudioPlayerWidget}}
+    \label{DC-NoteAudioPlayerWidget}
 \end{figure}
 
 \paragraph{DiaryViewModel}\mbox{}\\
