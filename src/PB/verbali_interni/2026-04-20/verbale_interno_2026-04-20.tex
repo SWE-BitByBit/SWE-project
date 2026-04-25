@@ -43,6 +43,10 @@
 \titleformat{\section}{\Large\bfseries}{\thesection.}{0.5em}{}
 \titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.5em}{}
 
+\newcommand{\term}[1]{\textbf{#1}$^\mathbf{G}$}
+
+\newcommand{\ignoreglossary}{}
+
 \begin{document}
 
 % ======= HEADER UNIVERSITÀ E GRUPPO CENTRATI VERTICALMENTE =======
@@ -140,26 +144,26 @@
 \clearpage
 
 
-% ---------- ORDINE DEL GIORNO, METTERE SE DOC È UN VERBALE  ----------
+% ---------- ORDINE DEL GIORNO, METTERE SE DOC È UN \term{Verbale}  ----------
 \section{Ordine del Giorno}
 \begin{itemize}
-    \item Discussione delle attività svolte durante lo sprint 10 con esposizione delle parti che non si è riuscito a completare.
+    \item Discussione delle attività svolte durante lo \term{Sprint} 10 con esposizione delle parti che non si è riuscito a completare.
     \item Brainstorming per le attività che dovranno essere fatte in base al lavoro rimanente e a quello passato.
     \item Prova del deploy e piccola guida pratica di come eseguirlo in maniera individuale.
-    \item Distribuzione attività e ruoli per lo sprint 11.
+    \item Distribuzione attività e ruoli per lo \term{Sprint} 11.
 \end{itemize}
 
-% ---------- DISCUSSIONI, METTERE SE DOC È UN VERBALE ----------
+% ---------- DISCUSSIONI, METTERE SE DOC È UN \term{Verbale} ----------
 \section{Discussioni}
 \begin{itemize}
     \item L'incontro è avvunuto per eseguire un riassunto delle attività svolte. In particolare i componenti del gruppo in questo 
-sprint si sono concentrati allo sviluppo del forntend in quanto i diagrammi delle classi relative al forntend sono state confermate all'unanimità dal gruppo 
+\term{Sprint} si sono concentrati allo sviluppo del forntend in quanto i diagrammi delle classi relative al forntend sono state confermate all'unanimità dal gruppo 
 dopo una visione preventiva inividuale.
     \item Dopo una visione della UI dell'applicazione è stato constatato che mancano dei widget in alcune parti per soddiffare i requisiti tracciati. Il gruppo successivamente 
-ha concordato che è necessario un refactoring del codice per la corretta applicazione dei pattern che sono stati individuati nei diagrammi e 
-riportati anche nel documento della Specifica Tecnica. Riguardo ai conenuti che devono essere presenti nella Specifica Tecnica
-    \item Sono stati colmati i dubbi riguardo ai diagrammi delle classi del backend, nello specifico si è risolto il problema dei tipi che devono essere passati alle classi Service presenti nell'architettura esagonale. Questo permetterà di concludere 
-l'inserimento dei diagrammi nel documento della Specifica Tecnica messo in pausa a causa dei precedenti dubbi.
+ha concordato che è necessario un \term{Refactoring} del codice per la corretta applicazione dei pattern che sono stati individuati nei diagrammi e 
+riportati anche nel documento della \term{Specifica Tecnica}. Riguardo ai conenuti che devono essere presenti nella \term{Specifica Tecnica}
+    \item Sono stati colmati i dubbi riguardo ai diagrammi delle classi del \term{Backend}, nello specifico si è risolto il problema dei tipi che devono essere passati alle classi Service presenti nell'\term{Architettura} esagonale. Questo permetterà di concludere 
+l'inserimento dei diagrammi nel documento della \term{Specifica Tecnica} messo in pausa a causa dei precedenti dubbi.
     \item Infine, abbiamo suddiviso i ruoli tra i membri del gruppo, continuando a ruotarli come fatto in precedenza. La distribuzione è la seguente:
     \begin{center}
         \textbf{Responsabile} $\rightarrow$ Riccardo Manisi\\
@@ -171,22 +175,7 @@ l'inserimento dei diagrammi nel documento della Specifica Tecnica messo in pausa
 \end{itemize}
 %modifica
 
-% ---------- DECISIONI, METTERE SE DOC È UN VERBALE ----------
-\section{Decisioni}
-\begin{center}
-\small
-\renewcommand{\arraystretch}{1.2} 
-\arrayrulecolor{black}
-\rowcolors{1}{gray!20}{white}
-\begin{tabular}{|p{0.73\textwidth}|c|}
-\hline
-\rowcolor{gray!60} 
-\textbf{Descrizione decisione} & \textbf{Codice decisione} \\
-
-\hline
-\end{tabular}
-\end{center}
-
+% ---------- DECISIONI, METTERE SE DOC È UN \term{Verbale} ----------
 \section{Decisioni}
 \begin{center}
 \small
@@ -222,19 +211,19 @@ Dalle discussioni e decisioni intraprese, sono emerse le seguenti attività:
 \begin{tabular}{|p{0.52\textwidth}|c|c|}
 \hline
 \rowcolor{gray!60} 
-\textbf{Task} & \textbf{Codice decisione} & \textbf{N°issue GitHub} \\
+\textbf{Task} & \textbf{Codice decisione} & \textbf{N°\term{Issue} GitHub} \\
 \hline
-Aggiornamento processo sviluppo su NdP & VI PB 4.4 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/618}{\textbf{\#618}} \\
+Aggiornamento \term{Processo} sviluppo su NdP & VI \term{PB} 4.4 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/618}{\textbf{\#618}} \\
 \hline
-Aggiornamento sezione librerie ST & VI PB 4.3 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/619}{\textbf{\#619}} \\
+Aggiornamento sezione librerie ST & VI \term{PB} 4.3 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/619}{\textbf{\#619}} \\
 \hline
-Aggiornamento sezione pattern ST & VI PB 4.3 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/620}{\textbf{\#620}} \\
+Aggiornamento sezione pattern ST & VI \term{PB} 4.3 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/620}{\textbf{\#620}} \\
 \hline
-Aggiornamento sezione requisiti ST & VI PB 4.3 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/621}{\textbf{\#621}} \\
+Aggiornamento sezione requisiti ST & VI \term{PB} 4.3 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/621}{\textbf{\#621}} \\
 \hline
-Fix schermata impostazioni forntend & VI PB 4.1 & \href{https://github.com/SWE-BitByBit/project-MVP/issues/36}{\textbf{\#36}} \\
+Fix schermata impostazioni forntend & VI \term{PB} 4.1 & \href{https://github.com/SWE-BitByBit/project-MVP/issues/36}{\textbf{\#36}} \\
 \hline
-Backend per contatti fidati & VI PB 4.2 & \href{https://github.com/SWE-BitByBit/project-MVP/issues/37}{\textbf{\#37}} \\
+\term{Backend} per contatti fidati & VI \term{PB} 4.2 & \href{https://github.com/SWE-BitByBit/project-MVP/issues/37}{\textbf{\#37}} \\
 \hline
 \end{tabular}
 \end{center}
