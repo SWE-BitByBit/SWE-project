@@ -112,7 +112,7 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & In lavorazione\\
-\textbf{Versione:} & 0.5.2 \\
+\textbf{Versione:} & 0.5.3 \\
 \textbf{Responsabile:} & Gabriele Scaggiante \\
 \textbf{Redattori:} & 
 \begin{tabular}[t]{@{}l@{}}
@@ -155,7 +155,9 @@ Gruppo BitByBit\\
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
-0.5.2 & 2026-04-24 & Ferdinando Fracasso & Aggiornato la sezione \hyperref[subsubsec:architettura_diari_frontend]{Architettura funzionalità diari} a seguito dell'implementazione della funzionalità & Marco Sanguin \\
+0.5.3 & 2026-04-24 & Ferdinando Fracasso & Aggiornato la sezione \hyperref[subsubsec:architettura_diari_frontend]{Architettura funzionalità diari} a seguito dell'implementazione della funzionalità & Marco Sanguin \\
+\hline
+0.5.2 & 2026-04-23 & Gabriele Scaggiante & Corretta la sezione \hyperref[subsubsec:architettura_chatbot]{Architettura chatbot} dopo l'introduzione di due tabelle DynamoDB & Giovanni Visentin \\
 \hline
 0.5.1 & 2026-04-20 & Dennis Parolin & Aggiornati i pattern presenti nella la sezione \hyperref[subsec:design_pattern]{Design pattern utilizzati}, aggiunti i pattern \hyperref[sec:pattern_dependency_injection]{Dependency Injection}, \hyperref[sec:pattern_command]{Command} e \hyperref[sec:pattern_adapter]{Adapter}. & Gabriele Scaggiante \\
 \hline
@@ -2123,7 +2125,7 @@ L'\term{Architettura} di \term{Backend} dedicata al chatbot è progettata per ge
 
 API Gateway rappresenta il punto di ingresso per tutte le richieste client e si occupa della \term{Verifica} dell’autenticazione dell’\term{Utente}. Una volta validata la richiesta, questa viene inoltrata a una funzione Lambda che implementa la logica applicativa del chatbot, inclusa la gestione delle chat e l’interazione con il modello linguistico.
 
-Le conversazioni sono strutturate come entità persistenti (chat), ciascuna identificata da un \texttt{chat\_id} univoco all'interno dell'intero sistema. Ogni chat contiene una sequenza di messaggi (\term{Utente} e assistente artificiale), memorizzati in DynamoDB. Per ottimizzare le prestazioni e ridurre il carico di rete, le operazioni di recupero dello storico restituiscono esclusivamente le informazioni di sintesi (ad esempio titolo e metadata), mentre il contenuto completo viene fornito solo su richiesta esplicita.
+Le conversazioni sono strutturate come entità persistenti (chat), ciascuna identificata da un \texttt{chat\_id} univoco all'interno dell’intero sistema. Per garantire una maggiore modularità e facilitare il recupero delle informazioni, chat e messaggi sono memorizzati in tabelle DynamoDB separate. Ogni chat contiene una sequenza di messaggi (\term{Utente} e assistente artificiale), anch’essi memorizzati in DynamoDB. Per ottimizzare le prestazioni e ridurre il carico di rete, le operazioni di recupero dello storico restituiscono esclusivamente informazioni di sintesi (ad esempio titolo e metadata), mentre il contenuto completo dei messaggi viene fornito solo su richiesta esplicita.
 
 Quando l’\term{Utente} invia un messaggio, il sistema non si limita a inoltrarlo direttamente al modello, ma recupera le informazioni più rilevanti dalla chat in corso. In particolare, la Lambda recupera il contesto rilevante della conversazione dalla base di dati (DynamoDB), costruendo un prompt arricchito che include la cronologia significativa dei messaggi. Per estrarre tali informazioni, la Lambda utilizza tecniche di ricerca lessicale basate su BM25, evitando di concatenare l'intera conversazione al testo inviato dall'\term{Utente}. Questo approccio consente di migliorare la coerenza e la pertinenza delle risposte generate dal modello.
 
