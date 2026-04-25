@@ -2256,7 +2256,7 @@ La gestione dei contatti fidati è completamente CRUD e permette all’\term{Ute
     \item \texttt{POST /trusted\_contacts/sos/}: attiva manualmente l’invio di una email di emergenza a tutti i contatti fidati.
 \end{itemize}
 
-% ===== diagramma classi contatti fidati backend ======
+% ===== diagramma classi contatti fidati \term{Backend} ======
 
 \paragraph{\term{Architettura} logica: Modulo contatti fidati, SOS e Dead man's switch} \label{par:architettura_backend_contatti_fidati}
 \begin{figure}[H]
@@ -2273,10 +2273,10 @@ La gestione dei contatti fidati è completamente CRUD e permette all’\term{Ute
     \caption{Diagramma della classe \code{TrustedContact}}
     \label{fig:architettura_logica_luoghi_TrustedContact}
 \end{figure}
-Rappresenta un contatto fidato associato a un utente. \\
+Rappresenta un contatto fidato associato a un \term{Utente}. \\
 Descrizione attributi: 
 \begin{itemize}
-    \item \code{user\_id} identifica l'utente proprietario del contatto;
+    \item \code{user\_id} identifica l'\term{Utente} proprietario del contatto;
     \item \code{contact\_id} identifica univocamente il contatto;
     \item \code{contact\_name}, \code{contact\_email} e \code{contact\_phone\_number} ne rappresentano i dati anagrafici.
 \end{itemize}
@@ -2315,7 +2315,7 @@ Command Object utilizzato dal controller per trasportare i dati necessari per il
     \caption{Diagramma della classe \code{DmsConfigurationSettings}}
     \label{fig:architettura_logica_luoghi_DmsConfigurationSettings}
 \end{figure}
-Rappresenta la configurazione del Dead Man's Switch associata a un utente. \\
+Rappresenta la configurazione del Dead Man's Switch associata a un \term{Utente}. \\
 Descrizione attributi:
 \begin{itemize}
     \item \code{active} indica se il meccanismo è attivo;
@@ -2333,7 +2333,7 @@ Descrizione attributi:
 È il Command Object utilizzato dal controller per trasportare i dati necessari all'invio dell'alert SOS. \\
 Descrizione attributi:
 \begin{itemize}
-    \item \code{user\_id} identificativo dell'utente;
+    \item \code{user\_id} identificativo dell'\term{Utente};
     \item \code{user\_email} identificativo della mail del mittente;
     \item \code{latitude} e \code{longitude} per la posizione geografica.
 \end{itemize}
@@ -2345,12 +2345,12 @@ Descrizione attributi:
     \caption{Diagramma della classe \code{EmailMessage}}
     \label{fig:architettura_logica_luoghi_EmailMessage}
 \end{figure}
-\code{EmailMessage} è la classe astratta che definisce il contratto comune per tutti i tipi di email inviabili dal sistema. Contiene gli attributi condivisi: \code{source\_email}, \code{contact\_name} e \code{destination\_contact\_email}.
+\code{EmailMessage} è la classe astratta che definisce il \term{Contratto} comune per tutti i tipi di email inviabili dal sistema. Contiene gli attributi condivisi: \code{source\_email}, \code{contact\_name} e \code{destination\_contact\_email}.
 \begin{itemize}
-    \item \code{AlertMessage}: aggiunge \code{user\_location} di tipo \code{UserLocation} per includere la posizione geografica dell'utente nell'email di soccorso;
-    \item \code{DmsMessage}: aggiunge \code{email\_template} di tipo \code{AlertTemplate} per includere il testo personalizzato configurato dall'utente nell'email del Dead Man's Switch.
-    \item \code{UserLocation}: rappresenta la posizione geografica dell'utente al momento dell'invio dell'alert SOS;
-    \item \code{AlertTemplate}: contiene il testo personalizzato dell'email del Dead Man's Switch configurato dall'utente.
+    \item \code{AlertMessage}: aggiunge \code{user\_location} di tipo \code{UserLocation} per includere la posizione geografica dell'\term{Utente} nell'email di soccorso;
+    \item \code{DmsMessage}: aggiunge \code{email\_template} di tipo \code{AlertTemplate} per includere il testo personalizzato configurato dall'\term{Utente} nell'email del Dead Man's Switch.
+    \item \code{UserLocation}: rappresenta la posizione geografica dell'\term{Utente} al momento dell'invio dell'alert SOS;
+    \item \code{AlertTemplate}: contiene il testo personalizzato dell'email del Dead Man's Switch configurato dall'\term{Utente}.
 \end{itemize}
 
 \paragraph{TrustedContactController}\mbox{}\\
@@ -2375,7 +2375,7 @@ Descrizione metodi:
     \caption{Diagramma della classe \code{SetDmsHeartBeatPort}}
     \label{fig:architettura_logica_luoghi_SetDmsHeartBeatPort}
 \end{figure}
-Espone \code{send\_heartbeat(user\_id: str)} per il reset dei timer del Dead Man's Switch al rientro dell'utente nell'applicazione.
+Espone \code{send\_heartbeat(user\_id: str)} per il reset dei timer del Dead Man's Switch al rientro dell'\term{Utente} nell'applicazione.
 
 \paragraph{GetDmsConfigurationSettingsPort}\mbox{}\\
 \begin{figure}[H]
@@ -2402,7 +2402,7 @@ Espone \code{update\_dms\_configuration\_settings(config: DmsConfig)} per l'aggi
     \caption{Diagramma della classe \code{UpdateDeadManSwitchAlertPort}}
     \label{fig:architettura_logica_luoghi_UpdateDeadManSwitchAlertPort}
 \end{figure}
-Espone \code{update\_dead\_man\_switch\_timers()} per l'aggiornamento dei timer lato backend.
+Espone \code{update\_dead\_man\_switch\_timers()} per l'aggiornamento dei timer lato \term{Backend}.
 
 \paragraph{SetTrustedContactPort}\mbox{}\\
 \begin{figure}[H]
@@ -2459,9 +2459,9 @@ Espone \code{send\_alert\_emails(alert\_info: AlertCmd)} per l'invio delle email
 È responsabile dell'invio delle notifiche del Dead Man's Switch. Si occupa del recupero dei contatti fidati, la configurazione del DMS e la costruzione dei messaggi email.\\
 Descrizione metodi:
 \begin{itemize}
-    \item \code{\_\_init\_\_(repository, notification\_repository, dms\_repository)}, costruttore che riceve le tre port secondarie tramite dependency injection;
-    \item \code{send\_user\_notification(user\_id: str)}, metodo privato che recupera la configurazione DMS dell'utente e costruisce e invia la notifica all'utente alla scadenza del primo timer;
-    \item \code{send\_contacts\_emails(message\_info: AlertMessage)}, metodo privato che costruisce e invia le email ai contatti fidati dell'utente alla scadenza del secondo timer.
+    \item \code{\_\_init\_\_(\term{Repository}, notification\_repository, dms\_repository)}, costruttore che riceve le tre port secondarie tramite dependency injection;
+    \item \code{send\_user\_notification(user\_id: str)}, metodo privato che recupera la configurazione DMS dell'\term{Utente} e costruisce e invia la notifica all'\term{Utente} alla scadenza del primo timer;
+    \item \code{send\_contacts\_emails(message\_info: AlertMessage)}, metodo privato che costruisce e invia le email ai contatti fidati dell'\term{Utente} alla scadenza del secondo timer.
 \end{itemize}
 
 \paragraph{TrustedContactCRUDService}\mbox{}\\
@@ -2474,7 +2474,7 @@ Descrizione metodi:
 È il service della domain logic responsabile delle operazioni CRUD sui contatti fidati.\\
 Descrizione metodi:
 \begin{itemize}
-    \item \code{\_\_init\_\_(repository: TrustedContactRepositoryPort)}, costruttore che riceve la port secondaria tramite dependency injection.
+    \item \code{\_\_init\_\_(\term{Repository}: TrustedContactRepositoryPort)}, costruttore che riceve la port secondaria tramite dependency injection.
 \end{itemize}
 
 \paragraph{SOSAlertService}\mbox{}\\
@@ -2484,7 +2484,7 @@ Descrizione metodi:
     \caption{Diagramma della classe \code{SOSAlertService}}
     \label{fig:architettura_logica_luoghi_SOSAlertService}
 \end{figure}
-È il service della domain logic responsabile dell'invio immediato delle email di soccorso al momento della pressione del pulsante SOS da parte dell'utente. Implementa la port primaria \code{SendAlertPort}.\\
+È il service della domain logic responsabile dell'invio immediato delle email di soccorso al momento della pressione del pulsante SOS da parte dell'\term{Utente}. Implementa la port primaria \code{SendAlertPort}.\\
 Descrizione metodi:
 \begin{itemize}
     \item \code{\_\_init\_\_(contact\_repository, notification\_repository)}, costruttore che riceve le due port secondarie tramite dependency injection;
@@ -2500,9 +2500,9 @@ Descrizione metodi:
 \end{figure}
 Descrizione metodi:
 \begin{itemize}
-    \item \code{update\_dms\_config(config: DmsConfig)}, aggiorna la configurazione DMS dell'utente;
-    \item \code{get\_dms\_config(user\_id: str)}, recupera la configurazione DMS associata all'utente;
-    \item \code{add\_dms\_config()}, crea una nuova configurazione DMS per l'utente;
+    \item \code{update\_dms\_config(config: DmsConfig)}, aggiorna la configurazione DMS dell'\term{Utente};
+    \item \code{get\_dms\_config(user\_id: str)}, recupera la configurazione DMS associata all'\term{Utente};
+    \item \code{add\_dms\_config()}, crea una nuova configurazione DMS per l'\term{Utente};
     \item \code{get\_first\_timer(user\_id: str)}, recupera il valore corrente del primo timer;
     \item \code{get\_second\_timer(user\_id: str)}, recupera il valore corrente del secondo timer;
     \item \code{update\_first\_counter(user\_id: str, remaining\_days: int)}, aggiorna il contatore residuo del primo timer;
@@ -2522,7 +2522,7 @@ Descrizione metodi:
     \item \code{get(user\_id: str, contact\_id: str)}, recupera un singolo contatto fidato tramite le chiavi identificative, restituendo \code{None} se non trovato;
     \item \code{delete(user\_id: str, contact\_id: str)}, elimina il contatto fidato corrispondente alle chiavi fornite;
     \item \code{update\_trusted\_contact(contact: TrustedContact)}, aggiorna i dati anagrafici di un contatto fidato esistente;
-    \item \code{list\_trusted\_contacts(user\_id: str)}, restituisce la lista completa dei contatti fidati associati all'utente.
+    \item \code{list\_trusted\_contacts(user\_id: str)}, restituisce la lista completa dei contatti fidati associati all'\term{Utente}.
 \end{itemize}
 
 \paragraph{NotificationPort}\mbox{}\\
