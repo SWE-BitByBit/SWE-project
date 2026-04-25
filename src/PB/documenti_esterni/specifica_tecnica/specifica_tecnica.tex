@@ -1833,7 +1833,6 @@ Questa specifica impostazione architetturale assicura che qualsiasi richiesta ma
 
 
 \subsubsection{Luoghi sicuri} \label{subsubsec:architettura_luoghi_sicuri}
-
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{diagrammi_architettura/luoghi_sicuri/luoghi_sicuri.pdf}
@@ -1864,13 +1863,13 @@ Al fine di ottimizzare ulteriormente i costi, l'intera logica di rendering visiv
 
 \paragraph{\term{Architettura} logica: Modulo Luoghi Sicuri}
 \begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth]{diagrammi_classi_lambda/luoghi_sicuri/DCB-luoghi-sicuri.pdf}
-\caption{Componenti del microservizio luoghi sicuri}
-\label{fig:architettura_logica_luoghi_sicuri}
+    \centering
+    \includegraphics[width=\textwidth]{diagrammi_classi_lambda/luoghi_sicuri/DCB-luoghi-sicuri.pdf}
+    \caption{Componenti del microservizio luoghi sicuri}
+    \label{fig:architettura_logica_luoghi_sicuri}
 \end{figure}
 Il microservizio \textbf{luoghi sicuri} viene utilizzato per eseguire il fetch dei \code{Marker} dall'istanza del 
-bucket S3 in cui sono memorizzati i marker da visualizzare nella mappa. È formato da tre componenti principali:
+bucket S3. È formato da tre componenti principali:
 \begin{itemize}
     \item \textbf{SafePlacesController}, che rappresenta l'application logic e corrisponde al controller del pattern esagonale. Riceve l'evento grezzo di API Gateway, lo instrada verso la port primaria e costruisce la risposta HTTP da restituire al client;
     \item \textbf{SafePlacesService}, che rappresenta la \term{Business Logic} e corrisponde alla domain logic del pattern esagonale. Implementa la port primaria \code{GetMarkerPort} e orchestra la comunicazione con il layer di persistenza tramite la port secondaria \code{SafePlacesRepositoryPort};
@@ -1888,7 +1887,10 @@ Rappresenta un punto geografico sicuro visualizzabile sulla mappa nel frontend d
 Descrizione attributi:
 \begin{abstract}
     \item \code{marker\_id}, che identifica univocamente il marker;
-    \item \code{latitude} e \code{longitude}, che ne definiscono la posizione geografica.
+    \item \code{latitude} e \code{longitude} definiscono la posizione geografica;
+    \item \code{name} indica il nome del marker;
+    \item \code{address} indica l'indirizzo;
+    \item \code{category} indica la cotegoria del marker;
 \end{abstract} 
 
 \paragraph{SafePlacesController}\mbox{}\\
@@ -1899,11 +1901,11 @@ Descrizione attributi:
     \label{fig:architettura_logica_luoghi_SafePlacesController}
 \end{figure}
 È il controller del pattern esagonale. Riceve l'evento grezzo di API Gateway, lo instrada verso la port primaria e 
-costruisce la risposta HTTP da restituire al client. Dipende dalla port primaria \code{GetMarkerPort}.
+costruisce la risposta HTTP da restituire al client.
 Descrizione metodi:
 \begin{itemize}
     \item \code{marker\_get(event)} fa il parsing della richiesta e chiama la funzione appropriata della specifica port primaria;
-    \item \code{handle_request(event)} chiama la funzione appropriata del controller in base alla route della richiesta;
+    \item \code{handle\_request(event)} chiama la funzione appropriata del controller in base alla route della richiesta;
     \item \code{response(status, body)} costruisce il dizionario di risposta nel formato atteso da API Gateway.
 \end{itemize}
 
@@ -1914,8 +1916,7 @@ Descrizione metodi:
     \caption{Diagramma dell'interfaccia \code{GetMarkerPort}}
     \label{fig:architettura_logica_luoghi_sicuri_getmarkerport}
 \end{figure}
-È la port primaria del pattern esagonale. Definisce il \term{Contratto} tra il controller e la domain logic, 
-imponendo la separazione tra il layer di trasporto HTTP e il dominio applicativo. 
+È la port primaria del pattern esagonale.\\
 Descrizione metodi:
 \begin{itemize}
     \item \code{get\_all\_markers()}, che restituisce la lista completa dei marker disponibili senza esporre dettagli implementativi su come vengono recuperati.
@@ -1928,9 +1929,8 @@ Descrizione metodi:
     \caption{Diagramma della classe \code{SafePlacesService}}
     \label{fig:architettura_logica_luoghi_SafePlacesService}
 \end{figure}
-È la domain logic del microservizio e implementa la port primaria \code{GetMarkerPort}. Contiene l'application logic per 
-il recupero dei luoghi sicuri e orchestra la comunicazione con il layer di persistenza tramite la port secondaria \code{SafePlacesRepositoryPort}. 
-La dipendenza verso il \term{Repository} è espressa esclusivamente tramite interfaccia, rendendo il dominio indipendente dalla sorgente concreta in cui i marker sono memorizzati.
+È la domain logic del microservizio. Contiene l'application logic per 
+il recupero dei luoghi sicuri e orchestra la comunicazione con il layer di persistenza tramite la port secondaria \code{SafePlacesRepositoryPort}.
 
 \paragraph{SafePlacesRepositoryPort}\mbox{}\\
 \begin{figure}[H]
@@ -1939,9 +1939,7 @@ La dipendenza verso il \term{Repository} è espressa esclusivamente tramite inte
     \caption{Diagramma dell'interfaccia \code{SafePlacesRepositoryPort}}
     \label{fig:architettura_logica_luoghi_sicuri_SafePlacesRepositoryPort}
 \end{figure}
-È la port secondaria del pattern esagonale orientata alla persistenza. Definisce il \term{Contratto} tra 
-la domain logic e il layer di accesso ai dati, rendendo il dominio indipendente dalla sorgente concreta 
-in cui i marker sono memorizzati. 
+È la port secondaria del pattern esagonale orientata alla persistenza.
 Descrizione metodi:
 \begin{itemize}
     \item \code{list\_markers()}, che restituisce la lista di tutti i marker disponibili senza esporre dettagli su S3 o qualsiasi altro storage.
@@ -1954,9 +1952,7 @@ Descrizione metodi:
     \caption{Diagramma della classe \code{S3SafePlacesRepository}}
     \label{fig:architettura_logica_luoghi_sicuri_S3SafePlacesRepository}
 \end{figure}
-È l'adapter secondario che implementa \code{SafePlacesRepositoryPort}. Contiene tutta la logica specifica per il 
-recupero dei marker da un bucket S3 ed è l'unico componente del microservizio che conosce i dettagli 
-della sorgente dati. Il costruttore \code{\_\_init\_\_()} inizializza il client S3.
+È l'adapter secondario che implementa \code{SafePlacesRepositoryPort}. Il costruttore \code{\_\_init\_\_()} inizializza il client S3.
 
 \subsubsection{Materiale informativo} \label{subsubsec:architettura_materiale_informativo}
 
@@ -2019,7 +2015,7 @@ Descrizione attributi:
     \item \code{url} il collegamento alla fonte esterna;
     \item \code{type} è di tipo \code{ResourceType} e categorizza la risorsa secondo una delle tipologie previste dal dominio.
 \end{itemize}
-L'enumerazione \code{ResourceType} definisce le tre categorie disponibili: \code{COMMUNITY} per le risorse legate a comunità di supporto, \code{LAW} per le risorse di natura legale e \code{ARTICLE} per gli articoli informativi.
+L'enumerazione \code{ResourceType} definisce le tre categorie disponibili: \code{COMMUNITY}, \code{LAW} e \code{ARTICLE}.
 
 \paragraph{ResourcesController}\mbox{}\\
 \begin{figure}[H]
@@ -2029,7 +2025,7 @@ L'enumerazione \code{ResourceType} definisce le tre categorie disponibili: \code
     \label{fig:architettura_logica_luoghi_ResourcesController}
 \end{figure}
 È il controller del pattern esagonale. Riceve l'evento grezzo di API Gateway, lo instrada verso 
-la port primaria e costruisce la risposta HTTP da restituire al client. Dipende dalla port primaria \code{GetResourcesPort}, iniettata nel costruttore.
+la port primaria e costruisce la risposta HTTP da restituire al client.
 Descrizione metodi:
 \begin{itemize}
     \item \code{get\_resources(event, context)} costituisce il punto di ingresso del controller e riceve i parametri nativi della Lambda;
@@ -2043,8 +2039,7 @@ Descrizione metodi:
     \caption{Diagramma della classe \code{GetResourcesPort}}
     \label{fig:architettura_logica_luoghi_GetResourcesPort}
 \end{figure}
-È la port primaria del pattern esagonale. Definisce il \term{Contratto} tra il controller e la domain logic, imponendo la separazione tra il layer di 
-trasporto HTTP e il dominio applicativo. 
+È la port primaria del pattern esagonale.\\
 Descrizione metodi:
 \begin{itemize}
     \item \code{get\_resources()}, che restituisce la lista completa delle risorse informative disponibili.
@@ -2066,7 +2061,7 @@ Descrizione metodi:
     \caption{Diagramma della classe \code{ResourcesRepositoryPort}}
     \label{fig:architettura_logica_luoghi_ResourcesRepositoryPort}
 \end{figure}
-È la port secondaria del pattern esagonale. Definisce il \term{Contratto} tra la domain logic e il layer di accesso ai dati, rendendo il dominio indipendente dalla sorgente concreta in cui le risorse sono memorizzate. 
+È la port secondaria del pattern esagonale.
 Descrizione metodi:
 \begin{itemize}
     \item \code{list\_all\_resources()}, restituisce la lista completa delle risorse disponibili senza esporre dettagli su S3.
@@ -2261,6 +2256,314 @@ La gestione dei contatti fidati è completamente CRUD e permette all’\term{Ute
     \item \texttt{POST /trusted\_contacts/sos/}: attiva manualmente l’invio di una email di emergenza a tutti i contatti fidati.
 \end{itemize}
 
+% ===== diagramma classi contatti fidati backend ======
+
+\paragraph{\term{Architettura} logica: Modulo contatti fidati, SOS e Dead man's switch} \label{par:architettura_backend_contatti_fidati}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{diagrammi_classi_lambda/contatti_fidati/DCB-contatti_fidati.pdf}
+    \caption{Componenti del microservizio contatti fidati, SOS e Dead man's switch}
+    \label{fig:rchitettura_backend_contatti_fidati}
+\end{figure}
+
+\paragraph{TrustedContact}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/DCB-TrustedContact.pdf}
+    \caption{Diagramma della classe \code{TrustedContact}}
+    \label{fig:architettura_logica_luoghi_TrustedContact}
+\end{figure}
+Rappresenta un contatto fidato associato a un utente. \\
+Descrizione attributi: 
+\begin{itemize}
+    \item \code{user\_id} identifica l'utente proprietario del contatto;
+    \item \code{contact\_id} identifica univocamente il contatto;
+    \item \code{contact\_name}, \code{contact\_email} e \code{contact\_phone\_number} ne rappresentano i dati anagrafici.
+\end{itemize}
+
+\paragraph{AddTrustedContactCmd}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/AddTrustedContactCmd.pdf}
+    \caption{Diagramma della classe \code{AddTrustedContactCmd}}
+    \label{fig:architettura_logica_luoghi_AddTrustedContactCmd}
+\end{figure}
+Command Object utilizzato dal controller per trasportare i dati necessari all'aggiunta di un contatto fidato.
+
+\paragraph{GetTrustedContactCmd}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{resources/diagrammi_classi_lambda/contatti_fidati/GetTrustedContactCmd.pdf}
+    \caption{Diagramma della classe \code{GetTrustedContactCmd}}
+    \label{fig:architettura_logica_luoghi_GetTrustedContactCmd}
+\end{figure}
+Command Object utilizzato dal controller per trasportare i dati necessari per il fetch di un contatto fidato.
+
+\paragraph{DeleteTrustedContactCmd}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/DeleteTrustedContactCmd.pdf}
+    \caption{Diagramma della classe \code{DeleteTrustedContactCmd}}
+    \label{fig:architettura_logica_luoghi_DeleteTrustedContactCmd}
+\end{figure}
+Command Object utilizzato dal controller per trasportare i dati necessari per il la cancellazione di un contatto fidato.
+
+\paragraph{DmsConfigurationSettings}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/DmsConfigurationSettings.pdf}
+    \caption{Diagramma della classe \code{DmsConfigurationSettings}}
+    \label{fig:architettura_logica_luoghi_DmsConfigurationSettings}
+\end{figure}
+Rappresenta la configurazione del Dead Man's Switch associata a un utente. \\
+Descrizione attributi:
+\begin{itemize}
+    \item \code{active} indica se il meccanismo è attivo;
+    \item \code{first\_timer} e \code{second\_timer} definiscono la durata in minuti dei due timer;
+    \item \code{body} e \code{subject} contengono il testo personalizzato dell'email che verrà inviata alla scadenza dei timer.
+\end{itemize}
+
+\paragraph{AlertCmd}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/AlertCmd.pdf}
+    \caption{Diagramma della classe \code{AlertCmd}}
+    \label{fig:architettura_logica_luoghi_AlertCmd}
+\end{figure}
+È il Command Object utilizzato dal controller per trasportare i dati necessari all'invio dell'alert SOS. \\
+Descrizione attributi:
+\begin{itemize}
+    \item \code{user\_id} identificativo dell'utente;
+    \item \code{user\_email} identificativo della mail del mittente;
+    \item \code{latitude} e \code{longitude} per la posizione geografica.
+\end{itemize}
+
+\paragraph{EmailMessage}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/EmaiMessage.pdf}
+    \caption{Diagramma della classe \code{EmailMessage}}
+    \label{fig:architettura_logica_luoghi_EmailMessage}
+\end{figure}
+\code{EmailMessage} è la classe astratta che definisce il contratto comune per tutti i tipi di email inviabili dal sistema. Contiene gli attributi condivisi: \code{source\_email}, \code{contact\_name} e \code{destination\_contact\_email}.
+\begin{itemize}
+    \item \code{AlertMessage}: aggiunge \code{user\_location} di tipo \code{UserLocation} per includere la posizione geografica dell'utente nell'email di soccorso;
+    \item \code{DmsMessage}: aggiunge \code{email\_template} di tipo \code{AlertTemplate} per includere il testo personalizzato configurato dall'utente nell'email del Dead Man's Switch.
+    \item \code{UserLocation}: rappresenta la posizione geografica dell'utente al momento dell'invio dell'alert SOS;
+    \item \code{AlertTemplate}: contiene il testo personalizzato dell'email del Dead Man's Switch configurato dall'utente.
+\end{itemize}
+
+\paragraph{TrustedContactController}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/TrustedContactController.pdf}
+    \caption{Diagramma della classe \code{TrustedContactController}}
+    \label{fig:architettura_logica_luoghi_TrustedContactController}
+\end{figure}
+Riceve l'evento grezzo di API Gateway e instrada la richiesta verso la port primaria appropriata in base alla route.\\
+
+Descrizione metodi:
+\begin{itemize}
+    \item \code{handle\_request(event, context)}, punto di ingresso del controller, legge la \code{routeKey} dall'evento e chiama la port primaria corrispondente;
+    \item \code{response(status, body)}, metodo privato di utilità che costruisce la risposta nel formato atteso da API Gateway.
+\end{itemize}
+
+\paragraph{SetDmsHeartBeatPort}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/SetDmsHeartBeatPort.pdf}
+    \caption{Diagramma della classe \code{SetDmsHeartBeatPort}}
+    \label{fig:architettura_logica_luoghi_SetDmsHeartBeatPort}
+\end{figure}
+Espone \code{send\_heartbeat(user\_id: str)} per il reset dei timer del Dead Man's Switch al rientro dell'utente nell'applicazione.
+
+\paragraph{GetDmsConfigurationSettingsPort}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/GetDmsConfigurationSettingsPort.pdf}
+    \caption{Diagramma della classe \code{GetDmsConfigurationSettingsPort}}
+    \label{fig:architettura_logica_luoghi_GetDmsConfigurationSettingsPort}
+\end{figure}
+Espone \code{get\_dms\_config(user\_id: str)} per il recupero della configurazione del Dead Man's Switch.
+
+\paragraph{SetDmsConfigurationSettingsPort}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/SetDmsConfigurationSettingsPort.pdf}
+    \caption{Diagramma della classe \code{SetDmsConfigurationSettingsPort}}
+    \label{fig:architettura_logica_luoghi_SetDmsConfigurationSettingsPort}
+\end{figure}
+Espone \code{update\_dms\_configuration\_settings(config: DmsConfig)} per l'aggiornamento della configurazione.
+
+\paragraph{UpdateDeadManSwitchAlertPort}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{}
+    \caption{Diagramma della classe \code{UpdateDeadManSwitchAlertPort}}
+    \label{fig:architettura_logica_luoghi_UpdateDeadManSwitchAlertPort}
+\end{figure}
+Espone \code{update\_dead\_man\_switch\_timers()} per l'aggiornamento dei timer lato backend.
+
+\paragraph{SetTrustedContactPort}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/SetTrustedContactPort.pdf}
+    \caption{Diagramma della classe \code{SetTrustedContactPort}}
+    \label{fig:architettura_logica_luoghi_SetTrustedContactPort}
+\end{figure}
+Espone \code{add\_contact(contact: AddTrustedContactCmd)} per la creazione di un nuovo contatto e \code{update\_trusted\_contact(request: TrustedContact)} per la modifica di uno esistente.
+
+\paragraph{GetTrustedContactPort}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/GetTrustedContactPort.pdf}
+    \caption{Diagramma della classe \code{GetTrustedContactPort}}
+    \label{fig:architettura_logica_luoghi_GetTrustedContactPort}
+\end{figure}
+Espone \code{get\_trusted\_contact(cmd: GetTrustedContactCmd)} per il recupero di un singolo contatto e \code{get\_all\_trusted\_contacts(user\_id: str)} per il recupero della lista completa.
+
+\paragraph{DeleteTrustedContactPort}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/DeleteTrustedContactPort.pdf}
+    \caption{Diagramma della classe \code{DeleteTrustedContactPort}}
+    \label{fig:architettura_logica_luoghi_DeleteTrustedContactPort}
+\end{figure}
+Espone \code{delete\_trusted\_contact(cmd: DeleteTrustedContactCmd)} per l'eliminazione di un contatto.
+
+\paragraph{SendAlertPort}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/SendAlertPort.pdf}
+    \caption{Diagramma della classe \code{SendAlertPort}}
+    \label{fig:architettura_logica_luoghi_SendAlertPort}
+\end{figure}
+Espone \code{send\_alert\_emails(alert\_info: AlertCmd)} per l'invio delle email di soccorso ai contatti fidati.
+
+\paragraph{DmsCRUDService}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/DmsCRUDService.pdf}
+    \caption{Diagramma della classe \code{DmsCRUDService}}
+    \label{fig:architettura_logica_luoghi_DmsCRUDService}
+\end{figure}
+È il service della domain logic responsabile delle operazioni di lettura e scrittura sulla configurazione del Dead Man's Switch e sui contatti fidati.
+
+\paragraph{DmsAlertService}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/DmsAlertService.pdf}
+    \caption{Diagramma della classe \code{DmsAlertService}}
+    \label{fig:architettura_logica_luoghi_DmsAlertService}
+\end{figure}
+È responsabile dell'invio delle notifiche del Dead Man's Switch. Si occupa del recupero dei contatti fidati, la configurazione del DMS e la costruzione dei messaggi email.\\
+Descrizione metodi:
+\begin{itemize}
+    \item \code{\_\_init\_\_(repository, notification\_repository, dms\_repository)}, costruttore che riceve le tre port secondarie tramite dependency injection;
+    \item \code{send\_user\_notification(user\_id: str)}, metodo privato che recupera la configurazione DMS dell'utente e costruisce e invia la notifica all'utente alla scadenza del primo timer;
+    \item \code{send\_contacts\_emails(message\_info: AlertMessage)}, metodo privato che costruisce e invia le email ai contatti fidati dell'utente alla scadenza del secondo timer.
+\end{itemize}
+
+\paragraph{TrustedContactCRUDService}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/TrustedContactCRUDService.pdf}
+    \caption{Diagramma della classe \code{TrustedContactCRUDService}}
+    \label{fig:architettura_logica_luoghi_TrustedContactCRUDService}
+\end{figure}
+È il service della domain logic responsabile delle operazioni CRUD sui contatti fidati.\\
+Descrizione metodi:
+\begin{itemize}
+    \item \code{\_\_init\_\_(repository: TrustedContactRepositoryPort)}, costruttore che riceve la port secondaria tramite dependency injection.
+\end{itemize}
+
+\paragraph{SOSAlertService}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/SOSAlertService.pdf}
+    \caption{Diagramma della classe \code{SOSAlertService}}
+    \label{fig:architettura_logica_luoghi_SOSAlertService}
+\end{figure}
+È il service della domain logic responsabile dell'invio immediato delle email di soccorso al momento della pressione del pulsante SOS da parte dell'utente. Implementa la port primaria \code{SendAlertPort}.\\
+Descrizione metodi:
+\begin{itemize}
+    \item \code{\_\_init\_\_(contact\_repository, notification\_repository)}, costruttore che riceve le due port secondarie tramite dependency injection;
+    \item \code{send\_single\_email(message: EmailMessage)}, metodo privato che costruisce e invia una singola email a partire da un oggetto \code{EmailMessage}, delegando l'invio alla \code{NotificationPort}.
+\end{itemize}
+
+\paragraph{DmsRepositoryPort}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/DmsRepositoryPort.pdf}
+    \caption{Diagramma della classe \code{DmsRepositoryPort}}
+    \label{fig:architettura_logica_luoghi_DmsRepositoryPort}
+\end{figure}
+Descrizione metodi:
+\begin{itemize}
+    \item \code{update\_dms\_config(config: DmsConfig)}, aggiorna la configurazione DMS dell'utente;
+    \item \code{get\_dms\_config(user\_id: str)}, recupera la configurazione DMS associata all'utente;
+    \item \code{add\_dms\_config()}, crea una nuova configurazione DMS per l'utente;
+    \item \code{get\_first\_timer(user\_id: str)}, recupera il valore corrente del primo timer;
+    \item \code{get\_second\_timer(user\_id: str)}, recupera il valore corrente del secondo timer;
+    \item \code{update\_first\_counter(user\_id: str, remaining\_days: int)}, aggiorna il contatore residuo del primo timer;
+    \item \code{update\_second\_counter(user\_id: str, remaining\_days: int)}, aggiorna il contatore residuo del secondo timer.
+\end{itemize}
+
+\paragraph{TrustedContactRepositoryPort}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/TrustedContactRepositoryPort.pdf}
+    \caption{Diagramma della classe \code{TrustedContactRepositoryPort}}
+    \label{fig:architettura_logica_luoghi_TrustedContactRepositoryPort}
+\end{figure}
+Descrizione metodi:
+\begin{itemize}
+    \item \code{add(contact: TrustedContact)}, aggiunge un nuovo contatto fidato e restituisce l'entità creata;
+    \item \code{get(user\_id: str, contact\_id: str)}, recupera un singolo contatto fidato tramite le chiavi identificative, restituendo \code{None} se non trovato;
+    \item \code{delete(user\_id: str, contact\_id: str)}, elimina il contatto fidato corrispondente alle chiavi fornite;
+    \item \code{update\_trusted\_contact(contact: TrustedContact)}, aggiorna i dati anagrafici di un contatto fidato esistente;
+    \item \code{list\_trusted\_contacts(user\_id: str)}, restituisce la lista completa dei contatti fidati associati all'utente.
+\end{itemize}
+
+\paragraph{NotificationPort}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/NotificationPort.pdf}
+    \caption{Diagramma della classe \code{NotificationPort}}
+    \label{fig:architettura_logica_luoghi_NotificationPort}
+\end{figure}
+È la port secondaria del pattern esagonale per l'invio delle notifiche email.
+Descrizione metodi:
+\begin{itemize}
+    \item \code{send\_email\_message(message: AlertMessage)}, invia un messaggio email a partire da un oggetto \code{AlertMessage}.
+\end{itemize}
+
+\paragraph{DynamoDmsAdapter}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/DynamoDmsAdapter.pdf}
+    \caption{Diagramma della classe \code{DynamoDmsAdapter}}
+    \label{fig:architettura_logica_luoghi_DynamoDmsAdapter}
+\end{figure}
+Contiene tutta la logica specifica per la persistenza della configurazione e dei contatori del Dead Man's Switch su DynamoDB.
+
+\paragraph{DynamoTrustedContactAdapter}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/DynamoTrustedContactAdapter.pdf}
+    \caption{Diagramma della classe \code{DynamoTrustedContactAdapter}}
+    \label{fig:architettura_logica_luoghi_DynamoTrustedContactAdapter}
+\end{figure}
+Contiene tutta la logica specifica per la persistenza dei contatti fidati su DynamoDB.
+
+\paragraph{SesNotificationAdapter}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/SesNotificationAdapter.pdf}
+    \caption{Diagramma della classe \code{SesNotificationAdapter}}
+    \label{fig:architettura_logica_luoghi_SesNotificationAdapter}
+\end{figure}
+Contiene tutta la logica specifica per l'invio delle email tramite il servizio Amazon SES.
 
 \section{Stato dei requisiti funzionali} \label{sec:stato_requisiti_funzionali}
 \subsection{Requisiti Funzionali obbligatori} \label{subsection:requisiti_funzionali_obbligatori}
