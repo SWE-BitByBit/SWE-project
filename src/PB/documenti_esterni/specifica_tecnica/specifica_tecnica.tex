@@ -2316,11 +2316,11 @@ Il flusso di elaborazione è dunque il seguente:
 \begin{itemize}
     \item \code{GET /chats/}
         \begin{itemize}
-            \item \textbf{Descrizione}: Recupera la lista delle chat associate all’utente autenticato, restituendo solo le informazioni principali, senza i messaggi.
+            \item \textbf{Descrizione}: Recupera la lista delle chat associate all’\term{Utente} autenticato, restituendo solo le informazioni principali, senza i messaggi.
             
             \item \textbf{Parametri}:
             \begin{itemize}
-                \item \texttt{user\_id}: identificativo dell’utente.
+                \item \texttt{user\_id}: identificativo dell’\term{Utente}.
             \end{itemize}
             
             \item \textbf{Response}:
@@ -2352,14 +2352,14 @@ Il flusso di elaborazione è dunque il seguente:
             \item \textbf{Errori}:
             \begin{itemize}
                 \item \texttt{400 Bad Request}: parametri mancanti o non validi.
-                \item \texttt{401 Unauthorized}: utente non autenticato.
+                \item \texttt{401 Unauthorized}: \term{Utente} non autenticato.
                 \item \texttt{500 Internal Server Error}: errore interno del server.
             \end{itemize}
         \end{itemize}
 
     \item \code{POST /chats/}
         \begin{itemize}
-            \item \textbf{Descrizione}: Crea una nuova chat associata all’utente autenticato, inizializzata senza messaggi.
+            \item \textbf{Descrizione}: Crea una nuova chat associata all’\term{Utente} autenticato, inizializzata senza messaggi.
 
             \item \textbf{Parametri}:
             \begin{itemize}
@@ -2445,7 +2445,7 @@ Il flusso di elaborazione è dunque il seguente:
             \begin{itemize}
                 \item \texttt{chat\_id}: identificativo della chat.
                 \item \texttt{title}: nuovo titolo della chat.
-                \item \texttt{user\_id}: identificativo dell’utente.
+                \item \texttt{user\_id}: identificativo dell’\term{Utente}.
             \end{itemize}
         
             \item \textbf{Response}:
@@ -2502,7 +2502,7 @@ Il flusso di elaborazione è dunque il seguente:
             \item \textbf{Parametri}:
             \begin{itemize}
                 \item \texttt{chat\_id}: identificativo della chat.
-                \item \texttt{message}: contenuto del messaggio dell’utente.
+                \item \texttt{message}: contenuto del messaggio dell’\term{Utente}.
                 \item \texttt{response\_mode} (body, opzionale): modalità di generazione della risposta del chatbot: \texttt{"mirror"} o \texttt{"detective"}.
             \end{itemize}
 
@@ -2523,12 +2523,12 @@ Il flusso di elaborazione è dunque il seguente:
             \begin{itemize}
                 \item \texttt{400 Bad Request}: messaggio mancante o non valido.
                 \item \texttt{404 Not Found}: chat non trovata.
-                \item \texttt{500 Internal Server Error}: errore interno del servizio LLM o del backend.
+                \item \texttt{500 Internal Server Error}: errore interno del servizio LLM o del \term{Backend}.
             \end{itemize}
         \end{itemize}
 \end{itemize}
 
-\paragraph{Architettura logica del chatbot}\mbox{}\\
+\paragraph{\term{Architettura} logica del chatbot}\mbox{}\\
 
 \begin{figure}[H]
     \centering
@@ -2539,7 +2539,7 @@ Il flusso di elaborazione è dunque il seguente:
 
 \paragraph{Chat}\mbox{}\\
 
-La classe \code{Chat} rappresenta il modello di dominio di una conversazione tra utente e chatbot. Contiene i metadati identificativi (\code{user\_id}, \code{chat\_id}), il titolo della conversazione, le date di creazione e aggiornamento e l'elenco completo dei messaggi scambiati. Questa classe costituisce l'entità centrale del dominio applicativo e viene utilizzata sia dai servizi di persistenza che da quelli di elaborazione tramite LLM.
+La classe \code{Chat} rappresenta il modello di dominio di una conversazione tra \term{Utente} e chatbot. Contiene i metadati identificativi (\code{user\_id}, \code{chat\_id}), il titolo della conversazione, le date di creazione e aggiornamento e l'elenco completo dei messaggi scambiati. Questa classe costituisce l'entità centrale del dominio applicativo e viene utilizzata sia dai servizi di persistenza che da quelli di elaborazione tramite LLM.
 
 \begin{figure}[H]
     \centering
@@ -2561,7 +2561,7 @@ La classe \code{Chat} rappresenta il modello di dominio di una conversazione tra
 
 \paragraph{ChatbotLLMPort}\mbox{}\\
 
-L'interfaccia \code{ChatbotLLMPort} definisce il contratto per gli adapter che si interfacciano con LLM. Espone il metodo \code{process\_prompt}, che accetta un prompt testuale e una modalità di risposta, restituendo la stringa generata dal modello. Questa astrazione permette di disaccoppiare la logica applicativa dall'implementazione specifica del provider LLM utilizzato.
+L'interfaccia \code{ChatbotLLMPort} definisce il \term{Contratto} per gli adapter che si interfacciano con LLM. Espone il metodo \code{process\_prompt}, che accetta un prompt testuale e una modalità di risposta, restituendo la stringa generata dal modello. Questa astrazione permette di disaccoppiare la logica applicativa dall'implementazione specifica del provider LLM utilizzato.
 
 \begin{figure}[H]
     \centering
@@ -2572,7 +2572,7 @@ L'interfaccia \code{ChatbotLLMPort} definisce il contratto per gli adapter che s
 
 \paragraph{BedrockLLMAdapter}\mbox{}\\
 
-\code{BedrockLLMAdapter} implementa l'interfaccia \code{ChatbotLLMPort} fornendo l'integrazione concreta con Amazon Bedrock. Questa classe incapsula la logica di comunicazione con il servizio cloud, traducendo le richieste dell'applicazione in chiamate API specifiche per il modello di linguaggio selezionato.
+\code{BedrockLLMAdapter} implementa l'interfaccia \code{ChatbotLLMPort} fornendo l'integrazione concreta con Amazon Bedrock. Questa classe incapsula la logica di comunicazione con il servizio \term{Cloud}, traducendo le richieste dell'applicazione in chiamate API specifiche per il modello di linguaggio selezionato.
 
 \begin{figure}[H]
     \centering
@@ -2583,7 +2583,7 @@ L'interfaccia \code{ChatbotLLMPort} definisce il contratto per gli adapter che s
 
 \paragraph{ChatbotLLMService}\mbox{}\\
 
-\code{ChatbotLLMService} coordina la generazione delle risposte del chatbot interagendo con un'implementazione di \code{ChatbotLLMPort}. Il metodo \code{get\_message\_response} orchestra l'intero \ignoreglossary{processo}: recupera i messaggi rilevanti dalla cronologia della conversazione tramite l'algoritmo BM25, costruisce il prompt contestualizzato attraverso \code{\_build\_prompt} combinando il messaggio utente con il contesto recuperato e il prompt di sistema appropriato alla modalità selezionata, e infine delega al modello la generazione della risposta. Questa classe è quindi responsabile di implementare i diversi meccanismi di risposta sulla base di \code{response\_mode}, realizzando così le funzionalità di risposta "Detective delle relazioni" e "Specchio intelligente".
+\code{ChatbotLLMService} coordina la generazione delle risposte del chatbot interagendo con un'implementazione di \code{ChatbotLLMPort}. Il metodo \code{get\_message\_response} orchestra l'intero \ignoreglossary{processo}: recupera i messaggi rilevanti dalla cronologia della conversazione tramite l'algoritmo BM25, costruisce il prompt contestualizzato attraverso \code{\_build\_prompt} combinando il messaggio \term{Utente} con il contesto recuperato e il prompt di sistema appropriato alla modalità selezionata, e infine delega al modello la generazione della risposta. Questa classe è quindi responsabile di implementare i diversi meccanismi di risposta sulla base di \code{response\_mode}, realizzando così le funzionalità di risposta "Detective delle relazioni" e "Specchio intelligente".
 
 \begin{figure}[H]
     \centering
@@ -2594,7 +2594,7 @@ L'interfaccia \code{ChatbotLLMPort} definisce il contratto per gli adapter che s
 
 \paragraph{ChatsRepositoryPort}\mbox{}\\
 
-L'interfaccia \code{ChatsRepositoryPort} definisce il contratto per la persistenza delle conversazioni. Espone metodi per tutte le operazioni CRUD: creazione di nuove chat (\code{create\_chat}), recupero singolo (\code{get\_chat}) e multiplo (\code{list\_chats}), eliminazione (\code{delete\_chat}) e aggiunta di messaggi (\code{add\_message}). Questa astrazione garantisce l'indipendenza del dominio dall'implementazione specifica del layer di persistenza.
+L'interfaccia \code{ChatsRepositoryPort} definisce il \term{Contratto} per la persistenza delle conversazioni. Espone metodi per tutte le operazioni CRUD: creazione di nuove chat (\code{create\_chat}), recupero singolo (\code{get\_chat}) e multiplo (\code{list\_chats}), eliminazione (\code{delete\_chat}) e aggiunta di messaggi (\code{add\_message}). Questa astrazione garantisce l'indipendenza del dominio dall'implementazione specifica del layer di persistenza.
 
 \begin{figure}[H]
     \centering
@@ -2627,7 +2627,7 @@ L'interfaccia \code{CreateChatPort} definisce la porta applicativa per la creazi
 
 \paragraph{GetChatPort}\mbox{}\\
 
-\code{GetChatPort} definisce le operazioni di lettura delle conversazioni. Include il metodo \code{get\_chat} per il recupero di una singola chat dato il suo identificativo e \code{get\_chat\_list} per ottenere l'elenco di tutte le conversazioni appartenenti a un utente. Entrambi i metodi operano attraverso comandi dedicati, mantenendo la separazione tra richiesta ed esecuzione.
+\code{GetChatPort} definisce le operazioni di lettura delle conversazioni. Include il metodo \code{get\_chat} per il recupero di una singola chat dato il suo identificativo e \code{get\_chat\_list} per ottenere l'elenco di tutte le conversazioni appartenenti a un \term{Utente}. Entrambi i metodi operano attraverso comandi dedicati, mantenendo la separazione tra richiesta ed esecuzione.
 
 \begin{figure}[H]
     \centering
@@ -2671,7 +2671,7 @@ L'interfaccia \code{ChatMessagePort} astrae l'operazione di aggiunta di messaggi
 
 \paragraph{ChatbotCRUDService}\mbox{}\\
 
-\code{ChatbotCRUDService} implementa tutte le porte applicative relative alle operazioni CRUD sulle conversazioni: \code{CreateChatPort}, \code{GetChatPort}, \code{UpdateChatPort}, \code{DeleteChatPort} e \code{ChatMessagePort}. Questo servizio funge da facade unificato per tutte le operazioni di gestione delle chat, delegando al repository la persistenza effettiva dei dati. Mantiene un riferimento a \code{ChatsRepositoryPort}, rispettando il principio di inversione delle dipendenze dell'architettura esagonale.
+\code{ChatbotCRUDService} implementa tutte le porte applicative relative alle operazioni CRUD sulle conversazioni: \code{CreateChatPort}, \code{GetChatPort}, \code{UpdateChatPort}, \code{DeleteChatPort} e \code{ChatMessagePort}. Questo servizio funge da facade unificato per tutte le operazioni di gestione delle chat, delegando al \term{Repository} la persistenza effettiva dei dati. Mantiene un riferimento a \code{ChatsRepositoryPort}, rispettando il principio di inversione delle dipendenze dell'\term{Architettura} esagonale.
 
 \begin{figure}[H]
     \centering
@@ -2682,7 +2682,7 @@ L'interfaccia \code{ChatMessagePort} astrae l'operazione di aggiunta di messaggi
 
 \paragraph{CreateChatCmd}\mbox{}\\
 
-\code{CreateChatCmd} incapsula i parametri necessari per la creazione di una nuova conversazione: l'identificativo dell'utente (\code{user\_id}) e il titolo della chat (\code{title}).
+\code{CreateChatCmd} incapsula i parametri necessari per la creazione di una nuova conversazione: l'identificativo dell'\term{Utente} (\code{user\_id}) e il titolo della chat (\code{title}).
 
 \begin{figure}[H]
     \centering
@@ -2693,7 +2693,7 @@ L'interfaccia \code{ChatMessagePort} astrae l'operazione di aggiunta di messaggi
 
 \paragraph{GetChatCmd}\mbox{}\\
 
-\code{GetChatCmd} trasporta i parametri per il recupero di una specifica conversazione: l'identificativo dell'utente e quello della chat.
+\code{GetChatCmd} trasporta i parametri per il recupero di una specifica conversazione: l'identificativo dell'\term{Utente} e quello della chat.
 
 \begin{figure}[H]
     \centering
@@ -2704,7 +2704,7 @@ L'interfaccia \code{ChatMessagePort} astrae l'operazione di aggiunta di messaggi
 
 \paragraph{GetChatListCmd}\mbox{}\\
 
-\code{GetChatListCmd} contiene l'identificativo dell'utente per il quale si richiede l'elenco completo delle conversazioni. Questo comando rappresenta l'operazione di recupero multiplo, fondamentale per la visualizzazione dello storico delle chat nell'interfaccia utente.
+\code{GetChatListCmd} contiene l'identificativo dell'\term{Utente} per il quale si richiede l'elenco completo delle conversazioni. Questo comando rappresenta l'operazione di recupero multiplo, fondamentale per la visualizzazione dello storico delle chat nell'interfaccia \term{Utente}.
 
 \begin{figure}[H]
     \centering
@@ -2715,7 +2715,7 @@ L'interfaccia \code{ChatMessagePort} astrae l'operazione di aggiunta di messaggi
 
 \paragraph{UpdateChatCmd}\mbox{}\\
 
-\code{UpdateChatCmd} incapsula i parametri per la modifica di una conversazione esistente: gli identificativi di utente e chat, e il nuovo titolo da assegnare.
+\code{UpdateChatCmd} incapsula i parametri per la modifica di una conversazione esistente: gli identificativi di \term{Utente} e chat, e il nuovo titolo da assegnare.
 
 \begin{figure}[H]
     \centering
@@ -2737,7 +2737,7 @@ L'interfaccia \code{ChatMessagePort} astrae l'operazione di aggiunta di messaggi
 
 \paragraph{AddChatMessageCmd}\mbox{}\\
 
-\code{AddChatMessageCmd} contiene tutti i parametri necessari per aggiungere un messaggio a una conversazione: identificativi di utente e chat, contenuto testuale (\code{text}) e tipologia del mittente (\code{sender}). Questo comando viene utilizzato sia per memorizzare i messaggi inviati dall'utente che le risposte generate dal chatbot, mantenendo la coerenza dello storico conversazionale.
+\code{AddChatMessageCmd} contiene tutti i parametri necessari per aggiungere un messaggio a una conversazione: identificativi di \term{Utente} e chat, contenuto testuale (\code{text}) e tipologia del mittente (\code{sender}). Questo comando viene utilizzato sia per memorizzare i messaggi inviati dall'\term{Utente} che le risposte generate dal chatbot, mantenendo la coerenza dello storico conversazionale.
 
 \begin{figure}[H]
     \centering
@@ -2748,7 +2748,7 @@ L'interfaccia \code{ChatMessagePort} astrae l'operazione di aggiunta di messaggi
 
 \paragraph{ChatDTO}\mbox{}\\
 
-\code{ChatDTO} è il Data Transfer Object utilizzato per la serializzazione e deserializzazione delle conversazioni nelle comunicazioni tra frontend e backend. Contiene tutti i campi dell'entità \code{Chat} di dominio e fornisce i metodi \code{to\_dict} per la conversione in dizionario Python (successivamente serializzato in JSON) e \code{from\_domain} per la creazione a partire da un oggetto di dominio.
+\code{ChatDTO} è il Data Transfer Object utilizzato per la serializzazione e deserializzazione delle conversazioni nelle comunicazioni tra frontend e \term{Backend}. Contiene tutti i campi dell'entità \code{Chat} di dominio e fornisce i metodi \code{to\_dict} per la conversione in dizionario Python (successivamente serializzato in JSON) e \code{from\_domain} per la creazione a partire da un oggetto di dominio.
 
 \begin{figure}[H]
     \centering
