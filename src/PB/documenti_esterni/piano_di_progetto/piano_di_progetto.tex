@@ -6,7 +6,7 @@
 % =======================================================
 \newcommand{\TitoloDocumento}{Piano di Progetto}
 \newcommand{\DataVersione}{AAAA/MM/GG}
-\newcommand{\VersioneAttuale}{1.1.2}
+\newcommand{\VersioneAttuale}{1.1.3}
 
 % =======================================================
 % 2. PACCHETTI
@@ -202,6 +202,9 @@ Gruppo BitByBit\\\\
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 \endhead
+\rowcolor{white}
+1.1.3 & 2026-04-27 & Giovanni Visentin & Consuntivo \term{Sprint} 10 & Dennis Parolin \\
+\hline
 \rowcolor{gray!20}
 1.1.2 & 2026-04-14 & Gabriele Scaggiante & Scritto il consuntivo dello \term{Sprint} 9 & Ferdinando Fracasso \\
 \hline
@@ -2740,7 +2743,7 @@ Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la
         Amministratore & 20\euro/h & 6 & 120\euro & 16.25 \textcolor{red}{(-6)} & 325\euro \textcolor{red}{(-120\euro)} \\
         \hline
         \rowcolor{tableLineOdd}
-        Analista & 25\euro/h & - & - & 0.5  & 12,50\euro \\
+        Analista & 25\euro/h & - & - & -0.5  & 12,50\euro \\
         \hline
         \rowcolor{tableLineEven}
         Progettista & 25\euro/h & 43 & 1.075\euro & 28 \textcolor{red}{(-43)} & 700\euro \textcolor{red}{(-1.075\euro)} \\
@@ -2769,5 +2772,218 @@ La retrospettiva ha evidenziato la necessità di richiedere un maggiore supporto
 Per prevenire disallineamenti significativi tra quanto progettato e i successivi riscontri ricevuti, si è scelto di non formalizzare nel documento di \term{Specifica Tecnica} le sezioni relative all’\term{Architettura} di \term{Backend}. Questa decisione ha comportato, nel consuntivo dello \term{Sprint} 9, un numero di ore effettivamente svolte inferiore rispetto a quanto preventivato.
 
 Pur implicando la necessità di completare le sezioni mancanti nello \term{Sprint} successivo, si ritiene che un approccio più cauto sia preferibile e consenta, nel complesso, di procedere in modo più rapido ed efficace nelle fasi successive.
+
+
+%-------------------------------------------------------------------------------------------------%
+\subsubsection{Sprint 10}\label{sec:sprint10_PB}
+
+% --- TABELLA RIEPILOGATIVA \term{Sprint} ---
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabularx}{\textwidth}{|>{\columncolor{tableHeader}\bfseries}l|X|>{\columncolor{tableHeader}\bfseries}l|X|}
+        \hline
+        Inizio & 2026-04-13 & Fine prevista & 2026-04-19 \\
+        \hline
+        Stato & \textbf{Concluso} & Fine reale & 2026-04-19 \\
+        \hline
+        \multicolumn{2}{|c|}{\cellcolor{tableHeader}\textbf{Giorni di ritardo}} & \multicolumn{2}{c|}{0} \\
+        \hline
+    \end{tabularx}
+    \caption{Riepilogo temporale \term{Sprint} 10}
+\end{table}
+
+\paragraph{Informazioni generali e attività da svolgere}
+Lo \term{Sprint} 10 è orientato, ancora, al completamento del documento di \term{Specifica Tecnica}. In continuità con i progressi conseguiti nello \term{Sprint} 9, lo \term{Sprint} 10 si propone inoltre di avviare lo sviluppo lato \term{Backend} di alcune funzionalità dell’applicazione. Le attività pianificate includono:
+
+\begin{itemize}
+\item \textbf{Progettazione:} Completamento e finalizzazione dei diagrammi secondo le indicazioni ricevute durante l'incontro con il professor Cardin e con la \term{Proponente}. Completamento e formalizzazione dell’\term{Architettura} di \term{Backend}, con particolare attenzione ai componenti basati su servizi \term{Serverless} e alla loro interazione. Redazione delle sezioni della \term{Specifica Tecnica} dedicate alla descrizione delle API, dei pattern architetturali adottati e del loro utilizzo.
+
+\item \textbf{Programmazione:} Conclusione dello sviluppo frontend delle principali funzionalità applicative la cui progettazione era già stata ultimata nello \term{Sprint} 9. Inizio dello sviluppo \term{Backend}, con particolare attenzione alla realizzazione dei servizi \term{Serverless} e alla loro integrazione con i servizi di storage e database. Si fa riferimento, in particolare, alla gestione del diario, alla realizzazione della homepage e dei contatti fidati, e all’implementazione delle componenti legate al chatbot. 
+\end{itemize}
+
+\paragraph{Rischi attesi}
+Tra i principali rischi identificati per questo periodo pre-implementativo troviamo:
+\begin{itemize}
+    \item \textbf{RT1 (Inesperienza tecnologica)}: Data la poca familiarità con alcuni pattern architetturali e il mancato utilizzo di alcuni servizi per via di permessi non ancora del tutto concessi, la progettazione di alcune componenti del sistema potrebbe richiedere più iterazioni per raggiungere un grado di correttezza soddisfacente.
+    \item \textbf{RO5 (Dipendenza da permessi esterni)}: Rischio di ritardi nello sviluppo \term{Backend} a causa della dipendenza da permessi e accessi necessari per l'utilizzo di alcuni servizi \term{Cloud}.
+\end{itemize}
+
+\paragraph{Preventivo}
+Si prospetta l'utilizzo delle seguenti risorse:
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \small 
+    \begin{tabularx}{\textwidth}{|l|C|C|C|C|C|C|}
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Membro} & \textbf{Resp} & \textbf{Amm} & \textbf{Anal} & \textbf{Pt} & \textbf{Pr} & \textbf{Ver} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        F. Fracasso & - & - & - & - & 10 & 5 \\
+        \hline
+        \rowcolor{tableLineEven}
+        R. Manisi & - & - & - & 7 & 7 & - \\
+        \hline
+        \rowcolor{tableLineOdd}
+        D. Parolin & - & - & - & - & 10 & - \\
+        \hline
+        \rowcolor{tableLineEven}
+        M. Sanguin & - & - & - & 5 & 7 & 5 \\
+        \hline
+        \rowcolor{tableLineOdd}
+        G. Scaggiante & - & - & - & 4 & 1 & 5 \\
+        \hline
+        \rowcolor{tableLineEven}
+        G. Visentin & 9 & - & - & - & 6 & - \\
+        \hline
+    \end{tabularx}
+    \caption{Preventivo orario per componente - \term{Sprint} 10}
+    \label{tab:preventivo_sprint10}
+\end{table}
+
+% GRAFICO A TORTA PREVENTIVO
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1.2]
+        % Responsabile (11.1%)
+        \draw[thick,fill=pieResp] (0,0) -- (0:1.5) arc (0:40:1.5) -- cycle;
+        \draw (20:2) node {11.1\%};
+        
+        % Progettista (19.8%)
+        \draw[thick,fill=pieDes] (0,0) -- (40:1.5) arc (40:111.1:1.5) -- cycle;
+        \draw (75.6:1.95) node {19.8\%};
+
+        % Programmatore (50.6%)
+        \draw[thick,fill=pieProg] (0,0) -- (111.1:1.5) arc (111.1:293.3:1.5) -- cycle;
+        \draw (202.2:1.95) node {50.6\%};
+
+        % Verificatore (18.5%)
+        \draw[thick,fill=pieVer] (0,0) -- (293.3:1.5) arc (293.3:360:1.5) -- cycle;
+        \draw (326.7:1.95) node {18.5\%};
+
+        \matrix [below, draw=none, fill=none] at (0,-2.5) {
+            \node [fill=pieResp, label=right:Responsabile] {}; & \node [fill=pieAmm, label=right:Amministratore] {}; \\
+            \node [fill=pieAnal, label=right:Analista] {};     & \node [fill=pieDes, label=right:Progettista] {}; \\
+            \node [fill=pieProg, label=right:Programmatore] {};& \node [fill=pieVer, label=right:Verificatore] {}; \\
+        };
+    \end{tikzpicture}
+    \caption{Distribuzione ore per ruolo - Preventivo \term{Sprint} 10}
+\end{figure}
+
+\paragraph{Consuntivo}
+Di seguito il resoconto delle ore effettivamente impiegate. 
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.4}
+    \footnotesize
+    \begin{tabularx}{\textwidth}{|l|C|C|C|C|C|C|}
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Membro} & \textbf{Resp} & \textbf{Amm} & \textbf{Anal} & \textbf{Pt} & \textbf{Pr} & \textbf{Ver} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        F. Fracasso & - & - & - & - & 12.5 & 2.5 \\
+        \hline
+        \rowcolor{tableLineEven}
+        R. Manisi & - & - & - & 8 & 3 & - \\
+        \hline
+        \rowcolor{tableLineOdd}
+        D. Parolin & - & - & - & 0.75 & 10.25 & 0.75 \\
+        \hline
+        \rowcolor{tableLineEven}
+        M. Sanguin & - & 3 & - & 4 & 6 & 5 \\
+        \hline
+        \rowcolor{tableLineOdd}
+        G. Scaggiante & - & - & - & 5 & - & 3 \\
+        \hline
+        \rowcolor{tableLineEven}
+        G. Visentin & 9 & - & - & - & 5 & - \\
+        \hline
+    \end{tabularx}
+    \caption{Consuntivo orario per componente - \term{Sprint} 10}
+    \label{tab:consuntivo_sprint10}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1.2]
+        % Responsabile (11.6%)
+        \draw[thick,fill=pieResp] (0,0) -- (0:1.5) arc (0:41.7:1.5) -- cycle;
+        \draw (20.9:2) node {11.6\%};
+        
+        % Amministratore (3.9%)
+        \draw[thick,fill=pieAmm] (0,0) -- (41.7:1.5) arc (41.7:55.6:1.5) -- cycle;
+        \draw (48.7:2) node {3.9\%};
+        
+        % Progettista (22.8%)
+        \draw[thick,fill=pieDes] (0,0) -- (55.6:1.5) arc (55.6:137.8:1.5) -- cycle;
+        \draw (96.7:1.95) node {22.8\%};
+
+        % Programmatore (47.3%)
+        \draw[thick,fill=pieProg] (0,0) -- (137.8:1.5) arc (137.8:308:1.5) -- cycle;
+        \draw (222.9:1.95) node {47.3\%};
+
+        % Verificatore (14.5%)
+        \draw[thick,fill=pieVer] (0,0) -- (308:1.5) arc (308:360:1.5) -- cycle;
+        \draw (334:1.95) node {14.5\%};
+
+        \matrix [below, draw=none, fill=none] at (0,-2.5) {
+            \node [fill=pieResp, label=right:Responsabile] {}; & \node [fill=pieAmm, label=right:Amministratore] {}; \\
+            \node [fill=pieAnal, label=right:Analista] {};     & \node [fill=pieDes, label=right:Progettista] {}; \\
+            \node [fill=pieProg, label=right:Programmatore] {};& \node [fill=pieVer, label=right:Verificatore] {}; \\
+        };
+    \end{tikzpicture}
+    \caption{Distribuzione ore per ruolo - Consuntivo \term{Sprint} 10}
+\end{figure}
+
+\paragraph{Aggiornamento delle risorse rimanenti}
+Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la chiusura dello \term{Sprint} 10. 
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabularx}{\textwidth}{|l|c|c|c|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Ruolo} & \textbf{Costo} & \textbf{Ore} & \textbf{Costo} & \textbf{Ore rimanenti} & \textbf{Budget rimanente} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Responsabile & 30\euro/h & 9 & 270\euro & 9 \textcolor{red}{(-9)} & 270\euro \textcolor{red}{(-270\euro)} \\
+        \hline
+        \rowcolor{tableLineEven}
+        Amministratore & 20\euro/h & 3 & 60\euro & 13.25 \textcolor{red}{(-3)} & 265\euro \textcolor{red}{(-60\euro)} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Analista & 25\euro/h & - & - & -0.5 & 12,50\euro \\
+        \hline
+        \rowcolor{tableLineEven}
+        Progettista & 25\euro/h & 17.75 & 443,75\euro & 10.25 \textcolor{red}{(-17.75)} & 256,25\euro \textcolor{red}{(-443,75\euro)} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Programmatore & 15\euro/h & 36.75 & 551,25\euro & 36.25 \textcolor{red}{(-36.75)} & 543,75\euro \textcolor{red}{(-551,25\euro)} \\
+        \hline
+        \rowcolor{tableLineEven}
+        Verificatore & 15\euro/h & 11.25 & 168,75\euro & 36.25 \textcolor{red}{(-11.25)} & 543,75\euro \textcolor{red}{(-168,75\euro)} \\
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Totale} & - & \textbf{77.75} & \textbf{1.493,75\euro} & \textbf{104.5 \textcolor{red}{(-77.75)}} & \textbf{1.866,25\euro \textcolor{red}{(-1.493,75\euro)}} \\
+        \hline
+    \end{tabularx}
+    \caption{\term{Sprint} 10 - Variazione nelle risorse disponibili}
+\end{table}
+
+\paragraph{Rischi incontrati}
+
+Durante lo \term{Sprint} 10, il rischio RT1 (Inesperienza tecnologica) si è concretizzato in parte, soprattutto per quanto riguarda la progettazione di alcune componenti del sistema.
+Inoltre, il rischio RO5 (Dipendenza da permessi esterni) si è concretizzato in parte, con l'impossibilità di eseguire test di rilascio completi su AWS.
+
+\paragraph{Retrospettiva}
+
+Il gruppo ha evidenziato la necessità di un maggiore supporto tecnico da parte dell'azienda \term{Proponente} per quanto riguarda lo sviluppo delle funzionalità che usano AWS.
+Lo sviluppo frontend è stato quasi completato, mentre lo sviluppo \term{Backend} è stato avviato lentamente, causa RO5 (Dipendenza da permessi esterni). Il gruppo continuerà a sviluppare e testare localmente, aspettando di poter eseguire test di rilascio completi su AWS non appena tutte le autorizzazioni saranno completamente concesse.
 
 \end{document}
