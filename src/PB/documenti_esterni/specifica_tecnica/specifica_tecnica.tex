@@ -112,7 +112,7 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & In lavorazione\\
-\textbf{Versione:} & 0.5.0 \\
+\textbf{Versione:} & 0.5.2 \\
 \textbf{Responsabile:} & Gabriele Scaggiante \\
 \textbf{Redattori:} & 
 \begin{tabular}[t]{@{}l@{}}
@@ -154,6 +154,10 @@ Gruppo BitByBit\\
 \hline
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+0.5.2 & 2026-04-23 & Gabriele Scaggiante & Corretta la sezione \hyperref[subsubsec:architettura_chatbot]{Architettura chatbot} dopo l'introduzione di due tabelle DynamoDB & Giovanni Visentin \\
+\hline
+0.5.1 & 2026-04-20 & Dennis Parolin & Aggiornati i pattern presenti nella la sezione \hyperref[subsec:design_pattern]{Design pattern utilizzati}, aggiunti i pattern \hyperref[sec:pattern_dependency_injection]{Dependency Injection}, \hyperref[sec:pattern_command]{Command} e \hyperref[sec:pattern_adapter]{Adapter}. & Gabriele Scaggiante \\
+\hline
 0.5.0 & 2026-04-18 & Gabriele Scaggiante & Nella sezione \hyperref[subsec:architettura_backend]{Architettura backend}, aggiornata \term{Architettura} Auth, Luoghi Sicuri e Materiale Informativo; redatte sezioni Diario, Chatbot e DMS. & Dennis Parolin \\
 \hline
 0.4.0 & 2026-04-17 & Riccardo Manisi & Redatta la sezione \hyperref[subsubsec:diagramma_classi_invio_sos]{Architettura InvioSOS} & Gabriele Scaggiante \\
@@ -402,6 +406,35 @@ http è una libreria per il linguaggio Dart che consente di effettuare richieste
     \item \textbf{Documentazione}: \url{https://pub.dev/packages/path_provider}
 \end{itemize}
 
+\subsubsection{provider}
+\texttt{provider} è una libreria per Flutter che offre un meccanismo di gestione dello stato e di propagazione delle dipendenze lungo l'albero dei widget. Si basa sul sistema nativo di \texttt{InheritedWidget} di Flutter, semplificandone notevolmente l'utilizzo attraverso un'API dichiarativa. Consente di rendere disponibili oggetti (come i ViewModel) a interi sottoalberi dell'interfaccia, facilitando la comunicazione reattiva tra i layer dell'applicazione.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 6.1.5+1
+    \item \textbf{Documentazione}: \url{https://pub.dev/packages/provider}
+\end{itemize}
+
+\subsubsection{url\_launcher}
+\texttt{url\_launcher} è una libreria Flutter che consente di aprire URL nel browser predefinito del dispositivo, avviare applicazioni di posta elettronica, effettuare chiamate telefoniche o aprire altri tipi di risorse tramite i rispettivi handler nativi. Fornisce un'interfaccia unificata e compatibile tra le diverse piattaforme supportate da Flutter.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 6.3.2
+    \item \textbf{Documentazione}: \url{https://pub.dev/packages/url_launcher}
+\end{itemize}
+
+\subsubsection{flutter\_dotenv}
+\texttt{flutter\_dotenv} è una libreria che permette di caricare variabili di configurazione da un file \texttt{.env} all'interno di un'applicazione Flutter. Consente di separare le configurazioni sensibili o dipendenti dall'ambiente (come chiavi API o endpoint) dal codice sorgente, rendendo più agevole la gestione di ambienti diversi senza modificare il codice dell'applicazione.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 6.0.0
+    \item \textbf{Documentazione}: \url{https://pub.dev/packages/flutter_dotenv}
+\end{itemize}
+
+\subsubsection{flutter\_web\_auth\_2}
+\texttt{flutter\_web\_auth\_2} è una libreria Flutter progettata per gestire flussi di autenticazione basati su protocolli web standard come OAuth 2.0 e OpenID Connect. Apre una sessione browser controllata, intercetta il redirect dell'URL di callback e restituisce il codice di autorizzazione all'applicazione, abilitando l'integrazione con provider di identità esterni senza esporre le credenziali nel codice nativo.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 5.0.2
+    \item \textbf{Documentazione}: \url{https://pub.dev/packages/flutter_web_auth_2}
+\end{itemize}
+
+
 \subsection{Tecnologie di analisi statica} \label{subsec:tecnologie_analisi_statica}
 \subsubsection{SonarQube}
 SonarQube è una piattaforma open-source per l’analisi continua della qualità del codice. Esegue \term{Analisi Statica} su diversi linguaggi di programmazione per individuare bug, vulnerabilità, code smells e problemi di copertura dei test. Il funzionamento si basa su scanner che analizzano il codice sorgente e inviano i risultati a un server centrale, dove vengono aggregati e visualizzati tramite una dashboard dedicata.
@@ -470,33 +503,169 @@ L'\term{Architettura} logica adibita all'interazione tra i device mobili e l'amb
 
 \subsection{Design pattern utilizzati} \label{subsec:design_pattern}
 \subsubsection{Model-view-viewmodel}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{diagrammi_classi/pattern_utilizzati/PatternMVVM.pdf}
+    \caption{Rappresentazione del pattern MVVM nel modulo di Autenticazione}
+    \label{fig:pattern_mvvm}
+\end{figure}
 \paragraph{Descrizione del pattern:}\mbox{}\\
-Il pattern Model-view-viewmodel (MVVM) prevede la separazione della parte software responsabile per la resa grafica dalle parti responsabili della \term{Presentation Logic} e \term{Business Logic} in tre componenti principali:
+Il pattern MVVM prevede la separazione tra la resa grafica, la \term{Presentation Logic} e la \term{Business Logic} in tre componenti principali:
 \begin{itemize}
     \item \textbf{Model:} contiene il codice responsabile per la \term{Business Logic} dell'applicazione.
-    \item \textbf{View:} contiene la parte responsabile esclusivamente per la resa grafica del software, e delega la gestione dell'interazione \term{Utente} alla componente \textit{ViewModel}.
-    \item \textbf{ViewModel:} contiene il codice responsabile per la gestione della \term{Presentation Logic} e per la coordinazione tra i componenti \textit{View} e \textit{Model}.
-\end{itemize} 
+    \item \textbf{View:} contiene la parte responsabile della resa grafica del software e della cattura delle interazioni dell'\term{Utente}, a cui reagisce invocando i metodi o i comandi messi a disposizione dal \textit{ViewModel}.
+    \item \textbf{ViewModel:} mantiene e gestisce lo stato della \textit{View} e coordina le interazioni tra quest'ultima e il \textit{Model}. La \textit{View} può modificare il proprio stato esclusivamente attraverso l'interazione con i metodi e i \code{Command} esposti dal \textit{ViewModel}.
+\end{itemize}
+Nel contesto del \term{Framework} Flutter, l'implementazione di questo pattern viene riadattata per assecondare la natura dichiarativa dell'interfaccia. Nello specifico, il ViewModel è tipicamente implementato sfruttando una classe o un mixin proprietario chiamato \code{ChangeNotifier}, il quale consente di notificare esplicitamente la View dei cambiamenti di stato interno. La View, composta a sua volta da Widget, ascolta reattivamente tali notifiche potendo ricostruire e aggiornare solo le specifiche porzioni grafiche necessarie.
 \paragraph{Ragioni per l'utilizzo:}\mbox{}\\
-L'utilizzo del pattern permette una più semplice gestione delle varie parti dell'applicazione, dato che limita notevolmente il coupling tra UI e logica sottostante, migliorandone quindi la manutenibilità, e rende lo sviluppo degli unit test più semplice.
+L'utilizzo del pattern garantisce notevoli vantaggi poiché permette una più semplice ed efficace gestione delle varie parti dell'applicazione, limitando il forte accoppiamento (\textit{coupling}) tra l'interfaccia \ignoreglossary{utente} visiva e la logica di business o di presentazione sottostante. Questo netto disaccoppiamento migliora la manutenibilità del codice dell'applicativo e agevola considerevolmente lo sviluppo e l'esecuzione degli unit test, in quanto permette di testare i ViewModel e i Model isolandoli dal \ignoreglossary{ciclo di vita} visivo tipico del sistema operativo e del \term{Framework}.
+\paragraph{Riferimenti nel progetto:}\mbox{}\\
+Il pattern MVVM è ampiamente utilizzato per strutturare l’interfaccia \term{Utente} dell'applicazione e la logica ad essa associata, separando la resa grafica dalla gestione dello stato e dei dati. Di seguito sono elencati i punti principali dove viene impiegato; all’interno di tali sezioni sono fornite spiegazioni dettagliate su come il pattern interagisce con il sistema circostante:
+\begin{itemize}
+    \item Autenticazione $\rightarrow$ \hyperref[DC-AuthViewModel]{\code{AuthViewModel}}
+    \item Chatbot $\rightarrow$ \hyperref[DC-ChatbotViewModel]{\code{ChatbotViewModel}}
+    \item Diario $\rightarrow$ \hyperref[DC-DiaryViewModel]{\code{DiaryViewModel}}
+    \item Contatti Fidati $\rightarrow$ \hyperref[DC-TrustedContactViewModel]{\code{TrustedContactViewModel}}
+\end{itemize}
 
 \subsubsection{Observer}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{diagrammi_classi/pattern_utilizzati/PatternObserver.pdf}
+    \caption{Rappresentazione del pattern Observer applicato nel modulo dei contatti fidati}
+    \label{fig:pattern_observer}
+\end{figure}
 \paragraph{Descrizione del pattern:}\mbox{}\\
 Il pattern Observer definisce la capacità per un oggetto \textit{Publisher} di definire un meccanismo di "iscrizione" per cui un insieme di oggetti \textit{Subscriber} può "osservarlo" ed essere notificato solo in seguito ad un suo cambiamento di stato. 
+
+Nel contesto di Flutter, l'integrazione di questo pattern avviene tramite l'utilizzo del mixin \code{ChangeNotifier} e dal widget specializzato \code{Consumer}. Il \textit{ViewModel} agisce da \textit{Publisher}: ogni qualvolta rileva un cambiamento rilevante nei dati o nello stato, invoca il metodo \code{notifyListeners()} per segnalare la necessità di un aggiornamento. Il \textit{Consumer} funge da \textit{Subscriber}: esso è un widget che osserva e utilizza i dati forniti dal ViewModel e, ricevuta la notifica di cambiamento, innesca la ricostruzione automatica della propria interfaccia. Questo meccanismo è fondamentale nel nostro caso, perché assicura che solo la porzione di interfaccia racchiusa nel \code{Consumer} (ovvero quella che effettivamente dipende dai dati mutati) venga aggiornata, ottimizzando le prestazioni ed evitando ricostruzioni costose e inutili dell'intera schermata.
 \paragraph{Ragioni per l'utilizzo:}\mbox{}\\
-L'uso principale del pattern nell'applicazione è nelle classi ViewModel, dato che permette di notificare solo i widget che richiedono modifiche dopo un cambiamento di stato del ViewModel, invece di dover ricostruire la schermata dopo una qualsiasi interazione, permettendo così una maggiore fluidità dell'interfaccia durante l'uso da parte dell'\term{Utente}. Inoltre il meccanismo di "iscrizione" rimuove la necessità di verifiche frequenti sullo stato del \textit{Publisher} da parte dei \textit{Subscriber} e rende il codice più facilmente estendibile e mantenibile dato che la modifica di una componente non va a influire sulle altre, per esempio, l'aggiunta di un widget alla \textit{View} non richiederebbe modifiche al \textit{ViewModel}.
+Il pattern Observer è utilizzato per permettere ai ViewModel di notificare solo i widget che richiedono modifiche dopo un cambiamento di stato, ottimizzando la ricostruzione dell'UI in modo da non dover ricostruire l'intera schermata dopo una qualsiasi interazione. Il meccanismo di "iscrizione" rimuove la necessità di verifiche frequenti sullo stato del \textit{Publisher} da parte dei \textit{Subscriber} e rende il codice più facilmente estendibile e mantenibile, dato che la modifica di una componente non va a influire sulle altre. Ad esempio, l’introduzione di un nuovo widget nella \textit{View} non implica la necessità di modificare il \textit{ViewModel}.
+\paragraph{Riferimenti nel progetto:}\mbox{}\\
+Essendo strettamente interconnesso al MVVM, il pattern Observer è utilizzato per la gestione dell'intera UI. Di seguito i punti principali dove i ViewModel agiscono da \textit{Publisher} per le rispettive schermate:
+\begin{itemize}
+    \item Autenticazione $\rightarrow$ \hyperref[DC-AuthViewModel]{\code{AuthViewModel}}
+    \item Chatbot $\rightarrow$ \hyperref[DC-ChatbotViewModel]{\code{ChatbotViewModel}}
+    \item Diario $\rightarrow$ \hyperref[DC-DiaryViewModel]{\code{DiaryViewModel}}
+    \item Contatti Fidati $\rightarrow$ \hyperref[DC-TrustedContactViewModel]{\code{TrustedContactViewModel}}
+\end{itemize}
 
 \subsubsection{Proxy}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{diagrammi_classi/pattern_utilizzati/PatternProxy.pdf}
+    \caption{Rappresentazione del pattern Proxy applicato alla gestione delle chat}
+    \label{fig:pattern_proxy}
+\end{figure}
 \paragraph{Descrizione del pattern:}\mbox{}\\
-Il pattern Proxy permette la creazione di un oggetto \textit{Proxy} che va a controllare l'accesso all'oggetto reale. L'oggetto \textit{Proxy} deve implementare la stessa interfaccia dell'oggetto reale, in modo da essere sempre utilizzabile quando il codice si aspetta l'oggetto reale, e una volta ricevuta una richiesta deve delegarla ad una istanza dell'oggetto reale. 
+Il pattern Proxy permette la creazione di un oggetto \textit{Proxy} che controlla l'accesso all'oggetto reale. L'oggetto \textit{Proxy} implementa la medesima interfaccia dell'oggetto reale, rendendolo perfettamente intercambiabile agli occhi del codice che lo utilizza, e ha il compito di delegare le richieste a un'istanza dell'oggetto reale solo quando necessario.
 \paragraph{Ragioni per l'utilizzo:}\mbox{}\\
-L'utilizzo del pattern Proxy per le strutture dati delle classi \code{Chat} e \code{Note} permette di rimandare la creazione di un loro oggetto fino a quando non effettivamente necessario, evitando così la creazione di tutti gli oggetti e dei loro componenti in una singola volta quando vengono inizialmente caricati, così risparmiando memoria che altrimenti sarebbe sprecata con oggetti pesanti.
+L'utilizzo di questo pattern permette di implementare il caricamento ritardato di strutture dati potenzialmente voluminose; nello specifico, le classi che fungono da Proxy operano come segnaposti leggeri contenenti solo metadati essenziali, rimandando il caricamento completo dei contenuti (come i messaggi di una singola chat) al momento del loro effettivo accesso. Questo approccio permette di ridurre sensibilmente l'utilizzo di banda, limitando la quantità di dati recuperati dal \term{Backend} a quelli strettamente necessari, garantendo al contempo una maggiore fluidità nel caricamento degli elenchi e un consumo di risorse sul dispositivo più efficiente.
+\paragraph{Riferimenti nel progetto:}\mbox{}\\
+Il pattern Proxy è utilizzato principalmente per la gestione dei modelli di dati persistenti:
+\begin{itemize}
+    \item Chatbot $\rightarrow$ \hyperref[DC-ProxyChat]{\code{ProxyChat}}
+    \item Diari Personali $\rightarrow$ \hyperref[DC-ProxyNote]{\code{ProxyNote}}
+\end{itemize}
 
 \subsubsection{Singleton}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{diagrammi_classi/diari/DC-DiarySession.pdf}
+    \caption{Rappresentazione del pattern Singleton applicato alla sessione del diario}
+    \label{fig:pattern_singleton}
+\end{figure}
 \paragraph{Descrizione del pattern:}\mbox{}\\
-Il pattern Singleton permette di avere la garanzia che in un dato momento esista al più una singola istanza della classe a cui è applicato. Questo si ottiene facendo in modo che il costruttore dell'oggetto ne crei uno nuovo solamente se non ne esiste già una copia, altrimenti ritorna un puntatore alla copia esistente.
+Il pattern Singleton garantisce che una classe abbia una sola istanza attiva in ogni momento e fornisce un punto di accesso globale a tale istanza. Questa proprietà si ottiene rendendo privato il costruttore della classe, impedendone l'instanziazione diretta dall'esterno, e mettendo a disposizione un metodo statico o una proprietà (\textit{getter}) che restituisce l'unica istanza disponibile.
+
+Nell'applicazione, questo pattern viene implementato seguendo gli standard del linguaggio Dart, utilizzando un costruttore privato e una variabile statica per mantenere il riferimento all'unica istanza creata al primo accesso.
 \paragraph{Ragioni per l'utilizzo:}\mbox{}\\
-Nell'applicazione questo pattern viene utilizzato per garantire l'esistenza di una sola istanza della classe \code{DiarySession} in un dato momento, in modo che l'\term{Utente} abbia accesso ad un solo versione del diario, criptato o fittizio, alla volta, evitando la condivisione accidentale dei dati tra le due versioni.
+L'impiego del Singleton è fondamentale per gestire componenti che devono mantenere uno stato unico e coerente in tutto il sistema. Nello specifico, garantisce l'esistenza di una sola sessione attiva per il diario, impedendo che l'\term{Utente} possa accedere contemporaneamente alla versione criptata e a quella fittizia. Questo approccio previene la condivisione accidentale di dati sensibili e assicura che ogni operazione di lettura o scrittura avvenga sempre nel contesto dell'archivio corretto, eliminando alla radice potenziali conflitti di sincronizzazione.
+\paragraph{Riferimenti nel progetto:}\mbox{}\\
+Il pattern Singleton è utilizzato per il coordinamento dei componenti di sessione:
+\begin{itemize}
+    \item Diari Personali $\rightarrow$ \hyperref[DC-DiarySession]{\code{DiarySession}}
+\end{itemize}
+
+\subsubsection{Dependency Injection} \label{sec:pattern_dependency_injection}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{diagrammi_classi/pattern_utilizzati/PatternDependencyInjection.pdf}
+    \caption{Rappresentazione del pattern Dependency Injection nel modulo di Autenticazione}
+    \label{fig:pattern_di}
+\end{figure}
+\paragraph{Descrizione del pattern:}\mbox{}\\
+Il pattern Dependency Injection (DI) è una tecnica in cui un oggetto riceve dall'esterno le istanze degli oggetti da cui dipende, anziché doverle creare internamente. Nel contesto dell'applicazione viene utilizzata in forma di \textit{constructor injection}: le dipendenze vengono passate ai componenti direttamente come parametri del costruttore durante la fase di istanziazione.
+
+Questo approccio permette di slegare i componenti logici dalla creazione delle proprie risorse. I \textit{ViewModel}, ad esempio, non istanziano mai i propri \textit{\term{Repository}}, ma li ricevono già configurati dal punto di ingresso del modulo o dell'applicazione, garantendo che ogni componente operi esclusivamente con le interfacce necessarie.
+\paragraph{Ragioni per l'utilizzo:}\mbox{}\\
+L'utilizzo della DI favorisce un'\term{Architettura} modulare e flessibile, riducendo l'accoppiamento tra le classi. Il vantaggio principale risiede nella testabilità: l'iniezione tramite costruttore permette di sostituire facilmente le dipendenze reali con oggetti fittizi (\textit{mock}), consentendo l'esecuzione di unit test in isolamento. Inoltre, centralizzare la logica di creazione degli oggetti facilita la manutenzione e l'eventuale sostituzione di implementazioni specifiche senza dover modificare i client che le utilizzano.
+\paragraph{Riferimenti nel progetto:}\mbox{}\\
+Il pattern è applicato diffusamente in tutta l'applicazione. Di seguito alcune classi che integrano attivamente questo approccio:
+\begin{itemize}
+    \item Autenticazione $\rightarrow$ \hyperref[DC-AuthViewModel]{\code{AuthViewModel}}
+    \item Chatbot $\rightarrow$ \hyperref[DC-ChatbotViewModel]{\code{ChatbotViewModel}}
+    \item Contatti Fidati $\rightarrow$ \hyperref[DC-TrustedContactViewModel]{\code{TrustedContactViewModel}}
+\end{itemize}
+
+
+\subsubsection{Command} \label{sec:pattern_command}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{diagrammi_classi/pattern_utilizzati/PatternCommand.pdf}
+    \caption{Rappresentazione del pattern Command}
+    \label{fig:pattern_command}
+\end{figure}
+\paragraph{Descrizione del pattern:}\mbox{}\\
+Il pattern Command è un design pattern comportamentale che incapsula una richiesta come un oggetto autonomo, consentendo di parametrizzare i client con diverse richieste, accodare o registrare le esecuzioni e supportare operazioni annullabili. Nel contesto di un'applicazione Flutter governata dal pattern MVVM, il pattern Command è utilizzato per incapsulare e standardizzare le azioni invocabili dall'interfaccia \ignoreglossary{utente}, esponendo comandi robusti e isolati dal layer di View.
+\paragraph{Ragioni per l'utilizzo:}\mbox{}\\
+Il pattern command permette di ottenere un forte disaccoppiamento tra la componente visiva che invoca l'azione (la View) e il modulo deputato all'esecuzione logica (il ViewModel o strati inferiori). Isolando e reificando l'interazione in un oggetto \textit{Command}, lo sviluppo beneficia in standardizzazione, accentrando il controllo della gestione di esecuzione asincrona e dei relativi stati interni dell'azione (attesa di elaborazione, conferme di successo o eccezioni previste). Questo elimina quasi integralmente le ridondanze nel codice e mitiga il verificarsi di interazioni non volute, come l'avvio accidentale e simultaneo di richieste doppie a seguito di pressioni ripetute sull'interfaccia.
+\paragraph{Riferimenti nel progetto:}\mbox{}\\
+Il pattern viene implementato sistematicamente in tutti i ViewModel dell'applicazione per la gestione delle interazioni \term{Utente} e delle operazioni asincrone. Di seguito sono riportate le principali classi che costituiscono l’infrastruttura del pattern Command nell'applicazione:
+
+\paragraph{Command<T>}\mbox{}\\
+È la classe base astratta del pattern. Mantiene internamente lo stato dell'azione tramite 
+i campi privati \code{\_running}, \code{\_result} e \code{\_error}. Espone queste informazioni tramite 
+getter pubblici che la View utilizza per aggiornare l'interfaccia. Il metodo privato \code{\_execute()} 
+contiene la logica comune a tutte le implementazioni concrete: impedisce esecuzioni multiple simultanee, aggiorna lo stato prima e 
+dopo l'esecuzione dell'azione e gestisce le eccezioni.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-Command_T_.pdf}
+    \caption[Diagramma della classe Command<T>]{Diagramma della classe \code{Command<T>}}
+    \label{DC-Command<T>}
+\end{figure}
+
+\paragraph{Command0<T>}\mbox{}\\
+È l'implementazione concreta di \code{Command<T>} per azioni senza argomenti. Riceve nel 
+costruttore una funzione di tipo \code{Future<T> Function()} che rappresenta l'azione da eseguire. 
+Espone il metodo pubblico \code{execute()}, che richiama il metodo \code{\_execute()} della classe base che esegue la funzione memorizzata come stato della specifica istanza della classe \code{Command}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-Command0_T_.pdf}
+    \caption[Diagramma della classe Command0<T>]{Diagramma della classe \code{Command0<T>}}
+    \label{DC-Command0<T>}
+\end{figure}
+
+\paragraph{Command1<T, A>}\mbox{}\\
+È l'implementazione concreta di \code{Command<T>} per azioni che richiedono un argomento di tipo A. 
+Riceve nel costruttore una funzione di tipo \code{Future<T> Function(A)} e il metodo pubblico \code{execute()} accetta l'argomento che viene 
+passato all'azione al momento dell'esecuzione.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-Command1_T,A_.pdf}
+    \caption[Diagramma della classe Command1<T, A>]{Diagramma della classe \code{Command1<T, A>}}
+    \label{DC-Command1<T, A>}
+\end{figure}
+
+\subsubsection{Adapter} \label{sec:pattern_adapter}
+\paragraph{Descrizione del pattern:}\mbox{}\\
+Il pattern Adapter è un design pattern strutturale che permette l'interazione tra interfacce incompatibili, agendo come un mediatore che converte l'interfaccia di una classe in un'altra attesa dal client. Nell'applicazione, questo pattern viene impiegato per interfacciare il nucleo logico del sistema con servizi esterni, \term{Driver} o librerie di terze parti.
+\paragraph{Ragioni per l'utilizzo:}\mbox{}\\
+L'integrazione di questo pattern è fondamentale per preservare l'integrità della \textit{\term{Business Logic}}. Attraverso l'uso degli Adapter, i moduli centrali possono interagire con database o API esterne senza dipendere dai loro protocolli specifici o dai formati di dati grezzi. Questo isolamento garantisce che il cuore del sistema rimanga agnostico rispetto alle scelte tecnologiche infrastrutturali, facilitando sostituzioni o aggiornamenti di componenti esterni con un impatto minimo o nullo sul resto del codice.
+\paragraph{Riferimenti nel progetto:}\mbox{}\\
+Il pattern è impiegato nel layer di accesso ai dati. Viene utilizzato per mappare le risposte provenienti dai servizi esterni in oggetti di dominio validi per l'applicazione e, specularmente, per tradurre le richieste del sistema nel formato richiesto dai destinatari esterni, garantendo una comunicazione fluida tra layer con responsabilità differenti.
+
 
 \subsection{Architettura di deployment} \label{subsec:architettura_deployment}
 
@@ -562,7 +731,7 @@ La schermata è composta da widget più piccoli come \code{AuthHeaderWidget} e \
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{diagrammi_classi/auth/DC-AuthScreen.pdf}
-    \caption{Diagramma della classe \code{AuthScreen}}
+    \caption[Diagramma della classe AuthScreen]{Diagramma della classe \code{AuthScreen}}
     \label{DC-AuthScreen}
 \end{figure}
 
@@ -573,7 +742,7 @@ logica applicativa e contribuisce alla separazione delle responsabilità tra UI 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{diagrammi_classi/auth/DC-AuthHeaderWidget.pdf}
-    \caption{Diagramma della classe \code{AuthHeaderWidget}}
+    \caption[Diagramma della classe AuthHeaderWidget]{Diagramma della classe \code{AuthHeaderWidget}}
     \label{DC-AuthHeaderWidget}
 \end{figure}
 
@@ -583,7 +752,7 @@ Rappresenta il pulsante che consente all’\term{Utente} di avviare il \ignoregl
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{diagrammi_classi/auth/DC-GoogleLoginButtonWidget.pdf}
-    \caption{Diagramma della classe \code{GoogleLoginButtonWidget}}
+    \caption[Diagramma della classe GoogleLoginButtonWidget]{Diagramma della classe \code{GoogleLoginButtonWidget}}
     \label{DC-GoogleLoginButtonWidget}
 \end{figure}
 
@@ -594,7 +763,7 @@ ed è utilizzata dal resto del sistema per gestire lo stato dell’autenticazion
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{diagrammi_classi/auth/DC-User.pdf}
-    \caption{Diagramma della classe \code{User}}
+    \caption[Diagramma della classe User]{Diagramma della classe \code{User}}
     \label{DC-User}
 \end{figure}
 
@@ -605,7 +774,7 @@ formato JSON e di ricostruirlo a partire da dati serializzati.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{diagrammi_classi/auth/DC-UserDTO.pdf}
-    \caption{Diagramma della classe \code{UserDTO}}
+    \caption[Diagramma della classe UserDTO]{Diagramma della classe \code{UserDTO}}
     \label{DC-UserDTO}
 \end{figure}
 
@@ -617,7 +786,7 @@ Command, mentre il metodo \code{checkExistingSession()} consente di verificare l
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{diagrammi_classi/auth/DC-AuthViewModel.pdf}
-    \caption{Diagramma della classe \code{AuthViewModel}}
+    \caption[Diagramma della classe AuthViewModel]{Diagramma della classe \code{AuthViewModel}}
     \label{DC-AuthViewModel}
 \end{figure}
 
@@ -628,7 +797,7 @@ Il \term{Repository} espone metodi per effettuare il login, il logout, recuperar
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{diagrammi_classi/auth/DC-AuthRepository.pdf}
-    \caption{Diagramma della classe \code{AuthRepository}}
+    \caption[Diagramma della classe AuthRepository]{Diagramma della classe \code{AuthRepository}}
     \label{DC-AuthRepository}
 \end{figure}
 
@@ -639,7 +808,7 @@ scope richiesti. Si occupa esclusivamente di eseguire le chiamate di rete per il
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{diagrammi_classi/auth/DC-AuthService.pdf}
-    \caption{Diagramma della classe \code{AuthenticationService}}
+    \caption[Diagramma della classe AuthenticationService]{Diagramma della classe \code{AuthenticationService}}
     \label{DC-AuthService}
 \end{figure}
 
@@ -666,7 +835,7 @@ dell'invio quando l'\term{Utente} preme il pulsante.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-SosBottomSheetWidget.pdf}
-    \caption{Diagramma della classe \code{SosBottomSheetWidget}}
+    \caption[Diagramma della classe SosBottomSheetWidget]{Diagramma della classe \code{SosBottomSheetWidget}}
     \label{DC-SosBottomSheetWidget}
 \end{figure}
 
@@ -681,7 +850,7 @@ Espone \code{sendAlert} come \code{Command0} che la View può eseguire direttame
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-SosAlertViewModel.pdf}
-    \caption{Diagramma della classe \code{SosAlertViewModel}}
+    \caption[Diagramma della classe SosAlertViewModel]{Diagramma della classe \code{SosAlertViewModel}}
     \label{DC-SosAlertViewModel}
 \end{figure}
 
@@ -691,7 +860,7 @@ tramite \code{SosAlertService} e rappresenta il punto di separazione tra il laye
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-SosAlertRepository.pdf}
-    \caption{Diagramma della classe \code{SosAlertRepository}}
+    \caption[Diagramma della classe SosAlertRepository]{Diagramma della classe \code{SosAlertRepository}}
     \label{DC-SosAlertRepository}
 \end{figure}
 
@@ -701,44 +870,12 @@ Riceve da \code{SosAlertRepository} la richiesta di invio e si occupa esclusivam
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-SosAlertService.pdf}
-    \caption{Diagramma della classe \code{SosAlertService}}
+    \caption[Diagramma della classe SosAlertService]{Diagramma della classe \code{SosAlertService}}
     \label{DC-SosAlertService}
 \end{figure}
 
-\paragraph{Command<T>}\mbox{}\\
-È la classe base astratta del pattern. Mantiene internamente lo stato dell'azione tramite 
-i campi privati \code{\_running}, \code{\_result} e \code{\_error}. Espone queste informazioni tramite 
-getter pubblici che la View utilizza per aggiornare l'interfaccia. Il metodo privato \code{\_execute()} 
-contiene la logica comune a tutte le implementazioni concrete: impedisce esecuzioni multiple simultanee, aggiorna lo stato prima e 
-dopo l'esecuzione dell'azione, e gestisce le eccezioni.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-Command_T_.pdf}
-    \caption{Diagramma della classe \code{Command<T>}}
-    \label{DC-Command<T>}
-\end{figure}
+Le tre classi principali alla base di questo pattern, ovvero il nucleo astratto e generico di partenza (\code{Command<T>}, \code{Command0<T>} e \code{Command1<T, A>}), vengono analizzate e spiegate nel dettaglio all'interno della corrispondente sezione architetturale analitica \hyperref[sec:pattern_command]{Command}.
 
-\paragraph{Command0<T>}\mbox{}\\
-È l'implementazione concreta di \code{Command<T>} per azioni senza argomenti. Riceve nel 
-costruttore una funzione di tipo \code{Future<T> Function()} che rappresenta l'azione da eseguire. 
-Espone il metodo pubblico \code{execute()} che delega a \code{\_execute()} della classe base passando l'azione ricevuta nel costruttore. 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-Command0_T_.pdf}
-    \caption{Diagramma della classe \code{Command0<T>}}
-    \label{DC-Command0<T>}
-\end{figure}
-
-\paragraph{Command1<T, A>}\mbox{}\\
-È l'implementazione concreta di \code{Command<T>} per azioni che richiedono un argomento di tipo A. 
-Riceve nel costruttore una funzione di tipo \code{Future<T> Function(A)} e il metodo pubblico \code{execute()} accetta l'argomento che viene 
-passato all'azione al momento dell'esecuzione.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-Command1_T,A_.pdf}
-    \caption{Diagramma della classe \code{Command1<T, A>}}
-    \label{DC-Command1<T, A>}
-\end{figure}
 
 % ====== CHATBOT ======
 \subsubsection{Chatbot} \label{subsubsec:architettura_chatbot_frontend}
@@ -1965,7 +2102,7 @@ L'\term{Architettura} di \term{Backend} dedicata al chatbot è progettata per ge
 
 API Gateway rappresenta il punto di ingresso per tutte le richieste client e si occupa della \term{Verifica} dell’autenticazione dell’\term{Utente}. Una volta validata la richiesta, questa viene inoltrata a una funzione Lambda che implementa la logica applicativa del chatbot, inclusa la gestione delle chat e l’interazione con il modello linguistico.
 
-Le conversazioni sono strutturate come entità persistenti (chat), ciascuna identificata da un \texttt{chat\_id} univoco all'interno dell'intero sistema. Ogni chat contiene una sequenza di messaggi (\term{Utente} e assistente artificiale), memorizzati in DynamoDB. Per ottimizzare le prestazioni e ridurre il carico di rete, le operazioni di recupero dello storico restituiscono esclusivamente le informazioni di sintesi (ad esempio titolo e metadata), mentre il contenuto completo viene fornito solo su richiesta esplicita.
+Le conversazioni sono strutturate come entità persistenti (chat), ciascuna identificata da un \texttt{chat\_id} univoco all'interno dell’intero sistema. Per garantire una maggiore modularità e facilitare il recupero delle informazioni, chat e messaggi sono memorizzati in tabelle DynamoDB separate. Ogni chat contiene una sequenza di messaggi (\term{Utente} e assistente artificiale), anch’essi memorizzati in DynamoDB. Per ottimizzare le prestazioni e ridurre il carico di rete, le operazioni di recupero dello storico restituiscono esclusivamente informazioni di sintesi (ad esempio titolo e metadata), mentre il contenuto completo dei messaggi viene fornito solo su richiesta esplicita.
 
 Quando l’\term{Utente} invia un messaggio, il sistema non si limita a inoltrarlo direttamente al modello, ma recupera le informazioni più rilevanti dalla chat in corso. In particolare, la Lambda recupera il contesto rilevante della conversazione dalla base di dati (DynamoDB), costruendo un prompt arricchito che include la cronologia significativa dei messaggi. Per estrarre tali informazioni, la Lambda utilizza tecniche di ricerca lessicale basate su BM25, evitando di concatenare l'intera conversazione al testo inviato dall'\term{Utente}. Questo approccio consente di migliorare la coerenza e la pertinenza delle risposte generate dal modello.
 
