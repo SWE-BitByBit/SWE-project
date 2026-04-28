@@ -162,6 +162,8 @@ Gruppo BitByBit\\
 \hline
 0.6.0 & 2026-04-26 & Gabriele Scaggiante & Completata la sezione \hyperref[subsubsec:architettura_chatbot]{Architettura chatbot} introducendo la sezione \hyperref[subsubsec:architettura_logica_chatbot]{Architettura logica chatbot} e aggiornando la sezione dedicata alle API & Dennis Parolin \\
 \hline
+0.5.3 & 2026-04-24 & Ferdinando Fracasso & Aggiornato la sezione \hyperref[subsubsec:architettura_diari_frontend]{Architettura funzionalità diari} a seguito dell'implementazione della funzionalità & Gabriele Scaggiante \\
+\hline
 0.5.2 & 2026-04-23 & Gabriele Scaggiante & Corretta la sezione \hyperref[subsubsec:architettura_chatbot]{Architettura chatbot} dopo l'introduzione di due tabelle DynamoDB & Giovanni Visentin \\
 \hline
 0.5.1 & 2026-04-20 & Dennis Parolin & Aggiornati i pattern presenti nella la sezione \hyperref[subsec:design_pattern]{Design pattern utilizzati}, aggiunti i pattern \hyperref[sec:pattern_dependency_injection]{Dependency Injection}, \hyperref[sec:pattern_command]{Command} e \hyperref[sec:pattern_adapter]{Adapter}. & Gabriele Scaggiante \\
@@ -1209,6 +1211,16 @@ La classe \code{DiaryScreen} gestisce la rappresentazione visiva della schermata
     \label{DC-DiaryScreen}
 \end{figure}
 
+\paragraph{DiaryPasswordSettingWidget}\mbox{}\\
+La classe \code{DiaryPasswordSettingWidget} gestisce la presentazione grafica dell'interfaccia per l'impostazione della password per l'accesso al diario fittizio. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/diari/DC-DiaryPasswordSettingWidget.pdf}
+    \caption[Diagramma della classe DiaryPasswordSettingWidget]{Diagramma della classe \code{DiaryPasswordSettingWidget}}
+    \label{DC-DiaryPasswordSettingWidget}
+\end{figure}
+
 \paragraph{NoteListWidget}\mbox{}\\
 La classe \code{NoteListWidget} si occupa della visualizzazione della lista delle note contenute nel diario in cui l'\term{Utente} ha effettuato l'accesso e l'eventuale visualizzazione dei contenuti di una nota selezionata. Trattandosi di un \code{Consumer}, la classe osserva gli aggiornamenti dei dati in \code{DiaryViewModel} in modo da reagire di conseguenza alla selezione, modifica o eliminazione delle note. 
 
@@ -1227,6 +1239,26 @@ La classe \code{NoteActionsWidget} si occupa della visualizzazione delle compone
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/diari/DC-NoteActionsWidget.pdf}
     \caption[Diagramma della classe NoteActionsWidget]{Diagramma della classe \code{NoteActionsWidget}}
     \label{DC-NoteActionsWidget}
+\end{figure}
+
+\paragraph{NoteEditorWidget}\mbox{}\\
+La classe \code{NoteEditorWidget} gestisce la visualizzazione di una nota del diario selezionata dall'\term{Utente}, offrendo la possibilità di visualizzarne gli elementi che la compongono e permettendone l'aggiunta e la modifica.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/diari/DC-NoteEditorWidget.pdf}
+    \caption[Diagramma della classe NoteEditorWidget]{Diagramma della classe \code{NoteEditorWidget}}
+    \label{DC-NoteEditorWidget}
+\end{figure}
+
+\paragraph{NoteAudioPlayerWidget}\mbox{}\\
+La classe \code{NoteAudioPlayerWidget} è responsabile della visualizzazione di un audio player che consente all'\term{Utente} di visualizzare e riprodurre le tracce audio inserite nella nota.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/diari/DC-NoteAudioPlayerWidget.pdf}
+    \caption[Diagramma della classe NoteAudioPlayerWidget]{Diagramma della classe \code{NoteAudioPlayerWidget}}
+    \label{DC-NoteAudioPlayerWidget}
 \end{figure}
 
 \paragraph{DiaryViewModel}\mbox{}\\
