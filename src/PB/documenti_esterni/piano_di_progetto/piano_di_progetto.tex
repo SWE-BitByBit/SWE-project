@@ -6,7 +6,7 @@
 % =======================================================
 \newcommand{\TitoloDocumento}{Piano di Progetto}
 \newcommand{\DataVersione}{AAAA/MM/GG}
-\newcommand{\VersioneAttuale}{1.1.3}
+\newcommand{\VersioneAttuale}{1.1.4}
 
 % =======================================================
 % 2. PACCHETTI
@@ -202,6 +202,9 @@ Gruppo BitByBit\\\\
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 \endhead
+\rowcolor{gray!20}
+1.1.4 & 2026-04-28 & Dennis Parolin & Scritta sezione \term{Sprint} 11 & Ferdinando Fracasso \\
+\hline
 \rowcolor{white}
 1.1.3 & 2026-04-27 & Giovanni Visentin & Consuntivo \term{Sprint} 10 & Dennis Parolin \\
 \hline
@@ -875,8 +878,42 @@ In particolare, per stimare le ore del Verificatore visibili nel grafico, è sta
 
 % ======================= ATTIVITA PREVISTE PER \term{PB} =======================
 \subsection{Attività previste per la Product Baseline (Pb)}
-La redazione di questo paragrafo sarà effettuato in seguito al superamento della
-\textbf{Requirements and Technology \term{Baseline} (\term{RTB})}.
+Di seguito sono elencate le principali attività pianificate per il periodo della \term{Product Baseline}:
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \arrayrulecolor{black}
+    \begin{tabularx}{\textwidth}{|L|Z|}
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Attività} & \textbf{Descrizione} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Redazione \term{Specifica Tecnica} & Documento che descrive l'architettura del sistema, i diagrammi delle classi e le scelte progettuali effettuate per le componenti \term{Backend} e \term{Frontend}. Spiega inoltre come le varie classi sono collegate e comunicano tra loro. \\
+        \hline
+        \rowcolor{tableLineEven}
+        Redazione Manuale Utente & Guida destinata all'utente finale per illustrare le funzionalità dell'applicazione, le modalità di utilizzo e le procedure per la risoluzione di eventuali problematiche. \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Completamento \term{Piano di progetto} & Aggiornamento del documento con la descrizione di tutti gli \term{Sprint} pianificati per il periodo della \term{PB}. \\
+        \hline
+        \rowcolor{tableLineEven}
+        Completamento \term{Norme di progetto} & Integrazione delle norme e delle convenzioni di codifica specifiche per i linguaggi Python e Dart, garantendo la produzione di codice corretto, condivisibile e comprensibile. \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Completamento e correzione \term{Piano di qualifica} & Revisione delle metriche di qualità definite nella \term{RTB} per correggere eventuali errori e definizione delle sezioni dedicate ai test da implementare per il codice sviluppato. \\
+        \hline
+        \rowcolor{tableLineEven}
+        Ampliamento \term{Glossario} & Inserimento dei nuovi termini tecnici e degli acronimi emersi durante la fase di sviluppo della \term{Product Baseline} per garantire chiarezza terminologica. \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Realizzazione del Minimum Viable Product (MVP) & Sviluppo effettivo del codice per le componenti \term{Frontend} e \term{Backend}, comprensivo della realizzazione dei relativi test per assicurarne il corretto funzionamento. \\
+        \hline
+    \end{tabularx}
+    \caption{Attività previste per la \term{PB}}
+    \label{tab:attivita_pb}
+\end{table}
 
 
 %============================================== 
@@ -928,7 +965,7 @@ Le attività pianificate e svolte includono:
 \begin{itemize}
     \item \textit{Analisi:} Studio del \term{Capitolato} e selezione delle funzionalità chiave.
     \item \textit{Incontri:} Preparazione delle domande per il primo meeting con Miriade.
-    \item \textit{Documentazione:} Avvio della stesura dei documenti \textit{\term{Analisi dei requisiti}} (AdR), \textit{Norme di Progetto} (NdP) e \textit{\term{Piano di progetto}} (PdP).
+    \item {\sloppy \textit{Documentazione:} Avvio della stesura dei documenti \textit{\term{Analisi dei requisiti}} (AdR), \textit{Norme di Progetto} (NdP) e \textit{\term{Piano di progetto}} (PdP). \par}
     \item \textit{Gestione:} Discussione e assegnazione dei ruoli.
 \end{itemize}
 
@@ -1327,7 +1364,7 @@ Le attività pianificate e svolte includono:
 \begin{itemize}
     \item \textbf{Analisi:} Studio degli UML, e delle metriche di qualit\`a.
     \item \textbf{Incontri:} Revisione dei diagrammi UML con il professore per accertamento della correttezza formale.
-    \item \textbf{Documentazione:} Avanzamento nel completamento dei diagrammi UML dei casi d'uso nell' \textit{\term{Analisi dei requisiti}} (AdR); prima redazione del \textit{\term{Piano di qualifica}} (PdQ) e aggiornamento delle \textit{Norme di Progetto} (NdP).
+    \item {\sloppy \textbf{Documentazione:} Avanzamento nel completamento dei diagrammi UML dei casi d'uso nell' \textit{\term{Analisi dei requisiti}} (AdR); prima redazione del \textit{\term{Piano di qualifica}} (PdQ) e aggiornamento delle \textit{Norme di Progetto} (NdP). \par}
     \item \textbf{Gestione:}Implementazione di migliorie tecniche al sito web.
 \end{itemize}
 
@@ -2268,7 +2305,7 @@ Di seguito il resoconto delle ore effettivamente impiegate:
         \hline
     \end{tabularx}
     \caption{Consuntivo orario per componente - \term{Sprint} 7}
-    \label{tab:consuntivo_sprint6}
+    \label{tab:consuntivo_sprint7}
 \end{table}
 
 \begin{figure}[H]
@@ -2367,7 +2404,7 @@ La retrospettiva ha evidenziato una disponibilità maggiore da parte di quasi tu
 Lo \term{Sprint} 8 segna l'inizio dei lavori per la Product \term{Baseline} (\term{PB}), spostando il focus sull'impostazione architetturale dell'\term{MVP}, la ripianificazione a lungo termine e l'aggiornamento della documentazione a seguito dei feedback ricevuti dai docenti (Prof. Vardanega e Prof. Cardin) in seguito alla revisione \term{RTB}.
 Le attività pianificate e svolte includono:
 \begin{itemize}
-    \item \textbf{Amministrazione:} Setup della \term{Repository} per l'\term{MVP} (progetto Flutter, directory sorgente/test, progetto AWS SAM). Configurazione delle pipeline di \term{CI/CD} tramite \term{GitHub Actions} per il deploy su AWS e integrazione di SonarQube \ignoreglossary{Cloud} per l'\term{Analisi Statica} di Python e Dart (verificando il supporto per quest'ultimo). Aggiornamento corposo delle \textit{Norme di Progetto} con convenzioni di scrittura codice, linee guida architetturali per Flutter e documentazione del \term{Processo} di sviluppo sulla wiki. Correzioni strutturali sui processi (gerarchia \term{Processo}-attività-procedure-strumenti) e sulla veste del sito web (es. riposizionamento della Lettera di Presentazione, rimozione etichette "File pdf").
+    \item {\sloppy \textbf{Amministrazione:} Setup della \term{Repository} per l'\term{MVP} (progetto Flutter, directory sorgente/test, progetto AWS SAM). Configurazione delle pipeline di \term{CI/CD} tramite \term{GitHub Actions} per il deploy su AWS e integrazione di SonarQube \ignoreglossary{Cloud} per l'\term{Analisi Statica} di Python e Dart (verificando il supporto per quest'ultimo). Aggiornamento corposo delle \textit{Norme di Progetto} con convenzioni di scrittura codice, linee guida architetturali per Flutter e documentazione del \term{Processo} di sviluppo sulla wiki. Correzioni strutturali sui processi (gerarchia \term{Processo}-attività-procedure-strumenti) e sulla veste del sito web (es. riposizionamento della Lettera di Presentazione, rimozione etichette "File pdf"). \par}
     \item \textbf{Analisi:} Revisione e ampliamento dell'\textit{\term{Analisi dei requisiti}} in risposta ai feedback ricevuti. Modifica dei diagrammi UML, aggiornamento del tracciamento requisiti e in particolare l'ampliamento dell'UC48 (Consultazione chatbot), precedentemente giudicato troppo generico.
     \item \textbf{Progettazione:} Creazione del documento \textit{\term{Specifica Tecnica}} (scopo, tecnologie impiegate). Inizio della progettazione dell'\term{Architettura} logica e di \term{Deployment}, con focus sulle funzionalità primarie (chatbot, diario criptato/fittizio, contatti fidati). Realizzazione di bozze su Figma per l'aspetto dell'app.
 \end{itemize}
@@ -2695,7 +2732,7 @@ Di seguito il resoconto delle ore effettivamente impiegate.
         \hline
     \end{tabularx}
     \caption{Consuntivo orario per componente - \term{Sprint} 9}
-    \label{tab:consuntivo_sprint8}
+    \label{tab:consuntivo_sprint9}
 \end{table}
 
 \begin{figure}[H]
@@ -2985,5 +3022,223 @@ Inoltre, il rischio RO5 (Dipendenza da permessi esterni) si è concretizzato in 
 
 Il gruppo ha evidenziato la necessità di un maggiore supporto tecnico da parte dell'azienda \term{Proponente} per quanto riguarda lo sviluppo delle funzionalità che usano AWS.
 Lo sviluppo frontend è stato quasi completato, mentre lo sviluppo \term{Backend} è stato avviato lentamente, causa RO5 (Dipendenza da permessi esterni). Il gruppo continuerà a sviluppare e testare localmente, aspettando di poter eseguire test di rilascio completi su AWS non appena tutte le autorizzazioni saranno completamente concesse.
+
+%-------------------------------------------------------------------------------------------------%
+\subsubsection{Sprint 11}\label{sec:sprint11_PB}
+
+% --- TABELLA RIEPILOGATIVA \term{Sprint} ---
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabularx}{\textwidth}{|>{\columncolor{tableHeader}\bfseries}l|X|>{\columncolor{tableHeader}\bfseries}l|X|}
+        \hline
+        Inizio & 2026-04-20 & Fine prevista & 2026-04-26 \\
+        \hline
+        Stato & \textbf{Concluso} & Fine reale & 2026-04-26 \\
+        \hline
+        \multicolumn{2}{|c|}{\cellcolor{tableHeader}\textbf{Giorni di ritardo}} & \multicolumn{2}{c|}{0} \\
+        \hline
+    \end{tabularx}
+    \caption{Riepilogo temporale \term{Sprint} 11}
+\end{table}
+
+\paragraph{Informazioni generali e attività da svolgere}
+Lo \term{Sprint} 11 è focalizzato sul proseguimento dell'implementazione delle componenti \term{Backend} e sull'aggiornamento della \term{Specifica Tecnica}. Quest'ultima attività include l'aggiunta delle sezioni relative al \term{Backend} e alle API utilizzate, con un aggiornamento delle librerie e dei pattern adottati in conformità con quanto emerso dall'incontro con il Professor Cardin avvenuto nello \term{Sprint} 10. Inoltre, è stata completata l'integrazione di AWS SAM e della relativa pipeline per automatizzare il processo di deploy, ed è stata avviata l'integrazione dei test di backend. Viene infine mantenuto un controllo sistematico del codice \term{Frontend} per verificare la coerenza con i diagrammi UML sviluppati dai progettisti.
+
+Le attività pianificate includono:
+\begin{itemize}
+    \item \textbf{Amministrazione:} Integrazione completa di AWS SAM e configurazione della pipeline di deploy.
+    \item \textbf{Progettazione:} Aggiornamento della \term{Specifica Tecnica} con l'integrazione delle parti \term{Backend}, descrizione delle API e revisione di librerie e pattern architetturali (post-incontro con il Prof. Cardin).
+    \item \textbf{Programmazione:} Proseguimento dell'implementazione delle funzionalità \term{Backend}, avvio dell'integrazione dei test di backend e revisione del codice \term{Frontend} per il rispetto dei diagrammi UML.
+    \item \textbf{Verifica:} Controllo generale della qualità del codice e della sua aderenza alla progettazione tramite test e review.
+\end{itemize}
+
+\paragraph{Rischi attesi}
+Tra i principali rischi identificati per questo periodo troviamo:
+\begin{itemize}
+    \item \textbf{RT1 (Inesperienza tecnologica)}: Possibili difficoltà nell'applicazione dei nuovi pattern architetturali e delle librerie aggiornate a seguito dei feedback ricevuti.
+    \item \textbf{RO1 (Errata stima dei tempi)}: Rischio di sottovalutare l'impegno richiesto per il controllo di coerenza tra il codice \term{Frontend} e i diagrammi UML.
+\end{itemize}
+
+\paragraph{Preventivo}
+Si prospetta l'utilizzo delle seguenti risorse:
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \small 
+    \begin{tabularx}{\textwidth}{|l|C|C|C|C|C|C|}
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Membro} & \textbf{Resp} & \textbf{Amm} & \textbf{Anal} & \textbf{Pt} & \textbf{Pr} & \textbf{Ver} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        F. Fracasso & - & - & - & 1 & 8 & 4 \\
+        \hline
+        \rowcolor{tableLineEven}
+        R. Manisi & 3 & - & - & - & 10 & 3 \\
+        \hline
+        \rowcolor{tableLineOdd}
+        D. Parolin & - & - & - & 2 & 6 & 1 \\
+        \hline
+        \rowcolor{tableLineEven}
+        M. Sanguin & - & - & - & 3 & 6 & 5 \\
+        \hline
+        \rowcolor{tableLineOdd}
+        G. Scaggiante & - & - & - & - & 6 & 4 \\
+        \hline
+        \rowcolor{tableLineEven}
+        G. Visentin & - & 4 & - & 3 & - & 3 \\
+        \hline
+    \end{tabularx}
+    \caption{Preventivo orario per componente - \term{Sprint} 11}
+    \label{tab:preventivo_sprint11}
+\end{table}
+
+% GRAFICO A TORTA PREVENTIVO
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1.2]
+        % Responsabile (4.2%)
+        \draw[thick,fill=pieResp] (0,0) -- (0:1.5) arc (0:15:1.5) -- cycle;
+        \draw (7.5:2) node {4.2\%};
+        
+        % Amministratore (5.6%)
+        \draw[thick,fill=pieAmm] (0,0) -- (15:1.5) arc (15:35:1.5) -- cycle;
+        \draw (25:1.95) node {5.6\%};
+        
+        % Progettista (12.5%)
+        \draw[thick,fill=pieDes] (0,0) -- (35:1.5) arc (35:80:1.5) -- cycle;
+        \draw (57.5:1.9) node {12.5\%};
+
+        % Programmatore (50.0%)
+        \draw[thick,fill=pieProg] (0,0) -- (80:1.5) arc (80:260:1.5) -- cycle;
+        \draw (170:2.1) node {50.0\%};
+
+        % Verificatore (27.8%)
+        \draw[thick,fill=pieVer] (0,0) -- (260:1.5) arc (260:360:1.5) -- cycle;
+        \draw (310:1.9) node {27.8\%};
+
+        \matrix [below, draw=none, fill=none] at (0,-2.5) {
+            \node [fill=pieResp, label=right:Responsabile] {}; & \node [fill=pieAmm, label=right:Amministratore] {}; \\
+            \node [fill=pieAnal, label=right:Analista] {};     & \node [fill=pieDes, label=right:Progettista] {}; \\
+            \node [fill=pieProg, label=right:Programmatore] {};& \node [fill=pieVer, label=right:Verificatore] {}; \\
+        };
+    \end{tikzpicture}
+    \caption{Distribuzione ore per ruolo - Preventivo \term{Sprint} 11}
+\end{figure}
+
+\paragraph{Consuntivo}
+Di seguito il resoconto delle ore effettivamente impiegate.
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.4}
+    \footnotesize
+    \begin{tabularx}{\textwidth}{|l|C|C|C|C|C|C|}
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Membro} & \textbf{Resp} & \textbf{Amm} & \textbf{Anal} & \textbf{Pt} & \textbf{Pr} & \textbf{Ver} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        F. Fracasso & - & - & - & 1 & 11.5\textcolor{red}{(+3.5)} & 0\textcolor{red}{(-4)} \\
+        \hline
+        \rowcolor{tableLineEven}
+        R. Manisi & 2\textcolor{red}{(-1)} & - & - & - & 10 & 3 \\
+        \hline
+        \rowcolor{tableLineOdd}
+        D. Parolin & - & - & - & 1.5\textcolor{red}{(-0.5)} & 5.5\textcolor{red}{(-0.5)} & 1 \\
+        \hline
+        \rowcolor{tableLineEven}
+        M. Sanguin & - & - & - & 3 & 6 & 2\textcolor{red}{(-3)} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        G. Scaggiante & - & - & - & - & 6 & 3\textcolor{red}{(-1)} \\
+        \hline
+        \rowcolor{tableLineEven}
+        G. Visentin & - & 3\textcolor{red}{(-1)} & - & 2\textcolor{red}{(-1)} & - & 3 \\
+        \hline
+    \end{tabularx}
+    \caption{Consuntivo orario per componente - \term{Sprint} 11}
+    \label{tab:consuntivo_sprint11}
+\end{table}
+
+% GRAFICO A TORTA CONSUNTIVO
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1.2]
+        % Responsabile (3.1%)
+        \draw[thick,fill=pieResp] (0,0) -- (0:1.5) arc (0:11:1.5) -- cycle;
+        \draw (5.5:2) node {3.1\%};
+        
+        % Amministratore (4.7%)
+        \draw[thick,fill=pieAmm] (0,0) -- (11:1.5) arc (11:28:1.5) -- cycle;
+        \draw (19.5:2.1) node {4.7\%};
+        
+        % Progettista (11.8%)
+        \draw[thick,fill=pieDes] (0,0) -- (28:1.5) arc (28:71:1.5) -- cycle;
+        \draw (49.5:1.95) node {11.8\%};
+
+        % Programmatore (61.4%)
+        \draw[thick,fill=pieProg] (0,0) -- (71:1.5) arc (71:292:1.5) -- cycle;
+        \draw (181.5:2.1) node {61.4\%};
+
+        % Verificatore (18.9%)
+        \draw[thick,fill=pieVer] (0,0) -- (292:1.5) arc (292:360:1.5) -- cycle;
+        \draw (326:1.95) node {18.9\%};
+
+        \matrix [below, draw=none, fill=none] at (0,-2.5) {
+            \node [fill=pieResp, label=right:Responsabile] {}; & \node [fill=pieAmm, label=right:Amministratore] {}; \\
+            \node [fill=pieAnal, label=right:Analista] {};     & \node [fill=pieDes, label=right:Progettista] {}; \\
+            \node [fill=pieProg, label=right:Programmatore] {};& \node [fill=pieVer, label=right:Verificatore] {}; \\
+        };
+    \end{tikzpicture}
+    \caption{Distribuzione ore per ruolo - Consuntivo \term{Sprint} 11}
+\end{figure}
+
+\paragraph{Aggiornamento delle risorse rimanenti}
+Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la chiusura dello \term{Sprint} 11.
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabularx}{\textwidth}{|l|c|c|c|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Ruolo} & \textbf{Costo} & \textbf{Ore} & \textbf{Costo} & \textbf{Ore rimanenti} & \textbf{Budget rimanente} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Responsabile & 30\euro/h & 2 & 60\euro & 7 \textcolor{red}{(-2)} & 210\euro \textcolor{red}{(-60\euro)} \\
+        \hline
+        \rowcolor{tableLineEven}
+        Amministratore & 20\euro/h & 3 & 60\euro & 10.25 \textcolor{red}{(-3)} & 205\euro \textcolor{red}{(-60\euro)} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Analista & 25\euro/h & - & - & -0.5 & -12,50\euro \\
+        \hline
+        \rowcolor{tableLineEven}
+        Progettista & 25\euro/h & 7.5 & 187,50\euro & 2.75 \textcolor{red}{(-7.5)} & 68,75\euro \textcolor{red}{(-187,50\euro)} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Programmatore & 15\euro/h & 39 & 585\euro & -2.75 \textcolor{red}{(-39)} & -41,25\euro \textcolor{red}{(-585\euro)} \\
+        \hline
+        \rowcolor{tableLineEven}
+        Verificatore & 15\euro/h & 12 & 180\euro & 24.25 \textcolor{red}{(-12)} & 363,75\euro \textcolor{red}{(-180\euro)} \\
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Totale} & - & \textbf{63.5} & \textbf{1.072,50\euro} & \textbf{41 \textcolor{red}{(-63.5)}} & \textbf{793,75\euro \textcolor{red}{(-1.072,50\euro)}} \\
+        \hline
+    \end{tabularx}
+    \caption{\term{Sprint} 11 - Variazione nelle risorse disponibili}
+\end{table}
+
+\paragraph{Rischi incontrati}
+Durante lo \term{Sprint} 11 si sono manifestati i seguenti rischi:
+\begin{itemize}
+    \item \textbf{RT1 (Inesperienza tecnologica):} Difficoltà legate alla novità rappresentata dall'utilizzo di AWS SAM, mai adottato in precedenza dal team.
+    \item \textbf{RO5 (Dipendenza da permessi esterni):} Ritardi nell'ottenimento dei permessi necessari per l'utilizzo di Amazon Bedrock e, inizialmente, per la configurazione stessa di SAM. Tale mancanza ha costretto il team a posticipare l'implementazione completa di queste tecnologie verso la fine dello \term{Sprint}.
+    \item \textbf{RT2 (Inesperienza tecnologica):} Errori nella configurazione iniziale di SAM, che hanno causato problemi sia nella fase di \term{Deploy} che nell'avvio dei test automatizzati.
+\end{itemize}
+
+\paragraph{Retrospettiva}
+Lo \term{Sprint} 11 ha evidenziato un forte impegno da parte di tutti i membri del team nel portare a termine le \term{issue} assegnate. Si è consolidata una cultura di supporto reciproco, con i componenti pronti ad aiutarsi a vicenda per superare ostacoli tecnici. Dal punto di vista dello sviluppo, le funzionalità \term{Backend} si stanno concretizzando regolarmente secondo quanto previsto in fase di progettazione, garantendo una base solida per le integrazioni future. Eventuali scostamenti rispetto alla stima dei tempi sono riconducibili proprio alla dinamica collaborativa adottata: il team ha scelto di dare priorità al supporto collettivo per garantire il completamento di tutti i task, prediligendo la solidità del risultato finale rispetto alla rigidità del programma individuale.
 
 \end{document}
