@@ -2043,7 +2043,55 @@ Al fine di ottimizzare ulteriormente i costi, l'intera logica di rendering visiv
 
 \paragraph{API associate}\mbox{}\\
 \begin{itemize}
-    \item \texttt{GET /safe\_locations/}: ritorna le informazioni di tutti i luoghi sicuri.
+    \item \code{GET /safe-places/}
+    \begin{itemize}
+        \item \textbf{Descrizione}: Recupera la lista dei luoghi sicuri disponibili, includendo informazioni geografiche e tipologia della struttura.
+        
+        \item \textbf{Parametri}:
+        \begin{itemize}
+            \item Nessun parametro richiesto.
+        \end{itemize}
+        
+        \item \textbf{Response}:
+        \begin{itemize}
+            \item \texttt{200 OK}: richiesta completata con successo.
+            \item Corpo della risposta:
+\begin{verbatim}
+[
+    {
+        "marker_id": "luogo-001",
+        "name": "Ospedale Centrale",
+        "address": "Via Roma 10, Milano",
+        "latitude": 45.4642,
+        "longitude": 9.1900,
+        "category": "ospedale"
+    },
+    {
+        "marker_id": "luogo-002",
+        "name": "Centro Antiviolenza Milano",
+        "address": "Via Torino 25, Milano",
+        "latitude": 45.4658,
+        "longitude": 9.1859,
+        "category": "centro_antiviolenza"
+    },
+    {
+        "marker_id": "luogo-003",
+        "name": "Comando Carabinieri Milano Centro",
+        "address": "Piazza Duomo 1, Milano",
+        "latitude": 45.4641,
+        "longitude": 9.1919,
+        "category": "carabinieri"
+    }
+]
+\end{verbatim}
+        \end{itemize}
+        
+        \item \textbf{Errori}:
+        \begin{itemize}
+            \item \texttt{405 Method Not Allowed}: metodo HTTP non consentito per l'endpoint.
+            \item \texttt{500 Internal Server Error}: errore interno del server.
+        \end{itemize}
+    \end{itemize}
 \end{itemize}
 \textit{Nota di sicurezza}: L'integrazione di un Authorizer Cognito per la \ignoreglossary{verifica} delle autorizzazioni è stata deliberatamente omessa per questa rotta. L'assenza dell'Authorizer in quest'area è difatti una scelta architetturale mirata a rimuovere complessità infrastrutturale non necessaria e ad abbattere i costi operativi associati al recupero di questi specifici dati.
 
@@ -2165,8 +2213,51 @@ Il risultato elaborato viene restituito all'API Gateway, che lo inoltra al clien
 
 \paragraph{API associate}\mbox{}\\
 \begin{itemize}
-    \item \texttt{GET /learning/}: ritorna le \textit{preview} di tutti i materiali di apprendimento.
-    \item \texttt{GET /learning/\{learning\_id\}}: ritorna il contenuto di uno specifico materiale di apprendimento.
+    \item \code{GET /materials/}
+    \begin{itemize}
+        \item \textbf{Descrizione}: Recupera la lista delle risorse informative disponibili, tra cui riferimenti normativi, comunità di supporto e articoli informativi relativi alla violenza domestica e di genere.
+        
+        \item \textbf{Parametri}:
+        \begin{itemize}
+            \item Nessun parametro richiesto.
+        \end{itemize}
+        
+        \item \textbf{Response}:
+        \begin{itemize}
+            \item \texttt{200 OK}: richiesta completata con successo.
+            \item Corpo della risposta:
+\begin{verbatim}
+    [
+        {
+            "resource_id": "resource-123",
+            "title": "Centro Antiviolenza Roma",
+            "content": "Servizio di supporto per vittime.",
+            "url": "https://www.centroantiviolenza.it/",
+            "type": "COMMUNITY"
+        },
+        {
+            "resource_id": "resource-456",
+            "title": "Legge tutela vittime",
+            "content": "Normativa nazionale violenza domestica.",
+            "url": null,
+            "type": "LAW"
+        },
+        {
+            "resource_id": "resource-789",
+            "title": "Riconoscere i segnali di abuso",
+            "content": "Guida informativa.",
+            "url": null,
+            "type": "ARTICLE"
+        }
+    ]
+    \end{verbatim}
+        \end{itemize}
+        
+        \item \textbf{Errori}:
+        \begin{itemize}
+            \item \texttt{500 Internal Server Error}: errore interno del server.
+        \end{itemize}
+    \end{itemize}
 \end{itemize}
 \textit{Nota di sicurezza}: In maniera analoga a quanto previsto per i luoghi sicuri, anche per l'accesso al materiale informativo si è optato per non implementare l'Authorizer Cognito. Questa decisione è dettata dalla volontà di snellire l'\term{Architettura}, riducendo le complessità superflue ed evitando di incorrere nei costi operativi aggiuntivi dell'infrastruttura di autenticazione.
 
