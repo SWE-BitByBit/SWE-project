@@ -2016,8 +2016,8 @@ Il microservizio \textbf{luoghi sicuri} viene utilizzato per eseguire il fetch d
 bucket S3. È formato da tre componenti principali:
 \begin{itemize}
     \item \textbf{SafePlacesController}, che rappresenta l'application logic e corrisponde al controller del pattern esagonale. Riceve l'evento grezzo di API Gateway, lo instrada verso la port primaria e costruisce la risposta HTTP da restituire al client;
-    \item \textbf{SafePlacesService}, che rappresenta la \term{Business Logic} e corrisponde alla business logic del pattern esagonale. Implementa la port primaria \code{GetMarkerPort} e orchestra la comunicazione con il layer di persistenza tramite la port secondaria \code{SafePlacesRepositoryPort};
-    \item \textbf{S3SafePlacesRepository}, che rappresenta la \term{Persistence Logic} e corrisponde all'adapter secondario dell'architettura esagonale. Contiene tutta la logica specifica per il recupero dei marker da un bucket S3 tramite il client boto3.
+    \item \textbf{SafePlacesService}, che rappresenta la \term{Business Logic} e corrisponde alla \term{Business Logic} del pattern esagonale. Implementa la port primaria \code{GetMarkerPort} e orchestra la comunicazione con il layer di persistenza tramite la port secondaria \code{SafePlacesRepositoryPort};
+    \item \textbf{S3SafePlacesRepository}, che rappresenta la \term{Persistence Logic} e corrisponde all'adapter secondario dell'\term{Architettura} esagonale. Contiene tutta la logica specifica per il recupero dei marker da un bucket S3 tramite il client boto3.
 \end{itemize}
 
 \paragraph{Marker}\mbox{}\\
@@ -2070,7 +2070,7 @@ Il metodo \code{get\_all\_markers()} restituisce la lista completa dei marker di
     \caption[Diagramma della classe SafePlacesService]{Diagramma della classe \code{SafePlacesService}}
     \label{fig:architettura_logica_luoghi_SafePlacesService}
 \end{figure}
-È la business logic del microservizio. Contiene l'application logic per 
+È la \term{Business Logic} del microservizio. Contiene l'application logic per 
 il recupero dei luoghi sicuri e orchestra la comunicazione con il layer di persistenza tramite la outbound port \code{SafePlacesRepositoryPort}.
 
 \paragraph{SafePlacesRepositoryPort}\mbox{}\\
@@ -2133,7 +2133,7 @@ Il microservizio \textbf{materiale informativo} viene utilizzato per eseguire il
 bucket S3 in cui sono memorizzate le risorse informative da visualizzare nell'applicazione. È formato da tre componenti principali:
 \begin{itemize}
     \item \textbf{ResourcesController}, che rappresenta l'application logic e corrisponde al controller del pattern esagonale. Riceve l'evento grezzo di API Gateway, lo instrada verso la port primaria e costruisce la risposta HTTP da restituire al client;
-    \item \textbf{ResourcesService}, che rappresenta la \term{Business Logic} e corrisponde alla business logic del pattern esagonale. Implementa la port primaria \code{GetResourcesPort} e orchestra la comunicazione con il layer di persistenza tramite la port secondaria \code{ResourcesRepositoryPort};
+    \item \textbf{ResourcesService}, che rappresenta la \term{Business Logic} e corrisponde alla \term{Business Logic} del pattern esagonale. Implementa la port primaria \code{GetResourcesPort} e orchestra la comunicazione con il layer di persistenza tramite la port secondaria \code{ResourcesRepositoryPort};
     \item \textbf{S3ResourcesRepository}, che rappresenta la \term{Persistence Logic} e corrisponde all'adapter secondario del pattern esagonale. Contiene tutta la logica specifica per il recupero delle risorse da un bucket S3 tramite il client boto3.
 \end{itemize}
 
@@ -2186,7 +2186,7 @@ Descrizione metodi:
     \caption[Diagramma della classe ResourcesService]{Diagramma della classe \code{ResourcesService}}
     \label{fig:architettura_logica_luoghi_ResourcesService}
 \end{figure}
-È la business logic del microservizio e implementa la port primaria \code{GetResourcesPort}. Contiene la logica applicativa per il recupero del materiale informativo e orchestra la comunicazione con il persistence layer tramite la port secondaria \code{ResourcesRepositoryPort}.
+È la \term{Business Logic} del microservizio e implementa la port primaria \code{GetResourcesPort}. Contiene la logica applicativa per il recupero del materiale informativo e orchestra la comunicazione con il persistence layer tramite la port secondaria \code{ResourcesRepositoryPort}.
 
 \paragraph{ResourcesRepositoryPort}\mbox{}\\
 \begin{figure}[H]
@@ -3066,7 +3066,7 @@ Espone \code{send\_alert\_emails(alert\_info: AlertCmd)} per l'invio delle email
     \caption[Diagramma della classe DmsCRUDService]{Diagramma della classe \code{DmsCRUDService}}
     \label{fig:architettura_logica_luoghi_DmsCRUDService}
 \end{figure}
-È il service della business logic responsabile delle operazioni di lettura e scrittura sulla configurazione dei valori delle impostazioni del Dead Man's Switch.
+È il service della \term{Business Logic} responsabile delle operazioni di lettura e scrittura sulla configurazione dei valori delle impostazioni del Dead Man's Switch.
 
 \paragraph{DmsAlertService}\mbox{}\\
 \begin{figure}[H]
@@ -3090,7 +3090,7 @@ Descrizione metodi:
     \caption[Diagramma della classe TrustedContactCRUDService]{Diagramma della classe \code{TrustedContactCRUDService}}
     \label{fig:architettura_logica_luoghi_TrustedContactCRUDService}
 \end{figure}
-È il service della business logic responsabile delle operazioni CRUD sui contatti fidati.\\
+È il service della \term{Business Logic} responsabile delle operazioni CRUD sui contatti fidati.\\
 Descrizione metodi:
 \begin{itemize}
     \item \code{\_\_init\_\_(\term{Repository}: TrustedContactRepositoryPort)}, costruttore che riceve la port secondaria tramite dependency injection.
@@ -3103,7 +3103,7 @@ Descrizione metodi:
     \caption[Diagramma della classe SOSAlertService]{Diagramma della classe \code{SOSAlertService}}
     \label{fig:architettura_logica_luoghi_SOSAlertService}
 \end{figure}
-È il service della business logic responsabile dell'invio immediato delle email di soccorso al momento della pressione del pulsante SOS da parte dell'\term{Utente}. Implementa la port primaria \code{SendAlertPort}.\\
+È il service della \term{Business Logic} responsabile dell'invio immediato delle email di soccorso al momento della pressione del pulsante SOS da parte dell'\term{Utente}. Implementa la port primaria \code{SendAlertPort}.\\
 Descrizione metodi:
 \begin{itemize}
     \item \code{\_\_init\_\_(contact\_repository, notification\_repository)}, costruttore che riceve le due port secondarie tramite dependency injection;
