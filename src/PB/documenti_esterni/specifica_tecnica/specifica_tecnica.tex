@@ -159,7 +159,11 @@ Gruppo BitByBit\\
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 0.7.0 & 2026-04-29 & Riccardo Manisi & Redatta sezione \hyperref[par:architettura_backend_contatti_fidati]{Architettura classi microservizio contatti fidati}, \hyperref[par:architettura_logica_backend_luoghi_sicuri]{Architettura classi microservizio luoghi sicuri} & Gabriele Scaggiante \\
 \hline
+0.6.1 & 2026-04-27 & Gabriele Scaggiante & Aggiunte librerie nella sezione \hyperref[subsec:librerie]{Librerie} & Ferdinando Fracasso \\ 
+\hline
 0.6.0 & 2026-04-26 & Gabriele Scaggiante & Completata la sezione \hyperref[subsubsec:architettura_chatbot]{Architettura chatbot} introducendo la sezione \hyperref[subsubsec:architettura_logica_chatbot]{Architettura logica chatbot} e aggiornando la sezione dedicata alle API & Dennis Parolin \\
+\hline
+0.5.3 & 2026-04-24 & Ferdinando Fracasso & Aggiornato la sezione \hyperref[subsubsec:architettura_diari_frontend]{Architettura funzionalità diari} a seguito dell'implementazione della funzionalità & Gabriele Scaggiante \\
 \hline
 0.5.2 & 2026-04-23 & Gabriele Scaggiante & Corretta la sezione \hyperref[subsubsec:architettura_chatbot]{Architettura chatbot} dopo l'introduzione di due tabelle DynamoDB & Giovanni Visentin \\
 \hline
@@ -392,21 +396,21 @@ AWS CloudFormation è un servizio di \term{Infrastructure as Code} che consente 
 
 \subsection{Librerie} \label{subsec:librerie}
 
-\subsubsection{http.dart}
-http è una libreria per il linguaggio Dart che consente di effettuare richieste HTTP in modo semplice e asincrono. Fornisce metodi per eseguire operazioni come GET, POST, PUT e DELETE, gestendo automaticamente la serializzazione delle richieste e la ricezione delle risposte. È progettata per essere leggera e facilmente integrabile in applicazioni client.
+\subsubsection{http}
+\texttt{http} è una libreria per il linguaggio Dart che consente di effettuare richieste HTTP in modo semplice e asincrono. Fornisce metodi per eseguire operazioni come GET, POST, PUT e DELETE, gestendo automaticamente la serializzazione delle richieste e la ricezione delle risposte. È progettata per essere leggera e facilmente integrabile in applicazioni client.
 \begin{itemize}
     \item \textbf{Versione utilizzata}: 1.6.0
     \item \textbf{Documentazione}: \url{https://pub.dev/packages/http}
 \end{itemize}
 
-\subsubsection{image\_picker.dart}
+\subsubsection{image\_picker}
 \texttt{image\_picker} è una libreria Flutter che permette di accedere alla fotocamera e alla galleria del dispositivo per selezionare o acquisire immagini e video. Fornisce un’interfaccia unificata tra piattaforme diverse, gestendo le differenze tra iOS e Android.
 \begin{itemize}
     \item \textbf{Versione utilizzata}: 1.2.1
     \item \textbf{Documentazione}: \url{https://pub.dev/packages/image_picker}
 \end{itemize}
 
-\subsubsection{path\_provider.dart}
+\subsubsection{path\_provider}
 \texttt{path\_provider} è una libreria Flutter che consente di ottenere i percorsi delle directory del file system del dispositivo, come directory temporanee o documenti applicativi. Facilita l’accesso a percorsi corretti e compatibili tra piattaforme per la gestione dei file.
 \begin{itemize}
     \item \textbf{Versione utilizzata}: 2.1.5
@@ -441,6 +445,47 @@ http è una libreria per il linguaggio Dart che consente di effettuare richieste
     \item \textbf{Documentazione}: \url{https://pub.dev/packages/flutter_web_auth_2}
 \end{itemize}
 
+\subsubsection{flutter\_map}
+\texttt{flutter\_map} è una libreria Flutter open-source per la visualizzazione di mappe interattive. Fornisce funzionalità per il rendering di layer multipli, gestione di marker, polilinee e poligoni, oltre al supporto per gesture come zoom e pan. È altamente configurabile e non dipende da servizi proprietari esterni come Google Maps.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 8.3.0
+    \item \textbf{Documentazione}: \url{https://pub.dev/packages/flutter_map}
+\end{itemize}
+
+\subsubsection{geolocator}
+\texttt{geolocator} è una libreria Flutter che consente di accedere ai servizi di geolocalizzazione del dispositivo. Permette di ottenere la posizione corrente, monitorare aggiornamenti di posizione in tempo reale e gestire i permessi richiesti dalle diverse piattaforme.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 14.0.2
+    \item \textbf{Documentazione}: \url{https://pub.dev/packages/geolocator}
+\end{itemize}
+
+\subsubsection{get\_it}
+\texttt{get\_it} è un service locator per Dart e Flutter utilizzato per la gestione delle dipendenze all'interno dell'applicazione. Consente di registrare e recuperare istanze di oggetti in modo centralizzato, facilitando l'implementazione di architetture modulari e testabili.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 9.2.1
+    \item \textbf{Documentazione}: \url{https://pub.dev/packages/get_it}
+\end{itemize}
+
+\subsubsection{latlong2}
+\texttt{latlong2} è una libreria Dart che fornisce strutture dati e utilities per la gestione di coordinate geografiche (latitudine e longitudine). Include funzionalità per il calcolo di distanze tra punti e altre operazioni geospaziali di base.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 0.10.1
+    \item \textbf{Documentazione}: \url{https://pub.dev/packages/latlong2}
+\end{itemize}
+
+\subsubsection{python-ulid}
+\texttt{python-ulid} è una libreria Python per la generazione di identificatori univoci ULID (Universally Unique Lexicographically Sortable Identifier). Gli ULID combinano unicità e ordinamento temporale, risultando particolarmente utili in sistemi distribuiti dove è necessario generare ID ordinabili senza coordinamento centrale.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 3.1.0
+    \item \textbf{Documentazione}: \url{https://pypi.org/project/python-ulid/}
+\end{itemize}
+
+\subsubsection{rank-bm25}
+\texttt{rank-bm25} è una libreria Python che implementa l'algoritmo di ranking BM25 (Best Matching 25), utilizzato nel campo dell'information retrieval per valutare la rilevanza dei documenti rispetto a una query testuale. Fornisce diverse varianti dell'algoritmo BM25 e consente di costruire rapidamente sistemi di ricerca basati su punteggi statistici senza necessità di motori di ricerca completi.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 0.2.2
+    \item \textbf{Documentazione}: \url{https://pypi.org/project/rank-bm25/}
+\end{itemize}
 
 \subsection{Tecnologie di analisi statica} \label{subsec:tecnologie_analisi_statica}
 \subsubsection{SonarQube}
@@ -1167,6 +1212,16 @@ La classe \code{DiaryScreen} gestisce la rappresentazione visiva della schermata
     \label{DC-DiaryScreen}
 \end{figure}
 
+\paragraph{DiaryPasswordSettingWidget}\mbox{}\\
+La classe \code{DiaryPasswordSettingWidget} gestisce la presentazione grafica dell'interfaccia per l'impostazione della password per l'accesso al diario fittizio. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/diari/DC-DiaryPasswordSettingWidget.pdf}
+    \caption[Diagramma della classe DiaryPasswordSettingWidget]{Diagramma della classe \code{DiaryPasswordSettingWidget}}
+    \label{DC-DiaryPasswordSettingWidget}
+\end{figure}
+
 \paragraph{NoteListWidget}\mbox{}\\
 La classe \code{NoteListWidget} si occupa della visualizzazione della lista delle note contenute nel diario in cui l'\term{Utente} ha effettuato l'accesso e l'eventuale visualizzazione dei contenuti di una nota selezionata. Trattandosi di un \code{Consumer}, la classe osserva gli aggiornamenti dei dati in \code{DiaryViewModel} in modo da reagire di conseguenza alla selezione, modifica o eliminazione delle note. 
 
@@ -1185,6 +1240,26 @@ La classe \code{NoteActionsWidget} si occupa della visualizzazione delle compone
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/diari/DC-NoteActionsWidget.pdf}
     \caption[Diagramma della classe NoteActionsWidget]{Diagramma della classe \code{NoteActionsWidget}}
     \label{DC-NoteActionsWidget}
+\end{figure}
+
+\paragraph{NoteEditorWidget}\mbox{}\\
+La classe \code{NoteEditorWidget} gestisce la visualizzazione di una nota del diario selezionata dall'\term{Utente}, offrendo la possibilità di visualizzarne gli elementi che la compongono e permettendone l'aggiunta e la modifica.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/diari/DC-NoteEditorWidget.pdf}
+    \caption[Diagramma della classe NoteEditorWidget]{Diagramma della classe \code{NoteEditorWidget}}
+    \label{DC-NoteEditorWidget}
+\end{figure}
+
+\paragraph{NoteAudioPlayerWidget}\mbox{}\\
+La classe \code{NoteAudioPlayerWidget} è responsabile della visualizzazione di un audio player che consente all'\term{Utente} di visualizzare e riprodurre le tracce audio inserite nella nota.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/diari/DC-NoteAudioPlayerWidget.pdf}
+    \caption[Diagramma della classe NoteAudioPlayerWidget]{Diagramma della classe \code{NoteAudioPlayerWidget}}
+    \label{DC-NoteAudioPlayerWidget}
 \end{figure}
 
 \paragraph{DiaryViewModel}\mbox{}\\
