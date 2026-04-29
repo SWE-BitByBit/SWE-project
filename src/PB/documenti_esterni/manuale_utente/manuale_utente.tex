@@ -6,7 +6,7 @@
 % =======================================================
 \newcommand{\TitoloDocumento}{Manuale Utente}
 \newcommand{\DataVersione}{AAAA/MM/GG}
-\newcommand{\VersioneAttuale}{0.1.0}
+\newcommand{\VersioneAttuale}{0.2.0}
 
 % =======================================================
 % 2. PACCHETTI
@@ -146,7 +146,7 @@
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & In corso\\
 \textbf{Versione:} & \VersioneAttuale \\
-\textbf{Responsabile:} & X\\
+\textbf{Responsabile:} & Riccardo Manisi \\
 \textbf{Redattori:} & 
 \begin{tabular}[t]{@{}l@{}}
 Dennis Parolin\\
@@ -192,6 +192,9 @@ Gruppo BitByBit\\\\
 \hline
 \endhead
 
+\rowcolor{gray!20}
+0.2.0 & 2026-04-29 & Dennis Parolin & Creazione delle sezioni \hyperref[sec:installazione_mobile]{Installazione Mobile}, \hyperref[sec:accesso_web]{Accesso da Web}, \hyperref[sec:esecuzione_sorgenti]{Esecuzione da codice sorgente} e \hyperref[sec:funzionalita]{Funzionalità dell'applicazione}. & Riccardo Manisi \\
+\hline
 \rowcolor{white}
 0.1.0 & 2026-03-28 & Dennis Parolin & Creazione del documento e redazione della sezione \hyperref[sec:introduzione]{Introduzione} con relative sottosezioni. & Giovanni Visentin \\
 \hline
@@ -208,6 +211,10 @@ Gruppo BitByBit\\\\
 \listoftables
 \clearpage
 
+% --- ELENCO FIGURE ---
+\listoffigures
+\clearpage
+
 % =======================================================
 % SEZIONE: INTRODUZIONE
 % =======================================================
@@ -216,9 +223,9 @@ Gruppo BitByBit\\\\
 
 % =======================SCOPO DOCUMENTO================================
 \subsection{Scopo del documento} \label{sec:scopo_documento}
-Il presente \textit{Manuale \term{Utente}} è stato redatto dal gruppo \textit{BitByBit} per fornire un supporto metodico e completo riguardo all'utilizzo del sistema sviluppato in risposta al \href{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C4.pdf}{Capitolato d'appalto C4: \emph{L'app che Protegge e Trasforma}}.
+Il presente \textit{Manuale Utente} è stato redatto dal gruppo \textit{BitByBit} per fornire un supporto metodico e completo riguardo all'utilizzo del sistema sviluppato in risposta al \href{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C4.pdf}{Capitolato d'appalto C4: \emph{L'app che Protegge e Trasforma}}.
 
-Il documento si propone come una guida operativa generica e trasversale, concepita per accompagnare l'utenza finale nell'interazione quotidiana con le interfacce dell'applicativo e per descriverne tutte le potenzialità. In aggiunta, questo manuale funge da punto di riferimento per eventuali figure amministrative o tecniche che dovranno interfacciarsi con il sistema o occuparsi della sua gestione e configurazione. L'obiettivo primario è duplice: da un lato, far sì che qualunque \term{Utente} possa apprendere velocemente e in autonomia come muoversi e operare attraverso il software; dall'altro, mitigare la probabilità di errori accidentali offrendo linee guida e soluzioni a dubbi comuni. 
+Il documento si propone come una guida operativa generica e trasversale, concepita per accompagnare l'utenza finale nell'interazione quotidiana con le interfacce dell'applicativo e per descriverne tutte le potenzialità. In aggiunta, questo manuale funge da punto di riferimento per eventuali figure amministrative o tecniche che dovranno interfacciarsi con il sistema o occuparsi della sua gestione e configurazione. L'obiettivo primario è duplice: da un lato, far sì che qualunque Utente possa apprendere velocemente e in autonomia come muoversi e operare attraverso il software; dall'altro, mitigare la probabilità di errori accidentali offrendo linee guida e soluzioni a dubbi comuni. 
 
 Per facilitare la ricerca delle informazioni, i contenuti sono stati suddivisi nelle seguenti aree chiave:
 
@@ -240,7 +247,7 @@ I termini tecnici, gli acronimi e le parole con significato specifico all'intern
 
 \subsubsection{Riferimenti normativi}\label{sec:riferimenti_normativi}
 \begin{itemize}
-\item \textbf{\term{Capitolato} d'appalto C4: \emph{L'app che Protegge e Trasforma}}\\
+\item \textbf{Capitolato d'appalto C4: \emph{L'app che Protegge e Trasforma}}\\
 Parti consultate: documento completo\\
 Versione: 1.0.0\\
 Ultimo accesso: \textit{2026-01-12}\\
@@ -263,6 +270,250 @@ Ultimo accesso: \textit{2026-03-31}\\
         \url{https://swe-bitbybit.github.io/SWE-docs/docs/RTB/documenti_interni/Glossario.pdf}
 \end{itemize}
 
+\section{Installazione mobile} \label{sec:installazione_mobile}
 
+L'applicazione è attualmente distribuita in modalità \textit{Pre-release} come Minimum Viable Product (MVP). Di seguito vengono riportate le istruzioni per l'installazione su dispositivi Android e iOS.
+
+\subsection{Requisiti minimi}
+\begin{itemize}
+    \item \textbf{Sistema Operativo:} 
+    \begin{itemize}
+        \item Android 8.0 (API 26) o superiore.
+        \item iOS 15.0 o superiore.
+    \end{itemize}
+    \item \textbf{Spazio di archiviazione:} Almeno 100MB di spazio libero.
+    \item \textbf{Connessione Internet:} Necessaria per l'utilizzo dell'applicazione.
+\end{itemize}
+
+\subsection{Procedura di installazione (Android)}
+Per installare l'applicazione tramite il file fornito (\texttt{app-release.apk}), seguire i passaggi descritti di seguito:
+
+\begin{enumerate}
+    \item \textbf{Trasferimento file:} Scaricare o copiare il file \texttt{app-release.apk} nella memoria interna del dispositivo mobile.
+    \item \textbf{Abilitazione sorgenti sconosciute:} 
+    A causa delle politiche di sicurezza di Android, l'installazione di applicazioni esterne al Google Play Store deve essere autorizzata manualmente:
+    \begin{itemize}
+        \item Recarsi nelle \textit{Impostazioni} del dispositivo.
+        \item Cercare la sezione \textit{Sicurezza} o \textit{Privacy}.
+        \item Abilitare l'opzione \textbf{"Origini sconosciute"} o, nelle versioni più recenti, autorizzare il proprio \textit{File Manager} all'installazione di app sconosciute.
+    \end{itemize}
+    \item \textbf{Esecuzione del pacchetto:} Individuare il file tramite l'app "Download" o un gestore file e toccarlo per avviare l'installazione.
+    \item \textbf{Conferma:} Alla richiesta del sistema, premere su \textbf{"Installa"}. Al termine dell'operazione, sarà possibile premere su "Apri" per avviare immediatamente l'applicativo.
+\end{enumerate}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Nota sulla sicurezza]
+    Essendo una versione di sviluppo, durante l'installazione il servizio \textit{Google Play Protect} potrebbe mostrare un avviso. Per procedere, è necessario cliccare su "Installa comunque".
+\end{tcolorbox}
+
+\subsection{Procedura di installazione (iOS)}
+Per i dispositivi Apple, l'installazione può avvenire tramite il file di pacchetto (\texttt{app-release.ipa}) o, più comunemente, tramite la piattaforma di beta testing \textit{TestFlight}.
+
+\begin{enumerate}
+    \item \textbf{Download del pacchetto:} Scaricare il file \texttt{app-release.ipa} sul proprio computer o riceverlo tramite i canali ufficiali del gruppo.
+    \item \textbf{Installazione tramite TestFlight (Scelta consigliata):} 
+    \begin{itemize}
+        \item Scaricare l'app \textbf{TestFlight} dall'App Store.
+        \item Accettare l'invito ricevuto via email o tramite link pubblico.
+        \item L'app comparirà nell'elenco di TestFlight; premere su \textbf{"Installa"}.
+    \end{itemize}
+    \item \textbf{Installazione manuale (.ipa):} 
+    In alternativa, per installare direttamente il file scaricato:
+    \begin{itemize}
+        \item Collegare l'iPhone al Mac.
+        \item Utilizzare l'app \textit{Apple Configurator} o trascinare il file in \textit{Xcode} -> \textit{Devices and Simulators}.
+        \item Autorizzare l'applicazione nelle impostazioni del dispositivo (\textit{Generali} -> \textit{VPN e gestione dispositivi}).
+    \end{itemize}
+\end{enumerate}
+
+\begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black,title=Nota per iOS]
+    A differenza di Android, l'installazione diretta di file esterni su iOS è più restrittiva. Si consiglia vivamente l'utilizzo di TestFlight per una procedura semplificata e sicura.
+\end{tcolorbox}
+
+\section{Accesso da Web} \label{sec:accesso_web}
+
+Per chi desidera utilizzare l'applicativo senza procedere all'installazione su un dispositivo fisico, è disponibile una versione Web ottimizzata per i principali browser desktop e mobile.
+
+\subsection{Requisiti hardware e software}
+\begin{itemize}
+    \item \textbf{Browser supportati:} Google Chrome (consigliato), Mozilla Firefox, Microsoft Edge, Safari.
+    \item \textbf{Risoluzione minima:} L'interfaccia è di tipo \textit{responsive} e si adatta sia a schermi desktop che a schermi di smartphone.
+    \item \textbf{Javascript:} Deve essere abilitato nel browser (impostazione predefinita).
+\end{itemize}
+
+\subsection{Procedura di accesso}
+\begin{enumerate}
+    \item Aprire il browser web sul proprio dispositivo.
+    \item Navigare all'indirizzo ufficiale del progetto: \\ 
+    \url{https://swe-bitbybit.github.io/project-MVP/} \footnote{L'indirizzo potrebbe variare in base alla configurazione finale dell'hosting.}
+    \item Al caricamento della pagina, l'utente si troverà direttamente nella schermata di autenticazione o nella \textit{Dashboard} principale.
+\end{enumerate}
+
+\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black,title=Suggerimento: Utilizzo come App]
+    Sui browser basati su Chromium (come Chrome o Edge), è possibile cliccare sull'icona "Installa" nella barra degli indirizzi per aggiungere l'applicazione direttamente al desktop o alla lista delle app del computer, utilizzandola come se fosse un software nativo (PWA).
+\end{tcolorbox}
+
+\subsection{Risoluzione dei problemi (Web)}
+\begin{itemize}
+    \item \textbf{Schermata bianca all'avvio:}
+    \textit{Soluzione:} Verificare la console del browser (tasto F12). Spesso è dovuto a un errore nel caricamento del file \texttt{.env} o a problemi di CORS se le API del backend non sono configurate correttamente per accettare richieste dal dominio web.
+\end{itemize}
+
+\section{Esecuzione da codice sorgente} \label{sec:esecuzione_sorgenti}
+
+Questa modalità è riservata a figure tecniche che desiderano analizzare il codice o eseguire l'applicazione in un ambiente di sviluppo controllato.
+
+\subsection{Prerequisiti di sistema}
+Prima di procedere, assicurarsi che sul sistema siano installati i seguenti componenti:
+\begin{itemize}
+    \item \textbf{Git:} per la gestione del controllo versione.
+    \item \textbf{Flutter SDK:} versione \texttt{3.10.7} o superiore (seguire la \href{https://docs.flutter.dev/get-started/install}{guida ufficiale}).
+    \item \textbf{Android SDK:} necessario per l'esecuzione su emulatore o dispositivo Android.
+    \item \textbf{IDE:} Visual Studio Code o Android Studio con estensione Flutter installata.
+\end{itemize}
+
+\subsection{Procedura di setup ed esecuzione}
+Seguire rigorosamente i seguenti comandi da terminale:
+
+\begin{enumerate}
+    \item \textbf{Clonazione della repository:}
+    \begin{verbatim}
+    git clone https://github.com/SWE-BitByBit/project-MVP.git
+    \end{verbatim}
+    \item \textbf{Navigazione nella cartella del frontend:}
+    \begin{verbatim}
+    cd project-MVP/frontend
+    \end{verbatim}
+    \item \textbf{Installazione delle dipendenze:}
+    \begin{verbatim}
+    flutter pub get
+    \end{verbatim}
+    \item \textbf{Verifica dell'ambiente:}
+    Eseguire il comando \texttt{flutter doctor} per assicurarsi che non vi siano problemi di configurazione.
+    \item \textbf{Avvio dell'applicazione:}
+    Assicurarsi che un emulatore sia attivo o un dispositivo sia collegato, quindi lanciare:
+    \begin{verbatim}
+    flutter run
+    \end{verbatim}
+\end{enumerate}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black,title=Attenzione: Variabili d'ambiente]
+    Il corretto funzionamento dell'applicativo dipende dalla presenza del file \texttt{.env} nella cartella root del frontend. Assicurarsi che il file contenga gli endpoint corretti per il backend AWS (Cognito e API Gateway).
+\end{tcolorbox}
+
+\subsection{Risoluzione dei problemi (Sorgente)}
+\begin{itemize}
+    \item \textbf{Problemi con Flutter Doctor:}
+    \begin{itemize}
+        \item \textbf{Android license status unknown:} Eseguire \texttt{flutter doctor --android-licenses} e accettare tutte le licenze.
+        \item \textbf{Android SDK not found:} Configurare il percorso manualmente con \texttt{flutter config --android-sdk <percorso\_sdk>}.
+        \item \textbf{Visual Studio missing (Windows):} Può essere ignorato se si desidera eseguire l'app solo su mobile o web. In caso contrario, installare il pacchetto "Sviluppo di applicazioni desktop con C++" tramite Visual Studio Installer.
+    \end{itemize}
+    \item \textbf{Blocco su "Running Gradle task 'assembleDebug'...":}
+    \textit{Soluzione:} La prima compilazione è lenta. Se persiste, eseguire \texttt{flutter clean} e riprovare.
+\end{itemize}
+
+\section{Funzionalità dell'applicazione} \label{sec:funzionalita}
+
+In questa sezione vengono descritte nel dettaglio le funzionalità messe a disposizione dall'applicativo per supportare l'utente.
+
+\subsection{Chatbot} \label{subsec:chatbot}
+
+L'interfaccia dell'applicazione include una sezione dedicata all'interazione testuale con l'Intelligenza Artificiale, concepita per chiarire dubbi e fornire supporto immediato. Questa schermata implementa due distinte modalità operative:
+
+\begin{itemize}
+    \item \textbf{Detective delle relazioni:} ha l'obiettivo di analizzare i comportamenti o le narrazioni dell'Utente per identificare la situazione attuale e riconoscere eventuali pattern di pericolo o segnali di allerta (red flags) che meritano attenzione.
+    \item \textbf{Lo specchio intelligente:} è orientata all'autoconsapevolezza, offrendo uno spazio privato e protetto per l'analisi dei propri pensieri e delle proprie emozioni, favorendo una riflessione profonda sulla propria condizione.
+\end{itemize}
+
+La selezione della modalità (e quindi del prompt) più adeguata tra le due viene gestita \textbf{automaticamente} dall'applicazione previa analisi del messaggio inviato dall'utente. Rimane comunque garantita la possibilità per l'utente di modificare manualmente la modalità selezionata qualora lo ritenga opportuno.
+
+\subsubsection{Gestione delle conversazioni}
+Il sistema prevede una gestione completa delle sessioni di chat, offrendo le seguenti possibilità:
+\begin{itemize}
+    \item \textbf{Creazione nuove chat:} è possibile avviare nuove conversazioni in qualsiasi momento tramite l'apposito pulsante.
+    \item \textbf{Archiviazione e cronologia:} tutte le chat create vengono salvate in un archivio storico. L'utente può consultare la cronologia completa delle interazioni passate.
+    \item \textbf{Prosecuzione:} una chat archiviata può essere riaperta per proseguire la conversazione dal punto in cui era stata interrotta.
+    \item \textbf{Eliminazione:} l'utente ha il pieno controllo sui propri dati e può decidere di eliminare definitivamente una o più chat dalla cronologia.
+\end{itemize}
+
+\subsection{La guida al coraggio} \label{subsec:guida_coraggio}
+
+Questa sezione funge da hub informativo centrale, offrendo un accesso chiaro e organizzato a risorse essenziali per il supporto e l'orientamento dell'utente. I contenuti sono suddivisi in tre categorie principali:
+
+\begin{enumerate}
+    \item \textbf{Articoli e Guide:} una raccolta di contenuti informativi che spaziano da piccole guide pratiche e consigli comportamentali a fatti e approfondimenti su temi di sicurezza e benessere.
+    \item \textbf{Community:} una selezione di link a comunità e forum di supporto esterni. Si specifica che tali community sono risorse di terze parti non gestite direttamente dal team di sviluppo.
+    \item \textbf{Leggi:} una sezione dedicata alla consultazione dei riferimenti normativi e delle leggi vigenti, per fornire all'utente una base di conoscenza giuridica sui propri diritti e sulle tutele disponibili.
+\end{enumerate}
+
+\subsection{Luoghi sicuri} \label{subsec:luoghi_sicuri}
+
+La funzionalità dei "Luoghi sicuri" integra una mappa interattiva (tramite Google Maps) che permette all'utente di individuare rapidamente punti di riferimento sicuri nelle vicinanze.
+
+\subsubsection{Mappa e Navigazione}
+L'interfaccia mostra una mappa dinamica con le seguenti caratteristiche:
+\begin{itemize}
+    \item \textbf{Geolocalizzazione:} il sistema rileva la posizione dell'utente per centrare la mappa e mostrare i luoghi più vicini.
+    \item \textbf{Calcolo percorsi:} grazie all'integrazione con i servizi di navigazione, l'utente può visualizzare il percorso più rapido per raggiungere un determinato luogo sicuro.
+\end{itemize}
+
+\subsubsection{Marker e Dettagli}
+Sulla mappa sono presenti dei marker (segnaposto) che identificano i luoghi sicuri. Cliccando su un marker, viene visualizzato un pannello informativo contenente:
+\begin{itemize}
+    \item \textbf{Nome:} la denominazione ufficiale del luogo.
+    \item \textbf{Indirizzo:} la via e il numero civico completi.
+    \item \textbf{Tipologia:} la categoria del luogo (ad esempio: Bar, Stazione dei Carabinieri, Centro Antiviolenza, ecc.), per permettere all'utente di scegliere il punto di riferimento più adatto alle proprie necessità.
+\end{itemize}
+
+\subsection{Diario criptato} \label{subsec:diario_criptato}
+
+Il Diario Criptato è concepito come uno spazio sicuro e protetto per l'annotazione di eventi, pensieri personali e l'archiviazione di file multimediali (foto e registrazioni audio). L'intera sezione è progettata con un'interfaccia discreta per non attirare attenzioni indesiderate.
+
+\subsubsection{Accesso e Sicurezza}
+L'accesso al diario è rigorosamente protetto:
+\begin{itemize}
+    \item \textbf{Autenticazione:} all'apertura, il sistema richiede l'inserimento di una password o l'autenticazione tramite dati biometrici (impronta digitale o riconoscimento facciale, se supportati dal dispositivo).
+    \item \textbf{Primo Accesso:} al primo utilizzo della funzionalità, l'utente viene guidato nella creazione della \textbf{password del diario reale}.
+\end{itemize}
+
+\subsubsection{Meccanismo di Accesso Differenziato (Diario Fittizio)}
+A tutela della sicurezza dell'utente in situazioni di potenziale costrizione, l'app implementa un innovativo sistema di "Accesso Differenziato":
+\begin{itemize}
+    \item \textbf{Diario Reale:} inserendo la password corretta, si accede al contenuto reale e a tutti i dati sensibili archiviati.
+    \item \textbf{Diario Fittizio:} l'utente può configurare una seconda password (password fittizia). Se questa viene inserita nella schermata di sblocco, l'app mostrerà una versione "esca" del diario. Questa versione contiene elementi coerenti e sensati, ma è totalmente priva di qualsiasi informazione sensibile.
+\end{itemize}
+La gestione di entrambe le password avviene all'interno del diario reale tramite un pulsante dedicato alle impostazioni di sicurezza.
+
+\subsubsection{Funzionalità del diario}
+All'interno del diario (sia reale che fittizio, con le dovute distinzioni di contenuto), l'utente può:
+\begin{itemize}
+    \item \textbf{Gestione Note:} creare nuove note testuali, modificarle nel tempo o eliminarle.
+    \item \textbf{Contenuti Multimediali:} allegare fotografie e registrazioni audio ad ogni singola nota per documentare eventi in modo più completo.
+\end{itemize}
+
+\subsection{Rete di supporto e SOS} \label{subsec:sos_contatti}
+
+L'applicazione integra un sistema di emergenza avanzato per permettere all'utente di richiedere aiuto in modo tempestivo e discreto alla propria rete di contatti fidati.
+
+\subsubsection{Comando SOS e Allarme Acustico}
+In situazioni di pericolo, l'utente ha a disposizione uno strumento di reazione immediata:
+\begin{itemize}
+    \item \textbf{SOS:} un pulsante chiaramente visibile nella Home dell'app permette di inviare istantaneamente una comunicazione di emergenza (e-mail) a tutti i contatti salvati nella propria rete. L'invio è gestito esclusivamente dal comando manuale dell'utente.
+    \item \textbf{Sicurezza in assenza di rete:} qualora non sia presente connettività internet (impedendo l'invio di e-mail), l'utente può attivare un \textbf{allarme acustico} ad alto volume. Questa funzione ha lo scopo di attirare l'attenzione dei presenti e fungere da deterrente verso potenziali aggressori.
+\end{itemize}
+
+\subsubsection{Gestione Contatti Fidati}
+Tramite l'apposita sezione accessibile dalla Dashboard, l'utente può gestire la propria rete di supporto:
+\begin{itemize}
+    \item \textbf{Aggiunta e Modifica:} inserire nuovi contatti o aggiornare le informazioni di quelli esistenti.
+    \item \textbf{Visualizzazione e Rimozione:} consultare l'elenco dei contatti attivi o eliminarli qualora non siano più necessari.
+\end{itemize}
+
+\subsubsection{Dead Man's Switch (Interruttore di emergenza)}
+Questa funzionalità di sicurezza preventiva può essere attivata tramite uno switch nelle impostazioni e si basa su due timer configurabili dall'utente:
+\begin{enumerate}
+    \item \textbf{Primo Timer (Avviso Personale):} allo scadere di questo timer, il sistema invia un'e-mail di controllo esclusivamente all'utente. Il contenuto (oggetto e corpo) di questa e-mail è personalizzabile dall'utente nella sezione dedicata alla configurazione della funzione.
+    \item \textbf{Secondo Timer (Emergenza):} se l'utente non disattiva il sistema dopo il primo avviso e scade anche il secondo timer, viene inviata automaticamente un'e-mail di emergenza a tutti i contatti fidati salvati. In questo caso, viene utilizzata una comunicazione di default preimpostata dal sistema per garantire la massima chiarezza.
+\end{enumerate}
 
 \end{document}
