@@ -112,7 +112,7 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & In lavorazione\\
-\textbf{Versione:} & 0.6.0 \\
+\textbf{Versione:} & 0.7.0 \\
 \textbf{Responsabile:} & Gabriele Scaggiante \\
 \textbf{Redattori:} & 
 \begin{tabular}[t]{@{}l@{}}
@@ -157,6 +157,8 @@ Gruppo BitByBit\\
 \hline
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+0.7.0 & 2026-04-29 & Riccardo Manisi & Redatta sezione \hyperref[par:architettura_backend_contatti_fidati]{Architettura classi microservizio contatti fidati}, \hyperref[par:architettura_logica_backend_luoghi_sicuri]{Architettura classi microservizio luoghi sicuri} & Gabriele Scaggiante \\
+\hline
 0.6.0 & 2026-04-26 & Gabriele Scaggiante & Completata la sezione \hyperref[subsubsec:architettura_chatbot]{Architettura chatbot} introducendo la sezione \hyperref[subsubsec:architettura_logica_chatbot]{Architettura logica chatbot} e aggiornando la sezione dedicata alle API & Dennis Parolin \\
 \hline
 0.5.2 & 2026-04-23 & Gabriele Scaggiante & Corretta la sezione \hyperref[subsubsec:architettura_chatbot]{Architettura chatbot} dopo l'introduzione di due tabelle DynamoDB & Giovanni Visentin \\
@@ -1425,7 +1427,7 @@ Questo widget raggruppa i bottoni e le azioni specifiche per la gestione dei con
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/contatti_fidati/DC-TrustedContactDTO.pdf}
-    \caption[Diagramma della classe TrustedContactDTO]{Diagramma della classe \code{TrustedContactDTO}}
+    \caption{Diagramma della classe \code{TrustedContactDTO}}
     \label{DC-TrustedContactDTO}
 \end{figure}
 
@@ -1449,7 +1451,7 @@ La classe \code{SafePlaceMapScreen} rappresenta la schermata principale dedicata
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/luoghi_sicuri/DC-SafePlaceMapScreen.pdf}
-    \caption[Diagramma della classe SafePlaceMapScreen]{Diagramma della classe \code{SafePlaceMapScreen}}
+    \caption{Diagramma della classe \code{SafePlaceMapScreen}}
     \label{DC-SafePlaceMapScreen}
 \end{figure}
 
@@ -1460,7 +1462,7 @@ Il componente \code{SafePlaceMapWidget} incapsula la logica necessaria all'inter
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/luoghi_sicuri/DC-SafePlaceMapWidget.pdf}
-    \caption[Diagramma della classe SafePlaceMapWidget]{Diagramma della classe \code{SafePlaceMapWidget}}
+    \caption{Diagramma della classe \code{SafePlaceMapWidget}}
     \label{DC-SafePlaceMapWidget}
 \end{figure}
 
@@ -1471,7 +1473,7 @@ Il componente \code{SafePlaceMapWidget} incapsula la logica necessaria all'inter
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/luoghi_sicuri/DC-SafePlaceViewModel.pdf}
-    \caption[Diagramma della classe SafePlaceViewModel]{Diagramma della classe \code{SafePlaceViewModel}}
+    \caption{Diagramma della classe \code{SafePlaceViewModel}}
     \label{DC-SafePlaceViewModel}
 \end{figure}
 
@@ -1482,7 +1484,7 @@ Il componente \code{SafePlaceMapWidget} incapsula la logica necessaria all'inter
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/luoghi_sicuri/DC-SafePlace.pdf}
-    \caption[Diagramma della classe SafePlace]{Diagramma della classe \code{SafePlace}}
+    \caption{Diagramma della classe \code{SafePlace}}
     \label{DC-SafePlace}
 \end{figure}
 
@@ -1493,7 +1495,7 @@ Il \code{SafePlaceRepository} astrae la sorgente dei dati geografici per il View
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/luoghi_sicuri/DC-SafePlaceRepository.pdf}
-    \caption[Diagramma della classe SafePlaceRepository]{Diagramma della classe \code{SafePlaceRepository}}
+    \caption{Diagramma della classe \code{SafePlaceRepository}}
     \label{DC-SafePlaceRepository}
 \end{figure}
 
@@ -1504,7 +1506,7 @@ Appartenente al livello infrastrutturale, \code{SafePlaceService} si occupa di e
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/luoghi_sicuri/DC-SafePlaceService.pdf}
-    \caption[Diagramma della classe SafePlaceService]{Diagramma della classe \code{SafePlaceService}}
+    \caption{Diagramma della classe \code{SafePlaceService}}
     \label{DC-SafePlaceService}
 \end{figure}
 
@@ -1515,7 +1517,7 @@ La classe \code{SafePlaceDTO} (\textit{Data Transfer Object}) gestisce la serial
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/luoghi_sicuri/DC-SafePlaceDTO.pdf}
-    \caption[Diagramma della classe SafePlaceDTO]{Diagramma della classe \code{SafePlaceDTO}}
+    \caption{Diagramma della classe \code{SafePlaceDTO}}
     \label{DC-SafePlaceDTO}
 \end{figure}
 
@@ -1540,7 +1542,7 @@ La classe \code{DeadManScreen} rappresenta la schermata principale del pannello 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/dead_man_switch/DC-DeadManScreen.pdf}
-    \caption[Diagramma della classe DeadManScreen]{Diagramma della classe \code{DeadManScreen}}
+    \caption{Diagramma della classe \code{DeadManScreen}}
     \label{DC-DeadManScreen}
 \end{figure}
 
@@ -1551,7 +1553,7 @@ Questo componente incapsula gli elementi interattivi dell'interfaccia, come i se
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/dead_man_switch/DC-DeadManFormWidget.pdf}
-    \caption[Diagramma della classe DeadManFormWidget]{Diagramma della classe \code{DeadManFormWidget}}
+    \caption{Diagramma della classe \code{DeadManFormWidget}}
     \label{DC-DeadManFormWidget}
 \end{figure}
 
@@ -2001,9 +2003,9 @@ Al fine di ottimizzare ulteriormente i costi, l'intera logica di rendering visiv
 \begin{itemize}
     \item \texttt{GET /safe\_locations/}: ritorna le informazioni di tutti i luoghi sicuri.
 \end{itemize}
-\textit{Nota di sicurezza}: L'integrazione di un Authorizer Cognito per la \ignoreglossary{verifica} delle autorizzazioni è stata deliberatamente omessa per questa rotta. L'assenza dell'Authorizer in quest'area è difatti una scelta architetturale mirata a rimuovere complessità infrastrutturale non necessaria e ad abbattere i costi operativi associati al recupero di questi specifici dati.
+\textit{Nota di sicurezza}: L'integrazione di un Authorizer Cognito per la \ignoreglossary{verifica} delle autorizzazioni è stata deliberatamente omessa per questa route. L'assenza dell'Authorizer in quest'area è difatti una scelta architetturale mirata a rimuovere complessità infrastrutturale non necessaria e ad abbattere i costi operativi associati al recupero di questi specifici dati.
 
-\paragraph{\term{Architettura} logica: Modulo Luoghi Sicuri}
+\paragraph{\term{Architettura} logica: Modulo Luoghi Sicuri} \label{par:architettura_logica_backend_luoghi_sicuri}
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{diagrammi_classi_lambda/luoghi_sicuri/DCB-luoghi-sicuri.pdf}
@@ -2014,8 +2016,8 @@ Il microservizio \textbf{luoghi sicuri} viene utilizzato per eseguire il fetch d
 bucket S3. È formato da tre componenti principali:
 \begin{itemize}
     \item \textbf{SafePlacesController}, che rappresenta l'application logic e corrisponde al controller del pattern esagonale. Riceve l'evento grezzo di API Gateway, lo instrada verso la port primaria e costruisce la risposta HTTP da restituire al client;
-    \item \textbf{SafePlacesService}, che rappresenta la \term{Business Logic} e corrisponde alla domain logic del pattern esagonale. Implementa la port primaria \code{GetMarkerPort} e orchestra la comunicazione con il layer di persistenza tramite la port secondaria \code{SafePlacesRepositoryPort};
-    \item \textbf{S3SafePlacesRepository}, che rappresenta la \term{Persistence Logic} e corrisponde all'adapter secondario del pattern esagonale. Contiene tutta la logica specifica per il recupero dei marker da un bucket S3 tramite il client boto3.
+    \item \textbf{SafePlacesService}, che rappresenta la \term{Business Logic} e corrisponde alla business logic del pattern esagonale. Implementa la port primaria \code{GetMarkerPort} e orchestra la comunicazione con il layer di persistenza tramite la port secondaria \code{SafePlacesRepositoryPort};
+    \item \textbf{S3SafePlacesRepository}, che rappresenta la \term{Persistence Logic} e corrisponde all'adapter secondario dell'architettura esagonale. Contiene tutta la logica specifica per il recupero dei marker da un bucket S3 tramite il client boto3.
 \end{itemize}
 
 \paragraph{Marker}\mbox{}\\
@@ -2032,7 +2034,7 @@ Descrizione attributi:
     \item \code{latitude} e \code{longitude} definiscono la posizione geografica;
     \item \code{name} indica il nome del marker;
     \item \code{address} indica l'indirizzo;
-    \item \code{category} indica la cotegoria del marker;
+    \item \code{category} indica la categoria del marker;
 \end{abstract} 
 
 \paragraph{SafePlacesController}\mbox{}\\
@@ -2042,7 +2044,7 @@ Descrizione attributi:
     \caption[Diagramma della classe SafePlacesController]{Diagramma della classe \code{SafePlacesController}}
     \label{fig:architettura_logica_luoghi_SafePlacesController}
 \end{figure}
-È il controller del pattern esagonale. Riceve l'evento grezzo di API Gateway, lo instrada verso la port primaria e 
+È il controller del pattern esagonale. Riceve la richiesta grezza da API Gateway, la instrada verso la port primaria e 
 costruisce la risposta HTTP da restituire al client.
 Descrizione metodi:
 \begin{itemize}
@@ -2059,10 +2061,7 @@ Descrizione metodi:
     \label{fig:architettura_logica_luoghi_sicuri_getmarkerport}
 \end{figure}
 È la port primaria del pattern esagonale.\\
-Descrizione metodi:
-\begin{itemize}
-    \item \code{get\_all\_markers()}, che restituisce la lista completa dei marker disponibili senza esporre dettagli implementativi su come vengono recuperati.
-\end{itemize}
+Il metodo \code{get\_all\_markers()} restituisce la lista completa dei marker disponibili senza esporre dettagli implementativi su come vengono recuperati.
 
 \paragraph{SafePlacesService}\mbox{}\\
 \begin{figure}[H]
@@ -2071,8 +2070,8 @@ Descrizione metodi:
     \caption[Diagramma della classe SafePlacesService]{Diagramma della classe \code{SafePlacesService}}
     \label{fig:architettura_logica_luoghi_SafePlacesService}
 \end{figure}
-È la domain logic del microservizio. Contiene l'application logic per 
-il recupero dei luoghi sicuri e orchestra la comunicazione con il layer di persistenza tramite la port secondaria \code{SafePlacesRepositoryPort}.
+È la business logic del microservizio. Contiene l'application logic per 
+il recupero dei luoghi sicuri e orchestra la comunicazione con il layer di persistenza tramite la outbound port \code{SafePlacesRepositoryPort}.
 
 \paragraph{SafePlacesRepositoryPort}\mbox{}\\
 \begin{figure}[H]
@@ -2081,11 +2080,8 @@ il recupero dei luoghi sicuri e orchestra la comunicazione con il layer di persi
     \caption[Diagramma dell'interfaccia SafePlacesRepositoryPort]{Diagramma dell'interfaccia \code{SafePlacesRepositoryPort}}
     \label{fig:architettura_logica_luoghi_sicuri_SafePlacesRepositoryPort}
 \end{figure}
-È la port secondaria del pattern esagonale orientata alla persistenza.
-Descrizione metodi:
-\begin{itemize}
-    \item \code{list\_markers()}, che restituisce la lista di tutti i marker disponibili senza esporre dettagli su S3 o qualsiasi altro storage.
-\end{itemize}
+È la outbound port del pattern esagonale orientata alla persistenza, utilizzata per restituire la 
+lista di tutti i marker disponibili senza esporre dettagli su S3 o qualsiasi altro storage sottostante.
 
 \paragraph{S3SafePlacesRepository}\mbox{}\\
 \begin{figure}[H]
@@ -2137,7 +2133,7 @@ Il microservizio \textbf{materiale informativo} viene utilizzato per eseguire il
 bucket S3 in cui sono memorizzate le risorse informative da visualizzare nell'applicazione. È formato da tre componenti principali:
 \begin{itemize}
     \item \textbf{ResourcesController}, che rappresenta l'application logic e corrisponde al controller del pattern esagonale. Riceve l'evento grezzo di API Gateway, lo instrada verso la port primaria e costruisce la risposta HTTP da restituire al client;
-    \item \textbf{ResourcesService}, che rappresenta la \term{Business Logic} e corrisponde alla domain logic del pattern esagonale. Implementa la port primaria \code{GetResourcesPort} e orchestra la comunicazione con il layer di persistenza tramite la port secondaria \code{ResourcesRepositoryPort};
+    \item \textbf{ResourcesService}, che rappresenta la \term{Business Logic} e corrisponde alla business logic del pattern esagonale. Implementa la port primaria \code{GetResourcesPort} e orchestra la comunicazione con il layer di persistenza tramite la port secondaria \code{ResourcesRepositoryPort};
     \item \textbf{S3ResourcesRepository}, che rappresenta la \term{Persistence Logic} e corrisponde all'adapter secondario del pattern esagonale. Contiene tutta la logica specifica per il recupero delle risorse da un bucket S3 tramite il client boto3.
 \end{itemize}
 
@@ -2166,11 +2162,11 @@ L'enumerazione \code{ResourceType} definisce le tre categorie disponibili: \code
     \caption[Diagramma della classe ResourcesController]{Diagramma della classe \code{ResourcesController}}
     \label{fig:architettura_logica_luoghi_ResourcesController}
 \end{figure}
-È il controller del pattern esagonale. Riceve l'evento grezzo di API Gateway, lo instrada verso 
+È il controller del pattern esagonale. Riceve la richiesta grezza di API Gateway, la instrada verso 
 la port primaria e costruisce la risposta HTTP da restituire al client.
 Descrizione metodi:
 \begin{itemize}
-    \item \code{get\_resources(event, context)} costituisce il punto di ingresso del controller e riceve i parametri nativi della Lambda;
+    \item \code{get\_resources(event)} costituisce il punto di ingresso del controller e riceve i parametri nativi della Lambda;
     \item \code{response(status, body)} è un metodo di utilità che costruisce il dizionario di risposta nel formato atteso da API Gateway.
 \end{itemize}
 
@@ -2181,11 +2177,7 @@ Descrizione metodi:
     \caption[Diagramma della classe GetResourcesPort]{Diagramma della classe \code{GetResourcesPort}}
     \label{fig:architettura_logica_luoghi_GetResourcesPort}
 \end{figure}
-È la port primaria del pattern esagonale.\\
-Descrizione metodi:
-\begin{itemize}
-    \item \code{get\_resources()}, che restituisce la lista completa delle risorse informative disponibili.
-\end{itemize} 
+È la inbound port del pattern esagonale. Descrive l'interfaccia per il recupero della lista completa delle risorse informative disponibili.\\
 
 \paragraph{ResourcesService}\mbox{}\\
 \begin{figure}[H]
@@ -2194,7 +2186,7 @@ Descrizione metodi:
     \caption[Diagramma della classe ResourcesService]{Diagramma della classe \code{ResourcesService}}
     \label{fig:architettura_logica_luoghi_ResourcesService}
 \end{figure}
-È la domain logic del microservizio e implementa la port primaria \code{GetResourcesPort}. Contiene la logica applicativa per il recupero del materiale informativo e orchestra la comunicazione con il persistence layer tramite la port secondaria \code{ResourcesRepositoryPort}.
+È la business logic del microservizio e implementa la port primaria \code{GetResourcesPort}. Contiene la logica applicativa per il recupero del materiale informativo e orchestra la comunicazione con il persistence layer tramite la port secondaria \code{ResourcesRepositoryPort}.
 
 \paragraph{ResourcesRepositoryPort}\mbox{}\\
 \begin{figure}[H]
@@ -2203,11 +2195,8 @@ Descrizione metodi:
     \caption[Diagramma della classe ResourcesRepositoryPort]{Diagramma della classe \code{ResourcesRepositoryPort}}
     \label{fig:architettura_logica_luoghi_ResourcesRepositoryPort}
 \end{figure}
-È la port secondaria del pattern esagonale.
-Descrizione metodi:
-\begin{itemize}
-    \item \code{list\_all\_resources()}, restituisce la lista completa delle risorse disponibili senza esporre dettagli su S3.
-\end{itemize}
+È l'outbound port del pattern esagonale. Definisce l'interfaccia per la restituzione della 
+lista completa delle risorse disponibili, senza esporre dettagli su S3.
 
 \paragraph{S3ResourcesRepository}\mbox{}\\
 \begin{figure}[H]
@@ -2544,7 +2533,7 @@ La classe \code{Chat} rappresenta il modello di dominio di una conversazione tra
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-Chat.pdf}
-    \caption[Diagramma della classe Chat]{Diagramma della classe \code{Chat}}
+    \caption{Diagramma della classe \code{Chat}}
     \label{DC-Chat-Backend}
 \end{figure}
 
@@ -2555,7 +2544,7 @@ La classe \code{Chat} rappresenta il modello di dominio di una conversazione tra
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-ChatMessage.pdf}
-    \caption[Diagramma della classe ChatMessage]{Diagramma della classe \code{ChatMessage}}
+    \caption{Diagramma della classe \code{ChatMessage}}
     \label{DC-ChatMessage-Backend}
 \end{figure}
 
@@ -2566,7 +2555,7 @@ L'interfaccia \code{ChatbotLLMPort} definisce il \term{Contratto} per gli adapte
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/chatbot/DC-ChatbotLLMPort.pdf}
-    \caption[Diagramma dell'interfaccia ChatbotLLMPort]{Diagramma dell'interfaccia \code{ChatbotLLMPort}}
+    \caption{Diagramma dell'interfaccia \code{ChatbotLLMPort}}
     \label{DC-ChatbotLLMPort-Backend}
 \end{figure}
 
@@ -2577,7 +2566,7 @@ L'interfaccia \code{ChatbotLLMPort} definisce il \term{Contratto} per gli adapte
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/chatbot/DC-BedrockLLMAdapter.pdf}
-    \caption[Diagramma della classe BedrockLLMAdapter]{Diagramma della classe \code{BedrockLLMAdapter}}
+    \caption{Diagramma della classe \code{BedrockLLMAdapter}}
     \label{DC-BedrockLLMAdapter-Backend}
 \end{figure}
 
@@ -2588,7 +2577,7 @@ L'interfaccia \code{ChatbotLLMPort} definisce il \term{Contratto} per gli adapte
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/chatbot/DC-ChatbotLLMService.pdf}
-    \caption[Diagramma della classe ChatbotLLMService]{Diagramma della classe \code{ChatbotLLMService}}
+    \caption{Diagramma della classe \code{ChatbotLLMService}}
     \label{DC-ChatbotLLMService-Backend}
 \end{figure}
 
@@ -2599,7 +2588,7 @@ L'interfaccia \code{ChatsRepositoryPort} definisce il \term{Contratto} per la pe
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/chatbot/DC-ChatsRepositoryPort.pdf}
-    \caption[Diagramma dell'interfaccia ChatsRepositoryPort]{Diagramma dell'interfaccia \code{ChatsRepositoryPort}}
+    \caption{Diagramma dell'interfaccia \code{ChatsRepositoryPort}}
     \label{DC-ChatsRepositoryPort-Backend}
 \end{figure}
 
@@ -2610,7 +2599,7 @@ L'interfaccia \code{ChatsRepositoryPort} definisce il \term{Contratto} per la pe
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/chatbot/DC-DynamoChatAdapter.pdf}
-    \caption[Diagramma della classe DynamoChatAdapter]{Diagramma della classe \code{DynamoChatAdapter}}
+    \caption{Diagramma della classe \code{DynamoChatAdapter}}
     \label{DC-DynamoChatAdapter-Backend}
 \end{figure}
 
@@ -2621,7 +2610,7 @@ L'interfaccia \code{CreateChatPort} definisce la porta applicativa per la creazi
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/chatbot/DC-CreateChatPort.pdf}
-    \caption[Diagramma dell'interfaccia CreateChatPort]{Diagramma dell'interfaccia \code{CreateChatPort}}
+    \caption{Diagramma dell'interfaccia \code{CreateChatPort}}
     \label{DC-CreateChatPort-Backend}
 \end{figure}
 
@@ -2632,7 +2621,7 @@ L'interfaccia \code{CreateChatPort} definisce la porta applicativa per la creazi
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/chatbot/DC-GetChatPort.pdf}
-    \caption[Diagramma dell'interfaccia GetChatPort]{Diagramma dell'interfaccia \code{GetChatPort}}
+    \caption{Diagramma dell'interfaccia \code{GetChatPort}}
     \label{DC-GetChatPort-Backend}
 \end{figure}
 
@@ -2643,7 +2632,7 @@ L'interfaccia \code{UpdateChatPort} gestisce le operazioni di modifica delle con
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/chatbot/DC-UpdateChatPort.pdf}
-    \caption[Diagramma dell'interfaccia UpdateChatPort]{Diagramma dell'interfaccia \code{UpdateChatPort}}
+    \caption{Diagramma dell'interfaccia \code{UpdateChatPort}}
     \label{DC-UpdateChatPort-Backend}
 \end{figure}
 
@@ -2654,7 +2643,7 @@ L'interfaccia \code{UpdateChatPort} gestisce le operazioni di modifica delle con
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/chatbot/DC-DeleteChatPort.pdf}
-    \caption[Diagramma dell'interfaccia DeleteChatPort]{Diagramma dell'interfaccia \code{DeleteChatPort}}
+    \caption{Diagramma dell'interfaccia \code{DeleteChatPort}}
     \label{DC-DeleteChatPort-Backend}
 \end{figure}
 
@@ -2665,7 +2654,7 @@ L'interfaccia \code{ChatMessagePort} astrae l'operazione di aggiunta di messaggi
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\textwidth]{diagrammi_classi_lambda/chatbot/DC-ChatMessagePort.pdf}
-    \caption[Diagramma dell'interfaccia ChatMessagePort]{Diagramma dell'interfaccia \code{ChatMessagePort}}
+    \caption{Diagramma dell'interfaccia \code{ChatMessagePort}}
     \label{DC-ChatMessagePort-Backend}
 \end{figure}
 
@@ -2676,7 +2665,7 @@ L'interfaccia \code{ChatMessagePort} astrae l'operazione di aggiunta di messaggi
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\textwidth]{diagrammi_classi_lambda/chatbot/DC-ChatbotCRUDService.pdf}
-    \caption[Diagramma della classe ChatbotCRUDService]{Diagramma della classe \code{ChatbotCRUDService}}
+    \caption{Diagramma della classe \code{ChatbotCRUDService}}
     \label{DC-ChatbotCRUDService-Backend}
 \end{figure}
 
@@ -2687,7 +2676,7 @@ L'interfaccia \code{ChatMessagePort} astrae l'operazione di aggiunta di messaggi
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.28\textwidth]{diagrammi_classi_lambda/chatbot/DC-CreateChatCmd.pdf}
-    \caption[Diagramma della classe CreateChatCmd]{Diagramma della classe \code{CreateChatCmd}}
+    \caption{Diagramma della classe \code{CreateChatCmd}}
     \label{DC-CreateChatCmd-Backend}
 \end{figure}
 
@@ -2698,7 +2687,7 @@ L'interfaccia \code{ChatMessagePort} astrae l'operazione di aggiunta di messaggi
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.28\textwidth]{diagrammi_classi_lambda/chatbot/DC-GetChatCmd.pdf}
-    \caption[Diagramma della classe GetChatCmd]{Diagramma della classe \code{GetChatCmd}}
+    \caption{Diagramma della classe \code{GetChatCmd}}
     \label{DC-GetChatCmd-Backend}
 \end{figure}
 
@@ -2709,7 +2698,7 @@ L'interfaccia \code{ChatMessagePort} astrae l'operazione di aggiunta di messaggi
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.28\textwidth]{diagrammi_classi_lambda/chatbot/DC-GetChatListCmd.pdf}
-    \caption[Diagramma della classe GetChatListCmd]{Diagramma della classe \code{GetChatListCmd}}
+    \caption{Diagramma della classe \code{GetChatListCmd}}
     \label{DC-GetChatListCmd-Backend}
 \end{figure}
 
@@ -2731,7 +2720,7 @@ L'interfaccia \code{ChatMessagePort} astrae l'operazione di aggiunta di messaggi
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.28\textwidth]{diagrammi_classi_lambda/chatbot/DC-DeleteChatCmd.pdf}
-    \caption[Diagramma della classe DeleteChatCmd]{Diagramma della classe \code{DeleteChatCmd}}
+    \caption{Diagramma della classe \code{DeleteChatCmd}}
     \label{DC-DeleteChatCmd-Backend}
 \end{figure}
 
@@ -2742,7 +2731,7 @@ L'interfaccia \code{ChatMessagePort} astrae l'operazione di aggiunta di messaggi
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.28\textwidth]{diagrammi_classi_lambda/chatbot/DC-AddChatMessageCmd.pdf}
-    \caption[Diagramma della classe AddChatMessageCmd]{Diagramma della classe \code{AddChatMessageCmd}}
+    \caption{Diagramma della classe \code{AddChatMessageCmd}}
     \label{DC-AddChatMessageCmd-Backend}
 \end{figure}
 
@@ -2884,8 +2873,8 @@ Descrizione attributi:
     \caption{Diagramma della classe \code{TrustedContactDTO}}
     \label{fig:architettura_logica_luoghi_TrustedContactDTO}
 \end{figure}
-Rappresenta il Data Transfer Object utilizzato per la serializzazione e deserializzazione delle conversazioni nelle comunicazioni tra frontend e \term{Backend}. 
-Contiene tutti i campi dell'entità \code{TrustedContact} di dominio e fornisce i metodi \code{to\_dict} per la conversione in dizionario Python (successivamente serializzato in JSON) e \code{from\_domain} per la creazione a partire da un oggetto di dominio.
+Rappresenta il Data Transfer Object utilizzato per la serializzazione e deserializzazione dei contatti fidati nelle comunicazioni tra frontend e \term{Backend}. 
+Contiene tutti i campi dell'entità di dominio \code{TrustedContact} e fornisce i metodi \code{to\_dict} per la conversione in dizionario Python (successivamente serializzato in JSON) e \code{from\_domain} per la creazione a partire da un oggetto di dominio.
 
 \paragraph{AddTrustedContactCmd}\mbox{}\\
 \begin{figure}[H]
@@ -2926,7 +2915,7 @@ Descrizione attributi:
 \begin{itemize}
     \item \code{user\_id} identifica l'\term{Utente} a cui è associata la configurazione del dead man's switch;
     \item \code{is\_active} indica se il dead man's switch è attivo;
-    \item \code{first\_timer} e \code{second\_timer} definiscono la durata in minuti dei due timer;
+    \item \code{first\_timer} e \code{second\_timer} definiscono la durata in giorni dei due timer;
     \item \code{email\_body} contiene il corpo della mail riferita al dead man's switch;
     \item \code{email\_subject} contiene l'oggetto della mail riferita al dead man's switch;.
 \end{itemize}
@@ -2938,8 +2927,8 @@ Descrizione attributi:
     \caption{Diagramma della classe \code{DmsConfigurationSettingsDTO}}
     \label{fig:architettura_logica_luoghi_DmsConfigurationSettingsDTO}
 \end{figure}
-Rappresenta il Data Transfer Object utilizzato per la serializzazione e deserializzazione delle conversazioni nelle comunicazioni tra frontend e \term{Backend}. 
-Contiene tutti i campi dell'entità \code{DmsConfigurationSettings} di dominio e fornisce i metodi \code{to\_dict} per la conversione in dizionario Python (successivamente serializzato in JSON) e \code{from\_domain} per la creazione a partire da un oggetto di dominio.
+Data Transfer Object utilizzato per la serializzazione e deserializzazione delle conversazioni nelle comunicazioni tra frontend e \term{Backend}. 
+Contiene tutti i campi dell'entità di dominio \code{DmsConfigurationSettings} e fornisce i metodi \code{to\_dict} per la conversione in dizionario Python (successivamente serializzato in JSON) e \code{from\_domain} per la creazione a partire da un oggetto di dominio.
 
 \paragraph{AlertCmd}\mbox{}\\
 \begin{figure}[H]
@@ -2948,7 +2937,7 @@ Contiene tutti i campi dell'entità \code{DmsConfigurationSettings} di dominio e
     \caption[Diagramma della classe AlertCmd]{Diagramma della classe \code{AlertCmd}}
     \label{fig:architettura_logica_luoghi_AlertCmd}
 \end{figure}
-È il Command Object utilizzato dal controller per trasportare i dati necessari all'invio dell'alert SOS. \\
+Command Object utilizzato dal controller per trasportare i dati necessari all'invio dell'alert SOS. \\
 Descrizione attributi:
 \begin{itemize}
     \item \code{user\_id}, identificativo dell'\term{Utente};
@@ -2976,10 +2965,10 @@ Descrizione attributi:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/TrustedContactController.pdf}
-    \caption[Diagramma della classe TrustedContactController]{Diagramma della classe \code{TrustedContactController}}
+    \caption{Diagramma della classe \code{TrustedContactController}}
     \label{fig:architettura_logica_luoghi_TrustedContactController}
 \end{figure}
-Riceve l'evento grezzo di API Gateway e instrada la richiesta verso la port primaria appropriata in base alla route.\\
+Riceve la richiesta grezza di API Gateway e la instrada verso la port primaria appropriata in base alla route.\\
 Descrizione metodi:
 \begin{itemize}
     \item \code{handle\_request(event, context)}, punto di ingresso del controller, legge la \code{routeKey} dall'evento e chiama la port primaria corrispondente;
@@ -2990,7 +2979,7 @@ Descrizione metodi:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/SetDmsHeartBeatPort.pdf}
-    \caption[Diagramma della classe SetDmsHeartBeatPort]{Diagramma della classe \code{SetDmsHeartBeatPort}}
+    \caption{Diagramma della classe \code{SetDmsHeartBeatPort}}
     \label{fig:architettura_logica_luoghi_SetDmsHeartBeatPort}
 \end{figure}
 Espone \code{send\_heartbeat(user\_id: str)} per il reset dei timer del Dead Man's Switch al rientro dell'\term{Utente} nell'applicazione.
@@ -2999,7 +2988,7 @@ Espone \code{send\_heartbeat(user\_id: str)} per il reset dei timer del Dead Man
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/GetDmsConfigurationSettingsPort.pdf}
-    \caption[Diagramma della classe GetDmsConfigurationSettingsPort]{Diagramma della classe \code{GetDmsConfigurationSettingsPort}}
+    \caption{Diagramma della classe \code{GetDmsConfigurationSettingsPort}}
     \label{fig:architettura_logica_luoghi_GetDmsConfigurationSettingsPort}
 \end{figure}
 Espone \code{get\_dms\_config(user\_id: str)} per il recupero della configurazione del Dead Man's Switch.
@@ -3008,7 +2997,7 @@ Espone \code{get\_dms\_config(user\_id: str)} per il recupero della configurazio
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/SetDmsConfigurationSettingsPort.pdf}
-    \caption[Diagramma della classe SetDmsConfigurationSettingsPort]{Diagramma della classe \code{SetDmsConfigurationSettingsPort}}
+    \caption{Diagramma della classe \code{SetDmsConfigurationSettingsPort}}
     \label{fig:architettura_logica_luoghi_SetDmsConfigurationSettingsPort}
 \end{figure}
 Descrizione metodi:
@@ -3030,7 +3019,7 @@ Espone \code{update\_dms\_timers()} per l'aggiornamento dei timer lato \term{Bac
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/SetTrustedContactPort.pdf}
-    \caption[Diagramma della classe SetTrustedContactPort]{Diagramma della classe \code{SetTrustedContactPort}}
+    \caption{Diagramma della classe \code{SetTrustedContactPort}}
     \label{fig:architettura_logica_luoghi_SetTrustedContactPort}
 \end{figure}
 Descrizione dei metodi:
@@ -3043,7 +3032,7 @@ Descrizione dei metodi:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/GetTrustedContactPort.pdf}
-    \caption[Diagramma della classe GetTrustedContactPort]{Diagramma della classe \code{GetTrustedContactPort}}
+    \caption{Diagramma della classe \code{GetTrustedContactPort}}
     \label{fig:architettura_logica_luoghi_GetTrustedContactPort}
 \end{figure}
 Descrizione dei metodi:
@@ -3056,7 +3045,7 @@ Descrizione dei metodi:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/DeleteTrustedContactPort.pdf}
-    \caption[Diagramma della classe DeleteTrustedContactPort]{Diagramma della classe \code{DeleteTrustedContactPort}}
+    \caption{Diagramma della classe \code{DeleteTrustedContactPort}}
     \label{fig:architettura_logica_luoghi_DeleteTrustedContactPort}
 \end{figure}
 Espone \code{delete\_trusted\_contact(cmd: DeleteTrustedContactCmd)} per l'eliminazione di un contatto.
@@ -3065,7 +3054,7 @@ Espone \code{delete\_trusted\_contact(cmd: DeleteTrustedContactCmd)} per l'elimi
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/SendAlertPort.pdf}
-    \caption[Diagramma della classe SendAlertPort]{Diagramma della classe \code{SendAlertPort}}
+    \caption{Diagramma della classe \code{SendAlertPort}}
     \label{fig:architettura_logica_luoghi_SendAlertPort}
 \end{figure}
 Espone \code{send\_alert\_emails(alert\_info: AlertCmd)} per l'invio delle email di soccorso ai contatti fidati.
@@ -3074,16 +3063,16 @@ Espone \code{send\_alert\_emails(alert\_info: AlertCmd)} per l'invio delle email
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/DmsCRUDService.pdf}
-    \caption[Diagramma della classe DmsCRUDService]{Diagramma della classe \code{DmsCRUDService}}
+    \caption{Diagramma della classe \code{DmsCRUDService}}
     \label{fig:architettura_logica_luoghi_DmsCRUDService}
 \end{figure}
-È il service della domain logic responsabile delle operazioni di lettura e scrittura sulla configurazione del Dead Man's Switch e sui contatti fidati.
+È il service della business logic responsabile delle operazioni di lettura e scrittura sulla configurazione dei valori delle impostazioni del Dead Man's Switch.
 
 \paragraph{DmsAlertService}\mbox{}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/DmsAlertService.pdf}
-    \caption[Diagramma della classe DmsAlertService]{Diagramma della classe \code{DmsAlertService}}
+    \caption{Diagramma della classe \code{DmsAlertService}}
     \label{fig:architettura_logica_luoghi_DmsAlertService}
 \end{figure}
 È responsabile dell'invio delle notifiche del Dead Man's Switch. Si occupa del recupero dei contatti fidati, la configurazione del DMS e la costruzione dei messaggi email.\\
@@ -3098,10 +3087,10 @@ Descrizione metodi:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/TrustedContactCRUDService.pdf}
-    \caption[Diagramma della classe TrustedContactCRUDService]{Diagramma della classe \code{TrustedContactCRUDService}}
+    \caption{Diagramma della classe \code{TrustedContactCRUDService}}
     \label{fig:architettura_logica_luoghi_TrustedContactCRUDService}
 \end{figure}
-È il service della domain logic responsabile delle operazioni CRUD sui contatti fidati.\\
+È il service della business logic responsabile delle operazioni CRUD sui contatti fidati.\\
 Descrizione metodi:
 \begin{itemize}
     \item \code{\_\_init\_\_(\term{Repository}: TrustedContactRepositoryPort)}, costruttore che riceve la port secondaria tramite dependency injection.
@@ -3111,10 +3100,10 @@ Descrizione metodi:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/SOSAlertService.pdf}
-    \caption[Diagramma della classe SOSAlertService]{Diagramma della classe \code{SOSAlertService}}
+    \caption{Diagramma della classe \code{SOSAlertService}}
     \label{fig:architettura_logica_luoghi_SOSAlertService}
 \end{figure}
-È il service della domain logic responsabile dell'invio immediato delle email di soccorso al momento della pressione del pulsante SOS da parte dell'\term{Utente}. Implementa la port primaria \code{SendAlertPort}.\\
+È il service della business logic responsabile dell'invio immediato delle email di soccorso al momento della pressione del pulsante SOS da parte dell'\term{Utente}. Implementa la port primaria \code{SendAlertPort}.\\
 Descrizione metodi:
 \begin{itemize}
     \item \code{\_\_init\_\_(contact\_repository, notification\_repository)}, costruttore che riceve le due port secondarie tramite dependency injection;
@@ -3125,7 +3114,7 @@ Descrizione metodi:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/DmsRepositoryPort.pdf}
-    \caption[Diagramma della classe DmsRepositoryPort]{Diagramma della classe \code{DmsRepositoryPort}}
+    \caption{Diagramma della classe \code{DmsRepositoryPort}}
     \label{fig:architettura_logica_luoghi_DmsRepositoryPort}
 \end{figure}
 Descrizione metodi:
@@ -3143,7 +3132,7 @@ Descrizione metodi:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/TrustedContactRepositoryPort.pdf}
-    \caption[Diagramma della classe TrustedContactRepositoryPort]{Diagramma della classe \code{TrustedContactRepositoryPort}}
+    \caption{Diagramma della classe \code{TrustedContactRepositoryPort}}
     \label{fig:architettura_logica_luoghi_TrustedContactRepositoryPort}
 \end{figure}
 Descrizione metodi:
@@ -3159,20 +3148,20 @@ Descrizione metodi:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/NotificationPort.pdf}
-    \caption[Diagramma della classe NotificationPort]{Diagramma della classe \code{NotificationPort}}
+    \caption{Diagramma della classe \code{NotificationPort}}
     \label{fig:architettura_logica_luoghi_NotificationPort}
 \end{figure}
 È la port secondaria del pattern esagonale per l'invio delle notifiche email.
 Descrizione metodi:
 \begin{itemize}
-    \item \code{send\_email\_message(message: AlertMessage)}, invia un messaggio email a partire da un oggetto \code{AlertMessage}.
+    \item \code{send\_email\_message(message: EmailMessage)}, invia un messaggio email a partire da un oggetto \code{AlertMessage}.
 \end{itemize}
 
 \paragraph{DynamoDmsAdapter}\mbox{}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/DynamoDmsAdapter.pdf}
-    \caption[Diagramma della classe DynamoDmsAdapter]{Diagramma della classe \code{DynamoDmsAdapter}}
+    \caption{Diagramma della classe \code{DynamoDmsAdapter}}
     \label{fig:architettura_logica_luoghi_DynamoDmsAdapter}
 \end{figure}
 Contiene tutta la logica specifica per la persistenza della configurazione e dei contatori del Dead Man's Switch su DynamoDB.
@@ -3181,7 +3170,7 @@ Contiene tutta la logica specifica per la persistenza della configurazione e dei
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/DynamoTrustedContactAdapter.pdf}
-    \caption[Diagramma della classe DynamoTrustedContactAdapter]{Diagramma della classe \code{DynamoTrustedContactAdapter}}
+    \caption{Diagramma della classe \code{DynamoTrustedContactAdapter}}
     \label{fig:architettura_logica_luoghi_DynamoTrustedContactAdapter}
 \end{figure}
 Contiene tutta la logica specifica per la persistenza dei contatti fidati su DynamoDB.
@@ -3190,7 +3179,7 @@ Contiene tutta la logica specifica per la persistenza dei contatti fidati su Dyn
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/SesNotificationAdapter.pdf}
-    \caption[Diagramma della classe SesNotificationAdapter]{Diagramma della classe \code{SesNotificationAdapter}}
+    \caption{Diagramma della classe \code{SesNotificationAdapter}}
     \label{fig:architettura_logica_luoghi_SesNotificationAdapter}
 \end{figure}
 Contiene tutta la logica specifica per l'invio delle email tramite il servizio Amazon SES.
