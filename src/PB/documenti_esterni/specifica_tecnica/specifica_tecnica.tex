@@ -112,7 +112,7 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & In lavorazione\\
-\textbf{Versione:} & 0.5.2 \\
+\textbf{Versione:} & 0.6.1 \\
 \textbf{Responsabile:} & Gabriele Scaggiante \\
 \textbf{Redattori:} & 
 \begin{tabular}[t]{@{}l@{}}
@@ -121,6 +121,7 @@ Dennis Parolin\\
 Ferdinando Fracasso\\
 Giovanni Visentin\\
 Marco Sanguin\\
+Riccardo Manisi\\
 \end{tabular} \\
 \textbf{Verificatori:} & 
 \begin{tabular}[t]{@{}l@{}}
@@ -128,6 +129,8 @@ Riccardo Manisi\\
 Dennis Parolin\\
 Marco Sanguin\\
 Giovanni Visentin\\
+Gabriele Scaggiante\\
+Ferdinando Fracasso\\
 \end{tabular} \\
 \textbf{Destinatari:} &
 \begin{tabular}[t]{@{}l@{}}
@@ -154,6 +157,13 @@ Gruppo BitByBit\\
 \hline
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+\hline
+0.6.1 & 2026-04-27 & Gabriele Scaggiante & Aggiunte librerie nella sezione \hyperref[subsec:librerie]{Librerie} & Ferdinando Fracasso \\ 
+\hline
+0.6.0 & 2026-04-26 & Gabriele Scaggiante & Completata la sezione \hyperref[subsubsec:architettura_chatbot]{Architettura chatbot} introducendo la sezione \hyperref[subsubsec:architettura_logica_chatbot]{Architettura logica chatbot} e aggiornando la sezione dedicata alle API & Dennis Parolin \\
+\hline
+0.5.3 & 2026-04-24 & Ferdinando Fracasso & Aggiornato la sezione \hyperref[subsubsec:architettura_diari_frontend]{Architettura funzionalità diari} a seguito dell'implementazione della funzionalità & Gabriele Scaggiante \\
+\hline
 0.5.2 & 2026-04-23 & Gabriele Scaggiante & Corretta la sezione \hyperref[subsubsec:architettura_chatbot]{Architettura chatbot} dopo l'introduzione di due tabelle DynamoDB & Giovanni Visentin \\
 \hline
 0.5.1 & 2026-04-20 & Dennis Parolin & Aggiornati i pattern presenti nella la sezione \hyperref[subsec:design_pattern]{Design pattern utilizzati}, aggiunti i pattern \hyperref[sec:pattern_dependency_injection]{Dependency Injection}, \hyperref[sec:pattern_command]{Command} e \hyperref[sec:pattern_adapter]{Adapter}. & Gabriele Scaggiante \\
@@ -290,7 +300,7 @@ Le tecnologie utilizzate sono state scelte trovando un punto d'incontro tra la n
 \subsection{Framework} \label{subsec:framework}
 
 \subsubsection{Flutter}
-Flutter è un \term{Framework} open-source sviluppato da Google per la creazione di applicazioni multi-piattaforma a partire da un unico codice sorgente. Consente di sviluppare interfacce per dispositivi mobili, web e desktop utilizzando il linguaggio Dart. Flutter si basa su un sistema di widget componibili, che possono rappresentare qualsiasi elemento dell’interfaccia \term{Utente}. Flutter include un proprio motore grafico (come Impeller o storicamente Skia) che disegna direttamente i componenti a schermo, garantendo elevata coerenza visiva e prestazioni indipendenti dalla piattaforma sottostante. È il \term{Framework} alla base dell'App Che Protegge e Trasforma, il che consente di poter generare build per iOS e Android da un unico codice sorgente, a fronte di un maggiore utilizzo di risorse rispetto alle soluzioni native e di una minore possibilità di controllo diretto e personalizzazione delle funzionalità native della piattaforma.
+Flutter è un \term{Framework} open-source sviluppato da Google per la creazione di applicazioni multi-piattaforma a partire da un unico codice sorgente. Consente di sviluppare interfacce per dispositivi mobili, web e desktop utilizzando il linguaggio Dart. Flutter si basa su un sistema di widget componibili, che possono rappresentare qualsiasi elemento dell’interfaccia \ignoreglossary{utente}. Flutter include un proprio motore grafico (come Impeller o storicamente Skia) che disegna direttamente i componenti a schermo, garantendo elevata coerenza visiva e prestazioni indipendenti dalla piattaforma sottostante. È il \term{Framework} alla base dell'App Che Protegge e Trasforma, il che consente di poter generare build per iOS e Android da un unico codice sorgente, a fronte di un maggiore utilizzo di risorse rispetto alle soluzioni native e di una minore possibilità di controllo diretto e personalizzazione delle funzionalità native della piattaforma.
 \begin{itemize}
     \item \textbf{Versione utilizzata}: 3.41.6
     \item \textbf{Documentazione}: \url{https://docs.flutter.dev/}
@@ -385,21 +395,21 @@ AWS CloudFormation è un servizio di \term{Infrastructure as Code} che consente 
 
 \subsection{Librerie} \label{subsec:librerie}
 
-\subsubsection{http.dart}
-http è una libreria per il linguaggio Dart che consente di effettuare richieste HTTP in modo semplice e asincrono. Fornisce metodi per eseguire operazioni come GET, POST, PUT e DELETE, gestendo automaticamente la serializzazione delle richieste e la ricezione delle risposte. È progettata per essere leggera e facilmente integrabile in applicazioni client.
+\subsubsection{http}
+\texttt{http} è una libreria per il linguaggio Dart che consente di effettuare richieste HTTP in modo semplice e asincrono. Fornisce metodi per eseguire operazioni come GET, POST, PUT e DELETE, gestendo automaticamente la serializzazione delle richieste e la ricezione delle risposte. È progettata per essere leggera e facilmente integrabile in applicazioni client.
 \begin{itemize}
     \item \textbf{Versione utilizzata}: 1.6.0
     \item \textbf{Documentazione}: \url{https://pub.dev/packages/http}
 \end{itemize}
 
-\subsubsection{image\_picker.dart}
+\subsubsection{image\_picker}
 \texttt{image\_picker} è una libreria Flutter che permette di accedere alla fotocamera e alla galleria del dispositivo per selezionare o acquisire immagini e video. Fornisce un’interfaccia unificata tra piattaforme diverse, gestendo le differenze tra iOS e Android.
 \begin{itemize}
     \item \textbf{Versione utilizzata}: 1.2.1
     \item \textbf{Documentazione}: \url{https://pub.dev/packages/image_picker}
 \end{itemize}
 
-\subsubsection{path\_provider.dart}
+\subsubsection{path\_provider}
 \texttt{path\_provider} è una libreria Flutter che consente di ottenere i percorsi delle directory del file system del dispositivo, come directory temporanee o documenti applicativi. Facilita l’accesso a percorsi corretti e compatibili tra piattaforme per la gestione dei file.
 \begin{itemize}
     \item \textbf{Versione utilizzata}: 2.1.5
@@ -434,6 +444,47 @@ http è una libreria per il linguaggio Dart che consente di effettuare richieste
     \item \textbf{Documentazione}: \url{https://pub.dev/packages/flutter_web_auth_2}
 \end{itemize}
 
+\subsubsection{flutter\_map}
+\texttt{flutter\_map} è una libreria Flutter open-source per la visualizzazione di mappe interattive. Fornisce funzionalità per il rendering di layer multipli, gestione di marker, polilinee e poligoni, oltre al supporto per gesture come zoom e pan. È altamente configurabile e non dipende da servizi proprietari esterni come Google Maps.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 8.3.0
+    \item \textbf{Documentazione}: \url{https://pub.dev/packages/flutter_map}
+\end{itemize}
+
+\subsubsection{geolocator}
+\texttt{geolocator} è una libreria Flutter che consente di accedere ai servizi di geolocalizzazione del dispositivo. Permette di ottenere la posizione corrente, monitorare aggiornamenti di posizione in tempo reale e gestire i permessi richiesti dalle diverse piattaforme.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 14.0.2
+    \item \textbf{Documentazione}: \url{https://pub.dev/packages/geolocator}
+\end{itemize}
+
+\subsubsection{get\_it}
+\texttt{get\_it} è un service locator per Dart e Flutter utilizzato per la gestione delle dipendenze all'interno dell'applicazione. Consente di registrare e recuperare istanze di oggetti in modo centralizzato, facilitando l'implementazione di architetture modulari e testabili.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 9.2.1
+    \item \textbf{Documentazione}: \url{https://pub.dev/packages/get_it}
+\end{itemize}
+
+\subsubsection{latlong2}
+\texttt{latlong2} è una libreria Dart che fornisce strutture dati e utilities per la gestione di coordinate geografiche (latitudine e longitudine). Include funzionalità per il calcolo di distanze tra punti e altre operazioni geospaziali di base.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 0.10.1
+    \item \textbf{Documentazione}: \url{https://pub.dev/packages/latlong2}
+\end{itemize}
+
+\subsubsection{python-ulid}
+\texttt{python-ulid} è una libreria Python per la generazione di identificatori univoci ULID (Universally Unique Lexicographically Sortable Identifier). Gli ULID combinano unicità e ordinamento temporale, risultando particolarmente utili in sistemi distribuiti dove è necessario generare ID ordinabili senza coordinamento centrale.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 3.1.0
+    \item \textbf{Documentazione}: \url{https://pypi.org/project/python-ulid/}
+\end{itemize}
+
+\subsubsection{rank-bm25}
+\texttt{rank-bm25} è una libreria Python che implementa l'algoritmo di ranking BM25 (Best Matching 25), utilizzato nel campo dell'information retrieval per valutare la rilevanza dei documenti rispetto a una query testuale. Fornisce diverse varianti dell'algoritmo BM25 e consente di costruire rapidamente sistemi di ricerca basati su punteggi statistici senza necessità di motori di ricerca completi.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 0.2.2
+    \item \textbf{Documentazione}: \url{https://pypi.org/project/rank-bm25/}
+\end{itemize}
 
 \subsection{Tecnologie di analisi statica} \label{subsec:tecnologie_analisi_statica}
 \subsubsection{SonarQube}
@@ -478,7 +529,7 @@ Docker è una piattaforma di containerizzazione che consente di creare, distribu
 \section{Architettura}
 \subsection{Architettura logica} \label{subsec:architettura_logica}
 
-Il sistema software è progettato secondo i princìpi di un'\textbf{\term{Architettura a Strati}} (o \textit{Layered Architecture}), che impone una chiara separazione delle responsabilità tra i diversi livelli applicativi del sistema.
+Il sistema software è progettato secondo i principi di un'\textbf{\term{Architettura a Strati}} (o \textit{Layered Architecture}), che impone una chiara separazione delle responsabilità tra i diversi livelli applicativi del sistema.
 L'obiettivo cardine di questa scelta è massimizzare l'indipendenza formale della logica di business dalle interfacce grafiche \term{Utente} e dai meccanismi fisici di gestione del dato, favorendo così la facilità di test, la manutenzione nel tempo e il forte disaccoppiamento (\textit{\term{Separation of Concerns}}).
 
 All'ingresso superiore dell'applicazione si posiziona l'ecosistema logico del dispositivo, mentre le fondamenta sono governate e calcolate dall'infrastruttura di servizio. L'interfaccia tra questi due mondi è ben definita tramite API e totalmente slegata dai linguaggi di programmazione o dai sistemi operativi utilizzati.
@@ -520,7 +571,7 @@ Nel contesto del \term{Framework} Flutter, l'implementazione di questo pattern v
 \paragraph{Ragioni per l'utilizzo:}\mbox{}\\
 L'utilizzo del pattern garantisce notevoli vantaggi poiché permette una più semplice ed efficace gestione delle varie parti dell'applicazione, limitando il forte accoppiamento (\textit{coupling}) tra l'interfaccia \ignoreglossary{utente} visiva e la logica di business o di presentazione sottostante. Questo netto disaccoppiamento migliora la manutenibilità del codice dell'applicativo e agevola considerevolmente lo sviluppo e l'esecuzione degli unit test, in quanto permette di testare i ViewModel e i Model isolandoli dal \ignoreglossary{ciclo di vita} visivo tipico del sistema operativo e del \term{Framework}.
 \paragraph{Riferimenti nel progetto:}\mbox{}\\
-Il pattern MVVM è ampiamente utilizzato per strutturare l’interfaccia \term{Utente} dell'applicazione e la logica ad essa associata, separando la resa grafica dalla gestione dello stato e dei dati. Di seguito sono elencati i punti principali dove viene impiegato; all’interno di tali sezioni sono fornite spiegazioni dettagliate su come il pattern interagisce con il sistema circostante:
+Il pattern MVVM è ampiamente utilizzato per strutturare l’interfaccia \ignoreglossary{utente} dell'applicazione e la logica ad essa associata, separando la resa grafica dalla gestione dello stato e dei dati. Di seguito sono elencati i punti principali dove viene impiegato; all’interno di tali sezioni sono fornite spiegazioni dettagliate su come il pattern interagisce con il sistema circostante:
 \begin{itemize}
     \item Autenticazione $\rightarrow$ \hyperref[DC-AuthViewModel]{\code{AuthViewModel}}
     \item Chatbot $\rightarrow$ \hyperref[DC-ChatbotViewModel]{\code{ChatbotViewModel}}
@@ -822,7 +873,7 @@ prima di inoltrare l'operazione al \code{SosAlertRepository}.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-InvioSOS.pdf}
+    \includegraphics[width=\textwidth]{diagrammi_classi/invio_sos/DC-InvioSOS.pdf}
     \caption{Diagramma delle classi relativo alla funzionalità dell'invio email di soccorso}
     \label{DC-InvioSOS}
 \end{figure}
@@ -1080,7 +1131,6 @@ L'interfaccia \code{Chat} definisce il modello astratto di una conversazione tra
     \label{DC-ChatDTO}
 \end{figure}
 
-\newpage
 \subsubsection{Diario criptato e diario fittizio} \label{subsubsec:architettura_diari_frontend}
 La funzionalità di diario criptato e diario fittizio permette all'\term{Utente} di utilizzare due archivi separati in cui memorizzare note, contenenti testo, immagini e/o contenuti audio, protetti da password . L'implementazione della funzionalità segue il pattern MVVM e le linee guida del \term{Framework} Flutter, risultanti nella suddivisione tra un \term{Data Layer}, composto da classi Service e \term{Repository}, responsabili per la \textit{\term{Business Logic}} e per la \textit{\term{Persistence Logic}} rispettivamente, ed un \term{UI Layer}, composto da classi View e Viewmodel. Gli oggetti principali della funzionalità sono le classi Note (\code{ProxyNote} e \code{LocalNote}), \code{NoteElement} e \code{DiarySession}. 
 
@@ -1090,8 +1140,6 @@ La funzionalità di diario criptato e diario fittizio permette all'\term{Utente}
     \caption{Diagramma delle classi relativo alle funzionalità del diario criptato}
     \label{DC-Diari}
 \end{figure}
-
-\newpage
 
 \paragraph{DiaryAccessScreen}\mbox{}\\
 La classe \code{DiaryAccessScreen} si occupa della rappresentazione visiva della schermata per l'accesso alla funzionalità dei diari. Contiene solamente la logica necessaria per il rendering dei widget che la compongono, tra cui \code{PasswordFormWidget}, per garantire la separazione tra presentazione e logica, come previsto dal pattern MVVM. Per questo delega la gestione dello stato a \code{DiaryAccessViewModel}.
@@ -1163,6 +1211,16 @@ La classe \code{DiaryScreen} gestisce la rappresentazione visiva della schermata
     \label{DC-DiaryScreen}
 \end{figure}
 
+\paragraph{DiaryPasswordSettingWidget}\mbox{}\\
+La classe \code{DiaryPasswordSettingWidget} gestisce la presentazione grafica dell'interfaccia per l'impostazione della password per l'accesso al diario fittizio. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/diari/DC-DiaryPasswordSettingWidget.pdf}
+    \caption[Diagramma della classe DiaryPasswordSettingWidget]{Diagramma della classe \code{DiaryPasswordSettingWidget}}
+    \label{DC-DiaryPasswordSettingWidget}
+\end{figure}
+
 \paragraph{NoteListWidget}\mbox{}\\
 La classe \code{NoteListWidget} si occupa della visualizzazione della lista delle note contenute nel diario in cui l'\term{Utente} ha effettuato l'accesso e l'eventuale visualizzazione dei contenuti di una nota selezionata. Trattandosi di un \code{Consumer}, la classe osserva gli aggiornamenti dei dati in \code{DiaryViewModel} in modo da reagire di conseguenza alla selezione, modifica o eliminazione delle note. 
 
@@ -1181,6 +1239,26 @@ La classe \code{NoteActionsWidget} si occupa della visualizzazione delle compone
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/diari/DC-NoteActionsWidget.pdf}
     \caption[Diagramma della classe NoteActionsWidget]{Diagramma della classe \code{NoteActionsWidget}}
     \label{DC-NoteActionsWidget}
+\end{figure}
+
+\paragraph{NoteEditorWidget}\mbox{}\\
+La classe \code{NoteEditorWidget} gestisce la visualizzazione di una nota del diario selezionata dall'\term{Utente}, offrendo la possibilità di visualizzarne gli elementi che la compongono e permettendone l'aggiunta e la modifica.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/diari/DC-NoteEditorWidget.pdf}
+    \caption[Diagramma della classe NoteEditorWidget]{Diagramma della classe \code{NoteEditorWidget}}
+    \label{DC-NoteEditorWidget}
+\end{figure}
+
+\paragraph{NoteAudioPlayerWidget}\mbox{}\\
+La classe \code{NoteAudioPlayerWidget} è responsabile della visualizzazione di un audio player che consente all'\term{Utente} di visualizzare e riprodurre le tracce audio inserite nella nota.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/diari/DC-NoteAudioPlayerWidget.pdf}
+    \caption[Diagramma della classe NoteAudioPlayerWidget]{Diagramma della classe \code{NoteAudioPlayerWidget}}
+    \label{DC-NoteAudioPlayerWidget}
 \end{figure}
 
 \paragraph{DiaryViewModel}\mbox{}\\
@@ -1327,7 +1405,6 @@ La funzionalità dei Contatti Fidati permette all'\term{Utente} di gestire una l
     \caption{Diagramma delle classi relativo alle funzionalità dei Contatti Fidati}
     \label{DC-ContattiFidati}
 \end{figure}
-\newpage
 
 \paragraph{TrustedContactScreen}\mbox{}\\
 
@@ -1440,7 +1517,6 @@ La funzionalità dei Luoghi Sicuri permette all'\term{Utente} di visualizzare ge
     \caption{Diagramma delle classi complessivo della funzionalità Luoghi Sicuri}
     \label{DC-MappaLuoghiSicuri}
 \end{figure}
-\newpage
 
 \paragraph{SafePlaceMapScreen}
 
@@ -1523,7 +1599,7 @@ La classe \code{SafePlaceDTO} (\textit{Data Transfer Object}) gestisce la serial
 
 \subsubsection{Dead Man's Switch} \label{subsubsec:architettura_dead_man_switch}
 
-La funzionalità del \textit{Dead Man's Switch} (Interruttore dell'Uomo Morto) rappresenta un sistema di sicurezza critico che invia avvisi automatici in caso di inattività prolungata dell'\term{Utente}. L'\term{Architettura} frontend è focalizzata sulla gestione sicura della configurazione di tale sistema. Il frontend non interagisce direttamente con servizi di posta elettronica, ma demanda la gestione dei timer e l'invio delle email tramite AWS SES al \term{Backend}, garantendo così la sicurezza e l'affidabilità del servizio anche ad applicazione chiusa. Analogamente al resto dell'applicazione, la funzionalità è implementata secondo il pattern MVVM e le linee guida architetturali di Flutter, distinguendo un \term{Data Layer}, composto da Service e \term{Repository}, e un \term{UI Layer}, composto da View e ViewModel.
+La funzionalità del \textit{Dead Man's Switch} rappresenta un sistema di sicurezza critico che invia avvisi automatici in caso di inattività prolungata dell'\term{Utente}. L'\term{Architettura} frontend è focalizzata sulla gestione sicura della configurazione di tale sistema. Il frontend non interagisce direttamente con servizi di posta elettronica, ma demanda la gestione dei timer e l'invio delle email tramite AWS SES al \term{Backend}, garantendo così la sicurezza e l'affidabilità del servizio anche ad applicazione chiusa. Analogamente al resto dell'applicazione, la funzionalità è implementata secondo il pattern MVVM e le linee guida architetturali di Flutter, distinguendo un \term{Data Layer}, composto da Service e \term{Repository}, e un \term{UI Layer}, composto da View e ViewModel.
 
 
 \begin{figure}[H]
@@ -1532,7 +1608,6 @@ La funzionalità del \textit{Dead Man's Switch} (Interruttore dell'Uomo Morto) r
     \caption{Diagramma delle classi relativo alla funzionalità del Dead Man's Switch}
     \label{DC-DeadManSwitch}
 \end{figure}
-\newpage
 
 \paragraph{DeadManScreen}
 
@@ -1623,7 +1698,6 @@ L'Area Informativa costituisce un centro di risorse in sola lettura per l'\term{
     \caption{Diagramma delle classi complessivo per l'Area Informativa}
     \label{DC-AreaInformativa}
 \end{figure}
-\newpage
 
 \paragraph{InfoHubScreen}
 
@@ -1965,19 +2039,18 @@ La classe \code{EmergencyContactDTO} gestisce la logica di mappatura dei dati. I
 La presente sezione descrive l'\term{Architettura} logica e il flusso dei dati relativi al modulo di autenticazione e autorizzazione dell'applicazione. Il sistema adotta un modello di federated login basato su Amazon Cognito integrato con Google come Identity Provider (IdP), progettato per garantire un accesso sicuro e standardizzato alle risorse di \term{Backend} senza demandare la gestione crittografica delle credenziali all'applicazione client.
 
 \paragraph{Iniziazione del Flusso e Autenticazione Federata}\mbox{}\\
-Il \term{Processo} di autenticazione ha inizio quando l'\term{Utente} interagisce con l'applicazione client (Flutter) richiedendo l'accesso al sistema. L'applicazione delega interamente la gestione dell'identità inoltrando una richiesta di login ad Amazon Cognito. Cognito, fungendo da Service Provider, intercetta la richiesta e avvia una procedura di autenticazione basata sullo standard OpenID Connect (OIDC) delegandola ai server di Google. L'\term{Utente} completa la fase di riconoscimento interfacciandosi direttamente con l'infrastruttura del provider esterno. A seguito della corretta \term{Verifica} delle credenziali, Google restituisce ad Amazon Cognito un codice di autorizzazione attestante il successo dell'operazione e l'identità dell'\term{Utente}.
+Il \ignoreglossary{processo} di autenticazione ha inizio quando l'\term{Utente} interagisce con l'applicazione client (Flutter) richiedendo l'accesso al sistema. L'applicazione delega interamente la gestione dell'identità inoltrando una richiesta di login ad Amazon Cognito. Cognito, fungendo da Service Provider, intercetta la richiesta e avvia una procedura di autenticazione basata sullo standard OpenID Connect (OIDC) delegandola ai server di Google. L'\term{Utente} completa la fase di riconoscimento interfacciandosi direttamente con l'infrastruttura del provider esterno. A seguito della corretta \ignoreglossary{verifica} delle credenziali, Google restituisce ad Amazon Cognito un codice di autorizzazione attestante il successo dell'operazione e l'identità dell'\term{Utente}.
 
 \paragraph{Emissione dei Token di Sessione}\mbox{}\\
 Acquisita la conferma dal provider federato, Amazon Cognito processa il codice di autorizzazione e genera un set di token crittografici aderenti allo standard JWT (JSON Web Token). Questi token vengono trasmessi in modo sicuro all'applicazione mobile, concludendo la fase di autenticazione. Da questo momento, il client dispone di una prova di identità verificata e utilizzerà l'Access Token JWT per autorizzare le successive chiamate di rete dirette ai servizi di \term{Backend}.
 
-\paragraph{\term{Validazione} Perimetrale e Instradamento Sicuro}\mbox{}\\
-Per accedere alle logiche applicative, l'app Flutter compone una richiesta HTTPS indirizzata all'Amazon API Gateway, includendo il token JWT nelle intestazioni di autorizzazione. L'API Gateway assume il ruolo di strato di sicurezza perimetrale (edge security). Prima di instradare il traffico, il Gateway utilizza un Cognito Authorizer nativo per eseguire un rigoroso controllo di validità sul token ricevuto. Tale procedura \term{Verifica} l'autenticità della firma crittografica, l'integrità del \term{Payload} e la validità temporale della sessione direttamente contro le configurazioni dello User Pool di Cognito.
+\paragraph{\ignoreglossary{validazione} Perimetrale e Instradamento Sicuro}\mbox{}\\
+Per accedere alle logiche applicative, l'app Flutter compone una richiesta HTTPS indirizzata all'Amazon API Gateway, includendo il token JWT nelle intestazioni di autorizzazione. L'API Gateway assume il ruolo di strato di sicurezza perimetrale (edge security). Prima di instradare il traffico, il Gateway utilizza un Cognito Authorizer nativo per eseguire un rigoroso controllo di validità sul token ricevuto. Tale procedura \ignoreglossary{verifica} l'autenticità della firma crittografica, l'integrità del \term{Payload} e la validità temporale della sessione direttamente contro le configurazioni dello User Pool di Cognito.
 
-Questa specifica impostazione architetturale assicura che qualsiasi richiesta malevola, non autorizzata o provvista di credenziali scadute venga respinta al livello di rete. Solamente le richieste che superano con successo la \term{Validazione} del token vengono instradate dall'API Gateway verso la specifica funzione AWS Lambda designata, garantendo che le risorse computazionali elaborino esclusivamente traffico certificato e sicuro.
+Questa specifica impostazione architetturale assicura che qualsiasi richiesta malevola, non autorizzata o provvista di credenziali scadute venga respinta al livello di rete. Solamente le richieste che superano con successo la \ignoreglossary{validazione} del token vengono instradate dall'API Gateway verso la specifica funzione AWS Lambda designata, garantendo che le risorse computazionali elaborino esclusivamente traffico certificato e sicuro.
 
 
 \subsubsection{Luoghi sicuri} \label{subsubsec:architettura_luoghi_sicuri}
-
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{diagrammi_architettura/luoghi_sicuri/luoghi_sicuri.pdf}
@@ -2004,7 +2077,100 @@ Al fine di ottimizzare ulteriormente i costi, l'intera logica di rendering visiv
 \begin{itemize}
     \item \texttt{GET /safe\_locations/}: ritorna le informazioni di tutti i luoghi sicuri.
 \end{itemize}
-\textit{Nota di sicurezza}: L'integrazione di un Authorizer Cognito per la \term{Verifica} delle autorizzazioni è stata deliberatamente omessa per questa rotta. L'assenza dell'Authorizer in quest'area è difatti una scelta architetturale mirata a rimuovere complessità infrastrutturale non necessaria e ad abbattere i costi operativi associati al recupero di questi specifici dati.
+\textit{Nota di sicurezza}: L'integrazione di un Authorizer Cognito per la \ignoreglossary{verifica} delle autorizzazioni è stata deliberatamente omessa per questa rotta. L'assenza dell'Authorizer in quest'area è difatti una scelta architetturale mirata a rimuovere complessità infrastrutturale non necessaria e ad abbattere i costi operativi associati al recupero di questi specifici dati.
+
+\paragraph{\term{Architettura} logica: Modulo Luoghi Sicuri}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{diagrammi_classi_lambda/luoghi_sicuri/DCB-luoghi-sicuri.pdf}
+    \caption{Componenti del microservizio luoghi sicuri}
+    \label{fig:architettura_logica_luoghi_sicuri}
+\end{figure}
+Il microservizio \textbf{luoghi sicuri} viene utilizzato per eseguire il fetch dei \code{Marker} dall'istanza del 
+bucket S3. È formato da tre componenti principali:
+\begin{itemize}
+    \item \textbf{SafePlacesController}, che rappresenta l'application logic e corrisponde al controller del pattern esagonale. Riceve l'evento grezzo di API Gateway, lo instrada verso la port primaria e costruisce la risposta HTTP da restituire al client;
+    \item \textbf{SafePlacesService}, che rappresenta la \term{Business Logic} e corrisponde alla domain logic del pattern esagonale. Implementa la port primaria \code{GetMarkerPort} e orchestra la comunicazione con il layer di persistenza tramite la port secondaria \code{SafePlacesRepositoryPort};
+    \item \textbf{S3SafePlacesRepository}, che rappresenta la \term{Persistence Logic} e corrisponde all'adapter secondario del pattern esagonale. Contiene tutta la logica specifica per il recupero dei marker da un bucket S3 tramite il client boto3.
+\end{itemize}
+
+\paragraph{Marker}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/luoghi_sicuri/DCB-Marker.pdf}
+    \caption[Diagramma della classe Marker]{Diagramma della classe \code{Marker}}
+    \label{fig:architettura_logica_luoghi_sicuri_marker}
+\end{figure}
+Rappresenta un punto geografico sicuro visualizzabile sulla mappa nel frontend dell'applicazione. 
+Descrizione attributi:
+\begin{abstract}
+    \item \code{marker\_id}, che identifica univocamente il marker;
+    \item \code{latitude} e \code{longitude} definiscono la posizione geografica;
+    \item \code{name} indica il nome del marker;
+    \item \code{address} indica l'indirizzo;
+    \item \code{category} indica la cotegoria del marker;
+\end{abstract} 
+
+\paragraph{SafePlacesController}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/luoghi_sicuri/DCB-SafePlacesController.pdf}
+    \caption[Diagramma della classe SafePlacesController]{Diagramma della classe \code{SafePlacesController}}
+    \label{fig:architettura_logica_luoghi_SafePlacesController}
+\end{figure}
+È il controller del pattern esagonale. Riceve l'evento grezzo di API Gateway, lo instrada verso la port primaria e 
+costruisce la risposta HTTP da restituire al client.
+Descrizione metodi:
+\begin{itemize}
+    \item \code{marker\_get(event)} fa il parsing della richiesta e chiama la funzione appropriata della specifica port primaria;
+    \item \code{handle\_request(event)} chiama la funzione appropriata del controller in base alla route della richiesta;
+    \item \code{response(status, body)} costruisce il dizionario di risposta nel formato atteso da API Gateway.
+\end{itemize}
+
+\paragraph{GetMarkerPort}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/luoghi_sicuri/DCB-GetMarkerPort.pdf}
+    \caption[Diagramma dell'interfaccia GetMarkerPort]{Diagramma dell'interfaccia \code{GetMarkerPort}}
+    \label{fig:architettura_logica_luoghi_sicuri_getmarkerport}
+\end{figure}
+È la port primaria del pattern esagonale.\\
+Descrizione metodi:
+\begin{itemize}
+    \item \code{get\_all\_markers()}, che restituisce la lista completa dei marker disponibili senza esporre dettagli implementativi su come vengono recuperati.
+\end{itemize}
+
+\paragraph{SafePlacesService}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/luoghi_sicuri/DCB-SafePlacesService.pdf}
+    \caption[Diagramma della classe SafePlacesService]{Diagramma della classe \code{SafePlacesService}}
+    \label{fig:architettura_logica_luoghi_SafePlacesService}
+\end{figure}
+È la domain logic del microservizio. Contiene l'application logic per 
+il recupero dei luoghi sicuri e orchestra la comunicazione con il layer di persistenza tramite la port secondaria \code{SafePlacesRepositoryPort}.
+
+\paragraph{SafePlacesRepositoryPort}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/luoghi_sicuri/DCB-SafePlacesRepositoryPort.pdf}
+    \caption[Diagramma dell'interfaccia SafePlacesRepositoryPort]{Diagramma dell'interfaccia \code{SafePlacesRepositoryPort}}
+    \label{fig:architettura_logica_luoghi_sicuri_SafePlacesRepositoryPort}
+\end{figure}
+È la port secondaria del pattern esagonale orientata alla persistenza.
+Descrizione metodi:
+\begin{itemize}
+    \item \code{list\_markers()}, che restituisce la lista di tutti i marker disponibili senza esporre dettagli su S3 o qualsiasi altro storage.
+\end{itemize}
+
+\paragraph{S3SafePlacesRepository}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/luoghi_sicuri/S3SafePlacesRepository.pdf}
+    \caption[Diagramma della classe S3SafePlacesRepository]{Diagramma della classe \code{S3SafePlacesRepository}}
+    \label{fig:architettura_logica_luoghi_sicuri_S3SafePlacesRepository}
+\end{figure}
+È l'adapter secondario che implementa \code{SafePlacesRepositoryPort}. Il costruttore \code{\_\_init\_\_()} inizializza il client S3.
 
 \subsubsection{Materiale informativo} \label{subsubsec:architettura_materiale_informativo}
 
@@ -2036,6 +2202,97 @@ Il risultato elaborato viene restituito all'API Gateway, che lo inoltra al clien
 \end{itemize}
 \textit{Nota di sicurezza}: In maniera analoga a quanto previsto per i luoghi sicuri, anche per l'accesso al materiale informativo si è optato per non implementare l'Authorizer Cognito. Questa decisione è dettata dalla volontà di snellire l'\term{Architettura}, riducendo le complessità superflue ed evitando di incorrere nei costi operativi aggiuntivi dell'infrastruttura di autenticazione.
 
+\paragraph{\term{Architettura} logica: Modulo Materiale Informativo} \label{par:architettura_backend_materiale_info}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{diagrammi_classi_lambda/materiale_informativo/DCB-materiale-info.pdf}
+    \caption{Componenti del microservizio materiale informativo}
+    \label{fig:architettura_logica_materiale_info}
+\end{figure}
+Il microservizio \textbf{materiale informativo} viene utilizzato per eseguire il fetch delle \code{Resource} dall'istanza del 
+bucket S3 in cui sono memorizzate le risorse informative da visualizzare nell'applicazione. È formato da tre componenti principali:
+\begin{itemize}
+    \item \textbf{ResourcesController}, che rappresenta l'application logic e corrisponde al controller del pattern esagonale. Riceve l'evento grezzo di API Gateway, lo instrada verso la port primaria e costruisce la risposta HTTP da restituire al client;
+    \item \textbf{ResourcesService}, che rappresenta la \term{Business Logic} e corrisponde alla domain logic del pattern esagonale. Implementa la port primaria \code{GetResourcesPort} e orchestra la comunicazione con il layer di persistenza tramite la port secondaria \code{ResourcesRepositoryPort};
+    \item \textbf{S3ResourcesRepository}, che rappresenta la \term{Persistence Logic} e corrisponde all'adapter secondario del pattern esagonale. Contiene tutta la logica specifica per il recupero delle risorse da un bucket S3 tramite il client boto3.
+\end{itemize}
+
+\paragraph{Resource}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/materiale_informativo/DCB-Resource.pdf}
+    \caption[Diagramma della classe Resource]{Diagramma della classe \code{Resource}}
+    \label{fig:architettura_logica_luoghi_Resource}
+\end{figure}
+Rappresenta una risorsa informativa disponibile nell'applicazione. 
+Descrizione attributi:
+\begin{itemize}
+    \item \code{resource\_id} identificativo della singola risorsa;
+    \item \code{title} nome della singola risorsa;
+    \item \code{content} il testo descrittivo;
+    \item \code{url} il collegamento alla fonte esterna;
+    \item \code{type} è di tipo \code{ResourceType} e categorizza la risorsa secondo una delle tipologie previste dal dominio.
+\end{itemize}
+L'enumerazione \code{ResourceType} definisce le tre categorie disponibili: \code{COMMUNITY}, \code{LAW} e \code{ARTICLE}.
+
+\paragraph{ResourcesController}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/materiale_informativo/DCB-ResourcesController.pdf}
+    \caption[Diagramma della classe ResourcesController]{Diagramma della classe \code{ResourcesController}}
+    \label{fig:architettura_logica_luoghi_ResourcesController}
+\end{figure}
+È il controller del pattern esagonale. Riceve l'evento grezzo di API Gateway, lo instrada verso 
+la port primaria e costruisce la risposta HTTP da restituire al client.
+Descrizione metodi:
+\begin{itemize}
+    \item \code{get\_resources(event, context)} costituisce il punto di ingresso del controller e riceve i parametri nativi della Lambda;
+    \item \code{response(status, body)} è un metodo di utilità che costruisce il dizionario di risposta nel formato atteso da API Gateway.
+\end{itemize}
+
+\paragraph{GetResourcesPort}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/materiale_informativo/DCB-GetResourcesPort.pdf}
+    \caption[Diagramma della classe GetResourcesPort]{Diagramma della classe \code{GetResourcesPort}}
+    \label{fig:architettura_logica_luoghi_GetResourcesPort}
+\end{figure}
+È la port primaria del pattern esagonale.\\
+Descrizione metodi:
+\begin{itemize}
+    \item \code{get\_resources()}, che restituisce la lista completa delle risorse informative disponibili.
+\end{itemize} 
+
+\paragraph{ResourcesService}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/materiale_informativo/DCB-ResourcesService.pdf}
+    \caption[Diagramma della classe ResourcesService]{Diagramma della classe \code{ResourcesService}}
+    \label{fig:architettura_logica_luoghi_ResourcesService}
+\end{figure}
+È la domain logic del microservizio e implementa la port primaria \code{GetResourcesPort}. Contiene la logica applicativa per il recupero del materiale informativo e orchestra la comunicazione con il persistence layer tramite la port secondaria \code{ResourcesRepositoryPort}.
+
+\paragraph{ResourcesRepositoryPort}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/materiale_informativo/DCB-ResourcesRepositoryPort.pdf}
+    \caption[Diagramma della classe ResourcesRepositoryPort]{Diagramma della classe \code{ResourcesRepositoryPort}}
+    \label{fig:architettura_logica_luoghi_ResourcesRepositoryPort}
+\end{figure}
+È la port secondaria del pattern esagonale.
+Descrizione metodi:
+\begin{itemize}
+    \item \code{list\_all\_resources()}, restituisce la lista completa delle risorse disponibili senza esporre dettagli su S3.
+\end{itemize}
+
+\paragraph{S3ResourcesRepository}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/materiale_informativo/DCB-S3ResourcesRepository.pdf}
+    \caption[Diagramma della classe S3ResourcesRepository]{Diagramma della classe \code{S3ResourcesRepository}}
+    \label{fig:architettura_logica_luoghi_S3ResourcesRepository}
+\end{figure}
+È l'adapter secondario che implementa \code{ResourcesRepositoryPort}. Contiene tutta la logica specifica per il recupero delle risorse informative da un bucket S3.
 
 \subsubsection{Diario criptato e fittizio} \label{subsubsec:architettura_diari}
 
@@ -2058,12 +2315,9 @@ L'archiviazione delle note avviene su due servizi AWS distinti. I contenuti test
 Il flusso di elaborazione è dunque il seguente:
 \begin{itemize}
     \item \textbf{Invio della Richiesta di Autenticazione}: L'\term{Utente} inserisce la password del diario tramite app. Il client genera una richiesta HTTPS (metodo \texttt{POST /diary/auth/}) includendo la password nel body della richiesta.
-    
-    \item \textbf{\term{Verifica} delle Credenziali}: API Gateway \term{Verifica} che l'\term{Utente} sia autenticato all'applicazione. Dopodiché inoltra la richiesta alla funzione Lambda, che calcola l'hash della password ricevuta e lo confronta con gli hash memorizzati in DynamoDB. In caso di corrispondenza, viene identificato il tipo di diario associato.
-    
+    \item \textbf{\ignoreglossary{verifica} delle Credenziali}: API Gateway \ignoreglossary{verifica} che l'\term{Utente} sia autenticato all'applicazione. Dopodiché inoltra la richiesta alla funzione Lambda, che calcola l'hash della password ricevuta e lo confronta con gli hash memorizzati in DynamoDB. In caso di corrispondenza, viene identificato il tipo di diario associato.
     \item \textbf{Derivazione della Chiave Crittografica}: La funzione Lambda utilizza la password fornita per derivare una chiave crittografica tramite Argon2id, impiegando un salt dedicato. Tale chiave viene utilizzata per le successive operazioni di decrittazione.
-    
-    \item \textbf{Creazione della Sessione}: A seguito dell'autenticazione, il \term{Backend} genera una sessione associata all'\term{Utente}, che consente di effettuare operazioni sul diario senza ripetere il \term{Processo} di autenticazione per ogni richiesta.
+    \item \textbf{Creazione della Sessione}: A seguito dell'autenticazione, il \term{Backend} genera una sessione associata all'\term{Utente}, che consente di effettuare operazioni sul diario senza ripetere il \ignoreglossary{processo} di autenticazione per ogni richiesta.
     
     \item \textbf{Recupero delle Note}: Quando l'\term{Utente} richiede di recuperare la lista di note di uno dei diari (metodo \texttt{GET /diary/\{diary\_type\}/}), API Gateway invia la richiesta alla Lambda, che recupera le \textit{preview} dal database DynamoDB e le restituisce al client.
     
@@ -2082,7 +2336,6 @@ Il flusso di elaborazione è dunque il seguente:
     
     \item \texttt{GET /diary/\{diary\_type\}/}: ritorna le \textit{preview} di tutte le note del diario specificato.
     \item \texttt{POST /diary/\{diary\_type\}/}: crea una nuova nota per l’\term{Utente} nel diario specificato.
-    
     \item \texttt{GET /diary/\{diary\_type\}/\{note\_id\}/}: ritorna il contenuto completo della nota specificata.
     \item \texttt{PUT /diary/\{diary\_type\}/\{note\_id\}/}: aggiorna la nota specificata nel database.
     \item \texttt{DELETE /diary/\{diary\_type\}/\{note\_id\}/}: rimuove la nota specificata.
@@ -2100,7 +2353,7 @@ Il flusso di elaborazione è dunque il seguente:
 \paragraph{\term{Architettura} e Flusso di Elaborazione: chatbot (detective delle relazioni e specchio intelligente)}\mbox{}\\
 L'\term{Architettura} di \term{Backend} dedicata al chatbot è progettata per gestire conversazioni persistenti tra \term{Utente} e modello linguistico, garantendo scalabilità, efficienza nell’accesso ai dati e qualità delle risposte generate.
 
-API Gateway rappresenta il punto di ingresso per tutte le richieste client e si occupa della \term{Verifica} dell’autenticazione dell’\term{Utente}. Una volta validata la richiesta, questa viene inoltrata a una funzione Lambda che implementa la logica applicativa del chatbot, inclusa la gestione delle chat e l’interazione con il modello linguistico.
+API Gateway rappresenta il punto di ingresso per tutte le richieste client e si occupa della \ignoreglossary{verifica} dell’autenticazione dell’\term{Utente}. Una volta validata la richiesta, questa viene inoltrata a una funzione Lambda che implementa la logica applicativa del chatbot, inclusa la gestione delle chat e l’interazione con il modello linguistico.
 
 Le conversazioni sono strutturate come entità persistenti (chat), ciascuna identificata da un \texttt{chat\_id} univoco all'interno dell’intero sistema. Per garantire una maggiore modularità e facilitare il recupero delle informazioni, chat e messaggi sono memorizzati in tabelle DynamoDB separate. Ogni chat contiene una sequenza di messaggi (\term{Utente} e assistente artificiale), anch’essi memorizzati in DynamoDB. Per ottimizzare le prestazioni e ridurre il carico di rete, le operazioni di recupero dello storico restituiscono esclusivamente informazioni di sintesi (ad esempio titolo e metadata), mentre il contenuto completo dei messaggi viene fornito solo su richiesta esplicita.
 
@@ -2112,9 +2365,9 @@ Il flusso di elaborazione è dunque il seguente:
 \begin{itemize}
     \item \textbf{Invio della Richiesta}: L’\term{Utente} interagisce con il chatbot tramite app, generando una richiesta HTTPS verso uno degli endpoint disponibili (ad esempio \texttt{POST /chats/\{chat\_id\}/messages}).
     
-    \item \textbf{Autenticazione}: API Gateway \term{Verifica} che l’\term{Utente} sia autenticato all’applicazione. In caso positivo, la richiesta viene inoltrata alla funzione Lambda responsabile della logica del chatbot.
+    \item \textbf{Autenticazione}: API Gateway \ignoreglossary{verifica} che l’\term{Utente} sia autenticato all’applicazione. In caso positivo, la richiesta viene inoltrata alla funzione Lambda responsabile della logica del chatbot.
     
-    \item \textbf{Gestione della Chat}: La Lambda identifica la chat di riferimento tramite \texttt{chat\_id}. Se necessario, recupera i metadati o \term{Verifica} l’esistenza della chat in DynamoDB.
+    \item \textbf{Gestione della Chat}: La Lambda identifica la chat di riferimento tramite \texttt{chat\_id}. Se necessario, recupera i metadati o \ignoreglossary{verifica} l’esistenza della chat in DynamoDB.
     
     \item \textbf{Recupero del Contesto (RAG)}: Prima di inviare il messaggio al modello, la Lambda esegue una query su DynamoDB per ottenere i messaggi precedenti rilevanti della conversazione, costruendo il contesto da includere nel prompt.
     
@@ -2137,16 +2390,470 @@ Il flusso di elaborazione è dunque il seguente:
 
 \paragraph{API associate}\mbox{}\\
 \begin{itemize}
-    \item \texttt{GET /chats/}: ritorna le \textit{preview} di tutte le chat dell’\term{Utente}.
-    \item \texttt{POST /chats/}: crea una nuova chat per l’\term{Utente}.
+    \item \code{GET /chats/}
+        \begin{itemize}
+            \item \textbf{Descrizione}: Recupera la lista delle chat associate all’\term{Utente} autenticato, restituendo solo le informazioni principali, senza i messaggi.
+            
+            \item \textbf{Parametri}:
+            \begin{itemize}
+                \item \texttt{user\_id}: identificativo dell’\term{Utente}.
+            \end{itemize}
+            
+            \item \textbf{Response}:
+            \begin{itemize}
+                \item \texttt{200 OK}: richiesta completata con successo.
+                \item Corpo della risposta:
+\begin{verbatim}
+{
+    "chats": [
+        {
+            "chat_id": "01KPX72J3Y5MFM9982J3TFTH7H",
+            "title": "Supporto emotivo",
+            "created_at": "2026-02-22T15:22:27.615449+00:00",
+            "updated_at": "2026-04-22T18:13:05.452786+00:00",
+            "messages": []
+        },
+        {
+            "chat_id": "01KPX8AB4Z9QTR672L8VYH3D2C",
+            "title": "Violenza domestica",
+            "created_at": "2026-03-05T09:11:42.123456+00:00",
+            "updated_at": "2026-04-24T16:47:19.987654+00:00",
+            "messages": []      
+        }
+    ]
+}
+\end{verbatim}
+            \end{itemize}
+            
+            \item \textbf{Errori}:
+            \begin{itemize}
+                \item \texttt{400 Bad Request}: parametri mancanti o non validi.
+                \item \texttt{401 Unauthorized}: \term{Utente} non autenticato.
+                \item \texttt{500 Internal Server Error}: errore interno del server.
+            \end{itemize}
+        \end{itemize}
+
+    \item \code{POST /chats/}
+        \begin{itemize}
+            \item \textbf{Descrizione}: Crea una nuova chat associata all’\term{Utente} autenticato, inizializzata senza messaggi.
+
+            \item \textbf{Parametri}:
+            \begin{itemize}
+                \item \texttt{title}: titolo della chat.
+            \end{itemize}
+
+            \item \textbf{Response}:
+            \begin{itemize}
+                \item \texttt{201 Created}: chat creata con successo.
+                \item Corpo della risposta:
+\begin{verbatim}
+{
+    "user_id": "3f8a1c2e-7b4d-4f9a-9c21-5d7e6a8b2c90",
+    "chat_id": "01KQ52JAEYD7ZDH894CN9HEH05",
+    "title": "La mia nuovissima chat",
+    "created_at": "2026-04-26T14:19:48.574747+00:00",
+    "updated_at": "2026-04-26T14:19:48.574747+00:00",
+    "messages": []
+}
+\end{verbatim}
+            \end{itemize}
+
+            \item \textbf{Errori}:
+            \begin{itemize}
+                \item \texttt{400 Bad Request}: body mancante o non valido.
+                \item \texttt{500 Internal Server Error}: errore interno del server.
+            \end{itemize}
+        \end{itemize}
+
+    \item \code{GET /chats/\{chat\_id\}}
+        \begin{itemize}
+            \item \textbf{Descrizione}: Recupera una chat specifica identificata da \texttt{chat\_id}, includendo tutti i messaggi associati.
+        
+            \item \textbf{Parametri}:
+            \begin{itemize}
+                \item \texttt{chat\_id}: identificativo della chat.
+            \end{itemize}
+        
+            \item \textbf{Response}:
+            \begin{itemize}
+                \item \texttt{200 OK}: richiesta completata con successo.
+                \item Corpo della risposta:
+\begin{verbatim}
+{
+    "user_id": "3f8a1c2e-7b4d-4f9a-9c21-5d7e6a8b2c90",
+    "chat_id": "01KPTWJ5CZ9QM4VH8CSHV451ZV",
+    "title": "La mia chat",
+    "created_at": "2026-04-22T15:22:27.615449+00:00",
+    "updated_at": "2026-04-25T17:26:12.748959+00:00",
+    "messages": [
+        {
+        "chat_id": "01KPTWJ5CZ9QM4VH8CSHV451ZV",
+        "message_id": "01MSG001",
+        "text": "Ciao, come ti chiami?",
+        "sender": "user",
+        "created_at": "2026-04-25T17:25:00.000000+00:00"
+        },
+        {
+        "chat_id": "01KPTWJ5CZ9QM4VH8CSHV451ZV",
+        "message_id": "01MSG002",
+        "text": "Sono Chatbot, come posso aiutarti?",
+        "sender": "ai",
+        "created_at": "2026-04-25T17:25:01.000000+00:00"
+        }
+    ]
+}
+        \end{verbatim}
+            \end{itemize}
+        
+            \item \textbf{Errori}:
+            \begin{itemize}
+                \item \texttt{404 Not Found}: chat non trovata.
+                \item \texttt{400 Bad Request}: parametri non validi.
+                \item \texttt{500 Internal Server Error}: errore interno del server.
+            \end{itemize}
+        \end{itemize}
+
+    \item \code{PUT /chats/\{chat\_id\}}
+        \begin{itemize}
+            \item \textbf{Descrizione}: Aggiorna le informazioni di una chat esistente identificata da \texttt{chat\_id}.
+        
+            \item \textbf{Parametri}:
+            \begin{itemize}
+                \item \texttt{chat\_id}: identificativo della chat.
+                \item \texttt{title}: nuovo titolo della chat.
+                \item \texttt{user\_id}: identificativo dell’\term{Utente}.
+            \end{itemize}
+        
+            \item \textbf{Response}:
+            \begin{itemize}
+                \item \texttt{200 OK}: aggiornamento completato con successo.
+                \item Corpo della risposta:
+\begin{verbatim}
+{
+    "user_id": "3f8a1c2e-7b4d-4f9a-9c21-5d7e6a8b2c90",
+    "chat_id": "01KPTWJ5CZ9QM4VH8CSHV451ZV",
+    "title": "Nuovo titolo aggiornato",
+    "created_at": "2026-04-22T15:22:27.615449+00:00",
+    "updated_at": "2026-04-26T14:26:38.684047+00:00",
+    "messages": [...]
+}
+\end{verbatim}
+            \end{itemize}
+        
+            \item \textbf{Errori}:
+            \begin{itemize}
+                \item \texttt{400 Bad Request}: body non valido o parametri mancanti.
+                \item \texttt{404 Not Found}: chat non trovata.
+                \item \texttt{500 Internal Server Error}: errore interno del server.
+            \end{itemize}
+        \end{itemize}
+
+    \item \code{DELETE /chats/\{chat\_id\}}
+        \begin{itemize}
+            \item \textbf{Descrizione}: Elimina una chat esistente identificata da \texttt{chat\_id} insieme ai relativi messaggi.
+        
+            \item \textbf{Parametri}:
+            \begin{itemize}
+                \item \texttt{chat\_id}: identificativo della chat.
+            \end{itemize}
+        
+            \item \textbf{Response}:
+            \begin{itemize}
+                \item \texttt{204 No Content}: eliminazione completata con successo.
+                \item Corpo della risposta: vuoto.
+            \end{itemize}
+        
+            \item \textbf{Errori}:
+            \begin{itemize}
+                \item \texttt{404 Not Found}: chat non trovata.
+                \item \texttt{400 Bad Request}: parametri non validi.
+                \item \texttt{500 Internal Server Error}: errore interno del server.
+            \end{itemize}
+        \end{itemize}
     
-    \item \texttt{GET /chats/\{chat\_id\}}: ritorna la chat specificata con il contenuto completo dei messaggi.
-    \item \texttt{PUT /chats/\{chat\_id\}}: aggiorna i dati della chat specificata.
-    \item \texttt{DELETE /chats/\{chat\_id\}}: rimuove la chat specificata dal database.
-    
-    \item \texttt{POST /chats/\{chat\_id\}/messages}: invia un messaggio al modello linguistico; ritorna la risposta generata e il titolo aggiornato della chat.
+    \item \code{POST /chats/\{chat\_id\}/messages}
+        \begin{itemize}
+            \item \textbf{Descrizione}: Inserisce un nuovo messaggio all’interno di una chat esistente e attiva la generazione della risposta da parte del modello LLM, secondo la modalità specificata.
+
+            \item \textbf{Parametri}:
+            \begin{itemize}
+                \item \texttt{chat\_id}: identificativo della chat.
+                \item \texttt{message}: contenuto del messaggio dell’\term{Utente}.
+                \item \texttt{response\_mode} (body, opzionale): modalità di generazione della risposta del chatbot: \texttt{"mirror"} o \texttt{"detective"}.
+            \end{itemize}
+
+            \item \textbf{Response}:
+            \begin{itemize}
+                \item \texttt{200 OK}: messaggio elaborato con successo e risposta generata.
+                \item Corpo della risposta:
+\begin{verbatim}
+{
+    "response": "questa è la risposta del chatbot",
+    "input_message_id": "01KQ536RE4QX5XSCZVC42XQJ49",
+    "response_message_id": "01KQ536RGM0Q86WPV8TNGZ5J1V"
+}
+        \end{verbatim}
+            \end{itemize}
+
+            \item \textbf{Errori}:
+            \begin{itemize}
+                \item \texttt{400 Bad Request}: messaggio mancante o non valido.
+                \item \texttt{404 Not Found}: chat non trovata.
+                \item \texttt{500 Internal Server Error}: errore interno del servizio LLM o del \term{Backend}.
+            \end{itemize}
+        \end{itemize}
 \end{itemize}
 
+\paragraph{\term{Architettura} logica del chatbot}\mbox{}\\
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{diagrammi_classi_lambda/chatbot/chatbot.pdf}
+    \caption{Componenti del microservizio Chatbot}
+    \label{fig:architettura_microservizio_chatbot}
+\end{figure}
+
+\paragraph{Chat}\mbox{}\\
+
+La classe \code{Chat} rappresenta il modello di dominio di una conversazione tra \term{Utente} e chatbot. Contiene i metadati identificativi (\code{user\_id}, \code{chat\_id}), il titolo della conversazione, le date di creazione e aggiornamento e l'elenco completo dei messaggi scambiati. Questa classe costituisce l'entità centrale del dominio applicativo e viene utilizzata sia dai servizi di persistenza che da quelli di elaborazione tramite LLM.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-Chat.pdf}
+    \caption[Diagramma della classe Chat]{Diagramma della classe \code{Chat}}
+    \label{DC-Chat-Backend}
+\end{figure}
+
+\paragraph{ChatMessage}\mbox{}\\
+
+\code{ChatMessage} modella un singolo messaggio all'interno di una conversazione. Include l'identificativo univoco del messaggio (\code{id}), il riferimento alla chat di appartenenza (\code{chat\_id}), il contenuto testuale (\code{content}), il mittente (\code{sender}, che può assumere il valore \code{"user"} o \code{"ai"}) e la data di creazione. Questa classe permette di mantenere traccia completa dello storico conversazionale necessario per il funzionamento del chatbot.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-ChatMessage.pdf}
+    \caption[Diagramma della classe ChatMessage]{Diagramma della classe \code{ChatMessage}}
+    \label{DC-ChatMessage-Backend}
+\end{figure}
+
+\paragraph{ChatbotLLMPort}\mbox{}\\
+
+L'interfaccia \code{ChatbotLLMPort} definisce il \term{Contratto} per gli adapter che si interfacciano con LLM. Espone il metodo \code{process\_prompt}, che accetta un prompt testuale e una modalità di risposta, restituendo la stringa generata dal modello. Questa astrazione permette di disaccoppiare la logica applicativa dall'implementazione specifica del provider LLM utilizzato.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/chatbot/DC-ChatbotLLMPort.pdf}
+    \caption[Diagramma dell'interfaccia ChatbotLLMPort]{Diagramma dell'interfaccia \code{ChatbotLLMPort}}
+    \label{DC-ChatbotLLMPort-Backend}
+\end{figure}
+
+\paragraph{BedrockLLMAdapter}\mbox{}\\
+
+\code{BedrockLLMAdapter} implementa l'interfaccia \code{ChatbotLLMPort} fornendo l'integrazione concreta con Amazon Bedrock. Questa classe incapsula la logica di comunicazione con il servizio \term{Cloud}, traducendo le richieste dell'applicazione in chiamate API specifiche per il modello di linguaggio selezionato.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/chatbot/DC-BedrockLLMAdapter.pdf}
+    \caption[Diagramma della classe BedrockLLMAdapter]{Diagramma della classe \code{BedrockLLMAdapter}}
+    \label{DC-BedrockLLMAdapter-Backend}
+\end{figure}
+
+\paragraph{ChatbotLLMService}\mbox{}\\
+
+\code{ChatbotLLMService} coordina la generazione delle risposte del chatbot interagendo con un'implementazione di \code{ChatbotLLMPort}. Il metodo \code{get\_message\_response} orchestra l'intero \ignoreglossary{processo}: recupera i messaggi rilevanti dalla cronologia della conversazione tramite l'algoritmo BM25, costruisce il prompt contestualizzato attraverso \code{\_build\_prompt} combinando il messaggio \term{Utente} con il contesto recuperato e il prompt di sistema appropriato alla modalità selezionata, e infine delega al modello la generazione della risposta. Questa classe è quindi responsabile di implementare i diversi meccanismi di risposta sulla base di \code{response\_mode}, realizzando così le funzionalità di risposta "Detective delle relazioni" e "Specchio intelligente".
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/chatbot/DC-ChatbotLLMService.pdf}
+    \caption[Diagramma della classe ChatbotLLMService]{Diagramma della classe \code{ChatbotLLMService}}
+    \label{DC-ChatbotLLMService-Backend}
+\end{figure}
+
+\paragraph{ChatsRepositoryPort}\mbox{}\\
+
+L'interfaccia \code{ChatsRepositoryPort} definisce il \term{Contratto} per la persistenza delle conversazioni. Espone metodi per tutte le operazioni CRUD: creazione di nuove chat (\code{create\_chat}), recupero singolo (\code{get\_chat}) e multiplo (\code{list\_chats}), eliminazione (\code{delete\_chat}) e aggiunta di messaggi (\code{add\_message}). Questa astrazione garantisce l'indipendenza del dominio dall'implementazione specifica del layer di persistenza.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/chatbot/DC-ChatsRepositoryPort.pdf}
+    \caption[Diagramma dell'interfaccia ChatsRepositoryPort]{Diagramma dell'interfaccia \code{ChatsRepositoryPort}}
+    \label{DC-ChatsRepositoryPort-Backend}
+\end{figure}
+
+\paragraph{DynamoChatAdapter}\mbox{}\\
+
+\code{DynamoChatAdapter} implementa \code{ChatsRepositoryPort} fornendo la persistenza concreta su DynamoDB. Questa classe gestisce l'interazione con due tabelle: \code{chats\_mvp} per i metadati delle conversazioni e \code{chats\_messages\_mvp} per i messaggi. Implementa la logica di traduzione tra gli oggetti di dominio e le strutture dati di DynamoDB, inclusa la generazione di identificativi ULID e la gestione delle operazioni batch per l'eliminazione dei messaggi. L'adapter incapsula completamente i dettagli tecnici di AWS, esponendo al dominio un'interfaccia pulita e tecnologicamente agnostica.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/chatbot/DC-DynamoChatAdapter.pdf}
+    \caption[Diagramma della classe DynamoChatAdapter]{Diagramma della classe \code{DynamoChatAdapter}}
+    \label{DC-DynamoChatAdapter-Backend}
+\end{figure}
+
+\paragraph{CreateChatPort}\mbox{}\\
+
+L'interfaccia \code{CreateChatPort} definisce la porta applicativa per la creazione di nuove conversazioni. Espone il metodo \code{create\_chat}, che accetta un comando \code{CreateChatCmd} e restituisce l'oggetto \code{Chat} creato. Questa interfaccia rappresenta uno degli use case primari del sistema, separando l'intento dell'operazione dalla sua implementazione.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/chatbot/DC-CreateChatPort.pdf}
+    \caption[Diagramma dell'interfaccia CreateChatPort]{Diagramma dell'interfaccia \code{CreateChatPort}}
+    \label{DC-CreateChatPort-Backend}
+\end{figure}
+
+\paragraph{GetChatPort}\mbox{}\\
+
+\code{GetChatPort} definisce le operazioni di lettura delle conversazioni. Include il metodo \code{get\_chat} per il recupero di una singola chat dato il suo identificativo e \code{get\_chat\_list} per ottenere l'elenco di tutte le conversazioni appartenenti a un \term{Utente}. Entrambi i metodi operano attraverso comandi dedicati, mantenendo la separazione tra richiesta ed esecuzione.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/chatbot/DC-GetChatPort.pdf}
+    \caption[Diagramma dell'interfaccia GetChatPort]{Diagramma dell'interfaccia \code{GetChatPort}}
+    \label{DC-GetChatPort-Backend}
+\end{figure}
+
+\paragraph{UpdateChatPort}\mbox{}\\
+
+L'interfaccia \code{UpdateChatPort} gestisce le operazioni di modifica delle conversazioni esistenti. Il metodo \code{update\_chat} accetta un \code{UpdateChatCmd} e restituisce la chat aggiornata, permettendo la modifica di metadati quali il titolo della conversazione.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/chatbot/DC-UpdateChatPort.pdf}
+    \caption[Diagramma dell'interfaccia UpdateChatPort]{Diagramma dell'interfaccia \code{UpdateChatPort}}
+    \label{DC-UpdateChatPort-Backend}
+\end{figure}
+
+\paragraph{DeleteChatPort}\mbox{}\\
+
+\code{DeleteChatPort} definisce l'operazione di eliminazione di una conversazione. Il metodo \code{delete\_chat} riceve un \code{DeleteChatCmd} contenente gli identificativi necessari e procede con la rimozione della chat e di tutti i messaggi associati dalle rispettive tabelle DynamoDB.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/chatbot/DC-DeleteChatPort.pdf}
+    \caption[Diagramma dell'interfaccia DeleteChatPort]{Diagramma dell'interfaccia \code{DeleteChatPort}}
+    \label{DC-DeleteChatPort-Backend}
+\end{figure}
+
+\paragraph{ChatMessagePort}\mbox{}\\
+
+L'interfaccia \code{ChatMessagePort} astrae l'operazione di aggiunta di messaggi a una conversazione esistente. Il metodo \code{add\_chat\_message} accetta un \code{AddChatMessageCmd} e restituisce l'identificativo del messaggio appena creato, permettendo al chiamante di tracciare il risultato dell'operazione.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{diagrammi_classi_lambda/chatbot/DC-ChatMessagePort.pdf}
+    \caption[Diagramma dell'interfaccia ChatMessagePort]{Diagramma dell'interfaccia \code{ChatMessagePort}}
+    \label{DC-ChatMessagePort-Backend}
+\end{figure}
+
+\paragraph{ChatbotCRUDService}\mbox{}\\
+
+\code{ChatbotCRUDService} implementa tutte le porte applicative relative alle operazioni CRUD sulle conversazioni: \code{CreateChatPort}, \code{GetChatPort}, \code{UpdateChatPort}, \code{DeleteChatPort} e \code{ChatMessagePort}. Questo servizio funge da facade unificato per tutte le operazioni di gestione delle chat, delegando al \term{Repository} la persistenza effettiva dei dati. Mantiene un riferimento a \code{ChatsRepositoryPort}, rispettando il principio di inversione delle dipendenze dell'\term{Architettura} esagonale.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{diagrammi_classi_lambda/chatbot/DC-ChatbotCRUDService.pdf}
+    \caption[Diagramma della classe ChatbotCRUDService]{Diagramma della classe \code{ChatbotCRUDService}}
+    \label{DC-ChatbotCRUDService-Backend}
+\end{figure}
+
+\paragraph{CreateChatCmd}\mbox{}\\
+
+\code{CreateChatCmd} incapsula i parametri necessari per la creazione di una nuova conversazione: l'identificativo dell'\term{Utente} (\code{user\_id}) e il titolo della chat (\code{title}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.28\textwidth]{diagrammi_classi_lambda/chatbot/DC-CreateChatCmd.pdf}
+    \caption[Diagramma della classe CreateChatCmd]{Diagramma della classe \code{CreateChatCmd}}
+    \label{DC-CreateChatCmd-Backend}
+\end{figure}
+
+\paragraph{GetChatCmd}\mbox{}\\
+
+\code{GetChatCmd} trasporta i parametri per il recupero di una specifica conversazione: l'identificativo dell'\term{Utente} e quello della chat.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.28\textwidth]{diagrammi_classi_lambda/chatbot/DC-GetChatCmd.pdf}
+    \caption[Diagramma della classe GetChatCmd]{Diagramma della classe \code{GetChatCmd}}
+    \label{DC-GetChatCmd-Backend}
+\end{figure}
+
+\paragraph{GetChatListCmd}\mbox{}\\
+
+\code{GetChatListCmd} contiene l'identificativo dell'\term{Utente} per il quale si richiede l'elenco completo delle conversazioni. Questo comando rappresenta l'operazione di recupero multiplo, fondamentale per la visualizzazione dello storico delle chat nell'interfaccia \term{Utente}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.28\textwidth]{diagrammi_classi_lambda/chatbot/DC-GetChatListCmd.pdf}
+    \caption[Diagramma della classe GetChatListCmd]{Diagramma della classe \code{GetChatListCmd}}
+    \label{DC-GetChatListCmd-Backend}
+\end{figure}
+
+\paragraph{UpdateChatCmd}\mbox{}\\
+
+\code{UpdateChatCmd} incapsula i parametri per la modifica di una conversazione esistente: gli identificativi di \term{Utente} e chat, e il nuovo titolo da assegnare.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.28\textwidth]{diagrammi_classi_lambda/chatbot/DC-UpdateChatCmd.pdf}
+    \caption[Diagramma della classe UpdateChatCmd]{Diagramma della classe \code{UpdateChatCmd}}
+    \label{DC-UpdateChatCmd-Backend}
+\end{figure}
+
+\paragraph{DeleteChatCmd}\mbox{}\\
+
+\code{DeleteChatCmd} trasporta gli identificativi necessari per l'eliminazione di una conversazione e di tutti i messaggi associati.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.28\textwidth]{diagrammi_classi_lambda/chatbot/DC-DeleteChatCmd.pdf}
+    \caption[Diagramma della classe DeleteChatCmd]{Diagramma della classe \code{DeleteChatCmd}}
+    \label{DC-DeleteChatCmd-Backend}
+\end{figure}
+
+\paragraph{AddChatMessageCmd}\mbox{}\\
+
+\code{AddChatMessageCmd} contiene tutti i parametri necessari per aggiungere un messaggio a una conversazione: identificativi di \term{Utente} e chat, contenuto testuale (\code{text}) e tipologia del mittente (\code{sender}). Questo comando viene utilizzato sia per memorizzare i messaggi inviati dall'\term{Utente} che le risposte generate dal chatbot, mantenendo la coerenza dello storico conversazionale.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.28\textwidth]{diagrammi_classi_lambda/chatbot/DC-AddChatMessageCmd.pdf}
+    \caption[Diagramma della classe AddChatMessageCmd]{Diagramma della classe \code{AddChatMessageCmd}}
+    \label{DC-AddChatMessageCmd-Backend}
+\end{figure}
+
+\paragraph{ChatDTO}\mbox{}\\
+
+\code{ChatDTO} è il Data Transfer Object utilizzato per la serializzazione e deserializzazione delle conversazioni nelle comunicazioni tra frontend e \term{Backend}. Contiene tutti i campi dell'entità \code{Chat} di dominio e fornisce i metodi \code{to\_dict} per la conversione in dizionario Python (successivamente serializzato in JSON) e \code{from\_domain} per la creazione a partire da un oggetto di dominio.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/chatbot/DC-ChatDTO.pdf}
+    \caption[Diagramma della classe ChatDTO]{Diagramma della classe \code{ChatDTO}}
+    \label{DC-ChatDTO-Backend}
+\end{figure}
+
+\paragraph{ChatMessageDTO}\mbox{}\\
+
+\code{ChatMessageDTO} rappresenta il Data Transfer Object per i singoli messaggi. Analogamente a \code{ChatDTO}, fornisce metodi per la conversione bidirezionale tra oggetti di dominio e strutture dati serializzabili.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/chatbot/DC-ChatMessageDTO.pdf}
+    \caption[Diagramma della classe ChatMessageDTO]{Diagramma della classe \code{ChatMessageDTO}}
+    \label{DC-ChatMessageDTO-Backend}
+\end{figure}
+
+\paragraph{LambdaHandler}\mbox{}\\
+
+\code{LambdaHandler} costituisce il punto di ingresso della funzione Lambda. La funzione \code{lambda\_handler} riceve gli eventi HTTP, li instrada ai gestori appropriati, coordina l'interazione tra \code{ChatbotCRUDService} e \code{ChatbotLLMService}, e costruisce le risposte HTTP conformi alle specifiche dell'API.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/chatbot/DC-LambdaHandler.pdf}
+    \caption[Diagramma della classe LambdaHandler]{Diagramma della classe \code{LambdaHandler}}
+    \label{DC-LambdaHandler-Backend}
+\end{figure}
 
 \subsubsection{Contatti fidati, invio SOS e Dead man's switch} \label{subsubsec:architettura_dms}
 
@@ -2160,7 +2867,7 @@ Il flusso di elaborazione è dunque il seguente:
 \paragraph{\term{Architettura} e Flusso di Elaborazione: contatti fidati, SOS e Dead man's switch}\mbox{}\\
 La sezione relativa ai contatti fidati, all’invio di messaggi di emergenza e al meccanismo di Dead man's switch è progettata per garantire la gestione automatizzata dello stato di attività dell’\term{Utente} e la possibilità di attivare procedure di emergenza sia manualmente che in modo automatico.
 
-API Gateway gestisce l’esposizione delle API e \term{Verifica}, per ogni richiesta, che l’\term{Utente} sia correttamente autenticato all’applicazione. Le richieste valide vengono inoltrate a una funzione Lambda centrale, responsabile della gestione della logica applicativa relativa ai contatti fidati, alla configurazione del Dead man's switch e all’orchestrazione dell’invio delle email tramite Amazon SES.
+API Gateway gestisce l’esposizione delle API e \ignoreglossary{verifica}, per ogni richiesta, che l’\term{Utente} sia correttamente autenticato all’applicazione. Le richieste valide vengono inoltrate a una funzione Lambda centrale, responsabile della gestione della logica applicativa relativa ai contatti fidati, alla configurazione del Dead man's switch e all’orchestrazione dell’invio delle email tramite Amazon SES.
 
 I dati sono memorizzati su due database DynamoDB distinti:
 \begin{itemize}
@@ -2169,7 +2876,7 @@ I dati sono memorizzati su due database DynamoDB distinti:
     \item \texttt{trusted\_contact\_mvp}: memorizza le informazioni relative ai contatti fidati associati a ciascun \term{Utente}, inclusi nome, email e numero di telefono.
 \end{itemize}
 
-Il sistema implementa inoltre un meccanismo di monitoraggio automatico basato su AWS EventBridge. Uno scheduler giornaliero attiva la Lambda centrale che \term{Verifica} lo stato di attività degli utenti e determina eventuali condizioni di inattività prolungata.
+Il sistema implementa inoltre un meccanismo di monitoraggio automatico basato su AWS EventBridge. Uno scheduler giornaliero attiva la Lambda centrale che \ignoreglossary{verifica} lo stato di attività degli utenti e determina eventuali condizioni di inattività prolungata.
 
 Il flusso di elaborazione del Dead man's switch è il seguente:
 \begin{itemize}
@@ -2221,6 +2928,314 @@ La gestione dei contatti fidati è completamente CRUD e permette all’\term{Ute
     \item \texttt{POST /trusted\_contacts/sos/}: attiva manualmente l’invio di una email di emergenza a tutti i contatti fidati.
 \end{itemize}
 
+% ===== diagramma classi contatti fidati \term{Backend} ======
+
+\paragraph{\term{Architettura} logica: Modulo contatti fidati, SOS e Dead man's switch} \label{par:architettura_backend_contatti_fidati}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{diagrammi_classi_lambda/contatti_fidati/DCB-contatti_fidati.pdf}
+    \caption{Componenti del microservizio contatti fidati, SOS e Dead man's switch}
+    \label{fig:rchitettura_backend_contatti_fidati}
+\end{figure}
+
+\paragraph{TrustedContact}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/DCB-TrustedContact.pdf}
+    \caption[Diagramma della classe TrustedContact]{Diagramma della classe \code{TrustedContact}}
+    \label{fig:architettura_logica_luoghi_TrustedContact}
+\end{figure}
+Rappresenta un contatto fidato associato a un \term{Utente}. \\
+Descrizione attributi: 
+\begin{itemize}
+    \item \code{user\_id} identifica l'\term{Utente} proprietario del contatto;
+    \item \code{contact\_id} identifica univocamente il contatto;
+    \item \code{contact\_name}, \code{contact\_email} e \code{contact\_phone\_number} ne rappresentano i dati anagrafici.
+\end{itemize}
+
+\paragraph{AddTrustedContactCmd}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/AddTrustedContactCmd.pdf}
+    \caption[Diagramma della classe AddTrustedContactCmd]{Diagramma della classe \code{AddTrustedContactCmd}}
+    \label{fig:architettura_logica_luoghi_AddTrustedContactCmd}
+\end{figure}
+Command Object utilizzato dal controller per trasportare i dati necessari all'aggiunta di un contatto fidato.
+
+\paragraph{GetTrustedContactCmd}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/GetTrustedContactCmd.pdf}
+    \caption[Diagramma della classe GetTrustedContactCmd]{Diagramma della classe \code{GetTrustedContactCmd}}
+    \label{fig:architettura_logica_luoghi_GetTrustedContactCmd}
+\end{figure}
+Command Object utilizzato dal controller per trasportare i dati necessari per il fetch di un contatto fidato.
+
+\paragraph{DeleteTrustedContactCmd}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/DeleteTrustedContactCmd.pdf}
+    \caption[Diagramma della classe DeleteTrustedContactCmd]{Diagramma della classe \code{DeleteTrustedContactCmd}}
+    \label{fig:architettura_logica_luoghi_DeleteTrustedContactCmd}
+\end{figure}
+Command Object utilizzato dal controller per trasportare i dati necessari per il la cancellazione di un contatto fidato.
+
+\paragraph{DmsConfigurationSettings}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/DmsConfigurationSettings.pdf}
+    \caption[Diagramma della classe DmsConfigurationSettings]{Diagramma della classe \code{DmsConfigurationSettings}}
+    \label{fig:architettura_logica_luoghi_DmsConfigurationSettings}
+\end{figure}
+Rappresenta la configurazione del Dead Man's Switch associata a un \term{Utente}. \\
+Descrizione attributi:
+\begin{itemize}
+    \item \code{active} indica se il meccanismo è attivo;
+    \item \code{first\_timer} e \code{second\_timer} definiscono la durata in minuti dei due timer;
+    \item \code{body} e \code{subject} contengono il testo personalizzato dell'email che verrà inviata alla scadenza dei timer.
+\end{itemize}
+
+\paragraph{AlertCmd}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/AlertCmd.pdf}
+    \caption[Diagramma della classe AlertCmd]{Diagramma della classe \code{AlertCmd}}
+    \label{fig:architettura_logica_luoghi_AlertCmd}
+\end{figure}
+È il Command Object utilizzato dal controller per trasportare i dati necessari all'invio dell'alert SOS. \\
+Descrizione attributi:
+\begin{itemize}
+    \item \code{user\_id} identificativo dell'\term{Utente};
+    \item \code{user\_email} identificativo della mail del mittente;
+    \item \code{latitude} e \code{longitude} per la posizione geografica.
+\end{itemize}
+
+\paragraph{EmailMessage}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/EmaiMessage.pdf}
+    \caption[Diagramma della classe EmailMessage]{Diagramma della classe \code{EmailMessage}}
+    \label{fig:architettura_logica_luoghi_EmailMessage}
+\end{figure}
+\code{EmailMessage} è la classe astratta che definisce il \term{Contratto} comune per tutti i tipi di email inviabili dal sistema. Contiene gli attributi condivisi: \code{source\_email}, \code{contact\_name} e \code{destination\_contact\_email}.
+\begin{itemize}
+    \item \code{AlertMessage}: aggiunge \code{user\_location} di tipo \code{UserLocation} per includere la posizione geografica dell'\term{Utente} nell'email di soccorso;
+    \item \code{DmsMessage}: aggiunge \code{email\_template} di tipo \code{AlertTemplate} per includere il testo personalizzato configurato dall'\term{Utente} nell'email del Dead Man's Switch.
+    \item \code{UserLocation}: rappresenta la posizione geografica dell'\term{Utente} al momento dell'invio dell'alert SOS;
+    \item \code{AlertTemplate}: contiene il testo personalizzato dell'email del Dead Man's Switch configurato dall'\term{Utente}.
+\end{itemize}
+
+\paragraph{TrustedContactController}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/TrustedContactController.pdf}
+    \caption[Diagramma della classe TrustedContactController]{Diagramma della classe \code{TrustedContactController}}
+    \label{fig:architettura_logica_luoghi_TrustedContactController}
+\end{figure}
+Riceve l'evento grezzo di API Gateway e instrada la richiesta verso la port primaria appropriata in base alla route.\\
+
+Descrizione metodi:
+\begin{itemize}
+    \item \code{handle\_request(event, context)}, punto di ingresso del controller, legge la \code{routeKey} dall'evento e chiama la port primaria corrispondente;
+    \item \code{response(status, body)}, metodo privato di utilità che costruisce la risposta nel formato atteso da API Gateway.
+\end{itemize}
+
+\paragraph{SetDmsHeartBeatPort}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/SetDmsHeartBeatPort.pdf}
+    \caption[Diagramma della classe SetDmsHeartBeatPort]{Diagramma della classe \code{SetDmsHeartBeatPort}}
+    \label{fig:architettura_logica_luoghi_SetDmsHeartBeatPort}
+\end{figure}
+Espone \code{send\_heartbeat(user\_id: str)} per il reset dei timer del Dead Man's Switch al rientro dell'\term{Utente} nell'applicazione.
+
+\paragraph{GetDmsConfigurationSettingsPort}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/GetDmsConfigurationSettingsPort.pdf}
+    \caption[Diagramma della classe GetDmsConfigurationSettingsPort]{Diagramma della classe \code{GetDmsConfigurationSettingsPort}}
+    \label{fig:architettura_logica_luoghi_GetDmsConfigurationSettingsPort}
+\end{figure}
+Espone \code{get\_dms\_config(user\_id: str)} per il recupero della configurazione del Dead Man's Switch.
+
+\paragraph{SetDmsConfigurationSettingsPort}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/SetDmsConfigurationSettingsPort.pdf}
+    \caption[Diagramma della classe SetDmsConfigurationSettingsPort]{Diagramma della classe \code{SetDmsConfigurationSettingsPort}}
+    \label{fig:architettura_logica_luoghi_SetDmsConfigurationSettingsPort}
+\end{figure}
+Espone \code{update\_dms\_configuration\_settings(config: DmsConfig)} per l'aggiornamento della configurazione.
+
+\paragraph{UpdateDeadManSwitchAlertPort}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/UpdateDeadManSwitchAlertPort.pdf}
+    \caption[Diagramma della classe UpdateDeadManSwitchAlertPort]{Diagramma della classe \code{UpdateDeadManSwitchAlertPort}}
+    \label{fig:architettura_logica_luoghi_UpdateDeadManSwitchAlertPort}
+\end{figure}
+Espone \code{update\_dead\_man\_switch\_timers()} per l'aggiornamento dei timer lato \term{Backend}.
+
+\paragraph{SetTrustedContactPort}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/SetTrustedContactPort.pdf}
+    \caption[Diagramma della classe SetTrustedContactPort]{Diagramma della classe \code{SetTrustedContactPort}}
+    \label{fig:architettura_logica_luoghi_SetTrustedContactPort}
+\end{figure}
+Espone \code{add\_contact(contact: AddTrustedContactCmd)} per la creazione di un nuovo contatto e \code{update\_trusted\_contact(request: TrustedContact)} per la modifica di uno esistente.
+
+\paragraph{GetTrustedContactPort}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/GetTrustedContactPort.pdf}
+    \caption[Diagramma della classe GetTrustedContactPort]{Diagramma della classe \code{GetTrustedContactPort}}
+    \label{fig:architettura_logica_luoghi_GetTrustedContactPort}
+\end{figure}
+Espone \code{get\_trusted\_contact(cmd: GetTrustedContactCmd)} per il recupero di un singolo contatto e \code{get\_all\_trusted\_contacts(user\_id: str)} per il recupero della lista completa.
+
+\paragraph{DeleteTrustedContactPort}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/DeleteTrustedContactPort.pdf}
+    \caption[Diagramma della classe DeleteTrustedContactPort]{Diagramma della classe \code{DeleteTrustedContactPort}}
+    \label{fig:architettura_logica_luoghi_DeleteTrustedContactPort}
+\end{figure}
+Espone \code{delete\_trusted\_contact(cmd: DeleteTrustedContactCmd)} per l'eliminazione di un contatto.
+
+\paragraph{SendAlertPort}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/SendAlertPort.pdf}
+    \caption[Diagramma della classe SendAlertPort]{Diagramma della classe \code{SendAlertPort}}
+    \label{fig:architettura_logica_luoghi_SendAlertPort}
+\end{figure}
+Espone \code{send\_alert\_emails(alert\_info: AlertCmd)} per l'invio delle email di soccorso ai contatti fidati.
+
+\paragraph{DmsCRUDService}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/DmsCRUDService.pdf}
+    \caption[Diagramma della classe DmsCRUDService]{Diagramma della classe \code{DmsCRUDService}}
+    \label{fig:architettura_logica_luoghi_DmsCRUDService}
+\end{figure}
+È il service della domain logic responsabile delle operazioni di lettura e scrittura sulla configurazione del Dead Man's Switch e sui contatti fidati.
+
+\paragraph{DmsAlertService}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/DmsAlertService.pdf}
+    \caption[Diagramma della classe DmsAlertService]{Diagramma della classe \code{DmsAlertService}}
+    \label{fig:architettura_logica_luoghi_DmsAlertService}
+\end{figure}
+È responsabile dell'invio delle notifiche del Dead Man's Switch. Si occupa del recupero dei contatti fidati, la configurazione del DMS e la costruzione dei messaggi email.\\
+Descrizione metodi:
+\begin{itemize}
+    \item \code{\_\_init\_\_(\term{Repository}, notification\_repository, dms\_repository)}, costruttore che riceve le tre port secondarie tramite dependency injection;
+    \item \code{send\_user\_notification(user\_id: str)}, metodo privato che recupera la configurazione DMS dell'\term{Utente} e costruisce e invia la notifica all'\term{Utente} alla scadenza del primo timer;
+    \item \code{send\_contacts\_emails(message\_info: AlertMessage)}, metodo privato che costruisce e invia le email ai contatti fidati dell'\term{Utente} alla scadenza del secondo timer.
+\end{itemize}
+
+\paragraph{TrustedContactCRUDService}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/TrustedContactCRUDService.pdf}
+    \caption[Diagramma della classe TrustedContactCRUDService]{Diagramma della classe \code{TrustedContactCRUDService}}
+    \label{fig:architettura_logica_luoghi_TrustedContactCRUDService}
+\end{figure}
+È il service della domain logic responsabile delle operazioni CRUD sui contatti fidati.\\
+Descrizione metodi:
+\begin{itemize}
+    \item \code{\_\_init\_\_(\term{Repository}: TrustedContactRepositoryPort)}, costruttore che riceve la port secondaria tramite dependency injection.
+\end{itemize}
+
+\paragraph{SOSAlertService}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/SOSAlertService.pdf}
+    \caption[Diagramma della classe SOSAlertService]{Diagramma della classe \code{SOSAlertService}}
+    \label{fig:architettura_logica_luoghi_SOSAlertService}
+\end{figure}
+È il service della domain logic responsabile dell'invio immediato delle email di soccorso al momento della pressione del pulsante SOS da parte dell'\term{Utente}. Implementa la port primaria \code{SendAlertPort}.\\
+Descrizione metodi:
+\begin{itemize}
+    \item \code{\_\_init\_\_(contact\_repository, notification\_repository)}, costruttore che riceve le due port secondarie tramite dependency injection;
+    \item \code{send\_single\_email(message: EmailMessage)}, metodo privato che costruisce e invia una singola email a partire da un oggetto \code{EmailMessage}, delegando l'invio alla \code{NotificationPort}.
+\end{itemize}
+
+\paragraph{DmsRepositoryPort}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/DmsRepositoryPort.pdf}
+    \caption[Diagramma della classe DmsRepositoryPort]{Diagramma della classe \code{DmsRepositoryPort}}
+    \label{fig:architettura_logica_luoghi_DmsRepositoryPort}
+\end{figure}
+Descrizione metodi:
+\begin{itemize}
+    \item \code{update\_dms\_config(config: DmsConfig)}, aggiorna la configurazione DMS dell'\term{Utente};
+    \item \code{get\_dms\_config(user\_id: str)}, recupera la configurazione DMS associata all'\term{Utente};
+    \item \code{add\_dms\_config()}, crea una nuova configurazione DMS per l'\term{Utente};
+    \item \code{get\_first\_timer(user\_id: str)}, recupera il valore corrente del primo timer;
+    \item \code{get\_second\_timer(user\_id: str)}, recupera il valore corrente del secondo timer;
+    \item \code{update\_first\_counter(user\_id: str, remaining\_days: int)}, aggiorna il contatore residuo del primo timer;
+    \item \code{update\_second\_counter(user\_id: str, remaining\_days: int)}, aggiorna il contatore residuo del secondo timer.
+\end{itemize}
+
+\paragraph{TrustedContactRepositoryPort}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/TrustedContactRepositoryPort.pdf}
+    \caption[Diagramma della classe TrustedContactRepositoryPort]{Diagramma della classe \code{TrustedContactRepositoryPort}}
+    \label{fig:architettura_logica_luoghi_TrustedContactRepositoryPort}
+\end{figure}
+Descrizione metodi:
+\begin{itemize}
+    \item \code{add(contact: TrustedContact)}, aggiunge un nuovo contatto fidato e restituisce l'entità creata;
+    \item \code{get(user\_id: str, contact\_id: str)}, recupera un singolo contatto fidato tramite le chiavi identificative, restituendo \code{None} se non trovato;
+    \item \code{delete(user\_id: str, contact\_id: str)}, elimina il contatto fidato corrispondente alle chiavi fornite;
+    \item \code{update\_trusted\_contact(contact: TrustedContact)}, aggiorna i dati anagrafici di un contatto fidato esistente;
+    \item \code{list\_trusted\_contacts(user\_id: str)}, restituisce la lista completa dei contatti fidati associati all'\term{Utente}.
+\end{itemize}
+
+\paragraph{NotificationPort}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/NotificationPort.pdf}
+    \caption[Diagramma della classe NotificationPort]{Diagramma della classe \code{NotificationPort}}
+    \label{fig:architettura_logica_luoghi_NotificationPort}
+\end{figure}
+È la port secondaria del pattern esagonale per l'invio delle notifiche email.
+Descrizione metodi:
+\begin{itemize}
+    \item \code{send\_email\_message(message: AlertMessage)}, invia un messaggio email a partire da un oggetto \code{AlertMessage}.
+\end{itemize}
+
+\paragraph{DynamoDmsAdapter}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/DynamoDmsAdapter.pdf}
+    \caption[Diagramma della classe DynamoDmsAdapter]{Diagramma della classe \code{DynamoDmsAdapter}}
+    \label{fig:architettura_logica_luoghi_DynamoDmsAdapter}
+\end{figure}
+Contiene tutta la logica specifica per la persistenza della configurazione e dei contatori del Dead Man's Switch su DynamoDB.
+
+\paragraph{DynamoTrustedContactAdapter}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/DynamoTrustedContactAdapter.pdf}
+    \caption[Diagramma della classe DynamoTrustedContactAdapter]{Diagramma della classe \code{DynamoTrustedContactAdapter}}
+    \label{fig:architettura_logica_luoghi_DynamoTrustedContactAdapter}
+\end{figure}
+Contiene tutta la logica specifica per la persistenza dei contatti fidati su DynamoDB.
+
+\paragraph{SesNotificationAdapter}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/SesNotificationAdapter.pdf}
+    \caption[Diagramma della classe SesNotificationAdapter]{Diagramma della classe \code{SesNotificationAdapter}}
+    \label{fig:architettura_logica_luoghi_SesNotificationAdapter}
+\end{figure}
+Contiene tutta la logica specifica per l'invio delle email tramite il servizio Amazon SES.
 
 \section{Stato dei requisiti funzionali} \label{sec:stato_requisiti_funzionali}
 \subsection{Requisiti Funzionali obbligatori} \label{subsection:requisiti_funzionali_obbligatori}
