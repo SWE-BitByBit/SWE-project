@@ -109,7 +109,7 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & Completo\\
-\textbf{Versione:} & 1.2.0 \\
+\textbf{Versione:} & 1.3.0 \\
 \textbf{Responsabile:} & Riccardo Manisi\\
 \textbf{Redattori:} & 
 \begin{tabular}[t]{@{}l@{}}
@@ -117,6 +117,7 @@ Ferdinando Fracasso\\
 Riccardo Manisi\\
 Gabriele Scaggiante\\
 Dennis Parolin\\
+Giovanni Visentin\\
 \end{tabular} \\
 \textbf{Verificatori:} & 
 \begin{tabular}[t]{@{}l@{}}
@@ -143,6 +144,9 @@ Ferdinando Fracasso\\
 \hline
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+\hline
+\rowcolor{gray!20}
+1.3.0 & 2026-04-29 & Giovanni Visentin & Sistemazione convenzioni di gerarchia delle directory per i file frontend \ref{subpar:convenzioni-gerarchia-dir-fe} & Dennis Parolin \\
 \hline
 \rowcolor{white}
 1.2.0 & 2026-03-31 & Riccardo Manisi & Miglioramento del \term{Processo} di \term{Verifica} secondo standard ISO elencato. & Dennis Parolin \\
@@ -560,10 +564,12 @@ Di seguito viene riportata la struttura delle directory principali e il contenut
         \item \texttt{domain/}, contiene le classi che rappresentano i dati nel formato consumato dal layer UI, indipendenti da qualsiasi sorgente dati;
         \item \texttt{data/}, contiene il layer di accesso ai dati, suddiviso in:
         \begin{itemize}
+            \item \texttt{dtos/}, contiene le classi DTO (Data Transfer Object), che rappresentano la struttura dei dati così come vengono inviati alla sorgente dati, prima di eventuali trasformazioni;
+            \item \texttt{proxies/}, contiene le classi Proxy, che rappresentano implementazioni fittizie dei Service, utilizzate principalmente per i test;
             \item \texttt{repositories/}, contiene le classi \term{Repository}, che rappresentano la fonte di verità per un tipo di dato e orchestrano l'accesso ai Service;
-            \item \texttt{services/}, contiene le classi Service, che comunicano con sorgenti dati esterne (\term{API REST}, database locali, ecc.);
-            \item \texttt{model/}, contiene le classi Model, che rappresentano la struttura dei dati così come vengono ricevuti dalla sorgente dati, prima di eventuali trasformazioni.
+            \item \texttt{services/}, contiene le classi Service, che comunicano con sorgenti dati esterne (\term{API REST}, database locali, ecc.).
         \end{itemize}
+        \item \texttt{utils/}, contiene classi e funzioni di utilità condivise tra più componenti del progetto, come ad esempio helper per la gestione degli errori, formattazione delle date, ecc.
     \end{itemize}
     \item \texttt{test/}, contiene gli unit test del codice Dart. La struttura interna rispecchia quella di \texttt{lib/}, in modo che ogni file sorgente abbia il corrispondente file di test con suffisso \texttt{\_test.dart};
     \item \texttt{testing/}, contiene le classi dedicate ai mock e alle utilities condivise tra i test, come le implementazioni fittizie dei \term{Repository} e dei Service.
