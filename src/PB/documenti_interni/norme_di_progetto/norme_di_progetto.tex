@@ -616,14 +616,14 @@ Di seguito viene riportata la struttura delle directory principali e il contenut
 \begin{itemize}
     \item \texttt{src/}, directory radice del codice sorgente:
     \begin{itemize}
-        \item \texttt{<lambda_name>/}, ogni directory rappresenta una specifica funzione Lambda (es. \texttt{materials}, \texttt{safe_places}), al suo interno:
+        \item \texttt{<lambda\_name>/}, ogni directory rappresenta una specifica funzione Lambda (es. \texttt{materials}, \texttt{safe\_places}), al suo interno:
         \begin{itemize}
             \item \texttt{controller/}, contiene le classi che orchestrano la risposta e gestiscono il flusso della richiesta in ingresso;
             \item \texttt{service/}, contiene l'implementazione della \term{Business Logic} core del microservizio;
             \item \texttt{repository/}, contiene gli adattatori per l'accesso fisico ai dati (es. implementazioni per S3 o DynamoDB);
             \item \texttt{ports/}, contiene le interfacce astratte (Port) che definiscono i contratti per i \term{Repository} e i servizi, garantendo il disaccoppiamento;
             \item \texttt{models/}, contiene le classi che rappresentano le entità e i modelli di dati interni del dominio;
-            \item \texttt{lambda_handler.py}, contiene la funzione di ingresso (Handler) scatenata dall'evento AWS.
+            \item \texttt{lambda\_handler.py}, contiene la funzione di ingresso (Handler) scatenata dall'evento AWS.
         \end{itemize}
     \end{itemize}
     \item \texttt{tests/}, contiene la suite di test automatizzati (unitari e di integrazione). La struttura interna rispecchia fedelmente quella di \texttt{src/};
