@@ -550,7 +550,7 @@ codice che i membri del gruppo producono durante questa attività:
 \end{itemize}
 
 \subparagraph{Convenzioni sulla struttura gerarchica delle directory} \label{subpar:convenzioni-gerarchia-dir-fe}
-La struttura del codice del progetto Flutter segue un'architettura stratificata (\term{Layered Architecture}) ispirata ai principi della \term{Clean Architecture}, garantendo separazione delle responsabilità e testabilità.
+La struttura del codice del progetto Flutter segue un'\term{Architettura} stratificata (Layered Architecture) ispirata ai principi della \term{Clean Architecture}, garantendo separazione delle responsabilità e testabilità.
 Di seguito viene riportata la struttura delle directory principali:
 \begin{itemize}
     \item \texttt{lib/}, directory del codice sorgente dell'applicazione:
@@ -567,9 +567,9 @@ Di seguito viene riportata la struttura delle directory principali:
         \item \texttt{domain/}, contiene le classi di dominio e i modelli (\texttt{models/}) che rappresentano i dati consumati dal layer UI;
         \item \texttt{data/}, contiene il layer di accesso ai dati, suddiviso in:
         \begin{itemize}
-            \item \texttt{dtos/}, classi \term{DTO} per la serializzazione/deserializzazione dei dati;
+            \item \texttt{dtos/}, classi DTO per la serializzazione/deserializzazione dei dati;
             \item \texttt{proxies/}, implementazioni fittizie utilizzate per test o sviluppo;
-            \item \texttt{repositories/}, classi \term{Repository} che orchestrano l'accesso ai \term{Service};
+            \item \texttt{repositories/}, classi \term{Repository} che orchestrano l'accesso ai Service;
             \item \texttt{services/}, classi che comunicano con sorgenti dati esterne (\term{API REST}, database, ecc.).
         \end{itemize}
         \item \texttt{utils/}, contiene helper e funzioni di utilità condivise.
