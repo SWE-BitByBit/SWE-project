@@ -611,23 +611,23 @@ Per garantirne il rispetto su tutto il progetto, la formattazione automatica vie
     \item \textbf{Remoto}: la pipeline di \term{GitHub Actions} per eseguire la Ci applica la formattazione Python ad ogni \textit{push}, impedendo il \term{Merge} di codice non formattato correttamente nel \term{Branch} principale.
 \end{itemize}
 
-\subparagraph{Convenzioni sulla struttura gerarchica della directory di backend} \label{subpar:convenzioni-gerarchia-dir-be}
+\subparagraph{Convenzioni sulla struttura gerarchica della directory di \term{Backend}} \label{subpar:convenzioni-gerarchia-dir-be}
 Di seguito viene riportata la struttura delle directory principali e il contenuto atteso per ciascuna:
 \begin{itemize}
     \item \texttt{src/}, directory radice del codice sorgente:
     \begin{itemize}
-        \item \texttt{<lambda_name>/}, ogni directory rappresenta una specifica funzione \term{Lambda} (es. \texttt{materials}, \texttt{safe_places}), al suo interno:
+        \item \texttt{<lambda_name>/}, ogni directory rappresenta una specifica funzione Lambda (es. \texttt{materials}, \texttt{safe_places}), al suo interno:
         \begin{itemize}
             \item \texttt{controller/}, contiene le classi che orchestrano la risposta e gestiscono il flusso della richiesta in ingresso;
             \item \texttt{service/}, contiene l'implementazione della \term{Business Logic} core del microservizio;
             \item \texttt{repository/}, contiene gli adattatori per l'accesso fisico ai dati (es. implementazioni per S3 o DynamoDB);
-            \item \texttt{ports/}, contiene le interfacce astratte (\term{Port}) che definiscono i contratti per i repository e i servizi, garantendo il disaccoppiamento;
+            \item \texttt{ports/}, contiene le interfacce astratte (Port) che definiscono i contratti per i \term{Repository} e i servizi, garantendo il disaccoppiamento;
             \item \texttt{models/}, contiene le classi che rappresentano le entità e i modelli di dati interni del dominio;
-            \item \texttt{lambda_handler.py}, contiene la funzione di ingresso (\term{Handler}) scatenata dall'evento AWS.
+            \item \texttt{lambda_handler.py}, contiene la funzione di ingresso (Handler) scatenata dall'evento AWS.
         \end{itemize}
     \end{itemize}
     \item \texttt{tests/}, contiene la suite di test automatizzati (unitari e di integrazione). La struttura interna rispecchia fedelmente quella di \texttt{src/};
-    \item \texttt{events/}, contiene i file \term{JSON} che simulano gli eventi di input per il testing locale delle funzioni tramite \term{AWS SAM}.
+    \item \texttt{events/}, contiene i file JSON che simulano gli eventi di input per il testing locale delle funzioni tramite AWS SAM.
 \end{itemize}
 
 \paragraph{Vincoli implementativi}
