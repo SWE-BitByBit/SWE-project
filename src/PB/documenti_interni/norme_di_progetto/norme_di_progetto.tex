@@ -549,33 +549,33 @@ codice che i membri del gruppo producono durante questa attività:
     impedendo il \term{Merge} di codice non formattato correttamente nel ramo principale.
 \end{itemize}
 
-\subparagraph{Convenzioni sulla struttura gerarchica delle directory} \label{subpar:convenzioni-gerarchia-dir-fe}
-La struttura del codice del progetto Flutter segue un'\term{Architettura} stratificata (Layered Architecture) ispirata ai principi della \term{Clean Architecture}, garantendo separazione delle responsabilità e testabilità.
-Di seguito viene riportata la struttura delle directory principali:
+\subparagraph{Convenzioni sulla struttura gerarchica della directory di frontend} \label{subpar:convenzioni-gerarchia-dir-fe}
+La struttura del codice del progetto Flutter segue la suddivisione per layer raccomandata dalla documentazione ufficiale di Flutter. 
+Di seguito viene riportata la struttura delle directory principali e il contenuto atteso per ciascuna:
 \begin{itemize}
     \item \texttt{lib/}, directory del codice sorgente dell'applicazione:
     \begin{itemize}
-        \item \texttt{ui/}, contiene tutto il codice relativo alla presentazione, organizzato per funzionalità:
+        \item \texttt{ui/}, contiene tutto il codice relativo alla presentazione:
         \begin{itemize}
-            \item \texttt{core/}, contiene i widget riutilizzabili globalmente (\texttt{widgets/}) e la definizione dei temi e colori (\texttt{themes/});
-            \item \texttt{<feature_name>/}, directory dedicata a una specifica funzionalità:
+            \item \texttt{core/}, contiene i widget e i temi riutilizzabili condivisi da più schermate (classi con suffisso Widget);
+            \item \texttt{<feature\_name>/}, ogni funzionalità ha una directory dedicata, al suo interno:
             \begin{itemize}
-                \item \texttt{view_model/}, contiene le classi ViewModel (suffisso \texttt{ViewModel});
-                \item \texttt{widget/}, contiene le classi Screen (suffisso \texttt{Screen}) e i componenti specifici della funzionalità (suffisso \texttt{Widget}).
+                \item \texttt{view\_model/}, contiene le classi ViewModel associate alle schermate della funzionalità;
+                \item \texttt{widget/}, contiene le classi Screen e gli eventuali widget specifici della funzionalità.
             \end{itemize}
         \end{itemize}
-        \item \texttt{domain/}, contiene le classi di dominio e i modelli (\texttt{models/}) che rappresentano i dati consumati dal layer UI;
+        \item \texttt{domain/}, contiene le classi che rappresentano i dati nel formato consumato dal layer UI, indipendenti da qualsiasi sorgente dati;
         \item \texttt{data/}, contiene il layer di accesso ai dati, suddiviso in:
         \begin{itemize}
-            \item \texttt{dtos/}, classi DTO per la serializzazione/deserializzazione dei dati;
-            \item \texttt{proxies/}, implementazioni fittizie utilizzate per test o sviluppo;
-            \item \texttt{repositories/}, classi \term{Repository} che orchestrano l'accesso ai Service;
-            \item \texttt{services/}, classi che comunicano con sorgenti dati esterne (\term{API REST}, database, ecc.).
+            \item \texttt{dtos/}, contiene le classi DTO (Data Transfer Object), che rappresentano la struttura dei dati così come vengono inviati alla sorgente dati, prima di eventuali trasformazioni;
+            \item \texttt{proxies/}, contiene le classi Proxy, che rappresentano implementazioni fittizie dei Service, utilizzate principalmente per i test;
+            \item \texttt{repositories/}, contiene le classi \term{Repository}, che rappresentano la fonte di verità per un tipo di dato e orchestrano l'accesso ai Service;
+            \item \texttt{services/}, contiene le classi Service, che comunicano con sorgenti dati esterne (\term{API REST}, database locali, ecc.).
         \end{itemize}
-        \item \texttt{utils/}, contiene helper e funzioni di utilità condivise.
+        \item \texttt{utils/}, contiene classi e funzioni di utilità condivise tra più componenti del progetto, come ad esempio helper per la gestione degli errori, formattazione delle date, ecc.
     \end{itemize}
-    \item \texttt{test/}, contiene gli unit test e i widget test. La struttura interna rispecchia quella di \texttt{lib/}.
-    \item \texttt{testing/}, contiene risorse di supporto ai test, come mock e utility condivise non destinate alla produzione.
+    \item \texttt{test/}, contiene gli unit test del codice Dart. La struttura interna rispecchia quella di \texttt{lib/}, in modo che ogni file sorgente abbia il corrispondente file di test con suffisso \texttt{\_test.dart};
+    \item \texttt{testing/}, contiene le classi dedicate ai mock e alle utilities condivise tra i test, come le implementazioni fittizie dei \term{Repository} e dei Service.
 \end{itemize}
 
 %==== SEZIONE CODICE PY ====
@@ -609,6 +609,25 @@ Per garantirne il rispetto su tutto il progetto, la formattazione automatica vie
 \begin{itemize}
     \item \textbf{Locale}: l'\term{IDE} adottato dal gruppo è configurato per eseguire \texttt{black} al salvataggio del file tramite l'estensione ufficiale.
     \item \textbf{Remoto}: la pipeline di \term{GitHub Actions} per eseguire la Ci applica la formattazione Python ad ogni \textit{push}, impedendo il \term{Merge} di codice non formattato correttamente nel \term{Branch} principale.
+\end{itemize}
+
+\subparagraph{Convenzioni sulla struttura gerarchica della directory di backend} \label{subpar:convenzioni-gerarchia-dir-be}
+Di seguito viene riportata la struttura delle directory principali e il contenuto atteso per ciascuna:
+\begin{itemize}
+    \item \texttt{src/}, directory radice del codice sorgente:
+    \begin{itemize}
+        \item \texttt{<lambda_name>/}, ogni directory rappresenta una specifica funzione \term{Lambda} (es. \texttt{materials}, \texttt{safe_places}), al suo interno:
+        \begin{itemize}
+            \item \texttt{controller/}, contiene le classi che orchestrano la risposta e gestiscono il flusso della richiesta in ingresso;
+            \item \texttt{service/}, contiene l'implementazione della \term{Business Logic} core del microservizio;
+            \item \texttt{repository/}, contiene gli adattatori per l'accesso fisico ai dati (es. implementazioni per S3 o DynamoDB);
+            \item \texttt{ports/}, contiene le interfacce astratte (\term{Port}) che definiscono i contratti per i repository e i servizi, garantendo il disaccoppiamento;
+            \item \texttt{models/}, contiene le classi che rappresentano le entità e i modelli di dati interni del dominio;
+            \item \texttt{lambda_handler.py}, contiene la funzione di ingresso (\term{Handler}) scatenata dall'evento AWS.
+        \end{itemize}
+    \end{itemize}
+    \item \texttt{tests/}, contiene la suite di test automatizzati (unitari e di integrazione). La struttura interna rispecchia fedelmente quella di \texttt{src/};
+    \item \texttt{events/}, contiene i file \term{JSON} che simulano gli eventi di input per il testing locale delle funzioni tramite \term{AWS SAM}.
 \end{itemize}
 
 \paragraph{Vincoli implementativi}
