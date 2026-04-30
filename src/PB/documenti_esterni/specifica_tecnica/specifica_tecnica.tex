@@ -3350,6 +3350,386 @@ Contiene tutta la logica specifica per la persistenza dei contatti fidati su Dyn
 \end{figure}
 Contiene tutta la logica specifica per l'invio delle email tramite il servizio Amazon SES.
 
+\paragraph{\term{Architettura} e Flusso di Elaborazione: diario criptato e fittizio}\mbox{}\\
+
+La sezione relativa alla gestione del diario è progettata per garantire la memorizzazione sicura delle note personali dell’\term{Utente}, introducendo un meccanismo di doppio accesso che distingue tra diario reale e diario fittizio.
+
+API Gateway gestisce l’esposizione degli endpoint REST e \ignoreglossary{verifica}, per ogni richiesta, che l’\term{Utente} sia correttamente autenticato all’applicazione principale mediante authorizer Amazon Cognito. Una volta validata l’identità, le richieste vengono inoltrate a una funzione Lambda centrale, responsabile della gestione della logica applicativa relativa all’autenticazione secondaria al diario, alle operazioni CRUD sulle note e alla gestione dei contenuti multimediali associati.
+
+L’architettura backend del microservizio si basa su una singola Lambda orchestratrice, tre tabelle DynamoDB e un bucket Amazon S3.
+
+I dati sono distribuiti tra tre database DynamoDB distinti:
+
+\begin{itemize}
+\item \texttt{diary\_auth}: contiene, per ciascun \term{Utente}, gli hash delle password associate al diario reale e il diario fittizio. Questa tabella viene consultata dalla Lambda per validare le credenziali secondarie fornite e determinare a quali note debba essere dato accesso.
+\item \texttt{notes}: memorizza i metadati principali delle note, inclusi identificativo della nota, identificativo dell’\term{Utente}, titolo, timestamp di creazione, timestamp di ultima modifica e tipologia del diario di appartenenza.
+\item \texttt{note\_elements}: contiene i singoli elementi che compongono ciascuna nota. Ogni elemento è associato a una specifica nota e include informazioni sul tipo di contenuto e sul relativo payload.
+\end{itemize}
+
+Gli elementi di nota supportati possono essere di tre tipologie principali:
+
+\begin{itemize}
+\item \textbf{Testo}: contenuto direttamente memorizzato all’interno della tabella DynamoDB;
+\item \textbf{Immagine}: riferimento a un'immagine memorizzata su Amazon S3;
+\item \textbf{Audio}: riferimento a un file audio memorizzato su Amazon S3.
+
+\end{itemize}
+
+I contenuti multimediali effettivi vengono memorizzati nel bucket \texttt{diary-storage}, mentre i corrispondenti elementi di nota mantengono un riferimento a tali risorse.
+
+Il flusso di elaborazione del microservizio diario è il seguente:
+
+\begin{itemize}
+\item \textbf{Autenticazione primaria}: l’\term{Utente} invia una richiesta verso un endpoint protetto. API Gateway, tramite Cognito Authorizer, \ignoreglossary{verifica} l’autenticità del token JWT e autorizza l’accesso al microservizio.
+\item \textbf{Instradamento verso Lambda}: la richiesta autenticata viene inoltrata alla Lambda centrale, che identifica l’operazione richiesta.
+
+\item \textbf{Validazione accesso al diario}: per le operazioni che richiedono apertura del diario, la Lambda recupera dalla tabella \texttt{diary\_auth} gli hash delle password associate all’\term{Utente} e confronta la credenziale ricevuta con i valori memorizzati.
+
+\item \textbf{Determinazione del contesto}: in base alla password validata, il sistema determina se operare sul diario reale o su quello fittizio, impostando il relativo valore di \texttt{DiaryType}.
+
+\item \textbf{Accesso ai dati}: la Lambda interroga la tabella \texttt{notes} per recuperare le note appartenenti al contesto selezionato e, ove necessario, interroga \texttt{note\_elements} per ricostruire integralmente il contenuto della nota.
+
+\item \textbf{Gestione contenuti multimediali}: nel caso di elementi immagine o audio, la Lambda genera URL pre-signed Amazon S3 per consentire accesso temporaneo e controllato ai file.
+
+\item \textbf{Operazioni di persistenza}: durante inserimenti o modifiche, i metadati vengono salvati su DynamoDB mentre i file binari vengono caricati sul bucket S3.
+
+\item \textbf{Restituzione risposta}: i dati vengono serializzati e restituiti al client sotto forma di payload JSON.
+\end{itemize}
+
+L’intero microservizio è implementato secondo il paradigma dell’architettura esagonale. Il lambda handler, la funzione primaria richiamata da API Gateway all'interno della Lambda, instrada la richiesta al rispettivo controller, che la trasforma in command object. Tali comandi vengono quindi processati dai service, responsabili della logica di business, che interagiscono con le porte di uscita per accedere a DynamoDB e Amazon S3.
+
+Questa separazione garantisce modularità, testabilità e indipendenza rispetto ai dettagli infrastrutturali, consentendo al sistema di evolvere mantenendo invariata la logica di business.
+
+\paragraph{DiaryType}\mbox{}\\
+L'enumerazione \code{DiaryType} definisce i due tipi di diario supportati dal sistema: \code{REAL\_DIARY} per il diario reale contenente i dati autentici dell'utente e \code{FAKE\_DIARY} per il diario fittizio.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-DiaryType.pdf}
+    \caption[Diagramma dell'enumerazione DiaryType]{Diagramma dell'enumerazione \code{DiaryType}}
+    \label{DCB-DiaryType-Backend}
+\end{figure}
+
+\paragraph{Note}\mbox{}\\
+La classe \code{Note} rappresenta l'entità di dominio principale del sistema, modellando una nota completa del diario. Include gli identificativi univoci (\code{note\_id}, \code{user\_id}), i metadati temporali (\code{created\_at}, \code{last\_modified\_at}), il titolo della nota e il tipo di diario di appartenenza (\code{diary\_type}). La nota è composta da una collezione di elementi rappresentati tramite la lista \code{message\_elements} di tipo \code{List\[NoteElement\]}. La serializzazione della classe avviene tramite \code{NoteDTO}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-Note.pdf}
+    \caption[Diagramma della classe Note]{Diagramma della classe \code{Note}}
+    \label{DCB-Note-Backend}
+\end{figure}
+
+\paragraph{NoteElement}\mbox{}\\
+\code{NoteElement} modella un singolo blocco di contenuto all'interno di una nota. Ogni elemento è identificato univocamente tramite \code{note\_element\_id} e mantiene un riferimento alla nota di appartenenza (\code{note\_id}) e all'utente proprietario (\code{user\_id}). Il campo \code{type} specifica la tipologia del contenuto (testo, immagine, audio), mentre \code{content} ne contiene il valore effettivo. Questa granularità permette di gestire note composite e strutturate, supportando l'aggiunta e rimozione incrementale di elementi. La classe viene serializzata tramite \code{NoteElementDTO}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-NoteElement.pdf}
+    \caption[Diagramma della classe NoteElement]{Diagramma della classe \code{NoteElement}}
+    \label{DCB-NoteElement-Backend}
+\end{figure}
+
+\paragraph{GetNoteCmd}\mbox{}\\
+Il command object \code{GetNoteCmd} incapsula i parametri necessari per richiedere il recupero di una singola nota. Contiene l'identificativo della nota (\code{note\_id}), l'identificativo dell'utente richiedente (\code{user\_id}) e il tipo di diario da cui recuperare la nota (\code{diary\_type}). Questo oggetto viene consumato dal metodo \code{get\_note} dell'interfaccia \code{GetNotePort}, implementata da \code{NoteService}, che delega il recupero effettivo al repository di persistenza.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-GetNoteCmd.pdf}
+    \caption[Diagramma della classe GetNoteCmd]{Diagramma della classe \code{GetNoteCmd}}
+    \label{DCB-GetNoteCmd-Backend}
+\end{figure}
+
+\paragraph{GetNotesCmd}\mbox{}\\
+\code{GetNotesCmd} rappresenta la richiesta dell'elenco delle note appartenenti a un utente. Include l'identificativo dell'utente (\code{user\_id}) e il tipo di diario da interrogare (\code{diary\_type}). Viene utilizzato dal metodo \code{list\_notes} di \code{GetNotePort} per recuperare l'insieme completo delle note dell'utente, mantenendo l'isolamento tra diario reale e fittizio.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-GetNotesCmd.pdf}
+    \caption[Diagramma della classe GetNotesCmd]{Diagramma della classe \code{GetNotesCmd}}
+    \label{DCB-GetNotesCmd-Backend}
+\end{figure}
+
+\paragraph{AddElementNewNoteCmd}\mbox{}\\
+Il command \code{AddElementNewNoteCmd} rappresenta la richiesta dell'aggiunta di un blocco di contenuto destinato a far parte di una nuova nota in fase di creazione. Contiene l'identificativo dell'utente proprietario (\code{user\_id}), la tipologia dell'elemento (\code{type}) e il suo contenuto (\code{content}). Questo oggetto viene utilizzato all'interno di \code{AddNoteCmd} come componente della lista \code{message\_elements}, permettendo la creazione di note con elementi preimpostati.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-AddElementNewNoteCmd.pdf}
+    \caption[Diagramma della classe AddElementNewNoteCmd]{Diagramma della classe \code{AddElementNewNoteCmd}}
+    \label{DCB-AddElementNewNoteCmd-Backend}
+\end{figure}
+
+\paragraph{AddNoteCmd}\mbox{}\\
+\code{AddNoteCmd} incapsula tutti i dati necessari per la creazione di una nuova nota completa. Include l'identificativo della nota, il titolo, i timestamp di creazione e ultima modifica, il tipo di diario di destinazione e le richieste di creazione per i singoli elementi della nota. \code{AddNoteCmd} viene consumato dal metodo \code{add\_note} dell'interfaccia \code{SetNotePort}, implementata da \code{NoteService}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-AddNoteCmd.pdf}
+    \caption[Diagramma della classe AddNoteCmd]{Diagramma della classe \code{AddNoteCmd}}
+    \label{DCB-AddNoteCmd-Backend}
+\end{figure}
+
+\paragraph{AddNoteElementCmd}\mbox{}\\
+Il command object \code{AddNoteElementCmd} rappresenta la richiesta di aggiunta di un singolo elemento a una nota esistente. Contiene l'identificativo dell'utente e della nota target, la tipologia del nuovo elemento e il suo contenuto. Viene processato dal metodo \code{add\_note\_element} dell'interfaccia \code{SetNoteElementPort}, che delega a \code{NoteService} la creazione dell'entità \code{NoteElement} e la successiva persistenza tramite il repository.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-AddNoteElementCmd.pdf}
+    \caption[Diagramma della classe AddNoteElementCmd]{Diagramma della classe \code{AddNoteElementCmd}}
+    \label{DCB-AddNoteElementCmd-Backend}
+\end{figure}
+
+\paragraph{DeleteNoteCmd}\mbox{}\\
+\code{DeleteNoteCmd} incapsula i parametri per l'eliminazione di una nota. Include l'identificativo della nota da rimuovere, quello dell'utente richiedente e il tipo di diario da cui eliminare la risorsa. Questo command viene consumato dal metodo \code{delete\_note} di \code{DeleteNotePort}, che coordina sia la rimozione dal repository di persistenza che l'eventuale cleanup degli allegati file tramite \code{FileRepositoryPort}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-DeleteNoteCmd.pdf}
+    \caption[Diagramma della classe DeleteNoteCmd]{Diagramma della classe \code{DeleteNoteCmd}}
+    \label{DCB-DeleteNoteCmd-Backend}
+\end{figure}
+
+\paragraph{DeleteNoteElementCmd}\mbox{}\\
+Il command \code{DeleteNoteElementCmd} modella la richiesta di rimozione di un singolo elemento da una nota esistente. Contiene l'identificativo dell'utente, della nota di riferimento e dell'elemento specifico (\code{note\_element\_id}). Viene processato dal metodo \code{delete\_note\_element} dell'interfaccia \code{DeleteNoteElementPort}, implementata da \code{NoteService}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-DeleteNoteElementCmd.pdf}
+    \caption[Diagramma della classe DeleteNoteElementCmd]{Diagramma della classe \code{DeleteNoteElementCmd}}
+    \label{DCB-DeleteNoteElementCmd-Backend}
+\end{figure}
+
+\paragraph{ValidatePasswordCmd}\mbox{}\\
+\code{ValidatePasswordCmd} rappresenta la richiesta di validazione delle credenziali di accesso al diario. Include l'identificativo dell'utente e la password da verificare. Questo command viene consumato dal metodo \code{validate\_password} dell'interfaccia \code{ValidatePasswordPort}, implementata da \code{DiaryAuthService}, che delega la verifica al repository di autenticazione e restituisce il tipo di diario corrispondente alla password fornita, permettendo così l'accesso selettivo al diario reale o fittizio.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-ValidatePasswordCmd.pdf}
+    \caption[Diagramma della classe ValidatePasswordCmd]{Diagramma della classe \code{ValidatePasswordCmd}}
+    \label{DCB-ValidatePasswordCmd-Backend}
+\end{figure}
+
+\paragraph{SetPasswordCmd}\mbox{}\\
+Il command object \code{SetPasswordCmd} incapsula i dati necessari per l'impostazione o l'aggiornamento delle credenziali di accesso. Include l'identificativo utente, il tipo di diario di riferimento, la nuova password (\code{password}) e opzionalmente la password precedente (\code{previous\_password}) per operazioni di modifica. Viene utilizzato dai metodi \code{set\_real\_password} e \code{set\_fake\_password} dell'interfaccia \code{SetPasswordPort}, permettendo la configurazione indipendente delle credenziali per ciascun tipo di diario.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-SetPasswordCmd.pdf}
+    \caption[Diagramma della classe SetPasswordCmd]{Diagramma della classe \code{SetPasswordCmd}}
+    \label{DCB-SetPasswordCmd-Backend}
+\end{figure}
+
+\paragraph{CheckPasswordCmd}\mbox{}\\
+\code{CheckPasswordCmd} modella la richiesta di verifica dello stato di configurazione delle password per un utente. Contiene esclusivamente l'identificativo dell'utente e viene consumato dal metodo \code{check\_password\_status} dell'interfaccia \code{CheckPasswordPort} per determinare quali credenziali di accesso sono state configurate. Ciò è necessario per permettere al frontend di mostrare una pagina di inserimento password dedicata nel caso in cui l'utente non abbia mai impostato la password per il diario con cui vuole interagire.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-CheckPasswordCmd.pdf}
+    \caption[Diagramma della classe CheckPasswordCmd]{Diagramma della classe \code{CheckPasswordCmd}}
+    \label{DCB-CheckPasswordCmd-Backend}
+\end{figure}
+
+\paragraph{GetNotePort}\mbox{}\\
+L'interfaccia \code{GetNotePort} definisce il contratto per le operazioni di lettura delle note. Tali operazioni di lettura includono il fetch di una singola nota e il fetch di tutte le note di un singolo utente. \code{GetNotePort} viene implementata da \code{NoteService}, che orchestra il recupero dei dati tramite \code{NoteRepositoryPort}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-GetNotePort.pdf}
+    \caption[Diagramma dell'interfaccia GetNotePort]{Diagramma dell'interfaccia \code{GetNotePort}}
+    \label{DCB-GetNotePort-Backend}
+\end{figure}
+
+\paragraph{SetNotePort}\mbox{}\\
+L'interfaccia \code{SetNotePort} definisce il contratto per la creazione di una nuova nota. È implementata da \code{NoteService}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-SetNotePort.pdf}
+    \caption[Diagramma dell'interfaccia SetNotePort]{Diagramma dell'interfaccia \code{SetNotePort}}
+    \label{DCB-SetNotePort-Backend}
+\end{figure}
+
+\paragraph{DeleteNotePort}\mbox{}\\
+L'interfaccia \code{DeleteNotePort} definisce il contratto per l'eliminazione di un'intera nota. È implementata da \code{NoteService}, che orchestra sia la rimozione della nota dal repository che l'eventuale cleanup dei file allegati attraverso \code{FileRepositoryPort}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-DeleteNotePort.pdf}
+    \caption[Diagramma dell'interfaccia DeleteNotePort]{Diagramma dell'interfaccia \code{DeleteNotePort}}
+    \label{DCB-DeleteNotePort-Backend}
+\end{figure}
+
+\paragraph{SetNoteElementPort}\mbox{}\\
+L'interfaccia \code{SetNoteElementPort} definisce il contratto per l'aggiunta di un elemento di contenuto a una nota esistente. Il metodo \code{add\_note\_element} accetta un \code{AddNoteElementCmd} e restituisce l'entità \code{NoteElement} creata. È implementata da \code{NoteService}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-SetNoteElementPort.pdf}
+    \caption[Diagramma dell'interfaccia SetNoteElementPort]{Diagramma dell'interfaccia \code{SetNoteElementPort}}
+    \label{DCB-SetNoteElementPort-Backend}
+\end{figure}
+
+\paragraph{DeleteNoteElementPort}\mbox{}\\
+L'interfaccia \code{DeleteNoteElementPort} definisce il contratto per la rimozione di un singolo elemento da una nota esistente. È implementata da \code{NoteService}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-DeleteNoteElementPort.pdf}
+    \caption[Diagramma dell'interfaccia DeleteNoteElementPort]{Diagramma dell'interfaccia \code{DeleteNoteElementPort}}
+    \label{DCB-DeleteNoteElementPort-Backend}
+\end{figure}
+
+\paragraph{SetPasswordPort}\mbox{}\\
+L'interfaccia \code{SetPasswordPort} definisce il contratto per la configurazione delle credenziali di accesso. Espone due metodi distinti: \code{set\_real\_password} per l'impostazione della password del diario reale e \code{set\_fake\_password} per quella del diario fittizio, entrambi accettando un \code{SetPasswordCmd}. È implementata da \code{DiaryAuthService}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-SetPasswordPort.pdf}
+    \caption[Diagramma dell'interfaccia SetPasswordPort]{Diagramma dell'interfaccia \code{SetPasswordPort}}
+    \label{DCB-SetPasswordPort-Backend}
+\end{figure}
+
+\paragraph{ValidatePasswordPort}\mbox{}\\
+L'interfaccia \code{ValidatePasswordPort} definisce il contratto per la validazione delle credenziali di accesso al diario. Il metodo \code{validate\_password} accetta un \code{ValidatePasswordCmd} e restituisce una stringa rappresentante il tipo di diario corrispondente alla password fornita se una corrispondenza viene effettivamente trovata. È implementata da \code{DiaryAuthService}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-ValidatePasswordPort.pdf}
+    \caption[Diagramma dell'interfaccia ValidatePasswordPort]{Diagramma dell'interfaccia \code{ValidatePasswordPort}}
+    \label{DCB-ValidatePasswordPort-Backend}
+\end{figure}
+
+\paragraph{CheckPasswordPort}\mbox{}\\
+L'interfaccia \code{CheckPasswordPort} definisce il contratto per la verifica dello stato di configurazione delle password.  È implementata da \code{DiaryAuthService}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-CheckPasswordPort.pdf}
+    \caption[Diagramma dell'interfaccia CheckPasswordPort]{Diagramma dell'interfaccia \code{CheckPasswordPort}}
+    \label{DCB-CheckPasswordPort-Backend}
+\end{figure}
+
+\paragraph{NoteRepositoryPort}\mbox{}\\
+L'interfaccia \code{NoteRepositoryPort} definisce il contratto per la persistenza delle note e dei loro elementi. Espone i metodi \code{add} per la creazione di note, \code{get} per il recupero di una nota specifica, \code{delete} per la rimozione, \code{list} per l'elenco completo delle note di un utente, \code{add\_note\_element} per l'inserimento di elementi in note esistenti e \code{delete\_note\_element} per la loro rimozione. Tutti i metodi accettano il parametro \code{diary\_type} per garantire l'isolamento tra diario reale e fittizio. Questa porta di uscita viene implementata da \code{DynamoNoteAdapter}, che fornisce la persistenza concreta su DynamoDB.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-NoteRepositoryPort.pdf}
+    \caption[Diagramma dell'interfaccia NoteRepositoryPort]{Diagramma dell'interfaccia \code{NoteRepositoryPort}}
+    \label{DCB-NoteRepositoryPort-Backend}
+\end{figure}
+
+\paragraph{FileRepositoryPort}\mbox{}\\
+L'interfaccia \code{FileRepositoryPort} definisce il contratto per la gestione degli file (immagini o audio) inseriti all'interno delle note del diario. Espone il metodo \code{add\_note\_element} che accetta una chiave e restituisce l'URL di accesso, \code{delete} per la rimozione di file tramite chiave e \code{generate\_presigned\_url} per la generazione di URL firmati con parametri e scadenza configurabili. \code{FileRepositoryPort} è implementata da \code{S3NoteAdapter}, che fornisce l'integrazione concreta con Amazon S3.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-FileRepositoryPort.pdf}
+    \caption[Diagramma dell'interfaccia FileRepositoryPort]{Diagramma dell'interfaccia \code{FileRepositoryPort}}
+    \label{DCB-FileRepositoryPort-Backend}
+\end{figure}
+
+\paragraph{DiaryAuthRepositoryPort}\mbox{}\\
+L'interfaccia \code{DiaryAuthRepositoryPort} definisce il contratto per la persistenza e validazione delle credenziali di accesso. Espone il metodo \code{hash\_password} per la generazione dell'hash di una password, \code{validate\_password} per la verifica delle credenziali fornite restituendo il tipo di diario corrispondente, e \code{set\_password} per la persistenza delle credenziali associate a uno specifico \code{diary\_type}. Implementata da \code{DynamoAuthAdapter}, questa porta permette a \code{DiaryAuthService} di gestire l'autenticazione mantenendo separati gli hash delle password per diario reale e fittizio.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-DiaryAuthRepositoryPort.pdf}
+    \caption[Diagramma dell'interfaccia DiaryAuthRepositoryPort]{Diagramma dell'interfaccia \code{DiaryAuthRepositoryPort}}
+    \label{DCB-DiaryAuthRepositoryPort-Backend}
+\end{figure}
+
+\paragraph{NoteService}\mbox{}\\
+La classe \code{NoteService} costituisce il servizio applicativo centrale per la gestione delle note, implementando le interfacce \code{GetNotePort}, \code{SetNotePort}, \code{DeleteNotePort}, \code{SetNoteElementPort} e \code{DeleteNoteElementPort}. Coordina l'intera business logic delle note: gestisce le operazioni CRUD e la comunicazione con le porte per i servizi di persistenza. Tali porte vengono passate alla classe tramite dependency injection nel costruttore.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-NoteService.pdf}
+    \caption[Diagramma della classe NoteService]{Diagramma della classe \code{NoteService}}
+    \label{DCB-NoteService-Backend}
+\end{figure}
+
+\paragraph{DiaryAuthService}\mbox{}\\
+La classe \code{DiaryAuthService} implementa il servizio applicativo per la gestione dell'autenticazione al diario, che include l'impostazione della password di entrambi i diari e la loro verifica. Si occupa inoltre di verificare che la password impostata dall'utente sia conforme a specifici criteri di sicurezza. \code{DiaryAuthService} riceve tramite costruttore la dipendenza \code{auth\_repository} di tipo \code{DiaryAuthRepositoryPort} per l'orchestrazione delle operazioni relative alla persistenza dei dati di accesso degli utenti.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-DiaryAuthService.pdf}
+    \caption[Diagramma della classe DiaryAuthService]{Diagramma della classe \code{DiaryAuthService}}
+    \label{DCB-DiaryAuthService-Backend}
+\end{figure}
+
+\paragraph{DynamoNoteAdapter}\mbox{}\\
+La classe \code{DynamoNoteAdapter} implementa l'interfaccia \code{NoteRepositoryPort} fornendo la persistenza concreta delle note su DynamoDB. È responsabile di effettuare le richieste concrete a DynamoDB e a ritornare i risultati ottenuti, implementando concretamente le varie operazioni CRUD. L'adapter utilizza \code{NoteDTO} e \code{NoteElementDTO} per la conversione bidirezionale tra le entità di dominio e il formato di persistenza su DynamoDB, isolando completamente il layer applicativo dai dettagli implementativi dello storage.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-DynamoNoteAdapter.pdf}
+    \caption[Diagramma della classe DynamoNoteAdapter]{Diagramma della classe \code{DynamoNoteAdapter}}
+    \label{DCB-DynamoNoteAdapter-Backend}
+\end{figure}
+
+\paragraph{S3NoteAdapter}\mbox{}\\
+La classe \code{S3NoteAdapter} implementa l'interfaccia \code{FileRepositoryPort} fornendo la gestione degli allegati file su Amazon S3. Gestisce la generazione dei presigned\_url e le chiamate a S3 per l'archiviazione o il recupero dei file binari. Viene utilizzato da \code{NoteService} per gestire il \ignoreglossary{ciclo di vita} completo degli allegati associati alle note.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-S3NoteAdapter.pdf}
+    \caption[Diagramma della classe S3NoteAdapter]{Diagramma della classe \code{S3NoteAdapter}}
+    \label{DCB-S3NoteAdapter-Backend}
+\end{figure}
+
+\paragraph{DynamoAuthAdapter}\mbox{}\\
+La classe \code{DynamoAuthAdapter} implementa l'interfaccia \code{DiaryAuthRepositoryPort} fornendo la persistenza delle credenziali di autenticazione su DynamoDB. Mantiene un riferimento al client DynamoDB (\code{dynamodb\_client}) inizializzato nel costruttore. Il metodo \code{hash\_password} genera l'hash sicuro di una password per un utente specifico tramite HMAC-SHA-256 applicato sulla concatenazione tra l'id dell'utente e la password stessa. \code{validate\_password} verifica le credenziali fornite restituendo il tipo di diario corrispondente all'hash validato, e \code{set\_password} memorizza o aggiorna le credenziali associate a uno specifico \code{diary\_type}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-DynamoAuthAdapter.pdf}
+    \caption[Diagramma della classe DynamoAuthAdapter]{Diagramma della classe \code{DynamoAuthAdapter}}
+    \label{DCB-DynamoAuthAdapter-Backend}
+\end{figure}
+
+\paragraph{NoteElementDTO}\mbox{}\\
+La classe \code{NoteElementDTO} fornisce il mapping bidirezionale tra l'entità di dominio \code{NoteElement} e il formato di persistenza su DynamoDB.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-NoteElementDTO.pdf}
+    \caption[Diagramma della classe NoteElementDTO]{Diagramma della classe \code{NoteElementDTO}}
+    \label{DCB-NoteElementDTO-Backend}
+\end{figure}
+
+\paragraph{NoteDTO}\mbox{}\\
+La classe \code{NoteDTO} gestisce la conversione tra l'entità di dominio \code{Note} e il formato di persistenza su DynamoDB.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-NoteDTO.pdf}
+    \caption[Diagramma della classe NoteDTO]{Diagramma della classe \code{NoteDTO}}
+    \label{DCB-NoteDTO-Backend}
+\end{figure}
+
+\paragraph{DiaryNoteController}\mbox{}\\
+La classe \code{DiaryNoteController} costituisce il punto di ingresso per le richieste relative alle operazioni sulle note. Mantiene un riferimento a \code{NoteService} che orchestra la business logic. Il metodo \code{handle\_request} funge da router principale, interpretando la richiesta in arrivo dal Lambda handler e delegandola alle funzioni specifiche.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-DiaryNoteController.pdf}
+    \caption[Diagramma della classe DiaryNoteController]{Diagramma della classe \code{DiaryNoteController}}
+    \label{DCB-DiaryNoteController-Backend}
+\end{figure}
+
+\paragraph{DiaryAccessController}\mbox{}\\
+La classe \code{DiaryAccessController} costituisce il punto di ingresso per le operazioni di autenticazione. Mantiene un riferimento a \code{DiaryAuthService} che implementa la logica di gestione delle credenziali. Il metodo \code{handle\_request} funge da router principale, interpretando la richiesta in arrivo dal Lambda handler e delegandola alle funzioni specifiche.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-DiaryAccessController.pdf}
+    \caption[Diagramma della classe DiaryAccessController]{Diagramma della classe \code{DiaryAccessController}}
+    \label{DCB-DiaryAccessController-Backend}
+\end{figure}
+
 \section{Stato dei requisiti funzionali} \label{sec:stato_requisiti_funzionali}
 \subsection{Requisiti Funzionali obbligatori} \label{subsection:requisiti_funzionali_obbligatori}
 \begin{center}
