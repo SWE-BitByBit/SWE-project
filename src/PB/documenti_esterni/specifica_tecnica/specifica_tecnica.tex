@@ -283,7 +283,7 @@ Ultimo accesso: \textit{2026-02-09}\\
         Versione: \textit{A.A.2022/2023}\\
         Ultimo accesso: \textit{2026-03-30}\\
         \url{https://www.math.unipd.it/~rcardin/swea/2022/}
-    \item \textbf{\emph{\term{Repository} Github} del Prof. Cardin}\\
+    \item \textbf{\emph{\ignoreglossary{repository} Github} del Prof. Cardin}\\
         Ultimo accesso: \textit{2026-03-30}\\
         \url{https://github.com/rcardin/swe-imdb}
     \item \textbf{Guida Flutter sull'\term{Architettura} di un'applicazione}\\
@@ -541,7 +541,7 @@ Il client mobile è sviluppato incapsulando il codice secondo i dettami moderni 
 \begin{itemize}
     \item \textbf{Presentation Layer (View)}: Costituisce il livello più visibile e frontale dell'applicazione. Riceve gli input da parte dell'\term{Utente} e si occupa unicamente di aggregare e renderizzare il layout grafico a schermo tramite widget componenti, senza mai eseguire logica complessa.
     \item \textbf{\term{State Management} Layer (ViewModel)}: Funge da mediatore tra View e dominio, gestendo lo stato della view. Riceve input dalla view, muta lo stato dell'UI e notifica la view che si aggiornerà sulla base del nuovo stato incapsulato (es. passando da "In caricamento" a "Successo"). Inoltre, gestisce le validazioni elementari dei dati inseriti, comandando ai servizi sottostanti le operazioni formali da compiere.
-    \item \textbf{\term{Data Layer}}: È lo strato più basso dell'ambiente Client, incaricato unicamente dell'acquisizione e gestione dei dati, ed è logicamente suddiviso in \textit{Service} e \textit{\term{Repository}}. I Service sono gli unici componenti ad interfacciarsi con l'esterno, conoscendo gli endpoint del \term{Backend} per eseguire le chiamate asincrone HTTP e gestendo l'accesso a dati memorizzati localmente o in remoto. I \term{Repository} fungono da intermediari: raccolgono i dati grezzi provenienti dai Service e li formattano in modelli di dominio strutturati (es. un oggetto \textit{Note}), fornendoli al ViewModel puliti e pronti all'uso.
+    \item \textbf{\term{Data Layer}}: È lo strato più basso dell'ambiente Client, incaricato unicamente dell'acquisizione e gestione dei dati, ed è logicamente suddiviso in \textit{Service} e \textit{\ignoreglossary{repository}}. I Service sono gli unici componenti ad interfacciarsi con l'esterno, conoscendo gli endpoint del \term{Backend} per eseguire le chiamate asincrone HTTP e gestendo l'accesso a dati memorizzati localmente o in remoto. I \ignoreglossary{repository} fungono da intermediari: raccolgono i dati grezzi provenienti dai Service e li formattano in modelli di dominio strutturati (es. un oggetto \textit{Note}), fornendoli al ViewModel puliti e pronti all'uso.
 \end{itemize}
 
 \subsubsection{Livello di Servizio (Backend)}
@@ -649,7 +649,7 @@ Il pattern Singleton è utilizzato per il coordinamento dei componenti di sessio
 \paragraph{Descrizione del pattern:}\mbox{}\\
 Il pattern Dependency Injection (DI) è una tecnica in cui un oggetto riceve dall'esterno le istanze degli oggetti da cui dipende, anziché doverle creare internamente. Nel contesto dell'applicazione viene utilizzata in forma di \textit{constructor injection}: le dipendenze vengono passate ai componenti direttamente come parametri del costruttore durante la fase di istanziazione.
 
-Questo approccio permette di slegare i componenti logici dalla creazione delle proprie risorse. I \textit{ViewModel}, ad esempio, non istanziano mai i propri \textit{\term{Repository}}, ma li ricevono già configurati dal punto di ingresso del modulo o dell'applicazione, garantendo che ogni componente operi esclusivamente con le interfacce necessarie.
+Questo approccio permette di slegare i componenti logici dalla creazione delle proprie risorse. I \textit{ViewModel}, ad esempio, non istanziano mai i propri \textit{\ignoreglossary{repository}}, ma li ricevono già configurati dal punto di ingresso del modulo o dell'applicazione, garantendo che ogni componente operi esclusivamente con le interfacce necessarie.
 \paragraph{Ragioni per l'utilizzo:}\mbox{}\\
 L'utilizzo della DI favorisce un'\term{Architettura} modulare e flessibile, riducendo l'accoppiamento tra le classi. Il vantaggio principale risiede nella testabilità: l'iniezione tramite costruttore permette di sostituire facilmente le dipendenze reali con oggetti fittizi (\textit{mock}), consentendo l'esecuzione di unit test in isolamento. Inoltre, centralizzare la logica di creazione degli oggetti facilita la manutenzione e l'eventuale sostituzione di implementazioni specifiche senza dover modificare i client che le utilizzano.
 \paragraph{Riferimenti nel progetto:}\mbox{}\\
@@ -763,7 +763,7 @@ Il \term{Deployment} materiale di tutte le risorse in ambiente AWS non è esegui
 La funzionalità di autenticazione è stata implementata seguendo il pattern architetturale MVVM raccomandato 
 dalle linee guida di Flutter, adattato al flusso OAuth 2.0 con OpenID Connect descritto nelle specifiche. 
 La struttura separa nettamente le responsabilità tra i layer: il Service gestisce la comunicazione con 
-gli endpoint e il flusso OAuth, il \term{Repository} mantiene lo stato dell'\term{Utente} autenticato e orchestra la traduzione dei dati grezzi 
+gli endpoint e il flusso OAuth, il \ignoreglossary{repository} mantiene lo stato dell'\term{Utente} autenticato e orchestra la traduzione dei dati grezzi 
 in oggetti di dominio tramite i DTO, il ViewModel espone lo stato e le azioni alla View tramite i Command del pattern MVVM. 
 Per la modellazione di un \term{Utente} viene utilizzato il domain model \code{User}.\\
 L'istanza unica dell'\term{Utente} autenticato viene gestita tramite il Provider di Flutter a livello di app per mantenere 
@@ -845,7 +845,7 @@ Command, mentre il metodo \code{checkExistingSession()} consente di verificare l
 \paragraph{AuthRepository} \mbox{}\\
 Funge da intermediario tra il \code{AuthViewModel} e il livello di accesso ai dati, incapsulando la logica 
 necessaria per gestire l’autenticazione. Mantiene lo stato dell’\term{Utente} corrente tramite \code{currentUser} e delega le operazioni di comunicazione remota a \code{AuthenticationService}. 
-Il \term{Repository} espone metodi per effettuare il login, il logout, recuperare l’\term{Utente} corrente e verificare se esiste una sessione attiva.
+Il \ignoreglossary{repository} espone metodi per effettuare il login, il logout, recuperare l’\term{Utente} corrente e verificare se esiste una sessione attiva.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{diagrammi_classi/auth/DC-AuthRepository.pdf}
@@ -932,7 +932,7 @@ Le tre classi principali alla base di questo pattern, ovvero il nucleo astratto 
 % ====== CHATBOT ======
 \subsubsection{Chatbot} \label{subsubsec:architettura_chatbot_frontend}
 
-La funzionalità del chatbot permette all'\term{Utente} di comunicare via chat con un modello di intelligenza artificiale (LLM) e di memorizzare e caricare tutte le chat passate. La funzionalità del chatbot è implementata secondo il pattern MVVM e le linee guida architetturali di Flutter, distinguendo quindi un \term{Data Layer}, composto da Service e \term{Repository}, e un \term{UI Layer}, composto da View e ViewModel. Tra questi layer figurano i vari domain models: le classi Chat (\code{ProxyChat} e \code{LocalChat}), \code{ChatMessage} e \code{MessageResponse}.
+La funzionalità del chatbot permette all'\term{Utente} di comunicare via chat con un modello di intelligenza artificiale (LLM) e di memorizzare e caricare tutte le chat passate. La funzionalità del chatbot è implementata secondo il pattern MVVM e le linee guida architetturali di Flutter, distinguendo quindi un \term{Data Layer}, composto da Service e \ignoreglossary{repository}, e un \term{UI Layer}, composto da View e ViewModel. Tra questi layer figurano i vari domain models: le classi Chat (\code{ProxyChat} e \code{LocalChat}), \code{ChatMessage} e \code{MessageResponse}.
 
 \begin{figure}[H]
     \centering
@@ -1133,7 +1133,7 @@ L'interfaccia \code{Chat} definisce il modello astratto di una conversazione tra
 \end{figure}
 
 \subsubsection{Diario criptato e diario fittizio} \label{subsubsec:architettura_diari_frontend}
-La funzionalità di diario criptato e diario fittizio permette all'\term{Utente} di utilizzare due archivi separati in cui memorizzare note, contenenti testo, immagini e/o contenuti audio, protetti da password . L'implementazione della funzionalità segue il pattern MVVM e le linee guida del \term{Framework} Flutter, risultanti nella suddivisione tra un \term{Data Layer}, composto da classi Service e \term{Repository}, responsabili per la \textit{\term{Business Logic}} e per la \textit{\term{Persistence Logic}} rispettivamente, ed un \term{UI Layer}, composto da classi View e Viewmodel. Gli oggetti principali della funzionalità sono le classi Note (\code{ProxyNote} e \code{LocalNote}), \code{NoteElement} e \code{DiarySession}. 
+La funzionalità di diario criptato e diario fittizio permette all'\term{Utente} di utilizzare due archivi separati in cui memorizzare note, contenenti testo, immagini e/o contenuti audio, protetti da password . L'implementazione della funzionalità segue il pattern MVVM e le linee guida del \term{Framework} Flutter, risultanti nella suddivisione tra un \term{Data Layer}, composto da classi Service e \ignoreglossary{repository}, responsabili per la \textit{\term{Business Logic}} e per la \textit{\term{Persistence Logic}} rispettivamente, ed un \term{UI Layer}, composto da classi View e Viewmodel. Gli oggetti principali della funzionalità sono le classi Note (\code{ProxyNote} e \code{LocalNote}), \code{NoteElement} e \code{DiarySession}. 
 
 \begin{figure}[H]
     \centering
@@ -1303,7 +1303,7 @@ L'interfaccia \code{Note} definisce i metodi necessari per gli oggetti rappresen
 \end{figure}
 
 \paragraph{ProxyNote}\mbox{}\\
-La classe \code{ProxyNote} realizza il pattern Proxy per rendere più efficiente il caricamento da \term{Repository} delle note, permettendo di rimandare il caricamento dei dati interni di una nota fino a quando non è effettivamente necessario, e così risparmiando risorse di sistema.
+La classe \code{ProxyNote} realizza il pattern Proxy per rendere più efficiente il caricamento da \ignoreglossary{repository} delle note, permettendo di rimandare il caricamento dei dati interni di una nota fino a quando non è effettivamente necessario, e così risparmiando risorse di sistema.
 La classe contiene un riferimento ad un oggetto \code{LocalNote} a cui delega le operazioni una volta effettuato il caricamento della nota.
 \begin{figure}[H]
     \centering    
@@ -1398,7 +1398,7 @@ La classe \code{NoteRepository} funge da strato di astrazione tra \code{DiaryVie
 
 \subsubsection{Contatti Fidati} \label{subsubsec:architettura_contatti_fidati}
 
-La funzionalità dei Contatti Fidati permette all'\term{Utente} di gestire una lista di persone di fiducia da avvisare in caso di inattività tramite il sistema di \textit{Dead Man's Switch}. Analogamente al resto dell'applicazione, la funzionalità è implementata secondo il pattern MVVM e le linee guida architetturali di Flutter, distinguendo un \term{Data Layer}, composto da Service e \term{Repository}, e un \term{UI Layer}, composto da View e ViewModel.
+La funzionalità dei Contatti Fidati permette all'\term{Utente} di gestire una lista di persone di fiducia da avvisare in caso di inattività tramite il sistema di \textit{Dead Man's Switch}. Analogamente al resto dell'applicazione, la funzionalità è implementata secondo il pattern MVVM e le linee guida architetturali di Flutter, distinguendo un \term{Data Layer}, composto da Service e \ignoreglossary{repository}, e un \term{UI Layer}, composto da View e ViewModel.
 
 \begin{figure}[H]
     \centering
@@ -1453,7 +1453,7 @@ Questo widget raggruppa i bottoni e le azioni specifiche per la gestione dei con
 
 \paragraph{TrustedContactViewModel}\mbox{}\\
 
-\code{TrustedContactViewModel} è il nucleo della gestione dello stato per questa funzionalità. Mantiene la lista dei contatti (\code{tcontacts}), lo stato di caricamento (\code{isLoading}) e la gestione degli errori (\code{error}). Espone i metodi per caricare, creare e cancellare i contatti, facendo da ponte tra la View e il \term{Repository}. Utilizza il mixin \code{ChangeNotifier} per notificare i widget in ascolto.
+\code{TrustedContactViewModel} è il nucleo della gestione dello stato per questa funzionalità. Mantiene la lista dei contatti (\code{tcontacts}), lo stato di caricamento (\code{isLoading}) e la gestione degli errori (\code{error}). Espone i metodi per caricare, creare e cancellare i contatti, facendo da ponte tra la View e il \ignoreglossary{repository}. Utilizza il mixin \code{ChangeNotifier} per notificare i widget in ascolto.
 
 \begin{figure}[H]
     \centering
@@ -1486,7 +1486,7 @@ Questo widget raggruppa i bottoni e le azioni specifiche per la gestione dei con
 
 \paragraph{TrustedContactService}\mbox{}\\
 
-\code{TrustedContactService} appartiene al livello infrastrutturale e si occupa di effettuare fisicamente le chiamate API verso il \term{Backend}. Gestisce le richieste HTTP per ottenere l'elenco dei contatti, aggiungerne di nuovi o eliminarli, restituendo le risposte grezze al \term{Repository}.
+\code{TrustedContactService} appartiene al livello infrastrutturale e si occupa di effettuare fisicamente le chiamate API verso il \term{Backend}. Gestisce le richieste HTTP per ottenere l'elenco dei contatti, aggiungerne di nuovi o eliminarli, restituendo le risposte grezze al \ignoreglossary{repository}.
 
 \begin{figure}[H]
     \centering
@@ -1510,7 +1510,7 @@ Questo widget raggruppa i bottoni e le azioni specifiche per la gestione dei con
 
 \subsubsection{Luoghi Sicuri} \label{subsubsec:architettura_classi_luoghi_sicuri}
 
-La funzionalità dei Luoghi Sicuri permette all'\term{Utente} di visualizzare geograficamente, tramite un'interfaccia cartografica, le strutture di supporto, i centri anti-violenza e altri punti di interesse rilevanti. Analogamente al resto dell'applicazione, la funzionalità è implementata secondo il pattern MVVM e le linee guida architetturali di Flutter, distinguendo un \term{Data Layer}, composto da Service e \term{Repository}, e un \term{UI Layer}, composto da View e ViewModel, integrando la libreria ufficiale \code{google\_maps\_flutter} per il rendering della mappa.
+La funzionalità dei Luoghi Sicuri permette all'\term{Utente} di visualizzare geograficamente, tramite un'interfaccia cartografica, le strutture di supporto, i centri anti-violenza e altri punti di interesse rilevanti. Analogamente al resto dell'applicazione, la funzionalità è implementata secondo il pattern MVVM e le linee guida architetturali di Flutter, distinguendo un \term{Data Layer}, composto da Service e \ignoreglossary{repository}, e un \term{UI Layer}, composto da View e ViewModel, integrando la libreria ufficiale \code{google\_maps\_flutter} per il rendering della mappa.
 
 \begin{figure}[H]
     \centering
@@ -1543,7 +1543,7 @@ Il componente \code{SafePlaceMapWidget} incapsula la logica necessaria all'inter
 
 \paragraph{SafePlaceViewModel}
 
-\code{SafePlaceViewModel} rappresenta il nucleo della gestione dello stato per questa funzionalità. Mantiene la lista dei luoghi sicuri (\code{safePlaces}), gestisce lo stato di caricamento (\code{isLoading}) e la gestione degli errori. Espone i metodi per il caricamento dei dati dal \term{Repository} e utilizza il mixin \code{ChangeNotifier} per notificare i widget della View non appena i dati geografici sono pronti per essere visualizzati sulla mappa.
+\code{SafePlaceViewModel} rappresenta il nucleo della gestione dello stato per questa funzionalità. Mantiene la lista dei luoghi sicuri (\code{safePlaces}), gestisce lo stato di caricamento (\code{isLoading}) e la gestione degli errori. Espone i metodi per il caricamento dei dati dal \ignoreglossary{repository} e utilizza il mixin \code{ChangeNotifier} per notificare i widget della View non appena i dati geografici sono pronti per essere visualizzati sulla mappa.
 
 \begin{figure}[H]
     \centering
@@ -1576,7 +1576,7 @@ Il \code{SafePlaceRepository} astrae la sorgente dei dati geografici per il View
 
 \paragraph{SafePlaceService}
 
-Appartenente al livello infrastrutturale, \code{SafePlaceService} si occupa di effettuare le chiamate verso il \term{Backend} o sorgenti dati esterne per ottenere l'elenco dei luoghi sicuri in formato grezzo, restituendo le risposte al \term{Repository}.
+Appartenente al livello infrastrutturale, \code{SafePlaceService} si occupa di effettuare le chiamate verso il \term{Backend} o sorgenti dati esterne per ottenere l'elenco dei luoghi sicuri in formato grezzo, restituendo le risposte al \ignoreglossary{repository}.
 
 \begin{figure}[H]
     \centering
@@ -1600,7 +1600,7 @@ La classe \code{SafePlaceDTO} (\textit{Data Transfer Object}) gestisce la serial
 
 \subsubsection{Dead Man's Switch} \label{subsubsec:architettura_dead_man_switch}
 
-La funzionalità del \textit{Dead Man's Switch} rappresenta un sistema di sicurezza critico che invia avvisi automatici in caso di inattività prolungata dell'\term{Utente}. L'\term{Architettura} frontend è focalizzata sulla gestione sicura della configurazione di tale sistema. Il frontend non interagisce direttamente con servizi di posta elettronica, ma demanda la gestione dei timer e l'invio delle email tramite AWS SES al \term{Backend}, garantendo così la sicurezza e l'affidabilità del servizio anche ad applicazione chiusa. Analogamente al resto dell'applicazione, la funzionalità è implementata secondo il pattern MVVM e le linee guida architetturali di Flutter, distinguendo un \term{Data Layer}, composto da Service e \term{Repository}, e un \term{UI Layer}, composto da View e ViewModel.
+La funzionalità del \textit{Dead Man's Switch} rappresenta un sistema di sicurezza critico che invia avvisi automatici in caso di inattività prolungata dell'\term{Utente}. L'\term{Architettura} frontend è focalizzata sulla gestione sicura della configurazione di tale sistema. Il frontend non interagisce direttamente con servizi di posta elettronica, ma demanda la gestione dei timer e l'invio delle email tramite AWS SES al \term{Backend}, garantendo così la sicurezza e l'affidabilità del servizio anche ad applicazione chiusa. Analogamente al resto dell'applicazione, la funzionalità è implementata secondo il pattern MVVM e le linee guida architetturali di Flutter, distinguendo un \term{Data Layer}, composto da Service e \ignoreglossary{repository}, e un \term{UI Layer}, composto da View e ViewModel.
 
 
 \begin{figure}[H]
@@ -1634,7 +1634,7 @@ Questo componente incapsula gli elementi interattivi dell'interfaccia, come i se
 
 \paragraph{DeadManViewModel}
 
-\code{DeadManViewModel} orchestra la logica di business di questa sezione. Mantiene in memoria le configurazioni attuali dell'\term{Utente} (\code{settings}) e lo stato di sincronizzazione (\code{isLoading}). Implementa il mixin \code{ChangeNotifier} per notificare la UI a ogni interazione. Oltre a recuperare i dati, espone metodi fondamentali come \code{saveConfiguration()}, che permette di confermare e trasmettere al \term{Repository} le nuove impostazioni scelte dall'\term{Utente}.
+\code{DeadManViewModel} orchestra la logica di business di questa sezione. Mantiene in memoria le configurazioni attuali dell'\term{Utente} (\code{settings}) e lo stato di sincronizzazione (\code{isLoading}). Implementa il mixin \code{ChangeNotifier} per notificare la UI a ogni interazione. Oltre a recuperare i dati, espone metodi fondamentali come \code{saveConfiguration()}, che permette di confermare e trasmettere al \ignoreglossary{repository} le nuove impostazioni scelte dall'\term{Utente}.
 
 \begin{figure}[H]
     \centering
@@ -1678,7 +1678,7 @@ Appartenente al \term{Data Layer}, \code{DeadManService} si occupa della comunic
 
 \paragraph{DeadManSettingsDTO}
 
-Il \code{DeadManSettingsDTO} è l'oggetto di trasferimento dati incaricato della serializzazione. Consente di mappare i campi JSON inviati e ricevuti dal server, assicurando che la comunicazione tra l'app Flutter e il \term{Backend} mantenga un \term{Contratto} dati rigoroso.
+Il \code{DeadManSettingsDTO} è l'oggetto di trasferimento dati incaricato della serializzazione. Consente di mappare i campi JSON inviati e ricevuti dal server, assicurando che la comunicazione tra l'app Flutter e il \term{Backend} mantenga un \ignoreglossary{contratto} dati rigoroso.
 
 \begin{figure}[H]
     \centering
@@ -1691,7 +1691,7 @@ Il \code{DeadManSettingsDTO} è l'oggetto di trasferimento dati incaricato della
 
 \subsubsection{Area Informativa} \label{subsubsec:architettura_area_informativa}
 
-L'Area Informativa costituisce un centro di risorse in sola lettura per l'\term{Utente}, aggregando informazioni su community di supporto, riferimenti normativi e materiale divulgativo. La funzionalità è implementata secondo il pattern MVVM e le linee guida architetturali di Flutter, distinguendo un \term{Data Layer}, composto da Service e \term{Repository}, e un \term{UI Layer}, composto da View e ViewModel.
+L'Area Informativa costituisce un centro di risorse in sola lettura per l'\term{Utente}, aggregando informazioni su community di supporto, riferimenti normativi e materiale divulgativo. La funzionalità è implementata secondo il pattern MVVM e le linee guida architetturali di Flutter, distinguendo un \term{Data Layer}, composto da Service e \ignoreglossary{repository}, e un \term{UI Layer}, composto da View e ViewModel.
 
 \begin{figure}[H]
     \centering
@@ -2395,7 +2395,7 @@ Il flusso di elaborazione è dunque il seguente:
     
     \item \textbf{\ignoreglossary{verifica} delle Credenziali}: API Gateway \ignoreglossary{verifica} che l'\term{Utente} sia autenticato all'applicazione. Dopodiché inoltra la richiesta alla funzione Lambda, che calcola l'hash della password ricevuta e lo confronta con gli hash memorizzati in DynamoDB. In caso di corrispondenza, viene identificato il tipo di diario associato.
     
-    \item \textbf{Generazione token di accesso}: dopo la \term{Validazione} della password, un token di accesso casuale viene generato, salvato su DynamoDB e passato in risposta al client. Tale token dovrà essere fornito nell'header di ogni richiesta successiva relativa a operazioni CRUD sui contenuti del diario.
+    \item \textbf{Generazione token di accesso}: dopo la \ignoreglossary{validazione} della password, un token di accesso casuale viene generato, salvato su DynamoDB e passato in risposta al client. Tale token dovrà essere fornito nell'header di ogni richiesta successiva relativa a operazioni CRUD sui contenuti del diario.
     
     \item \textbf{Recupero delle Note}: Quando l'\term{Utente} richiede di recuperare la lista di note di uno dei diari (metodo \texttt{GET /diary/\{diary\_type\}/}), API Gateway invia la richiesta alla Lambda, che recupera le \textit{preview} dal database DynamoDB e le restituisce al client.
     
@@ -2403,7 +2403,7 @@ Il flusso di elaborazione è dunque il seguente:
     
     \item \textbf{Gestione dei Contenuti Binari}: In presenza di immagini o tracce audio, la Lambda genera URL \textit{presigned} per gli oggetti memorizzati su S3, permettendo al client di accedere direttamente alle risorse senza transitare attraverso il \term{Backend}.
     
-    \item \textbf{Operazioni di Scrittura}: Per la creazione o modifica di note (\texttt{PUT /diary/\{diary\_type\}/\{note\_id\}/}), la Lambda memorizza in DynamoDB i metadati principali e la struttura complessiva della nota, salvando eventuali file binari su S3.
+    \item \textbf{Operazioni di Scrittura}: Per la creazione o modifica di note, la Lambda memorizza in DynamoDB i metadati principali e la struttura complessiva della nota, salvando eventuali file binari su S3.
     
     \item \textbf{Eliminazione delle Note}: In caso di richiesta di eliminazione (metodo \texttt{DELETE /diary/\{diary\_type\}/\{note\_id\}/}), la Lambda rimuove i dati associati dal database e, se presenti, elimina anche i file binari corrispondenti dai bucket S3.
     
@@ -2640,6 +2640,15 @@ Le API relative al diario criptato e fittizio sono suddivise in due categorie di
 
 \end{itemize}
 
+\paragraph{\term{Architettura} logica: microservizio diario (criptato e fittizio)} \label{par:architettura_backend_diari}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{diagrammi_classi_lambda/diari/LambdaDiari.pdf}
+    \caption[Componenti della Lambda per la gestione dei diari]{Componenti della Lambda per la gestione dei diari}
+    \label{DCB-Lambda-diari-Backend}
+\end{figure}
+
 \paragraph{DiaryType}\mbox{}\\
 L'enumerazione \code{DiaryType} definisce i due tipi di diario supportati dal sistema: \code{REAL\_DIARY} per il diario reale contenente i dati autentici dell'\term{Utente} e \code{FAKE\_DIARY} per il diario fittizio.
 
@@ -2671,7 +2680,7 @@ La classe \code{Note} rappresenta l'entità di dominio principale del sistema, m
 \end{figure}
 
 \paragraph{GetNoteCmd}\mbox{}\\
-Il command object \code{GetNoteCmd} incapsula i parametri necessari per richiedere il recupero di una singola nota. Contiene l'identificativo della nota (\code{note\_id}), l'identificativo dell'\term{Utente} richiedente (\code{user\_id}) e il tipo di diario da cui recuperare la nota (\code{diary\_type}). Questo oggetto viene consumato dal metodo \code{get\_note} dell'interfaccia \code{GetNotePort}, implementata da \code{NoteService}, che delega il recupero effettivo al \term{Repository} di persistenza.
+Il command object \code{GetNoteCmd} incapsula i parametri necessari per richiedere il recupero di una singola nota. Contiene l'identificativo della nota (\code{note\_id}), l'identificativo dell'\term{Utente} richiedente (\code{user\_id}) e il tipo di diario da cui recuperare la nota (\code{diary\_type}). Questo oggetto viene consumato dal metodo \code{get\_note} dell'interfaccia \code{GetNotePort}, implementata da \code{NoteService}, che delega il recupero effettivo al \ignoreglossary{repository} di persistenza.
 
 \begin{figure}[H]
     \centering
@@ -2711,7 +2720,7 @@ Il command \code{AddElementNewNoteCmd} rappresenta la richiesta dell'aggiunta di
 \end{figure}
 
 \paragraph{AddNoteElementCmd}\mbox{}\\
-Il command object \code{AddNoteElementCmd} rappresenta la richiesta di aggiunta di un singolo elemento a una nota esistente. Contiene l'identificativo dell'\term{Utente} e della nota target, la tipologia del nuovo elemento e il suo contenuto. Viene processato dal metodo \code{add\_note\_element} dell'interfaccia \code{SetNoteElementPort}, che delega a \code{NoteService} la creazione dell'entità \code{NoteElement} e la successiva persistenza tramite il \term{Repository}.
+Il command object \code{AddNoteElementCmd} rappresenta la richiesta di aggiunta di un singolo elemento a una nota esistente. Contiene l'identificativo dell'\term{Utente} e della nota target, la tipologia del nuovo elemento e il suo contenuto. Viene processato dal metodo \code{add\_note\_element} dell'interfaccia \code{SetNoteElementPort}, che delega a \code{NoteService} la creazione dell'entità \code{NoteElement} e la successiva persistenza tramite il \ignoreglossary{repository}.
 
 \begin{figure}[H]
     \centering
@@ -2721,7 +2730,7 @@ Il command object \code{AddNoteElementCmd} rappresenta la richiesta di aggiunta 
 \end{figure}
 
 \paragraph{DeleteNoteCmd}\mbox{}\\
-\code{DeleteNoteCmd} incapsula i parametri per l'eliminazione di una nota. Include l'identificativo della nota da rimuovere, quello dell'\term{Utente} richiedente e il tipo di diario da cui eliminare la risorsa. Questo command viene consumato dal metodo \code{delete\_note} di \code{DeleteNotePort}, che coordina sia la rimozione dal \term{Repository} di persistenza che l'eventuale cleanup degli allegati file tramite \code{FileRepositoryPort}.
+\code{DeleteNoteCmd} incapsula i parametri per l'eliminazione di una nota. Include l'identificativo della nota da rimuovere, quello dell'\term{Utente} richiedente e il tipo di diario da cui eliminare la risorsa. Questo command viene consumato dal metodo \code{delete\_note} di \code{DeleteNotePort}, che coordina sia la rimozione dal \ignoreglossary{repository} di persistenza che l'eventuale cleanup degli allegati file tramite \code{FileRepositoryPort}.
 
 \begin{figure}[H]
     \centering
@@ -2741,7 +2750,7 @@ Il command \code{DeleteNoteElementCmd} modella la richiesta di rimozione di un s
 \end{figure}
 
 \paragraph{ValidatePasswordCmd}\mbox{}\\
-\code{ValidatePasswordCmd} rappresenta la richiesta di \term{Validazione} delle credenziali di accesso al diario. Include l'identificativo dell'\term{Utente} e la password da verificare. Questo command viene consumato dal metodo \code{validate\_password} dell'interfaccia \code{ValidationPort}, implementata da \code{DiaryAuthService}, che delega la \term{Verifica} al \term{Repository} di autenticazione e restituisce il tipo di diario corrispondente alla password fornita, permettendo così l'accesso selettivo al diario reale o fittizio.
+\code{ValidatePasswordCmd} rappresenta la richiesta di \ignoreglossary{validazione} delle credenziali di accesso al diario. Include l'identificativo dell'\term{Utente} e la password da verificare. Questo command viene consumato dal metodo \code{validate\_password} dell'interfaccia \code{ValidationPort}, implementata da \code{DiaryAuthService}, che delega la \ignoreglossary{verifica} al \ignoreglossary{repository} di autenticazione e restituisce il tipo di diario corrispondente alla password fornita, permettendo così l'accesso selettivo al diario reale o fittizio.
 
 \begin{figure}[H]
     \centering
@@ -2751,7 +2760,7 @@ Il command \code{DeleteNoteElementCmd} modella la richiesta di rimozione di un s
 \end{figure}
 
 \paragraph{ValidateTokenCmd}\mbox{}\\
-\code{ValidateTokenCmd} rappresenta la richiesta di \term{Validazione} del token associato alla sessione di accesso al diario corrente. Include l'identificativo dell'\term{Utente} e il token da verificare. Questo command viene consumato dal metodo \code{validate\_token} dell'interfaccia \code{ValidationPort}, implementata da \code{DiaryAuthService}, che delega la \term{Verifica} al \term{Repository} di autenticazione e restituisce un booleano che indica se il token inserito corrisponde a quello presente nella tabella DynamoDB.
+\code{ValidateTokenCmd} rappresenta la richiesta di \ignoreglossary{validazione} del token associato alla sessione di accesso al diario corrente. Include l'identificativo dell'\term{Utente} e il token da verificare. Questo command viene consumato dal metodo \code{validate\_token} dell'interfaccia \code{ValidationPort}, implementata da \code{DiaryAuthService}, che delega la \ignoreglossary{verifica} al \ignoreglossary{repository} di autenticazione e restituisce un booleano che indica se il token inserito corrisponde a quello presente nella tabella DynamoDB.
 
 \begin{figure}[H]
     \centering
@@ -2771,7 +2780,7 @@ Il command object \code{SetPasswordCmd} incapsula i dati necessari per l'imposta
 \end{figure}
 
 \paragraph{CheckPasswordCmd}\mbox{}\\
-\code{CheckPasswordCmd} modella la richiesta di \term{Verifica} dello stato di configurazione delle password per un \term{Utente}. Contiene esclusivamente l'identificativo dell'\term{Utente} e viene consumato dal metodo \code{check\_password\_status} dell'interfaccia \code{CheckPasswordPort} per determinare quali credenziali di accesso sono state configurate. Ciò è necessario per permettere al frontend di mostrare una pagina di inserimento password dedicata nel caso in cui l'\term{Utente} non abbia mai impostato la password per il diario con cui vuole interagire.
+\code{CheckPasswordCmd} modella la richiesta di \ignoreglossary{verifica} dello stato di configurazione delle password per un \term{Utente}. Contiene esclusivamente l'identificativo dell'\term{Utente} e viene consumato dal metodo \code{check\_password\_status} dell'interfaccia \code{CheckPasswordPort} per determinare quali credenziali di accesso sono state configurate. Ciò è necessario per permettere al frontend di mostrare una pagina di inserimento password dedicata nel caso in cui l'\term{Utente} non abbia mai impostato la password per il diario con cui vuole interagire.
 
 \begin{figure}[H]
     \centering
@@ -2781,7 +2790,7 @@ Il command object \code{SetPasswordCmd} incapsula i dati necessari per l'imposta
 \end{figure}
 
 \paragraph{GetNotePort}\mbox{}\\
-L'interfaccia \code{GetNotePort} definisce il \term{Contratto} per le operazioni di lettura delle note. Tali operazioni di lettura includono il fetch di una singola nota e il fetch di tutte le note di un singolo \term{Utente}. \code{GetNotePort} viene implementata da \code{NoteService}, che orchestra il recupero dei dati tramite \code{NoteRepositoryPort}.
+L'interfaccia \code{GetNotePort} definisce il \ignoreglossary{contratto} per le operazioni di lettura delle note. Tali operazioni di lettura includono il fetch di una singola nota e il fetch di tutte le note di un singolo \term{Utente}. \code{GetNotePort} viene implementata da \code{NoteService}, che orchestra il recupero dei dati tramite \code{NoteRepositoryPort}.
 
 \begin{figure}[H]
     \centering
@@ -2791,7 +2800,7 @@ L'interfaccia \code{GetNotePort} definisce il \term{Contratto} per le operazioni
 \end{figure}
 
 \paragraph{SetNotePort}\mbox{}\\
-L'interfaccia \code{SetNotePort} definisce il \term{Contratto} per la creazione di una nuova nota. È implementata da \code{NoteService}.
+L'interfaccia \code{SetNotePort} definisce il \ignoreglossary{contratto} per la creazione di una nuova nota. È implementata da \code{NoteService}.
 
 \begin{figure}[H]
     \centering
@@ -2801,7 +2810,7 @@ L'interfaccia \code{SetNotePort} definisce il \term{Contratto} per la creazione 
 \end{figure}
 
 \paragraph{DeleteNotePort}\mbox{}\\
-L'interfaccia \code{DeleteNotePort} definisce il \term{Contratto} per l'eliminazione di un'intera nota. È implementata da \code{NoteService}, che orchestra sia la rimozione della nota dal \term{Repository} che l'eventuale cleanup dei file allegati attraverso \code{FileRepositoryPort}.
+L'interfaccia \code{DeleteNotePort} definisce il \ignoreglossary{contratto} per l'eliminazione di un'intera nota. È implementata da \code{NoteService}, che orchestra sia la rimozione della nota dal \ignoreglossary{repository} che l'eventuale cleanup dei file allegati attraverso \code{FileRepositoryPort}.
 
 \begin{figure}[H]
     \centering
@@ -2811,7 +2820,7 @@ L'interfaccia \code{DeleteNotePort} definisce il \term{Contratto} per l'eliminaz
 \end{figure}
 
 \paragraph{SetNoteElementPort}\mbox{}\\
-L'interfaccia \code{SetNoteElementPort} definisce il \term{Contratto} per l'aggiunta di un elemento di contenuto a una nota esistente. Il metodo \code{add\_note\_element} accetta un \code{AddNoteElementCmd} e restituisce l'entità \code{NoteElement} creata. È implementata da \code{NoteService}.
+L'interfaccia \code{SetNoteElementPort} definisce il \ignoreglossary{contratto} per l'aggiunta di un elemento di contenuto a una nota esistente. Il metodo \code{add\_note\_element} accetta un \code{AddNoteElementCmd} e restituisce l'entità \code{NoteElement} creata. È implementata da \code{NoteService}.
 
 \begin{figure}[H]
     \centering
@@ -2821,7 +2830,7 @@ L'interfaccia \code{SetNoteElementPort} definisce il \term{Contratto} per l'aggi
 \end{figure}
 
 \paragraph{DeleteNoteElementPort}\mbox{}\\
-L'interfaccia \code{DeleteNoteElementPort} definisce il \term{Contratto} per la rimozione di un singolo elemento da una nota esistente. È implementata da \code{NoteService}.
+L'interfaccia \code{DeleteNoteElementPort} definisce il \ignoreglossary{contratto} per la rimozione di un singolo elemento da una nota esistente. È implementata da \code{NoteService}.
 
 \begin{figure}[H]
     \centering
@@ -2831,7 +2840,7 @@ L'interfaccia \code{DeleteNoteElementPort} definisce il \term{Contratto} per la 
 \end{figure}
 
 \paragraph{SetPasswordPort}\mbox{}\\
-L'interfaccia \code{SetPasswordPort} definisce il \term{Contratto} per la configurazione delle credenziali di accesso. Espone due metodi distinti: \code{set\_real\_password} per l'impostazione della password del diario reale e \code{set\_fake\_password} per quella del diario fittizio, entrambi accettando un \code{SetPasswordCmd}. È implementata da \code{DiaryAuthService}.
+L'interfaccia \code{SetPasswordPort} definisce il \ignoreglossary{contratto} per la configurazione delle credenziali di accesso. Espone due metodi distinti: \code{set\_real\_password} per l'impostazione della password del diario reale e \code{set\_fake\_password} per quella del diario fittizio, entrambi accettando un \code{SetPasswordCmd}. È implementata da \code{DiaryAuthService}.
 
 \begin{figure}[H]
     \centering
@@ -2841,7 +2850,7 @@ L'interfaccia \code{SetPasswordPort} definisce il \term{Contratto} per la config
 \end{figure}
 
 \paragraph{ValidationPort}\mbox{}\\
-L'interfaccia \code{ValidationPort} definisce il \term{Contratto} per la \term{Validazione} delle credenziali di accesso al diario. Il metodo \code{validate\_password} accetta un \code{ValidatePasswordCmd} e restituisce una stringa rappresentante il tipo di diario corrispondente alla password fornita se una corrispondenza viene effettivamente trovata. Il metodo \code{validate\_token} accetta un \code{ValidateTokenCmd} e restituisce un booleano indicante la validità del token. È implementata da \code{DiaryAuthService}.
+L'interfaccia \code{ValidationPort} definisce il \ignoreglossary{contratto} per la \ignoreglossary{validazione} delle credenziali di accesso al diario. Il metodo \code{validate\_password} accetta un \code{ValidatePasswordCmd} e restituisce una stringa rappresentante il tipo di diario corrispondente alla password fornita se una corrispondenza viene effettivamente trovata. Il metodo \code{validate\_token} accetta un \code{ValidateTokenCmd} e restituisce un booleano indicante la validità del token. È implementata da \code{DiaryAuthService}.
 
 \begin{figure}[H]
     \centering
@@ -2851,7 +2860,7 @@ L'interfaccia \code{ValidationPort} definisce il \term{Contratto} per la \term{V
 \end{figure}
 
 \paragraph{CheckPasswordPort}\mbox{}\\
-L'interfaccia \code{CheckPasswordPort} definisce il \term{Contratto} per la \term{Verifica} dello stato di configurazione delle password.  È implementata da \code{DiaryAuthService}.
+L'interfaccia \code{CheckPasswordPort} definisce il \ignoreglossary{contratto} per la \ignoreglossary{verifica} dello stato di configurazione delle password.  È implementata da \code{DiaryAuthService}.
 
 \begin{figure}[H]
     \centering
@@ -2861,7 +2870,7 @@ L'interfaccia \code{CheckPasswordPort} definisce il \term{Contratto} per la \ter
 \end{figure}
 
 \paragraph{NoteRepositoryPort}\mbox{}\\
-L'interfaccia \code{NoteRepositoryPort} definisce il \term{Contratto} per la persistenza delle note e dei loro elementi. Espone i metodi \code{add} per la creazione di note, \code{get} per il recupero di una nota specifica, \code{delete} per la rimozione, \code{list} per l'elenco completo delle note di un \term{Utente}, \code{add\_note\_element} per l'inserimento di elementi in note esistenti e \code{delete\_note\_element} per la loro rimozione. Tutti i metodi accettano il parametro \code{diary\_type} per garantire l'isolamento tra diario reale e fittizio. Questa porta di uscita viene implementata da \code{DynamoNoteAdapter}, che fornisce la persistenza concreta su DynamoDB.
+L'interfaccia \code{NoteRepositoryPort} definisce il \ignoreglossary{contratto} per la persistenza delle note e dei loro elementi. Espone i metodi \code{add} per la creazione di note, \code{get} per il recupero di una nota specifica, \code{delete} per la rimozione, \code{list} per l'elenco completo delle note di un \term{Utente}, \code{add\_note\_element} per l'inserimento di elementi in note esistenti e \code{delete\_note\_element} per la loro rimozione. Tutti i metodi accettano il parametro \code{diary\_type} per garantire l'isolamento tra diario reale e fittizio. Questa porta di uscita viene implementata da \code{DynamoNoteAdapter}, che fornisce la persistenza concreta su DynamoDB.
 
 \begin{figure}[H]
     \centering
@@ -2871,7 +2880,7 @@ L'interfaccia \code{NoteRepositoryPort} definisce il \term{Contratto} per la per
 \end{figure}
 
 \paragraph{FileRepositoryPort}\mbox{}\\
-L'interfaccia \code{FileRepositoryPort} definisce il \term{Contratto} per la gestione degli file (immagini o audio) inseriti all'interno delle note del diario. Espone il metodo \code{add\_note\_element} che accetta una chiave e restituisce l'URL di accesso, \code{delete} per la rimozione di file tramite chiave e \code{generate\_presigned\_url} per la generazione di URL firmati con parametri e scadenza configurabili. \code{FileRepositoryPort} è implementata da \code{S3NoteAdapter}, che fornisce l'integrazione concreta con Amazon S3.
+L'interfaccia \code{FileRepositoryPort} definisce il \ignoreglossary{contratto} per la gestione degli file (immagini o audio) inseriti all'interno delle note del diario. Espone il metodo \code{add\_note\_element} che accetta una chiave e restituisce l'URL di accesso, \code{delete} per la rimozione di file tramite chiave e \code{generate\_presigned\_url} per la generazione di URL firmati con parametri e scadenza configurabili. \code{FileRepositoryPort} è implementata da \code{S3NoteAdapter}, che fornisce l'integrazione concreta con Amazon S3.
 
 \begin{figure}[H]
     \centering
@@ -2881,7 +2890,7 @@ L'interfaccia \code{FileRepositoryPort} definisce il \term{Contratto} per la ges
 \end{figure}
 
 \paragraph{DiaryAuthRepositoryPort}\mbox{}\\
-L'interfaccia \code{DiaryAuthRepositoryPort} definisce il \term{Contratto} per la persistenza e \term{Validazione} delle credenziali di accesso. Espone il metodo \code{hash\_password} per la generazione dell'hash di una password, \code{validate\_password} per la \term{Verifica} delle credenziali fornite restituendo il tipo di diario corrispondente, e \code{set\_password} per la persistenza delle credenziali associate a uno specifico \code{diary\_type}. Implementata da \code{DynamoAuthAdapter}, questa porta permette a \code{DiaryAuthService} di gestire l'autenticazione mantenendo separati gli hash delle password per diario reale e fittizio.
+L'interfaccia \code{DiaryAuthRepositoryPort} definisce il \ignoreglossary{contratto} per la persistenza e \ignoreglossary{validazione} delle credenziali di accesso. Espone il metodo \code{hash\_password} per la generazione dell'hash di una password, \code{validate\_password} per la \ignoreglossary{verifica} delle credenziali fornite restituendo il tipo di diario corrispondente, e \code{set\_password} per la persistenza delle credenziali associate a uno specifico \code{diary\_type}. Implementata da \code{DynamoAuthAdapter}, questa porta permette a \code{DiaryAuthService} di gestire l'autenticazione mantenendo separati gli hash delle password per diario reale e fittizio.
 
 \begin{figure}[H]
     \centering
@@ -2901,7 +2910,7 @@ La classe \code{NoteService} costituisce il servizio applicativo centrale per la
 \end{figure}
 
 \paragraph{DiaryAuthService}\mbox{}\\
-La classe \code{DiaryAuthService} implementa il servizio applicativo per la gestione dell'autenticazione al diario, che include l'impostazione della password di entrambi i diari e la loro \term{Verifica}. Si occupa inoltre di verificare che la password impostata dall'\term{Utente} sia conforme a specifici criteri di sicurezza. \code{DiaryAuthService} riceve tramite costruttore la dipendenza \code{auth\_repository} di tipo \code{DiaryAuthRepositoryPort} per l'orchestrazione delle operazioni relative alla persistenza dei dati di accesso degli utenti.
+La classe \code{DiaryAuthService} implementa il servizio applicativo per la gestione dell'autenticazione al diario, che include l'impostazione della password di entrambi i diari e la loro \ignoreglossary{verifica}. Si occupa inoltre di verificare che la password impostata dall'\term{Utente} sia conforme a specifici criteri di sicurezza. \code{DiaryAuthService} riceve tramite costruttore la dipendenza \code{auth\_repository} di tipo \code{DiaryAuthRepositoryPort} per l'orchestrazione delle operazioni relative alla persistenza dei dati di accesso degli utenti.
 
 \begin{figure}[H]
     \centering
@@ -2931,7 +2940,7 @@ La classe \code{S3NoteAdapter} implementa l'interfaccia \code{FileRepositoryPort
 \end{figure}
 
 \paragraph{DynamoAuthAdapter}\mbox{}\\
-La classe \code{DynamoAuthAdapter} implementa l'interfaccia \code{DiaryAuthRepositoryPort} fornendo la persistenza delle credenziali di autenticazione su DynamoDB. Mantiene un riferimento al client DynamoDB (\code{dynamodb\_client}) inizializzato nel costruttore. Il metodo \code{hash\_password} genera l'hash sicuro di una password per un \term{Utente} specifico tramite HMAC-SHA-256 applicato sulla concatenazione tra l'id dell'\term{Utente} e la password stessa. \code{validate\_password} \term{Verifica} le credenziali fornite restituendo il tipo di diario corrispondente all'hash validato, e \code{set\_password} memorizza o aggiorna le credenziali associate a uno specifico \code{diary\_type}.
+La classe \code{DynamoAuthAdapter} implementa l'interfaccia \code{DiaryAuthRepositoryPort} fornendo la persistenza delle credenziali di autenticazione su DynamoDB. Mantiene un riferimento al client DynamoDB (\code{dynamodb\_client}) inizializzato nel costruttore. Il metodo \code{hash\_password} genera l'hash sicuro di una password per un \term{Utente} specifico tramite HMAC-SHA-256 applicato sulla concatenazione tra l'id dell'\term{Utente} e la password stessa. \code{validate\_password} \ignoreglossary{Verifica} le credenziali fornite restituendo il tipo di diario corrispondente all'hash validato, e \code{set\_password} memorizza o aggiorna le credenziali associate a uno specifico \code{diary\_type}.
 
 \begin{figure}[H]
     \centering
@@ -3276,7 +3285,7 @@ La classe \code{Chat} rappresenta il modello di dominio di una conversazione tra
 
 \paragraph{ChatbotLLMPort}\mbox{}\\
 
-L'interfaccia \code{ChatbotLLMPort} definisce il \term{Contratto} per gli adapter che si interfacciano con LLM. Espone il metodo \code{process\_prompt}, che accetta un prompt testuale e una modalità di risposta, restituendo la stringa generata dal modello. Questa astrazione permette di disaccoppiare la logica applicativa dall'implementazione specifica del provider LLM utilizzato.
+L'interfaccia \code{ChatbotLLMPort} definisce il \ignoreglossary{contratto} per gli adapter che si interfacciano con LLM. Espone il metodo \code{process\_prompt}, che accetta un prompt testuale e una modalità di risposta, restituendo la stringa generata dal modello. Questa astrazione permette di disaccoppiare la logica applicativa dall'implementazione specifica del provider LLM utilizzato.
 
 \begin{figure}[H]
     \centering
@@ -3309,7 +3318,7 @@ L'interfaccia \code{ChatbotLLMPort} definisce il \term{Contratto} per gli adapte
 
 \paragraph{ChatsRepositoryPort}\mbox{}\\
 
-L'interfaccia \code{ChatsRepositoryPort} definisce il \term{Contratto} per la persistenza delle conversazioni. Espone metodi per tutte le operazioni CRUD: creazione di nuove chat (\code{create\_chat}), recupero singolo (\code{get\_chat}) e multiplo (\code{list\_chats}), eliminazione (\code{delete\_chat}) e aggiunta di messaggi (\code{add\_message}). Questa astrazione garantisce l'indipendenza del dominio dall'implementazione specifica del layer di persistenza.
+L'interfaccia \code{ChatsRepositoryPort} definisce il \ignoreglossary{contratto} per la persistenza delle conversazioni. Espone metodi per tutte le operazioni CRUD: creazione di nuove chat (\code{create\_chat}), recupero singolo (\code{get\_chat}) e multiplo (\code{list\_chats}), eliminazione (\code{delete\_chat}) e aggiunta di messaggi (\code{add\_message}). Questa astrazione garantisce l'indipendenza del dominio dall'implementazione specifica del layer di persistenza.
 
 \begin{figure}[H]
     \centering
@@ -3386,7 +3395,7 @@ L'interfaccia \code{ChatMessagePort} astrae l'operazione di aggiunta di messaggi
 
 \paragraph{ChatbotCRUDService}\mbox{}\\
 
-\code{ChatbotCRUDService} implementa tutte le porte applicative relative alle operazioni CRUD sulle conversazioni: \code{CreateChatPort}, \code{GetChatPort}, \code{UpdateChatPort}, \code{DeleteChatPort} e \code{ChatMessagePort}. Questo servizio funge da facade unificato per tutte le operazioni di gestione delle chat, delegando al \term{Repository} la persistenza effettiva dei dati. Mantiene un riferimento a \code{ChatsRepositoryPort}, rispettando il principio di inversione delle dipendenze dell'\term{Architettura} esagonale.
+\code{ChatbotCRUDService} implementa tutte le porte applicative relative alle operazioni CRUD sulle conversazioni: \code{CreateChatPort}, \code{GetChatPort}, \code{UpdateChatPort}, \code{DeleteChatPort} e \code{ChatMessagePort}. Questo servizio funge da facade unificato per tutte le operazioni di gestione delle chat, delegando al \ignoreglossary{repository} la persistenza effettiva dei dati. Mantiene un riferimento a \code{ChatsRepositoryPort}, rispettando il principio di inversione delle dipendenze dell'\term{Architettura} esagonale.
 
 \begin{figure}[H]
     \centering
@@ -3819,7 +3828,7 @@ Descrizione metodi:
 È il service della \term{Business Logic} responsabile delle operazioni CRUD sui contatti fidati.\\
 Descrizione metodi:
 \begin{itemize}
-    \item \code{\_\_init\_\_(\term{Repository}: TrustedContactRepositoryPort)}, costruttore che riceve la port secondaria tramite dependency injection.
+    \item \code{\_\_init\_\_(\ignoreglossary{repository}: TrustedContactRepositoryPort)}, costruttore che riceve la port secondaria tramite dependency injection.
 \end{itemize}
 
 \paragraph{SOSAlertService}\mbox{}\\
