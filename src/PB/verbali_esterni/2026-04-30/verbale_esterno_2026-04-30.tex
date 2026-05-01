@@ -156,6 +156,7 @@ nessuno \\
 \begin{itemize}
     \item Richiesta permessi per Amazon Bedrock.
     \item Chiarimenti e risoluzione errori su alcuni permessi AWS.
+    \item Discussione sulla crittazione delle note e del diario.
     \item Discussione su alcuni requisiti funzionali da modificare.
     \item Discussione sulla presentazione finale e su come strutturarla.
 \end{itemize}
@@ -163,8 +164,17 @@ nessuno \\
 % ---------- DISCUSSIONI, METTERE SE DOC È UN \term{Verbale} ----------
 \section{Discussioni}
 \begin{itemize}
-    \item 
-\end{itemize}
+    \item E' stato discusso e richiesto esplicitamente l'accesso ad Amazon Bedrock, al fine di poter integrare le funzionalità di LLM all'interno del progetto e testare le potenzialità offerte da questo servizio per la gestione dei dati e l'implementazione di funzionalità avanzate. L'azienda ha prontamente concesso l'accesso, permettendo al gruppo di procedere con l'integrazione e la sperimentazione di Amazon Bedrock all'interno del progetto.
+    \item Sono stati chiariti alcuni errori relativi ai permessi AWS, in particolare 
+    \item E' stato chiesto all'azienda se ogni singola nota e voce del diario debba essere crittata, o se è sufficiente crittare solo le note e le voci del diario che contengono informazioni sensibili. L'azienda ha confermato che sarebbe sufficiente crittare il contenuto delle note. L'azienda ha inoltre specificato che, se dovesse risultare per questioni tempistiche troppo difficile crittare il contenuto delle note, è possibile creare una semplice funzione "cripta" e "decripta" che, sebbene non offra un livello di sicurezza elevato, permetterebbe comunque di crittare con una semplice chiave le note, garantendo un livello di sicurezza minimo e soddisfacente per il progetto. 
+    \item Sono stati discussi alcuni requisiti funzionali che, per motivi di fattibilità tecnica o di tempo, necessitano di essere modificati o rimossi. Il gruppo ha chiesto all'azienda se i seguenti requisiti possono essere modificati o rimossi:
+    \begin{itemize}
+        \item RF-OB-4: L'Utente deve poter selezionare il profilo di utilizzo ("Per me" o "Per altri") - L'azienda ha confermato che questo requisito può essere rimosso, in quanto non è strettamente necessario per il funzionamento dell'applicazione e potrebbe risultare complesso da implementare entro i tempi previsti.
+        \item RF-OB-102: L'Utente deve poter avviare un segnale acustico di emergenza indipendente dalle impostazioni di volume del dispositivo - L'azienda ha confermato che questo requisito non è così difficile da implementare, e ha quindi negato la richiesta di rimozione, specificando che è necessario mantenere questo requisito per garantire la sicurezza degli utenti in situazioni di emergenza. L'azienda ha anche suggerito la libreria "audioplayers" per implementare questa funzionalità, in quanto permette di riprodurre suoni indipendentemente dalle impostazioni di volume del dispositivo, garantendo così che il segnale acustico di emergenza sia sempre udibile quando necessario.
+    \end{itemize}
+    \item E' stata discussa la struttura della presentazione finale, ed è stato specificato che la presentazione dovrà essere strutturata in modo da coprire tutti gli aspetti principali del progetto, includendo una dimostrazione pratica dell'applicazione e una sezione dedicata alla descrizione dell'architettura delle lambda e dei microservizi.
+    \item E' stato infine discusso sulla necessità di mettere un "cookie banner" all'interno dell'applicazione, e l'azienda ha confermato che, a meno che non vengano raccolti dati personali degli utenti, non è necessario implementare un cookie banner, in quanto l'applicazione non rientra nell'ambito di applicazione del GDPR e non richiede il consenso degli utenti per la raccolta dei dati. L'azienda ha specificato che, se dovessero essere raccolti dati personali, sarà necessario implementare un cookie banner per informare gli utenti sulla raccolta dei dati e ottenere il loro consenso, in conformità con le normative sulla privacy.
+\end{itemize}   
 
 % ---------- DECISIONI, METTERE SE DOC È UN \term{Verbale} ----------
 \section{Decisioni}
@@ -178,13 +188,15 @@ nessuno \\
 \rowcolor{gray!60} 
 \textbf{Descrizione decisione} & \textbf{Codice decisione} \\
 \hline
-Adottare un pattern architetturale a microservizi, accorpando all'interno di una singola funzione Lambda le diverse operazioni relative a una specifica funzionalità o entità di dominio, garantendo al contempo la segregazione del database per ciascun microservizio. & VE \ignoreglossary{PB} 3.1 \\
+Sistemare l'analisi dei requisiti coerentemente con le nuove specifiche & VE \ignoreglossary{PB} 4.1 \\
 \hline
-Utilizzare ufficialmente il pacchetto Provider di Flutter per la Dependency Injection &  VE \ignoreglossary{PB} 3.2 \\
+Implementare e testare le funzionalità di integrazione con Amazon Bedrock &  VE \ignoreglossary{PB} 4.2 \\
 \hline
-Isolare strettamente la \term{Business Logic} dai dati esterni avvalendosi di Inbound Adapter e oggetti di dominio secondo i principi dell'\term{Architettura} Esagonale. &  VE \ignoreglossary{PB} 3.3\\
+Implementare e testare le funzionalità di crittografia delle note e del diario &  VE \ignoreglossary{PB} 4.3\\
 \hline
-Migrare la memorizzazione dei dati non modificabili dall'\term{Utente} su Amazon S3, preferendolo a DynamoDB per ottimizzare i costi e l'efficienza nella gestione di risorse statiche. &  VE \ignoreglossary{PB} 3.4\\
+Implementare e testare la funzionalità di segnalazione acustica di emergenza &  VE \ignoreglossary{PB} 4.4\\
+\hline
+Preparare la presentazione finale del progetto &  VE \ignoreglossary{PB} 4.5\\
 \hline
 \end{tabular}
 \end{center}
