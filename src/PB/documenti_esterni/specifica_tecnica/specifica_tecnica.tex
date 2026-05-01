@@ -2395,7 +2395,7 @@ Il flusso di elaborazione è dunque il seguente:
     
     \item \textbf{\ignoreglossary{verifica} delle Credenziali}: API Gateway \ignoreglossary{verifica} che l'\term{Utente} sia autenticato all'applicazione. Dopodiché inoltra la richiesta alla funzione Lambda, che calcola l'hash della password ricevuta e lo confronta con gli hash memorizzati in DynamoDB. In caso di corrispondenza, viene identificato il tipo di diario associato.
     
-    \item \textbf{Generazione token di accesso}: dopo la validazione della password, un token di accesso casuale viene generato, salvato su DynamoDB e passato in risposta al client. Tale token dovrà essere fornito nell'header di ogni richiesta successiva relativa a operazioni CRUD sui contenuti del diario.
+    \item \textbf{Generazione token di accesso}: dopo la \term{Validazione} della password, un token di accesso casuale viene generato, salvato su DynamoDB e passato in risposta al client. Tale token dovrà essere fornito nell'header di ogni richiesta successiva relativa a operazioni CRUD sui contenuti del diario.
     
     \item \textbf{Recupero delle Note}: Quando l'\term{Utente} richiede di recuperare la lista di note di uno dei diari (metodo \texttt{GET /diary/\{diary\_type\}/}), API Gateway invia la richiesta alla Lambda, che recupera le \textit{preview} dal database DynamoDB e le restituisce al client.
     
@@ -2407,7 +2407,7 @@ Il flusso di elaborazione è dunque il seguente:
     
     \item \textbf{Eliminazione delle Note}: In caso di richiesta di eliminazione (metodo \texttt{DELETE /diary/\{diary\_type\}/\{note\_id\}/}), la Lambda rimuove i dati associati dal database e, se presenti, elimina anche i file binari corrispondenti dai bucket S3.
     
-    \item \textbf{Logout}: quando l'utente esce dal diario, il backend viene notificato e la Lambda elimina la sessione precedentemente avviata.
+    \item \textbf{Logout}: quando l'\term{Utente} esce dal diario, il \term{Backend} viene notificato e la Lambda elimina la sessione precedentemente avviata.
 \end{itemize}
 
 \paragraph{API associate}\mbox{}\\
@@ -2462,7 +2462,7 @@ Le API relative al diario criptato e fittizio sono suddivise in due categorie di
 
             \item \textbf{Errori}:
             \begin{itemize}
-                \item \texttt{400 Bad Request}: Utente non trovato.
+                \item \texttt{400 Bad Request}: \term{Utente} non trovato.
                 \item \texttt{500 Internal Server Error}: Errore interno al server.
             \end{itemize}
         \end{itemize}
@@ -2519,7 +2519,7 @@ Le API relative al diario criptato e fittizio sono suddivise in due categorie di
 
             \item \textbf{Errori}:
             \begin{itemize}
-                \item \texttt{400 Bad Request}: JSON malformato o utente non trovato.
+                \item \texttt{400 Bad Request}: JSON malformato o \term{Utente} non trovato.
                 \item \texttt{500 Internal Server Error}: errore interno al server.
             \end{itemize}
         \end{itemize}
@@ -2641,7 +2641,7 @@ Le API relative al diario criptato e fittizio sono suddivise in due categorie di
 \end{itemize}
 
 \paragraph{DiaryType}\mbox{}\\
-L'enumerazione \code{DiaryType} definisce i due tipi di diario supportati dal sistema: \code{REAL\_DIARY} per il diario reale contenente i dati autentici dell'utente e \code{FAKE\_DIARY} per il diario fittizio.
+L'enumerazione \code{DiaryType} definisce i due tipi di diario supportati dal sistema: \code{REAL\_DIARY} per il diario reale contenente i dati autentici dell'\term{Utente} e \code{FAKE\_DIARY} per il diario fittizio.
 
 \begin{figure}[H]
     \centering
@@ -2661,7 +2661,7 @@ La classe \code{Note} rappresenta l'entità di dominio principale del sistema, m
 \end{figure}
 
 \paragraph{NoteElement}\mbox{}\\
-\code{NoteElement} modella un singolo blocco di contenuto all'interno di una nota. Ogni elemento è identificato univocamente tramite \code{note\_element\_id} e mantiene un riferimento alla nota di appartenenza (\code{note\_id}) e all'utente proprietario (\code{user\_id}). Il campo \code{type} specifica la tipologia del contenuto (testo, immagine, audio), mentre \code{content} ne contiene il valore effettivo. Questa granularità permette di gestire note composite e strutturate, supportando l'aggiunta e rimozione incrementale di elementi. La classe viene serializzata tramite \code{NoteElementDTO}.
+\code{NoteElement} modella un singolo blocco di contenuto all'interno di una nota. Ogni elemento è identificato univocamente tramite \code{note\_element\_id} e mantiene un riferimento alla nota di appartenenza (\code{note\_id}) e all'\term{Utente} proprietario (\code{user\_id}). Il campo \code{type} specifica la tipologia del contenuto (testo, immagine, audio), mentre \code{content} ne contiene il valore effettivo. Questa granularità permette di gestire note composite e strutturate, supportando l'aggiunta e rimozione incrementale di elementi. La classe viene serializzata tramite \code{NoteElementDTO}.
 
 \begin{figure}[H]
     \centering
@@ -2671,7 +2671,7 @@ La classe \code{Note} rappresenta l'entità di dominio principale del sistema, m
 \end{figure}
 
 \paragraph{GetNoteCmd}\mbox{}\\
-Il command object \code{GetNoteCmd} incapsula i parametri necessari per richiedere il recupero di una singola nota. Contiene l'identificativo della nota (\code{note\_id}), l'identificativo dell'utente richiedente (\code{user\_id}) e il tipo di diario da cui recuperare la nota (\code{diary\_type}). Questo oggetto viene consumato dal metodo \code{get\_note} dell'interfaccia \code{GetNotePort}, implementata da \code{NoteService}, che delega il recupero effettivo al repository di persistenza.
+Il command object \code{GetNoteCmd} incapsula i parametri necessari per richiedere il recupero di una singola nota. Contiene l'identificativo della nota (\code{note\_id}), l'identificativo dell'\term{Utente} richiedente (\code{user\_id}) e il tipo di diario da cui recuperare la nota (\code{diary\_type}). Questo oggetto viene consumato dal metodo \code{get\_note} dell'interfaccia \code{GetNotePort}, implementata da \code{NoteService}, che delega il recupero effettivo al \term{Repository} di persistenza.
 
 \begin{figure}[H]
     \centering
@@ -2681,7 +2681,7 @@ Il command object \code{GetNoteCmd} incapsula i parametri necessari per richiede
 \end{figure}
 
 \paragraph{GetNotesCmd}\mbox{}\\
-\code{GetNotesCmd} rappresenta la richiesta dell'elenco delle note appartenenti a un utente. Include l'identificativo dell'utente (\code{user\_id}) e il tipo di diario da interrogare (\code{diary\_type}). Viene utilizzato dal metodo \code{list\_notes} di \code{GetNotePort} per recuperare l'insieme completo delle note dell'utente, mantenendo l'isolamento tra diario reale e fittizio.
+\code{GetNotesCmd} rappresenta la richiesta dell'elenco delle note appartenenti a un \term{Utente}. Include l'identificativo dell'\term{Utente} (\code{user\_id}) e il tipo di diario da interrogare (\code{diary\_type}). Viene utilizzato dal metodo \code{list\_notes} di \code{GetNotePort} per recuperare l'insieme completo delle note dell'\term{Utente}, mantenendo l'isolamento tra diario reale e fittizio.
 
 \begin{figure}[H]
     \centering
@@ -2691,7 +2691,7 @@ Il command object \code{GetNoteCmd} incapsula i parametri necessari per richiede
 \end{figure}
 
 \paragraph{AddElementNewNoteCmd}\mbox{}\\
-Il command \code{AddElementNewNoteCmd} rappresenta la richiesta dell'aggiunta di un blocco di contenuto destinato a far parte di una nuova nota in fase di creazione. Contiene l'identificativo dell'utente proprietario (\code{user\_id}), la tipologia dell'elemento (\code{type}) e il suo contenuto (\code{content}). Questo oggetto viene utilizzato all'interno di \code{AddNoteCmd} come componente della lista \code{message\_elements}, permettendo la creazione di note con elementi preimpostati.
+Il command \code{AddElementNewNoteCmd} rappresenta la richiesta dell'aggiunta di un blocco di contenuto destinato a far parte di una nuova nota in fase di creazione. Contiene l'identificativo dell'\term{Utente} proprietario (\code{user\_id}), la tipologia dell'elemento (\code{type}) e il suo contenuto (\code{content}). Questo oggetto viene utilizzato all'interno di \code{AddNoteCmd} come componente della lista \code{message\_elements}, permettendo la creazione di note con elementi preimpostati.
 
 \begin{figure}[H]
     \centering
@@ -2711,7 +2711,7 @@ Il command \code{AddElementNewNoteCmd} rappresenta la richiesta dell'aggiunta di
 \end{figure}
 
 \paragraph{AddNoteElementCmd}\mbox{}\\
-Il command object \code{AddNoteElementCmd} rappresenta la richiesta di aggiunta di un singolo elemento a una nota esistente. Contiene l'identificativo dell'utente e della nota target, la tipologia del nuovo elemento e il suo contenuto. Viene processato dal metodo \code{add\_note\_element} dell'interfaccia \code{SetNoteElementPort}, che delega a \code{NoteService} la creazione dell'entità \code{NoteElement} e la successiva persistenza tramite il repository.
+Il command object \code{AddNoteElementCmd} rappresenta la richiesta di aggiunta di un singolo elemento a una nota esistente. Contiene l'identificativo dell'\term{Utente} e della nota target, la tipologia del nuovo elemento e il suo contenuto. Viene processato dal metodo \code{add\_note\_element} dell'interfaccia \code{SetNoteElementPort}, che delega a \code{NoteService} la creazione dell'entità \code{NoteElement} e la successiva persistenza tramite il \term{Repository}.
 
 \begin{figure}[H]
     \centering
@@ -2721,7 +2721,7 @@ Il command object \code{AddNoteElementCmd} rappresenta la richiesta di aggiunta 
 \end{figure}
 
 \paragraph{DeleteNoteCmd}\mbox{}\\
-\code{DeleteNoteCmd} incapsula i parametri per l'eliminazione di una nota. Include l'identificativo della nota da rimuovere, quello dell'utente richiedente e il tipo di diario da cui eliminare la risorsa. Questo command viene consumato dal metodo \code{delete\_note} di \code{DeleteNotePort}, che coordina sia la rimozione dal repository di persistenza che l'eventuale cleanup degli allegati file tramite \code{FileRepositoryPort}.
+\code{DeleteNoteCmd} incapsula i parametri per l'eliminazione di una nota. Include l'identificativo della nota da rimuovere, quello dell'\term{Utente} richiedente e il tipo di diario da cui eliminare la risorsa. Questo command viene consumato dal metodo \code{delete\_note} di \code{DeleteNotePort}, che coordina sia la rimozione dal \term{Repository} di persistenza che l'eventuale cleanup degli allegati file tramite \code{FileRepositoryPort}.
 
 \begin{figure}[H]
     \centering
@@ -2731,7 +2731,7 @@ Il command object \code{AddNoteElementCmd} rappresenta la richiesta di aggiunta 
 \end{figure}
 
 \paragraph{DeleteNoteElementCmd}\mbox{}\\
-Il command \code{DeleteNoteElementCmd} modella la richiesta di rimozione di un singolo elemento da una nota esistente. Contiene l'identificativo dell'utente, della nota di riferimento e dell'elemento specifico (\code{note\_element\_id}). Viene processato dal metodo \code{delete\_note\_element} dell'interfaccia \code{DeleteNoteElementPort}, implementata da \code{NoteService}.
+Il command \code{DeleteNoteElementCmd} modella la richiesta di rimozione di un singolo elemento da una nota esistente. Contiene l'identificativo dell'\term{Utente}, della nota di riferimento e dell'elemento specifico (\code{note\_element\_id}). Viene processato dal metodo \code{delete\_note\_element} dell'interfaccia \code{DeleteNoteElementPort}, implementata da \code{NoteService}.
 
 \begin{figure}[H]
     \centering
@@ -2741,7 +2741,7 @@ Il command \code{DeleteNoteElementCmd} modella la richiesta di rimozione di un s
 \end{figure}
 
 \paragraph{ValidatePasswordCmd}\mbox{}\\
-\code{ValidatePasswordCmd} rappresenta la richiesta di validazione delle credenziali di accesso al diario. Include l'identificativo dell'utente e la password da verificare. Questo command viene consumato dal metodo \code{validate\_password} dell'interfaccia \code{ValidationPort}, implementata da \code{DiaryAuthService}, che delega la verifica al repository di autenticazione e restituisce il tipo di diario corrispondente alla password fornita, permettendo così l'accesso selettivo al diario reale o fittizio.
+\code{ValidatePasswordCmd} rappresenta la richiesta di \term{Validazione} delle credenziali di accesso al diario. Include l'identificativo dell'\term{Utente} e la password da verificare. Questo command viene consumato dal metodo \code{validate\_password} dell'interfaccia \code{ValidationPort}, implementata da \code{DiaryAuthService}, che delega la \term{Verifica} al \term{Repository} di autenticazione e restituisce il tipo di diario corrispondente alla password fornita, permettendo così l'accesso selettivo al diario reale o fittizio.
 
 \begin{figure}[H]
     \centering
@@ -2751,7 +2751,7 @@ Il command \code{DeleteNoteElementCmd} modella la richiesta di rimozione di un s
 \end{figure}
 
 \paragraph{ValidateTokenCmd}\mbox{}\\
-\code{ValidateTokenCmd} rappresenta la richiesta di validazione del token associato alla sessione di accesso al diario corrente. Include l'identificativo dell'utente e il token da verificare. Questo command viene consumato dal metodo \code{validate\_token} dell'interfaccia \code{ValidationPort}, implementata da \code{DiaryAuthService}, che delega la verifica al repository di autenticazione e restituisce un booleano che indica se il token inserito corrisponde a quello presente nella tabella DynamoDB.
+\code{ValidateTokenCmd} rappresenta la richiesta di \term{Validazione} del token associato alla sessione di accesso al diario corrente. Include l'identificativo dell'\term{Utente} e il token da verificare. Questo command viene consumato dal metodo \code{validate\_token} dell'interfaccia \code{ValidationPort}, implementata da \code{DiaryAuthService}, che delega la \term{Verifica} al \term{Repository} di autenticazione e restituisce un booleano che indica se il token inserito corrisponde a quello presente nella tabella DynamoDB.
 
 \begin{figure}[H]
     \centering
@@ -2761,7 +2761,7 @@ Il command \code{DeleteNoteElementCmd} modella la richiesta di rimozione di un s
 \end{figure}
 
 \paragraph{SetPasswordCmd}\mbox{}\\
-Il command object \code{SetPasswordCmd} incapsula i dati necessari per l'impostazione o l'aggiornamento delle password del diario criptato o fittizio. Include l'identificativo utente, il tipo di diario di riferimento, la nuova password (\code{password}) e opzionalmente la password precedente (\code{previous\_password}) per operazioni di modifica. Viene utilizzato dai metodi \code{set\_real\_password} e \code{set\_fake\_password} dell'interfaccia \code{SetPasswordPort}, permettendo la configurazione indipendente delle credenziali per ciascun tipo di diario.
+Il command object \code{SetPasswordCmd} incapsula i dati necessari per l'impostazione o l'aggiornamento delle password del diario criptato o fittizio. Include l'identificativo \term{Utente}, il tipo di diario di riferimento, la nuova password (\code{password}) e opzionalmente la password precedente (\code{previous\_password}) per operazioni di modifica. Viene utilizzato dai metodi \code{set\_real\_password} e \code{set\_fake\_password} dell'interfaccia \code{SetPasswordPort}, permettendo la configurazione indipendente delle credenziali per ciascun tipo di diario.
 
 \begin{figure}[H]
     \centering
@@ -2771,7 +2771,7 @@ Il command object \code{SetPasswordCmd} incapsula i dati necessari per l'imposta
 \end{figure}
 
 \paragraph{CheckPasswordCmd}\mbox{}\\
-\code{CheckPasswordCmd} modella la richiesta di verifica dello stato di configurazione delle password per un utente. Contiene esclusivamente l'identificativo dell'utente e viene consumato dal metodo \code{check\_password\_status} dell'interfaccia \code{CheckPasswordPort} per determinare quali credenziali di accesso sono state configurate. Ciò è necessario per permettere al frontend di mostrare una pagina di inserimento password dedicata nel caso in cui l'utente non abbia mai impostato la password per il diario con cui vuole interagire.
+\code{CheckPasswordCmd} modella la richiesta di \term{Verifica} dello stato di configurazione delle password per un \term{Utente}. Contiene esclusivamente l'identificativo dell'\term{Utente} e viene consumato dal metodo \code{check\_password\_status} dell'interfaccia \code{CheckPasswordPort} per determinare quali credenziali di accesso sono state configurate. Ciò è necessario per permettere al frontend di mostrare una pagina di inserimento password dedicata nel caso in cui l'\term{Utente} non abbia mai impostato la password per il diario con cui vuole interagire.
 
 \begin{figure}[H]
     \centering
@@ -2781,7 +2781,7 @@ Il command object \code{SetPasswordCmd} incapsula i dati necessari per l'imposta
 \end{figure}
 
 \paragraph{GetNotePort}\mbox{}\\
-L'interfaccia \code{GetNotePort} definisce il contratto per le operazioni di lettura delle note. Tali operazioni di lettura includono il fetch di una singola nota e il fetch di tutte le note di un singolo utente. \code{GetNotePort} viene implementata da \code{NoteService}, che orchestra il recupero dei dati tramite \code{NoteRepositoryPort}.
+L'interfaccia \code{GetNotePort} definisce il \term{Contratto} per le operazioni di lettura delle note. Tali operazioni di lettura includono il fetch di una singola nota e il fetch di tutte le note di un singolo \term{Utente}. \code{GetNotePort} viene implementata da \code{NoteService}, che orchestra il recupero dei dati tramite \code{NoteRepositoryPort}.
 
 \begin{figure}[H]
     \centering
@@ -2791,7 +2791,7 @@ L'interfaccia \code{GetNotePort} definisce il contratto per le operazioni di let
 \end{figure}
 
 \paragraph{SetNotePort}\mbox{}\\
-L'interfaccia \code{SetNotePort} definisce il contratto per la creazione di una nuova nota. È implementata da \code{NoteService}.
+L'interfaccia \code{SetNotePort} definisce il \term{Contratto} per la creazione di una nuova nota. È implementata da \code{NoteService}.
 
 \begin{figure}[H]
     \centering
@@ -2801,7 +2801,7 @@ L'interfaccia \code{SetNotePort} definisce il contratto per la creazione di una 
 \end{figure}
 
 \paragraph{DeleteNotePort}\mbox{}\\
-L'interfaccia \code{DeleteNotePort} definisce il contratto per l'eliminazione di un'intera nota. È implementata da \code{NoteService}, che orchestra sia la rimozione della nota dal repository che l'eventuale cleanup dei file allegati attraverso \code{FileRepositoryPort}.
+L'interfaccia \code{DeleteNotePort} definisce il \term{Contratto} per l'eliminazione di un'intera nota. È implementata da \code{NoteService}, che orchestra sia la rimozione della nota dal \term{Repository} che l'eventuale cleanup dei file allegati attraverso \code{FileRepositoryPort}.
 
 \begin{figure}[H]
     \centering
@@ -2811,7 +2811,7 @@ L'interfaccia \code{DeleteNotePort} definisce il contratto per l'eliminazione di
 \end{figure}
 
 \paragraph{SetNoteElementPort}\mbox{}\\
-L'interfaccia \code{SetNoteElementPort} definisce il contratto per l'aggiunta di un elemento di contenuto a una nota esistente. Il metodo \code{add\_note\_element} accetta un \code{AddNoteElementCmd} e restituisce l'entità \code{NoteElement} creata. È implementata da \code{NoteService}.
+L'interfaccia \code{SetNoteElementPort} definisce il \term{Contratto} per l'aggiunta di un elemento di contenuto a una nota esistente. Il metodo \code{add\_note\_element} accetta un \code{AddNoteElementCmd} e restituisce l'entità \code{NoteElement} creata. È implementata da \code{NoteService}.
 
 \begin{figure}[H]
     \centering
@@ -2821,7 +2821,7 @@ L'interfaccia \code{SetNoteElementPort} definisce il contratto per l'aggiunta di
 \end{figure}
 
 \paragraph{DeleteNoteElementPort}\mbox{}\\
-L'interfaccia \code{DeleteNoteElementPort} definisce il contratto per la rimozione di un singolo elemento da una nota esistente. È implementata da \code{NoteService}.
+L'interfaccia \code{DeleteNoteElementPort} definisce il \term{Contratto} per la rimozione di un singolo elemento da una nota esistente. È implementata da \code{NoteService}.
 
 \begin{figure}[H]
     \centering
@@ -2831,7 +2831,7 @@ L'interfaccia \code{DeleteNoteElementPort} definisce il contratto per la rimozio
 \end{figure}
 
 \paragraph{SetPasswordPort}\mbox{}\\
-L'interfaccia \code{SetPasswordPort} definisce il contratto per la configurazione delle credenziali di accesso. Espone due metodi distinti: \code{set\_real\_password} per l'impostazione della password del diario reale e \code{set\_fake\_password} per quella del diario fittizio, entrambi accettando un \code{SetPasswordCmd}. È implementata da \code{DiaryAuthService}.
+L'interfaccia \code{SetPasswordPort} definisce il \term{Contratto} per la configurazione delle credenziali di accesso. Espone due metodi distinti: \code{set\_real\_password} per l'impostazione della password del diario reale e \code{set\_fake\_password} per quella del diario fittizio, entrambi accettando un \code{SetPasswordCmd}. È implementata da \code{DiaryAuthService}.
 
 \begin{figure}[H]
     \centering
@@ -2841,7 +2841,7 @@ L'interfaccia \code{SetPasswordPort} definisce il contratto per la configurazion
 \end{figure}
 
 \paragraph{ValidationPort}\mbox{}\\
-L'interfaccia \code{ValidationPort} definisce il contratto per la validazione delle credenziali di accesso al diario. Il metodo \code{validate\_password} accetta un \code{ValidatePasswordCmd} e restituisce una stringa rappresentante il tipo di diario corrispondente alla password fornita se una corrispondenza viene effettivamente trovata. Il metodo \code{validate\_token} accetta un \code{ValidateTokenCmd} e restituisce un booleano indicante la validità del token. È implementata da \code{DiaryAuthService}.
+L'interfaccia \code{ValidationPort} definisce il \term{Contratto} per la \term{Validazione} delle credenziali di accesso al diario. Il metodo \code{validate\_password} accetta un \code{ValidatePasswordCmd} e restituisce una stringa rappresentante il tipo di diario corrispondente alla password fornita se una corrispondenza viene effettivamente trovata. Il metodo \code{validate\_token} accetta un \code{ValidateTokenCmd} e restituisce un booleano indicante la validità del token. È implementata da \code{DiaryAuthService}.
 
 \begin{figure}[H]
     \centering
@@ -2851,7 +2851,7 @@ L'interfaccia \code{ValidationPort} definisce il contratto per la validazione de
 \end{figure}
 
 \paragraph{CheckPasswordPort}\mbox{}\\
-L'interfaccia \code{CheckPasswordPort} definisce il contratto per la verifica dello stato di configurazione delle password.  È implementata da \code{DiaryAuthService}.
+L'interfaccia \code{CheckPasswordPort} definisce il \term{Contratto} per la \term{Verifica} dello stato di configurazione delle password.  È implementata da \code{DiaryAuthService}.
 
 \begin{figure}[H]
     \centering
@@ -2861,7 +2861,7 @@ L'interfaccia \code{CheckPasswordPort} definisce il contratto per la verifica de
 \end{figure}
 
 \paragraph{NoteRepositoryPort}\mbox{}\\
-L'interfaccia \code{NoteRepositoryPort} definisce il contratto per la persistenza delle note e dei loro elementi. Espone i metodi \code{add} per la creazione di note, \code{get} per il recupero di una nota specifica, \code{delete} per la rimozione, \code{list} per l'elenco completo delle note di un utente, \code{add\_note\_element} per l'inserimento di elementi in note esistenti e \code{delete\_note\_element} per la loro rimozione. Tutti i metodi accettano il parametro \code{diary\_type} per garantire l'isolamento tra diario reale e fittizio. Questa porta di uscita viene implementata da \code{DynamoNoteAdapter}, che fornisce la persistenza concreta su DynamoDB.
+L'interfaccia \code{NoteRepositoryPort} definisce il \term{Contratto} per la persistenza delle note e dei loro elementi. Espone i metodi \code{add} per la creazione di note, \code{get} per il recupero di una nota specifica, \code{delete} per la rimozione, \code{list} per l'elenco completo delle note di un \term{Utente}, \code{add\_note\_element} per l'inserimento di elementi in note esistenti e \code{delete\_note\_element} per la loro rimozione. Tutti i metodi accettano il parametro \code{diary\_type} per garantire l'isolamento tra diario reale e fittizio. Questa porta di uscita viene implementata da \code{DynamoNoteAdapter}, che fornisce la persistenza concreta su DynamoDB.
 
 \begin{figure}[H]
     \centering
@@ -2871,7 +2871,7 @@ L'interfaccia \code{NoteRepositoryPort} definisce il contratto per la persistenz
 \end{figure}
 
 \paragraph{FileRepositoryPort}\mbox{}\\
-L'interfaccia \code{FileRepositoryPort} definisce il contratto per la gestione degli file (immagini o audio) inseriti all'interno delle note del diario. Espone il metodo \code{add\_note\_element} che accetta una chiave e restituisce l'URL di accesso, \code{delete} per la rimozione di file tramite chiave e \code{generate\_presigned\_url} per la generazione di URL firmati con parametri e scadenza configurabili. \code{FileRepositoryPort} è implementata da \code{S3NoteAdapter}, che fornisce l'integrazione concreta con Amazon S3.
+L'interfaccia \code{FileRepositoryPort} definisce il \term{Contratto} per la gestione degli file (immagini o audio) inseriti all'interno delle note del diario. Espone il metodo \code{add\_note\_element} che accetta una chiave e restituisce l'URL di accesso, \code{delete} per la rimozione di file tramite chiave e \code{generate\_presigned\_url} per la generazione di URL firmati con parametri e scadenza configurabili. \code{FileRepositoryPort} è implementata da \code{S3NoteAdapter}, che fornisce l'integrazione concreta con Amazon S3.
 
 \begin{figure}[H]
     \centering
@@ -2881,7 +2881,7 @@ L'interfaccia \code{FileRepositoryPort} definisce il contratto per la gestione d
 \end{figure}
 
 \paragraph{DiaryAuthRepositoryPort}\mbox{}\\
-L'interfaccia \code{DiaryAuthRepositoryPort} definisce il contratto per la persistenza e validazione delle credenziali di accesso. Espone il metodo \code{hash\_password} per la generazione dell'hash di una password, \code{validate\_password} per la verifica delle credenziali fornite restituendo il tipo di diario corrispondente, e \code{set\_password} per la persistenza delle credenziali associate a uno specifico \code{diary\_type}. Implementata da \code{DynamoAuthAdapter}, questa porta permette a \code{DiaryAuthService} di gestire l'autenticazione mantenendo separati gli hash delle password per diario reale e fittizio.
+L'interfaccia \code{DiaryAuthRepositoryPort} definisce il \term{Contratto} per la persistenza e \term{Validazione} delle credenziali di accesso. Espone il metodo \code{hash\_password} per la generazione dell'hash di una password, \code{validate\_password} per la \term{Verifica} delle credenziali fornite restituendo il tipo di diario corrispondente, e \code{set\_password} per la persistenza delle credenziali associate a uno specifico \code{diary\_type}. Implementata da \code{DynamoAuthAdapter}, questa porta permette a \code{DiaryAuthService} di gestire l'autenticazione mantenendo separati gli hash delle password per diario reale e fittizio.
 
 \begin{figure}[H]
     \centering
@@ -2891,7 +2891,7 @@ L'interfaccia \code{DiaryAuthRepositoryPort} definisce il contratto per la persi
 \end{figure}
 
 \paragraph{NoteService}\mbox{}\\
-La classe \code{NoteService} costituisce il servizio applicativo centrale per la gestione delle note, implementando le interfacce \code{GetNotePort}, \code{SetNotePort}, \code{DeleteNotePort}, \code{SetNoteElementPort} e \code{DeleteNoteElementPort}. Coordina l'intera business logic delle note: gestisce le operazioni CRUD e la comunicazione con le porte per i servizi di persistenza. Tali porte vengono passate alla classe tramite dependency injection nel costruttore.
+La classe \code{NoteService} costituisce il servizio applicativo centrale per la gestione delle note, implementando le interfacce \code{GetNotePort}, \code{SetNotePort}, \code{DeleteNotePort}, \code{SetNoteElementPort} e \code{DeleteNoteElementPort}. Coordina l'intera \term{Business Logic} delle note: gestisce le operazioni CRUD e la comunicazione con le porte per i servizi di persistenza. Tali porte vengono passate alla classe tramite dependency injection nel costruttore.
 
 \begin{figure}[H]
     \centering
@@ -2901,7 +2901,7 @@ La classe \code{NoteService} costituisce il servizio applicativo centrale per la
 \end{figure}
 
 \paragraph{DiaryAuthService}\mbox{}\\
-La classe \code{DiaryAuthService} implementa il servizio applicativo per la gestione dell'autenticazione al diario, che include l'impostazione della password di entrambi i diari e la loro verifica. Si occupa inoltre di verificare che la password impostata dall'utente sia conforme a specifici criteri di sicurezza. \code{DiaryAuthService} riceve tramite costruttore la dipendenza \code{auth\_repository} di tipo \code{DiaryAuthRepositoryPort} per l'orchestrazione delle operazioni relative alla persistenza dei dati di accesso degli utenti.
+La classe \code{DiaryAuthService} implementa il servizio applicativo per la gestione dell'autenticazione al diario, che include l'impostazione della password di entrambi i diari e la loro \term{Verifica}. Si occupa inoltre di verificare che la password impostata dall'\term{Utente} sia conforme a specifici criteri di sicurezza. \code{DiaryAuthService} riceve tramite costruttore la dipendenza \code{auth\_repository} di tipo \code{DiaryAuthRepositoryPort} per l'orchestrazione delle operazioni relative alla persistenza dei dati di accesso degli utenti.
 
 \begin{figure}[H]
     \centering
@@ -2931,7 +2931,7 @@ La classe \code{S3NoteAdapter} implementa l'interfaccia \code{FileRepositoryPort
 \end{figure}
 
 \paragraph{DynamoAuthAdapter}\mbox{}\\
-La classe \code{DynamoAuthAdapter} implementa l'interfaccia \code{DiaryAuthRepositoryPort} fornendo la persistenza delle credenziali di autenticazione su DynamoDB. Mantiene un riferimento al client DynamoDB (\code{dynamodb\_client}) inizializzato nel costruttore. Il metodo \code{hash\_password} genera l'hash sicuro di una password per un utente specifico tramite HMAC-SHA-256 applicato sulla concatenazione tra l'id dell'utente e la password stessa. \code{validate\_password} verifica le credenziali fornite restituendo il tipo di diario corrispondente all'hash validato, e \code{set\_password} memorizza o aggiorna le credenziali associate a uno specifico \code{diary\_type}.
+La classe \code{DynamoAuthAdapter} implementa l'interfaccia \code{DiaryAuthRepositoryPort} fornendo la persistenza delle credenziali di autenticazione su DynamoDB. Mantiene un riferimento al client DynamoDB (\code{dynamodb\_client}) inizializzato nel costruttore. Il metodo \code{hash\_password} genera l'hash sicuro di una password per un \term{Utente} specifico tramite HMAC-SHA-256 applicato sulla concatenazione tra l'id dell'\term{Utente} e la password stessa. \code{validate\_password} \term{Verifica} le credenziali fornite restituendo il tipo di diario corrispondente all'hash validato, e \code{set\_password} memorizza o aggiorna le credenziali associate a uno specifico \code{diary\_type}.
 
 \begin{figure}[H]
     \centering
@@ -2961,7 +2961,7 @@ La classe \code{NoteDTO} gestisce la conversione tra l'entità di dominio \code{
 \end{figure}
 
 \paragraph{DiaryNoteController}\mbox{}\\
-La classe \code{DiaryNoteController} costituisce il punto di ingresso per le richieste relative alle operazioni sulle note. Mantiene un riferimento a \code{NoteService} che orchestra la business logic. Il metodo \code{handle\_request} funge da router principale, interpretando la richiesta in arrivo dal Lambda handler e delegandola alle funzioni specifiche.
+La classe \code{DiaryNoteController} costituisce il punto di ingresso per le richieste relative alle operazioni sulle note. Mantiene un riferimento a \code{NoteService} che orchestra la \term{Business Logic}. Il metodo \code{handle\_request} funge da router principale, interpretando la richiesta in arrivo dal Lambda handler e delegandola alle funzioni specifiche.
 
 \begin{figure}[H]
     \centering
