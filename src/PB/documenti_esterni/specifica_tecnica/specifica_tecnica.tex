@@ -2391,21 +2391,21 @@ L'archiviazione delle note avviene su due servizi AWS distinti. I contenuti test
 
 Il flusso di elaborazione è dunque il seguente:
 \begin{itemize}
-    \item \textbf{Invio della Richiesta di Autenticazione}: L'\term{Utente} inserisce la password del diario tramite app. Il client genera una richiesta HTTPS (metodo \texttt{POST /diary/auth/}) includendo la password nel body della richiesta.
+    \item \textbf{Invio della Richiesta di Autenticazione}: L'\term{Utente} inserisce la password del diario tramite app. Il client genera una richiesta HTTPS (metodo \texttt{POST /diary/auth}) includendo la password nel body della richiesta.
     
     \item \textbf{\ignoreglossary{verifica} delle Credenziali}: API Gateway \ignoreglossary{verifica} che l'\term{Utente} sia autenticato all'applicazione. Dopodiché inoltra la richiesta alla funzione Lambda, che calcola l'hash della password ricevuta e lo confronta con gli hash memorizzati in DynamoDB. In caso di corrispondenza, viene identificato il tipo di diario associato.
     
     \item \textbf{Generazione token di accesso}: dopo la \ignoreglossary{validazione} della password, un token di accesso casuale viene generato, salvato su DynamoDB e passato in risposta al client. Tale token dovrà essere fornito nell'header di ogni richiesta successiva relativa a operazioni CRUD sui contenuti del diario.
     
-    \item \textbf{Recupero delle Note}: Quando l'\term{Utente} richiede di recuperare la lista di note di uno dei diari (metodo \texttt{GET /diary/\{diary\_type\}/}), API Gateway invia la richiesta alla Lambda, che recupera le \textit{preview} dal database DynamoDB e le restituisce al client.
+    \item \textbf{Recupero delle Note}: Quando l'\term{Utente} richiede di recuperare la lista di note di uno dei diari (metodo \texttt{GET /notes}), API Gateway invia la richiesta alla Lambda, che recupera le \textit{preview} dal database DynamoDB e le restituisce al client.
     
-    \item \textbf{Recupero di una Nota}: Per ottenere il contenuto completo di una nota (metodo \texttt{GET /diary/\{diary\_type\}/\{note\_id\}/}), la Lambda recupera i dati da DynamoDB e gli eventuali riferimenti a file su S3, costruendo l'oggetto finale che viene restituito al client.
+    \item \textbf{Recupero di una Nota}: Per ottenere il contenuto completo di una nota (metodo \texttt{GET /notes/\{note\_id\}}), la Lambda recupera i dati da DynamoDB e gli eventuali riferimenti a file su S3, costruendo l'oggetto finale che viene restituito al client.
     
     \item \textbf{Gestione dei Contenuti Binari}: In presenza di immagini o tracce audio, la Lambda genera URL \textit{presigned} per gli oggetti memorizzati su S3, permettendo al client di accedere direttamente alle risorse senza transitare attraverso il \term{Backend}.
     
     \item \textbf{Operazioni di Scrittura}: Per la creazione o modifica di note, la Lambda memorizza in DynamoDB i metadati principali e la struttura complessiva della nota, salvando eventuali file binari su S3.
     
-    \item \textbf{Eliminazione delle Note}: In caso di richiesta di eliminazione (metodo \texttt{DELETE /diary/\{diary\_type\}/\{note\_id\}/}), la Lambda rimuove i dati associati dal database e, se presenti, elimina anche i file binari corrispondenti dai bucket S3.
+    \item \textbf{Eliminazione delle Note}: In caso di richiesta di eliminazione (metodo \texttt{DELETE /notes/\{note\_id\}}), la Lambda rimuove i dati associati dal database e, se presenti, elimina anche i file binari corrispondenti dai bucket S3.
     
     \item \textbf{Logout}: quando l'\term{Utente} esce dal diario, il \term{Backend} viene notificato e la Lambda elimina la sessione precedentemente avviata.
 \end{itemize}
@@ -2526,19 +2526,19 @@ Le API relative al diario criptato e fittizio sono suddivise in due categorie di
 
     \item \code{PUT /note}
         \begin{itemize}
-            \item \textbf{Descrizione}: Crea o aggiorna una nota associata all’\term{Utente} autenticato, composta da metadati e una lista di elementi.
+            \item \textbf{Descrizione}: Crea una nuova nota associata all’\term{Utente}, composta da metadati e una lista di elementi.
 
             \item \textbf{Parametri}:
             \begin{itemize}
-                \item \texttt{user\_id}: identificativo dell’\term{Utente}.
-                \item \texttt{title}: titolo della nota.
-                \item \texttt{created\_at}: timestamp di creazione.
-                \item \texttt{last\_modified\_at}: timestamp dell’ultima modifica.
-                \item \texttt{diary\_type}: tipo di diario (\texttt{REAL\_DIARY} o \texttt{FAKE\_DIARY}).
-                \item \texttt{elements}: lista di elementi della nota.
+                \item \texttt{user\_id}: identificativo dell'utente;
+                \item \texttt{title}: titolo della nota;
+                \item \texttt{created\_at}: timestamp di creazione;
+                \item \texttt{last\_modified\_at}: timestamp dell'ultima modifica;
+                \item \texttt{diary\_type}: tipo di diario (\texttt{REAL\_DIARY} o \texttt{FAKE\_DIARY});
+                \item \texttt{elements}: lista di elementi della nota:
                 \begin{itemize}
-                    \item \texttt{type}: tipo dell’elemento.
-                    \item \texttt{content}: contenuto dell’elemento.
+                    \item \texttt{type}: tipo dell'elemento (\texttt{text}, \texttt{image}, \texttt{audio});
+                    \item \texttt{content}: obbligatorio solo nel caso venga inserito del testo, identifica il contenuto testuale inserito dall'utente.
                 \end{itemize}
             \end{itemize}
 
@@ -2547,7 +2547,29 @@ Le API relative al diario criptato e fittizio sono suddivise in due categorie di
                 \item \texttt{200 OK}: operazione completata con successo.
                 \item Corpo della risposta:
 \begin{verbatim}
-
+{
+    "note_id": "01KPX72J3Y5MFM9982J3TFTH7H",
+    "user_id": "user1",
+    "title": "Titolo",
+    "created_at": "2026-02-22T15:22:27.615449+00:00",
+    "last_modified_at": "2026-04-22T18:13:05.452786+00:00",
+    "diary_type": "REAL_DIARY"
+    "note_elements": [
+        {
+            "note_id": "01KPX72J3Y5MFM9982J3TFTH7H",
+            "note_element_id": "01KQM5R2QQQ3GTV7026YGY7PD1",
+            "type": "text",
+            "content": "testo"
+        },
+        {
+            "note_id": "01KPX72J3Y5MFM9982J3TFTH7H",
+            "note_element_id": "01KQM5R2QRHD5Q38YEWSXNFJ2P",
+            "type": "image",
+            "content": "key_s3",
+            "upload_url": "https://presigned-url"
+        }
+    ]
+}
 \end{verbatim}
             \end{itemize}
 
@@ -2560,66 +2582,107 @@ Le API relative al diario criptato e fittizio sono suddivise in due categorie di
 
     \item \code{GET /notes}
         \begin{itemize}
-            \item \textbf{Descrizione}: Recupera l’elenco delle note associate all’\term{Utente}, filtrate per tipologia di diario.
+            \item \textbf{Descrizione}: Recupera la lista delle note dell’\term{Utente} filtrate per tipo diario.
 
             \item \textbf{Parametri}:
             \begin{itemize}
-                \item \texttt{user\_id}: identificativo dell’\term{Utente}.
-                \item \texttt{diary\_type}: tipo di diario (\texttt{enum DiaryType}).
+                \item \texttt{user\_id}: identificativo dell'utente;
+                \item \texttt{diary\_type}: tipo di diario.
             \end{itemize}
 
             \item \textbf{Response}:
             \begin{itemize}
-                \item \texttt{200 OK}: richiesta completata con successo.
+                \item \texttt{200 OK}: liste delle note recuperata con successo.
                 \item Corpo della risposta:
 \begin{verbatim}
-
+{
+    "notes": [
+        {
+            "note_id": "01KPX72J3Y5MFM9982J3TFTH7H",
+            "user_id": "user1",
+            "title": "Titolo",
+            "created_at": "2026-02-22T15:22:27.615449+00:00",
+            "last_modified_at": "2026-04-22T18:13:05.452786+00:00",
+            "diary_type": "REAL_DIARY"
+        },
+        {
+            "note_id": "01KQM5R2QQQ3GTV7026YGY7PD1",
+            "user_id": "user1",
+            "title": "Titolo",
+            "created_at": "2026-02-22T15:22:27.615449+00:00",
+            "last_modified_at": "2026-04-22T18:13:05.452786+00:00",
+            "diary_type": "REAL_DIARY"
+        }
+    ]
+}
 \end{verbatim}
             \end{itemize}
 
             \item \textbf{Errori}:
             \begin{itemize}
-                \item \texttt{400 Bad Request}: parametri in ingresso mal formattati o assenti.
-                \item \texttt{500 Internal Server Error}: errore interno del server.
+                \item \texttt{400 Bad Request}: \texttt{Invalid diary\_type} (ValueError su enum DiaryType).
+                \item \texttt{500 Internal Server Error}: errore di \texttt{service.list\_notes}.
             \end{itemize}
         \end{itemize}
 
     \item \code{GET /notes/\{note\_id\}}
         \begin{itemize}
-            \item \textbf{Descrizione}: Recupera una singola nota identificata da \texttt{note\_id} per l’\term{Utente} autenticato.
+            \item \textbf{Descrizione}: una nota completa con i suoi elementi recuperata con successo.
 
             \item \textbf{Parametri}:
             \begin{itemize}
-                \item \texttt{user\_id}: identificativo dell’\term{Utente}.
-                \item \texttt{note\_id}: identificativo della nota.
-                \item \texttt{diary\_type}: tipo di diario (\texttt{enum DiaryType}).
+                \item \texttt{user\_id}: identificativo dell'utente;
+                \item \item \texttt{note\_id}: identificativo della nota;
+                \item \texttt{diary\_type}: tipo di diario.
             \end{itemize}
 
             \item \textbf{Response}:
             \begin{itemize}
-                \item \texttt{200 OK}: nota recuperata con successo.
+                \item \texttt{200 OK}: : nota recuperata con successo.
                 \item Corpo della risposta:
 \begin{verbatim}
-
+{
+    "note_id": "01KPX72J3Y5MFM9982J3TFTH7H",
+    "user_id": "user1",
+    "title": "Titolo",
+    "created_at": "2026-02-22T15:22:27.615449+00:00",
+    "last_modified_at": "2026-04-22T18:13:05.452786+00:00",
+    "diary_type": "REAL_DIARY"
+    "note_elements": [
+        {
+            "note_id": "01KPX72J3Y5MFM9982J3TFTH7H",
+            "note_element_id": "01KQM5R2QQQ3GTV7026YGY7PD1",
+            "type": "text",
+            "content": "testo"
+        },
+        {
+            "note_id": "01KPX72J3Y5MFM9982J3TFTH7H",
+            "note_element_id": "01KQM5R2QRHD5Q38YEWSXNFJ2P",
+            "type": "image",
+            "content": "key_s3",
+            "download_url": "https://presigned-url"
+        }
+    ]
+}
 \end{verbatim}
             \end{itemize}
 
             \item \textbf{Errori}:
             \begin{itemize}
-                \item \texttt{400 Bad Request}: parametri in ingresso mal formattati o assenti.
+                \item \texttt{400 Bad Request}: diary\_type non valido.
+                \item \texttt{404 Not Found}: nota non trovata.
                 \item \texttt{500 Internal Server Error}: errore interno del server.
             \end{itemize}
         \end{itemize}
 
     \item \code{DELETE /notes/\{note\_id\}}
         \begin{itemize}
-            \item \textbf{Descrizione}: Elimina una nota identificata da \texttt{note\_id} per l’\term{Utente} autenticato.
+            \item \textbf{Descrizione}: Elimina una nota e di tutti i suoi elementi che la compongono.
 
             \item \textbf{Parametri}:
             \begin{itemize}
-                \item \texttt{user\_id}: identificativo dell’\term{Utente}.
-                \item \texttt{note\_id}: identificativo della nota da eliminare.
-                \item \texttt{diary\_type}: tipo di diario (\texttt{enum DiaryType}).
+                \item \texttt{user\_id}: identificativo dell'utente;
+                \item \texttt{diary\_type}: tipo di diario.
             \end{itemize}
 
             \item \textbf{Response}:
@@ -2627,13 +2690,78 @@ Le API relative al diario criptato e fittizio sono suddivise in due categorie di
                 \item \texttt{200 OK}: eliminazione completata con successo.
                 \item Corpo della risposta:
 \begin{verbatim}
-
+{
+    "message": "Note deleted successfully"
+}
 \end{verbatim}
             \end{itemize}
 
             \item \textbf{Errori}:
             \begin{itemize}
-                \item \texttt{400 Bad Request}: \texttt{diary\_type} errato o nota non trovata.
+                \item \texttt{400 Bad Request}: campi obbligatori mancanti.
+                \item \texttt{404 Not Found}: nota non trovata.
+                \item \texttt{500 Internal Server Error}: errore interno del server.
+            \end{itemize}
+        \end{itemize}
+
+    \item \code{PUT /note\_element}
+        \begin{itemize}
+            \item \textbf{Descrizione}: Aggiunge un elemento ad una nota esistente.
+
+            \item \textbf{Parametri}:
+            \begin{itemize}
+                \item \texttt{note\_id}: identificativo della nota a cui si vuole aggiungere l'elemento;
+                \item \texttt{type}: tipo del contenuto inserito (\texttt{text}, \texttt{image}, \texttt{audio})
+                \item \texttt{content}: obbligatorio solo nel caso venga inserito del testo, identifica il contenuto testuale inserito dall'utente.
+            \end{itemize}
+
+            \item \textbf{Response}:
+            \begin{itemize}
+                \item \texttt{200 OK}: elemento aggiunto con successo alla nota.
+                \item Corpo della risposta:
+\begin{verbatim}
+{
+    "note_id": "01KPX72J3Y5MFM9982J3TFTH7H",
+    "note_element_id": "01KQM5R2QRHD5Q38YEWSXNFJ2P",
+    "type": "image",
+    "content": "key_s3",
+    "upload_url": "https://presigned-url"
+}
+\end{verbatim}
+            \end{itemize}
+
+            \item \textbf{Errori}:
+            \begin{itemize}
+                \item \texttt{400 Bad Request}: campi mancanti o incoerenti.
+                \item \texttt{500 Internal Server Error}: errore interno del server.
+            \end{itemize}
+        \end{itemize}
+
+    \item \code{DELETE /note\_element}
+        \begin{itemize}
+            \item \textbf{Descrizione}: Elimina un elemento da una nota (e il file associato se presente).
+
+            \item \textbf{Parametri}:
+            \begin{itemize}
+                \item \texttt{note\_id}: identificativo della nota a cui si vuole eliminare l'elemento;
+                \item \texttt{note\_element\_id}: identificativo dell'elemento della note che si vuole eliminare;
+                \item \texttt{type}: tipo del contenuto che si vuole eliminare;
+                \item \texttt{content}: contenuto dell'elemento da eliminare.
+            \end{itemize}
+
+            \item \textbf{Response}:
+            \begin{itemize}
+                \item \texttt{200 OK}: 
+\begin{verbatim}
+{
+    "message": "Note element deleted successfully"
+}
+\end{verbatim}
+            \end{itemize}
+
+            \item \textbf{Errori}:
+            \begin{itemize}
+                \item \texttt{400 Bad Request}: campi obbligatori mancanti.
                 \item \texttt{500 Internal Server Error}: errore interno del server.
             \end{itemize}
         \end{itemize}
@@ -3519,8 +3647,7 @@ API Gateway gestisce l’esposizione delle API e \ignoreglossary{verifica}, per 
 
 I dati sono memorizzati su due database DynamoDB distinti:
 \begin{itemize}
-    \item \texttt{dms\_config\_mvp}: contiene la configurazione del Dead man's switch, includendo il titolo e il corpo dell’email di inattività, il primo e secondo timer di inattività, l’ultimo accesso dell’\term{Utente} e lo stato corrente del sistema (attivo, prima inattività, seconda inattività).
-    
+    \item \texttt{dead\_man\_switch\_settings\_mvp}: contiene la configurazione del Dead man's switch, includendo il titolo e il corpo dell’email di inattività, il primo e secondo timer di inattività, l’ultimo accesso dell’\term{Utente} e lo stato corrente del sistema (attivo, prima inattività, seconda inattività).
     \item \texttt{trusted\_contact\_mvp}: memorizza le informazioni relative ai contatti fidati associati a ciascun \term{Utente}, inclusi nome, email e numero di telefono.
 \end{itemize}
 
@@ -3530,7 +3657,7 @@ Il flusso di elaborazione del Dead man's switch è il seguente:
 \begin{itemize}
     \item \textbf{Trigger programmato}: EventBridge attiva quotidianamente la Lambda, che avvia il controllo dello stato degli utenti.
     
-    \item \textbf{Recupero configurazioni}: la Lambda effettua il fetch dei dati presenti in \texttt{dms\_config\_mvp}, ottenendo i timer di inattività, l’ultimo accesso registrato e lo stato corrente del Dead man's switch.
+    \item \textbf{Recupero configurazioni}: la Lambda effettua il fetch dei dati presenti in \texttt{dead\_man\_switch\_settings\_mvp}, ottenendo i timer di inattività, l’ultimo accesso registrato e lo stato corrente del Dead man's switch.
     
     \item \textbf{Valutazione dello stato di inattività}: la funzione confronta il tempo corrente con l’ultimo accesso dell’\term{Utente}. Se viene superata la prima soglia di inattività, il sistema entra nello stato di “prima inattività”. Al raggiungimento della seconda soglia di inattività, viene attivato lo stato di “seconda inattività”.
     
@@ -3545,14 +3672,14 @@ Oltre al flusso automatico, il sistema supporta l’invio manuale di SOS e la ge
 
 Il flusso di heartbeat è il seguente:
 \begin{itemize}
-    \item \textbf{Invio heartbeat}: All'avvio dell'app, il client invia una richiesta all'API \texttt{POST /dms/heartbeat/} per notificare l’utilizzo attivo dell’applicazione.
+    \item \textbf{Invio heartbeat}: All'avvio dell'app, il client invia una richiesta all'API \texttt{POST /heartbeat} per notificare l’utilizzo attivo dell’applicazione.
     
-    \item \textbf{Aggiornamento stato \term{Backend}}: la Lambda aggiorna il campo “ultimo accesso” nella tabella \texttt{dms\_config\_mvp} e, se necessario, resetta lo stato di inattività.
+    \item \textbf{Aggiornamento stato \term{Backend}}: la Lambda aggiorna il campo “ultimo accesso” nella tabella \texttt{dead\_man\_switch\_settings\_mvp} e, se necessario, resetta lo stato di inattività.
 \end{itemize}
 
 L’invio SOS \textbf{manuale} segue invece il seguente flusso:
 \begin{itemize}
-    \item \textbf{Richiesta di emergenza}: il client invia una richiesta HTTPS all'API \texttt{POST /trusted\_contacts/sos/}.
+    \item \textbf{Richiesta di emergenza}: il client invia una richiesta HTTPS all'API \texttt{POST /alert}.
     
     \item \textbf{Recupero contatti}: la Lambda recupera tutti i contatti fidati associati all’\term{Utente} da \texttt{trusted\_contact\_mvp}.
     
@@ -3563,17 +3690,318 @@ La gestione dei contatti fidati è completamente CRUD e permette all’\term{Ute
 
 \paragraph{API associate}\mbox{}\\
 \begin{itemize}
-    \item \texttt{GET /dms/}: restituisce tutte le opzioni configurabili del Dead man's switch, incluse soglie di inattività e template email.
-    \item \texttt{POST /dms/}: salva o aggiorna la configurazione del Dead man's switch dell’\term{Utente}.
-    
-    \item \texttt{POST /dms/heartbeat/}: registra il segnale di attività dell’\term{Utente} aggiornando l’ultimo accesso.
-    
-    \item \texttt{GET /trusted\_contacts/}: restituisce la lista dei contatti fidati associati all’\term{Utente}.
-    \item \texttt{POST /trusted\_contacts/}: crea un nuovo contatto fidato.
-    \item \texttt{PUT /trusted\_contacts/\{trusted\_contact\_id\}/}: aggiorna un contatto fidato esistente.
-    \item \texttt{DELETE /trusted\_contacts/\{trusted\_contact\_id\}/}: elimina un contatto fidato.
-    
-    \item \texttt{POST /trusted\_contacts/sos/}: attiva manualmente l’invio di una email di emergenza a tutti i contatti fidati.
+
+    % ---------------- DMS SETTINGS ----------------
+
+    \item \code{POST /dms\_settings}
+        \begin{itemize}
+            \item \textbf{Descrizione}: Crea la configurazione del Dead Man’s Switch per l’\term{Utente} autenticato.
+
+            \item \textbf{Parametri}:
+            \begin{itemize}
+                \item \texttt{user\_id}: identificativo dell’\term{Utente};
+                \item \texttt{user\_email}: email dell’\term{Utente};
+                \item \texttt{user\_name}: nome dell’\term{Utente}.
+            \end{itemize}
+
+            \item \textbf{Response}:
+            \begin{itemize}
+                \item \texttt{200 OK}: configurazione creata con successo.
+                \item Corpo della risposta:
+\begin{verbatim}
+{
+    "user_id": "user1",
+    "is_active": true,
+    "first_timer": 60,
+    "second_timer": 120,
+    "email_subject": "Messaggio di emergenza",
+    "email_body": "Corpo del messaggio"
+}
+\end{verbatim}
+            \end{itemize}
+
+            \item \textbf{Errori}:
+            \begin{itemize}
+                \item \texttt{400 Bad Request}: campi non validi.
+                \item \texttt{500 Internal Server Error}: errore interno del server.
+            \end{itemize}
+        \end{itemize}
+
+    \item \code{GET /dms\_settings}
+        \begin{itemize}
+            \item \textbf{Descrizione}: Recupera la configurazione del Dead Man’s Switch dell’\term{Utente}.
+            
+            \item \textbf{Parametri}:
+            \begin{itemize}
+                \item \texttt{user\_id}: identificativo dell’\term{Utente}.
+            \end{itemize}
+
+            \item \textbf{Response}:
+            \begin{itemize}
+                \item \texttt{200 OK}: configurazione recuperata con successo.
+                \item Corpo della risposta:
+\begin{verbatim}
+{
+    "user_id": "user1",
+    "is_active": true,
+    "first_timer": 60,
+    "second_timer": 120,
+    "email_subject": "Messaggio di emergenza",
+    "email_body": "Corpo del messaggio"
+}
+\end{verbatim}
+            \end{itemize}
+
+            \item \textbf{Errori}:
+            \begin{itemize}
+                \item \texttt{500 Internal Server Error}: errore interno del server.
+            \end{itemize}
+        \end{itemize}
+
+    \item \code{PUT /dms\_settings}
+        \begin{itemize}
+            \item \textbf{Descrizione}: Aggiorna le impostazioni del Dead Man’s Switch.
+
+            \item \textbf{Parametri}:
+            \begin{itemize}
+                \item \texttt{user\_id}: identificativo dell’\term{Utente};
+                \item \texttt{is\_active}: valore booleano 
+                \item \texttt{first\_timer}: primo timer del dead man's switch;
+                \item \texttt{second\_timer}: secondo timer del dead man's switch;
+                \item \texttt{email\_subject}: oggetto della mail per la notifica del dead man's switch all'utente;
+                \item \texttt{email\_body}: corpo della mail per la notifica del dead man's switch all'utente.
+            \end{itemize}
+
+            \item \textbf{Response}:
+            \begin{itemize}
+                \item \texttt{204 OK}: aggiornamento della configurazione avvenuto con succcesso.
+                \item Corpo della risposta:
+\begin{verbatim}
+{
+    "user_id": "user1",
+    "is_active": true,
+    "first_timer": 60,
+    "second_timer": 120,
+    "email_subject": "Messaggio di emergenza",
+    "email_body": "Corpo del messaggio"
+}
+\end{verbatim}
+
+            \end{itemize}
+            \item \textbf{Errori}:
+            \begin{itemize}
+                \item \texttt{500 Internal Server Error}: errore interno del server.
+            \end{itemize}
+        \end{itemize}
+
+    \item \code{PUT /dms\_settings/heartbeat}
+        \begin{itemize}
+            \item \textbf{Descrizione}: registra il segnale di attività dell’\term{Utente} aggiornando l’ultimo accesso.
+            
+            \item \textbf{Parametri}:
+            \begin{itemize}
+                \item \texttt{user\_id}: identificativo dell’\term{Utente}.
+            \end{itemize}
+
+            \item \textbf{Response}:
+            \begin{itemize}
+                \item \texttt{200}: dati aggiornati con successo.
+                \item Corpo della risposta:
+\begin{verbatim}
+{
+    "message": "Heartbeat processed with success"
+}
+\end{verbatim}
+            \end{itemize}
+        \end{itemize}
+
+    % ---------------- TRUSTED CONTACT ----------------
+
+    \item \code{POST /trusted\_contact}
+        \begin{itemize}
+            \item \textbf{Descrizione}: Crea un nuovo contatto fidato associato all’\term{Utente} autenticato.
+
+            \item \textbf{Parametri}:
+            \begin{itemize}
+                \item \texttt{user\_id}: identificativo dell’\term{Utente};
+                \item \texttt{contact\_name}: nome del contatto fidato;
+                \item \texttt{contact\_email} email del contatto fidato;
+                \item \texttt{contact\_phone\_number}: numero di telefono del contatto fidato.
+            \end{itemize}
+
+            \item \textbf{Response}:
+            \begin{itemize}
+                \item \texttt{200 OK}: creazione contatti completata con successo.
+                \item Corpo della risposta:
+\begin{verbatim}
+{
+    "user_id": "user1",
+    "contact_id": "contact123",
+    "contact_name": "Mario Rossi",
+    "contact_email": "mario@gmail.com",
+    "contact_phone_number": "333 1111 111"
+}
+\end{verbatim}
+            \end{itemize}
+
+            \item \textbf{Errori}:
+            \begin{itemize}
+                \item \texttt{400 Bad Request}: errore nella validazione dei campi.
+                \item \texttt{500 Internal Server Error}: errore interno del server.
+            \end{itemize}
+        \end{itemize}
+
+    \item \code{GET /trusted\_contact}
+        \begin{itemize}
+            \item \textbf{Descrizione}: Recupera tutti i contatti fidati associati all'utente autenticato.
+            
+            \item \textbf{Parametri}:
+            \begin{itemize}
+                \item \texttt{user\_id}: identificativo dell’\term{Utente}.
+            \end{itemize}
+
+            \item \textbf{Response}:
+            \begin{itemize}
+                \item \texttt{200 OK}: contatti recuperati con successo.
+                \item Corpo della risposta:
+\begin{verbatim}
+{
+    "trusted_contacts": [
+        {
+            "user_id": "user1",
+            "contact_id": "contact1",
+            "contact_name": "Mario Rossi",
+            "contact_email": "mario@gmail.com",
+            "contact_phone_number": "111 1111 111"
+        },
+        {
+            "user_id": "user1",
+            "contact_id": "contact2",
+            "contact_name": "Luigi Verdi",
+            "contact_email": "luigi@gmail.com",
+            "contact_phone_number": "333 2222 222"
+        }
+    ]
+}
+\end{verbatim}
+            \end{itemize}
+        \end{itemize}
+
+    \item \code{GET /trusted\_contact/\{contact\_id\}}
+        \begin{itemize}
+            \item \textbf{Descrizione}: Recupera un contatto specifico associato all’\term{Utente} autenticato.
+            
+            \item \textbf{Parametri}:
+            \begin{itemize}
+                \item \texttt{user\_id}: identificativo dell’\term{Utente}.
+            \end{itemize}
+
+            \item \textbf{Response}:
+            \begin{itemize}
+                \item \texttt{200 OK}: contatto recuperato con successo.
+                \item Corpo della risposta:
+\begin{verbatim}
+{
+    "user_id": "user1",
+    "contact_id": "contact1",
+    "contact_name": "Mario Rossi",
+    "contact_email": "mario@gmail.com",
+    "contact_phone_number": "111 1111 111"
+}
+\end{verbatim}
+            \end{itemize}
+
+            \item \textbf{Errori}:
+            \begin{itemize}
+                \item \texttt{500 Internal Server Error}: errore interno del server.
+            \end{itemize}
+        \end{itemize}
+
+    \item \code{PUT /trusted\_contact}
+        \begin{itemize}
+            \item \textbf{Descrizione}: Aggiorna un contatto fidato esistente associato all’\term{Utente} autenticato.
+            
+            \item \textbf{Parametri}:
+            \begin{itemize}
+                \item \texttt{user\_id}: identificativo dell’\term{Utente};
+                \item \texttt{contact\_id}: identificativo del contatto fidato;
+                \item \texttt{contact\_name}: nome del contatto fidato;
+                \item \texttt{contact\_email} email del contatto fidato;
+                \item \texttt{contact\_phone\_number}: numero di telefono del contatto fidato.
+            \end{itemize}
+
+            \item \textbf{Response}:
+            \begin{itemize}
+                \item \texttt{200 OK}: contatto aggiornato con successo.
+                \item Corpo della risposta:
+
+            \end{itemize}
+\begin{verbatim}
+{
+    "user_id": "user1",
+    "contact_id": "contact1",
+    "contact_name": "Mario Rossi",
+    "contact_email": "mario@gmail.com",
+    "contact_phone_number": "111 1111 111"
+}
+\end{verbatim}
+            \item \textbf{Errori}:
+            \begin{itemize}
+                \item \texttt{400 Bad Request}: errore nella validazione dei campi.
+                \item \texttt{500 Internal Server Error}: errore interno del server.
+            \end{itemize}
+        \end{itemize}
+
+    \item \code{DELETE /trusted\_contact/\{contact\_id\}}
+        \begin{itemize}
+            \item \textbf{Descrizione}: Elimina un contatto fidato esistente associato all’\term{Utente} autenticato.
+            
+            \item \textbf{Parametri}:
+            \begin{itemize}
+                \item \texttt{user\_id}: identificativo dell’\term{Utente}.
+            \end{itemize}
+
+            \item \textbf{Response}:
+            \begin{itemize}
+                \item \texttt{200 OK}: eliminazione contatto avveuta con successo.
+\begin{verbatim}
+{
+    "message": "Contact contact1 deleted"
+}
+\end{verbatim}
+            \end{itemize}
+        \end{itemize}
+
+    % ---------------- ALERT ----------------
+
+    \item \code{PUT /alert}
+        \begin{itemize}
+            \item \textbf{Descrizione}: Invia un alert ai contatti fidati con posizione opzionale.
+
+            \item \textbf{Parametri}:
+            \begin{itemize}
+                \item \texttt{user\_id}: identificativo dell’\term{Utente};
+                \item \texttt{latitude} (opzionale);
+                \item \texttt{longitude} (opzionale).
+            \end{itemize}
+
+            \item \textbf{Response}:
+            \begin{itemize}
+                \item \texttt{200 OK}: invio dell'alert avvenuto con successo.
+\begin{verbatim}
+{
+    "message": "Alert send processed with success"
+}
+\end{verbatim}
+            \end{itemize}
+
+            \item \textbf{Errori}:
+            \begin{itemize}
+                \item \texttt{400 Bad Request}: verifica presenza contatti fidati fallita.
+                \item \texttt{500 Internal Server Error}: errore interno del server.
+            \end{itemize}
+        \end{itemize}
+
 \end{itemize}
 
 % ===== diagramma classi contatti fidati \term{Backend} ======
@@ -3738,7 +4166,7 @@ Espone \code{get\_dms\_config(user\_id: str)} per il recupero della configurazio
 Descrizione metodi:
 \begin{itemize}
     \item \code{update\_dms\_configuration\_settings(config: DmsConfigurationSettings)}, per l'aggiornamento delle impostazione del dead man's switch;
-    \item \code{create\_dms\_configuration\_settings(user-id: str)}, per la creazione dei valori di default per le impostazione del dead man's switch.
+    \item \code{create\_dms\_configuration\_settings(user\_id: str)}, per la creazione dei valori di default per le impostazione del dead man's switch.
 \end{itemize}
 
 \paragraph{UpdateDmsAlertPort}\mbox{}\\
