@@ -2530,7 +2530,7 @@ Le API relative al diario criptato e fittizio sono suddivise in due categorie di
 
             \item \textbf{Parametri}:
             \begin{itemize}
-                \item \texttt{user\_id}: identificativo dell'utente;
+                \item \texttt{user\_id}: identificativo dell'\term{Utente};
                 \item \texttt{title}: titolo della nota;
                 \item \texttt{created\_at}: timestamp di creazione;
                 \item \texttt{last\_modified\_at}: timestamp dell'ultima modifica;
@@ -2538,7 +2538,7 @@ Le API relative al diario criptato e fittizio sono suddivise in due categorie di
                 \item \texttt{elements}: lista di elementi della nota:
                 \begin{itemize}
                     \item \texttt{type}: tipo dell'elemento (\texttt{text}, \texttt{image}, \texttt{audio});
-                    \item \texttt{content}: obbligatorio solo nel caso venga inserito del testo, identifica il contenuto testuale inserito dall'utente.
+                    \item \texttt{content}: obbligatorio solo nel caso venga inserito del testo, identifica il contenuto testuale inserito dall'\term{Utente}.
                 \end{itemize}
             \end{itemize}
 
@@ -2586,7 +2586,7 @@ Le API relative al diario criptato e fittizio sono suddivise in due categorie di
 
             \item \textbf{Parametri}:
             \begin{itemize}
-                \item \texttt{user\_id}: identificativo dell'utente;
+                \item \texttt{user\_id}: identificativo dell'\term{Utente};
                 \item \texttt{diary\_type}: tipo di diario.
             \end{itemize}
 
@@ -2631,7 +2631,7 @@ Le API relative al diario criptato e fittizio sono suddivise in due categorie di
 
             \item \textbf{Parametri}:
             \begin{itemize}
-                \item \texttt{user\_id}: identificativo dell'utente;
+                \item \texttt{user\_id}: identificativo dell'\term{Utente};
                 \item \item \texttt{note\_id}: identificativo della nota;
                 \item \texttt{diary\_type}: tipo di diario.
             \end{itemize}
@@ -2681,7 +2681,7 @@ Le API relative al diario criptato e fittizio sono suddivise in due categorie di
 
             \item \textbf{Parametri}:
             \begin{itemize}
-                \item \texttt{user\_id}: identificativo dell'utente;
+                \item \texttt{user\_id}: identificativo dell'\term{Utente};
                 \item \texttt{diary\_type}: tipo di diario.
             \end{itemize}
 
@@ -2712,7 +2712,7 @@ Le API relative al diario criptato e fittizio sono suddivise in due categorie di
             \begin{itemize}
                 \item \texttt{note\_id}: identificativo della nota a cui si vuole aggiungere l'elemento;
                 \item \texttt{type}: tipo del contenuto inserito (\texttt{text}, \texttt{image}, \texttt{audio})
-                \item \texttt{content}: obbligatorio solo nel caso venga inserito del testo, identifica il contenuto testuale inserito dall'utente.
+                \item \texttt{content}: obbligatorio solo nel caso venga inserito del testo, identifica il contenuto testuale inserito dall'\term{Utente}.
             \end{itemize}
 
             \item \textbf{Response}:
@@ -3768,8 +3768,8 @@ La gestione dei contatti fidati è completamente CRUD e permette all’\term{Ute
                 \item \texttt{is\_active}: valore booleano 
                 \item \texttt{first\_timer}: primo timer del dead man's switch;
                 \item \texttt{second\_timer}: secondo timer del dead man's switch;
-                \item \texttt{email\_subject}: oggetto della mail per la notifica del dead man's switch all'utente;
-                \item \texttt{email\_body}: corpo della mail per la notifica del dead man's switch all'utente.
+                \item \texttt{email\_subject}: oggetto della mail per la notifica del dead man's switch all'\term{Utente};
+                \item \texttt{email\_body}: corpo della mail per la notifica del dead man's switch all'\term{Utente}.
             \end{itemize}
 
             \item \textbf{Response}:
@@ -3846,14 +3846,14 @@ La gestione dei contatti fidati è completamente CRUD e permette all’\term{Ute
 
             \item \textbf{Errori}:
             \begin{itemize}
-                \item \texttt{400 Bad Request}: errore nella validazione dei campi.
+                \item \texttt{400 Bad Request}: errore nella \term{Validazione} dei campi.
                 \item \texttt{500 Internal Server Error}: errore interno del server.
             \end{itemize}
         \end{itemize}
 
     \item \code{GET /trusted\_contact}
         \begin{itemize}
-            \item \textbf{Descrizione}: Recupera tutti i contatti fidati associati all'utente autenticato.
+            \item \textbf{Descrizione}: Recupera tutti i contatti fidati associati all'\term{Utente} autenticato.
             
             \item \textbf{Parametri}:
             \begin{itemize}
@@ -3947,7 +3947,7 @@ La gestione dei contatti fidati è completamente CRUD e permette all’\term{Ute
 \end{verbatim}
             \item \textbf{Errori}:
             \begin{itemize}
-                \item \texttt{400 Bad Request}: errore nella validazione dei campi.
+                \item \texttt{400 Bad Request}: errore nella \term{Validazione} dei campi.
                 \item \texttt{500 Internal Server Error}: errore interno del server.
             \end{itemize}
         \end{itemize}
@@ -3997,7 +3997,7 @@ La gestione dei contatti fidati è completamente CRUD e permette all’\term{Ute
 
             \item \textbf{Errori}:
             \begin{itemize}
-                \item \texttt{400 Bad Request}: verifica presenza contatti fidati fallita.
+                \item \texttt{400 Bad Request}: \term{Verifica} presenza contatti fidati fallita.
                 \item \texttt{500 Internal Server Error}: errore interno del server.
             \end{itemize}
         \end{itemize}
