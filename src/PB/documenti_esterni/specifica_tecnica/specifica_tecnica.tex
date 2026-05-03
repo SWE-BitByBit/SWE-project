@@ -2528,7 +2528,7 @@ Le API relative al diario criptato e fittizio sono suddivise in due categorie di
             \end{itemize}
         \end{itemize}
 
-    \item \code{PUT /note}
+    \item \code{PUT /notes}
         \begin{itemize}
             \item \textbf{Descrizione}: Crea una nuova nota associata all’\term{Utente}, composta da metadati e una lista di elementi.
 
@@ -2792,7 +2792,7 @@ L'enumerazione \code{DiaryType} definisce i due tipi di diario supportati dal si
 \end{figure}
 
 \paragraph{Note}\mbox{}\\
-La classe \code{Note} rappresenta l'entità di dominio principale del sistema, modellando una nota completa del diario. Include gli identificativi univoci (\code{note\_id}, \code{user\_id}), i metadati temporali (\code{created\_at}, \code{last\_modified\_at}), il titolo della nota e il tipo di diario di appartenenza (\code{diary\_type}). La nota è composta da una collezione di elementi rappresentati tramite la lista \code{message\_elements} di tipo \code{List\[NoteElement\]}. La serializzazione della classe avviene tramite \code{NoteDTO}.
+La classe \code{Note} rappresenta l'entità di dominio principale del sistema, modellando una nota completa del diario. Include gli identificativi univoci (\code{note\_id}, \code{user\_id}), i metadati temporali (\code{created\_at}, \code{last\_modified\_at}), il titolo della nota e il tipo di diario di appartenenza (\code{diary\_type}). La nota è composta da una collezione di elementi di tipo \code{NoteElement}. La serializzazione della classe avviene tramite \code{NoteDTO}.
 
 \begin{figure}[H]
     \centering
