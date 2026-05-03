@@ -2401,12 +2401,16 @@ Il flusso di elaborazione è dunque il seguente:
     
     \item \textbf{Recupero di una Nota}: Per ottenere il contenuto completo di una nota (metodo \texttt{GET /notes/\{note\_id\}}), la Lambda recupera i dati da DynamoDB e gli eventuali riferimenti a file su S3, costruendo l'oggetto finale che viene restituito al client.
     
-    \item \textbf{Gestione dei Contenuti Binari}: In presenza di immagini o tracce audio, la Lambda genera URL \textit{presigned} per gli oggetti memorizzati su S3, permettendo al client di accedere direttamente alle risorse senza transitare attraverso il \term{Backend}.
+    \item \textbf{Gestione dei Contenuti Binari}: In presenza di immagini o tracce audio, la Lambda genera \textit{URL presigned} per gli oggetti memorizzati su S3, permettendo al client di accedere direttamente alle risorse senza transitare attraverso il \term{Backend}.
     
     \item \textbf{Operazioni di Scrittura}: Per la creazione o modifica di note, la Lambda memorizza in DynamoDB i metadati principali e la struttura complessiva della nota, salvando eventuali file binari su S3.
     
     \item \textbf{Eliminazione delle Note}: In caso di richiesta di eliminazione (metodo \texttt{DELETE /notes/\{note\_id\}}), la Lambda rimuove i dati associati dal database e, se presenti, elimina anche i file binari corrispondenti dai bucket S3.
     
+    \item \textbf{Aggiunta elemento ad una Not}: In caso di richiesta di aggiunta di un elemento, che sia composto da un'immagine, un'audio o una stringa di testo, la Lambda creare una entry su DynamoDB per la memorizzazione dei metadati dell'elemento e tramite il client di S3 crea un \textit{URL presigned} per l'upload del file binario direttamente dal client.
+
+    \item \textbf{Eliminazione elemento da una Nota}: In caso di rischiesta di eliminazione di un'elemento di una nota, la Lmabda rimuove i metdatadi da DynamoDB e, se presente, il file binario associato all'elemento presente nel bucket S3.
+
     \item \textbf{Logout}: quando l'\term{Utente} esce dal diario, il \term{Backend} viene notificato e la Lambda elimina la sessione precedentemente avviata.
 \end{itemize}
 
@@ -2704,7 +2708,7 @@ Le API relative al diario criptato e fittizio sono suddivise in due categorie di
             \end{itemize}
         \end{itemize}
 
-    \item \code{PUT /note\_element}
+    \item \code{PUT /notes/note\_element}
         \begin{itemize}
             \item \textbf{Descrizione}: Aggiunge un elemento ad una nota esistente.
 
@@ -2737,7 +2741,7 @@ Le API relative al diario criptato e fittizio sono suddivise in due categorie di
             \end{itemize}
         \end{itemize}
 
-    \item \code{DELETE /note\_element}
+    \item \code{DELETE /notes/note\_element}
         \begin{itemize}
             \item \textbf{Descrizione}: Elimina un elemento da una nota (e il file associato se presente).
 
