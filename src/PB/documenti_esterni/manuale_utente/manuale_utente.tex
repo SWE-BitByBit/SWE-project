@@ -192,6 +192,9 @@ Gruppo BitByBit\\\\
 \hline
 \endhead
 
+\rowcolor{white}
+0.3.0 & 2026-04-30 & Dennis Parolin & Aggiornamento della descrizione di tutte le funzionalità, aggiungendo le relative immagini di guida. & Giovanni Visentin \\
+\hline
 \rowcolor{gray!20}
 0.2.0 & 2026-04-29 & Dennis Parolin & Creazione delle sezioni \hyperref[sec:installazione_mobile]{Installazione Mobile}, \hyperref[sec:accesso_web]{Accesso da Web}, \hyperref[sec:esecuzione_sorgenti]{Esecuzione da codice sorgente} e \hyperref[sec:funzionalita]{Funzionalità dell'applicazione}. & Giovanni Visentin \\
 \hline
@@ -492,12 +495,12 @@ La funzionalità dei "Luoghi sicuri" integra una mappa interattiva che permette 
 \subsubsection{Visualizzazione della posizione e dei luoghi}
 L'interfaccia mostra la posizione attuale dell'\term{Utente} sulla mappa, facilitando l'orientamento rispetto ai punti di interesse circostanti.
 
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[width=0.5\textwidth]{manuale_utente/luoghi_sicuri/posizione_utente.png}
-%     \caption[Posizione dell'utente sulla mappa]{Posizione dell'\term{Utente} sulla mappa}
-%     \label{fig:posizione_utente}
-% \end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/luoghi_sicuri/posizione_utente.png}
+    \caption[Posizione dell'utente sulla mappa]{Posizione dell'\term{Utente} sulla mappa}
+    \label{fig:posizione_utente}
+\end{figure}
 
 I luoghi sicuri sono identificati da appositi marker posizionati sulla mappa.
 
@@ -604,23 +607,137 @@ Per visualizzare i dettagli di una specifica risorsa, è sufficiente \textbf{pre
 
 \subsection{Chatbot} \label{subsec:chatbot}
 
-L'interfaccia dell'applicazione include una sezione dedicata all'interazione testuale con l'Intelligenza Artificiale, concepita per chiarire dubbi e fornire supporto immediato. Questa schermata implementa due distinte modalità operative:
+L'interfaccia dell'applicazione include una sezione dedicata all'interazione testuale con l'Intelligenza Artificiale, concepita per chiarire dubbi e fornire supporto immediato. 
 
+\textbf{Accesso alla funzionalità:}
+Per accedere al Chatbot, premere il pulsante dedicato situato nella Home dell'applicazione (\ref{fig:homepage-chatbot}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/chatbot/homepage-chatbot.png}
+    \caption[Pulsante di accesso al Chatbot]{Pulsante per l'accesso alla sezione Chatbot dalla Home}
+    \label{fig:homepage-chatbot}
+\end{figure}
+
+Una volta entrati, verrà visualizzata la schermata principale di conversazione.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/chatbot/schermata-chatbot.png}
+    \caption[Schermata principale del Chatbot]{Interfaccia di conversazione con l'Intelligenza Artificiale}
+    \label{fig:schermata-chatbot}
+\end{figure}
+
+\subsubsection{Modalità operative}
+Il Chatbot implementa due distinte modalità operative, studiate per rispondere a diverse esigenze dell'\term{Utente}:
 \begin{itemize}
     \item \textbf{Detective delle relazioni:} ha l'obiettivo di analizzare i comportamenti o le narrazioni dell'\term{Utente} per identificare la situazione attuale e riconoscere eventuali pattern di pericolo o segnali di allerta (red flags) che meritano attenzione.
     \item \textbf{Lo specchio intelligente:} è orientata all'autoconsapevolezza, offrendo uno spazio privato e protetto per l'analisi dei propri pensieri e delle proprie emozioni, favorendo una riflessione profonda sulla propria condizione.
 \end{itemize}
 
-La selezione della modalità (e quindi del prompt) più adeguata tra le due viene gestita \textbf{automaticamente} dall'applicazione previa analisi del messaggio inviato dall'\term{Utente}. Rimane comunque garantita la possibilità per l'\term{Utente} di modificare manualmente la modalità selezionata qualora lo ritenga opportuno.
+L'\term{Utente} mantiene il controllo totale sulla scelta.
 
-\subsubsection{Gestione delle conversazioni}
-Il sistema prevede una gestione completa delle sessioni di chat, offrendo le seguenti possibilità:
+\textbf{Informazioni sulle modalità:}
+È possibile consultare i dettagli e le differenze tra le due modalità premendo il pulsante informativo situato in alto a destra (\ref{fig:info-modalita-pulsante}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/chatbot/info-modalita-pulsante.png}
+    \caption[Pulsante informazioni modalità]{Pulsante per visualizzare i dettagli sulle modalità del Chatbot}
+    \label{fig:info-modalita-pulsante}
+\end{figure}
+
+Verrà mostrato un popup esplicativo (\ref{fig:info-modalita-popup}).
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/chatbot/info-modalita-popup.png}
+    \caption[Popup informativo modalità]{Schermata esplicativa delle differenze tra le modalità}
+    \label{fig:info-modalita-popup}
+\end{figure}
+
+\textbf{Cambio manuale della modalità:}
+Per cambiare manualmente la modalità attiva, premere il pulsante situato in alto a sinistra (\ref{fig:cambio-modalita-pulsante}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/chatbot/cambio-modalita-pulsante.png}
+    \caption[Pulsante cambio modalità]{Pulsante per l'apertura del menu di selezione modalità}
+    \label{fig:cambio-modalita-pulsante}
+\end{figure}
+Selezionare quella desiderata dalla lista che compare (\ref{fig:cambio-modalita-lista}).
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/chatbot/cambio-modalita-lista.png}
+    \caption[Menu selezione modalità]{Elenco delle modalità selezionabili dall'utente}
+    \label{fig:cambio-modalita-lista}
+\end{figure}
+
+\subsubsection{Interazione e messaggistica}
+Per comunicare con l'Intelligenza Artificiale, è sufficiente digitare il proprio messaggio nella barra situata in basso allo schermo e premere il pulsante di invio posto accanto ad essa (\ref{fig:invio-messaggio}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/chatbot/invio-messaggio.png}
+    \caption[Invio di un messaggio]{Barra di digitazione e pulsante di invio messaggio}
+    \label{fig:invio-messaggio}
+\end{figure}
+
+\subsubsection{Cronologia e gestione conversazioni}
+Il sistema salva automaticamente le conversazioni per permetterne la consultazione futura.
+
+\textbf{Visualizzazione cronologia e nuove chat:}
+Per accedere all'elenco delle conversazioni passate, premere il pulsante della cronologia (\ref{fig:pulsante-cronologia}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/chatbot/pulsante-cronologia.png}
+    \caption[Accesso alla cronologia]{Pulsante per la visualizzazione dell'elenco delle chat salvate}
+    \label{fig:pulsante-cronologia}
+\end{figure}
+All'interno di questa schermata, è possibile anche avviare una nuova conversazione premendo sul pulsante dedicato (\ref{fig:nuova-conversazione}).
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/chatbot/nuova-conversazione.png}
+    \caption[Creazione nuova conversazione]{Pulsante per avviare una nuova sessione di chat}
+    \label{fig:nuova-conversazione}
+\end{figure}
+Per riprendere una chat esistente, è sufficiente premere su di essa nell'elenco.
+\textbf{Modifica ed eliminazione:}
+Accanto ad ogni conversazione nella cronologia sono presenti \textbf{tre puntini} (\ref{fig:opzioni-chat-pulsante}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/chatbot/opzioni-chat-pulsante.png}
+    \caption[Menu opzioni conversazione]{Icona per l'accesso alla gestione della singola chat}
+    \label{fig:opzioni-chat-pulsante}
+\end{figure}
+Premendoli, vengono mostrate le opzioni di gestione (\ref{fig:opzioni-chat-menu}).
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/chatbot/opzioni-chat-menu.png}
+    \caption[Scelte di gestione chat]{Opzioni di modifica titolo ed eliminazione della conversazione}
+    \label{fig:opzioni-chat-menu}
+\end{figure}
+
+Le operazioni disponibili sono:
 \begin{itemize}
-    \item \textbf{Creazione nuove chat:} è possibile avviare nuove conversazioni in qualsiasi momento tramite l'apposito pulsante.
-    \item \textbf{Archiviazione e cronologia:} tutte le chat create vengono salvate in un archivio storico. L'\term{Utente} può consultare la cronologia completa delle interazioni passate.
-    \item \textbf{Prosecuzione:} una chat archiviata può essere riaperta per proseguire la conversazione dal punto in cui era stata interrotta.
-    \item \textbf{Eliminazione:} l'\term{Utente} ha il pieno controllo sui propri dati e può decidere di eliminare definitivamente una o più chat dalla cronologia.
+    \item \textbf{Modifica titolo:} permette di rinominare la chat (\ref{fig:modifica-titolo-popup}). Nota: di default, il titolo della conversazione è composto dalle prime parole del primo messaggio inviato dall'\term{Utente}.
+    \item \textbf{Eliminazione:} permette di cancellare definitivamente la chat. Il sistema richiederà una conferma tramite popup, consentendo di accettare o rifiutare l'operazione (\ref{fig:eliminazione-chat-popup}).
 \end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/chatbot/modifica-titolo-popup.png}
+    \caption[Ridenominazione chat]{Schermata per la modifica del titolo della conversazione}
+    \label{fig:modifica-titolo-popup}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/chatbot/eliminazione-chat-popup.png}
+    \caption[Conferma eliminazione chat]{Popup di sicurezza per la cancellazione della conversazione}
+    \label{fig:eliminazione-chat-popup}
+\end{figure}
 
 \subsection{Diario criptato} \label{subsec:diario_criptato}
 
@@ -650,27 +767,144 @@ All'interno del diario (sia reale che fittizio, con le dovute distinzioni di con
 
 \subsection{Rete di supporto e SOS} \label{subsec:sos_contatti}
 
-L'applicazione integra un sistema di emergenza avanzato per permettere all'\term{Utente} di richiedere aiuto in modo tempestivo e discreto alla propria rete di contatti fidati.
+L'applicazione integra un sistema di emergenza avanzato per permettere all'\term{Utente} di richiedere aiuto in modo tempestivo e discreto alla propria rete di contatti fidati. Questa sezione si compone di tre strumenti principali, accessibili tramite percorsi differenti: l'invio rapido di un segnale di SOS, la gestione della rete di contatti fidati e la configurazione del sistema di allarme automatico (\term{Dead Man's Switch}).
 
 \subsubsection{Comando SOS e Allarme Acustico}
-In situazioni di pericolo, l'\term{Utente} ha a disposizione uno strumento di reazione immediata:
+In situazioni di pericolo, l'\term{Utente} ha a disposizione uno strumento di reazione immediata tramite un \textbf{pulsante a leva} che è presente in ogni schermata e funzionalità dell'applicazione, mantenendo sempre la stessa posizione per essere facilmente raggiungibile in qualsiasi momento.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/sos/leva-sos.png}
+    \caption[Posizionamento del pulsante SOS]{Esempio del pulsante a leva presente in tutte le schermate dell'applicazione}
+    \label{fig:leva-sos}
+\end{figure}
+
+Il funzionamento del comando dipende dalla disponibilità di connessione internet:
 \begin{itemize}
-    \item \textbf{SOS:} un pulsante chiaramente visibile nella Home dell'app permette di inviare istantaneamente una comunicazione di emergenza (e-mail) a tutti i contatti salvati nella propria rete. L'invio è gestito esclusivamente dal comando manuale dell'\term{Utente}.
-    \item \textbf{Sicurezza in assenza di rete:} qualora non sia presente connettività internet (impedendo l'invio di e-mail), l'\term{Utente} può attivare un \textbf{allarme acustico} ad alto volume. Questa funzione ha lo scopo di attirare l'attenzione dei presenti e fungere da deterrente verso potenziali aggressori.
+    \item \textbf{SOS (con rete):} trascinando la leva, il sistema invia istantaneamente una comunicazione di emergenza (e-mail) a tutti i contatti salvati nella propria rete. L'invio è gestito esclusivamente dal comando manuale dell'\term{Utente}.
+    \item \textbf{Allarme Acustico (senza rete):} qualora non sia presente connettività internet (impedendo l'invio di e-mail), l'attivazione della leva farà partire un \textbf{allarme acustico} ad alto volume. Questa funzione ha lo scopo di attirare l'attenzione dei presenti e fungere da deterrente verso potenziali aggressori.
 \end{itemize}
+
+Per utilizzare il comando, è necessario \textbf{tenere premuta la leva e trascinarla verso il basso} fino al completamento della corsa, momento in cui la funzionalità si attiverà.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/sos/attivazione-sos.png}
+    \caption[Attivazione del segnale di emergenza]{Effetto visivo della leva dopo l'attivazione del comando di SOS}
+    \label{fig:attivazione-sos}
+\end{figure}
 
 \subsubsection{Gestione Contatti Fidati} \label{subsubsec:contatti_fidati}
-Tramite l'apposita sezione accessibile dalla Dashboard, l'\term{Utente} può gestire la propria rete di supporto:
-\begin{itemize}
-    \item \textbf{Aggiunta e Modifica:} inserire nuovi contatti o aggiornare le informazioni di quelli esistenti.
-    \item \textbf{Visualizzazione e Rimozione:} consultare l'elenco dei contatti attivi o eliminarli qualora non siano più necessari.
-\end{itemize}
+Tramite questa sezione, l'\term{Utente} può creare e gestire una cerchia ristretta di persone fidate a cui l'applicazione invierà richieste di aiuto in caso di emergenza.
+
+\textbf{Accesso alla funzionalità:}
+Per accedere alla gestione dei contatti, premere il pulsante apposito situato nella Home dell'applicazione (\ref{fig:homepage-contatti-fidati}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/contatti_fidati/homepage-contatti-fidati.png}
+    \caption[Pulsante di accesso ai contatti fidati]{Pulsante per l'accesso alla gestione dei contatti fidati dalla Home}
+    \label{fig:homepage-contatti-fidati}
+\end{figure}
+
+\textbf{Visualizzazione e aggiunta contatti:}
+Al primo accesso, la lista risulterà vuota. Per inserire un nuovo contatto, premere il pulsante \textbf{"+"} situato in basso a destra nella schermata (\ref{fig:schermata-contatti-vuota}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/contatti_fidati/schermata-contatti-vuota.png}
+    \caption[Schermata iniziale contatti fidati]{Schermata della sezione contatti fidati (senza contatti salvati)}
+    \label{fig:schermata-contatti-vuota}
+\end{figure}
+
+Una volta premuto il tasto di aggiunta, si aprirà un modulo dove inserire i dati del contatto (Nome, numero di telefono ed indirizzo e-mail). Dopo aver inserito le informazioni, salvare il contatto premendo sul pulsante "Salva contatto".
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/contatti_fidati/aggiunta-contatto.png}
+    \caption[Modulo di aggiunta contatto]{Schermata per l'inserimento di un nuovo contatto fidato}
+    \label{fig:aggiunta-contatto}
+\end{figure}
+
+\textbf{Eliminazione di un contatto:}
+È possibile rimuovere un contatto dalla propria rete premendo sull'icona del \textbf{cestino} presente accanto al nome del contatto desiderato (\ref{fig:eliminazione-contatto}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/contatti_fidati/eliminazione-contatto.png}
+    \caption[Rimozione di un contatto]{Pulsante per l'eliminazione di un contatto salvato}
+    \label{fig:eliminazione-contatto}
+\end{figure}
+
+Il sistema richiederà una conferma tramite un popup. L'\term{Utente} può decidere di procedere con l'eliminazione o annullare l'operazione.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/contatti_fidati/popup-conferma.png}
+    \caption[Popup di conferma eliminazione]{Richiesta di conferma prima dell'eliminazione definitiva}
+    \label{fig:popup-conferma}
+\end{figure}
+
+\textbf{Modifica di un contatto:}
+Per aggiornare le informazioni di un contatto già salvato, è sufficiente \textbf{premere sul contatto stesso} all'interno della lista (\ref{fig:selezione-contatto}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/contatti_fidati/selezione-contatto.png}
+    \caption[Selezione contatto per modifica]{Click su un contatto esistente per aprirne i dettagli}
+    \label{fig:selezione-contatto}
+\end{figure}
+
+Verranno mostrati i campi contenenti le informazioni attuali, che possono essere modificate. Per rendere effettivi i cambiamenti, premere il pulsante \textbf{"Aggiorna contatto"}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/contatti_fidati/modifica-contatto.png}
+    \caption[Schermata di modifica contatto]{Modifica dei dati e pulsante di salvataggio}
+    \label{fig:modifica-contatto}
+\end{figure}
 
 \subsubsection{Dead Man's Switch (Interruttore di emergenza)} \label{subsubsec:dms}
-Questa funzionalità di sicurezza preventiva può essere attivata tramite uno switch nelle impostazioni e si basa su due timer configurabili dall'\term{Utente}:
-\begin{enumerate}
-    \item \textbf{Primo Timer (Avviso Personale):} allo scadere di questo timer, il sistema invia un'e-mail di controllo esclusivamente all'\term{Utente}. Il contenuto (oggetto e corpo) di questa e-mail è personalizzabile dall'\term{Utente} nella sezione dedicata alla configurazione della funzione.
-    \item \textbf{Secondo Timer (Emergenza):} se l'\term{Utente} non disattiva il sistema dopo il primo avviso e scade anche il secondo timer, viene inviata automaticamente un'e-mail di emergenza a tutti i contatti fidati salvati. In questo caso, viene utilizzata una comunicazione di default preimpostata dal sistema per garantire la massima chiarezza.
-\end{enumerate}
+Il \term{Dead Man's Switch} è una funzionalità di sicurezza preventiva progettata per attivarsi automaticamente in caso di prolungata inattività dell'\term{Utente}.
+
+\textbf{Accesso alla funzionalità:}
+Per configurare il sistema, è necessario accedere alle impostazioni dell'applicazione tramite l'icona a forma di ingranaggio situata in alto a destra nella Home. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/dms/homepage_dms.png}
+    \caption[Pulsante di accesso al Dead Man's Switch dalla Homepage]{Pulsante per l'accesso alla funzionalità di configurazione del sistema di allarme automatico}
+    \label{fig:homepage_dms}
+\end{figure}
+
+All'interno della schermata impostazioni, selezionare la voce \textbf{"Gestione dell'allarme automatico"} (sotto la quale è riportata la dicitura "Configura dead man's switch").
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/dms/accesso-dms.png}
+    \caption[Pulsante di accesso al Dead Man's Switch]{Pulsante per la configurazione del sistema di allarme automatico nelle impostazioni}
+    \label{fig:accesso-dms}
+\end{figure}
+
+\textbf{Configurazione e impostazioni:}
+Una volta aperta la sezione, l'\term{Utente} può personalizzare il funzionamento dei timer e delle comunicazioni di emergenza.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/dms/impostazioni-dms.png}
+    \caption[Schermata impostazioni Dead Man's Switch]{Schermata per la configurazione dei timer e dei messaggi di emergenza}
+    \label{fig:impostazioni-dms}
+\end{figure}
+
+Le opzioni disponibili includono:
+\begin{itemize}
+    \item \textbf{Stato Allarme:} uno switch che permette di attivare o disattivare l'intera funzionalità. Nota: affinché le modifiche ai timer e ai testi vengano salvate correttamente, lo stato dell'allarme deve essere impostato su \textbf{Attivo}.
+    \item \textbf{Primo Timer (Avviso Personale):} tramite una barra di regolazione orizzontale, l'\term{Utente} può impostare il numero di giorni di inattività (mancato avvio dell'app) superati i quali il sistema invierà un'e-mail di controllo esclusivamente all'\term{Utente}.
+    \item \textbf{Personalizzazione E-mail di Controllo:} l'\term{Utente} può definire l'Oggetto e il Corpo del messaggio per il primo avviso tramite i campi di testo dedicati, rendendo la comunicazione più o meno esplicita a seconda delle proprie preferenze.
+    \item \textbf{Secondo Timer (Emergenza):} una seconda barra orizzontale permette di stabilire dopo quanto tempo dall'invio del primo avviso (se l'\term{Utente} non ha ripristinato lo stato di sicurezza accedendo all'app) debba essere inviata l'e-mail di emergenza ai \textbf{Contatti Fidati}.
+    \item \textbf{E-mail ai Contatti:} il contenuto di questa seconda comunicazione è gestito dal sistema per garantire la massima chiarezza e tempestività nella richiesta di aiuto ai propri contatti.
+\end{itemize}
+
+Per confermare e rendere effettive tutte le impostazioni configurate, è necessario premere il pulsante \textbf{"Salva"} situato in fondo alla schermata.
 
 \end{document}
