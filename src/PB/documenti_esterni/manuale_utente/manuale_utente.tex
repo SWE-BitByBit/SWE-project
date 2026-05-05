@@ -193,7 +193,7 @@ Gruppo BitByBit\\\\
 \endhead
 
 \rowcolor{gray!20}
-0.2.0 & 2026-04-29 & Dennis Parolin & Creazione delle sezioni \hyperref[sec:installazione_mobile]{Installazione Mobile}, \hyperref[sec:accesso_web]{Accesso da Web}, \hyperref[sec:esecuzione_sorgenti]{Esecuzione da codice sorgente} e \hyperref[sec:funzionalita]{Funzionalità dell'applicazione}. & Riccardo Manisi \\
+0.2.0 & 2026-04-29 & Dennis Parolin & Creazione delle sezioni \hyperref[sec:installazione_mobile]{Installazione Mobile}, \hyperref[sec:accesso_web]{Accesso da Web}, \hyperref[sec:esecuzione_sorgenti]{Esecuzione da codice sorgente} e \hyperref[sec:funzionalita]{Funzionalità dell'applicazione}. & Giovanni Visentin \\
 \hline
 \rowcolor{white}
 0.1.0 & 2026-03-28 & Dennis Parolin & Creazione del documento e redazione della sezione \hyperref[sec:introduzione]{Introduzione} con relative sottosezioni. & Giovanni Visentin \\
@@ -416,6 +416,192 @@ Seguire rigorosamente i seguenti comandi da terminale:
 
 In questa sezione vengono descritte nel dettaglio le funzionalità messe a disposizione dall'applicativo per supportare l'\term{Utente}.
 
+\subsection{Homepage} \label{subsec:homepage}
+
+La Homepage rappresenta il fulcro dell'applicazione, fungendo da punto di accesso centrale per tutte le funzionalità disponibili. L'interfaccia è stata progettata per essere intuitiva e permettere all'\term{Utente} di navigare rapidamente tra i vari strumenti di supporto e protezione.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/homepage.png}
+    \caption[Schermata della Homepage]{Schermata della Homepage dell'applicazione}
+    \label{fig:homepage}
+\end{figure}
+
+Dalla Homepage è possibile accedere direttamente alle seguenti sezioni:
+\begin{itemize}
+    \item \hyperref[subsec:chatbot]{Chatbot}: per ricevere supporto immediato tramite l'Intelligenza Artificiale;
+    \item \hyperref[subsec:diario_criptato]{Diario}: per annotare pensieri e archiviare contenuti in modo sicuro;
+    \item \hyperref[subsec:luoghi_sicuri]{Luoghi sicuri}: per individuare i punti di riferimento sicuri più vicini;
+    \item \hyperref[subsec:materiale_informativo]{Materiale Informativo}: per consultare guide, articoli e riferimenti normativi;
+    \item \hyperref[subsec:sos_contatti]{Contatti fidati}: per gestire la propria rete di supporto;
+    \item \hyperref[subsubsec:dms]{Dead man's switch}: per configurare il sistema di emergenza automatizzato.
+\end{itemize}
+
+\subsection{Gestione Account e Autenticazione} \label{subsec:autenticazione}
+
+L'applicazione richiede l'autenticazione dell'\term{Utente} per l'accesso a funzionalità specifiche che prevedono il salvataggio e la protezione dei dati personali. In particolare, è necessario aver effettuato il login per utilizzare:
+\begin{itemize}
+    \item \textbf{Chatbot}: per il salvataggio della cronologia delle conversazioni;
+    \item \textbf{Diario}: per la memorizzazione sicura di note e file multimediali;
+    \item \textbf{Rete di contatti fidati}: per la gestione della propria cerchia di supporto;
+    \item \textbf{Dead Man's Switch}: per la gestione del sistema di emergenza automatizzato.
+\end{itemize}
+
+\subsubsection{Accesso (Login)}
+Per accedere alla schermata di autenticazione, premere il pulsante del profilo situato nella Home dell'applicazione (\ref{fig:homepage-autenticazione}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/autenticazione/homepage-autenticazione.png}
+    \caption[Pulsante di accesso all'account]{Pulsante per accedere alla gestione dell'account dalla Home}
+    \label{fig:homepage-autenticazione}
+\end{figure}
+
+L'autenticazione avviene esclusivamente tramite il proprio \textbf{Account Google}. Premendo sul pulsante dedicato (\ref{fig:schermata-login}), l'\term{Utente} verrà mostrata la seguente schermata con il pulsante apposito al reindirizzamento alla schemrata di login standard di Google.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/autenticazione/login-google.png}
+    \caption[Schermata di login]{Schermata per l'autenticazione tramite Account Google}
+    \label{fig:schermata-login}
+\end{figure}
+
+\subsubsection{Gestione Profilo e Logout}
+Una volta effettuato l'accesso, la schermata del profilo mostrerà l'account con il quale si è effettuato il login. In questa sezione è presente il pulsante per effettuare il \textbf{Logout}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/autenticazione/logout.png}
+    \caption[Schermata del profilo e logout]{Visualizzazione delle info profilo e pulsante di logout}
+    \label{fig:schermata-logout}
+\end{figure}
+
+Premendo sul pulsante di logout, la sessione verrà terminata e l'\term{Utente} tornerà a uno stato di navigazione anonima, perdendo l'accesso alle funzionalità protette sopra elencate.
+
+\subsection{Luoghi sicuri} \label{subsec:luoghi_sicuri}
+
+La funzionalità dei "Luoghi sicuri" integra una mappa interattiva che permette all'\term{Utente} di individuare rapidamente punti di riferimento sicuri nelle vicinanze. Per utilizzare la funzionalità, premere il pulsante mostrato in figura nella seguente figura (\ref{fig:homepage-luoghi-sicuri}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/luoghi_sicuri/homepage-luoghi-sicuri.png}
+    \caption[Schermata pulsante di accesso ai luoghi sicuri]{Schermata pulsante di accesso ai luoghi sicuri}
+    \label{fig:homepage-luoghi-sicuri}
+\end{figure}
+
+\subsubsection{Visualizzazione della posizione e dei luoghi}
+L'interfaccia mostra la posizione attuale dell'\term{Utente} sulla mappa, facilitando l'orientamento rispetto ai punti di interesse circostanti.
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.5\textwidth]{manuale_utente/luoghi_sicuri/posizione_utente.png}
+%     \caption[Posizione dell'utente sulla mappa]{Posizione dell'\term{Utente} sulla mappa}
+%     \label{fig:posizione_utente}
+% \end{figure}
+
+I luoghi sicuri sono identificati da appositi marker posizionati sulla mappa.
+
+Per permettere una rapida identificazione della tipologia di luogo, i marker sono visualizzati con icone e colori differenti in base alla categoria di appartenenza (ad esempio: Stazione dei Carabinieri, Bar, Centri Antiviolenza, ecc.).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/luoghi_sicuri/mappa-marker.png}
+    \caption[Esempio di visualizzazione dei marker sulla mappa]{Esempio di visualizzazione dei marker sulla mappa con diverse categorie}
+    \label{fig:mappa-marker}
+\end{figure}
+
+\subsubsection{Legenda dei marker}
+Per agevolare la comprensione della mappa, è disponibile una legenda che spiega il significato di ogni icona utilizzata per i marker. 
+
+È possibile accedere alla legenda premendo sul pulsante informativo situato in alto a sinistra della schermata della mappa. Una volta premuto, verrà visualizzata una schermata dedicata contenente l'elenco di tutte le categorie di luoghi sicuri e le relative icone identificative.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/luoghi_sicuri/legenda-luoghi-sicuri.png}
+    \caption[Schermata della legenda dei luoghi sicuri]{Schermata informativa contenente la legenda delle icone sulla mappa}
+    \label{fig:legenda-luoghi-sicuri}
+\end{figure}
+
+\subsubsection{Interazione con i marker e dettagli}
+Interagire con la mappa è semplice e immediato:
+\begin{itemize}
+    \item \textbf{Selezione di un luogo:} premendo su un marker, questo viene evidenziato per confermare la selezione.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/luoghi_sicuri/marker-selezionato.png}
+    \caption[Selezione di un marker sulla mappa]{Esempio di marker selezionato sulla mappa}
+    \label{fig:marker-selezionato}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Accesso alle informazioni:} una volta selezionato un marker, è possibile visualizzare i dettagli del luogo premendo sul pulsante informativo che compare in basso a destra dello schermo. Verrà visualizzata una schermata come quella presente nella seguente figura (\ref{fig:dettagli-luogo}):
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/luoghi_sicuri/dettagli-luogo.png}
+    \caption[Visualizzazione dei dettagli di un luogo sicuro]{Schermata con i dettagli del luogo selezionato}
+    \label{fig:dettagli-luogo}
+\end{figure}
+
+Le informazioni mostrate per ogni luogo includono:
+\begin{itemize}
+    \item \textbf{Nome:} la denominazione ufficiale del luogo;
+    \item \textbf{Indirizzo:} la via e il numero civico completi;
+    \item \textbf{Tipologia:} la categoria specifica del punto di interesse.
+\end{itemize}
+
+\subsection{Materiale informativo} \label{subsec:materiale_informativo}
+
+Questa sezione funge da hub informativo centrale, offrendo un accesso chiaro e organizzato a risorse essenziali per il supporto e l'orientamento dell'\term{Utente}. Per accedere alla sezione, premere il pulsante apposito nella Home dell'applicazione (\ref{fig:homepage-materiale-informativo}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/materiale_informativo/homepage-materiale-informativo.png}
+    \caption[Pulsante di accesso al materiale informativo]{Pulsante di accesso alla sezione Materiale informativo}
+    \label{fig:homepage-materiale-informativo}
+\end{figure}
+
+\subsubsection{Consultazione e Filtri}
+Una volta entrati nella sezione, l'\term{Utente} si troverà di fronte a una lista di risorse informative. Ogni risorsa è identificata da un'icona specifica in base alla propria categoria, permettendo un riconoscimento visivo immediato:
+\begin{itemize}
+    \item \textbf{Articoli e Guide:} identificate dall'icona di un foglio/documento;
+    \item \textbf{Community e Associazioni:} identificate dall'icona raffigurante delle persone;
+    \item \textbf{Normative:} identificate dall'icona di un martelletto (simbolo della legge).
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/materiale_informativo/lista-materiale.png}
+    \caption[Schermata principale materiale informativo]{Schermata principale con l'elenco delle risorse e relative icone}
+    \label{fig:lista-materiale}
+\end{figure}
+
+Per facilitare la ricerca, è possibile utilizzare il sistema di \textbf{filtri} situato nella barra in alto. Premendo su una delle categorie disponibili (Articoli e Guide, Community e Associazioni, Normative), la lista verrà aggiornata istantaneamente per mostrare solo i contenuti appartenenti a quella specifica selezione.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/materiale_informativo/filtro-materiale.png}
+    \caption[Utilizzo dei filtri]{Utilizzo dei filtri per categoria nella sezione materiale informativo}
+    \label{fig:filtro-materiale}
+\end{figure}
+
+\subsubsection{Visualizzazione dei contenuti}
+Per visualizzare i dettagli di una specifica risorsa, è sufficiente \textbf{premere sull'elemento desiderato} all'interno della lista. Si aprirà una schermata di dettaglio dove, in base alla tipologia di contenuto, l'applicazione può mostrare:
+\begin{itemize}
+    \item \textbf{Contenuto testuale:} il testo completo dell'articolo o della guida, consultabile direttamente all'interno dell'app;
+    \item \textbf{Link esterni:} qualora la risorsa faccia riferimento a un sito esterno, sarà presente un \textbf{pulsante apposito} all'interno delle informazioni dell'elemento che, se premuto, aprirà il browser del dispositivo sulla pagina ufficiale selezionata.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/materiale_informativo/dettaglio-materiale.png}
+    \caption[Dettaglio di una risorsa]{Schermata di dettaglio con il contenuto o il link esterno}
+    \label{fig:dettaglio-materiale}
+\end{figure}
+
 \subsection{Chatbot} \label{subsec:chatbot}
 
 L'interfaccia dell'applicazione include una sezione dedicata all'interazione testuale con l'Intelligenza Artificiale, concepita per chiarire dubbi e fornire supporto immediato. Questa schermata implementa due distinte modalità operative:
@@ -434,35 +620,6 @@ Il sistema prevede una gestione completa delle sessioni di chat, offrendo le seg
     \item \textbf{Archiviazione e cronologia:} tutte le chat create vengono salvate in un archivio storico. L'\term{Utente} può consultare la cronologia completa delle interazioni passate.
     \item \textbf{Prosecuzione:} una chat archiviata può essere riaperta per proseguire la conversazione dal punto in cui era stata interrotta.
     \item \textbf{Eliminazione:} l'\term{Utente} ha il pieno controllo sui propri dati e può decidere di eliminare definitivamente una o più chat dalla cronologia.
-\end{itemize}
-
-\subsection{La guida al coraggio} \label{subsec:guida_coraggio}
-
-Questa sezione funge da hub informativo centrale, offrendo un accesso chiaro e organizzato a risorse essenziali per il supporto e l'orientamento dell'\term{Utente}. I contenuti sono suddivisi in tre categorie principali:
-
-\begin{enumerate}
-    \item \textbf{Articoli e Guide:} una raccolta di contenuti informativi che spaziano da piccole guide pratiche e consigli comportamentali a fatti e approfondimenti su temi di sicurezza e benessere.
-    \item \textbf{Community:} una selezione di link a comunità e forum di supporto esterni. Si specifica che tali community sono risorse di terze parti non gestite direttamente dal team di sviluppo.
-    \item \textbf{Leggi:} una sezione dedicata alla consultazione dei riferimenti normativi e delle leggi vigenti, per fornire all'\term{Utente} una base di conoscenza giuridica sui propri diritti e sulle tutele disponibili.
-\end{enumerate}
-
-\subsection{Luoghi sicuri} \label{subsec:luoghi_sicuri}
-
-La funzionalità dei "Luoghi sicuri" integra una mappa interattiva (tramite Google Maps) che permette all'\term{Utente} di individuare rapidamente punti di riferimento sicuri nelle vicinanze.
-
-\subsubsection{Mappa e Navigazione}
-L'interfaccia mostra una mappa dinamica con le seguenti caratteristiche:
-\begin{itemize}
-    \item \textbf{Geolocalizzazione:} il sistema rileva la posizione dell'\term{Utente} per centrare la mappa e mostrare i luoghi più vicini.
-    \item \textbf{Calcolo percorsi:} grazie all'integrazione con i servizi di navigazione, l'\term{Utente} può visualizzare il percorso più rapido per raggiungere un determinato luogo sicuro.
-\end{itemize}
-
-\subsubsection{Marker e Dettagli}
-Sulla mappa sono presenti dei marker (segnaposto) che identificano i luoghi sicuri. Cliccando su un marker, viene visualizzato un pannello informativo contenente:
-\begin{itemize}
-    \item \textbf{Nome:} la denominazione ufficiale del luogo.
-    \item \textbf{Indirizzo:} la via e il numero civico completi.
-    \item \textbf{Tipologia:} la categoria del luogo (ad esempio: Bar, Stazione dei Carabinieri, Centro Antiviolenza, ecc.), per permettere all'\term{Utente} di scegliere il punto di riferimento più adatto alle proprie necessità.
 \end{itemize}
 
 \subsection{Diario criptato} \label{subsec:diario_criptato}
@@ -502,14 +659,14 @@ In situazioni di pericolo, l'\term{Utente} ha a disposizione uno strumento di re
     \item \textbf{Sicurezza in assenza di rete:} qualora non sia presente connettività internet (impedendo l'invio di e-mail), l'\term{Utente} può attivare un \textbf{allarme acustico} ad alto volume. Questa funzione ha lo scopo di attirare l'attenzione dei presenti e fungere da deterrente verso potenziali aggressori.
 \end{itemize}
 
-\subsubsection{Gestione Contatti Fidati}
+\subsubsection{Gestione Contatti Fidati} \label{subsubsec:contatti_fidati}
 Tramite l'apposita sezione accessibile dalla Dashboard, l'\term{Utente} può gestire la propria rete di supporto:
 \begin{itemize}
     \item \textbf{Aggiunta e Modifica:} inserire nuovi contatti o aggiornare le informazioni di quelli esistenti.
     \item \textbf{Visualizzazione e Rimozione:} consultare l'elenco dei contatti attivi o eliminarli qualora non siano più necessari.
 \end{itemize}
 
-\subsubsection{Dead Man's Switch (Interruttore di emergenza)}
+\subsubsection{Dead Man's Switch (Interruttore di emergenza)} \label{subsubsec:dms}
 Questa funzionalità di sicurezza preventiva può essere attivata tramite uno switch nelle impostazioni e si basa su due timer configurabili dall'\term{Utente}:
 \begin{enumerate}
     \item \textbf{Primo Timer (Avviso Personale):} allo scadere di questo timer, il sistema invia un'e-mail di controllo esclusivamente all'\term{Utente}. Il contenuto (oggetto e corpo) di questa e-mail è personalizzabile dall'\term{Utente} nella sezione dedicata alla configurazione della funzione.
