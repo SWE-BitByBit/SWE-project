@@ -2584,7 +2584,7 @@ Le API relative al diario criptato e fittizio sono suddivise in due categorie di
             \end{itemize}
         \end{itemize}
 
-    \item \code{GET /notes}
+    \item \code{GET /notes/\{diary\_type\}}
         \begin{itemize}
             \item \textbf{Descrizione}: Recupera la lista delle note dell’\term{Utente} filtrate per tipo diario.
 
@@ -2629,7 +2629,7 @@ Le API relative al diario criptato e fittizio sono suddivise in due categorie di
             \end{itemize}
         \end{itemize}
 
-    \item \code{GET /notes/\{note\_id\}}
+    \item \code{GET /notes/\{diary\_type\}/\{note\_id\}}
         \begin{itemize}
             \item \textbf{Descrizione}: una nota completa con i suoi elementi recuperata con successo.
 
@@ -2679,12 +2679,13 @@ Le API relative al diario criptato e fittizio sono suddivise in due categorie di
             \end{itemize}
         \end{itemize}
 
-    \item \code{DELETE /notes/\{note\_id\}}
+    \item \code{DELETE /notes/\{diary\_type\}/\{note\_id\}}
         \begin{itemize}
             \item \textbf{Descrizione}: Elimina una nota e di tutti i suoi elementi che la compongono.
 
             \item \textbf{Parametri}:
             \begin{itemize}
+                \item \texttt{note\_id}: identificativo della nota;
                 \item \texttt{user\_id}: identificativo dell'\term{Utente};
                 \item \texttt{diary\_type}: tipo di diario.
             \end{itemize}
@@ -2741,7 +2742,7 @@ Le API relative al diario criptato e fittizio sono suddivise in due categorie di
             \end{itemize}
         \end{itemize}
 
-    \item \code{DELETE /notes/note\_element}
+    \item \code{DELETE /notes/note\_element/\{note\_id\}/\{note\_element\_id\}}
         \begin{itemize}
             \item \textbf{Descrizione}: Elimina un elemento da una nota (e il file associato se presente).
 
