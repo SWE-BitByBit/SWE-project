@@ -6,7 +6,7 @@
 % =======================================================
 \newcommand{\TitoloDocumento}{Piano di Progetto}
 \newcommand{\DataVersione}{AAAA/MM/GG}
-\newcommand{\VersioneAttuale}{1.1.4}
+\newcommand{\VersioneAttuale}{1.1.5}
 
 % =======================================================
 % 2. PACCHETTI
@@ -202,6 +202,9 @@ Gruppo BitByBit\\\\
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 \endhead
+\rowcolor{white}
+1.1.5 & 2026-05-05 & Ferdinando Fracasso & Scrutti sezione Sprint 12 & Gabriele Scaggiante \\
+\hline
 \rowcolor{gray!20}
 1.1.4 & 2026-04-28 & Dennis Parolin & Scritta sezione \term{Sprint} 11 e aggiornata sezione \hyperref[subsec:attivita_previste_pb]{Attività previste per la Product Baseline (PB)} & Giovanni Visentin \\
 \hline
@@ -3240,5 +3243,216 @@ Durante lo \term{Sprint} 11 si sono manifestati i seguenti rischi:
 
 \paragraph{Retrospettiva}
 Lo \term{Sprint} 11 ha evidenziato un forte impegno da parte di tutti i membri del team nel portare a termine le \term{Issue} assegnate. Si è consolidata una cultura di supporto reciproco, con i componenti pronti ad aiutarsi a vicenda per superare ostacoli tecnici. Dal punto di vista dello sviluppo, le funzionalità \term{Backend} si stanno concretizzando regolarmente secondo quanto previsto in fase di progettazione, garantendo una base solida per le integrazioni future. Eventuali scostamenti rispetto alla stima dei tempi sono riconducibili proprio alla dinamica collaborativa adottata: il team ha scelto di dare priorità al supporto collettivo per garantire il completamento di tutti i task, prediligendo la solidità del risultato finale rispetto alla rigidità del programma individuale.
+
+
+%-------------------------------------------------------------------------------------------------%
+\subsubsection{Sprint 12}\label{sec:sprint12_PB}
+
+% --- TABELLA RIEPILOGATIVA \term{Sprint} ---
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabularx}{\textwidth}{|>{\columncolor{tableHeader}\bfseries}l|X|>{\columncolor{tableHeader}\bfseries}l|X|}
+        \hline
+        Inizio & 2026-04-27 & Fine prevista & 2026-05-03 \\
+        \hline
+        Stato & \textbf{Concluso} & Fine reale & 2026-05-03 \\
+        \hline
+        \multicolumn{2}{|c|}{\cellcolor{tableHeader}\textbf{Giorni di ritardo}} & \multicolumn{2}{c|}{0} \\
+        \hline
+    \end{tabularx}
+    \caption{Riepilogo temporale \term{Sprint} 12}
+\end{table}
+
+\paragraph{Informazioni generali e attività da svolgere}
+Lo \term{Sprint} 12 si focalizza sul completamento della parte di Backend del progetto e sull'integrazione con il Frontend delle funzionalità implementate. In seguito al completamento della parte di codice si andrà ad aggiornare il documento di Specifica Tecnica con informazioni più recenti ed in linea con lo sviluppo. Infine si valuteranno i requisiti funzionali insieme all'azienda proponente, eventualmente riclassificandoli se necessario in vista della consegna del MVP.\\ 
+Le attività pianificate includono:
+\begin{itemize}
+    \item \textbf{Progettazione:} Aggiornamento della Specifica Tecnica, revisione della sezione dell'architettura logica e correzione dei diagrammi delle classi. Completamento sezioni mancanti.
+    \item \textbf{Programmazione:} Completare parti mancanti del Backend, effettuare deploy della funzionalità chatbot e integrare Frontend e Backend delle funzionalità completate.
+    \item \textbf{\term{Verifica}:} Effettuare controlli sulla qualità del codice backend e sulla correttezza delle modifiche alla documentazione.
+\end{itemize}
+
+\paragraph{Rischi attesi}
+\begin{itemize}
+    \item \textbf{RT1 (Inesperienza tecnologica)}: Possibili difficoltà nello sviluppo del Backend dell'applicazione dovuta a inesperienza con i sistemi AWS, in particolare AWS SAM.
+    \item \textbf{RO1 (Errata stima dei tempi)}: Rischio di sottovalutare la complessità dell'integrazione tra Frontend e Backend.
+\end{itemize}
+
+\paragraph{Preventivo}
+Si prospetta l'utilizzo delle seguenti risorse:
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \small 
+    \begin{tabularx}{\textwidth}{|l|C|C|C|C|C|C|}
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Membro} & \textbf{Resp} & \textbf{Amm} & \textbf{Anal} & \textbf{Pt} & \textbf{Pr} & \textbf{Ver} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        F. Fracasso & 3 & - & - & - & 2 & 1 \\
+        \hline
+        \rowcolor{tableLineEven}
+        R. Manisi & - & - & - & - & 5 & 4.5 \\
+        \hline
+        \rowcolor{tableLineOdd}
+        D. Parolin & - & - & - & - & 2 & 2 \\
+        \hline
+        \rowcolor{tableLineEven}
+        M. Sanguin & - & - & - & - & 4 & 3 \\
+        \hline
+        \rowcolor{tableLineOdd}
+        G. Scaggiante & - & - & - & - & 6 & 4 \\
+        \hline
+        \rowcolor{tableLineEven}
+        G. Visentin & - & 3 & - & - & 5 & 1 \\
+        \hline
+    \end{tabularx}
+    \caption{Preventivo orario per componente - \term{Sprint} 12}
+    \label{tab:preventivo_sprint12}
+\end{table}
+
+% GRAFICO A TORTA PREVENTIVO
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1.2]
+        % Responsabile (6.6%)
+        \draw[thick,fill=pieResp] (0,0) -- (0:1.5) arc (0:24:1.5) -- cycle;
+        \draw (12:2) node {6.6\%};
+        
+        % Amministratore (6.6%)
+        \draw[thick,fill=pieAmm] (0,0) -- (24:1.5) arc (24:48:1.5) -- cycle;
+        \draw (36:1.95) node {6.6\%};
+
+        % Programmatore (52.7%)
+        \draw[thick,fill=pieProg] (0,0) -- (48:1.5) arc (48:238:1.5) -- cycle;
+        \draw (143:2.1) node {52.7\%};
+
+        % Verificatore (34.1%)
+        \draw[thick,fill=pieVer] (0,0) -- (238:1.5) arc (238:360:1.5) -- cycle;
+        \draw (299:1.9) node {34.1\%};
+
+        \matrix [below, draw=none, fill=none] at (0,-2.5) {
+            \node [fill=pieResp, label=right:Responsabile] {}; & \node [fill=pieAmm, label=right:Amministratore] {}; \\
+            \node [fill=pieAnal, label=right:Analista] {};     & \node [fill=pieDes, label=right:Progettista] {}; \\
+            \node [fill=pieProg, label=right:Programmatore] {};& \node [fill=pieVer, label=right:Verificatore] {}; \\
+        };
+    \end{tikzpicture}
+    \caption{Distribuzione ore per ruolo - Preventivo \term{Sprint} 12}
+\end{figure}
+
+\paragraph{Consuntivo}
+Di seguito il resoconto delle ore effettivamente impiegate.
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.4}
+    \footnotesize
+    \begin{tabularx}{\textwidth}{|l|C|C|C|C|C|C|}
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Membro} & \textbf{Resp} & \textbf{Amm} & \textbf{Anal} & \textbf{Pt} & \textbf{Pr} & \textbf{Ver} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        F. Fracasso & 3 & - & - & - & 2 & 0.5 \textcolor{red}{(-0.5)} \\
+        \hline
+        \rowcolor{tableLineEven}
+        R. Manisi & - & - & - & - & 8 \textcolor{red}{(+3)} & 3 \textcolor{red}{(-1.5)} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        D. Parolin & - & - & - & 0.75 \textcolor{red}{(+0.75)} & 3 \textcolor{red}{(+1)} & 2 \\
+        \hline
+        \rowcolor{tableLineEven}
+        M. Sanguin & - & - & - & - & 4 & 3 \\
+        \hline
+        \rowcolor{tableLineOdd}
+        G. Scaggiante & - & - & - & - & 6 & 4 \\
+        \hline
+        \rowcolor{tableLineEven}
+        G. Visentin & - & 3 & - & - & 5 & 1 \\
+        \hline
+    \end{tabularx}
+    \caption{Consuntivo orario per componente - \term{Sprint} 12}
+    \label{tab:consuntivo_sprint11}
+\end{table}
+
+% GRAFICO A TORTA CONSUNTIVO
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1.2]
+        % Responsabile (6.2%)
+        \draw[thick,fill=pieResp] (0,0) -- (0:1.5) arc (0:22:1.5) -- cycle;
+        \draw (11:2) node {6.2\%};
+        
+        % Amministratore (6.2%)
+        \draw[thick,fill=pieAmm] (0,0) -- (22:1.5) arc (22:44:1.5) -- cycle;
+        \draw (33:1.9) node {6.2\%};
+        
+        % Progettista (1.6%)
+        \draw[thick,fill=pieDes] (0,0) -- (44:1.5) arc (44:50:1.5) -- cycle;
+        \draw (47:1.95) node {1.6\%};
+
+        % Programmatore (58.0%)
+        \draw[thick,fill=pieProg] (0,0) -- (50:1.5) arc (50:259:1.5) -- cycle;
+        \draw (155.5:2) node {58\%};
+
+        % Verificatore (28.0%)
+        \draw[thick,fill=pieVer] (0,0) -- (259:1.5) arc (259:360:1.5) -- cycle;
+        \draw (309.5:1.9) node {28\%};
+
+        \matrix [below, draw=none, fill=none] at (0,-2.5) {
+            \node [fill=pieResp, label=right:Responsabile] {}; & \node [fill=pieAmm, label=right:Amministratore] {}; \\
+            \node [fill=pieAnal, label=right:Analista] {};     & \node [fill=pieDes, label=right:Progettista] {}; \\
+            \node [fill=pieProg, label=right:Programmatore] {};& \node [fill=pieVer, label=right:Verificatore] {}; \\
+        };
+    \end{tikzpicture}
+    \caption{Distribuzione ore per ruolo - Consuntivo \term{Sprint} 12}
+\end{figure}
+
+\paragraph{Aggiornamento delle risorse rimanenti}
+Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la chiusura dello \term{Sprint} 12.
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabularx}{\textwidth}{|l|c|c|c|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Ruolo} & \textbf{Costo} & \textbf{Ore} & \textbf{Costo} & \textbf{Ore rimanenti} & \textbf{Budget rimanente} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Responsabile & 30\euro/h & 3 & 90\euro & 4 \textcolor{red}{(-3)} & 120\euro \textcolor{red}{(-60\euro)} \\
+        \hline
+        \rowcolor{tableLineEven}
+        Amministratore & 20\euro/h & 3 & 60\euro & 7.25 \textcolor{red}{(-3)} & 145\euro \textcolor{red}{(-60\euro)} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Analista & 25\euro/h & - & - & -0.5 & -12,50\euro \\
+        \hline
+        \rowcolor{tableLineEven}
+        Progettista & 25\euro/h & 0.75 & 18,75\euro & 2 \textcolor{red}{(-0.75)} & 50\euro \textcolor{red}{(-187,50\euro)} \\
+        \hline
+        \rowcolor{tableLineOdd}
+        Programmatore & 15\euro/h & 28 & 420\euro & -30.75 \textcolor{red}{(-28)} & -461.25\euro \textcolor{red}{(-585\euro)} \\
+        \hline
+        \rowcolor{tableLineEven}
+        Verificatore & 15\euro/h & 13.5 & 180\euro & 10.75 \textcolor{red}{(-13.5)} & 131.25\euro \textcolor{red}{(-180\euro)} \\
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Totale} & - & \textbf{48.25} & \textbf{791,25\euro} & \textbf{-7.25 \textcolor{red}{(-48.25)}} & \textbf{2,50\euro \textcolor{red}{(-791,25\euro)}} \\
+        \hline
+    \end{tabularx}
+    \caption{\term{Sprint} 12 - Variazione nelle risorse disponibili}
+\end{table}
+
+\paragraph{Rischi incontrati}
+Durante lo \term{Sprint} 12 si sono manifestati i seguenti rischi:
+\begin{itemize}
+    \item \textbf{RT1 (Inesperienza tecnologica:} La poca familiarità con AWS SAM ha causato dei problemi nel completamento del Backend, rendendo necessarie più ore lavorative.
+\end{itemize}
+
+\paragraph{Retrospettiva} Lo Sprint 12 ha permesso al gruppo di portare molto vicino al completamento l'applicazione, nonostante le difficoltà riscontrate con gli strumenti per il Backend. Si è resa nota la necessità di aggiornare nuovamente i contenuti della Specifica Tecnica a seguito delle attività di sviluppo, percio sarà necessaria una quantità limitata di lavoro aggiuntivo, anche per terminare le funzionalità non ancora in linea con i requisiti dell'applicazione. \\
+Nonostante i contrattempi, lo sviluppo e le attività di documentazione sono nelle loro fasi conclusive, perciò il gruppo dovrà iniziare a focalizzarsi sulla futura fase di revisione.
+
 
 \end{document}
