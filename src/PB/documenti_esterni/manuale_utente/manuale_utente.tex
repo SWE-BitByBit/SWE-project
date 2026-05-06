@@ -6,7 +6,7 @@
 % =======================================================
 \newcommand{\TitoloDocumento}{Manuale Utente}
 \newcommand{\DataVersione}{AAAA/MM/GG}
-\newcommand{\VersioneAttuale}{0.2.0}
+\newcommand{\VersioneAttuale}{0.4.0}
 
 % =======================================================
 % 2. PACCHETTI
@@ -192,8 +192,11 @@ Gruppo BitByBit\\\\
 \hline
 \endhead
 
+\rowcolor{gray!20}
+0.4.0 & 2026-05-01 & Dennis Parolin & Aggiornamento e completamento della sezione di introduzione. & Giovanni Visentin \\
+\hline
 \rowcolor{white}
-0.3.0 & 2026-04-30 & Dennis Parolin & Aggiornamento della descrizione di tutte le funzionalità, aggiungendo le relative immagini di guida. & Giovanni Visentin \\
+0.3.0 & 2026-04-30 & Dennis Parolin & Aggiornamento della descrizione di tutte le funzionalità. Aggiunta delle relative immagini di guida. & Giovanni Visentin \\
 \hline
 \rowcolor{gray!20}
 0.2.0 & 2026-04-29 & Dennis Parolin & Creazione delle sezioni \hyperref[sec:installazione_mobile]{Installazione Mobile}, \hyperref[sec:accesso_web]{Accesso da Web}, \hyperref[sec:esecuzione_sorgenti]{Esecuzione da codice sorgente} e \hyperref[sec:funzionalita]{Funzionalità dell'applicazione}. & Giovanni Visentin \\
@@ -226,16 +229,13 @@ Gruppo BitByBit\\\\
 
 % =======================SCOPO DOCUMENTO================================
 \subsection{Scopo del documento} \label{sec:scopo_documento}
-Il presente \textit{Manuale \term{Utente}} è stato redatto dal gruppo \textit{BitByBit} per fornire un supporto metodico e completo riguardo all'utilizzo del sistema sviluppato in risposta al \href{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C4.pdf}{Capitolato d'appalto C4: \emph{L'app che Protegge e Trasforma}}.
+Il presente \textit{Manuale Utente} è stato redatto dal gruppo \textit{BitByBit} per fornire un supporto metodico e completo riguardo all'utilizzo del sistema sviluppato in risposta al \href{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C4.pdf}{Capitolato d'appalto C4: \emph{L'app che Protegge e Trasforma}}.
 
-Il documento si propone come una guida operativa generica e trasversale, concepita per accompagnare l'utenza finale nell'interazione quotidiana con le interfacce dell'applicativo e per descriverne tutte le potenzialità. In aggiunta, questo manuale funge da punto di riferimento per eventuali figure amministrative o tecniche che dovranno interfacciarsi con il sistema o occuparsi della sua gestione e configurazione. L'obiettivo primario è duplice: da un lato, far sì che qualunque \term{Utente} possa apprendere velocemente e in autonomia come muoversi e operare attraverso il software; dall'altro, mitigare la probabilità di errori accidentali offrendo linee guida e soluzioni a dubbi comuni. 
+Il documento si propone come una guida operativa concepita per accompagnare l'Utente nell'interazione quotidiana con le interfacce dell'applicativo e per descriverne tutte le potenzialità. L'obiettivo primario è far sì che qualunque utilizzatore possa apprendere velocemente e in autonomia come muoversi e operare attraverso il software, mitigando la probabilità di errori accidentali offrendo linee guida e soluzioni a dubbi comuni.
 
-Per facilitare la ricerca delle informazioni, i contenuti sono stati suddivisi nelle seguenti aree chiave:
-
-\todo[inline, color=yellow!40]{Completare l'elenco puntato sottostante con le sezioni definitive del manuale (es. Installazione, Setup, Guide, Troubleshooting, ecc.) non appena il perimetro dell'applicazione sarà delineato.}
-\begin{itemize}
-    \item \dots
-\end{itemize}
+% =======================SCOPO PRODOTTO================================
+\subsection{Scopo del prodotto} \label{sec:scopo_prodotto}
+"L'app che Protegge e Trasforma" è un'applicazione mobile multipiattaforma (Android e iOS) finalizzata alla prevenzione della violenza di genere e al supporto concreto attraverso strumenti di consapevolezza e sicurezza. Il prodotto integra funzionalità intelligenti, come il supporto analitico dell'IA per aiutare l'Utente a decodificare la propria situazione e riconoscere pattern di rischio, oltre a strumenti di allerta verso contatti fidati. Attraverso funzionalità come il Dead Man's Switch, il sistema lascia all'Utente la libertà di gestire il proprio livello di discrezione in base alle proprie necessità. Il sistema funge inoltre da hub informativo collegando l'utenza a risorse esterne, normative e mappe di luoghi sicuri.
 
 % =======================DEFINIZIONI, ACRONIMI E ABBREVIAZIONI================================
 
@@ -250,7 +250,7 @@ I termini tecnici, gli acronimi e le parole con significato specifico all'intern
 
 \subsubsection{Riferimenti normativi}\label{sec:riferimenti_normativi}
 \begin{itemize}
-\item \textbf{\term{Capitolato} d'appalto C4: \emph{L'app che Protegge e Trasforma}}\\
+\item \textbf{Capitolato d'appalto C4: \emph{L'app che Protegge e Trasforma}}\\
 Parti consultate: documento completo\\
 Versione: 1.0.0\\
 Ultimo accesso: \textit{2026-01-12}\\
@@ -275,7 +275,7 @@ Ultimo accesso: \textit{2026-03-31}\\
 
 \section{Installazione mobile} \label{sec:installazione_mobile}
 
-L'applicazione è attualmente distribuita in modalità \textit{Pre-\term{Release}} come Minimum Viable Product (\term{MVP}). Di seguito vengono riportate le istruzioni per l'installazione su dispositivi Android e iOS.
+L'applicazione è attualmente distribuita in modalità \textit{Pre-Release} come Minimum Viable Product (MVP). Di seguito vengono riportate le istruzioni per l'installazione su dispositivi Android e iOS.
 
 \subsection{Requisiti minimi}
 \begin{itemize}
@@ -348,7 +348,7 @@ Per chi desidera utilizzare l'applicativo senza procedere all'installazione su u
     \item Aprire il browser web sul proprio dispositivo.
     \item Navigare all'indirizzo ufficiale del progetto: \\ 
     \url{https://swe-bitbybit.github.io/project-MVP/} \footnote{L'indirizzo potrebbe variare in base alla configurazione finale dell'hosting.}
-    \item Al caricamento della pagina, l'\term{Utente} si troverà direttamente nella schermata di autenticazione o nella \textit{Dashboard} principale.
+    \item Al caricamento della pagina, l'Utente si troverà direttamente nella schermata di autenticazione o nella \textit{Dashboard} principale.
 \end{enumerate}
 
 \begin{tcolorbox}[colback=green!5!white,colframe=green!75!black,title=Suggerimento: Utilizzo come App]
@@ -358,7 +358,7 @@ Per chi desidera utilizzare l'applicativo senza procedere all'installazione su u
 \subsection{Risoluzione dei problemi (Web)}
 \begin{itemize}
     \item \textbf{Schermata bianca all'avvio:}
-    \textit{Soluzione:} Verificare la console del browser (tasto F12). Spesso è dovuto a un errore nel caricamento del file \texttt{.env} o a problemi di CORS se le API del \term{Backend} non sono configurate correttamente per accettare richieste dal dominio web.
+    \textit{Soluzione:} Verificare la console del browser (tasto F12). Spesso è dovuto a un errore nel caricamento del file \texttt{.env} o a problemi di CORS se le API del Backend non sono configurate correttamente per accettare richieste dal dominio web.
 \end{itemize}
 
 \section{Esecuzione da codice sorgente} \label{sec:esecuzione_sorgenti}
@@ -371,26 +371,26 @@ Prima di procedere, assicurarsi che sul sistema siano installati i seguenti comp
     \item \textbf{Git:} per la gestione del controllo versione.
     \item \textbf{Flutter SDK:} versione \texttt{3.10.7} o superiore (seguire la \href{https://docs.flutter.dev/get-started/install}{guida ufficiale}).
     \item \textbf{Android SDK:} necessario per l'esecuzione su emulatore o dispositivo Android.
-    \item \textbf{\term{IDE}:} Visual Studio Code o Android Studio con estensione Flutter installata.
+    \item \textbf{IDE:} Visual Studio Code o Android Studio con estensione Flutter installata.
 \end{itemize}
 
 \subsection{Procedura di setup ed esecuzione}
 Seguire rigorosamente i seguenti comandi da terminale:
 
 \begin{enumerate}
-    \item \textbf{Clonazione della \term{Repository}:}
+    \item \textbf{Clonazione della Repository:}
     \begin{verbatim}
-    git clone https://github.com/SWE-BitByBit/\term{Project}-\term{MVP}.git
+    git clone https://github.com/SWE-BitByBit/Project-MVP.git
     \end{verbatim}
     \item \textbf{Navigazione nella cartella del frontend:}
     \begin{verbatim}
-    cd \term{Project}-\term{MVP}/frontend
+    cd Project-MVP/frontend
     \end{verbatim}
     \item \textbf{Installazione delle dipendenze:}
     \begin{verbatim}
     flutter pub get
     \end{verbatim}
-    \item \textbf{\term{Verifica} dell'ambiente:}
+    \item \textbf{Verifica dell'ambiente:}
     Eseguire il comando \texttt{flutter doctor} per assicurarsi che non vi siano problemi di configurazione.
     \item \textbf{Avvio dell'applicazione:}
     Assicurarsi che un emulatore sia attivo o un dispositivo sia collegato, quindi lanciare:
@@ -400,7 +400,7 @@ Seguire rigorosamente i seguenti comandi da terminale:
 \end{enumerate}
 
 \begin{tcolorbox}[colback=red!5!white,colframe=red!75!black,title=Attenzione: Variabili d'ambiente]
-    Il corretto funzionamento dell'applicativo dipende dalla presenza del file \texttt{.env} nella cartella root del frontend. Assicurarsi che il file contenga gli endpoint corretti per il \term{Backend} AWS (Cognito e API Gateway).
+    Il corretto funzionamento dell'applicativo dipende dalla presenza del file \texttt{.env} nella cartella root del frontend. Assicurarsi che il file contenga gli endpoint corretti per il Backend AWS (Cognito e API Gateway).
 \end{tcolorbox}
 
 \subsection{Risoluzione dei problemi (Sorgente)}
@@ -417,11 +417,11 @@ Seguire rigorosamente i seguenti comandi da terminale:
 
 \section{Funzionalità dell'applicazione} \label{sec:funzionalita}
 
-In questa sezione vengono descritte nel dettaglio le funzionalità messe a disposizione dall'applicativo per supportare l'\term{Utente}.
+In questa sezione vengono descritte nel dettaglio le funzionalità messe a disposizione dall'applicativo per supportare l'Utente.
 
 \subsection{Homepage} \label{subsec:homepage}
 
-La Homepage rappresenta il fulcro dell'applicazione, fungendo da punto di accesso centrale per tutte le funzionalità disponibili. L'interfaccia è stata progettata per essere intuitiva e permettere all'\term{Utente} di navigare rapidamente tra i vari strumenti di supporto e protezione.
+La Homepage rappresenta il fulcro dell'applicazione, fungendo da punto di accesso centrale per tutte le funzionalità disponibili. L'interfaccia è stata progettata per essere intuitiva e permettere all'Utente di navigare rapidamente tra i vari strumenti di supporto e protezione.
 
 \begin{figure}[H]
     \centering
@@ -442,7 +442,7 @@ Dalla Homepage è possibile accedere direttamente alle seguenti sezioni:
 
 \subsection{Gestione Account e Autenticazione} \label{subsec:autenticazione}
 
-L'applicazione richiede l'autenticazione dell'\term{Utente} per l'accesso a funzionalità specifiche che prevedono il salvataggio e la protezione dei dati personali. In particolare, è necessario aver effettuato il login per utilizzare:
+L'applicazione richiede l'autenticazione dell'Utente per l'accesso a funzionalità specifiche che prevedono il salvataggio e la protezione dei dati personali. In particolare, è necessario aver effettuato il login per utilizzare:
 \begin{itemize}
     \item \textbf{Chatbot}: per il salvataggio della cronologia delle conversazioni;
     \item \textbf{Diario}: per la memorizzazione sicura di note e file multimediali;
@@ -460,7 +460,7 @@ Per accedere alla schermata di autenticazione, premere il pulsante del profilo s
     \label{fig:homepage-autenticazione}
 \end{figure}
 
-L'autenticazione avviene esclusivamente tramite il proprio \textbf{Account Google}. Premendo sul pulsante dedicato (\ref{fig:schermata-login}), l'\term{Utente} verrà mostrata la seguente schermata con il pulsante apposito al reindirizzamento alla schemrata di login standard di Google.
+L'autenticazione avviene esclusivamente tramite il proprio \textbf{Account Google}. Premendo sul pulsante dedicato (\ref{fig:schermata-login}), l'Utente verrà mostrata la seguente schermata con il pulsante apposito al reindirizzamento alla schemrata di login standard di Google.
 
 \begin{figure}[H]
     \centering
@@ -479,11 +479,11 @@ Una volta effettuato l'accesso, la schermata del profilo mostrerà l'account con
     \label{fig:schermata-logout}
 \end{figure}
 
-Premendo sul pulsante di logout, la sessione verrà terminata e l'\term{Utente} tornerà a uno stato di navigazione anonima, perdendo l'accesso alle funzionalità protette sopra elencate.
+Premendo sul pulsante di logout, la sessione verrà terminata e l'Utente tornerà a uno stato di navigazione anonima, perdendo l'accesso alle funzionalità protette sopra elencate.
 
 \subsection{Luoghi sicuri} \label{subsec:luoghi_sicuri}
 
-La funzionalità dei "Luoghi sicuri" integra una mappa interattiva che permette all'\term{Utente} di individuare rapidamente punti di riferimento sicuri nelle vicinanze. Per utilizzare la funzionalità, premere il pulsante mostrato in figura nella seguente figura (\ref{fig:homepage-luoghi-sicuri}).
+La funzionalità dei "Luoghi sicuri" integra una mappa interattiva che permette all'Utente di individuare rapidamente punti di riferimento sicuri nelle vicinanze. Per utilizzare la funzionalità, premere il pulsante mostrato in figura nella seguente figura (\ref{fig:homepage-luoghi-sicuri}).
 
 \begin{figure}[H]
     \centering
@@ -493,12 +493,12 @@ La funzionalità dei "Luoghi sicuri" integra una mappa interattiva che permette 
 \end{figure}
 
 \subsubsection{Visualizzazione della posizione e dei luoghi}
-L'interfaccia mostra la posizione attuale dell'\term{Utente} sulla mappa, facilitando l'orientamento rispetto ai punti di interesse circostanti.
+L'interfaccia mostra la posizione attuale dell'Utente sulla mappa, facilitando l'orientamento rispetto ai punti di interesse circostanti.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{manuale_utente/luoghi_sicuri/posizione_utente.png}
-    \caption[Posizione dell'utente sulla mappa]{Posizione dell'\term{Utente} sulla mappa}
+    \caption[Posizione dell'utente sulla mappa]{Posizione dell'Utente sulla mappa}
     \label{fig:posizione_utente}
 \end{figure}
 
@@ -558,7 +558,7 @@ Le informazioni mostrate per ogni luogo includono:
 
 \subsection{Materiale informativo} \label{subsec:materiale_informativo}
 
-Questa sezione funge da hub informativo centrale, offrendo un accesso chiaro e organizzato a risorse essenziali per il supporto e l'orientamento dell'\term{Utente}. Per accedere alla sezione, premere il pulsante apposito nella Home dell'applicazione (\ref{fig:homepage-materiale-informativo}).
+Questa sezione funge da hub informativo centrale, offrendo un accesso chiaro e organizzato a risorse essenziali per il supporto e l'orientamento dell'Utente. Per accedere alla sezione, premere il pulsante apposito nella Home dell'applicazione (\ref{fig:homepage-materiale-informativo}).
 
 \begin{figure}[H]
     \centering
@@ -568,7 +568,7 @@ Questa sezione funge da hub informativo centrale, offrendo un accesso chiaro e o
 \end{figure}
 
 \subsubsection{Consultazione e Filtri}
-Una volta entrati nella sezione, l'\term{Utente} si troverà di fronte a una lista di risorse informative. Ogni risorsa è identificata da un'icona specifica in base alla propria categoria, permettendo un riconoscimento visivo immediato:
+Una volta entrati nella sezione, l'Utente si troverà di fronte a una lista di risorse informative. Ogni risorsa è identificata da un'icona specifica in base alla propria categoria, permettendo un riconoscimento visivo immediato:
 \begin{itemize}
     \item \textbf{Articoli e Guide:} identificate dall'icona di un foglio/documento;
     \item \textbf{Community e Associazioni:} identificate dall'icona raffigurante delle persone;
@@ -629,13 +629,13 @@ Una volta entrati, verrà visualizzata la schermata principale di conversazione.
 \end{figure}
 
 \subsubsection{Modalità operative}
-Il Chatbot implementa due distinte modalità operative, studiate per rispondere a diverse esigenze dell'\term{Utente}:
+Il Chatbot implementa due distinte modalità operative, studiate per rispondere a diverse esigenze dell'Utente:
 \begin{itemize}
-    \item \textbf{Detective delle relazioni:} ha l'obiettivo di analizzare i comportamenti o le narrazioni dell'\term{Utente} per identificare la situazione attuale e riconoscere eventuali pattern di pericolo o segnali di allerta (red flags) che meritano attenzione.
+    \item \textbf{Detective delle relazioni:} ha l'obiettivo di analizzare i comportamenti o le narrazioni dell'Utente per identificare la situazione attuale e riconoscere eventuali pattern di pericolo o segnali di allerta (red flags) che meritano attenzione.
     \item \textbf{Lo specchio intelligente:} è orientata all'autoconsapevolezza, offrendo uno spazio privato e protetto per l'analisi dei propri pensieri e delle proprie emozioni, favorendo una riflessione profonda sulla propria condizione.
 \end{itemize}
 
-L'\term{Utente} mantiene il controllo totale sulla scelta.
+L'Utente mantiene il controllo totale sulla scelta.
 
 \textbf{Informazioni sulle modalità:}
 È possibile consultare i dettagli e le differenze tra le due modalità premendo il pulsante informativo situato in alto a destra (\ref{fig:info-modalita-pulsante}).
@@ -721,7 +721,7 @@ Premendoli, vengono mostrate le opzioni di gestione (\ref{fig:opzioni-chat-menu}
 
 Le operazioni disponibili sono:
 \begin{itemize}
-    \item \textbf{Modifica titolo:} permette di rinominare la chat (\ref{fig:modifica-titolo-popup}). Nota: di default, il titolo della conversazione è composto dalle prime parole del primo messaggio inviato dall'\term{Utente}.
+    \item \textbf{Modifica titolo:} permette di rinominare la chat (\ref{fig:modifica-titolo-popup}). Nota: di default, il titolo della conversazione è composto dalle prime parole del primo messaggio inviato dall'Utente.
     \item \textbf{Eliminazione:} permette di cancellare definitivamente la chat. Il sistema richiederà una conferma tramite popup, consentendo di accettare o rifiutare l'operazione (\ref{fig:eliminazione-chat-popup}).
 \end{itemize}
 
@@ -747,19 +747,19 @@ Il Diario Criptato è concepito come uno spazio sicuro e protetto per l'annotazi
 L'accesso al diario è rigorosamente protetto:
 \begin{itemize}
     \item \textbf{Autenticazione:} all'apertura, il sistema richiede l'inserimento di una password o l'autenticazione tramite dati biometrici (impronta digitale o riconoscimento facciale, se supportati dal dispositivo).
-    \item \textbf{Primo Accesso:} al primo utilizzo della funzionalità, l'\term{Utente} viene guidato nella creazione della \textbf{password del diario reale}.
+    \item \textbf{Primo Accesso:} al primo utilizzo della funzionalità, l'Utente viene guidato nella creazione della \textbf{password del diario reale}.
 \end{itemize}
 
 \subsubsection{Diario Fittizio}
-A tutela della sicurezza dell'\term{Utente} in situazioni di potenziale costrizione, l'app implementa un innovativo sistema di "Diario Fittizio":
+A tutela della sicurezza dell'Utente in situazioni di potenziale costrizione, l'app implementa un innovativo sistema di "Diario Fittizio":
 \begin{itemize}
     \item \textbf{Diario Reale:} inserendo la password corretta, si accede al contenuto reale e a tutti i dati sensibili archiviati.
-    \item \textbf{Diario Fittizio:} l'\term{Utente} può configurare una seconda password (password fittizia). Se questa viene inserita nella schermata di sblocco, l'app mostrerà una versione "esca" del diario. Questa versione contiene elementi coerenti e sensati, ma è totalmente priva di qualsiasi informazione sensibile.
+    \item \textbf{Diario Fittizio:} l'Utente può configurare una seconda password (password fittizia). Se questa viene inserita nella schermata di sblocco, l'app mostrerà una versione "esca" del diario. Questa versione contiene elementi coerenti e sensati, ma è totalmente priva di qualsiasi informazione sensibile.
 \end{itemize}
 La gestione di entrambe le password avviene all'interno del diario reale tramite un pulsante dedicato alle impostazioni di sicurezza.
 
 \subsubsection{Funzionalità del diario}
-All'interno del diario (sia reale che fittizio, con le dovute distinzioni di contenuto), l'\term{Utente} può:
+All'interno del diario (sia reale che fittizio, con le dovute distinzioni di contenuto), l'Utente può:
 \begin{itemize}
     \item \textbf{Gestione Note:} creare nuove note testuali, modificarle nel tempo o eliminarle.
     \item \textbf{Contenuti Multimediali:} allegare fotografie e registrazioni audio ad ogni singola nota per documentare eventi in modo più completo.
@@ -767,10 +767,10 @@ All'interno del diario (sia reale che fittizio, con le dovute distinzioni di con
 
 \subsection{Rete di supporto e SOS} \label{subsec:sos_contatti}
 
-L'applicazione integra un sistema di emergenza avanzato per permettere all'\term{Utente} di richiedere aiuto in modo tempestivo e discreto alla propria rete di contatti fidati. Questa sezione si compone di tre strumenti principali, accessibili tramite percorsi differenti: l'invio rapido di un segnale di SOS, la gestione della rete di contatti fidati e la configurazione del sistema di allarme automatico (\term{Dead Man's Switch}).
+L'applicazione integra un sistema di emergenza avanzato per permettere all'Utente di richiedere aiuto in modo tempestivo e discreto alla propria rete di contatti fidati. Questa sezione si compone di tre strumenti principali, accessibili tramite percorsi differenti: l'invio rapido di un segnale di SOS, la gestione della rete di contatti fidati e la configurazione del sistema di allarme automatico (Dead Man's Switch).
 
 \subsubsection{Comando SOS e Allarme Acustico}
-In situazioni di pericolo, l'\term{Utente} ha a disposizione uno strumento di reazione immediata tramite un \textbf{pulsante a leva} che è presente in ogni schermata e funzionalità dell'applicazione, mantenendo sempre la stessa posizione per essere facilmente raggiungibile in qualsiasi momento.
+In situazioni di pericolo, l'Utente ha a disposizione uno strumento di reazione immediata tramite un \textbf{pulsante a leva} che è presente in ogni schermata e funzionalità dell'applicazione, mantenendo sempre la stessa posizione per essere facilmente raggiungibile in qualsiasi momento.
 
 \begin{figure}[H]
     \centering
@@ -781,7 +781,7 @@ In situazioni di pericolo, l'\term{Utente} ha a disposizione uno strumento di re
 
 Il funzionamento del comando dipende dalla disponibilità di connessione internet:
 \begin{itemize}
-    \item \textbf{SOS (con rete):} trascinando la leva, il sistema invia istantaneamente una comunicazione di emergenza (e-mail) a tutti i contatti salvati nella propria rete. L'invio è gestito esclusivamente dal comando manuale dell'\term{Utente}.
+    \item \textbf{SOS (con rete):} trascinando la leva, il sistema invia istantaneamente una comunicazione di emergenza (e-mail) a tutti i contatti salvati nella propria rete. L'invio è gestito esclusivamente dal comando manuale dell'Utente.
     \item \textbf{Allarme Acustico (senza rete):} qualora non sia presente connettività internet (impedendo l'invio di e-mail), l'attivazione della leva farà partire un \textbf{allarme acustico} ad alto volume. Questa funzione ha lo scopo di attirare l'attenzione dei presenti e fungere da deterrente verso potenziali aggressori.
 \end{itemize}
 
@@ -795,7 +795,7 @@ Per utilizzare il comando, è necessario \textbf{tenere premuta la leva e trasci
 \end{figure}
 
 \subsubsection{Gestione Contatti Fidati} \label{subsubsec:contatti_fidati}
-Tramite questa sezione, l'\term{Utente} può creare e gestire una cerchia ristretta di persone fidate a cui l'applicazione invierà richieste di aiuto in caso di emergenza.
+Tramite questa sezione, l'Utente può creare e gestire una cerchia ristretta di persone fidate a cui l'applicazione invierà richieste di aiuto in caso di emergenza.
 
 \textbf{Accesso alla funzionalità:}
 Per accedere alla gestione dei contatti, premere il pulsante apposito situato nella Home dell'applicazione (\ref{fig:homepage-contatti-fidati}).
@@ -836,7 +836,7 @@ Una volta premuto il tasto di aggiunta, si aprirà un modulo dove inserire i dat
     \label{fig:eliminazione-contatto}
 \end{figure}
 
-Il sistema richiederà una conferma tramite un popup. L'\term{Utente} può decidere di procedere con l'eliminazione o annullare l'operazione.
+Il sistema richiederà una conferma tramite un popup. L'Utente può decidere di procedere con l'eliminazione o annullare l'operazione.
 
 \begin{figure}[H]
     \centering
@@ -865,7 +865,7 @@ Verranno mostrati i campi contenenti le informazioni attuali, che possono essere
 \end{figure}
 
 \subsubsection{Dead Man's Switch (Interruttore di emergenza)} \label{subsubsec:dms}
-Il \term{Dead Man's Switch} è una funzionalità di sicurezza preventiva progettata per attivarsi automaticamente in caso di prolungata inattività dell'\term{Utente}.
+Il Dead Man's Switch è una funzionalità di sicurezza preventiva progettata per attivarsi automaticamente in caso di prolungata inattività dell'Utente.
 
 \textbf{Accesso alla funzionalità:}
 Per configurare il sistema, è necessario accedere alle impostazioni dell'applicazione tramite l'icona a forma di ingranaggio situata in alto a destra nella Home. 
@@ -887,7 +887,7 @@ All'interno della schermata impostazioni, selezionare la voce \textbf{"Gestione 
 \end{figure}
 
 \textbf{Configurazione e impostazioni:}
-Una volta aperta la sezione, l'\term{Utente} può personalizzare il funzionamento dei timer e delle comunicazioni di emergenza.
+Una volta aperta la sezione, l'Utente può personalizzare il funzionamento dei timer e delle comunicazioni di emergenza.
 
 \begin{figure}[H]
     \centering
@@ -899,12 +899,13 @@ Una volta aperta la sezione, l'\term{Utente} può personalizzare il funzionament
 Le opzioni disponibili includono:
 \begin{itemize}
     \item \textbf{Stato Allarme:} uno switch che permette di attivare o disattivare l'intera funzionalità. Nota: affinché le modifiche ai timer e ai testi vengano salvate correttamente, lo stato dell'allarme deve essere impostato su \textbf{Attivo}.
-    \item \textbf{Primo Timer (Avviso Personale):} tramite una barra di regolazione orizzontale, l'\term{Utente} può impostare il numero di giorni di inattività (mancato avvio dell'app) superati i quali il sistema invierà un'e-mail di controllo esclusivamente all'\term{Utente}.
-    \item \textbf{Personalizzazione E-mail di Controllo:} l'\term{Utente} può definire l'Oggetto e il Corpo del messaggio per il primo avviso tramite i campi di testo dedicati, rendendo la comunicazione più o meno esplicita a seconda delle proprie preferenze.
-    \item \textbf{Secondo Timer (Emergenza):} una seconda barra orizzontale permette di stabilire dopo quanto tempo dall'invio del primo avviso (se l'\term{Utente} non ha ripristinato lo stato di sicurezza accedendo all'app) debba essere inviata l'e-mail di emergenza ai \textbf{Contatti Fidati}.
+    \item \textbf{Primo Timer (Avviso Personale):} tramite una barra di regolazione orizzontale, l'Utente può impostare il numero di giorni di inattività (mancato avvio dell'app) superati i quali il sistema invierà un'e-mail di controllo esclusivamente all'Utente.
+    \item \textbf{Personalizzazione E-mail di Controllo:} l'Utente può definire l'Oggetto e il Corpo del messaggio per il primo avviso tramite i campi di testo dedicati, rendendo la comunicazione più o meno esplicita a seconda delle proprie preferenze.
+    \item \textbf{Secondo Timer (Emergenza):} una seconda barra orizzontale permette di stabilire dopo quanto tempo dall'invio del primo avviso (se l'Utente non ha ripristinato lo stato di sicurezza accedendo all'app) debba essere inviata l'e-mail di emergenza ai \textbf{Contatti Fidati}.
     \item \textbf{E-mail ai Contatti:} il contenuto di questa seconda comunicazione è gestito dal sistema per garantire la massima chiarezza e tempestività nella richiesta di aiuto ai propri contatti.
 \end{itemize}
 
 Per confermare e rendere effettive tutte le impostazioni configurate, è necessario premere il pulsante \textbf{"Salva"} situato in fondo alla schermata.
 
 \end{document}
+
