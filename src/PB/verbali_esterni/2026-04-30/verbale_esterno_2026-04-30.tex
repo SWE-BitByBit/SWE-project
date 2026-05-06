@@ -1,0 +1,230 @@
+% template presente
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{tabularx}
+\usepackage[table]{xcolor}
+\usepackage{tcolorbox}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    urlcolor=blue,     
+}
+\usepackage{graphicx}
+\graphicspath{{resources/}{../resources/}{../../resources/}{../../../resources/}{../../../../resources/}}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{colortbl}
+\usepackage{fancyhdr}
+\setlength{\headheight}{33pt}
+\setlength{\headsep}{1cm}
+\usepackage{titlesec}
+\geometry{margin=2.5cm}
+% ===== Variabile per il titolo del documento =====
+\newcommand{\documenttitle}{Verbale Riunione Esterna Numero 4 } %serve l'ultimo spazio
+
+
+\setlength{\parindent}{0pt}
+\setstretch{1.2}
+
+% ===== Stile intestazione =====
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{gray}{\documenttitle - BitByBit}}
+\fancyhead[R]{\includegraphics[height=1cm]{solo_logo.jpg}}
+\fancyfoot[C]{\thepage}
+
+% ===== Formattazione sezioni =====
+\titleformat{\section}{\Large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.5em}{}
+
+\newcommand{\term}[1]{\textbf{#1}$^\mathbf{G}$}
+
+\newcommand{\ignoreglossary}{}
+
+\begin{document}
+
+% ======= HEADER UNIVERSITÀ E GRUPPO CENTRATI VERTICALMENTE =======
+\vspace*{\fill} % --- Spinge verso il basso l'inizio del contenuto
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logoUni.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\color{red}\LARGE \textbf{Università degli Studi di Padova}}\\[0.3cm]
+        {\large
+        Laurea: Informatica\\
+        Corso: Ingegneria del Software\\
+        Anno Accademico: 2025/26
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1cm}
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logo.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\LARGE \textbf{Gruppo 17}}\\[0.3cm]
+        {\large
+        Nome: BitByBit\\
+        Email: swe.bitbybit@gmail.com
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1.5cm}
+
+\begin{center}
+    {\LARGE \textbf{\documenttitle}}
+\end{center}
+
+% ======= INFO GENERALI SUL DOCUMENTO, DA TENERE SU OGNI DOC =======
+\renewcommand{\arraystretch}{1.3}
+\vspace{0.1cm}
+
+\begin{tcolorbox}
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\textbf{Stato:} & Completato \\
+\textbf{Versione:} & 0.1.0 \\
+\textbf{Redattori:} & Giovanni Visentin \\
+\textbf{Verificatori:} & Dennis Parolin, Gabriele Scaggiante \\
+\textbf{Responsabile:} & Giovanni Visentin \\
+\textbf{Destinatari:} & 
+\begin{tabular}[t]{@{}l@{}}
+Miriade \\
+Prof. Tullio Vardanega \\
+Prof. Cardin
+\end{tabular} \\
+\end{tabularx}
+\end{tcolorbox}
+
+\vspace*{\fill} % --- Spinge verso l’alto la fine del contenuto, centrando tutto il blocco
+\clearpage
+
+% ======= INDICE SU PAGINA DEDICATA =======
+\clearpage
+\tableofcontents
+\thispagestyle{empty} % senza numero di pagina per l'indice
+\clearpage
+
+% ======= INFO GENERALI RIUNIONE, METTERE SE DOC È UN \term{Verbale} =======
+\section{Informazioni generali}
+\renewcommand{\arraystretch}{1.3}
+
+\begin{tcolorbox}
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\textbf{Data:} & 30 aprile 2026 \\
+\textbf{Ora Inizio:} & 12:00 \\
+\textbf{Durata:} & 1h 15min \\
+\textbf{Luogo:} & Google Meet \\
+\textbf{Presenti:} & 
+\begin{tabular}[t]{@{}l@{}}
+Fracasso Ferdinando\\
+Manisi Riccardo\\
+Parolin Dennis\\
+Scaggiante Gabriele\\
+Visentin Giovanni \\
+Sanguin Marco \\
+\end{tabular} \\
+\textbf{Docenti:} & 
+\begin{tabular}[t]{@{}l@{}}
+Prof. Cardin \\
+\end{tabular} \\
+\textbf{Assenti:} & 
+\begin{tabular}[t]{@{}l@{}}
+nessuno \\
+\end{tabular} \\
+\end{tabularx}
+\end{tcolorbox}
+\clearpage
+
+% ---------- ORDINE DEL GIORNO, METTERE SE DOC È UN \term{Verbale}  ----------
+\section{Ordine del Giorno}
+\begin{itemize}
+    \item Richiesta permessi per Amazon Bedrock.
+    \item Chiarimenti e risoluzione errori su alcuni permessi AWS.
+    \item Discussione sulla crittazione delle note e del diario.
+    \item Discussione su alcuni requisiti funzionali da modificare.
+    \item Discussione sulla presentazione finale e su come strutturarla.
+\end{itemize}
+
+% ---------- DISCUSSIONI, METTERE SE DOC È UN \term{Verbale} ----------
+\section{Discussioni}
+\begin{itemize}
+    \item È stato discusso e richiesto esplicitamente l'accesso ad Amazon Bedrock, al fine di poter integrare le funzionalità di LLM all'interno del progetto e testare le potenzialità offerte da questo servizio per la gestione dei dati e l'implementazione di funzionalità avanzate. L'azienda ha prontamente concesso l'accesso, permettendo al gruppo di procedere con l'integrazione e la sperimentazione di Amazon Bedrock all'interno del progetto.
+    \item Sono stati chiariti alcuni errori relativi ai permessi AWS riscontrati dal gruppo.
+    \item È stato chiesto all'azienda se ogni singola nota e voce del diario debba essere crittografata o se sia sufficiente implementare una password di accesso per i diari. L'azienda ha confermato che l'importante è aver implementato una password per poter accedere ai diari per proteggere le note. Tuttavia, l'azienda ha anche specificato che, se possibile entro le tempistiche del progetto, sarebbe ideale integrare due semplici funzioni di crittografia e decrittografia per garantire un livello minimo di sicurezza a protezione dei dati.
+    \item Sono stati discussi alcuni requisiti funzionali che, per motivi di fattibilità tecnica o di tempo, necessitano di essere modificati o rimossi. Il gruppo ha chiesto all'azienda se i seguenti requisiti possono essere modificati o rimossi:
+    \begin{itemize}
+        \item RF-OB-4: L'\term{Utente} deve poter selezionare il profilo di utilizzo ("Per me" o "Per altri") - L'azienda ha confermato che questo \term{Requisito} può essere rimosso, in quanto non è strettamente necessario per il funzionamento dell'applicazione e potrebbe risultare complesso da implementare entro i tempi previsti.
+        \item RF-OB-102: L'\term{Utente} deve poter avviare un segnale acustico di emergenza indipendente dalle impostazioni di volume del dispositivo - L'azienda ha confermato che questo \term{Requisito} non è così difficile da implementare, e ha quindi negato la richiesta di rimozione, specificando che è necessario mantenere questo \term{Requisito} per garantire la sicurezza degli utenti in situazioni di emergenza. L'azienda ha anche suggerito la libreria "audioplayers" per implementare questa funzionalità, in quanto permette di riprodurre suoni indipendentemente dalle impostazioni di volume del dispositivo, garantendo così che il segnale acustico di emergenza sia sempre udibile quando necessario.
+    \end{itemize}
+    \item È stata discussa la struttura della presentazione finale, specificando che dovrà essere strutturata in modo da coprire tutti gli aspetti principali del progetto, includendo una dimostrazione pratica dell'applicazione e una sezione dedicata alla descrizione dell'\term{Architettura} delle lambda e dei microservizi.
+    \item È stata infine discussa la necessità di inserire un "cookie banner" all'interno dell'applicazione: l'azienda ha confermato che, a meno che non vengano raccolti dati personali degli utenti, non è necessario implementarlo, in quanto l'applicazione non rientra nell'ambito di applicazione del GDPR e non richiede il consenso degli utenti per la raccolta dei dati. L'azienda ha specificato che, se in futuro dovessero essere raccolti dati personali, sarà necessario inserire un cookie banner per informare gli utenti sulla raccolta dei dati e ottenere il loro consenso, in conformità con le normative sulla privacy.
+\end{itemize}   
+
+% ---------- DECISIONI, METTERE SE DOC È UN \term{Verbale} ----------
+\section{Decisioni}
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2} 
+\arrayrulecolor{black}
+\rowcolors{1}{gray!20}{white}
+\begin{tabular}{|p{0.73\textwidth}|c|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Descrizione decisione} & \textbf{Codice decisione} \\
+\hline
+Sistemare l'\term{Analisi dei requisiti} coerentemente con le nuove specifiche & VE \ignoreglossary{PB} 4.1 \\
+\hline
+Implementare e testare le funzionalità di integrazione con Amazon Bedrock &  VE \ignoreglossary{PB} 4.2 \\
+\hline
+Implementare e testare le funzionalità di crittografia delle note e del diario &  VE \ignoreglossary{PB} 4.3\\
+\hline
+Implementare e testare la funzionalità di segnalazione acustica di emergenza &  VE \ignoreglossary{PB} 4.4\\
+\hline
+Preparare la presentazione finale del progetto &  VE \ignoreglossary{PB} 4.5\\
+\hline
+\end{tabular}
+\end{center}
+
+% ---------- TO DO, METTERE SE DOC È UN \term{Verbale} ----------
+\section{To Do}
+Le prossime attività da svolgere a seguito di questa riunione sono:
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2} 
+\arrayrulecolor{black} 
+\rowcolors{1}{gray!20}{white}
+\begin{tabularx}{\textwidth}{|X|c|c|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Task} & \textbf{Codice decisione} & \textbf{N°\term{Issue} GitHub} \\
+\hline
+Sistemare l'\term{Analisi dei requisiti} coerentemente con le nuove specifiche & VE \ignoreglossary{PB} 4.1 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/635}{\#635} \\
+\hline
+Implementare e testare le funzionalità di integrazione con Amazon Bedrock & VE \ignoreglossary{PB} 4.2 & \href{https://github.com/SWE-BitByBit/Project-MVP/issues/54}{\#54} \\
+\hline
+Implementare e testare le funzionalità di crittografia delle note e del diario & VE \ignoreglossary{PB} 4.3 & \href{https://github.com/SWE-BitByBit/Project-MVP/issues/55}{\#55} \\
+\hline
+Implementare e testare le funzionalità di segnalazione acustica di emergenza & VE \ignoreglossary{PB} 4.4 & \href{https://github.com/SWE-BitByBit/Project-MVP/issues/56}{\#56} \\
+\hline
+Preparare la presentazione finale del progetto & VE \ignoreglossary{PB} 4.5 & nessuna \\
+\hline
+\end{tabularx}
+\end{center}
+
+\end{document}
