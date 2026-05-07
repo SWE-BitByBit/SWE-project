@@ -163,7 +163,7 @@ Gruppo BitByBit\\
 \hline
 
 \rowcolor{gray!20}
-1.3.0 & 2026-05-2 & Dennis Parolin & Aggiornamento dei test di sistema e accettazione nella sezione\hyperref[sec:metodi_testing]{Metodi di testing}. Aggiunti i test di integrazione, regressione e di unità. & Gabriele Scaggiante \\
+1.3.0 & 2026-05-2 & Dennis Parolin & Aggiornamento dei \term{Test di Sistema} e accettazione nella sezione \hyperref[sec:metodi_testing]{Metodi di testing}. Aggiunti i \term{Test di Integrazione}, \term{Regressione} e di unità. & Gabriele Scaggiante \\
 \hline
 \rowcolor{white}
 1.2.0 & 2026-04-03 & Ferdinando Fracasso & Modifica metriche nella sezione \hyperref[sec:qualità_prodotto]{Qualità di Prodotto} e \hyperref[sec:qualità_processo]{Qualità di Processo} in base alle modifiche delle Norme di Progetto & Marco Sanguin \\
@@ -411,12 +411,12 @@ Come stabilito nel documento \href{https://swe-bitbybit.github.io/SWE-docs/docs/
 I test che verranno effettuati sono quelli presenti nella sezione \textbf{3.4.3.2}. La nomenclatura usata per identificare i test viene invece descritta nella sezione \textbf{3.4.4}.\\
 
 \subsection{Test di Regressione}
-Per prevenire problemi di regressione durante lo sviluppo di nuove funzionalità,
+Per prevenire problemi di \term{Regressione} durante lo sviluppo di nuove funzionalità,
 BitByBit ha deciso di adottare un approccio di integrazione continua.
-La repository del codice sorgente è configurata in modo che ogni commit
-attivi automaticamente l'esecuzione completa della suite di test di unità e
-integrazione (i quali verranno definiti durante la PB). Questo approccio consente di rilevare tempestivamente possibili regressioni introdotte dalle modifiche apportate al codice, permettendo di intervenire prima dell'integrazione nel
-branch principale.
+La \term{Repository} del codice sorgente è configurata in modo che ogni commit
+attivi automaticamente l'esecuzione completa della suite di \term{Test di Unità} e
+integrazione (i quali verranno definiti durante la \term{PB}). Questo approccio consente di rilevare tempestivamente possibili regressioni introdotte dalle modifiche apportate al codice, permettendo di intervenire prima dell'integrazione nel
+\term{Branch} principale.
 
 \clearpage
 \begingroup
@@ -797,7 +797,7 @@ branch principale.
 \hline
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il pulsante SOS rapido sia visibile e facilmente accessibile nell'interfaccia. & RF-OB-99 & I \\
+\stepcounter{testsys} \systestcode & Verificare che il pulsante SOS rapido sia visibile e utilizzabile. & RF-OB-99 & I \\
 \hline
 
 \stepcounter{testsys} \systestcode & Verificare che l'attivazione della procedura di SOS avvenga correttamente. & RF-OB-99 & I \\
@@ -821,7 +821,7 @@ branch principale.
 \stepcounter{testsys} \systestcode & Verificare che la disattivazione del segnale acustico avvenga correttamente. & RF-OB-102 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'accesso alla sezione Chatbot con l'AI avvenga correttamente. & RF-OB-103 & I \\
+\stepcounter{testsys} \systestcode & Verificare che l'accesso alla sezione Chatbot avvenga correttamente. & RF-OB-103 & I \\
 \hline
 
 \stepcounter{testsys} \systestcode & Verificare che il messaggio testuale inviato all'AI venga elaborato correttamente. & RF-OB-103 & I \\
@@ -938,7 +938,7 @@ branch principale.
 \stepcounter{testsys} \systestcode & Verificare che il sistema mostri i dati riassuntivi di ogni singolo contatto d'emergenza nella lista. & RF-OB-135 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema most di ogni contatto d'emergenza. & RF-OB-136 & I \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema mostri il nome identificativo di ogni contatto d'emergenza. & RF-OB-136 & I \\
 \hline
 
 \stepcounter{testsys} \systestcode & Verificare che il sistema mostri il numero di telefono associato ad ogni contatto d'emergenza. & RF-OB-137 & I \\
@@ -965,7 +965,7 @@ branch principale.
 \stepcounter{testsys} \systestcode & Verificare che la posizione corrente dell'\term{Utente} venga visualizzata correttamente. & RF-OB-144 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che cliccando su un marcatore vengano mostrati i dettagli del luogo sicuro. & RF-OB-144 & I \\
+\stepcounter{testsys} \systestcode & Verificare che cliccando su un marker vengano mostrati i dettagli del luogo sicuro. & RF-OB-144 & I \\
 \hline
 
 \stepcounter{testsys} \systestcode & Verificare che l'indirizzo del luogo sicuro sia visibile e corretto nei dettagli. & RF-OB-144 & I \\
@@ -1950,7 +1950,7 @@ branch principale.
 \endgroup
 
 \subsection{Test di Unità}
-I test di unità vengono eseguiti automaticamente tramite pipeline di \term{Continuous Integration} (CI) configurate sulla piattaforma GitHub ad ogni operazione di \textit{push} o \textit{pull request}. Questo meccanismo garantisce che ogni modifica al codice venga verificata prima dell'integrazione definitiva, permettendo il \textit{merge} nel \textit{branch} principale solo in caso di esito positivo di tutti i test.
+I \term{Test di Unità} vengono eseguiti automaticamente tramite pipeline di Continuous Integration (CI) configurate sulla piattaforma GitHub ad ogni operazione di \textit{push} o \textit{\term{Pull Request}}. Questo meccanismo garantisce che ogni modifica al codice venga verificata prima dell'integrazione definitiva, permettendo il \textit{\term{Merge}} nel \textit{\term{Branch}} principale solo in caso di esito positivo di tutti i test.
 
 \subsubsection{Test Di Unità - Frontend}
 \renewcommand{\arraystretch}{1.2}
@@ -1974,7 +1974,7 @@ I test di unità vengono eseguiti automaticamente tramite pipeline di \term{Cont
 
 TF-1-U & [MaterialViewModel] Verificare che, al caricamento iniziale, venga invocato il metodo \texttt{fetchMaterials} con il parametro \texttt{forceRefresh} impostato a \texttt{false}. & I \\
 \hline
-TF-2-U & [MaterialViewModel] Verificare che, in assenza di un filtro attivo, vengano restituiti tutti i materiali presenti nel repository. & I \\
+TF-2-U & [MaterialViewModel] Verificare che, in assenza di un filtro attivo, vengano restituiti tutti i materiali presenti nel \term{Repository}. & I \\
 \hline
 TF-3-U & [MaterialViewModel] Verificare che il metodo \texttt{filterByType} applichi il filtro selezionato e riduca correttamente la lista dei materiali visualizzati. & I \\
 \hline
@@ -2000,11 +2000,11 @@ TF-11-U & [ResourceTypeUI] Verificare che la tipologia \texttt{article} restitui
 
 % --- Luoghi Sicuri: SafePlaceViewModel ---
 
-TF-12-U & [SafePlaceViewModel] Verificare che il costruttore avvii automaticamente il caricamento dei luoghi sicuri e il recupero della posizione dell'utente. & I \\
+TF-12-U & [SafePlaceViewModel] Verificare che il costruttore avvii automaticamente il caricamento dei luoghi sicuri e il recupero della posizione dell'\term{Utente}. & I \\
 \hline
-TF-13-U & [SafePlaceViewModel] Verificare che il metodo \texttt{loadPlaces} aggiorni correttamente lo stato interno tramite il repository. & I \\
+TF-13-U & [SafePlaceViewModel] Verificare che il metodo \texttt{loadPlaces} aggiorni correttamente lo stato interno tramite il \term{Repository}. & I \\
 \hline
-TF-14-U & [SafePlaceViewModel] Verificare che il metodo \texttt{getUserLocation} salvi la posizione dell'utente quando i permessi di geolocalizzazione sono concessi. & I \\
+TF-14-U & [SafePlaceViewModel] Verificare che il metodo \texttt{getUserLocation} salvi la posizione dell'\term{Utente} quando i permessi di geolocalizzazione sono concessi. & I \\
 \hline
 TF-15-U & [SafePlaceViewModel] Verificare che il metodo \texttt{getUserLocation} sollevi un'eccezione quando il servizio GPS è disattivato. & I \\
 \hline
@@ -2014,7 +2014,7 @@ TF-17-U & [SafePlaceViewModel] Verificare che il metodo \texttt{getUserLocation}
 \hline
 TF-18-U & [SafePlaceViewModel] Verificare che il metodo \texttt{selectPlace} aggiorni correttamente il luogo sicuro selezionato. & I \\
 \hline
-TF-19-U & [SafePlaceViewModel] Verificare che il metodo \texttt{saveMapSessionState} aggiorni la cache del repository senza generare notifiche alla UI. & I \\
+TF-19-U & [SafePlaceViewModel] Verificare che il metodo \texttt{saveMapSessionState} aggiorni la cache del \term{Repository} senza generare notifiche alla UI. & I \\
 \hline
 
 % --- Luoghi Sicuri: SafePlaceCategoryUI ---
@@ -2028,19 +2028,19 @@ TF-22-U & [SafePlaceCategoryUI] Verificare che la categoria \texttt{pharmacy} re
 
 % --- Autenticazione: AuthViewModel ---
 
-TF-23-U & [AuthViewModel] Verificare che il metodo \texttt{checkExistingSession} non invochi \texttt{restoreSession} qualora l'utente risulti già autenticato. & I \\
+TF-23-U & [AuthViewModel] Verificare che il metodo \texttt{checkExistingSession} non invochi \texttt{restoreSession} qualora l'\term{Utente} risulti già autenticato. & I \\
 \hline
 TF-24-U & [AuthViewModel] Verificare che il comando \texttt{login} esegua correttamente il flusso di autenticazione in caso di successo. & I \\
 \hline
-TF-25-U & [AuthViewModel] Verificare che il comando \texttt{login} gestisca correttamente un errore restituito dal repository. & I \\
+TF-25-U & [AuthViewModel] Verificare che il comando \texttt{login} gestisca correttamente un errore restituito dal \term{Repository}. & I \\
 \hline
-TF-26-U & [AuthViewModel] Verificare che il comando \texttt{login} sollevi un'eccezione qualora il repository restituisca un valore \texttt{null}. & I \\
+TF-26-U & [AuthViewModel] Verificare che il comando \texttt{login} sollevi un'eccezione qualora il \term{Repository} restituisca un valore \texttt{null}. & I \\
 \hline
-TF-27-U & [AuthViewModel] Verificare che il comando \texttt{login} sollevi un'eccezione qualora il repository lanci un errore imprevisto. & I \\
+TF-27-U & [AuthViewModel] Verificare che il comando \texttt{login} sollevi un'eccezione qualora il \term{Repository} lanci un errore imprevisto. & I \\
 \hline
-TF-28-U & [AuthViewModel] Verificare che il comando \texttt{logout} invochi correttamente il repository e pulisca la cache locale. & I \\
+TF-28-U & [AuthViewModel] Verificare che il comando \texttt{logout} invochi correttamente il \term{Repository} e pulisca la cache locale. & I \\
 \hline
-TF-29-U & [AuthViewModel] Verificare che il comando \texttt{logout} sollevi un'eccezione qualora il repository di disconnessione fallisca. & I \\
+TF-29-U & [AuthViewModel] Verificare che il comando \texttt{logout} sollevi un'eccezione qualora il \term{Repository} di disconnessione fallisca. & I \\
 \hline
 
 % --- Homepage: HomeViewModel ---
@@ -2049,18 +2049,18 @@ TF-30-U & [HomeViewModel] Verificare che il comando \texttt{loadDashboard} resti
 \hline
 TF-31-U & [HomeViewModel] Verificare che lo stato iniziale del comando \texttt{loadDashboard} sia già popolato con gli elementi del dashboard. & I \\
 \hline
-TF-32-U & [HomeViewModel] Verificare che la proprietà \texttt{isDeadManActive} restituisca \texttt{true} quando il repository contiene impostazioni attive. & I \\
+TF-32-U & [HomeViewModel] Verificare che la proprietà \texttt{isDeadManActive} restituisca \texttt{true} quando il \term{Repository} contiene impostazioni attive. & I \\
 \hline
-TF-33-U & [HomeViewModel] Verificare che la proprietà \texttt{isDeadManActive} restituisca \texttt{false} quando il repository contiene impostazioni disattivate. & I \\
+TF-33-U & [HomeViewModel] Verificare che la proprietà \texttt{isDeadManActive} restituisca \texttt{false} quando il \term{Repository} contiene impostazioni disattivate. & I \\
 \hline
-TF-34-U & [HomeViewModel] Verificare che la proprietà \texttt{isDeadManActive} restituisca \texttt{false} quando il repository non contiene impostazioni. & I \\
+TF-34-U & [HomeViewModel] Verificare che la proprietà \texttt{isDeadManActive} restituisca \texttt{false} quando il \term{Repository} non contiene impostazioni. & I \\
 \hline
 
 % --- Chatbot: ChatbotViewModel ---
 
 TF-35-U & [ChatbotViewModel] Verificare che il costruttore carichi le anteprime delle chat e crei una chat virtuale se la lista è vuota. & I \\
 \hline
-TF-36-U & [ChatbotViewModel] Verificare che le anteprime delle chat non vengano caricate qualora l'utente non risulti autenticato. & I \\
+TF-36-U & [ChatbotViewModel] Verificare che le anteprime delle chat non vengano caricate qualora l'\term{Utente} non risulti autenticato. & I \\
 \hline
 TF-37-U & [ChatbotViewModel] Verificare che l'ultima chat visualizzata venga aperta automaticamente se il relativo identificativo è presente e valido. & I \\
 \hline
@@ -2081,20 +2081,20 @@ TF-44-U & [ChatbotViewModel] Verificare che il metodo \texttt{sendMessage} impos
 
 % --- Contatti Fidati: TrustedContactViewModel ---
 
-TF-45-U & [TrustedContactViewModel] Verificare che il metodo \texttt{createContact} invochi il repository e aggiorni la lista dei contatti. & I \\
+TF-45-U & [TrustedContactViewModel] Verificare che il metodo \texttt{createContact} invochi il \term{Repository} e aggiorni la lista dei contatti. & I \\
 \hline
-TF-46-U & [TrustedContactViewModel] Verificare che il metodo \texttt{updateContact} invochi il repository e aggiorni la lista dei contatti. & I \\
+TF-46-U & [TrustedContactViewModel] Verificare che il metodo \texttt{updateContact} invochi il \term{Repository} e aggiorni la lista dei contatti. & I \\
 \hline
 TF-47-U & [TrustedContactViewModel] Verificare che il metodo \texttt{deleteContact} non esegua un aggiornamento ottimistico e aggiorni correttamente la lista in caso di successo. & I \\
 \hline
-TF-48-U & [TrustedContactViewModel] Verificare che il metodo \texttt{deleteContact} esegua il rollback e aggiorni la lista in caso di fallimento del repository. & I \\
+TF-48-U & [TrustedContactViewModel] Verificare che il metodo \texttt{deleteContact} esegua il rollback e aggiorni la lista in caso di fallimento del \term{Repository}. & I \\
 \hline
-TF-49-U & [TrustedContactViewModel] Verificare che il metodo \texttt{loadContacts} imposti correttamente lo stato di errore in caso di fallimento del repository. & I \\
+TF-49-U & [TrustedContactViewModel] Verificare che il metodo \texttt{loadContacts} imposti correttamente lo stato di errore in caso di fallimento del \term{Repository}. & I \\
 \hline
 
 % --- Dead Man's Switch: DeadManViewModel ---
 
-TF-50-U & [DeadManViewModel] Verificare che, al caricamento, la bozza delle impostazioni venga popolata con una copia dei dati presenti nel repository. & I \\
+TF-50-U & [DeadManViewModel] Verificare che, al caricamento, la bozza delle impostazioni venga popolata con una copia dei dati presenti nel \term{Repository}. & I \\
 \hline
 TF-51-U & [DeadManViewModel] Verificare che il metodo \texttt{toggleActiveStatus} aggiorni la bozza delle impostazioni e notifichi i listener della UI. & I \\
 \hline
@@ -2102,16 +2102,16 @@ TF-52-U & [DeadManViewModel] Verificare che il metodo \texttt{updateTimers} aggi
 \hline
 TF-53-U & [DeadManViewModel] Verificare che il metodo \texttt{updateMessage} aggiorni correttamente i testi del messaggio di allerta. & I \\
 \hline
-TF-54-U & [DeadManViewModel] Verificare che il metodo \texttt{discardChanges} ripristini la bozza con i valori attualmente salvati nel repository. & I \\
+TF-54-U & [DeadManViewModel] Verificare che il metodo \texttt{discardChanges} ripristini la bozza con i valori attualmente salvati nel \term{Repository}. & I \\
 \hline
-TF-55-U & [DeadManViewModel] Verificare che il metodo \texttt{saveSettings} invochi il repository e aggiorni la bozza con i nuovi dati salvati. & I \\
+TF-55-U & [DeadManViewModel] Verificare che il metodo \texttt{saveSettings} invochi il \term{Repository} e aggiorni la bozza con i nuovi dati salvati. & I \\
 \hline
 TF-56-U & [DeadManViewModel] Verificare che il metodo \texttt{saveSettings} non esegua alcuna operazione qualora la bozza delle impostazioni non sia ancora stata caricata. & I \\
 \hline
 
 % --- Diario: DiaryAccessViewModel ---
 
-TF-57-U & [DiaryAccessViewModel] Verificare che, se la sessione è già autenticata, la proprietà \texttt{isAuthenticated} sia \texttt{true} senza interrogare il backend. & I \\
+TF-57-U & [DiaryAccessViewModel] Verificare che, se la sessione è già autenticata, la proprietà \texttt{isAuthenticated} sia \texttt{true} senza interrogare il \term{Backend}. & I \\
 \hline
 TF-58-U & [DiaryAccessViewModel] Verificare che, se \texttt{restoreSession} rileva credenziali valide, la proprietà \texttt{isAuthenticated} sia \texttt{true}. & I \\
 \hline
@@ -2127,11 +2127,11 @@ TF-63-U & [DiaryAccessViewModel] Verificare che il logout termini la sessione at
 \hline
 TF-64-U & [DiaryAccessViewModel] Verificare che il metodo \texttt{validateInput} rilevi gli errori di formato e validi correttamente un input conforme. & I \\
 \hline
-TF-65-U & [DiaryAccessViewModel] Verificare che \texttt{updateRealPassword} fallisca qualora la validazione locale non superi i controlli. & I \\
+TF-65-U & [DiaryAccessViewModel] Verificare che \texttt{updateRealPassword} fallisca qualora la \term{Validazione} locale non superi i controlli. & I \\
 \hline
-TF-66-U & [DiaryAccessViewModel] Verificare che \texttt{updateRealPassword} aggiorni lo stato correttamente in caso di successo del repository. & I \\
+TF-66-U & [DiaryAccessViewModel] Verificare che \texttt{updateRealPassword} aggiorni lo stato correttamente in caso di successo del \term{Repository}. & I \\
 \hline
-TF-67-U & [DiaryAccessViewModel] Verificare che \texttt{createInitialPassword} sollevi un errore e popoli \texttt{asyncError} qualora la validazione locale fallisca. & I \\
+TF-67-U & [DiaryAccessViewModel] Verificare che \texttt{createInitialPassword} sollevi un errore e popoli \texttt{asyncError} qualora la \term{Validazione} locale fallisca. & I \\
 \hline
 
 % --- Diario: DiaryViewModel ---
@@ -2142,11 +2142,11 @@ TF-69-U & [DiaryViewModel] Verificare che il metodo \texttt{addTextElement} aggi
 \hline
 TF-70-U & [DiaryViewModel] Verificare che il metodo \texttt{addMediaElement} aggiunga un elemento di tipo immagine quando il tipo specificato è \texttt{image}. & I \\
 \hline
-TF-71-U & [DiaryViewModel] Verificare che il metodo \texttt{loadNotes} invochi il metodo \texttt{getNotes} sul repository. & I \\
+TF-71-U & [DiaryViewModel] Verificare che il metodo \texttt{loadNotes} invochi il metodo \texttt{getNotes} sul \term{Repository}. & I \\
 \hline
 TF-72-U & [DiaryViewModel] Verificare che il metodo \texttt{openNote} carichi la nota tramite proxy e la imposti come nota corrente. & I \\
 \hline
-TF-73-U & [DiaryViewModel] Verificare che il metodo \texttt{saveNote} invochi il metodo \texttt{saveNote} sul repository. & I \\
+TF-73-U & [DiaryViewModel] Verificare che il metodo \texttt{saveNote} invochi il metodo \texttt{saveNote} sul \term{Repository}. & I \\
 \hline
 TF-74-U & [DiaryViewModel] Verificare che il metodo \texttt{deleteNote} gestisca il rollback e imposti \texttt{asyncError} in caso di fallimento. & I \\
 \hline
@@ -2223,9 +2223,9 @@ TF-100-U & [AppConfig] Verificare che le costanti hardcoded per gli URI di callb
 
 % --- Infrastruttura: CacheManager ---
 
-TF-101-U & [CacheManager] Verificare che il metodo \texttt{clearAllCaches} invochi \texttt{clearCache} su ciascun repository registrato. & I \\
+TF-101-U & [CacheManager] Verificare che il metodo \texttt{clearAllCaches} invochi \texttt{clearCache} su ciascun \term{Repository} registrato. & I \\
 \hline
-TF-102-U & [CacheManager] Verificare che il metodo \texttt{clearAllCaches} non esegua alcuna operazione quando la lista dei repository è vuota. & I \\
+TF-102-U & [CacheManager] Verificare che il metodo \texttt{clearAllCaches} non esegua alcuna operazione quando la lista dei \term{Repository} è vuota. & I \\
 \hline
 
 % --- Infrastruttura: Locator ---
@@ -2250,10 +2250,10 @@ TF-104-U & [Locator] Verificare che l'intero albero delle dipendenze per tutti i
 \endhead
 \hline
 \rowcolor{white}
-\caption[]{Tabella dei \term{Test di Unità} - Backend} \\
+\caption[]{Tabella dei \term{Test di Unità} - \term{Backend}} \\
 \endfoot
 \hline
-\caption{Tabella dei \term{Test di Unità} - Backend} \\
+\caption{Tabella dei \term{Test di Unità} - \term{Backend}} \\
 \endlastfoot
 
 % --- Materiale Informativo: ResourceModel ---
@@ -2389,9 +2389,9 @@ TB-55-U & [S3SafePlacesRepository] Verificare che il metodo \texttt{list\_marker
 
 % --- Luoghi Sicuri: SafePlacesService ---
 
-TB-56-U & [SafePlacesService] Verificare che il metodo \texttt{get\_all\_markers} deleghi correttamente l'operazione al repository. & I \\
+TB-56-U & [SafePlacesService] Verificare che il metodo \texttt{get\_all\_markers} deleghi correttamente l'operazione al \term{Repository}. & I \\
 \hline
-TB-57-U & [SafePlacesService] Verificare che il metodo \texttt{get\_all\_markers} propaghi correttamente l'eccezione sollevata dal repository. & I \\
+TB-57-U & [SafePlacesService] Verificare che il metodo \texttt{get\_all\_markers} propaghi correttamente l'eccezione sollevata dal \term{Repository}. & I \\
 \hline
 
 % --- Luoghi Sicuri: SafePlacesController ---
@@ -2407,7 +2407,7 @@ TB-60-U & [SafePlacesController] Verificare che il metodo helper di risposta for
 
 TB-61-U & [LambdaHandlerSafePlaces] Verificare che il Lambda handler attivi correttamente tutti i componenti della catena applicativa. & I \\
 \hline
-TB-62-U & [LambdaHandlerSafePlaces] Verificare che il Lambda handler gestisca correttamente il payload API Gateway v2. & I \\
+TB-62-U & [LambdaHandlerSafePlaces] Verificare che il Lambda handler gestisca correttamente il \term{Payload} API Gateway v2. & I \\
 \hline
 TB-63-U & [LambdaHandlerSafePlaces] Verificare che il Lambda handler risponda correttamente alle richieste di preflight CORS (metodo OPTIONS). & I \\
 \hline
@@ -2488,7 +2488,7 @@ TB-94-U & [ChatbotLambdaHandler] Verificare il comportamento del Lambda handler 
 
 % --- Chatbot: LambdaHandler (casi limite e sicurezza) ---
 
-TB-95-U & [ChatbotLambdaHandler] Verificare che le richieste prive di identificativo utente vengano rifiutate come non autorizzate. & I \\
+TB-95-U & [ChatbotLambdaHandler] Verificare che le richieste prive di identificativo \term{Utente} vengano rifiutate come non autorizzate. & I \\
 \hline
 TB-96-U & [ChatbotLambdaHandler] Verificare il comportamento del Lambda handler in presenza di un corpo JSON non valido. & I \\
 \hline
@@ -2594,13 +2594,13 @@ TB-140-U & [Controller] Verificare l'invio dell'allerta SOS senza informazioni s
 \hline
 TB-141-U & [Controller] Verificare il comportamento in assenza di contatti fidati durante l'invio dell'allerta SOS. & I \\
 \hline
-TB-142-U & [Controller] Verificare che l'evento schedulato decrementi correttamente il contatore per il primo utente. & I \\
+TB-142-U & [Controller] Verificare che l'evento schedulato decrementi correttamente il contatore per il primo \term{Utente}. & I \\
 \hline
-TB-143-U & [Controller] Verificare che l'evento schedulato decrementi correttamente il contatore per il terzo utente. & I \\
+TB-143-U & [Controller] Verificare che l'evento schedulato decrementi correttamente il contatore per il terzo \term{Utente}. & I \\
 \hline
-TB-144-U & [Controller] Verificare che l'evento schedulato decrementi correttamente il contatore per il quarto utente. & I \\
+TB-144-U & [Controller] Verificare che l'evento schedulato decrementi correttamente il contatore per il quarto \term{Utente}. & I \\
 \hline
-TB-145-U & [Controller] Verificare che l'evento schedulato invii l'email di allerta all'utente. & I \\
+TB-145-U & [Controller] Verificare che l'evento schedulato invii l'email di allerta all'\term{Utente}. & I \\
 \hline
 TB-146-U & [Controller] Verificare che le richieste non autorizzate vengano rifiutate correttamente. & I \\
 \hline
@@ -2611,7 +2611,7 @@ TB-148-U & [Controller] Verificare la gestione dell'evento schedulato. & I \\
 
 % --- Contatti Fidati / DMS: LambdaHandler ---
 
-TB-149-U & [LambdaHandler] Verificare che le richieste prive di identificativo utente vengano rifiutate. & I \\
+TB-149-U & [LambdaHandler] Verificare che le richieste prive di identificativo \term{Utente} vengano rifiutate. & I \\
 \hline
 TB-150-U & [LambdaHandler] Verificare che una route inesistente restituisca il codice di stato 404. & I \\
 \hline
@@ -2677,7 +2677,7 @@ TB-177-U & [NoteController] Verificare l'aggiunta di un elemento nota con conten
 \hline
 TB-178-U & [NoteController] Verificare che l'eliminazione di un elemento nota rimuova il relativo oggetto S3. & I \\
 \hline
-TB-179-U & [NoteController] Verificare che un utente non possa accedere alle note di un altro utente. & I \\
+TB-179-U & [NoteController] Verificare che un \term{Utente} non possa accedere alle note di un altro \term{Utente}. & I \\
 \hline
 
 % --- Diario: S3NoteAdapter ---
@@ -2690,7 +2690,7 @@ TB-180-U & [S3NoteAdapter] Verificare l'eliminazione di un oggetto dal bucket S3
 
 
 \subsection{Test di Integrazione}
-I test di integrazione servono a verificare che le componenti del sistema si integrino correttamente e in maniera efficace. L'obiettivo dei test è identificare eventuali problemi di interoperabilità e integrazione fra le componenti del software.
+I \term{Test di Integrazione} servono a verificare che le componenti del sistema si integrino correttamente e in maniera efficace. L'obiettivo dei test è identificare eventuali problemi di interoperabilità e integrazione fra le componenti del software.
 
 \section{Cruscotto di valutazione della qualità}\label{sec:cruscotto_valutazione}
 \subsection{MPC02: Planned Value e MPC04: Earned Value totali}
