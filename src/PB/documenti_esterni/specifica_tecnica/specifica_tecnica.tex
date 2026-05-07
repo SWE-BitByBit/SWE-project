@@ -112,7 +112,7 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & In lavorazione\\
-\textbf{Versione:} & 0.7.0 \\
+\textbf{Versione:} & 0.7.1 \\
 \textbf{Responsabile:} & Gabriele Scaggiante \\
 \textbf{Redattori:} & 
 \begin{tabular}[t]{@{}l@{}}
@@ -157,6 +157,8 @@ Gruppo BitByBit\\
 \hline
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+0.7.1 & 2026-05-07 & Ferdinando Fracasso & Aggiornato sezione \hyperref[subsec:librerie]{Librerie} & Gabriele Scaggiante \\
+\hline
 0.7.0 & 2026-04-29 & Riccardo Manisi & Redatta sezione \hyperref[par:architettura_backend_contatti_fidati]{Architettura classi microservizio contatti fidati}, \hyperref[par:architettura_logica_backend_luoghi_sicuri]{Architettura classi microservizio luoghi sicuri} & Gabriele Scaggiante \\
 \hline
 0.6.1 & 2026-04-27 & Gabriele Scaggiante & Aggiunte librerie nella sezione \hyperref[subsec:librerie]{Librerie} & Ferdinando Fracasso \\ 
@@ -473,6 +475,97 @@ AWS CloudFormation è un servizio di \term{Infrastructure as Code} che consente 
     \item \textbf{Documentazione}: \url{https://pub.dev/packages/latlong2}
 \end{itemize}
 
+\subsubsection{path}
+\texttt{path} è una libreria Dart che fornisce strumenti per la gestione e manipolazione dei percorsi file, indipendenti dalla piattaforma di esecuzione. 
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 1.9.1
+    \item \textbf{Documentazione} \url{https://pub.dev/packages/path}
+\end{itemize}
+
+\subsubsection{flutter\_secure\_storage}
+\texttt{flutter\_secure\_storage} è una libreria Flutter che consente il salvataggio di dati sensibili in modo sicuro e specifico per la piattaforma di esecuzione. I dati vengono salvati come coppie chiave-valore e possono essere criptati prima del salvataggio.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 10.0.0
+    \item \textbf{Documentazione} \url{https://pub.dev/packages/flutter_secure_storage}
+\end{itemize}
+
+\subsubsection{intl}
+\texttt{intl} è una libreria Dart per l\'internazionalizzazione e localizzazione, e fornisce funzionalità che includono la formattazione e il parsing di date e testo.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 0.20.2
+    \item \textbf{Documentazione} \url{https://pub.dev/packages/intl}
+\end{itemize}
+
+\subsubsection{just\_audio}
+\texttt{just\_audio} è una libreria Flutter che fornisce strumenti per la creazione e utilizzo di player audio, e supporta molteplici formati di tracce audio.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 0.10.5
+    \item \textbf{Documentazione} \url{https://pub.dev/packages/just_audio}
+\end{itemize}
+
+\subsubsection{plugin\_platform\_interface}
+\texttt{plugin\_platform\_interface} è una libreria Dart che mette a disposizione una classe base per platform interface con funzionalità per garantire che le loro implementazioni usino la keyword \code{extend}, cosicchè le sottoclassi abbiano accesso alle implementazioni dei metodi della classe base.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 2.1.8
+    \item \textbf{Documentazione} \url{https://pub.dev/packages/plugin_platform_interface/versions}
+\end{itemize}
+
+\subsubsection{file\_picker}
+\texttt{file\_picker} è una libreria Flutter che permette l'utilizzo del file picker nativo per la selezione di uno o più file. La libreria permette anche di filtrare i file selezionabili dall'utente in base al formato.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 11.0.2
+    \item \textbf{Documentazione} \url{https://pub.dev/packages/file_picker}
+\end{itemize}
+
+\subsubsection{url\_launcher\_platform\_interface}
+\texttt{url\_launcher\_platform\_interface} è un plugin flutter che permette estensioni platform-specific del plugin \texttt{url\_launcher}.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 2.3.2
+    \item \textbf{Documentazione} \url{https://pub.dev/packages/url_launcher_platform_interface}
+\end{itemize}
+
+\subsubsection{command\_it}
+\texttt{command\_it} è una libreria Flutter che permette l'implementazione del pattern \textit{Command}, tramite la creazione di wrap functions con gestione automatica dello stato. 
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 9.5.1
+    \item \textbf{Documentazione} \url{https://pub.dev/packages/command_it}
+\end{itemize}
+
+\subsubsection{listen\_it}
+\texttt{listen\_it} è una libreria Flutter che fornisce primitive reattive per la creazione di oggetti che notificano automaticamente eventuali ascoltatori in seguito a mutamenti del proprio stato.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 5.3.5
+    \item \textbf{Documentazione} \url{https://pub.dev/packages/listen_it}
+\end{itemize}
+
+\subsubsection{mocktail}
+\texttt{mocktail} è una libreria Dart che fornisce una API per la creazione di Mock senza doverli creare da zero o usare la generazione di codice.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 1.0.5
+    \item \textbf{Documentazione} \url{https://pub.dev/packages/mocktail}
+\end{itemize}
+
+\subsubsection{shared\_preferences}
+\texttt{shared\_preferences} è una libreria Flutter che permette l'utilizzo della memorizzazione persistente platform-specific per il salvataggio di dati semplici.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 2.5.5
+    \item \textbf{Documentazione} \url{https://pub.dev/packages/shared_preferences}
+\end{itemize}
+
+\subsubsection{connectivity\_plus}
+\texttt{connectivity\_plus} è un plugin Flutter che permette all'applicazione di conoscere i tipi di connessione disponibili in un dato momento, in modo da reagire di conseguenza.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 7.1.1
+    \item \textbf{Documentazione} \url{https://pub.dev/packages/connectivity_plus}
+\end{itemize}
+
+\subsubsection{audio\_session}
+\texttt{audio\_session} è un plugin Flutter per la gestione delle sessioni audio dell'applicazione. Permette una configurazione molto approfondita delle sessioni audio, permettendo di specificare caratteristiche quali il comportamento in presenza di audio appartenenti ad altre applicazioni o quali dispositivi possono riprodurre l'audio.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 0.2.3
+    \item \textbf{Documentazione} \url{https://pub.dev/packages/audio_session}
+\end{itemize}
+
 \subsubsection{python-ulid}
 \texttt{python-ulid} è una libreria Python per la generazione di identificatori univoci ULID (Universally Unique Lexicographically Sortable Identifier). Gli ULID combinano unicità e ordinamento temporale, risultando particolarmente utili in sistemi distribuiti dove è necessario generare ID ordinabili senza coordinamento centrale.
 \begin{itemize}
@@ -485,6 +578,13 @@ AWS CloudFormation è un servizio di \term{Infrastructure as Code} che consente 
 \begin{itemize}
     \item \textbf{Versione utilizzata}: 0.2.2
     \item \textbf{Documentazione}: \url{https://pypi.org/project/rank-bm25/}
+\end{itemize}
+
+\subsubsection{boto3}
+\texttt{boto3} è una libreria Python che fornisce strumenti per la creazione, configurazione e gestione dei servizi Amazon Web Services.
+\begin{itemize}
+    \item \textbf{Versione utilizzata}: 1.43.5
+    \item \textbf{Documentazione}: \url{https://docs.aws.amazon.com/boto3/latest/}
 \end{itemize}
 
 \subsection{Tecnologie di analisi statica} \label{subsec:tecnologie_analisi_statica}
