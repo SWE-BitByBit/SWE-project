@@ -1,0 +1,211 @@
+% template presente
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{tabularx}
+\usepackage[table]{xcolor}
+\usepackage{tcolorbox}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    urlcolor=blue,     
+}
+\usepackage{graphicx}
+\graphicspath{{resources/}{../resources/}{../../resources/}{../../../resources/}{../../../../resources/}}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{colortbl}
+\usepackage{fancyhdr}
+\setlength{\headheight}{33pt}
+\setlength{\headsep}{1cm}
+\usepackage{titlesec}
+\geometry{margin=2.5cm}
+% ===== Variabile per il titolo del documento =====
+\newcommand{\documenttitle}{Verbale Riunione Esterna Numero 5 } %serve l'ultimo spazio
+
+
+\setlength{\parindent}{0pt}
+\setstretch{1.2}
+
+% ===== Stile intestazione =====
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{gray}{\documenttitle - BitByBit}}
+\fancyhead[R]{\includegraphics[height=1cm]{solo_logo.jpg}}
+\fancyfoot[C]{\thepage}
+
+% ===== Formattazione sezioni =====
+\titleformat{\section}{\Large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.5em}{}
+
+\newcommand{\term}[1]{\textbf{#1}$^\mathbf{G}$}
+
+\newcommand{\ignoreglossary}{}
+
+\begin{document}
+
+% ======= HEADER UNIVERSITÀ E GRUPPO CENTRATI VERTICALMENTE =======
+\vspace*{\fill} % --- Spinge verso il basso l'inizio del contenuto
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logoUni.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\color{red}\LARGE \textbf{Università degli Studi di Padova}}\\[0.3cm]
+        {\large
+        Laurea: Informatica\\
+        Corso: Ingegneria del Software\\
+        Anno Accademico: 2025/26
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1cm}
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logo.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\LARGE \textbf{Gruppo 17}}\\[0.3cm]
+        {\large
+        Nome: BitByBit\\
+        Email: swe.bitbybit@gmail.com
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1.5cm}
+
+\begin{center}
+    {\LARGE \textbf{\documenttitle}}
+\end{center}
+
+% ======= INFO GENERALI SUL DOCUMENTO, DA TENERE SU OGNI DOC =======
+\renewcommand{\arraystretch}{1.3}
+\vspace{0.1cm}
+
+\begin{tcolorbox}
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\textbf{Stato:} & Completato \\
+\textbf{Versione:} & 1.0.0 \\
+\textbf{Redattori:} & Giovanni Visentin \\
+\textbf{Verificatori:} & Gabriele Scaggiante \\
+\textbf{Responsabile:} & Gabriele Scaggiante \\
+\textbf{Destinatari:} & 
+\begin{tabular}[t]{@{}l@{}}
+Miriade \\
+Prof. Tullio Vardanega \\
+Prof. Cardin
+\end{tabular} \\
+\end{tabularx}
+\end{tcolorbox}
+
+\vspace*{\fill} % --- Spinge verso l’alto la fine del contenuto, centrando tutto il blocco
+\clearpage
+
+% ======= INDICE SU PAGINA DEDICATA =======
+\clearpage
+\tableofcontents
+\thispagestyle{empty} % senza numero di pagina per l'indice
+\clearpage
+
+% ======= INFO GENERALI RIUNIONE, METTERE SE DOC È UN \term{Verbale} =======
+\section{Informazioni generali}
+\renewcommand{\arraystretch}{1.3}
+
+\begin{tcolorbox}
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\textbf{Data:} & 4 maggio 2026 \\
+\textbf{Ora Inizio:} & 16:00 \\
+\textbf{Durata:} & 1h \\
+\textbf{Luogo:} & Google Meet \\
+\textbf{Presenti:} & 
+\begin{tabular}[t]{@{}l@{}}
+Fracasso Ferdinando\\
+Manisi Riccardo\\
+Parolin Dennis\\
+Scaggiante Gabriele\\
+Visentin Giovanni \\
+Sanguin Marco \\
+\end{tabular} \\
+\textbf{Miriade:} & 
+\begin{tabular}[t]{@{}l@{}}
+Annalisa Egidi \\
+Emanuele Righetto \\
+Francesca Bonotto \\
+\end{tabular} \\
+\textbf{Assenti:} & 
+\begin{tabular}[t]{@{}l@{}}
+nessuno \\
+\end{tabular} \\
+\end{tabularx}
+\end{tcolorbox}
+\clearpage
+
+% ---------- ORDINE DEL GIORNO, METTERE SE DOC È UN \term{Verbale}  ----------
+\section{Ordine del Giorno}
+\begin{itemize}
+    \item Presentazione finale dell'applicazione.
+    \item Presentazione dell'\term{Architettura} delle lambda e dei microservizi.
+    \item Discussione sull'avanzamento del progetto e sui problemi riscontrati
+\end{itemize}
+
+% ---------- DISCUSSIONI, METTERE SE DOC È UN \term{Verbale} ----------
+\section{Discussioni}
+\begin{itemize}
+    \item Durante la riunione è stata presentata l'applicazione sviluppata, mostrando le funzionalità implementate ed evidenziando le sfide e i problemi affrontati durante lo sviluppo. Tutte le funzionalità sono state dimostrate con successo, mostrando la capacità dell'applicazione di soddisfare i requisiti stabiliti. L'azienda \term{Proponente} ha espresso soddisfazione per il lavoro svolto finora, riconoscendo l'impegno del gruppo e la qualità del prodotto presentato.
+    \item La discussione sull'\term{Architettura} di \term{Backend} ha evidenziato la scelta di utilizzare un'\term{Architettura} basata su microservizi per garantire scalabilità e modularità. Sono stati illustrati i componenti principali dell'\term{Architettura}, inclusi i servizi di persistenza, le funzioni Lambda utilizzate e le relazioni tra i vari servizi AWS per la gestione di specifiche funzionalità dell'applicazione. L'azienda \term{Proponente} è rimasta soddisfatta della chiarezza e della coerenza dell'\term{Architettura} proposta, riconoscendo l'efficacia della soluzione adottata.
+    \item A conclusione della riunione, è stato definito il percorso da seguire per le prossime fasi del progetto: l'azienda \term{Proponente} aspetterà le istruzioni e le modalità per comunicare ai professori la conferma dell'avvenuta presentazione finale, in modo da poter procedere con la valutazione del progetto. Il gruppo si è impegnato a fornire tutte le informazioni necessarie per facilitare questo \ignoreglossary{processo} e garantire una comunicazione efficace con i professori. Il gruppo manderà il \term{Verbale} all'azienda \term{Proponente}, che lo firmerà e lo restituirà al gruppo in modo da poterlo allegare alla documentazione finale del progetto. L'azienda \term{Proponente} ha espresso la propria disponibilità a collaborare per garantire una conclusione positiva del progetto e una valutazione soddisfacente da parte dei professori.
+    \item L'azienda \term{Proponente} ha infine proposto al gruppo di esporre l'applicazione sviluppata durante una giornata, organizzata periodicamente dall'azienda, dedicata ad interventi mirati su nuove tecnologie, progetti e iniziative condotti dai dipendenti di Miriade. Tale esposizione è slegata dal progetto didattico, ed è quindi facoltativa e a discrezione dei membri del gruppo.
+\end{itemize}   
+
+% ---------- DECISIONI, METTERE SE DOC È UN \term{Verbale} ----------
+\section{Decisioni}
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2} 
+\arrayrulecolor{black}
+\rowcolors{1}{gray!20}{white}
+\begin{tabular}{|p{0.73\textwidth}|c|}
+\hline
+\rowcolor{gray!60} 
+\textbf{Descrizione decisione} & \textbf{Codice decisione} \\
+\hline
+Preparere e inviare il \term{Verbale} alla controparte per la firma & VE \ignoreglossary{PB} 5.1 \\
+\hline
+Contattare il professor Cardin non appena possibile & VE \ignoreglossary{PB} 5.2 \\
+\hline
+Preparare una presentazione dell'applicazione e dell'\term{Architettura} per la riunione con il professor Cardin & VE \ignoreglossary{PB} 5.3 \\
+\hline
+\end{tabular}
+\end{center}
+
+% ---------- TO DO, METTERE SE DOC È UN \term{Verbale} ----------
+\section{To Do}
+
+Il gruppo si impegna a completare le attività già pianificate, come il terminare la \term{Specifica Tecnica} e il manuale \term{Utente}, preparare la presentazione per il professor Cardin e inviare il \term{Verbale} alla controparte per la firma. Il gruppo si impegna a contattare il professore non appena possibile per organizzare una riunione e discutere i dettagli della presentazione dell'applicazione e dell'\term{Architettura}.
+
+\vspace*{\fill}
+\noindent
+\begin{minipage}{0.60\textwidth}
+    {\small
+    \textbf{Firma aziendale:}\\[0.3cm]
+    \textit{(Spazio riservato all’azienda per apporre firma o timbro)}\\[0.8cm]
+    \fbox{\rule{0pt}{2.5cm}\rule{5cm}{0pt}} 
+    }
+\end{minipage}
+
+
+
+\end{document}
