@@ -123,7 +123,7 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & Completato\\
-\textbf{Versione:} & 1.2.0 \\
+\textbf{Versione:} & 1.3.0 \\
 \textbf{Responsabile:} & Gabriele Scaggiante\\
 \textbf{Redattori:} & 
 \begin{tabular}[t]{@{}l@{}}
@@ -2287,25 +2287,6 @@ TB-13-U & [ResourceModel] Verificare che il metodo \texttt{to\_dict} restituisca
 TB-14-U & [ResourceModel] Verificare che il dizionario prodotto da \texttt{to\_dict} contenga il numero atteso di campi. & I \\
 \hline
 
-% --- Materiale Informativo: S3ResourcesRepository ---
-
-TB-15-U & [S3ResourcesRepository] Verificare che \texttt{list\_all\_resources} restituisca una lista. & I \\
-\hline
-TB-16-U & [S3ResourcesRepository] Verificare che il numero di elementi restituiti da \texttt{list\_all\_resources} sia corretto. & I \\
-\hline
-TB-17-U & [S3ResourcesRepository] Verificare che il primo elemento della lista contenga un \texttt{resource\_id} valido. & I \\
-\hline
-TB-18-U & [S3ResourcesRepository] Verificare che il primo elemento della lista contenga un \texttt{title} valido. & I \\
-\hline
-TB-19-U & [S3ResourcesRepository] Verificare che tra le risorse restituite siano presenti elementi di tipo \texttt{article}. & I \\
-\hline
-TB-20-U & [S3ResourcesRepository] Verificare che tra le risorse restituite siano presenti elementi di tipo \texttt{law}. & I \\
-\hline
-TB-21-U & [S3ResourcesRepository] Verificare che tra le risorse restituite siano presenti elementi di tipo \texttt{community}. & I \\
-\hline
-TB-22-U & [S3ResourcesRepository] Verificare che venga sollevata un'eccezione qualora il file S3 sia assente. & I \\
-\hline
-
 % --- Materiale Informativo: ResourcesService ---
 
 TB-23-U & [ResourcesService] Verificare che il metodo \texttt{get\_resources} restituisca correttamente una lista multipla di risorse. & I \\
@@ -2332,29 +2313,6 @@ TB-31-U & [ResourcesController] Verificare che il corpo della risposta di errore
 TB-32-U & [ResourcesController] Verificare che il service venga invocato esattamente una volta per ogni richiesta. & I \\
 \hline
 
-% --- Materiale Informativo: LambdaHandlerMaterials ---
-
-TB-33-U & [LambdaHandlerMaterials] Verificare che il Lambda handler restituisca codice di stato 200 in caso di successo. & I \\
-\hline
-TB-34-U & [LambdaHandlerMaterials] Verificare che il corpo della risposta Lambda sia una lista. & I \\
-\hline
-TB-35-U & [LambdaHandlerMaterials] Verificare che il numero di risorse restituite sia corretto. & I \\
-\hline
-TB-36-U & [LambdaHandlerMaterials] Verificare che il primo elemento della risposta contenga un \texttt{resource\_id} valido. & I \\
-\hline
-TB-37-U & [LambdaHandlerMaterials] Verificare che il primo elemento della risposta contenga un \texttt{title} valido. & I \\
-\hline
-TB-38-U & [LambdaHandlerMaterials] Verificare che il primo elemento della risposta contenga la tipologia corretta. & I \\
-\hline
-TB-39-U & [LambdaHandlerMaterials] Verificare che la risposta Lambda includa l'header \texttt{Content-Type} corretto. & I \\
-\hline
-TB-40-U & [LambdaHandlerMaterials] Verificare che la risposta Lambda includa l'header CORS corretto. & I \\
-\hline
-TB-41-U & [LambdaHandlerMaterials] Verificare che il Lambda handler restituisca codice di stato 500 quando il file S3 è assente. & I \\
-\hline
-TB-42-U & [LambdaHandlerMaterials] Verificare che il corpo della risposta di errore contenga il campo \texttt{errorMessage}. & I \\
-\hline
-
 % --- Luoghi Sicuri: MarkerModel ---
 
 TB-43-U & [MarkerModel] Verificare che il metodo \texttt{to\_dict} produca un dizionario contenente il campo \texttt{marker\_id}. & I \\
@@ -2376,15 +2334,6 @@ TB-50-U & [MarkerModel] Verificare che il dizionario prodotto da \texttt{to\_dic
 TB-51-U & [MarkerModel] Verificare che un valore di latitudine non valido sollevi un'eccezione. & I \\
 \hline
 TB-52-U & [MarkerModel] Verificare che un valore di longitudine non valido sollevi un'eccezione. & I \\
-\hline
-
-% --- Luoghi Sicuri: S3SafePlacesRepository ---
-
-TB-53-U & [S3SafePlacesRepository] Verificare che le variabili di istanza vengano impostate correttamente durante l'inizializzazione. & I \\
-\hline
-TB-54-U & [S3SafePlacesRepository] Verificare che il metodo \texttt{list\_markers} restituisca correttamente una lista di marker. & I \\
-\hline
-TB-55-U & [S3SafePlacesRepository] Verificare che il metodo \texttt{list\_markers} sollevi un'eccezione in caso di errore S3. & I \\
 \hline
 
 % --- Luoghi Sicuri: SafePlacesService ---
@@ -2463,103 +2412,6 @@ TB-83-U & [ChatbotLLMService] Verificare la corretta costruzione del corpus di m
 TB-84-U & [ChatbotLLMService] Verificare il recupero dei messaggi rilevanti per la generazione del contesto. & I \\
 \hline
 
-% --- Chatbot: LambdaHandler (operazioni CRUD) ---
-
-TB-85-U & [ChatbotLambdaHandler] Verificare il recupero di una singola chat tramite Lambda handler. & I \\
-\hline
-TB-86-U & [ChatbotLambdaHandler] Verificare il recupero della lista delle chat tramite Lambda handler. & I \\
-\hline
-TB-87-U & [ChatbotLambdaHandler] Verificare la creazione di una nuova chat tramite Lambda handler. & I \\
-\hline
-TB-88-U & [ChatbotLambdaHandler] Verificare il recupero di una chat per identificativo tramite Lambda handler. & I \\
-\hline
-TB-89-U & [ChatbotLambdaHandler] Verificare il comportamento del Lambda handler quando la chat richiesta non viene trovata. & I \\
-\hline
-TB-90-U & [ChatbotLambdaHandler] Verificare l'eliminazione di una chat tramite Lambda handler. & I \\
-\hline
-TB-91-U & [ChatbotLambdaHandler] Verificare l'aggiornamento del titolo di una chat (PUT) tramite Lambda handler. & I \\
-\hline
-TB-92-U & [ChatbotLambdaHandler] Verificare il comportamento del Lambda handler in caso di aggiornamento su chat inesistente. & I \\
-\hline
-TB-93-U & [ChatbotLambdaHandler] Verificare l'invio di un messaggio a una chat tramite Lambda handler. & I \\
-\hline
-TB-94-U & [ChatbotLambdaHandler] Verificare il comportamento del Lambda handler in caso di invio messaggio su chat inesistente. & I \\
-\hline
-
-% --- Chatbot: LambdaHandler (casi limite e sicurezza) ---
-
-TB-95-U & [ChatbotLambdaHandler] Verificare che le richieste prive di identificativo \term{Utente} vengano rifiutate come non autorizzate. & I \\
-\hline
-TB-96-U & [ChatbotLambdaHandler] Verificare il comportamento del Lambda handler in presenza di un corpo JSON non valido. & I \\
-\hline
-TB-97-U & [ChatbotLambdaHandler] Verificare il comportamento del Lambda handler in assenza del corpo della richiesta. & I \\
-\hline
-TB-98-U & [ChatbotLambdaHandler] Verificare che una route non valida produca una risposta di errore appropriata. & I \\
-\hline
-TB-99-U & [ChatbotLambdaHandler] Verificare che un metodo HTTP non supportato sull'endpoint \texttt{/chats} produca un errore. & I \\
-\hline
-TB-100-U & [ChatbotLambdaHandler] Verificare che un metodo HTTP non supportato sull'endpoint \texttt{/chat/\{id\}} produca un errore. & I \\
-\hline
-TB-101-U & [ChatbotLambdaHandler] Verificare che un metodo HTTP non supportato sull'endpoint \texttt{/messages} produca un errore. & I \\
-\hline
-TB-102-U & [ChatbotLambdaHandler] Verificare che una richiesta di creazione chat priva del titolo venga rifiutata. & I \\
-\hline
-TB-103-U & [ChatbotLambdaHandler] Verificare il comportamento del Lambda handler in presenza di un path eccessivamente lungo. & I \\
-\hline
-TB-104-U & [ChatbotLambdaHandler] Verificare che il Lambda handler gestisca correttamente un errore del service LLM. & I \\
-\hline
-
-% --- Contatti Fidati: TrustedContactRepository ---
-
-TB-105-U & [TrustedContactRepository] Verificare l'aggiunta di un contatto fidato al database. & I \\
-\hline
-TB-106-U & [TrustedContactRepository] Verificare il recupero di un contatto fidato per identificativo. & I \\
-\hline
-TB-107-U & [TrustedContactRepository] Verificare il comportamento in caso di contatto fidato non trovato. & I \\
-\hline
-TB-108-U & [TrustedContactRepository] Verificare l'eliminazione di un contatto fidato. & I \\
-\hline
-TB-109-U & [TrustedContactRepository] Verificare il comportamento in caso di eliminazione di un contatto inesistente. & I \\
-\hline
-TB-110-U & [TrustedContactRepository] Verificare l'aggiornamento dei dati di un contatto fidato. & I \\
-\hline
-TB-111-U & [TrustedContactRepository] Verificare il comportamento in caso di aggiornamento di un contatto inesistente. & I \\
-\hline
-TB-112-U & [TrustedContactRepository] Verificare il recupero della lista completa dei contatti fidati. & I \\
-\hline
-TB-113-U & [TrustedContactRepository] Verificare il recupero della lista dei contatti fidati quando è vuota. & I \\
-\hline
-
-% --- Contatti Fidati / DMS: NotificationRepository ---
-
-TB-114-U & [NotificationRepository] Verificare l'invio corretto del messaggio di allerta tramite SES. & I \\
-\hline
-TB-115-U & [NotificationRepository] Verificare il comportamento in caso di indirizzo mittente non autorizzato. & I \\
-\hline
-
-% --- Contatti Fidati / DMS: DMSRepository ---
-
-TB-116-U & [DMSRepository] Verificare il recupero della configurazione DMS dal database. & I \\
-\hline
-TB-117-U & [DMSRepository] Verificare il comportamento quando la configurazione DMS non viene trovata. & I \\
-\hline
-TB-118-U & [DMSRepository] Verificare l'aggiunta di una nuova configurazione DMS. & I \\
-\hline
-TB-119-U & [DMSRepository] Verificare l'aggiornamento di una configurazione DMS esistente. & I \\
-\hline
-TB-120-U & [DMSRepository] Verificare il comportamento in caso di aggiornamento di una configurazione inesistente. & I \\
-\hline
-TB-121-U & [DMSRepository] Verificare il recupero del valore del primo timer di inattività. & I \\
-\hline
-TB-122-U & [DMSRepository] Verificare il recupero del valore del secondo timer di inattività. & I \\
-\hline
-TB-123-U & [DMSRepository] Verificare il comportamento in caso di timer non trovato. & I \\
-\hline
-TB-124-U & [DMSRepository] Verificare l'aggiornamento del contatore del primo timer. & I \\
-\hline
-TB-125-U & [DMSRepository] Verificare l'aggiornamento del contatore del secondo timer. & I \\
-\hline
-
 % --- Contatti Fidati / DMS: Controller ---
 
 TB-126-U & [Controller] Verificare la creazione delle impostazioni DMS. & I \\
@@ -2615,55 +2467,6 @@ TB-149-U & [LambdaHandler] Verificare che le richieste prive di identificativo \
 \hline
 TB-150-U & [LambdaHandler] Verificare che una route inesistente restituisca il codice di stato 404. & I \\
 \hline
-TB-151-U & [LambdaHandler] Verificare la creazione di un contatto fidato tramite Lambda handler. & I \\
-\hline
-TB-152-U & [LambdaHandler] Verificare il comportamento in caso di dati non validi durante la creazione del contatto. & I \\
-\hline
-TB-153-U & [LambdaHandler] Verificare il recupero della lista dei contatti fidati tramite Lambda handler. & I \\
-\hline
-TB-154-U & [LambdaHandler] Verificare il recupero di un contatto fidato per identificativo tramite Lambda handler. & I \\
-\hline
-TB-155-U & [LambdaHandler] Verificare l'aggiornamento di un contatto fidato tramite Lambda handler. & I \\
-\hline
-TB-156-U & [LambdaHandler] Verificare l'eliminazione di un contatto fidato tramite Lambda handler. & I \\
-\hline
-TB-157-U & [LambdaHandler] Verificare la creazione delle impostazioni DMS tramite Lambda handler. & I \\
-\hline
-TB-158-U & [LambdaHandler] Verificare il recupero delle impostazioni DMS tramite Lambda handler. & I \\
-\hline
-TB-159-U & [LambdaHandler] Verificare l'aggiornamento delle impostazioni DMS tramite Lambda handler. & I \\
-\hline
-TB-160-U & [LambdaHandler] Verificare il corretto funzionamento dell'heartbeat tramite Lambda handler. & I \\
-\hline
-TB-161-U & [LambdaHandler] Verificare il comportamento in assenza di contatti fidati durante l'invio dell'allerta. & I \\
-\hline
-TB-162-U & [LambdaHandler] Verificare la gestione dell'evento schedulato tramite Lambda handler. & I \\
-\hline
-
-% --- Diario: DynamoNoteAdapter ---
-
-TB-163-U & [DynamoNoteAdapter] Verificare l'aggiunta di una nota al database DynamoDB. & I \\
-\hline
-TB-164-U & [DynamoNoteAdapter] Verificare l'aggiunta di una nota con elementi allegati. & I \\
-\hline
-TB-165-U & [DynamoNoteAdapter] Verificare il recupero di una nota con i relativi elementi. & I \\
-\hline
-TB-166-U & [DynamoNoteAdapter] Verificare che gli elementi della nota vengano restituiti nell'ordine corretto. & I \\
-\hline
-TB-167-U & [DynamoNoteAdapter] Verificare il comportamento in caso di tipo di diario non valido. & I \\
-\hline
-TB-168-U & [DynamoNoteAdapter] Verificare il comportamento quando la nota richiesta non viene trovata. & I \\
-\hline
-TB-169-U & [DynamoNoteAdapter] Verificare il recupero della lista delle note del diario reale. & I \\
-\hline
-TB-170-U & [DynamoNoteAdapter] Verificare il recupero della lista delle note del diario fittizio. & I \\
-\hline
-TB-171-U & [DynamoNoteAdapter] Verificare il comportamento con una lista di note vuota. & I \\
-\hline
-TB-172-U & [DynamoNoteAdapter] Verificare il comportamento con note prive di elementi allegati. & I \\
-\hline
-TB-173-U & [DynamoNoteAdapter] Verificare l'eliminazione di una nota dal database. & I \\
-\hline
 
 % --- Diario: NoteController ---
 
@@ -2680,17 +2483,145 @@ TB-178-U & [NoteController] Verificare che l'eliminazione di un elemento nota ri
 TB-179-U & [NoteController] Verificare che un \term{Utente} non possa accedere alle note di un altro \term{Utente}. & I \\
 \hline
 
-% --- Diario: S3NoteAdapter ---
-
-TB-180-U & [S3NoteAdapter] Verificare l'eliminazione di un oggetto dal bucket S3. & I \\
-\hline
-
 \end{longtable}
 
 
 
 \subsection{Test di Integrazione}
 I \term{Test di Integrazione} servono a verificare che le componenti del sistema si integrino correttamente e in maniera efficace. L'obiettivo dei test è identificare eventuali problemi di interoperabilità e integrazione fra le componenti del software.
+
+\subsection{Test di Integrazione - Frontend}\label{sec:test_integrazione_frontend}
+\rowcolors{2}{gray!10}{white}
+\begin{longtable}{|c|p{10cm}|c|}
+    \hline
+    \rowcolor{gray!30}
+    \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\
+    \hline
+    \endfirsthead
+
+    \hline
+    \rowcolor{gray!30}
+    \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\
+    \hline
+    \endhead
+
+    \hline
+    \endfoot
+
+    \hline
+    \endlastfoot
+
+    % --- Integrazione Frontend: Luoghi Sicuri ---
+    TF-1-I & Verifica dell'integrazione end-to-end: navigazione verso la schermata "Luoghi Sicuri" a partire dalla dashboard principale. & I \\
+    \hline
+    TF-2-I & Verifica dell'integrazione end-to-end: corretto caricamento e rendering della mappa interattiva (`SafePlaceMapWidget`). & I \\
+    \hline
+    TF-3-I & Verifica dell'integrazione end-to-end: apertura e visualizzazione della legenda informativa della mappa. & I \\
+    \hline
+    TF-4-I & Verifica dell'integrazione end-to-end: interazione con il pulsante di geolocalizzazione e comunicazione con il LocationService. & I \\
+    \hline
+    TF-5-I & Verifica dell'integrazione end-to-end: rendering dei marker sulla mappa recuperati tramite il SafePlaceService. & I \\
+    \hline
+
+    % --- Integrazione Frontend: Materiale Informativo ---
+    TF-6-I & Verifica dell'integrazione end-to-end: navigazione verso la schermata "Materiale Informativo" a partire dalla dashboard principale. & I \\
+    \hline
+    TF-7-I & Verifica dell'integrazione end-to-end: rendering della lista dei materiali informativi ottenuta tramite il MaterialService. & I \\
+    \hline
+    TF-8-I & Verifica dell'integrazione end-to-end: funzionamento dei filtri per categoria (chip) e conseguente aggiornamento reattivo della vista. & I \\
+    \hline
+    TF-9-I & Verifica dell'integrazione end-to-end: ripristino della lista completa deselezionando i filtri (selezione del chip "Tutti"). & I \\
+    \hline
+    TF-10-I & [Chatbot] Verificare la navigazione alla schermata dell'assistente AI. & I \\
+    \hline
+    TF-11-I & [Chatbot] Verificare la creazione automatica di una nuova sessione di chat se vuota. & I \\
+    \hline
+    TF-12-I & [Chatbot] Verificare l'invio di un messaggio testuale dall'utente. & I \\
+    \hline
+    TF-13-I & [Chatbot] Verificare la ricezione e visualizzazione della risposta dall'assistente AI. & I \\
+    \hline
+    TF-14-I & [Chatbot] Verificare il cambio di modalità di risposta (Detective/Specchio). & I \\
+    \hline
+        % --- Integrazione Frontend: Diario ---
+    TF-15-I & Verifica dell'integrazione end-to-end: navigazione verso la schermata "Diario" a partire dalla dashboard. & I \\
+    \hline
+    TF-16-I & Verifica dell'integrazione end-to-end: inserimento della password e sblocco tramite \texttt{DiaryAccountService}. & I \\
+    \hline
+    TF-17-I & Verifica dell'integrazione end-to-end: caricamento e visualizzazione della lista delle note tramite \texttt{NoteService}. & I \\
+    \hline
+        % --- Integrazione Frontend: Contatti Fidati ---
+    TF-18-I & Verifica dell'integrazione end-to-end: navigazione verso la schermata "Contatti Fidati" a partire dalla dashboard. & I \\
+    \hline
+    TF-19-I & Verifica dell'integrazione end-to-end: caricamento e visualizzazione della lista dei contatti tramite \texttt{TrustedContactService}. & I \\
+    \hline
+    TF-20-I & Verifica dell'integrazione end-to-end: compilazione del form e aggiunta di un nuovo contatto fidato. & I \\
+    \hline
+
+\end{longtable}
+
+
+\subsubsection{Test di Integrazione - Backend}\label{sec:test_integrazione_backend}
+\rowcolors{2}{gray!10}{white}
+\begin{longtable}{|l|p{10cm}|c|}
+    \hline
+    \rowcolor{gray!60}
+    \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato del Test} \\
+    \hline
+    \endfirsthead
+
+    \hline
+    \rowcolor{gray!60}
+    \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato del Test} \\
+    \hline
+    \endhead
+
+    \hline
+    \endfoot
+
+    \hline
+    \caption{Tracciamento dei test di integrazione backend per materiali informativi e luoghi sicuri}
+    \endlastfoot
+
+    TB-1-I & Verifica dell'integrazione tra il componente S3ResourcesRepository e il servizio Amazon S3 per il recupero e la mappatura dei materiali informativi. & I \\
+    \hline
+    TB-2-I & Verifica dell'integrazione tra l'entry point Lambda dei materiali informativi e la catena di componenti interni (Controller, Service, Repository). & I \\
+    \hline
+    TB-3-I & Verifica dell'integrazione tra il componente S3SafePlacesRepository e il servizio Amazon S3 per il recupero dei marker relativi ai luoghi sicuri. & I \\
+    \hline
+    TB-4-I & Verifica dell'integrazione tra l'entry point Lambda dei luoghi sicuri e la catena di componenti interni (Controller, Service, Repository). & I \\
+    \hline
+    TB-5-I & Verifica dell'integrazione tra il componente DmsRepository e il servizio Amazon DynamoDB per la persistenza e gestione delle configurazioni Dead Man's Switch. & I \\
+    \hline
+    TB-6-I & Verifica dell'integrazione tra il componente TrustedContactRepository e il servizio Amazon DynamoDB per la gestione dei contatti di emergenza. & I \\
+    \hline
+    TB-7-I & Verifica dell'integrazione tra il componente NotificationRepository e il servizio Amazon SES per l'invio delle email di notifica e di allerta. & I \\
+    \hline
+    TB-8-I & Verifica dell'integrazione dell'entry point Lambda dei contatti fidati con l'intera catena di componenti interni (Controller, Services, Repositories). & I \\
+    \hline
+    TB-9-I & Verifica dell'integrazione tra il servizio ChatbotCRUDService e il servizio Amazon DynamoDB per la persistenza delle conversazioni e della cronologia dei messaggi. & I \\
+    \hline
+    TB-10-I & Verifica dell'integrazione dell'entry point Lambda del chatbot con l'intera catena di componenti interni (Controller, Service, Repository) e il mock del servizio LLM. & I \\
+    \hline
+    TB-11-I & Verifica dell'integrazione dell'intero flusso Lambda per l'attivazione manuale dell'allarme SOS e il corretto innesco del NotificationRepository verso Amazon SES. & I \\
+    \hline
+    TB-12-I & Verifica dell'integrazione del flusso scatenato dal cron job (EventBridge) per il ricalcolo automatico dei timer del Dead Man's Switch e il conseguente invio di allerte. & I \\
+    \hline
+    TB-13-I & Verifica dell'integrazione del flusso API per l'operazione di heartbeat, assicurando il corretto azzeramento dei contatori del Dead Man's Switch su DynamoDB. & I \\
+    \hline
+    TB-14-I & Verifica dell'integrazione tra il componente DynamoAuthAdapter e il servizio Amazon DynamoDB per la persistenza delle credenziali di accesso (reali e fake) al diario. & I \\
+    \hline
+    TB-15-I & Verifica dell'integrazione tra l'entry point Lambda dell'autenticazione diario e l'intera catena di componenti interni (Controller, Service, Repository). & I \\
+    \hline
+    TB-16-I & Verifica dell'integrazione tra il componente DynamoNoteAdapter e il servizio Amazon DynamoDB per la persistenza delle note e dei relativi elementi multimediali. & I \\
+    \hline
+    TB-17-I & Verifica dell'integrazione tra il componente S3NoteAdapter e il servizio Amazon S3 per la gestione del caricamento e dell'eliminazione degli allegati alle note. & I \\
+    \hline
+    TB-18-I & Verifica dell'integrazione dell'entry point Lambda della gestione note con l'intera catena di componenti interni (Controller, Service, Repositories) per le operazioni CRUD. & I \\
+    \hline 
+    TB-19-I & Verifica dell'integrazione del flusso di eliminazione note, assicurando la corretta rimozione sincronizzata dei dati su DynamoDB e dei file correlati su Amazon S3. & I \\
+    \hline
+\end{longtable}
+
 
 \section{Cruscotto di valutazione della qualità}\label{sec:cruscotto_valutazione}
 \subsection{MPC02: Planned Value e MPC04: Earned Value totali}

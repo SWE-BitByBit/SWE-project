@@ -112,7 +112,7 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & In lavorazione\\
-\textbf{Versione:} & 0.7.0 \\
+\textbf{Versione:} & 0.8.0 \\
 \textbf{Responsabile:} & Gabriele Scaggiante \\
 \textbf{Redattori:} & 
 \begin{tabular}[t]{@{}l@{}}
@@ -157,6 +157,8 @@ Gruppo BitByBit\\
 \hline
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+0.8.0 & 2026-05-02 & Giovanni Visentin & Sistemazione della tabella dei requisiti & Dennis Parolin \\ 
+\hline
 0.7.0 & 2026-04-29 & Riccardo Manisi & Redatta sezione \hyperref[par:architettura_backend_contatti_fidati]{Architettura classi microservizio contatti fidati}, \hyperref[par:architettura_logica_backend_luoghi_sicuri]{Architettura classi microservizio luoghi sicuri} & Gabriele Scaggiante \\
 \hline
 0.6.1 & 2026-04-27 & Gabriele Scaggiante & Aggiunte librerie nella sezione \hyperref[subsec:librerie]{Librerie} & Ferdinando Fracasso \\ 
@@ -3289,9 +3291,6 @@ RF-OB-2 & Il sistema deve attivare automaticamente la funzionalità di Dead Man'
 RF-OB-3 & L'\term{Utente} deve poter visualizzare un messaggio di errore esplicativo nel caso in cui l'autenticazione tramite Google Auth fallisca, venga annullata o restituisca parametri non validi & Non soddisfatto \\
 \hline
 
-RF-OB-4 & L'\term{Utente} deve poter selezionare il profilo di utilizzo ("Per me" o "Per altri") & Non soddisfatto \\
-\hline
-
 RF-OB-5 & L'\term{Utente} deve poter visualizzare la lista dei contatti fidati & Non soddisfatto \\
 \hline
 
@@ -3442,9 +3441,6 @@ RF-OB-54 & Il sistema deve visualizzare un messaggio di errore esplicativo nel c
 RF-OB-55 & L'\term{Utente} deve poter reinserire la password di accesso al diario dopo la visualizzazione del messaggio di errore esplicativo & Non soddisfatto \\
 \hline
 
-RF-OB-56 & Il sistema deve bloccare temporaneamente l'accesso al diario in seguito al superamento del limite massimo di tentativi errati di inserimento password & Non soddisfatto \\
-\hline
-
 RF-OB-57 & L'\term{Utente} deve poter visualizzare il contenuto del diario criptato & Non soddisfatto \\
 \hline
 
@@ -3586,9 +3582,6 @@ RF-OB-102 & L'\term{Utente} deve poter avviare un segnale acustico di emergenza 
 RF-OB-103 & L'\term{Utente} deve poter inviare un messaggio al chatbot e ricevere una risposta generata dall'LLM in base al contesto scelto & Non soddisfatto \\
 \hline
 
-RF-OB-104 & L'\term{Utente} deve poter interrompere la generazione della risposta dell'LLM durante la consultazione del chatbot & Non soddisfatto \\
-\hline
-
 RF-OB-105 & Il sistema deve notificare l'\term{Utente} della mancanza di connessione internet durante la consultazione del chatbot & Non soddisfatto \\
 \hline
 
@@ -3599,12 +3592,6 @@ RF-OB-107 & L'\term{Utente} deve poter cambiare il contesto della chat a "Detect
 \hline
 
 RF-OB-108 & L'\term{Utente} deve poter cambiare il contesto della chat a "Specchio Intelligente" & Non soddisfatto \\
-\hline
-
-RF-OB-109 & Il sistema deve notificare l'\term{Utente} di un errore durante il cambio di contesto del chatbot e mantenere il contesto precedente & Non soddisfatto \\
-\hline
-
-RF-OB-110 & L'\term{Utente} deve poter ritentare il cambio di contesto del chatbot dopo la notifica di errore & Non soddisfatto \\
 \hline
 
 RF-OB-111 & L'\term{Utente} deve poter creare una nuova sessione di chat con il chatbot & Non soddisfatto \\
@@ -3711,9 +3698,81 @@ RF-OB-145 & L'\term{Utente} deve poter aprire un luogo sicuro nella mappa estern
 
 RF-OB-146 & Il sistema deve notificare l'\term{Utente} di un errore nell'apertura dell'applicazione Google Maps e mantenere la visualizzazione della mappa interna & Non soddisfatto \\
 \hline
+
 \caption{Tabella dello stato dei requisiti funzionali obbligatori} \label{tab:stato_requisiti_funzionali_obbligatori} \\
 \end{longtable}
 \end{center}
+
+% REQUISITI DESIDERABILI %
+
+\subsection{Requisiti Funzionali desiderabili} \label{subsection:requisiti_funzionali_desiderabili}
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\arrayrulecolor{black}
+\begin{longtable}{|c|p{8.5cm}|>{\centering\arraybackslash}p{4cm}|}
+
+\hline
+\rowcolor{gray!60}
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\
+\hline
+\endfirsthead
+\caption[]{Tabella Requisiti Funzionali desiderabili (continua)} \\
+\hline
+\rowcolor{gray!60}
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\
+\hline
+\endhead
+
+\rowcolor{white}
+RF-DE-1 & Il sistema deve mostrare all'\term{Utente} una spiegazione della differenza tra "per me" e "per altri" & Non Soddisfatto \\
+\hline
+\rowcolor{gray!20}
+RF-DE-2 & Il sistema mostra all'\term{Utente} una breve descrizione del funzionamento del Dead Man's Switch & Non Soddisfatto \\
+\hline
+\rowcolor{white}
+RF-DE-3 & Il sistema deve permettere all'\term{Utente} di inserire più contenuti multimediali con una singola azione nel diario criptato & Non Soddisfatto \\
+\hline
+\rowcolor{gray!20}
+RF-DE-4 & Il sistema deve permettere all'\term{Utente} di inserire più immagini con una singola azione nel diario criptato & Non Soddisfatto \\
+\hline
+\rowcolor{white}
+RF-DE-5 & Il sistema deve permettere all'\term{Utente} di inserire più tracce audio con una singola azione nel diario criptato & Non Soddisfatto \\
+\hline
+\rowcolor{gray!20}
+RF-DE-6 & Il sistema deve permettere all'\term{Utente} di inserire più contenuti multimediali con una singola azione nel diario fittizio & Non Soddisfatto \\
+\hline
+\rowcolor{white}
+RF-DE-7 & Il sistema deve permettere all'\term{Utente} di inserire più immagini con una singola azione nel diario fittizio & Non Soddisfatto \\
+\hline
+\rowcolor{gray!20}
+RF-DE-8 & Il sistema deve permettere all'\term{Utente} di inserire più tracce audio con una singola azione nel diario fittizio & Non Soddisfatto \\
+\hline
+\rowcolor{white}
+RF-DE-9 & Il sistema deve permettere all'\term{Utente} di riprodurre le tracce audio inserite nel diario criptato & Non Soddisfatto \\
+\hline
+\rowcolor{gray!20}
+RF-DE-10 & Il sistema deve permettere all'\term{Utente} di riprodurre le tracce audio inserite nel diario fittizio & Non Soddisfatto \\
+\hline
+\rowcolor{white}
+RF-DE-11 & Il sistema deve indicare all'\term{Utente} che il messaggio del chatbot è in fase di caricamento & Non Soddisfatto \\
+\hline
+\rowcolor{gray!20}
+RF-DE-12 & Il sistema deve utilizzare i contenuti del diario criptato per personalizzare le risposte del chatbot & Non Soddisfatto \\
+\hline
+\rowcolor{white}
+RF-DE-13 & Il sistema deve mostrare all'\term{Utente} una spiegazione del tipo di contesto a cui può passare (Detective delle relazioni) & Non Soddisfatto \\
+\hline
+\rowcolor{gray!20}
+RF-DE-14 & Il sistema deve mostrare all'\term{Utente} una spiegazione del tipo di contesto a cui può passare (Specchio intelligente) & Non Soddisfatto \\
+\hline
+\rowcolor{white}
+RF-DE-15 & L'\term{Utente} deve poter comporre automaticamente il numero di un contatto d'emergenza tramite l'apposita voce & Non Soddisfatto \\
+\hline
+
+\caption{Tabella Requisiti Funzionali Desiderabili} \label{tab:requisiti_funzionali_desiderabili} \\
+\end{longtable}
+\end{center}
+
 
 % REQUISITI OPZIONALI %
 \subsection{Requisiti Funzionali opzionali} \label{subsection:requisiti_funzionali_opzionali}
@@ -3754,6 +3813,21 @@ RF-OP-6 & Il sistema deve mostrare leggi aggiornate, giuridicamente valide e com
 \hline
 \rowcolor{gray!20}
 RF-OP-7 & Il sistema deve indicare all'\term{Utente} se i luoghi sicuri visualizzati nella mappa sono autorevoli e verificati & Non Soddisfatto \\
+\hline
+\rowcolor{white}
+RF-OP-8 & L'\term{Utente} deve poter selezionare il profilo di utilizzo ("Per me" o "Per altri") & Non soddisfatto \\
+\hline
+\rowcolor{gray!20}
+RF-OP-9 & Il sistema deve bloccare temporaneamente l'accesso al diario in seguito al superamento del limite massimo di tentativi errati di inserimento password & Non soddisfatto \\
+\hline
+\rowcolor{white}
+RF-OP-10 & L'\term{Utente} deve poter interrompere la generazione della risposta dell'LLM durante la consultazione del chatbot & Non soddisfatto \\
+\hline
+\rowcolor{gray!20}
+RF-OP-11 & Il sistema deve notificare l'\term{Utente} di un errore durante il cambio di contesto del chatbot e mantenere il contesto precedente & Non soddisfatto \\
+\hline
+\rowcolor{white}
+RF-OP-12 & L'\term{Utente} deve poter ritentare il cambio di contesto del chatbot dopo la notifica di errore & Non soddisfatto \\
 \hline
 
 \caption{Tabella dello stato dei requisiti funzionali opzionali} \label{tab:stato_requisiti_funzionali_opzionali} \\
