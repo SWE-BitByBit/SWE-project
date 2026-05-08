@@ -157,13 +157,13 @@ Gruppo BitByBit\\
 \hline
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
-0.7.0 & 2026-04-29 & Riccardo Manisi & Redatta sezione \hyperref[par:architettura_backend_contatti_fidati]{Architettura classi microservizio contatti fidati}, \hyperref[par:architettura_logica_backend_luoghi_sicuri]{Architettura classi microservizio luoghi sicuri} & Gabriele Scaggiante \\
+0.7.0 & 2026-04-29 & Riccardo Manisi & Redatte le sezioni \hyperref[par:architettura_backend_contatti_fidati]{Architettura classi microservizio contatti fidati}, \hyperref[par:architettura_logica_backend_luoghi_sicuri]{Architettura classi microservizio luoghi sicuri} & Gabriele Scaggiante \\
 \hline
 0.6.1 & 2026-04-27 & Gabriele Scaggiante & Aggiunte librerie nella sezione \hyperref[subsec:librerie]{Librerie} & Ferdinando Fracasso \\ 
 \hline
 0.6.0 & 2026-04-26 & Gabriele Scaggiante & Completata la sezione \hyperref[subsubsec:architettura_chatbot]{Architettura chatbot} introducendo la sezione \hyperref[subsubsec:architettura_logica_chatbot]{Architettura logica chatbot} e aggiornando la sezione dedicata alle API & Dennis Parolin \\
 \hline
-0.5.3 & 2026-04-24 & Ferdinando Fracasso & Aggiornato la sezione \hyperref[subsubsec:architettura_diari_frontend]{Architettura funzionalità diari} a seguito dell'implementazione della funzionalità & Gabriele Scaggiante \\
+0.5.3 & 2026-04-24 & Ferdinando Fracasso & Aggiornato la sezione \hyperref[subsubsec:architettura_diari_frontend]{Architettura funzionalità diari} & Gabriele Scaggiante \\
 \hline
 0.5.2 & 2026-04-23 & Gabriele Scaggiante & Corretta la sezione \hyperref[subsubsec:architettura_chatbot]{Architettura chatbot} dopo l'introduzione di due tabelle DynamoDB & Giovanni Visentin \\
 \hline
@@ -297,7 +297,8 @@ Ultimo accesso: \textit{2026-02-09}\\
 \end{itemize}
 
 \section{Tecnologie} \label{sec:tecnologie}
-Le tecnologie utilizzate sono state scelte trovando un punto d'incontro tra la necessità di garantire la sicurezza e la tutela dei dati personali degli utenti e il bisogno di realizzare un'\term{Architettura} solida, modulare e facilmente estendibile. Di seguito sono riportate tutte le tecnologie adottate 
+Le tecnologie utilizzate sono state scelte trovando un punto d'incontro tra la necessità di garantire la sicurezza e la tutela dei dati personali degli utenti e il bisogno di realizzare un'\term{Architettura} solida, modulare e facilmente estendibile. Di seguito sono riportate tutte le tecnologie adottate.
+
 \subsection{Framework} \label{subsec:framework}
 
 \subsubsection{Flutter}
@@ -545,13 +546,32 @@ Il client mobile è sviluppato incapsulando il codice secondo i dettami moderni 
 \end{itemize}
 
 \subsubsection{Livello di Servizio (Backend)}
-L'\term{Architettura} logica adibita all'interazione tra i device mobili e l'ambiente computazionale in \term{Cloud} si fonda su un analogo approccio modulare disaccoppiato in tre sotto-livelli principali:
+Ogni lambda function costituisce un microservizio. Ogni microservizio è stato implementato attraverso architettura esagonale.
+Il sistema è progettato secondo l'architettura esagonale, conosciuta anche come pattern port e adapter. Questa permette di realizzare un basso accoppiamento tra le componenti del 
+sistema e facilita la creazione dei test per ognuno di essi. In questo pattern il sistema comunica con componenti esterno attraverso l'utilizzo di interfacce 
+denominate port, e usa gli adater costituiscono il collegamento concreto con i servizi esterni.
 
-\begin{itemize}
-    \item \textbf{Presentation e Routing Layer}: Costituisce il \textit{\term{Single Point of Entry}} dell'infrastruttura esposto al software. Ha la pura e unica responsabilità di tracciare e smistare le richieste esterne verso i rami corretti. Intercetta validazioni e autorizzazioni per poi rilasciare formalmente il \term{Payload} agli strati contigui.
-    \item \textbf{Business Core / Logic Layer}: Costituisce il cuore elaborativo del sistema, dove risiede l'intera \textit{\term{Business Logic}}. Questo strato è implementato tramite unità funzionali indipendenti e distribuite (\textit{Funzioni Lambda}) ed è progettato per essere completamente agnostico rispetto ai dettagli di trasporto e comunicazione (come il protocollo HTTP). Il suo compito esclusivo è ricevere i dati già validati dal livello di \textit{Routing}, applicare le regole di dominio, coordinare l'elaborazione degli eventi asincroni e restituire le informazioni elaborate e strutturate.
-    \item \textbf{\term{Data Access Layer}}: Un livello totalmente passivo e disaccoppiato che offre un'astrazione tramite moduli e \term{Driver}. Consente una persistenza dati logica e mascherata ai database sottostanti (quali storage documentali, array non relazionali o conservazione audio/video grezza), celando alla logica di business i layer fisici o i linguaggi di interrogazione diretti della persistenza \term{Cloud}.
-\end{itemize}
+Service class.
+Il punto centrale del sistema è rappresentato dalla domain logic, che rappresenta l'application logic e la business logic 
+Le porte rappresentano il punto d'entrata nel sistema per le componenti esterne, indipendente dai servizi che implementano quella port. La definizione delle port è stata 
+divisa in modo tale che si possano andare a intercambiare i servizi che le implementano. 
+Gli adapter interagiscono con la domain logic attraverso, porte utilizzando uno specifico servizio. 
+I service sono classi che non dipendono dalle tecnologie utilizzate interagiscono con le istanze dei vari servizi attraverso interfacce per diminuire l'accoppiamento.
+
+Inbound port: consentono la comunicazione con la domain logic. utilizza oggetti di domanio e non dati grezzi per la comunicazione. isolano la domain logic da implementazioni dovute a scelte di tecnologie specifiche.
+
+Oubound port: permettono alla domain logic di interagire con i servizi. sono interfacce che descrivono i metodi con cui il service può andare ad interagire con i dati gestiti negli output adapters.
+
+Controller. 
+Sono input adapters: ricevono richieste dall'esterno. Questo è responsabile del parsing delle richieste in oggetti command, oggetti di dominio, che incapsulano i dati per eseguire azioni precise.
+Il controller si intefaccia con la domain logic attraverso interfacce. 
+
+Output adapters.
+Gli adapter costituiscono l'implementazione delle port per i servizi AWS specifici utilizzati per il micorservizio che si sta modellando. Il vantaggio è quello di andare a porter 
+cambiare l'adapter nel momento in cui si decidesse di andare a cambiare il servizio AWS utilizzato nel microservizio.
+Implementano le interfacce delle port, definendo i metodi d'accesso ai servizi AWS che racchiudono i client dei vari servizi. 
+
+
 
 \subsection{Design pattern utilizzati} \label{subsec:design_pattern}
 \subsubsection{Model-view-viewmodel}
@@ -1133,7 +1153,11 @@ L'interfaccia \code{Chat} definisce il modello astratto di una conversazione tra
 \end{figure}
 
 \subsubsection{Diario criptato e diario fittizio} \label{subsubsec:architettura_diari_frontend}
-La funzionalità di diario criptato e diario fittizio permette all'\term{Utente} di utilizzare due archivi separati in cui memorizzare note, contenenti testo, immagini e/o contenuti audio, protetti da password . L'implementazione della funzionalità segue il pattern MVVM e le linee guida del \term{Framework} Flutter, risultanti nella suddivisione tra un \term{Data Layer}, composto da classi Service e \ignoreglossary{repository}, responsabili per la \textit{\term{Business Logic}} e per la \textit{\term{Persistence Logic}} rispettivamente, ed un \term{UI Layer}, composto da classi View e Viewmodel. Gli oggetti principali della funzionalità sono le classi Note (\code{ProxyNote} e \code{LocalNote}), \code{NoteElement} e \code{DiarySession}. 
+La funzionalità di diario criptato e diario fittizio permette all'\term{Utente} di utilizzare due archivi separati in cui memorizzare note, 
+contenenti testo, immagini e/o contenuti audio, protetti da password. L'implementazione della funzionalità segue il pattern MVVM e le linee 
+guida del \term{Framework} Flutter, risultanti nella suddivisione tra un \term{Data Layer}, composto da classi Service e 
+\ignoreglossary{repository}, responsabili per la \textit{\term{Business Logic}} e per la \textit{\term{Persistence Logic}} rispettivamente, 
+e un \term{UI Layer}, composto da classi View e ViewModel. Gli oggetti principali della funzionalità sono le classi Note (\code{ProxyNote} e \code{LocalNote}), \code{NoteElement} e \code{DiarySession}. 
 
 \begin{figure}[H]
     \centering
@@ -1163,7 +1187,7 @@ La classe \code{PasswordFormWidget} è responsabile della visualizzazione dei ca
 \end{figure}
 
 \paragraph{DiaryAccessViewModel}\mbox{}\\
-La classe \code{DiaryAccessViewModel} gestisce lo stato dell'applicazione e coordina le operazioni tra i Layer, implementando il pattern Observer. la classe è un \code{ChangeNotifier} e mantiene una lista di \textit{listeners} che vengono notificati quando avvengono cambiamenti che necessitano di un loro aggiornamento, in questo caso componenti che devono reagire a tentativi di accesso ai diari da parte dell'\term{Utente}. Per accedere ai dati e verificare le credenziali si affida alla classe \code{DiaryAccountRepository}.
+La classe \code{DiaryAccessViewModel} gestisce lo stato dell'applicazione e coordina le operazioni tra i Layer, implementando il pattern Observer. La classe è un \code{ChangeNotifier} e mantiene una lista di \textit{listeners} che vengono notificati quando avvengono cambiamenti che necessitano di un loro aggiornamento, in questo caso componenti che devono reagire a tentativi di accesso ai diari da parte dell'\term{Utente}. Per accedere ai dati e verificare le credenziali si affida alla classe \code{DiaryAccountRepository}.
 
 \begin{figure}[H]
     \centering
@@ -2152,13 +2176,13 @@ bucket S3. È formato da tre componenti principali:
 \end{figure}
 Rappresenta un punto geografico sicuro visualizzabile sulla mappa nel frontend dell'applicazione. 
 Descrizione attributi:
-\begin{abstract}
+\begin{itemize}
     \item \code{marker\_id}, che identifica univocamente il marker;
     \item \code{latitude} e \code{longitude} definiscono la posizione geografica;
     \item \code{name} indica il nome del marker;
     \item \code{address} indica l'indirizzo;
     \item \code{category} indica la categoria del marker;
-\end{abstract} 
+\end{itemize} 
 
 \paragraph{SafePlacesController}\mbox{}\\
 \begin{figure}[H]
@@ -2171,7 +2195,7 @@ Descrizione attributi:
 costruisce la risposta HTTP da restituire al client.
 Descrizione metodi:
 \begin{itemize}
-    \item \code{marker\_get(event)} fa il parsing della richiesta e chiama la funzione appropriata della specifica port primaria;
+    \item \code{marker\_get(event)} esegue il parsing della richiesta e chiama la funzione appropriata della specifica port primaria;
     \item \code{handle\_request(event)} chiama la funzione appropriata del controller in base alla route della richiesta;
     \item \code{response(status, body)} costruisce il dizionario di risposta nel formato atteso da API Gateway.
 \end{itemize}
@@ -3605,7 +3629,7 @@ L'interfaccia \code{ChatMessagePort} astrae l'operazione di aggiunta di messaggi
 
 \paragraph{ChatDTO}\mbox{}\\
 
-\code{ChatDTO} è il Data Transfer Object utilizzato per la serializzazione e deserializzazione delle conversazioni nelle comunicazioni tra frontend e \term{Backend}. Contiene tutti i campi dell'entità \code{Chat} di dominio e fornisce i metodi \code{to\_dict} per la conversione in dizionario Python (successivamente serializzato in JSON) e \code{from\_domain} per la creazione a partire da un oggetto di dominio.
+\code{ChatDTO} è il Data Transfer Object utilizzato per la serializzazione di una chat in un dizionario utilizzato per la risposta della lambda. Contiene tutti i campi dell'entità \code{Chat} di dominio e fornisce i metodi \code{to\_dict} per la conversione in dizionario Python (successivamente serializzato in JSON) e \code{from\_domain} per la creazione a partire da un oggetto di dominio.
 
 \begin{figure}[H]
     \centering
@@ -4016,7 +4040,7 @@ La gestione dei contatti fidati è completamente CRUD e permette all’\term{Ute
     \centering
     \includegraphics[width=\textwidth]{diagrammi_classi_lambda/contatti_fidati/DCB-contatti_fidati.pdf}
     \caption[Componenti del microservizio contatti fidati, SOS e Dead man's switch]{Componenti del microservizio contatti fidati, SOS e Dead man's switch}
-    \label{fig:rchitettura_backend_contatti_fidati}
+    \label{fig:architettura_backend_contatti_fidati}
 \end{figure}
 
 \paragraph{TrustedContact}\mbox{}\\
@@ -4024,7 +4048,7 @@ La gestione dei contatti fidati è completamente CRUD e permette all’\term{Ute
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/DCB-TrustedContact.pdf}
     \caption[Diagramma della classe TrustedContact]{Diagramma della classe \code{TrustedContact}}
-    \label{fig:architettura_logica_luoghi_TrustedContact}
+    \label{fig:architettura_logica_contatti_fidati_TrustedContact}
 \end{figure}
 Rappresenta un contatto fidato associato a un \term{Utente}. \\
 Descrizione attributi: 
@@ -4039,9 +4063,9 @@ Descrizione attributi:
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/TrustedContactDTO.pdf}
     \caption[Diagramma della classe TrustedContactDTO]{Diagramma della classe \code{TrustedContactDTO}}
-    \label{fig:architettura_logica_luoghi_TrustedContactDTO}
+    \label{fig:architettura_logica_contatti_fidati_TrustedContactDTO}
 \end{figure}
-Rappresenta il Data Transfer Object utilizzato per la serializzazione e deserializzazione dei contatti fidati nelle comunicazioni tra frontend e \term{Backend}. 
+Rappresenta il Data Transfer Object utilizzato per la serializzazione di un contatto fidato in un dizionario utilizzato per la risposta della lambda. 
 Contiene tutti i campi dell'entità di dominio \code{TrustedContact} e fornisce i metodi \code{to\_dict} per la conversione in dizionario Python (successivamente serializzato in JSON) e \code{from\_domain} per la creazione a partire da un oggetto di dominio.
 
 \paragraph{AddTrustedContactCmd}\mbox{}\\
@@ -4049,7 +4073,7 @@ Contiene tutti i campi dell'entità di dominio \code{TrustedContact} e fornisce 
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/AddTrustedContactCmd.pdf}
     \caption[Diagramma della classe AddTrustedContactCmd]{Diagramma della classe \code{AddTrustedContactCmd}}
-    \label{fig:architettura_logica_luoghi_AddTrustedContactCmd}
+    \label{fig:architettura_contatti_fidati_AddTrustedContactCmd}
 \end{figure}
 Command Object utilizzato dal controller per trasportare i dati necessari all'aggiunta di un contatto fidato.
 
@@ -4058,7 +4082,7 @@ Command Object utilizzato dal controller per trasportare i dati necessari all'ag
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/GetTrustedContactCmd.pdf}
     \caption[Diagramma della classe GetTrustedContactCmd]{Diagramma della classe \code{GetTrustedContactCmd}}
-    \label{fig:architettura_logica_luoghi_GetTrustedContactCmd}
+    \label{fig:architettura_contatti_fidati_GetTrustedContactCmd}
 \end{figure}
 Command Object utilizzato dal controller per trasportare i dati necessari per il fetch di un contatto fidato.
 
@@ -4067,16 +4091,16 @@ Command Object utilizzato dal controller per trasportare i dati necessari per il
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/DeleteTrustedContactCmd.pdf}
     \caption[Diagramma della classe DeleteTrustedContactCmd]{Diagramma della classe \code{DeleteTrustedContactCmd}}
-    \label{fig:architettura_logica_luoghi_DeleteTrustedContactCmd}
+    \label{fig:architettura_contatti_fidati_DeleteTrustedContactCmd}
 \end{figure}
-Command Object utilizzato dal controller per trasportare i dati necessari per il la cancellazione di un contatto fidato.
+Command Object utilizzato dal controller per trasportare i dati necessari per la cancellazione di un contatto fidato.
 
 \paragraph{DmsConfigurationSettings}\mbox{}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/DmsConfigurationSettings.pdf}
     \caption[Diagramma della classe DmsConfigurationSettings]{Diagramma della classe \code{DmsConfigurationSettings}}
-    \label{fig:architettura_logica_luoghi_DmsConfigurationSettings}
+    \label{fig:architettura_contatti_fidati_DmsConfigurationSettings}
 \end{figure}
 Rappresenta la configurazione del Dead Man's Switch associata ad un \term{Utente}. \\
 Descrizione attributi:
@@ -4085,7 +4109,7 @@ Descrizione attributi:
     \item \code{is\_active} indica se il dead man's switch è attivo;
     \item \code{first\_timer} e \code{second\_timer} definiscono la durata in giorni dei due timer;
     \item \code{email\_body} contiene il corpo della mail riferita al dead man's switch;
-    \item \code{email\_subject} contiene l'oggetto della mail riferita al dead man's switch;.
+    \item \code{email\_subject} contiene l'oggetto della mail riferita al dead man's switch.
 \end{itemize}
 
 \paragraph{DmsConfigurationSettingsDTO}\mbox{}\\
@@ -4093,9 +4117,9 @@ Descrizione attributi:
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/DmsConfigurationSettingsDTO.pdf}
     \caption[Diagramma della classe DmsConfigurationSettingsDTO]{Diagramma della classe \code{DmsConfigurationSettingsDTO}}
-    \label{fig:architettura_logica_luoghi_DmsConfigurationSettingsDTO}
+    \label{fig:architettura_contatti_fidati_DmsConfigurationSettingsDTO}
 \end{figure}
-Data Transfer Object utilizzato per la serializzazione e deserializzazione delle conversazioni nelle comunicazioni tra frontend e \term{Backend}. 
+Data Transfer Object utilizzato per la serializzazione delle impostazioni di un utente in un dizionario utilizzato per la risposta della lambda. . 
 Contiene tutti i campi dell'entità di dominio \code{DmsConfigurationSettings} e fornisce i metodi \code{to\_dict} per la conversione in dizionario Python (successivamente serializzato in JSON) e \code{from\_domain} per la creazione a partire da un oggetto di dominio.
 
 \paragraph{AlertCmd}\mbox{}\\
@@ -4103,7 +4127,7 @@ Contiene tutti i campi dell'entità di dominio \code{DmsConfigurationSettings} e
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/AlertCmd.pdf}
     \caption[Diagramma della classe AlertCmd]{Diagramma della classe \code{AlertCmd}}
-    \label{fig:architettura_logica_luoghi_AlertCmd}
+    \label{fig:architettura_contatti_fidati_AlertCmd}
 \end{figure}
 Command Object utilizzato dal controller per trasportare i dati necessari all'invio dell'alert SOS. \\
 Descrizione attributi:
@@ -4118,7 +4142,7 @@ Descrizione attributi:
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/EmailMessage.pdf}
     \caption[Diagramma della classe EmailMessage]{Diagramma della classe \code{EmailMessage}}
-    \label{fig:architettura_logica_luoghi_EmailMessage}
+    \label{fig:architettura_contatti_fidati_EmailMessage}
 \end{figure}
 Rappresenta la struttura delle email inviabili dal sistema.\\
 Descrizione attributi:
@@ -4134,7 +4158,7 @@ Descrizione attributi:
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/TrustedContactController.pdf}
     \caption[Diagramma della classe TrustedContactController]{Diagramma della classe \code{TrustedContactController}}
-    \label{fig:architettura_logica_luoghi_TrustedContactController}
+    \label{fig:architettura_contatti_fidati_TrustedContactController}
 \end{figure}
 Riceve la richiesta grezza di API Gateway e la instrada verso la port primaria appropriata in base alla route.\\
 Descrizione metodi:
@@ -4148,7 +4172,7 @@ Descrizione metodi:
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/SetDmsHeartBeatPort.pdf}
     \caption[Diagramma della classe SetDmsHeartBeatPort]{Diagramma della classe \code{SetDmsHeartBeatPort}}
-    \label{fig:architettura_logica_luoghi_SetDmsHeartBeatPort}
+    \label{fig:architettura_contatti_fidati_SetDmsHeartBeatPort}
 \end{figure}
 Espone \code{send\_heartbeat(user\_id: str)} per il reset dei timer del Dead Man's Switch al rientro dell'\term{Utente} nell'applicazione.
 
@@ -4157,7 +4181,7 @@ Espone \code{send\_heartbeat(user\_id: str)} per il reset dei timer del Dead Man
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/GetDmsConfigurationSettingsPort.pdf}
     \caption[Diagramma della classe GetDmsConfigurationSettingsPort]{Diagramma della classe \code{GetDmsConfigurationSettingsPort}}
-    \label{fig:architettura_logica_luoghi_GetDmsConfigurationSettingsPort}
+    \label{fig:architettura_contatti_fidati_GetDmsConfigurationSettingsPort}
 \end{figure}
 Espone \code{get\_dms\_config(user\_id: str)} per il recupero della configurazione del Dead Man's Switch.
 
@@ -4166,12 +4190,12 @@ Espone \code{get\_dms\_config(user\_id: str)} per il recupero della configurazio
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/SetDmsConfigurationSettingsPort.pdf}
     \caption[Diagramma della classe SetDmsConfigurationSettingsPort]{Diagramma della classe \code{SetDmsConfigurationSettingsPort}}
-    \label{fig:architettura_logica_luoghi_SetDmsConfigurationSettingsPort}
+    \label{fig:architettura_contatti_fidati_SetDmsConfigurationSettingsPort}
 \end{figure}
 Descrizione metodi:
 \begin{itemize}
-    \item \code{update\_dms\_configuration\_settings(config: DmsConfigurationSettings)}, per l'aggiornamento delle impostazione del dead man's switch;
-    \item \code{create\_dms\_configuration\_settings(user\_id: str)}, per la creazione dei valori di default per le impostazione del dead man's switch.
+    \item \code{update\_dms\_configuration\_settings(config: DmsConfigurationSettings)}, per l'aggiornamento delle impostazioni del dead man's switch;
+    \item \code{create\_dms\_configuration\_settings(user\_id: str)}, per la creazione dei valori di default per le impostazioni del dead man's switch.
 \end{itemize}
 
 \paragraph{UpdateDmsAlertPort}\mbox{}\\
@@ -4179,7 +4203,7 @@ Descrizione metodi:
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/UpdateDmsAlertPort.pdf}
     \caption[Diagramma della classe UpdateDmsAlertPort]{Diagramma della classe \code{UpdateDmsAlertPort}}
-    \label{fig:architettura_logica_luoghi_UpdateDmsAlertPort}
+    \label{fig:architettura_contatti_fidati_UpdateDmsAlertPort}
 \end{figure}
 Espone \code{update\_dms\_timers()} per l'aggiornamento dei timer lato \term{Backend}.
 
@@ -4188,7 +4212,7 @@ Espone \code{update\_dms\_timers()} per l'aggiornamento dei timer lato \term{Bac
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/SetTrustedContactPort.pdf}
     \caption[Diagramma della classe SetTrustedContactPort]{Diagramma della classe \code{SetTrustedContactPort}}
-    \label{fig:architettura_logica_luoghi_SetTrustedContactPort}
+    \label{fig:architettura_contatti_fidati_SetTrustedContactPort}
 \end{figure}
 Descrizione dei metodi:
 \begin{itemize}
@@ -4201,7 +4225,7 @@ Descrizione dei metodi:
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/GetTrustedContactPort.pdf}
     \caption[Diagramma della classe GetTrustedContactPort]{Diagramma della classe \code{GetTrustedContactPort}}
-    \label{fig:architettura_logica_luoghi_GetTrustedContactPort}
+    \label{fig:architettura_contatti_fidati_GetTrustedContactPort}
 \end{figure}
 Descrizione dei metodi:
 \begin{itemize}
@@ -4214,7 +4238,7 @@ Descrizione dei metodi:
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/DeleteTrustedContactPort.pdf}
     \caption[Diagramma della classe DeleteTrustedContactPort]{Diagramma della classe \code{DeleteTrustedContactPort}}
-    \label{fig:architettura_logica_luoghi_DeleteTrustedContactPort}
+    \label{fig:architettura_contatti_fidati_DeleteTrustedContactPort}
 \end{figure}
 Espone \code{delete\_trusted\_contact(cmd: DeleteTrustedContactCmd)} per l'eliminazione di un contatto.
 
@@ -4223,7 +4247,7 @@ Espone \code{delete\_trusted\_contact(cmd: DeleteTrustedContactCmd)} per l'elimi
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/SendAlertPort.pdf}
     \caption[Diagramma della classe SendAlertPort]{Diagramma della classe \code{SendAlertPort}}
-    \label{fig:architettura_logica_luoghi_SendAlertPort}
+    \label{fig:architettura_contatti_fidati_SendAlertPort}
 \end{figure}
 Espone \code{send\_alert\_emails(alert\_info: AlertCmd)} per l'invio delle email di soccorso ai contatti fidati.
 
@@ -4232,7 +4256,7 @@ Espone \code{send\_alert\_emails(alert\_info: AlertCmd)} per l'invio delle email
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/DmsCRUDService.pdf}
     \caption[Diagramma della classe DmsCRUDService]{Diagramma della classe \code{DmsCRUDService}}
-    \label{fig:architettura_logica_luoghi_DmsCRUDService}
+    \label{fig:architettura_contatti_fidati_DmsCRUDService}
 \end{figure}
 È il service della \term{Business Logic} responsabile delle operazioni di lettura e scrittura sulla configurazione dei valori delle impostazioni del Dead Man's Switch.
 
@@ -4241,7 +4265,7 @@ Espone \code{send\_alert\_emails(alert\_info: AlertCmd)} per l'invio delle email
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/DmsAlertService.pdf}
     \caption[Diagramma della classe DmsAlertService]{Diagramma della classe \code{DmsAlertService}}
-    \label{fig:architettura_logica_luoghi_DmsAlertService}
+    \label{fig:architettura_contatti_fidati_DmsAlertService}
 \end{figure}
 È responsabile dell'invio delle notifiche del Dead Man's Switch. Si occupa del recupero dei contatti fidati, la configurazione del DMS e la costruzione dei messaggi email.\\
 Descrizione metodi:
@@ -4256,7 +4280,7 @@ Descrizione metodi:
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/TrustedContactCRUDService.pdf}
     \caption[Diagramma della classe TrustedContactCRUDService]{Diagramma della classe \code{TrustedContactCRUDService}}
-    \label{fig:architettura_logica_luoghi_TrustedContactCRUDService}
+    \label{fig:architettura_contatti_fidati_TrustedContactCRUDService}
 \end{figure}
 È il service della \term{Business Logic} responsabile delle operazioni CRUD sui contatti fidati.\\
 Descrizione metodi:
@@ -4269,7 +4293,7 @@ Descrizione metodi:
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/SOSAlertService.pdf}
     \caption[Diagramma della classe SOSAlertService]{Diagramma della classe \code{SOSAlertService}}
-    \label{fig:architettura_logica_luoghi_SOSAlertService}
+    \label{fig:architettura_contatti_fidati_SOSAlertService}
 \end{figure}
 È il service della \term{Business Logic} responsabile dell'invio immediato delle email di soccorso al momento della pressione del pulsante SOS da parte dell'\term{Utente}. Implementa la port primaria \code{SendAlertPort}.\\
 Descrizione metodi:
@@ -4283,7 +4307,7 @@ Descrizione metodi:
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/DmsRepositoryPort.pdf}
     \caption[Diagramma della classe DmsRepositoryPort]{Diagramma della classe \code{DmsRepositoryPort}}
-    \label{fig:architettura_logica_luoghi_DmsRepositoryPort}
+    \label{fig:architettura_contatti_fidati_DmsRepositoryPort}
 \end{figure}
 Descrizione metodi:
 \begin{itemize}
@@ -4301,7 +4325,7 @@ Descrizione metodi:
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/TrustedContactRepositoryPort.pdf}
     \caption[Diagramma della classe TrustedContactRepositoryPort]{Diagramma della classe \code{TrustedContactRepositoryPort}}
-    \label{fig:architettura_logica_luoghi_TrustedContactRepositoryPort}
+    \label{fig:architettura_contatti_fidati_TrustedContactRepositoryPort}
 \end{figure}
 Descrizione metodi:
 \begin{itemize}
@@ -4317,7 +4341,7 @@ Descrizione metodi:
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/NotificationPort.pdf}
     \caption[Diagramma della classe NotificationPort]{Diagramma della classe \code{NotificationPort}}
-    \label{fig:architettura_logica_luoghi_NotificationPort}
+    \label{fig:architettura_contatti_fidati_NotificationPort}
 \end{figure}
 È la port secondaria del pattern esagonale per l'invio delle notifiche email.
 Descrizione metodi:
@@ -4330,7 +4354,7 @@ Descrizione metodi:
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/DynamoDmsAdapter.pdf}
     \caption[Diagramma della classe DynamoDmsAdapter]{Diagramma della classe \code{DynamoDmsAdapter}}
-    \label{fig:architettura_logica_luoghi_DynamoDmsAdapter}
+    \label{fig:architettura_contatti_fidati_DynamoDmsAdapter}
 \end{figure}
 Contiene tutta la logica specifica per la persistenza della configurazione e dei contatori del Dead Man's Switch su DynamoDB.
 
@@ -4339,7 +4363,7 @@ Contiene tutta la logica specifica per la persistenza della configurazione e dei
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/DynamoTrustedContactAdapter.pdf}
     \caption[Diagramma della classe DynamoTrustedContactAdapter]{Diagramma della classe \code{DynamoTrustedContactAdapter}}
-    \label{fig:architettura_logica_luoghi_DynamoTrustedContactAdapter}
+    \label{fig:architettura_contatti_fidati_DynamoTrustedContactAdapter}
 \end{figure}
 Contiene tutta la logica specifica per la persistenza dei contatti fidati su DynamoDB.
 
@@ -4348,7 +4372,7 @@ Contiene tutta la logica specifica per la persistenza dei contatti fidati su Dyn
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/contatti_fidati/SesNotificationAdapter.pdf}
     \caption[Diagramma della classe SesNotificationAdapter]{Diagramma della classe \code{SesNotificationAdapter}}
-    \label{fig:architettura_logica_luoghi_SesNotificationAdapter}
+    \label{fig:architettura_contatti_fidati_SesNotificationAdapter}
 \end{figure}
 Contiene tutta la logica specifica per l'invio delle email tramite il servizio Amazon SES.
 
