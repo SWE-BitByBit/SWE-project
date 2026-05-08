@@ -786,11 +786,96 @@ A tutela della sicurezza dell'\term{Utente} in situazioni di potenziale costrizi
 La gestione di entrambe le password avviene all'interno del diario reale tramite un pulsante dedicato alle impostazioni di sicurezza.
 
 \subsubsection{Funzionalità del diario}
-All'interno del diario (sia reale che fittizio, con le dovute distinzioni di contenuto), l'\term{Utente} può:
+Una volta effettuato l'accesso con la password corretta, l'\term{Utente} visualizzerà la lista delle proprie note. Al primo utilizzo, la lista risulterà vuota (\ref{fig:lista-note-vuota}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/lista-note-vuota.png}
+    \caption[Lista note vuota]{Schermata del diario reale senza note salvate}
+    \label{fig:lista-note-vuota}
+\end{figure}
+
+Per creare una nuova nota, è necessario premere il pulsante \textbf{"+"} situato in basso a destra nella schermata (\ref{fig:aggiunta-nota}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/aggiunta-nota.png}
+    \caption[Pulsante aggiunta nota]{Pulsante per la creazione di una nuova nota}
+    \label{fig:aggiunta-nota}
+\end{figure}
+
+L'attivazione del pulsante genera istantaneamente una nuova nota e apre la schermata di modifica (\ref{fig:nota-vuota}). In questa fase, l'\term{Utente} può inserire del testo o allegare contenuti multimediali.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/nota-vuota.png}
+    \caption[Schermata nota vuota]{Interfaccia di creazione di una nuova nota}
+    \label{fig:nota-vuota}
+\end{figure}
+
+Per aggiungere testo, immagini o registrazioni audio, premere il pulsante con l'\textbf{icona della cartella} situato in basso a destra all'interno della nota e scegliere il contenuto da aggiungere. Una volta inseriti i contenuti e il testo desiderato, la nota apparirà completa (\ref{fig:nota-piena}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/nota-piena.png}
+    \caption[Nota con contenuti]{Esempio di una nota contenente testo e allegati multimediali}
+    \label{fig:nota-piena}
+\end{figure}
+
+Ogni nota è strutturata in \textbf{blocchi} indipendenti (testo, audio o immagini). Per modificare un blocco di testo, è sufficiente cliccarci sopra. Qualora si desideri rimuovere un elemento, premere sui \textbf{tre puntini} situati sul blocco (\ref{fig:opzioni-blocco}) e selezionare la voce "Elimina". Per modificare il titolo, basta cliccare in alto nella schermata sulla voce "Nuova Nota" e si potrà procedere alla modifica.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/opzioni-blocco.png}
+    \caption[Opzioni del blocco]{Menu per l'eliminazione di un singolo blocco della nota}
+    \label{fig:opzioni-blocco}
+\end{figure}
+
+\subsubsection{Gestione della lista note}
+Una volta create, le note vengono elencate nella schermata principale del diario (\ref{fig:lista-note-piena}), permettendo una rapida consultazione.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/lista-note-piena.png}
+    \caption[Lista note con contenuti]{Visualizzazione della lista delle note salvate nel diario}
+    \label{fig:lista-note-piena}
+\end{figure}
+
+L'\term{Utente} può interagire con la lista in due modi:
 \begin{itemize}
-    \item \textbf{Gestione Note:} creare nuove note testuali, modificarle nel tempo o eliminarle.
-    \item \textbf{Contenuti Multimediali:} allegare fotografie e registrazioni audio ad ogni singola nota per documentare eventi in modo più completo.
+    \item \textbf{Modifica:} premendo direttamente sulla nota desiderata per riaprire l'interfaccia di modifica.
+    \item \textbf{Eliminazione:} premendo sull'icona del \textbf{cestino} posta accanto alla nota. Il sistema richiederà una conferma definitiva tramite un popup (\ref{fig:conferma-eliminazione-nota}).
 \end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/conferma-eliminazione-nota.png}
+    \caption[Popup eliminazione nota]{Richiesta di conferma prima della cancellazione della nota}
+    \label{fig:conferma-eliminazione-nota}
+\end{figure}
+
+\subsubsection{Gestione delle Password}
+La configurazione e la modifica delle password, sia per il diario reale che per quello fittizio, possono essere effettuate esclusivamente dall'interno del \textbf{diario reale}. Questa scelta garantisce che solo chi è già in possesso delle credenziali corrette possa alterare le impostazioni di sicurezza.
+
+Per accedere a queste opzioni, premere il pulsante \textbf{"Impostazioni Sicurezza"} situato nella schermata principale del diario (\ref{fig:pulsante-impostazioni-sicurezza}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/pulsante-impostazioni-sicurezza.png}
+    \caption[Pulsante impostazioni sicurezza]{Pulsante per la gestione delle password all'interno del diario}
+    \label{fig:pulsante-impostazioni-sicurezza}
+\end{figure}
+
+Una volta premuto, verrà visualizzata una schermata dedicata (\ref{fig:schermata-impostazioni-sicurezza}) dove l'\term{Utente} può impostare o aggiornare le credenziali per entrambe le modalità di accesso.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/schermata-impostazioni-sicurezza.png}
+    \caption[Schermata impostazioni sicurezza]{Interfaccia per la modifica della password reale e fittizia}
+    \label{fig:schermata-impostazioni-sicurezza}
+\end{figure}
+
+Le procedure di inserimento e i criteri di sicurezza richiesti sono identici a quelli descritti nella sezione di primo accesso al diario reale.
 
 \subsection{Rete di supporto e SOS} \label{subsec:sos_contatti}
 
