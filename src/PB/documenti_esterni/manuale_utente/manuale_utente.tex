@@ -242,7 +242,7 @@ Il documento si propone come una guida operativa concepita per accompagnare l'\t
 \subsection{Definizioni, acronimi e abbreviazioni} \label{sec:definizioni_acronimi_abbreviazioni}
 
 Al fine di evitare ambiguità relative al linguaggio e ai termini utilizzati all'interno dei documenti formali, viene allegato il \href{https://swe-bitbybit.github.io/SWE-docs/docs/RTB/documenti_interni/Glossario.pdf}{\textit{Glossario}}.
-I termini tecnici, gli acronimi e le parole con significato specifico all'interno del progetto sono contrassegnati da una lettera 'G' in apice (es. Agile) e sono descritti in dettaglio nel documento apposito.
+I termini tecnici, gli acronimi e le parole con significato specifico all'interno del progetto sono contrassegnati da una lettera 'G' in apice (es. \term{Agile}) e sono descritti in dettaglio nel documento apposito.
 
 % =======================RIFERIMENTI================================
 
@@ -743,11 +743,38 @@ Le operazioni disponibili sono:
 
 Il Diario Criptato è concepito come uno spazio sicuro e protetto per l'annotazione di eventi, pensieri personali e l'archiviazione di file multimediali (foto e registrazioni audio). L'intera sezione è progettata con un'interfaccia discreta per non attirare attenzioni indesiderate.
 
+\textbf{Accesso alla funzionalità:}
+Per accedere al Diario, premere il pulsante dedicato situato nella Home dell'applicazione (\ref{fig:homepage-diario}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/homepage-diario.png}
+    \caption[Pulsante di accesso al Diario]{Pulsante per l'accesso alla sezione Diario dalla Home}
+    \label{fig:homepage-diario}
+\end{figure}
+
+Una volta selezionata la funzionalità, verrà visualizzata la schermata di attivazione o di sblocco del diario.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/schermata-diario.png}
+    \caption[Schermata del Diario]{Schermata principale della sezione Diario}
+    \label{fig:schermata-diario}
+\end{figure}
+
 \subsubsection{Accesso e Sicurezza}
 L'accesso al diario è rigorosamente protetto:
 \begin{itemize}
-    \item \textbf{Autenticazione:} all'apertura, il sistema richiede l'inserimento di una password o l'autenticazione tramite dati biometrici (impronta digitale o riconoscimento facciale, se supportati dal dispositivo).
-    \item \textbf{Primo Accesso:} al primo utilizzo della funzionalità, l'\term{Utente} viene guidato nella creazione della \textbf{password del diario reale}.
+    \item \textbf{Autenticazione:} all'apertura, il sistema richiede l'inserimento di una password.
+    \item \textbf{Primo Accesso:} al primo utilizzo della funzionalità, l'\term{Utente} deve creare la \textbf{password per il diario reale} e confermarla cliccando sul pulsante \textbf{"Attiva Diario"}. 
+\end{itemize}
+
+La password scelta deve rispettare i seguenti criteri di sicurezza:
+\begin{itemize}
+    \item Almeno \textbf{10 caratteri} (lettere o numeri);
+    \item Almeno una lettera \textbf{minuscola};
+    \item Almeno una lettera \textbf{maiuscola};
+    \item Almeno un \textbf{carattere speciale}.
 \end{itemize}
 
 \subsubsection{Diario Fittizio}
