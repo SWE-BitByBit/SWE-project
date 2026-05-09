@@ -804,7 +804,7 @@ Per creare una nuova nota, è necessario premere il pulsante \textbf{"+"} situat
     \label{fig:aggiunta-nota}
 \end{figure}
 
-L'attivazione del pulsante genera istantaneamente una nuova nota e apre la schermata di modifica (\ref{fig:nota-vuota}). In questa fase, l'\term{Utente} può inserire del testo o allegare contenuti multimediali.
+La nota vuota viene visualizzata immediatamente nella schermata di modifica (\ref{fig:nota-vuota}). Questo è il punto di partenza per inserire titolo, testo e allegati.
 
 \begin{figure}[H]
     \centering
@@ -813,16 +813,90 @@ L'attivazione del pulsante genera istantaneamente una nuova nota e apre la scher
     \label{fig:nota-vuota}
 \end{figure}
 
-Per aggiungere testo, immagini o registrazioni audio, premere il pulsante con l'\textbf{icona della cartella} situato in basso a destra all'interno della nota e scegliere il contenuto da aggiungere. Una volta inseriti i contenuti e il testo desiderato, la nota apparirà completa (\ref{fig:nota-piena}).
+Per modificare il titolo della nota, è sufficiente cliccare sul titolo predefinito "Titolo nota" presente in alto nella schermata di modifica. Si aprirà un campo di testo che permetterà di inserire il titolo desiderato. (\ref{fig:modifica-titolo-nota})
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/nota-piena.png}
-    \caption[Nota con contenuti]{Esempio di una nota contenente testo e allegati multimediali}
-    \label{fig:nota-piena}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/titolo-nota.png}
+    \caption[Modifica titolo nota]{Interfaccia per la modifica del titolo di una nota}
+    \label{fig:modifica-titolo-nota}
 \end{figure}
 
-Ogni nota è strutturata in \textbf{blocchi} indipendenti (testo, audio o immagini). Per modificare un blocco di testo, è sufficiente cliccarci sopra. Qualora si desideri rimuovere un elemento, premere sui \textbf{tre puntini} situati sul blocco (\ref{fig:opzioni-blocco}) e selezionare la voce "Elimina". Per modificare il titolo, basta cliccare in alto nella schermata sulla voce "Nuova Nota" e si potrà procedere alla modifica.
+
+Per aggiungere testo, immagini o registrazioni audio, premere il pulsante con l'\textbf{icona della cartella} situato in basso a destra all'interno della nota e scegliere il contenuto da aggiungere. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/Nota_bottone_seleziona.png}
+    \caption[Selezione elemento]{Schermata di selezione del tipo di contenuto da aggiungere alla nota}
+    \label{fig:bottone-seleziona-elemento}
+\end{figure}
+
+Per inserire testo, è sufficiente selezionare l'opzione \textbf{"Aggiungi testo"} e digitare il contenuto desiderato all'interno del campo apposito. Il testo viene salvato automaticamente e può essere modificato in qualsiasi momento.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/Nota_testo.png}
+    \caption[Aggiunta testo]{Schermata con il campo di inserimento del testo all'interno della nota}
+    \label{fig:nota-testo}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/Nota_testo_modificato.png}
+    \caption[Testo modificato]{Testo inserito e modificato all'interno di una nota}
+    \label{fig:nota-testo-modificato}
+\end{figure}
+
+Per aggiungere un'immagine al diario, selezionare il pulsante delle risorse e scegliere \textbf{"Aggiungi immagine"}. Selezionare il file desiderato nella schermata di scelta (\ref{fig:nota-immagine-search}) e confermare l'allegato. L'immagine verrà inserita come elemento separato nella nota (\ref{fig:nota-immagine}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/Nota_immagine_search.png}
+    \caption[Scelta immagine]{Schermata di selezione dell'immagine da allegare}
+    \label{fig:nota-immagine-search}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/Nota_immagine.png}
+    \caption[Immagine inserita]{Immagine allegata a una nota del diario}
+    \label{fig:nota-immagine}
+\end{figure}
+
+Per inserire audio, premere il pulsante delle risorse e scegliere \textbf{"Aggiungi audio"}. Dalla schermata di scelta o registrazione (\ref{fig:nota-audio-search}) si può selezionare il file o avviare la registrazione. Il blocco audio viene aggiunto alla nota e può essere riprodotto direttamente all'interno dell'interfaccia (\ref{fig:nota-audio} e \ref{fig:nota-audio-play}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/Nota_audio_search.png}
+    \caption[Scelta audio]{Schermata di selezione o registrazione audio}
+    \label{fig:nota-audio-search}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/Nota_audio.png}
+    \caption[Audio inserito]{Blocco audio aggiunto alla nota}
+    \label{fig:nota-audio}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/Nota_audio_play.png}
+    \caption[Audio in riproduzione]{Riproduzione di una nota vocale all'interno del diario}
+    \label{fig:nota-audio-play}
+\end{figure}
+
+Una singola nota può contenere testo, immagine e audio insieme. In questo modo il diario supporta la composizione di contenuti completi e multimediali (\ref{fig:nota-full-elements}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/Nota_full_elements.png}
+    \caption[Nota con tutti gli elementi]{Nota che mostra testo, immagine e audio insieme}
+    \label{fig:nota-full-elements}
+\end{figure}
+
+Ogni elemento all'interno della nota è gestito come un blocco indipendente. Per rimuovere un blocco di testo, un'immagine o un audio, premere sui \textbf{tre puntini} del blocco desiderato e selezionare \textbf{"Elimina"} (\ref{fig:opzioni-blocco}).
 
 \begin{figure}[H]
     \centering
