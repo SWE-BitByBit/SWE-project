@@ -152,7 +152,6 @@ Gruppo BitByBit\\
 % ===== REGISTRO MODIFICHE =======
 \clearpage
 \section*{Registro delle modifiche}
-\begin{center}
 \small
 \renewcommand{\arraystretch}{1.2} 
 \arrayrulecolor{black}
@@ -190,7 +189,7 @@ Gruppo BitByBit\\
 0.3.0 & 2026-02-09 & Dennis Parolin & Aggiunta della sezione Metodi di Testing (\ref{sec:metodi_testing}). Corretti errori di compilazione. &  Giovanni Visentin \\
 \hline
 \rowcolor{white}
-0.2.1 & 2026-01-06 & Riccardo Manisi & Corretti valori accettabili e ottimi & Gabriele Scaggiante\\
+0.2.1 & 2025-01-06 & Riccardo Manisi & Corretti valori accettabili e ottimi & Gabriele Scaggiante\\
 \hline
 \rowcolor{gray!20}
 0.2.0 & 2025-12-19 & Dennis Parolin & Stesura delle intere sezioni \ref{sec:introduzione}, \ref{sec:qualità_prodotto}, \ref{sec:qualità_processo} e delle loro sottosezioni &  Gabriele Scaggiante \\
@@ -199,7 +198,6 @@ Gruppo BitByBit\\
 0.1.0 & 2025-12-19 & Dennis Parolin & Creazione del documento &  Gabriele Scaggiante\\
 \hline
 \end{longtable}
-\end{center}
 
 \clearpage
 
@@ -371,7 +369,7 @@ Il gruppo BitByBit monitora i seguenti processi primari attraverso metriche ogge
 \textbf{MPC07} & Estimate At Completion (EAC) & $\pm 15\%$ del $BAC$ & $\pm 5\%$ del $BAC$ \\ \hline
 \textbf{MPC08} & Estimate To Complete (ETC) & $\le BAC$ & $\le (BAC - AC)$ \\ \hline
 \end{tabularx}
-\caption{Soglie delle metriche per il \term{Processo} di fornitura}
+\caption{Soglie delle metriche per il \protect\term{Processo} di fornitura}
 \end{table}
 
 % --------------------------------------------- PROCESSI DI SUPPORTO ---------------------------------------------
@@ -388,7 +386,7 @@ I processi di supporto assicurano che la qualità del lavoro svolto sia costante
 \textbf{MPC09} & Indice di Gulpease & $50-59$ & $\ge 60$ \\ \hline
 
 \end{tabularx}
-\caption{Soglie delle metriche per il \term{Processo} di documentazione}
+\caption{Soglie delle metriche per il \protect\term{Processo} di documentazione}
 \end{table}
 
 \subsubsection{Gestione dei processi}\label{sec:gestione-processi}
@@ -413,7 +411,7 @@ I test che verranno effettuati sono quelli presenti nella sezione \textbf{3.4.3.
 \subsection{Test di Regressione}
 Per prevenire problemi di \term{Regressione} durante lo sviluppo di nuove funzionalità,
 BitByBit ha deciso di adottare un approccio di integrazione continua.
-La \term{Repository} del codice sorgente è configurata in modo che ogni commit
+La \term{repository} del codice sorgente è configurata in modo che ogni commit
 attivi automaticamente l'esecuzione completa della suite di \term{Test di Unità} e
 integrazione (i quali verranno definiti durante la \term{PB}). Questo approccio consente di rilevare tempestivamente possibili regressioni introdotte dalle modifiche apportate al codice, permettendo di intervenire prima dell'integrazione nel
 \term{Branch} principale.
@@ -433,10 +431,10 @@ integrazione (i quali verranno definiti durante la \term{PB}). Questo approccio 
 \endhead
 \hline
 \rowcolor{white}
-\caption[]{Tabella dei \term{Test di Sistema}} \\
+\caption[]{Tabella dei \protect\term{Test di Sistema}} \\
 \endfoot
 \hline
-\caption{Tabella dei \term{Test di Sistema}} \\
+\caption{Tabella dei \protect\term{Test di Sistema}} \\
 \endlastfoot
 
 \stepcounter{testsys} \systestcode & Verificare l'autenticazione all'applicazione tramite Google Auth. & RF-OB-1 & NI \\
@@ -1058,7 +1056,6 @@ integrazione (i quali verranno definiti durante la \term{PB}). Questo approccio 
 \setcounter{testsys}{0}
 \begingroup
 \subsection{Tracciamento dei Test di Sistema} \label{subsection:tracciamento_test_sistema}
-\begin{center}
 \renewcommand{\arraystretch}{1.5}
 \arrayrulecolor{black}
 \rowcolors{2}{gray!20}{white}
@@ -1070,7 +1067,7 @@ integrazione (i quali verranno definiti durante la \term{PB}). Questo approccio 
 \textbf{Codice Test} & \textbf{Codice \term{Requisito}} \\
 \hline
 \endfirsthead
-\caption[]{Tracciamento dei \term{Test di Sistema}} \\
+\caption[]{Tracciamento dei \protect\term{Test di Sistema}} \\
 \hline
 \rowcolor{gray!60}
 \textbf{Codice Test} & \textbf{Codice \term{Requisito}} \\
@@ -1897,9 +1894,8 @@ integrazione (i quali verranno definiti durante la \term{PB}). Questo approccio 
 \systestref & RF-OP-7 \\
 \hline
 \rowcolor{white}
-\caption{Tracciamento dei \term{Test di Sistema}} \label{tab:tracciamento_test_sistema} \\
+\caption{Tracciamento dei \protect\term{Test di Sistema}} \label{tab:tracciamento_test_sistema} \\
 \end{longtable}
-\end{center}
 \endgroup
 
 \begingroup
@@ -1915,11 +1911,11 @@ integrazione (i quali verranno definiti durante la \term{PB}). Questo approccio 
 \endhead
 \hline
 \rowcolor{white}
-\caption[]{Tabella dei \term{Test di Accettazione}} \\
+\caption[]{Tabella dei \protect\term{Test di Accettazione}} \\
 \endfoot
 \hline
 \rowcolor{white}
-\caption{Tabella dei \term{Test di Accettazione}} \\
+\caption{Tabella dei \protect\term{Test di Accettazione}} \\
 \endlastfoot
 
 \stepcounter{testacc} \acctestcode & Verificare il flusso completo di gestione dei contatti fidati (aggiunta, modifica, visualizzazione, \ignoreglossary{validazione} ed errori). & I \\
@@ -1964,17 +1960,17 @@ I \term{Test di Unità} vengono eseguiti automaticamente tramite pipeline di Con
 \endhead
 \hline
 \rowcolor{white}
-\caption[]{Tabella dei \term{Test di Unità} - Frontend} \\
+\caption[]{Tabella dei \protect\term{Test di Unità} - Frontend} \\
 \endfoot
 \hline
-\caption{Tabella dei \term{Test di Unità} - Frontend} \\
+\caption{Tabella dei \protect\term{Test di Unità} - Frontend} \\
 \endlastfoot
 
 % --- Materiale Informativo: MaterialViewModel ---
 
 TF-1-U & [MaterialViewModel] Verificare che, al caricamento iniziale, venga invocato il metodo \texttt{fetchMaterials} con il parametro \texttt{forceRefresh} impostato a \texttt{false}. & I \\
 \hline
-TF-2-U & [MaterialViewModel] Verificare che, in assenza di un filtro attivo, vengano restituiti tutti i materiali presenti nel \term{Repository}. & I \\
+TF-2-U & [MaterialViewModel] Verificare che, in assenza di un filtro attivo, vengano restituiti tutti i materiali presenti nel \ignoreglossary{Repository}. & I \\
 \hline
 TF-3-U & [MaterialViewModel] Verificare che il metodo \texttt{filterByType} applichi il filtro selezionato e riduca correttamente la lista dei materiali visualizzati. & I \\
 \hline
@@ -2002,7 +1998,7 @@ TF-11-U & [ResourceTypeUI] Verificare che la tipologia \texttt{article} restitui
 
 TF-12-U & [SafePlaceViewModel] Verificare che il costruttore avvii automaticamente il caricamento dei luoghi sicuri e il recupero della posizione dell'\term{Utente}. & I \\
 \hline
-TF-13-U & [SafePlaceViewModel] Verificare che il metodo \texttt{loadPlaces} aggiorni correttamente lo stato interno tramite il \term{Repository}. & I \\
+TF-13-U & [SafePlaceViewModel] Verificare che il metodo \texttt{loadPlaces} aggiorni correttamente lo stato interno tramite il \ignoreglossary{Repository}. & I \\
 \hline
 TF-14-U & [SafePlaceViewModel] Verificare che il metodo \texttt{getUserLocation} salvi la posizione dell'\term{Utente} quando i permessi di geolocalizzazione sono concessi. & I \\
 \hline
@@ -2014,7 +2010,7 @@ TF-17-U & [SafePlaceViewModel] Verificare che il metodo \texttt{getUserLocation}
 \hline
 TF-18-U & [SafePlaceViewModel] Verificare che il metodo \texttt{selectPlace} aggiorni correttamente il luogo sicuro selezionato. & I \\
 \hline
-TF-19-U & [SafePlaceViewModel] Verificare che il metodo \texttt{saveMapSessionState} aggiorni la cache del \term{Repository} senza generare notifiche alla UI. & I \\
+TF-19-U & [SafePlaceViewModel] Verificare che il metodo \texttt{saveMapSessionState} aggiorni la cache del \ignoreglossary{Repository} senza generare notifiche alla UI. & I \\
 \hline
 
 % --- Luoghi Sicuri: SafePlaceCategoryUI ---
@@ -2032,15 +2028,15 @@ TF-23-U & [AuthViewModel] Verificare che il metodo \texttt{checkExistingSession}
 \hline
 TF-24-U & [AuthViewModel] Verificare che il comando \texttt{login} esegua correttamente il flusso di autenticazione in caso di successo. & I \\
 \hline
-TF-25-U & [AuthViewModel] Verificare che il comando \texttt{login} gestisca correttamente un errore restituito dal \term{Repository}. & I \\
+TF-25-U & [AuthViewModel] Verificare che il comando \texttt{login} gestisca correttamente un errore restituito dal \ignoreglossary{Repository}. & I \\
 \hline
-TF-26-U & [AuthViewModel] Verificare che il comando \texttt{login} sollevi un'eccezione qualora il \term{Repository} restituisca un valore \texttt{null}. & I \\
+TF-26-U & [AuthViewModel] Verificare che il comando \texttt{login} sollevi un'eccezione qualora il \ignoreglossary{Repository} restituisca un valore \texttt{null}. & I \\
 \hline
-TF-27-U & [AuthViewModel] Verificare che il comando \texttt{login} sollevi un'eccezione qualora il \term{Repository} lanci un errore imprevisto. & I \\
+TF-27-U & [AuthViewModel] Verificare che il comando \texttt{login} sollevi un'eccezione qualora il \ignoreglossary{Repository} lanci un errore imprevisto. & I \\
 \hline
-TF-28-U & [AuthViewModel] Verificare che il comando \texttt{logout} invochi correttamente il \term{Repository} e pulisca la cache locale. & I \\
+TF-28-U & [AuthViewModel] Verificare che il comando \texttt{logout} invochi correttamente il \ignoreglossary{Repository} e pulisca la cache locale. & I \\
 \hline
-TF-29-U & [AuthViewModel] Verificare che il comando \texttt{logout} sollevi un'eccezione qualora il \term{Repository} di disconnessione fallisca. & I \\
+TF-29-U & [AuthViewModel] Verificare che il comando \texttt{logout} sollevi un'eccezione qualora il \ignoreglossary{Repository} di disconnessione fallisca. & I \\
 \hline
 
 % --- Homepage: HomeViewModel ---
@@ -2049,11 +2045,11 @@ TF-30-U & [HomeViewModel] Verificare che il comando \texttt{loadDashboard} resti
 \hline
 TF-31-U & [HomeViewModel] Verificare che lo stato iniziale del comando \texttt{loadDashboard} sia già popolato con gli elementi del dashboard. & I \\
 \hline
-TF-32-U & [HomeViewModel] Verificare che la proprietà \texttt{isDeadManActive} restituisca \texttt{true} quando il \term{Repository} contiene impostazioni attive. & I \\
+TF-32-U & [HomeViewModel] Verificare che la proprietà \texttt{isDeadManActive} restituisca \texttt{true} quando il \ignoreglossary{Repository} contiene impostazioni attive. & I \\
 \hline
-TF-33-U & [HomeViewModel] Verificare che la proprietà \texttt{isDeadManActive} restituisca \texttt{false} quando il \term{Repository} contiene impostazioni disattivate. & I \\
+TF-33-U & [HomeViewModel] Verificare che la proprietà \texttt{isDeadManActive} restituisca \texttt{false} quando il \ignoreglossary{Repository} contiene impostazioni disattivate. & I \\
 \hline
-TF-34-U & [HomeViewModel] Verificare che la proprietà \texttt{isDeadManActive} restituisca \texttt{false} quando il \term{Repository} non contiene impostazioni. & I \\
+TF-34-U & [HomeViewModel] Verificare che la proprietà \texttt{isDeadManActive} restituisca \texttt{false} quando il \ignoreglossary{Repository} non contiene impostazioni. & I \\
 \hline
 
 % --- Chatbot: ChatbotViewModel ---
@@ -2081,20 +2077,20 @@ TF-44-U & [ChatbotViewModel] Verificare che il metodo \texttt{sendMessage} impos
 
 % --- Contatti Fidati: TrustedContactViewModel ---
 
-TF-45-U & [TrustedContactViewModel] Verificare che il metodo \texttt{createContact} invochi il \term{Repository} e aggiorni la lista dei contatti. & I \\
+TF-45-U & [TrustedContactViewModel] Verificare che il metodo \texttt{createContact} invochi il \ignoreglossary{Repository} e aggiorni la lista dei contatti. & I \\
 \hline
-TF-46-U & [TrustedContactViewModel] Verificare che il metodo \texttt{updateContact} invochi il \term{Repository} e aggiorni la lista dei contatti. & I \\
+TF-46-U & [TrustedContactViewModel] Verificare che il metodo \texttt{updateContact} invochi il \ignoreglossary{Repository} e aggiorni la lista dei contatti. & I \\
 \hline
 TF-47-U & [TrustedContactViewModel] Verificare che il metodo \texttt{deleteContact} non esegua un aggiornamento ottimistico e aggiorni correttamente la lista in caso di successo. & I \\
 \hline
-TF-48-U & [TrustedContactViewModel] Verificare che il metodo \texttt{deleteContact} esegua il rollback e aggiorni la lista in caso di fallimento del \term{Repository}. & I \\
+TF-48-U & [TrustedContactViewModel] Verificare che il metodo \texttt{deleteContact} esegua il rollback e aggiorni la lista in caso di fallimento del \ignoreglossary{Repository}. & I \\
 \hline
-TF-49-U & [TrustedContactViewModel] Verificare che il metodo \texttt{loadContacts} imposti correttamente lo stato di errore in caso di fallimento del \term{Repository}. & I \\
+TF-49-U & [TrustedContactViewModel] Verificare che il metodo \texttt{loadContacts} imposti correttamente lo stato di errore in caso di fallimento del \ignoreglossary{Repository}. & I \\
 \hline
 
 % --- Dead Man's Switch: DeadManViewModel ---
 
-TF-50-U & [DeadManViewModel] Verificare che, al caricamento, la bozza delle impostazioni venga popolata con una copia dei dati presenti nel \term{Repository}. & I \\
+TF-50-U & [DeadManViewModel] Verificare che, al caricamento, la bozza delle impostazioni venga popolata con una copia dei dati presenti nel \ignoreglossary{Repository}. & I \\
 \hline
 TF-51-U & [DeadManViewModel] Verificare che il metodo \texttt{toggleActiveStatus} aggiorni la bozza delle impostazioni e notifichi i listener della UI. & I \\
 \hline
@@ -2102,9 +2098,9 @@ TF-52-U & [DeadManViewModel] Verificare che il metodo \texttt{updateTimers} aggi
 \hline
 TF-53-U & [DeadManViewModel] Verificare che il metodo \texttt{updateMessage} aggiorni correttamente i testi del messaggio di allerta. & I \\
 \hline
-TF-54-U & [DeadManViewModel] Verificare che il metodo \texttt{discardChanges} ripristini la bozza con i valori attualmente salvati nel \term{Repository}. & I \\
+TF-54-U & [DeadManViewModel] Verificare che il metodo \texttt{discardChanges} ripristini la bozza con i valori attualmente salvati nel \ignoreglossary{Repository}. & I \\
 \hline
-TF-55-U & [DeadManViewModel] Verificare che il metodo \texttt{saveSettings} invochi il \term{Repository} e aggiorni la bozza con i nuovi dati salvati. & I \\
+TF-55-U & [DeadManViewModel] Verificare che il metodo \texttt{saveSettings} invochi il \ignoreglossary{Repository} e aggiorni la bozza con i nuovi dati salvati. & I \\
 \hline
 TF-56-U & [DeadManViewModel] Verificare che il metodo \texttt{saveSettings} non esegua alcuna operazione qualora la bozza delle impostazioni non sia ancora stata caricata. & I \\
 \hline
@@ -2129,7 +2125,7 @@ TF-64-U & [DiaryAccessViewModel] Verificare che il metodo \texttt{validateInput}
 \hline
 TF-65-U & [DiaryAccessViewModel] Verificare che \texttt{updateRealPassword} fallisca qualora la \term{Validazione} locale non superi i controlli. & I \\
 \hline
-TF-66-U & [DiaryAccessViewModel] Verificare che \texttt{updateRealPassword} aggiorni lo stato correttamente in caso di successo del \term{Repository}. & I \\
+TF-66-U & [DiaryAccessViewModel] Verificare che \texttt{updateRealPassword} aggiorni lo stato correttamente in caso di successo del \ignoreglossary{Repository}. & I \\
 \hline
 TF-67-U & [DiaryAccessViewModel] Verificare che \texttt{createInitialPassword} sollevi un errore e popoli \texttt{asyncError} qualora la \term{Validazione} locale fallisca. & I \\
 \hline
@@ -2142,11 +2138,11 @@ TF-69-U & [DiaryViewModel] Verificare che il metodo \texttt{addTextElement} aggi
 \hline
 TF-70-U & [DiaryViewModel] Verificare che il metodo \texttt{addMediaElement} aggiunga un elemento di tipo immagine quando il tipo specificato è \texttt{image}. & I \\
 \hline
-TF-71-U & [DiaryViewModel] Verificare che il metodo \texttt{loadNotes} invochi il metodo \texttt{getNotes} sul \term{Repository}. & I \\
+TF-71-U & [DiaryViewModel] Verificare che il metodo \texttt{loadNotes} invochi il metodo \texttt{getNotes} sul \ignoreglossary{Repository}. & I \\
 \hline
 TF-72-U & [DiaryViewModel] Verificare che il metodo \texttt{openNote} carichi la nota tramite proxy e la imposti come nota corrente. & I \\
 \hline
-TF-73-U & [DiaryViewModel] Verificare che il metodo \texttt{saveNote} invochi il metodo \texttt{saveNote} sul \term{Repository}. & I \\
+TF-73-U & [DiaryViewModel] Verificare che il metodo \texttt{saveNote} invochi il metodo \texttt{saveNote} sul \ignoreglossary{Repository}. & I \\
 \hline
 TF-74-U & [DiaryViewModel] Verificare che il metodo \texttt{deleteNote} gestisca il rollback e imposti \texttt{asyncError} in caso di fallimento. & I \\
 \hline
@@ -2223,9 +2219,9 @@ TF-100-U & [AppConfig] Verificare che le costanti hardcoded per gli URI di callb
 
 % --- Infrastruttura: CacheManager ---
 
-TF-101-U & [CacheManager] Verificare che il metodo \texttt{clearAllCaches} invochi \texttt{clearCache} su ciascun \term{Repository} registrato. & I \\
+TF-101-U & [CacheManager] Verificare che il metodo \texttt{clearAllCaches} invochi \texttt{clearCache} su ciascun \ignoreglossary{Repository} registrato. & I \\
 \hline
-TF-102-U & [CacheManager] Verificare che il metodo \texttt{clearAllCaches} non esegua alcuna operazione quando la lista dei \term{Repository} è vuota. & I \\
+TF-102-U & [CacheManager] Verificare che il metodo \texttt{clearAllCaches} non esegua alcuna operazione quando la lista dei \ignoreglossary{Repository} è vuota. & I \\
 \hline
 
 % --- Infrastruttura: Locator ---
@@ -2250,41 +2246,46 @@ TF-104-U & [Locator] Verificare che l'intero albero delle dipendenze per tutti i
 \endhead
 \hline
 \rowcolor{white}
-\caption[]{Tabella dei \term{Test di Unità} - \term{Backend}} \\
+\caption[]{Tabella dei \protect\term{Test di Unità} - \protect\term{Backend}} \\
 \endfoot
 \hline
-\caption{Tabella dei \term{Test di Unità} - \term{Backend}} \\
+\caption{Tabella dei \protect\term{Test di Unità} - \protect\term{Backend}} \\
 \endlastfoot
 
 % --- Materiale Informativo: ResourceModel ---
 
-TB-1-U & [ResourceModel] Verificare i valori dell'enumerazione per la tipologia \texttt{community}. & I \\
+% --- Materiale Informativo: ResourceType (Enum) ---
+
+TB-1-U & [ResourceType] Verificare la presenza del valore dell'enumerazione per la tipologia \texttt{COMMUNITY}. & I \\
 \hline
-TB-2-U & [ResourceModel] Verificare i valori dell'enumerazione per la tipologia \texttt{law}. & I \\
+TB-2-U & [ResourceType] Verificare la presenza del valore dell'enumerazione per la tipologia \texttt{LAW}. & I \\
 \hline
-TB-3-U & [ResourceModel] Verificare i valori dell'enumerazione per la tipologia \texttt{article}. & I \\
+TB-3-U & [ResourceType] Verificare la presenza del valore dell'enumerazione per la tipologia \texttt{ARTICLE}. & I \\
 \hline
-TB-4-U & [ResourceModel] Verificare che il modello venga costruito correttamente a partire da una stringa valida. & I \\
+
+% --- Materiale Informativo: Resource ---
+
+TB-4-U & [Resource] Verificare che il costruttore inizializzi correttamente tutti i campi della classe. & I \\
 \hline
-TB-5-U & [ResourceModel] Verificare il comportamento del costruttore in presenza di una stringa non valida. & I \\
+TB-5-U & [Resource] Verificare il comportamento del costruttore in presenza di parametri non validi (es. tipo risorsa errato). & I \\
 \hline
-TB-6-U & [ResourceModel] Verificare che il metodo \texttt{to\_dict} produca un dizionario contenente il campo \texttt{resource\_id}. & I \\
+TB-6-U & [Resource] Verificare che il metodo \texttt{to\_dict} produca un dizionario contenente il campo \texttt{resource\_id}. & I \\
 \hline
-TB-7-U & [ResourceModel] Verificare che il metodo \texttt{to\_dict} produca un dizionario contenente il campo \texttt{title}. & I \\
+TB-7-U & [Resource] Verificare che il metodo \texttt{to\_dict} produca un dizionario contenente il campo \texttt{title}. & I \\
 \hline
-TB-8-U & [ResourceModel] Verificare che il metodo \texttt{to\_dict} produca un dizionario contenente il campo \texttt{content}. & I \\
+TB-8-U & [Resource] Verificare che il metodo \texttt{to\_dict} produca un dizionario contenente il campo \texttt{content}. & I \\
 \hline
-TB-9-U & [ResourceModel] Verificare che il metodo \texttt{to\_dict} produca un dizionario contenente il campo \texttt{url}. & I \\
+TB-9-U & [Resource] Verificare che il metodo \texttt{to\_dict} produca un dizionario contenente il campo \texttt{url}. & I \\
 \hline
-TB-10-U & [ResourceModel] Verificare che il metodo \texttt{to\_dict} produca un dizionario contenente il campo \texttt{type} come stringa. & I \\
+TB-10-U & [Resource] Verificare che il metodo \texttt{to\_dict} converta correttamente il campo \texttt{type} nel suo valore stringa. & I \\
 \hline
-TB-11-U & [ResourceModel] Verificare la corretta serializzazione del modello con tipologia \texttt{law}. & I \\
+TB-11-U & [Resource] Verificare la corretta serializzazione di una risorsa con tipologia \texttt{LAW}. & I \\
 \hline
-TB-12-U & [ResourceModel] Verificare la corretta serializzazione del modello con tipologia \texttt{article}. & I \\
+TB-12-U & [Resource] Verificare la corretta serializzazione di una risorsa con tipologia \texttt{ARTICLE}. & I \\
 \hline
-TB-13-U & [ResourceModel] Verificare che il metodo \texttt{to\_dict} restituisca un oggetto di tipo dizionario. & I \\
+TB-13-U & [Resource] Verificare che il metodo \texttt{to\_dict} restituisca effettivamente un oggetto di tipo \texttt{dict}. & I \\
 \hline
-TB-14-U & [ResourceModel] Verificare che il dizionario prodotto da \texttt{to\_dict} contenga il numero atteso di campi. & I \\
+TB-14-U & [Resource] Verificare che il dizionario prodotto da \texttt{to\_dict} contenga esattamente 5 campi. & I \\
 \hline
 
 % --- Materiale Informativo: ResourcesService ---
@@ -2315,32 +2316,32 @@ TB-32-U & [ResourcesController] Verificare che il service venga invocato esattam
 
 % --- Luoghi Sicuri: MarkerModel ---
 
-TB-43-U & [MarkerModel] Verificare che il metodo \texttt{to\_dict} produca un dizionario contenente il campo \texttt{marker\_id}. & I \\
+TB-43-U & [Marker] Verificare che il metodo \texttt{to\_dict} produca un dizionario contenente il campo \texttt{marker\_id}. & I \\
 \hline
-TB-44-U & [MarkerModel] Verificare che il metodo \texttt{to\_dict} produca un dizionario contenente il campo \texttt{name}. & I \\
+TB-44-U & [Marker] Verificare che il metodo \texttt{to\_dict} produca un dizionario contenente il campo \texttt{name}. & I \\
 \hline
-TB-45-U & [MarkerModel] Verificare che il metodo \texttt{to\_dict} produca un dizionario contenente il campo \texttt{address}. & I \\
+TB-45-U & [Marker] Verificare che il metodo \texttt{to\_dict} produca un dizionario contenente il campo \texttt{address}. & I \\
 \hline
-TB-46-U & [MarkerModel] Verificare che il metodo \texttt{to\_dict} produca un dizionario contenente il campo \texttt{latitude}. & I \\
+TB-46-U & [Marker] Verificare che il metodo \texttt{to\_dict} produca un dizionario contenente il campo \texttt{latitude}. & I \\
 \hline
-TB-47-U & [MarkerModel] Verificare che il metodo \texttt{to\_dict} produca un dizionario contenente il campo \texttt{longitude}. & I \\
+TB-47-U & [Marker] Verificare che il metodo \texttt{to\_dict} produca un dizionario contenente il campo \texttt{longitude}. & I \\
 \hline
-TB-48-U & [MarkerModel] Verificare che il metodo \texttt{to\_dict} produca un dizionario contenente il campo \texttt{category}. & I \\
+TB-48-U & [Marker] Verificare che il metodo \texttt{to\_dict} produca un dizionario contenente il campo \texttt{category}. & I \\
 \hline
-TB-49-U & [MarkerModel] Verificare che il metodo \texttt{to\_dict} restituisca un oggetto di tipo dizionario. & I \\
+TB-49-U & [Marker] Verificare che il metodo \texttt{to\_dict} restituisca effettivamente un oggetto di tipo \texttt{dict}. & I \\
 \hline
-TB-50-U & [MarkerModel] Verificare che il dizionario prodotto da \texttt{to\_dict} contenga il numero atteso di campi. & I \\
+TB-50-U & [Marker] Verificare che il dizionario prodotto da \texttt{to\_dict} contenga esattamente il numero atteso di campi (6). & I \\
 \hline
-TB-51-U & [MarkerModel] Verificare che un valore di latitudine non valido sollevi un'eccezione. & I \\
+TB-51-U & [Marker] Verificare che il costruttore sollevi un'eccezione \texttt{ValueError} in caso di latitudine non valida. & I \\
 \hline
-TB-52-U & [MarkerModel] Verificare che un valore di longitudine non valido sollevi un'eccezione. & I \\
+TB-52-U & [Marker] Verificare che il costruttore sollevi un'eccezione \texttt{ValueError} in caso di longitudine non valida. & I \\
 \hline
 
 % --- Luoghi Sicuri: SafePlacesService ---
 
-TB-56-U & [SafePlacesService] Verificare che il metodo \texttt{get\_all\_markers} deleghi correttamente l'operazione al \term{Repository}. & I \\
+TB-56-U & [SafePlacesService] Verificare che il metodo \texttt{get\_all\_markers} deleghi correttamente l'operazione al \ignoreglossary{Repository}. & I \\
 \hline
-TB-57-U & [SafePlacesService] Verificare che il metodo \texttt{get\_all\_markers} propaghi correttamente l'eccezione sollevata dal \term{Repository}. & I \\
+TB-57-U & [SafePlacesService] Verificare che il metodo \texttt{get\_all\_markers} propaghi correttamente l'eccezione sollevata dal \ignoreglossary{Repository}. & I \\
 \hline
 
 % --- Luoghi Sicuri: SafePlacesController ---
@@ -2356,9 +2357,9 @@ TB-60-U & [SafePlacesController] Verificare che il metodo helper di risposta for
 
 TB-61-U & [LambdaHandlerSafePlaces] Verificare che il Lambda handler attivi correttamente tutti i componenti della catena applicativa. & I \\
 \hline
-TB-62-U & [LambdaHandlerSafePlaces] Verificare che il Lambda handler gestisca correttamente il \term{Payload} API Gateway v2. & I \\
+TB-62-U & [LambdaHandlerSafePlaces] Verificare che la funzione gestisca correttamente il formato dell'evento ricevuto da API Gateway v2. & I \\
 \hline
-TB-63-U & [LambdaHandlerSafePlaces] Verificare che il Lambda handler risponda correttamente alle richieste di preflight CORS (metodo OPTIONS). & I \\
+TB-63-U & [LambdaHandlerSafePlaces] Verificare che la funzione gestisca correttamente le risposte per il preflight CORS. & I \\
 \hline
 TB-64-U & [LambdaHandlerSafePlaces] Verificare che il Lambda handler rifiuti le richieste effettuate con metodi HTTP non supportati. & I \\
 \hline
@@ -2367,17 +2368,17 @@ TB-65-U & [LambdaHandlerSafePlaces] Verificare che il Lambda handler intercetti 
 
 % --- Autenticazione Diario: DiaryAuth ---
 
-TB-66-U & [DiaryAuth] Verificare che l'impostazione della password per il diario reale avvenga correttamente. & I \\
+TB-66-U & [DiaryAuthService] Verificare che il metodo \texttt{set\_real\_password} imposti correttamente la password per il diario reale tramite il Repository. & I \\
 \hline
-TB-67-U & [DiaryAuth] Verificare che l'impostazione della password per il diario fittizio avvenga correttamente. & I \\
+TB-67-U & [DiaryAuthService] Verificare che il metodo \texttt{set\_fake\_password} imposti correttamente la password per il diario fittizio tramite il Repository. & I \\
 \hline
-TB-68-U & [DiaryAuth] Verificare che il sistema impedisca l'utilizzo della stessa password per il diario reale e quello fittizio. & I \\
+TB-68-U & [DiaryAuthService] Verificare che il sistema impedisca l'utilizzo della stessa password per il diario reale e quello fittizio. & I \\
 \hline
-TB-69-U & [DiaryAuth] Verificare che il login con la password del diario reale venga completato con successo. & I \\
+TB-69-U & [DiaryAuthService] Verificare che il metodo \texttt{login} con la password del diario reale restituisca l'esito positivo. & I \\
 \hline
-TB-70-U & [DiaryAuth] Verificare che il login venga rifiutato in presenza di una password non valida. & I \\
+TB-70-U & [DiaryAuthService] Verificare che il metodo \texttt{login} restituisca \texttt{None} (fallimento) in presenza di una password errata. & I \\
 \hline
-TB-71-U & [DiaryAuth] Verificare che il recupero dello stato di autenticazione del diario funzioni correttamente. & I \\
+TB-71-U & [DiaryAuthService] Verificare che il metodo \texttt{check\_password\_status} recuperi correttamente lo stato di attivazione del diario. & I \\
 \hline
 
 % --- Chatbot: ChatbotCRUDService ---
@@ -2414,51 +2415,51 @@ TB-84-U & [ChatbotLLMService] Verificare il recupero dei messaggi rilevanti per 
 
 % --- Contatti Fidati / DMS: Controller ---
 
-TB-126-U & [Controller] Verificare la creazione delle impostazioni DMS. & I \\
+TB-126-U & [DMSController] Verificare la creazione delle impostazioni DMS. & I \\
 \hline
-TB-127-U & [Controller] Verificare il recupero delle impostazioni DMS. & I \\
+TB-127-U & [DMSController] Verificare il recupero delle impostazioni DMS. & I \\
 \hline
-TB-128-U & [Controller] Verificare l'aggiornamento delle impostazioni DMS. & I \\
+TB-128-U & [DMSController] Verificare l'aggiornamento delle impostazioni DMS. & I \\
 \hline
-TB-129-U & [Controller] Verificare che nome e indirizzo email rimangano invariati durante l'aggiornamento delle impostazioni DMS. & I \\
+TB-129-U & [DMSController] Verificare che nome e indirizzo email rimangano invariati durante l'aggiornamento delle impostazioni DMS. & I \\
 \hline
-TB-130-U & [Controller] Verificare il corretto funzionamento dell'heartbeat. & I \\
+TB-130-U & [DMSController] Verificare il corretto funzionamento dell'heartbeat. & I \\
 \hline
-TB-131-U & [Controller] Verificare che l'heartbeat azzeri correttamente il contatore. & I \\
+TB-131-U & [DMSController] Verificare che l'heartbeat azzeri correttamente il contatore. & I \\
 \hline
-TB-132-U & [Controller] Verificare la creazione di un nuovo contatto fidato. & I \\
+TB-132-U & [DMSController] Verificare la creazione di un nuovo contatto fidato. & I \\
 \hline
-TB-133-U & [Controller] Verificare il recupero di un contatto fidato per identificativo. & I \\
+TB-133-U & [DMSController] Verificare il recupero di un contatto fidato per identificativo. & I \\
 \hline
-TB-134-U & [Controller] Verificare il comportamento in caso di contatto fidato non trovato. & I \\
+TB-134-U & [DMSController] Verificare il comportamento in caso di contatto fidato non trovato. & I \\
 \hline
-TB-135-U & [Controller] Verificare il recupero della lista completa dei contatti fidati. & I \\
+TB-135-U & [DMSController] Verificare il recupero della lista completa dei contatti fidati. & I \\
 \hline
-TB-136-U & [Controller] Verificare l'aggiornamento di un contatto fidato esistente. & I \\
+TB-136-U & [DMSController] Verificare l'aggiornamento di un contatto fidato esistente. & I \\
 \hline
-TB-137-U & [Controller] Verificare l'eliminazione di un contatto fidato. & I \\
+TB-137-U & [DMSController] Verificare l'eliminazione di un contatto fidato. & I \\
 \hline
-TB-138-U & [Controller] Verificare il comportamento in caso di eliminazione di un contatto inesistente. & I \\
+TB-138-U & [DMSController] Verificare il comportamento in caso di eliminazione di un contatto inesistente. & I \\
 \hline
-TB-139-U & [Controller] Verificare l'invio dell'allerta SOS con informazioni sulla posizione. & I \\
+TB-139-U & [DMSController] Verificare l'invio dell'allerta SOS con informazioni sulla posizione. & I \\
 \hline
-TB-140-U & [Controller] Verificare l'invio dell'allerta SOS senza informazioni sulla posizione. & I \\
+TB-140-U & [DMSController] Verificare l'invio dell'allerta SOS senza informazioni sulla posizione. & I \\
 \hline
-TB-141-U & [Controller] Verificare il comportamento in assenza di contatti fidati durante l'invio dell'allerta SOS. & I \\
+TB-141-U & [DMSController] Verificare il comportamento in assenza di contatti fidati durante l'invio dell'allerta SOS. & I \\
 \hline
-TB-142-U & [Controller] Verificare che l'evento schedulato decrementi correttamente il contatore per il primo \term{Utente}. & I \\
+TB-142-U & [DMSController] Verificare che l'evento schedulato decrementi correttamente il contatore per il primo \term{Utente}. & I \\
 \hline
-TB-143-U & [Controller] Verificare che l'evento schedulato decrementi correttamente il contatore per il terzo \term{Utente}. & I \\
+TB-143-U & [DMSController] Verificare che l'evento schedulato decrementi correttamente il contatore per il terzo \term{Utente}. & I \\
 \hline
-TB-144-U & [Controller] Verificare che l'evento schedulato decrementi correttamente il contatore per il quarto \term{Utente}. & I \\
+TB-144-U & [DMSController] Verificare che l'evento schedulato decrementi correttamente il contatore per il quarto \term{Utente}. & I \\
 \hline
-TB-145-U & [Controller] Verificare che l'evento schedulato invii l'email di allerta all'\term{Utente}. & I \\
+TB-145-U & [DMSController] Verificare che l'evento schedulato invii l'email di allerta all'\term{Utente}. & I \\
 \hline
-TB-146-U & [Controller] Verificare che le richieste non autorizzate vengano rifiutate correttamente. & I \\
+TB-146-U & [DMSController] Verificare che le richieste non autorizzate vengano rifiutate correttamente. & I \\
 \hline
-TB-147-U & [Controller] Verificare che una route non esistente produca una risposta di errore. & I \\
+TB-147-U & [DMSController] Verificare che una route non esistente produca una risposta di errore. & I \\
 \hline
-TB-148-U & [Controller] Verificare la gestione dell'evento schedulato. & I \\
+TB-148-U & [DMSController] Verificare la gestione dell'evento schedulato. & I \\
 \hline
 
 % --- Contatti Fidati / DMS: LambdaHandler ---
@@ -2490,7 +2491,7 @@ TB-179-U & [NoteController] Verificare che un \term{Utente} non possa accedere a
 \subsection{Test di Integrazione}
 I \term{Test di Integrazione} servono a verificare che le componenti del sistema si integrino correttamente e in maniera efficace. L'obiettivo dei test è identificare eventuali problemi di interoperabilità e integrazione fra le componenti del software.
 
-\subsection{Test di Integrazione - Frontend}\label{sec:test_integrazione_frontend}
+\subsubsection{Test di Integrazione - Frontend}\label{sec:test_integrazione_frontend}
 \rowcolors{2}{gray!10}{white}
 \begin{longtable}{|c|p{10cm}|c|}
     \hline
@@ -2514,23 +2515,23 @@ I \term{Test di Integrazione} servono a verificare che le componenti del sistema
     % --- Integrazione Frontend: Luoghi Sicuri ---
     TF-1-I & \term{Verifica} dell'integrazione end-to-end: navigazione verso la schermata "Luoghi Sicuri" a partire dalla dashboard principale. & I \\
     \hline
-    TF-2-I & \term{Verifica} dell'integrazione end-to-end: corretto caricamento e rendering della mappa interattiva (\texttt{SafePlaceMapWidget}). & I \\
+    TF-2-I & \term{Verifica} dell'integrazione end-to-end: corretto caricamento e rendering della mappa interattiva. & I \\
     \hline
     TF-3-I & \term{Verifica} dell'integrazione end-to-end: apertura e visualizzazione della legenda informativa della mappa. & I \\
     \hline
-    TF-4-I & \term{Verifica} dell'integrazione end-to-end: interazione con il pulsante di geolocalizzazione e comunicazione con il \texttt{LocationService}. & I \\
+    TF-4-I & \term{Verifica} dell'integrazione end-to-end: interazione con il pulsante di geolocalizzazione. & I \\
     \hline
-    TF-5-I & \term{Verifica} dell'integrazione end-to-end: rendering dei marker sulla mappa recuperati tramite il SafePlaceService. & I \\
+    TF-5-I & \term{Verifica} dell'integrazione end-to-end: rendering dei marker sulla mappa. & I \\
     \hline
 
     % --- Integrazione Frontend: Materiale Informativo ---
     TF-6-I & \term{Verifica} dell'integrazione end-to-end: navigazione verso la schermata "Materiale Informativo" a partire dalla dashboard principale. & I \\
     \hline
-    TF-7-I & \term{Verifica} dell'integrazione end-to-end: rendering della lista dei materiali informativi ottenuta tramite il MaterialService. & I \\
+    TF-7-I & \term{Verifica} dell'integrazione end-to-end: rendering della lista dei materiali informativi. & I \\
     \hline
-    TF-8-I & \term{Verifica} dell'integrazione end-to-end: funzionamento dei filtri per categoria (chip) e conseguente aggiornamento reattivo della vista. & I \\
+    TF-8-I & \term{Verifica} dell'integrazione end-to-end: funzionamento dei filtri per categoria e conseguente aggiornamento reattivo della vista. & I \\
     \hline
-    TF-9-I & \term{Verifica} dell'integrazione end-to-end: ripristino della lista completa deselezionando i filtri (selezione del chip "Tutti"). & I \\
+    TF-9-I & \term{Verifica} dell'integrazione end-to-end: ripristino della lista completa deselezionando i filtri. & I \\
     \hline
     TF-10-I & [Chatbot] Verificare la navigazione alla schermata dell'assistente AI. & I \\
     \hline
@@ -2545,14 +2546,14 @@ I \term{Test di Integrazione} servono a verificare che le componenti del sistema
         % --- Integrazione Frontend: Diario ---
     TF-15-I & \term{Verifica} dell'integrazione end-to-end: navigazione verso la schermata "Diario" a partire dalla dashboard. & I \\
     \hline
-    TF-16-I & \term{Verifica} dell'integrazione end-to-end: inserimento della password e sblocco tramite \texttt{DiaryAccountService}. & I \\
+    TF-16-I & \term{Verifica} dell'integrazione end-to-end: inserimento della password e sblocco del diario. & I \\
     \hline
-    TF-17-I & \term{Verifica} dell'integrazione end-to-end: caricamento e visualizzazione della lista delle note tramite \texttt{NoteService}. & I \\
+    TF-17-I & \term{Verifica} dell'integrazione end-to-end: caricamento e visualizzazione della lista delle note. & I \\
     \hline
         % --- Integrazione Frontend: Contatti Fidati ---
     TF-18-I & \term{Verifica} dell'integrazione end-to-end: navigazione verso la schermata "Contatti Fidati" a partire dalla dashboard. & I \\
     \hline
-    TF-19-I & \term{Verifica} dell'integrazione end-to-end: caricamento e visualizzazione della lista dei contatti tramite \texttt{TrustedContactService}. & I \\
+    TF-19-I & \term{Verifica} dell'integrazione end-to-end: caricamento e visualizzazione della lista dei contatti. & I \\
     \hline
     TF-20-I & \term{Verifica} dell'integrazione end-to-end: compilazione del form e aggiunta di un nuovo contatto fidato. & I \\
     \hline
@@ -2579,42 +2580,42 @@ I \term{Test di Integrazione} servono a verificare che le componenti del sistema
     \endfoot
 
     \hline
-    \caption{Tracciamento dei \term{Test di Integrazione} \term{Backend} per materiali informativi e luoghi sicuri}
+    \caption{Tracciamento dei \protect\term{Test di Integrazione} \protect\term{Backend} per materiali informativi e luoghi sicuri}
     \endlastfoot
 
-    TB-1-I & \term{Verifica} dell'integrazione tra il componente \textt{S3ResourcesRepository} e il servizio Amazon S3 per il recupero e la mappatura dei materiali informativi. & I \\
+    TB-1-I & \term{Verifica} dell'integrazione tra il componente \texttt{S3ResourcesRepository} e il servizio Amazon S3 per il recupero e la mappatura dei materiali informativi. & I \\
     \hline
-    TB-2-I & \term{Verifica} dell'integrazione tra l'entry point Lambda dei materiali informativi e la catena di componenti interni (Controller, Service, \term{Repository}). & I \\
+    TB-2-I & \term{Verifica} dell'integrazione tra l'entry point Lambda dei materiali informativi e la catena di componenti interni (Controller, Service, \ignoreglossary{Repository}). & I \\
     \hline
-    TB-3-I & \term{Verifica} dell'integrazione tra il componente \textt{S3SafePlacesRepository} e il servizio Amazon S3 per il recupero dei marker relativi ai luoghi sicuri. & I \\
+    TB-3-I & \term{Verifica} dell'integrazione tra il componente \texttt{S3SafePlacesRepository} e il servizio Amazon S3 per il recupero dei marker relativi ai luoghi sicuri. & I \\
     \hline
-    TB-4-I & \term{Verifica} dell'integrazione tra l'entry point Lambda dei luoghi sicuri e la catena di componenti interni (Controller, Service, \term{Repository}). & I \\
+    TB-4-I & \term{Verifica} dell'integrazione tra l'entry point Lambda dei luoghi sicuri e la catena di componenti interni (Controller, Service, \ignoreglossary{Repository}). & I \\
     \hline
-    TB-5-I & \term{Verifica} dell'integrazione tra il componente \textt{DmsRepository} e il servizio Amazon DynamoDB per la persistenza e gestione delle configurazioni Dead Man's Switch. & I \\
+    TB-5-I & \term{Verifica} dell'integrazione tra il componente \texttt{DmsRepository} e il servizio Amazon DynamoDB per la persistenza e gestione delle configurazioni Dead Man's Switch. & I \\
     \hline
-    TB-6-I & \term{Verifica} dell'integrazione tra il componente \textt{TrustedContactRepository} e il servizio Amazon DynamoDB per la gestione dei contatti di emergenza. & I \\
+    TB-6-I & \term{Verifica} dell'integrazione tra il componente \texttt{TrustedContactRepository} e il servizio Amazon DynamoDB per la gestione dei contatti di emergenza. & I \\
     \hline
-    TB-7-I & \term{Verifica} dell'integrazione tra il componente \textt{NotificationRepository} e il servizio Amazon SES per l'invio delle email di notifica e di allerta. & I \\
+    TB-7-I & \term{Verifica} dell'integrazione tra il componente \texttt{NotificationRepository} e il servizio Amazon SES per l'invio delle email di notifica e di allerta. & I \\
     \hline
     TB-8-I & \term{Verifica} dell'integrazione dell'entry point Lambda dei contatti fidati con l'intera catena di componenti interni (Controller, Services, Repositories). & I \\
     \hline
     TB-9-I & \term{Verifica} dell'integrazione tra il servizio ChatbotCRUDService e il servizio Amazon DynamoDB per la persistenza delle conversazioni e della cronologia dei messaggi. & I \\
     \hline
-    TB-10-I & \term{Verifica} dell'integrazione dell'entry point Lambda del chatbot con l'intera catena di componenti interni (Controller, Service, \term{Repository}) e il mock del servizio LLM. & I \\
+    TB-10-I & \term{Verifica} dell'integrazione dell'entry point Lambda del chatbot con l'intera catena di componenti interni (Controller, Service, \ignoreglossary{Repository}) e il mock del servizio LLM. & I \\
     \hline
-    TB-11-I & \term{Verifica} dell'integrazione dell'intero flusso Lambda per l'attivazione manuale dell'allarme SOS e il corretto innesco del \textt{NotificationRepository} verso Amazon SES. & I \\
+    TB-11-I & \term{Verifica} dell'integrazione dell'intero flusso Lambda per l'attivazione manuale dell'allarme SOS e il corretto innesco del \texttt{NotificationRepository} verso Amazon SES. & I \\
     \hline
     TB-12-I & \term{Verifica} dell'integrazione del flusso scatenato dal cron job (EventBridge) per il ricalcolo automatico dei timer del Dead Man's Switch e il conseguente invio di allerte. & I \\
     \hline
     TB-13-I & \term{Verifica} dell'integrazione del flusso API per l'operazione di heartbeat, assicurando il corretto azzeramento dei contatori del Dead Man's Switch su DynamoDB. & I \\
     \hline
-    TB-14-I & \term{Verifica} dell'integrazione tra il componente \textt{DynamoAuthAdapter} e il servizio Amazon DynamoDB per la persistenza delle credenziali di accesso (reali e fake) al diario. & I \\
+    TB-14-I & \term{Verifica} dell'integrazione tra il componente \texttt{DynamoAuthAdapter} e il servizio Amazon DynamoDB per la persistenza delle credenziali di accesso (reali e fake) al diario. & I \\
     \hline
-    TB-15-I & \term{Verifica} dell'integrazione tra l'entry point Lambda dell'autenticazione diario e l'intera catena di componenti interni (Controller, Service, \term{Repository}). & I \\
+    TB-15-I & \term{Verifica} dell'integrazione tra l'entry point Lambda dell'autenticazione diario e l'intera catena di componenti interni (Controller, Service, \ignoreglossary{Repository}). & I \\
     \hline
-    TB-16-I & \term{Verifica} dell'integrazione tra il componente \textt{DynamoNoteAdapter} e il servizio Amazon DynamoDB per la persistenza delle note e dei relativi elementi multimediali. & I \\
+    TB-16-I & \term{Verifica} dell'integrazione tra il componente \texttt{DynamoNoteAdapter} e il servizio Amazon DynamoDB per la persistenza delle note e dei relativi elementi multimediali. & I \\
     \hline
-    TB-17-I & \term{Verifica} dell'integrazione tra il componente \textt{S3NoteAdapter} e il servizio Amazon S3 per la gestione del caricamento e dell'eliminazione degli allegati alle note. & I \\
+    TB-17-I & \term{Verifica} dell'integrazione tra il componente \texttt{S3NoteAdapter} e il servizio Amazon S3 per la gestione del caricamento e dell'eliminazione degli allegati alle note. & I \\
     \hline
     TB-18-I & \term{Verifica} dell'integrazione dell'entry point Lambda della gestione note con l'intera catena di componenti interni (Controller, Service, Repositories) per le operazioni CRUD. & I \\
     \hline 
