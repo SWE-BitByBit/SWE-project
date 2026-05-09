@@ -2171,20 +2171,19 @@ La classe \code{EmergencyContactDTO} gestisce la logica di mappatura dei dati. I
     \label{fig:architettura_autenticazione}
 \end{figure}
 
-\paragraph{\term{Architettura} e Flusso di Autenticazione: Modulo Federated Login}\mbox{}\\
+\subsubsubsection{\ignoreglossary{Architettura} e Flusso di Autenticazione: Modulo Federated Login}\mbox{}\\
 La presente sezione descrive l'\term{Architettura} logica e il flusso dei dati relativi al modulo di autenticazione e autorizzazione dell'applicazione. Il sistema adotta un modello di federated login basato su Amazon Cognito integrato con Google come Identity Provider (IdP), progettato per garantire un accesso sicuro e standardizzato alle risorse di \term{Backend} senza demandare la gestione crittografica delle credenziali all'applicazione client.
 
-\paragraph{Iniziazione del Flusso e Autenticazione Federata}\mbox{}\\
+\subsubsubsubsection{Iniziazione del Flusso e Autenticazione Federata}
 Il \ignoreglossary{processo} di autenticazione ha inizio quando l'\term{Utente} interagisce con l'applicazione client (Flutter) richiedendo l'accesso al sistema. L'applicazione delega interamente la gestione dell'identità inoltrando una richiesta di login ad Amazon Cognito. Cognito, fungendo da Service Provider, intercetta la richiesta e avvia una procedura di autenticazione basata sullo standard OpenID Connect (OIDC) delegandola ai server di Google. L'\term{Utente} completa la fase di riconoscimento interfacciandosi direttamente con l'infrastruttura del provider esterno. A seguito della corretta \ignoreglossary{verifica} delle credenziali, Google restituisce ad Amazon Cognito un codice di autorizzazione attestante il successo dell'operazione e l'identità dell'\term{Utente}.
 
-\paragraph{Emissione dei Token di Sessione}\mbox{}\\
+\subsubsubsubsection{Emissione dei Token di Sessione}
 Acquisita la conferma dal provider federato, Amazon Cognito processa il codice di autorizzazione e genera un set di token crittografici aderenti allo standard JWT (JSON Web Token). Questi token vengono trasmessi in modo sicuro all'applicazione mobile, concludendo la fase di autenticazione. Da questo momento, il client dispone di una prova di identità verificata e utilizzerà l'Access Token JWT per autorizzare le successive chiamate di rete dirette ai servizi di \term{Backend}.
 
-\paragraph{\ignoreglossary{validazione} Perimetrale e Instradamento Sicuro}\mbox{}\\
+\subsubsubsubsection{\ignoreglossary{Validazione} Perimetrale e Instradamento Sicuro}\mbox{}\\
 Per accedere alle logiche applicative, l'app Flutter compone una richiesta HTTPS indirizzata all'Amazon API Gateway, includendo il token JWT nelle intestazioni di autorizzazione. L'API Gateway assume il ruolo di strato di sicurezza perimetrale (edge security). Prima di instradare il traffico, il Gateway utilizza un Cognito Authorizer nativo per eseguire un rigoroso controllo di validità sul token ricevuto. Tale procedura \ignoreglossary{verifica} l'autenticità della firma crittografica, l'integrità del \term{Payload} e la validità temporale della sessione direttamente contro le configurazioni dello User Pool di Cognito.
 
 Questa specifica impostazione architetturale assicura che qualsiasi richiesta malevola, non autorizzata o provvista di credenziali scadute venga respinta al livello di rete. Solamente le richieste che superano con successo la \ignoreglossary{validazione} del token vengono instradate dall'API Gateway verso la specifica funzione AWS Lambda designata, garantendo che le risorse computazionali elaborino esclusivamente traffico certificato e sicuro.
-
 
 \subsubsection{Luoghi sicuri} \label{subsubsec:architettura_luoghi_sicuri}
 \begin{figure}[H]
@@ -2194,7 +2193,7 @@ Questa specifica impostazione architetturale assicura che qualsiasi richiesta ma
     \label{fig:architettura_luoghi_sicuri}
 \end{figure}
 
-\paragraph{\term{Architettura} e Flusso di Elaborazione: Modulo Luoghi Sicuri}\mbox{}\\
+\subsubsubsection{\ignoreglossary{Architettura} e Flusso di Elaborazione: Modulo Luoghi Sicuri}\mbox{}\\
 Il modulo "Luoghi Sicuri" è stato ingegnerizzato adottando una rigorosa separazione delle responsabilità (\textit{\term{Separation of Concerns}}) tra l'elaborazione lato client (Frontend) e l'infrastruttura \term{Cloud} (\term{Backend}). L'obiettivo primario è stato quello di minimizzare il carico computazionale server-side ed eliminare del tutto i costi legati ai calcoli geospaziali.
 
 Il flusso di elaborazione si articola nei seguenti passaggi:
@@ -2206,7 +2205,7 @@ Il flusso di elaborazione si articola nei seguenti passaggi:
     \item \textbf{Risposta al client}: API Gateway inoltra la risposta HTTP \texttt{200 OK} al client Flutter contenente l'elenco dei luoghi sicuri.
 \end{itemize}
 
-\paragraph{Delega della Logica Geospaziale al Livello Client (Edge Computing)}\mbox{}\\
+\subsubsubsubsection{Delega della Logica Geospaziale al Livello Client (Edge Computing)}\mbox{}\\
 Al fine di ottimizzare ulteriormente i costi, l'intera logica di rendering visivo e di routing è delegata all'applicazione sul dispositivo dell'\term{Utente}. Il \term{Backend} AWS si configura esclusivamente come Data Provider di coordinate statiche. Alla ricezione del \term{Payload} JSON, l'applicativo Flutter si fa carico di istanziare la mappa nativa e posizionare i marker grafici (pin). L'azione di navigazione guidata (es. pulsante "Portami lì") sfrutta le Intents (su Android) o le URL Schemes (su iOS) del sistema operativo per invocare applicazioni di navigazione di terze parti (come Google Maps o Apple Maps). Questo approccio demanda il tracciamento GPS e il calcolo dinamico dell'itinerario al dispositivo locale, garantendo la scalabilità infinita del sistema AWS anche in condizioni di massiccio utilizzo concorrente.
 
 \subsubsubsection{API associate}
@@ -2272,7 +2271,7 @@ Al fine di ottimizzare ulteriormente i costi, l'intera logica di rendering visiv
     \label{fig:architettura_logica_luoghi_sicuri}
 \end{figure}
 
-\paragraph{Marker}\mbox{}\\
+\subsubsubsubsection{Marker}\mbox{}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/luoghi_sicuri/DCB-Marker.pdf}
@@ -2289,7 +2288,7 @@ Descrizione attributi:
     \item \code{category} indica la categoria del marker;
 \end{itemize} 
 
-\paragraph{SafePlacesController}\mbox{}\\
+\subsubsubsubsection{SafePlacesController}\mbox{}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/luoghi_sicuri/DCB-SafePlacesController.pdf}
@@ -2305,7 +2304,7 @@ Descrizione metodi:
     \item \code{response(status, body)} costruisce il dizionario di risposta nel formato atteso da API Gateway.
 \end{itemize}
 
-\paragraph{GetMarkerPort}\mbox{}\\
+\subsubsubsubsection{GetMarkerPort}\mbox{}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/luoghi_sicuri/DCB-GetMarkerPort.pdf}
@@ -2315,7 +2314,7 @@ Descrizione metodi:
 È la port primaria del pattern esagonale.\\
 Il metodo \code{get\_all\_markers()} restituisce la lista completa dei marker disponibili senza esporre dettagli implementativi su come vengono recuperati.
 
-\paragraph{SafePlacesService}\mbox{}\\
+\subsubsubsubsection{SafePlacesService}\mbox{}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/luoghi_sicuri/DCB-SafePlacesService.pdf}
@@ -2325,7 +2324,7 @@ Il metodo \code{get\_all\_markers()} restituisce la lista completa dei marker di
 Corrisponde alla domain logic del microservizio. Contiene la logica per 
 il recupero dei luoghi sicuri e orchestra la comunicazione con il layer di persistenza tramite la outbound port \code{SafePlacesRepositoryPort}.
 
-\paragraph{SafePlacesRepositoryPort}\mbox{}\\
+\subsubsubsubsection{SafePlacesRepositoryPort}\mbox{}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/luoghi_sicuri/DCB-SafePlacesRepositoryPort.pdf}
@@ -2335,7 +2334,7 @@ il recupero dei luoghi sicuri e orchestra la comunicazione con il layer di persi
 Corrisponde alla outbound port del pattern esagonale. Definisce il metodo per il fetch della 
 lista di tutti i marker disponibili, senza esporre dettagli implementativi di S3 o qualsiasi altro servizio sottostante.
 
-\paragraph{S3SafePlacesRepository}\mbox{}\\
+\subsubsubsubsection{S3SafePlacesRepository}\mbox{}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/luoghi_sicuri/S3SafePlacesRepository.pdf}
@@ -2344,7 +2343,7 @@ lista di tutti i marker disponibili, senza esporre dettagli implementativi di S3
 \end{figure}
 Corrisponde all'aoutbound che implementa \code{SafePlacesRepositoryPort}. Contiene la logica per il fetch dei marker dall'istanza del bucket S3. Il costruttore \code{\_\_init\_\_()} inizializza il client S3.
 
-\subsubsection{Materiale informativo} \label{subsubsec:architettura_materiale_informativo}
+\subsubsubsubsection{Materiale informativo} \label{subsubsec:architettura_materiale_informativo}
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{diagrammi_architettura/materiale_informativo/materiale_informativo.pdf}
@@ -2352,7 +2351,7 @@ Corrisponde all'aoutbound che implementa \code{SafePlacesRepositoryPort}. Contie
     \label{fig:architettura_materiale_informativo}
 \end{figure}
 
-\paragraph{\term{Architettura} e Flusso di Elaborazione: Modulo Materiale Informativo}\mbox{}\\
+\subsubsubsection{\ignoreglossary{Architettura} e Flusso di Elaborazione: Modulo Materiale Informativo}\mbox{}\\
 La sezione dedicata al "Materiale Informativo" è stata progettata privilegiando la massima efficienza e l'ottimizzazione dei costi operativi. Trattandosi di un modulo a prevalenza di lettura (Read-Heavy) e privo di logiche di business complesse per la manipolazione dei dati, l'\term{Architettura} prevede una funzione Lambda molto leggera, che si interfaccia con S3 esclusivamente per il fetch dei dati.
 
 Il ciclo di elaborazione si innesca quando l'applicazione client necessita di recuperare il catalogo delle informazioni, generando una richiesta HTTPS (metodo \texttt{GET}) verso l'endpoint dedicato. L'API Gateway intercetta la chiamata e la inoltra alla funzione AWS Lambda responsabile del modulo.
@@ -2425,7 +2424,7 @@ Il risultato elaborato viene restituito all'API Gateway, che lo inoltra al clien
     \label{fig:architettura_logica_materiale_info}
 \end{figure}
 
-\paragraph{Resource}\mbox{}\\
+\subsubsubsubsection{Resource}\mbox{}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/materiale_informativo/DCB-Resource.pdf}
@@ -2443,7 +2442,7 @@ Descrizione attributi:
 \end{itemize}
 L'enumerazione \code{ResourceType} definisce le tre categorie disponibili: \code{COMMUNITY}, \code{LAW} e \code{ARTICLE}.
 
-\paragraph{ResourcesController}\mbox{}\\
+\subsubsubsubsection{ResourcesController}\mbox{}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/materiale_informativo/DCB-ResourcesController.pdf}
@@ -2458,7 +2457,7 @@ Descrizione metodi:
     \item \code{response(status, body)}, metodo di utilità che costruisce il dizionario di risposta nel formato atteso da API Gateway.
 \end{itemize}
 
-\paragraph{GetResourcesPort}\mbox{}\\
+\subsubsubsubsection{GetResourcesPort}\mbox{}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/materiale_informativo/DCB-GetResourcesPort.pdf}
@@ -2467,7 +2466,7 @@ Descrizione metodi:
 \end{figure}
 È la inbound port del pattern esagonale. Descrive l'interfaccia per il fetch della lista completa delle risorse informative disponibili.\\
 
-\paragraph{ResourcesService}\mbox{}\\
+\subsubsubsubsection{ResourcesService}\mbox{}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/materiale_informativo/DCB-ResourcesService.pdf}
@@ -2476,7 +2475,7 @@ Descrizione metodi:
 \end{figure}
 Costituisce la domain logic del microservizio, implementa la inbound port \code{GetResourcesPort}. Contiene la logica per il recupero del materiale informativo e orchestra la comunicazione con il persistence layer tramite la oubound port \code{ResourcesRepositoryPort}.
 
-\paragraph{ResourcesRepositoryPort}\mbox{}\\
+\subsubsubsubsection{ResourcesRepositoryPort}\mbox{}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/materiale_informativo/DCB-ResourcesRepositoryPort.pdf}
@@ -2486,7 +2485,7 @@ Costituisce la domain logic del microservizio, implementa la inbound port \code{
 Corrisponde all'outbound port del pattern esagonale. Definisce l'interfaccia per la restituzione della 
 lista completa delle risorse disponibili, senza esporre dettagli implementativi relativi al servizio S3.
 
-\paragraph{S3ResourcesRepository}\mbox{}\\
+\subsubsubsubsection{S3ResourcesRepository}\mbox{}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/materiale_informativo/DCB-S3ResourcesRepository.pdf}
@@ -2504,7 +2503,7 @@ Corrisponde all'outbound adapter, implementa \code{ResourcesRepositoryPort}. Con
     \label{fig:architettura_diari}
 \end{figure}
 
-\paragraph{\term{Architettura} e Flusso di Elaborazione: diario criptato e fittizio}\mbox{}\\
+\subsubsubsection{\ignoreglossary{Architettura} e Flusso di Elaborazione: diario criptato e fittizio}\mbox{}\\
 La sezione dedicata al diario criptato e fittizio è progettata per garantire la sicurezza delle informazioni dell'\term{Utente} e la corretta gestione e archiviazione di diverse tipologie di dati, quali contenuti testuali, immagini e tracce audio. A differenza delle altre funzionalità, il diario è l'unica componente protetta da una password aggiuntiva, distinta da quella utilizzata per l'account principale.
 
 Questo approccio consente all'applicazione di fornire accesso a risorse differenti in base alla password inserita, dato che i due diari sono protetti da credenziali separate. Poiché Amazon Cognito non supporta direttamente flussi di autenticazione di questo tipo, la gestione dell'accesso al diario avviene tramite la memorizzazione in DynamoDB degli hash delle due password. Quando l'\term{Utente} tenta l'accesso, viene generato l'hash della password inserita tramite HMAC-SHA256. Questo hash viene quindi confrontato con quello salvato nella tabella utenti. In caso di corrispondenza, l'accesso al diario viene garantito generando un token di accesso casuale, anch'esso salvato in DynamoDB. Tale token, comunicato al client in seguito al login, viene riportato nell'header di tutte le richieste a dati sensibili presenti nel diario.
@@ -2895,8 +2894,6 @@ Le API relative al diario criptato e fittizio sono suddivise in due categorie di
 
 \end{itemize}
 
-\clearpage
-
 \begin{landscape}
 
     \subsubsubsection{\ignoreglossary{Architettura} logica: microservizio diario}
@@ -2912,10 +2909,7 @@ Le API relative al diario criptato e fittizio sono suddivise in due categorie di
 
 \end{landscape}
 
-\clearpage
-
-\paragraph{DiaryType}\mbox{}\\
-L'enumerazione \code{DiaryType} definisce i due tipi di diario supportati dal sistema: \code{REAL\_DIARY} per il diario reale contenente i dati autentici dell'\term{Utente} e \code{FAKE\_DIARY} per il diario fittizio.
+\subsubsubsubsection{DiaryType}\mbox{}\\
 
 \begin{figure}[H]
     \centering
@@ -2924,335 +2918,304 @@ L'enumerazione \code{DiaryType} definisce i due tipi di diario supportati dal si
     \label{DCB-DiaryType-Backend}
 \end{figure}
 
-\paragraph{Note}\mbox{}\\
-La classe \code{Note} rappresenta l'entità di dominio principale del sistema, modellando una nota completa del diario. Include gli identificativi univoci (\code{note\_id}, \code{user\_id}), i metadati temporali (\code{created\_at}, \code{last\_modified\_at}), il titolo della nota e il tipo di diario di appartenenza (\code{diary\_type}). La nota è composta da una collezione di elementi di tipo \code{NoteElement}. La serializzazione della classe avviene tramite \code{NoteDTO}.
+L'enum \code{DiaryType} definisce i due tipi di diario supportati dal sistema: \code{REAL\_DIARY} per il diario reale contenente i dati autentici dell'\term{Utente} e \code{FAKE\_DIARY} per il diario fittizio.
 
+\subsubsubsubsection{Note}\mbox{}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-Note.pdf}
     \caption[Diagramma della classe Note]{Diagramma della classe \code{Note}}
     \label{DCB-Note-Backend}
 \end{figure}
+La classe \code{Note} rappresenta l'entità di dominio principale del sistema, modellando una nota completa del diario. Include gli identificativi univoci (\code{note\_id}, \code{user\_id}), i metadati temporali (\code{created\_at}, \code{last\_modified\_at}), il titolo della nota e il tipo di diario di appartenenza (\code{diary\_type}). La nota è composta da una collezione di elementi di tipo \code{NoteElement}. La serializzazione della classe avviene tramite \code{NoteDTO}.
 
-\paragraph{NoteElement}\mbox{}\\
-\code{NoteElement} modella un singolo blocco di contenuto all'interno di una nota. Ogni elemento è identificato univocamente tramite \code{note\_element\_id} e mantiene un riferimento alla nota di appartenenza (\code{note\_id}) e all'\term{Utente} proprietario (\code{user\_id}). Il campo \code{type} specifica la tipologia del contenuto (testo, immagine, audio), mentre \code{content} ne contiene il valore effettivo. Questa granularità permette di gestire note composite e strutturate, supportando l'aggiunta e rimozione incrementale di elementi. La classe viene serializzata tramite \code{NoteElementDTO}.
-
+\subsubsubsubsection{NoteElement}\mbox{}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.3\textwidth]{diagrammi_classi_lambda/diari/DCB-NoteElement.pdf}
     \caption[Diagramma della classe NoteElement]{Diagramma della classe \code{NoteElement}}
     \label{DCB-NoteElement-Backend}
 \end{figure}
+\code{NoteElement} modella un singolo blocco di contenuto all'interno di una nota. Ogni elemento è identificato univocamente tramite \code{note\_element\_id} e mantiene un riferimento alla nota di appartenenza (\code{note\_id}) e all'\term{Utente} proprietario (\code{user\_id}). Il campo \code{type} specifica la tipologia del contenuto (testo, immagine, audio), mentre \code{content} ne contiene il valore effettivo. Questa granularità permette di gestire note composite e strutturate, supportando l'aggiunta e rimozione incrementale di elementi. La classe viene serializzata tramite \code{NoteElementDTO}.
 
-\paragraph{GetNoteCmd}\mbox{}\\
-Il command object \code{GetNoteCmd} incapsula i parametri necessari per richiedere il recupero di una singola nota. Contiene l'identificativo della nota (\code{note\_id}), l'identificativo dell'\term{Utente} richiedente (\code{user\_id}) e il tipo di diario da cui recuperare la nota (\code{diary\_type}). Questo oggetto viene consumato dal metodo \code{get\_note} dell'interfaccia \code{GetNotePort}, implementata da \code{NoteService}, che delega il recupero effettivo al \ignoreglossary{repository} di persistenza.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.3\textwidth]{diagrammi_classi_lambda/diari/DCB-GetNoteCmd.pdf}
-    \caption[Diagramma della classe GetNoteCmd]{Diagramma della classe \code{GetNoteCmd}}
-    \label{DCB-GetNoteCmd-Backend}
-\end{figure}
-
-\paragraph{GetNotesCmd}\mbox{}\\
-\code{GetNotesCmd} rappresenta la richiesta dell'elenco delle note appartenenti a un \term{Utente}. Include l'identificativo dell'\term{Utente} (\code{user\_id}) e il tipo di diario da interrogare (\code{diary\_type}). Viene utilizzato dal metodo \code{list\_notes} di \code{GetNotePort} per recuperare l'insieme completo delle note dell'\term{Utente}, mantenendo l'isolamento tra diario reale e fittizio.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.3\textwidth]{diagrammi_classi_lambda/diari/DCB-GetNotesCmd.pdf}
-    \caption[Diagramma della classe GetNotesCmd]{Diagramma della classe \code{GetNotesCmd}}
-    \label{DCB-GetNotesCmd-Backend}
-\end{figure}
-
-\paragraph{AddElementNewNoteCmd}\mbox{}\\
-Il command \code{AddElementNewNoteCmd} rappresenta la richiesta dell'aggiunta di un blocco di contenuto destinato a far parte di una nuova nota in fase di creazione. Contiene l'identificativo dell'\term{Utente} proprietario (\code{user\_id}), la tipologia dell'elemento (\code{type}) e il suo contenuto (\code{content}). Questo oggetto viene utilizzato all'interno di \code{AddNoteCmd} come componente della lista \code{message\_elements}, permettendo la creazione di note con elementi preimpostati.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.35\textwidth]{diagrammi_classi_lambda/diari/DCB-AddElementNewNoteCmd.pdf}
-    \caption[Diagramma della classe AddElementNewNoteCmd]{Diagramma della classe \code{AddElementNewNoteCmd}}
-    \label{DCB-AddElementNewNoteCmd-Backend}
-\end{figure}
-
-\paragraph{AddNoteCmd}\mbox{}\\
-\code{AddNoteCmd} incapsula tutti i dati necessari per la creazione di una nuova nota completa. Include l'identificativo della nota, il titolo, i timestamp di creazione e ultima modifica, il tipo di diario di destinazione e le richieste di creazione per i singoli elementi della nota. \code{AddNoteCmd} viene consumato dal metodo \code{add\_note} dell'interfaccia \code{SetNotePort}, implementata da \code{NoteService}.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-AddNoteCmd.pdf}
-    \caption[Diagramma della classe AddNoteCmd]{Diagramma della classe \code{AddNoteCmd}}
-    \label{DCB-AddNoteCmd-Backend}
-\end{figure}
-
-\paragraph{AddNoteElementCmd}\mbox{}\\
-Il command object \code{AddNoteElementCmd} rappresenta la richiesta di aggiunta di un singolo elemento a una nota esistente. Contiene l'identificativo dell'\term{Utente} e della nota target, la tipologia del nuovo elemento e il suo contenuto. Viene processato dal metodo \code{add\_note\_element} dell'interfaccia \code{SetNoteElementPort}, che delega a \code{NoteService} la creazione dell'entità \code{NoteElement} e la successiva persistenza tramite il \ignoreglossary{repository}.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.3\textwidth]{diagrammi_classi_lambda/diari/DCB-AddNoteElementCmd.pdf}
-    \caption[Diagramma della classe AddNoteElementCmd]{Diagramma della classe \code{AddNoteElementCmd}}
-    \label{DCB-AddNoteElementCmd-Backend}
-\end{figure}
-
-\paragraph{DeleteNoteCmd}\mbox{}\\
-\code{DeleteNoteCmd} incapsula i parametri per l'eliminazione di una nota. Include l'identificativo della nota da rimuovere, quello dell'\term{Utente} richiedente e il tipo di diario da cui eliminare la risorsa. Questo command viene consumato dal metodo \code{delete\_note} di \code{DeleteNotePort}, che coordina sia la rimozione dal \ignoreglossary{repository} di persistenza che l'eventuale cleanup degli allegati file tramite \code{FileRepositoryPort}.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-DeleteNoteCmd.pdf}
-    \caption[Diagramma della classe DeleteNoteCmd]{Diagramma della classe \code{DeleteNoteCmd}}
-    \label{DCB-DeleteNoteCmd-Backend}
-\end{figure}
-
-\paragraph{DeleteNoteElementCmd}\mbox{}\\
-Il command \code{DeleteNoteElementCmd} modella la richiesta di rimozione di un singolo elemento da una nota esistente. Contiene l'identificativo dell'\term{Utente}, della nota di riferimento e dell'elemento specifico (\code{note\_element\_id}). Viene processato dal metodo \code{delete\_note\_element} dell'interfaccia \code{DeleteNoteElementPort}, implementata da \code{NoteService}.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.3\textwidth]{diagrammi_classi_lambda/diari/DCB-DeleteNoteElementCmd.pdf}
-    \caption[Diagramma della classe DeleteNoteElementCmd]{Diagramma della classe \code{DeleteNoteElementCmd}}
-    \label{DCB-DeleteNoteElementCmd-Backend}
-\end{figure}
-
-\paragraph{ValidatePasswordCmd}\mbox{}\\
-\code{ValidatePasswordCmd} rappresenta la richiesta di \ignoreglossary{validazione} delle credenziali di accesso al diario. Include l'identificativo dell'\term{Utente} e la password da verificare. Questo command viene consumato dal metodo \code{validate\_password} dell'interfaccia \code{ValidationPort}, implementata da \code{DiaryAuthService}, che delega la \ignoreglossary{verifica} al \ignoreglossary{repository} di autenticazione e restituisce il tipo di diario corrispondente alla password fornita, permettendo così l'accesso selettivo al diario reale o fittizio.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.3\textwidth]{diagrammi_classi_lambda/diari/DCB-ValidatePasswordCmd.pdf}
-    \caption[Diagramma della classe ValidatePasswordCmd]{Diagramma della classe \code{ValidatePasswordCmd}}
-    \label{DCB-ValidatePasswordCmd-Backend}
-\end{figure}
-
-\paragraph{ValidateTokenCmd}\mbox{}\\
-\code{ValidateTokenCmd} rappresenta la richiesta di \ignoreglossary{validazione} del token associato alla sessione di accesso al diario corrente. Include l'identificativo dell'\term{Utente} e il token da verificare. Questo command viene consumato dal metodo \code{validate\_token} dell'interfaccia \code{ValidationPort}, implementata da \code{DiaryAuthService}, che delega la \ignoreglossary{verifica} al \ignoreglossary{repository} di autenticazione e restituisce un booleano che indica se il token inserito corrisponde a quello presente nella tabella DynamoDB.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.3\textwidth]{diagrammi_classi_lambda/diari/DCB-ValidateTokenCmd.pdf}
-    \caption[Diagramma della classe ValidateTokenCmd]{Diagramma della classe \code{ValidateTokenCmd}}
-    \label{DCB-ValidateTokenCmd-Backend}
-\end{figure}
-
-\paragraph{SetPasswordCmd}\mbox{}\\
-Il command object \code{SetPasswordCmd} incapsula i dati necessari per l'impostazione o l'aggiornamento delle password del diario criptato o fittizio. Include l'identificativo \term{Utente}, il tipo di diario di riferimento, la nuova password (\code{password}) e opzionalmente la password precedente (\code{previous\_password}) per operazioni di modifica. Viene utilizzato dai metodi \code{set\_real\_password} e \code{set\_fake\_password} dell'interfaccia \code{SetPasswordPort}, permettendo la configurazione indipendente delle credenziali per ciascun tipo di diario.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.32\textwidth]{diagrammi_classi_lambda/diari/DCB-SetPasswordCmd.pdf}
-    \caption[Diagramma della classe SetPasswordCmd]{Diagramma della classe \code{SetPasswordCmd}}
-    \label{DCB-SetPasswordCmd-Backend}
-\end{figure}
-
-\paragraph{CheckPasswordCmd}\mbox{}\\
-\code{CheckPasswordCmd} modella la richiesta di \ignoreglossary{verifica} dello stato di configurazione delle password per un \term{Utente}. Contiene esclusivamente l'identificativo dell'\term{Utente} e viene consumato dal metodo \code{check\_password\_status} dell'interfaccia \code{CheckPasswordPort} per determinare quali credenziali di accesso sono state configurate. Ciò è necessario per permettere al frontend di mostrare una pagina di inserimento password dedicata nel caso in cui l'\term{Utente} non abbia mai impostato la password per il diario con cui vuole interagire.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.3\textwidth]{diagrammi_classi_lambda/diari/DCB-CheckPasswordCmd.pdf}
-    \caption[Diagramma della classe CheckPasswordCmd]{Diagramma della classe \code{CheckPasswordCmd}}
-    \label{DCB-CheckPasswordCmd-Backend}
-\end{figure}
-
-\paragraph{GetNotePort}\mbox{}\\
-L'interfaccia \code{GetNotePort} definisce il \ignoreglossary{contratto} per le operazioni di lettura delle note. Tali operazioni di lettura includono il fetch di una singola nota e il fetch di tutte le note di un singolo \term{Utente}. \code{GetNotePort} viene implementata da \code{NoteService}, che orchestra il recupero dei dati tramite \code{NoteRepositoryPort}.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{diagrammi_classi_lambda/diari/DCB-GetNotePort.pdf}
-    \caption[Diagramma dell'interfaccia GetNotePort]{Diagramma dell'interfaccia \code{GetNotePort}}
-    \label{DCB-GetNotePort-Backend}
-\end{figure}
-
-\paragraph{SetNotePort}\mbox{}\\
-L'interfaccia \code{SetNotePort} definisce il \ignoreglossary{contratto} per la creazione di una nuova nota. È implementata da \code{NoteService}.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{diagrammi_classi_lambda/diari/DCB-SetNotePort.pdf}
-    \caption[Diagramma dell'interfaccia SetNotePort]{Diagramma dell'interfaccia \code{SetNotePort}}
-    \label{DCB-SetNotePort-Backend}
-\end{figure}
-
-\paragraph{DeleteNotePort}\mbox{}\\
-L'interfaccia \code{DeleteNotePort} definisce il \ignoreglossary{contratto} per l'eliminazione di un'intera nota. È implementata da \code{NoteService}, che orchestra sia la rimozione della nota dal \ignoreglossary{repository} che l'eventuale cleanup dei file allegati attraverso \code{FileRepositoryPort}.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{diagrammi_classi_lambda/diari/DCB-DeleteNotePort.pdf}
-    \caption[Diagramma dell'interfaccia DeleteNotePort]{Diagramma dell'interfaccia \code{DeleteNotePort}}
-    \label{DCB-DeleteNotePort-Backend}
-\end{figure}
-
-\paragraph{SetNoteElementPort}\mbox{}\\
-L'interfaccia \code{SetNoteElementPort} definisce il \ignoreglossary{contratto} per l'aggiunta di un elemento di contenuto a una nota esistente. Il metodo \code{add\_note\_element} accetta un \code{AddNoteElementCmd} e restituisce l'entità \code{NoteElement} creata. È implementata da \code{NoteService}.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{diagrammi_classi_lambda/diari/DCB-SetNoteElementPort.pdf}
-    \caption[Diagramma dell'interfaccia SetNoteElementPort]{Diagramma dell'interfaccia \code{SetNoteElementPort}}
-    \label{DCB-SetNoteElementPort-Backend}
-\end{figure}
-
-\paragraph{DeleteNoteElementPort}\mbox{}\\
-L'interfaccia \code{DeleteNoteElementPort} definisce il \ignoreglossary{contratto} per la rimozione di un singolo elemento da una nota esistente. È implementata da \code{NoteService}.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{diagrammi_classi_lambda/diari/DCB-DeleteNoteElementPort.pdf}
-    \caption[Diagramma dell'interfaccia DeleteNoteElementPort]{Diagramma dell'interfaccia \code{DeleteNoteElementPort}}
-    \label{DCB-DeleteNoteElementPort-Backend}
-\end{figure}
-
-\paragraph{SetPasswordPort}\mbox{}\\
-L'interfaccia \code{SetPasswordPort} definisce il \ignoreglossary{contratto} per la configurazione delle credenziali di accesso. Espone due metodi distinti: \code{set\_real\_password} per l'impostazione della password del diario reale e \code{set\_fake\_password} per quella del diario fittizio, entrambi accettando un \code{SetPasswordCmd}. È implementata da \code{DiaryAuthService}.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{diagrammi_classi_lambda/diari/DCB-SetPasswordPort.pdf}
-    \caption[Diagramma dell'interfaccia SetPasswordPort]{Diagramma dell'interfaccia \code{SetPasswordPort}}
-    \label{DCB-SetPasswordPort-Backend}
-\end{figure}
-
-\paragraph{ValidationPort}\mbox{}\\
-L'interfaccia \code{ValidationPort} definisce il \ignoreglossary{contratto} per la \ignoreglossary{validazione} delle credenziali di accesso al diario. Il metodo \code{validate\_password} accetta un \code{ValidatePasswordCmd} e restituisce una stringa rappresentante il tipo di diario corrispondente alla password fornita se una corrispondenza viene effettivamente trovata. Il metodo \code{validate\_token} accetta un \code{ValidateTokenCmd} e restituisce un booleano indicante la validità del token. È implementata da \code{DiaryAuthService}.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{diagrammi_classi_lambda/diari/DCB-ValidationPort.pdf}
-    \caption[Diagramma dell'interfaccia ValidationPort]{Diagramma dell'interfaccia \code{ValidationPort}}
-    \label{DCB-ValidationPort-Backend}
-\end{figure}
-
-\paragraph{CheckPasswordPort}\mbox{}\\
-L'interfaccia \code{CheckPasswordPort} definisce il \ignoreglossary{contratto} per la \ignoreglossary{verifica} dello stato di configurazione delle password.  È implementata da \code{DiaryAuthService}.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{diagrammi_classi_lambda/diari/DCB-CheckPasswordPort.pdf}
-    \caption[Diagramma dell'interfaccia CheckPasswordPort]{Diagramma dell'interfaccia \code{CheckPasswordPort}}
-    \label{DCB-CheckPasswordPort-Backend}
-\end{figure}
-
-\paragraph{NoteRepositoryPort}\mbox{}\\
-L'interfaccia \code{NoteRepositoryPort} definisce il \ignoreglossary{contratto} per la persistenza delle note e dei loro elementi. Espone i metodi \code{add} per la creazione di note, \code{get} per il recupero di una nota specifica, \code{delete} per la rimozione, \code{list} per l'elenco completo delle note di un \term{Utente}, \code{add\_note\_element} per l'inserimento di elementi in note esistenti e \code{delete\_note\_element} per la loro rimozione. Tutti i metodi accettano il parametro \code{diary\_type} per garantire l'isolamento tra diario reale e fittizio. Questa porta di uscita viene implementata da \code{DynamoNoteAdapter}, che fornisce la persistenza concreta su DynamoDB.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.65\textwidth]{diagrammi_classi_lambda/diari/DCB-NoteRepositoryPort.pdf}
-    \caption[Diagramma dell'interfaccia NoteRepositoryPort]{Diagramma dell'interfaccia \code{NoteRepositoryPort}}
-    \label{DCB-NoteRepositoryPort-Backend}
-\end{figure}
-
-\paragraph{FileRepositoryPort}\mbox{}\\
-L'interfaccia \code{FileRepositoryPort} definisce il \ignoreglossary{contratto} per la gestione degli file (immagini o audio) inseriti all'interno delle note del diario. Espone il metodo \code{add\_note\_element} che accetta una chiave e restituisce l'URL di accesso, \code{delete} per la rimozione di file tramite chiave e \code{generate\_presigned\_url} per la generazione di URL firmati con parametri e scadenza configurabili. \code{FileRepositoryPort} è implementata da \code{S3NoteAdapter}, che fornisce l'integrazione concreta con Amazon S3.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.65\textwidth]{diagrammi_classi_lambda/diari/DCB-FileRepositoryPort.pdf}
-    \caption[Diagramma dell'interfaccia FileRepositoryPort]{Diagramma dell'interfaccia \code{FileRepositoryPort}}
-    \label{DCB-FileRepositoryPort-Backend}
-\end{figure}
-
-\paragraph{DiaryAuthRepositoryPort}\mbox{}\\
-L'interfaccia \code{DiaryAuthRepositoryPort} definisce il \ignoreglossary{contratto} per la persistenza e \ignoreglossary{validazione} delle credenziali di accesso. Espone il metodo \code{hash\_password} per la generazione dell'hash di una password, \code{validate\_password} per la \ignoreglossary{verifica} delle credenziali fornite restituendo il tipo di diario corrispondente, e \code{set\_password} per la persistenza delle credenziali associate a uno specifico \code{diary\_type}. Implementata da \code{DynamoAuthAdapter}, questa porta permette a \code{DiaryAuthService} di gestire l'autenticazione mantenendo separati gli hash delle password per diario reale e fittizio.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.65\textwidth]{diagrammi_classi_lambda/diari/DCB-DiaryAuthRepositoryPort.pdf}
-    \caption[Diagramma dell'interfaccia DiaryAuthRepositoryPort]{Diagramma dell'interfaccia \code{DiaryAuthRepositoryPort}}
-    \label{DCB-DiaryAuthRepositoryPort-Backend}
-\end{figure}
-
-\paragraph{NoteService}\mbox{}\\
-La classe \code{NoteService} costituisce il servizio applicativo centrale per la gestione delle note, implementando le interfacce \code{GetNotePort}, \code{SetNotePort}, \code{DeleteNotePort}, \code{SetNoteElementPort} e \code{DeleteNoteElementPort}. Coordina l'intera \term{Business Logic} delle note: gestisce le operazioni CRUD e la comunicazione con le porte per i servizi di persistenza. Tali porte vengono passate alla classe tramite dependency injection nel costruttore.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.65\textwidth]{diagrammi_classi_lambda/diari/DCB-NoteService.pdf}
-    \caption[Diagramma della classe NoteService]{Diagramma della classe \code{NoteService}}
-    \label{DCB-NoteService-Backend}
-\end{figure}
-
-\paragraph{DiaryAuthService}\mbox{}\\
-La classe \code{DiaryAuthService} implementa il servizio applicativo per la gestione dell'autenticazione al diario, che include l'impostazione della password di entrambi i diari e la loro \ignoreglossary{verifica}. Si occupa inoltre di verificare che la password impostata dall'\term{Utente} sia conforme a specifici criteri di sicurezza. \code{DiaryAuthService} riceve tramite costruttore la dipendenza \code{auth\_repository} di tipo \code{DiaryAuthRepositoryPort} per l'orchestrazione delle operazioni relative alla persistenza dei dati di accesso degli utenti.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-DiaryAuthService.pdf}
-    \caption[Diagramma della classe DiaryAuthService]{Diagramma della classe \code{DiaryAuthService}}
-    \label{DCB-DiaryAuthService-Backend}
-\end{figure}
-
-\paragraph{DynamoNoteAdapter}\mbox{}\\
-La classe \code{DynamoNoteAdapter} implementa l'interfaccia \code{NoteRepositoryPort} fornendo la persistenza concreta delle note su DynamoDB. È responsabile di effettuare le richieste concrete a DynamoDB e a ritornare i risultati ottenuti, implementando concretamente le varie operazioni CRUD. L'adapter utilizza \code{NoteDTO} e \code{NoteElementDTO} per la conversione bidirezionale tra le entità di dominio e il formato di persistenza su DynamoDB, isolando completamente il layer applicativo dai dettagli implementativi dello storage.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-DynamoNoteAdapter.pdf}
-    \caption[Diagramma della classe DynamoNoteAdapter]{Diagramma della classe \code{DynamoNoteAdapter}}
-    \label{DCB-DynamoNoteAdapter-Backend}
-\end{figure}
-
-\paragraph{S3NoteAdapter}\mbox{}\\
-La classe \code{S3NoteAdapter} implementa l'interfaccia \code{FileRepositoryPort} fornendo la gestione degli allegati file su Amazon S3. Gestisce la generazione dei presigned\_url e le chiamate a S3 per l'archiviazione o il recupero dei file binari. Viene utilizzato da \code{NoteService} per gestire il \ignoreglossary{ciclo di vita} completo degli allegati associati alle note.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-S3NoteAdapter.pdf}
-    \caption[Diagramma della classe S3NoteAdapter]{Diagramma della classe \code{S3NoteAdapter}}
-    \label{DCB-S3NoteAdapter-Backend}
-\end{figure}
-
-\paragraph{DynamoAuthAdapter}\mbox{}\\
-La classe \code{DynamoAuthAdapter} implementa l'interfaccia \code{DiaryAuthRepositoryPort} fornendo la persistenza delle credenziali di autenticazione su DynamoDB. Mantiene un riferimento al client DynamoDB (\code{dynamodb\_client}) inizializzato nel costruttore. Il metodo \code{hash\_password} genera l'hash sicuro di una password per un \term{Utente} specifico tramite HMAC-SHA-256 applicato sulla concatenazione tra l'id dell'\term{Utente} e la password stessa. \code{validate\_password} \ignoreglossary{Verifica} le credenziali fornite restituendo il tipo di diario corrispondente all'hash validato, e \code{set\_password} memorizza o aggiorna le credenziali associate a uno specifico \code{diary\_type}.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-DynamoAuthAdapter.pdf}
-    \caption[Diagramma della classe DynamoAuthAdapter]{Diagramma della classe \code{DynamoAuthAdapter}}
-    \label{DCB-DynamoAuthAdapter-Backend}
-\end{figure}
-
-\paragraph{NoteElementDTO}\mbox{}\\
-La classe \code{NoteElementDTO} fornisce il mapping bidirezionale tra l'entità di dominio \code{NoteElement} e il formato di persistenza su DynamoDB.
-
+\subsubsubsubsection{NoteElementDTO}\mbox{}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-NoteElementDTO.pdf}
     \caption[Diagramma della classe NoteElementDTO]{Diagramma della classe \code{NoteElementDTO}}
     \label{DCB-NoteElementDTO-Backend}
 \end{figure}
+La classe \code{NoteElementDTO} fornisce il mapping bidirezionale tra l'entità di dominio \code{NoteElement} e il formato di persistenza su DynamoDB.
 
-\paragraph{NoteDTO}\mbox{}\\
-La classe \code{NoteDTO} gestisce la conversione tra l'entità di dominio \code{Note} e il formato di persistenza su DynamoDB.
-
+\subsubsubsubsection{NoteDTO}\mbox{}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-NoteDTO.pdf}
     \caption[Diagramma della classe NoteDTO]{Diagramma della classe \code{NoteDTO}}
     \label{DCB-NoteDTO-Backend}
 \end{figure}
+La classe \code{NoteDTO} gestisce la conversione tra l'entità di dominio \code{Note} e il formato di persistenza su DynamoDB.
 
-\paragraph{DiaryNoteController}\mbox{}\\
-La classe \code{DiaryNoteController} costituisce il punto di ingresso per le richieste relative alle operazioni sulle note. Mantiene un riferimento a \code{NoteService} che orchestra la \term{Business Logic}. Il metodo \code{handle\_request} funge da router principale, interpretando la richiesta in arrivo dal Lambda handler e delegandola alle funzioni specifiche.
+\subsubsubsubsection{GetNoteCmd}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{diagrammi_classi_lambda/diari/DCB-GetNoteCmd.pdf}
+    \caption[Diagramma della classe GetNoteCmd]{Diagramma della classe \code{GetNoteCmd}}
+    \label{DCB-GetNoteCmd-Backend}
+\end{figure}
+Il command object \code{GetNoteCmd} incapsula i parametri necessari per richiedere il recupero di una singola nota. Contiene l'identificativo della nota (\code{note\_id}), l'identificativo dell'\term{Utente} richiedente (\code{user\_id}) e il tipo di diario da cui recuperare la nota (\code{diary\_type}). Questo oggetto viene consumato dal metodo \code{get\_note} dell'interfaccia \code{GetNotePort}, implementata da \code{NoteService}, che delega il recupero effettivo al \ignoreglossary{repository} di persistenza.
 
+\subsubsubsubsection{GetNotesCmd}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{diagrammi_classi_lambda/diari/DCB-GetNotesCmd.pdf}
+    \caption[Diagramma della classe GetNotesCmd]{Diagramma della classe \code{GetNotesCmd}}
+    \label{DCB-GetNotesCmd-Backend}
+\end{figure}
+\code{GetNotesCmd} rappresenta la richiesta dell'elenco delle note appartenenti a un \term{Utente}. Include l'identificativo dell'\term{Utente} (\code{user\_id}) e il tipo di diario da interrogare (\code{diary\_type}). Viene utilizzato dal metodo \code{list\_notes} di \code{GetNotePort} per recuperare l'insieme completo delle note dell'\term{Utente}, mantenendo l'isolamento tra diario reale e fittizio.
+
+\subsubsubsubsection{AddElementNewNoteCmd}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.35\textwidth]{diagrammi_classi_lambda/diari/DCB-AddElementNewNoteCmd.pdf}
+    \caption[Diagramma della classe AddElementNewNoteCmd]{Diagramma della classe \code{AddElementNewNoteCmd}}
+    \label{DCB-AddElementNewNoteCmd-Backend}
+\end{figure}
+Il command \code{AddElementNewNoteCmd} rappresenta la richiesta dell'aggiunta di un blocco di contenuto destinato a far parte di una nuova nota in fase di creazione. Contiene l'identificativo dell'\term{Utente} proprietario (\code{user\_id}), la tipologia dell'elemento (\code{type}) e il suo contenuto (\code{content}). Questo oggetto viene utilizzato all'interno di \code{AddNoteCmd} come componente della lista \code{message\_elements}, permettendo la creazione di note con elementi preimpostati.
+
+\subsubsubsubsection{AddNoteCmd}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-AddNoteCmd.pdf}
+    \caption[Diagramma della classe AddNoteCmd]{Diagramma della classe \code{AddNoteCmd}}
+    \label{DCB-AddNoteCmd-Backend}
+\end{figure}
+\code{AddNoteCmd} incapsula tutti i dati necessari per la creazione di una nuova nota completa. Include l'identificativo della nota, il titolo, i timestamp di creazione e ultima modifica, il tipo di diario di destinazione e le richieste di creazione per i singoli elementi della nota. \code{AddNoteCmd} viene consumato dal metodo \code{add\_note} dell'interfaccia \code{SetNotePort}, implementata da \code{NoteService}.
+
+\subsubsubsubsection{AddNoteElementCmd}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{diagrammi_classi_lambda/diari/DCB-AddNoteElementCmd.pdf}
+    \caption[Diagramma della classe AddNoteElementCmd]{Diagramma della classe \code{AddNoteElementCmd}}
+    \label{DCB-AddNoteElementCmd-Backend}
+\end{figure}
+Il command object \code{AddNoteElementCmd} rappresenta la richiesta di aggiunta di un singolo elemento a una nota esistente. Contiene l'identificativo dell'\term{Utente} e della nota target, la tipologia del nuovo elemento e il suo contenuto. Viene processato dal metodo \code{add\_note\_element} dell'interfaccia \code{SetNoteElementPort}, che delega a \code{NoteService} la creazione dell'entità \code{NoteElement} e la successiva persistenza tramite il \ignoreglossary{repository}.
+
+\subsubsubsubsection{DeleteNoteCmd}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-DeleteNoteCmd.pdf}
+    \caption[Diagramma della classe DeleteNoteCmd]{Diagramma della classe \code{DeleteNoteCmd}}
+    \label{DCB-DeleteNoteCmd-Backend}
+\end{figure}
+\code{DeleteNoteCmd} incapsula i parametri per l'eliminazione di una nota. Include l'identificativo della nota da rimuovere, quello dell'\term{Utente} richiedente e il tipo di diario da cui eliminare la risorsa. Questo command viene consumato dal metodo \code{delete\_note} di \code{DeleteNotePort}, che coordina sia la rimozione dal \ignoreglossary{repository} di persistenza che l'eventuale cleanup degli allegati file tramite \code{FileRepositoryPort}.
+
+\subsubsubsubsection{DeleteNoteElementCmd}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{diagrammi_classi_lambda/diari/DCB-DeleteNoteElementCmd.pdf}
+    \caption[Diagramma della classe DeleteNoteElementCmd]{Diagramma della classe \code{DeleteNoteElementCmd}}
+    \label{DCB-DeleteNoteElementCmd-Backend}
+\end{figure}
+Il command \code{DeleteNoteElementCmd} modella la richiesta di rimozione di un singolo elemento da una nota esistente. Contiene l'identificativo dell'\term{Utente}, della nota di riferimento e dell'elemento specifico (\code{note\_element\_id}). Viene processato dal metodo \code{delete\_note\_element} dell'interfaccia \code{DeleteNoteElementPort}, implementata da \code{NoteService}.
+
+\subsubsubsubsection{ValidatePasswordCmd}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{diagrammi_classi_lambda/diari/DCB-ValidatePasswordCmd.pdf}
+    \caption[Diagramma della classe ValidatePasswordCmd]{Diagramma della classe \code{ValidatePasswordCmd}}
+    \label{DCB-ValidatePasswordCmd-Backend}
+\end{figure}
+\code{ValidatePasswordCmd} rappresenta la richiesta di \ignoreglossary{validazione} delle credenziali di accesso al diario. Include l'identificativo dell'\term{Utente} e la password da verificare. Questo command viene consumato dal metodo \code{validate\_password} dell'interfaccia \code{ValidationPort}, implementata da \code{DiaryAuthService}, che delega la \ignoreglossary{verifica} al \ignoreglossary{repository} di autenticazione e restituisce il tipo di diario corrispondente alla password fornita, permettendo così l'accesso selettivo al diario reale o fittizio.
+
+\subsubsubsubsection{ValidateTokenCmd}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{diagrammi_classi_lambda/diari/DCB-ValidateTokenCmd.pdf}
+    \caption[Diagramma della classe ValidateTokenCmd]{Diagramma della classe \code{ValidateTokenCmd}}
+    \label{DCB-ValidateTokenCmd-Backend}
+\end{figure}
+\code{ValidateTokenCmd} rappresenta la richiesta di \ignoreglossary{validazione} del token associato alla sessione di accesso al diario corrente. Include l'identificativo dell'\term{Utente} e il token da verificare. Questo command viene consumato dal metodo \code{validate\_token} dell'interfaccia \code{ValidationPort}, implementata da \code{DiaryAuthService}, che delega la \ignoreglossary{verifica} al \ignoreglossary{repository} di autenticazione e restituisce un booleano che indica se il token inserito corrisponde a quello presente nella tabella DynamoDB.
+
+\subsubsubsubsection{SetPasswordCmd}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.32\textwidth]{diagrammi_classi_lambda/diari/DCB-SetPasswordCmd.pdf}
+    \caption[Diagramma della classe SetPasswordCmd]{Diagramma della classe \code{SetPasswordCmd}}
+    \label{DCB-SetPasswordCmd-Backend}
+\end{figure}
+Il command object \code{SetPasswordCmd} incapsula i dati necessari per l'impostazione o l'aggiornamento delle password del diario criptato o fittizio. Include l'identificativo \term{Utente}, il tipo di diario di riferimento, la nuova password (\code{password}) e opzionalmente la password precedente (\code{previous\_password}) per operazioni di modifica. Viene utilizzato dai metodi \code{set\_real\_password} e \code{set\_fake\_password} dell'interfaccia \code{SetPasswordPort}, permettendo la configurazione indipendente delle credenziali per ciascun tipo di diario.
+
+\subsubsubsubsection{CheckPasswordCmd}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{diagrammi_classi_lambda/diari/DCB-CheckPasswordCmd.pdf}
+    \caption[Diagramma della classe CheckPasswordCmd]{Diagramma della classe \code{CheckPasswordCmd}}
+    \label{DCB-CheckPasswordCmd-Backend}
+\end{figure}
+\code{CheckPasswordCmd} modella la richiesta di \ignoreglossary{verifica} dello stato di configurazione delle password per un \term{Utente}. Contiene esclusivamente l'identificativo dell'\term{Utente} e viene consumato dal metodo \code{check\_password\_status} dell'interfaccia \code{CheckPasswordPort} per determinare quali credenziali di accesso sono state configurate. Ciò è necessario per permettere al frontend di mostrare una pagina di inserimento password dedicata nel caso in cui l'\term{Utente} non abbia mai impostato la password per il diario con cui vuole interagire.
+
+\subsubsubsubsection{GetNotePort}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{diagrammi_classi_lambda/diari/DCB-GetNotePort.pdf}
+    \caption[Diagramma dell'interfaccia GetNotePort]{Diagramma dell'interfaccia \code{GetNotePort}}
+    \label{DCB-GetNotePort-Backend}
+\end{figure}
+L'interfaccia \code{GetNotePort} definisce il \ignoreglossary{contratto} per le operazioni di lettura delle note. Tali operazioni di lettura includono il fetch di una singola nota e il fetch di tutte le note di un singolo \term{Utente}. \code{GetNotePort} viene implementata da \code{NoteService}, che orchestra il recupero dei dati tramite \code{NoteRepositoryPort}.
+
+\subsubsubsubsection{SetNotePort}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{diagrammi_classi_lambda/diari/DCB-SetNotePort.pdf}
+    \caption[Diagramma dell'interfaccia SetNotePort]{Diagramma dell'interfaccia \code{SetNotePort}}
+    \label{DCB-SetNotePort-Backend}
+\end{figure}
+L'interfaccia \code{SetNotePort} definisce il \ignoreglossary{contratto} per la creazione di una nuova nota. È implementata da \code{NoteService}.
+
+\subsubsubsubsection{DeleteNotePort}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{diagrammi_classi_lambda/diari/DCB-DeleteNotePort.pdf}
+    \caption[Diagramma dell'interfaccia DeleteNotePort]{Diagramma dell'interfaccia \code{DeleteNotePort}}
+    \label{DCB-DeleteNotePort-Backend}
+\end{figure}
+L'interfaccia \code{DeleteNotePort} definisce il \ignoreglossary{contratto} per l'eliminazione di un'intera nota. È implementata da \code{NoteService}, che orchestra sia la rimozione della nota dal \ignoreglossary{repository} che l'eventuale cleanup dei file allegati attraverso \code{FileRepositoryPort}.
+
+\subsubsubsubsection{SetNoteElementPort}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{diagrammi_classi_lambda/diari/DCB-SetNoteElementPort.pdf}
+    \caption[Diagramma dell'interfaccia SetNoteElementPort]{Diagramma dell'interfaccia \code{SetNoteElementPort}}
+    \label{DCB-SetNoteElementPort-Backend}
+\end{figure}
+L'interfaccia \code{SetNoteElementPort} definisce il \ignoreglossary{contratto} per l'aggiunta di un elemento di contenuto a una nota esistente. Il metodo \code{add\_note\_element} accetta un \code{AddNoteElementCmd} e restituisce l'entità \code{NoteElement} creata. È implementata da \code{NoteService}.
+
+\subsubsubsubsection{DeleteNoteElementPort}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{diagrammi_classi_lambda/diari/DCB-DeleteNoteElementPort.pdf}
+    \caption[Diagramma dell'interfaccia DeleteNoteElementPort]{Diagramma dell'interfaccia \code{DeleteNoteElementPort}}
+    \label{DCB-DeleteNoteElementPort-Backend}
+\end{figure}
+L'interfaccia \code{DeleteNoteElementPort} definisce il \ignoreglossary{contratto} per la rimozione di un singolo elemento da una nota esistente. È implementata da \code{NoteService}.
+
+\subsubsubsubsection{SetPasswordPort}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{diagrammi_classi_lambda/diari/DCB-SetPasswordPort.pdf}
+    \caption[Diagramma dell'interfaccia SetPasswordPort]{Diagramma dell'interfaccia \code{SetPasswordPort}}
+    \label{DCB-SetPasswordPort-Backend}
+\end{figure}
+L'interfaccia \code{SetPasswordPort} definisce il \ignoreglossary{contratto} per la configurazione delle credenziali di accesso. Espone due metodi distinti: \code{set\_real\_password} per l'impostazione della password del diario reale e \code{set\_fake\_password} per quella del diario fittizio, entrambi accettando un \code{SetPasswordCmd}. È implementata da \code{DiaryAuthService}.
+
+\subsubsubsubsection{ValidationPort}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{diagrammi_classi_lambda/diari/DCB-ValidationPort.pdf}
+    \caption[Diagramma dell'interfaccia ValidationPort]{Diagramma dell'interfaccia \code{ValidationPort}}
+    \label{DCB-ValidationPort-Backend}
+\end{figure}
+L'interfaccia \code{ValidationPort} definisce il \ignoreglossary{contratto} per la \ignoreglossary{validazione} delle credenziali di accesso al diario. Il metodo \code{validate\_password} accetta un \code{ValidatePasswordCmd} e restituisce una stringa rappresentante il tipo di diario corrispondente alla password fornita se una corrispondenza viene effettivamente trovata. Il metodo \code{validate\_token} accetta un \code{ValidateTokenCmd} e restituisce un booleano indicante la validità del token. È implementata da \code{DiaryAuthService}.
+
+\subsubsubsubsection{CheckPasswordPort}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{diagrammi_classi_lambda/diari/DCB-CheckPasswordPort.pdf}
+    \caption[Diagramma dell'interfaccia CheckPasswordPort]{Diagramma dell'interfaccia \code{CheckPasswordPort}}
+    \label{DCB-CheckPasswordPort-Backend}
+\end{figure}
+L'interfaccia \code{CheckPasswordPort} definisce il \ignoreglossary{contratto} per la \ignoreglossary{verifica} dello stato di configurazione delle password.  È implementata da \code{DiaryAuthService}.
+
+\subsubsubsubsection{NoteRepositoryPort}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\textwidth]{diagrammi_classi_lambda/diari/DCB-NoteRepositoryPort.pdf}
+    \caption[Diagramma dell'interfaccia NoteRepositoryPort]{Diagramma dell'interfaccia \code{NoteRepositoryPort}}
+    \label{DCB-NoteRepositoryPort-Backend}
+\end{figure}
+L'interfaccia \code{NoteRepositoryPort} definisce il \ignoreglossary{contratto} per la persistenza delle note e dei loro elementi. Espone i metodi \code{add} per la creazione di note, \code{get} per il recupero di una nota specifica, \code{delete} per la rimozione, \code{list} per l'elenco completo delle note di un \term{Utente}, \code{add\_note\_element} per l'inserimento di elementi in note esistenti e \code{delete\_note\_element} per la loro rimozione. Tutti i metodi accettano il parametro \code{diary\_type} per garantire l'isolamento tra diario reale e fittizio. Questa porta di uscita viene implementata da \code{DynamoNoteAdapter}, che fornisce la persistenza concreta su DynamoDB.
+
+\subsubsubsubsection{FileRepositoryPort}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\textwidth]{diagrammi_classi_lambda/diari/DCB-FileRepositoryPort.pdf}
+    \caption[Diagramma dell'interfaccia FileRepositoryPort]{Diagramma dell'interfaccia \code{FileRepositoryPort}}
+    \label{DCB-FileRepositoryPort-Backend}
+\end{figure}
+Costituisce l'oubound adapter, definisce i metodi per la gestione degli file (immagini o audio) inseriti all'interno delle note del diario. Espone il metodo \code{add\_note\_element} che accetta una chiave e restituisce l'URL di accesso, \code{delete} per la rimozione di file tramite chiave e \code{generate\_presigned\_url} per la generazione di URL firmati con parametri e scadenza configurabili. \code{FileRepositoryPort} è implementata da \code{S3NoteAdapter}, che fornisce l'integrazione concreta con Amazon S3.
+
+\subsubsubsubsection{DiaryAuthRepositoryPort}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\textwidth]{diagrammi_classi_lambda/diari/DCB-DiaryAuthRepositoryPort.pdf}
+    \caption[Diagramma dell'interfaccia DiaryAuthRepositoryPort]{Diagramma dell'interfaccia \code{DiaryAuthRepositoryPort}}
+    \label{DCB-DiaryAuthRepositoryPort-Backend}
+\end{figure}
+Costituisce l'outbound adapter, definisce i metodi per la persistenza e \ignoreglossary{validazione} delle credenziali di accesso. Espone il metodo \code{hash\_password} per la generazione dell'hash di una password, \code{validate\_password} per la \ignoreglossary{verifica} delle credenziali fornite restituendo il tipo di diario corrispondente, e \code{set\_password} per la persistenza delle credenziali associate a uno specifico \code{diary\_type}. Implementata da \code{DynamoAuthAdapter}, questa porta permette a \code{DiaryAuthService} di gestire l'autenticazione mantenendo separati gli hash delle password per diario reale e fittizio.
+
+\subsubsubsubsection{NoteService}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\textwidth]{diagrammi_classi_lambda/diari/DCB-NoteService.pdf}
+    \caption[Diagramma della classe NoteService]{Diagramma della classe \code{NoteService}}
+    \label{DCB-NoteService-Backend}
+\end{figure}
+Rappresenta la domain logic per la gestione delle note, implementando le interfacce \code{GetNotePort}, \code{SetNotePort}, \code{DeleteNotePort}, \code{SetNoteElementPort} e \code{DeleteNoteElementPort}. Coordina l'intera \term{Business Logic} delle note: gestisce le operazioni CRUD e la comunicazione con le porte per i servizi di persistenza. Tali porte vengono passate alla classe tramite dependency injection nel costruttore.
+
+\subsubsubsubsection{DiaryAuthService}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-DiaryAuthService.pdf}
+    \caption[Diagramma della classe DiaryAuthService]{Diagramma della classe \code{DiaryAuthService}}
+    \label{DCB-DiaryAuthService-Backend}
+\end{figure}
+Rappresenta la domain logic per la gestione dell'autenticazione al diario, che include l'impostazione della password di entrambi i diari e la loro \ignoreglossary{verifica}. Si occupa inoltre di verificare che la password impostata dall'\term{Utente} sia conforme a specifici criteri di sicurezza. \code{DiaryAuthService} riceve tramite costruttore la dipendenza \code{auth\_repository} di tipo \code{DiaryAuthRepositoryPort} per l'orchestrazione delle operazioni relative alla persistenza dei dati di accesso degli utenti.
+
+\subsubsubsubsection{DynamoNoteAdapter}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-DynamoNoteAdapter.pdf}
+    \caption[Diagramma della classe DynamoNoteAdapter]{Diagramma della classe \code{DynamoNoteAdapter}}
+    \label{DCB-DynamoNoteAdapter-Backend}
+\end{figure}
+Rappresenta l'oubound adapter, implementa l'interfaccia \code{NoteRepositoryPort} fornendo la persistenza concreta delle note su DynamoDB. È responsabile di effettuare le richieste concrete a DynamoDB e a ritornare i risultati ottenuti, implementando concretamente le varie operazioni CRUD. L'adapter utilizza \code{NoteDTO} e \code{NoteElementDTO} per la conversione bidirezionale tra le entità di dominio e il formato di persistenza su DynamoDB, isolando completamente il layer applicativo dai dettagli implementativi dello storage.
+
+\subsubsubsubsection{S3NoteAdapter}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-S3NoteAdapter.pdf}
+    \caption[Diagramma della classe S3NoteAdapter]{Diagramma della classe \code{S3NoteAdapter}}
+    \label{DCB-S3NoteAdapter-Backend}
+\end{figure}
+Rappresenta l'outbound adapter, implementa l'interfaccia \code{FileRepositoryPort} fornendo la gestione degli allegati file su Amazon S3. Gestisce la generazione dei presigned\_url e le chiamate a S3 per l'archiviazione o il recupero dei file binari. Viene utilizzato da \code{NoteService} per gestire il \ignoreglossary{ciclo di vita} completo degli allegati associati alle note.
+
+\subsubsubsubsection{DynamoAuthAdapter}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-DynamoAuthAdapter.pdf}
+    \caption[Diagramma della classe DynamoAuthAdapter]{Diagramma della classe \code{DynamoAuthAdapter}}
+    \label{DCB-DynamoAuthAdapter-Backend}
+\end{figure}
+Rappresenta l'outbound adapter, implementa l'interfaccia \code{DiaryAuthRepositoryPort} fornendo la persistenza delle credenziali di autenticazione su DynamoDB. Mantiene un riferimento al client DynamoDB (\code{dynamodb\_client}) inizializzato nel costruttore. Il metodo \code{hash\_password} genera l'hash sicuro di una password per un \term{Utente} specifico tramite HMAC-SHA-256 applicato sulla concatenazione tra l'id dell'\term{Utente} e la password stessa. \code{validate\_password} \ignoreglossary{Verifica} le credenziali fornite restituendo il tipo di diario corrispondente all'hash validato, e \code{set\_password} memorizza o aggiorna le credenziali associate a uno specifico \code{diary\_type}.
+
+\subsubsubsubsection{DiaryNoteController}\mbox{}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.65\textwidth]{diagrammi_classi_lambda/diari/DCB-DiaryNoteController.pdf}
     \caption[Diagramma della classe DiaryNoteController]{Diagramma della classe \code{DiaryNoteController}}
     \label{DCB-DiaryNoteController-Backend}
 \end{figure}
+La classe \code{DiaryNoteController} costituisce il punto di ingresso per le richieste relative alle operazioni sulle note. Mantiene un riferimento a \code{NoteService} che orchestra la \term{Business Logic}. Il metodo \code{handle\_request} funge da router principale, interpretando la richiesta in arrivo dal Lambda handler e delegandola alle funzioni specifiche.
 
-\paragraph{DiaryAccessController}\mbox{}\\
-La classe \code{DiaryAccessController} costituisce il punto di ingresso per le operazioni di autenticazione. Mantiene un riferimento a \code{DiaryAuthService} che implementa la logica di gestione delle credenziali. Il metodo \code{handle\_request} funge da router principale, interpretando la richiesta in arrivo dal Lambda handler e delegandola alle funzioni specifiche.
-
+\subsubsubsubsection{DiaryAccessController}\mbox{}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/diari/DCB-DiaryAccessController.pdf}
     \caption[Diagramma della classe DiaryAccessController]{Diagramma della classe \code{DiaryAccessController}}
     \label{DCB-DiaryAccessController-Backend}
 \end{figure}
+La classe \code{DiaryAccessController} costituisce il punto di ingresso per le operazioni di autenticazione. Mantiene un riferimento a \code{DiaryAuthService} che implementa la logica di gestione delle credenziali. Il metodo \code{handle\_request} funge da router principale, interpretando la richiesta in arrivo dal Lambda handler e delegandola alle funzioni specifiche.
 
 \subsubsection{Chatbot} \label{subsubsec:architettura_chatbot}
 
@@ -3263,7 +3226,7 @@ La classe \code{DiaryAccessController} costituisce il punto di ingresso per le o
     \label{fig:architettura_chatbot}
 \end{figure}
 
-\paragraph{\term{Architettura} e Flusso di Elaborazione: chatbot (detective delle relazioni e specchio intelligente)}\mbox{}\\
+\subsubsubsection{\ignoreglossary{Architettura} e Flusso di Elaborazione: chatbot (detective delle relazioni e specchio intelligente)}\mbox{}\\
 L'\term{Architettura} di \term{Backend} dedicata al chatbot è progettata per gestire conversazioni persistenti tra \term{Utente} e modello linguistico, garantendo scalabilità, efficienza nell’accesso ai dati e qualità delle risposte generate.
 
 API Gateway rappresenta il punto di ingresso per tutte le richieste client e si occupa della \ignoreglossary{verifica} dell’autenticazione dell’\term{Utente}. Una volta validata la richiesta, questa viene inoltrata a una funzione Lambda che implementa la logica applicativa del chatbot, inclusa la gestione delle chat e l’interazione con il modello linguistico.
@@ -3301,7 +3264,7 @@ Il flusso di elaborazione è dunque il seguente:
     \item \textbf{Operazioni CRUD}: Le operazioni di creazione, aggiornamento ed eliminazione delle chat vengono gestite direttamente dalla Lambda tramite interazioni con DynamoDB.
 \end{itemize}
 
-\paragraph{API associate}\mbox{}\\
+\subsubsubsection{API associate}\mbox{}\\
 \begin{itemize}
     \item \code{GET /chats/}
         \begin{itemize}
@@ -3517,256 +3480,215 @@ Il flusso di elaborazione è dunque il seguente:
         \end{itemize}
 \end{itemize}
 
-\paragraph{\term{Architettura} logica del chatbot}\label{subsubsec:architettura_logica_chatbot}\mbox{}\\ 
+\begin{landscape}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{diagrammi_classi_lambda/chatbot/chatbot.pdf}
-    \caption[Componenti del microservizio Chatbot]{Componenti del microservizio Chatbot}
-    \label{fig:architettura_microservizio_chatbot}
-\end{figure}
+    \subsubsubsection{\ignoreglossary{Architettura} logica del chatbot}\label{subsubsec:architettura_logica_chatbot}\mbox{}\\ 
 
-\paragraph{Chat}\mbox{}\\
+    \begin{center}
+        \includegraphics[width=\textwidth]{diagrammi_classi_lambda/chatbot/chatbot.pdf}
+        \captionof{figure}{Componenti del microservizio Chatbot}
+        \label{fig:architettura_microservizio_chatbot}
+    \end{center}
 
-La classe \code{Chat} rappresenta il modello di dominio di una conversazione tra \term{Utente} e chatbot. Contiene i metadati identificativi (\code{user\_id}, \code{chat\_id}), il titolo della conversazione, le date di creazione e aggiornamento e l'elenco completo dei messaggi scambiati. Questa classe costituisce l'entità centrale del dominio applicativo e viene utilizzata sia dai servizi di persistenza che da quelli di elaborazione tramite LLM.
+\end{landscape}
 
+\subsubsubsubsection{Chat}\mbox{}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-Chat.pdf}
     \caption[Diagramma della classe Chat]{Diagramma della classe \code{Chat}}
     \label{DC-Chat-Backend}
 \end{figure}
+La classe \code{Chat} rappresenta il modello di dominio di una conversazione tra \term{Utente} e chatbot. Contiene i metadati identificativi (\code{user\_id}, \code{chat\_id}), il titolo della conversazione, le date di creazione e aggiornamento e l'elenco completo dei messaggi scambiati. Questa classe costituisce l'entità centrale del dominio applicativo e viene utilizzata sia dai servizi di persistenza che da quelli di elaborazione tramite LLM.
 
-\paragraph{ChatMessage}\mbox{}\\
-
-\code{ChatMessage} modella un singolo messaggio all'interno di una conversazione. Include l'identificativo univoco del messaggio (\code{id}), il riferimento alla chat di appartenenza (\code{chat\_id}), il contenuto testuale (\code{content}), il mittente (\code{sender}, che può assumere il valore \code{"user"} o \code{"ai"}) e la data di creazione. Questa classe permette di mantenere traccia completa dello storico conversazionale necessario per il funzionamento del chatbot.
-
+\subsubsubsubsection{ChatMessage}\mbox{}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi/chatbot/DC-ChatMessage.pdf}
     \caption[Diagramma della classe ChatMessage]{Diagramma della classe \code{ChatMessage}}
     \label{DC-ChatMessage-Backend}
 \end{figure}
+\code{ChatMessage} modella un singolo messaggio all'interno di una conversazione. Include l'identificativo univoco del messaggio (\code{id}), il riferimento alla chat di appartenenza (\code{chat\_id}), il contenuto testuale (\code{content}), il mittente (\code{sender}, che può assumere il valore \code{"user"} o \code{"ai"}) e la data di creazione. Questa classe permette di mantenere traccia completa dello storico conversazionale necessario per il funzionamento del chatbot.
 
-\paragraph{ChatbotLLMPort}\mbox{}\\
-
-L'interfaccia \code{ChatbotLLMPort} definisce il \ignoreglossary{contratto} per gli adapter che si interfacciano con LLM. Espone il metodo \code{process\_prompt}, che accetta un prompt testuale e una modalità di risposta, restituendo la stringa generata dal modello. Questa astrazione permette di disaccoppiare la logica applicativa dall'implementazione specifica del provider LLM utilizzato.
-
+\subsubsubsubsection{ChatbotLLMPort}\mbox{}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/chatbot/DC-ChatbotLLMPort.pdf}
     \caption[Diagramma dell'interfaccia ChatbotLLMPort]{Diagramma dell'interfaccia \code{ChatbotLLMPort}}
     \label{DC-ChatbotLLMPort-Backend}
 \end{figure}
+L'interfaccia \code{ChatbotLLMPort} definisce il \ignoreglossary{contratto} per gli adapter che si interfacciano con LLM. Espone il metodo \code{process\_prompt}, che accetta un prompt testuale e una modalità di risposta, restituendo la stringa generata dal modello. Questa astrazione permette di disaccoppiare la logica applicativa dall'implementazione specifica del provider LLM utilizzato.
 
-\paragraph{BedrockLLMAdapter}\mbox{}\\
-
-\code{BedrockLLMAdapter} implementa l'interfaccia \code{ChatbotLLMPort} fornendo l'integrazione concreta con Amazon Bedrock. Questa classe incapsula la logica di comunicazione con il servizio \term{Cloud}, traducendo le richieste dell'applicazione in chiamate API specifiche per il modello di linguaggio selezionato.
-
+\subsubsubsubsection{BedrockLLMAdapter}\mbox{}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/chatbot/DC-BedrockLLMAdapter.pdf}
     \caption[Diagramma della classe BedrockLLMAdapter]{Diagramma della classe \code{BedrockLLMAdapter}}
     \label{DC-BedrockLLMAdapter-Backend}
 \end{figure}
+\code{BedrockLLMAdapter} implementa l'interfaccia \code{ChatbotLLMPort} fornendo l'integrazione concreta con Amazon Bedrock. Questa classe incapsula la logica di comunicazione con il servizio \term{Cloud}, traducendo le richieste dell'applicazione in chiamate API specifiche per il modello di linguaggio selezionato.
 
-\paragraph{ChatbotLLMService}\mbox{}\\
-
-\code{ChatbotLLMService} coordina la generazione delle risposte del chatbot interagendo con un'implementazione di \code{ChatbotLLMPort}. Il metodo \code{get\_message\_response} orchestra l'intero \ignoreglossary{processo}: recupera i messaggi rilevanti dalla cronologia della conversazione tramite l'algoritmo BM25, costruisce il prompt contestualizzato attraverso \code{\_build\_prompt} combinando il messaggio \term{Utente} con il contesto recuperato e il prompt di sistema appropriato alla modalità selezionata, e infine delega al modello la generazione della risposta. Questa classe è quindi responsabile di implementare i diversi meccanismi di risposta sulla base di \code{response\_mode}, realizzando così le funzionalità di risposta "Detective delle relazioni" e "Specchio intelligente".
-
+\subsubsubsubsection{ChatbotLLMService}\mbox{}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/chatbot/DC-ChatbotLLMService.pdf}
     \caption[Diagramma della classe ChatbotLLMService]{Diagramma della classe \code{ChatbotLLMService}}
     \label{DC-ChatbotLLMService-Backend}
 \end{figure}
+Rappresenta la domain logic, coordina la generazione delle risposte del chatbot interagendo con un'implementazione di \code{ChatbotLLMPort}. Il metodo \code{get\_message\_response} orchestra l'intero \ignoreglossary{processo}: recupera i messaggi rilevanti dalla cronologia della conversazione tramite l'algoritmo BM25, costruisce il prompt contestualizzato attraverso \code{\_build\_prompt} combinando il messaggio \term{Utente} con il contesto recuperato e il prompt di sistema appropriato alla modalità selezionata, e infine delega al modello la generazione della risposta. Questa classe è quindi responsabile di implementare i diversi meccanismi di risposta sulla base di \code{response\_mode}, realizzando così le funzionalità di risposta "Detective delle relazioni" e "Specchio intelligente".
 
-\paragraph{ChatsRepositoryPort}\mbox{}\\
-
-L'interfaccia \code{ChatsRepositoryPort} definisce il \ignoreglossary{contratto} per la persistenza delle conversazioni. Espone metodi per tutte le operazioni CRUD: creazione di nuove chat (\code{create\_chat}), recupero singolo (\code{get\_chat}) e multiplo (\code{list\_chats}), eliminazione (\code{delete\_chat}) e aggiunta di messaggi (\code{add\_message}). Questa astrazione garantisce l'indipendenza del dominio dall'implementazione specifica del layer di persistenza.
-
+\subsubsubsubsection{ChatsRepositoryPort}\mbox{}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/chatbot/DC-ChatsRepositoryPort.pdf}
     \caption[Diagramma dell'interfaccia ChatsRepositoryPort]{Diagramma dell'interfaccia \code{ChatsRepositoryPort}}
     \label{DC-ChatsRepositoryPort-Backend}
 \end{figure}
+Definisce il \ignoreglossary{contratto} per la persistenza delle conversazioni. Espone metodi per tutte le operazioni CRUD: creazione di nuove chat (\code{create\_chat}), recupero singolo (\code{get\_chat}) e multiplo (\code{list\_chats}), eliminazione (\code{delete\_chat}) e aggiunta di messaggi (\code{add\_message}). Questa astrazione garantisce l'indipendenza del dominio dall'implementazione specifica del layer di persistenza.
 
-\paragraph{DynamoChatAdapter}\mbox{}\\
-
-\code{DynamoChatAdapter} implementa \code{ChatsRepositoryPort} fornendo la persistenza concreta su DynamoDB. Questa classe gestisce l'interazione con due tabelle: \code{chats\_mvp} per i metadati delle conversazioni e \code{chats\_messages\_mvp} per i messaggi. Implementa la logica di traduzione tra gli oggetti di dominio e le strutture dati di DynamoDB, inclusa la generazione di identificativi ULID e la gestione delle operazioni batch per l'eliminazione dei messaggi. L'adapter incapsula completamente i dettagli tecnici di AWS, esponendo al dominio un'interfaccia pulita e tecnologicamente agnostica.
-
+\subsubsubsubsection{DynamoChatAdapter}\mbox{}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/chatbot/DC-DynamoChatAdapter.pdf}
     \caption[Diagramma della classe DynamoChatAdapter]{Diagramma della classe \code{DynamoChatAdapter}}
     \label{DC-DynamoChatAdapter-Backend}
 \end{figure}
+\code{DynamoChatAdapter} implementa \code{ChatsRepositoryPort} fornendo la persistenza concreta su DynamoDB. Questa classe gestisce l'interazione con due tabelle: \code{chats\_mvp} per i metadati delle conversazioni e \code{chats\_messages\_mvp} per i messaggi. Implementa la logica di traduzione tra gli oggetti di dominio e le strutture dati di DynamoDB, inclusa la generazione di identificativi ULID e la gestione delle operazioni batch per l'eliminazione dei messaggi. L'adapter incapsula completamente i dettagli tecnici di AWS, esponendo al dominio un'interfaccia pulita e tecnologicamente agnostica.
 
-\paragraph{CreateChatPort}\mbox{}\\
-
-L'interfaccia \code{CreateChatPort} definisce la porta applicativa per la creazione di nuove conversazioni. Espone il metodo \code{create\_chat}, che accetta un comando \code{CreateChatCmd} e restituisce l'oggetto \code{Chat} creato. Questa interfaccia rappresenta uno degli use case primari del sistema, separando l'intento dell'operazione dalla sua implementazione.
-
+\subsubsubsubsection{CreateChatPort}\mbox{}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/chatbot/DC-CreateChatPort.pdf}
     \caption[Diagramma dell'interfaccia CreateChatPort]{Diagramma dell'interfaccia \code{CreateChatPort}}
     \label{DC-CreateChatPort-Backend}
 \end{figure}
+L'interfaccia \code{CreateChatPort} definisce la porta applicativa per la creazione di nuove conversazioni. Espone il metodo \code{create\_chat}, che accetta un comando \code{CreateChatCmd} e restituisce l'oggetto \code{Chat} creato. Questa interfaccia rappresenta uno degli use case primari del sistema, separando l'intento dell'operazione dalla sua implementazione.
 
-\paragraph{GetChatPort}\mbox{}\\
-
-\code{GetChatPort} definisce le operazioni di lettura delle conversazioni. Include il metodo \code{get\_chat} per il recupero di una singola chat dato il suo identificativo e \code{get\_chat\_list} per ottenere l'elenco di tutte le conversazioni appartenenti a un \term{Utente}. Entrambi i metodi operano attraverso comandi dedicati, mantenendo la separazione tra richiesta ed esecuzione.
-
+\subsubsubsubsection{GetChatPort}\mbox{}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/chatbot/DC-GetChatPort.pdf}
     \caption[Diagramma dell'interfaccia GetChatPort]{Diagramma dell'interfaccia \code{GetChatPort}}
     \label{DC-GetChatPort-Backend}
 \end{figure}
+\code{GetChatPort} definisce le operazioni di lettura delle conversazioni. Include il metodo \code{get\_chat} per il recupero di una singola chat dato il suo identificativo e \code{get\_chat\_list} per ottenere l'elenco di tutte le conversazioni appartenenti a un \term{Utente}. Entrambi i metodi operano attraverso comandi dedicati, mantenendo la separazione tra richiesta ed esecuzione.
 
-\paragraph{UpdateChatPort}\mbox{}\\
-
-L'interfaccia \code{UpdateChatPort} gestisce le operazioni di modifica delle conversazioni esistenti. Il metodo \code{update\_chat} accetta un \code{UpdateChatCmd} e restituisce la chat aggiornata, permettendo la modifica di metadati quali il titolo della conversazione.
-
+\subsubsubsubsection{UpdateChatPort}\mbox{}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/chatbot/DC-UpdateChatPort.pdf}
     \caption[Diagramma dell'interfaccia UpdateChatPort]{Diagramma dell'interfaccia \code{UpdateChatPort}}
     \label{DC-UpdateChatPort-Backend}
 \end{figure}
+L'interfaccia \code{UpdateChatPort} gestisce le operazioni di modifica delle conversazioni esistenti. Il metodo \code{update\_chat} accetta un \code{UpdateChatCmd} e restituisce la chat aggiornata, permettendo la modifica di metadati quali il titolo della conversazione.
 
-\paragraph{DeleteChatPort}\mbox{}\\
-
-\code{DeleteChatPort} definisce l'operazione di eliminazione di una conversazione. Il metodo \code{delete\_chat} riceve un \code{DeleteChatCmd} contenente gli identificativi necessari e procede con la rimozione della chat e di tutti i messaggi associati dalle rispettive tabelle DynamoDB.
-
+\subsubsubsubsection{DeleteChatPort}\mbox{}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/chatbot/DC-DeleteChatPort.pdf}
     \caption[Diagramma dell'interfaccia DeleteChatPort]{Diagramma dell'interfaccia \code{DeleteChatPort}}
     \label{DC-DeleteChatPort-Backend}
 \end{figure}
+\code{DeleteChatPort} definisce l'operazione di eliminazione di una conversazione. Il metodo \code{delete\_chat} riceve un \code{DeleteChatCmd} contenente gli identificativi necessari e procede con la rimozione della chat e di tutti i messaggi associati dalle rispettive tabelle DynamoDB.
 
-\paragraph{ChatMessagePort}\mbox{}\\
-
-L'interfaccia \code{ChatMessagePort} astrae l'operazione di aggiunta di messaggi a una conversazione esistente. Il metodo \code{add\_chat\_message} accetta un \code{AddChatMessageCmd} e restituisce l'identificativo del messaggio appena creato, permettendo al chiamante di tracciare il risultato dell'operazione.
-
+\subsubsubsubsection{ChatMessagePort}\mbox{}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\textwidth]{diagrammi_classi_lambda/chatbot/DC-ChatMessagePort.pdf}
     \caption[Diagramma dell'interfaccia ChatMessagePort]{Diagramma dell'interfaccia \code{ChatMessagePort}}
     \label{DC-ChatMessagePort-Backend}
 \end{figure}
+L'interfaccia \code{ChatMessagePort} astrae l'operazione di aggiunta di messaggi a una conversazione esistente. Il metodo \code{add\_chat\_message} accetta un \code{AddChatMessageCmd} e restituisce l'identificativo del messaggio appena creato, permettendo al chiamante di tracciare il risultato dell'operazione.
 
-\paragraph{ChatbotCRUDService}\mbox{}\\
-
-\code{ChatbotCRUDService} implementa tutte le porte applicative relative alle operazioni CRUD sulle conversazioni: \code{CreateChatPort}, \code{GetChatPort}, \code{UpdateChatPort}, \code{DeleteChatPort} e \code{ChatMessagePort}. Questo servizio funge da facade unificato per tutte le operazioni di gestione delle chat, delegando al \ignoreglossary{repository} la persistenza effettiva dei dati. Mantiene un riferimento a \code{ChatsRepositoryPort}, rispettando il principio di inversione delle dipendenze dell'\term{Architettura} esagonale.
-
+\subsubsubsubsection{ChatbotCRUDService}\mbox{}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\textwidth]{diagrammi_classi_lambda/chatbot/DC-ChatbotCRUDService.pdf}
     \caption[Diagramma della classe ChatbotCRUDService]{Diagramma della classe \code{ChatbotCRUDService}}
     \label{DC-ChatbotCRUDService-Backend}
 \end{figure}
+Costituisce la domain logic per le operazione relative alle operazioni CRUD sulle conversazioni, implementando le classi \code{CreateChatPort}, \code{GetChatPort}, \code{UpdateChatPort}, \code{DeleteChatPort} e \code{ChatMessagePort}. Questo servizio funge da facade unificato per tutte le operazioni di gestione delle chat, delegando al \ignoreglossary{repository} la persistenza effettiva dei dati. Mantiene un riferimento a \code{ChatsRepositoryPort}, rispettando il principio di inversione delle dipendenze dell'\term{Architettura} esagonale.
 
-\paragraph{CreateChatCmd}\mbox{}\\
-
-\code{CreateChatCmd} incapsula i parametri necessari per la creazione di una nuova conversazione: l'identificativo dell'\term{Utente} (\code{user\_id}) e il titolo della chat (\code{title}).
-
+\subsubsubsubsection{CreateChatCmd}\mbox{}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.28\textwidth]{diagrammi_classi_lambda/chatbot/DC-CreateChatCmd.pdf}
     \caption[Diagramma della classe CreateChatCmd]{Diagramma della classe \code{CreateChatCmd}}
     \label{DC-CreateChatCmd-Backend}
 \end{figure}
+\code{CreateChatCmd} incapsula i parametri necessari per la creazione di una nuova conversazione: l'identificativo dell'\term{Utente} (\code{user\_id}) e il titolo della chat (\code{title}).
 
-\paragraph{GetChatCmd}\mbox{}\\
-
-\code{GetChatCmd} trasporta i parametri per il recupero di una specifica conversazione: l'identificativo dell'\term{Utente} e quello della chat.
-
+\subsubsubsubsection{GetChatCmd}\mbox{}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.28\textwidth]{diagrammi_classi_lambda/chatbot/DC-GetChatCmd.pdf}
     \caption[Diagramma della classe GetChatCmd]{Diagramma della classe \code{GetChatCmd}}
     \label{DC-GetChatCmd-Backend}
 \end{figure}
+\code{GetChatCmd} trasporta i parametri per il recupero di una specifica conversazione: l'identificativo dell'\term{Utente} e quello della chat.
 
-\paragraph{GetChatListCmd}\mbox{}\\
-
-\code{GetChatListCmd} contiene l'identificativo dell'\term{Utente} per il quale si richiede l'elenco completo delle conversazioni. Questo comando rappresenta l'operazione di recupero multiplo, fondamentale per la visualizzazione dello storico delle chat nell'interfaccia \term{Utente}.
-
+\subsubsubsubsection{GetChatListCmd}\mbox{}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.28\textwidth]{diagrammi_classi_lambda/chatbot/DC-GetChatListCmd.pdf}
     \caption[Diagramma della classe GetChatListCmd]{Diagramma della classe \code{GetChatListCmd}}
     \label{DC-GetChatListCmd-Backend}
 \end{figure}
+\code{GetChatListCmd} contiene l'identificativo dell'\term{Utente} per il quale si richiede l'elenco completo delle conversazioni. Questo comando rappresenta l'operazione di recupero multiplo, fondamentale per la visualizzazione dello storico delle chat nell'interfaccia \term{Utente}.
 
-\paragraph{UpdateChatCmd}\mbox{}\\
-
-\code{UpdateChatCmd} incapsula i parametri per la modifica di una conversazione esistente: gli identificativi di \term{Utente} e chat, e il nuovo titolo da assegnare.
-
+\subsubsubsubsection{UpdateChatCmd}\mbox{}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.28\textwidth]{diagrammi_classi_lambda/chatbot/DC-UpdateChatCmd.pdf}
     \caption[Diagramma della classe UpdateChatCmd]{Diagramma della classe \code{UpdateChatCmd}}
     \label{DC-UpdateChatCmd-Backend}
 \end{figure}
+\code{UpdateChatCmd} incapsula i parametri per la modifica di una conversazione esistente: gli identificativi di \term{Utente} e chat, e il nuovo titolo da assegnare.
 
-\paragraph{DeleteChatCmd}\mbox{}\\
-
-\code{DeleteChatCmd} trasporta gli identificativi necessari per l'eliminazione di una conversazione e di tutti i messaggi associati.
-
+\subsubsubsubsection{DeleteChatCmd}\mbox{}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.28\textwidth]{diagrammi_classi_lambda/chatbot/DC-DeleteChatCmd.pdf}
     \caption[Diagramma della classe DeleteChatCmd]{Diagramma della classe \code{DeleteChatCmd}}
     \label{DC-DeleteChatCmd-Backend}
 \end{figure}
+\code{DeleteChatCmd} trasporta gli identificativi necessari per l'eliminazione di una conversazione e di tutti i messaggi associati.
 
-\paragraph{AddChatMessageCmd}\mbox{}\\
-
-\code{AddChatMessageCmd} contiene tutti i parametri necessari per aggiungere un messaggio a una conversazione: identificativi di \term{Utente} e chat, contenuto testuale (\code{text}) e tipologia del mittente (\code{sender}). Questo comando viene utilizzato sia per memorizzare i messaggi inviati dall'\term{Utente} che le risposte generate dal chatbot, mantenendo la coerenza dello storico conversazionale.
-
+\subsubsubsubsection{AddChatMessageCmd}\mbox{}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.28\textwidth]{diagrammi_classi_lambda/chatbot/DC-AddChatMessageCmd.pdf}
     \caption[Diagramma della classe AddChatMessageCmd]{Diagramma della classe \code{AddChatMessageCmd}}
     \label{DC-AddChatMessageCmd-Backend}
 \end{figure}
+\code{AddChatMessageCmd} contiene tutti i parametri necessari per aggiungere un messaggio a una conversazione: identificativi di \term{Utente} e chat, contenuto testuale (\code{text}) e tipologia del mittente (\code{sender}). Questo comando viene utilizzato sia per memorizzare i messaggi inviati dall'\term{Utente} che le risposte generate dal chatbot, mantenendo la coerenza dello storico conversazionale.
 
-\paragraph{ChatDTO}\mbox{}\\
-
-\code{ChatDTO} è il Data Transfer Object utilizzato per la serializzazione di una chat in un dizionario utilizzato per la risposta della lambda. Contiene tutti i campi dell'entità \code{Chat} di dominio e fornisce i metodi \code{to\_dict} per la conversione in dizionario Python (successivamente serializzato in JSON) e \code{from\_domain} per la creazione a partire da un oggetto di dominio.
-
+\subsubsubsubsection{ChatDTO}\mbox{}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/chatbot/DC-ChatDTO.pdf}
     \caption[Diagramma della classe ChatDTO]{Diagramma della classe \code{ChatDTO}}
     \label{DC-ChatDTO-Backend}
 \end{figure}
+\code{ChatDTO} è il Data Transfer Object utilizzato per la serializzazione di una chat in un dizionario utilizzato per la risposta della lambda. Contiene tutti i campi dell'entità \code{Chat} di dominio e fornisce i metodi \code{to\_dict} per la conversione in dizionario Python (successivamente serializzato in JSON) e \code{from\_domain} per la creazione a partire da un oggetto di dominio.
 
-\paragraph{ChatMessageDTO}\mbox{}\\
-
-\code{ChatMessageDTO} rappresenta il Data Transfer Object per i singoli messaggi. Analogamente a \code{ChatDTO}, fornisce metodi per la conversione bidirezionale tra oggetti di dominio e strutture dati serializzabili.
-
+\subsubsubsubsection{ChatMessageDTO}\mbox{}\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/chatbot/DC-ChatMessageDTO.pdf}
     \caption[Diagramma della classe ChatMessageDTO]{Diagramma della classe \code{ChatMessageDTO}}
     \label{DC-ChatMessageDTO-Backend}
 \end{figure}
+\code{ChatMessageDTO} rappresenta il Data Transfer Object per i singoli messaggi. Analogamente a \code{ChatDTO}, fornisce metodi per la conversione bidirezionale tra oggetti di dominio e strutture dati serializzabili.
 
-\paragraph{LambdaHandler}\mbox{}\\
-
-\code{LambdaHandler} costituisce il punto di ingresso della funzione Lambda. La funzione \code{lambda\_handler} riceve gli eventi HTTP, li instrada ai gestori appropriati, coordina l'interazione tra \code{ChatbotCRUDService} e \code{ChatbotLLMService}, e costruisce le risposte HTTP conformi alle specifiche dell'API.
-
+\subsubsubsubsection{ChatBotController}\mbox{}\\
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/chatbot/DC-LambdaHandler.pdf}
-    \caption[Diagramma della classe LambdaHandler]{Diagramma della classe \code{LambdaHandler}}
-    \label{DC-LambdaHandler-Backend}
+    \includegraphics[width=0.5\textwidth]{diagrammi_classi_lambda/chatbot/DC-ChatBotController.pdf}
+    \caption[Diagramma della classe LambdaHandler]{Diagramma della classe \code{ChatBotController}}
+    \label{DC-ChatBotController-Backend}
 \end{figure}
+Rappesenta l'inbound adapter del microservizio. Esegue il parsing delle richieste inviate da API Gateway in oggetti di domanio. il punto di ingresso della funzione Lambda, li instrada ai gestori appropriati, coordina l'interazione tra \code{ChatbotCRUDService} e \code{ChatbotLLMService}, e costruisce le risposte HTTP conformi alle specifiche dell'API.
 
 \subsubsection{Contatti fidati, invio SOS e Dead man's switch} \label{subsubsec:architettura_dms}
 
@@ -3777,7 +3699,7 @@ L'interfaccia \code{ChatMessagePort} astrae l'operazione di aggiunta di messaggi
     \label{fig:architettura_dms}
 \end{figure}
 
-\paragraph{\term{Architettura} e Flusso di Elaborazione: contatti fidati, SOS e Dead man's switch}\mbox{}\\
+\subsubsubsection{\ignoreglossary{Architettura} e Flusso di Elaborazione: contatti fidati, SOS e Dead man's switch}\mbox{}\\
 La sezione relativa ai contatti fidati, all’invio di messaggi di emergenza e al meccanismo di Dead man's switch è progettata per garantire la gestione automatizzata dello stato di attività dell’\term{Utente} e la possibilità di attivare procedure di emergenza sia manualmente che in modo automatico.
 
 API Gateway gestisce l’esposizione delle API e \ignoreglossary{verifica}, per ogni richiesta, che l’\term{Utente} sia correttamente autenticato all’applicazione. Le richieste valide vengono inoltrate a una funzione Lambda centrale, responsabile della gestione della logica applicativa relativa ai contatti fidati, alla configurazione del Dead man's switch e all’orchestrazione dell’invio delle email tramite Amazon SES.
@@ -3825,7 +3747,7 @@ L’invio SOS \textbf{manuale} segue invece il seguente flusso:
 
 La gestione dei contatti fidati è completamente CRUD e permette all’\term{Utente} di mantenere aggiornato il proprio elenco di destinatari di emergenza.
 
-\paragraph{API associate}\mbox{}\\
+\subsubsubsection{API associate}\mbox{}\\
 \begin{itemize}
 
     % ---------------- DMS SETTINGS ----------------
@@ -4143,7 +4065,7 @@ La gestione dei contatti fidati è completamente CRUD e permette all’\term{Ute
 
 % ===== diagramma classi contatti fidati \term{Backend} ======
 
-\paragraph{\term{Architettura} logica: Modulo contatti fidati, SOS e Dead man's switch} \label{par:architettura_backend_contatti_fidati}
+\subsubsubsection{\ignoreglossary{Architettura} logica: Modulo contatti fidati, SOS e Dead man's switch} \label{par:architettura_backend_contatti_fidati}
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{diagrammi_classi_lambda/contatti_fidati/DCB-contatti_fidati.pdf}
