@@ -1,7 +1,7 @@
 % template presente
 \documentclass[a4paper,12pt]{article}
 
-\usepackage{lscape}
+\usepackage{pdflscape}
 \usepackage[table]{xcolor}
 \usepackage{tabularx}
 \usepackage{tcolorbox}
@@ -2894,21 +2894,24 @@ Le API relative al diario criptato e fittizio sono suddivise in due categorie di
 
 \end{itemize}
 
+\clearpage
+
 \begin{landscape}
 
     \subsubsubsection{\ignoreglossary{Architettura} logica: microservizio diario}
     \label{par:architettura_backend_diari}
 
-    \begin{figure}[H]
-        \centering
+    \begin{center}
         \includegraphics[width=1.2\textheight]
         {diagrammi_classi_lambda/diari/LambdaDiari.pdf}
         
-        \caption{Componenti della Lambda per la gestione dei diari}
+        \captionof{figure}{Componenti della Lambda per la gestione dei diari}
         \label{DCB-Lambda-diari-Backend}
-    \end{figure}
+    \end{center}
 
 \end{landscape}
+
+\clearpage
 
 \paragraph{DiaryType}\mbox{}\\
 L'enumerazione \code{DiaryType} definisce i due tipi di diario supportati dal sistema: \code{REAL\_DIARY} per il diario reale contenente i dati autentici dell'\term{Utente} e \code{FAKE\_DIARY} per il diario fittizio.
