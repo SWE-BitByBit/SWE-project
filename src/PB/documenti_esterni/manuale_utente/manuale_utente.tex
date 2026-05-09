@@ -6,7 +6,7 @@
 % =======================================================
 \newcommand{\TitoloDocumento}{Manuale Utente}
 \newcommand{\DataVersione}{AAAA/MM/GG}
-\newcommand{\VersioneAttuale}{0.4.0}
+\newcommand{\VersioneAttuale}{0.6.0}
 
 % =======================================================
 % 2. PACCHETTI
@@ -151,10 +151,13 @@
 \textbf{Redattori:} & 
 \begin{tabular}[t]{@{}l@{}}
 Dennis Parolin\\
+Giovanni Visentin\\
 \end{tabular} \\
 \textbf{Verificatori:} & 
 \begin{tabular}[t]{@{}l@{}}
 Giovanni Visentin \\
+Dennis Parolin \\
+Gabriele Scaggiante \\
 \end{tabular} \\
 \textbf{Destinatari:} &
 \begin{tabular}[t]{@{}l@{}}
@@ -200,7 +203,7 @@ Gruppo BitByBit\\\\
 0.5.0 & 2026-05-02 & Dennis Parolin & Aggiunta immagini e scrittura della funzionalità del \hyperref[subsec:diario_criptato]{Diario Criptato} & Giovanni Visentin \\
 \hline
 \rowcolor{gray!20}
-0.4.0 & 2026-05-01 & Dennis Parolin & Aggiornamento e completamento della sezione di introduzione. & Giovanni Visentin \\
+0.4.0 & 2026-05-01 & Dennis Parolin & Aggiornamento e completamento della \hyperref[sec:introduzione]{sezione di introduzione}. & Giovanni Visentin \\
 \hline
 \rowcolor{white}
 0.3.0 & 2026-04-30 & Dennis Parolin & Aggiornamento della descrizione di tutte le funzionalità. Aggiunta delle relative immagini di guida. & Giovanni Visentin \\
@@ -236,13 +239,13 @@ Gruppo BitByBit\\\\
 
 % =======================SCOPO DOCUMENTO================================
 \subsection{Scopo del documento} \label{sec:scopo_documento}
-Il presente \textit{Manuale \term{Utente}} è stato redatto dal gruppo \textit{BitByBit} per fornire un supporto metodico e completo riguardo all'utilizzo del sistema sviluppato in risposta al \href{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C4.pdf}{Capitolato d'appalto C4: \emph{L'app che Protegge e Trasforma}}.
+Il presente \textit{Manuale \ignoreglossary{Utente}} è stato redatto dal gruppo \textit{BitByBit} per fornire un supporto metodico e completo riguardo all'utilizzo del sistema sviluppato nell'ambito del \href{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C4.pdf}{Capitolato d'appalto C4: \emph{L'app che Protegge e Trasforma}}.
 
-Il documento si propone come una guida operativa concepita per accompagnare l'\term{Utente} nell'interazione quotidiana con le interfacce dell'applicativo e per descriverne tutte le potenzialità. L'obiettivo primario è far sì che qualunque utilizzatore possa apprendere velocemente e in autonomia come muoversi e operare attraverso il software, mitigando la probabilità di errori accidentali offrendo linee guida e soluzioni a dubbi comuni.
+Il documento si propone come una guida operativa concepita per accompagnare l'\term{Utente} nell'interazione quotidiana con le interfacce dell'applicativo e per descriverne tutte le funzionalità. L'obiettivo primario è far sì che chiunque possa apprendere velocemente e in autonomia come utilizzare il software, mitigando la probabilità di errori accidentali e offrendo linee guida e soluzioni a dubbi comuni.
 
 % =======================SCOPO PRODOTTO================================
 \subsection{Scopo del prodotto} \label{sec:scopo_prodotto}
-"L'app che Protegge e Trasforma" è un'applicazione mobile multipiattaforma (Android e iOS) finalizzata alla prevenzione della violenza di genere e al supporto concreto attraverso strumenti di consapevolezza e sicurezza. Il prodotto integra funzionalità intelligenti, come il supporto analitico dell'IA per aiutare l'\term{Utente} a decodificare la propria situazione e riconoscere pattern di rischio, oltre a strumenti di allerta verso contatti fidati. Attraverso funzionalità come il Dead Man's Switch, il sistema lascia all'\term{Utente} la libertà di gestire il proprio livello di discrezione in base alle proprie necessità. Il sistema funge inoltre da hub informativo collegando l'utenza a risorse esterne, normative e mappe di luoghi sicuri.
+"L'app che Protegge e Trasforma" è un'applicazione mobile multipiattaforma (Android e iOS) finalizzata alla prevenzione della violenza di genere e al supporto concreto attraverso strumenti di consapevolezza e sicurezza. Il prodotto integra funzionalità intelligenti, come il supporto analitico dell'IA per aiutare l'\term{Utente} a decodificare la propria situazione e riconoscere pattern di rischio, oltre a strumenti di allerta verso contatti fidati. Attraverso funzionalità come il Dead Man's Switch, il sistema lascia all'\term{Utente} la libertà di gestire il proprio livello di discrezione in base alle proprie necessità. Il sistema funge inoltre da hub informativo, collegando l'\term{Utente} a risorse esterne, normative e mappe di luoghi sicuri.
 
 % =======================DEFINIZIONI, ACRONIMI E ABBREVIAZIONI================================
 
@@ -334,9 +337,9 @@ Per i dispositivi Apple, l'installazione può avvenire tramite il file di pacche
 \begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black,title=Nota sulla compatibilità iOS]
     A differenza di Android, l'installazione di applicazioni esterne (sideloading) su iOS è soggetta a forti restrizioni di sicurezza da parte di Apple. 
     
-    Il file \texttt{app\_unsigned.ipa} fornito è un pacchetto compilato correttamente per architettura \textit{iPhoneOS}, ma non include la \textbf{firma digitale ufficiale} (Digital Signature) richiesta per l'esecuzione su dispositivi fisici non registrati. Tale firma richiede l'utilizzo di un account \textit{Apple Developer} e di un ambiente macOS per la notarizzazione.
+    Il file \texttt{app\_unsigned.ipa} fornito è un pacchetto compilato correttamente per \term{Architettura} \textit{iPhoneOS}, ma non include la \textbf{firma digitale ufficiale} (Digital Signature) richiesta per l'esecuzione su dispositivi fisici non registrati. Tale firma richiede l'utilizzo di un account \textit{Apple Developer} e di un ambiente macOS per la notarizzazione.
     
-    Per un progetto in fase di \textit{Minimum Viable Product} (MVP) in ambito universitario, il file dimostra la piena compatibilità del codice sorgente con l'ecosistema iOS. Per un'eventuale distribuzione reale, la procedura standard prevede l'utilizzo di \textbf{Apple TestFlight} o la pubblicazione ufficiale sull'App Store.
+    Per un progetto in fase di \textit{Minimum Viable Product} (\term{MVP}) in ambito universitario, il file dimostra la piena compatibilità del codice sorgente con l'ecosistema iOS. Per un'eventuale distribuzione reale, la procedura standard prevede l'utilizzo di \textbf{Apple TestFlight} o la pubblicazione ufficiale sull'App Store.
 \end{tcolorbox}
 
 \section{Accesso da Web} \label{sec:accesso_web}
@@ -355,7 +358,7 @@ Per chi desidera utilizzare l'applicativo senza procedere all'installazione su u
     \item Aprire il browser web sul proprio dispositivo.
     \item Navigare all'indirizzo ufficiale del progetto: \\ 
     \url{https://swe-bitbybit.github.io/project-MVP/} \footnote{L'indirizzo potrebbe variare in base alla configurazione finale dell'hosting.}
-    \item Al caricamento della pagina, l'\term{Utente} si troverà direttamente nella schermata di autenticazione o nella \textit{Dashboard} principale.
+    \item Al caricamento della pagina, l'\term{Utente} si troverà direttamente nella \textit{Homepage} dell'applicazione.
 \end{enumerate}
 
 \section{Esecuzione da codice sorgente} \label{sec:esecuzione_sorgenti}
@@ -376,7 +379,7 @@ Il corretto funzionamento dell'applicativo dipende dalla configurazione delle va
 \begin{enumerate}
     \item Localizzare il file \texttt{.env.example} nella cartella root del frontend.
     \item Copiare il contenuto in un nuovo file denominato \texttt{.env}.
-    \item Sostituire il valore di \texttt{API\_BASE\_URL} con l'endpoint corretto fornito dal team di sviluppo (Backend AWS).
+    \item Sostituire il valore di \texttt{API\_BASE\_URL} con l'endpoint corretto fornito dal team di sviluppo (\term{Backend} AWS).
 \end{enumerate}
 
 \subsection{Procedura di setup ed esecuzione} \label{subsec:procedura_esecuzione}
@@ -386,7 +389,7 @@ Seguire rigorosamente i seguenti comandi da terminale per preparare ed eseguire 
     \item \textbf{Clonazione della \term{Repository}:}
     {\small
     \begin{verbatim}
-    git clone https://github.com/SWE-BitByBit/Project-MVP.git
+    git clone https://github.com/SWE-BitByBit/\term{Project}-\term{MVP}.git
     \end{verbatim}
     }
     \item \textbf{Navigazione nella cartella del frontend:}
@@ -420,11 +423,11 @@ Seguire rigorosamente i seguenti comandi da terminale per preparare ed eseguire 
 \begin{itemize}
     \item \textbf{Problemi con Flutter Doctor:}
     \begin{itemize}
-        \item \textbf{Android license status unknown:} Eseguire \texttt{flutter doctor --android-licenses} e accettare le licenze.
-        \item \textbf{Android SDK not found:} Configurare il percorso con \texttt{flutter config --android-sdk <percorso\_sdk>}.
+        \item \textbf{Android license status unknown:} Eseguire \texttt{flutter doctor {-}{-}android-licenses} e accettare le licenze.
+        \item \textbf{Android SDK not found:} Configurare il percorso con \texttt{flutter config {-}{-}android-sdk <percorso\_sdk>}.
     \end{itemize}
     \item \textbf{Errore Lint Separatori Windows:}
-    In caso di errore \textit{"Windows file separators (\textbackslash) and drive letter separators (':') must be escaped"}, è necessario fare l'escape dei \texttt{:} nel path \texttt{sdk.dir} in \texttt{android/local.properties} (es. \texttt{C:\textbackslash\textbackslash Users\textbackslash\textbackslash...}). Verificare la risoluzione con il comando \texttt{gradlew lintDebug} ed eventualmente riavviare l'IDE (VS Code).
+    In caso di errore \textit{"Windows file separators (\textbackslash) and drive letter separators (':') must be escaped"}, è necessario fare l'escape dei \texttt{:} nel path \texttt{sdk.dir} in \texttt{android/local.properties} (es. \texttt{C:\textbackslash\textbackslash Users\textbackslash\textbackslash...}). Verificare la risoluzione con il comando \texttt{gradlew lintDebug} ed eventualmente riavviare l'\term{IDE}.
     \item \textbf{Blocco su "Running Gradle task 'assembleDebug'...":}
     \textit{Soluzione:} La prima compilazione può essere molto lenta. Se persiste, eseguire:
     \begin{verbatim}
@@ -444,7 +447,7 @@ Per un'esperienza di sviluppo più fluida, si consiglia di:
 
 \section{Funzionalità dell'applicazione} \label{sec:funzionalita}
 
-In questa sezione vengono descritte nel dettaglio le funzionalità messe a disposizione dall'applicativo per supportare l'\term{Utente}.
+In questa sezione vengono descritte nel dettaglio le funzionalità messe a disposizione dall'applicativo per l'\term{Utente}.
 
 \subsection{Homepage} \label{subsec:homepage}
 
@@ -464,7 +467,7 @@ Dalla Homepage è possibile accedere direttamente alle seguenti sezioni:
     \item \hyperref[subsec:luoghi_sicuri]{Luoghi sicuri}: per individuare i punti di riferimento sicuri più vicini;
     \item \hyperref[subsec:materiale_informativo]{Materiale Informativo}: per consultare guide, articoli e riferimenti normativi;
     \item \hyperref[subsec:sos_contatti]{Contatti fidati}: per gestire la propria rete di supporto;
-    \item \hyperref[subsubsec:dms]{Dead man's switch}: per configurare il sistema di emergenza automatizzato.
+    \item \hyperref[subsubsec:dms]{Dead Man's Switch}: per configurare il sistema di emergenza automatizzato.
 \end{itemize}
 
 \subsection{Gestione Account e Autenticazione} \label{subsec:autenticazione}
@@ -487,7 +490,7 @@ Per accedere alla schermata di autenticazione, premere il pulsante del profilo s
     \label{fig:homepage-autenticazione}
 \end{figure}
 
-L'autenticazione avviene esclusivamente tramite il proprio \textbf{Account Google}. Premendo sul pulsante dedicato (\ref{fig:schermata-login}), l'\term{Utente} verrà mostrata la seguente schermata con il pulsante apposito al reindirizzamento alla schemrata di login standard di Google.
+L'autenticazione avviene esclusivamente tramite il proprio \textbf{Account Google}. Premendo sul pulsante dedicato (\ref{fig:schermata-login}), all'\term{Utente} verrà mostrata la seguente schermata, contenente il pulsante per il reindirizzamento al form di login Google.
 
 \begin{figure}[H]
     \centering
@@ -543,7 +546,7 @@ Per permettere una rapida identificazione della tipologia di luogo, i marker son
 \subsubsection{Legenda dei marker}
 Per agevolare la comprensione della mappa, è disponibile una legenda che spiega il significato di ogni icona utilizzata per i marker. 
 
-È possibile accedere alla legenda premendo sul pulsante informativo situato in alto a sinistra della schermata della mappa. Una volta premuto, verrà visualizzata una schermata dedicata contenente l'elenco di tutte le categorie di luoghi sicuri e le relative icone identificative.
+È possibile accedere alla legenda premendo sul pulsante informativo situato in alto a destra della schermata della mappa. Una volta premuto, verrà visualizzata una schermata dedicata contenente l'elenco di tutte le categorie di luoghi sicuri e le relative icone identificative.
 
 \begin{figure}[H]
     \centering
@@ -622,7 +625,7 @@ Per facilitare la ricerca, è possibile utilizzare il sistema di \textbf{filtri}
 Per visualizzare i dettagli di una specifica risorsa, è sufficiente \textbf{premere sull'elemento desiderato} all'interno della lista. Si aprirà una schermata di dettaglio dove, in base alla tipologia di contenuto, l'applicazione può mostrare:
 \begin{itemize}
     \item \textbf{Contenuto testuale:} il testo completo dell'articolo o della guida, consultabile direttamente all'interno dell'app;
-    \item \textbf{Link esterni:} qualora la risorsa faccia riferimento a un sito esterno, sarà presente un \textbf{pulsante apposito} all'interno delle informazioni dell'elemento che, se premuto, aprirà il browser del dispositivo sulla pagina ufficiale selezionata.
+    \item \textbf{Link esterni:} qualora la risorsa faccia riferimento a un sito esterno, sarà presente un \textbf{pulsante apposito} che, se premuto, aprirà il browser del dispositivo sulla pagina ufficiale selezionata.
 \end{itemize}
 
 \begin{figure}[H]
@@ -808,7 +811,7 @@ La password scelta deve rispettare i seguenti criteri di sicurezza:
 A tutela della sicurezza dell'\term{Utente} in situazioni di potenziale costrizione, l'app implementa un innovativo sistema di "Diario Fittizio":
 \begin{itemize}
     \item \textbf{Diario Reale:} inserendo la password corretta, si accede al contenuto reale e a tutti i dati sensibili archiviati.
-    \item \textbf{Diario Fittizio:} l'\term{Utente} può configurare una seconda password (password fittizia). Se questa viene inserita nella schermata di sblocco, l'app mostrerà una versione "esca" del diario. Questa versione contiene elementi coerenti e sensati, ma è totalmente priva di qualsiasi informazione sensibile.
+    \item \textbf{Diario Fittizio:} l'\term{Utente} può configurare una seconda password (password fittizia). Se questa viene inserita nella schermata di accesso al diario, l'app mostrerà una versione "esca" del diario reale. Questa versione contiene elementi coerenti e sensati, ma è totalmente priva di qualsiasi informazione sensibile.
 \end{itemize}
 La gestione di entrambe le password avviene all'interno del diario reale tramite un pulsante dedicato alle impostazioni di sicurezza.
 
@@ -891,12 +894,12 @@ Per aggiungere un'immagine al diario, selezionare il pulsante delle risorse e sc
     \label{fig:nota-immagine}
 \end{figure}
 
-Per inserire audio, premere il pulsante delle risorse e scegliere \textbf{"Aggiungi audio"}. Dalla schermata di scelta o registrazione (\ref{fig:nota-audio-search}) si può selezionare il file o avviare la registrazione. Il blocco audio viene aggiunto alla nota e può essere riprodotto direttamente all'interno dell'interfaccia (\ref{fig:nota-audio} e \ref{fig:nota-audio-play}).
+Per inserire audio, premere il pulsante delle risorse e scegliere \textbf{"Aggiungi traccia audio"}. Dalla schermata di scelta o registrazione (\ref{fig:nota-audio-search}) si può selezionare il file o avviare la registrazione. Il blocco audio viene aggiunto alla nota e può essere riprodotto direttamente all'interno dell'interfaccia (\ref{fig:nota-audio} e \ref{fig:nota-audio-play}).
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{manuale_utente/diario/Nota_audio_search.pdf}
-    \caption[Scelta audio]{Schermata di selezione o registrazione audio}
+    \caption[Scelta audio]{Schermata di selezione audio}
     \label{fig:nota-audio-search}
 \end{figure}
 
@@ -914,7 +917,7 @@ Per inserire audio, premere il pulsante delle risorse e scegliere \textbf{"Aggiu
     \label{fig:nota-audio-play}
 \end{figure}
 
-Una singola nota può contenere testo, immagine e audio insieme. In questo modo il diario supporta la composizione di contenuti completi e multimediali (\ref{fig:nota-full-elements}).
+Una singola nota può contenere testo, immagini e audio insieme. In questo modo il diario supporta la composizione di contenuti completi e multimediali (\ref{fig:nota-full-elements}).
 
 \begin{figure}[H]
     \centering
@@ -956,7 +959,7 @@ L'\term{Utente} può interagire con la lista in due modi:
 \end{figure}
 
 \subsubsection{Gestione delle Password}
-La configurazione e la modifica delle password, sia per il diario reale che per quello fittizio, possono essere effettuate esclusivamente dall'interno del \textbf{diario reale}. Questa scelta garantisce che solo chi è già in possesso delle credenziali corrette possa alterare le impostazioni di sicurezza.
+La configurazione e la modifica delle password, sia per il diario reale che per quello fittizio, possono essere effettuate esclusivamente dall'interno del \textbf{diario reale}. Questa scelta garantisce che solo chi è già in possesso delle credenziali corrette possa apportare modifiche alle impostazioni di sicurezza.
 
 Per accedere a queste opzioni, premere il pulsante \textbf{"Impostazioni Sicurezza"} situato nella schermata principale del diario (\ref{fig:pulsante-impostazioni-sicurezza}).
 
@@ -976,14 +979,14 @@ Una volta premuto, verrà visualizzata una schermata dedicata (\ref{fig:schermat
     \label{fig:schermata-impostazioni-sicurezza}
 \end{figure}
 
-Le procedure di inserimento e i criteri di sicurezza richiesti sono identici a quelli descritti nella sezione di primo accesso al diario reale.
+Le procedure di inserimento e i criteri di sicurezza richiesti sono identici a quelli descritti nella sezione di primo accesso al diario reale. Si noti che la password del diario reale e quella del diario fittizio non possono coincidere. Provare a impostarle allo stesso valore causerà la comparsa di un messaggio d'errore e invaliderà la modifica effettuata. 
 
 \subsection{Rete di supporto e SOS} \label{subsec:sos_contatti}
 
 L'applicazione integra un sistema di emergenza avanzato per permettere all'\term{Utente} di richiedere aiuto in modo tempestivo e discreto alla propria rete di contatti fidati. Questa sezione si compone di tre strumenti principali, accessibili tramite percorsi differenti: l'invio rapido di un segnale di SOS, la gestione della rete di contatti fidati e la configurazione del sistema di allarme automatico (Dead Man's Switch).
 
 \subsubsection{Comando SOS e Allarme Acustico}
-In situazioni di pericolo, l'\term{Utente} ha a disposizione uno strumento di reazione immediata tramite un \textbf{pulsante a leva} che è presente in ogni schermata e funzionalità dell'applicazione, mantenendo sempre la stessa posizione per essere facilmente raggiungibile in qualsiasi momento.
+In situazioni di pericolo, l'\term{Utente} ha a disposizione uno strumento di reazione immediata tramite un \textbf{pulsante a leva} che è presente in ogni schermata dell'applicazione, mantenendo sempre la stessa posizione per essere facilmente raggiungibile in qualsiasi momento.
 
 \begin{figure}[H]
     \centering
@@ -1078,10 +1081,10 @@ Verranno mostrati i campi contenenti le informazioni attuali, che possono essere
 \end{figure}
 
 \subsubsection{Dead Man's Switch (Interruttore di emergenza)} \label{subsubsec:dms}
-Il Dead Man's Switch è una funzionalità di sicurezza preventiva progettata per attivarsi automaticamente in caso di prolungata inattività dell'\term{Utente}.
+Il Dead Man's Switch è una funzionalità di sicurezza preventiva progettata per attivarsi automaticamente in caso di prolungata inattività dell'\term{Utente}. Questa funzionalità invia un email di avviso all'\term{Utente} dopo un periodo di inattività prefissato. In caso di mancato accesso all'app nei giorni successivi al ricevimento del messaggio, il Dead Man's Switch invierà una mail di avviso a tutti i contatti fidati dell'\term{Utente}. I tempi di inattività, così come il messaggio che l'\term{Utente} riceve in caso di mancato accesso prolungato, sono completamente personalizzabili. La funzionalità stessa può essere disabilitata.
 
 \textbf{Accesso alla funzionalità:}
-Per configurare il sistema, è necessario accedere alle impostazioni dell'applicazione tramite l'icona a forma di ingranaggio situata in alto a destra nella Home. 
+Per configurare il Dead Man's Switch, è necessario accedere alle impostazioni dell'applicazione tramite l'icona a forma di ingranaggio situata in alto a destra nella Home. 
 
 \begin{figure}[H]
     \centering
@@ -1090,7 +1093,7 @@ Per configurare il sistema, è necessario accedere alle impostazioni dell'applic
     \label{fig:homepage_dms}
 \end{figure}
 
-All'interno della schermata impostazioni, selezionare la voce \textbf{"Gestione dell'allarme automatico"} (sotto la quale è riportata la dicitura "Configura dead man's switch").
+All'interno della schermata impostazioni, selezionare la voce \textbf{"Allarme automatico"} (sotto la quale è riportata la dicitura "Configura li Dead Man's Switch").
 
 \begin{figure}[H]
     \centering
@@ -1100,7 +1103,7 @@ All'interno della schermata impostazioni, selezionare la voce \textbf{"Gestione 
 \end{figure}
 
 \textbf{Configurazione e impostazioni:}
-Una volta aperta la sezione, l'\term{Utente} può personalizzare il funzionamento dei timer e delle comunicazioni di emergenza.
+Una volta aperta la sezione, l'\term{Utente} può personalizzare la durata dei timer e il contenuto testuale delle comunicazioni di emergenza.
 
 \begin{figure}[H]
     \centering
@@ -1113,7 +1116,7 @@ Le opzioni disponibili includono:
 \begin{itemize}
     \item \textbf{Stato Allarme:} uno switch che permette di attivare o disattivare l'intera funzionalità. Nota: affinché le modifiche ai timer e ai testi vengano salvate correttamente, lo stato dell'allarme deve essere impostato su \textbf{Attivo}.
     \item \textbf{Primo Timer (Avviso Personale):} tramite una barra di regolazione orizzontale, l'\term{Utente} può impostare il numero di giorni di inattività (mancato avvio dell'app) superati i quali il sistema invierà un'e-mail di controllo esclusivamente all'\term{Utente}.
-    \item \textbf{Personalizzazione E-mail di Controllo:} l'\term{Utente} può definire l'Oggetto e il Corpo del messaggio per il primo avviso tramite i campi di testo dedicati, rendendo la comunicazione più o meno esplicita a seconda delle proprie preferenze.
+    \item \textbf{Personalizzazione E-mail di Controllo:} l'\term{Utente} può definire l'oggetto e il corpo del messaggio per il primo avviso tramite i campi di testo dedicati, rendendo la comunicazione più o meno esplicita a seconda delle proprie preferenze.
     \item \textbf{Secondo Timer (Emergenza):} una seconda barra orizzontale permette di stabilire dopo quanto tempo dall'invio del primo avviso (se l'\term{Utente} non ha ripristinato lo stato di sicurezza accedendo all'app) debba essere inviata l'e-mail di emergenza ai \textbf{Contatti Fidati}.
     \item \textbf{E-mail ai Contatti:} il contenuto di questa seconda comunicazione è gestito dal sistema per garantire la massima chiarezza e tempestività nella richiesta di aiuto ai propri contatti.
 \end{itemize}
