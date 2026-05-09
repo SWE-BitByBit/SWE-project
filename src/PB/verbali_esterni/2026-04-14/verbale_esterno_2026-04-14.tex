@@ -120,7 +120,7 @@ Miriade
 \thispagestyle{empty} % senza numero di pagina per l'indice
 \clearpage
 
-% ======= INFO GENERALI RIUNIONE, METTERE SE DOC È UN \term{Verbale} =======
+% ======= INFO GENERALI RIUNIONE, METTERE SE DOC È UN Verbale =======
 \section{Informazioni generali}
 \renewcommand{\arraystretch}{1.3}
 
@@ -150,25 +150,25 @@ Sanguin Marco\\
 \end{tcolorbox}
 \clearpage
 
-% ---------- ORDINE DEL GIORNO, METTERE SE DOC È UN \term{Verbale}  ----------
+% ---------- ORDINE DEL GIORNO, METTERE SE DOC È UN Verbale  ----------
 \section{Ordine del Giorno}
 \begin{itemize}
-    \item Analisi della distinzione tra pattern di \term{Deployment} \term{Serverless} e Microservizi.
+    \item Analisi della distinzione tra pattern di Deployment Serverless e Microservizi.
     \item Valutazione della granularità delle Lambda e vincoli di persistenza.
-    \item Revisione dell'\term{Architettura} Esagonale: gestione di Business Objects e DTO.
+    \item Revisione dell'Architettura Esagonale: gestione di Business Objects e DTO.
     \item Definizione formale dello stereotipo UML \texttt{<<module>>}.
 \end{itemize}
 
-% ---------- DISCUSSIONI, METTERE SE DOC È UN \term{Verbale} ----------
+% ---------- DISCUSSIONI, METTERE SE DOC È UN Verbale ----------
 \section{Discussioni}
 \begin{itemize}
-    \item \textbf{\term{Architettura} \term{Backend} e Pattern}: È stata discussa la differenza tra \term{Architettura} a microservizi e approccio \term{Serverless}. Il Prof. Cardin ha chiarito che non si può definire "microservizio" un'\term{Architettura} in cui più Lambda condividono lo stesso database. Attualmente il sistema è orientato verso un "\term{Serverless} che tende ai microservizi", ma il consiglio principale è quello di spostarsi decisamente verso uno dei due modelli: adottare un pattern pienamente \term{Serverless}, assegnando una singola operazione a ciascuna Lambda, oppure passare a un'\term{Architettura} a microservizi, accorpando le Lambda per funzionalità logica e garantendo l'indipendenza del database.
-    \item \textbf{Dependency Injection in Flutter}: È stato confermato che l'utilizzo del \term{Framework} Provider in Flutter rappresenta la scelta architetturale più corretta. L'uso di Singleton è sconsigliato in quanto crea dipendenze implicite non evidenti dal costruttore e lega il \term{Ciclo di vita} all'intera app, impedendone la ricreazione flessibile.
-    \item \textbf{\term{Architettura} Esagonale}: Si è discusso del ruolo di adapter e interfacce. È emerso che la \term{Business Logic} non deve mai dipendere da dati o risorse esterne e deve operare unicamente utilizzando le classi di dominio. L'impiego di Inbound Adapter (come un ipotetico \textit{SesEventAdapter}) per decodificare gli input esterni e convertirli in oggetti di dominio è un approccio validato e incoraggiato.
-    \item \textbf{Gestione Dati Statici}: Per il recupero di dati statici che non necessitano di modifiche da parte dell'\term{Utente} (come la posizione dei luoghi sicuri), è stato sconsigliato l'utilizzo di DynamoDB. L'approccio raccomandato è quello di archiviare tali risorse all'interno di Amazon S3, in quanto risulta una soluzione decisamente più efficiente e meno costosa rispetto alla gestione tramite database NoSQL per dati che rimangono invariati.
+    \item \textbf{Architettura Backend e Pattern}: È stata discussa la differenza tra Architettura a microservizi e approccio Serverless. Il Prof. Cardin ha chiarito che non si può definire "microservizio" un'Architettura in cui più Lambda condividono lo stesso database. Attualmente il sistema è orientato verso un "Serverless che tende ai microservizi", ma il consiglio principale è quello di spostarsi decisamente verso uno dei due modelli: adottare un pattern pienamente Serverless, assegnando una singola operazione a ciascuna Lambda, oppure passare a un'Architettura a microservizi, accorpando le Lambda per funzionalità logica e garantendo l'indipendenza del database.
+    \item \textbf{Dependency Injection in Flutter}: È stato confermato che l'utilizzo del Framework Provider in Flutter rappresenta la scelta architetturale più corretta. L'uso di Singleton è sconsigliato in quanto crea dipendenze implicite non evidenti dal costruttore e lega il Ciclo di vita all'intera app, impedendone la ricreazione flessibile.
+    \item \textbf{Architettura Esagonale}: Si è discusso del ruolo di adapter e interfacce. È emerso che la Business Logic non deve mai dipendere da dati o risorse esterne e deve operare unicamente utilizzando le classi di dominio. L'impiego di Inbound Adapter (come un ipotetico \textit{SesEventAdapter}) per decodificare gli input esterni e convertirli in oggetti di dominio è un approccio validato e incoraggiato.
+    \item \textbf{Gestione Dati Statici}: Per il recupero di dati statici che non necessitano di modifiche da parte dell'Utente (come la posizione dei luoghi sicuri), è stato sconsigliato l'utilizzo di DynamoDB. L'approccio raccomandato è quello di archiviare tali risorse all'interno di Amazon S3, in quanto risulta una soluzione decisamente più efficiente e meno costosa rispetto alla gestione tramite database NoSQL per dati che rimangono invariati.
 \end{itemize}
 
-% ---------- DECISIONI, METTERE SE DOC È UN \term{Verbale} ----------
+% ---------- DECISIONI, METTERE SE DOC È UN Verbale ----------
 \section{Decisioni}
 \begin{center}
 \small
@@ -184,14 +184,14 @@ Adottare un pattern architetturale a microservizi, accorpando all'interno di una
 \hline
 Utilizzare ufficialmente il pacchetto Provider di Flutter per la Dependency Injection &  VE \ignoreglossary{PB} 3.2 \\
 \hline
-Isolare strettamente la \term{Business Logic} dai dati esterni avvalendosi di Inbound Adapter e oggetti di dominio secondo i principi dell'\term{Architettura} Esagonale. &  VE \ignoreglossary{PB} 3.3\\
+Isolare strettamente la Business Logic dai dati esterni avvalendosi di Inbound Adapter e oggetti di dominio secondo i principi dell'Architettura Esagonale. &  VE \ignoreglossary{PB} 3.3\\
 \hline
-Migrare la memorizzazione dei dati non modificabili dall'\term{Utente} su Amazon S3, preferendolo a DynamoDB per ottimizzare i costi e l'efficienza nella gestione di risorse statiche. &  VE \ignoreglossary{PB} 3.4\\
+Migrare la memorizzazione dei dati non modificabili dall'Utente su Amazon S3, preferendolo a DynamoDB per ottimizzare i costi e l'efficienza nella gestione di risorse statiche. &  VE \ignoreglossary{PB} 3.4\\
 \hline
 \end{tabular}
 \end{center}
 
-% ---------- TO DO, METTERE SE DOC È UN \term{Verbale} ----------
+% ---------- TO DO, METTERE SE DOC È UN Verbale ----------
 \section{To Do}
 Le prossime attività da svolgere a seguito di questa riunione sono:
 \begin{center}
@@ -202,11 +202,11 @@ Le prossime attività da svolgere a seguito di questa riunione sono:
 \begin{tabularx}{\textwidth}{|X|c|c|}
 \hline
 \rowcolor{gray!60} 
-\textbf{Task} & \textbf{Codice decisione} & \textbf{N°\term{Issue} GitHub} \\
+\textbf{Task} & \textbf{Codice decisione} & \textbf{N°Issue GitHub} \\
 \hline
 Adottare un pattern architetturale a microservizi, assegnando una singola funzione Lambda a ogni macro-funzionalità (o entità di dominio), assicurando che ogni microservizio mantenga il controllo esclusivo sul proprio database. & VE \ignoreglossary{PB} 3.1 & nessuna \\
 \hline
-Ristrutturare i diagrammi UML per riflettere l'adozione dell'\term{Architettura} a microservizi e definire chiaramente i confini di responsabilità di ciascuna Lambda in base alla funzionalità gestita. & VE \ignoreglossary{PB} 3.1 & nessuna \\
+Ristrutturare i diagrammi UML per riflettere l'adozione dell'Architettura a microservizi e definire chiaramente i confini di responsabilità di ciascuna Lambda in base alla funzionalità gestita. & VE \ignoreglossary{PB} 3.1 & nessuna \\
 \hline
 \end{tabularx}
 \end{center}

@@ -120,7 +120,7 @@ Prof. Cardin
 \thispagestyle{empty} % senza numero di pagina per l'indice
 \clearpage
 
-% ======= INFO GENERALI RIUNIONE, METTERE SE DOC È UN \term{Verbale} =======
+% ======= INFO GENERALI RIUNIONE, METTERE SE DOC È UN Verbale =======
 \section{Informazioni generali}
 \renewcommand{\arraystretch}{1.3}
 
@@ -151,7 +151,7 @@ nessuno \\
 \end{tcolorbox}
 \clearpage
 
-% ---------- ORDINE DEL GIORNO, METTERE SE DOC È UN \term{Verbale}  ----------
+% ---------- ORDINE DEL GIORNO, METTERE SE DOC È UN Verbale  ----------
 \section{Ordine del Giorno}
 \begin{itemize}
     \item Richiesta permessi per Amazon Bedrock.
@@ -161,7 +161,7 @@ nessuno \\
     \item Discussione sulla presentazione finale e su come strutturarla.
 \end{itemize}
 
-% ---------- DISCUSSIONI, METTERE SE DOC È UN \term{Verbale} ----------
+% ---------- DISCUSSIONI, METTERE SE DOC È UN Verbale ----------
 \section{Discussioni}
 \begin{itemize}
     \item È stato discusso e richiesto esplicitamente l'accesso ad Amazon Bedrock, al fine di poter integrare le funzionalità di LLM all'interno del progetto e testare le potenzialità offerte da questo servizio per la gestione dei dati e l'implementazione di funzionalità avanzate. L'azienda ha prontamente concesso l'accesso, permettendo al gruppo di procedere con l'integrazione e la sperimentazione di Amazon Bedrock all'interno del progetto.
@@ -169,14 +169,14 @@ nessuno \\
     \item È stato chiesto all'azienda se ogni singola nota e voce del diario debba essere crittografata o se sia sufficiente implementare una password di accesso per i diari. L'azienda ha confermato che l'importante è aver implementato una password per poter accedere ai diari per proteggere le note. Tuttavia, l'azienda ha anche specificato che, se possibile entro le tempistiche del progetto, sarebbe ideale integrare due semplici funzioni di crittografia e decrittografia per garantire un livello minimo di sicurezza a protezione dei dati.
     \item Sono stati discussi alcuni requisiti funzionali che, per motivi di fattibilità tecnica o di tempo, necessitano di essere modificati o rimossi. Il gruppo ha chiesto all'azienda se i seguenti requisiti possono essere modificati o rimossi:
     \begin{itemize}
-        \item RF-OB-4: L'\term{Utente} deve poter selezionare il profilo di utilizzo ("Per me" o "Per altri") - L'azienda ha confermato che questo \term{Requisito} può essere rimosso, in quanto non è strettamente necessario per il funzionamento dell'applicazione e potrebbe risultare complesso da implementare entro i tempi previsti.
-        \item RF-OB-102: L'\term{Utente} deve poter avviare un segnale acustico di emergenza indipendente dalle impostazioni di volume del dispositivo - L'azienda ha confermato che questo \term{Requisito} non è così difficile da implementare, e ha quindi negato la richiesta di rimozione, specificando che è necessario mantenere questo \term{Requisito} per garantire la sicurezza degli utenti in situazioni di emergenza. L'azienda ha anche suggerito la libreria "audioplayers" per implementare questa funzionalità, in quanto permette di riprodurre suoni indipendentemente dalle impostazioni di volume del dispositivo, garantendo così che il segnale acustico di emergenza sia sempre udibile quando necessario.
+        \item RF-OB-4: L'Utente deve poter selezionare il profilo di utilizzo ("Per me" o "Per altri") - L'azienda ha confermato che questo Requisito può essere rimosso, in quanto non è strettamente necessario per il funzionamento dell'applicazione e potrebbe risultare complesso da implementare entro i tempi previsti.
+        \item RF-OB-102: L'Utente deve poter avviare un segnale acustico di emergenza indipendente dalle impostazioni di volume del dispositivo - L'azienda ha confermato che questo Requisito non è così difficile da implementare, e ha quindi negato la richiesta di rimozione, specificando che è necessario mantenere questo Requisito per garantire la sicurezza degli utenti in situazioni di emergenza. L'azienda ha anche suggerito la libreria "audioplayers" per implementare questa funzionalità, in quanto permette di riprodurre suoni indipendentemente dalle impostazioni di volume del dispositivo, garantendo così che il segnale acustico di emergenza sia sempre udibile quando necessario.
     \end{itemize}
-    \item È stata discussa la struttura della presentazione finale, specificando che dovrà essere strutturata in modo da coprire tutti gli aspetti principali del progetto, includendo una dimostrazione pratica dell'applicazione e una sezione dedicata alla descrizione dell'\term{Architettura} delle lambda e dei microservizi.
+    \item È stata discussa la struttura della presentazione finale, specificando che dovrà essere strutturata in modo da coprire tutti gli aspetti principali del progetto, includendo una dimostrazione pratica dell'applicazione e una sezione dedicata alla descrizione dell'Architettura delle lambda e dei microservizi.
     \item È stata infine discussa la necessità di inserire un "cookie banner" all'interno dell'applicazione: l'azienda ha confermato che, a meno che non vengano raccolti dati personali degli utenti, non è necessario implementarlo, in quanto l'applicazione non rientra nell'ambito di applicazione del GDPR e non richiede il consenso degli utenti per la raccolta dei dati. L'azienda ha specificato che, se in futuro dovessero essere raccolti dati personali, sarà necessario inserire un cookie banner per informare gli utenti sulla raccolta dei dati e ottenere il loro consenso, in conformità con le normative sulla privacy.
 \end{itemize}   
 
-% ---------- DECISIONI, METTERE SE DOC È UN \term{Verbale} ----------
+% ---------- DECISIONI, METTERE SE DOC È UN Verbale ----------
 \section{Decisioni}
 \begin{center}
 \small
@@ -188,7 +188,7 @@ nessuno \\
 \rowcolor{gray!60} 
 \textbf{Descrizione decisione} & \textbf{Codice decisione} \\
 \hline
-Sistemare l'\term{Analisi dei requisiti} coerentemente con le nuove specifiche & VE \ignoreglossary{PB} 4.1 \\
+Sistemare l'Analisi dei requisiti coerentemente con le nuove specifiche & VE \ignoreglossary{PB} 4.1 \\
 \hline
 Implementare e testare le funzionalità di integrazione con Amazon Bedrock &  VE \ignoreglossary{PB} 4.2 \\
 \hline
@@ -201,7 +201,7 @@ Preparare la presentazione finale del progetto &  VE \ignoreglossary{PB} 4.5\\
 \end{tabular}
 \end{center}
 
-% ---------- TO DO, METTERE SE DOC È UN \term{Verbale} ----------
+% ---------- TO DO, METTERE SE DOC È UN Verbale ----------
 \section{To Do}
 Le prossime attività da svolgere a seguito di questa riunione sono:
 \begin{center}
@@ -212,9 +212,9 @@ Le prossime attività da svolgere a seguito di questa riunione sono:
 \begin{tabularx}{\textwidth}{|X|c|c|}
 \hline
 \rowcolor{gray!60} 
-\textbf{Task} & \textbf{Codice decisione} & \textbf{N°\term{Issue} GitHub} \\
+\textbf{Task} & \textbf{Codice decisione} & \textbf{N°Issue GitHub} \\
 \hline
-Sistemare l'\term{Analisi dei requisiti} coerentemente con le nuove specifiche & VE \ignoreglossary{PB} 4.1 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/635}{\#635} \\
+Sistemare l'Analisi dei requisiti coerentemente con le nuove specifiche & VE \ignoreglossary{PB} 4.1 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/635}{\#635} \\
 \hline
 Implementare e testare le funzionalità di integrazione con Amazon Bedrock & VE \ignoreglossary{PB} 4.2 & \href{https://github.com/SWE-BitByBit/Project-MVP/issues/54}{\#54} \\
 \hline
