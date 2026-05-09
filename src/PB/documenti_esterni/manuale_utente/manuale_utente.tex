@@ -424,7 +424,7 @@ Seguire rigorosamente i seguenti comandi da terminale per preparare ed eseguire 
     \item \textbf{Problemi con Flutter Doctor:}
     \begin{itemize}
         \item \textbf{Android license status unknown:} Eseguire \texttt{flutter doctor --android-licenses} e accettare le licenze.
-        \item \textbf{Android SDK not found:} Configurare il percorso con \texttt{flutter config --android-sdk <percorso\_sdk>}.
+        \item \textbf{Android SDK not found:} Configurare il percorso con \texttt{flutter config {-}{-}android-sdk <percorso\_sdk>}.
     \end{itemize}
     \item \textbf{Errore Lint Separatori Windows:}
     In caso di errore \textit{"Windows file separators (\textbackslash) and drive letter separators (':') must be escaped"}, è necessario fare l'escape dei \texttt{:} nel path \texttt{sdk.dir} in \texttt{android/local.properties} (es. \texttt{C:\textbackslash\textbackslash Users\textbackslash\textbackslash...}). Verificare la risoluzione con il comando \texttt{gradlew lintDebug} ed eventualmente riavviare l'\term{IDE} (VS Code).
