@@ -1,6 +1,7 @@
 % template presente
 \documentclass[a4paper,12pt]{article}
 
+\usepackage{pdflscape}
 \usepackage[table]{xcolor}
 \usepackage{tabularx}
 \usepackage{tcolorbox}
@@ -27,6 +28,14 @@
 \usepackage{amssymb} 
 \usepackage{titlesec}
 \usepackage[T1]{fontenc}
+
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
+
+\makeatletter
+\newcommand\subsubsubsection{\@startsection{paragraph}{4}{\z@}{-2.5ex\@plus -1ex \@minus -.25ex}{1.25ex \@plus .25ex}{\normalfont\normalsize\bfseries}}
+\newcommand\subsubsubsubsection{\@startsection{subparagraph}{5}{\z@}{-2.5ex\@plus -1ex \@minus -.25ex}{1.25ex \@plus .25ex}{\normalfont\normalsize\bfseries}}
+\makeatother
 
 \setlength{\headheight}{30pt}
 
@@ -638,7 +647,7 @@ L'obiettivo cardine di questa scelta è massimizzare l'indipendenza formale dell
 
 All'ingresso superiore dell'applicazione si posiziona l'ecosistema logico del dispositivo, mentre le fondamenta sono governate e calcolate dall'infrastruttura di servizio. L'interfaccia tra questi due mondi è ben definita tramite API e totalmente slegata dai linguaggi di programmazione o dai sistemi operativi utilizzati.
 
-\subsubsection{Livello Client (Frontend Mobile)}
+\subsubsection{Frontend Mobile}
 Il client mobile è sviluppato incapsulando il codice secondo i dettami moderni di una \textit{\term{Clean Architecture}} (fortemente affine al noto pattern architetturale \textit{Model-View-ViewModel} - MVVM). Il codice dell'applicazione è suddiviso in almeno tre strati logici indipendenti e gerarchici:
 
 \begin{itemize}
@@ -647,36 +656,32 @@ Il client mobile è sviluppato incapsulando il codice secondo i dettami moderni 
     \item \textbf{\term{Data Layer}}: È lo strato più basso dell'ambiente Client, incaricato unicamente dell'acquisizione e gestione dei dati, ed è logicamente suddiviso in \textit{Service} e \textit{\ignoreglossary{repository}}. I Service sono gli unici componenti ad interfacciarsi con l'esterno, conoscendo gli endpoint del \term{Backend} per eseguire le chiamate asincrone HTTP e gestendo l'accesso a dati memorizzati localmente o in remoto. I \ignoreglossary{repository} fungono da intermediari: raccolgono i dati grezzi provenienti dai Service e li formattano in modelli di dominio strutturati (es. un oggetto \textit{Note}), fornendoli al ViewModel puliti e pronti all'uso.
 \end{itemize}
 
-\subsubsection{Livello di Servizio (Backend)}
-Ogni lambda function costituisce un microservizio. Ogni microservizio è stato implementato attraverso architettura esagonale.
-Il sistema è progettato secondo l'architettura esagonale, conosciuta anche come pattern port e adapter. Questa permette di realizzare un basso accoppiamento tra le componenti del 
-sistema e facilita la creazione dei test per ognuno di essi. In questo pattern il sistema comunica con componenti esterno attraverso l'utilizzo di interfacce 
-denominate port, e usa gli adater costituiscono il collegamento concreto con i servizi esterni.
+\subsubsection{Backend Serverless}
+Ogni Lambda Function costituisce un microservizio indipendente, implementato seguendo il pattern dell'architettura esagonale (conosciuto anche come \textit{Ports and Adapters pattern}). 
+Questo approccio garantisce un basso accoppiamento tra le componenti del sistema, isolando la domain logic dalle tecnologie esterne e facilitando la scrittura dei test.\\
+In questo pattern il sistema comunica con le componenti esterne attraverso interfacce, le port, mentre 
+gli adapter sono responsabili dell'implementazioni concrete di queste.\\
 
-Service class.
-Il punto centrale del sistema è rappresentato dalla domain logic, che rappresenta l'application logic e la business logic 
-Le porte rappresentano il punto d'entrata nel sistema per le componenti esterne, indipendente dai servizi che implementano quella port. La definizione delle port è stata 
-divisa in modo tale che si possano andare a intercambiare i servizi che le implementano. 
-Gli adapter interagiscono con la domain logic attraverso, porte utilizzando uno specifico servizio. 
-I service sono classi che non dipendono dalle tecnologie utilizzate interagiscono con le istanze dei vari servizi attraverso interfacce per diminuire l'accoppiamento.
+Il nucleo del sistema è rappresentato dalla domain logic, che racchiude sia la logica applicativa che quella di business. È implementata nelle classi \code{Service},
+che non dipendono da alcuna tecnologia specifica e interagiscono con le risorse esterne esclusivamente attraverso interfacce. Le operazioni esposte dai \code{Service} accettano
+oggetti di dominio o Command come input, oggetti che incapsulano i dati necessari per eseguire un'azione specifica.\\
 
-Inbound port: consentono la comunicazione con la domain logic. utilizza oggetti di domanio e non dati grezzi per la comunicazione. isolano la domain logic da implementazioni dovute a scelte di tecnologie specifiche.
+Le port si dividono in due categorie:
+\begin{itemize}
+    \item Inbound port:definiscono le interfacce attraverso cui le risorse esterne comunicano con la domain logic. Il loro utilizzo isola il nucleo del sistema
+da qualsiasi dipendenza tecnologica esterna, rendendo intercambiabili le implementazioni che le realizzano.
+    \item Outbound port: definiscono le interfacce attraverso cui la domain logic interagisce con i servizi esterni, come le risorse di persistenza. In particolare, le
+repository port specificano i metodi che gli adapter devono implementare per le operazioni di lettura e scrittura sui dati.
+\end{itemize}
 
-Oubound port: permettono alla domain logic di interagire con i servizi. sono interfacce che descrivono i metodi con cui il service può andare ad interagire con i dati gestiti negli output adapters.
-
-Controller. 
-Sono input adapters: ricevono richieste dall'esterno. Questo è responsabile del parsing delle richieste in oggetti command, oggetti di dominio, che incapsulano i dati per eseguire azioni precise.
-Il controller si intefaccia con la domain logic attraverso interfacce. 
-
-Output adapters.
-Gli adapter costituiscono l'implementazione delle port per i servizi AWS specifici utilizzati per il micorservizio che si sta modellando. Il vantaggio è quello di andare a porter 
-cambiare l'adapter nel momento in cui si decidesse di andare a cambiare il servizio AWS utilizzato nel microservizio.
-Implementano le interfacce delle port, definendo i metodi d'accesso ai servizi AWS che racchiudono i client dei vari servizi. 
-
-Buongiorno,
-per la firma nel documento per l'approvazione dell'MVP sarebbe possibile averla per oggi.
-
-
+Gli adapter si dividono anche essi in 2 categorie:
+\begin{itemize}
+    \item Inbound adapter: sono rappresentati dalle classsi \code{Controller}, responsabili della ricezione degli eventi AWS Lambda e della loro traduzione in oggetti di dominio comprensibili alla domain logic. Il \code{Controller} determina la route dall'evento in ingresso, esegue il parsing del
+body e dei parametri, costruisce il il body della risposta da restituire al client e delega l'esecuzione alla domain logic attraverso le inbound port.
+    \item Outbound adapter: costituiscono l'implementazione concreta delle outbound port per i servizi AWS utilizzati da ciascun microservizio. Ogni adapter
+incapsula il client del servizio AWS corrispondente, ad esempio DynamoDB per la persistenza dei dati e S3 per la gestione dei file multimediali, esponendo i metodi
+definiti dalla porta. Questo approccio permette di sostituire il servizio sottostante modificando esclusivamente l'adapter, senza impatto sulla \textit{domain logic}.
+\end{itemize}
 
 \subsection{Design pattern utilizzati} \label{subsec:design_pattern}
 \subsubsection{Model-view-viewmodel}
@@ -2203,7 +2208,7 @@ Il flusso di elaborazione si articola nei seguenti passaggi:
 \paragraph{Delega della Logica Geospaziale al Livello Client (Edge Computing)}\mbox{}\\
 Al fine di ottimizzare ulteriormente i costi, l'intera logica di rendering visivo e di routing è delegata all'applicazione sul dispositivo dell'\term{Utente}. Il \term{Backend} AWS si configura esclusivamente come Data Provider di coordinate statiche. Alla ricezione del \term{Payload} JSON, l'applicativo Flutter si fa carico di istanziare la mappa nativa e posizionare i marker grafici (pin). L'azione di navigazione guidata (es. pulsante "Portami lì") sfrutta le Intents (su Android) o le URL Schemes (su iOS) del sistema operativo per invocare applicazioni di navigazione di terze parti (come Google Maps o Apple Maps). Questo approccio demanda il tracciamento GPS e il calcolo dinamico dell'itinerario al dispositivo locale, garantendo la scalabilità infinita del sistema AWS anche in condizioni di massiccio utilizzo concorrente.
 
-\paragraph{API associate}\mbox{}\\
+\subsubsubsection{API associate}
 \begin{itemize}
     \item \code{GET /safe-places/}
     \begin{itemize}
@@ -2257,20 +2262,14 @@ Al fine di ottimizzare ulteriormente i costi, l'intera logica di rendering visiv
 \end{itemize}
 \textit{Nota di sicurezza}: L'integrazione di un Authorizer Cognito per la \ignoreglossary{verifica} delle autorizzazioni è stata deliberatamente omessa per questa route. L'assenza dell'Authorizer in quest'area è difatti una scelta architetturale mirata a rimuovere complessità infrastrutturale non necessaria e ad abbattere i costi operativi associati al recupero di questi specifici dati.
 
-\paragraph{\term{Architettura} logica: Modulo Luoghi Sicuri} \label{par:architettura_logica_backend_luoghi_sicuri}
+\subsubsubsection{\ignoreglossary{Architettura} logica: Modulo Luoghi Sicuri} \label{par:architettura_logica_backend_luoghi_sicuri}
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{diagrammi_classi_lambda/luoghi_sicuri/DCB-luoghi-sicuri.pdf}
     \caption[Componenti del microservizio luoghi sicuri]{Componenti del microservizio luoghi sicuri}
     \label{fig:architettura_logica_luoghi_sicuri}
 \end{figure}
-Il microservizio \textbf{luoghi sicuri} viene utilizzato per eseguire il fetch dei \code{Marker} dall'istanza del 
-bucket S3. È formato da tre componenti principali:
-\begin{itemize}
-    \item \textbf{SafePlacesController}, che rappresenta l'application logic e corrisponde al controller del pattern esagonale. Riceve l'evento grezzo di API Gateway, lo instrada verso la port primaria e costruisce la risposta HTTP da restituire al client;
-    \item \textbf{SafePlacesService}, che rappresenta la \term{Business Logic} e corrisponde alla \term{Business Logic} del pattern esagonale. Implementa la port primaria \code{GetMarkerPort} e orchestra la comunicazione con il layer di persistenza tramite la port secondaria \code{SafePlacesRepositoryPort};
-    \item \textbf{S3SafePlacesRepository}, che rappresenta la \term{Persistence Logic} e corrisponde all'adapter secondario dell'\term{Architettura} esagonale. Contiene tutta la logica specifica per il recupero dei marker da un bucket S3 tramite il client boto3.
-\end{itemize}
 
 \paragraph{Marker}\mbox{}\\
 \begin{figure}[H]
@@ -2296,8 +2295,8 @@ Descrizione attributi:
     \caption[Diagramma della classe SafePlacesController]{Diagramma della classe \code{SafePlacesController}}
     \label{fig:architettura_logica_luoghi_SafePlacesController}
 \end{figure}
-È il controller del pattern esagonale. Riceve la richiesta grezza da API Gateway, la instrada verso la port primaria e 
-costruisce la risposta HTTP da restituire al client.
+Controller del pattern esagonale. Riceve la richiesta grezza da API Gateway, la instrada verso la inbound port e 
+costruisce il body per la risposta HTTP da restituire al client.
 Descrizione metodi:
 \begin{itemize}
     \item \code{marker\_get(event)} esegue il parsing della richiesta e chiama la funzione appropriata della specifica port primaria;
@@ -2322,7 +2321,7 @@ Il metodo \code{get\_all\_markers()} restituisce la lista completa dei marker di
     \caption[Diagramma della classe SafePlacesService]{Diagramma della classe \code{SafePlacesService}}
     \label{fig:architettura_logica_luoghi_SafePlacesService}
 \end{figure}
-È la \term{Business Logic} del microservizio. Contiene l'application logic per 
+Corrisponde alla domain logic del microservizio. Contiene la logica per 
 il recupero dei luoghi sicuri e orchestra la comunicazione con il layer di persistenza tramite la outbound port \code{SafePlacesRepositoryPort}.
 
 \paragraph{SafePlacesRepositoryPort}\mbox{}\\
@@ -2332,8 +2331,8 @@ il recupero dei luoghi sicuri e orchestra la comunicazione con il layer di persi
     \caption[Diagramma dell'interfaccia SafePlacesRepositoryPort]{Diagramma dell'interfaccia \code{SafePlacesRepositoryPort}}
     \label{fig:architettura_logica_luoghi_sicuri_SafePlacesRepositoryPort}
 \end{figure}
-È la outbound port del pattern esagonale orientata alla persistenza, utilizzata per restituire la 
-lista di tutti i marker disponibili senza esporre dettagli su S3 o qualsiasi altro storage sottostante.
+Corrisponde alla outbound port del pattern esagonale. Definisce il metodo per il fetch della 
+lista di tutti i marker disponibili, senza esporre dettagli implementativi di S3 o qualsiasi altro servizio sottostante.
 
 \paragraph{S3SafePlacesRepository}\mbox{}\\
 \begin{figure}[H]
@@ -2342,10 +2341,9 @@ lista di tutti i marker disponibili senza esporre dettagli su S3 o qualsiasi alt
     \caption[Diagramma della classe S3SafePlacesRepository]{Diagramma della classe \code{S3SafePlacesRepository}}
     \label{fig:architettura_logica_luoghi_sicuri_S3SafePlacesRepository}
 \end{figure}
-È l'adapter secondario che implementa \code{SafePlacesRepositoryPort}. Il costruttore \code{\_\_init\_\_()} inizializza il client S3.
+Corrisponde all'aoutbound che implementa \code{SafePlacesRepositoryPort}. Contiene la logica per il fetch dei marker dall'istanza del bucket S3. Il costruttore \code{\_\_init\_\_()} inizializza il client S3.
 
 \subsubsection{Materiale informativo} \label{subsubsec:architettura_materiale_informativo}
-
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{diagrammi_architettura/materiale_informativo/materiale_informativo.pdf}
@@ -2367,7 +2365,7 @@ La Lambda si occupa quindi di:
 
 Il risultato elaborato viene restituito all'API Gateway, che lo inoltra al client Flutter tramite una risposta HTTP. Il ciclo sincrono si conclude con la consegna del catalogo informativo all'applicazione.
 
-\paragraph{API associate}\mbox{}\\
+\subsubsubsection{API associate}
 \begin{itemize}
     \item \code{GET /materials/}
     \begin{itemize}
@@ -2417,20 +2415,14 @@ Il risultato elaborato viene restituito all'API Gateway, che lo inoltra al clien
 \end{itemize}
 \textit{Nota di sicurezza}: In maniera analoga a quanto previsto per i luoghi sicuri, anche per l'accesso al materiale informativo si è optato per non implementare l'Authorizer Cognito. Questa decisione è dettata dalla volontà di snellire l'\term{Architettura}, riducendo le complessità superflue ed evitando di incorrere nei costi operativi aggiuntivi dell'infrastruttura di autenticazione.
 
-\paragraph{\term{Architettura} logica: Modulo Materiale Informativo} \label{par:architettura_backend_materiale_info}
+\subsubsubsection{\ignoreglossary{Architettura} logica: Modulo Materiale Informativo} \label{par:architettura_backend_materiale_info}
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{diagrammi_classi_lambda/materiale_informativo/DCB-materiale-info.pdf}
     \caption[Componenti del microservizio materiale informativo]{Componenti del microservizio materiale informativo}
     \label{fig:architettura_logica_materiale_info}
 \end{figure}
-Il microservizio \textbf{materiale informativo} viene utilizzato per eseguire il fetch delle \code{Resource} dall'istanza del 
-bucket S3 in cui sono memorizzate le risorse informative da visualizzare nell'applicazione. È formato da tre componenti principali:
-\begin{itemize}
-    \item \textbf{ResourcesController}, che rappresenta l'application logic e corrisponde al controller del pattern esagonale. Riceve l'evento grezzo di API Gateway, lo instrada verso la port primaria e costruisce la risposta HTTP da restituire al client;
-    \item \textbf{ResourcesService}, che rappresenta la \term{Business Logic} e corrisponde alla \term{Business Logic} del pattern esagonale. Implementa la port primaria \code{GetResourcesPort} e orchestra la comunicazione con il layer di persistenza tramite la port secondaria \code{ResourcesRepositoryPort};
-    \item \textbf{S3ResourcesRepository}, che rappresenta la \term{Persistence Logic} e corrisponde all'adapter secondario del pattern esagonale. Contiene tutta la logica specifica per il recupero delle risorse da un bucket S3 tramite il client boto3.
-\end{itemize}
 
 \paragraph{Resource}\mbox{}\\
 \begin{figure}[H]
@@ -2439,14 +2431,14 @@ bucket S3 in cui sono memorizzate le risorse informative da visualizzare nell'ap
     \caption[Diagramma della classe Resource]{Diagramma della classe \code{Resource}}
     \label{fig:architettura_logica_luoghi_Resource}
 \end{figure}
-Rappresenta una risorsa informativa disponibile nell'applicazione. 
+Rappresenta una risorsa informativa disponibile nell'applicazione.\\
 Descrizione attributi:
 \begin{itemize}
-    \item \code{resource\_id} identificativo della singola risorsa;
-    \item \code{title} nome della singola risorsa;
-    \item \code{content} il testo descrittivo;
-    \item \code{url} il collegamento alla fonte esterna;
-    \item \code{type} è di tipo \code{ResourceType} e categorizza la risorsa secondo una delle tipologie previste dal dominio.
+    \item \code{resource\_id}, identificativo della singola risorsa;
+    \item \code{title}, nome della singola risorsa;
+    \item \code{content}, testo descrittivo della singola risorsa;
+    \item \code{url}, collegamento alla fonte esterna;
+    \item \code{type}, corrisponde al tipo \code{ResourceType} e categorizza la risorsa secondo una delle tipologie previste dal dominio.
 \end{itemize}
 L'enumerazione \code{ResourceType} definisce le tre categorie disponibili: \code{COMMUNITY}, \code{LAW} e \code{ARTICLE}.
 
@@ -2457,12 +2449,12 @@ L'enumerazione \code{ResourceType} definisce le tre categorie disponibili: \code
     \caption[Diagramma della classe ResourcesController]{Diagramma della classe \code{ResourcesController}}
     \label{fig:architettura_logica_luoghi_ResourcesController}
 \end{figure}
-È il controller del pattern esagonale. Riceve la richiesta grezza di API Gateway, la instrada verso 
-la port primaria e costruisce la risposta HTTP da restituire al client.
+Corrisponde al controller del pattern esagonale. Riceve la richiesta grezza di API Gateway, la instrada verso 
+la inbound port e costruisce il body della risposta HTTP da restituire al client.\\
 Descrizione metodi:
 \begin{itemize}
-    \item \code{get\_resources(event)} costituisce il punto di ingresso del controller e riceve i parametri nativi della Lambda;
-    \item \code{response(status, body)} è un metodo di utilità che costruisce il dizionario di risposta nel formato atteso da API Gateway.
+    \item \code{get\_resources(event)}, costituisce il punto di ingresso del controller e riceve i parametri nativi della Lambda;
+    \item \code{response(status, body)}, metodo di utilità che costruisce il dizionario di risposta nel formato atteso da API Gateway.
 \end{itemize}
 
 \paragraph{GetResourcesPort}\mbox{}\\
@@ -2472,7 +2464,7 @@ Descrizione metodi:
     \caption[Diagramma della classe GetResourcesPort]{Diagramma della classe \code{GetResourcesPort}}
     \label{fig:architettura_logica_luoghi_GetResourcesPort}
 \end{figure}
-È la inbound port del pattern esagonale. Descrive l'interfaccia per il recupero della lista completa delle risorse informative disponibili.\\
+È la inbound port del pattern esagonale. Descrive l'interfaccia per il fetch della lista completa delle risorse informative disponibili.\\
 
 \paragraph{ResourcesService}\mbox{}\\
 \begin{figure}[H]
@@ -2481,7 +2473,7 @@ Descrizione metodi:
     \caption[Diagramma della classe ResourcesService]{Diagramma della classe \code{ResourcesService}}
     \label{fig:architettura_logica_luoghi_ResourcesService}
 \end{figure}
-È la \term{Business Logic} del microservizio e implementa la port primaria \code{GetResourcesPort}. Contiene la logica applicativa per il recupero del materiale informativo e orchestra la comunicazione con il persistence layer tramite la port secondaria \code{ResourcesRepositoryPort}.
+Costituisce la domain logic del microservizio, implementa la inbound port \code{GetResourcesPort}. Contiene la logica per il recupero del materiale informativo e orchestra la comunicazione con il persistence layer tramite la oubound port \code{ResourcesRepositoryPort}.
 
 \paragraph{ResourcesRepositoryPort}\mbox{}\\
 \begin{figure}[H]
@@ -2490,8 +2482,8 @@ Descrizione metodi:
     \caption[Diagramma della classe ResourcesRepositoryPort]{Diagramma della classe \code{ResourcesRepositoryPort}}
     \label{fig:architettura_logica_luoghi_ResourcesRepositoryPort}
 \end{figure}
-È l'outbound port del pattern esagonale. Definisce l'interfaccia per la restituzione della 
-lista completa delle risorse disponibili, senza esporre dettagli su S3.
+Corrisponde all'outbound port del pattern esagonale. Definisce l'interfaccia per la restituzione della 
+lista completa delle risorse disponibili, senza esporre dettagli implementativi relativi al servizio S3.
 
 \paragraph{S3ResourcesRepository}\mbox{}\\
 \begin{figure}[H]
@@ -2500,7 +2492,7 @@ lista completa delle risorse disponibili, senza esporre dettagli su S3.
     \caption[Diagramma della classe S3ResourcesRepository]{Diagramma della classe \code{S3ResourcesRepository}}
     \label{fig:architettura_logica_luoghi_S3ResourcesRepository}
 \end{figure}
-È l'adapter secondario che implementa \code{ResourcesRepositoryPort}. Contiene tutta la logica specifica per il recupero delle risorse informative da un bucket S3.
+Corrisponde all'outbound adapter, implementa \code{ResourcesRepositoryPort}. Contiene tutta la logica specifica per il recupero delle risorse informative da un bucket S3.
 
 \subsubsection{Diario criptato e fittizio} \label{subsubsec:architettura_diari}
 
@@ -2543,7 +2535,7 @@ Il flusso di elaborazione è dunque il seguente:
     \item \textbf{Logout}: quando l'\term{Utente} esce dal diario, il \term{Backend} viene notificato e la Lambda elimina la sessione precedentemente avviata.
 \end{itemize}
 
-\paragraph{API associate}\mbox{}\\
+\subsubsubsection{API associate}
 Le API relative al diario criptato e fittizio sono suddivise in due categorie distinte:
 \begin{itemize}
     \item \textbf{API di autenticazione}: gestiscono login, logout, impostazione password e generazione e convalida dei token di accesso.
@@ -2902,14 +2894,19 @@ Le API relative al diario criptato e fittizio sono suddivise in due categorie di
 
 \end{itemize}
 
-\paragraph{\term{Architettura} logica: microservizio diario (criptato e fittizio)} \label{par:architettura_backend_diari}
+\begin{landscape}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth]{diagrammi_classi_lambda/diari/LambdaDiari.pdf}
-    \caption[Componenti della Lambda per la gestione dei diari]{Componenti della Lambda per la gestione dei diari}
-    \label{DCB-Lambda-diari-Backend}
-\end{figure}
+    \subsubsubsection{\ignoreglossary{Architettura} logica: microservizio diario}
+    \label{par:architettura_backend_diari}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1.3\textheight]{diagrammi_classi_lambda/diari/LambdaDiari.pdf}
+        \caption{Componenti della Lambda per la gestione dei diari}
+        \label{DCB-Lambda-diari-Backend}
+    \end{figure}
+
+\end{landscape}
 
 \paragraph{DiaryType}\mbox{}\\
 L'enumerazione \code{DiaryType} definisce i due tipi di diario supportati dal sistema: \code{REAL\_DIARY} per il diario reale contenente i dati autentici dell'\term{Utente} e \code{FAKE\_DIARY} per il diario fittizio.
