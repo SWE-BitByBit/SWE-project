@@ -196,6 +196,9 @@ Gruppo BitByBit\\\\
 \hline
 \endhead
 
+\rowcolor{white}
+1.0.0 & 2026-05-04 & Dennis Parolin & Approvazione finale del documento. & Gabriele Scaggiante \\
+\hline
 \rowcolor{gray!20}
 0.6.0 & 2026-05-04 & Giovanni Visentin & Aggiornamento e completamento della sezione del \hyperref[subsec:diario_criptato]{Diario Criptato} & Dennis Parolin \\
 \hline
@@ -252,7 +255,7 @@ Il documento si propone come una guida operativa concepita per accompagnare l'\t
 \subsection{Definizioni, acronimi e abbreviazioni} \label{sec:definizioni_acronimi_abbreviazioni}
 
 Al fine di evitare ambiguità relative al linguaggio e ai termini utilizzati all'interno dei documenti formali, viene allegato il \href{https://swe-bitbybit.github.io/SWE-docs/docs/RTB/documenti_interni/Glossario.pdf}{\textit{Glossario}}.
-I termini tecnici, gli acronimi e le parole con significato specifico all'interno del progetto sono contrassegnati da una lettera 'G' in apice (es. Agile) e sono descritti in dettaglio nel documento apposito.
+I termini tecnici, gli acronimi e le parole con significato specifico all'interno del progetto sono contrassegnati da una lettera 'G' in apice (es. \term{Agile}) e sono descritti in dettaglio nel documento apposito.
 
 % =======================RIFERIMENTI================================
 
@@ -299,11 +302,11 @@ L'applicazione è attualmente distribuita in modalità \textit{Pre-\term{Release
 \end{itemize}
 
 \subsection{Procedura di installazione (Android)}
-L'applicazione può essere scaricata direttamente sul proprio dispositivo Android cliccando sul pulsante sottostante:
+L'applicazione può essere scaricata dalla cartella \texttt{install\_app} della \term{Repository} ufficiale. È possibile scaricare il file \texttt{app-release.apk} cliccando sul pulsante sottostante per accedere alla cartella:
 
 \begin{center}
     \begin{tcolorbox}[colback=blue!60!white,colframe=blue!80!black,width=0.8\textwidth,arc=3mm,auto outer arc, center title, title=\textbf{SCARICA L'APP (APK)}]
-        \centering \href{https://swe-bitbybit.github.io/SWE-docs/resources/manuale_utente/app-release.apk}{\textcolor{white}{\textbf{Clicca qui per avviare il download diretto sul tuo smartphone}}}
+        \centering \href{https://github.com/SWE-BitByBit/project-MVP/tree/main/install_app}{\textcolor{white}{\textbf{Clicca qui per accedere alla cartella di download}}}
     \end{tcolorbox}
 \end{center}
 
@@ -322,15 +325,15 @@ Una volta scaricato il file \texttt{app-release.apk}, seguire i passaggi descrit
 \end{enumerate}
 
 \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Nota sulla sicurezza]
-    Essendo una versione di sviluppo, durante l'installazione il servizio \textit{Google Play Protect} potrebbe mostrare un avviso. Per procedere, è necessario cliccare su "Installa comunque".
+    Essendo una versione di sviluppo, durante l'installazione il servizio \textit{Google Play Protect} potrebbe mostrare un avviso di attenzione. Per procedere, è necessario cliccare su "Installa comunque".
 \end{tcolorbox}
 
 \subsection{Procedura di installazione (iOS)}
-Per i dispositivi Apple, l'installazione può avvenire tramite il file di pacchetto (\texttt{app\_unsigned.ipa}). È possibile scaricare il file cliccando sul pulsante sottostante:
+Per i dispositivi Apple, l'installazione può avvenire tramite il file di pacchetto (\texttt{app\_unsigned.ipa}) presente nella cartella \texttt{install\_app} della \term{Repository} ufficiale:
 
 \begin{center}
-    \begin{tcolorbox}[colback=orange!60!white,colframe=orange!80!black,width=0.8\textwidth,arc=3mm,auto outer arc, center title, title=\textbf{SCARICA L'APP (IPA)}]
-        \centering \href{https://swe-bitbybit.github.io/SWE-docs/resources/manuale_utente/app_unsigned.ipa}{\textcolor{white}{\textbf{Clicca qui per scaricare il pacchetto iOS}}}
+    \begin{tcolorbox}[colback=orange!10!white,colframe=orange!80!black,width=0.8\textwidth,arc=3mm,auto outer arc, center title, title=\textbf{SCARICA L'APP (IPA)}]
+        \centering \href{https://github.com/SWE-BitByBit/project-MVP/tree/main/install_app}{\textbf{Clicca qui per accedere alla cartella di download}}
     \end{tcolorbox}
 \end{center}
 
@@ -349,7 +352,7 @@ Per chi desidera utilizzare l'applicativo senza procedere all'installazione su u
 \subsection{Requisiti hardware e software}
 \begin{itemize}
     \item \textbf{Browser supportati:} Google Chrome (consigliato), Mozilla Firefox, Microsoft Edge, Safari.
-    \item \textbf{Risoluzione minima:} L'interfaccia è di tipo \textit{responsive} e si adatta sia a schermi desktop che a schermi di smartphone.
+    \item \textbf{Risoluzione minima:} L'interfaccia è di tipo \textit{responsive} (risoluzione minima consigliata: 360x640 pixel).
     \item \textbf{Javascript:} Deve essere abilitato nel browser (impostazione predefinita).
 \end{itemize}
 
@@ -467,7 +470,10 @@ Dalla Homepage è possibile accedere direttamente alle seguenti sezioni:
     \item \hyperref[subsec:luoghi_sicuri]{Luoghi sicuri}: per individuare i punti di riferimento sicuri più vicini;
     \item \hyperref[subsec:materiale_informativo]{Materiale Informativo}: per consultare guide, articoli e riferimenti normativi;
     \item \hyperref[subsec:sos_contatti]{Contatti fidati}: per gestire la propria rete di supporto;
-    \item \hyperref[subsubsec:dms]{Dead Man's Switch}: per configurare il sistema di emergenza automatizzato.
+    \item \hyperref[subsec:sos_contatti]{Comando SOS}: per inviare segnalazioni di emergenza immediate o attivare l'allarme acustico;
+    \item \hyperref[subsubsec:dms]{Dead Man's Switch}: per configurare il sistema di emergenza automatizzato;
+    \item \hyperref[subsec:autenticazione]{Gestione Account}: per gestire il proprio profilo e l'accesso ai dati;
+    \item \hyperref[subsubsec:dms]{Impostazioni}: per personalizzare l'esperienza d'uso e configurare l'allarme automatico.
 \end{itemize}
 
 \subsection{Gestione Account e Autenticazione} \label{subsec:autenticazione}
@@ -481,12 +487,12 @@ L'applicazione richiede l'autenticazione dell'\term{Utente} per l'accesso a funz
 \end{itemize}
 
 \subsubsection{Accesso (Login)}
-Per accedere alla schermata di autenticazione, premere il pulsante del profilo situato nella Home dell'applicazione (\ref{fig:homepage-autenticazione}).
+Per accedere alla schermata di autenticazione, premere il pulsante del profilo situato nella Homepage dell'applicazione (\ref{fig:homepage-autenticazione}).
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{manuale_utente/autenticazione/homepage-autenticazione.pdf}
-    \caption[Pulsante di accesso all'account]{Pulsante per accedere alla gestione dell'account dalla Home}
+    \caption[Pulsante di accesso all'account]{Pulsante per accedere alla gestione dell'account dalla Homepage}
     \label{fig:homepage-autenticazione}
 \end{figure}
 
@@ -588,7 +594,7 @@ Le informazioni mostrate per ogni luogo includono:
 
 \subsection{Materiale informativo} \label{subsec:materiale_informativo}
 
-Questa sezione funge da hub informativo centrale, offrendo un accesso chiaro e organizzato a risorse essenziali per il supporto e l'orientamento dell'\term{Utente}. Per accedere alla sezione, premere il pulsante apposito nella Home dell'applicazione (\ref{fig:homepage-materiale-informativo}).
+Questa sezione funge da hub informativo centrale, offrendo un accesso chiaro e organizzato a risorse essenziali per il supporto e l'orientamento dell'\term{Utente}. Per accedere alla sezione, premere il pulsante apposito nella Homepage dell'applicazione (\ref{fig:homepage-materiale-informativo}).
 
 \begin{figure}[H]
     \centering
@@ -640,12 +646,12 @@ Per visualizzare i dettagli di una specifica risorsa, è sufficiente \textbf{pre
 L'interfaccia dell'applicazione include una sezione dedicata all'interazione testuale con l'Intelligenza Artificiale, concepita per chiarire dubbi e fornire supporto immediato. 
 
 \textbf{Accesso alla funzionalità:}
-Per accedere al Chatbot, premere il pulsante dedicato situato nella Home dell'applicazione (\ref{fig:homepage-chatbot}).
+Per accedere al Chatbot, premere il pulsante dedicato situato nella Homepage dell'applicazione (\ref{fig:homepage-chatbot}).
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{manuale_utente/chatbot/homepage-chatbot.pdf}
-    \caption[Pulsante di accesso al Chatbot]{Pulsante per l'accesso alla sezione Chatbot dalla Home}
+    \caption[Pulsante di accesso al Chatbot]{Pulsante per l'accesso alla sezione Chatbot dalla Homepage}
     \label{fig:homepage-chatbot}
 \end{figure}
 
@@ -774,12 +780,12 @@ Le operazioni disponibili sono:
 Il Diario Criptato è concepito come uno spazio sicuro e protetto per l'annotazione di eventi, pensieri personali e l'archiviazione di file multimediali (foto e registrazioni audio). L'intera sezione è progettata con un'interfaccia discreta per non attirare attenzioni indesiderate.
 
 \textbf{Accesso alla funzionalità:}
-Per accedere al Diario, premere il pulsante dedicato situato nella Home dell'applicazione (\ref{fig:homepage-diario}).
+Per accedere al Diario, premere il pulsante dedicato situato nella Homepage dell'applicazione (\ref{fig:homepage-diario}).
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{manuale_utente/diario/homepage-diario.pdf}
-    \caption[Pulsante di accesso al Diario]{Pulsante per l'accesso alla sezione Diario dalla Home}
+    \caption[Pulsante di accesso al Diario]{Pulsante per l'accesso alla sezione Diario dalla Homepage}
     \label{fig:homepage-diario}
 \end{figure}
 
@@ -857,6 +863,15 @@ Per aggiungere testo, immagini o registrazioni audio, premere il pulsante con l'
 
 \begin{figure}[H]
     \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/bottone_aggiungi.pdf}
+    \caption[Bottone aggiungi elementi]{Pulsante per aggiungere elementi alla nota}
+    \label{fig:bottone-aggiungi-elementi}
+\end{figure}
+
+E le seguenti opzioni verranno visualizzate:
+
+\begin{figure}[H]
+    \centering
     \includegraphics[width=0.5\textwidth]{manuale_utente/diario/Nota_bottone_seleziona.pdf}
     \caption[Selezione elemento]{Schermata di selezione del tipo di contenuto da aggiungere alla nota}
     \label{fig:bottone-seleziona-elemento}
@@ -894,7 +909,7 @@ Per aggiungere un'immagine al diario, selezionare il pulsante delle risorse e sc
     \label{fig:nota-immagine}
 \end{figure}
 
-Per inserire audio, premere il pulsante delle risorse e scegliere \textbf{"Aggiungi traccia audio"}. Dalla schermata di scelta o registrazione (\ref{fig:nota-audio-search}) si può selezionare il file o avviare la registrazione. Il blocco audio viene aggiunto alla nota e può essere riprodotto direttamente all'interno dell'interfaccia (\ref{fig:nota-audio} e \ref{fig:nota-audio-play}).
+Per inserire audio, premere il pulsante delle risorse e scegliere \textbf{"Aggiungi traccia audio"}. Dalla schermata di scelta o registrazione (\ref{fig:nota-audio-search}) è possibile selezionare la traccia audio da inserire all'interno della nota. Il blocco audio viene aggiunto automaticamente dopo la selezione del file, e la traccia può essere riprodotta direttamente all'interno dell'interfaccia (\ref{fig:nota-audio} e \ref{fig:nota-audio-play}).
 
 \begin{figure}[H]
     \centering
@@ -983,43 +998,18 @@ Le procedure di inserimento e i criteri di sicurezza richiesti sono identici a q
 
 \subsection{Rete di supporto e SOS} \label{subsec:sos_contatti}
 
-L'applicazione integra un sistema di emergenza avanzato per permettere all'\term{Utente} di richiedere aiuto in modo tempestivo e discreto alla propria rete di contatti fidati. Questa sezione si compone di tre strumenti principali, accessibili tramite percorsi differenti: l'invio rapido di un segnale di SOS, la gestione della rete di contatti fidati e la configurazione del sistema di allarme automatico (Dead Man's Switch).
-
-\subsubsection{Comando SOS e Allarme Acustico}
-In situazioni di pericolo, l'\term{Utente} ha a disposizione uno strumento di reazione immediata tramite un \textbf{pulsante a leva} che è presente in ogni schermata dell'applicazione, mantenendo sempre la stessa posizione per essere facilmente raggiungibile in qualsiasi momento.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/sos/leva-sos.pdf}
-    \caption[Posizionamento del pulsante SOS]{Esempio del pulsante a leva presente in tutte le schermate dell'applicazione}
-    \label{fig:leva-sos}
-\end{figure}
-
-Il funzionamento del comando dipende dalla disponibilità di connessione internet:
-\begin{itemize}
-    \item \textbf{SOS (con rete):} trascinando la leva, il sistema invia istantaneamente una comunicazione di emergenza (e-mail) a tutti i contatti salvati nella propria rete. L'invio è gestito esclusivamente dal comando manuale dell'\term{Utente}.
-    \item \textbf{Allarme Acustico (senza rete):} qualora non sia presente connettività internet (impedendo l'invio di e-mail), l'attivazione della leva farà partire un \textbf{allarme acustico} ad alto volume. Questa funzione ha lo scopo di attirare l'attenzione dei presenti e fungere da deterrente verso potenziali aggressori.
-\end{itemize}
-
-Per utilizzare il comando, è necessario \textbf{tenere premuta la leva e trascinarla verso il basso} fino al completamento della corsa, momento in cui la funzionalità si attiverà.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/sos/attivazione-sos.pdf}
-    \caption[Attivazione del segnale di emergenza]{Effetto visivo della leva dopo l'attivazione del comando di SOS}
-    \label{fig:attivazione-sos}
-\end{figure}
+L'applicazione integra un sistema di emergenza avanzato per permettere all'\term{Utente} di richiedere aiuto in modo tempestivo e discreto alla propria rete di contatti fidati. Questa sezione si compone di tre strumenti principali, accessibili tramite percorsi differenti: la gestione della rete di contatti fidati, l'invio rapido di un segnale di SOS e la configurazione del sistema di allarme automatico (Dead Man's Switch).
 
 \subsubsection{Gestione Contatti Fidati} \label{subsubsec:contatti_fidati}
-Tramite questa sezione, l'\term{Utente} può creare e gestire una cerchia ristretta di persone fidate a cui l'applicazione invierà richieste di aiuto in caso di emergenza.
+Tramite questa sezione, l'\term{Utente} può creare e gestire una cerchia ristretta di persone fidate a cui l'applicazione invierà richieste di aiuto in caso di emergenza. La configurazione di una rete di contatti è un prerequisito fondamentale per il corretto funzionamento dei segnali di SOS e del Dead Man's Switch.
 
 \textbf{Accesso alla funzionalità:}
-Per accedere alla gestione dei contatti, premere il pulsante apposito situato nella Home dell'applicazione (\ref{fig:homepage-contatti-fidati}).
+Per accedere alla gestione dei contatti, premere il pulsante apposito situato nella Homepage dell'applicazione (\ref{fig:homepage-contatti-fidati}).
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{manuale_utente/contatti_fidati/homepage-contatti-fidati.pdf}
-    \caption[Pulsante di accesso ai contatti fidati]{Pulsante per l'accesso alla gestione dei contatti fidati dalla Home}
+    \caption[Pulsante di accesso ai contatti fidati]{Pulsante per l'accesso alla gestione dei contatti fidati dalla Homepage}
     \label{fig:homepage-contatti-fidati}
 \end{figure}
 
@@ -1080,11 +1070,50 @@ Verranno mostrati i campi contenenti le informazioni attuali, che possono essere
     \label{fig:modifica-contatto}
 \end{figure}
 
+\subsubsection{Comando SOS e Allarme Acustico}
+In situazioni di pericolo, l'\term{Utente} ha a disposizione uno strumento di reazione immediata tramite un \textbf{pulsante a leva} che è presente in ogni schermata dell'applicazione, mantenendo sempre la stessa posizione per essere facilmente raggiungibile in qualsiasi momento.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/sos/leva-sos.pdf}
+    \caption[Posizionamento del pulsante SOS]{Esempio del pulsante a leva presente in tutte le schermate dell'applicazione}
+    \label{fig:leva-sos}
+\end{figure}
+
+Il funzionamento del comando dipende dalla disponibilità di connessione internet:
+\begin{itemize}
+    \item \textbf{SOS (con rete):} trascinando la leva, il sistema invia istantaneamente una comunicazione di emergenza (e-mail) a tutti i contatti salvati nella propria rete. Tale comunicazione contiene la \textbf{posizione geografica attuale} dell'\term{Utente} sotto forma di link interattivo a Google Maps. Poiché l'e-mail è preconfigurata per garantire tempestività, il suo contenuto non è modificabile e si presenta come segue:
+    \begin{tcolorbox}[colback=red!5!white,colframe=red!75!black,title=Contenuto e-mail di SOS]
+        \textbf{Oggetto:} Messaggio di emergenza \\
+        \textbf{Corpo del messaggio:} \\
+        Ciao, questo è un messaggio di aiuto dall'applicazione "App che protegge e trasforma". \\
+        Ti è arrivato questo messaggio perché l'utente ha inviato un segnale di emergenza tramite l'app. Chiamala/o il prima possibile per sapere se è tutto a posto. \\
+        \href{https://www.google.com/maps}{\textbf{Apri posizione in Google Maps}}
+    \end{tcolorbox}
+    \item \textbf{Allarme Acustico (senza rete):} qualora il sistema rilevi l'assenza di connettività internet al momento dell'attivazione della leva, verrà mostrato un messaggio di avviso (\ref{fig:conferma-allarme-sonoro}). All'\term{Utente} verrà chiesto se desidera procedere con l'attivazione dell'\textbf{allarme acustico} ad alto volume, strumento fondamentale per attirare l'attenzione dei presenti e fungere da deterrente verso potenziali aggressori.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\textwidth]{manuale_utente/sos/conferma-allarme-sonoro.pdf}
+        \caption[Richiesta attivazione allarme sonoro]{Messaggio di avviso per assenza di connessione e richiesta attivazione allarme sonoro}
+        \label{fig:conferma-allarme-sonoro}
+    \end{figure}
+\end{itemize}
+
+Per utilizzare il comando, è necessario \textbf{tenere premuta la leva e trascinarla verso il basso} fino al completamento della corsa, momento in cui la funzionalità si attiverà.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/sos/attivazione-sos.pdf}
+    \caption[Attivazione del segnale di emergenza]{Effetto visivo della leva dopo l'attivazione del comando di SOS}
+    \label{fig:attivazione-sos}
+\end{figure}
+
 \subsubsection{Dead Man's Switch (Interruttore di emergenza)} \label{subsubsec:dms}
 Il Dead Man's Switch è una funzionalità di sicurezza preventiva progettata per attivarsi automaticamente in caso di prolungata inattività dell'\term{Utente}. Questa funzionalità invia un email di avviso all'\term{Utente} dopo un periodo di inattività prefissato. In caso di mancato accesso all'app nei giorni successivi al ricevimento del messaggio, il Dead Man's Switch invierà una mail di avviso a tutti i contatti fidati dell'\term{Utente}. I tempi di inattività, così come il messaggio che l'\term{Utente} riceve in caso di mancato accesso prolungato, sono completamente personalizzabili. La funzionalità stessa può essere disabilitata.
 
 \textbf{Accesso alla funzionalità:}
-Per configurare il Dead Man's Switch, è necessario accedere alle impostazioni dell'applicazione tramite l'icona a forma di ingranaggio situata in alto a destra nella Home. 
+Per configurare il Dead Man's Switch, è necessario accedere alle impostazioni dell'applicazione tramite l'icona a forma di ingranaggio situata in alto a destra nella Homepage. 
 
 \begin{figure}[H]
     \centering
