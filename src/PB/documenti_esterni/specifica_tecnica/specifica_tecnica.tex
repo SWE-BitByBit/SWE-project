@@ -657,7 +657,7 @@ Il client mobile è sviluppato incapsulando il codice secondo i dettami moderni 
 \end{itemize}
 
 \subsubsection{Backend Serverless}
-Ogni Lambda Function costituisce un microservizio indipendente, implementato seguendo il pattern dell'architettura esagonale (conosciuto anche come \textit{Ports and Adapters pattern}). 
+Ogni Lambda Function costituisce un microservizio indipendente, implementato seguendo il pattern dell'\term{Architettura} esagonale (conosciuto anche come \textit{Ports and Adapters pattern}). 
 Questo approccio garantisce un basso accoppiamento tra le componenti del sistema, isolando la domain logic dalle tecnologie esterne e facilitando la scrittura dei test.\\
 In questo pattern il sistema comunica con le componenti esterne attraverso interfacce, le port, mentre 
 gli adapter sono responsabili dell'implementazioni concrete di queste.\\
@@ -671,7 +671,7 @@ Le port si dividono in due categorie:
     \item Inbound port:definiscono le interfacce attraverso cui le risorse esterne comunicano con la domain logic. Il loro utilizzo isola il nucleo del sistema
 da qualsiasi dipendenza tecnologica esterna, rendendo intercambiabili le implementazioni che le realizzano.
     \item Outbound port: definiscono le interfacce attraverso cui la domain logic interagisce con i servizi esterni, come le risorse di persistenza. In particolare, le
-repository port specificano i metodi che gli adapter devono implementare per le operazioni di lettura e scrittura sui dati.
+\term{Repository} port specificano i metodi che gli adapter devono implementare per le operazioni di lettura e scrittura sui dati.
 \end{itemize}
 
 Gli adapter si dividono anche essi in 2 categorie:
@@ -4221,7 +4221,7 @@ Descrizione attributi:
     \caption[Diagramma della classe DmsConfigurationSettingsDTO]{Diagramma della classe \code{DmsConfigurationSettingsDTO}}
     \label{fig:architettura_contatti_fidati_DmsConfigurationSettingsDTO}
 \end{figure}
-Data Transfer Object utilizzato per la serializzazione delle impostazioni di un utente in un dizionario utilizzato per la risposta della lambda. . 
+Data Transfer Object utilizzato per la serializzazione delle impostazioni di un \term{Utente} in un dizionario utilizzato per la risposta della lambda. . 
 Contiene tutti i campi dell'entità di dominio \code{DmsConfigurationSettings} e fornisce i metodi \code{to\_dict} per la conversione in dizionario Python (successivamente serializzato in JSON) e \code{from\_domain} per la creazione a partire da un oggetto di dominio.
 
 \paragraph{AlertCmd}\mbox{}\\
