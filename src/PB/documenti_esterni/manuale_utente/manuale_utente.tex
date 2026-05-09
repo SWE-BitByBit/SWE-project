@@ -13,6 +13,7 @@
 % =======================================================
 % Carica xcolor con opzione table (include già colortbl)
 \usepackage[table]{xcolor}
+\usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[italian]{babel}
 \usepackage{geometry}
@@ -295,18 +296,25 @@ L'applicazione è attualmente distribuita in modalità \textit{Pre-\term{Release
 \end{itemize}
 
 \subsection{Procedura di installazione (Android)}
-Per installare l'applicazione tramite il file fornito (\texttt{app-release.apk}), seguire i passaggi descritti di seguito:
+L'applicazione può essere scaricata direttamente sul proprio dispositivo Android cliccando sul pulsante sottostante:
+
+\begin{center}
+    \begin{tcolorbox}[colback=blue!60!white,colframe=blue!80!black,width=0.8\textwidth,arc=3mm,auto outer arc, center title, title=\textbf{SCARICA L'APP (APK)}]
+        \centering \href{https://swe-bitbybit.github.io/SWE-docs/resources/manuale_utente/app-release.apk}{\textcolor{white}{\textbf{Clicca qui per avviare il download diretto sul tuo smartphone}}}
+    \end{tcolorbox}
+\end{center}
+
+Una volta scaricato il file \texttt{app-release.apk}, seguire i passaggi descritti di seguito per completare l'installazione:
 
 \begin{enumerate}
-    \item \textbf{Trasferimento file:} Scaricare o copiare il file \texttt{app-release.apk} nella memoria interna del dispositivo mobile.
     \item \textbf{Abilitazione sorgenti sconosciute:} 
-    A causa delle politiche di sicurezza di Android, l'installazione di applicazioni esterne al Google Play Store deve essere autorizzata manualmente:
+    A causa delle politiche di sicurezza di Android, l'installazione di applicazioni esterne al Google Play Store deve essere autorizzata manualmente (solo per la prima volta):
     \begin{itemize}
         \item Recarsi nelle \textit{Impostazioni} del dispositivo.
         \item Cercare la sezione \textit{Sicurezza} o \textit{Privacy}.
-        \item Abilitare l'opzione \textbf{"Origini sconosciute"} o, nelle versioni più recenti, autorizzare il proprio \textit{File Manager} all'installazione di app sconosciute.
+        \item Abilitare l'opzione \textbf{"Origini sconosciute"} o, nelle versioni più recenti, autorizzare il proprio \textit{Browser} o \textit{File Manager} all'installazione di app sconosciute.
     \end{itemize}
-    \item \textbf{Esecuzione del pacchetto:} Individuare il file tramite l'app "Download" o un gestore file e toccarlo per avviare l'installazione.
+    \item \textbf{Esecuzione del pacchetto:} Individuare il file tramite l'area notifiche o l'app "Download" e toccarlo per avviare l'installazione.
     \item \textbf{Conferma:} Alla richiesta del sistema, premere su \textbf{"Installa"}. Al termine dell'operazione, sarà possibile premere su "Apri" per avviare immediatamente l'applicativo.
 \end{enumerate}
 
@@ -315,27 +323,20 @@ Per installare l'applicazione tramite il file fornito (\texttt{app-release.apk})
 \end{tcolorbox}
 
 \subsection{Procedura di installazione (iOS)}
-Per i dispositivi Apple, l'installazione può avvenire tramite il file di pacchetto (\texttt{app-release.ipa}) o, più comunemente, tramite la piattaforma di beta testing \textit{TestFlight}.
+Per i dispositivi Apple, l'installazione può avvenire tramite il file di pacchetto (\texttt{app\_unsigned.ipa}). È possibile scaricare il file cliccando sul pulsante sottostante:
 
-\begin{enumerate}
-    \item \textbf{Download del pacchetto:} Scaricare il file \texttt{app-release.ipa} sul proprio computer o riceverlo tramite i canali ufficiali del gruppo.
-    \item \textbf{Installazione tramite TestFlight (Scelta consigliata):} 
-    \begin{itemize}
-        \item Scaricare l'app \textbf{TestFlight} dall'App Store.
-        \item Accettare l'invito ricevuto via email o tramite link pubblico.
-        \item L'app comparirà nell'elenco di TestFlight; premere su \textbf{"Installa"}.
-    \end{itemize}
-    \item \textbf{Installazione manuale (.ipa):} 
-    In alternativa, per installare direttamente il file scaricato:
-    \begin{itemize}
-        \item Collegare l'iPhone al Mac.
-        \item Utilizzare l'app \textit{Apple Configurator} o trascinare il file in \textit{Xcode} -> \textit{Devices and Simulators}.
-        \item Autorizzare l'applicazione nelle impostazioni del dispositivo (\textit{Generali} -> \textit{VPN e gestione dispositivi}).
-    \end{itemize}
-\end{enumerate}
+\begin{center}
+    \begin{tcolorbox}[colback=orange!60!white,colframe=orange!80!black,width=0.8\textwidth,arc=3mm,auto outer arc, center title, title=\textbf{SCARICA L'APP (IPA)}]
+        \centering \href{https://swe-bitbybit.github.io/SWE-docs/resources/manuale_utente/app_unsigned.ipa}{\textcolor{white}{\textbf{Clicca qui per scaricare il pacchetto iOS}}}
+    \end{tcolorbox}
+\end{center}
 
-\begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black,title=Nota per iOS]
-    A differenza di Android, l'installazione diretta di file esterni su iOS è più restrittiva. Si consiglia vivamente l'utilizzo di TestFlight per una procedura semplificata e sicura.
+\begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black,title=Nota sulla compatibilità iOS]
+    A differenza di Android, l'installazione di applicazioni esterne (sideloading) su iOS è soggetta a forti restrizioni di sicurezza da parte di Apple. 
+    
+    Il file \texttt{app\_unsigned.ipa} fornito è un pacchetto compilato correttamente per architettura \textit{iPhoneOS}, ma non include la \textbf{firma digitale ufficiale} (Digital Signature) richiesta per l'esecuzione su dispositivi fisici non registrati. Tale firma richiede l'utilizzo di un account \textit{Apple Developer} e di un ambiente macOS per la notarizzazione.
+    
+    Per un progetto in fase di \textit{Minimum Viable Product} (MVP) in ambito universitario, il file dimostra la piena compatibilità del codice sorgente con l'ecosistema iOS. Per un'eventuale distribuzione reale, la procedura standard prevede l'utilizzo di \textbf{Apple TestFlight} o la pubblicazione ufficiale sull'App Store.
 \end{tcolorbox}
 
 \section{Accesso da Web} \label{sec:accesso_web}
@@ -357,37 +358,37 @@ Per chi desidera utilizzare l'applicativo senza procedere all'installazione su u
     \item Al caricamento della pagina, l'\term{Utente} si troverà direttamente nella schermata di autenticazione o nella \textit{Dashboard} principale.
 \end{enumerate}
 
-\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black,title=Suggerimento: Utilizzo come App]
-    Sui browser basati su Chromium (come Chrome o Edge), è possibile cliccare sull'icona "Installa" nella barra degli indirizzi per aggiungere l'applicazione direttamente al desktop o alla lista delle app del computer, utilizzandola come se fosse un software nativo (PWA).
-\end{tcolorbox}
-
-\subsection{Risoluzione dei problemi (Web)}
-\begin{itemize}
-    \item \textbf{Schermata bianca all'avvio:}
-    \textit{Soluzione:} Verificare la console del browser (tasto F12). Spesso è dovuto a un errore nel caricamento del file \texttt{.env} o a problemi di CORS se le API del \term{Backend} non sono configurate correttamente per accettare richieste dal dominio web.
-\end{itemize}
-
 \section{Esecuzione da codice sorgente} \label{sec:esecuzione_sorgenti}
 
 Questa modalità è riservata a figure tecniche che desiderano analizzare il codice o eseguire l'applicazione in un ambiente di sviluppo controllato.
 
-\subsection{Prerequisiti di sistema}
+\subsection{Prerequisiti di sistema} \label{subsec:prerequisiti_sorgente}
 Prima di procedere, assicurarsi che sul sistema siano installati i seguenti componenti:
 \begin{itemize}
     \item \textbf{Git:} per la gestione del controllo versione.
-    \item \textbf{Flutter SDK:} versione \texttt{3.10.7} o superiore (seguire la \href{https://docs.flutter.dev/get-started/install}{guida ufficiale}).
-    \item \textbf{Android SDK:} necessario per l'esecuzione su emulatore o dispositivo Android.
+    \item \textbf{Flutter SDK:} versione \texttt{3.10.7} o superiore. Si consiglia di seguire la \href{https://docs.flutter.dev/install/quick}{guida ufficiale di installazione}.
+    \item \textbf{Android SDK:} necessario per l'esecuzione su emulatore o dispositivo Android. Seguire il \href{https://docs.flutter.dev/platform-integration/android/setup}{setup del development environment} per Android.
     \item \textbf{\term{IDE}:} Visual Studio Code o Android Studio con estensione Flutter installata.
 \end{itemize}
 
-\subsection{Procedura di setup ed esecuzione}
-Seguire rigorosamente i seguenti comandi da terminale:
+\subsection{Setup ambiente e variabili} \label{subsec:setup_ambiente}
+Il corretto funzionamento dell'applicativo dipende dalla configurazione delle variabili d'ambiente. Seguire questi passaggi all'interno della cartella \texttt{frontend/}:
+\begin{enumerate}
+    \item Localizzare il file \texttt{.env.example} nella cartella root del frontend.
+    \item Copiare il contenuto in un nuovo file denominato \texttt{.env}.
+    \item Sostituire il valore di \texttt{API\_BASE\_URL} con l'endpoint corretto fornito dal team di sviluppo (Backend AWS).
+\end{enumerate}
+
+\subsection{Procedura di setup ed esecuzione} \label{subsec:procedura_esecuzione}
+Seguire rigorosamente i seguenti comandi da terminale per preparare ed eseguire l'applicazione:
 
 \begin{enumerate}
     \item \textbf{Clonazione della \term{Repository}:}
+    {\small
     \begin{verbatim}
-    git clone https://github.com/SWE-BitByBit/\term{Project}-\term{MVP}.git
+    git clone https://github.com/SWE-BitByBit/Project-MVP.git
     \end{verbatim}
+    }
     \item \textbf{Navigazione nella cartella del frontend:}
     \begin{verbatim}
     cd \term{Project}-\term{MVP}/frontend
@@ -398,27 +399,47 @@ Seguire rigorosamente i seguenti comandi da terminale:
     \end{verbatim}
     \item \textbf{\term{Verifica} dell'ambiente:}
     Eseguire il comando \texttt{flutter doctor} per assicurarsi che non vi siano problemi di configurazione.
-    \item \textbf{Avvio dell'applicazione:}
-    Assicurarsi che un emulatore sia attivo o un dispositivo sia collegato, quindi lanciare:
+    \item \textbf{Gestione Emulatori:}
+    Se non si dispone di un dispositivo fisico, creare un nuovo emulatore tramite il \textit{Virtual Device Manager} di Android Studio (\href{https://developer.android.com/studio/run/managing-avds?hl=it}{guida ufficiale}). Verificare la presenza degli emulatori con:
+    {\small
     \begin{verbatim}
+    flutter emulators && flutter devices
+    \end{verbatim}
+    }
+    \item \textbf{Avvio dell'applicazione:}
+    Lanciare l'emulatore desiderato e successivamente l'app:
+    {\small
+    \begin{verbatim}
+    flutter emulators --launch <Nome_emulatore>
     flutter run
     \end{verbatim}
+    }
 \end{enumerate}
 
-\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black,title=Attenzione: Variabili d'ambiente]
-    Il corretto funzionamento dell'applicativo dipende dalla presenza del file \texttt{.env} nella cartella root del frontend. Assicurarsi che il file contenga gli endpoint corretti per il \term{Backend} AWS (Cognito e API Gateway).
-\end{tcolorbox}
-
-\subsection{Risoluzione dei problemi (Sorgente)}
+\subsection{Risoluzione dei problemi (Sorgente)} \label{subsec:risoluzione_sorgente}
 \begin{itemize}
     \item \textbf{Problemi con Flutter Doctor:}
     \begin{itemize}
-        \item \textbf{Android license status unknown:} Eseguire \texttt{flutter doctor --android-licenses} e accettare tutte le licenze.
-        \item \textbf{Android SDK not found:} Configurare il percorso manualmente con \texttt{flutter config --android-sdk <percorso\_sdk>}.
-        \item \textbf{Visual Studio missing (Windows):} Può essere ignorato se si desidera eseguire l'app solo su mobile o web. In caso contrario, installare il pacchetto "Sviluppo di applicazioni desktop con C++" tramite Visual Studio Installer.
+        \item \textbf{Android license status unknown:} Eseguire \texttt{flutter doctor --android-licenses} e accettare le licenze.
+        \item \textbf{Android SDK not found:} Configurare il percorso con \texttt{flutter config --android-sdk <percorso\_sdk>}.
     \end{itemize}
+    \item \textbf{Errore Lint Separatori Windows:}
+    In caso di errore \textit{"Windows file separators (\textbackslash) and drive letter separators (':') must be escaped"}, è necessario fare l'escape dei \texttt{:} nel path \texttt{sdk.dir} in \texttt{android/local.properties} (es. \texttt{C:\textbackslash\textbackslash Users\textbackslash\textbackslash...}). Verificare la risoluzione con il comando \texttt{gradlew lintDebug} ed eventualmente riavviare l'IDE (VS Code).
     \item \textbf{Blocco su "Running Gradle task 'assembleDebug'...":}
-    \textit{Soluzione:} La prima compilazione è lenta. Se persiste, eseguire \texttt{flutter clean} e riprovare.
+    \textit{Soluzione:} La prima compilazione può essere molto lenta. Se persiste, eseguire:
+    \begin{verbatim}
+    cd android
+    ./gradlew clean build
+    \end{verbatim}
+    \item \textbf{Emulatore con schermata nera:}
+    Provare a premere il pulsante di avvio a fianco del simulatore (quello a forma di cerchio con la linea verticale all'interno) o eseguire un \textbf{Wipe Data} dal \textit{Device Manager} di Android Studio.
+\end{itemize}
+
+\subsection{Miglioramento prestazioni emulatore} \label{subsec:prestazioni_emulatore}
+Per un'esperienza di sviluppo più fluida, si consiglia di:
+\begin{itemize}
+    \item \textbf{Aumento RAM:} Da Android Studio (\textit{Edit Device -> Advanced Settings}), abilitare il \textit{Quick Boot} e aumentare la RAM. In alternativa, modificare \texttt{hw.ramSize} nel file \texttt{config.ini} del dispositivo.
+    \item \textbf{Rendering Grafico:} Nelle impostazioni dell'emulatore avviato, impostare l'\textit{OpenGL ES Renderer} a \texttt{Desktop Native OpenGL}.
 \end{itemize}
 
 \section{Funzionalità dell'applicazione} \label{sec:funzionalita}
@@ -431,7 +452,7 @@ La Homepage rappresenta il fulcro dell'applicazione, fungendo da punto di access
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/homepage.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/homepage.pdf}
     \caption[Schermata della Homepage]{Schermata della Homepage dell'applicazione}
     \label{fig:homepage}
 \end{figure}
@@ -461,7 +482,7 @@ Per accedere alla schermata di autenticazione, premere il pulsante del profilo s
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/autenticazione/homepage-autenticazione.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/autenticazione/homepage-autenticazione.pdf}
     \caption[Pulsante di accesso all'account]{Pulsante per accedere alla gestione dell'account dalla Home}
     \label{fig:homepage-autenticazione}
 \end{figure}
@@ -470,7 +491,7 @@ L'autenticazione avviene esclusivamente tramite il proprio \textbf{Account Googl
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/autenticazione/login-google.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/autenticazione/login-google.pdf}
     \caption[Schermata di login]{Schermata per l'autenticazione tramite Account Google}
     \label{fig:schermata-login}
 \end{figure}
@@ -480,7 +501,7 @@ Una volta effettuato l'accesso, la schermata del profilo mostrerà l'account con
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/autenticazione/logout.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/autenticazione/logout.pdf}
     \caption[Schermata del profilo e logout]{Visualizzazione delle info profilo e pulsante di logout}
     \label{fig:schermata-logout}
 \end{figure}
@@ -493,7 +514,7 @@ La funzionalità dei "Luoghi sicuri" integra una mappa interattiva che permette 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/luoghi_sicuri/homepage-luoghi-sicuri.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/luoghi_sicuri/homepage-luoghi-sicuri.pdf}
     \caption[Schermata pulsante di accesso ai luoghi sicuri]{Schermata pulsante di accesso ai luoghi sicuri}
     \label{fig:homepage-luoghi-sicuri}
 \end{figure}
@@ -503,7 +524,7 @@ L'interfaccia mostra la posizione attuale dell'\term{Utente} sulla mappa, facili
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/luoghi_sicuri/posizione_utente.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/luoghi_sicuri/posizione_utente.pdf}
     \caption[Posizione dell'utente sulla mappa]{Posizione dell'\term{Utente} sulla mappa}
     \label{fig:posizione_utente}
 \end{figure}
@@ -514,7 +535,7 @@ Per permettere una rapida identificazione della tipologia di luogo, i marker son
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/luoghi_sicuri/mappa-marker.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/luoghi_sicuri/mappa-marker.pdf}
     \caption[Esempio di visualizzazione dei marker sulla mappa]{Esempio di visualizzazione dei marker sulla mappa con diverse categorie}
     \label{fig:mappa-marker}
 \end{figure}
@@ -526,7 +547,7 @@ Per agevolare la comprensione della mappa, è disponibile una legenda che spiega
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/luoghi_sicuri/legenda-luoghi-sicuri.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/luoghi_sicuri/legenda-luoghi-sicuri.pdf}
     \caption[Schermata della legenda dei luoghi sicuri]{Schermata informativa contenente la legenda delle icone sulla mappa}
     \label{fig:legenda-luoghi-sicuri}
 \end{figure}
@@ -539,7 +560,7 @@ Interagire con la mappa è semplice e immediato:
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/luoghi_sicuri/marker-selezionato.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/luoghi_sicuri/marker-selezionato.pdf}
     \caption[Selezione di un marker sulla mappa]{Esempio di marker selezionato sulla mappa}
     \label{fig:marker-selezionato}
 \end{figure}
@@ -550,7 +571,7 @@ Interagire con la mappa è semplice e immediato:
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/luoghi_sicuri/dettagli-luogo.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/luoghi_sicuri/dettagli-luogo.pdf}
     \caption[Visualizzazione dei dettagli di un luogo sicuro]{Schermata con i dettagli del luogo selezionato}
     \label{fig:dettagli-luogo}
 \end{figure}
@@ -568,7 +589,7 @@ Questa sezione funge da hub informativo centrale, offrendo un accesso chiaro e o
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/materiale_informativo/homepage-materiale-informativo.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/materiale_informativo/homepage-materiale-informativo.pdf}
     \caption[Pulsante di accesso al materiale informativo]{Pulsante di accesso alla sezione Materiale informativo}
     \label{fig:homepage-materiale-informativo}
 \end{figure}
@@ -583,7 +604,7 @@ Una volta entrati nella sezione, l'\term{Utente} si troverà di fronte a una lis
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/materiale_informativo/lista-materiale.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/materiale_informativo/lista-materiale.pdf}
     \caption[Schermata principale materiale informativo]{Schermata principale con l'elenco delle risorse e relative icone}
     \label{fig:lista-materiale}
 \end{figure}
@@ -592,7 +613,7 @@ Per facilitare la ricerca, è possibile utilizzare il sistema di \textbf{filtri}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/materiale_informativo/filtro-materiale.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/materiale_informativo/filtro-materiale.pdf}
     \caption[Utilizzo dei filtri]{Utilizzo dei filtri per categoria nella sezione materiale informativo}
     \label{fig:filtro-materiale}
 \end{figure}
@@ -606,7 +627,7 @@ Per visualizzare i dettagli di una specifica risorsa, è sufficiente \textbf{pre
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/materiale_informativo/dettaglio-materiale.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/materiale_informativo/dettaglio-materiale.pdf}
     \caption[Dettaglio di una risorsa]{Schermata di dettaglio con il contenuto o il link esterno}
     \label{fig:dettaglio-materiale}
 \end{figure}
@@ -620,7 +641,7 @@ Per accedere al Chatbot, premere il pulsante dedicato situato nella Home dell'ap
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/chatbot/homepage-chatbot.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/chatbot/homepage-chatbot.pdf}
     \caption[Pulsante di accesso al Chatbot]{Pulsante per l'accesso alla sezione Chatbot dalla Home}
     \label{fig:homepage-chatbot}
 \end{figure}
@@ -629,7 +650,7 @@ Una volta entrati, verrà visualizzata la schermata principale di conversazione.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/chatbot/schermata-chatbot.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/chatbot/schermata-chatbot.pdf}
     \caption[Schermata principale del Chatbot]{Interfaccia di conversazione con l'Intelligenza Artificiale}
     \label{fig:schermata-chatbot}
 \end{figure}
@@ -648,7 +669,7 @@ L'\term{Utente} mantiene il controllo totale sulla scelta.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/chatbot/info-modalita-pulsante.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/chatbot/info-modalita-pulsante.pdf}
     \caption[Pulsante informazioni modalità]{Pulsante per visualizzare i dettagli sulle modalità del Chatbot}
     \label{fig:info-modalita-pulsante}
 \end{figure}
@@ -656,7 +677,7 @@ L'\term{Utente} mantiene il controllo totale sulla scelta.
 Verrà mostrato un popup esplicativo (\ref{fig:info-modalita-popup}).
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/chatbot/info-modalita-popup.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/chatbot/info-modalita-popup.pdf}
     \caption[Popup informativo modalità]{Schermata esplicativa delle differenze tra le modalità}
     \label{fig:info-modalita-popup}
 \end{figure}
@@ -666,14 +687,14 @@ Per cambiare manualmente la modalità attiva, premere il pulsante situato in alt
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/chatbot/cambio-modalita-pulsante.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/chatbot/cambio-modalita-pulsante.pdf}
     \caption[Pulsante cambio modalità]{Pulsante per l'apertura del menu di selezione modalità}
     \label{fig:cambio-modalita-pulsante}
 \end{figure}
 Selezionare quella desiderata dalla lista che compare (\ref{fig:cambio-modalita-lista}).
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/chatbot/cambio-modalita-lista.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/chatbot/cambio-modalita-lista.pdf}
     \caption[Menu selezione modalità]{Elenco delle modalità selezionabili dall'\term{Utente}}
     \label{fig:cambio-modalita-lista}
 \end{figure}
@@ -683,7 +704,7 @@ Per comunicare con l'Intelligenza Artificiale, è sufficiente digitare il propri
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/chatbot/invio-messaggio.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/chatbot/invio-messaggio.pdf}
     \caption[Invio di un messaggio]{Barra di digitazione e pulsante di invio messaggio}
     \label{fig:invio-messaggio}
 \end{figure}
@@ -696,14 +717,14 @@ Per accedere all'elenco delle conversazioni passate, premere il pulsante della c
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/chatbot/pulsante-cronologia.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/chatbot/pulsante-cronologia.pdf}
     \caption[Accesso alla cronologia]{Pulsante per la visualizzazione dell'elenco delle chat salvate}
     \label{fig:pulsante-cronologia}
 \end{figure}
 All'interno di questa schermata, è possibile anche avviare una nuova conversazione premendo sul pulsante dedicato (\ref{fig:nuova-conversazione}).
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/chatbot/nuova-conversazione.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/chatbot/nuova-conversazione.pdf}
     \caption[Creazione nuova conversazione]{Pulsante per avviare una nuova sessione di chat}
     \label{fig:nuova-conversazione}
 \end{figure}
@@ -713,14 +734,14 @@ Accanto ad ogni conversazione nella cronologia sono presenti \textbf{tre puntini
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/chatbot/opzioni-chat-pulsante.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/chatbot/opzioni-chat-pulsante.pdf}
     \caption[Menu opzioni conversazione]{Icona per l'accesso alla gestione della singola chat}
     \label{fig:opzioni-chat-pulsante}
 \end{figure}
 Premendoli, vengono mostrate le opzioni di gestione (\ref{fig:opzioni-chat-menu}).
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/chatbot/opzioni-chat-menu.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/chatbot/opzioni-chat-menu.pdf}
     \caption[Scelte di gestione chat]{Opzioni di modifica titolo ed eliminazione della conversazione}
     \label{fig:opzioni-chat-menu}
 \end{figure}
@@ -733,14 +754,14 @@ Le operazioni disponibili sono:
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/chatbot/modifica-titolo-popup.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/chatbot/modifica-titolo-popup.pdf}
     \caption[Ridenominazione chat]{Schermata per la modifica del titolo della conversazione}
     \label{fig:modifica-titolo-popup}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/chatbot/eliminazione-chat-popup.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/chatbot/eliminazione-chat-popup.pdf}
     \caption[Conferma eliminazione chat]{Popup di sicurezza per la cancellazione della conversazione}
     \label{fig:eliminazione-chat-popup}
 \end{figure}
@@ -754,7 +775,7 @@ Per accedere al Diario, premere il pulsante dedicato situato nella Home dell'app
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/homepage-diario.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/homepage-diario.pdf}
     \caption[Pulsante di accesso al Diario]{Pulsante per l'accesso alla sezione Diario dalla Home}
     \label{fig:homepage-diario}
 \end{figure}
@@ -763,7 +784,7 @@ Una volta selezionata la funzionalità, verrà visualizzata la schermata di atti
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/schermata-diario.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/schermata-diario.pdf}
     \caption[Schermata del Diario]{Schermata principale della sezione Diario}
     \label{fig:schermata-diario}
 \end{figure}
@@ -796,7 +817,7 @@ Una volta effettuato l'accesso con la password corretta, l'\term{Utente} visuali
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/lista-note-vuota.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/lista-note-vuota.pdf}
     \caption[Lista note vuota]{Schermata del diario reale senza note salvate}
     \label{fig:lista-note-vuota}
 \end{figure}
@@ -805,7 +826,7 @@ Per creare una nuova nota, è necessario premere il pulsante \textbf{"+"} situat
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/aggiunta-nota.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/aggiunta-nota.pdf}
     \caption[Pulsante aggiunta nota]{Pulsante per la creazione di una nuova nota}
     \label{fig:aggiunta-nota}
 \end{figure}
@@ -814,7 +835,7 @@ La nota vuota viene visualizzata immediatamente nella schermata di modifica (\re
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/nota-vuota.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/nota-vuota.pdf}
     \caption[Schermata nota vuota]{Interfaccia di creazione di una nuova nota}
     \label{fig:nota-vuota}
 \end{figure}
@@ -823,7 +844,7 @@ Per modificare il titolo della nota, è sufficiente cliccare sul titolo predefin
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/titolo-nota.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/titolo-nota.pdf}
     \caption[Modifica titolo nota]{Interfaccia per la modifica del titolo di una nota}
     \label{fig:modifica-titolo-nota}
 \end{figure}
@@ -833,7 +854,7 @@ Per aggiungere testo, immagini o registrazioni audio, premere il pulsante con l'
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/Nota_bottone_seleziona.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/Nota_bottone_seleziona.pdf}
     \caption[Selezione elemento]{Schermata di selezione del tipo di contenuto da aggiungere alla nota}
     \label{fig:bottone-seleziona-elemento}
 \end{figure}
@@ -842,14 +863,14 @@ Per inserire testo, è sufficiente selezionare l'opzione \textbf{"Aggiungi testo
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/Nota_testo.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/Nota_testo.pdf}
     \caption[Aggiunta testo]{Schermata con il campo di inserimento del testo all'interno della nota}
     \label{fig:nota-testo}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/Nota_testo_modificato.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/Nota_testo_modificato.pdf}
     \caption[Testo modificato]{Testo inserito e modificato all'interno di una nota}
     \label{fig:nota-testo-modificato}
 \end{figure}
@@ -858,14 +879,14 @@ Per aggiungere un'immagine al diario, selezionare il pulsante delle risorse e sc
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/Nota_immagine_search.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/Nota_immagine_search.pdf}
     \caption[Scelta immagine]{Schermata di selezione dell'immagine da allegare}
     \label{fig:nota-immagine-search}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/Nota_immagine.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/Nota_immagine.pdf}
     \caption[Immagine inserita]{Immagine allegata a una nota del diario}
     \label{fig:nota-immagine}
 \end{figure}
@@ -874,21 +895,21 @@ Per inserire audio, premere il pulsante delle risorse e scegliere \textbf{"Aggiu
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/Nota_audio_search.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/Nota_audio_search.pdf}
     \caption[Scelta audio]{Schermata di selezione o registrazione audio}
     \label{fig:nota-audio-search}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/Nota_audio.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/Nota_audio.pdf}
     \caption[Audio inserito]{Blocco audio aggiunto alla nota}
     \label{fig:nota-audio}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/Nota_audio_play.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/Nota_audio_play.pdf}
     \caption[Audio in riproduzione]{Riproduzione di una nota vocale all'interno del diario}
     \label{fig:nota-audio-play}
 \end{figure}
@@ -897,7 +918,7 @@ Una singola nota può contenere testo, immagine e audio insieme. In questo modo 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/Nota_full_elements.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/Nota_full_elements.pdf}
     \caption[Nota con tutti gli elementi]{Nota che mostra testo, immagine e audio insieme}
     \label{fig:nota-full-elements}
 \end{figure}
@@ -906,7 +927,7 @@ Ogni elemento all'interno della nota è gestito come un blocco indipendente. Per
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/opzioni-blocco.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/opzioni-blocco.pdf}
     \caption[Opzioni del blocco]{Menu per l'eliminazione di un singolo blocco della nota}
     \label{fig:opzioni-blocco}
 \end{figure}
@@ -916,7 +937,7 @@ Una volta create, le note vengono elencate nella schermata principale del diario
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/lista-note-piena.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/lista-note-piena.pdf}
     \caption[Lista note con contenuti]{Visualizzazione della lista delle note salvate nel diario}
     \label{fig:lista-note-piena}
 \end{figure}
@@ -929,7 +950,7 @@ L'\term{Utente} può interagire con la lista in due modi:
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/conferma-eliminazione-nota.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/conferma-eliminazione-nota.pdf}
     \caption[Popup eliminazione nota]{Richiesta di conferma prima della cancellazione della nota}
     \label{fig:conferma-eliminazione-nota}
 \end{figure}
@@ -939,21 +960,21 @@ La configurazione e la modifica delle password, sia per il diario reale che per 
 
 Per accedere a queste opzioni, premere il pulsante \textbf{"Impostazioni Sicurezza"} situato nella schermata principale del diario (\ref{fig:pulsante-impostazioni-sicurezza}).
 
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[width=0.5\textwidth]{manuale_utente/diario/pulsante-impostazioni-sicurezza.png}
-%     \caption[Pulsante impostazioni sicurezza]{Pulsante per la gestione delle password all'interno del diario}
-%     \label{fig:pulsante-impostazioni-sicurezza}
-% \end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/pulsante-impostazioni-sicurezza.pdf}
+    \caption[Pulsante impostazioni sicurezza]{Pulsante per la gestione delle password all'interno del diario}
+    \label{fig:pulsante-impostazioni-sicurezza}
+\end{figure}
 
 Una volta premuto, verrà visualizzata una schermata dedicata (\ref{fig:schermata-impostazioni-sicurezza}) dove l'\term{Utente} può impostare o aggiornare le credenziali per entrambe le modalità di accesso.
 
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[width=0.5\textwidth]{manuale_utente/diario/schermata-impostazioni-sicurezza.png}
-%     \caption[Schermata impostazioni sicurezza]{Interfaccia per la modifica della password reale e fittizia}
-%     \label{fig:schermata-impostazioni-sicurezza}
-% \end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{manuale_utente/diario/schermata-impostazioni-sicurezza.pdf}
+    \caption[Schermata impostazioni sicurezza]{Interfaccia per la modifica della password reale e fittizia}
+    \label{fig:schermata-impostazioni-sicurezza}
+\end{figure}
 
 Le procedure di inserimento e i criteri di sicurezza richiesti sono identici a quelli descritti nella sezione di primo accesso al diario reale.
 
@@ -966,7 +987,7 @@ In situazioni di pericolo, l'\term{Utente} ha a disposizione uno strumento di re
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/sos/leva-sos.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/sos/leva-sos.pdf}
     \caption[Posizionamento del pulsante SOS]{Esempio del pulsante a leva presente in tutte le schermate dell'applicazione}
     \label{fig:leva-sos}
 \end{figure}
@@ -981,7 +1002,7 @@ Per utilizzare il comando, è necessario \textbf{tenere premuta la leva e trasci
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/sos/attivazione-sos.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/sos/attivazione-sos.pdf}
     \caption[Attivazione del segnale di emergenza]{Effetto visivo della leva dopo l'attivazione del comando di SOS}
     \label{fig:attivazione-sos}
 \end{figure}
@@ -994,7 +1015,7 @@ Per accedere alla gestione dei contatti, premere il pulsante apposito situato ne
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/contatti_fidati/homepage-contatti-fidati.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/contatti_fidati/homepage-contatti-fidati.pdf}
     \caption[Pulsante di accesso ai contatti fidati]{Pulsante per l'accesso alla gestione dei contatti fidati dalla Home}
     \label{fig:homepage-contatti-fidati}
 \end{figure}
@@ -1004,7 +1025,7 @@ Al primo accesso, la lista risulterà vuota. Per inserire un nuovo contatto, pre
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/contatti_fidati/schermata-contatti-vuota.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/contatti_fidati/schermata-contatti-vuota.pdf}
     \caption[Schermata iniziale contatti fidati]{Schermata della sezione contatti fidati (senza contatti salvati)}
     \label{fig:schermata-contatti-vuota}
 \end{figure}
@@ -1013,7 +1034,7 @@ Una volta premuto il tasto di aggiunta, si aprirà un modulo dove inserire i dat
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/contatti_fidati/aggiunta-contatto.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/contatti_fidati/aggiunta-contatto.pdf}
     \caption[Modulo di aggiunta contatto]{Schermata per l'inserimento di un nuovo contatto fidato}
     \label{fig:aggiunta-contatto}
 \end{figure}
@@ -1023,7 +1044,7 @@ Una volta premuto il tasto di aggiunta, si aprirà un modulo dove inserire i dat
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/contatti_fidati/eliminazione-contatto.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/contatti_fidati/eliminazione-contatto.pdf}
     \caption[Rimozione di un contatto]{Pulsante per l'eliminazione di un contatto salvato}
     \label{fig:eliminazione-contatto}
 \end{figure}
@@ -1032,7 +1053,7 @@ Il sistema richiederà una conferma tramite un popup. L'\term{Utente} può decid
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/contatti_fidati/popup-conferma.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/contatti_fidati/popup-conferma.pdf}
     \caption[Popup di conferma eliminazione]{Richiesta di conferma prima dell'eliminazione definitiva}
     \label{fig:popup-conferma}
 \end{figure}
@@ -1042,7 +1063,7 @@ Per aggiornare le informazioni di un contatto già salvato, è sufficiente \text
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/contatti_fidati/selezione-contatto.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/contatti_fidati/selezione-contatto.pdf}
     \caption[Selezione contatto per modifica]{Click su un contatto esistente per aprirne i dettagli}
     \label{fig:selezione-contatto}
 \end{figure}
@@ -1051,7 +1072,7 @@ Verranno mostrati i campi contenenti le informazioni attuali, che possono essere
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/contatti_fidati/modifica-contatto.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/contatti_fidati/modifica-contatto.pdf}
     \caption[Schermata di modifica contatto]{Modifica dei dati e pulsante di salvataggio}
     \label{fig:modifica-contatto}
 \end{figure}
@@ -1064,7 +1085,7 @@ Per configurare il sistema, è necessario accedere alle impostazioni dell'applic
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/dms/homepage_dms.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/dms/homepage_dms.pdf}
     \caption[Pulsante di accesso al Dead Man's Switch dalla Homepage]{Pulsante per l'accesso alla funzionalità di configurazione del sistema di allarme automatico}
     \label{fig:homepage_dms}
 \end{figure}
@@ -1073,7 +1094,7 @@ All'interno della schermata impostazioni, selezionare la voce \textbf{"Gestione 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/dms/accesso-dms.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/dms/accesso-dms.pdf}
     \caption[Pulsante di accesso al Dead Man's Switch]{Pulsante per la configurazione del sistema di allarme automatico nelle impostazioni}
     \label{fig:accesso-dms}
 \end{figure}
@@ -1083,7 +1104,7 @@ Una volta aperta la sezione, l'\term{Utente} può personalizzare il funzionament
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{manuale_utente/dms/impostazioni-dms.png}
+    \includegraphics[width=0.5\textwidth]{manuale_utente/dms/impostazioni-dms.pdf}
     \caption[Schermata impostazioni Dead Man's Switch]{Schermata per la configurazione dei timer e dei messaggi di emergenza}
     \label{fig:impostazioni-dms}
 \end{figure}
