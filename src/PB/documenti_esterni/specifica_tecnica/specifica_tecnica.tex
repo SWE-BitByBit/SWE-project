@@ -167,7 +167,7 @@ Gruppo BitByBit\\
 \hline
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
-0.9.0 & 2026-05-02 & Riccardo Manisi & Correzioni a sezioni architettura logica, e di deployment & Gabriele Scaggiante \\ 
+0.9.0 & 2026-05-02 & Riccardo Manisi & Correzioni a sezioni \term{Architettura} logica, e di \term{Deployment} & Gabriele Scaggiante \\ 
 \hline
 0.8.0 & 2026-05-02 & Giovanni Visentin & Sistemazione della tabella dei requisiti & Dennis Parolin \\ 
 \hline
@@ -855,9 +855,9 @@ Il pattern è impiegato nel layer di accesso ai dati. Viene utilizzato per mappa
 \subsection{Architettura di deployment} \label{subsec:architettura_deployment}
 
 \subsubsection{Architettura three-tier}
-Il sistema adotta un'architettura \textbf{three-tier} composta da tre livelli distinti con responsabilità separate.
+Il sistema adotta un'\term{Architettura} \textbf{three-tier} composta da tre livelli distinti con responsabilità separate.
 \begin{itemize}
-    \item \textbf{presentation tier}, corrisponde al client mobile sviluppato in Flutter, che interagisce con il backend esclusivamente 
+    \item \textbf{presentation tier}, corrisponde al client mobile sviluppato in Flutter, che interagisce con il \term{Backend} esclusivamente 
 tramite richieste HTTPS verso gli endpoint esposti da API Gateway.
     \item \textbf{logic tier}, è costituito da AWS API Gateway e AWS Lambda. API Gateway espone le Lambda come endpoint HTTPS 
 e funge da proxy HTTP: riceve la richiesta del client, la inoltra alla Lambda corrispondente sotto forma di oggetto evento, e 
@@ -872,10 +872,10 @@ Per il logic tier viene adottato il pattern architetturale a \textbf{microserviz
 da componenti indipendenti, ciascuno responsabile di un sottoinsieme ben definito di funzionalità. Ogni componente è deployabile, aggiornabile e scalabile in modo autonomo rispetto agli altri.\\
 
 Nel progetto ogni microservizio corrisponde a una singola funzione AWS Lambda, deployata tramite AWS SAM. Questa corrispondenza diretta semplifica 
-il ciclo di sviluppo, consentendo di concentrarsi sulla business logic di ciascun servizio senza doversi occupare della gestione dell'infrastruttura sottostante, delegata interamente ad AWS.\\
+il ciclo di sviluppo, consentendo di concentrarsi sulla \term{Business Logic} di ciascun servizio senza doversi occupare della gestione dell'infrastruttura sottostante, delegata interamente ad AWS.\\
 
 Per evitare l'accoppiamento tra microservizi, ogni Lambda interagisce esclusivamente con le proprie istanze dedicate di DynamoDB o S3, 
-senza condivisione di risorse di persistenza tra servizi distinti. Questa scelta è visibile nei diagrammi dell'architettura di ciascun 
+senza condivisione di risorse di persistenza tra servizi distinti. Questa scelta è visibile nei diagrammi dell'\term{Architettura} di ciascun 
 microservizio (si veda \hyperref[sec:elenco-metriche]{Sezione~\ref*{subsec:architettura_backend}}).\\ 
 
 Il ridimensionamento è gestito in modo automatico da AWS Lambda in risposta al volume di richieste, senza intervento manuale e senza costi per capacità inutilizzata.
@@ -897,7 +897,7 @@ Il flusso operativo del sistema e la connessione tra i componenti AWS si articol
     \item \textbf{Amazon DynamoDB e Amazon S3}: compongono lo strato di persistenza profondo ospitando, in alta disponibilità, i dati relazionali/JSON e i contenuti multimediali grezzi sollevando il livello server della necessità di memoria sul disco.
 \end{itemize}
 
-\subsubsubsection{Orchestrazione Event-Driven}
+\subsubsubsection{Orchestrazione \term{Event-Driven}}
 Oltre alle comunicazioni sincrone HTTP per le API \textit{REST}, l'\term{Architettura} di \term{Deployment} prevede un'orchestrazione asincrona fondamentale per le funzionalità dell'applicazione (es. le notifiche del sistema \textit{Dead Man's Switch}).
 I componenti comunicano internamente tramite eventi gestiti da \textbf{Amazon EventBridge}, che funge da \textit{\term{Message Bus}} e permette:
 \begin{itemize}
@@ -906,7 +906,7 @@ I componenti comunicano internamente tramite eventi gestiti da \textbf{Amazon Ev
     \item L'instradamento di Eventi critici e allerte verso il servizio \textbf{Amazon SES} per l'invio automatizzato di e-mail.
 \end{itemize}
 
-\subsubsubsection{Infrastructure as Code (IaC)}
+\subsubsubsection{\term{Infrastructure as Code} (IaC)}
 Il \term{Deployment} materiale di tutte le risorse in ambiente AWS non è eseguito manualmente, ma viene automatizzato in modo riproducibile attraverso l'impiego di \textbf{AWS SAM (\term{Serverless} Application Model)} e \textbf{AWS CloudFormation}. L'infrastruttura logica e fisica è versionata sotto forma di file \term{YAML}, aderendo interamente al paradigma dell'\textit{\term{Infrastructure as Code}}.
 
 % ===== AUTENTICAZIONE =====
@@ -4373,7 +4373,7 @@ Descrizione metodi:
     \caption[Diagramma della classe DmsRepositoryPort]{Diagramma della classe \code{DmsRepositoryPort}}
     \label{fig:architettura_contatti_fidati_DmsRepositoryPort}
 \end{figure}
-Costituisce l'outbound port, fornisce il contratto per la persistenza delle impostazioni del Dead man's Switch. Espone i metodi utilizzati dalla domain logic.
+Costituisce l'outbound port, fornisce il \term{Contratto} per la persistenza delle impostazioni del Dead man's Switch. Espone i metodi utilizzati dalla domain logic.
 Descrizione metodi:
 \begin{itemize}
     \item \code{update\_dms\_config(config: DmsConfigurationSettings)}, aggiorna la configurazione del dead man's switch dell'\term{Utente};
@@ -4392,7 +4392,7 @@ Descrizione metodi:
     \caption[Diagramma della classe TrustedContactRepositoryPort]{Diagramma della classe \code{TrustedContactRepositoryPort}}
     \label{fig:architettura_contatti_fidati_TrustedContactRepositoryPort}
 \end{figure}
-Definisce il contratto per la persistenza dei contatti fidati. Espone i metodi per le operazioni CRUD.
+Definisce il \term{Contratto} per la persistenza dei contatti fidati. Espone i metodi per le operazioni CRUD.
 Descrizione metodi:
 \begin{itemize}
     \item \code{add(contact: TrustedContact)}, aggiunge un nuovo contatto fidato e restituisce l'entità creata;
