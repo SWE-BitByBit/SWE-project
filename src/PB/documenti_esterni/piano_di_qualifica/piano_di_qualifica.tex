@@ -123,7 +123,7 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & Completato\\
-\textbf{Versione:} & 1.2.0 \\
+\textbf{Versione:} & 1.3.0 \\
 \textbf{Responsabile:} & Gabriele Scaggiante\\
 \textbf{Redattori:} & 
 \begin{tabular}[t]{@{}l@{}}
@@ -152,7 +152,6 @@ Gruppo BitByBit\\
 % ===== REGISTRO MODIFICHE =======
 \clearpage
 \section*{Registro delle modifiche}
-\begin{center}
 \small
 \renewcommand{\arraystretch}{1.2} 
 \arrayrulecolor{black}
@@ -162,6 +161,9 @@ Gruppo BitByBit\\
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 
+\rowcolor{gray!20}
+1.3.0 & 2026-05-2 & Dennis Parolin & Aggiornamento dei \term{Test di Sistema} e accettazione nella sezione \hyperref[sec:metodi_testing]{Metodi di testing}. Aggiunti i \term{Test di Integrazione}, \term{Regressione} e di unità. & Gabriele Scaggiante \\
+\hline
 \rowcolor{white}
 1.2.0 & 2026-04-03 & Ferdinando Fracasso & Modifica metriche nella sezione \hyperref[sec:qualità_prodotto]{Qualità di Prodotto} e \hyperref[sec:qualità_processo]{Qualità di Processo} in base alle modifiche delle Norme di Progetto & Marco Sanguin \\
 \hline
@@ -187,7 +189,7 @@ Gruppo BitByBit\\
 0.3.0 & 2026-02-09 & Dennis Parolin & Aggiunta della sezione Metodi di Testing (\ref{sec:metodi_testing}). Corretti errori di compilazione. &  Giovanni Visentin \\
 \hline
 \rowcolor{white}
-0.2.1 & 2026-01-06 & Riccardo Manisi & Corretti valori accettabili e ottimi & Gabriele Scaggiante\\
+0.2.1 & 2025-01-06 & Riccardo Manisi & Corretti valori accettabili e ottimi & Gabriele Scaggiante\\
 \hline
 \rowcolor{gray!20}
 0.2.0 & 2025-12-19 & Dennis Parolin & Stesura delle intere sezioni \ref{sec:introduzione}, \ref{sec:qualità_prodotto}, \ref{sec:qualità_processo} e delle loro sottosezioni &  Gabriele Scaggiante \\
@@ -196,7 +198,6 @@ Gruppo BitByBit\\
 0.1.0 & 2025-12-19 & Dennis Parolin & Creazione del documento &  Gabriele Scaggiante\\
 \hline
 \end{longtable}
-\end{center}
 
 \clearpage
 
@@ -368,7 +369,7 @@ Il gruppo BitByBit monitora i seguenti processi primari attraverso metriche ogge
 \textbf{MPC07} & Estimate At Completion (EAC) & $\pm 15\%$ del $BAC$ & $\pm 5\%$ del $BAC$ \\ \hline
 \textbf{MPC08} & Estimate To Complete (ETC) & $\le BAC$ & $\le (BAC - AC)$ \\ \hline
 \end{tabularx}
-\caption{Soglie delle metriche per il \term{Processo} di fornitura}
+\caption{Soglie delle metriche per il \protectProcesso di fornitura}
 \end{table}
 
 % --------------------------------------------- PROCESSI DI SUPPORTO ---------------------------------------------
@@ -385,7 +386,7 @@ I processi di supporto assicurano che la qualità del lavoro svolto sia costante
 \textbf{MPC09} & Indice di Gulpease & $50-59$ & $\ge 60$ \\ \hline
 
 \end{tabularx}
-\caption{Soglie delle metriche per il \term{Processo} di documentazione}
+\caption{Soglie delle metriche per il \protectProcesso di documentazione}
 \end{table}
 
 \subsubsection{Gestione dei processi}\label{sec:gestione-processi}
@@ -406,7 +407,14 @@ I processi di supporto assicurano che la qualità del lavoro svolto sia costante
 \section{Metodi di testing} \label{sec:metodi_testing}
 Come stabilito nel documento \href{https://swe-bitbybit.github.io/SWE-docs/docs/RTB/documenti_interni/norme_di_progetto.pdf}{\textbf{Norme di Progetto}} alla sezione \textbf{3.4} e \textbf{3.5}, i test effettuati saranno eseguiti secondo le modalità descritte, garantendo la copertura richiesta e la conformità agli standard di qualità.\\
 I test che verranno effettuati sono quelli presenti nella sezione \textbf{3.4.3.2}. La nomenclatura usata per identificare i test viene invece descritta nella sezione \textbf{3.4.4}.\\
-Il gruppo BitByBit identificherà i \term{Test di Integrazione}, \term{Regressione} e Unità durante lo svolgimento delle attività per la \textbf{Product \term{Baseline} (\term{PB})}.
+
+\subsection{Test di Regressione}
+Per prevenire problemi di \term{Regressione} durante lo sviluppo di nuove funzionalità,
+BitByBit ha deciso di adottare un approccio di integrazione continua.
+La \term{Repository} del codice sorgente è configurata in modo che ogni commit
+attivi automaticamente l'esecuzione completa della suite di \term{Test di Unità} e
+integrazione (i quali verranno definiti durante la \term{PB}). Questo approccio consente di rilevare tempestivamente possibili regressioni introdotte dalle modifiche apportate al codice, permettendo di intervenire prima dell'integrazione nel
+\term{Branch} principale.
 
 \clearpage
 \begingroup
@@ -423,10 +431,10 @@ Il gruppo BitByBit identificherà i \term{Test di Integrazione}, \term{Regressio
 \endhead
 \hline
 \rowcolor{white}
-\caption[]{Tabella dei \term{Test di Sistema}} \\
+\caption[]{Tabella dei \protectTest di Sistema} \\
 \endfoot
 \hline
-\caption{Tabella dei \term{Test di Sistema}} \\
+\caption{Tabella dei \protectTest di Sistema} \\
 \endlastfoot
 
 \stepcounter{testsys} \systestcode & Verificare l'autenticazione all'applicazione tramite Google Auth. & RF-OB-1 & NI \\
@@ -441,73 +449,73 @@ Il gruppo BitByBit identificherà i \term{Test di Integrazione}, \term{Regressio
 \stepcounter{testsys} \systestcode & Verificare l'attivazione automatica della funzionalità di Dead Man's Switch a seguito del login dell'\term{Utente}. & RF-OB-2 & NI \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare la visualizzazione di un messaggio di errore esplicativo nel caso in cui l'autenticazione tramite Google Auth fallisca, venga annullata o restituisca parametri non validi. & RF-OB-3 & NI \\
+\stepcounter{testsys} \systestcode & Verificare la visualizzazione di un messaggio di errore esplicativo nel caso in cui l'autenticazione tramite Google Auth fallisca, venga annullata o restituisca parametri non validi. & RF-OB-3 & I \\
 \hline
 
 \stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa selezionare il profilo di utilizzo ("Per me" o "Per altri"). & RF-OB-4 & NI \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare la visualizzazione della lista dei contatti fidati. & RF-OB-5 & NI \\
+\stepcounter{testsys} \systestcode & Verificare la visualizzazione della lista dei contatti fidati. & RF-OB-5 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che la lista dei contatti fidati venga visualizzata correttamente anche quando è vuota. & RF-OB-5 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che la lista dei contatti fidati venga visualizzata correttamente anche quando è vuota. & RF-OB-5 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare la visualizzazione di un messaggio di errore esplicativo nel caso in cui il recupero dei dati dal database fallisca. & RF-OB-6 & NI \\
+\stepcounter{testsys} \systestcode & Verificare la visualizzazione di un messaggio di errore esplicativo nel caso in cui il recupero dei dati dal database fallisca. & RF-OB-6 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa ricaricare la sezione dei contatti fidati dopo la visualizzazione dell'errore di caricamento dei dati dal database. & RF-OB-7 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa ricaricare la sezione dei contatti fidati dopo la visualizzazione dell'errore di caricamento dei dati dal database. & RF-OB-7 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema permetta la visualizzazione di un singolo contatto fidato dalla lista dei contatti fidati. & RF-OB-8 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema permetta la visualizzazione di un singolo contatto fidato dalla lista dei contatti fidati. & RF-OB-8 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare la preview delle informazioni (il nome) del contatto fidato che sta visualizzando dalla lista dei contatti fidati. & RF-OB-9 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare la preview delle informazioni (il nome) del contatto fidato che sta visualizzando dalla lista dei contatti fidati. & RF-OB-9 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare i dettagli di un contatto fidato selezionato dalla lista dei contatti fidati. & RF-OB-10 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare i dettagli di un contatto fidato selezionato dalla lista dei contatti fidati. & RF-OB-10 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} venga disconnesso correttamente dopo aver effettuato il logout. & RF-OB-32 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} venga disconnesso correttamente dopo aver effettuato il logout. & RF-OB-32 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'accesso alle aree riservate venga negato dopo aver effettuato il logout. & RF-OB-32 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'accesso alle aree riservate venga negato dopo aver effettuato il logout. & RF-OB-32 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il nuovo contatto aggiunto appaia correttamente nella lista dei contatti. & RF-OB-14 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il nuovo contatto aggiunto appaia correttamente nella lista dei contatti. & RF-OB-14 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare il nome del contatto fidato selezionato dalla lista dei contatti fidati. & RF-OB-11 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare il nome del contatto fidato selezionato dalla lista dei contatti fidati. & RF-OB-11 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare il numero di telefono del contatto fidato selezionato dalla lista dei contatti fidati. & RF-OB-12 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare il numero di telefono del contatto fidato selezionato dalla lista dei contatti fidati. & RF-OB-12 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il pulsante per aggiungere un nuovo contatto sia visibile e accessibile. & RF-OB-14 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il pulsante per aggiungere un nuovo contatto sia visibile e accessibile. & RF-OB-14 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare l'indirizzo email del contatto fidato selezionato. & RF-OB-13 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare l'indirizzo email del contatto fidato selezionato. & RF-OB-13 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il modulo per l'aggiunta di un nuovo contatto si apra correttamente. & RF-OB-14 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il modulo per l'aggiunta di un nuovo contatto si apra correttamente. & RF-OB-14 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema permetta l'inserimento del nome del nuovo contatto. & RF-OB-15 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema permetta l'inserimento del nome del nuovo contatto. & RF-OB-15 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema permetta l'inserimento di un numero di telefono per il contatto. & RF-OB-16 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema permetta l'inserimento di un numero di telefono per il contatto. & RF-OB-16 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema permetta l'inserimento di un indirizzo email per il contatto. & RF-OB-17 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema permetta l'inserimento di un indirizzo email per il contatto. & RF-OB-17 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che i dati del nuovo contatto vengano salvati e persistiti correttamente nel sistema. & RF-OB-14 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che i dati del nuovo contatto vengano salvati e persistiti correttamente nel sistema. & RF-OB-14 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema impedisca il salvataggio se il nome del contatto è mancante. & RF-OB-15 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema impedisca il salvataggio se il nome del contatto è mancante. & RF-OB-15 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema impedisca il salvataggio se mancano sia numero che email. & RF-OB-16 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema impedisca il salvataggio se mancano sia numero che email. & RF-OB-16 & I \\
 \hline
 
 \stepcounter{testsys} \systestcode & Verificare che il sistema riconosca e gestisca le informazioni di numero e email già presenti. & RF-OB-18 & NI \\
@@ -531,597 +539,523 @@ Il gruppo BitByBit identificherà i \term{Test di Integrazione}, \term{Regressio
 \stepcounter{testsys} \systestcode & Verificare la visualizzazione di un errore se l'indirizzo email non è conforme. & RF-OB-24 & NI \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa modificare i dati generali di un contatto esistente. & RF-OB-25 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa modificare i dati generali di un contatto esistente. & RF-OB-25 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che la modifica del nome del contatto venga salvata correttamente. & RF-OB-26 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che la modifica del nome del contatto venga salvata correttamente. & RF-OB-26 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che la modifica del numero di telefono venga salvata correttamente. & RF-OB-27 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che la modifica del numero di telefono venga salvata correttamente. & RF-OB-27 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che la modifica dell'email del contatto venga salvata correttamente. & RF-OB-28 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che la modifica dell'email del contatto venga salvata correttamente. & RF-OB-28 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'eliminazione di un contatto rimuova definitivamente i suoi dati. & RF-OB-29 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'eliminazione di un contatto rimuova definitivamente i suoi dati. & RF-OB-29 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema richieda conferma esplicita prima di eliminare un contatto. & RF-OB-30 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema richieda conferma esplicita prima di eliminare un contatto. & RF-OB-30 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa confermare l'eliminazione tramite l'apposita voce. & RF-OB-31 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa confermare l'eliminazione tramite l'apposita voce. & RF-OB-31 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa modificare le informazioni della mail di avviso. & RF-OB-34 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa modificare le informazioni della mail di avviso. & RF-OB-34 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che la modifica del titolo della mail di avviso venga salvata. & RF-OB-35 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che la modifica del titolo della mail di avviso venga salvata. & RF-OB-35 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che la modifica del corpo della mail di avviso venga salvata. & RF-OB-36 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che la modifica del corpo della mail di avviso venga salvata. & RF-OB-36 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare un'anteprima generale della mail di avviso. & RF-OB-37 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare un'anteprima generale della mail di avviso. & RF-OB-37 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare l'anteprima del corpo della mail. & RF-OB-38 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare l'anteprima del corpo della mail. & RF-OB-38 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare l'anteprima del titolo della mail. & RF-OB-39 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare l'anteprima del titolo della mail. & RF-OB-39 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare l'attivazione manuale del Dead Man's Switch da parte dell'\term{Utente}. & RF-OB-40 & NI \\
+\stepcounter{testsys} \systestcode & Verificare l'attivazione manuale del Dead Man's Switch da parte dell'\term{Utente}. & RF-OB-40 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa disattivare la funzionalità di Dead Man's Switch. & RF-OB-41 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa disattivare la funzionalità di Dead Man's Switch. & RF-OB-41 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che se l'\term{Utente} disattiva la funzionalità, allora questa sia disattivata a tutti gli effetti. & RF-OB-41 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che se l'\term{Utente} disattiva la funzionalità, allora questa sia disattivata a tutti gli effetti. & RF-OB-41 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa impostare una password per il diario criptato. & RF-OB-42 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa impostare una password per il diario criptato. & RF-OB-42 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che la password impostata per il diario criptato venga salvata correttamente. & RF-OB-42 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che la password impostata per il diario criptato venga salvata correttamente. & RF-OB-42 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema validi la conformità della password del diario criptato ai criteri prestabiliti. & RF-OB-43 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema validi la conformità della password del diario criptato ai criteri prestabiliti. & RF-OB-43 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema mostri un messaggio di errore se la password del diario criptato non rispetta i criteri di sicurezza. & RF-OB-44 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema mostri un messaggio di errore se la password del diario criptato non rispetta i criteri di sicurezza. & RF-OB-44 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa reinserire la password del diario criptato dopo un errore. & RF-OB-45 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa reinserire la password del diario criptato dopo un errore. & RF-OB-45 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa impostare una password per il diario fittizio. & RF-OB-46 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa impostare una password per il diario fittizio. & RF-OB-46 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che la password impostata per il diario fittizio venga salvata correttamente. & RF-OB-46 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che la password impostata per il diario fittizio venga salvata correttamente. & RF-OB-46 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema validi la conformità e l'unicità della password del diario fittizio rispetto ai criteri prestabiliti. & RF-OB-47 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema validi la conformità e l'unicità della password del diario fittizio rispetto ai criteri prestabiliti. & RF-OB-47 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema mostri un messaggio di errore se la password del diario fittizio non rispetta i criteri di sicurezza. & RF-OB-48 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema mostri un messaggio di errore se la password del diario fittizio non rispetta i criteri di sicurezza. & RF-OB-48 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema impedisca che la password del diario fittizio sia uguale a quella del diario criptato, mostrando un errore. & RF-OB-49 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema impedisca che la password del diario fittizio sia uguale a quella del diario criptato, mostrando un errore. & RF-OB-49 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa reinserire la password del diario fittizio dopo un errore. & RF-OB-50 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa reinserire la password del diario fittizio dopo un errore. & RF-OB-50 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema richieda l'inserimento della password per accedere al diario personale. & RF-OB-51 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema richieda l'inserimento della password per accedere al diario personale. & RF-OB-51 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa accedere al diario criptato inserendo la password corretta. & RF-OB-52 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa accedere al diario criptato inserendo la password corretta. & RF-OB-52 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa accedere al diario fittizio inserendo la password corretta. & RF-OB-53 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa accedere al diario fittizio inserendo la password corretta. & RF-OB-53 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema mostri un messaggio di errore appropriato in caso di password errata per l'accesso al diario. & RF-OB-54 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema mostri un messaggio di errore appropriato in caso di password errata per l'accesso al diario. & RF-OB-54 & I \\
 \hline
 
 \stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa reinserire la password di accesso al diario dopo un errore. & RF-OB-55 & NI \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema blocchi temporaneamente l'accesso al diario dopo troppi tentativi errati. & RF-OB-56 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema blocchi temporaneamente l'accesso al diario dopo troppi tentativi errati. & RF-OB-56 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} autenticato possa visualizzare correttamente la schermata del diario criptato. & RF-OB-57 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} autenticato possa visualizzare correttamente la schermata del diario criptato. & RF-OB-57 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema mostri la lista delle note presenti nel diario criptato. & RF-OB-58 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema mostri la lista delle note presenti nel diario criptato. & RF-OB-58 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare l'anteprima di una singola nota nella lista del diario criptato. & RF-OB-59 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare l'anteprima di una singola nota nella lista del diario criptato. & RF-OB-59 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa ricaricare la sezione delle note del diario criptato dopo un errore dal database. & RF-OB-60 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa ricaricare la sezione delle note del diario criptato dopo un errore dal database. & RF-OB-60 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa creare una nuova nota vuota all'interno del diario criptato. & RF-OB-61 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa creare una nuova nota vuota all'interno del diario criptato. & RF-OB-61 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che la nuova nota creata nel diario criptato venga salvata e visualizzata correttamente. & RF-OB-61 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che la nuova nota creata nel diario criptato venga salvata e visualizzata correttamente. & RF-OB-61 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'eliminazione di una nota rimuova definitivamente i suoi dati dal diario criptato. & RF-OB-62 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'eliminazione di una nota rimuova definitivamente i suoi dati dal diario criptato. & RF-OB-62 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema richieda conferma prima dell'eliminazione definitiva di una nota del diario criptato. & RF-OB-63 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema richieda conferma prima dell'eliminazione definitiva di una nota del diario criptato. & RF-OB-63 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa confermare l'eliminazione della nota del diario criptato tramite l'apposita voce. & RF-OB-64 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa confermare l'eliminazione della nota del diario criptato tramite l'apposita voce. & RF-OB-64 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare l'intero contenuto di una nota aperta del diario criptato. & RF-OB-65 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare l'intero contenuto di una nota aperta del diario criptato. & RF-OB-65 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare il contenuto testuale della nota del diario criptato. & RF-OB-66 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare il contenuto testuale della nota del diario criptato. & RF-OB-66 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare il contenuto multimediale della nota del diario criptato. & RF-OB-67 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare il contenuto multimediale della nota del diario criptato. & RF-OB-67 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa riprodurre correttamente la nota vocale nel diario criptato. & RF-OB-68 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa riprodurre correttamente la nota vocale nel diario criptato. & RF-OB-68 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare correttamente l'immagine allegata alla nota nel diario criptato. & RF-OB-69 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare correttamente l'immagine allegata alla nota nel diario criptato. & RF-OB-69 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa inserire del contenuto testuale all'interno di una nota del diario criptato. & RF-OB-70 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa inserire del contenuto testuale all'interno di una nota del diario criptato. & RF-OB-70 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il contenuto testuale inserito nel diario criptato venga salvato correttamente. & RF-OB-70 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il contenuto testuale inserito nel diario criptato venga salvato correttamente. & RF-OB-70 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa inserire del contenuto multimediale all'interno di una nota del diario criptato. & RF-OB-71 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa inserire del contenuto multimediale all'interno di una nota del diario criptato. & RF-OB-71 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa allegare un'immagine all'interno di una nota del diario criptato. & RF-OB-72 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa allegare un'immagine all'interno di una nota del diario criptato. & RF-OB-72 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema salvi correttamente l'immagine inserita nel diario criptato. & RF-OB-72 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema salvi correttamente l'immagine inserita nel diario criptato. & RF-OB-72 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema mostri un errore se il formato dell'immagine non è supportato nel diario criptato. & RF-OB-72 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema mostri un errore se il formato dell'immagine non è supportato nel diario criptato. & RF-OB-72 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema mostri un errore se l'immagine supera la dimensione massima consentita nel diario criptato. & RF-OB-72 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema mostri un errore se l'immagine supera la dimensione massima consentita nel diario criptato. & RF-OB-72 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa registrare e salvare una traccia audio all'interno di una nota del diario criptato. & RF-OB-73 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa registrare e salvare una traccia audio all'interno di una nota del diario criptato. & RF-OB-73 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa rimuovere del contenuto multimediale presente in una nota del diario criptato. & RF-OB-75 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa rimuovere del contenuto multimediale presente in una nota del diario criptato. & RF-OB-75 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa rimuovere un'immagine allegata da una nota del diario criptato. & RF-OB-76 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa rimuovere un'immagine allegata da una nota del diario criptato. & RF-OB-76 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa rimuovere una traccia audio allegata da una nota del diario criptato. & RF-OB-77 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa rimuovere una traccia audio allegata da una nota del diario criptato. & RF-OB-77 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa modificare il contenuto testuale presente all'interno di una nota del diario criptato. & RF-OB-74 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa modificare il contenuto testuale presente all'interno di una nota del diario criptato. & RF-OB-74 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} autenticato possa visualizzare correttamente la schermata del diario fittizio. & RF-OB-78 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} autenticato possa visualizzare correttamente la schermata del diario fittizio. & RF-OB-78 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema mostri la lista delle note presenti nel diario fittizio. & RF-OB-79 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema mostri la lista delle note presenti nel diario fittizio. & RF-OB-79 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare l'anteprima di una singola nota nella lista del diario fittizio. & RF-OB-80 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare l'anteprima di una singola nota nella lista del diario fittizio. & RF-OB-80 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa ricaricare la sezione delle note del diario fittizio dopo un errore dal database. & RF-OB-81 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa ricaricare la sezione delle note del diario fittizio dopo un errore dal database. & RF-OB-81 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa creare una nuova nota vuota all'interno del diario fittizio. & RF-OB-85 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa creare una nuova nota vuota all'interno del diario fittizio. & RF-OB-85 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che la nuova nota creata nel diario fittizio venga salvata e visualizzata correttamente. & RF-OB-85 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che la nuova nota creata nel diario fittizio venga salvata e visualizzata correttamente. & RF-OB-85 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'eliminazione di una nota rimuova definitivamente i suoi dati dal diario fittizio. & RF-OB-82 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'eliminazione di una nota rimuova definitivamente i suoi dati dal diario fittizio. & RF-OB-82 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema richieda conferma prima dell'eliminazione definitiva di una nota del diario fittizio. & RF-OB-83 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema richieda conferma prima dell'eliminazione definitiva di una nota del diario fittizio. & RF-OB-83 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa confermare l'eliminazione della nota del diario fittizio tramite l'apposita voce. & RF-OB-84 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa confermare l'eliminazione della nota del diario fittizio tramite l'apposita voce. & RF-OB-84 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare l'intero contenuto di una nota aperta del diario fittizio. & RF-OB-86 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare l'intero contenuto di una nota aperta del diario fittizio. & RF-OB-86 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare il contenuto testuale della nota del diario fittizio. & RF-OB-87 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare il contenuto testuale della nota del diario fittizio. & RF-OB-87 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare il contenuto multimediale della nota del diario fittizio. & RF-OB-88 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare il contenuto multimediale della nota del diario fittizio. & RF-OB-88 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa riprodurre correttamente la nota vocale nel diario fittizio. & RF-OB-89 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa riprodurre correttamente la nota vocale nel diario fittizio. & RF-OB-89 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare correttamente l'immagine allegata alla nota nel diario fittizio. & RF-OB-90 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare correttamente l'immagine allegata alla nota nel diario fittizio. & RF-OB-90 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa inserire del contenuto testuale all'interno di una nota del diario fittizio. & RF-OB-91 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa inserire del contenuto testuale all'interno di una nota del diario fittizio. & RF-OB-91 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il contenuto testuale inserito nel diario fittizio venga salvato correttamente. & RF-OB-91 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il contenuto testuale inserito nel diario fittizio venga salvato correttamente. & RF-OB-91 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa inserire del contenuto multimediale all'interno di una nota del diario fittizio. & RF-OB-92 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa inserire del contenuto multimediale all'interno di una nota del diario fittizio. & RF-OB-92 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa allegare un'immagine all'interno di una nota del diario fittizio. & RF-OB-93 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa allegare un'immagine all'interno di una nota del diario fittizio. & RF-OB-93 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema salvi correttamente l'immagine inserita nel diario fittizio. & RF-OB-93 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema salvi correttamente l'immagine inserita nel diario fittizio. & RF-OB-93 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema mostri un errore se il formato dell'immagine non è supportato nel diario fittizio. & RF-OB-93 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema mostri un errore se il formato dell'immagine non è supportato nel diario fittizio. & RF-OB-93 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema mostri un errore se l'immagine supera la dimensione massima consentita nel diario fittizio. & RF-OB-93 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema mostri un errore se l'immagine supera la dimensione massima consentita nel diario fittizio. & RF-OB-93 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa registrare e salvare una traccia audio all'interno di una nota del diario fittizio. & RF-OB-94 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa registrare e salvare una traccia audio all'interno di una nota del diario fittizio. & RF-OB-94 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa rimuovere del contenuto multimediale presente in una nota del diario fittizio. & RF-OB-95 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa rimuovere del contenuto multimediale presente in una nota del diario fittizio. & RF-OB-95 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa rimuovere un'immagine allegata da una nota del diario fittizio. & RF-OB-96 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa rimuovere un'immagine allegata da una nota del diario fittizio. & RF-OB-96 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa rimuovere una traccia audio allegata da una nota del diario fittizio. & RF-OB-97 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa rimuovere una traccia audio allegata da una nota del diario fittizio. & RF-OB-97 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa modificare il contenuto testuale presente all'interno di una nota del diario fittizio. & RF-OB-98 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa modificare il contenuto testuale presente all'interno di una nota del diario fittizio. & RF-OB-98 & I \\
 \hline
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il pulsante SOS rapido sia visibile e facilmente accessibile nell'interfaccia. & RF-OB-99 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il pulsante SOS rapido sia visibile e utilizzabile. & RF-OB-99 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'attivazione della procedura di SOS avvenga correttamente. & RF-OB-99 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'attivazione della procedura di SOS avvenga correttamente. & RF-OB-99 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che, in caso di SOS, vengano inviati automaticamente SMS e/o email ai contatti fidati. & RF-OB-99 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che, in caso di SOS, vengano inviati automaticamente SMS e/o email ai contatti fidati. & RF-OB-99 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} riceva un feedback di conferma dopo l'invio della richiesta di SOS. & RF-OB-99 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} riceva un feedback di conferma dopo l'invio della richiesta di SOS. & RF-OB-99 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare la notifica in caso di assenza di rete durante l'invio SOS e la proposta di segnale acustico. & RF-OB-100 & NI \\
+\stepcounter{testsys} \systestcode & Verificare la notifica in caso di assenza di rete durante l'invio SOS e la proposta di segnale acustico. & RF-OB-100 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare la notifica in assenza di contatti fidati configurati durante SOS e la proposta di attivazione del segnale acustico. & RF-OB-101 & NI \\
+\stepcounter{testsys} \systestcode & Verificare la notifica in assenza di contatti fidati configurati durante SOS e la proposta di attivazione del segnale acustico. & RF-OB-101 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'attivazione manuale del segnale acustico funzioni correttamente. & RF-OB-102 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'attivazione manuale del segnale acustico funzioni correttamente. & RF-OB-102 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che la disattivazione del segnale acustico avvenga correttamente. & RF-OB-102 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che la disattivazione del segnale acustico avvenga correttamente. & RF-OB-102 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'accesso alla sezione Chatbot con l'AI avvenga correttamente. & RF-OB-103 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'accesso alla sezione Chatbot avvenga correttamente. & RF-OB-103 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il messaggio testuale inviato all'AI venga elaborato correttamente. & RF-OB-103 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il messaggio testuale inviato all'AI venga elaborato correttamente. & RF-OB-103 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che la risposta generata dall'AI venga ricevuta e visualizzata correttamente. & RF-OB-103 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che la risposta generata dall'AI venga ricevuta e visualizzata correttamente. & RF-OB-103 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'indicatore di digitazione sia visibile mentre l'AI sta elaborando la risposta. & RF-OB-103 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'indicatore di digitazione sia visibile mentre l'AI sta elaborando la risposta. & RF-OB-103 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema impedisca l'invio di messaggi vuoti al chatbot. & RF-OB-103 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema impedisca l'invio di messaggi vuoti al chatbot. & RF-OB-103 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa interrompere la generazione della risposta del chatbot. & RF-OB-104 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che venga mostrato un errore appropriato in caso di mancata connessione internet durante la chat. & RF-OB-105 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che venga mostrato un errore appropriato in caso di mancata connessione internet durante la chat. & RF-OB-105 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa ripetere l'invio del messaggio dopo un errore di connessione. & RF-OB-106 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa ripetere l'invio del messaggio dopo un errore di connessione. & RF-OB-106 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema gestisca correttamente il cambio di contesto in "Detective delle Relazioni". & RF-OB-107 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema gestisca correttamente il cambio di contesto in "Detective delle Relazioni". & RF-OB-107 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema gestisca correttamente il cambio di contesto in "Specchio Intelligente". & RF-OB-108 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema gestisca correttamente il cambio di contesto in "Specchio Intelligente". & RF-OB-108 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che sia possibile avviare correttamente una nuova sessione conversazionale (chat). & RF-OB-111 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema notifichi errori all'\term{Utente} durante il cambio di contesto. & RF-OB-109 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'eliminazione di una conversazione rimuova definitivamente i suoi dati dalla cronologia. & RF-OB-112 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa ritentare il cambio di contesto a seguito di un errore. & RF-OB-110 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema richieda conferma per l'eliminazione di una chat dalla cronologia. & RF-OB-113 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che sia possibile avviare correttamente una nuova sessione conversazionale (chat). & RF-OB-111 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa confermare l'eliminazione della chat tramite l'apposita voce. & RF-OB-114 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'eliminazione di una conversazione rimuova definitivamente i suoi dati dalla cronologia. & RF-OB-112 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare il contenuto completo di una chat passata o corrente. & RF-OB-115 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema richieda conferma per l'eliminazione di una chat dalla cronologia. & RF-OB-113 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema mostri un messaggio d'errore in caso di errore di caricamento della chat. & RF-OB-116 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa confermare l'eliminazione della chat tramite l'apposita voce. & RF-OB-114 & NI \\
+\stepcounter{testsys} \systestcode & Verificare la corretta visualizzazione della lista dei messaggi scambiati nella chat. & RF-OB-117 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare il contenuto completo di una chat passata o corrente. & RF-OB-115 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema distingua visivamente i messaggi \term{Utente} da quelli del chatbot. & RF-OB-118 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema mostri un messaggio d'errore in caso di errore di caricamento della chat. & RF-OB-116 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che i messaggi inviati dall'\term{Utente} siano posizionati logicamente (es. a destra). & RF-OB-119 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare la corretta visualizzazione della lista dei messaggi scambiati nella chat. & RF-OB-117 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che i messaggi ricevuti dal chatbot siano posizionati logicamente (es. a sinistra). & RF-OB-120 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema distingua visivamente i messaggi \term{Utente} da quelli del chatbot. & RF-OB-118 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa rifiutare l'eliminazione di una chat. & RF-OB-113 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che i messaggi inviati dall'\term{Utente} siano posizionati logicamente (es. a destra). & RF-OB-119 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che la chat rimanga invariata se l'\term{Utente} rifiuta l'eliminazione. & RF-OB-113 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che i messaggi ricevuti dal chatbot siano posizionati logicamente (es. a sinistra). & RF-OB-120 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che la chat scorra automaticamente all'ultimo messaggio ricevuto o inviato. & RF-OB-115 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa rifiutare l'eliminazione di una chat. & RF-OB-113 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che sia possibile copiare correttamente il testo dei messaggi del bot. & RF-OB-115 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che la chat rimanga invariata se l'\term{Utente} rifiuta l'eliminazione. & RF-OB-113 & NI \\
+\stepcounter{testsys} \systestcode & Verificare il comportamento corretto della chat durante l'utilizzo della tastiera emoji. & RF-OB-115 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che la chat scorra automaticamente all'ultimo messaggio ricevuto o inviato. & RF-OB-115 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che lo storico delle conversazioni recenti venga visualizzato correttamente. & RF-OB-121 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che sia possibile copiare correttamente il testo dei messaggi del bot. & RF-OB-115 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa selezionare e visualizzare una singola chat dalla cronologia. & RF-OB-122 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare il comportamento corretto della chat durante l'utilizzo della tastiera emoji. & RF-OB-115 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema mostri il titolo identificativo di ogni chat presente nella cronologia. & RF-OB-123 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che lo storico delle conversazioni recenti venga visualizzato correttamente. & RF-OB-121 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare correttamente la lista delle community. & RF-OB-124 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa selezionare e visualizzare una singola chat dalla cronologia. & RF-OB-122 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema gestisca e notifichi errori nel caricamento della lista delle community. & RF-OB-125 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema mostri il titolo identificativo di ogni chat presente nella cronologia. & RF-OB-123 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema mostri i dati riassuntivi di ogni singola community nella lista. & RF-OB-126 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare correttamente la lista delle community. & RF-OB-124 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema mostri il nome di ogni singola community nella lista. & RF-OB-127 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema gestisca e notifichi errori nel caricamento della lista delle community. & RF-OB-125 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema mostri il link associato ad ogni singola community. & RF-OB-128 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema mostri i dati riassuntivi di ogni singola community nella lista. & RF-OB-126 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa aprire il link di una community per visitarne il sito web esterno. & RF-OB-129 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema mostri il nome di ogni singola community nella lista. & RF-OB-127 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare la lista delle leggi e normative. & RF-OB-130 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema mostri il link associato ad ogni singola community. & RF-OB-128 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema mostri il titolo di ogni singola legge nella lista. & RF-OB-131 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa aprire il link di una community per visitarne il sito web esterno. & RF-OB-129 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare i dettagli completi di una legge. & RF-OB-132 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare la lista delle leggi e normative. & RF-OB-130 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema notifichi l'\term{Utente} di un errore nel caricamento dei dati di una legge. & RF-OB-133 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema mostri il titolo di ogni singola legge nella lista. & RF-OB-131 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare la lista dei contatti e degli enti d'emergenza. & RF-OB-134 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare i dettagli completi di una legge. & RF-OB-132 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema mostri i dati riassuntivi di ogni singolo contatto d'emergenza nella lista. & RF-OB-135 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema notifichi l'\term{Utente} di un errore nel caricamento dei dati di una legge. & RF-OB-133 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema mostri il nome identificativo di ogni contatto d'emergenza. & RF-OB-136 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare la lista dei contatti e degli enti d'emergenza. & RF-OB-134 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema mostri il numero di telefono associato ad ogni contatto d'emergenza. & RF-OB-137 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema mostri i dati riassuntivi di ogni singolo contatto d'emergenza nella lista. & RF-OB-135 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare la lista del materiale informativo disponibile. & RF-OB-139 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema mostri il nome identificativo di ogni contatto d'emergenza. & RF-OB-136 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema notifichi errori nel caricamento della lista del materiale informativo. & RF-OB-140 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema mostri il numero di telefono associato ad ogni contatto d'emergenza. & RF-OB-137 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema mostri titolo e formato di ogni materiale informativo nella lista. & RF-OB-141 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare la lista del materiale informativo disponibile. & RF-OB-139 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare il contenuto di un materiale informativo selezionato. & RF-OB-142 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema notifichi errori nel caricamento della lista del materiale informativo. & RF-OB-140 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema notifichi un errore nel recupero dei dati di uno specifico materiale informativo. & RF-OB-143 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema mostri titolo e formato di ogni materiale informativo nella lista. & RF-OB-141 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare la mappa interattiva con i marker dei luoghi sicuri. & RF-OB-144 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare il contenuto di un materiale informativo selezionato. & RF-OB-142 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che la posizione corrente dell'\term{Utente} venga visualizzata correttamente. & RF-OB-144 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema notifichi un errore nel recupero dei dati di uno specifico materiale informativo. & RF-OB-143 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che cliccando su un marker vengano mostrati i dettagli del luogo sicuro. & RF-OB-144 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa visualizzare la mappa interattiva con i marker dei luoghi sicuri. & RF-OB-144 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'indirizzo del luogo sicuro sia visibile e corretto nei dettagli. & RF-OB-144 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa aprire un luogo sicuro tramite l'applicazione Google Maps esterna. & RF-OB-145 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che la posizione dell'\term{Utente} si aggiorni in tempo reale sulla mappa. & RF-OB-144 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema notifichi errori di connessione alla mappa esterna mantenendo quella interna. & RF-OB-146 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema gestisca correttamente la disattivazione del GPS. & RF-OB-144 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che la posizione corrente dell'\term{Utente} venga visualizzata correttamente. & RF-OB-144 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che i contatti telefonici del luogo sicuro siano visibili e corretti. & RF-OB-144 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che cliccando su un marcatore vengano mostrati i dettagli del luogo sicuro. & RF-OB-144 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che la riproduzione dei video educativi funzioni correttamente. & RF-OB-142 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'indirizzo del luogo sicuro sia visibile e corretto nei dettagli. & RF-OB-144 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il download del materiale informativo funzioni correttamente. & RF-OB-142 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che la mappa si ricarichi al variare della connessione o della posizione. & RF-OB-144 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema mostri all'\term{Utente} la spiegazione della differenza tra le modalità "per me" e "per altri". & RF-DE-1 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che la posizione dell'\term{Utente} si aggiorni in tempo reale sulla mappa. & RF-OB-144 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema mostri all'\term{Utente} una breve descrizione del funzionamento della funzionalità di Dead Man's Switch. & RF-DE-2 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema gestisca correttamente la disattivazione del GPS. & RF-OB-144 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa inserire più contenuti multimediali con una singola azione all'interno di una nota del diario criptato. & RF-DE-3 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che gli orari di apertura del luogo sicuro vengano visualizzati correttamente. & RF-OB-144 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa allegare più immagini con una singola azione all'interno di una nota del diario criptato. & RF-DE-4 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che i contatti telefonici del luogo sicuro siano visibili e corretti. & RF-OB-144 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa inserire più tracce audio con una singola azione all'interno di una nota del diario criptato. & RF-DE-5 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che la riproduzione dei video educativi funzioni correttamente. & RF-OB-142 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa inserire più contenuti multimediali con una singola azione all'interno di una nota del diario fittizio. & RF-DE-6 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il download del materiale informativo funzioni correttamente. & RF-OB-142 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa allegare più immagini con una singola azione all'interno di una nota del diario fittizio. & RF-DE-7 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema mostri all'\term{Utente} la spiegazione della differenza tra le modalità "per me" e "per altri". & RF-DE-1 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa inserire più tracce audio con una singola azione all'interno di una nota del diario fittizio. & RF-DE-8 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema mostri all'\term{Utente} una breve descrizione del funzionamento della funzionalità di Dead Man's Switch. & RF-DE-2 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa riprodurre le tracce audio inserite in precedenza all'interno del diario criptato. & RF-DE-9 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa inserire più contenuti multimediali con una singola azione all'interno di una nota del diario criptato. & RF-DE-3 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa riprodurre le tracce audio inserite in precedenza all'interno del diario fittizio. & RF-DE-10 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa allegare più immagini con una singola azione all'interno di una nota del diario criptato. & RF-DE-4 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema indichi visivamente all'\term{Utente} che il messaggio in risposta del chatbot è in fase di caricamento. & RF-DE-11 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa inserire più tracce audio con una singola azione all'interno di una nota del diario criptato. & RF-DE-5 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il chatbot utilizzi correttamente i contenuti del diario criptato per personalizzare le proprie risposte. & RF-DE-12 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa inserire più contenuti multimediali con una singola azione all'interno di una nota del diario fittizio. & RF-DE-6 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema mostri all'\term{Utente} la spiegazione relativa al contesto conversazionale "Detective delle Relazioni". & RF-DE-13 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa allegare più immagini con una singola azione all'interno di una nota del diario fittizio. & RF-DE-7 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema mostri all'\term{Utente} la spiegazione relativa al contesto conversazionale "Specchio Intelligente". & RF-DE-14 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa inserire più tracce audio con una singola azione all'interno di una nota del diario fittizio. & RF-DE-8 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa comporre automaticamente il numero di un contatto d'emergenza tramite l'apposita voce. & RF-DE-15 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa riprodurre le tracce audio inserite in precedenza all'interno del diario criptato. & RF-DE-9 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa impostare il timer di prima inattività per la funzionalità di Dead Man's Switch. & RF-OP-1 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa riprodurre le tracce audio inserite in precedenza all'interno del diario fittizio. & RF-DE-10 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa impostare il timer di seconda inattività per la funzionalità di Dead Man's Switch. & RF-OP-2 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema indichi visivamente all'\term{Utente} che il messaggio in risposta del chatbot è in fase di caricamento. & RF-DE-11 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema invii automaticamente un SMS ai numeri di telefono dei contatti fidati all'invio del segnale SOS. & RF-OP-3 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il chatbot utilizzi correttamente i contenuti del diario criptato per personalizzare le proprie risposte. & RF-DE-12 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema indichi visivamente all'\term{Utente} se le risorse consultate sono autorevoli e verificate. & RF-OP-4 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema mostri all'\term{Utente} la spiegazione relativa al contesto conversazionale "Detective delle Relazioni". & RF-DE-13 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema metta a disposizione dell'\term{Utente} la consultazione di leggi estere. & RF-OP-5 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che il sistema mostri all'\term{Utente} la spiegazione relativa al contesto conversazionale "Specchio Intelligente". & RF-DE-14 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema mostri leggi aggiornate, giuridicamente valide e complete. & RF-OP-6 & I \\
 \hline
 
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa comporre automaticamente il numero di un contatto d'emergenza tramite l'apposita voce. & RF-DE-15 & NI \\
-\hline
-
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa impostare il timer di prima inattività per la funzionalità di Dead Man's Switch. & RF-OP-1 & NI \\
-\hline
-
-\stepcounter{testsys} \systestcode & Verificare che l'\term{Utente} possa impostare il timer di seconda inattività per la funzionalità di Dead Man's Switch. & RF-OP-2 & NI \\
-\hline
-
-\stepcounter{testsys} \systestcode & Verificare che il sistema invii automaticamente un SMS ai numeri di telefono dei contatti fidati all'invio del segnale SOS. & RF-OP-3 & NI \\
-\hline
-
-\stepcounter{testsys} \systestcode & Verificare che il sistema indichi visivamente all'\term{Utente} se le risorse consultate sono autorevoli e verificate. & RF-OP-4 & NI \\
-\hline
-
-\stepcounter{testsys} \systestcode & Verificare che il sistema metta a disposizione dell'\term{Utente} la consultazione di leggi estere. & RF-OP-5 & NI \\
-\hline
-
-\stepcounter{testsys} \systestcode & Verificare che il sistema mostri leggi aggiornate, giuridicamente valide e complete. & RF-OP-6 & NI \\
-\hline
-
-\stepcounter{testsys} \systestcode & Verificare che il sistema indichi visivamente all'\term{Utente} se i luoghi sicuri visualizzati nella mappa sono autorevoli e verificati. & RF-OP-7 & NI \\
+\stepcounter{testsys} \systestcode & Verificare che il sistema indichi visivamente all'\term{Utente} se i luoghi sicuri visualizzati nella mappa sono autorevoli e verificati. & RF-OP-7 & I \\
 \hline
 \end{longtable}
 \endgroup
 
-\begingroup
-\subsection{Test Di Accettazione}
-\renewcommand{\arraystretch}{1.2}
-\arrayrulecolor{black}
-\rowcolors{2}{white}{gray!20}
-\begin{longtable}{| >{\centering\arraybackslash}p{0.10\textwidth} | >{\raggedright\arraybackslash}p{0.68\textwidth} | >{\centering\arraybackslash}p{0.10\textwidth} |}
-\hline
-\rowcolor{gray!60}
-\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato del Test} \\
-\hline
-\endhead
-\hline
-\rowcolor{white}
-\caption[]{Tabella dei \term{Test di Accettazione}} \\
-\endfoot
-\hline
-\rowcolor{white}
-\caption{Tabella dei \term{Test di Accettazione}} \\
-\endlastfoot
-
-\stepcounter{testacc} \acctestcode & Verificare la creazione e gestione del profilo \term{Utente}. & NI \\
-\hline
-\stepcounter{testacc} \acctestcode & Verificare il flusso completo di gestione dei contatti fidati (aggiunta, modifica, visualizzazione, \ignoreglossary{validazione} ed errori). & NI \\
-\hline
-\stepcounter{testacc} \acctestcode & Verificare la configurazione completa delle funzionalità di sicurezza (timer inattività e personalizzazione messaggi di avviso). & NI \\
-\hline
-\stepcounter{testacc} \acctestcode & Verificare il corretto funzionamento del Dead Man's Switch (attivazione, disattivazione, countdown e trigger dei messaggi). & NI \\
-\hline
-\stepcounter{testacc} \acctestcode & Verificare l'accesso e la gestione della sicurezza del diario (impostazione password diario fittizio e criptato). & NI \\
-\hline
-\stepcounter{testacc} \acctestcode & Verificare le operazioni CRUD (Create, Read, Update, Delete) sulle note del diario, inclusi allegati multimediali. & NI \\
-\hline
-\stepcounter{testacc} \acctestcode & Verificare l'attivazione e l'esecuzione corretta della procedura di emergenza (SOS immediato). & NI \\
-\hline
-\stepcounter{testacc} \acctestcode & Verificare il flusso completo di interazione con il Chatbot e la gestione del cambio contesto AI (Detective, Specchio). & NI \\
-\hline
-\stepcounter{testacc} \acctestcode & Verificare la gestione della cronologia chat (visualizzazione lista, dettaglio conversazione). & NI \\
-\hline
-\stepcounter{testacc} \acctestcode & Verificare il \ignoreglossary{processo} di eliminazione sicura di una chat (richiesta, conferma, annullamento). & NI \\
-\hline
-\stepcounter{testacc} \acctestcode & Verificare l'accesso e la consultazione delle risorse esterne (Community, Numeri di Emergenza). & NI \\
-\hline
-\stepcounter{testacc} \acctestcode & Verificare la consultazione del materiale informativo e giuridico (Leggi, Normative, Guide). & NI \\
-\hline
-\stepcounter{testacc} \acctestcode & Verificare la funzionalità di localizzazione e navigazione verso i Luoghi Sicuri. & NI \\
-\hline
-\stepcounter{testacc} \acctestcode & Verificare il comportamento del sistema in condizioni di errore (assenza rete, timeout API, dati non disponibili). & NI \\
-\hline
-\stepcounter{testacc} \acctestcode & Verificare la consistenza dei dati e la persistenza delle informazioni attraverso sessioni \term{Utente} multiple. & NI \\
-\hline
-\end{longtable}
-\endgroup
 
 \setcounter{testsys}{0}
 \begingroup
 \subsection{Tracciamento dei Test di Sistema} \label{subsection:tracciamento_test_sistema}
-\begin{center}
 \renewcommand{\arraystretch}{1.5}
 \arrayrulecolor{black}
 \rowcolors{2}{gray!20}{white}
@@ -1133,7 +1067,7 @@ Il gruppo BitByBit identificherà i \term{Test di Integrazione}, \term{Regressio
 \textbf{Codice Test} & \textbf{Codice \term{Requisito}} \\
 \hline
 \endfirsthead
-\caption[]{Tracciamento dei \term{Test di Sistema}} \\
+\caption[]{Tracciamento dei \protectTest di Sistema} \\
 \hline
 \rowcolor{gray!60}
 \textbf{Codice Test} & \textbf{Codice \term{Requisito}} \\
@@ -1669,10 +1603,6 @@ Il gruppo BitByBit identificherà i \term{Test di Integrazione}, \term{Regressio
 \hline
 
 \stepcounter{testsys}
-\systestref & RF-OB-104 \\
-\hline
-
-\stepcounter{testsys}
 \systestref & RF-OB-105 \\
 \hline
 
@@ -1686,14 +1616,6 @@ Il gruppo BitByBit identificherà i \term{Test di Integrazione}, \term{Regressio
 
 \stepcounter{testsys}
 \systestref & RF-OB-108 \\
-\hline
-
-\stepcounter{testsys}
-\systestref & RF-OB-109 \\
-\hline
-
-\stepcounter{testsys}
-\systestref & RF-OB-110 \\
 \hline
 
 \stepcounter{testsys}
@@ -1849,14 +1771,6 @@ Il gruppo BitByBit identificherà i \term{Test di Integrazione}, \term{Regressio
 \hline
 
 \stepcounter{testsys}
-\systestref & RF-OB-145 \\
-\hline
-
-\stepcounter{testsys}
-\systestref & RF-OB-146 \\
-\hline
-
-\stepcounter{testsys}
 \systestref & RF-OB-144 \\
 \hline
 
@@ -1868,9 +1782,7 @@ Il gruppo BitByBit identificherà i \term{Test di Integrazione}, \term{Regressio
 \systestref & RF-OB-144 \\
 \hline
 
-\stepcounter{testsys}
-\systestref & RF-OB-144 \\
-\hline
+
 
 \stepcounter{testsys}
 \systestref & RF-OB-144 \\
@@ -1880,9 +1792,7 @@ Il gruppo BitByBit identificherà i \term{Test di Integrazione}, \term{Regressio
 \systestref & RF-OB-144 \\
 \hline
 
-\stepcounter{testsys}
-\systestref & RF-OB-144 \\
-\hline
+
 
 \stepcounter{testsys}
 \systestref & RF-OB-144 \\
@@ -1984,10 +1894,735 @@ Il gruppo BitByBit identificherà i \term{Test di Integrazione}, \term{Regressio
 \systestref & RF-OP-7 \\
 \hline
 \rowcolor{white}
-\caption{Tracciamento dei \term{Test di Sistema}} \label{tab:tracciamento_test_sistema} \\
+\caption{Tracciamento dei \protectTest di Sistema} \label{tab:tracciamento_test_sistema} \\
 \end{longtable}
-\end{center}
 \endgroup
+
+\begingroup
+\subsection{Test Di Accettazione}
+\renewcommand{\arraystretch}{1.2}
+\arrayrulecolor{black}
+\rowcolors{2}{white}{gray!20}
+\begin{longtable}{| >{\centering\arraybackslash}p{0.10\textwidth} | >{\raggedright\arraybackslash}p{0.68\textwidth} | >{\centering\arraybackslash}p{0.10\textwidth} |}
+\hline
+\rowcolor{gray!60}
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato del Test} \\
+\hline
+\endhead
+\hline
+\rowcolor{white}
+\caption[]{Tabella dei \protectTest di Accettazione} \\
+\endfoot
+\hline
+\rowcolor{white}
+\caption{Tabella dei \protectTest di Accettazione} \\
+\endlastfoot
+
+\stepcounter{testacc} \acctestcode & Verificare il flusso completo di gestione dei contatti fidati (aggiunta, modifica, visualizzazione, \ignoreglossary{validazione} ed errori). & I \\
+\hline
+\stepcounter{testacc} \acctestcode & Verificare la configurazione completa delle funzionalità di sicurezza (timer inattività e personalizzazione messaggi di avviso). & I \\
+\hline
+\stepcounter{testacc} \acctestcode & Verificare il corretto funzionamento del Dead Man's Switch (attivazione, disattivazione, countdown e trigger dei messaggi). & I \\
+\hline
+\stepcounter{testacc} \acctestcode & Verificare l'accesso e la gestione della sicurezza del diario (impostazione password diario fittizio e criptato). & I \\
+\hline
+\stepcounter{testacc} \acctestcode & Verificare le operazioni CRUD (Create, Read, Update, Delete) sulle note del diario, inclusi allegati multimediali. & I \\
+\hline
+\stepcounter{testacc} \acctestcode & Verificare l'attivazione e l'esecuzione corretta della procedura di emergenza (SOS immediato). & I \\
+\hline
+\stepcounter{testacc} \acctestcode & Verificare il flusso completo di interazione con il Chatbot e la gestione del cambio contesto AI (Detective, Specchio). & I \\
+\hline
+\stepcounter{testacc} \acctestcode & Verificare la gestione della cronologia chat (visualizzazione lista, dettaglio conversazione). & I \\
+\hline
+\stepcounter{testacc} \acctestcode & Verificare il \ignoreglossary{processo} di eliminazione sicura di una chat (richiesta, conferma, annullamento). & I \\
+\hline
+\stepcounter{testacc} \acctestcode & Verificare l'accesso e la consultazione delle risorse esterne (Community, Numeri di Emergenza). & I \\
+\hline
+\stepcounter{testacc} \acctestcode & Verificare la consultazione del materiale informativo e giuridico (Leggi, Normative, Guide). & I \\
+\hline
+\stepcounter{testacc} \acctestcode & Verificare la consistenza dei dati e la persistenza delle informazioni attraverso sessioni \term{Utente} multiple. & I \\
+\hline
+\end{longtable}
+\endgroup
+
+\subsection{Test di Unità}
+I \term{Test di Unità} vengono eseguiti automaticamente tramite pipeline di Continuous Integration (CI) configurate sulla piattaforma GitHub ad ogni operazione di \textit{push} o \textit{\term{Pull Request}}. Questo meccanismo garantisce che ogni modifica al codice venga verificata prima dell'integrazione definitiva, permettendo il \textit{\term{Merge}} nel \textit{\term{Branch}} principale solo in caso di esito positivo di tutti i test.
+
+\subsubsection{Test Di Unità - Frontend}
+\renewcommand{\arraystretch}{1.2}
+\arrayrulecolor{black}
+\rowcolors{2}{white}{gray!20}
+\begin{longtable}{| >{\centering\arraybackslash}p{0.13\textwidth} | >{\raggedright\arraybackslash}p{0.72\textwidth} | >{\centering\arraybackslash}p{0.09\textwidth} |}
+\hline
+\rowcolor{gray!60}
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato del Test} \\
+\hline
+\endhead
+\hline
+\rowcolor{white}
+\caption[]{Tabella dei \protectTest di Unità - Frontend} \\
+\endfoot
+\hline
+\caption{Tabella dei \protectTest di Unità - Frontend} \\
+\endlastfoot
+
+% --- Materiale Informativo: MaterialViewModel ---
+
+TF-1-U & [MaterialViewModel] Verificare che, al caricamento iniziale, venga invocato il metodo \texttt{fetchMaterials} con il parametro \texttt{forceRefresh} impostato a \texttt{false}. & I \\
+\hline
+TF-2-U & [MaterialViewModel] Verificare che, in assenza di un filtro attivo, vengano restituiti tutti i materiali presenti nel \ignoreglossary{Repository}. & I \\
+\hline
+TF-3-U & [MaterialViewModel] Verificare che il metodo \texttt{filterByType} applichi il filtro selezionato e riduca correttamente la lista dei materiali visualizzati. & I \\
+\hline
+TF-4-U & [MaterialViewModel] Verificare che il metodo \texttt{filterByType} si comporti come un toggle: la selezione ripetuta dello stesso tipo azzeri il filtro attivo. & I \\
+\hline
+TF-5-U & [MaterialViewModel] Verificare che la modifica del filtro attivo produca la notifica ai listener registrati. & I \\
+\hline
+TF-6-U & [MaterialViewModel] Verificare che il metodo \texttt{refreshMaterials} invochi \texttt{fetchMaterials} con il parametro \texttt{forceRefresh} impostato a \texttt{true}. & I \\
+\hline
+TF-7-U & [MaterialViewModel] Verificare che, in caso di eccezione sollevata da \texttt{fetchMaterials}, il metodo \texttt{refreshMaterials} la propaghi correttamente. & I \\
+\hline
+TF-8-U & [MaterialViewModel] Verificare che il metodo \texttt{dispose} chiuda correttamente tutti i comandi attivi. & I \\
+\hline
+
+% --- Materiale Informativo: ResourceTypeUI ---
+
+TF-9-U & [ResourceTypeUI] Verificare che la tipologia \texttt{community} restituisca l'icona e il colore previsti dalla specifica grafica. & I \\
+\hline
+TF-10-U & [ResourceTypeUI] Verificare che la tipologia \texttt{law} restituisca l'icona e il colore previsti dalla specifica grafica. & I \\
+\hline
+TF-11-U & [ResourceTypeUI] Verificare che la tipologia \texttt{article} restituisca l'icona e il colore previsti dalla specifica grafica. & I \\
+\hline
+
+% --- Luoghi Sicuri: SafePlaceViewModel ---
+
+TF-12-U & [SafePlaceViewModel] Verificare che il costruttore avvii automaticamente il caricamento dei luoghi sicuri e il recupero della posizione dell'\term{Utente}. & I \\
+\hline
+TF-13-U & [SafePlaceViewModel] Verificare che il metodo \texttt{loadPlaces} aggiorni correttamente lo stato interno tramite il \ignoreglossary{Repository}. & I \\
+\hline
+TF-14-U & [SafePlaceViewModel] Verificare che il metodo \texttt{getUserLocation} salvi la posizione dell'\term{Utente} quando i permessi di geolocalizzazione sono concessi. & I \\
+\hline
+TF-15-U & [SafePlaceViewModel] Verificare che il metodo \texttt{getUserLocation} sollevi un'eccezione quando il servizio GPS è disattivato. & I \\
+\hline
+TF-16-U & [SafePlaceViewModel] Verificare che il metodo \texttt{getUserLocation} richieda i permessi di geolocalizzazione quando questi risultano inizialmente negati. & I \\
+\hline
+TF-17-U & [SafePlaceViewModel] Verificare che il metodo \texttt{getUserLocation} fallisca con errore appropriato quando i permessi sono negati in modo permanente. & I \\
+\hline
+TF-18-U & [SafePlaceViewModel] Verificare che il metodo \texttt{selectPlace} aggiorni correttamente il luogo sicuro selezionato. & I \\
+\hline
+TF-19-U & [SafePlaceViewModel] Verificare che il metodo \texttt{saveMapSessionState} aggiorni la cache del \ignoreglossary{Repository} senza generare notifiche alla UI. & I \\
+\hline
+
+% --- Luoghi Sicuri: SafePlaceCategoryUI ---
+
+TF-20-U & [SafePlaceCategoryUI] Verificare che la categoria \texttt{hospital} restituisca l'icona e il colore previsti dalla specifica grafica. & I \\
+\hline
+TF-21-U & [SafePlaceCategoryUI] Verificare che la categoria \texttt{police} restituisca l'icona e il colore previsti dalla specifica grafica. & I \\
+\hline
+TF-22-U & [SafePlaceCategoryUI] Verificare che la categoria \texttt{pharmacy} restituisca l'icona e il colore previsti dalla specifica grafica. & I \\
+\hline
+
+% --- Autenticazione: AuthViewModel ---
+
+TF-23-U & [AuthViewModel] Verificare che il metodo \texttt{checkExistingSession} non invochi \texttt{restoreSession} qualora l'\term{Utente} risulti già autenticato. & I \\
+\hline
+TF-24-U & [AuthViewModel] Verificare che il comando \texttt{login} esegua correttamente il flusso di autenticazione in caso di successo. & I \\
+\hline
+TF-25-U & [AuthViewModel] Verificare che il comando \texttt{login} gestisca correttamente un errore restituito dal \ignoreglossary{Repository}. & I \\
+\hline
+TF-26-U & [AuthViewModel] Verificare che il comando \texttt{login} sollevi un'eccezione qualora il \ignoreglossary{Repository} restituisca un valore \texttt{null}. & I \\
+\hline
+TF-27-U & [AuthViewModel] Verificare che il comando \texttt{login} sollevi un'eccezione qualora il \ignoreglossary{Repository} lanci un errore imprevisto. & I \\
+\hline
+TF-28-U & [AuthViewModel] Verificare che il comando \texttt{logout} invochi correttamente il \ignoreglossary{Repository} e pulisca la cache locale. & I \\
+\hline
+TF-29-U & [AuthViewModel] Verificare che il comando \texttt{logout} sollevi un'eccezione qualora il \ignoreglossary{Repository} di disconnessione fallisca. & I \\
+\hline
+
+% --- Homepage: HomeViewModel ---
+
+TF-30-U & [HomeViewModel] Verificare che il comando \texttt{loadDashboard} restituisca esattamente tre elementi al termine dell'esecuzione. & I \\
+\hline
+TF-31-U & [HomeViewModel] Verificare che lo stato iniziale del comando \texttt{loadDashboard} sia già popolato con gli elementi del dashboard. & I \\
+\hline
+TF-32-U & [HomeViewModel] Verificare che la proprietà \texttt{isDeadManActive} restituisca \texttt{true} quando il \ignoreglossary{Repository} contiene impostazioni attive. & I \\
+\hline
+TF-33-U & [HomeViewModel] Verificare che la proprietà \texttt{isDeadManActive} restituisca \texttt{false} quando il \ignoreglossary{Repository} contiene impostazioni disattivate. & I \\
+\hline
+TF-34-U & [HomeViewModel] Verificare che la proprietà \texttt{isDeadManActive} restituisca \texttt{false} quando il \ignoreglossary{Repository} non contiene impostazioni. & I \\
+\hline
+
+% --- Chatbot: ChatbotViewModel ---
+
+TF-35-U & [ChatbotViewModel] Verificare che il costruttore carichi le anteprime delle chat e crei una chat virtuale se la lista è vuota. & I \\
+\hline
+TF-36-U & [ChatbotViewModel] Verificare che le anteprime delle chat non vengano caricate qualora l'\term{Utente} non risulti autenticato. & I \\
+\hline
+TF-37-U & [ChatbotViewModel] Verificare che l'ultima chat visualizzata venga aperta automaticamente se il relativo identificativo è presente e valido. & I \\
+\hline
+TF-38-U & [ChatbotViewModel] Verificare che il metodo \texttt{setMode} non produca notifiche ai listener quando la modalità selezionata è identica a quella corrente. & I \\
+\hline
+TF-39-U & [ChatbotViewModel] Verificare che il metodo \texttt{createChat} crei correttamente una nuova chat virtuale. & I \\
+\hline
+TF-40-U & [ChatbotViewModel] Verificare che il metodo \texttt{openChat}, in presenza di una \texttt{ProxyChat}, invochi il metodo \texttt{load()} sul proxy. & I \\
+\hline
+TF-41-U & [ChatbotViewModel] Verificare che il metodo \texttt{deleteChat} elimini la chat e azzeri la selezione corrente qualora fosse quella attiva. & I \\
+\hline
+TF-42-U & [ChatbotViewModel] Verificare che un errore durante \texttt{deleteChat} imposti correttamente il valore di \texttt{asyncError}. & I \\
+\hline
+TF-43-U & [ChatbotViewModel] Verificare che il metodo \texttt{sendMessage}, in presenza di una chat virtuale, crei prima una chat reale e poi invii il messaggio. & I \\
+\hline
+TF-44-U & [ChatbotViewModel] Verificare che il metodo \texttt{sendMessage} imposti \texttt{asyncError} e rimuova il messaggio temporaneo in caso di fallimento dell'API. & I \\
+\hline
+
+% --- Contatti Fidati: TrustedContactViewModel ---
+
+TF-45-U & [TrustedContactViewModel] Verificare che il metodo \texttt{createContact} invochi il \ignoreglossary{Repository} e aggiorni la lista dei contatti. & I \\
+\hline
+TF-46-U & [TrustedContactViewModel] Verificare che il metodo \texttt{updateContact} invochi il \ignoreglossary{Repository} e aggiorni la lista dei contatti. & I \\
+\hline
+TF-47-U & [TrustedContactViewModel] Verificare che il metodo \texttt{deleteContact} non esegua un aggiornamento ottimistico e aggiorni correttamente la lista in caso di successo. & I \\
+\hline
+TF-48-U & [TrustedContactViewModel] Verificare che il metodo \texttt{deleteContact} esegua il rollback e aggiorni la lista in caso di fallimento del \ignoreglossary{Repository}. & I \\
+\hline
+TF-49-U & [TrustedContactViewModel] Verificare che il metodo \texttt{loadContacts} imposti correttamente lo stato di errore in caso di fallimento del \ignoreglossary{Repository}. & I \\
+\hline
+
+% --- Dead Man's Switch: DeadManViewModel ---
+
+TF-50-U & [DeadManViewModel] Verificare che, al caricamento, la bozza delle impostazioni venga popolata con una copia dei dati presenti nel \ignoreglossary{Repository}. & I \\
+\hline
+TF-51-U & [DeadManViewModel] Verificare che il metodo \texttt{toggleActiveStatus} aggiorni la bozza delle impostazioni e notifichi i listener della UI. & I \\
+\hline
+TF-52-U & [DeadManViewModel] Verificare che il metodo \texttt{updateTimers} aggiorni esclusivamente i campi dei timer specificati. & I \\
+\hline
+TF-53-U & [DeadManViewModel] Verificare che il metodo \texttt{updateMessage} aggiorni correttamente i testi del messaggio di allerta. & I \\
+\hline
+TF-54-U & [DeadManViewModel] Verificare che il metodo \texttt{discardChanges} ripristini la bozza con i valori attualmente salvati nel \ignoreglossary{Repository}. & I \\
+\hline
+TF-55-U & [DeadManViewModel] Verificare che il metodo \texttt{saveSettings} invochi il \ignoreglossary{Repository} e aggiorni la bozza con i nuovi dati salvati. & I \\
+\hline
+TF-56-U & [DeadManViewModel] Verificare che il metodo \texttt{saveSettings} non esegua alcuna operazione qualora la bozza delle impostazioni non sia ancora stata caricata. & I \\
+\hline
+
+% --- Diario: DiaryAccessViewModel ---
+
+TF-57-U & [DiaryAccessViewModel] Verificare che, se la sessione è già autenticata, la proprietà \texttt{isAuthenticated} sia \texttt{true} senza interrogare il \term{Backend}. & I \\
+\hline
+TF-58-U & [DiaryAccessViewModel] Verificare che, se \texttt{restoreSession} rileva credenziali valide, la proprietà \texttt{isAuthenticated} sia \texttt{true}. & I \\
+\hline
+TF-59-U & [DiaryAccessViewModel] Verificare che, in assenza di sessione attiva e in presenza di una password configurata, venga richiesto il login. & I \\
+\hline
+TF-60-U & [DiaryAccessViewModel] Verificare che, in assenza di sessione attiva e in assenza di una password configurata, venga avviato il setup iniziale. & I \\
+\hline
+TF-61-U & [DiaryAccessViewModel] Verificare che il login con la password del diario reale venga completato con successo. & I \\
+\hline
+TF-62-U & [DiaryAccessViewModel] Verificare che un errore durante il login imposti correttamente \texttt{asyncError} senza provocare crash. & I \\
+\hline
+TF-63-U & [DiaryAccessViewModel] Verificare che il logout termini la sessione attiva e azzeri lo stato di autenticazione. & I \\
+\hline
+TF-64-U & [DiaryAccessViewModel] Verificare che il metodo \texttt{validateInput} rilevi gli errori di formato e validi correttamente un input conforme. & I \\
+\hline
+TF-65-U & [DiaryAccessViewModel] Verificare che \texttt{updateRealPassword} fallisca qualora la \term{Validazione} locale non superi i controlli. & I \\
+\hline
+TF-66-U & [DiaryAccessViewModel] Verificare che \texttt{updateRealPassword} aggiorni lo stato correttamente in caso di successo del \ignoreglossary{Repository}. & I \\
+\hline
+TF-67-U & [DiaryAccessViewModel] Verificare che \texttt{createInitialPassword} sollevi un errore e popoli \texttt{asyncError} qualora la \term{Validazione} locale fallisca. & I \\
+\hline
+
+% --- Diario: DiaryViewModel ---
+
+TF-68-U & [DiaryViewModel] Verificare che il metodo \texttt{createNewNote} imposti una nuova \texttt{LocalNote} come nota corrente. & I \\
+\hline
+TF-69-U & [DiaryViewModel] Verificare che il metodo \texttt{addTextElement} aggiunga correttamente un elemento testuale alla nota corrente. & I \\
+\hline
+TF-70-U & [DiaryViewModel] Verificare che il metodo \texttt{addMediaElement} aggiunga un elemento di tipo immagine quando il tipo specificato è \texttt{image}. & I \\
+\hline
+TF-71-U & [DiaryViewModel] Verificare che il metodo \texttt{loadNotes} invochi il metodo \texttt{getNotes} sul \ignoreglossary{Repository}. & I \\
+\hline
+TF-72-U & [DiaryViewModel] Verificare che il metodo \texttt{openNote} carichi la nota tramite proxy e la imposti come nota corrente. & I \\
+\hline
+TF-73-U & [DiaryViewModel] Verificare che il metodo \texttt{saveNote} invochi il metodo \texttt{saveNote} sul \ignoreglossary{Repository}. & I \\
+\hline
+TF-74-U & [DiaryViewModel] Verificare che il metodo \texttt{deleteNote} gestisca il rollback e imposti \texttt{asyncError} in caso di fallimento. & I \\
+\hline
+TF-75-U & [DiaryViewModel] Verificare che il metodo \texttt{deleteNote} azzeri la nota corrente qualora la nota eliminata fosse quella aperta. & I \\
+\hline
+
+% --- Diario: Modello DiarySession ---
+
+TF-76-U & [DiarySession] Verificare che il metodo \texttt{initSession} aggiorni lo stato interno e salvi i dati nello storage. & I \\
+\hline
+TF-77-U & [DiarySession] Verificare che \texttt{restoreSession} ripristini correttamente la sessione del diario reale in presenza di dati validi. & I \\
+\hline
+TF-78-U & [DiarySession] Verificare che \texttt{restoreSession} ripristini correttamente la sessione del diario fittizio quando il tipo non è \texttt{real\_diary}. & I \\
+\hline
+TF-79-U & [DiarySession] Verificare che \texttt{restoreSession} restituisca \texttt{false} qualora i dati nello storage siano assenti o incompleti. & I \\
+\hline
+TF-80-U & [DiarySession] Verificare che il metodo \texttt{endSession} azzeri lo stato interno e pulisca i dati dallo storage. & I \\
+\hline
+
+% --- Diario: Modello LocalNote ---
+
+TF-81-U & [LocalNote] Verificare che il costruttore inizializzi correttamente i campi del modello nota. & I \\
+\hline
+TF-82-U & [LocalNote] Verificare che la proprietà \texttt{noteElements} restituisca una lista non modificabile. & I \\
+\hline
+TF-83-U & [LocalNote] Verificare che \texttt{addElement} inserisca l'elemento e aggiorni la data di modifica. & I \\
+\hline
+TF-84-U & [LocalNote] Verificare che \texttt{addElement} non inserisca l'elemento qualora l'indice sia fuori dai limiti. & I \\
+\hline
+TF-85-U & [LocalNote] Verificare che \texttt{removeElement} non aggiorni la data di modifica se l'elemento non è presente. & I \\
+\hline
+TF-86-U & [LocalNote] Verificare che \texttt{editNoteElement} non esegua alcuna operazione se l'elemento target non è presente nella lista. & I \\
+\hline
+
+% --- Modello LocalChat ---
+
+TF-87-U & [LocalChat] Verificare che il costruttore inizializzi correttamente tutti i valori del modello. & I \\
+\hline
+TF-88-U & [LocalChat] Verificare che il setter del titolo aggiorni il titolo e la data di ultimo aggiornamento. & I \\
+\hline
+TF-89-U & [LocalChat] Verificare che il getter \texttt{messages} restituisca una lista non modificabile. & I \\
+\hline
+TF-90-U & [LocalChat] Verificare che il metodo \texttt{addMessage} aggiunga il messaggio alla lista e aggiorni la data di ultimo aggiornamento. & I \\
+\hline
+
+% --- Modello DeadManSettings ---
+
+TF-91-U & [DeadManSettings] Verificare che il costruttore inizializzi correttamente i valori predefiniti del modello. & I \\
+\hline
+TF-92-U & [DeadManSettings] Verificare che il costruttore inizializzi correttamente i valori personalizzati forniti. & I \\
+\hline
+TF-93-U & [DeadManSettings] Verificare che il metodo \texttt{copyWith} aggiorni esclusivamente i campi specificati. & I \\
+\hline
+TF-94-U & [DeadManSettings] Verificare che il metodo \texttt{copyWith} invocato senza parametri mantenga invariati tutti i valori esistenti. & I \\
+\hline
+
+% --- Modello TrustedContact ---
+
+TF-95-U & [TrustedContact] Verificare che il costruttore inizializzi correttamente tutti i campi del modello. & I \\
+\hline
+TF-96-U & [TrustedContact] Verificare che il metodo \texttt{copyWith} aggiorni esclusivamente i campi specificati. & I \\
+\hline
+TF-97-U & [TrustedContact] Verificare che il metodo \texttt{copyWith} invocato senza parametri restituisca un nuovo oggetto con i medesimi valori. & I \\
+\hline
+
+% --- Infrastruttura: AppConfig ---
+
+TF-98-U & [AppConfig] Verificare che vengano restituiti i valori definiti nel file \texttt{.env} quando le relative chiavi sono presenti. & I \\
+\hline
+TF-99-U & [AppConfig] Verificare che vengano restituiti i valori di fallback predefiniti quando le chiavi nel file \texttt{.env} risultano mancanti. & I \\
+\hline
+TF-100-U & [AppConfig] Verificare che le costanti hardcoded per gli URI di callback OAuth siano corrette. & I \\
+\hline
+
+% --- Infrastruttura: CacheManager ---
+
+TF-101-U & [CacheManager] Verificare che il metodo \texttt{clearAllCaches} invochi \texttt{clearCache} su ciascun \ignoreglossary{Repository} registrato. & I \\
+\hline
+TF-102-U & [CacheManager] Verificare che il metodo \texttt{clearAllCaches} non esegua alcuna operazione quando la lista dei \ignoreglossary{Repository} è vuota. & I \\
+\hline
+
+% --- Infrastruttura: Locator ---
+
+TF-103-U & [Locator] Verificare che tutte le istanze base vengano registrate correttamente nel service locator. & I \\
+\hline
+TF-104-U & [Locator] Verificare che l'intero albero delle dipendenze per tutti i ViewModel sia risolvibile correttamente. & I \\
+\hline
+
+
+\end{longtable}
+
+\subsubsection{Test Di Unità - Backend}
+\renewcommand{\arraystretch}{1.2}
+\arrayrulecolor{black}
+\rowcolors{2}{white}{gray!20}
+\begin{longtable}{| >{\centering\arraybackslash}p{0.13\textwidth} | >{\raggedright\arraybackslash}p{0.72\textwidth} | >{\centering\arraybackslash}p{0.09\textwidth} |}
+\hline
+\rowcolor{gray!60}
+\textbf{Codice} & \textbf{Descrizione} & \textbf{Stato del Test} \\
+\hline
+\endhead
+\hline
+\rowcolor{white}
+\caption[]{Tabella dei \protectTest di Unità - \protectBackend} \\
+\endfoot
+\hline
+\caption{Tabella dei \protectTest di Unità - \protectBackend} \\
+\endlastfoot
+
+% --- Materiale Informativo: ResourceModel ---
+
+% --- Materiale Informativo: ResourceType (Enum) ---
+
+TB-1-U & [ResourceType] Verificare la presenza del valore dell'enumerazione per la tipologia \texttt{COMMUNITY}. & I \\
+\hline
+TB-2-U & [ResourceType] Verificare la presenza del valore dell'enumerazione per la tipologia \texttt{LAW}. & I \\
+\hline
+TB-3-U & [ResourceType] Verificare la presenza del valore dell'enumerazione per la tipologia \texttt{ARTICLE}. & I \\
+\hline
+
+% --- Materiale Informativo: Resource ---
+
+TB-4-U & [Resource] Verificare che il costruttore inizializzi correttamente tutti i campi della classe. & I \\
+\hline
+TB-5-U & [Resource] Verificare il comportamento del costruttore in presenza di parametri non validi (es. tipo risorsa errato). & I \\
+\hline
+TB-6-U & [Resource] Verificare che il metodo \texttt{to\_dict} produca un dizionario contenente il campo \texttt{resource\_id}. & I \\
+\hline
+TB-7-U & [Resource] Verificare che il metodo \texttt{to\_dict} produca un dizionario contenente il campo \texttt{title}. & I \\
+\hline
+TB-8-U & [Resource] Verificare che il metodo \texttt{to\_dict} produca un dizionario contenente il campo \texttt{content}. & I \\
+\hline
+TB-9-U & [Resource] Verificare che il metodo \texttt{to\_dict} produca un dizionario contenente il campo \texttt{url}. & I \\
+\hline
+TB-10-U & [Resource] Verificare che il metodo \texttt{to\_dict} converta correttamente il campo \texttt{type} nel suo valore stringa. & I \\
+\hline
+TB-11-U & [Resource] Verificare la corretta serializzazione di una risorsa con tipologia \texttt{LAW}. & I \\
+\hline
+TB-12-U & [Resource] Verificare la corretta serializzazione di una risorsa con tipologia \texttt{ARTICLE}. & I \\
+\hline
+TB-13-U & [Resource] Verificare che il metodo \texttt{to\_dict} restituisca effettivamente un oggetto di tipo \texttt{dict}. & I \\
+\hline
+TB-14-U & [Resource] Verificare che il dizionario prodotto da \texttt{to\_dict} contenga esattamente 5 campi. & I \\
+\hline
+
+% --- Materiale Informativo: ResourcesService ---
+
+TB-23-U & [ResourcesService] Verificare che il metodo \texttt{get\_resources} restituisca correttamente una lista multipla di risorse. & I \\
+\hline
+
+% --- Materiale Informativo: ResourcesController ---
+
+TB-24-U & [ResourcesController] Verificare che la risposta restituita in caso di successo abbia codice di stato 200. & I \\
+\hline
+TB-25-U & [ResourcesController] Verificare che il corpo della risposta sia una lista serializzata in formato JSON. & I \\
+\hline
+TB-26-U & [ResourcesController] Verificare che il corpo della risposta contenga la risorsa attesa. & I \\
+\hline
+TB-27-U & [ResourcesController] Verificare che la risposta includa l'header \texttt{Content-Type} corretto. & I \\
+\hline
+TB-28-U & [ResourcesController] Verificare che la risposta includa l'header CORS corretto. & I \\
+\hline
+TB-29-U & [ResourcesController] Verificare il comportamento del controller in presenza di una lista vuota di risorse. & I \\
+\hline
+TB-30-U & [ResourcesController] Verificare che la risposta restituita in caso di errore abbia codice di stato 500. & I \\
+\hline
+TB-31-U & [ResourcesController] Verificare che il corpo della risposta di errore contenga un messaggio esplicativo. & I \\
+\hline
+TB-32-U & [ResourcesController] Verificare che il service venga invocato esattamente una volta per ogni richiesta. & I \\
+\hline
+
+% --- Luoghi Sicuri: MarkerModel ---
+
+TB-43-U & [Marker] Verificare che il metodo \texttt{to\_dict} produca un dizionario contenente il campo \texttt{marker\_id}. & I \\
+\hline
+TB-44-U & [Marker] Verificare che il metodo \texttt{to\_dict} produca un dizionario contenente il campo \texttt{name}. & I \\
+\hline
+TB-45-U & [Marker] Verificare che il metodo \texttt{to\_dict} produca un dizionario contenente il campo \texttt{address}. & I \\
+\hline
+TB-46-U & [Marker] Verificare che il metodo \texttt{to\_dict} produca un dizionario contenente il campo \texttt{latitude}. & I \\
+\hline
+TB-47-U & [Marker] Verificare che il metodo \texttt{to\_dict} produca un dizionario contenente il campo \texttt{longitude}. & I \\
+\hline
+TB-48-U & [Marker] Verificare che il metodo \texttt{to\_dict} produca un dizionario contenente il campo \texttt{category}. & I \\
+\hline
+TB-49-U & [Marker] Verificare che il metodo \texttt{to\_dict} restituisca effettivamente un oggetto di tipo \texttt{dict}. & I \\
+\hline
+TB-50-U & [Marker] Verificare che il dizionario prodotto da \texttt{to\_dict} contenga esattamente il numero atteso di campi (6). & I \\
+\hline
+TB-51-U & [Marker] Verificare che il costruttore sollevi un'eccezione \texttt{ValueError} in caso di latitudine non valida. & I \\
+\hline
+TB-52-U & [Marker] Verificare che il costruttore sollevi un'eccezione \texttt{ValueError} in caso di longitudine non valida. & I \\
+\hline
+
+% --- Luoghi Sicuri: SafePlacesService ---
+
+TB-56-U & [SafePlacesService] Verificare che il metodo \texttt{get\_all\_markers} deleghi correttamente l'operazione al \ignoreglossary{Repository}. & I \\
+\hline
+TB-57-U & [SafePlacesService] Verificare che il metodo \texttt{get\_all\_markers} propaghi correttamente l'eccezione sollevata dal \ignoreglossary{Repository}. & I \\
+\hline
+
+% --- Luoghi Sicuri: SafePlacesController ---
+
+TB-58-U & [SafePlacesController] Verificare il comportamento del controller in caso di recupero dei marker avvenuto con successo. & I \\
+\hline
+TB-59-U & [SafePlacesController] Verificare la gestione dell'errore da parte del controller durante il recupero dei marker. & I \\
+\hline
+TB-60-U & [SafePlacesController] Verificare che il metodo helper di risposta formatti correttamente l'output. & I \\
+\hline
+
+% --- Luoghi Sicuri: LambdaHandlerSafePlaces ---
+
+TB-61-U & [LambdaHandlerSafePlaces] Verificare che il Lambda handler attivi correttamente tutti i componenti della catena applicativa. & I \\
+\hline
+TB-62-U & [LambdaHandlerSafePlaces] Verificare che la funzione gestisca correttamente il formato dell'evento ricevuto da API Gateway v2. & I \\
+\hline
+TB-63-U & [LambdaHandlerSafePlaces] Verificare che la funzione gestisca correttamente le risposte per il preflight CORS. & I \\
+\hline
+TB-64-U & [LambdaHandlerSafePlaces] Verificare che il Lambda handler rifiuti le richieste effettuate con metodi HTTP non supportati. & I \\
+\hline
+TB-65-U & [LambdaHandlerSafePlaces] Verificare che il Lambda handler intercetti e gestisca correttamente le eccezioni globali non previste. & I \\
+\hline
+
+% --- Autenticazione Diario: DiaryAuth ---
+
+TB-66-U & [DiaryAuthService] Verificare che il metodo \texttt{set\_real\_password} imposti correttamente la password per il diario reale tramite il \term{Repository}. & I \\
+\hline
+TB-67-U & [DiaryAuthService] Verificare che il metodo \texttt{set\_fake\_password} imposti correttamente la password per il diario fittizio tramite il \term{Repository}. & I \\
+\hline
+TB-68-U & [DiaryAuthService] Verificare che il sistema impedisca l'utilizzo della stessa password per il diario reale e quello fittizio. & I \\
+\hline
+TB-69-U & [DiaryAuthService] Verificare che il metodo \texttt{login} con la password del diario reale restituisca l'esito positivo. & I \\
+\hline
+TB-70-U & [DiaryAuthService] Verificare che il metodo \texttt{login} restituisca \texttt{None} (fallimento) in presenza di una password errata. & I \\
+\hline
+TB-71-U & [DiaryAuthService] Verificare che il metodo \texttt{check\_password\_status} recuperi correttamente lo stato di attivazione del diario. & I \\
+\hline
+
+% --- Chatbot: ChatbotCRUDService ---
+
+TB-72-U & [ChatbotCRUDService] Verificare il recupero della lista delle chat (GET /chats) tramite il service. & I \\
+\hline
+TB-73-U & [ChatbotCRUDService] Verificare la creazione di una nuova chat (POST /chats) tramite il service. & I \\
+\hline
+TB-74-U & [ChatbotCRUDService] Verificare il recupero di una chat esistente per identificativo (GET /chat - trovata). & I \\
+\hline
+TB-75-U & [ChatbotCRUDService] Verificare il comportamento del service quando la chat richiesta non viene trovata. & I \\
+\hline
+TB-76-U & [ChatbotCRUDService] Verificare l'eliminazione di una chat (DELETE /chat) tramite il service. & I \\
+\hline
+TB-77-U & [ChatbotCRUDService] Verificare l'aggiornamento del titolo di una chat (PUT /chat) tramite il service. & I \\
+\hline
+TB-78-U & [ChatbotCRUDService] Verificare l'aggiunta di un messaggio a una chat esistente (POST /messages) tramite il service. & I \\
+\hline
+
+% --- Chatbot: LLMService ---
+
+TB-79-U & [ChatbotLLMService] Verificare il comportamento del service LLM con la modalità conversazionale \textit{Detective delle Relazioni}. & I \\
+\hline
+TB-80-U & [ChatbotLLMService] Verificare il comportamento del service LLM con la modalità conversazionale \textit{Specchio Intelligente}. & I \\
+\hline
+TB-81-U & [ChatbotLLMService] Verificare che la lunghezza del prompt generato rientri nei limiti attesi. & I \\
+\hline
+TB-82-U & [ChatbotLLMService] Verificare il corretto funzionamento della funzione di tokenizzazione. & I \\
+\hline
+TB-83-U & [ChatbotLLMService] Verificare la corretta costruzione del corpus di messaggi per il contesto. & I \\
+\hline
+TB-84-U & [ChatbotLLMService] Verificare il recupero dei messaggi rilevanti per la generazione del contesto. & I \\
+\hline
+
+% --- Contatti Fidati / DMS: Controller ---
+
+TB-126-U & [DMSController] Verificare la creazione delle impostazioni DMS. & I \\
+\hline
+TB-127-U & [DMSController] Verificare il recupero delle impostazioni DMS. & I \\
+\hline
+TB-128-U & [DMSController] Verificare l'aggiornamento delle impostazioni DMS. & I \\
+\hline
+TB-129-U & [DMSController] Verificare che nome e indirizzo email rimangano invariati durante l'aggiornamento delle impostazioni DMS. & I \\
+\hline
+TB-130-U & [DMSController] Verificare il corretto funzionamento dell'heartbeat. & I \\
+\hline
+TB-131-U & [DMSController] Verificare che l'heartbeat azzeri correttamente il contatore. & I \\
+\hline
+TB-132-U & [DMSController] Verificare la creazione di un nuovo contatto fidato. & I \\
+\hline
+TB-133-U & [DMSController] Verificare il recupero di un contatto fidato per identificativo. & I \\
+\hline
+TB-134-U & [DMSController] Verificare il comportamento in caso di contatto fidato non trovato. & I \\
+\hline
+TB-135-U & [DMSController] Verificare il recupero della lista completa dei contatti fidati. & I \\
+\hline
+TB-136-U & [DMSController] Verificare l'aggiornamento di un contatto fidato esistente. & I \\
+\hline
+TB-137-U & [DMSController] Verificare l'eliminazione di un contatto fidato. & I \\
+\hline
+TB-138-U & [DMSController] Verificare il comportamento in caso di eliminazione di un contatto inesistente. & I \\
+\hline
+TB-139-U & [DMSController] Verificare l'invio dell'allerta SOS con informazioni sulla posizione. & I \\
+\hline
+TB-140-U & [DMSController] Verificare l'invio dell'allerta SOS senza informazioni sulla posizione. & I \\
+\hline
+TB-141-U & [DMSController] Verificare il comportamento in assenza di contatti fidati durante l'invio dell'allerta SOS. & I \\
+\hline
+TB-142-U & [DMSController] Verificare che l'evento schedulato decrementi correttamente il contatore per il primo \term{Utente}. & I \\
+\hline
+TB-143-U & [DMSController] Verificare che l'evento schedulato decrementi correttamente il contatore per il terzo \term{Utente}. & I \\
+\hline
+TB-144-U & [DMSController] Verificare che l'evento schedulato decrementi correttamente il contatore per il quarto \term{Utente}. & I \\
+\hline
+TB-145-U & [DMSController] Verificare che l'evento schedulato invii l'email di allerta all'\term{Utente}. & I \\
+\hline
+TB-146-U & [DMSController] Verificare che le richieste non autorizzate vengano rifiutate correttamente. & I \\
+\hline
+TB-147-U & [DMSController] Verificare che una route non esistente produca una risposta di errore. & I \\
+\hline
+TB-148-U & [DMSController] Verificare la gestione dell'evento schedulato. & I \\
+\hline
+
+% --- Contatti Fidati / DMS: LambdaHandler ---
+
+TB-149-U & [LambdaHandler] Verificare che le richieste prive di identificativo \term{Utente} vengano rifiutate. & I \\
+\hline
+TB-150-U & [LambdaHandler] Verificare che una route inesistente restituisca il codice di stato 404. & I \\
+\hline
+
+% --- Diario: NoteController ---
+
+TB-174-U & [NoteController] Verificare l'aggiunta di una nota con contenuto multimediale. & I \\
+\hline
+TB-175-U & [NoteController] Verificare il recupero di una nota con contenuto multimediale. & I \\
+\hline
+TB-176-U & [NoteController] Verificare che l'eliminazione di una nota rimuova correttamente gli oggetti S3 associati. & I \\
+\hline
+TB-177-U & [NoteController] Verificare l'aggiunta di un elemento nota con contenuto multimediale. & I \\
+\hline
+TB-178-U & [NoteController] Verificare che l'eliminazione di un elemento nota rimuova il relativo oggetto S3. & I \\
+\hline
+TB-179-U & [NoteController] Verificare che un \term{Utente} non possa accedere alle note di un altro \term{Utente}. & I \\
+\hline
+
+\end{longtable}
+
+
+
+\subsection{Test di Integrazione}
+I \term{Test di Integrazione} servono a verificare che le componenti del sistema si integrino correttamente e in maniera efficace. L'obiettivo dei test è identificare eventuali problemi di interoperabilità e integrazione fra le componenti del software.
+
+\subsubsection{Test di Integrazione - Frontend}\label{sec:test_integrazione_frontend}
+\rowcolors{2}{gray!10}{white}
+\begin{longtable}{|c|p{10cm}|c|}
+    \hline
+    \rowcolor{gray!30}
+    \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\
+    \hline
+    \endfirsthead
+
+    \hline
+    \rowcolor{gray!30}
+    \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\
+    \hline
+    \endhead
+
+    \hline
+    \endfoot
+
+    \hline
+    \endlastfoot
+
+    % --- Integrazione Frontend: Luoghi Sicuri ---
+    TF-1-I & \term{Verifica} dell'integrazione end-to-end: navigazione verso la schermata "Luoghi Sicuri" a partire dalla dashboard principale. & I \\
+    \hline
+    TF-2-I & \term{Verifica} dell'integrazione end-to-end: corretto caricamento e rendering della mappa interattiva. & I \\
+    \hline
+    TF-3-I & \term{Verifica} dell'integrazione end-to-end: apertura e visualizzazione della legenda informativa della mappa. & I \\
+    \hline
+    TF-4-I & \term{Verifica} dell'integrazione end-to-end: interazione con il pulsante di geolocalizzazione. & I \\
+    \hline
+    TF-5-I & \term{Verifica} dell'integrazione end-to-end: rendering dei marker sulla mappa. & I \\
+    \hline
+
+    % --- Integrazione Frontend: Materiale Informativo ---
+    TF-6-I & \term{Verifica} dell'integrazione end-to-end: navigazione verso la schermata "Materiale Informativo" a partire dalla dashboard principale. & I \\
+    \hline
+    TF-7-I & \term{Verifica} dell'integrazione end-to-end: rendering della lista dei materiali informativi. & I \\
+    \hline
+    TF-8-I & \term{Verifica} dell'integrazione end-to-end: funzionamento dei filtri per categoria e conseguente aggiornamento reattivo della vista. & I \\
+    \hline
+    TF-9-I & \term{Verifica} dell'integrazione end-to-end: ripristino della lista completa deselezionando i filtri. & I \\
+    \hline
+    TF-10-I & [Chatbot] Verificare la navigazione alla schermata dell'assistente AI. & I \\
+    \hline
+    TF-11-I & [Chatbot] Verificare la creazione automatica di una nuova sessione di chat se vuota. & I \\
+    \hline
+    TF-12-I & [Chatbot] Verificare l'invio di un messaggio testuale dall'\term{Utente}. & I \\
+    \hline
+    TF-13-I & [Chatbot] Verificare la ricezione e visualizzazione della risposta dall'assistente AI. & I \\
+    \hline
+    TF-14-I & [Chatbot] Verificare il cambio di modalità di risposta (Detective/Specchio). & I \\
+    \hline
+        % --- Integrazione Frontend: Diario ---
+    TF-15-I & \term{Verifica} dell'integrazione end-to-end: navigazione verso la schermata "Diario" a partire dalla dashboard. & I \\
+    \hline
+    TF-16-I & \term{Verifica} dell'integrazione end-to-end: inserimento della password e sblocco del diario. & I \\
+    \hline
+    TF-17-I & \term{Verifica} dell'integrazione end-to-end: caricamento e visualizzazione della lista delle note. & I \\
+    \hline
+        % --- Integrazione Frontend: Contatti Fidati ---
+    TF-18-I & \term{Verifica} dell'integrazione end-to-end: navigazione verso la schermata "Contatti Fidati" a partire dalla dashboard. & I \\
+    \hline
+    TF-19-I & \term{Verifica} dell'integrazione end-to-end: caricamento e visualizzazione della lista dei contatti. & I \\
+    \hline
+    TF-20-I & \term{Verifica} dell'integrazione end-to-end: compilazione del form e aggiunta di un nuovo contatto fidato. & I \\
+    \hline
+
+\end{longtable}
+
+
+\subsubsection{Test di Integrazione - Backend}\label{sec:test_integrazione_backend}
+\rowcolors{2}{gray!10}{white}
+\begin{longtable}{|l|p{10cm}|c|}
+    \hline
+    \rowcolor{gray!60}
+    \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato del Test} \\
+    \hline
+    \endfirsthead
+
+    \hline
+    \rowcolor{gray!60}
+    \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato del Test} \\
+    \hline
+    \endhead
+
+    \hline
+    \endfoot
+
+    \hline
+    \caption{Tracciamento dei \protectTest di Integrazione \protectBackend per materiali informativi e luoghi sicuri}
+    \endlastfoot
+
+    TB-1-I & \term{Verifica} dell'integrazione tra il componente \texttt{S3ResourcesRepository} e il servizio Amazon S3 per il recupero e la mappatura dei materiali informativi. & I \\
+    \hline
+    TB-2-I & \term{Verifica} dell'integrazione tra l'entry point Lambda dei materiali informativi e la catena di componenti interni (Controller, Service, \ignoreglossary{Repository}). & I \\
+    \hline
+    TB-3-I & \term{Verifica} dell'integrazione tra il componente \texttt{S3SafePlacesRepository} e il servizio Amazon S3 per il recupero dei marker relativi ai luoghi sicuri. & I \\
+    \hline
+    TB-4-I & \term{Verifica} dell'integrazione tra l'entry point Lambda dei luoghi sicuri e la catena di componenti interni (Controller, Service, \ignoreglossary{Repository}). & I \\
+    \hline
+    TB-5-I & \term{Verifica} dell'integrazione tra il componente \texttt{DmsRepository} e il servizio Amazon DynamoDB per la persistenza e gestione delle configurazioni Dead Man's Switch. & I \\
+    \hline
+    TB-6-I & \term{Verifica} dell'integrazione tra il componente \texttt{TrustedContactRepository} e il servizio Amazon DynamoDB per la gestione dei contatti di emergenza. & I \\
+    \hline
+    TB-7-I & \term{Verifica} dell'integrazione tra il componente \texttt{NotificationRepository} e il servizio Amazon SES per l'invio delle email di notifica e di allerta. & I \\
+    \hline
+    TB-8-I & \term{Verifica} dell'integrazione dell'entry point Lambda dei contatti fidati con l'intera catena di componenti interni (Controller, Services, Repositories). & I \\
+    \hline
+    TB-9-I & \term{Verifica} dell'integrazione tra il servizio ChatbotCRUDService e il servizio Amazon DynamoDB per la persistenza delle conversazioni e della cronologia dei messaggi. & I \\
+    \hline
+    TB-10-I & \term{Verifica} dell'integrazione dell'entry point Lambda del chatbot con l'intera catena di componenti interni (Controller, Service, \ignoreglossary{Repository}) e il mock del servizio LLM. & I \\
+    \hline
+    TB-11-I & \term{Verifica} dell'integrazione dell'intero flusso Lambda per l'attivazione manuale dell'allarme SOS e il corretto innesco del \texttt{NotificationRepository} verso Amazon SES. & I \\
+    \hline
+    TB-12-I & \term{Verifica} dell'integrazione del flusso scatenato dal cron job (EventBridge) per il ricalcolo automatico dei timer del Dead Man's Switch e il conseguente invio di allerte. & I \\
+    \hline
+    TB-13-I & \term{Verifica} dell'integrazione del flusso API per l'operazione di heartbeat, assicurando il corretto azzeramento dei contatori del Dead Man's Switch su DynamoDB. & I \\
+    \hline
+    TB-14-I & \term{Verifica} dell'integrazione tra il componente \texttt{DynamoAuthAdapter} e il servizio Amazon DynamoDB per la persistenza delle credenziali di accesso (reali e fake) al diario. & I \\
+    \hline
+    TB-15-I & \term{Verifica} dell'integrazione tra l'entry point Lambda dell'autenticazione diario e l'intera catena di componenti interni (Controller, Service, \ignoreglossary{Repository}). & I \\
+    \hline
+    TB-16-I & \term{Verifica} dell'integrazione tra il componente \texttt{DynamoNoteAdapter} e il servizio Amazon DynamoDB per la persistenza delle note e dei relativi elementi multimediali. & I \\
+    \hline
+    TB-17-I & \term{Verifica} dell'integrazione tra il componente \texttt{S3NoteAdapter} e il servizio Amazon S3 per la gestione del caricamento e dell'eliminazione degli allegati alle note. & I \\
+    \hline
+    TB-18-I & \term{Verifica} dell'integrazione dell'entry point Lambda della gestione note con l'intera catena di componenti interni (Controller, Service, Repositories) per le operazioni CRUD. & I \\
+    \hline 
+    TB-19-I & \term{Verifica} dell'integrazione del flusso di eliminazione note, assicurando la corretta rimozione sincronizzata dei dati su DynamoDB e dei file correlati su Amazon S3. & I \\
+    \hline
+\end{longtable}
+
 
 \section{Cruscotto di valutazione della qualità}\label{sec:cruscotto_valutazione}
 \subsection{MPC02: Planned Value e MPC04: Earned Value totali}
