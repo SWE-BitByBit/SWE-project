@@ -163,7 +163,7 @@ Anna Baldo\\
 
 % ---------- DISCUSSIONI FORMALIZZATE ----------
 \section{Discussioni}
-Durante la sessione, si è stabilito di adottare la metodologia del Design \term{Sprint} al fine di identificare con precisione il target di utenza finale e definire le funzionalità core da sviluppare. Successivamente, l'attività si è concentrata sulla realizzazione di mockup preliminari, volti a delineare l'identità visiva e l'\term{Architettura} dell'applicazione.
+Durante la sessione, si è stabilito di adottare la metodologia del Design Sprint al fine di identificare con precisione il target di utenza finale e definire le funzionalità core da sviluppare. Successivamente, l'attività si è concentrata sulla realizzazione di mockup preliminari, volti a delineare l'identità visiva e l'Architettura dell'applicazione.
 
 \subsection{Identificazione del Target di Utenza}
 La fase iniziale del meeting è stata dedicata all'analisi dei potenziali fruitori dell'applicazione. Le categorie di utenti individuate sono state le seguenti:
@@ -174,15 +174,15 @@ La fase iniziale del meeting è stata dedicata all'analisi dei potenziali fruito
     \item Cerchia amicale (prevalentemente under 30);
     \item Professionisti del settore (es. psicologi);
     \item Utenti esterni (interessati a reperire informazioni sul tema);
-    \item Rete di supporto (soggetti selezionati dall'\term{Utente} come contatti fidati).
+    \item Rete di supporto (soggetti selezionati dall'Utente come contatti fidati).
 \end{itemize}
 
-A seguito di un confronto interno, si è deliberato di focalizzare il target primario sulle donne di età compresa tra i 18 e i 30 anni. Tuttavia, si è deciso di includere anche utenti esterni interessati all'argomento, prevedendo una sezione informativa accessibile sia a questi ultimi che all'\term{Utente} target principale.
+A seguito di un confronto interno, si è deliberato di focalizzare il target primario sulle donne di età compresa tra i 18 e i 30 anni. Tuttavia, si è deciso di includere anche utenti esterni interessati all'argomento, prevedendo una sezione informativa accessibile sia a questi ultimi che all'Utente target principale.
 
 \subsection{Analisi del Contesto d'Uso}
-Il gruppo di lavoro ha successivamente analizzato il contesto in cui l'\term{Utente} potrebbe trovarsi durante l'utilizzo dell'applicazione.
-È emerso che l'applicativo si configura principalmente come strumento di prevenzione volto a mitigare il degenerare di situazioni a rischio. Si presuppone, infatti, che in casi di pericolo imminente la vittima contatti direttamente le autorità competenti (es. 118), bypassando l'applicazione. Pertanto, lo scenario ideale prevede che l'\term{Utente} disponga di tempo sufficiente per interagire con l'app. Nonostante ciò, verrà garantito un supporto anche in situazioni di maggiore stress.
-Nello specifico, l'installazione e l'utilizzo dell'applicazione sono previsti quando l'\term{Utente}:
+Il gruppo di lavoro ha successivamente analizzato il contesto in cui l'Utente potrebbe trovarsi durante l'utilizzo dell'applicazione.
+È emerso che l'applicativo si configura principalmente come strumento di prevenzione volto a mitigare il degenerare di situazioni a rischio. Si presuppone, infatti, che in casi di pericolo imminente la vittima contatti direttamente le autorità competenti (es. 118), bypassando l'applicazione. Pertanto, lo scenario ideale prevede che l'Utente disponga di tempo sufficiente per interagire con l'app. Nonostante ciò, verrà garantito un supporto anche in situazioni di maggiore stress.
+Nello specifico, l'installazione e l'utilizzo dell'applicazione sono previsti quando l'Utente:
 
 \begin{itemize}
     \item Nutre dubbi sull'argomento e desidera informarsi disponendo del tempo necessario;
@@ -191,11 +191,11 @@ Nello specifico, l'installazione e l'utilizzo dell'applicazione sono previsti qu
 \end{itemize}
 
 \subsection{Definizione delle Funzionalità}
-Una volta delineato il contesto d'uso, si è proceduto all'identificazione delle funzionalità più idonee per il target di riferimento. È stato stabilito come principio cardine che le azioni critiche o gli allarmi (come la chiamata alle forze dell'ordine) non debbano essere gestiti autonomamente dall'Intelligenza Artificiale, bensì richiedano sempre la conferma esplicita dell'\term{Utente}. 
+Una volta delineato il contesto d'uso, si è proceduto all'identificazione delle funzionalità più idonee per il target di riferimento. È stato stabilito come principio cardine che le azioni critiche o gli allarmi (come la chiamata alle forze dell'ordine) non debbano essere gestiti autonomamente dall'Intelligenza Artificiale, bensì richiedano sempre la conferma esplicita dell'Utente. 
 \\Le funzionalità principali selezionate sono:
 
 \begin{itemize}
-    \item Welcome page e \term{Walkthrough} introduttivo;
+    \item Welcome page e Walkthrough introduttivo;
     \item Pagina impostazioni;
     \item Login e gestione Account;
     \item Detective delle relazioni;
@@ -206,19 +206,19 @@ Una volta delineato il contesto d'uso, si è proceduto all'identificazione delle
 \end{itemize}
 
 \subsubsection{Welcome Page e Walkthrough}
-L'esperienza \term{Utente} avrà inizio con una schermata di benvenuto volta a comprendere la finalità dell'installazione. Tale interfaccia presenterà due opzioni: "Per me" o "Per altri". Questa distinzione è fondamentale per fornire un contesto iniziale al Large Language Model (LLM) e preconfigurare determinati parametri. Inoltre, tale struttura permetterà in futuro l'implementazione di funzionalità differenziate in base al beneficiario del servizio.
+L'esperienza Utente avrà inizio con una schermata di benvenuto volta a comprendere la finalità dell'installazione. Tale interfaccia presenterà due opzioni: "Per me" o "Per altri". Questa distinzione è fondamentale per fornire un contesto iniziale al Large Language Model (LLM) e preconfigurare determinati parametri. Inoltre, tale struttura permetterà in futuro l'implementazione di funzionalità differenziate in base al beneficiario del servizio.
 
-Successivamente, sarà proposto un \term{Walkthrough} illustrativo delle funzionalità disponibili. È prevista la presenza di un comando per saltare tale guida, permettendo l'accesso diretto alle funzionalità dell'app.
+Successivamente, sarà proposto un Walkthrough illustrativo delle funzionalità disponibili. È prevista la presenza di un comando per saltare tale guida, permettendo l'accesso diretto alle funzionalità dell'app.
 
 \subsubsection{Account e Impostazioni}
-È prevista l'implementazione di una sezione per la gestione dell'account. L'\term{Utente} avrà la facoltà di fornire un indirizzo e-mail personale, utilizzabile per l'invio di notifiche qualora si rilevi un periodo prolungato di inattività, fungendo da meccanismo di controllo (dead man's switch) per verificare lo stato di sicurezza dell'\term{Utente} o l'abbandono volontario dell'app.
+È prevista l'implementazione di una sezione per la gestione dell'account. L'Utente avrà la facoltà di fornire un indirizzo e-mail personale, utilizzabile per l'invio di notifiche qualora si rilevi un periodo prolungato di inattività, fungendo da meccanismo di controllo (dead man's switch) per verificare lo stato di sicurezza dell'Utente o l'abbandono volontario dell'app.
 
-Un'ulteriore sezione sarà dedicata alle preferenze, incluse la gestione della rete di contatti fidati, la personalizzazione delle notifiche e la scelta dell'icona dell'app (funzionalità di "camuffamento" per proteggere la privacy in caso di \term{Ispezione} del dispositivo da parte di terzi) e delle informazioni condivisibili (es. posizione geografica). La configurazione della rete di supporto è cruciale: l'\term{Utente} potrà inserire e-mail o numeri di telefono di persone ritenute \textbf{fidate}, dati essenziali per il funzionamento del \textbf{Guardiano Silenzioso}. Tale funzionalità è progettata per essere scalabile, prevedendo in futuro l'invio di diverse tipologie di notifiche.
+Un'ulteriore sezione sarà dedicata alle preferenze, incluse la gestione della rete di contatti fidati, la personalizzazione delle notifiche e la scelta dell'icona dell'app (funzionalità di "camuffamento" per proteggere la privacy in caso di Ispezione del dispositivo da parte di terzi) e delle informazioni condivisibili (es. posizione geografica). La configurazione della rete di supporto è cruciale: l'Utente potrà inserire e-mail o numeri di telefono di persone ritenute \textbf{fidate}, dati essenziali per il funzionamento del \textbf{Guardiano Silenzioso}. Tale funzionalità è progettata per essere scalabile, prevedendo in futuro l'invio di diverse tipologie di notifiche.
 
 \subsubsection{Detective delle Relazioni e Lo Specchio Intelligente}
 L'interfaccia includerà una sezione dedicata all'interazione testuale con l'Intelligenza Artificiale, concepita per chiarire dubbi e fornire supporto. Questa schermata implementerà due distinte funzionalità: \textbf{Detective delle relazioni} e \textbf{Lo specchio intelligente}.
-La prima ha l'obiettivo di analizzare comportamenti o narrazioni dell'\term{Utente} per identificare la situazione attuale e riconoscere pattern di pericolo meritevoli di attenzione. La seconda è orientata all'autoconsapevolezza, offrendo uno spazio privato per l'analisi dei propri pensieri.
-La selezione del prompt più adeguato tra i due sarà gestita automaticamente dall'app previa analisi del messaggio \term{Utente}, mantenendo comunque la possibilità di modifica manuale. È prevista inoltre una sezione per l'archiviazione delle chat, consentendone la consultazione e la prosecuzione futura.
+La prima ha l'obiettivo di analizzare comportamenti o narrazioni dell'Utente per identificare la situazione attuale e riconoscere pattern di pericolo meritevoli di attenzione. La seconda è orientata all'autoconsapevolezza, offrendo uno spazio privato per l'analisi dei propri pensieri.
+La selezione del prompt più adeguato tra i due sarà gestita automaticamente dall'app previa analisi del messaggio Utente, mantenendo comunque la possibilità di modifica manuale. È prevista inoltre una sezione per l'archiviazione delle chat, consentendone la consultazione e la prosecuzione futura.
 
 \subsubsection{La Guida al Coraggio}
 La sezione denominata \textbf{La guida al coraggio} fungerà da hub informativo, offrendo accesso chiaro a risorse essenziali. I contenuti includeranno:
@@ -229,20 +229,20 @@ La sezione denominata \textbf{La guida al coraggio} fungerà da hub informativo,
     \item Definizioni normative e informazioni sulla "violenza di genere";
     \item Informazioni legali (diritti, azioni permesse, procedure di denuncia, ecc.).
 \end{itemize}
-Sarà inoltre integrata una mappa per la visualizzazione dei "luoghi sicuri", con indicazioni sui percorsi per raggiungerli basate sulla geolocalizzazione dell'\term{Utente} (tramite integrazione con Google Maps).
+Sarà inoltre integrata una mappa per la visualizzazione dei "luoghi sicuri", con indicazioni sui percorsi per raggiungerli basate sulla geolocalizzazione dell'Utente (tramite integrazione con Google Maps).
 
 \subsubsection{Guardiano Silenzioso}
-Tale funzionalità è concepita per l'invio tempestivo di comunicazioni di emergenza (e-mail o SMS) ai contatti della rete di supporto in caso di pericolo o necessità. L'attivazione di tali comunicazioni non sarà demandata all'IA, ma sarà gestita direttamente dall'\term{Utente} tramite un comando "\textbf{SOS}" chiaramente visibile e di rapido accesso.
+Tale funzionalità è concepita per l'invio tempestivo di comunicazioni di emergenza (e-mail o SMS) ai contatti della rete di supporto in caso di pericolo o necessità. L'attivazione di tali comunicazioni non sarà demandata all'IA, ma sarà gestita direttamente dall'Utente tramite un comando "\textbf{SOS}" chiaramente visibile e di rapido accesso.
 
-Qualora il dispositivo si trovi in condizioni di scarsa o nulla connettività internet, l'applicazione prevede una modalità di sicurezza ausiliaria. In tale scenario, previo comando specifico dell'\term{Utente}, verrà attivato un allarme acustico volto ad attirare l'attenzione dei presenti e dissuadere eventuali aggressori.
+Qualora il dispositivo si trovi in condizioni di scarsa o nulla connettività internet, l'applicazione prevede una modalità di sicurezza ausiliaria. In tale scenario, previo comando specifico dell'Utente, verrà attivato un allarme acustico volto ad attirare l'attenzione dei presenti e dissuadere eventuali aggressori.
 
 \subsubsection{Diario Criptato}
 Il \textbf{Diario Criptato} costituirà uno spazio sicuro per l'annotazione di eventi, pensieri e l'archiviazione di file multimediali (foto e audio). L'accesso a tale sezione sarà protetto da password o autenticazione biometrica, e l'interfaccia sarà progettata per essere discreta.
 
-A tutela della sicurezza dell'\term{Utente} in situazioni di costrizione, è previsto un meccanismo di accesso differenziato: qualora l'\term{Utente} sia forzato a mostrare il contenuto del diario, l'inserimento di una password errata darà accesso a un diario fittizio. Questa versione conterrà elementi coerenti e sensati, ma privi di qualsiasi informazione sensibile. L'inserimento della password corretta, invece, garantirà il normale accesso al diario reale e ai dati personali archiviati.
+A tutela della sicurezza dell'Utente in situazioni di costrizione, è previsto un meccanismo di accesso differenziato: qualora l'Utente sia forzato a mostrare il contenuto del diario, l'inserimento di una password errata darà accesso a un diario fittizio. Questa versione conterrà elementi coerenti e sensati, ma privi di qualsiasi informazione sensibile. L'inserimento della password corretta, invece, garantirà il normale accesso al diario reale e ai dati personali archiviati.
 
 In una prima fase, il diario non sarà interconnesso con l'IA.
-Tuttavia, l'\term{Architettura} è predisposta per future estensioni, eventualmente sviluppate da team specializzati o tramite microservizi. Possibili evoluzioni includono l'analisi dei contenuti del diario da parte dell'IA per arricchire il contesto delle conversazioni, o viceversa, l'esportazione automatica delle chat nel diario. Si ipotizza inoltre l'implementazione di widget per smartphone o smartwatch per l'inserimento rapido di note vocali o fotografiche.
+Tuttavia, l'Architettura è predisposta per future estensioni, eventualmente sviluppate da team specializzati o tramite microservizi. Possibili evoluzioni includono l'analisi dei contenuti del diario da parte dell'IA per arricchire il contesto delle conversazioni, o viceversa, l'esportazione automatica delle chat nel diario. Si ipotizza inoltre l'implementazione di widget per smartphone o smartwatch per l'inserimento rapido di note vocali o fotografiche.
 
 \subsection{Sintesi Grafica}
 Quanto discusso è stato schematizzato su supporto cartaceo durante il meeting. Partendo da un foglio bianco, sono stati aggiunti progressivamente post-it rappresentanti le categorie di utenti, i contesti d'uso e le funzionalità. Tale elaborato è visibile in Figura \ref{fig:cartellone_organizzativo}.
@@ -256,7 +256,7 @@ Quanto discusso è stato schematizzato su supporto cartaceo durante il meeting. 
 \end{figure}
 
 \subsection{Prototipo UI (Mockup)}
-Definite le specifiche funzionali, si è proceduto alla valutazione dell'Interfaccia \term{Utente} (UI). Ciascun membro del team ha prodotto una bozza grafica su carta, successivamente presentata al gruppo, come illustrato in Figura \ref{fig:mockup}.
+Definite le specifiche funzionali, si è proceduto alla valutazione dell'Interfaccia Utente (UI). Ciascun membro del team ha prodotto una bozza grafica su carta, successivamente presentata al gruppo, come illustrato in Figura \ref{fig:mockup}.
 
 \begin{figure}[H]
     \centering
@@ -282,7 +282,7 @@ Non è stata ancora deliberata una veste grafica definitiva; tuttavia, l'attenzi
 Definizione delle funzionalità operative da implementare & VE \ignoreglossary{RTB} 2.1 \\
 \hline
 \rowcolor{gray!20}
-Definizione delle linee guida per l'Interfaccia \term{Utente} (UI) &  VE \ignoreglossary{RTB} 2.2 \\
+Definizione delle linee guida per l'Interfaccia Utente (UI) &  VE \ignoreglossary{RTB} 2.2 \\
 \hline
 \end{tabular}
 \end{center}
@@ -298,18 +298,18 @@ Dalle discussioni e decisioni intraprese, sono emerse le seguenti attività:
 \begin{tabular}{|p{0.52\textwidth}|c|c|}
 \hline
 \rowcolor{gray!60} 
-\textbf{Task} & \textbf{Codice decisione} & \textbf{N° \term{Issue} Github} \\
+\textbf{Task} & \textbf{Codice decisione} & \textbf{N° Issue Github} \\
 \hline
 \rowcolor{white}
 Analisi tecnica preliminare dei servizi AWS per l'individuazione delle risorse idonee all'implementazione delle funzionalità & VE \ignoreglossary{RTB} 2.1 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/85}{\textbf{\#85}} \\
 \hline
 \rowcolor{gray!20}
-Scelta e finalizzazione del design dell'Interfaccia \term{Utente} (UI) per il \term{PoC} & VE \ignoreglossary{RTB} 2.2 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/86}{\textbf{\#86}} \\
+Scelta e finalizzazione del design dell'Interfaccia Utente (UI) per il PoC & VE \ignoreglossary{RTB} 2.2 & \href{https://github.com/SWE-BitByBit/SWE-docs/issues/86}{\textbf{\#86}} \\
 \hline
 \end{tabular}
 \end{center}
 
-\textbf{Nota Metodologica:} Si precisa che l'attuale fase progettuale è focalizzata sull'\term{Analisi dei requisiti} e sullo studio di fattibilità tecnologica. L'effettiva fase di sviluppo software e programmazione sarà avviata esclusivamente a seguito del consolidamento delle scelte architetturali e dello stack tecnologico.
+\textbf{Nota Metodologica:} Si precisa che l'attuale fase progettuale è focalizzata sull'Analisi dei requisiti e sullo studio di fattibilità tecnologica. L'effettiva fase di sviluppo software e programmazione sarà avviata esclusivamente a seguito del consolidamento delle scelte architetturali e dello stack tecnologico.
 
 \vspace*{\fill}
 \noindent
