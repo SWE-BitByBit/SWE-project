@@ -884,10 +884,10 @@ Il ridimensionamento è gestito in modo automatico da AWS Lambda in risposta al 
 
 \subsubsection{Infrastruttura}
 L'infrastruttura del sistema è ospitata interamente su \textbf{Amazon Web Services (AWS)}. 
-In questo modello il provisioning, il bilanciamento del carico, la scalabilità e la gestione dell'hardware sottostante sono demandati al cloud provider, riducendo la necessità di gestione da parte del team di sviluppo.\\
+In questo modello il provisioning, il bilanciamento del carico, la scalabilità e la gestione dell'hardware sottostante sono demandati al \term{Cloud} provider, riducendo la necessità di gestione da parte del team di sviluppo.\\
 
 Questa scelta risulta coerente con l'\term{Architettura} three-tier descritta in precedenza e con l'adozione del pattern a microservizi, in quanto consente di distribuire componenti indipendenti che scalano automaticamente in funzione del carico. 
-L'infrastruttura serverless introduce inoltre i seguenti vantaggi:
+L'infrastruttura \term{Serverless} introduce inoltre i seguenti vantaggi:
 \begin{itemize}
     \item \textbf{\term{Scalabilità dinamica}}: le risorse computazionali vengono allocate automaticamente da AWS in base al numero di richieste ricevute riducendo i costi dovuti a capacità inutilizzata;
     \item \textbf{Isolamento dei servizi}: ogni microservizio viene eseguito in modo indipendente tramite una funzione AWS Lambda dedicata, con risorse di persistenza e permessi separati rispetto agli altri servizi;
@@ -897,27 +897,27 @@ L'infrastruttura serverless introduce inoltre i seguenti vantaggi:
 
 L'infrastruttura applicativa è organizzata attraverso i seguenti componenti principali:
 \begin{itemize}
-    \item \textbf{Amazon API Gateway}: costituisce il punto di ingresso del sistema lato backend ed espone gli endpoint HTTPS consumati dal client Flutter. 
+    \item \textbf{Amazon API Gateway}: costituisce il punto di ingresso del sistema lato \term{Backend} ed espone gli endpoint HTTPS consumati dal client Flutter. 
     Il servizio si occupa di ricevere le richieste HTTP, validarle e instradarle verso la funzione AWS Lambda associata;
     \item \textbf{Amazon Cognito}: gestisce l'autenticazione e l'autorizzazione degli utenti attraverso token JWT validati da API Gateway prima dell'invocazione delle Lambda protette;
     \item \textbf{AWS Lambda}: implementa il logic tier dell'applicazione secondo il pattern a microservizi. 
-    Ogni Lambda contiene la business logic relativa a uno specifico dominio funzionale ed esegue il codice in ambienti di esecuzione creati dinamicamente da AWS;
+    Ogni Lambda contiene la \term{Business Logic} relativa a uno specifico dominio funzionale ed esegue il codice in ambienti di esecuzione creati dinamicamente da AWS;
     \item \textbf{Amazon DynamoDB}: fornisce la persistenza dei dati strutturati tramite database NoSQL;
     \item \textbf{Amazon S3}: viene utilizzato per l'archiviazione dei contenuti multimediali, quali immagini e file audio.
 \end{itemize}
 
 \subsubsubsection{\term{Infrastructure as Code} (IaC)}
-L'infrastruttura cloud viene gestita tramite il paradigma dell'\term{Infrastructure as Code} (IaC). 
-Tutte le risorse AWS necessarie al funzionamento del sistema vengono descritte tramite file \term{YAML} versionati all'interno del repository del progetto.\\
+L'infrastruttura \term{Cloud} viene gestita tramite il paradigma dell'\term{Infrastructure as Code} (IaC). 
+Tutte le risorse AWS necessarie al funzionamento del sistema vengono descritte tramite file \term{YAML} versionati all'interno del \term{Repository} del progetto.\\
 
-Per la gestione dell'infrastruttura viene utilizzato \textbf{AWS SAM (Serverless Application Model)}, framework sviluppato da AWS e basato su \textbf{AWS CloudFormation}. 
-AWS SAM introduce una sintassi semplificata specifica per applicazioni serverless, consentendo di definire in modo compatto risorse quali:
+Per la gestione dell'infrastruttura viene utilizzato \textbf{AWS SAM (\term{Serverless} Application Model)}, \term{Framework} sviluppato da AWS e basato su \textbf{AWS CloudFormation}. 
+AWS SAM introduce una sintassi semplificata specifica per applicazioni \term{Serverless}, consentendo di definire in modo compatto risorse quali:
 \begin{itemize}
     \item funzioni AWS Lambda;
     \item endpoint API Gateway;
     \item bucket Amazon S3;
     \item tabelle Amazon DynamoDB;
-    \item variabili d'ambiente e configurazioni di deployment.
+    \item variabili d'ambiente e configurazioni di \term{Deployment}.
 \end{itemize}
 
 % ===== AUTENTICAZIONE =====
