@@ -49,7 +49,7 @@ def main():
             else:
                 print(f"\n✅ PDF generato correttamente: {tex_file}")
         else:
-            print(f"\n PDF saltato per presenza file firmato: {tex_file}")
+            print(f"\n Generazione PDF saltata per presenza file firmato: {tex_file}")
     if failed_files:
         print("\n=================================")
         print("FILE CHE NON HANNO COMPILATO:")
