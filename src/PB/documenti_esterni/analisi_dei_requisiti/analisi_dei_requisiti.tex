@@ -370,11 +370,11 @@ Il prodotto dovrà seguire le seguenti funzionalità principali:
 \subsubsection{Account e Impostazioni}
 È prevista l'implementazione di una sezione per la gestione dell'account. L'Utente avrà la facoltà di fornire un indirizzo e-mail personale, utilizzabile per l'invio di notifiche qualora si rilevi un periodo prolungato di inattività, fungendo da meccanismo di controllo (dead man's switch) per verificare lo stato di sicurezza dell'Utente o l'abbandono volontario dell'app.
 
-Un'ulteriore sezione sarà dedicata alle preferenze, incluse la gestione della rete di contatti fidati e la personalizzazione delle notifiche. La configurazione della rete di supporto è cruciale: l'\term{Utente} potrà inserire e-mail o numeri di telefono di persone ritenute \textbf{fidate}, dati essenziali per il funzionamento del \textbf{Guardiano Silenzioso}. Tale funzionalità è progettata per essere scalabile, prevedendo in futuro l'invio di diverse tipologie di notifiche.
+Un'ulteriore sezione sarà dedicata alle preferenze, incluse la gestione della rete di contatti fidati e la personalizzazione delle notifiche. La configurazione della rete di supporto è cruciale: l'Utente potrà inserire e-mail o numeri di telefono di persone ritenute \textbf{fidate}, dati essenziali per il funzionamento del \textbf{Guardiano Silenzioso}. Tale funzionalità è progettata per essere scalabile, prevedendo in futuro l'invio di diverse tipologie di notifiche.
 
 \subsubsection{Detective delle Relazioni e Lo Specchio Intelligente}
 L'interfaccia includerà una sezione dedicata all'interazione testuale con l'Intelligenza Artificiale, concepita per chiarire dubbi e fornire supporto. Questa schermata implementerà due distinte funzionalità: \textbf{Detective delle relazioni} e \textbf{Lo specchio intelligente}.
-La prima ha l'obiettivo di analizzare comportamenti o narrazioni dell'\term{Utente} per identificare la situazione attuale e riconoscere pattern di pericolo meritevoli di attenzione. La seconda è orientata all'autoconsapevolezza, offrendo uno spazio privato per l'analisi dei propri pensieri. L'\term{Utente} potrà cambiarere il contesto di conversazione tra le due modalità, mantenendo la possibilità di accedere a entrambe in qualsiasi momento. In questa fase, l'IA non avrà alcun ruolo attivo o decisionale in situazioni critiche, ma si limiterà a fornire supporto analitico e riflessivo.
+La prima ha l'obiettivo di analizzare comportamenti o narrazioni dell'Utente per identificare la situazione attuale e riconoscere pattern di pericolo meritevoli di attenzione. La seconda è orientata all'autoconsapevolezza, offrendo uno spazio privato per l'analisi dei propri pensieri. L'Utente potrà cambiarere il contesto di conversazione tra le due modalità, mantenendo la possibilità di accedere a entrambe in qualsiasi momento. In questa fase, l'IA non avrà alcun ruolo attivo o decisionale in situazioni critiche, ma si limiterà a fornire supporto analitico e riflessivo.
 
 \subsubsection{La Guida al Coraggio}
 La sezione denominata \textbf{La guida al coraggio} fungerà da hub informativo, offrendo accesso chiaro a risorse essenziali. I contenuti includeranno:
@@ -398,14 +398,14 @@ Il \textbf{Diario Criptato} costituirà uno spazio sicuro per l'annotazione di e
 A tutela della sicurezza dell'Utente in situazioni di costrizione, è previsto un meccanismo di accesso differenziato: qualora l'Utente sia forzato a mostrare il contenuto del diario, l'inserimento di una password errata darà accesso a un diario fittizio. Questa versione conterrà elementi coerenti e sensati, ma privi di qualsiasi informazione sensibile. L'inserimento della password corretta, invece, garantirà il normale accesso al diario reale e ai dati personali archiviati.
 
 In una prima fase, il diario non sarà interconnesso con l'IA.
-Tuttavia, l'\term{Architettura} è predisposta per future estensioni, eventualmente sviluppate da team specializzati o tramite microservizi. Possibili evoluzioni includono l'analisi dei contenuti del diario da parte dell'IA per arricchire il contesto delle conversazioni, o viceversa, l'esportazione automatica delle chat nel diario. Si ipotizza inoltre l'implementazione di widget per smartphone o smartwatch per l'inserimento rapido di note vocali o fotografiche.
+Tuttavia, l'Architettura è predisposta per future estensioni, eventualmente sviluppate da team specializzati o tramite microservizi. Possibili evoluzioni includono l'analisi dei contenuti del diario da parte dell'IA per arricchire il contesto delle conversazioni, o viceversa, l'esportazione automatica delle chat nel diario. Si ipotizza inoltre l'implementazione di widget per smartphone o smartwatch per l'inserimento rapido di note vocali o fotografiche.
 
 \subsubsection{Dead Man's Switch}
-Il sistema prevede un meccanismo di controllo denominato "Dead Man's Switch", che si attiva in caso di prolungata inattività dell'\term{Utente}. Se l'\term{Utente} non interagisce con l'app per un periodo di tempo configurabile, il sistema invierà una notifica all'\term{Utente} per controllare la propria situazione. In caso di mancata risposta, il sistema, dopo un ultieriore periodo di tempo, invierà una notifica ai contatti fidati, segnalando la potenziale situazione di rischio. Una qualsiasi interazione dell'\term{Utente} con l'app durante questo \term{Processo} annullerà le notifiche e resetterà il timer di controllo.
-L'\term{Utente} avrà la possibilità di disattivare questa funzionalità in qualsiasi momento tramite le impostazioni.
+Il sistema prevede un meccanismo di controllo denominato "Dead Man's Switch", che si attiva in caso di prolungata inattività dell'Utente. Se l'Utente non interagisce con l'app per un periodo di tempo configurabile, il sistema invierà una notifica all'Utente per controllare la propria situazione. In caso di mancata risposta, il sistema, dopo un ultieriore periodo di tempo, invierà una notifica ai contatti fidati, segnalando la potenziale situazione di rischio. Una qualsiasi interazione dell'Utente con l'app durante questo Processo annullerà le notifiche e resetterà il timer di controllo.
+L'Utente avrà la possibilità di disattivare questa funzionalità in qualsiasi momento tramite le impostazioni.
 
 \subsubsection{Luoghi Sicuri}
-La sezione "Luoghi Sicuri" fornirà una mappa interattiva che evidenzia i luoghi considerati sicuri, come centri antiviolenza, stazioni di polizia, ospedali e altri punti di riferimento. L'\term{Utente} potrà visualizzareil luogo sicuro più vicino a sé. Questa funzionalità sarà integrata con Google Maps per garantire accuratezza e facilità d'uso.
+La sezione "Luoghi Sicuri" fornirà una mappa interattiva che evidenzia i luoghi considerati sicuri, come centri antiviolenza, stazioni di polizia, ospedali e altri punti di riferimento. L'Utente potrà visualizzareil luogo sicuro più vicino a sé. Questa funzionalità sarà integrata con Google Maps per garantire accuratezza e facilità d'uso.
 
 % =======================CARATTERISTICHE Utente================================
 
@@ -3957,7 +3957,7 @@ RF-OB-1 & L'Utente deve poter autenticarsi all'applicazione tramite l'utilizzo d
 RF-OB-2 & Il sistema deve attivare automaticamente la funzionalità di Dead Man's Switch a seguito del login dell'Utente & \hyperref[subsec:UC-1]{UC-1}, \hyperref[sec:UC-19]{UC-19} \\
 \hline
 
-RF-OB-3 & L'\term{Utente} deve poter visualizzare un messaggio di errore esplicativo nel caso in cui l'autenticazione tramite Google Auth fallisca, venga annullata o restituisca parametri non validi & \hyperref[subsec:UC-2]{UC-2} \\
+RF-OB-3 & L'Utente deve poter visualizzare un messaggio di errore esplicativo nel caso in cui l'autenticazione tramite Google Auth fallisca, venga annullata o restituisca parametri non validi & \hyperref[subsec:UC-2]{UC-2} \\
 \hline
 
 RF-OB-5 & L'Utente deve poter visualizzare la lista dei contatti fidati & \hyperref[sec:UC-4]{UC-4} \\
@@ -4107,7 +4107,7 @@ RF-OB-53 & L'Utente deve poter inserire la password per accedere al diario fitti
 RF-OB-54 & Il sistema deve visualizzare un messaggio di errore esplicativo nel caso in cui la password inserita per l'accesso al diario risulti errata & \hyperref[subsec:UC-27]{UC-27} \\
 \hline
 
-RF-OB-55 & L'\term{Utente} deve poter reinserire la password di accesso al diario dopo la visualizzazione del messaggio di errore esplicativo & \hyperref[subsec:UC-27]{UC-27} \\
+RF-OB-55 & L'Utente deve poter reinserire la password di accesso al diario dopo la visualizzazione del messaggio di errore esplicativo & \hyperref[subsec:UC-27]{UC-27} \\
 \hline
 
 RF-OB-57 & L'Utente deve poter visualizzare il contenuto del diario criptato & \hyperref[subsec:UC-28]{UC-28} \\
@@ -4248,7 +4248,7 @@ RF-OB-101 & Il sistema deve notificare l'Utente della mancanza di contatti fidat
 RF-OB-102 & L'Utente deve poter avviare un segnale acustico di emergenza indipendente dalle impostazioni di volume del dispositivo & \hyperref[sec:UC-47]{UC-47} \\
 \hline
 
-RF-OB-103 & L'\term{Utente} deve poter inviare un messaggio al chatbot e ricevere una risposta generata dall'LLM in base al contesto scelto & \hyperref[sec:UC-48]{UC-48} \\
+RF-OB-103 & L'Utente deve poter inviare un messaggio al chatbot e ricevere una risposta generata dall'LLM in base al contesto scelto & \hyperref[sec:UC-48]{UC-48} \\
 \hline
 
 RF-OB-105 & Il sistema deve notificare l'Utente della mancanza di connessione internet durante la consultazione del chatbot & \hyperref[sec:UC-50]{UC-50} \\
@@ -4260,7 +4260,7 @@ RF-OB-106 & L'Utente deve poter ripetere l'invio del messaggio o scriverne uno n
 RF-OB-107 & L'Utente deve poter cambiare il contesto della chat a "Detective delle Relazioni" & \hyperref[sec:UC-51]{UC-51} \\
 \hline
 
-RF-OB-108 & L'\term{Utente} deve poter cambiare il contesto della chat a "Specchio Intelligente" & \hyperref[sec:UC-52]{UC-52} \\
+RF-OB-108 & L'Utente deve poter cambiare il contesto della chat a "Specchio Intelligente" & \hyperref[sec:UC-52]{UC-52} \\
 \hline
 
 RF-OB-111 & L'Utente deve poter creare una nuova sessione di chat con il chatbot & \hyperref[subsec:UC-54]{UC-54} \\
@@ -4481,22 +4481,22 @@ RF-OP-5 & Il sistema deve mettere a disposizione leggi estere & \hyperref[sec:UC
 RF-OP-6 & Il sistema deve mostrare leggi aggiornate, giuridicamente valide e complete & \hyperref[sec:UC-61]{UC-61} \\
 \hline
 \rowcolor{gray!20}
-RF-OP-7 & Il sistema deve indicare all'\term{Utente} se i luoghi sicuri visualizzati nella mappa sono autorevoli e verificati & \hyperref[sec:UC-66]{UC-66} \\
+RF-OP-7 & Il sistema deve indicare all'Utente se i luoghi sicuri visualizzati nella mappa sono autorevoli e verificati & \hyperref[sec:UC-66]{UC-66} \\
 \hline
 \rowcolor{white}
-RF-OP-8 & L'\term{Utente} deve poter selezionare il profilo di utilizzo ("Per me" o "Per altri") & \hyperref[subsec:UC-3]{UC-3} \\
+RF-OP-8 & L'Utente deve poter selezionare il profilo di utilizzo ("Per me" o "Per altri") & \hyperref[subsec:UC-3]{UC-3} \\
 \hline
 \rowcolor{gray!20}
 RF-OP-9 & Il sistema deve bloccare temporaneamente l'accesso al diario in seguito al superamento del limite massimo di tentativi errati di inserimento password & \hyperref[subsec:UC-26]{UC-26} \\
 \hline
 \rowcolor{white}
-RF-OP-10 & L'\term{Utente} deve poter interrompere la generazione della risposta dell'LLM durante la consultazione del chatbot & \hyperref[sec:UC-49]{UC-49} \\
+RF-OP-10 & L'Utente deve poter interrompere la generazione della risposta dell'LLM durante la consultazione del chatbot & \hyperref[sec:UC-49]{UC-49} \\
 \hline
 \rowcolor{gray!20}
-RF-OP-11 & Il sistema deve notificare l'\term{Utente} di un errore durante il cambio di contesto del chatbot e mantenere il contesto precedente & \hyperref[sec:UC-53]{UC-53} \\
+RF-OP-11 & Il sistema deve notificare l'Utente di un errore durante il cambio di contesto del chatbot e mantenere il contesto precedente & \hyperref[sec:UC-53]{UC-53} \\
 \hline
 \rowcolor{white}
-RF-OP-12 & L'\term{Utente} deve poter ritentare il cambio di contesto del chatbot dopo la notifica di errore & \hyperref[sec:UC-53]{UC-53} \\
+RF-OP-12 & L'Utente deve poter ritentare il cambio di contesto del chatbot dopo la notifica di errore & \hyperref[sec:UC-53]{UC-53} \\
 \hline
 
 \caption{Tabella Requisiti Funzionali Opzionali} \label{tab:requisiti_funzionali_opzionali} \\
@@ -4549,10 +4549,10 @@ RQ-OB-8 & L'intera documentazione formale di progetto deve essere redatta esclus
 RF-OP-9 & Il sistema deve bloccare temporaneamente l'accesso al diario in seguito al superamento del limite massimo di tentativi errati di inserimento password & \hyperref[subsec:UC-26]{UC-26} \\
 \hline
 \rowcolor{gray!20}
-RF-OP-10 & L'\term{Utente} deve poter interrompere la generazione della risposta dell'LLM durante la consultazione del chatbot & \hyperref[sec:UC-49]{UC-49} \\
+RF-OP-10 & L'Utente deve poter interrompere la generazione della risposta dell'LLM durante la consultazione del chatbot & \hyperref[sec:UC-49]{UC-49} \\
 \hline
 \rowcolor{white}
-RF-OP-11 & Il sistema deve notificare l'\term{Utente} di un errore durante il cambio di contesto del chatbot e mantenere il contesto precedente & \hyperref[sec:UC-53]{UC-53} \\
+RF-OP-11 & Il sistema deve notificare l'Utente di un errore durante il cambio di contesto del chatbot e mantenere il contesto precedente & \hyperref[sec:UC-53]{UC-53} \\
 \hline
 \caption{Tabella Requisiti di Qualità} \label{tab:requisiti_qualita} \\
 \end{longtable}
