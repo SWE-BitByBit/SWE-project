@@ -157,6 +157,9 @@ Gruppo BitByBit\\
 \hline
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+0.9.0 & 2026-05-04 & Marco Sanguin & Aggiornamento dell'architettura frontend con corrispettivi UML & Riccardo Manisi \\ 
+\hline
+\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 0.8.0 & 2026-05-02 & Giovanni Visentin & Sistemazione della tabella dei requisiti & Dennis Parolin \\ 
 \hline
 0.7.1 & 2026-05-07 & Ferdinando Fracasso & Aggiornato sezione \hyperref[subsec:librerie]{Librerie} & Riccardo Manisi \\
@@ -660,7 +663,7 @@ L'architettura logica dei microservizi in Cloud si fonda sui principi dell'Archi
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{diagrammi_classi/pattern_utilizzati/PatternMVVM.pdf}
-    \caption[Rappresentazione del pattern MVVM nel modulo di Autenticazione]{Rappresentazione del pattern MVVM nel modulo di Autenticazione}
+    \caption[Rappresentazione del pattern MVVM nel modulo del materiale informativo]{Rappresentazione del pattern MVVM nel modulo del materiale informativo}
     \label{fig:pattern_mvvm}
 \end{figure}
 \paragraph{Descrizione del pattern:}\mbox{}\\
@@ -680,21 +683,64 @@ Il pattern MVVM è ampiamente utilizzato per strutturare l'interfaccia \ignoregl
     \item Chatbot $\rightarrow$ \hyperref[DC-ChatbotViewModel]{\code{ChatbotViewModel}}
     \item Diario $\rightarrow$ \hyperref[DC-DiaryViewModel]{\code{DiaryViewModel}}
     \item Contatti Fidati $\rightarrow$ \hyperref[DC-TrustedContactViewModel]{\code{TrustedContactViewModel}}
+    \item Materiale Informativo $\rightarrow$ \hyperref[DC-MaterialViewModel]{\code{MaterialViewModel}}
+    \item Luoghi Sicuri $\rightarrow$ \hyperref[DC-SafePlaceViewModel]{\code{SafePlaceViewModel}}
+    \item Impostazioni $\rightarrow$ \hyperref[DC-DeadManViewModel]{\code{DeadManViewModel}}
+    
 \end{itemize}
+
+\subsubsection{Command} \label{sec:pattern_command}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{diagrammi_classi/pattern_utilizzati/PatternCommand.pdf}
+	\caption[Rappresentazione del pattern Command]{Rappresentazione del pattern Command}
+	\label{fig:pattern_command}
+\end{figure}
+
+\paragraph{Descrizione del pattern:}\mbox{}\\
+Il pattern Command è un design pattern comportamentale che incapsula una richiesta o un'azione come un oggetto autonomo. Nel frontend dell'applicazione, questo pattern è implementato tramite il pacchetto \code{command\_it}, che permette di standardizzare l'esecuzione della logica asincrona all'interno dei ViewModel. 
+
+A differenza di una semplice funzione, il comando così implementato agisce come un contenitore logico che gestisce automaticamente il ciclo di vita di un'operazione: dall'invocazione alla gestione dei risultati, fino alla cattura di eventuali eccezioni. Ogni comando espone tre proprietà osservabili tramite \code{ValueListenable}:
+\begin{itemize}
+	\item \code{isRunning}: un booleano che indica se l'operazione è attualmente in esecuzione.
+	\item \code{errors}: contiene eventuali errori catturati durante l'esecuzione.
+	\item \code{value}: contiene il risultato dell'operazione una volta completata con successo.
+\end{itemize}
+
+
+
+\paragraph{Ragioni per l'utilizzo:}\mbox{}\\
+L'adozione di \code{command\_it} risponde alla necessità di eliminare il "boilerplate code" (codice ripetitivo) tipico della gestione dello stato asincrono in Flutter. Le ragioni principali includono:
+\begin{itemize}
+	\item \textbf{Standardizzazione dello Stato}: evita la proliferazione manuale di variabili come \code{isLoading} o \code{errorMessage} per ogni singola azione nel ViewModel, accentrando tutto nell'oggetto Command.
+	\item \textbf{Prevenzione di Esecuzioni Concorrenti}: il pattern impedisce automaticamente l'avvio accidentale di più istanze della stessa operazione (es. pressioni ripetute su un tasto di invio) finché la precedente non è terminata.
+	\item \textbf{Disaccoppiamento UI-Logica}: la View non deve implementare blocchi \code{try-catch} o logiche di feedback: si limita a invocare il comando e "osservare" reattivamente i suoi cambiamenti di stato per mostrare indicatori di caricamento o dialoghi di errore.
+\end{itemize}
+
+\paragraph{Riferimenti nel progetto:}\mbox{}\\
+Il pattern viene implementato sistematicamente in tutti i ViewModel dell'applicazione per la gestione delle interazioni \term{Utente} e delle operazioni asincrone.
+
 
 \subsubsection{Observer}
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{diagrammi_classi/pattern_utilizzati/PatternObserver.pdf}
-    \caption[Rappresentazione del pattern Observer applicato nel modulo dei contatti fidati]{Rappresentazione del pattern Observer applicato nel modulo dei contatti fidati}
-    \label{fig:pattern_observer}
+	\centering
+	\includegraphics[width=\textwidth]{diagrammi_classi/pattern_utilizzati/PatternObserver.pdf}
+	\caption[Rappresentazione del pattern Observer applicato nel modulo dell'autenticazione]{Rappresentazione del pattern Observer applicato nel modulo dell'autenticazione}
+	\label{fig:pattern_observer}
 \end{figure}
-\paragraph{Descrizione del pattern:}\mbox{}\\
-Il pattern Observer definisce la capacità per un oggetto \textit{Publisher} di definire un meccanismo di "iscrizione" per cui un insieme di oggetti \textit{Subscriber} può "osservarlo" ed essere notificato solo in seguito ad un suo cambiamento di stato. 
 
-Nel contesto di Flutter, l'integrazione di questo pattern avviene tramite l'utilizzo del mixin \code{ChangeNotifier} e dal widget specializzato \code{Consumer}. Il \textit{ViewModel} agisce da \textit{Publisher}: ogni qualvolta rileva un cambiamento rilevante nei dati o nello stato, invoca il metodo \code{notifyListeners()} per segnalare la necessità di un aggiornamento. Il \textit{Consumer} funge da \textit{Subscriber}: esso è un widget che osserva e utilizza i dati forniti dal ViewModel e, ricevuta la notifica di cambiamento, innesca la ricostruzione automatica della propria interfaccia. Questo meccanismo è fondamentale nel nostro caso, perché assicura che solo la porzione di interfaccia racchiusa nel \code{Consumer} (ovvero quella che effettivamente dipende dai dati mutati) venga aggiornata, ottimizzando le prestazioni ed evitando ricostruzioni costose e inutili dell'intera schermata.
+\paragraph{Descrizione del pattern:}\mbox{}\\
+Il pattern Observer definisce un meccanismo di comunicazione in cui un oggetto, chiamato \textit{Subject} (o Publisher), mantiene una lista di dipendenti, chiamati \textit{Observers} (o Subscriber), e li notifica automaticamente di ogni cambiamento di stato. Nel sistema sviluppato, questo pattern è stato implementato con due diversi livelli di granularità per gestire la reattività dell'interfaccia utente:
+
+\begin{itemize}
+	\item \textbf{Livello Macro (ChangeNotifier e Consumer)}: Il ViewModel agisce come Publisher globale della schermata espandendo il \code{ChangeNotifier}. Quando il ViewModel invoca il metodo \code{notifyListeners()}, segnala che l'intero stato della logica di presentazione è mutato. Il widget \code{Consumer} funge da Subscriber, ricostruendo i rami della View che dipendono da quel ViewModel. Questo approccio è utilizzato per aggiornamenti di stato generali che influenzano più componenti contemporaneamente (per esempio lo stato di autenticazione).
+	\item \textbf{Livello Micro (Command e ValueListenableBuilder)}: Per una gestione più granulare, il sistema sfrutta l'integrazione tra il pattern Command e l'interfaccia \code{ValueListenable}. Ogni azione asincrona (es. \code{login}, \code{loadContacts}) è incapsulata in un oggetto \code{Command}, che agisce come un Publisher specializzato. Esso espone tre flussi di dati osservabili separatamente: \code{isRunning}, \code{errors} e \code{value}. La View utilizza widget \code{ValueListenableBuilder} per "mettersi in ascolto" solo di una specifica proprietà del comando. Ciò permette, ad esempio, di mostrare un indicatore di caricamento reagendo solo alla variazione di \code{isRunning}, senza richiedere la notifica di aggiornamento dell'intero ViewModel.
+\end{itemize}
+
+
+
 \paragraph{Ragioni per l'utilizzo:}\mbox{}\\
-Il pattern Observer è utilizzato per permettere ai ViewModel di notificare solo i widget che richiedono modifiche dopo un cambiamento di stato, ottimizzando la ricostruzione dell'UI in modo da non dover ricostruire l'intera schermata dopo una qualsiasi interazione. Il meccanismo di "iscrizione" rimuove la necessità di verifiche frequenti sullo stato del \textit{Publisher} da parte dei \textit{Subscriber} e rende il codice più facilmente estendibile e mantenibile, dato che la modifica di una componente non va a influire sulle altre. Ad esempio, l'introduzione di un nuovo widget nella \textit{View} non implica la necessità di modificare il \textit{ViewModel}.
+L'adozione di questa doppia implementazione risponde a esigenze di efficienza prestazionale e pulizia del codice. L'utilizzo di \code{ValueListenableBuilder} accoppiato ai \code{Command} riduce drasticamente il numero di "rebuild" inutili dell'interfaccia: la View può reagire al cambiamento del risultato di una singola operazione asincrona senza dover processare nuovamente lo stato globale del modulo. Questo garantisce una UI fluida anche in presenza di logiche complesse o flussi di dati frequenti. Inoltre, questo approccio disaccoppia la gestione degli errori e del caricamento (loading state) dalla logica di business principale, centralizzandola negli oggetti Command osservabili.
 \paragraph{Riferimenti nel progetto:}\mbox{}\\
 Essendo strettamente interconnesso al MVVM, il pattern Observer è utilizzato per la gestione dell'intera UI. Di seguito i punti principali dove i ViewModel agiscono da \textit{Publisher} per le rispettive schermate:
 \begin{itemize}
@@ -702,6 +748,9 @@ Essendo strettamente interconnesso al MVVM, il pattern Observer è utilizzato pe
     \item Chatbot $\rightarrow$ \hyperref[DC-ChatbotViewModel]{\code{ChatbotViewModel}}
     \item Diario $\rightarrow$ \hyperref[DC-DiaryViewModel]{\code{DiaryViewModel}}
     \item Contatti Fidati $\rightarrow$ \hyperref[DC-TrustedContactViewModel]{\code{TrustedContactViewModel}}
+    \item Materiale Informativo $\rightarrow$ \hyperref[DC-MaterialViewModel]{\code{MaterialViewModel}}
+    \item Luoghi Sicuri $\rightarrow$ \hyperref[DC-SafePlaceViewModel]{\code{SafePlaceViewModel}}
+    \item Impostazioni $\rightarrow$ \hyperref[DC-DeadManViewModel]{\code{DeadManViewModel}}
 \end{itemize}
 
 \subsubsection{Proxy}
@@ -741,19 +790,28 @@ Il pattern Singleton è utilizzato per il coordinamento dei componenti di sessio
     \item Diari Personali $\rightarrow$ \hyperref[DC-DiarySession]{\code{DiarySession}}
 \end{itemize}
 
-\subsubsection{Dependency Injection} \label{sec:pattern_dependency_injection}
+\subsubsection{Dependency Injection e Service Locator} \label{sec:pattern_dependency_injection}
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{diagrammi_classi/pattern_utilizzati/PatternDependencyInjection.pdf}
-    \caption[Rappresentazione del pattern Dependency Injection nel modulo di Autenticazione]{Rappresentazione del pattern Dependency Injection nel modulo di Autenticazione}
-    \label{fig:pattern_di}
+	\centering
+	\includegraphics[width=\textwidth]{diagrammi_classi/pattern_utilizzati/PatternDependencyInjection.pdf}
+	\caption[Rappresentazione del pattern Dependency Injection nel modulo di Autenticazione]{Rappresentazione del pattern Dependency Injection nel modulo del Dead Man' switch}
+	\label{fig:pattern_di}
 \end{figure}
-\paragraph{Descrizione del pattern:}\mbox{}\\
-Il pattern Dependency Injection (DI) è una tecnica in cui un oggetto riceve dall'esterno le istanze degli oggetti da cui dipende, anziché doverle creare internamente. Nel contesto dell'applicazione viene utilizzata in forma di \textit{constructor injection}: le dipendenze vengono passate ai componenti direttamente come parametri del costruttore durante la fase di istanziazione.
 
-Questo approccio permette di slegare i componenti logici dalla creazione delle proprie risorse. I \textit{ViewModel}, ad esempio, non istanziano mai i propri \textit{\term{Repository}}, ma li ricevono già configurati dal punto di ingresso del modulo o dell'applicazione, garantendo che ogni componente operi esclusivamente con le interfacce necessarie.
+\paragraph{Descrizione del pattern:}\mbox{}\\
+Il sistema adotta il pattern Dependency Injection (DI) supportato dal pattern \textbf{Service Locator}, implementato tramite la libreria \code{get\_it}. Questo approccio permette di separare la creazione delle dipendenze dal loro effettivo utilizzo. 
+
+L'architettura si basa su un punto di configurazione centralizzato (\code{setupLocator}) dove vengono registrate tutte le istanze del sistema. La DI viene poi attuata tramite \textit{Constructor Injection}: i componenti (come i ViewModel) non creano mai i propri Repository o Service internamente, ma dichiarano le dipendenze nel proprio costruttore. È il Service Locator a farsi carico di "iniettare" l'istanza corretta al momento della creazione, prelevandola dal registro globale.
+
 \paragraph{Ragioni per l'utilizzo:}\mbox{}\\
-L'utilizzo della DI favorisce un'\term{Architettura} modulare e flessibile, riducendo l'accoppiamento tra le classi. Il vantaggio principale risiede nella testabilità: l'iniezione tramite costruttore permette di sostituire facilmente le dipendenze reali con oggetti fittizi (\textit{mock}), consentendo l'esecuzione di unit test in isolamento. Inoltre, centralizzare la logica di creazione degli oggetti facilita la manutenzione e l'eventuale sostituzione di implementazioni specifiche senza dover modificare i client che le utilizzano.
+L'integrazione di \code{get\_it} e della DI offre tre vantaggi fondamentali per l'applicazione:
+\begin{itemize}
+	\item \textbf{Gestione del Ciclo di Vita}: Permette di differenziare tra \textit{Singletons} (istanze uniche come \code{DeadManRepository} o \code{ApiClient}), che mantengono lo stato per tutta la durata dell'app, e \textit{Factories} (come i ViewModel), che vengono creati ex-novo ogni volta che si accede a una schermata per garantire uno stato pulito.
+	\item \textbf{Lazy Loading}: Grazie alla registrazione di tipo \textit{Lazy}, le risorse (es. \code{MaterialService}) vengono istanziate solo nel momento del primo effettivo utilizzo, ottimizzando il consumo di memoria e i tempi di avvio del software.
+	\item \textbf{Testabilità e Mocking}: Centralizzare la creazione dei componenti permette di sostituire istantaneamente le implementazioni reali con versioni fittizie (Mock) durante i test, semplicemente modificando la registrazione nel locator senza toccare il codice della View o della logica di business.
+\end{itemize}
+
+	
 \paragraph{Riferimenti nel progetto:}\mbox{}\\
 Il pattern è applicato diffusamente in tutta l'applicazione. Di seguito alcune classi che integrano attivamente questo approccio:
 \begin{itemize}
@@ -763,62 +821,30 @@ Il pattern è applicato diffusamente in tutta l'applicazione. Di seguito alcune 
 \end{itemize}
 
 
-\subsubsection{Command} \label{sec:pattern_command}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{diagrammi_classi/pattern_utilizzati/PatternCommand.pdf}
-    \caption[Rappresentazione del pattern Command]{Rappresentazione del pattern Command}
-    \label{fig:pattern_command}
-\end{figure}
-\paragraph{Descrizione del pattern:}\mbox{}\\
-Il pattern Command è un design pattern comportamentale che incapsula una richiesta come un oggetto autonomo, consentendo di parametrizzare i client con diverse richieste, accodare o registrare le esecuzioni e supportare operazioni annullabili. Nel contesto di un'applicazione Flutter governata dal pattern MVVM, il pattern Command è utilizzato per incapsulare e standardizzare le azioni invocabili dall'interfaccia \ignoreglossary{utente}, esponendo comandi robusti e isolati dal layer di View.
-\paragraph{Ragioni per l'utilizzo:}\mbox{}\\
-Il pattern command permette di ottenere un forte disaccoppiamento tra la componente visiva che invoca l'azione (la View) e il modulo deputato all'esecuzione logica (il ViewModel o strati inferiori). Isolando e reificando l'interazione in un oggetto \textit{Command}, lo sviluppo beneficia in standardizzazione, accentrando il controllo della gestione di esecuzione asincrona e dei relativi stati interni dell'azione (attesa di elaborazione, conferme di successo o eccezioni previste). Questo elimina quasi integralmente le ridondanze nel codice e mitiga il verificarsi di interazioni non volute, come l'avvio accidentale e simultaneo di richieste doppie a seguito di pressioni ripetute sull'interfaccia.
-\paragraph{Riferimenti nel progetto:}\mbox{}\\
-Il pattern viene implementato sistematicamente in tutti i ViewModel dell'applicazione per la gestione delle interazioni \term{Utente} e delle operazioni asincrone. Di seguito sono riportate le principali classi che costituiscono l'infrastruttura del pattern Command nell'applicazione:
-
-\paragraph{Command<T>}\mbox{}\\
-È la classe base astratta del pattern. Mantiene internamente lo stato dell'azione tramite 
-i campi privati \code{\_running}, \code{\_result} e \code{\_error}. Espone queste informazioni tramite 
-getter pubblici che la View utilizza per aggiornare l'interfaccia. Il metodo privato \code{\_execute()} 
-contiene la logica comune a tutte le implementazioni concrete: impedisce esecuzioni multiple simultanee, aggiorna lo stato prima e 
-dopo l'esecuzione dell'azione e gestisce le eccezioni.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-Command_T_.pdf}
-    \caption[Diagramma della classe Command<T>]{Diagramma della classe \code{Command<T>}}
-    \label{DC-Command<T>}
-\end{figure}
-
-\paragraph{Command0<T>}\mbox{}\\
-È l'implementazione concreta di \code{Command<T>} per azioni senza argomenti. Riceve nel 
-costruttore una funzione di tipo \code{Future<T> Function()} che rappresenta l'azione da eseguire. 
-Espone il metodo pubblico \code{execute()}, che richiama il metodo \code{\_execute()} della classe base che esegue la funzione memorizzata come stato della specifica istanza della classe \code{Command}.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-Command0_T_.pdf}
-    \caption[Diagramma della classe Command0<T>]{Diagramma della classe \code{Command0<T>}}
-    \label{DC-Command0<T>}
-\end{figure}
-
-\paragraph{Command1<T, A>}\mbox{}\\
-È l'implementazione concreta di \code{Command<T>} per azioni che richiedono un argomento di tipo A. 
-Riceve nel costruttore una funzione di tipo \code{Future<T> Function(A)} e il metodo pubblico \code{execute()} accetta l'argomento che viene 
-passato all'azione al momento dell'esecuzione.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{diagrammi_classi/invio_sos/DC-Command1_T,A_.pdf}
-    \caption[Diagramma della classe Command1<T, A>]{Diagramma della classe \code{Command1<T, A>}}
-    \label{DC-Command1<T, A>}
-\end{figure}
 
 \subsubsection{Adapter} \label{sec:pattern_adapter}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{diagrammi_classi/pattern_utilizzati/PatternAdapter.pdf}
+	\caption[Rappresentazione del pattern Adapter all'ApiClient]{Rappresentazione del pattern Adapter all'ApiClient}
+	\label{fig:pattern_di}
+\end{figure}
+
 \paragraph{Descrizione del pattern:}\mbox{}\\
-Il pattern Adapter è un design pattern strutturale che permette l'interazione tra interfacce incompatibili, agendo come un mediatore che converte l'interfaccia di una classe in un'altra attesa dal client. Nell'applicazione, questo pattern viene impiegato per interfacciare il nucleo logico del sistema con servizi esterni, \term{Driver} o librerie di terze parti.
+Il pattern Adapter è un design pattern strutturale che permette a interfacce incompatibili di lavorare insieme. Agisce come un convertitore che traduce le chiamate del client nel formato compreso da una classe o libreria esterna. Nell'architettura del sistema, questo pattern è fondamentale per implementare i principi dell'Architettura Esagonale, dove il "core" dell'applicazione definisce dei contratti (Porte) e gli Adapter forniscono l'implementazione concreta per interfacciarsi con il mondo esterno.
+
 \paragraph{Ragioni per l'utilizzo:}\mbox{}\\
-L'integrazione di questo pattern è fondamentale per preservare l'integrità della \textit{\term{Business Logic}}. Attraverso l'uso degli Adapter, i moduli centrali possono interagire con database o API esterne senza dipendere dai loro protocolli specifici o dai formati di dati grezzi. Questo isolamento garantisce che il cuore del sistema rimanga agnostico rispetto alle scelte tecnologiche infrastrutturali, facilitando sostituzioni o aggiornamenti di componenti esterni con un impatto minimo o nullo sul resto del codice.
+L'integrazione di questo pattern permette di isolare il codice sorgente dalle dipendenze di terze parti. Utilizzando un Adapter per la comunicazione di rete o per i servizi di sistema, si evita di "inquinare" i Service o i Repository con dettagli implementativi di librerie specifiche. Se in futuro si decidesse di cambiare il client HTTP (ad esempio passando dalla libreria \code{http} a \code{dio}) o il fornitore di un servizio cloud, basterebbe creare un nuovo Adapter che rispetti l'interfaccia predefinita, senza dover modificare una singola riga di logica di business.
+
+
+
 \paragraph{Riferimenti nel progetto:}\mbox{}\\
-Il pattern è impiegato nel layer di accesso ai dati. Viene utilizzato per mappare le risposte provenienti dai servizi esterni in oggetti di dominio validi per l'applicazione e, specularmente, per tradurre le richieste del sistema nel formato richiesto dai destinatari esterni, garantendo una comunicazione fluida tra layer con responsabilità differenti.
+Il pattern è applicato in modo sistematico nella gestione dell'infrastruttura di rete e dei servizi hardware del dispositivo, oltre che nelle AWS Lambda che utilizzano l'architettura esagonale:
+\begin{itemize}
+	\item NetworkAdapter $\rightarrow$ \hyperref[DC-Chatbot]{\code{ApiClient}}
+	\item Location Service $\rightarrow$ \hyperref[DC-LocationService]{\code{LocationService}}
+	\item 
+\end{itemize}
 
 
 \subsection{Architettura di deployment} \label{subsec:architettura_deployment}
