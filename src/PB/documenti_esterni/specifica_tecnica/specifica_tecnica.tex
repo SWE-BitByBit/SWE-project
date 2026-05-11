@@ -871,8 +871,10 @@ la memorizzazione dei contenuti multimediali, quali immagini e file audio associ
 Per il logic tier viene adottato il pattern architetturale a \textbf{microservizi}. In questo modello l'applicazione è realizzata 
 da componenti indipendenti, ciascuno responsabile di un sottoinsieme ben definito di funzionalità. Ogni componente è deployabile, aggiornabile e scalabile in modo autonomo rispetto agli altri.\\
 
-Nel progetto ogni microservizio corrisponde a una singola funzione AWS Lambda, deployata tramite AWS SAM. Questa corrispondenza diretta semplifica 
-il ciclo di sviluppo, consentendo di concentrarsi sulla \term{Business Logic} di ciascun servizio senza doversi occupare della gestione dell'infrastruttura sottostante, delegata interamente ad AWS.\\
+Nel progetto ogni microservizio corrisponde a una singola funzione AWS Lambda, deployata tramite AWS SAM. Questa corrispondenza elimina la necessità dell'implementazione delle API per la 
+comunicazione tra Lambda diverse che si introdurrebbe invocando Lambda distinte per ogni operazione, e riduce i costi di esecuzione in quanto AWS deve andare ad inizializzare una sola Lambda per microservizio. 
+Ogni microservizio gestisce inoltre un proprio layer di persistenza dedicato, senza condivisione di istanze 
+di database tra servizi distinti.\\
 
 Per evitare l'accoppiamento tra microservizi, ogni Lambda interagisce esclusivamente con le proprie istanze dedicate di DynamoDB o S3, 
 senza condivisione di risorse di persistenza tra servizi distinti. Questa scelta è visibile nei diagrammi dell'\term{Architettura} di ciascun 
@@ -881,33 +883,42 @@ microservizio (si veda \hyperref[sec:elenco-metriche]{Sezione~\ref*{subsec:archi
 Il ridimensionamento è gestito in modo automatico da AWS Lambda in risposta al volume di richieste, senza intervento manuale e senza costi per capacità inutilizzata.
 
 \subsubsection{Infrastruttura}
-L'intero ecosistema di \term{Backend} è ospitato e gestito all'interno di \textbf{Amazon Web Services (AWS)}.
-Questa scelta architetturale consente:
+L'infrastruttura del sistema è ospitata interamente su \textbf{Amazon Web Services (AWS)}. 
+In questo modello il provisioning, il bilanciamento del carico, la scalabilità e la gestione dell'hardware sottostante sono demandati al cloud provider, riducendo la necessità di gestione da parte del team di sviluppo.\\
+
+Questa scelta risulta coerente con l'\term{Architettura} three-tier descritta in precedenza e con l'adozione del pattern a microservizi, in quanto consente di distribuire componenti indipendenti che scalano automaticamente in funzione del carico. 
+L'infrastruttura serverless introduce inoltre i seguenti vantaggi:
 \begin{itemize}
-    \item \textbf{\term{Scalabilità dinamica}}: le risorse allocate (il calcolo e lo storage) scalano o si accendono/spengono automaticamente in base al volume di richieste ricevute dai Client;
-    \item \textbf{Isolamento e Sicurezza}: ogni funzione ha una specifica responsabilità e policy di accesso minima verso le altre risorse, limitando l'esposizione al minimo indispensabile;
-    \item \textbf{Gestione del servizio (\term{Zero Ops})}: l'uso di infrastrutture completamente gestite e la persistenza dei dati automatizzata tramite \textbf{Amazon DynamoDB} e \textbf{Amazon S3} libera il team dagli oneri di manutenzione sistemistica.
+    \item \textbf{\term{Scalabilità dinamica}}: le risorse computazionali vengono allocate automaticamente da AWS in base al numero di richieste ricevute riducendo i costi dovuti a capacità inutilizzata;
+    \item \textbf{Isolamento dei servizi}: ogni microservizio viene eseguito in modo indipendente tramite una funzione AWS Lambda dedicata, con risorse di persistenza e permessi separati rispetto agli altri servizi;
+    \item \textbf{Sicurezza}: l'accesso alle risorse AWS è regolato tramite policy IAM, limitando ogni Lambda esclusivamente alle operazioni necessarie al proprio dominio applicativo;
+    \item \textbf{Riduzione dell'overhead operativo (\term{Zero Ops})}: la gestione dell'infrastruttura fisica, degli aggiornamenti di sicurezza, della disponibilità dei servizi e della replica dei dati è demandata ad AWS.
 \end{itemize}
 
-Il flusso operativo del sistema e la connessione tra i componenti AWS si articolano nei seguenti layer di \term{Deployment}:
+L'infrastruttura applicativa è organizzata attraverso i seguenti componenti principali:
 \begin{itemize}
-    \item \textbf{Amazon API Gateway}: costituisce l'unico punto di ingresso espositivo e si occupa di orchestrare e bilanciare le richieste HTTP provenienti dal Client.
-    \item \textbf{Amazon Cognito}: agisce come filtro primario in stretta collaborazione con l'API Gateway, validando i token \term{Utente} e negando le richieste non autorizzate.
-    \item \textbf{AWS Lambda}: rappresenta il cuore elaborativo decentralizzato; l'infrastruttura crea dinamicamente container di esecuzione che accolgono le richieste smistate e processano la \term{Business Logic} interna.
-    \item \textbf{Amazon DynamoDB e Amazon S3}: compongono lo strato di persistenza profondo ospitando, in alta disponibilità, i dati relazionali/JSON e i contenuti multimediali grezzi sollevando il livello server della necessità di memoria sul disco.
-\end{itemize}
-
-\subsubsubsection{Orchestrazione \term{Event-Driven}}
-Oltre alle comunicazioni sincrone HTTP per le API \textit{REST}, l'\term{Architettura} di \term{Deployment} prevede un'orchestrazione asincrona fondamentale per le funzionalità dell'applicazione (es. le notifiche del sistema \textit{Dead Man's Switch}).
-I componenti comunicano internamente tramite eventi gestiti da \textbf{Amazon EventBridge}, che funge da \textit{\term{Message Bus}} e permette:
-\begin{itemize}
-    \item \textbf{Comunicazione asincrona e disaccoppiata}: riducendo la dipendenza operativa tra i servizi;
-    \item L'esecuzione ritardata e pianificata di check sui dati salvati nel database;
-    \item L'instradamento di Eventi critici e allerte verso il servizio \textbf{Amazon SES} per l'invio automatizzato di e-mail.
+    \item \textbf{Amazon API Gateway}: costituisce il punto di ingresso del sistema lato backend ed espone gli endpoint HTTPS consumati dal client Flutter. 
+    Il servizio si occupa di ricevere le richieste HTTP, validarle e instradarle verso la funzione AWS Lambda associata;
+    \item \textbf{Amazon Cognito}: gestisce l'autenticazione e l'autorizzazione degli utenti attraverso token JWT validati da API Gateway prima dell'invocazione delle Lambda protette;
+    \item \textbf{AWS Lambda}: implementa il logic tier dell'applicazione secondo il pattern a microservizi. 
+    Ogni Lambda contiene la business logic relativa a uno specifico dominio funzionale ed esegue il codice in ambienti di esecuzione creati dinamicamente da AWS;
+    \item \textbf{Amazon DynamoDB}: fornisce la persistenza dei dati strutturati tramite database NoSQL;
+    \item \textbf{Amazon S3}: viene utilizzato per l'archiviazione dei contenuti multimediali, quali immagini e file audio.
 \end{itemize}
 
 \subsubsubsection{\term{Infrastructure as Code} (IaC)}
-Il \term{Deployment} materiale di tutte le risorse in ambiente AWS non è eseguito manualmente, ma viene automatizzato in modo riproducibile attraverso l'impiego di \textbf{AWS SAM (\term{Serverless} Application Model)} e \textbf{AWS CloudFormation}. L'infrastruttura logica e fisica è versionata sotto forma di file \term{YAML}, aderendo interamente al paradigma dell'\textit{\term{Infrastructure as Code}}.
+L'infrastruttura cloud viene gestita tramite il paradigma dell'\term{Infrastructure as Code} (IaC). 
+Tutte le risorse AWS necessarie al funzionamento del sistema vengono descritte tramite file \term{YAML} versionati all'interno del repository del progetto.\\
+
+Per la gestione dell'infrastruttura viene utilizzato \textbf{AWS SAM (Serverless Application Model)}, framework sviluppato da AWS e basato su \textbf{AWS CloudFormation}. 
+AWS SAM introduce una sintassi semplificata specifica per applicazioni serverless, consentendo di definire in modo compatto risorse quali:
+\begin{itemize}
+    \item funzioni AWS Lambda;
+    \item endpoint API Gateway;
+    \item bucket Amazon S3;
+    \item tabelle Amazon DynamoDB;
+    \item variabili d'ambiente e configurazioni di deployment.
+\end{itemize}
 
 % ===== AUTENTICAZIONE =====
 \subsection{Architettura Front End} \label{subsec:architettura_frontend}
@@ -4373,7 +4384,7 @@ Descrizione metodi:
     \caption[Diagramma della classe DmsRepositoryPort]{Diagramma della classe \code{DmsRepositoryPort}}
     \label{fig:architettura_contatti_fidati_DmsRepositoryPort}
 \end{figure}
-Costituisce l'outbound port, fornisce il \term{Contratto} per la persistenza delle impostazioni del Dead man's Switch. Espone i metodi utilizzati dalla domain logic.
+Costituisce l'outbound port, fornisce il \ignoreglossary{contratto} per la persistenza delle impostazioni del Dead man's Switch. Espone i metodi utilizzati dalla domain logic.
 Descrizione metodi:
 \begin{itemize}
     \item \code{update\_dms\_config(config: DmsConfigurationSettings)}, aggiorna la configurazione del dead man's switch dell'\term{Utente};
@@ -4392,7 +4403,7 @@ Descrizione metodi:
     \caption[Diagramma della classe TrustedContactRepositoryPort]{Diagramma della classe \code{TrustedContactRepositoryPort}}
     \label{fig:architettura_contatti_fidati_TrustedContactRepositoryPort}
 \end{figure}
-Definisce il \term{Contratto} per la persistenza dei contatti fidati. Espone i metodi per le operazioni CRUD.
+Definisce il \ignoreglossary{contratto} per la persistenza dei contatti fidati. Espone i metodi per le operazioni CRUD.
 Descrizione metodi:
 \begin{itemize}
     \item \code{add(contact: TrustedContact)}, aggiunge un nuovo contatto fidato e restituisce l'entità creata;
