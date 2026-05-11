@@ -32,6 +32,7 @@ def main():
         print(f"==============================\n")
         
         signed_file = output_dir / (tex_file.stem + "_firmato.pdf" )
+        print(signed_file)
         if (not signed_file.exists):
             result = subprocess.run(
                 [
