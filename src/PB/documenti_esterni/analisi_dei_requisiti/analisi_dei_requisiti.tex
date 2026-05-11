@@ -110,7 +110,7 @@
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
 \textbf{Stato:} & Completo\\
-\textbf{Versione:} & 1.6.0 \\
+\textbf{Versione:} & 2.0.0 \\
 \textbf{Responsabile:} & Giovanni Visentin \\
 \textbf{Redattori:} & 
 \begin{tabular}[t]{@{}l@{}}
@@ -153,6 +153,9 @@ Gruppo BitByBit\\
 \hline
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+\hline
+\rowcolor{white}
+2.0.0 & 2026-05-06 & Giovanni Visentin & Ultime modifiche e approvazione documento & Dennis Parolin \\
 \hline
 \rowcolor{gray!20}
 1.7.0 & 2026-05-01 & Giovanni Visentin & Modifiche generali e aggiornamenti dei requisiti & Dennis Parolin \\
@@ -353,7 +356,6 @@ Infine, il sistema è progettato per essere affidabile e accessibile in contesti
 Il prodotto dovrà seguire le seguenti funzionalità principali:
 
 \begin{itemize}
-    \item Welcome page;
     \item Pagina impostazioni;
     \item Login e gestione Account;
     \item Detective delle relazioni;
@@ -361,10 +363,9 @@ Il prodotto dovrà seguire le seguenti funzionalità principali:
     \item La guida al coraggio;
     \item Guardiano silenzioso;
     \item Diario criptato.
+    \item Dead Man's Switch.
+    \item Luoghi sicuri.
 \end{itemize}
-
-\subsubsection{Welcome Page}
-L'esperienza \ignoreglossary{utente} avrà inizio con una schermata di benvenuto pensata per introdurre l’applicazione, illustrandone sinteticamente finalità e funzionalità principali.
 
 \subsubsection{Account e Impostazioni}
 È prevista l'implementazione di una sezione per la gestione dell'account. L'\term{Utente} avrà la facoltà di fornire un indirizzo e-mail personale, utilizzabile per l'invio di notifiche qualora si rilevi un periodo prolungato di inattività, fungendo da meccanismo di controllo (dead man's switch) per verificare lo stato di sicurezza dell'\term{Utente} o l'abbandono volontario dell'app.
@@ -398,6 +399,13 @@ A tutela della sicurezza dell'\term{Utente} in situazioni di costrizione, è pre
 
 In una prima fase, il diario non sarà interconnesso con l'IA.
 Tuttavia, l'\term{Architettura} è predisposta per future estensioni, eventualmente sviluppate da team specializzati o tramite microservizi. Possibili evoluzioni includono l'analisi dei contenuti del diario da parte dell'IA per arricchire il contesto delle conversazioni, o viceversa, l'esportazione automatica delle chat nel diario. Si ipotizza inoltre l'implementazione di widget per smartphone o smartwatch per l'inserimento rapido di note vocali o fotografiche.
+
+\subsubsection{Dead Man's Switch}
+Il sistema prevede un meccanismo di controllo denominato "Dead Man's Switch", che si attiva in caso di prolungata inattività dell'\term{Utente}. Se l'\term{Utente} non interagisce con l'app per un periodo di tempo configurabile, il sistema invierà una notifica all'\term{Utente} per controllare la propria situazione. In caso di mancata risposta, il sistema, dopo un ultieriore periodo di tempo, invierà una notifica ai contatti fidati, segnalando la potenziale situazione di rischio. Una qualsiasi interazione dell'\term{Utente} con l'app durante questo \term{Processo} annullerà le notifiche e resetterà il timer di controllo.
+L'\term{Utente} avrà la possibilità di disattivare questa funzionalità in qualsiasi momento tramite le impostazioni.
+
+\subsubsection{Luoghi Sicuri}
+La sezione "Luoghi Sicuri" fornirà una mappa interattiva che evidenzia i luoghi considerati sicuri, come centri antiviolenza, stazioni di polizia, ospedali e altri punti di riferimento. L'\term{Utente} potrà visualizzareil luogo sicuro più vicino a sé. Questa funzionalità sarà integrata con Google Maps per garantire accuratezza e facilità d'uso.
 
 % =======================CARATTERISTICHE \term{Utente}================================
 
@@ -3952,7 +3960,7 @@ RF-OB-2 & Il sistema deve attivare automaticamente la funzionalità di Dead Man'
 RF-OB-3 & L'\term{Utente} deve poter visualizzare un messaggio di errore esplicativo nel caso in cui l'autenticazione tramite Google Auth fallisca, venga annullata o restituisca parametri non validi & \hyperref[subsec:UC-2]{UC-2} \\
 \hline
 
-RF-OB-4 & L'\term{Utente} deve poter selezionare il profilo di utilizzo ("Per me" o "Per altri") & \hyperref[subsec:UC-3]{UC-3} \\
+RF-OB-5 & L'\term{Utente} deve poter visualizzare la lista dei contatti fidati & \hyperref[sec:UC-4]{UC-4} \\
 \hline
 
 RF-OB-6 & L'\term{Utente} deve poter visualizzare un messaggio di errore esplicativo nel caso in cui il recupero dei dati dal database fallisca & \hyperref[sec:UC-5]{UC-5} \\
@@ -4476,7 +4484,19 @@ RF-OP-6 & Il sistema deve mostrare leggi aggiornate, giuridicamente valide e com
 RF-OP-7 & Il sistema deve indicare all'\term{Utente} se i luoghi sicuri visualizzati nella mappa sono autorevoli e verificati & \hyperref[sec:UC-66]{UC-66} \\
 \hline
 \rowcolor{white}
-RF-OP-8 & L'\term{Utente} deve poter visualizzare la lista dei contatti fidati & \hyperref[sec:UC-4]{UC-4} \\
+RF-OP-8 & L'\term{Utente} deve poter selezionare il profilo di utilizzo ("Per me" o "Per altri") & \hyperref[subsec:UC-3]{UC-3} \\
+\hline
+\rowcolor{gray!20}
+RF-OP-9 & Il sistema deve bloccare temporaneamente l'accesso al diario in seguito al superamento del limite massimo di tentativi errati di inserimento password & \hyperref[subsec:UC-26]{UC-26} \\
+\hline
+\rowcolor{white}
+RF-OP-10 & L'\term{Utente} deve poter interrompere la generazione della risposta dell'LLM durante la consultazione del chatbot & \hyperref[sec:UC-49]{UC-49} \\
+\hline
+\rowcolor{gray!20}
+RF-OP-11 & Il sistema deve notificare l'\term{Utente} di un errore durante il cambio di contesto del chatbot e mantenere il contesto precedente & \hyperref[sec:UC-53]{UC-53} \\
+\hline
+\rowcolor{white}
+RF-OP-12 & L'\term{Utente} deve poter ritentare il cambio di contesto del chatbot dopo la notifica di errore & \hyperref[sec:UC-53]{UC-53} \\
 \hline
 
 \caption{Tabella Requisiti Funzionali Opzionali} \label{tab:requisiti_funzionali_opzionali} \\
