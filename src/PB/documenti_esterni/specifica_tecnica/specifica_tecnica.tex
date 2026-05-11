@@ -882,7 +882,7 @@ microservizio (si veda \hyperref[sec:elenco-metriche]{Sezione~\ref*{subsec:archi
 
 Il ridimensionamento è gestito in modo automatico da AWS Lambda in risposta al volume di richieste, senza intervento manuale e senza costi per capacità inutilizzata.
 
-\subsubsection{Infrastruttura}
+\subsection{Infrastruttura}
 L'infrastruttura del sistema è ospitata interamente su \textbf{Amazon Web Services (AWS)}. 
 In questo modello il provisioning, il bilanciamento del carico, la scalabilità e la gestione dell'hardware sottostante sono demandati al \term{Cloud} provider, riducendo la necessità di gestione da parte del team di sviluppo.\\
 
@@ -906,7 +906,7 @@ L'infrastruttura applicativa è organizzata attraverso i seguenti componenti pri
     \item \textbf{Amazon S3}: viene utilizzato per l'archiviazione dei contenuti multimediali, quali immagini e file audio.
 \end{itemize}
 
-\subsubsubsection{\term{Infrastructure as Code} (IaC)}
+\subsubsection{\ignoreglossary{Infrastructure as Code} (IaC)}
 L'infrastruttura \term{Cloud} viene gestita tramite il paradigma dell'\term{Infrastructure as Code} (IaC). 
 Tutte le risorse AWS necessarie al funzionamento del sistema vengono descritte tramite file \term{YAML} versionati all'interno del \term{Repository} del progetto.\\
 
