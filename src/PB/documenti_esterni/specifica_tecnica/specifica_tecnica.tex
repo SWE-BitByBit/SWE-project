@@ -167,7 +167,7 @@ Gruppo BitByBit\\
 \hline
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
-0.10.0 & 2026-05-04 & Marco Sanguin & Aggiornamento dell'\term{Architettura} frontend con corrispettivi UML & Riccardo Manisi \\
+0.10.0 & 2026-05-04 & Marco Sanguin & Aggiornamento dell'Architettura frontend con corrispettivi UML & Riccardo Manisi \\
 \hline
 0.9.0 & 2026-05-02 & Riccardo Manisi & Correzioni a sezioni Architettura logica, e di Deployment & Gabriele Scaggiante \\ 
 \hline 
@@ -320,7 +320,7 @@ Le tecnologie utilizzate sono state scelte trovando un punto d'incontro tra la n
 \subsection{Framework} \label{subsec:framework}
 
 \subsubsection{Flutter}
-Flutter è un \term{Framework} open-source sviluppato da Google per la creazione di applicazioni multi-piattaforma a partire da un unico codice sorgente. Consente di sviluppare interfacce per dispositivi mobili, web e desktop utilizzando il linguaggio Dart. Flutter si basa su un sistema di widget componibili, che possono rappresentare qualsiasi elemento dell'interfaccia \ignoreglossary{utente}. Flutter include un proprio motore grafico (come Impeller o storicamente Skia) che disegna direttamente i componenti a schermo, garantendo elevata coerenza visiva e prestazioni indipendenti dalla piattaforma sottostante. È il \term{Framework} alla base dell'App Che Protegge e Trasforma, il che consente di poter generare build per iOS e Android da un unico codice sorgente, a fronte di un maggiore utilizzo di risorse rispetto alle soluzioni native e di una minore possibilità di controllo diretto e personalizzazione delle funzionalità native della piattaforma.
+Flutter è un Framework open-source sviluppato da Google per la creazione di applicazioni multi-piattaforma a partire da un unico codice sorgente. Consente di sviluppare interfacce per dispositivi mobili, web e desktop utilizzando il linguaggio Dart. Flutter si basa su un sistema di widget componibili, che possono rappresentare qualsiasi elemento dell'interfaccia \ignoreglossary{utente}. Flutter include un proprio motore grafico (come Impeller o storicamente Skia) che disegna direttamente i componenti a schermo, garantendo elevata coerenza visiva e prestazioni indipendenti dalla piattaforma sottostante. È il Framework alla base dell'App Che Protegge e Trasforma, il che consente di poter generare build per iOS e Android da un unico codice sorgente, a fronte di un maggiore utilizzo di risorse rispetto alle soluzioni native e di una minore possibilità di controllo diretto e personalizzazione delle funzionalità native della piattaforma.
 \begin{itemize}
     \item \textbf{Versione utilizzata}: 3.41.6
     \item \textbf{Documentazione}: \url{https://docs.flutter.dev/}
@@ -401,13 +401,13 @@ Amazon EventBridge è un servizio di event bus Serverless che consente di gestir
 \end{itemize}
 
 \subsubsection{SAM}
-AWS \term{Serverless} Application Model (SAM) è un \term{Framework} open-source che semplifica la definizione e il \term{Deployment} di applicazioni \term{Serverless} su AWS. Estende AWS CloudFormation introducendo una sintassi più compatta per risorse come Lambda, API Gateway e DynamoDB e include strumenti per build, testing locale e deploy delle applicazioni. Nel progetto è utilizzato per definire e distribuire l'infrastruttura \term{Serverless} in modo semplificato.
+AWS Serverless Application Model (SAM) è un Framework open-source che semplifica la definizione e il Deployment di applicazioni Serverless su AWS. Estende AWS CloudFormation introducendo una sintassi più compatta per risorse come Lambda, API Gateway e DynamoDB e include strumenti per build, testing locale e deploy delle applicazioni. Nel progetto è utilizzato per definire e distribuire l'infrastruttura Serverless in modo semplificato.
 \begin{itemize}
     \item \textbf{Documentazione}: \url{https://docs.aws.amazon.com/serverless-application-model/}
 \end{itemize}
 
 \subsubsection{CloudFormation}
-AWS CloudFormation è un servizio di \term{Infrastructure as Code} che consente di modellare e gestire risorse AWS tramite template dichiarativi in formato \term{YAML} o JSON. Nel progetto è utilizzato come base per il provisioning dell'infrastruttura, anche tramite template generati da SAM.
+AWS CloudFormation è un servizio di Infrastructure as Code che consente di modellare e gestire risorse AWS tramite template dichiarativi in formato YAML o JSON. Nel progetto è utilizzato come base per il provisioning dell'infrastruttura, anche tramite template generati da SAM.
 \begin{itemize}
     \item \textbf{Documentazione}: \url{https://docs.aws.amazon.com/cloudformation/}
     \item \textbf{Versioni}: CloudFormation non prevede versioni di servizio esplicite; eventuali aggiornamenti sono gestiti direttamente da AWS. I template possono però utilizzare versioni di specifiche risorse e trasformazioni (es. AWS::Serverless).
@@ -592,7 +592,7 @@ AWS CloudFormation è un servizio di \term{Infrastructure as Code} che consente 
 
 \subsection{Tecnologie di analisi statica} \label{subsec:tecnologie_analisi_statica}
 \subsubsection{SonarQube}
-SonarQube è una piattaforma open-source per l'analisi continua della qualità del codice. Esegue \term{Analisi Statica} su diversi linguaggi di programmazione per individuare bug, vulnerabilità, code smells e problemi di copertura dei test. Il funzionamento si basa su scanner che analizzano il codice sorgente e inviano i risultati a un server centrale, dove vengono aggregati e visualizzati tramite una dashboard dedicata.
+SonarQube è una piattaforma open-source per l'analisi continua della qualità del codice. Esegue Analisi Statica su diversi linguaggi di programmazione per individuare bug, vulnerabilità, code smells e problemi di copertura dei test. Il funzionamento si basa su scanner che analizzano il codice sorgente e inviano i risultati a un server centrale, dove vengono aggregati e visualizzati tramite una dashboard dedicata.
 \begin{itemize}
     \item \textbf{Versione utilizzata}: 26.3.0
     \item \textbf{Documentazione}: \url{https://docs.sonarsource.com/sonarqube/}
@@ -617,14 +617,14 @@ Moto è una libreria Python che consente di mockare i servizi AWS durante i test
 \subsection{Altro} \label{subsec:altro}
 
 \subsubsection{Ollama}
-Ollama è una piattaforma che consente di eseguire e gestire LLM in locale tramite una semplice interfaccia. Permette il download, l'esecuzione e l'interazione con modelli di intelligenza artificiale direttamente in ambiente locale, senza necessità di servizi \term{Cloud} esterni. Il funzionamento si basa su un runtime che gestisce i modelli e espone endpoint per inferenza.
+Ollama è una piattaforma che consente di eseguire e gestire LLM in locale tramite una semplice interfaccia. Permette il download, l'esecuzione e l'interazione con modelli di intelligenza artificiale direttamente in ambiente locale, senza necessità di servizi Cloud esterni. Il funzionamento si basa su un runtime che gestisce i modelli e espone endpoint per inferenza.
 \begin{itemize}
     \item \textbf{Versione utilizzata}: 0.18.3
     \item \textbf{Documentazione}: \url{https://ollama.com/docs}
 \end{itemize}
 
 \subsubsection{Docker}
-Docker è una piattaforma di containerizzazione che consente di creare, distribuire ed eseguire applicazioni all'interno di ambienti isolati detti container. I container includono tutto il necessario per eseguire un'applicazione, garantendo portabilità e consistenza tra ambienti diversi. Nel progetto è utilizzato a supporto delle pipeline di \term{CI/CD} e per testare in locale servizi come DynamoDB e S3.
+Docker è una piattaforma di containerizzazione che consente di creare, distribuire ed eseguire applicazioni all'interno di ambienti isolati detti container. I container includono tutto il necessario per eseguire un'applicazione, garantendo portabilità e consistenza tra ambienti diversi. Nel progetto è utilizzato a supporto delle pipeline di CI/CD e per testare in locale servizi come DynamoDB e S3.
 
 \begin{itemize}
     \item \textbf{Documentazione}: \url{https://docs.docker.com/}
@@ -633,22 +633,22 @@ Docker è una piattaforma di containerizzazione che consente di creare, distribu
 \section{Architettura}
 \subsection{Architettura logica} \label{subsec:architettura_logica}
 
-Il sistema software è progettato secondo i principi di un'\term{Architettura} a Microservizi, integrando internamente il paradigma dell'\term{Architettura} Esagonale (o Ports and Adapters). Questa scelta impone una netta separazione tra la logica di dominio e le tecnologie di infrastruttura, garantendo che il "core" applicativo rimanga isolato da influenze esterne.
-L'obiettivo cardine è massimizzare l'indipendenza della logica di business, favorendo l'intercambiabilità dei componenti (database, servizi \term{Cloud}, interfacce), la facilità di test automatizzati e una scalabilità granulare dei singoli moduli funzionali (\term{Separation of Concerns}).
+Il sistema software è progettato secondo i principi di un'Architettura a Microservizi, integrando internamente il paradigma dell'Architettura Esagonale (o Ports and Adapters). Questa scelta impone una netta separazione tra la logica di dominio e le tecnologie di infrastruttura, garantendo che il "core" applicativo rimanga isolato da influenze esterne.
+L'obiettivo cardine è massimizzare l'indipendenza della logica di business, favorendo l'intercambiabilità dei componenti (database, servizi Cloud, interfacce), la facilità di test automatizzati e una scalabilità granulare dei singoli moduli funzionali (Separation of Concerns).
 
-L'interazione tra l'ecosistema mobile e l'infrastruttura di servizio avviene tramite interfacce API ben definite, che fungono da \term{Contratto} formale tra i due mondi. Tale disaccoppiamento permette ai microservizi di evolvere indipendentemente dal client, garantendo al contempo una comunicazione sicura e agnostica rispetto ai linguaggi di programmazione utilizzati.
+L'interazione tra l'ecosistema mobile e l'infrastruttura di servizio avviene tramite interfacce API ben definite, che fungono da Contratto formale tra i due mondi. Tale disaccoppiamento permette ai microservizi di evolvere indipendentemente dal client, garantendo al contempo una comunicazione sicura e agnostica rispetto ai linguaggi di programmazione utilizzati.
 
 \subsubsection{Livello Client (Frontend Mobile)}
 Il client mobile è sviluppato seguendo il pattern architetturale Model-View-ViewModel (MVVM). Il codice è suddiviso nei seguenti strati logici:
 
 \begin{itemize}
-	\item \textbf{Presentation Layer (View \& ViewModel)}: La View, costituita dai diversi widget Flutter, ha la responsabilità esclusiva di renderizzare l'interfaccia e catturare gli input \term{Utente}. Il ViewModel funge da mediatore: gestisce lo stato della View notificandola di cambiamenti e incapsula la logica di presentazione tramite il pattern Command. Quest'ultimo permette di gestire operazioni asincrone, monitorare i caricamenti e centralizzare la gestione degli errori senza sporcare il codice dell'interfaccia.
-	\item \textbf{Domain Layer (\term{Business Logic})}: Rappresentato dai modelli di dominio, che definiscono le entità base su cui opera l'intera app. In quanto modelli di dominio, sono completamente indipendenti da qualsiasi tecnologia di persistenza o protocollo di comunicazione, gestendo esclusivamente la business logic dell'applicazione.
-	\item \textbf{\term{Data Layer} (\ignoreglossary{Repository} \& Service)}: Incaricato dell'acquisizione dei dati, il data layer utilizza classi Repository per trasformare i dati grezzi in arrivo dal backend in modelli di dominio, gestendo la logica di caching e di gestione degli errori. Le classi Service, invece, si fanno carico della gestione delle comunicazioni con fonti di dati esterne, esponendo metodi per inviare richieste HTTP al backend e ricevere le risposte sottoforma di JSON.
+	\item \textbf{Presentation Layer (View \& ViewModel)}: La View, costituita dai diversi widget Flutter, ha la responsabilità esclusiva di renderizzare l'interfaccia e catturare gli input Utente. Il ViewModel funge da mediatore: gestisce lo stato della View notificandola di cambiamenti e incapsula la logica di presentazione tramite il pattern Command. Quest'ultimo permette di gestire operazioni asincrone, monitorare i caricamenti e centralizzare la gestione degli errori senza sporcare il codice dell'interfaccia.
+	\item \textbf{Domain Layer (Business Logic)}: Rappresentato dai modelli di dominio, che definiscono le entità base su cui opera l'intera app. In quanto modelli di dominio, sono completamente indipendenti da qualsiasi tecnologia di persistenza o protocollo di comunicazione, gestendo esclusivamente la business logic dell'applicazione.
+	\item \textbf{Data Layer (\ignoreglossary{Repository} \& Service)}: Incaricato dell'acquisizione dei dati, il data layer utilizza classi Repository per trasformare i dati grezzi in arrivo dal backend in modelli di dominio, gestendo la logica di caching e di gestione degli errori. Le classi Service, invece, si fanno carico della gestione delle comunicazioni con fonti di dati esterne, esponendo metodi per inviare richieste HTTP al backend e ricevere le risposte sottoforma di JSON.
 \end{itemize}
 
 \subsubsection{Livello di Servizio (Backend)}
-L'\term{Architettura} logica dei microservizi in \term{Cloud} si fonda sui principi dell'\term{Architettura} Esagonale, organizzando l'ambiente computazionale in tre componenti principali totalmente disaccoppiati:
+L'Architettura logica dei microservizi in Cloud si fonda sui principi dell'Architettura Esagonale, organizzando l'ambiente computazionale in tre componenti principali totalmente disaccoppiati:
 
 Il nucleo del sistema è rappresentato dalla domain logic, che racchiude sia la logica applicativa che quella di business. È implementata nelle classi \code{Service},
 che non dipendono da alcuna tecnologia specifica e interagiscono con le risorse esterne esclusivamente attraverso interfacce. Le operazioni esposte dai \code{Service} accettano
@@ -713,7 +713,7 @@ Il pattern MVVM è ampiamente utilizzato per strutturare l'interfaccia \ignoregl
 \paragraph{Descrizione del pattern:}\mbox{}\\
 Il pattern Command è un design pattern comportamentale che incapsula una richiesta o un'azione come un oggetto autonomo. Nel frontend dell'applicazione, questo pattern è implementato tramite il pacchetto \code{command\_it}, che permette di standardizzare l'esecuzione della logica asincrona all'interno dei ViewModel. 
 
-A differenza di una semplice funzione, il comando così implementato agisce come un contenitore logico che gestisce automaticamente il \term{Ciclo di vita} di un'operazione: dall'invocazione alla gestione dei risultati, fino alla cattura di eventuali eccezioni. Ogni comando espone tre proprietà osservabili tramite \code{ValueListenable}:
+A differenza di una semplice funzione, il comando così implementato agisce come un contenitore logico che gestisce automaticamente il Ciclo di vita di un'operazione: dall'invocazione alla gestione dei risultati, fino alla cattura di eventuali eccezioni. Ogni comando espone tre proprietà osservabili tramite \code{ValueListenable}:
 \begin{itemize}
 	\item \code{isRunning}: un booleano che indica se l'operazione è attualmente in esecuzione.
 	\item \code{errors}: contiene eventuali errori catturati durante l'esecuzione.
@@ -731,7 +731,7 @@ L'adozione di \code{command\_it} risponde alla necessità di eliminare il "boile
 \end{itemize}
 
 \paragraph{Riferimenti nel progetto:}\mbox{}\\
-Il pattern viene implementato sistematicamente in tutti i ViewModel dell'applicazione per la gestione delle interazioni \term{Utente} e delle operazioni asincrone.
+Il pattern viene implementato sistematicamente in tutti i ViewModel dell'applicazione per la gestione delle interazioni Utente e delle operazioni asincrone.
 
 
 \subsubsection{Observer}
@@ -743,7 +743,7 @@ Il pattern viene implementato sistematicamente in tutti i ViewModel dell'applica
 \end{figure}
 
 \paragraph{Descrizione del pattern:}\mbox{}\\
-Il pattern Observer definisce un meccanismo di comunicazione in cui un oggetto, chiamato \textit{Subject} (o Publisher), mantiene una lista di dipendenti, chiamati \textit{Observers} (o Subscriber), e li notifica automaticamente di ogni cambiamento di stato. Nel sistema sviluppato, questo pattern è stato implementato con due diversi livelli di granularità per gestire la reattività dell'interfaccia \term{Utente}:
+Il pattern Observer definisce un meccanismo di comunicazione in cui un oggetto, chiamato \textit{Subject} (o Publisher), mantiene una lista di dipendenti, chiamati \textit{Observers} (o Subscriber), e li notifica automaticamente di ogni cambiamento di stato. Nel sistema sviluppato, questo pattern è stato implementato con due diversi livelli di granularità per gestire la reattività dell'interfaccia Utente:
 
 \begin{itemize}
 	\item \textbf{Livello Macro (ChangeNotifier e Consumer)}: Il ViewModel agisce come Publisher globale della schermata implementando la classe \code{ChangeNotifier}. Quando il ViewModel invoca il metodo \code{notifyListeners()}, segnala mutamento dello stato della View. Il widget \code{Consumer} funge da Subscriber, ricostruendo i rami della View che dipendono da quel ViewModel. Questo approccio è utilizzato per aggiornamenti di stato generali che influenzano più componenti contemporaneamente (per esempio lo stato di autenticazione).
@@ -814,7 +814,7 @@ Il pattern Singleton è utilizzato per il coordinamento dei componenti di sessio
 \paragraph{Descrizione del pattern:}\mbox{}\\
 Il sistema adotta il pattern Dependency Injection (DI) supportato dal pattern \textbf{Service Locator}, implementato tramite la libreria \code{get\_it}. Questo approccio permette di separare la creazione delle dipendenze dal loro effettivo utilizzo. 
 
-L'\term{Architettura} si basa su un punto di configurazione centralizzato (\code{setupLocator}) dove vengono registrate tutte le istanze delle classi d'interesse. La DI viene poi attuata tramite \textit{Constructor Injection}: i componenti (come i ViewModel) non creano mai i propri \term{Repository} o Service internamente, ma dichiarano le dipendenze nel proprio costruttore. È il Service Locator a farsi carico di "iniettare" l'istanza corretta al momento della creazione, prelevandola dal registro globale.
+L'Architettura si basa su un punto di configurazione centralizzato (\code{setupLocator}) dove vengono registrate tutte le istanze delle classi d'interesse. La DI viene poi attuata tramite \textit{Constructor Injection}: i componenti (come i ViewModel) non creano mai i propri Repository o Service internamente, ma dichiarano le dipendenze nel proprio costruttore. È il Service Locator a farsi carico di "iniettare" l'istanza corretta al momento della creazione, prelevandola dal registro globale.
 
 \paragraph{Ragioni per l'utilizzo:}\mbox{}\\
 L'integrazione di \code{get\_it} e della DI offre tre vantaggi fondamentali per l'applicazione:
@@ -843,15 +843,15 @@ Il pattern è applicato diffusamente in tutta l'applicazione. Di seguito alcune 
 \end{figure}
 
 \paragraph{Descrizione del pattern:}\mbox{}\\
-Il pattern Adapter è un design pattern strutturale che permette a interfacce incompatibili di lavorare insieme. Agisce come un convertitore che traduce le chiamate del client nel formato compreso da una classe o libreria esterna. Nell'\term{Architettura} del sistema, questo pattern è fondamentale per implementare i principi dell'\term{Architettura} Esagonale, dove il "core" dell'applicazione definisce dei contratti (Porte) e gli Adapter forniscono l'implementazione concreta per interfacciarsi con il mondo esterno.
+Il pattern Adapter è un design pattern strutturale che permette a interfacce incompatibili di lavorare insieme. Agisce come un convertitore che traduce le chiamate del client nel formato compreso da una classe o libreria esterna. Nell'Architettura del sistema, questo pattern è fondamentale per implementare i principi dell'Architettura Esagonale, dove il "core" dell'applicazione definisce dei contratti (Porte) e gli Adapter forniscono l'implementazione concreta per interfacciarsi con il mondo esterno.
 
 \paragraph{Ragioni per l'utilizzo:}\mbox{}\\
-L'integrazione di questo pattern permette di isolare il codice sorgente dalle dipendenze di terze parti. Utilizzando un Adapter per la comunicazione di rete o per i servizi di sistema, si evita di "inquinare" i Service o i \term{Repository} con dettagli implementativi di librerie specifiche. Se in futuro si decidesse di cambiare il client HTTP (ad esempio passando dalla libreria \code{http} a \code{dio}) o il fornitore di un servizio \term{Cloud}, basterebbe creare un nuovo Adapter che rispetti l'interfaccia predefinita, senza dover modificare una singola riga di logica di business.
+L'integrazione di questo pattern permette di isolare il codice sorgente dalle dipendenze di terze parti. Utilizzando un Adapter per la comunicazione di rete o per i servizi di sistema, si evita di "inquinare" i Service o i Repository con dettagli implementativi di librerie specifiche. Se in futuro si decidesse di cambiare il client HTTP (ad esempio passando dalla libreria \code{http} a \code{dio}) o il fornitore di un servizio Cloud, basterebbe creare un nuovo Adapter che rispetti l'interfaccia predefinita, senza dover modificare una singola riga di logica di business.
 
 
 
 \paragraph{Riferimenti nel progetto:}\mbox{}\\
-Il pattern è applicato in modo sistematico nella gestione dell'infrastruttura di rete e dei servizi hardware del dispositivo, oltre che nelle AWS Lambda che utilizzano l'\term{Architettura} esagonale:
+Il pattern è applicato in modo sistematico nella gestione dell'infrastruttura di rete e dei servizi hardware del dispositivo, oltre che nelle AWS Lambda che utilizzano l'Architettura esagonale:
 \begin{itemize}
 	\item NetworkAdapter $\rightarrow$ \hyperref[DC-Chatbot]{\code{ApiClient}}
 	\item Location Service $\rightarrow$ \hyperref[DC-LocationService]{\code{LocationService}}
@@ -949,7 +949,7 @@ una sola istanza attiva per tutta la durata della sessione.
 \paragraph{LoginScreen} \mbox{}\\
 Widget principale che rappresenta la schermata di autenticazione dell'applicazione.
 Nel contesto del pattern MVVM, svolge il ruolo di View, occupandosi esclusivamente della costruzione dell'interfaccia \ignoreglossary{Utente} tramite il metodo \code{build(BuildContext context)}.
-Mantiene un riferimento al \code{AuthViewModel}, dal quale osserva lo stato dell'autenticazione (avvalendosi di componenti come \code{ValueListenableBuilder} e \code{Consumer}) e a cui delega le azioni dell'\term{Utente}.
+Mantiene un riferimento al \code{AuthViewModel}, dal quale osserva lo stato dell'autenticazione (avvalendosi di componenti come \code{ValueListenableBuilder} e \code{Consumer}) e a cui delega le azioni dell'Utente.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{diagrammi_classi/auth/DC-LoginScreen.pdf}
@@ -958,7 +958,7 @@ Mantiene un riferimento al \code{AuthViewModel}, dal quale osserva lo stato dell
 \end{figure}
 
 \paragraph{User} \mbox{}\\
-Rappresenta il modello di dominio dell'\term{Utente} autenticato all'interno dell'applicazione. Contiene le 
+Rappresenta il modello di dominio dell'Utente autenticato all'interno dell'applicazione. Contiene le 
 informazioni essenziali legate all'identità e alla sessione, come l'identificativo univoco e i token di accesso, 
 ed è utilizzata dal resto del sistema per gestire lo stato dell'autenticazione in modo indipendente dal formato dei dati provenienti dall'esterno.
 \begin{figure}[H]
@@ -993,8 +993,8 @@ Inoltre, funge da orchestratore: al login si interfaccia con il \code{DeadManRep
 
 \paragraph{AuthRepository} \mbox{}\\
 Funge da intermediario tra il \code{AuthViewModel} e il livello di accesso ai dati, incapsulando la logica 
-necessaria per gestire l'autenticazione. Mantiene lo stato dell'\term{Utente} corrente tramite \code{currentUser}, gestisce la persistenza sicura dei token tramite \code{FlutterSecureStorage} e delega le operazioni di comunicazione remota all'\code{AuthService}. 
-Il \term{Repository} espone metodi per effettuare il login, il logout, recuperare l'\term{Utente} corrente e verificare o ripristinare una sessione attiva.
+necessaria per gestire l'autenticazione. Mantiene lo stato dell'Utente corrente tramite \code{currentUser}, gestisce la persistenza sicura dei token tramite \code{FlutterSecureStorage} e delega le operazioni di comunicazione remota all'\code{AuthService}. 
+Il Repository espone metodi per effettuare il login, il logout, recuperare l'Utente corrente e verificare o ripristinare una sessione attiva.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{diagrammi_classi/auth/DC-AuthRepository.pdf}
@@ -1015,7 +1015,7 @@ scope richiesti. Si occupa di eseguire le chiamate di rete per il login e il log
 % ====== CHATBOT ======
 \subsubsection{Chatbot} \label{subsubsec:architettura_chatbot_frontend}
 
-La funzionalità del chatbot permette all'\term{Utente} di comunicare in tempo reale con un modello di linguaggio (LLM) e di gestire lo storico delle conversazioni. L'\term{Architettura} segue rigorosamente il pattern MVVM e i principi di \term{Clean Architecture}. La struttura si avvale del pattern strutturale \textbf{Proxy} per ottimizzare il caricamento delle cronologie e di un approccio \textbf{Optimistic UI} per garantire reattività. Il sistema distingue nettamente un \term{Data Layer} (Service, \term{Repository}, API Client), un Domain Layer (interfaccia \code{Chat}, \code{ProxyChat}, \code{LocalChat}, \code{ChatMessage}) e un \term{UI Layer} (View e ViewModel).
+La funzionalità del chatbot permette all'Utente di comunicare in tempo reale con un modello di linguaggio (LLM) e di gestire lo storico delle conversazioni. L'Architettura segue rigorosamente il pattern MVVM e i principi di Clean Architecture. La struttura si avvale del pattern strutturale \textbf{Proxy} per ottimizzare il caricamento delle cronologie e di un approccio \textbf{Optimistic UI} per garantire reattività. Il sistema distingue nettamente un Data Layer (Service, Repository, API Client), un Domain Layer (interfaccia \code{Chat}, \code{ProxyChat}, \code{LocalChat}, \code{ChatMessage}) e un UI Layer (View e ViewModel).
 
 \begin{figure}[H]
 	\centering
@@ -1055,7 +1055,7 @@ La classe \code{ChatWidget} è responsabile della visualizzazione della conversa
 \end{figure}
 
 \paragraph{ChatbotModeToggleWidget}\mbox{}\\
-Consente all'\term{Utente} di selezionare il contesto operativo del chatbot (\code{ChatMode}). Le modalità disponibili, "Specchio" e "Detective", influenzano il \textit{system prompting} applicato lato \term{Backend} durante la generazione della risposta da parte di AWS Bedrock.
+Consente all'Utente di selezionare il contesto operativo del chatbot (\code{ChatMode}). Le modalità disponibili, "Specchio" e "Detective", influenzano il \textit{system prompting} applicato lato Backend durante la generazione della risposta da parte di AWS Bedrock.
 
 \begin{figure}[H]
 	\centering
@@ -1106,7 +1106,7 @@ L'interfaccia \code{Chat} definisce il \ignoreglossary{contratto} per una conver
 \end{figure}
 
 \paragraph{ProxyChat}\mbox{}\\
-Implementazione del pattern Proxy che agisce come segnaposto per una conversazione storica. Contiene solo i metadati essenziali e implementa il metodo \code{load()}, che interagisce con il \term{Repository} per istanziare una \code{LocalChat} e caricarne i messaggi solo quando l'\term{Utente} decide di aprire effettivamente la conversazione (\textit{Lazy Loading}).
+Implementazione del pattern Proxy che agisce come segnaposto per una conversazione storica. Contiene solo i metadati essenziali e implementa il metodo \code{load()}, che interagisce con il Repository per istanziare una \code{LocalChat} e caricarne i messaggi solo quando l'Utente decide di aprire effettivamente la conversazione (\textit{Lazy Loading}).
 
 \begin{figure}[H]
 	\centering
@@ -1169,7 +1169,7 @@ Agisce come orchestratore dei dati e implementa una cache puramente \textbf{in-m
 \end{figure}
 
 \paragraph{ChatbotService}\mbox{}\\
-Responsabile della comunicazione con le \term{API REST} di AWS. Si occupa di invocare gli endpoint per il recupero delle chat, l'invio dei messaggi e la gestione della cronologia, restituendo risposte grezze al \term{Repository}.
+Responsabile della comunicazione con le API REST di AWS. Si occupa di invocare gli endpoint per il recupero delle chat, l'invio dei messaggi e la gestione della cronologia, restituendo risposte grezze al Repository.
 
 \begin{figure}[H]
 	\centering
@@ -1179,7 +1179,7 @@ Responsabile della comunicazione con le \term{API REST} di AWS. Si occupa di inv
 \end{figure}
 
 \paragraph{ApiClient}\mbox{}\\
-Interfaccia astratta che definisce il \term{Contratto} per le operazioni HTTP (\code{get}, \code{post}, \code{put}, \code{delete}). Astrae il client di rete permettendo una facile sostituzione o simulazione (mocking) del livello di comunicazione.
+Interfaccia astratta che definisce il Contratto per le operazioni HTTP (\code{get}, \code{post}, \code{put}, \code{delete}). Astrae il client di rete permettendo una facile sostituzione o simulazione (mocking) del livello di comunicazione.
 
 \begin{figure}[H]
 	\centering
@@ -1209,7 +1209,7 @@ Gestisce la traduzione tra i modelli di dominio e le rappresentazioni JSON scamb
 \end{figure}
 
 \subsubsection{Diari} \label{subsubsec:architettura_diari_frontend}
-La funzionalità di diario criptato e diario fittizio permette all'\term{Utente} di utilizzare due archivi separati in cui memorizzare note, contenenti testo, immagini e/o contenuti audio, protetti da password . L'implementazione della funzionalità segue il pattern MVVM e le linee guida del \term{Framework} Flutter, risultanti nella suddivisione tra un \term{Data Layer}, composto da classi Service e \ignoreglossary{repository}, responsabili per la \textit{\term{Business Logic}} e per la \textit{\term{Persistence Logic}} rispettivamente, ed un \term{UI Layer}, composto da classi View e Viewmodel. Gli oggetti principali della funzionalità sono le classi Note (\code{ProxyNote} e \code{LocalNote}), \code{NoteElement} e \code{DiarySession}. 
+La funzionalità di diario criptato e diario fittizio permette all'Utente di utilizzare due archivi separati in cui memorizzare note, contenenti testo, immagini e/o contenuti audio, protetti da password . L'implementazione della funzionalità segue il pattern MVVM e le linee guida del Framework Flutter, risultanti nella suddivisione tra un Data Layer, composto da classi Service e \ignoreglossary{repository}, responsabili per la \textit{Business Logic} e per la \textit{Persistence Logic} rispettivamente, ed un UI Layer, composto da classi View e Viewmodel. Gli oggetti principali della funzionalità sono le classi Note (\code{ProxyNote} e \code{LocalNote}), \code{NoteElement} e \code{DiarySession}. 
 
 \begin{figure}[H]
 	\centering
@@ -1239,7 +1239,7 @@ Responsabile della visualizzazione dei campi di input per la password. In quanto
 \end{figure}
 
 \paragraph{DiaryAccessViewModel}\mbox{}\\
-Coordina le operazioni di autenticazione tra UI e \term{Data Layer}. Implementa il Command \code{login} per validare le credenziali tramite il \term{Repository}. Una volta ottenuto l'accesso, comunica al sistema i dettagli relativi alla sessione attiva, tra cui la tipologia di diario aperto e il token di sessione. Essendo un \code{ChangeNotifier}, notifica i widget interessati ad ogni cambiamento di stato.
+Coordina le operazioni di autenticazione tra UI e Data Layer. Implementa il Command \code{login} per validare le credenziali tramite il Repository. Una volta ottenuto l'accesso, comunica al sistema i dettagli relativi alla sessione attiva, tra cui la tipologia di diario aperto e il token di sessione. Essendo un \code{ChangeNotifier}, notifica i widget interessati ad ogni cambiamento di stato.
 
 \begin{figure}[H]
 	\centering
@@ -1259,7 +1259,7 @@ Funge da strato di astrazione per la gestione dell'account del diario. Si occupa
 \end{figure}
 
 \paragraph{DiaryAccountService}\mbox{}\\
-Rappresenta lo strato infrastrutturale responsabile della comunicazione con le API remote per la \term{Validazione} delle password e la gestione dei parametri di sicurezza del diario. Restituisce dati grezzi al \term{Repository} per la successiva elaborazione.
+Rappresenta lo strato infrastrutturale responsabile della comunicazione con le API remote per la Validazione delle password e la gestione dei parametri di sicurezza del diario. Restituisce dati grezzi al Repository per la successiva elaborazione.
 
 \begin{figure}[H]
 	\centering
@@ -1351,7 +1351,7 @@ Enumerazione che definisce le due tipologie di archivio disponibili: \code{fake\
 \end{figure}
 
 \paragraph{Note}\mbox{}\\
-Interfaccia che definisce il \term{Contratto} per una nota di diario. Supporta il pattern Proxy per ottimizzare le risorse di sistema durante la visualizzazione di elenchi di note voluminosi.
+Interfaccia che definisce il Contratto per una nota di diario. Supporta il pattern Proxy per ottimizzare le risorse di sistema durante la visualizzazione di elenchi di note voluminosi.
 
 \begin{figure}[H]
 	\centering
@@ -1432,7 +1432,7 @@ Orchestra l'accesso ai dati delle note e dei file multimediali. Implementa logic
 \end{figure}
 
 \paragraph{NoteService}\mbox{}\\
-Livello infrastrutturale per la comunicazione con gli endpoint delle note. Gestisce operazioni CRUD remote e l'invio/ricezione di byte per i file multimediali. Restituisce i dati grezzi al \term{Repository} per la trasformazione in modelli di dominio.
+Livello infrastrutturale per la comunicazione con gli endpoint delle note. Gestisce operazioni CRUD remote e l'invio/ricezione di byte per i file multimediali. Restituisce i dati grezzi al Repository per la trasformazione in modelli di dominio.
 
 \begin{figure}[H]
 	\centering
@@ -1493,7 +1493,7 @@ La classe \code{TrustedContactListWidget} è responsabile della visualizzazione 
 \end{figure}
 
 \paragraph{TrustedContactFormWidget}\mbox{}\\
-\code{TrustedContactFormWidget} gestisce i campi di input necessari per l'inserimento o la modifica dei dati di un contatto fidato. Il widget integra componenti di osservazione come \code{Consumer} per monitorare lo stato di \term{Validazione} e gli errori provenienti dal ViewModel, e \code{ValueListenableBuilder} per gestire lo stato di esecuzione dei Command, garantendo un feedback visivo durante le operazioni asincrone.
+\code{TrustedContactFormWidget} gestisce i campi di input necessari per l'inserimento o la modifica dei dati di un contatto fidato. Il widget integra componenti di osservazione come \code{Consumer} per monitorare lo stato di Validazione e gli errori provenienti dal ViewModel, e \code{ValueListenableBuilder} per gestire lo stato di esecuzione dei Command, garantendo un feedback visivo durante le operazioni asincrone.
 
 \begin{figure}[H]
 	\centering
@@ -1503,7 +1503,7 @@ La classe \code{TrustedContactListWidget} è responsabile della visualizzazione 
 \end{figure}
 
 \paragraph{TrustedContactActionsWidget}\mbox{}\\
-Questo widget raggruppa i bottoni e le azioni specifiche per la gestione dei contatti fidati, come l'aggiunta di nuovi elementi o l'attivazione di procedure di modifica. Comunica le intenzioni dell'\term{Utente} al ViewModel invocando i relativi Command e reagisce ai cambiamenti di stato della View per gestire correttamente la disponibilità delle interazioni durante i processi di caricamento.
+Questo widget raggruppa i bottoni e le azioni specifiche per la gestione dei contatti fidati, come l'aggiunta di nuovi elementi o l'attivazione di procedure di modifica. Comunica le intenzioni dell'Utente al ViewModel invocando i relativi Command e reagisce ai cambiamenti di stato della View per gestire correttamente la disponibilità delle interazioni durante i processi di caricamento.
 
 \begin{figure}[H]
 	\centering
@@ -1540,7 +1540,7 @@ Questo widget raggruppa i bottoni e le azioni specifiche per la gestione dei con
 \end{figure}
 
 \paragraph{TrustedContactService}\mbox{}\\
-\code{TrustedContactService} si occupa delle chiamate API verso il \term{Backend}. Oltre alle operazioni CRUD standard (\code{getContacts}, \code{addContact}, \code{deleteContact}, \code{updateContact}), implementa il metodo \code{sendSosAlert} per inoltrare al backend la richiesta di invio dei messaggi di emergenza.
+\code{TrustedContactService} si occupa delle chiamate API verso il Backend. Oltre alle operazioni CRUD standard (\code{getContacts}, \code{addContact}, \code{deleteContact}, \code{updateContact}), implementa il metodo \code{sendSosAlert} per inoltrare al backend la richiesta di invio dei messaggi di emergenza.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{diagrammi_classi/contatti_fidati/DC-TrustedContactService.pdf} % Portato a 0.5 come richiesto
@@ -1561,7 +1561,7 @@ Questo widget raggruppa i bottoni e le azioni specifiche per la gestione dei con
 
 \subsubsection{Luoghi Sicuri} \label{subsubsec:architettura_classi_luoghi_sicuri}
 
-La funzionalità dei Luoghi Sicuri permette all'\term{Utente} di visualizzare geograficamente, tramite una mappa dinamica, i punti di interesse rilevanti per la propria sicurezza personale (es. ospedali, centri anti-violenza, forze dell'ordine). La funzionalità è architettata secondo il pattern MVVM e sfrutta la libreria \code{flutter\_map} per il rendering cartografico basato su OpenStreetMap.
+La funzionalità dei Luoghi Sicuri permette all'Utente di visualizzare geograficamente, tramite una mappa dinamica, i punti di interesse rilevanti per la propria sicurezza personale (es. ospedali, centri anti-violenza, forze dell'ordine). La funzionalità è architettata secondo il pattern MVVM e sfrutta la libreria \code{flutter\_map} per il rendering cartografico basato su OpenStreetMap.
 
 \begin{figure}[H]
 	\centering
@@ -1625,7 +1625,7 @@ L'enumerazione \code{SafePlaceCategory} definisce la classificazione tipologica 
 
 \paragraph{SafePlaceRepository}
 
-Il \code{SafePlaceRepository} funge da \textit{Single Source of Truth} per la sessione corrente, estendendo l'interfaccia \code{CacheableRepository}. Oltre a convertire i dati grezzi in oggetti di dominio tramite il DTO, incapsula una logica di memorizzazione in cache (\code{cachedPlaces}). Salva inoltre le coordinate e lo zoom correnti (\code{cachedMapState}) per ripristinare il contesto geografico tra diverse navigazioni nella schermata, ottimizzando le prestazioni e abbattendo i costi associati alle chiamate di rete superflue verso il \term{Backend} \term{Serverless}.
+Il \code{SafePlaceRepository} funge da \textit{Single Source of Truth} per la sessione corrente, estendendo l'interfaccia \code{CacheableRepository}. Oltre a convertire i dati grezzi in oggetti di dominio tramite il DTO, incapsula una logica di memorizzazione in cache (\code{cachedPlaces}). Salva inoltre le coordinate e lo zoom correnti (\code{cachedMapState}) per ripristinare il contesto geografico tra diverse navigazioni nella schermata, ottimizzando le prestazioni e abbattendo i costi associati alle chiamate di rete superflue verso il Backend Serverless.
 
 \begin{figure}[H]
 	\centering
@@ -1636,7 +1636,7 @@ Il \code{SafePlaceRepository} funge da \textit{Single Source of Truth} per la se
 
 \paragraph{LocationService}
 
-Appartenente al livello infrastrutturale, \code{LocationService} astrae l'interazione con l'hardware GPS del dispositivo mobile. Offre i metodi essenziali per controllare l'abilitazione del sensore (\code{isLocationServiceEnabled}) e per richiedere in modo sicuro i permessi all'\term{Utente} (\code{checkPermission}, \code{requestPermission}), permettendo al ViewModel di gestire preventivamente gli accessi negati.
+Appartenente al livello infrastrutturale, \code{LocationService} astrae l'interazione con l'hardware GPS del dispositivo mobile. Offre i metodi essenziali per controllare l'abilitazione del sensore (\code{isLocationServiceEnabled}) e per richiedere in modo sicuro i permessi all'Utente (\code{checkPermission}, \code{requestPermission}), permettendo al ViewModel di gestire preventivamente gli accessi negati.
 
 \begin{figure}[H]
 	\centering
@@ -1647,7 +1647,7 @@ Appartenente al livello infrastrutturale, \code{LocationService} astrae l'intera
 
 \paragraph{SafePlaceService}
 
-\code{SafePlaceService} è incaricato delle comunicazioni HTTP verso gli endpoint del \term{Backend} per il recupero dei luoghi sicuri. Sfruttando \code{ApiClient}, inoltra le richieste per ottenere il dataset dei luoghi sicuri, contenente le coordinate geografiche di ogni singolo luogo e i relativi metadati.
+\code{SafePlaceService} è incaricato delle comunicazioni HTTP verso gli endpoint del Backend per il recupero dei luoghi sicuri. Sfruttando \code{ApiClient}, inoltra le richieste per ottenere il dataset dei luoghi sicuri, contenente le coordinate geografiche di ogni singolo luogo e i relativi metadati.
 
 \begin{figure}[H]
 	\centering
@@ -1658,7 +1658,7 @@ Appartenente al livello infrastrutturale, \code{LocationService} astrae l'intera
 
 \paragraph{SafePlaceDTO}
 
-La classe \code{SafePlaceDTO} (\textit{Data Transfer Object}) isola la logica di serializzazione e deserializzazione (\code{fromJson}, \code{toJson}). Mappa le chiavi della \term{Payload} JSON scaricata dal \term{Backend} nei tipi primitivi Dart attesi dal dominio, disaccoppiando la persistenza esterna dalla \textit{\term{Business Logic}} interna.
+La classe \code{SafePlaceDTO} (\textit{Data Transfer Object}) isola la logica di serializzazione e deserializzazione (\code{fromJson}, \code{toJson}). Mappa le chiavi della Payload JSON scaricata dal Backend nei tipi primitivi Dart attesi dal dominio, disaccoppiando la persistenza esterna dalla \textit{Business Logic} interna.
 
 \begin{figure}[H]
 	\centering
@@ -1671,7 +1671,7 @@ La classe \code{SafePlaceDTO} (\textit{Data Transfer Object}) isola la logica di
 
 \subsubsection{Dead Man's Switch} \label{subsubsec:architettura_dead_man_switch}
 
-La funzionalità del \textit{Dead Man's Switch} rappresenta un sistema di sicurezza critico che invia avvisi automatici in caso di inattività prolungata dell'\term{Utente}. L'\term{Architettura} frontend è focalizzata sulla gestione sicura e reattiva della configurazione di tale sistema. Il frontend non interagisce direttamente con servizi di posta elettronica o code di schedulazione, ma demanda la gestione dei timer e l'invio delle email al \term{Backend}, garantendo l'affidabilità del servizio anche ad applicazione chiusa. Il conteggio dell'inattività viene azzerato tramite un segnale di \textit{heartbeat}, il cui innesco primario è delegato a componenti esterne (come l'avvenuto login). Analogamente al resto dell'applicazione, la funzionalità implementa il pattern MVVM e le linee guida della \textit{\term{Clean Architecture}}.
+La funzionalità del \textit{Dead Man's Switch} rappresenta un sistema di sicurezza critico che invia avvisi automatici in caso di inattività prolungata dell'Utente. L'Architettura frontend è focalizzata sulla gestione sicura e reattiva della configurazione di tale sistema. Il frontend non interagisce direttamente con servizi di posta elettronica o code di schedulazione, ma demanda la gestione dei timer e l'invio delle email al Backend, garantendo l'affidabilità del servizio anche ad applicazione chiusa. Il conteggio dell'inattività viene azzerato tramite un segnale di \textit{heartbeat}, il cui innesco primario è delegato a componenti esterne (come l'avvenuto login). Analogamente al resto dell'applicazione, la funzionalità implementa il pattern MVVM e le linee guida della \textit{Clean Architecture}.
 
 \begin{figure}[H]
 	\centering
@@ -1682,7 +1682,7 @@ La funzionalità del \textit{Dead Man's Switch} rappresenta un sistema di sicure
 
 \paragraph{SettingsScreen}
 
-La classe \code{SettingsScreen} rappresenta la schermata principale che ospita il pannello di controllo per la sicurezza. Funge da compositore, strutturando il layout della pagina e integrando i form interattivi, delegando al \code{DeadManViewModel} la reattività agli stati asincroni e la \term{Persistence Logic}.
+La classe \code{SettingsScreen} rappresenta la schermata principale che ospita il pannello di controllo per la sicurezza. Funge da compositore, strutturando il layout della pagina e integrando i form interattivi, delegando al \code{DeadManViewModel} la reattività agli stati asincroni e la Persistence Logic.
 
 \begin{figure}[H]
 	\centering
@@ -1693,7 +1693,7 @@ La classe \code{SettingsScreen} rappresenta la schermata principale che ospita i
 
 \paragraph{DeadManFormWidget}
 
-Questo componente incapsula gli elementi interattivi dell'interfaccia, come lo switch per l'attivazione del servizio, i campi di input per i timer e le aree di testo per i messaggi di emergenza. È implementato come widget con stato locale (\textit{StatefulWidget}) per gestire in modo efficiente lo stato transitorio della form durante la digitazione, evitando onerosi \textit{rebuild} del ViewModel. Si occupa inoltre di disabilitare visivamente e bloccare i campi di input quando l'\term{Utente} sceglie di disattivare il servizio.
+Questo componente incapsula gli elementi interattivi dell'interfaccia, come lo switch per l'attivazione del servizio, i campi di input per i timer e le aree di testo per i messaggi di emergenza. È implementato come widget con stato locale (\textit{StatefulWidget}) per gestire in modo efficiente lo stato transitorio della form durante la digitazione, evitando onerosi \textit{rebuild} del ViewModel. Si occupa inoltre di disabilitare visivamente e bloccare i campi di input quando l'Utente sceglie di disattivare il servizio.
 
 \begin{figure}[H]
 	\centering
@@ -1704,7 +1704,7 @@ Questo componente incapsula gli elementi interattivi dell'interfaccia, come lo s
 
 \paragraph{DeadManViewModel}
 
-\code{DeadManViewModel} orchestra la logica di business relativa alla configurazione del servizio. Abbandonando la gestione manuale di flag di caricamento generici, adotta il pattern Command esponendo le proprietà \code{loadSettings} e \code{saveSettings}. Questi comandi incapsulano autonomamente gli stati asincroni dell'operazione, permettendo alla View di reagirvi in modo granulare. Riceve i dati dalla form solo al momento del salvataggio, delegando al \term{Repository} la comunicazione dei nuovi parametri temporali e testuali.
+\code{DeadManViewModel} orchestra la logica di business relativa alla configurazione del servizio. Abbandonando la gestione manuale di flag di caricamento generici, adotta il pattern Command esponendo le proprietà \code{loadSettings} e \code{saveSettings}. Questi comandi incapsulano autonomamente gli stati asincroni dell'operazione, permettendo alla View di reagirvi in modo granulare. Riceve i dati dalla form solo al momento del salvataggio, delegando al Repository la comunicazione dei nuovi parametri temporali e testuali.
 
 \begin{figure}[H]
 	\centering
@@ -1737,7 +1737,7 @@ Il \code{DeadManRepository} astrae la persistenza e il recupero delle configuraz
 
 \paragraph{DeadManService}
 
-Appartenente al \term{Data Layer}, \code{DeadManService} si occupa della comunicazione HTTP/REST con le API del \term{Backend}. Fornisce i metodi necessari per effettuare le operazioni CRUD sulle configurazioni (\code{fetchSettings}, \code{saveSettings}, \code{createSettings}) e per l'invio effettivo del segnale vitale dell'\term{Utente} verso i server AWS (\code{sendHeartbeat}).
+Appartenente al Data Layer, \code{DeadManService} si occupa della comunicazione HTTP/REST con le API del Backend. Fornisce i metodi necessari per effettuare le operazioni CRUD sulle configurazioni (\code{fetchSettings}, \code{saveSettings}, \code{createSettings}) e per l'invio effettivo del segnale vitale dell'Utente verso i server AWS (\code{sendHeartbeat}).
 
 \begin{figure}[H]
 	\centering
@@ -1748,7 +1748,7 @@ Appartenente al \term{Data Layer}, \code{DeadManService} si occupa della comunic
 
 \paragraph{DeadManSettingsDTO}
 
-Il \code{DeadManSettingsDTO} (\textit{Data Transfer Object}) gestisce la logica di serializzazione bidirezionale. Consente di mappare coerentemente i campi della \term{Payload} JSON in istanze del dominio, assicurando che la comunicazione tra l'app Flutter e il \term{Backend} rispetti un rigido \term{Contratto} dati per i nuovi parametri di configurazione temporali e testuali.
+Il \code{DeadManSettingsDTO} (\textit{Data Transfer Object}) gestisce la logica di serializzazione bidirezionale. Consente di mappare coerentemente i campi della Payload JSON in istanze del dominio, assicurando che la comunicazione tra l'app Flutter e il Backend rispetti un rigido Contratto dati per i nuovi parametri di configurazione temporali e testuali.
 
 \begin{figure}[H]
 	\centering
@@ -1761,7 +1761,7 @@ Il \code{DeadManSettingsDTO} (\textit{Data Transfer Object}) gestisce la logica 
 
 \subsubsection{Materiale Informativo} \label{subsubsec:architettura_materiale_informativo}
 
-La funzionalità del Materiale Informativo consente all'\term{Utente} di consultare risorse educative, normative di legge e contatti utili per la sicurezza personale. A livello architetturale, questa sezione condivide la medesima impostazione ibrida e ottimizzata della Mappa dei Luoghi Sicuri. Aderisce rigorosamente al pattern MVVM e ai principi della \textit{\term{Clean Architecture}}, prevedendo un disaccoppiamento netto tra la logica di fetching dei dati statici per massimizzare la scalabilità), il caching in locale e la logica di presentazione reattiva.
+La funzionalità del Materiale Informativo consente all'Utente di consultare risorse educative, normative di legge e contatti utili per la sicurezza personale. A livello architetturale, questa sezione condivide la medesima impostazione ibrida e ottimizzata della Mappa dei Luoghi Sicuri. Aderisce rigorosamente al pattern MVVM e ai principi della \textit{Clean Architecture}, prevedendo un disaccoppiamento netto tra la logica di fetching dei dati statici per massimizzare la scalabilità), il caching in locale e la logica di presentazione reattiva.
 
 \begin{figure}[H]
 	\centering
@@ -1772,7 +1772,7 @@ La funzionalità del Materiale Informativo consente all'\term{Utente} di consult
 
 \paragraph{MaterialScreen}
 
-La classe \code{MaterialScreen} rappresenta il punto d'ingresso per la fruizione delle risorse all'interno del \textit{Presentation Layer}. Agisce come compositore del layout principale: organizza la barra di navigazione, delega la visualizzazione degli stati asincroni (caricamento, errore) e ospita i componenti di interazione rapida, che permettono all'\term{Utente} di selezionare agilmente le categorie di interesse senza bloccare l'interfaccia.
+La classe \code{MaterialScreen} rappresenta il punto d'ingresso per la fruizione delle risorse all'interno del \textit{Presentation Layer}. Agisce come compositore del layout principale: organizza la barra di navigazione, delega la visualizzazione degli stati asincroni (caricamento, errore) e ospita i componenti di interazione rapida, che permettono all'Utente di selezionare agilmente le categorie di interesse senza bloccare l'interfaccia.
 
 \begin{figure}[H]
 	\centering
@@ -1794,7 +1794,7 @@ Il \code{MaterialListWidget} è incaricato della renderizzazione della lista di 
 
 \paragraph{MaterialViewModel}
 
-Il \code{MaterialViewModel} gestisce la \term{Presentation Logic} e lo stato dell'interfaccia. Espone il comando asincrono \code{loadMaterials} (basato sul pattern Command) per governare il primo fetch dei dati tramite \code{ValueListenable}. La caratteristica peculiare di questo ViewModel è la gestione totalmente client-side del filtraggio tramite la variabile \code{currentFilter} e il metodo sincrono \code{filterByType}: operando sulla lista già mantenuta in memoria, le transizioni di interfaccia risultano istantanee, azzerando la latenza di rete e ottimizzando i costi infrastrutturali.
+Il \code{MaterialViewModel} gestisce la Presentation Logic e lo stato dell'interfaccia. Espone il comando asincrono \code{loadMaterials} (basato sul pattern Command) per governare il primo fetch dei dati tramite \code{ValueListenable}. La caratteristica peculiare di questo ViewModel è la gestione totalmente client-side del filtraggio tramite la variabile \code{currentFilter} e il metodo sincrono \code{filterByType}: operando sulla lista già mantenuta in memoria, le transizioni di interfaccia risultano istantanee, azzerando la latenza di rete e ottimizzando i costi infrastrutturali.
 
 \begin{figure}[H]
 	\centering
@@ -1816,7 +1816,7 @@ Il \code{MaterialViewModel} gestisce la \term{Presentation Logic} e lo stato del
 
 \paragraph{ResourceType}
 
-\code{ResourceType} è l'enumerazione di dominio che definisce le possibili nature della risorsa (es. \code{community}, \code{law}, \code{article}). Questa astrazione tipizzata è cruciale non solo per la \textit{\term{Business Logic}}, ma anche per il ViewModel, che la utilizza come chiave discriminante per l'applicazione dei filtri locali.
+\code{ResourceType} è l'enumerazione di dominio che definisce le possibili nature della risorsa (es. \code{community}, \code{law}, \code{article}). Questa astrazione tipizzata è cruciale non solo per la \textit{Business Logic}, ma anche per il ViewModel, che la utilizza come chiave discriminante per l'applicazione dei filtri locali.
 
 \begin{figure}[H]
 	\centering
@@ -1827,7 +1827,7 @@ Il \code{MaterialViewModel} gestisce la \term{Presentation Logic} e lo stato del
 
 \paragraph{MaterialRepository}
 
-Il \code{MaterialRepository} assolve al ruolo di \textit{Single Source of Truth} per l'accesso ai documenti. Implementando l'interfaccia \code{CacheableRepository}, mantiene in memoria la lista completa dei materiali recuperati (\code{cachedResources}). Questa scelta architetturale disaccoppia le operazioni di filtraggio visivo dalla rete, permettendo all'applicazione di fornire una reattività immediata ai cambi di categoria operati dall'\term{Utente}.
+Il \code{MaterialRepository} assolve al ruolo di \textit{Single Source of Truth} per l'accesso ai documenti. Implementando l'interfaccia \code{CacheableRepository}, mantiene in memoria la lista completa dei materiali recuperati (\code{cachedResources}). Questa scelta architetturale disaccoppia le operazioni di filtraggio visivo dalla rete, permettendo all'applicazione di fornire una reattività immediata ai cambi di categoria operati dall'Utente.
 
 \begin{figure}[H]
 	\centering
@@ -1838,7 +1838,7 @@ Il \code{MaterialRepository} assolve al ruolo di \textit{Single Source of Truth}
 
 \paragraph{MaterialService}
 
-Appartenente al livello infrastrutturale, il \code{MaterialService} gestisce le invocazioni HTTP tramite \code{ApiClient}. Il metodo \code{fetchMaterials} inoltra la richiesta al \term{Backend} AWS \term{Serverless}, il quale si occupa di esporre e recapitare il \term{Payload} JSON statico custodito all'interno di un Bucket S3, configurazione ideale per minimizzare il caricamento iniziale e mantenere i costi scalabili.
+Appartenente al livello infrastrutturale, il \code{MaterialService} gestisce le invocazioni HTTP tramite \code{ApiClient}. Il metodo \code{fetchMaterials} inoltra la richiesta al Backend AWS Serverless, il quale si occupa di esporre e recapitare il Payload JSON statico custodito all'interno di un Bucket S3, configurazione ideale per minimizzare il caricamento iniziale e mantenere i costi scalabili.
 
 \begin{figure}[H]
 	\centering
@@ -1849,7 +1849,7 @@ Appartenente al livello infrastrutturale, il \code{MaterialService} gestisce le 
 
 \paragraph{ResourceDTO}
 
-La classe \code{ResourceDTO} (\textit{Data Transfer Object}) gestisce il confine di serializzazione. Mappa in modo difensivo le chiavi del JSON scaricato dal \term{Backend} (gestendo correttamente la presenza o l'assenza dei campi opzionali \code{content} o \code{url}) e restituisce al \term{Repository} oggetti \code{Resource} perfettamente istanziati e tipizzati per il dominio interno.
+La classe \code{ResourceDTO} (\textit{Data Transfer Object}) gestisce il confine di serializzazione. Mappa in modo difensivo le chiavi del JSON scaricato dal Backend (gestendo correttamente la presenza o l'assenza dei campi opzionali \code{content} o \code{url}) e restituisce al Repository oggetti \code{Resource} perfettamente istanziati e tipizzati per il dominio interno.
 
 \begin{figure}[H]
 	\centering
@@ -1860,7 +1860,7 @@ La classe \code{ResourceDTO} (\textit{Data Transfer Object}) gestisce il confine
 
 \subsubsection{Main App, Home e Sistema SOS} \label{subsubsec:architettura_main_home_sos}
 
-Il nucleo orchestrale dell'applicazione è definito dall'integrazione tra la radice del sistema, la dashboard di controllo e il modulo di emergenza. Questa sezione governa il \term{Ciclo di vita} della sessione, il routing globale e i meccanismi di sicurezza immediata, garantendo che le funzionalità critiche siano sempre accessibili all'\term{Utente}.
+Il nucleo orchestrale dell'applicazione è definito dall'integrazione tra la radice del sistema, la dashboard di controllo e il modulo di emergenza. Questa sezione governa il Ciclo di vita della sessione, il routing globale e i meccanismi di sicurezza immediata, garantendo che le funzionalità critiche siano sempre accessibili all'Utente.
 
 \begin{figure}[H]
 	\centering
@@ -1882,7 +1882,7 @@ La classe \code{MainAppWidget} costituisce l'\textit{Entry Point} dell'applicazi
 
 \paragraph{HomeScreen}
 
-La \code{HomeScreen} implementa la navigazione principale dell'applicativo tramite un pattern a schede (\textit{Tab Navigation}). Coordina un widget \code{PageView} per lo scorrimento delle sezioni (Chatbot, Home, Diario) e una \code{NavigationBar} per la selezione rapida. Per preservare l'integrità dei dati sensibili, la classe integra logiche di controllo dell'autenticazione: se l'\term{Utente} non è loggato, le tab protette vengono sostituite dinamicamente da un \code{AuthPlaceholderScreen}, impedendo accessi non autorizzati senza interrompere il flusso di navigazione.
+La \code{HomeScreen} implementa la navigazione principale dell'applicativo tramite un pattern a schede (\textit{Tab Navigation}). Coordina un widget \code{PageView} per lo scorrimento delle sezioni (Chatbot, Home, Diario) e una \code{NavigationBar} per la selezione rapida. Per preservare l'integrità dei dati sensibili, la classe integra logiche di controllo dell'autenticazione: se l'Utente non è loggato, le tab protette vengono sostituite dinamicamente da un \code{AuthPlaceholderScreen}, impedendo accessi non autorizzati senza interrompere il flusso di navigazione.
 
 \begin{figure}[H]
 	\centering
@@ -1915,7 +1915,7 @@ Il \code{HomeDashboardWidget} è incaricato della renderizzazione visiva dei pun
 
 \paragraph{HomeViewModel}
 
-Il \code{HomeViewModel} centralizza la \term{Presentation Logic} della dashboard. Attraverso il metodo \code{getDashboardItem()}, popola staticamente una lista di oggetti di dominio \code{DashboardItem}, definendone l'iconografia, il titolo descrittivo e la rotta di destinazione. Questo approccio permette di gestire l'\term{Architettura} della homepage in modo centralizzato, facilitando l'aggiunta o la rimozione di moduli funzionali senza modificare la struttura dei widget.
+Il \code{HomeViewModel} centralizza la Presentation Logic della dashboard. Attraverso il metodo \code{getDashboardItem()}, popola staticamente una lista di oggetti di dominio \code{DashboardItem}, definendone l'iconografia, il titolo descrittivo e la rotta di destinazione. Questo approccio permette di gestire l'Architettura della homepage in modo centralizzato, facilitando l'aggiunta o la rimozione di moduli funzionali senza modificare la struttura dei widget.
 
 \begin{figure}[H]
 	\centering
@@ -1926,7 +1926,7 @@ Il \code{HomeViewModel} centralizza la \term{Presentation Logic} della dashboard
 
 \paragraph{SosPullTopWidget}
 
-Il \code{SosPullTopWidget} rappresenta l'interfaccia di attivazione globale del sistema di emergenza. Essendo iniettato alla radice dell'applicazione, rimane persistente e accessibile tramite un'interazione di trascinamento (\textit{pull}) o pressione. Comunica direttamente con il \code{SosViewModel} per innescare immediatamente le procedure di soccorso indipendentemente dalla schermata in cui si trova l'\term{Utente}.
+Il \code{SosPullTopWidget} rappresenta l'interfaccia di attivazione globale del sistema di emergenza. Essendo iniettato alla radice dell'applicazione, rimane persistente e accessibile tramite un'interazione di trascinamento (\textit{pull}) o pressione. Comunica direttamente con il \code{SosViewModel} per innescare immediatamente le procedure di soccorso indipendentemente dalla schermata in cui si trova l'Utente.
 
 \begin{figure}[H]
 	\centering
@@ -1937,7 +1937,7 @@ Il \code{SosPullTopWidget} rappresenta l'interfaccia di attivazione globale del 
 
 \paragraph{SosViewModel}
 
-Il \code{SosViewModel} orchestra la logica critica di invio delle segnalazioni. Implementando il pattern Command, espone il metodo \code{sendAlert} che avvia una strategia di \textit{fallback} basata sulla connettività del dispositivo. In modalità online, inoltra una richiesta al \term{Backend} per l'invio di email tramite AWS SES; in modalità offline, attiva un segnale acustico ad alta intensità tramite il componente \code{AudioPlayer}, garantendo una forma di allerta locale anche in assenza di rete.
+Il \code{SosViewModel} orchestra la logica critica di invio delle segnalazioni. Implementando il pattern Command, espone il metodo \code{sendAlert} che avvia una strategia di \textit{fallback} basata sulla connettività del dispositivo. In modalità online, inoltra una richiesta al Backend per l'invio di email tramite AWS SES; in modalità offline, attiva un segnale acustico ad alta intensità tramite il componente \code{AudioPlayer}, garantendo una forma di allerta locale anche in assenza di rete.
 
 \begin{figure}[H]
 	\centering
@@ -2329,7 +2329,7 @@ Le API relative al diario criptato e fittizio sono suddivise in due categorie di
     \item \texttt{POST /diary/auth/}: invia la password per l'autenticazione; ritorna l'esito dell'autenticazione e il tipo di diario associato.
     
     \item \texttt{GET /diary/\{diary\_type\}/}: ritorna le \textit{preview} di tutte le note del diario specificato.
-    \item \texttt{POST /diary/\{diary\_type\}/}: crea una nuova nota per l'\term{Utente} nel diario specificato.
+    \item \texttt{POST /diary/\{diary\_type\}/}: crea una nuova nota per l'Utente nel diario specificato.
     \item \texttt{GET /diary/\{diary\_type\}/\{note\_id\}/}: ritorna il contenuto completo della nota specificata.
     \item \texttt{PUT /diary/\{diary\_type\}/\{note\_id\}/}: aggiorna la nota specificata nel database.
     \item \texttt{DELETE /diary/\{diary\_type\}/\{note\_id\}/}: rimuove la nota specificata.
@@ -3022,38 +3022,38 @@ La classe \code{DiaryAccessController} costituisce il punto di ingresso per le o
     \label{fig:architettura_chatbot}
 \end{figure}
 
-\paragraph{\term{Architettura} e Flusso di Elaborazione: chatbot (detective delle relazioni e specchio intelligente)}\mbox{}\\
-L'\term{Architettura} di \term{Backend} dedicata al chatbot è progettata per gestire conversazioni persistenti tra \term{Utente} e modello linguistico, garantendo scalabilità, efficienza nell'accesso ai dati e qualità delle risposte generate.
+\paragraph{Architettura e Flusso di Elaborazione: chatbot (detective delle relazioni e specchio intelligente)}\mbox{}\\
+L'Architettura di Backend dedicata al chatbot è progettata per gestire conversazioni persistenti tra Utente e modello linguistico, garantendo scalabilità, efficienza nell'accesso ai dati e qualità delle risposte generate.
 
-API Gateway rappresenta il punto di ingresso per tutte le richieste client e si occupa della \ignoreglossary{verifica} dell'autenticazione dell'\term{Utente}. Una volta validata la richiesta, questa viene inoltrata a una funzione Lambda che implementa la logica applicativa del chatbot, inclusa la gestione delle chat e l'interazione con il modello linguistico.
+API Gateway rappresenta il punto di ingresso per tutte le richieste client e si occupa della \ignoreglossary{verifica} dell'autenticazione dell'Utente. Una volta validata la richiesta, questa viene inoltrata a una funzione Lambda che implementa la logica applicativa del chatbot, inclusa la gestione delle chat e l'interazione con il modello linguistico.
 
-Le conversazioni sono strutturate come entità persistenti (chat), ciascuna identificata da un \texttt{chat\_id} univoco all'interno dell'intero sistema. Per garantire una maggiore modularità e facilitare il recupero delle informazioni, chat e messaggi sono memorizzati in tabelle DynamoDB separate. Ogni chat contiene una sequenza di messaggi (\term{Utente} e assistente artificiale), anch'essi memorizzati in DynamoDB. Per ottimizzare le prestazioni e ridurre il carico di rete, le operazioni di recupero dello storico restituiscono esclusivamente informazioni di sintesi (ad esempio titolo e metadata), mentre il contenuto completo dei messaggi viene fornito solo su richiesta esplicita.
+Le conversazioni sono strutturate come entità persistenti (chat), ciascuna identificata da un \texttt{chat\_id} univoco all'interno dell'intero sistema. Per garantire una maggiore modularità e facilitare il recupero delle informazioni, chat e messaggi sono memorizzati in tabelle DynamoDB separate. Ogni chat contiene una sequenza di messaggi (Utente e assistente artificiale), anch'essi memorizzati in DynamoDB. Per ottimizzare le prestazioni e ridurre il carico di rete, le operazioni di recupero dello storico restituiscono esclusivamente informazioni di sintesi (ad esempio titolo e metadata), mentre il contenuto completo dei messaggi viene fornito solo su richiesta esplicita.
 
-Quando l'\term{Utente} invia un messaggio, il sistema non si limita a inoltrarlo direttamente al modello, ma recupera le informazioni più rilevanti dalla chat in corso. In particolare, la Lambda recupera il contesto rilevante della conversazione dalla base di dati (DynamoDB), costruendo un prompt arricchito che include la cronologia significativa dei messaggi. Per estrarre tali informazioni, la Lambda utilizza tecniche di ricerca lessicale basate su BM25, evitando di concatenare l'intera conversazione al testo inviato dall'\term{Utente}. Questo approccio consente di migliorare la coerenza e la pertinenza delle risposte generate dal modello.
+Quando l'Utente invia un messaggio, il sistema non si limita a inoltrarlo direttamente al modello, ma recupera le informazioni più rilevanti dalla chat in corso. In particolare, la Lambda recupera il contesto rilevante della conversazione dalla base di dati (DynamoDB), costruendo un prompt arricchito che include la cronologia significativa dei messaggi. Per estrarre tali informazioni, la Lambda utilizza tecniche di ricerca lessicale basate su BM25, evitando di concatenare l'intera conversazione al testo inviato dall'Utente. Questo approccio consente di migliorare la coerenza e la pertinenza delle risposte generate dal modello.
 
-Il prompt così costruito viene inviato a Bedrock, che restituisce la risposta generata dal LLM. La risposta, insieme al messaggio dell'\term{Utente}, viene quindi memorizzata in DynamoDB come parte della chat. Nel caso in cui il messaggio inviato sia il primo di una nuova chat, la Lambda imposta il titolo della chat alle prime tre parole del messaggio dell'\term{Utente}.
+Il prompt così costruito viene inviato a Bedrock, che restituisce la risposta generata dal LLM. La risposta, insieme al messaggio dell'Utente, viene quindi memorizzata in DynamoDB come parte della chat. Nel caso in cui il messaggio inviato sia il primo di una nuova chat, la Lambda imposta il titolo della chat alle prime tre parole del messaggio dell'Utente.
 
 Il flusso di elaborazione è dunque il seguente:
 \begin{itemize}
-    \item \textbf{Invio della Richiesta}: L'\term{Utente} interagisce con il chatbot tramite app, generando una richiesta HTTPS verso uno degli endpoint disponibili (ad esempio \texttt{POST /chats/\{chat\_id\}/messages}).
+    \item \textbf{Invio della Richiesta}: L'Utente interagisce con il chatbot tramite app, generando una richiesta HTTPS verso uno degli endpoint disponibili (ad esempio \texttt{POST /chats/\{chat\_id\}/messages}).
     
-    \item \textbf{Autenticazione}: API Gateway \ignoreglossary{verifica} che l'\term{Utente} sia autenticato all'applicazione. In caso positivo, la richiesta viene inoltrata alla funzione Lambda responsabile della logica del chatbot.
+    \item \textbf{Autenticazione}: API Gateway \ignoreglossary{verifica} che l'Utente sia autenticato all'applicazione. In caso positivo, la richiesta viene inoltrata alla funzione Lambda responsabile della logica del chatbot.
     
     \item \textbf{Gestione della Chat}: La Lambda identifica la chat di riferimento tramite \texttt{chat\_id}. Se necessario, recupera i metadati o \ignoreglossary{verifica} l'esistenza della chat in DynamoDB.
     
     \item \textbf{Recupero del Contesto (RAG)}: Prima di inviare il messaggio al modello, la Lambda esegue una query su DynamoDB per ottenere i messaggi precedenti rilevanti della conversazione, costruendo il contesto da includere nel prompt.
     
-    \item \textbf{Costruzione del Prompt}: Il messaggio dell'\term{Utente} viene combinato con il contesto recuperato, formando un prompt strutturato da inviare al modello linguistico.
+    \item \textbf{Costruzione del Prompt}: Il messaggio dell'Utente viene combinato con il contesto recuperato, formando un prompt strutturato da inviare al modello linguistico.
     
     \item \textbf{Invocazione del Modello}: La Lambda invia il prompt a Bedrock, che elabora la richiesta e restituisce una risposta generata.
     
-    \item \textbf{Persistenza dei Messaggi}: La Lambda salva sia il messaggio dell'\term{Utente} sia la risposta del modello in DynamoDB, associandoli alla chat corrente.
+    \item \textbf{Persistenza dei Messaggi}: La Lambda salva sia il messaggio dell'Utente sia la risposta del modello in DynamoDB, associandoli alla chat corrente.
     
     \item \textbf{Aggiornamento dei Metadati}: Se necessario, la Lambda aggiorna le informazioni della chat (ad esempio titolo o timestamp dell'ultima attività).
     
     \item \textbf{Restituzione della Risposta}: La risposta generata dal modello, insieme ai metadati aggiornati, viene restituita al client.
     
-    \item \textbf{Recupero dello Storico}: Quando l'\term{Utente} richiede la lista delle chat (metodo \texttt{GET /chats/}), la Lambda restituisce solo le \textit{preview} delle chat, senza includere l'intero contenuto dei messaggi.
+    \item \textbf{Recupero dello Storico}: Quando l'Utente richiede la lista delle chat (metodo \texttt{GET /chats/}), la Lambda restituisce solo le \textit{preview} delle chat, senza includere l'intero contenuto dei messaggi.
     
     \item \textbf{Recupero di una Chat}: Per ottenere il contenuto completo di una chat (metodo \texttt{GET /chats/\{chat\_id\}}), la Lambda recupera tutti i messaggi associati da DynamoDB e li restituisce al client.
     
@@ -3064,11 +3064,11 @@ Il flusso di elaborazione è dunque il seguente:
 \begin{itemize}
     \item \code{GET /chats/}
         \begin{itemize}
-            \item \textbf{Descrizione}: Recupera la lista delle chat associate all'\term{Utente} autenticato, restituendo solo le informazioni principali, senza i messaggi.
+            \item \textbf{Descrizione}: Recupera la lista delle chat associate all'Utente autenticato, restituendo solo le informazioni principali, senza i messaggi.
             
             \item \textbf{Parametri}:
             \begin{itemize}
-                \item \texttt{user\_id}: identificativo dell'\term{Utente}.
+                \item \texttt{user\_id}: identificativo dell'Utente.
             \end{itemize}
             
             \item \textbf{Response}:
@@ -3107,7 +3107,7 @@ Il flusso di elaborazione è dunque il seguente:
 
     \item \code{POST /chats/}
         \begin{itemize}
-            \item \textbf{Descrizione}: Crea una nuova chat associata all'\term{Utente} autenticato, inizializzata senza messaggi.
+            \item \textbf{Descrizione}: Crea una nuova chat associata all'Utente autenticato, inizializzata senza messaggi.
 
             \item \textbf{Parametri}:
             \begin{itemize}
@@ -3193,7 +3193,7 @@ Il flusso di elaborazione è dunque il seguente:
             \begin{itemize}
                 \item \texttt{chat\_id}: identificativo della chat.
                 \item \texttt{title}: nuovo titolo della chat.
-                \item \texttt{user\_id}: identificativo dell'\term{Utente}.
+                \item \texttt{user\_id}: identificativo dell'Utente.
             \end{itemize}
         
             \item \textbf{Response}:
@@ -3250,7 +3250,7 @@ Il flusso di elaborazione è dunque il seguente:
             \item \textbf{Parametri}:
             \begin{itemize}
                 \item \texttt{chat\_id}: identificativo della chat.
-                \item \texttt{message}: contenuto del messaggio dell'\term{Utente}.
+                \item \texttt{message}: contenuto del messaggio dell'Utente.
                 \item \texttt{response\_mode} (body, opzionale): modalità di generazione della risposta del chatbot: \texttt{"mirror"} o \texttt{"detective"}.
             \end{itemize}
 
@@ -3495,16 +3495,16 @@ Rappesenta l'inbound adapter del microservizio. Esegue il parsing delle richiest
     \label{fig:architettura_dms}
 \end{figure}
 
-\paragraph{\term{Architettura} e Flusso di Elaborazione: contatti fidati, SOS e Dead man's switch}\mbox{}\\
-La sezione relativa ai contatti fidati, all'invio di messaggi di emergenza e al meccanismo di Dead man's switch è progettata per garantire la gestione automatizzata dello stato di attività dell'\term{Utente} e la possibilità di attivare procedure di emergenza sia manualmente che in modo automatico.
+\paragraph{Architettura e Flusso di Elaborazione: contatti fidati, SOS e Dead man's switch}\mbox{}\\
+La sezione relativa ai contatti fidati, all'invio di messaggi di emergenza e al meccanismo di Dead man's switch è progettata per garantire la gestione automatizzata dello stato di attività dell'Utente e la possibilità di attivare procedure di emergenza sia manualmente che in modo automatico.
 
-API Gateway gestisce l'esposizione delle API e \ignoreglossary{verifica}, per ogni richiesta, che l'\term{Utente} sia correttamente autenticato all'applicazione. Le richieste valide vengono inoltrate a una funzione Lambda centrale, responsabile della gestione della logica applicativa relativa ai contatti fidati, alla configurazione del Dead man's switch e all'orchestrazione dell'invio delle email tramite Amazon SES.
+API Gateway gestisce l'esposizione delle API e \ignoreglossary{verifica}, per ogni richiesta, che l'Utente sia correttamente autenticato all'applicazione. Le richieste valide vengono inoltrate a una funzione Lambda centrale, responsabile della gestione della logica applicativa relativa ai contatti fidati, alla configurazione del Dead man's switch e all'orchestrazione dell'invio delle email tramite Amazon SES.
 
 I dati sono memorizzati su due database DynamoDB distinti:
 \begin{itemize}
-    \item \texttt{dms\_config\_mvp}: contiene la configurazione del Dead man's switch, includendo il titolo e il corpo dell'email di inattività, il primo e secondo timer di inattività, l'ultimo accesso dell'\term{Utente} e lo stato corrente del sistema (attivo, prima inattività, seconda inattività).
+    \item \texttt{dms\_config\_mvp}: contiene la configurazione del Dead man's switch, includendo il titolo e il corpo dell'email di inattività, il primo e secondo timer di inattività, l'ultimo accesso dell'Utente e lo stato corrente del sistema (attivo, prima inattività, seconda inattività).
     
-    \item \texttt{trusted\_contact\_mvp}: memorizza le informazioni relative ai contatti fidati associati a ciascun \term{Utente}, inclusi nome, email e numero di telefono.
+    \item \texttt{trusted\_contact\_mvp}: memorizza le informazioni relative ai contatti fidati associati a ciascun Utente, inclusi nome, email e numero di telefono.
 \end{itemize}
 
 Il sistema implementa inoltre un meccanismo di monitoraggio automatico basato su AWS EventBridge. Uno scheduler giornaliero attiva la Lambda centrale che \ignoreglossary{verifica} lo stato di attività degli utenti e determina eventuali condizioni di inattività prolungata.
@@ -3515,16 +3515,16 @@ Il flusso di elaborazione del Dead man's switch è il seguente:
     
     \item \textbf{Recupero configurazioni}: la Lambda effettua il fetch dei dati presenti in \texttt{dms\_config\_mvp}, ottenendo i timer di inattività, l'ultimo accesso registrato e lo stato corrente del Dead man's switch.
     
-    \item \textbf{Valutazione dello stato di inattività}: la funzione confronta il tempo corrente con l'ultimo accesso dell'\term{Utente}. Se viene superata la prima soglia di inattività, il sistema entra nello stato di “prima inattività”. Al raggiungimento della seconda soglia di inattività, viene attivato lo stato di “seconda inattività”.
+    \item \textbf{Valutazione dello stato di inattività}: la funzione confronta il tempo corrente con l'ultimo accesso dell'Utente. Se viene superata la prima soglia di inattività, il sistema entra nello stato di “prima inattività”. Al raggiungimento della seconda soglia di inattività, viene attivato lo stato di “seconda inattività”.
     
-    \item \textbf{Invio email di prima inattività}: al superamento della prima soglia, la Lambda invia tramite Amazon SES un'email all'\term{Utente} utilizzando il titolo e il corpo configurati, notificando lo stato di inattività.
+    \item \textbf{Invio email di prima inattività}: al superamento della prima soglia, la Lambda invia tramite Amazon SES un'email all'Utente utilizzando il titolo e il corpo configurati, notificando lo stato di inattività.
     
     \item \textbf{Attivazione SOS (seconda inattività)}: al superamento della seconda soglia, la Lambda recupera l'elenco dei contatti fidati da \texttt{trusted\_contact\_mvp} e invia, tramite SES, un'email di SOS predefinita a ciascun contatto.
     
     \item \textbf{Aggiornamento stato}: lo stato del sistema viene aggiornato in DynamoDB per evitare invii ripetuti non necessari.
 \end{itemize}
 
-Oltre al flusso automatico, il sistema supporta l'invio manuale di SOS e la gestione in tempo reale dello stato di attività dell'\term{Utente} tramite heartbeat.
+Oltre al flusso automatico, il sistema supporta l'invio manuale di SOS e la gestione in tempo reale dello stato di attività dell'Utente tramite heartbeat.
 
 Il flusso di heartbeat è il seguente:
 \begin{itemize}
@@ -3537,21 +3537,21 @@ L'invio SOS \textbf{manuale} segue invece il seguente flusso:
 \begin{itemize}
     \item \textbf{Richiesta di emergenza}: il client invia una richiesta HTTPS all'API \texttt{POST /alert}.
     
-    \item \textbf{Recupero contatti}: la Lambda recupera tutti i contatti fidati associati all'\term{Utente} da \texttt{trusted\_contact\_mvp}.
+    \item \textbf{Recupero contatti}: la Lambda recupera tutti i contatti fidati associati all'Utente da \texttt{trusted\_contact\_mvp}.
     
     \item \textbf{Invio email SES}: la funzione Lambda invia immediatamente un'email di emergenza a tutti i contatti fidati tramite Amazon SES.
 \end{itemize}
 
-La gestione dei contatti fidati è completamente CRUD e permette all'\term{Utente} di mantenere aggiornato il proprio elenco di destinatari di emergenza.
+La gestione dei contatti fidati è completamente CRUD e permette all'Utente di mantenere aggiornato il proprio elenco di destinatari di emergenza.
 
 \subsubsubsection{API associate}
 \begin{itemize}
     \item \texttt{GET /dms/}: restituisce tutte le opzioni configurabili del Dead man's switch, incluse soglie di inattività e template email.
-    \item \texttt{POST /dms/}: salva o aggiorna la configurazione del Dead man's switch dell'\term{Utente}.
+    \item \texttt{POST /dms/}: salva o aggiorna la configurazione del Dead man's switch dell'Utente.
     
-    \item \texttt{POST /dms/heartbeat/}: registra il segnale di attività dell'\term{Utente} aggiornando l'ultimo accesso.
+    \item \texttt{POST /dms/heartbeat/}: registra il segnale di attività dell'Utente aggiornando l'ultimo accesso.
     
-    \item \texttt{GET /trusted\_contacts/}: restituisce la lista dei contatti fidati associati all'\term{Utente}.
+    \item \texttt{GET /trusted\_contacts/}: restituisce la lista dei contatti fidati associati all'Utente.
     \item \texttt{POST /trusted\_contacts/}: crea un nuovo contatto fidato.
     \item \texttt{PUT /trusted\_contacts/\{trusted\_contact\_id\}/}: aggiorna un contatto fidato esistente.
     \item \texttt{DELETE /trusted\_contacts/\{trusted\_contact\_id\}/}: elimina un contatto fidato.
