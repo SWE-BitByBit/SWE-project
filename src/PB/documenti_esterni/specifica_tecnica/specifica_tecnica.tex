@@ -159,7 +159,6 @@ Gruppo BitByBit\\
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 0.9.0 & 2026-05-04 & Marco Sanguin & Aggiornamento dell'\term{Architettura} frontend con corrispettivi UML & Riccardo Manisi \\ 
 \hline
-\textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 0.8.0 & 2026-05-02 & Giovanni Visentin & Sistemazione della tabella dei requisiti & Dennis Parolin \\ 
 \hline
 0.7.1 & 2026-05-07 & Ferdinando Fracasso & Aggiornato sezione \hyperref[subsec:librerie]{Librerie} & Riccardo Manisi \\
@@ -494,25 +493,11 @@ AWS CloudFormation è un servizio di \term{Infrastructure as Code} che consente 
     \item \textbf{Documentazione} \url{https://pub.dev/packages/flutter_secure_storage}
 \end{itemize}
 
-\subsubsection{intl}
-\texttt{intl} è una libreria Dart per l\'internazionalizzazione e localizzazione, e fornisce funzionalità che includono la formattazione e il parsing di date e testo.
-\begin{itemize}
-    \item \textbf{Versione utilizzata}: 0.20.2
-    \item \textbf{Documentazione} \url{https://pub.dev/packages/intl}
-\end{itemize}
-
 \subsubsection{just\_audio}
 \texttt{just\_audio} è una libreria Flutter che fornisce strumenti per la creazione e utilizzo di player audio, e supporta molteplici formati di tracce audio.
 \begin{itemize}
     \item \textbf{Versione utilizzata}: 0.10.5
     \item \textbf{Documentazione} \url{https://pub.dev/packages/just_audio}
-\end{itemize}
-
-\subsubsection{plugin\_platform\_interface}
-\texttt{plugin\_platform\_interface} è una libreria Dart che mette a disposizione una classe base per platform interface con funzionalità per garantire che le loro implementazioni usino la keyword \code{extend}, cosicchè le sottoclassi abbiano accesso alle implementazioni dei metodi della classe base.
-\begin{itemize}
-    \item \textbf{Versione utilizzata}: 2.1.8
-    \item \textbf{Documentazione} \url{https://pub.dev/packages/plugin_platform_interface/versions}
 \end{itemize}
 
 \subsubsection{file\_picker}
@@ -544,7 +529,7 @@ AWS CloudFormation è un servizio di \term{Infrastructure as Code} che consente 
 \end{itemize}
 
 \subsubsection{mocktail}
-\texttt{mocktail} è una libreria Dart che fornisce una API per la creazione di Mock senza doverli creare da zero o usare la generazione di codice.
+\texttt{mocktail} è una libreria Dart che fornisce una API per la creazione di Mock senza doverli creare da zero.
 \begin{itemize}
     \item \textbf{Versione utilizzata}: 1.0.5
     \item \textbf{Documentazione} \url{https://pub.dev/packages/mocktail}
@@ -626,7 +611,7 @@ Ollama è una piattaforma che consente di eseguire e gestire LLM in locale trami
 \end{itemize}
 
 \subsubsection{Docker}
-Docker è una piattaforma di containerizzazione che consente di creare, distribuire ed eseguire applicazioni all'interno di ambienti isolati (container). I container includono tutto il necessario per eseguire un'applicazione (codice, runtime, librerie e dipendenze), garantendo portabilità e consistenza tra ambienti diversi. Nel progetto è utilizzato a supporto delle pipeline di \term{CI/CD} e per testare in locale servizi come DynamoDB e S3.
+Docker è una piattaforma di containerizzazione che consente di creare, distribuire ed eseguire applicazioni all'interno di ambienti isolati detti container. I container includono tutto il necessario per eseguire un'applicazione, garantendo portabilità e consistenza tra ambienti diversi. Nel progetto è utilizzato a supporto delle pipeline di \term{CI/CD} e per testare in locale servizi come DynamoDB e S3.
 
 \begin{itemize}
     \item \textbf{Documentazione}: \url{https://docs.docker.com/}
@@ -641,12 +626,12 @@ L'obiettivo cardine è massimizzare l'indipendenza della logica di business, fav
 L'interazione tra l'ecosistema mobile e l'infrastruttura di servizio avviene tramite interfacce API ben definite, che fungono da \term{Contratto} formale tra i due mondi. Tale disaccoppiamento permette ai microservizi di evolvere indipendentemente dal client, garantendo al contempo una comunicazione sicura e agnostica rispetto ai linguaggi di programmazione utilizzati.
 
 \subsubsection{Livello Client (Frontend Mobile)}
-Il client mobile è sviluppato seguendo il pattern architetturale Model-View-ViewModel (MVVM), strutturato secondo i dettami della \term{Clean Architecture} per gestire la complessità delle feature in modo modulare. Il codice è suddiviso nei seguenti strati logici:
+Il client mobile è sviluppato seguendo il pattern architetturale Model-View-ViewModel (MVVM). Il codice è suddiviso nei seguenti strati logici:
 
 \begin{itemize}
-	\item \textbf{Presentation Layer (View \& ViewModel)}: La View (composta da Widget e Schermi) ha la responsabilità esclusiva di renderizzare l'interfaccia e catturare gli input \term{Utente}. Il ViewModel funge da mediatore reattivo: gestisce lo stato della View e incapsula la logica di presentazione tramite il pattern Command. Quest'ultimo permette di gestire operazioni asincrone, monitorare i caricamenti e centralizzare la gestione degli errori senza sporcare il codice dell'interfaccia.
-	\item \textbf{Domain Layer (\term{Business Logic})}: Rappresenta il cuore del frontend, contenente i modelli di dominio "puri" e le entità. È uno strato agnostico rispetto alla provenienza dei dati, definendo la struttura degli oggetti che l'applicazione manipola internamente.
-	\item \textbf{\term{Data Layer} (\term{Repository} \& Service)}: Incaricato dell'acquisizione dei dati, implementa il \term{Repository} Pattern per astrarre l'origine delle informazioni (cache locale o API remote). I Service agiscono come adattatori verso i microservizi esterni, gestendo le chiamate HTTP e la trasformazione dei dati grezzi (JSON) in modelli di dominio tramite oggetti DTO (Data Transfer Object).
+	\item \textbf{Presentation Layer (View \& ViewModel)}: La View, costituita dai diversi widget Flutter, ha la responsabilità esclusiva di renderizzare l'interfaccia e catturare gli input \term{Utente}. Il ViewModel funge da mediatore: gestisce lo stato della View notificandola di cambiamenti e incapsula la logica di presentazione tramite il pattern Command. Quest'ultimo permette di gestire operazioni asincrone, monitorare i caricamenti e centralizzare la gestione degli errori senza sporcare il codice dell'interfaccia.
+	\item \textbf{Domain Layer (\term{Business Logic})}: Rappresentato dai modelli di dominio, che definiscono le entità base su cui opera l'intera applicazione. In quanto modelli di dominio, sono completamente indipendenti da qualsiasi tecnologia di persistenza o protocollo di comunicazione, gestendo esclusivamente la business logic dell'applicazione.
+	\item \textbf{\term{Data Layer} (\term{Repository} \& Service)}: Incaricato dell'acquisizione dei dati, il data layer utilizza classi Repository per trasformare i dati grezzi in arrivo dal backend in modelli di dominio, gestendo la logica di caching e di gestione degli errori. Le classi Service, invece, si fanno carico della gestione delle comunicazioni con fonti di dati esterne, esponendo metodi per inviare richieste HTTP al backend e ricevere le risposte sottoforma di JSON.
 \end{itemize}
 
 \subsubsection{Livello di Servizio (Backend)}
