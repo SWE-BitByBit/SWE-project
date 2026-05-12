@@ -166,7 +166,6 @@ def wrap_terms(text: str, terms):
         r'\\RequirePackage(?:\[[^\]]*\])?\{[^}]*\}', # \RequirePackage[options]{package}
         r'\\documentclass(?:\[[^\]]*\])?\{[^}]*\}',  # \documentclass[options]{class}
         
-        # Index e glossary
         r'\\index\{[^}]*\}',                         # \index{entry}
         r'\\glossary\{[^}]*\}',                      # \glossary{entry}
         
@@ -180,6 +179,10 @@ def wrap_terms(text: str, terms):
         r'\\setlength\{[^}]*\}\{[^}]*\}',            # \setlength{length}{value}
         r'\\addtolength\{[^}]*\}\{[^}]*\}',          # \addtolength{length}{value}
         r'\\newlength\{[^}]*\}',                     # \newlength{length}
+
+        # Ambienti di codice (verbatim, lstlisting)
+        r'(?s)\\begin\{verbatim\}.*?\\end\{verbatim\}',
+        r'(?s)\\begin\{lstlisting\}.*?\\end\{lstlisting\}',
     ]
     
     # Combina tutti i pattern in uno solo
