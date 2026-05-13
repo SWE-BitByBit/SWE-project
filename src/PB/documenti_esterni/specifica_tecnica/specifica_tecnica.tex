@@ -650,7 +650,7 @@ Il client mobile è sviluppato seguendo il pattern architetturale Model-View-Vie
 \end{itemize}
 
 \subsubsection{Backend Serverless}
-Ogni Lambda Function costituisce un microservizio indipendente, implementato seguendo il pattern dell'Architettura esagonale (conosciuto anche come \textit{Ports and Adapters pattern}). 
+Ogni Lambda Function costituisce un microservizio indipendente, implementato seguendo il pattern dell'Architettura esagonale. 
 Questo approccio garantisce un basso accoppiamento tra le componenti del sistema, isolando la domain logic dalle tecnologie esterne e facilitando la scrittura dei test.\\
 In questo pattern il sistema comunica con le componenti esterne attraverso interfacce, le port, mentre 
 gli adapter sono responsabili dell'implementazioni concrete di queste.\\
@@ -748,7 +748,7 @@ Il pattern viene implementato sistematicamente in tutti i ViewModel dell'applica
 \end{figure}
 
 \paragraph{Descrizione del pattern:}\mbox{}\\
-Il pattern Observer definisce un meccanismo di comunicazione in cui un oggetto, chiamato \textit{Subject} (o Publisher), mantiene una lista di dipendenti, chiamati \textit{Observers} (o Subscriber), e li notifica automaticamente di ogni cambiamento di stato. Nel sistema sviluppato, questo pattern è stato implementato con due diversi livelli di granularità per gestire la reattività dell'interfaccia Utente:
+Il pattern Observer definisce un meccanismo di comunicazione in cui un oggetto, chiamato \textit{Publisher}, mantiene una lista di oggetti in ascolto, chiamati \textit{Listeners}, o Subscribers, e li notifica automaticamente di ogni cambiamento di stato. Nel sistema sviluppato, questo pattern è stato implementato con due diversi livelli di granularità per gestire la reattività dell'interfaccia Utente:
 
 \begin{itemize}
 	\item \textbf{Livello Macro (ChangeNotifier e Consumer)}: Il ViewModel agisce come Publisher globale della schermata implementando la classe \code{ChangeNotifier}. Quando il ViewModel invoca il metodo \code{notifyListeners()}, segnala mutamento dello stato della View. Il widget \code{Consumer} funge da Subscriber, ricostruendo i rami della View che dipendono da quel ViewModel. Questo approccio è utilizzato per aggiornamenti di stato generali che influenzano più componenti contemporaneamente (per esempio lo stato di autenticazione).
@@ -1284,7 +1284,7 @@ L'enumerazione \code{DiaryAccessResult} permette la classificazione della rispos
 \end{figure}
 
 \paragraph{DiaryScreen}\mbox{}\\
-Gestisce l'interfaccia principale del diario sbloccato. Per garantire la \textit{Plausible Deniability}, la struttura visiva è identica per entrambi i tipi di diario, includendo i widget \code{NoteListWidget} e \code{NoteActionsWidget}. La gestione dello stato operativo è delegata a \code{DiaryViewModel}.
+Gestisce l'interfaccia principale del diario sbloccato. Per garantire la sicurezza dell'Utente, la struttura visiva è identica per entrambi i tipi di diario, includendo i widget \code{NoteListWidget} e \code{NoteActionsWidget}. La gestione dello stato operativo è delegata a \code{DiaryViewModel}.
 
 \begin{figure}[H]
 	\centering
@@ -1539,7 +1539,7 @@ Questo widget raggruppa i bottoni e le azioni specifiche per la gestione dei con
 \code{TrustedContactRepository} astrae la sorgente dei dati e implementa le logiche di caching tramite \code{cachedContacts}. Per l'eliminazione dei contatti adotta una strategia di \textit{Optimistic UI} con rollback in caso di errore. Inoltre, orchestra l'invio del segnale SOS tramite il metodo \code{sendSosAlert()}, interagendo con il \code{LocationService} per acquisire la posizione geografica prima di inoltrare la richiesta al Service.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\textwidth]{diagrammi_classi/contatti_fidati/DC-TrustedContactRepository.pdf} % Portato a 0.5 come richiesto
+	\includegraphics[width=0.5\textwidth]{diagrammi_classi/contatti_fidati/DC-TrustedContactRepository.pdf}
 	\caption[Diagramma della classe TrustedContactRepository]{Diagramma della classe \code{TrustedContactRepository}}
 	\label{DC-TrustedContactRepository}
 \end{figure}
@@ -1548,7 +1548,7 @@ Questo widget raggruppa i bottoni e le azioni specifiche per la gestione dei con
 \code{TrustedContactService} si occupa delle chiamate API verso il Backend. Oltre alle operazioni CRUD standard (\code{getContacts}, \code{addContact}, \code{deleteContact}, \code{updateContact}), implementa il metodo \code{sendSosAlert} per inoltrare al backend la richiesta di invio dei messaggi di emergenza.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\textwidth]{diagrammi_classi/contatti_fidati/DC-TrustedContactService.pdf} % Portato a 0.5 come richiesto
+	\includegraphics[width=0.5\textwidth]{diagrammi_classi/contatti_fidati/DC-TrustedContactService.pdf}
 	\caption[Diagramma della classe TrustedContactService]{Diagramma della classe \code{TrustedContactService}}
 	\label{DC-TrustedContactService}
 \end{figure}
@@ -1731,7 +1731,7 @@ Questo componente incapsula gli elementi interattivi dell'interfaccia, come lo s
 
 \paragraph{DeadManRepository}
 
-Il \code{DeadManRepository} astrae la persistenza e il recupero delle configurazioni, agendo come \textit{Single Source of Truth} temporanea in quanto implementazione di \code{CacheableRepository}. Utilizza \code{DeadManService} per recuperare o inviare le preferenze e per instradare richieste accessorie come la creazione iniziale (\code{createSettings}) o la segnalazione di attività vitale (\code{sendHeartbeat}). Si occupa inoltre di convertire le risposte grezze di rete in oggetti di dominio sicuri tramite l'apposito DTO.
+Il \code{DeadManRepository} astrae la persistenza e il recupero delle configurazioni, agendo come \textit{Single Source of Truth} temporanea in quanto implementazione di \code{CacheableRepository}. Utilizza \code{DeadManService} per recuperare o inviare le preferenze e per instradare richieste accessorie come la creazione iniziale (\code{createSettings}) o la segnalazione di apertura dell'app (\code{sendHeartbeat}). Si occupa inoltre di convertire le risposte grezze di rete in oggetti di dominio sicuri tramite l'apposito DTO.
 
 \begin{figure}[H]
 	\centering
