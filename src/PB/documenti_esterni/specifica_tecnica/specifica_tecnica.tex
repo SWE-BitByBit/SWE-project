@@ -121,8 +121,8 @@
 
 \begin{tcolorbox}
 \begin{tabularx}{\textwidth}{@{}l X@{}}
-\textbf{Stato:} & In lavorazione\\
-\textbf{Versione:} & 0.10.0 \\
+\textbf{Stato:} & Completato \\
+\textbf{Versione:} & 1.0.0 \\
 \textbf{Responsabile:} & Gabriele Scaggiante \\
 \textbf{Redattori:} & 
 \begin{tabular}[t]{@{}l@{}}
@@ -167,13 +167,15 @@ Gruppo BitByBit\\
 \hline
 \rowcolor{gray!60} 
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
+1.0.0 & 2026-05-13 & Giovanni Visentin & Approvazione del documento & Gabriele Scaggiante \\
+\hline
 0.10.0 & 2026-05-04 & Marco Sanguin & Aggiornamento dell'Architettura frontend con corrispettivi UML & Riccardo Manisi \\
 \hline
 0.9.0 & 2026-05-02 & Riccardo Manisi & Correzioni a sezioni Architettura logica, e di Deployment & Gabriele Scaggiante \\ 
 \hline 
 0.8.0 & 2026-05-02 & Giovanni Visentin & Sistemazione della tabella dei requisiti & Dennis Parolin \\
 \hline
-0.7.1 & 2026-05-07 & Ferdinando Fracasso & Aggiornato sezione \hyperref[subsec:librerie]{Librerie} & Riccardo Manisi \\
+0.7.1 & 2026-05-01 & Ferdinando Fracasso & Aggiornato sezione \hyperref[subsec:librerie]{Librerie} & Riccardo Manisi \\
 \hline
 0.7.0 & 2026-04-29 & Riccardo Manisi & Redatte le sezioni \hyperref[par:architettura_backend_contatti_fidati]{Architettura classi microservizio contatti fidati}, \hyperref[par:architettura_logica_backend_luoghi_sicuri]{Architettura classi microservizio luoghi sicuri} & Gabriele Scaggiante \\
 \hline
@@ -352,7 +354,7 @@ AWS Lambda è un servizio Serverless che consente di eseguire codice senza gesti
 \end{itemize}
 
 \subsubsection{API Gateway}
-AWS API Gateway è un servizio che permette di creare, pubblicare e gestire API REST e HTTP, fungendo da punto di ingresso per le richieste client. Gestisce autenticazione, routing e integrazione con altri servizi AWS. Nel progetto è utilizzato per esporre endpoint HTTP che invocano le funzioni Lambda.
+AWS API Gateway è un servizio che permette di creare, pubblicare e gestire API, fungendo da punto di ingresso per le richieste client. Gestisce autenticazione, routing e integrazione con altri servizi AWS. Nel progetto è utilizzato per esporre endpoint HTTP che invocano le funzioni Lambda.
 \begin{itemize}
     \item \textbf{Versione utilizzata}: HTTP API (v2)
     \item \textbf{Documentazione}: \url{https://docs.aws.amazon.com/apigateway/}
@@ -1018,7 +1020,7 @@ scope richiesti. Si occupa di eseguire le chiamate di rete per il login e il log
 % ====== CHATBOT ======
 \subsubsection{Chatbot} \label{subsubsec:architettura_chatbot_frontend}
 
-La funzionalità del chatbot permette all'Utente di comunicare in tempo reale con un modello di linguaggio (LLM) e di gestire lo storico delle conversazioni. L'Architettura segue rigorosamente il pattern MVVM e i principi di Clean Architecture. La struttura si avvale del pattern strutturale \textbf{Proxy} per ottimizzare il caricamento delle cronologie e di un approccio \textbf{Optimistic UI} per garantire reattività. Il sistema distingue nettamente un Data Layer (Service, Repository, API Client), un Domain Layer (interfaccia \code{Chat}, \code{ProxyChat}, \code{LocalChat}, \code{ChatMessage}) e un UI Layer (View e ViewModel).
+La funzionalità del chatbot permette all'Utente di comunicare in tempo reale con un modello di linguaggio (LLM) e di gestire lo storico delle conversazioni. L'Architettura segue rigorosamente il pattern MVVM. La struttura si avvale del pattern strutturale \textbf{Proxy} per ottimizzare il caricamento delle cronologie e di un approccio \textbf{Optimistic UI} per garantire reattività. Il sistema distingue nettamente un Data Layer (Service, Repository, API Client), un Domain Layer (interfaccia \code{Chat}, \code{ProxyChat}, \code{LocalChat}, \code{ChatMessage}) e un UI Layer (View e ViewModel).
 
 \begin{figure}[H]
 	\centering
@@ -1172,7 +1174,7 @@ Agisce come orchestratore dei dati e implementa una cache puramente \textbf{in-m
 \end{figure}
 
 \paragraph{ChatbotService}\mbox{}\\
-Responsabile della comunicazione con le API REST di AWS. Si occupa di invocare gli endpoint per il recupero delle chat, l'invio dei messaggi e la gestione della cronologia, restituendo risposte grezze al Repository.
+Responsabile della comunicazione con le API di AWS. Si occupa di invocare gli endpoint per il recupero delle chat, l'invio dei messaggi e la gestione della cronologia, restituendo risposte grezze al Repository.
 
 \begin{figure}[H]
 	\centering
@@ -1674,7 +1676,7 @@ La classe \code{SafePlaceDTO} (\textit{Data Transfer Object}) isola la logica di
 
 \subsubsection{Dead Man's Switch} \label{subsubsec:architettura_dead_man_switch}
 
-La funzionalità del \textit{Dead Man's Switch} rappresenta un sistema di sicurezza critico che invia avvisi automatici in caso di inattività prolungata dell'Utente. L'Architettura frontend è focalizzata sulla gestione sicura e reattiva della configurazione di tale sistema. Il frontend non interagisce direttamente con servizi di posta elettronica o code di schedulazione, ma demanda la gestione dei timer e l'invio delle email al Backend, garantendo l'affidabilità del servizio anche ad applicazione chiusa. Il conteggio dell'inattività viene azzerato tramite un segnale di \textit{heartbeat}, il cui innesco primario è delegato a componenti esterne (come l'avvenuto login). Analogamente al resto dell'applicazione, la funzionalità implementa il pattern MVVM e le linee guida della \textit{Clean Architecture}.
+La funzionalità del \textit{Dead Man's Switch} rappresenta un sistema di sicurezza critico che invia avvisi automatici in caso di inattività prolungata dell'Utente. L'Architettura frontend è focalizzata sulla gestione sicura e reattiva della configurazione di tale sistema. Il frontend non interagisce direttamente con servizi di posta elettronica o code di schedulazione, ma demanda la gestione dei timer e l'invio delle email al Backend, garantendo l'affidabilità del servizio anche ad applicazione chiusa. Il conteggio dell'inattività viene azzerato tramite un segnale di \textit{heartbeat}, il cui innesco primario è delegato a componenti esterne (come l'avvenuto login). Analogamente al resto dell'applicazione, la funzionalità implementa il pattern MVVM.
 
 \begin{figure}[H]
 	\centering
@@ -1740,7 +1742,7 @@ Il \code{DeadManRepository} astrae la persistenza e il recupero delle configuraz
 
 \paragraph{DeadManService}
 
-Appartenente al Data Layer, \code{DeadManService} si occupa della comunicazione HTTP/REST con le API del Backend. Fornisce i metodi necessari per effettuare le operazioni CRUD sulle configurazioni (\code{fetchSettings}, \code{saveSettings}, \code{createSettings}) e per l'invio effettivo del segnale vitale dell'Utente verso i server AWS (\code{sendHeartbeat}).
+Appartenente al Data Layer, \code{DeadManService} si occupa della comunicazione HTTP con le API del Backend. Fornisce i metodi necessari per effettuare le operazioni CRUD sulle configurazioni (\code{fetchSettings}, \code{saveSettings}, \code{createSettings}) e per l'invio effettivo del segnale vitale dell'Utente verso i server AWS (\code{sendHeartbeat}).
 
 \begin{figure}[H]
 	\centering
@@ -1764,7 +1766,7 @@ Il \code{DeadManSettingsDTO} (\textit{Data Transfer Object}) gestisce la logica 
 
 \subsubsection{Materiale Informativo} \label{subsubsec:architettura_materiale_informativo_frontend}
 
-La funzionalità del Materiale Informativo consente all'Utente di consultare risorse educative, normative di legge e contatti utili per la sicurezza personale. A livello architetturale, questa sezione condivide la medesima impostazione ibrida e ottimizzata della Mappa dei Luoghi Sicuri. Aderisce rigorosamente al pattern MVVM e ai principi della \textit{Clean Architecture}, prevedendo un disaccoppiamento netto tra la logica di fetching dei dati statici per massimizzare la scalabilità), il caching in locale e la logica di presentazione reattiva.
+La funzionalità del Materiale Informativo consente all'Utente di consultare risorse educative, normative di legge e contatti utili per la sicurezza personale. A livello architetturale, questa sezione condivide la medesima impostazione ibrida e ottimizzata della Mappa dei Luoghi Sicuri. Aderisce al pattern MVVM.
 
 \begin{figure}[H]
 	\centering
@@ -3510,7 +3512,7 @@ Il flusso di elaborazione del Dead man's switch è il seguente:
 \begin{itemize}
     \item \textbf{Trigger programmato}: EventBridge attiva quotidianamente la Lambda, che avvia il controllo dello stato degli utenti.
     
-    \item \textbf{Recupero configurazioni}: la Lambda effettua il fetch dei dati presenti in \texttt{dead\_man\_switch\_settings\_mvp}, ottenendo i timer di inattività, l’ultimo accesso registrato e lo stato corrente del Dead man's switch.
+    \item \textbf{Recupero configurazioni}: la Lambda effettua il fetch dei dati presenti in \\ \texttt{dead\_man\_switch\_settings\_mvp}, ottenendo i timer di inattività, l’ultimo accesso registrato e lo stato corrente del Dead man's switch.
     
     \item \textbf{Valutazione dello stato di inattività}: la funzione confronta il tempo corrente con l’ultimo accesso dell’Utente. Se viene superata la prima soglia di inattività, il sistema entra nello stato di “prima inattività”. Al raggiungimento della seconda soglia di inattività, viene attivato lo stato di “seconda inattività”.
     
@@ -4700,10 +4702,10 @@ RF-DE-7 & Il sistema deve permettere all'Utente di inserire più immagini con un
 RF-DE-8 & Il sistema deve permettere all'Utente di inserire più tracce audio con una singola azione nel diario fittizio & Non Soddisfatto \\
 \hline
 \rowcolor{white}
-RF-DE-9 & Il sistema deve permettere all'Utente di riprodurre le tracce audio inserite nel diario criptato & Non Soddisfatto \\
+RF-DE-9 & Il sistema deve permettere all'Utente di riprodurre le tracce audio inserite nel diario criptato & Soddisfatto \\
 \hline
 \rowcolor{gray!20}
-RF-DE-10 & Il sistema deve permettere all'Utente di riprodurre le tracce audio inserite nel diario fittizio & Non Soddisfatto \\
+RF-DE-10 & Il sistema deve permettere all'Utente di riprodurre le tracce audio inserite nel diario fittizio & Soddisfatto \\
 \hline
 \rowcolor{white}
 RF-DE-11 & Il sistema deve indicare all'Utente che il messaggio del chatbot è in fase di caricamento & Non Soddisfatto \\
@@ -4712,10 +4714,10 @@ RF-DE-11 & Il sistema deve indicare all'Utente che il messaggio del chatbot è i
 RF-DE-12 & Il sistema deve utilizzare i contenuti del diario criptato per personalizzare le risposte del chatbot & Non Soddisfatto \\
 \hline
 \rowcolor{white}
-RF-DE-13 & Il sistema deve mostrare all'Utente una spiegazione del tipo di contesto a cui può passare (Detective delle relazioni) & Non Soddisfatto \\
+RF-DE-13 & Il sistema deve mostrare all'Utente una spiegazione del tipo di contesto a cui può passare (Detective delle relazioni) & Soddisfatto \\
 \hline
 \rowcolor{gray!20}
-RF-DE-14 & Il sistema deve mostrare all'Utente una spiegazione del tipo di contesto a cui può passare (Specchio intelligente) & Non Soddisfatto \\
+RF-DE-14 & Il sistema deve mostrare all'Utente una spiegazione del tipo di contesto a cui può passare (Specchio intelligente) & Soddisfatto \\
 \hline
 \rowcolor{white}
 RF-DE-15 & L'Utente deve poter comporre automaticamente il numero di un contatto d'emergenza tramite l'apposita voce & Non Soddisfatto \\
@@ -4746,10 +4748,10 @@ RF-DE-15 & L'Utente deve poter comporre automaticamente il numero di un contatto
 \endhead
 
 \rowcolor{gray!20}
-RF-OP-1 & L'Utente deve poter impostare il timer di prima inattività (per la funzionalità di Dead Man's Switch) & Non Soddisfatto \\
+RF-OP-1 & L'Utente deve poter impostare il timer di prima inattività (per la funzionalità di Dead Man's Switch) & Soddisfatto \\
 \hline
 \rowcolor{white}
-RF-OP-2 & L'Utente deve poter impostare il timer di seconda inattività (per la funzionalità di Dead Man's Switch) & Non Soddisfatto \\
+RF-OP-2 & L'Utente deve poter impostare il timer di seconda inattività (per la funzionalità di Dead Man's Switch) & Soddisfatto \\
 \hline
 \rowcolor{gray!20}
 RF-OP-3 & Il sistema deve inviare un SMS ai numeri di telefono dei contatti fidati all'invio del segnale SOS & Non Soddisfatto \\
