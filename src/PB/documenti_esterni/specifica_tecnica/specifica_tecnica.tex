@@ -189,7 +189,7 @@ Gruppo BitByBit\\
 \hline
 0.5.0 & 2026-04-18 & Gabriele Scaggiante & Nella sezione \hyperref[subsec:architettura_backend]{Architettura backend}, aggiornata Architettura Auth, Luoghi Sicuri e Materiale Informativo; redatte sezioni Diario, Chatbot e DMS. & Dennis Parolin \\
 \hline
-0.4.0 & 2026-04-17 & Riccardo Manisi & Redatta la sezione \hyperref[subsubsec:diagramma_classi_invio_sos]{Architettura InvioSOS} & Gabriele Scaggiante \\
+0.4.0 & 2026-04-17 & Riccardo Manisi & Redatta la sezione \hyperref[subsubsec:architettura_dms]{Architettura invio SOS} & Gabriele Scaggiante \\
 \hline
 0.3.0 & 2026-04-17 & Riccardo Manisi & Redatta la sezione \hyperref[subsubsec:diagrammi_classi_auth]{Architettura auth} & Ferdinando Fracasso \\
 \hline
@@ -201,7 +201,7 @@ Gruppo BitByBit\\
 \hline
 0.1.8 & 2026-04-11 & Marco Sanguin & Aggiunta la sezione \hyperref[sec:stato_requisiti_funzionali]{Stato dei requisiti funzionali} & Ferdinando Fracasso\\
 \hline
-0.1.7 & 2026-04-10 & Marco Sanguin & Redatta la sezione \hyperref[subsubsec:architettura_area_informativa]{Architettura Area Informativa} & Ferdinando Fracasso \\
+0.1.7 & 2026-04-10 & Marco Sanguin & Redatta la sezione \hyperref[subsubsec:architettura_materiale_informativo_frontend]{Architettura Materiale Informativo} & Ferdinando Fracasso \\
 \hline
 0.1.6 & 2026-04-09 & Ferdinando Fracasso & Redatta la sezione \hyperref[subsec:design_pattern]{Design pattern utilizzati} & Giovanni Visentin\\
 \hline
@@ -841,7 +841,7 @@ Il pattern è applicato diffusamente in tutta l'applicazione. Di seguito alcune 
 	\centering
 	\includegraphics[width=\textwidth]{diagrammi_classi/pattern_utilizzati/PatternAdapter.pdf}
 	\caption[Rappresentazione del pattern Adapter all'ApiClient]{Rappresentazione del pattern Adapter all'ApiClient}
-	\label{fig:pattern_di}
+	\label{fig:pattern_adapter}
 \end{figure}
 
 \paragraph{Descrizione del pattern:}\mbox{}\\
@@ -887,7 +887,7 @@ di database tra servizi distinti.\\
 
 Per evitare l'accoppiamento tra microservizi, ogni Lambda interagisce esclusivamente con le proprie istanze dedicate di DynamoDB o S3, 
 senza condivisione di risorse di persistenza tra servizi distinti. Questa scelta è visibile nei diagrammi dell'Architettura di ciascun 
-microservizio (si veda \hyperref[sec:elenco-metriche]{Sezione~\ref*{subsec:architettura_backend}}).\\ 
+microservizio (si veda \hyperref[subsec:architettura_backend]{Sezione~\ref*{subsec:architettura_backend}}).\\ 
 
 Il ridimensionamento è gestito in modo automatico da AWS Lambda in risposta al volume di richieste, senza intervento manuale e senza costi per capacità inutilizzata.
 
@@ -1762,7 +1762,7 @@ Il \code{DeadManSettingsDTO} (\textit{Data Transfer Object}) gestisce la logica 
 
 %SEZIONE AREA INFORMATIVA
 
-\subsubsection{Materiale Informativo} \label{subsubsec:architettura_materiale_informativo}
+\subsubsection{Materiale Informativo} \label{subsubsec:architettura_materiale_informativo_frontend}
 
 La funzionalità del Materiale Informativo consente all'Utente di consultare risorse educative, normative di legge e contatti utili per la sicurezza personale. A livello architetturale, questa sezione condivide la medesima impostazione ibrida e ottimizzata della Mappa dei Luoghi Sicuri. Aderisce rigorosamente al pattern MVVM e ai principi della \textit{Clean Architecture}, prevedendo un disaccoppiamento netto tra la logica di fetching dei dati statici per massimizzare la scalabilità), il caching in locale e la logica di presentazione reattiva.
 
@@ -2695,6 +2695,7 @@ Le API relative al diario criptato e fittizio sono suddivise in due categorie di
             keepaspectratio
         ]{diagrammi_classi_lambda/diari/LambdaDiari.pdf}
 
+        \captionsetup{hypcap=false}
         \captionof{figure}{Componenti della Lambda per la gestione dei diari}
         \label{DCB-Lambda-diari-Backend}
     \end{center}
@@ -3278,6 +3279,7 @@ Il flusso di elaborazione è dunque il seguente:
 
     \begin{center}
         \includegraphics[width=\textwidth]{diagrammi_classi_lambda/chatbot/chatbot.pdf}
+        \captionsetup{hypcap=false}
         \captionof{figure}{Componenti del microservizio Chatbot}
         \label{fig:architettura_microservizio_chatbot}
     \end{center}
@@ -3867,6 +3869,7 @@ La gestione dei contatti fidati è completamente CRUD e permette all’Utente di
             keepaspectratio
         ]{diagrammi_classi_lambda/contatti_fidati/DCB-contatti_fidati.pdf}
 
+        \captionsetup{hypcap=false}
         \captionof{figure}{Componenti del microservizio contatti fidati, SOS e Dead man's switch}
         \label{DCB-Lambda-ContattiFidati-Backend}
     \end{center}
