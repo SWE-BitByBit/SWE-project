@@ -316,7 +316,7 @@ Le tecnologie utilizzate sono state scelte trovando un punto d'incontro tra la n
 \subsection{Framework} \label{subsec:framework}
 
 \subsubsection{Flutter}
-Flutter è un Framework open-source sviluppato da Google per la creazione di applicazioni multi-piattaforma a partire da un unico codice sorgente. Consente di sviluppare interfacce per dispositivi mobili, web e desktop utilizzando il linguaggio Dart. Flutter si basa su un sistema di widget componibili, che possono rappresentare qualsiasi elemento dell'interfaccia \ignoreglossary{utente}. Flutter include un proprio motore grafico (come Impeller o storicamente Skia) che disegna direttamente i componenti a schermo, garantendo elevata coerenza visiva e prestazioni indipendenti dalla piattaforma sottostante. È il Framework alla base dell'App Che Protegge e Trasforma, il che consente di poter generare build per iOS e Android da un unico codice sorgente, a fronte di un maggiore utilizzo di risorse rispetto alle soluzioni native e di una minore possibilità di controllo diretto e personalizzazione delle funzionalità native della piattaforma.
+Flutter è un Framework open-source sviluppato da Google per la creazione di applicazioni multi-piattaforma a partire da un unico codice sorgente. Consente di sviluppare interfacce per dispositivi mobili, web e desktop utilizzando il linguaggio Dart. Flutter si basa su un sistema di widget componibili, che possono rappresentare qualsiasi elemento dell'interfaccia \ignoreglossary{utente}. Flutter include un proprio motore grafico, Impeller, che disegna direttamente i componenti a schermo, garantendo elevata coerenza visiva e prestazioni indipendenti dalla piattaforma sottostante. È il Framework alla base dell'App Che Protegge e Trasforma, il che consente di poter generare build per iOS e Android da un unico codice sorgente, a fronte di un maggiore utilizzo di risorse rispetto alle soluzioni native e di una minore possibilità di controllo diretto e personalizzazione delle funzionalità native della piattaforma.
 \begin{itemize}
     \item \textbf{Versione utilizzata}: 3.41.6
     \item \textbf{Documentazione}: \url{https://docs.flutter.dev/}
@@ -630,10 +630,10 @@ Docker è una piattaforma di containerizzazione che consente di creare, distribu
 \subsection{Architettura logica} \label{subsec:architettura_logica}
 
 Il sistema software è progettato seguendo un approccio modulare e disaccoppiato, volto a massimizzare l'indipendenza tra la Business Logic, l'interfaccia utente e i meccanismi di persistenza dei dati. Per rispondere alle diverse esigenze tecnologiche e funzionali del client mobile e del backend, sono stati adottati due paradigmi architetturali distinti ma complementari, entrambi focalizzati sulla \textit{Separation of Concerns} e sulla facilità di test.
-L'interazionegarantisce che l'evoluzione tecnologica di una parte del sistema non influenzi negativamente le altre.
+L'interazione garantisce che l'evoluzione tecnologica di una parte del sistema non influenzi negativamente le altre.
 
 \subsubsection{Frontend Mobile}
-Il client mobile è sviluppato seguendo i principi della \textit{Layered Architecture} coniugata con il pattern architetturale \textbf{Model-View-ViewModel}. Questa scelta permette di isolare la logica di presentazione dalle tecnologie specifiche di Flutter e dai protocolli di rete, suddividendo il codice nei seguenti strati logici:
+Il client mobile è sviluppato seguendo i principi della \textit{Layered Architecture} coniugata con il pattern architetturale \textbf{Model-View-ViewModel}. Questa scelta permette di isolare la logica di presentazione dalla business logic e dai protocolli di rete, suddividendo il codice nei seguenti strati logici:
 
 \begin{itemize}
 	\item \textbf{Presentation Layer (View \& ViewModel)}: La View, costituita dai diversi widget Flutter, ha la responsabilità esclusiva di renderizzare l'interfaccia e catturare gli input Utente. Non contiene business logic. Il ViewModel funge da mediatore: gestisce lo stato della View notificandola di cambiamenti e incapsula la logica di presentazione tramite il pattern Command. Quest'ultimo permette di gestire operazioni asincrone, monitorare i caricamenti e centralizzare la gestione degli errori senza sporcare il codice dell'interfaccia.
@@ -641,8 +641,8 @@ Il client mobile è sviluppato seguendo i principi della \textit{Layered Archite
 	\item \textbf{Data Layer (\ignoreglossary{Repository} \& Service)}: Incaricato dell'acquisizione dei dati, il data layer utilizza classi Repository per trasformare i dati grezzi in arrivo dal backend in modelli di dominio, gestendo la logica di caching e di gestione degli errori. Le classi Service, invece, si fanno carico della gestione delle comunicazioni con fonti di dati esterne, esponendo metodi per inviare richieste HTTP al backend e ricevere le risposte sottoforma di JSON.
 \end{itemize}
 
-\subsubsection{Backend Serverless}
-Ogni Lambda Function costituisce un microservizio indipendente, implementato seguendo il pattern dell'Architettura esagonale. 
+\subsubsection{Backend con architettura esagonale}
+Ogni Lambda Function costituisce, insieme alle istanze dei servizi che utilizza, un microservizio indipendente. Il codice che ogni Lambda esegue è implementato seguendo il pattern dell'Architettura esagonale. 
 Questo approccio garantisce un basso accoppiamento tra le componenti del sistema, isolando la domain logic dalle tecnologie esterne e facilitando la scrittura dei test.\\
 In questo pattern il sistema comunica con le componenti esterne attraverso interfacce, le port, mentre 
 gli adapter sono responsabili dell'implementazioni concrete di queste.\\
@@ -783,7 +783,7 @@ Il pattern Proxy è utilizzato principalmente per la gestione dei modelli di dat
 \subsubsection{Singleton}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.4\textwidth]{diagrammi_classi/diari/DC-DiarySession.pdf}
+    \includegraphics[width=0.55\textwidth]{diagrammi_classi/diari/DC-DiarySession.pdf}
     \caption[Rappresentazione del pattern Singleton applicato alla sessione del diario]{Rappresentazione del pattern Singleton applicato alla sessione del diario}
     \label{fig:pattern_singleton}
 \end{figure}
@@ -851,7 +851,6 @@ Il pattern è applicato in modo sistematico nella gestione dell'infrastruttura d
 \begin{itemize}
 	\item NetworkAdapter $\rightarrow$ \hyperref[DC-Chatbot]{\code{ApiClient}}
 	\item Location Service $\rightarrow$ \hyperref[DC-LocationService]{\code{LocationService}}
-	\item 
 \end{itemize}
 
 
@@ -1990,7 +1989,7 @@ Il flusso di elaborazione si articola nei seguenti passaggi:
     \item \textbf{Risposta al client}: API Gateway inoltra la risposta HTTP \texttt{200 OK} al client Flutter contenente l'elenco dei luoghi sicuri.
 \end{itemize}
 
-\subsubsubsubsection{Delega della Logica Geospaziale al Livello Client (Edge Computing)}\mbox{}\\
+\subsubsubsubsection{Delega della Logica Geospaziale al Livello Client}\mbox{}\\
 Al fine di ottimizzare ulteriormente i costi, l'intera logica di rendering visivo e di routing è delegata all'applicazione sul dispositivo dell'Utente. Il Backend AWS si configura esclusivamente come Data Provider di coordinate statiche. Alla ricezione del Payload JSON, l'applicativo Flutter si fa carico di istanziare la mappa nativa e posizionare i marker.
 
 \subsubsubsection{API associate}
