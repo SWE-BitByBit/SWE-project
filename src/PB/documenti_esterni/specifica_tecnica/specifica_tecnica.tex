@@ -1012,7 +1012,7 @@ scope richiesti. Si occupa di eseguire le chiamate di rete per il login e il log
 % ====== CHATBOT ======
 \subsubsection{Chatbot} \label{subsubsec:architettura_chatbot_frontend}
 
-La funzionalità del chatbot permette all'Utente di comunicare in tempo reale con un LLM e di gestirne lo storico delle conversazioni. L'Architettura segue rigorosamente il pattern MVVM. La struttura si avvale del pattern strutturale \textbf{Proxy} per ottimizzare il caricamento delle cronologie e di un approccio \textbf{Optimistic UI} per garantire reattività. Il sistema distingue nettamente un Data Layer (Service, Repository, API Client), un Domain Layer (interfaccia \code{Chat}, \code{ProxyChat}, \code{LocalChat}, \code{ChatMessage}) e un UI Layer (View e ViewModel).
+La funzionalità del chatbot permette all'utente di comunicare con un LLM e di gestire lo storico delle proprie conversazioni. Il sistema è sviluppato seguendo il pattern \textbf{MVVM}, che assicura una chiara separazione tra la logica di stato e la visualizzazione dei widget. Per la gestione e l'ottimizzazione del caricamento della cronologia è stato integrato il pattern strutturale \textbf{Proxy}. Il sistema distingue nettamente un Data Layer (Service, Repository, API Client), un Domain Layer (interfaccia \code{Chat}, \code{ProxyChat}, \code{LocalChat}, \code{ChatMessage}) e un UI Layer (View e ViewModel).
 
 \begin{figure}[H]
 	\centering
@@ -1156,7 +1156,8 @@ Incapsula la risposta prodotta dall'LLM lato server. Contiene il corpo del messa
 \end{figure}
 
 \paragraph{ChatbotRepository}\mbox{}\\
-Agisce come orchestratore dei dati e implementa una cache puramente \textbf{in-memory} (\code{cachedPreviews}) per garantire privacy e sicurezza. Implementa strategie di \textbf{Optimistic UI} per l'invio e l'eliminazione dei messaggi, aggiornando immediatamente lo stato locale prima della conferma del server. Utilizza il \code{ChatbotService} per le operazioni remote e il \code{ChatDTO} per la mappatura dei dati.
+Agisce come orchestratore dei dati del chatbot, implementando una cache \textbf{in-memory} (\code{cachedChats}) per ottimizzare l'accesso alle sessioni di conversazione e garantire la sicurezza dei dati, evitando la persistenza locale di informazioni sensibili. La classe gestisce il recupero delle informazioni tramite il \code{ChatbotService} e utilizza \code{ChatDTO} per la mappatura e la trasformazione dei dati grezzi provenienti dal backend nei modelli di dominio utilizzati dall'applicazione.
+
 
 \begin{figure}[H]
 	\centering
@@ -1307,7 +1308,7 @@ Espone le interazioni per la creazione di nuove note o l'attivazione della modal
 \end{figure}
 
 \paragraph{NoteEditorWidget}\mbox{}\\
-Gestisce l'interfaccia di modifica della nota selezionata. Permette la manipolazione dei singoli \code{NoteElement} (testo, audio e immagini) ed implementa logiche di \textit{Optimistic UI} per riflettere immediatamente le modifiche locali prima dell'avvenuta persistenza sul server.
+Componente responsabile dell'interfaccia di visualizzazione e modifica di una nota. Permette la manipolazione granulare dei singoli \code{NoteElement} (testo, audio e immagini) attraverso l'integrazione di widget specializzati per ogni tipologia di contenuto. Il widget interagisce con il ViewModel per gestire la sincronizzazione dei dati, assicurando che ogni modifica apportata dall'utente venga correttamente processata e riflessa nell'interfaccia grafica in modo fluido.
 
 \begin{figure}[H]
 	\centering
@@ -1398,7 +1399,7 @@ Specializzazione di \code{NoteElement} per la gestione di contenuti testuali all
 \end{figure}
 
 \paragraph{NoteImageElement}\mbox{}\\
-Specializzazione di \code{NoteElement} per i contenuti grafici. Gestisce il riferimento locale dell'immagine per l'Optimistic UI e l'URL remoto post-caricamento.
+Specializzazione di \code{NoteElement} dedicata ai contenuti grafici. La classe gestisce il riferimento al file locale presente sul dispositivo per consentire la visualizzazione istantanea dell'immagine dopo la selezione; allo stesso tempo, mantiene il collegamento alla risorsa remota tramite l'URL generato a seguito del caricamento sul server.
 
 \begin{figure}[H]
 	\centering
@@ -1528,7 +1529,8 @@ Questo widget raggruppa i bottoni e le azioni specifiche per la gestione dei con
 \end{figure}
 
 \paragraph{TrustedContactRepository}\mbox{}\\
-\code{TrustedContactRepository} astrae la sorgente dei dati e implementa le logiche di caching tramite \code{cachedContacts}. Per l'eliminazione dei contatti adotta una strategia di \textit{Optimistic UI} con rollback in caso di errore. Inoltre, orchestra l'invio del segnale SOS tramite il metodo \code{sendSosAlert()}, interagendo con il \code{LocationService} per acquisire la posizione geografica prima di inoltrare la richiesta al Service.
+\code{TrustedContactRepository} astrae la sorgente dei dati e implementa la gestione della cache locale tramite \code{cachedContacts} per migliorare la reattività dell'applicazione. La classe gestisce l'eliminazione dei contatti assicurando la sincronizzazione tra lo stato locale e il backend, con meccanismi di ripristino in caso di fallimento della richiesta. Inoltre, orchestra l'invio del segnale SOS tramite il metodo \code{sendSosAlert()}, coordinando l'acquisizione della posizione geografica tramite il \code{LocationService} prima di inoltrare la richiesta di emergenza al Service.
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{diagrammi_classi/contatti_fidati/DC-TrustedContactRepository.pdf}
