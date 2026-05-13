@@ -246,24 +246,18 @@ Gruppo BitByBit\\
 \subsection{Scopo del documento} \label{sec:scopo_documento}
 Il presente documento ha lo scopo di fornire una descrizione completa, formale e strutturata del prodotto software, delineandone in modo rigoroso le caratteristiche tecniche e architetturali.
 
-La Specifica Tecnica rappresenta il riferimento principale per tutte le attività di progettazione, sviluppo, Verifica e manutenzione del sistema, assicurando coerenza rispetto ai requisiti definiti nel documento di Analisi dei requisiti e alle scelte progettuali adottate.
+La Specifica Tecnica rappresenta il riferimento principale per tutte le attività di progettazione, sviluppo, verifica e manutenzione del sistema, assicurando coerenza rispetto ai requisiti definiti nel documento di Analisi dei requisiti e alle scelte progettuali adottate.
 
 In particolare, il documento si propone di:
 
 \begin{itemize}
-    \item Definire l'Architettura complessiva del sistema, descrivendo le componenti software, le loro responsabilità e le modalità di interazione attraverso appositi diagrammi
+    \item Definire l'Architettura complessiva del sistema, descrivendo le componenti, le loro responsabilità e le modalità di interazione attraverso appositi diagrammi
     
-    \item Specificare i moduli funzionali e le interfacce esposte, includendo i contratti di comunicazione e i formati dei dati scambiati
+    \item Documentare le tecnologie, i linguaggi di programmazione, i Framework e gli strumenti adottati, motivando le scelte effettuate in relazione ai requisiti di progetto e al capitolato
     
-    \item Descrivere l'Architettura di Deployment, evidenziando la distribuzione delle componenti nei diversi ambienti di esecuzione e le relative dipendenze infrastrutturali
-    
-    \item Documentare le tecnologie, i linguaggi di programmazione, i Framework e gli strumenti adottati, motivando le scelte effettuate in relazione ai requisiti di progetto e al Capitolato
-    
-    \item Illustrare i principali design pattern e le soluzioni architetturali utilizzate, con particolare attenzione agli aspetti di scalabilità, manutenibilità e sicurezza
+    \item Illustrare i principali design pattern e le soluzioni architetturali utilizzate.
         
-    \item Fornire indicazioni sui metodi di testing e di Validazione
-    
-    \item Supportare le attività di evoluzione e manutenzione del software, garantendo una base documentale chiara e coerente.
+    \item Il tracciamento dei requisiti, che attesta la copertura di quanto stabilito nel documento di Analisi dei Requisiti.
 \end{itemize}
 
 % ====== RIFERIMENTI ======
@@ -274,7 +268,7 @@ In particolare, il documento si propone di:
 % ====== DEFINIZIONI, ACRINIMI E ABBREVIAZIONI ======
 
 Al fine di evitare ambiguità relative al linguaggio e ai termini utilizzati all'interno dei documenti formali, viene allegato il \href{https://swe-bitbybit.github.io/SWE-docs/docs/RTB/documenti_interni/Glossario.pdf}{\textit{Glossario}}.
-I termini tecnici, gli acronimi e le parole con significato specifico all'interno del progetto sono contrassegnati da una lettera 'G' in apice (es. \textbf{Agile\textsuperscript{G}}) e sono descritti in dettaglio nel documento apposito.
+I termini tecnici, gli acronimi e le parole con significato specifico all'interno del progetto sono contrassegnati da una lettera 'G' in apice (es. Agile) e sono descritti in dettaglio nel documento apposito.
 
 \subsubsection{Riferimenti normativi}\label{sec:riferimenti_normativi}
 \begin{itemize}
@@ -286,8 +280,8 @@ Ultimo accesso: \textit{2026-01-14}\\
 
 \item \textbf{Norme di Progetto}\\
 Parti consultate: documento completo\\
-Versione: v.1.0.0\\
-Ultimo accesso: \textit{2026-02-09}\\
+Versione: v.2.0.0\\
+Ultimo accesso: \textit{2026-04-30}\\
 \url{https://swe-bitbybit.github.io/SWE-docs/docs/RTB/documenti_interni/norme_di_progetto.pdf}
 \end{itemize}
 
@@ -311,8 +305,8 @@ Ultimo accesso: \textit{2026-02-09}\\
         \url{https://docs.flutter.dev/app-architecture/guide} 
     \item \textbf{Glossario}\\
         Parti consultate: documento completo\\
-        Versione: \textit{v.1.0.0}\\
-        Ultimo accesso: \textit{2026-02-27}\\
+        Versione: \textit{v.2.0.0}\\
+        Ultimo accesso: \textit{2026-05-13}\\
         \url{https://swe-bitbybit.github.io/SWE-docs/docs/RTB/documenti_interni/Glossario.pdf}
 \end{itemize}
 
@@ -1315,7 +1309,7 @@ Espone le interazioni per la creazione di nuove note o l'attivazione della modal
 \end{figure}
 
 \paragraph{NoteEditorWidget}\mbox{}\\
-Gestisce l'interfaccia di modifica della nota selezionata. Permette la manipolazione dei singoli \code{NoteElement} (testo, audio, immagini, file) e implementa logiche di \textit{Optimistic UI} per riflettere immediatamente le modifiche locali prima dell'avvenuta persistenza sul server.
+Gestisce l'interfaccia di modifica della nota selezionata. Permette la manipolazione dei singoli \code{NoteElement} (testo, audio e immagini) ed implementa logiche di \textit{Optimistic UI} per riflettere immediatamente le modifiche locali prima dell'avvenuta persistenza sul server.
 
 \begin{figure}[H]
 	\centering
@@ -1498,7 +1492,7 @@ La classe \code{TrustedContactListWidget} è responsabile della visualizzazione 
 \end{figure}
 
 \paragraph{TrustedContactFormWidget}\mbox{}\\
-\code{TrustedContactFormWidget} gestisce i campi di input necessari per l'inserimento o la modifica dei dati di un contatto fidato. Il widget integra componenti di osservazione come \code{Consumer} per monitorare lo stato di Validazione e gli errori provenienti dal ViewModel, e \code{ValueListenableBuilder} per gestire lo stato di esecuzione dei Command, garantendo un feedback visivo durante le operazioni asincrone.
+\code{TrustedContactFormWidget} gestisce i campi di input necessari per l'inserimento o la modifica dei dati di un contatto fidato. Il widget integra componenti di osservazione come \code{Consumer} per monitorare lo stato di validazione e gli errori provenienti dal ViewModel, e \code{ValueListenableBuilder} per gestire lo stato di esecuzione dei Command, garantendo un feedback visivo durante le operazioni asincrone.
 
 \begin{figure}[H]
 	\centering
@@ -1566,7 +1560,7 @@ Questo widget raggruppa i bottoni e le azioni specifiche per la gestione dei con
 
 \subsubsection{Luoghi Sicuri} \label{subsubsec:architettura_classi_luoghi_sicuri}
 
-La funzionalità dei Luoghi Sicuri permette all'Utente di visualizzare geograficamente, tramite una mappa dinamica, i punti di interesse rilevanti per la propria sicurezza personale (es. ospedali, centri anti-violenza, forze dell'ordine). La funzionalità è architettata secondo il pattern MVVM e sfrutta la libreria \code{flutter\_map} per il rendering cartografico basato su OpenStreetMap.
+La funzionalità dei Luoghi Sicuri permette all'Utente di visualizzare geograficamente, tramite una mappa dinamica, i punti di interesse rilevanti per la propria sicurezza personale (come ospedali, centri antiviolenza e forze dell'ordine). La funzionalità è architettata secondo il pattern MVVM e sfrutta la libreria \code{flutter\_map} per il rendering cartografico basato su OpenStreetMap.
 
 \begin{figure}[H]
 	\centering
@@ -1663,7 +1657,7 @@ Appartenente al livello infrastrutturale, \code{LocationService} astrae l'intera
 
 \paragraph{SafePlaceDTO}
 
-La classe \code{SafePlaceDTO} (\textit{Data Transfer Object}) isola la logica di serializzazione e deserializzazione (\code{fromJson}, \code{toJson}). Mappa le chiavi della Payload JSON scaricata dal Backend nei tipi primitivi Dart attesi dal dominio, disaccoppiando la persistenza esterna dalla \textit{Business Logic} interna.
+La classe \code{SafePlaceDTO} (\textit{Data Transfer Object}) isola la logica di serializzazione e deserializzazione (\code{fromJson}, \code{toJson}). Mappa le chiavi del Payload JSON scaricata dal Backend nei tipi primitivi Dart attesi dal dominio, disaccoppiando la persistenza esterna dalla \textit{Business Logic} interna.
 
 \begin{figure}[H]
 	\centering
@@ -1720,7 +1714,7 @@ Questo componente incapsula gli elementi interattivi dell'interfaccia, come lo s
 
 \paragraph{DeadManSettings}
 
-\code{DeadManSettings} è l'entità di dominio che modella le preferenze del \textit{Dead Man's Switch}. Contiene gli attributi necessari a configurare la logica di allarme: uno stato booleano di attivazione (\code{isActive}), i valori temporali che definiscono le due distinte soglie di inattività (\code{firstInactivityTimer} e \code{secondInactivityTimer}), nonché l'oggetto (\code{messageSubject}) e il corpo (\code{messageBody}) del messaggio testuale.
+\code{DeadManSettings} è l'entità di dominio che modella le preferenze del \textit{Dead Man's Switch}. Contiene gli attributi necessari a configurare la logica di allarme: uno stato booleano di attivazione, i valori temporali che definiscono le due distinte soglie di inattività, nonché l'oggetto e il corpo del messaggio testuale.
 
 \begin{figure}[H]
 	\centering
@@ -1810,7 +1804,7 @@ Il \code{MaterialViewModel} gestisce la Presentation Logic e lo stato dell'inter
 
 \paragraph{Resource}
 
-\code{Resource} modella la singola entità di dominio del materiale informativo. È progettata per essere flessibile, contenendo campi obbligatori di identificazione (\code{id}, \code{title}, \code{type}) e campi opzionali mutualmente esclusivi nella logica applicativa: \code{content} (per testi enciclopedici brevi da mostrare internamente) e \code{url} (per reindirizzamenti verso leggi ufficiali o siti istituzionali).
+\code{Resource} modella la singola entità di dominio del materiale informativo. È progettata per essere flessibile, contenendo campi obbligatori di identificazione e campi opzionali mutualmente esclusivi nella logica applicativa: \code{content} (per brevi testi informativi) e \code{url} (per link che rimandano a leggi ufficiali, siti istituzionali, ecc..).
 
 \begin{figure}[H]
 	\centering
@@ -1965,7 +1959,7 @@ Il \code{SosViewModel} orchestra la logica critica di invio delle segnalazioni. 
 \subsubsubsection{\ignoreglossary{Architettura} e Flusso di Autenticazione: Modulo Federated Login}\mbox{}\\
 La presente sezione descrive l'Architettura logica e il flusso dei dati relativi al modulo di autenticazione e autorizzazione dell'applicazione. Il sistema adotta un modello di federated login basato su Amazon Cognito integrato con Google come Identity Provider (IdP), progettato per garantire un accesso sicuro e standardizzato alle risorse di Backend senza demandare la gestione crittografica delle credenziali all'applicazione client.
 
-\subsubsubsubsection{Iniziazione del Flusso e Autenticazione Federata}
+\subsubsubsubsection{Inizializzazione del Flusso e Autenticazione Federata}
 Il \ignoreglossary{processo} di autenticazione ha inizio quando l'Utente interagisce con l'applicazione client (Flutter) richiedendo l'accesso al sistema. L'applicazione delega interamente la gestione dell'identità inoltrando una richiesta di login ad Amazon Cognito. Cognito, fungendo da Service Provider, intercetta la richiesta e avvia una procedura di autenticazione basata sullo standard OpenID Connect (OIDC) delegandola ai server di Google. L'Utente completa la fase di riconoscimento interfacciandosi direttamente con l'infrastruttura del provider esterno. A seguito della corretta \ignoreglossary{verifica} delle credenziali, Google restituisce ad Amazon Cognito un codice di autorizzazione attestante il successo dell'operazione e l'identità dell'Utente.
 
 \subsubsubsubsection{Emissione dei Token di Sessione}
@@ -1997,7 +1991,7 @@ Il flusso di elaborazione si articola nei seguenti passaggi:
 \end{itemize}
 
 \subsubsubsubsection{Delega della Logica Geospaziale al Livello Client (Edge Computing)}\mbox{}\\
-Al fine di ottimizzare ulteriormente i costi, l'intera logica di rendering visivo e di routing è delegata all'applicazione sul dispositivo dell'Utente. Il Backend AWS si configura esclusivamente come Data Provider di coordinate statiche. Alla ricezione del Payload JSON, l'applicativo Flutter si fa carico di istanziare la mappa nativa e posizionare i marker grafici (pin). L'azione di navigazione guidata (es. pulsante "Portami lì") sfrutta le Intents (su Android) o le URL Schemes (su iOS) del sistema operativo per invocare applicazioni di navigazione di terze parti (come Google Maps o Apple Maps). Questo approccio demanda il tracciamento GPS e il calcolo dinamico dell'itinerario al dispositivo locale, garantendo la scalabilità infinita del sistema AWS anche in condizioni di massiccio utilizzo concorrente.
+Al fine di ottimizzare ulteriormente i costi, l'intera logica di rendering visivo e di routing è delegata all'applicazione sul dispositivo dell'Utente. Il Backend AWS si configura esclusivamente come Data Provider di coordinate statiche. Alla ricezione del Payload JSON, l'applicativo Flutter si fa carico di istanziare la mappa nativa e posizionare i marker.
 
 \subsubsubsection{API associate}
 \begin{itemize}
@@ -2132,7 +2126,7 @@ lista di tutti i marker disponibili, senza esporre dettagli implementativi di S3
     \caption[Diagramma della classe S3SafePlacesRepository]{Diagramma della classe \code{S3SafePlacesRepository}}
     \label{fig:architettura_logica_luoghi_sicuri_S3SafePlacesRepository}
 \end{figure}
-Corrisponde all'aoutbound che implementa \code{SafePlacesRepositoryPort}. Contiene la logica per il fetch dei marker dall'istanza del bucket S3. Il costruttore \code{\_\_init\_\_()} inizializza il client S3.
+Corrisponde all'autbound che implementa \code{SafePlacesRepositoryPort}. Contiene la logica per il fetch dei marker dall'istanza del bucket S3. Il costruttore \code{\_\_init\_\_()} inizializza il client S3.
 
 \subsubsubsubsection{Materiale informativo} \label{subsubsec:architettura_materiale_informativo}
 \begin{figure}[H]
@@ -2319,9 +2313,9 @@ Il flusso di elaborazione è dunque il seguente:
     
     \item \textbf{Eliminazione delle Note}: In caso di richiesta di eliminazione (metodo \texttt{DELETE /notes/\{note\_id\}}), la Lambda rimuove i dati associati dal database e, se presenti, elimina anche i file binari corrispondenti dai bucket S3.
     
-    \item \textbf{Aggiunta elemento ad una Not}: In caso di richiesta di aggiunta di un elemento, che sia composto da un'immagine, un'audio o una stringa di testo, la Lambda creare una entry su DynamoDB per la memorizzazione dei metadati dell'elemento e tramite il client di S3 crea un \textit{URL presigned} per l'upload del file binario direttamente dal client.
+    \item \textbf{Aggiunta elemento ad una Not}: In caso di richiesta di aggiunta di un elemento, che sia composto da un'immagine, un audio o una stringa di testo, la Lambda creare una entry su DynamoDB per la memorizzazione dei metadati dell'elemento e tramite il client di S3 crea un \textit{URL presigned} per l'upload del file binario direttamente dal client.
 
-    \item \textbf{Eliminazione elemento da una Nota}: In caso di rischiesta di eliminazione di un'elemento di una nota, la Lmabda rimuove i metdatadi da DynamoDB e, se presente, il file binario associato all'elemento presente nel bucket S3.
+    \item \textbf{Eliminazione elemento da una Nota}: In caso di richiesta di eliminazione di un'elemento di una nota, la Lambda rimuove i metadati da DynamoDB e, se presente, il file binario associato all'elemento presente nel bucket S3.
 
     \item \textbf{Logout}: quando l'Utente esce dal diario, il Backend viene notificato e la Lambda elimina la sessione precedentemente avviata.
 \end{itemize}
@@ -2938,7 +2932,7 @@ L'interfaccia \code{NoteRepositoryPort} definisce il \ignoreglossary{contratto} 
     \caption[Diagramma dell'interfaccia FileRepositoryPort]{Diagramma dell'interfaccia \code{FileRepositoryPort}}
     \label{DCB-FileRepositoryPort-Backend}
 \end{figure}
-Costituisce l'oubound adapter, definisce i metodi per la gestione degli file (immagini o audio) inseriti all'interno delle note del diario. Espone il metodo \code{add\_note\_element} che accetta una chiave e restituisce l'URL di accesso, \code{delete} per la rimozione di file tramite chiave e \code{generate\_presigned\_url} per la generazione di URL firmati con parametri e scadenza configurabili. \code{FileRepositoryPort} è implementata da \code{S3NoteAdapter}, che fornisce l'integrazione concreta con Amazon S3.
+Costituisce l'outbound adapter, definisce i metodi per la gestione degli file (immagini o audio) inseriti all'interno delle note del diario. Espone il metodo \code{add\_note\_element} che accetta una chiave e restituisce l'URL di accesso, \code{delete} per la rimozione di file tramite chiave e \code{generate\_presigned\_url} per la generazione di URL firmati con parametri e scadenza configurabili. \code{FileRepositoryPort} è implementata da \code{S3NoteAdapter}, che fornisce l'integrazione concreta con Amazon S3.
 
 \subsubsubsubsection{DiaryAuthRepositoryPort}
 \begin{figure}[H]
@@ -2974,7 +2968,7 @@ Rappresenta la domain logic per la gestione dell'autenticazione al diario, che i
     \caption[Diagramma della classe DynamoNoteAdapter]{Diagramma della classe \code{DynamoNoteAdapter}}
     \label{DCB-DynamoNoteAdapter-Backend}
 \end{figure}
-Rappresenta l'oubound adapter, implementa l'interfaccia \code{NoteRepositoryPort} fornendo la persistenza concreta delle note su DynamoDB. È responsabile di effettuare le richieste concrete a DynamoDB e a ritornare i risultati ottenuti, implementando concretamente le varie operazioni CRUD. L'adapter utilizza \code{NoteDTO} e \code{NoteElementDTO} per la conversione bidirezionale tra le entità di dominio e il formato di persistenza su DynamoDB, isolando completamente il layer applicativo dai dettagli implementativi dello storage.
+Rappresenta l'outbound adapter, implementa l'interfaccia \code{NoteRepositoryPort} fornendo la persistenza concreta delle note su DynamoDB. È responsabile di effettuare le richieste concrete a DynamoDB e a ritornare i risultati ottenuti, implementando concretamente le varie operazioni CRUD. L'adapter utilizza \code{NoteDTO} e \code{NoteElementDTO} per la conversione bidirezionale tra le entità di dominio e il formato di persistenza su DynamoDB, isolando completamente il layer applicativo dai dettagli implementativi dello storage.
 
 \subsubsubsubsection{S3NoteAdapter}
 \begin{figure}[H]
@@ -3484,7 +3478,7 @@ Costituisce la domain logic per le operazione relative alle operazioni CRUD sull
     \caption[Diagramma della classe LambdaHandler]{Diagramma della classe \code{ChatBotController}}
     \label{DC-ChatBotController-Backend}
 \end{figure}
-Rappesenta l'inbound adapter del microservizio. Esegue il parsing delle richieste inviate da API Gateway in oggetti di domanio. il punto di ingresso della funzione Lambda, li instrada ai gestori appropriati, coordina l'interazione tra \code{ChatbotCRUDService} e \code{ChatbotLLMService}, e costruisce le risposte HTTP conformi alle specifiche dell'API.
+Rappresenta l'inbound adapter del microservizio. Esegue il parsing delle richieste inviate da API Gateway in oggetti di dominio. il punto di ingresso della funzione Lambda, li instrada ai gestori appropriati, coordina l'interazione tra \code{ChatbotCRUDService} e \code{ChatbotLLMService}, e costruisce le risposte HTTP conformi alle specifiche dell'API.
 
 \subsubsection{Contatti fidati, invio SOS e Dead man's switch} \label{subsubsec:architettura_dms}
 
@@ -3627,7 +3621,7 @@ La gestione dei contatti fidati è completamente CRUD e permette all’Utente di
 
             \item \textbf{Response}:
             \begin{itemize}
-                \item \texttt{204 OK}: aggiornamento della configurazione avvenuto con succcesso.
+                \item \texttt{204 OK}: aggiornamento della configurazione avvenuto con successo.
                 \item Corpo della risposta:
 \begin{verbatim}
 {
@@ -3816,7 +3810,7 @@ La gestione dei contatti fidati è completamente CRUD e permette all’Utente di
 
             \item \textbf{Response}:
             \begin{itemize}
-                \item \texttt{200 OK}: eliminazione contatto avveuta con successo.
+                \item \texttt{200 OK}: eliminazione contatto avvenuta con successo.
 \begin{verbatim}
 {
     "message": "Contact contact1 deleted"
@@ -4131,7 +4125,7 @@ Descrizione metodi:
     \caption[Diagramma della classe SOSAlertService]{Diagramma della classe \code{SOSAlertService}}
     \label{fig:architettura_contatti_fidati_SOSAlertService}
 \end{figure}
-Rappsenta la domain logic, è responsabile dell'invio immediato delle email di soccorso al momento della pressione del pulsante SOS da parte dell'Utente. Implementa la port primaria \code{SendAlertPort}.\\
+Rappresenta la domain logic, è responsabile dell'invio immediato delle email di soccorso al momento della pressione del pulsante SOS da parte dell'Utente. Implementa la port primaria \code{SendAlertPort}.\\
 Descrizione metodi:
 \begin{itemize}
     \item \code{\_\_init\_\_(contact\_repository, notification\_repository)}, costruttore che riceve le due port secondarie tramite dependency injection;
