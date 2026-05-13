@@ -3510,7 +3510,7 @@ Il flusso di elaborazione del Dead man's switch è il seguente:
 \begin{itemize}
     \item \textbf{Trigger programmato}: EventBridge attiva quotidianamente la Lambda, che avvia il controllo dello stato degli utenti.
     
-    \item \textbf{Recupero configurazioni}: la Lambda effettua il fetch dei dati presenti in \texttt{dead\_man\_switch\_settings\_mvp}, ottenendo i timer di inattività, l’ultimo accesso registrato e lo stato corrente del Dead man's switch.
+    \item \textbf{Recupero configurazioni}: la Lambda effettua il fetch dei dati presenti in \\ \texttt{dead\_man\_switch\_settings\_mvp}, ottenendo i timer di inattività, l’ultimo accesso registrato e lo stato corrente del Dead man's switch.
     
     \item \textbf{Valutazione dello stato di inattività}: la funzione confronta il tempo corrente con l’ultimo accesso dell’Utente. Se viene superata la prima soglia di inattività, il sistema entra nello stato di “prima inattività”. Al raggiungimento della seconda soglia di inattività, viene attivato lo stato di “seconda inattività”.
     
