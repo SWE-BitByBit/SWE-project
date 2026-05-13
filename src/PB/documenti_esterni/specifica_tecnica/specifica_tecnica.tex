@@ -629,16 +629,14 @@ Docker è una piattaforma di containerizzazione che consente di creare, distribu
 \section{Architettura}
 \subsection{Architettura logica} \label{subsec:architettura_logica}
 
-Il sistema software è progettato secondo i principi di un'\textbf{Architettura a Strati} (o \textit{Layered Architecture}), che impone una chiara separazione delle responsabilità tra i diversi livelli applicativi del sistema.
-L'obiettivo cardine di questa scelta è massimizzare l'indipendenza formale della logica di business dalle interfacce grafiche Utente e dai meccanismi fisici di gestione del dato, favorendo così la facilità di test, la manutenzione nel tempo e il forte disaccoppiamento (\textit{Separation of Concerns}).
-
-All'ingresso superiore dell'applicazione si posiziona l'ecosistema logico del dispositivo, mentre le fondamenta sono governate e calcolate dall'infrastruttura di servizio. L'interfaccia tra questi due mondi è ben definita tramite API e totalmente slegata dai linguaggi di programmazione o dai sistemi operativi utilizzati.
+Il sistema software è progettato seguendo un approccio modulare e disaccoppiato, volto a massimizzare l'indipendenza tra la Business Logic, l'interfaccia utente e i meccanismi di persistenza dei dati. Per rispondere alle diverse esigenze tecnologiche e funzionali del client mobile e del backend, sono stati adottati due paradigmi architetturali distinti ma complementari, entrambi focalizzati sulla \textit{Separation of Concerns} e sulla facilità di test.
+L'interazionegarantisce che l'evoluzione tecnologica di una parte del sistema non influenzi negativamente le altre.
 
 \subsubsection{Frontend Mobile}
-Il client mobile è sviluppato seguendo il pattern architetturale Model-View-ViewModel (MVVM). Il codice è suddiviso nei seguenti strati logici:
+Il client mobile è sviluppato seguendo i principi della \textit{Layered Architecture} coniugata con il pattern architetturale \textbf{Model-View-ViewModel}. Questa scelta permette di isolare la logica di presentazione dalle tecnologie specifiche di Flutter e dai protocolli di rete, suddividendo il codice nei seguenti strati logici:
 
 \begin{itemize}
-	\item \textbf{Presentation Layer (View \& ViewModel)}: La View, costituita dai diversi widget Flutter, ha la responsabilità esclusiva di renderizzare l'interfaccia e catturare gli input Utente. Il ViewModel funge da mediatore: gestisce lo stato della View notificandola di cambiamenti e incapsula la logica di presentazione tramite il pattern Command. Quest'ultimo permette di gestire operazioni asincrone, monitorare i caricamenti e centralizzare la gestione degli errori senza sporcare il codice dell'interfaccia.
+	\item \textbf{Presentation Layer (View \& ViewModel)}: La View, costituita dai diversi widget Flutter, ha la responsabilità esclusiva di renderizzare l'interfaccia e catturare gli input Utente. Non contiene business logic. Il ViewModel funge da mediatore: gestisce lo stato della View notificandola di cambiamenti e incapsula la logica di presentazione tramite il pattern Command. Quest'ultimo permette di gestire operazioni asincrone, monitorare i caricamenti e centralizzare la gestione degli errori senza sporcare il codice dell'interfaccia.
 	\item \textbf{Domain Layer (Business Logic)}: Rappresentato dai modelli di dominio, che definiscono le entità base su cui opera l'intera app. In quanto modelli di dominio, sono completamente indipendenti da qualsiasi tecnologia di persistenza o protocollo di comunicazione, gestendo esclusivamente la business logic dell'applicazione.
 	\item \textbf{Data Layer (\ignoreglossary{Repository} \& Service)}: Incaricato dell'acquisizione dei dati, il data layer utilizza classi Repository per trasformare i dati grezzi in arrivo dal backend in modelli di dominio, gestendo la logica di caching e di gestione degli errori. Le classi Service, invece, si fanno carico della gestione delle comunicazioni con fonti di dati esterne, esponendo metodi per inviare richieste HTTP al backend e ricevere le risposte sottoforma di JSON.
 \end{itemize}
@@ -1014,7 +1012,7 @@ scope richiesti. Si occupa di eseguire le chiamate di rete per il login e il log
 % ====== CHATBOT ======
 \subsubsection{Chatbot} \label{subsubsec:architettura_chatbot_frontend}
 
-La funzionalità del chatbot permette all'Utente di comunicare in tempo reale con un modello di linguaggio (LLM) e di gestire lo storico delle conversazioni. L'Architettura segue rigorosamente il pattern MVVM. La struttura si avvale del pattern strutturale \textbf{Proxy} per ottimizzare il caricamento delle cronologie e di un approccio \textbf{Optimistic UI} per garantire reattività. Il sistema distingue nettamente un Data Layer (Service, Repository, API Client), un Domain Layer (interfaccia \code{Chat}, \code{ProxyChat}, \code{LocalChat}, \code{ChatMessage}) e un UI Layer (View e ViewModel).
+La funzionalità del chatbot permette all'Utente di comunicare in tempo reale con un LLM e di gestirne lo storico delle conversazioni. L'Architettura segue rigorosamente il pattern MVVM. La struttura si avvale del pattern strutturale \textbf{Proxy} per ottimizzare il caricamento delle cronologie e di un approccio \textbf{Optimistic UI} per garantire reattività. Il sistema distingue nettamente un Data Layer (Service, Repository, API Client), un Domain Layer (interfaccia \code{Chat}, \code{ProxyChat}, \code{LocalChat}, \code{ChatMessage}) e un UI Layer (View e ViewModel).
 
 \begin{figure}[H]
 	\centering
