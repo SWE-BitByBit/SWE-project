@@ -6,7 +6,7 @@
 % =======================================================
 \newcommand{\TitoloDocumento}{Piano di Progetto}
 \newcommand{\DataVersione}{AAAA/MM/GG}
-\newcommand{\VersioneAttuale}{1.1.5}
+\newcommand{\VersioneAttuale}{1.2}
 
 % =======================================================
 % 2. PACCHETTI
@@ -202,6 +202,9 @@ Gruppo BitByBit\\\\
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 \endhead
+\rowcolor{gray!20}
+1.2 & 2026-05-18 & Marco Sanguin & Aggiunta consuntivo finale progetto & Gabreiele Scaggiante \\
+\hline
 \rowcolor{white}
 1.1.5 & 2026-05-05 & Ferdinando Fracasso & Scritta sezione Sprint 12 & Dennis Parolin \\
 \hline
@@ -1406,10 +1409,10 @@ Si prospetta l'utilizzo delle seguenti risorse:
         M. Sanguin & 4 & - & - & - & - & - \\
         \hline
         \rowcolor{tableLineOdd}
-        G. Scaggiante & - & 1 & 6 & - & - & - \\
+        G. Scaggiante & - & - & 6 & - & - & - \\
         \hline
         \rowcolor{tableLineEven}
-        G. Visentin & - & 2 & 4 & - & - & 2 \\
+        G. Visentin & - & - & 5 & - & - & 2 \\
         \hline
     \end{tabularx}
     \caption{Preventivo orario per componente - Sprint 3}
@@ -1421,16 +1424,16 @@ Si prospetta l'utilizzo delle seguenti risorse:
     \centering
     \begin{tikzpicture}[scale=1.2]
         \draw[thick,fill=pieResp] (0,0) -- (0:1.5) arc (0:44:1.5) -- cycle;
-        \draw (22:1.96) node {12.2\%};
+        \draw (22:1.96) node {12.8\%};
         
         \draw[thick,fill=pieAmm] (0,0) -- (44:1.5) arc (44:150:1.5) -- cycle;
-        \draw (97:1.8) node {29.3\%};
+        \draw (97:1.8) node {23.1\%};
         
         \draw[thick,fill=pieAnal] (0,0) -- (150:1.5) arc (150:308:1.5) -- cycle;
-        \draw (229:1.9) node {43.9\%};
+        \draw (229:1.9) node {48.7\%};
         
         \draw[thick,fill=pieVer] (0,0) -- (308:1.5) arc (308:360:1.5) -- cycle;
-        \draw (334:1.95) node {14.6\%};
+        \draw (334:1.95) node {15.4\%};
         
         \matrix [below, draw=none, fill=none] at (0,-2.5) {
             \node [fill=pieResp, label=right:Responsabile] {}; & \node [fill=pieAmm, label=right:Amministratore] {}; \\
@@ -1459,16 +1462,16 @@ Di seguito il resoconto delle ore effettivamente impiegate:
         R. Manisi & - \textcolor{red}{(-1)} & 4 \textcolor{red}{(-1)} & 2 & - & - & - \\
         \hline
         \rowcolor{tableLineOdd}
-        D. Parolin & - & 2.5 \textcolor{red}{(-1.5)} & 5.5 \textcolor{red}{(+3,5)} & - & - & 1.5 \textcolor{red}{(-0,5)}\\
+        D. Parolin & - & 2.5 \textcolor{red}{(-1.5)} & 5 \textcolor{red}{(+3)} & - & - & 1.5 \textcolor{red}{(-0,5)}\\
         \hline
         \rowcolor{tableLineEven}
         M. Sanguin & 4 & - & - & - & - & 1 \textcolor{red}{(+1)} \\
         \hline
         \rowcolor{tableLineOdd}
-        G. Scaggiante & - & - \textcolor{red}{(-1)} & 7 \textcolor{red}{(+1)} & - & - & - \\
+        G. Scaggiante & - & - & 7.5 \textcolor{red}{(+1.5)} & - & - & - \\
         \hline
         \rowcolor{tableLineEven}
-        G. Visentin & - & - \textcolor{red}{(-2)} & 5 \textcolor{red}{(+1)} & - & - & 1 \textcolor{red}{(-1)} \\
+        G. Visentin & - & - & 5 & - & - & 1 \textcolor{red}{(-1)} \\
         \hline
     \end{tabularx}
     \caption{Consuntivo orario per componente - Sprint 3}
@@ -1749,6 +1752,7 @@ La retrospettiva ha fatto emergere la necessità di pianificare in modo più eff
 
 \subsubsection{Sprint 5}\label{sec:sprint5_RTB}
 
+
 % --- TABELLA RIEPILOGATIVA Sprint ---
 \begin{table}[H]
     \centering
@@ -1957,6 +1961,7 @@ Gli studi sulle funzionalità da implementare nel \textbf{Proof of Concept} hann
 
 %-------------------------------------------------------------------------------------------------%
 \pagebreak % Inserito perchè taglia la prima sezione dello Sprint 6
+
 \subsubsection{Sprint 6}\label{sec:sprint6_RTB}
 
 % --- TABELLA RIEPILOGATIVA Sprint ---
@@ -2175,6 +2180,7 @@ Risulta inoltre una decisa mancanza di presenza nel gruppo (\textbf{RO4}) dovuta
 La retrospettiva ha evidenziato che, nonostante i progressi, lo sviluppo risulta globalmente rallentato. Si rende necessaria una maggiore onestà della propria disponibilità e dello stato dei lavori. Occorre porre maggior realismo in fase di preventivo delle ore assegnate e aumentare la trasparenza, affinché l'avanzamento rifletta fedelmente l'effettiva capacità di ogni membro per i futuri Sprint.
 
 %-------------------------------------------------------------------------------------------------%
+
 \subsubsection{Sprint 7}\label{sec:sprint7_RTB}
 
 % --- TABELLA RIEPILOGATIVA Sprint ---
@@ -2385,6 +2391,7 @@ Nonostante vi siano stati brevi ritardi da parte della Proponente nel fornire ac
 La retrospettiva ha evidenziato una disponibilità maggiore da parte di quasi tutti i membri del gruppo, data la conclusione della sessione. Se così non fosse stato, probabilmente parte delle funzionalità del PoC non sarebbero state implementate entro il perimetro dello Sprint 7. La coordinazione generale delle attività è stata buona. Risulta però necessario bilanciare il carico di lavoro lato programmazione, e fare in modo che tutti i membri del gruppo conoscano le tecnologie utilizzate e comprendano il loro ruolo all'interno del sistema sviluppato per il PoC. Per tali ragioni, durante lo Sprint, si è deciso di documentare le funzionalità implementate e il funzionamento delle tecnologie attraverso la sezione \textit{wiki} dedicata della Repository GitHub, in modo da consentire a ognuno uno studio autonomo mirato su ciò che i programmatori hanno realizzato.
 
 %-------------------------------------------------------------------------------------------------%
+
 \subsubsection{Sprint 8}\label{sec:sprint8_PB}
 
 % --- TABELLA RIEPILOGATIVA Sprint ---
@@ -2597,6 +2604,7 @@ Per ovviare ai blocchi legati all'ambiente Cloud reale (\textbf{RO5}), il gruppo
 
 
 %-------------------------------------------------------------------------------------------------%
+
 \subsubsection{Sprint 9}\label{sec:sprint9_PB}
 
 % --- TABELLA RIEPILOGATIVA Sprint ---
@@ -2815,6 +2823,7 @@ Pur implicando la necessità di completare le sezioni mancanti nello Sprint succ
 
 
 %-------------------------------------------------------------------------------------------------%
+
 \subsubsection{Sprint 10}\label{sec:sprint10_PB}
 
 % --- TABELLA RIEPILOGATIVA Sprint ---
@@ -3027,6 +3036,7 @@ Il gruppo ha evidenziato la necessità di un maggiore supporto tecnico da parte 
 Lo sviluppo frontend è stato quasi completato, mentre lo sviluppo Backend è stato avviato lentamente, causa RO5 (Dipendenza da permessi esterni). Il gruppo continuerà a sviluppare e testare localmente, aspettando di poter eseguire test di rilascio completi su AWS non appena tutte le autorizzazioni saranno completamente concesse.
 
 %-------------------------------------------------------------------------------------------------%
+
 \subsubsection{Sprint 11}\label{sec:sprint11_PB}
 
 % --- TABELLA RIEPILOGATIVA Sprint ---
@@ -3246,6 +3256,7 @@ Lo Sprint 11 ha evidenziato un forte impegno da parte di tutti i membri del team
 
 
 %-------------------------------------------------------------------------------------------------%
+
 \subsubsection{Sprint 12}\label{sec:sprint12_PB}
 
 % --- TABELLA RIEPILOGATIVA Sprint ---
