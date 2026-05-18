@@ -6,7 +6,7 @@
 % =======================================================
 \newcommand{\TitoloDocumento}{Piano di Progetto}
 \newcommand{\DataVersione}{AAAA/MM/GG}
-\newcommand{\VersioneAttuale}{1.1.5}
+\newcommand{\VersioneAttuale}{2.0}
 
 % =======================================================
 % 2. PACCHETTI
@@ -202,6 +202,12 @@ Gruppo BitByBit\\\\
 \textbf{Versione} & \textbf{Data} & \textbf{Autore} & \textbf{Descrizione} & \textbf{Verificatore} \\
 \hline
 \endhead
+\rowcolor{white}
+2.0 & 2026-05-18 & Marco Sanguin & Approvazione finale & Gabriele Scaggiante \\
+\hline
+\rowcolor{gray!20}
+1.2 & 2026-05-18 & Marco Sanguin & Aggiunta consuntivo finale progetto & Gabriele Scaggiante \\
+\hline
 \rowcolor{white}
 1.1.5 & 2026-05-05 & Ferdinando Fracasso & Scritta sezione Sprint 12 & Dennis Parolin \\
 \hline
@@ -1406,10 +1412,10 @@ Si prospetta l'utilizzo delle seguenti risorse:
         M. Sanguin & 4 & - & - & - & - & - \\
         \hline
         \rowcolor{tableLineOdd}
-        G. Scaggiante & - & 1 & 6 & - & - & - \\
+        G. Scaggiante & - & - & 6 & - & - & - \\
         \hline
         \rowcolor{tableLineEven}
-        G. Visentin & - & 2 & 4 & - & - & 2 \\
+        G. Visentin & - & - & 5 & - & - & 2 \\
         \hline
     \end{tabularx}
     \caption{Preventivo orario per componente - Sprint 3}
@@ -1421,16 +1427,16 @@ Si prospetta l'utilizzo delle seguenti risorse:
     \centering
     \begin{tikzpicture}[scale=1.2]
         \draw[thick,fill=pieResp] (0,0) -- (0:1.5) arc (0:44:1.5) -- cycle;
-        \draw (22:1.96) node {12.2\%};
+        \draw (22:1.96) node {12.8\%};
         
         \draw[thick,fill=pieAmm] (0,0) -- (44:1.5) arc (44:150:1.5) -- cycle;
-        \draw (97:1.8) node {29.3\%};
+        \draw (97:1.8) node {23.1\%};
         
         \draw[thick,fill=pieAnal] (0,0) -- (150:1.5) arc (150:308:1.5) -- cycle;
-        \draw (229:1.9) node {43.9\%};
+        \draw (229:1.9) node {48.7\%};
         
         \draw[thick,fill=pieVer] (0,0) -- (308:1.5) arc (308:360:1.5) -- cycle;
-        \draw (334:1.95) node {14.6\%};
+        \draw (334:1.95) node {15.4\%};
         
         \matrix [below, draw=none, fill=none] at (0,-2.5) {
             \node [fill=pieResp, label=right:Responsabile] {}; & \node [fill=pieAmm, label=right:Amministratore] {}; \\
@@ -1459,16 +1465,16 @@ Di seguito il resoconto delle ore effettivamente impiegate:
         R. Manisi & - \textcolor{red}{(-1)} & 4 \textcolor{red}{(-1)} & 2 & - & - & - \\
         \hline
         \rowcolor{tableLineOdd}
-        D. Parolin & - & 2.5 \textcolor{red}{(-1.5)} & 5.5 \textcolor{red}{(+3,5)} & - & - & 1.5 \textcolor{red}{(-0,5)}\\
+        D. Parolin & - & 2.5 \textcolor{red}{(-1.5)} & 5 \textcolor{red}{(+3)} & - & - & 1.5 \textcolor{red}{(-0,5)}\\
         \hline
         \rowcolor{tableLineEven}
         M. Sanguin & 4 & - & - & - & - & 1 \textcolor{red}{(+1)} \\
         \hline
         \rowcolor{tableLineOdd}
-        G. Scaggiante & - & - \textcolor{red}{(-1)} & 7 \textcolor{red}{(+1)} & - & - & - \\
+        G. Scaggiante & - & - & 7.5 \textcolor{red}{(+1.5)} & - & - & - \\
         \hline
         \rowcolor{tableLineEven}
-        G. Visentin & - & - \textcolor{red}{(-2)} & 5 \textcolor{red}{(+1)} & - & - & 1 \textcolor{red}{(-1)} \\
+        G. Visentin & - & - & 5 & - & - & 1 \textcolor{red}{(-1)} \\
         \hline
     \end{tabularx}
     \caption{Consuntivo orario per componente - Sprint 3}
@@ -1658,13 +1664,13 @@ Di seguito il resoconto delle ore effettivamente impiegate:
         F. Fracasso & - & 3\textcolor{red}{(+2)} & 5\textcolor{red}{(+1)} & - & - & - \\
         \hline
         \rowcolor{tableLineEven}
-        R. Manisi & 3\textcolor{red}{(+3)} & 0\textcolor{red}{(-5)} & - & - & - & 1.5\textcolor{red}{(-0.5)} \\
+        R. Manisi & 3\textcolor{red}{(+3)} & - \textcolor{red}{(-5)} & - & - & - & 1.5\textcolor{red}{(-0.5)} \\
         \hline
         \rowcolor{tableLineOdd}
-        D. Parolin & - & 3\textcolor{red}{(-1)} & 0\textcolor{red}{(-1)} & - & - & 2 \\
+        D. Parolin & - & 3\textcolor{red}{(-1)} & - \textcolor{red}{(-1)} & - & - & 2 \\
         \hline
         \rowcolor{tableLineEven}
-        M. Sanguin & 3\textcolor{red}{(+1)} & - & 0\textcolor{red}{(-3)} & - & - & - \\
+        M. Sanguin & 3\textcolor{red}{(+1)} & - & - \textcolor{red}{(-3)} & - & - & - \\
         \hline
         \rowcolor{tableLineOdd}
         G. Scaggiante & - & 2\textcolor{red}{(-1)} & 3\textcolor{red}{(+2)} & - & - & 2\textcolor{red}{(+1)} \\
@@ -1728,7 +1734,7 @@ Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la
         Programmatore & 15\euro/h & - & - & 120 & 1.800\euro \\
         \hline
         \rowcolor{tableLineEven}
-        Verificatore & 15\euro/h & 5.5 & 82,5\euro & 69.5 \textcolor{red}{(-5.5)} & 1.035\euro \textcolor{red}{(-82,50\euro)} \\
+        Verificatore & 15\euro/h & 5.5 & 82,5\euro & 69 \textcolor{red}{(-5.5)} & 1.035\euro \textcolor{red}{(-82,50\euro)} \\
         \hline
         \rowcolor{tableHeader}
         \textbf{Totale} & - & \textbf{32.5} & \textbf{752,50\euro} & \textbf{414 \textcolor{red}{(-32.5)}} & \textbf{8.432,50\euro \textcolor{red}{(-752,50\euro)}} \\
@@ -1748,6 +1754,7 @@ La retrospettiva ha fatto emergere la necessità di pianificare in modo più eff
 %-------------------------------------------------------------------------------------------------%
 
 \subsubsection{Sprint 5}\label{sec:sprint5_RTB}
+
 
 % --- TABELLA RIEPILOGATIVA Sprint ---
 \begin{table}[H]
@@ -1877,7 +1884,7 @@ Di seguito il resoconto delle ore effettivamente impiegate:
         G. Scaggiante & - & - & - & - & 0\textcolor{red}{(-2)} & 1.5\textcolor{red}{(+0.5)} \\
         \hline
         \rowcolor{tableLineEven}
-        G. Visentin & - & - & 2\textcolor{red}{(+1)} & - & 0\textcolor{red}{(-2)} & - \\
+        G. Visentin & - & - & 2\textcolor{red}{(+1)} & - &  -\textcolor{red}{(-2)} & - \\
         \hline
     \end{tabularx}
     \caption{Consuntivo orario per componente - Sprint 5}
@@ -1957,6 +1964,7 @@ Gli studi sulle funzionalità da implementare nel \textbf{Proof of Concept} hann
 
 %-------------------------------------------------------------------------------------------------%
 \pagebreak % Inserito perchè taglia la prima sezione dello Sprint 6
+
 \subsubsection{Sprint 6}\label{sec:sprint6_RTB}
 
 % --- TABELLA RIEPILOGATIVA Sprint ---
@@ -2155,10 +2163,10 @@ Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la
         Programmatore & 15\euro/h & 9 & 135\euro & 110 \textcolor{red}{(-9)} & 1.650\euro \textcolor{red}{(-135\euro)} \\
         \hline
         \rowcolor{tableLineEven}
-        Verificatore & 15\euro/h & 2.5 & 37,50\euro & 65 \textcolor{red}{(-2.5)} & 967,50\euro \textcolor{red}{(-37,50\euro)} \\
+        Verificatore & 15\euro/h & 2.5 & 37,50\euro & 64.5 \textcolor{red}{(-2.5)} & 967,50\euro \textcolor{red}{(-37,50\euro)} \\
         \hline
         \rowcolor{tableHeader}
-        \textbf{Totale} & - & \textbf{34.75} & \textbf{737,50\euro} & \textbf{369.25 \textcolor{red}{(-34.75)}} & \textbf{7.450\euro \textcolor{red}{(-737,50\euro)}} \\
+        \textbf{Totale} & - & \textbf{34.75} & \textbf{737,50\euro} & \textbf{368.75 \textcolor{red}{(-34.75)}} & \textbf{7.450\euro \textcolor{red}{(-737,50\euro)}} \\
         \hline
     \end{tabularx}
     \caption{Sprint 6 - Variazione nelle risorse disponibili}
@@ -2175,6 +2183,7 @@ Risulta inoltre una decisa mancanza di presenza nel gruppo (\textbf{RO4}) dovuta
 La retrospettiva ha evidenziato che, nonostante i progressi, lo sviluppo risulta globalmente rallentato. Si rende necessaria una maggiore onestà della propria disponibilità e dello stato dei lavori. Occorre porre maggior realismo in fase di preventivo delle ore assegnate e aumentare la trasparenza, affinché l'avanzamento rifletta fedelmente l'effettiva capacità di ogni membro per i futuri Sprint.
 
 %-------------------------------------------------------------------------------------------------%
+
 \subsubsection{Sprint 7}\label{sec:sprint7_RTB}
 
 % --- TABELLA RIEPILOGATIVA Sprint ---
@@ -2241,7 +2250,7 @@ Si prospetta l'utilizzo delle seguenti risorse:
         G. Scaggiante & - & 1 & - & - & 5 & - \\
         \hline
         \rowcolor{tableLineEven}
-        G. Visentin & - & - & - & - & 4 & 2 \\
+        G. Visentin & - & - & - & - & 4 & - \\
         \hline
     \end{tabularx}
     \caption{Preventivo orario per componente - Sprint 7}
@@ -2253,19 +2262,19 @@ Si prospetta l'utilizzo delle seguenti risorse:
     \centering
     \begin{tikzpicture}[scale=1.2]
         \draw[thick,fill=pieResp] (0,0) -- (0:1.5) arc (0:52.2:1.5) -- cycle;
-        \draw (26.1:1.95) node {14.5\%};
+        \draw (26.1:1.95) node {15.5\%};
         
         \draw[thick,fill=pieAmm] (0,0) -- (52.2:1.5) arc (52.2:130.4:1.5) -- cycle;
-        \draw (91.3:1.8) node {21.7\%};
+        \draw (91.3:1.8) node {23.1\%};
         
         \draw[thick,fill=pieAnal] (0,0) -- (130.4:1.5) arc (130.4:161.7:1.5) -- cycle;
-        \draw (146.1:1.95) node {8.7\%};
+        \draw (146.1:1.95) node {9.2\%};
         
         \draw[thick,fill=pieVer] (0,0) -- (161.7:1.5) arc (161.7:224.4:1.5) -- cycle;
-        \draw (193.0:1.95) node {17.4\%};
+        \draw (193.0:1.95) node {12.3\%};
 
         \draw[thick,fill=pieProg] (0,0) -- (224.4:1.5) arc (224.4:360:1.5) -- cycle;
-        \draw (292.2:1.8) node {37.7\%};
+        \draw (292.2:1.8) node {40.0\%};
         
         \matrix [below, draw=none, fill=none] at (0,-2.5) {
             \node [fill=pieResp, label=right:Responsabile] {}; & \node [fill=pieAmm, label=right:Amministratore] {}; \\
@@ -2369,10 +2378,10 @@ Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la
         Programmatore & 15\euro/h & 24 & 360\euro & 86 \textcolor{red}{(-24)} & 1.290\euro \textcolor{red}{(-360\euro)} \\
         \hline
         \rowcolor{tableLineEven}
-        Verificatore & 15\euro/h & 5 & 75\euro & 60 \textcolor{red}{(-5)} & 892,50\euro \textcolor{red}{(-75\euro)} \\
+        Verificatore & 15\euro/h & 5 & 75\euro & 59.5 \textcolor{red}{(-5)} & 892,50\euro \textcolor{red}{(-75\euro)} \\
         \hline
         \rowcolor{tableHeader}
-        \textbf{Totale} & - & \textbf{43.5} & \textbf{790\euro} & \textbf{325.75 \textcolor{red}{(-43.5)}} & \textbf{6.660\euro \textcolor{red}{(-790\euro)}} \\
+        \textbf{Totale} & - & \textbf{43.5} & \textbf{790\euro} & \textbf{325.25 \textcolor{red}{(-43.5)}} & \textbf{6.660\euro \textcolor{red}{(-790\euro)}} \\
         \hline
     \end{tabularx}
     \caption{Sprint 7 - Variazione nelle risorse disponibili}
@@ -2385,6 +2394,9 @@ Nonostante vi siano stati brevi ritardi da parte della Proponente nel fornire ac
 La retrospettiva ha evidenziato una disponibilità maggiore da parte di quasi tutti i membri del gruppo, data la conclusione della sessione. Se così non fosse stato, probabilmente parte delle funzionalità del PoC non sarebbero state implementate entro il perimetro dello Sprint 7. La coordinazione generale delle attività è stata buona. Risulta però necessario bilanciare il carico di lavoro lato programmazione, e fare in modo che tutti i membri del gruppo conoscano le tecnologie utilizzate e comprendano il loro ruolo all'interno del sistema sviluppato per il PoC. Per tali ragioni, durante lo Sprint, si è deciso di documentare le funzionalità implementate e il funzionamento delle tecnologie attraverso la sezione \textit{wiki} dedicata della Repository GitHub, in modo da consentire a ognuno uno studio autonomo mirato su ciò che i programmatori hanno realizzato.
 
 %-------------------------------------------------------------------------------------------------%
+
+\subsection{Product Baseline (PB )}
+
 \subsubsection{Sprint 8}\label{sec:sprint8_PB}
 
 % --- TABELLA RIEPILOGATIVA Sprint ---
@@ -2442,7 +2454,7 @@ Si prospetta l'utilizzo delle seguenti risorse:
         D. Parolin & - & - & - & 7 & - & 3 \\
         \hline
         \rowcolor{tableLineEven}
-        M. Sanguin & 10 & - & - & - & - & 3 \\
+        M. Sanguin & 8 & - & - & - & - & 3 \\
         \hline
         \rowcolor{tableLineOdd}
         G. Scaggiante & - & - & - & 10 & - & - \\
@@ -2460,19 +2472,19 @@ Si prospetta l'utilizzo delle seguenti risorse:
     \centering
     \begin{tikzpicture}[scale=1.2]
         \draw[thick,fill=pieResp] (0,0) -- (0:1.5) arc (0:52.6:1.5) -- cycle;
-        \draw (26.3:1.95) node {14.6\%};
+        \draw (26.3:1.95) node {12.0\%};
         
         \draw[thick,fill=pieAmm] (0,0) -- (52.6:1.5) arc (52.6:141.8:1.5) -- cycle;
-        \draw (97.2:1.85) node {24.8\%};
+        \draw (97.2:1.85) node {25.6\%};
 
         \draw[thick,fill=pieAnal] (0,0) -- (141.8:1.5) arc (141.8:144.4:1.5) -- cycle;
-        \draw (143:2.1) node {0.7\%};
+        \draw (143:2.1) node {0.8\%};
         
         \draw[thick,fill=pieDes] (0,0) -- (144.4:1.5) arc (144.4:328.3:1.5) -- cycle;
-        \draw (236.3:1.8) node {51.1\%};
+        \draw (236.3:1.8) node {52.6\%};
 
         \draw[thick,fill=pieVer] (0,0) -- (328.3:1.5) arc (328.3:360:1.5) -- cycle;
-        \draw (344.1:1.95) node {8.8\%};
+        \draw (344.1:1.95) node {9.0\%};
 
         \matrix [below, draw=none, fill=none] at (0,-2.5) {
             \node [fill=pieResp, label=right:Responsabile] {}; & \node [fill=pieAmm, label=right:Amministratore] {}; \\
@@ -2505,7 +2517,7 @@ Di seguito il resoconto delle ore effettivamente impiegate.
         D. Parolin & - & - & - & 7 & - & 3 \\
         \hline
         \rowcolor{tableLineEven}
-        M. Sanguin & 10 & - & - & - & - & 0\textcolor{red}{(-3)} \\
+        M. Sanguin & 8 & - & - & - & - & - \textcolor{red}{(-3)} \\
         \hline
         \rowcolor{tableLineOdd}
         G. Scaggiante & - & - & - & 8\textcolor{red}{(-2)} & - & - \\
@@ -2523,11 +2535,11 @@ Di seguito il resoconto delle ore effettivamente impiegate.
     \begin{tikzpicture}[scale=1.2]
         % Responsabile: 15.9% -> 57.2°
         \draw[thick,fill=pieResp] (0,0) -- (0:1.5) arc (0:57.2:1.5) -- cycle;
-        \draw (28.6:1.95) node {15.9\%};
+        \draw (28.6:1.95) node {13.1\%};
 
         % Amministratore: 28.6% -> 103° (Cumulato: 160.2°)
         \draw[thick,fill=pieAmm] (0,0) -- (57.2:1.5) arc (57.2:160.2:1.5) -- cycle;
-        \draw (108.7:1.85) node {28.6\%};
+        \draw (108.7:1.85) node {29.5\%};
 
         % Analista: 1.6% -> 5.8° (Cumulato: 166.0°)
         \draw[thick,fill=pieAnal] (0,0) -- (160.2:1.5) arc (160.2:166.0:1.5) -- cycle;
@@ -2535,11 +2547,11 @@ Di seguito il resoconto delle ore effettivamente impiegate.
 
         % Progettista: 49.2% -> 177.1° (Cumulato: 343.1°)
         \draw[thick,fill=pieDes] (0,0) -- (166.0:1.5) arc (166.0:343.1:1.5) -- cycle;
-        \draw (254.5:1.85) node {49.2\%};
+        \draw (254.5:1.85) node {50.8\%};
 
         % Verificatore: 4.7% -> 16.9° (Cumulato: 360°)
         \draw[thick,fill=pieVer] (0,0) -- (343.1:1.5) arc (343.1:360:1.5) -- cycle;
-        \draw (351.5:1.95) node {4.8\%};
+        \draw (351.5:1.95) node {4.9\%};
 
         \matrix [below, draw=none, fill=none] at (0,-2.5) {
             \node [fill=pieResp, label=right:Responsabile] {}; & \node [fill=pieAmm, label=right:Amministratore] {}; \\
@@ -2562,7 +2574,7 @@ Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la
         \textbf{Ruolo} & \textbf{Costo} & \textbf{Ore} & \textbf{Costo} & \textbf{Ore rimanenti} & \textbf{Budget rimanente} \\
         \hline
         \rowcolor{tableLineOdd}
-        Responsabile & 30\euro/h & 10 & 300\euro & 27 \textcolor{red}{(-10)} & 810\euro \textcolor{red}{(-300\euro)} \\
+        Responsabile & 30\euro/h & 8 & 240\euro & 29 \textcolor{red}{(-8)} & 870\euro \textcolor{red}{(-240\euro)} \\
         \hline
         \rowcolor{tableLineEven}
         Amministratore & 20\euro/h & 18 & 360\euro & 22.25 \textcolor{red}{(-18)} & 445\euro \textcolor{red}{(-360\euro)} \\
@@ -2580,7 +2592,7 @@ Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la
         Verificatore & 15\euro/h & 3 & 45\euro & 56.5 \textcolor{red}{(-3)} & 847,50\euro \textcolor{red}{(-45\euro)} \\
         \hline
         \rowcolor{tableHeader}
-        \textbf{Totale} & - & \textbf{63} & \textbf{1.505\euro} & \textbf{262.25 \textcolor{red}{(-63)}} & \textbf{5.155\euro \textcolor{red}{(-1.505\euro)}} \\
+        \textbf{Totale} & - & \textbf{61} & \textbf{1.445\euro} & \textbf{264.25 \textcolor{red}{(-61)}} & \textbf{5.215\euro \textcolor{red}{(-1.445\euro)}} \\
         \hline
     \end{tabularx}
     \caption{Sprint 8 - Variazione nelle risorse disponibili}
@@ -2597,6 +2609,7 @@ Per ovviare ai blocchi legati all'ambiente Cloud reale (\textbf{RO5}), il gruppo
 
 
 %-------------------------------------------------------------------------------------------------%
+
 \subsubsection{Sprint 9}\label{sec:sprint9_PB}
 
 % --- TABELLA RIEPILOGATIVA Sprint ---
@@ -2674,26 +2687,26 @@ Si prospetta l'utilizzo delle seguenti risorse:
     \begin{tikzpicture}[scale=1.2]
         % Responsabile
         \draw[thick,fill=pieResp] (0,0) -- (0:1.5) arc (0:34.8:1.5) -- cycle;
-        \draw (17.4:1.95) node {9.7\%};
+        \draw (17.4:1.95) node {9.8\%};
         
         % Amministratore
         \draw[thick,fill=pieAmm] (0,0) -- (34.8:1.5) arc (34.8:61.9:1.5) -- cycle;
-        \draw (48.4:1.9) node {7.5\%};
+        \draw (48.4:1.9) node {7.6\%};
 
         % Analista (0%)
         \draw[thick,fill=pieAnal] (0,0) -- (61.9:1.5) arc (61.9:61.9:1.5) -- cycle;
         
         % Progettista
         \draw[thick,fill=pieDes] (0,0) -- (61.9:1.5) arc (61.9:251.6:1.5) -- cycle;
-        \draw (156.8:2) node {52.7\%};
+        \draw (156.8:2) node {52.2\%};
 
         % Programmatore
         \draw[thick,fill=pieProg] (0,0) -- (251.6:1.5) arc (251.6:309.7:1.5) -- cycle;
-        \draw (280.7:1.8) node {16.1\%};
+        \draw (280.7:1.8) node {16.3\%};
 
         % Verificatore
         \draw[thick,fill=pieVer] (0,0) -- (309.7:1.5) arc (309.7:360:1.5) -- cycle;
-        \draw (334.9:2) node {14.0\%};
+        \draw (334.9:2) node {14.1\%};
 
         \matrix [below, draw=none, fill=none] at (0,-2.5) {
             \node [fill=pieResp, label=right:Responsabile] {}; & \node [fill=pieAmm, label=right:Amministratore] {}; \\
@@ -2716,22 +2729,22 @@ Di seguito il resoconto delle ore effettivamente impiegate.
         \textbf{Membro} & \textbf{Resp} & \textbf{Amm} & \textbf{Anal} & \textbf{Pt} & \textbf{Pr} & \textbf{Ver} \\
         \hline
         \rowcolor{tableLineOdd}
-        F. Fracasso & - & - & - & 5 & 4.5 & 4 \\
+        F. Fracasso & - & - & - & 5 & 4.5 \textcolor{red}{(-0.5)} & 4 \textcolor{red}{(-2)} \\
         \hline
         \rowcolor{tableLineEven}
-        R. Manisi & - & - & - & 10 & - & 1 \\
+        R. Manisi & - & - & - & 10 \textcolor{red}{(-2)} & - & 1 \textcolor{red}{(-2)} \\
         \hline
         \rowcolor{tableLineOdd}
-        D. Parolin & - & - & - & 7 & 2.5 & - \\
+        D. Parolin & - & - & - & 7 & 2.5 \textcolor{red}{(-2.5)} & - \\
         \hline
         \rowcolor{tableLineEven}
-        M. Sanguin & - & 2 & - & 11 & 6 & - \\
+        M. Sanguin & - & 2 \textcolor{red}{(-1)} & - & 11 \textcolor{red}{(-1)} & 6 \textcolor{red}{(+1)} & - \\
         \hline
         \rowcolor{tableLineOdd}
         G. Scaggiante & 9 & - & - & 4 & - & - \\
         \hline
         \rowcolor{tableLineEven}
-        G. Visentin & - & 4 & - & 6 & - & 4 \\
+        G. Visentin & - & 4 & - & 6 \textcolor{red}{(-1)} & - & 4 \\
         \hline
     \end{tabularx}
     \caption{Consuntivo orario per componente - Sprint 9}
@@ -2777,7 +2790,7 @@ Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la
         \textbf{Ruolo} & \textbf{Costo} & \textbf{Ore} & \textbf{Costo} & \textbf{Ore rimanenti} & \textbf{Budget rimanente} \\
         \hline
         \rowcolor{tableLineOdd}
-        Responsabile & 30\euro/h & 9 & 270\euro & 18 \textcolor{red}{(-9)} & 540\euro \textcolor{red}{(-270\euro)} \\
+        Responsabile & 30\euro/h & 9 & 270\euro & 20 \textcolor{red}{(-9)} & 600\euro \textcolor{red}{(-270\euro)} \\
         \hline
         \rowcolor{tableLineEven}
         Amministratore & 20\euro/h & 6 & 120\euro & 16.25 \textcolor{red}{(-6)} & 325\euro \textcolor{red}{(-120\euro)} \\
@@ -2795,7 +2808,7 @@ Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la
         Verificatore & 15\euro/h & 9 & 135\euro & 47.5 \textcolor{red}{(-9)} & 712,50\euro \textcolor{red}{(-135\euro)} \\
         \hline
         \rowcolor{tableHeader}
-        \textbf{Totale} & - & \textbf{80} & \textbf{1.795\euro} & \textbf{182.25 \textcolor{red}{(-80)}} & \textbf{3.360\euro \textcolor{red}{(-1.795\euro)}} \\
+        \textbf{Totale} & - & \textbf{80} & \textbf{1.795\euro} & \textbf{184.25 \textcolor{red}{(-80)}} & \textbf{3.420\euro \textcolor{red}{(-1.795\euro)}} \\
         \hline
     \end{tabularx}
     \caption{Sprint 9 - Variazione nelle risorse disponibili}
@@ -2815,6 +2828,7 @@ Pur implicando la necessità di completare le sezioni mancanti nello Sprint succ
 
 
 %-------------------------------------------------------------------------------------------------%
+
 \subsubsection{Sprint 10}\label{sec:sprint10_PB}
 
 % --- TABELLA RIEPILOGATIVA Sprint ---
@@ -2926,22 +2940,22 @@ Di seguito il resoconto delle ore effettivamente impiegate.
         \textbf{Membro} & \textbf{Resp} & \textbf{Amm} & \textbf{Anal} & \textbf{Pt} & \textbf{Pr} & \textbf{Ver} \\
         \hline
         \rowcolor{tableLineOdd}
-        F. Fracasso & - & - & - & - & 12.5 & 2.5 \\
+        F. Fracasso & - & - & - & - & 12.5 \textcolor{red}{(+2.5)}& 2.5 \textcolor{red}{(-2.5)} \\
         \hline
         \rowcolor{tableLineEven}
-        R. Manisi & - & - & - & 8 & 3 & - \\
+        R. Manisi & - & - & - & 8 \textcolor{red}{(+1)} & 3 \textcolor{red}{(-4)}& - \\
         \hline
         \rowcolor{tableLineOdd}
-        D. Parolin & - & - & - & 0.75 & 10.25 & 0.75 \\
+        D. Parolin & - & - & - & 0.75 \textcolor{red}{(+0.75)} & 10.25 \textcolor{red}{(+0.25)}& 0.75 \textcolor{red}{(+0.75)}\\
         \hline
         \rowcolor{tableLineEven}
-        M. Sanguin & - & 3 & - & 4 & 6 & 5 \\
+        M. Sanguin & - & 3 & - & 4 \textcolor{red}{(-1)} & 6 \textcolor{red}{(-1)}& 5 \\
         \hline
         \rowcolor{tableLineOdd}
-        G. Scaggiante & - & - & - & 5 & - & 3 \\
+        G. Scaggiante & - & - & - & 5 \textcolor{red}{(+1)}& - \textcolor{red}{(-1)} & 3 \textcolor{red}{(-2)}\\
         \hline
         \rowcolor{tableLineEven}
-        G. Visentin & 9 & - & - & - & 5 & - \\
+        G. Visentin & 9 & - & - & - & 5 \textcolor{red}{(-1)}& - \\
         \hline
     \end{tabularx}
     \caption{Consuntivo orario per componente - Sprint 10}
@@ -2992,7 +3006,7 @@ Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la
         \textbf{Ruolo} & \textbf{Costo} & \textbf{Ore} & \textbf{Costo} & \textbf{Ore rimanenti} & \textbf{Budget rimanente} \\
         \hline
         \rowcolor{tableLineOdd}
-        Responsabile & 30\euro/h & 9 & 270\euro & 9 \textcolor{red}{(-9)} & 270\euro \textcolor{red}{(-270\euro)} \\
+        Responsabile & 30\euro/h & 9 & 270\euro & 11 \textcolor{red}{(-9)} & 330\euro \textcolor{red}{(-270\euro)} \\
         \hline
         \rowcolor{tableLineEven}
         Amministratore & 20\euro/h & 3 & 60\euro & 13.25 \textcolor{red}{(-3)} & 265\euro \textcolor{red}{(-60\euro)} \\
@@ -3010,7 +3024,7 @@ Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la
         Verificatore & 15\euro/h & 11.25 & 168,75\euro & 36.25 \textcolor{red}{(-11.25)} & 543,75\euro \textcolor{red}{(-168,75\euro)} \\
         \hline
         \rowcolor{tableHeader}
-        \textbf{Totale} & - & \textbf{77.75} & \textbf{1.493,75\euro} & \textbf{104.5 \textcolor{red}{(-77.75)}} & \textbf{1.866,25\euro \textcolor{red}{(-1.493,75\euro)}} \\
+        \textbf{Totale} & - & \textbf{77.75} & \textbf{1.493,75\euro} & \textbf{106.5 \textcolor{red}{(-77.75)}} & \textbf{1.926,25\euro \textcolor{red}{(-1.493,75\euro)}} \\
         \hline
     \end{tabularx}
     \caption{Sprint 10 - Variazione nelle risorse disponibili}
@@ -3027,6 +3041,7 @@ Il gruppo ha evidenziato la necessità di un maggiore supporto tecnico da parte 
 Lo sviluppo frontend è stato quasi completato, mentre lo sviluppo Backend è stato avviato lentamente, causa RO5 (Dipendenza da permessi esterni). Il gruppo continuerà a sviluppare e testare localmente, aspettando di poter eseguire test di rilascio completi su AWS non appena tutte le autorizzazioni saranno completamente concesse.
 
 %-------------------------------------------------------------------------------------------------%
+
 \subsubsection{Sprint 11}\label{sec:sprint11_PB}
 
 % --- TABELLA RIEPILOGATIVA Sprint ---
@@ -3075,7 +3090,7 @@ Si prospetta l'utilizzo delle seguenti risorse:
         \textbf{Membro} & \textbf{Resp} & \textbf{Amm} & \textbf{Anal} & \textbf{Pt} & \textbf{Pr} & \textbf{Ver} \\
         \hline
         \rowcolor{tableLineOdd}
-        F. Fracasso & - & - & - & 1 & 8 & 4 \\
+        F. Fracasso & - & - & - & 1 & 8 & 1 \\
         \hline
         \rowcolor{tableLineEven}
         R. Manisi & 3 & - & - & - & 10 & 3 \\
@@ -3103,23 +3118,23 @@ Si prospetta l'utilizzo delle seguenti risorse:
     \begin{tikzpicture}[scale=1.2]
         % Responsabile (4.2%)
         \draw[thick,fill=pieResp] (0,0) -- (0:1.5) arc (0:15:1.5) -- cycle;
-        \draw (7.5:2) node {4.2\%};
+        \draw (7.5:2) node {4.3\%};
         
         % Amministratore (5.6%)
         \draw[thick,fill=pieAmm] (0,0) -- (15:1.5) arc (15:35:1.5) -- cycle;
-        \draw (25:1.95) node {5.6\%};
+        \draw (25:1.95) node {5.8\%};
         
         % Progettista (12.5%)
         \draw[thick,fill=pieDes] (0,0) -- (35:1.5) arc (35:80:1.5) -- cycle;
-        \draw (57.5:1.9) node {12.5\%};
+        \draw (57.5:1.9) node {13.0\%};
 
         % Programmatore (50.0%)
         \draw[thick,fill=pieProg] (0,0) -- (80:1.5) arc (80:260:1.5) -- cycle;
-        \draw (170:2.1) node {50.0\%};
+        \draw (170:2.1) node {52.2\%};
 
         % Verificatore (27.8%)
         \draw[thick,fill=pieVer] (0,0) -- (260:1.5) arc (260:360:1.5) -- cycle;
-        \draw (310:1.9) node {27.8\%};
+        \draw (310:1.9) node {24.6\%};
 
         \matrix [below, draw=none, fill=none] at (0,-2.5) {
             \node [fill=pieResp, label=right:Responsabile] {}; & \node [fill=pieAmm, label=right:Amministratore] {}; \\
@@ -3142,7 +3157,7 @@ Di seguito il resoconto delle ore effettivamente impiegate.
         \textbf{Membro} & \textbf{Resp} & \textbf{Amm} & \textbf{Anal} & \textbf{Pt} & \textbf{Pr} & \textbf{Ver} \\
         \hline
         \rowcolor{tableLineOdd}
-        F. Fracasso & - & - & - & 1 & 11.5\textcolor{red}{(+3.5)} & 0\textcolor{red}{(-4)} \\
+        F. Fracasso & - & - & - & 1 & 11.5\textcolor{red}{(+3.5)} & - \textcolor{red}{(-1)} \\
         \hline
         \rowcolor{tableLineEven}
         R. Manisi & 2\textcolor{red}{(-1)} & - & - & - & 10 & 3 \\
@@ -3209,7 +3224,7 @@ Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la
         \textbf{Ruolo} & \textbf{Costo} & \textbf{Ore} & \textbf{Costo} & \textbf{Ore rimanenti} & \textbf{Budget rimanente} \\
         \hline
         \rowcolor{tableLineOdd}
-        Responsabile & 30\euro/h & 2 & 60\euro & 7 \textcolor{red}{(-2)} & 210\euro \textcolor{red}{(-60\euro)} \\
+        Responsabile & 30\euro/h & 2 & 60\euro & 9 \textcolor{red}{(-2)} & 270\euro \textcolor{red}{(-60\euro)} \\
         \hline
         \rowcolor{tableLineEven}
         Amministratore & 20\euro/h & 3 & 60\euro & 10.25 \textcolor{red}{(-3)} & 205\euro \textcolor{red}{(-60\euro)} \\
@@ -3227,7 +3242,7 @@ Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la
         Verificatore & 15\euro/h & 12 & 180\euro & 24.25 \textcolor{red}{(-12)} & 363,75\euro \textcolor{red}{(-180\euro)} \\
         \hline
         \rowcolor{tableHeader}
-        \textbf{Totale} & - & \textbf{63.5} & \textbf{1.072,50\euro} & \textbf{41 \textcolor{red}{(-63.5)}} & \textbf{793,75\euro \textcolor{red}{(-1.072,50\euro)}} \\
+        \textbf{Totale} & - & \textbf{63.5} & \textbf{1.072,50\euro} & \textbf{43 \textcolor{red}{(-63.5)}} & \textbf{853,75\euro \textcolor{red}{(-1.072,50\euro)}} \\
         \hline
     \end{tabularx}
     \caption{Sprint 11 - Variazione nelle risorse disponibili}
@@ -3246,6 +3261,7 @@ Lo Sprint 11 ha evidenziato un forte impegno da parte di tutti i membri del team
 
 
 %-------------------------------------------------------------------------------------------------%
+
 \subsubsection{Sprint 12}\label{sec:sprint12_PB}
 
 % --- TABELLA RIEPILOGATIVA Sprint ---
@@ -3291,7 +3307,7 @@ Si prospetta l'utilizzo delle seguenti risorse:
         \textbf{Membro} & \textbf{Resp} & \textbf{Amm} & \textbf{Anal} & \textbf{Pt} & \textbf{Pr} & \textbf{Ver} \\
         \hline
         \rowcolor{tableLineOdd}
-        F. Fracasso & 3 & - & - & - & 1 & 1 \\
+        F. Fracasso & 2 & - & - & - & 1 & 1 \\
         \hline
         \rowcolor{tableLineEven}
         R. Manisi & - & - & - & - & 5 & 4.5 \\
@@ -3306,7 +3322,7 @@ Si prospetta l'utilizzo delle seguenti risorse:
         G. Scaggiante & - & - & - & - & 6 & 3 \\
         \hline
         \rowcolor{tableLineEven}
-        G. Visentin & - & 3 & - & - & 5 & 1 \\
+        G. Visentin & - & 3 & - & - & 5 & 3 \\
         \hline
     \end{tabularx}
     \caption{Preventivo orario per componente - Sprint 12}
@@ -3319,19 +3335,19 @@ Si prospetta l'utilizzo delle seguenti risorse:
     \begin{tikzpicture}[scale=1.2]
         % Responsabile (7%)
         \draw[thick,fill=pieResp] (0,0) -- (0:1.5) arc (0:25:1.5) -- cycle;
-        \draw (12.5:2) node {7\%};
+        \draw (12.5:2) node {4.6\%};
         
         % Amministratore (7%)
         \draw[thick,fill=pieAmm] (0,0) -- (25:1.5) arc (25:50:1.5) -- cycle;
-        \draw (37.5:1.95) node {7\%};
+        \draw (37.5:1.95) node {6.9\%};
 
         % Programmatore (54.2%)
         \draw[thick,fill=pieProg] (0,0) -- (50:1.5) arc (50:245:1.5) -- cycle;
-        \draw (147.5:2.1) node {54.2\%};
+        \draw (147.5:2.1) node {52.9\%};
 
         % Verificatore (31.8%)
         \draw[thick,fill=pieVer] (0,0) -- (245:1.5) arc (245:360:1.5) -- cycle;
-        \draw (302.5:1.9) node {31.8\%};
+        \draw (302.5:1.9) node {35.6\%};
 
         \matrix [below, draw=none, fill=none] at (0,-2.5) {
             \node [fill=pieResp, label=right:Responsabile] {}; & \node [fill=pieAmm, label=right:Amministratore] {}; \\
@@ -3354,10 +3370,10 @@ Di seguito il resoconto delle ore effettivamente impiegate.
         \textbf{Membro} & \textbf{Resp} & \textbf{Amm} & \textbf{Anal} & \textbf{Pt} & \textbf{Pr} & \textbf{Ver} \\
         \hline
         \rowcolor{tableLineOdd}
-        F. Fracasso & 3 & - & - & - & 1 & 0.5 \textcolor{red}{(-0.5)} \\
+        F. Fracasso & 2 & - & - & - & 1 & 0.5 \textcolor{red}{(-0.5)} \\
         \hline
         \rowcolor{tableLineEven}
-        R. Manisi & - & - & - & - & 5.5 \textcolor{red}{(+0.5)} & 3 \textcolor{red}{(-1.5)} \\
+        R. Manisi & - & - & - & - & 6.5 \textcolor{red}{(+1.5)} & 4.5 \\
         \hline
         \rowcolor{tableLineOdd}
         D. Parolin & - & - & - & 0.75 \textcolor{red}{(+0.75)} & 1.5 \textcolor{red}{(-0.5)} & 0.5 \textcolor{red}{(-0.5)}\\
@@ -3366,10 +3382,10 @@ Di seguito il resoconto delle ore effettivamente impiegate.
         M. Sanguin & - & - & - & - & 4 & 3 \\
         \hline
         \rowcolor{tableLineOdd}
-        G. Scaggiante & - & - & - & - & 6 & 2 \textcolor{red}{(-1)} \\
+        G. Scaggiante & - & - & - & - & 6 & 5 \textcolor{red}{(+2)} \\
         \hline
         \rowcolor{tableLineEven}
-        G. Visentin & - & 3 & - & - & 5 & 1 \\
+        G. Visentin & - & 3 & - & - & 5 & 3 \\
         \hline
     \end{tabularx}
     \caption{Consuntivo orario per componente - Sprint 12}
@@ -3382,23 +3398,23 @@ Di seguito il resoconto delle ore effettivamente impiegate.
     \begin{tikzpicture}[scale=1.2]
         % Responsabile (7.5%)
         \draw[thick,fill=pieResp] (0,0) -- (0:1.5) arc (0:27:1.5) -- cycle;
-        \draw (13.5:2) node {7.5\%};
+        \draw (13.5:2) node {4.3\%};
         
         % Amministratore (7.5%)
         \draw[thick,fill=pieAmm] (0,0) -- (27:1.5) arc (27:54:1.5) -- cycle;
-        \draw (40.5:1.9) node {7.5\%};
+        \draw (40.5:1.9) node {6.5\%};
         
         % Progettista (1.9%)
         \draw[thick,fill=pieDes] (0,0) -- (54:1.5) arc (54:61:1.5) -- cycle;
-        \draw (57.5:1.95) node {1.9\%};
+        \draw (57.5:1.95) node {1.6\%};
 
         % Programmatore (57.9%)
         \draw[thick,fill=pieProg] (0,0) -- (61:1.5) arc (61:269:1.5) -- cycle;
-        \draw (165.5:2) node {57.9\%};
+        \draw (165.5:2) node {51.9\%};
 
         % Verificatore (25.2%)
         \draw[thick,fill=pieVer] (0,0) -- (269:1.5) arc (269:360:1.5) -- cycle;
-        \draw (314.5:1.9) node {25.2\%};
+        \draw (314.5:1.9) node {35.7\%};
 
         \matrix [below, draw=none, fill=none] at (0,-2.5) {
             \node [fill=pieResp, label=right:Responsabile] {}; & \node [fill=pieAmm, label=right:Amministratore] {}; \\
@@ -3421,7 +3437,7 @@ Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la
         \textbf{Ruolo} & \textbf{Costo} & \textbf{Ore} & \textbf{Costo} & \textbf{Ore rimanenti} & \textbf{Budget rimanente} \\
         \hline
         \rowcolor{tableLineOdd}
-        Responsabile & 30\euro/h & 3 & 90\euro & 4 \textcolor{red}{(-3)} & 120\euro \textcolor{red}{(-90\euro)} \\
+        Responsabile & 30\euro/h & 2 & 60\euro & 7 \textcolor{red}{(-2)} & 210\euro \textcolor{red}{(-60\euro)} \\
         \hline
         \rowcolor{tableLineEven}
         Amministratore & 20\euro/h & 3 & 60\euro & 7.25 \textcolor{red}{(-3)} & 145\euro \textcolor{red}{(-60\euro)} \\
@@ -3433,13 +3449,13 @@ Di seguito viene riportato il prospetto delle risorse ancora disponibili dopo la
         Progettista & 25\euro/h & 0.75 & 18,75\euro & 2 \textcolor{red}{(-0.75)} & 50\euro \textcolor{red}{(-18,75\euro)} \\
         \hline
         \rowcolor{tableLineOdd}
-        Programmatore & 15\euro/h & 23 & 345\euro & -25.75 \textcolor{red}{(-23)} & -386.25\euro \textcolor{red}{(-345\euro)} \\
+        Programmatore & 15\euro/h & 24 & 360\euro & -26.75 \textcolor{red}{(-24)} & -401.25\euro \textcolor{red}{(-360\euro)} \\
         \hline
         \rowcolor{tableLineEven}
-        Verificatore & 15\euro/h & 10 & 150\euro & 14.25 \textcolor{red}{(-10)} & 213.75\euro \textcolor{red}{(-150\euro)} \\
+        Verificatore & 15\euro/h & 16.5 & 247.50\euro & 7.75 \textcolor{red}{(-16.5)} & 116.25\euro \textcolor{red}{(-247.50\euro)} \\
         \hline
         \rowcolor{tableHeader}
-        \textbf{Totale} & - & \textbf{39.75} & \textbf{663,75\euro} & \textbf{1.25 \textcolor{red}{(-39.75)}} & \textbf{130,00\euro \textcolor{red}{(-663,75\euro)}} \\
+        \textbf{Totale} & - & \textbf{46.25} & \textbf{746.25\euro} & \textbf{-3.25 \textcolor{red}{(-46.25)}} & \textbf{107.50\euro \textcolor{red}{(-746.25\euro)}} \\
         \hline
     \end{tabularx}
     \caption{Sprint 12 - Variazione nelle risorse disponibili}
@@ -3454,5 +3470,82 @@ Durante lo Sprint 12 si sono manifestati i seguenti rischi:
 \paragraph{Retrospettiva} Lo Sprint 12 ha permesso al gruppo di portare molto vicino al completamento l'applicazione, nonostante le difficoltà riscontrate con gli strumenti per il Backend. Si è resa nota la necessità di aggiornare nuovamente i contenuti della Specifica Tecnica a seguito delle attività di sviluppo, perciò sarà necessaria una quantità limitata di lavoro aggiuntivo, anche per terminare le funzionalità non ancora in linea con i requisiti dell'applicazione. \\
 Nonostante i contrattempi, lo sviluppo e le attività di documentazione sono nelle loro fasi conclusive, perciò il gruppo dovrà iniziare a focalizzarsi sulla futura fase di revisione.
 
+
+\section{Riassunto delle risorse utilizzate durante il progetto}\label{sec:consuntivo_fine_progetto}
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \small 
+    \begin{tabularx}{\textwidth}{|l|C|C|C|C|C|C|C|}
+        \hline
+        \rowcolor{tableHeader}
+        \textbf{Membro} & \textbf{Resp} & \textbf{Amm} & \textbf{Anal} & \textbf{Pt} & \textbf{Pr} & \textbf{Ver} & \textbf{Tot}\\
+        \hline
+        \rowcolor{tableLineOdd}
+        F. Fracasso & 10 & 16 & 8 & 15 & 29.5 & 11.5 & 90 \\
+        \hline
+        \rowcolor{tableLineEven}
+        R. Manisi & 9 & 21 & 7 & 18 & 26.5 & 10 & 91.5 \\
+        \hline
+        \rowcolor{tableLineOdd}
+        D. Parolin & 12 & 14.25 & 16 & 17 & 19.75 & 12.75 & 91.75\\
+        \hline
+        \rowcolor{tableLineEven}
+        M. Sanguin & 18 & 7 & 8 & 18 & 22 & 15 & 88 \\
+        \hline
+        \rowcolor{tableLineOdd}
+        G. Scaggiante & 9 & 8.5 & 10.5 & 17 & 31 & 16 & 92 \\
+        \hline
+        \rowcolor{tableLineEven}
+        G. Visentin & 13 & 10 & 17 & 15 & 18 & 17 & 90 \\
+        \hline
+    \end{tabularx}
+    \caption{Ore utilizzate da ogni componente per ciascun ruolo}
+    \label{tab:consuntivo_progetto}
+\end{table}
+
+Come evidenziato dalla tabella precedente, relativa alle risorse rimanenti alla
+fine dell'ultimo sprint, il gruppo termina la realizzazione di quanto necessario
+per affrontare la Product Baseline con un saldo rimanente di 107.50€, spendendo
+dunque un totale di 11262.50€, sotto il budget inizialmente a disposizione pari
+a 11.370€.
+Nella tabella si evidenzia il contributo in termini di ore produttive portato da
+ogni componente del gruppo
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1.2]
+        % Responsabile (13.1%)
+        \draw[thick,fill=pieResp] (0,0) -- (0:1.5) arc (0:47:1.5) -- cycle;
+        \draw (23.5:1.95) node {13.1\%};
+
+        % Amministratore (14.1%)
+        \draw[thick,fill=pieAmm] (0,0) -- (47:1.5) arc (47:98:1.5) -- cycle;
+        \draw (72.5:1.9) node {14.1\%};
+
+        % Analista (12.2%)
+        \draw[thick,fill=pieAnal] (0,0) -- (98:1.5) arc (98:142:1.5) -- cycle;
+        \draw (120:1.95) node {12.2\%};
+
+        % Progettista (18.4%)
+        \draw[thick,fill=pieDes] (0,0) -- (142:1.5) arc (142:208:1.5) -- cycle;
+        \draw (175:1.95) node {18.4\%};
+
+        % Programmatore (27.0%)
+        \draw[thick,fill=pieProg] (0,0) -- (208:1.5) arc (208:305.5:1.5) -- cycle;
+        \draw (257:2) node {27.0\%};
+
+        % Verificatore (15.1%)
+        \draw[thick,fill=pieVer] (0,0) -- (305.5:1.5) arc (305.5:360:1.5) -- cycle;
+        \draw (333:1.95) node {15.1\%};
+
+        \matrix [below, draw=none, fill=none] at (0,-2.5) {
+            \node [fill=pieResp, label=right:Responsabile 71 ore] {}; & \node [fill=pieAmm, label=right:Amministratore 76.75 ore] {}; \\
+            \node [fill=pieAnal, label=right:Analista 66.5 ore] {};     & \node [fill=pieDes, label=right:Progettista 100 ore] {}; \\
+            \node [fill=pieProg, label=right:Programmatore 146.75 ore] {};& \node [fill=pieVer, label=right:Verificatore 82.25 ore] {}; \\
+        };
+    \end{tikzpicture}
+    \caption{Distribuzione ore per ruolo - Consuntivo finale di progetto}
+\end{figure}
 
 \end{document}
