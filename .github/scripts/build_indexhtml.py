@@ -96,7 +96,7 @@ interni_pb = list(PB_PATH_INTERNI.rglob("*.pdf"))
 
 #Togli glossario da doc pb
 interni_pb = [f for f in interni_pb if f.exists() and f.name not in {"Glossario.pdf"}]
-esterni_pb = [f for f in esterni_pb if f.exists() and f.name not in {"lettera_di_presentazione_PB.pdf"}]
+esterni_pb = [f for f in esterni_pb if f.exists() and f.name not in {"lettera_presentazione_PB.pdf"}]
 verb_esterni_pb = list(PB_PATH_VERB_EXT.rglob("*.pdf"))
 verb_esterni_pb.sort(key=lambda f: f.name, reverse=True)
 verb_interni_pb = list(PB_PATH_VERB_INT.rglob("*.pdf"))
@@ -116,6 +116,14 @@ if esterni_pb or interni_pb or verb_interni_pb or verb_esterni_pb:
     docs = ''
     verb_ext = ''
     verb_int = ''
+    sez_lettera_pb = ''
+
+    lettera_pb = list(PB_PATH_ESTERNI.rglob("*lettera_presentazione_PB.pdf"))
+    print(f"lettera pb trovata: {len(lettera_pb)}")
+    if(lettera_pb):
+        for l in lettera_pb:
+            sez_lettera_pb = create_link_special(l)
+
     docs = docs + '<h3>Documenti esterni</h3>\n<ul>\n'
     for file in esterni_pb:
         docs = docs + create_doc_link(file)
@@ -143,7 +151,7 @@ if esterni_pb or interni_pb or verb_interni_pb or verb_esterni_pb:
         for f in file_glossario_pb:
             sez_glossario = create_link_special(f)
 
-    docsections = docsections + docs + verb_ext + verb_int + sez_glossario + '</section>\n'
+    docsections = docsections + sez_lettera_pb + docs + verb_ext + verb_int + sez_glossario + '</section>\n'
 
 
 

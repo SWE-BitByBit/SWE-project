@@ -1,0 +1,162 @@
+% template presente
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{tabularx}
+\usepackage{tcolorbox}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    urlcolor=blue,     
+}
+\usepackage{graphicx}
+\graphicspath{{resources/}{../resources/}{../../resources/}{../../../resources/}{../../../../resources/}}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{colortbl}
+\usepackage{fancyhdr}
+\setlength{\headheight}{25pt}
+\setlength{\headsep}{1cm}
+\usepackage{titlesec}
+\geometry{margin=2.5cm}
+
+% ===== Variabile per il titolo del documento =====
+\newcommand{\documenttitle}{Presentazione PB}
+
+\setlength{\parindent}{0pt}
+\setstretch{1.2}
+
+% ===== Stile intestazione =====
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{gray}{\documenttitle - BitByBit}}
+\fancyhead[R]{\includegraphics[height=1cm]{solo_logo.jpg}}
+\fancyfoot[C]{\thepage}
+
+% ===== Formattazione sezioni =====
+\titleformat{\section}{\Large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.5em}{}
+
+\newcommand{\term}[1]{\textbf{#1}$^\mathbf{G}$}
+
+\newcommand{\ignoreglossary}{}
+
+\begin{document}
+
+% ======= HEADER UNIVERSITÀ E GRUPPO CENTRATI VERTICALMENTE =======
+\vspace*{\fill} 
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logoUni.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\color{red}\LARGE \textbf{Università degli Studi di Padova}}\\[0.3cm]
+        {\large
+        Laurea: Informatica\\
+        Corso: Ingegneria del Software\\
+        Anno Accademico: 2025/26
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1cm}
+
+\begin{center}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{logo.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.7\textwidth}
+        \raggedright
+        {\LARGE \textbf{Gruppo 17}}\\[0.3cm]
+        {\large
+        Nome: BitByBit\\
+        Email: swe.bitbybit@gmail.com
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{1.5cm}
+
+\begin{center}
+    {\LARGE \textbf{\documenttitle}}
+\end{center}
+
+% ======= INFO GENERALI SUL DOCUMENTO =======
+\renewcommand{\arraystretch}{1.3}
+\vspace{0.1cm}
+
+\begin{tcolorbox}
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\textbf{Componenti:} & 
+\begin{tabular}[t]{@{}l@{}}
+    Riccardo Manisi - 2111948 \\
+    Giovanni Visentin - 2101064 \\
+    Marco Sanguin - 2103121 \\
+    Dennis Parolin - 2113203 \\
+    Gabriele Scaggiante - 2101076 \\
+    Ferdinando Fracasso - 2122649 \\
+\end{tabular} \\
+\textbf{Destinatari:} & 
+\begin{tabular}[t]{@{}l@{}}
+Prof. Tullio Vardanega \\
+Prof. Riccardo Cardin \\
+\end{tabular} \\
+\end{tabularx}
+\end{tcolorbox}
+
+\vspace*{\fill}
+\clearpage
+
+\section{Lettera di presentazione}
+Alla cortese attenzione dei Professori Tullio Vardanega e Riccardo Cardin,\\[0.2cm]
+attraverso questa comunicazione, il gruppo BitByBit presenta formalmente la propria candidatura per partecipare alla valutazione prevista per la Product Baseline (PB).
+
+Il gruppo si è impegnato nello sviluppo del sistema richiesto dal Capitolato C4 (L'app che Protegge e Trasforma), su proposta dell'azienda Miriade Srl. Il testo originale dell'appalto è rintracciabile all'indirizzo:
+\begin{center}
+    \url{https://www.math.unipd.it/~tullio/IS-1/2025/Progetto/C4.pdf}
+\end{center}
+
+Il nostro lavoro è documentato in un repository GitHub, accessibile al seguente link:
+\begin{center}
+    \url{https://github.com/SWE-BitByBit/project-MVP.git}
+\end{center}
+
+Il verbale, firmato dalla Proponente, che attesta l'avvenuto incontro con la Proponente e la presentazione del nostro lavoro è disponibile al seguente indirizzo:
+\begin{center}
+    \url{https://github.com/SWE-BitByBit/SWE-docs/blob/develop/docs/PB/verbali_esterni/2026-05-04/verbale_esterno_2026-05-04_firmato.pdf}
+\end{center}
+
+In aggiunta, tutto il materiale redatto utile a certificare l'avanzamento dei processi e la solidità del nostro prodotto è raccolto in un portale web allestito appositamente per permettervi una rapida consultazione:
+\begin{center}
+    \url{https://swe-bitbybit.github.io/SWE-docs/}
+\end{center}
+
+I documenti che costituiscono la nostra offerta per lo svolgimento della PB includono, oltre a questa lettera:
+\begin{itemize}[labelsep=0.5cm]
+    \item Analisi dei Requisiti v2.0.0
+    \item Piano di Progetto v2.0.0
+    \item Piano di Qualifica v2.0.0
+    \item Norme di Progetto v2.0.0
+    \item Glossario v1.0.0
+    \item Manuale Utente v1.0.0
+    \item Specifica tecnica v1.0.0
+    \item Verbali interni
+    \item Verbali esterni
+\end{itemize}
+
+Certi di un Vostro positivo riscontro, restiamo a Vostra completa disposizione per qualsiasi necessità.\\[0.4cm]
+Distinti saluti,\\[0.2cm]
+Il gruppo BitByBit
+
+\end{document}
