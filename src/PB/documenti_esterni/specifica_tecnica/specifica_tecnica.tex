@@ -856,21 +856,8 @@ Il pattern è applicato in modo sistematico nella gestione dell'infrastruttura d
 
 \subsection{Architettura di deployment} \label{subsec:architettura_deployment}
 
-\subsubsection{Architettura three-tier}
-Il sistema adotta un'Architettura \textbf{three-tier} composta da tre livelli distinti con responsabilità separate.
-\begin{itemize}
-    \item \textbf{presentation tier}, corrisponde al client mobile sviluppato in Flutter, che interagisce con il Backend esclusivamente 
-tramite richieste HTTPS verso gli endpoint esposti da API Gateway.
-    \item \textbf{logic tier}, è costituito da AWS API Gateway e AWS Lambda. API Gateway espone le Lambda come endpoint HTTPS 
-e funge da proxy HTTP: riceve la richiesta del client, la inoltra alla Lambda corrispondente sotto forma di oggetto evento, e 
-restituisce al client la risposta HTTP prodotta dalla funzione. Questo livello non richiede gestione manuale del carico in quanto entrambi i servizi 
-scalano automaticamente in risposta alla domanda, garantendo disponibilità e sicurezza senza provisioning di infrastruttura dedicata.
-    \item \textbf{data tier}, è composto dalle istanze di Amazon DynamoDB per la persistenza dei dati strutturati e dai bucket Amazon S3 per 
-la memorizzazione dei contenuti multimediali, quali immagini e file audio associati alle note del diario.
-\end{itemize}
-
 \subsubsection{Architettura a microservizi}
-Per il logic tier viene adottato il pattern architetturale a \textbf{microservizi}. In questo modello l'applicazione è realizzata 
+Per l'architettura logica viene adottato il pattern architetturale \textbf{microservizi}. In questo modello l'applicazione è realizzata 
 da componenti indipendenti, ciascuno responsabile di un sottoinsieme ben definito di funzionalità. Ogni componente è deployabile, aggiornabile e scalabile in modo autonomo rispetto agli altri.\\
 
 Nel progetto ogni microservizio corrisponde a una singola funzione AWS Lambda, deployata tramite AWS SAM. Questa corrispondenza elimina la necessità dell'implementazione delle API per la 
