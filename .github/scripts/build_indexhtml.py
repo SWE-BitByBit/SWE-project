@@ -151,7 +151,7 @@ if esterni_pb or interni_pb or verb_interni_pb or verb_esterni_pb:
         for f in file_glossario_pb:
             sez_glossario = create_link_special(f)
 
-    docsections = docsections + docs + verb_ext + verb_int + sez_glossario + '</section>\n'
+    docsections = docsections + sez_lettera_pb + docs + verb_ext + verb_int + sez_glossario + '</section>\n'
 
 
 
