@@ -318,8 +318,6 @@ Le soglie di accettabilità e di optimalità definite per ciascuna Metrica sono 
     \textbf{MPD03} & Requisiti opzionali soddisfatti & $\ge 10\%$ & $\ge 40\%$ \\ \hline
     \textbf{MPD04} & Reliability Rating (RR) & $\ge B$ & $A$ \\ \hline
     \textbf{MPD05} & Maintainability Rating & $\ge B$ & $A$ \\ \hline
-    \textbf{MPD06} & Cyclomatic Complexity  (CYC) & $\le 10$ per funzione & $\le 5$ per funzione \\ \hline
-    \textbf{MPD07} & Cognitive Complexity (COC) & $\le15$ & $\le8$ \\ \hline
 \end{tabularx}
 \caption{Soglie delle metriche statiche}
 \end{table}
@@ -332,8 +330,8 @@ Le soglie di accettabilità e di optimalità definite per ciascuna Metrica sono 
 \begin{tabularx}{\textwidth}{|c|Y|c|c|}
 \hline
 \rowcolor{gray!30} \textbf{ID} & \textbf{Nome} & \textbf{Valore accettabile} & \textbf{Valore ottimo} \\ \hline
-\textbf{MPD08} & Code Coverage (CC) & $\ge80\%$ & $\ge90\%$ \\ \hline
-\textbf{MPD09} & Unit Test Success Density (UTSD) & $\ge 90\%$ & $100\%$ \\ \hline
+\textbf{MPD06} & Code Coverage (CC) & $\ge80\%$ & $\ge90\%$ \\ \hline
+\textbf{MPD07} & Unit Test Success Density (UTSD) & $\ge 90\%$ & $100\%$ \\ \hline
 \end{tabularx}
 \caption{Soglie delle metriche dinamiche}
 \end{table}
@@ -2676,45 +2674,72 @@ I valori negli Sprint 6 e 7, nonostante la non sufficienza, mostrano un trend po
 Il grafico mostra che il valore dell'Indice di Gulpease della documentazione prodotta risulta sempre superiore alla soglia del valore accettabile, con la maggior parte della documentazione oltre la soglia ottima.\\
 Le Norme di Progetto e l'Analisi dei requisiti sono i documenti con l'indice più basso, ma va segnalato che anche il Glossario (59,68) sfiora appena la soglia ottima, senza tuttavia superarla. Poiché si tratta di documenti tecnici, la presenza di terminologia specifica e frasi articolate può abbassare marginalmente questo indice senza comprometterne la reale leggibilità per gli addetti ai lavori. Pertanto, un intervento correttivo mirato unicamente all'innalzamento dell'indice non è ritenuto prioritario, ma se in futuro si renderanno necessarie modifiche a questi documenti, si presterà attenzione a semplificarne la struttura linguistica.
 
-%Completamento requisiti
-\subsection{MPD01, MPD02, MPD03: Soddisfazione requisiti}
+% Cruscotti per metriche
+\subsection{Cruscotto metriche di prodotto}
+
+Per il monitoraggio continuo della qualità del codice, il gruppo ha adottato SonarCloud, 
+una soluzione enterprise di analisi statica del codice.\\
+
+\subsubsection{Cruscotto codice frontend}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{pdq/cruscotto_frontend_PB.png}
+    \caption{Cruscotto metriche codice frontend}
+    \label{fig:cruscotto_frontend_PB}
+\end{figure}
+Il cruscotto del frontend, visibile in figura~\ref{fig:cruscotto_frontend_PB}, riporta 
+le metriche di qualità relative al codice Flutter dell'applicazione mobile.
+
+\subsubsection{Cruscotto codice backend}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{pdq/cruscotto_backend_PB.png}
+    \caption{Cruscotto metriche codice backend}
+    \label{fig:cruscotto_backend_PB}
+\end{figure}
+
+Il cruscotto del backend, visibile in figura~\ref{fig:cruscotto_backend_PB}, riporta 
+le metriche di qualità relative al codice Python.
 
 %Metriche Sonarqube
-\subsection{MPD04: Reliability Rating, MPD06: Maintanability Rating}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\linewidth]{pdq/MPD04-MPD05_frontend.png}
-    \caption{Rating di Reliability e Maintainability del codice frontend}
-    \label{fig:Rating MPD04 e MPD05 codice frontend}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\linewidth]{pdq/MPD04-MPD05_backend.png}
-    \caption{Rating di Reliability e Maintainability del codice backend}
-    \label{fig:Rating MPD04 e MPD05 codice backend}
-\end{figure}
+\subsubsection{MPD04: Reliability Rating}
+La metrica di Reliability Rating valuta la presenza di bug nel codice attraverso 
+un sistema di rating che va da A (nessun bug) a E (almeno un bug critico). 
+Sia il frontend che il backend hanno ottenuto un rating \textbf{A}, il valore 
+massimo raggiungibile, indicando l'assenza di bug rilevati dall'analisi statica 
+di SonarCloud.
+
+\subsubsection{MPD05: Maintanability Rating}
+La metrica di Maintainability Rating valuta il debito tecnico del codice, ovvero 
+la quantità di lavoro necessaria per portare il codice a uno stato pulito e 
+manutenibile. Il rating va da A (debito tecnico inferiore al 5\% del tempo 
+necessario per riscrivere il codice) a E. Anche in questo caso, sia frontend 
+che backend hanno raggiunto il rating \textbf{A}, confermando un basso debito 
+tecnico complessivo.
 
 \subsection{MPD08: Code Coverage}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\linewidth]{pdq/MPD08_frontend.png}
-    \caption{Rating di Code Coverage del codice frontend}
-    \label{fig:Rating MPD08 codice frontend}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\linewidth]{pdq/MPD08_backend.png}
-    \caption{Rating di Code Coverage del codice backend}
-    \label{fig:Rating MPD08 codice backend}
-\end{figure}
+La Code Coverage misura la percentuale di codice sorgente esercitata dai test 
+automatici. I valori raggiunti sono:
+
+\begin{itemize}
+    \item \textbf{Frontend (Flutter):} 84.7\%
+    \item \textbf{Backend (Python):} 88.0\%
+\end{itemize}
+
+Entrambi i valori superano la soglia minima definita nei quality gate del progetto. 
+La copertura è stata misurata rispettivamente tramite il tool nativo di Flutter 
+per il frontend e tramite \texttt{pytest-cov} per il backend, con i report 
+trasmessi a SonarCloud in fase di CI.
 
 \subsection{MPD09: Unit Test Success Density}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{pdq/MPD09.png}
-    \caption{Unit Test Success Density}
-    \label{fig:MPD09 Unit Test Success Density}
+    \includegraphics[width=\linewidth]{pdq/MPD09_unit_test_success_density.png}
+    \caption{Unit Test Success Density codice backend}
+    \label{fig:MPD09_Unit_Test_Success_Density_backend}
 \end{figure}
-Dato l'utilizzo della versione gratuita di SonarQube, non è stato possibile ottenere un grafico dello storico della metrica. 
+Per il backend Python, SonarCloud è stato configurato per acquisire direttamente 
+i risultati dei test prodotti da \texttt{pytest}, mostrando nella dashboard la percentuale di 
+test eseguiti con successo che si attesta al 100\% come indica la figura~\ref{fig:MPD09_Unit_Test_Success_Density_backend}.
 
 \end{document}

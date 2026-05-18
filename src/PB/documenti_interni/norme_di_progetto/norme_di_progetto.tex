@@ -1427,29 +1427,10 @@ rilevati) e il costo stimato per sviluppare l'intero codice, dove il costo per
 linea è predefinito a 30 minuti sonarqube-metrics.
 \end{itemize}
 
-\paragraph{Cyclomatic Complexity (CYC)}
-\begin{itemize}
-    \item \textbf{Codice:} \texttt{M-PD06}
-    \item \textbf{Formula:} $CC = 1 + \# \text{rami condizionali}$
-    \item \textbf{Descrizione:} misura il numero di percorsi linearmente indipendenti 
-nel flusso di controllo del codice. Il valore viene calcolato a livello di funzione 
-incrementando un contatore di uno ogni volta che il flusso di controllo si divide 
-generando un nuovo ramo condizionale.
-\end{itemize}
-
-\paragraph{Cognitive Complexity (COC)}
-\begin{itemize}
-\item \textbf{Codice:} \texttt{M-PD07}
-\item \textbf{Formula:} $COC = \sum_{i=1}^{n} w_i$
-\item \textbf{Descrizione:} misura quanto è difficile comprendere il flusso di controllo 
-del codice. Penalizza in modo progressivo l'annidamento delle strutture condizionali 
-(\texttt{if}, \texttt{else}, \texttt{switch}, cicli): ogni livello aggiuntivo di annidamento aumenta il peso $w_i$ del costrutto.
-\end{itemize}
-
 \subsubsection{Metriche dinamiche}
 \paragraph{Code Coverage (CC)}
 \begin{itemize}
-\item \textbf{Codice:} \texttt{M-PD08}
+\item \textbf{Codice:} \texttt{M-PD06}
 \item \textbf{Formula:} 
 $CC = \dfrac{CT + LC}{B + EL} \cdot 100$
 \begin{itemize}
@@ -1465,7 +1446,7 @@ del codice è stata effettivamente verificata dai test.
 
 \paragraph{Unit Test Success Density (UTSD)}
 \begin{itemize}
-\item \textbf{Codice:} \texttt{M-PD09}
+\item \textbf{Codice:} \texttt{M-PD07}
 \item \textbf{Formula:} $UTSD = \dfrac{\#\ \text{test} - (\#\ \text{test errors} + 
 \#\ \text{test failures})}{\#\ \text{test}} \cdot 100$
 \item \textbf{Descrizione:} misura la percentuale di test unitari eseguiti con 
