@@ -29,6 +29,10 @@ DOCUMENTI = {
         "type": "file",
         "filename": "piano_di_qualifica.tex"
     },
+    "Specifica tecnica": {
+        "type": "file",
+        "filename": "specifica_tecnica.tex"
+    },
     "Glossario": {
         "type": "file",
         "filename": "Glossario.tex"
